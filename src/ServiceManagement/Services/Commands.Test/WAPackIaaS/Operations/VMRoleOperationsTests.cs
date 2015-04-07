@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
@@ -38,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         private const string cloudServiceName = "CloudService01";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldCreateOneVMRole()
@@ -74,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneVMRole()
@@ -92,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneVMRoleByName()
@@ -110,6 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnMultipleVMRole()
@@ -144,6 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnMultipleVMRoleVMs()
@@ -171,6 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldDeleteVMRole()
@@ -192,6 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         [Trait("Type", "WAPackIaaS-Negative")]

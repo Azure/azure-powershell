@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
 
@@ -56,6 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -65,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
                 string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
 
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
 
                 cmdlet.ExecuteCmdlet();
@@ -78,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageWithEmptyServiceSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -97,6 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageWithMultipleRolesSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -106,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
                 string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
 
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
                 service.AddWorkerRole(Test.Utilities.Common.Data.NodeWorkerRoleScaffoldingPath);
                 service.AddWorkerRole(Test.Utilities.Common.Data.NodeWorkerRoleScaffoldingPath);

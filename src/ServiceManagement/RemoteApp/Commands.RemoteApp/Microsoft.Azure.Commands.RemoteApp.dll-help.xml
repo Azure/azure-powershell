@@ -589,10 +589,29 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AsJob</maml:name>
+				<maml:description>
+					<maml:para>Allows running the cmdlet in the background as a PS job</maml:para>
+				</maml:description>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AsJob</maml:name>
+			<maml:description>
+				<maml:para>Allows running the cmdlet in the background as a PS job</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>CollectionName</maml:name>
 			<maml:description>
@@ -724,14 +743,14 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 				<maml:name>UsageMonth</maml:name>
 				<maml:description>
-					<maml:para>Two digit number for the usage month</maml:para>
+					<maml:para>Two digit number for the usage month. If not provided then the current month will be used.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 				<maml:name>UsageYear</maml:name>
 				<maml:description>
-					<maml:para>Full year of the usage.</maml:para>
+					<maml:para>Full year of the usage. If not provided then the current year will be used.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -755,7 +774,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>UsageMonth</maml:name>
 			<maml:description>
-				<maml:para>Two digit number for the usage month</maml:para>
+				<maml:para>Two digit number for the usage month. If not provided then the current month will be used.</maml:para>
 								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -768,7 +787,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
 			<maml:name>UsageYear</maml:name>
 			<maml:description>
-				<maml:para>Full year of the usage.</maml:para>
+				<maml:para>Full year of the usage. If not provided then the current year will be used.</maml:para>
 								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -2729,6 +2748,79 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>VNetName</maml:name>
+				<maml:description>
+					<maml:para>Name of Microsoft Azure RemoteApp virtual network.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>Domain</maml:name>
+				<maml:description>
+					<maml:para>The name of the Active Directory Domain Services domain to join the RD Session Host servers to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6">
+				<maml:name>Credential</maml:name>
+				<maml:description>
+					<maml:para>Credential of a service account that has permission to join the RemoteApp servers to your domain.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="7">
+				<maml:name>SubnetName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Subnet in the Virtual Network which should be used to create the Microsoft Azure RemoteApp collection.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>CustomRdpProperty</maml:name>
+				<maml:description>
+					<maml:para>Custom RDP properties which can be used to configure drive redirection and other settings.  See https://technet.microsoft.com/library/ff393699(v=ws.10).aspx for details. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Description</maml:name>
+				<maml:description>
+					<maml:para>A short description for the object.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>DnsServers</maml:name>
+				<maml:description>
+					<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRemoteAppCollection</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CollectionName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Microsoft Azure RemoteApp collection. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>ImageName</maml:name>
+				<maml:description>
+					<maml:para>Name of Microsoft Azure RemoteApp template image.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Plan</maml:name>
+				<maml:description>
+					<maml:para>The plan for the Microsoft Azure RemoteApp collection, which may define the usage limits. Use Get-AzureRemoteAppPlan to see the plans available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>VNetName</maml:name>
 				<maml:description>
@@ -2761,13 +2853,6 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 				<maml:name>Description</maml:name>
 				<maml:description>
 					<maml:para>A short description for the object.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>DnsServers</maml:name>
-				<maml:description>
-					<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -2823,13 +2908,6 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>DnsServers</maml:name>
-				<maml:description>
-					<maml:para>A string containing a comma-separated list of IPv4 addresses of the DNS servers.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
@@ -2847,7 +2925,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="6">
 			<maml:name>Credential</maml:name>
 			<maml:description>
 				<maml:para>Credential of a service account that has permission to join the RemoteApp servers to your domain.</maml:para>
@@ -2964,7 +3042,20 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="7">
+			<maml:name>SubnetName</maml:name>
+			<maml:description>
+				<maml:para>Name of the Subnet in the Virtual Network which should be used to create the Microsoft Azure RemoteApp collection.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
 			<maml:name>VNetName</maml:name>
 			<maml:description>
 				<maml:para>Name of Microsoft Azure RemoteApp virtual network.</maml:para>
@@ -4905,31 +4996,61 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Plan</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Description</maml:name>
 				<maml:description>
-					<maml:para>The plan for the Microsoft Azure RemoteApp collection, which may define the usage limits. Use Get-AzureRemoteAppPlan to see the plans available.</maml:para>
+					<maml:para>A short description for the collection.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRemoteAppCollection</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CollectionName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Credential</maml:name>
 				<maml:description>
 					<maml:para>Credential of a service account that has permission to join the RemoteApp servers to your domain.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>CustomRdpProperty</maml:name>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRemoteAppCollection</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CollectionName</maml:name>
 				<maml:description>
-					<maml:para>Custom RDP properties which can be used to configure drive redirection and other settings.  See https://technet.microsoft.com/library/ff393699(v=ws.10).aspx for details. </maml:para>
+					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Description</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Plan</maml:name>
 				<maml:description>
-					<maml:para>A short description for the collection.</maml:para>
+					<maml:para>The plan for the Microsoft Azure RemoteApp collection, which may define the usage limits. Use Get-AzureRemoteAppPlan to see the plans available.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRemoteAppCollection</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>CollectionName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Microsoft Azure RemoteApp collection.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CustomRdpProperty</maml:name>
+				<maml:description>
+					<maml:para>Custom RDP properties which can be used to configure drive redirection and other settings.  See https://technet.microsoft.com/library/ff393699(v=ws.10).aspx for details. </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -4950,7 +5071,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Credential</maml:name>
 			<maml:description>
 				<maml:para>Credential of a service account that has permission to join the RemoteApp servers to your domain.</maml:para>
@@ -4963,7 +5084,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>CustomRdpProperty</maml:name>
 			<maml:description>
 				<maml:para>Custom RDP properties which can be used to configure drive redirection and other settings.  See https://technet.microsoft.com/library/ff393699(v=ws.10).aspx for details. </maml:para>
@@ -4976,7 +5097,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Description</maml:name>
 			<maml:description>
 				<maml:para>A short description for the collection.</maml:para>
@@ -4989,7 +5110,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Plan</maml:name>
 			<maml:description>
 				<maml:para>The plan for the Microsoft Azure RemoteApp collection, which may define the usage limits. Use Get-AzureRemoteAppPlan to see the plans available.</maml:para>

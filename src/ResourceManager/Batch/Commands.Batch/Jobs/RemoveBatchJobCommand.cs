@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, "AzureBatchJob")]
     public class RemoveBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Job to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem containing the job to delete.")]
         [ValidateNotNullOrEmpty]
         public string WorkItemName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Job to delete.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the job to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Job to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudJob object representing the job to delete.")]
         [ValidateNotNullOrEmpty]
         public PSCloudJob InputObject { get; set; }
 

@@ -38,36 +38,35 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         public string ImageName { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Immediately log off users after update has successfully completed")]
+            HelpMessage = "Log off users immediately after the update has successfully completed")]
         public SwitchParameter ForceLogoffWhenUpdateComplete { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            CollectionCreationDetails details = null;
+            CollectionUpdateDetails details = null;
             OperationResultWithTrackingId response = null;
             Collection collection = null;
 
             collection = FindCollection(CollectionName);
-
-            if (collection != null)
+            if (collection == null)
             {
-                details = new CollectionCreationDetails()
-                {
-                    Name = CollectionName,
-                    TemplateImageName = ImageName,
-                    PlanName = collection.PlanName,
-                    WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0
-                };
+                return;
+            }
 
-                if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))
-                {
-                    response = CallClient(() => Client.Collections.Set(CollectionName, true, false, details), Client.Collections);
-                }
+            details = new CollectionUpdateDetails()
+            {
+                TemplateImageName = ImageName,
+                WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0
+            };
 
-                if (response != null)
-                {
-                    WriteTrackingId(response);
-                }
+            if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))
+            {
+                response = CallClient(() => Client.Collections.Set(CollectionName, true, false, details), Client.Collections);
+            }
+
+            if (response != null)
+            {
+                WriteTrackingId(response);
             }
         }
     }

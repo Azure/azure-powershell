@@ -20,35 +20,30 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
     public class TableTests : DataFactoriesScenarioTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTable()
         {
             RunPowerShellTest("Test-Table");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableWithDataFactoryParameter()
         {
             RunPowerShellTest("Test-TableWithDataFactoryParameter");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetTableWithEmptyName()
         {
             RunPowerShellTest("Test-GetTableWithEmptyName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetTableWithWhiteSpaceName()
         {
             RunPowerShellTest("Test-GetTableWithWhiteSpaceName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTablePiping()
         {
             RunPowerShellTest("Test-TablePiping");

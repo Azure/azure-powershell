@@ -22,23 +22,23 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, "AzureBatchWorkItem")]
     public class NewBatchWorkItemCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem to create.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem to create.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "The Schedule to use when creating a new WorkItem")]
+        [Parameter(HelpMessage = "The schedule specification to use when creating the workitem.")]
         [ValidateNotNullOrEmpty]
         public PSWorkItemSchedule Schedule { get; set; }
 
-        [Parameter(HelpMessage = "The Job Specification to use when creating a new WorkItem")]
+        [Parameter(HelpMessage = "The job specification to use when creating the workitem.")]
         [ValidateNotNullOrEmpty]
         public PSJobSpecification JobSpecification { get; set; }
 
-        [Parameter(HelpMessage = "The Job Execution Enviornment to use when creating a new WorkItem")]
+        [Parameter(HelpMessage = "The job execution environment to use when creating the workitem.")]
         [ValidateNotNullOrEmpty]
         public PSJobExecutionEnvironment JobExecutionEnvironment { get; set; }
 
-        [Parameter(HelpMessage = "Metadata to add to the new WorkItem. For each key/value pair, set the key to the Metadata name, and the value to the Metadata value.")]
+        [Parameter(HelpMessage = "Metadata to add to the new workitem.")]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
 

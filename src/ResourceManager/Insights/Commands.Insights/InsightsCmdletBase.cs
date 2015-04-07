@@ -12,25 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using System.Management.Automation;
+using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Insights
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database server.
+    /// Base class for the Azure Insights SDK Cmdlets
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerAuditingSetting"), OutputType(typeof(AuditingPolicy))]
-    public class GetAzureSqlServerAuditingSetting : SqlDatabaseSecurityCmdletBase
+    public abstract class InsightsCmdletBase : AzurePSCmdlet
     {
         /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
+        /// Executes the Cmdlet. This is a callback function to simplify the execption handling
         /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
+        protected abstract void ExecuteCmdletInternal();
+
+        /// <summary>
+        /// Execute the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
         {
-            return this.PolicyHandler.GetServerAuditingPolicy(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+            try
+            {
+                this.ExecuteCmdletInternal();
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.Flatten().InnerException;
+            }
         }
     }
 }
