@@ -28,9 +28,9 @@ This repository contains a set of PowerShell cmdlets for developers and administ
       * Log streaming
       * Save log
 * Cloud Services
-  * Create scaffolding for cloud service and role. Role support includes Node.js, PHP, Django and Cache.
+  * Create scaffolding for cloud service and role. Role support includes Node.js and PHP.
   * Manage cloud service and role, such as CRUD, start and stop.
-  * Manage extension
+  * Manage extension.
   * Start/Stop Azure emulator.
   * Manage certificate.
   * Manage cloud service extensions

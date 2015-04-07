@@ -92,8 +92,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
-                PrincipalId = principalId,
-                RoleDefinitionId = roleDefinitionId
+                Properties = new RoleAssignmentProperties {
+                    PrincipalId = principalId,
+                    RoleDefinitionId = roleDefinitionId
+                }
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
