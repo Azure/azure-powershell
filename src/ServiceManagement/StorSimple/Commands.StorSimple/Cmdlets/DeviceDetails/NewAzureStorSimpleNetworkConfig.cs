@@ -32,75 +32,76 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         #region Parameters
 
         /// <summary>
+        /// Interface alias of interface for which settings are being supplied. A value 
+        /// from Data0 to Data5
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.InterfaceAlias)]
+        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
+        public string InterfaceAlias { get; set; }
+
+        /// <summary>
         /// Whether the net interface is iscsi enabled/disabled
         /// </summary>
-        [Parameter(Mandatory=false, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.IsIscsiEnabled)]
+        [Parameter(Mandatory=false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.IsIscsiEnabled)]
         [ValidateNotNullOrEmpty]
         public bool? EnableIscsi { get; set; }
 
         /// <summary>
         /// Whether the net interface is cloud enabled/disabled
         /// </summary>
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.IsCloudEnabled)]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.IsCloudEnabled)]
         [ValidateNotNullOrEmpty]
         public bool? EnableCloud { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 0, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.Controller0IPv4Address)]
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.Controller0IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string Controller0IPv4Address { get; set; }
         
         /// <summary>
         /// IPv4Address for controller 1, should be used only with Data0 interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.Controller1IPv4Address)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.Controller1IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string Controller1IPv4Address { get; set; }
 
         /// <summary>
         /// IPv4 net mask for interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 4, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Gateway)]
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Gateway)]
         [ValidateNotNullOrEmpty]
         public string IPv6Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address of gateway
         /// </summary>
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Gateway)]
+        [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Gateway)]
         [ValidateNotNullOrEmpty]
         public string IPv4Gateway { get; set; }
 
         /// <summary>
         /// IPv4 Address for the net interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Address)]
+        [Parameter(Mandatory = false, Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Address)]
         [ValidateNotNullOrEmpty]
         public string IPv4Address { get; set; }
 
         /// <summary>
         /// IPv6 Prefix for the net interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Prefix)]
+        [Parameter(Mandatory = false, Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.IPv6Prefix)]
         [ValidateNotNullOrEmpty]
         public string IPv6Prefix { get; set; }
                 
         /// <summary>
         /// IPv4 netmask for this interface
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Netmask)]
+        [Parameter(Mandatory = false, Position = 9, HelpMessage = StorSimpleCmdletHelpMessage.IPv4Netmask)]
         [ValidateNotNullOrEmpty]
         public string IPv4Netmask { get; set; }
 
-        /// <summary>
-        /// Interface alias of interface for which settings are being supplied. A value 
-        /// from Data0 to Data5
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 9, HelpMessage = StorSimpleCmdletHelpMessage.InterfaceAlias)]
-        [ValidateSetAttribute(new string[] { "Data0", "Data1", "Data2", "Data3", "Data4", "Data5" })]
-        public string InterfaceAlias { get; set; }
         #endregion
 
         private IPAddress controller0Address;
@@ -113,13 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (!ProcessParameters())
-            {
-                WriteObject(null);
-                return;
-            }
             try
             {
+                ProcessParameters();
                 var netConfig = new NetworkConfig
                 {
                     IsIscsiEnabled = EnableIscsi,
@@ -144,39 +141,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             }
         }
 
-        private bool ProcessParameters(){
+        private void ProcessParameters(){
             // parse interfaceAlias
             if (!Enum.TryParse<NetInterfaceId>(InterfaceAlias, out interfaceAlias))
             {
-                WriteVerbose(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
-                return false;
+                throw new ArgumentException(string.Format(Resources.InvalidInterfaceId, InterfaceAlias));
             }
 
             // Try and set all the IP address
-            if (!TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway"))
-            {
-                return false;
-            }
-            if (!TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask"))
-            {
-                return false;
-            }
-            if(!TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway"))
-            {
-                return false;
-            }
+            TrySetIPAddress(Controller0IPv4Address, out controller0Address, "Controller0IPv4Address");
+            TrySetIPAddress(Controller1IPv4Address, out controller1Address, "Controller1IPv4Address");
+            TrySetIPAddress(IPv4Address, out ipv4Address, "IPv4Address");
+            TrySetIPAddress(IPv4Gateway, out ipv4Gateway, "IPv4Gateway");
+            TrySetIPAddress(IPv4Netmask, out ipv4Netmask, "IPv4Netmask");
+            TrySetIPAddress(IPv6Gateway, out ipv6Gateway, "IPv6Gateway");
 
             // Only EnableIscsi, Controller0 and controller1 IP Addresses can be set on Data0
             if (InterfaceAlias == NetInterfaceId.Data0.ToString())
@@ -184,8 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if(IPv4Address != null || IPv4Gateway != null || IPv4Netmask != null
                     && IPv6Gateway != null || IPv6Prefix != null || EnableCloud != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigData0AllowedSettings);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigData0AllowedSettings);
                 }
             }
             // On other interfaces (non-Data0), Controller0 and Controller1 IP Addresses cannot be set
@@ -193,14 +170,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 if (Controller0IPv4Address != null || Controller1IPv4Address != null)
                 {
-                    WriteVerbose(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
-                    return false;
+                    throw new ArgumentException(Resources.NetworkConfigControllerIPsNotAllowedOnOthers);
                 }
             }
-
-            return true;
         }
-
     }
 }
 

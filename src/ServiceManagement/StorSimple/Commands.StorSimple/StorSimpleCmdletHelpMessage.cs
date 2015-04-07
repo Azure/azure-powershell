@@ -119,6 +119,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string ToTime = "End of time interval for which to filter results.";
         public const string DeviceJobStatus = "Status of job.";
         public const string DeviceJobType = "Type of job.";
+        public const string AdministratorPasswd = "Administrator password for the device.";
+        public const string SnapshotManagerPasswd = "Password for snapshot manager";
         public const string PersistAzureVMOnFailrue =
             "The switch parameter to debug any Provisioning Failrues by skipping deletion of the VM on failrue";
     }

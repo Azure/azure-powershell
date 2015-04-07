@@ -74,6 +74,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             return taskStatusInfo;
         }
 
+        public bool IsValidDeviceId(string deviceId)
+        {
+            if (string.IsNullOrWhiteSpace(deviceId)) throw new ArgumentNullException("deviceId");
+            var deviceInfos = GetAllDevices();
+            foreach (var deviceInfo in deviceInfos)
+            {
+                if (deviceInfo.DeviceId.Equals(deviceId, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public string GetDeviceId(string deviceToUse)
         {
             if (deviceToUse == null) throw new ArgumentNullException("deviceToUse");
@@ -146,6 +161,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 netInterface.NicIPv6Settings.IPv6Gateway = netConfig.IPv6Gateway.ToString();
             }
+
+            // Make sure that the interface gets enabled as well
+            netInterface.IsEnabled = true;
         }
 
         /// <summary>
@@ -202,7 +220,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             deviceDetails.WebProxy = null;
         }
 
-        public void UpdateVirtualDeviceDetails(DeviceDetails details, TimeZoneInfo timeZone, string sek, string cik)
+        public void UpdateVirtualDeviceDetails(DeviceDetails details, TimeZoneInfo timeZone, string sek, string adminPasswd, string snapshotPasswd, string cik, StorSimpleCryptoManager cryptoManager)
         {
             if (timeZone != null)
             {
@@ -215,10 +233,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
             // Also set the CIK before making the request - service needs it.
             var encryptedCik = this.EncryptWithDevicePublicKey(details.DeviceProperties.DeviceId, cik);
-
             details.VirtualApplianceProperties.EncodedChannelIntegrityKey = encryptedCik;
 
-            details.VirtualApplianceProperties.IsServiceEncryptionKeySet = true;
+            // Set the admin password
+            string encryptedAdminPasswd = null;
+            cryptoManager.EncryptSecretWithRakPub(adminPasswd, out encryptedAdminPasswd);
+            details.RemoteMinishellSecretInfo.MinishellSecret = encryptedAdminPasswd;
+
+            // Set the snapshot manager password
+            string encryptedSnapshotManagerPasswd = null;
+            cryptoManager.EncryptSecretWithRakPub(snapshotPasswd, out encryptedSnapshotManagerPasswd);
+            details.Snapshot.SnapshotSecret = encryptedSnapshotManagerPasswd;
+
+            // Set the cert thumbprint for the key used.
+            details.SecretEncryptionCertThumbprint = cryptoManager.GetSecretsEncryptionThumbprint();
 
             // mark everything that we dont intend to modify as null - indicating
             // to the service that there has been no change
@@ -227,9 +255,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             details.DnsServer = null;
             details.NetInterfaceList = null;
             details.RemoteMgmtSettingsInfo = null;
-            details.RemoteMinishellSecretInfo = null;
-            details.SecretEncryptionCertThumbprint = null;
-            details.Snapshot = null;
             details.WebProxy = null;
         }
     }
