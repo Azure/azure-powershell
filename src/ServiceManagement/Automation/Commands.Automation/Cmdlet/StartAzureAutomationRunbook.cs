@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the optional hybrid agent friendly name upon which the runbook should be executed.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional name of the hybrid agent which should execute the runbook")]
+        [Alias("HybridWorker")]
         public string RunOn { get; set; }
 
         /// <summary>

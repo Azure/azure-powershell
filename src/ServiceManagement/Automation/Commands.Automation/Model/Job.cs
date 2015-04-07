@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
-            this.RunOn = job.Properties.RunOn;
+            this.HybridWorker = job.Properties.RunOn;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters) 
             {
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string RunbookName { get; set; }
 
         /// <summary>
-        /// Gets or sets the RunOn.
+        /// Gets or sets the HybridWorker.
         /// </summary>
-        public string RunOn { get; set; }
+        public string HybridWorker { get; set; }
     }
 }
