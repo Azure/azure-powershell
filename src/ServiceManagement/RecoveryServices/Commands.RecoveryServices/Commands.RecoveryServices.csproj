@@ -165,8 +165,11 @@
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVault.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoverySite.cs" />
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryVault.cs" />
+    <Compile Include="Service\SetAzureSiteRecoveryProtectionProfile.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
