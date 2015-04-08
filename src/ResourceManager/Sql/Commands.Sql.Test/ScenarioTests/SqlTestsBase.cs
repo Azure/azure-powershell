@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.Authorization;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -37,7 +38,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient);
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -73,6 +75,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected ResourceManagementClient GetResourcesClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        {
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
         }
     }
 }

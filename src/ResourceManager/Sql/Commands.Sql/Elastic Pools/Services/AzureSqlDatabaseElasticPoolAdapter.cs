@@ -18,6 +18,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
@@ -40,12 +41,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
+        /// Gets or sets the Azure Subscription
+        /// </summary>
+        private AzureSubscription _subscription { get; set; }
+
+        /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
         public AzureSqlDatabaseElasticPoolAdapter(AzureProfile Profile, AzureSubscription subscription)
         {
+            this._subscription = subscription;
             this.Profile = Profile;
             Communicator = new AzureSqlDatabaseElasticPoolCommunicator(Profile, subscription);
         }
@@ -144,6 +151,19 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
             }).ToList();
+        }
+
+        /// <summary>
+        /// Gets the Location of the server.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the server</param>
+        /// <returns></returns>
+        public string GetServerLocation(string resourceGroupName, string serverName)
+        {
+            AzureSqlDatabaseServerAdapter serverAdapter = new AzureSqlDatabaseServerAdapter(Profile, _subscription);
+            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            return server.Location;
         }
 
         /// <summary>

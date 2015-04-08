@@ -67,6 +67,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
+
             WriteObject(GetDatabase());
         }
 

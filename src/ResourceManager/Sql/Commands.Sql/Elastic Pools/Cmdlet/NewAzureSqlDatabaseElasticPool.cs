@@ -19,6 +19,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -92,15 +93,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the location for the Azure SQL Database ElasticPool.  Must be the same as server location
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location for the Azure SQL Database ElasticPool.  Must be the same as server location")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -136,6 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseElasticPoolModel> model)
         {
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlDatabaseElasticPoolModel> newEntity = new List<AzureSqlDatabaseElasticPoolModel>();
             newEntity.Add(new AzureSqlDatabaseElasticPoolModel()
                 {
@@ -148,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     Edition = Edition,
                     ElasticPoolName = ElasticPoolName,
                     StorageMB = StorageMB,
-                    Location = Location
+                    Location = location,
                 });
             return newEntity;
         }

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
@@ -40,6 +41,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
+        /// Gets or sets the Azure Subscription
+        /// </summary>
+        private AzureSubscription _subscription { get; set; }
+
+        /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -47,6 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureSqlDatabaseAdapter(AzureProfile Profile, AzureSubscription subscription)
         {
             this.Profile = Profile;
+            this._subscription = subscription;
             Communicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
         }
 
@@ -114,6 +121,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public void RemoveDatabase(string resourceGroupName, string serverName, string databaseName)
         {
             Communicator.Remove(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+        }
+
+        /// <summary>
+        /// Gets the Location of the server.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the server</param>
+        /// <returns></returns>
+        public string GetServerLocation(string resourceGroupName, string serverName)
+        {
+            AzureSqlDatabaseServerAdapter serverAdapter = new AzureSqlDatabaseServerAdapter(Profile, _subscription);
+            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            return server.Location;
         }
 
         /// <summary>

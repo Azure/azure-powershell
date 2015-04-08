@@ -100,15 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the location for the Azure SQL Database.  Must be the same as server location
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location for the Azure SQL Database.  Must be the same as server location")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -144,10 +135,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
             newEntity.Add(new AzureSqlDatabaseModel()
                 {
-                    Location = Location,
+                    Location = location,
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     CatalogCollation = CatalogCollation,

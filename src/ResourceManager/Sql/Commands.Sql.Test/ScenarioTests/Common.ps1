@@ -78,10 +78,9 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 function Create-ResourceGroupForTest ()
 {
 	$guid = [System.Guid]::NewGuid().ToString()
-	$location = "Japan East"
+	$location = "Southeast Asia"
 	$rgName = "sql-ps-test-rg-" + $guid
 	
-	Write-Output (Get-Date) ("Creating resource group: $rgName in location: $location")
 	$rg = New-AzureResourceGroup -Name $rgName -Location $location
 
 	return $rg
@@ -94,7 +93,6 @@ function Create-ResourceGroupForTest ()
 	#>
 function Remove-ResourceGroupForTest ($rg)
 {
-	Write-Output (Get-Date) "Deleting resource group: $rg.ResourceGroupName"
 	Remove-AzureResourceGroup -Name $rg.ResourceGroupName -Force
 }
 
@@ -110,10 +108,9 @@ function Create-ServerForTest ($resourceGroup)
 	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$location = "Japan East"
+	$location = "Southeast Asia"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	Write-Output (Get-Date) ("Creating server: $serverName in location: $location version: $version")
 	$server = New-AzureSqlDatabaseServer -ResourceGroupName  $resourceGroup.Name -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
 	return $server
 }
