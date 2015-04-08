@@ -13,17 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Update attribute of a key vault key.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKey")]
+    [Alias("Set-AzureKeyVaultKey")]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute")]
     [OutputType(typeof(KeyBundle))]
-    public class SetAzureKeyVaultKey : KeyVaultCmdletBase
+    public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -47,6 +49,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Key version.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+        [Alias("KeyVersion")]
+        public string Version { get; set; }
 
         /// <summary>
         /// If present, enable a key if value is true. 
@@ -81,19 +93,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "The operations that can be performed with the key. If not present, no change on current key permitted operations.")]
         public string[] KeyOps { get; set; }
 
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A hashtable represents key tags. If not present, no change on current key's tags.")]
+        public Hashtable Tags { get; set; }
+
+        [Parameter(Mandatory = false,
+           HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return key bundle object.")]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            KeyAttributes attributes = new KeyAttributes
-            {
-                Enabled = this.Enable,
-                Expires = this.Expires,
-                NotBefore = this.NotBefore,
-                KeyOps = this.KeyOps
-            };
+            var keyBundle = DataServiceClient.UpdateKey(
+                VaultName,
+                Name,
+                Version,
+                new KeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tags));
 
-            WriteObject(DataServiceClient.SetKey(VaultName, Name, attributes));
+            if (PassThru)
+            {
+                WriteObject(keyBundle);
+            }
         }
     }
 }

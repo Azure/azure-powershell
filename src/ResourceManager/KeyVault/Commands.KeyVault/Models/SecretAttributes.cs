@@ -20,50 +20,45 @@ using Microsoft.Azure.KeyVault;
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     /// <summary>
-    /// Key attributes from PSH perspective
+    /// Secret attributes from PSH perspective
     /// </summary>
-    public class KeyAttributes
+    public class SecretAttributes
     {
-        public KeyAttributes()
-        { }        
+        public SecretAttributes() 
+        {}
 
-        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
-            string[] keyOps, Hashtable tags)
+        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
             this.NotBefore = notBefore;
-            this.KeyType = keyType;
-            this.KeyOps = keyOps;
+            this.ContentType = contentType;
             this.Tags = tags;
         }
 
-        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
-            string[] keyOps, DateTime? created, DateTime? updated, Dictionary<string, string> tags)
+        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
+            DateTime? created, DateTime? updated, string contentType, Dictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
             this.NotBefore = notBefore;
-            this.KeyType = keyType;
-            this.KeyOps = keyOps;
             this.Created = created;
             this.Updated = updated;
-            this.Tags = (tags == null) ? null : tags.ConvertToHashtable();     
+            this.ContentType = contentType;
+            this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
      
         public bool? Enabled { get; set; }
 
         public DateTime? Expires { get; set; }
 
-        public DateTime? NotBefore { get; set; }
+        public DateTime? NotBefore { get; set; }       
         
-        public string[] KeyOps { get; set; }
-
-        public string KeyType { get; private set; }
-
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
+
+        public string ContentType { get; set; }
 
         public Hashtable Tags { get; set; }
         public string TagsTable
@@ -82,14 +77,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Microsoft.Azure.KeyVault.KeyAttributes(KeyAttributes attr)
+        public static explicit operator Microsoft.Azure.KeyVault.SecretAttributes(SecretAttributes attr)
         {
-            return new Microsoft.Azure.KeyVault.KeyAttributes()
+            return new Microsoft.Azure.KeyVault.SecretAttributes()
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,
-                Expires = attr.Expires
+                Expires = attr.Expires               
             };
+
         }       
     }
 }
