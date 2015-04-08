@@ -32,10 +32,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// </summary>
     public enum MessageType
     {
-        Info = 0,
-        Warning = 1,
-        Error = 2,
-        Verbose = 3
+        Verbose,
+        Info, 
+        Warning,
+        Error,
+
     }
 
     /// <summary>
@@ -51,7 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         StorageAccountCredential,
         InboundChapSetting,
         TargetChapSetting,
-        BandwidthSetting
+        BandwidthSetting,
+        AlertSetting
     }
 
     /// <summary>
@@ -211,16 +213,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             this.LoadAndValidateLegacyConfigXml(filePath, decryptionKey);
             ProcessConfigs();
             LegacyApplianceDetails legacyApplianceDetails = new LegacyApplianceDetails();
-            legacyApplianceDetails.AccessControlRecordList = this.acrList;
-            legacyApplianceDetails.BackupPolicyList = this.policyList;
-            legacyApplianceDetails.BandwidthSettingList = this.bandwidthSettingList;
-            legacyApplianceDetails.VolumeContainerList = this.migrationDataContainerList;
-            legacyApplianceDetails.StorageAccountCredentialList = this.storageAcctCredList;
-            legacyApplianceDetails.VolumeGroupList = this.virtualDiskGroupList;
-            legacyApplianceDetails.VolumeList = this.volumeList;
-            legacyApplianceDetails.InboundChapSettingList = this.inboundChapSettingList;
-            legacyApplianceDetails.TargetChapSettingList = this.targetChapSettingList;
-            legacyApplianceDetails.RelatedVolumeContainerNames = legacyApplianceDetails.UpdateMigrationDataContainerGroups();
+            legacyApplianceDetails.AccessControlRecords = this.acrList;
+            legacyApplianceDetails.BackupPolicies = this.policyList;
+            legacyApplianceDetails.BandwidthSettings = this.bandwidthSettingList;
+            legacyApplianceDetails.CloudConfigurations = this.migrationDataContainerList;
+            legacyApplianceDetails.StorageAccountCredentials = this.storageAcctCredList;
+            legacyApplianceDetails.VolumeGroups = this.virtualDiskGroupList;
+            legacyApplianceDetails.Volumes = this.volumeList;
+            legacyApplianceDetails.InboundChapSettings = this.inboundChapSettingList;
+            legacyApplianceDetails.TargetChapSettings = this.targetChapSettingList;
+            legacyApplianceDetails.RelatedCloudConfigurationNames = legacyApplianceDetails.UpdateMigrationDataContainerGroups();
             
             return legacyApplianceDetails;
         }
@@ -336,6 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             this.ParseVirtualDiskGroup();
             this.ParseBackupPolicy();
             this.ParseScsiChapSetting();
+            this.ParseAlertSetting();
 
             // Post processing of parsed data
 
@@ -507,7 +510,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (null != scsiChapXmlList && 0 < scsiChapXmlList.Count())
                 {
                     chapSettingList = new List<MigrationChapSetting>();
-                    foreach (XElement scsiChapXmlElement in scsiChapXmlList)
+                    foreach (var scsiChapXmlElement in scsiChapXmlList)
                     {
                         MigrationChapSetting chapSetting = new MigrationChapSetting();
                         var Id = this.GetSubElements(scsiChapXmlElement, "Id");
@@ -520,12 +523,47 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         chapSetting.Password = this.serviceSecretEncryptor.EncryptSecret(this.GetSubElements(scsiChapXmlElement, "Password").First().Value);
                         chapSetting.SecretsEncryptionThumbprint = this.serviceSecretEncryptor.GetSecretsEncryptionThumbprint();
                         chapSetting.Valid = bool.Parse(this.GetSubElements(scsiChapXmlElement, "Valid").First().Value);
+                        chapSettingList.Add(chapSetting);
                     }
                 }
             }
 
             return chapSettingList;
         }
+
+        /// <summary>
+        /// Outbound chap setting parser
+        /// </summary>
+        /// <param name="scsiClapRootElement">out bound chap setting root</param>
+        /// <returns>chap setting</returns>
+        private List<MigrationChapSetting> ParseScsiOutBoundChapDataImpl(XElement scsiClapRootElement)
+        {
+            List<MigrationChapSetting> chapSettingList = null;
+            if (null != scsiClapRootElement)
+            {
+                MigrationChapSetting chapSetting = new MigrationChapSetting();
+                var Id = this.GetSubElements(scsiClapRootElement, "Id");
+                if (null != Id && 0 < Id.Count())
+                {
+                    chapSetting.Id = Id.First().Value;
+                }
+
+                chapSetting.Name = this.GetSubElements(scsiClapRootElement, "Name").First().Value;
+                chapSetting.Password =
+                    this.serviceSecretEncryptor.EncryptSecret(
+                        this.GetSubElements(scsiClapRootElement, "Password").First().Value);
+                chapSetting.SecretsEncryptionThumbprint = this.serviceSecretEncryptor.GetSecretsEncryptionThumbprint();
+                chapSetting.Valid = bool.Parse(this.GetSubElements(scsiClapRootElement, "Valid").First().Value);
+                if (!string.IsNullOrEmpty(chapSetting.Name) && !string.IsNullOrEmpty(chapSetting.Password))
+                {
+                    chapSettingList = new List<MigrationChapSetting>();
+                    chapSettingList.Add(chapSetting);
+                }
+            }
+
+            return chapSettingList;
+        }
+
         
         /// <summary>
         /// Create default backup schedule
@@ -552,7 +590,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// <returns>back up schedule</returns>
         private BackupScheduleBase ParseBackupScheduleImpl(XElement scheduleNodeElement)
         {
-            this.AddMessage(LegacyObjectsSupported.BackupPolicy, Resources.MigrationBackupSchedulesNotMigrated, string.Empty, MessageType.Info);
+            this.AddMessage(LegacyObjectsSupported.BackupPolicy, Resources.MigrationBackupSchedulesNotMigrated, string.Empty, MessageType.Warning);
             return this.CreateDefaultBackupPolicySchedule();            
         }
 
@@ -567,12 +605,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             this.acrList = new List<AccessControlRecord>();
             var acrXmlList = this.GetSubElements(doc.Root, "AccessControlGroup");
-            foreach (XElement acrElementList in acrXmlList)
+            foreach (var acrElementList in acrXmlList)
             {
-                foreach (XElement acrElement in acrElementList.Elements())
+                foreach (var acrElement in acrElementList.Elements())
                 {
                     AccessControlRecord acr = new AccessControlRecord();
-                    foreach (XElement acrProperty in acrElement.Elements())
+                    foreach (var acrProperty in acrElement.Elements())
                     {
                         switch (acrProperty.Name.LocalName)
                         {
@@ -584,7 +622,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             case "Members":
                                 {
                                     var acrPropertyDetails = acrProperty.Elements().First().Elements().ToList();
-                                    foreach (XElement acrEle in acrPropertyDetails)
+                                    foreach (var acrEle in acrPropertyDetails)
                                     {
                                         switch (acrEle.Name.LocalName)
                                         {
@@ -627,12 +665,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             this.storageAcctCredList = new List<StorageAccountCredential>();
             var cloudCredentialsList = this.GetSubElements(doc.Root, "CloudCredentials");
-            foreach (XElement cloudCredentialsL1 in cloudCredentialsList)
+            foreach (var cloudCredentialsL1 in cloudCredentialsList)
             {
-                foreach (XElement elemL2 in cloudCredentialsL1.Elements())
+                foreach (var elemL2 in cloudCredentialsL1.Elements())
                 {
                     StorageAccountCredential credential = new StorageAccountCredential();
-                    foreach (XElement elemL3 in elemL2.Elements())
+                    foreach (var elemL3 in elemL2.Elements())
                     {
                         switch (elemL3.Name.LocalName)
                         {
@@ -699,14 +737,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             this.bandwidthSettingList = new List<BandwidthSetting>();
             var qosTemplatesList = this.GetSubElements(doc.Root, "QosTemplates");
-            foreach (XElement qosTemplate in qosTemplatesList)
+            foreach (var qosTemplate in qosTemplatesList)
             {
                 var qosTemplateElementList = this.GetSubElements(qosTemplate, "QosTemplateInfo");
-                foreach (XElement qosTemplateElement in qosTemplateElementList)
+                foreach (var qosTemplateElement in qosTemplateElementList)
                 {
                     BandwidthSetting bandWidthSetting = new BandwidthSetting();
                     bandWidthSetting.Schedules = new List<BandwidthSchedule>();
-                    foreach (XElement bandWidthSettingElement in qosTemplateElement.Elements())
+                    foreach (var bandWidthSettingElement in qosTemplateElement.Elements())
                     {
                         switch (bandWidthSettingElement.Name.LocalName)
                         {
@@ -725,20 +763,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             case "Schedule":
                                 {
                                     var scheduleInfoElementList = this.GetSubElements(bandWidthSettingElement, "QosScheduleInfo");
-                                    foreach (XElement scheduleInfo in scheduleInfoElementList)
+                                    foreach (var scheduleInfo in scheduleInfoElementList)
                                     {
                                         // Assuming ScheduleInfo has only one element                                    
                                         BandwidthSchedule schedule = new BandwidthSchedule();
                                         bandWidthSetting.Schedules.Add(schedule);
                                         TimeSpan duration = TimeSpan.Zero;
-                                        foreach (XElement scheduleElement in scheduleInfo.Elements())
+                                        foreach (var scheduleElement in scheduleInfo.Elements())
                                         {
                                             switch (scheduleElement.Name.LocalName)
                                             {
                                                 case "Days":
                                                     {
                                                         schedule.Days = new List<int>();
-                                                        foreach (XElement dayElem in scheduleElement.Elements())
+                                                        foreach (var dayElem in scheduleElement.Elements())
                                                         {
                                                             schedule.Days.Add((int)Enum.Parse(typeof(DayOfWeek), dayElem.Value, true));
                                                         }
@@ -839,16 +877,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             this.dataContainerList = new List<DataContainer>();
             this.migrationDataContainerList = new List<MigrationDataContainer>();
             var cloudConfigurationsList = this.GetSubElements(doc.Root, "CloudConfigurations");
-            foreach (XElement cloudConfigurations in cloudConfigurationsList)
+            foreach (var cloudConfigurations in cloudConfigurationsList)
             {
                 var cloudConfigurationInfoList = this.GetSubElements(cloudConfigurations, "CloudConfigurationInfo");
-                foreach (XElement cloudConfigurationInfo in cloudConfigurationInfoList)
+                foreach (var cloudConfigurationInfo in cloudConfigurationInfoList)
                 {
                     DataContainer dataContainer = new DataContainer();
                     MigrationDataContainer migrationDataContainer = new MigrationDataContainer();
                     string bandwidthSettingID = string.Empty;
                     bool bandwidthSettingAddStatus = true;
-                    foreach (XElement dataContainerProperty in cloudConfigurationInfo.Elements())
+                    foreach (var dataContainerProperty in cloudConfigurationInfo.Elements())
                     {
                         switch (dataContainerProperty.Name.LocalName)
                         {
@@ -971,24 +1009,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             volumeList = new List<VirtualDisk>();
             var volumesList = this.GetSubElements(doc.Root, "Volumes");
-            foreach (XElement volumes in volumesList)
+            foreach (var volumes in volumesList)
             {
                 var diskList = this.GetSubElements(volumes, "Volume");
-                foreach (XElement disk in diskList)
+                foreach (var disk in diskList)
                 {
                     VirtualDisk volume = new VirtualDisk();
-                    foreach (XElement diskItem in disk.Elements())
+                    foreach (var diskItem in disk.Elements())
                     {
                         switch (diskItem.Name.LocalName)
                         {
                             case "AccessControlList":
                                 {
                                     volume.AcrIdList = new List<string>();
-                                    foreach (XElement acrElement in diskItem.Elements())
+                                    foreach (var acrElement in diskItem.Elements())
                                     {
                                         if ("VolumeAce" == acrElement.Name.LocalName)
                                         {
-                                            foreach (XElement acr in acrElement.Elements())
+                                            foreach (var acr in acrElement.Elements())
                                             {
                                                 if ("AccessControlGroupId" == acr.Name.LocalName)
                                                 {
@@ -1069,18 +1107,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             this.virtualDiskGroupList = new List<VirtualDiskGroup>();
             var backupDataInfoList = this.GetSubElements(doc.Root, "BackupData");
-            foreach (XElement backupData in backupDataInfoList)
+            foreach (var backupData in backupDataInfoList)
             {
                 // find items corresponding to
                 var collectionsList = this.GetSubElements(backupData, "Collections");
-                foreach (XElement collections in collectionsList)
+                foreach (var collections in collectionsList)
                 {
                     var collectionInfoList = this.GetSubElements(collections, "CollectionInfo");
-                    foreach (XElement collectionInfo in collectionInfoList)
+                    foreach (var collectionInfo in collectionInfoList)
                     {
                         VirtualDiskGroup virtualDiskGroup = new VirtualDiskGroup();
                         virtualDiskGroup.VirtualDiskList = new List<string>();
-                        foreach (XElement volumeGroupProperty in collectionInfo.Elements())
+                        foreach (var volumeGroupProperty in collectionInfo.Elements())
                         {
                             if ("Alias" == volumeGroupProperty.Name.LocalName)
                             {
@@ -1092,11 +1130,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             }
                             else if ("ExplicitVolumes" == volumeGroupProperty.Name.LocalName)
                             {
-                                foreach (XElement volumeInfo in volumeGroupProperty.Elements())
+                                foreach (var volumeInfo in volumeGroupProperty.Elements())
                                 {
                                     if ("VolumeInfo" == volumeInfo.Name.LocalName)
                                     {
-                                        foreach (XElement volumeInfoItem in volumeInfo.Elements())
+                                        foreach (var volumeInfoItem in volumeInfo.Elements())
                                         {
                                             if ("Id" == volumeInfoItem.Name.LocalName)
                                             {
@@ -1132,17 +1170,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             this.policyList = new List<MigrationBackupPolicy>();
             var backupDataInfoList = this.GetSubElements(doc.Root, "BackupData");
-            foreach (XElement backupDataInfo in backupDataInfoList)
+            foreach (var backupDataInfo in backupDataInfoList)
             {
                 var backupPolicyInfoList = this.GetSubElements(backupDataInfo, "BackupPolicies");
-                foreach (XElement backupPolicyInfo in backupPolicyInfoList)
+                foreach (var backupPolicyInfo in backupPolicyInfoList)
                 {
                     var policyInfo = this.GetSubElements(backupPolicyInfo, "BackupPolicyInfo");
-                    foreach (XElement policyItem in policyInfo)
+                    foreach (var policyItem in policyInfo)
                     {
                         MigrationBackupPolicy backupPolicy = new MigrationBackupPolicy();
                         backupPolicy.BackupSchedules = new List<BackupScheduleBase>();
-                        foreach (XElement policyProperty in policyItem.Elements())
+                        foreach (var policyProperty in policyItem.Elements())
                         {
                             switch (policyProperty.Name.LocalName)
                             {
@@ -1180,7 +1218,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                     {
                                         if (null != policyProperty.Elements())
                                         {
-                                            XElement lastRunProperty = policyProperty.Elements().ToList().Find(property => "_d" == property.Name.LocalName);
+                                            var lastRunProperty = policyProperty.Elements().ToList().Find(property => "_d" == property.Name.LocalName);
                                             if(null != lastRunProperty)
                                             {
                                                 backupPolicy.LastRunTime = lastRunProperty.Value;
@@ -1218,10 +1256,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// </summary>
         private void ParseScsiChapSetting()
         {
+        #if GA_SUPPORT
             var inboundScsiChapXmlElement = this.GetSubElements(doc.Root, "InBoundScsiChap").First();
             var targetScsiChapXmlElement = this.GetSubElements(doc.Root, "OutBoundScsiChap").First();
             this.inboundChapSettingList = this.ParseScsiChapDataImpl(inboundScsiChapXmlElement);
-            this.targetChapSettingList = this.ParseScsiChapDataImpl(targetScsiChapXmlElement);
+            this.targetChapSettingList = this.ParseScsiOutBoundChapDataImpl(targetScsiChapXmlElement);
+        #endif
+        }
+
+        /// <summary>
+        /// Parse alert setting
+        /// </summary>
+        private void ParseAlertSetting()
+        {
+            this.AddMessage(LegacyObjectsSupported.AlertSetting, Resources.MigrationAlertSettingNotMigrated, string.Empty, MessageType.Warning);
         }
 
         #endregion

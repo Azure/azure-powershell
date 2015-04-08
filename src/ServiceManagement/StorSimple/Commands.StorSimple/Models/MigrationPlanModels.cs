@@ -29,28 +29,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     {
         public string LegacyConfigId { get; set; }
         public string DeviceName { get; set; }
-        public MigrationPlanInfoMsgList MigrationPlanInProgressList { get; set; }
-        public MigrationPlanInfoMsgList MigrationPlanNotStartedList { get; set; }
-        public MigrationPlanInfoMsgList MigrationPlanCompletedList { get; set; }
-        public MigrationPlanInfoMsgList MigrationPlanFailedList { get; set; }
+        public MigrationPlanInfoMsgList MigrationTimeEstimationCompleted { get; set; }
+        public MigrationPlanInfoMsgList MigrationTimeEstimationInProgress { get; set; }
+        public MigrationPlanInfoMsgList MigrationTimeEstimationFailed { get; set; }
+        public MigrationPlanInfoMsgList MigrationTimeEstimationNotStarted { get; set; }      
 
         public class MigrationPlanInfoMsgList
         {
-            public List<MigrationPlanInfoMsg> MigrationPlanInfoList { get; set; }
-            public MigrationPlanStatus MigrationPlanStatus { get; set; }
+            public List<MigrationPlanInfoMsg> MigrationTimeEstimationInfoList { get; set; }
+            public MigrationPlanStatus MigrationTimeEstimationStatus { get; set; }
             public MigrationPlanInfoMsgList(MigrationPlanStatus status)
             {
-                this.MigrationPlanStatus = status;
-                this.MigrationPlanInfoList = new List<MigrationPlanInfoMsg>();
+                this.MigrationTimeEstimationStatus = status;
+                this.MigrationTimeEstimationInfoList = new List<MigrationPlanInfoMsg>();
             }
 
             public override string ToString()
             {
                 StringBuilder consoleOp = new StringBuilder();
-                consoleOp.AppendFormat(Resources.MigrationDCWithGivenMigrationPlanStatus, MigrationPlanStatus.ToString());
-                if (0 < MigrationPlanInfoList.Count)
+                if (0 < MigrationTimeEstimationInfoList.Count)
                 {
-                    foreach (MigrationPlanInfoMsg migrationPlanInfoMsg in MigrationPlanInfoList)
+                    foreach (var migrationPlanInfoMsg in MigrationTimeEstimationInfoList)
                     {
                         consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
                         consoleOp.AppendLine();
@@ -69,30 +68,30 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         {
             LegacyConfigId = migrationPlan.ConfigId;
             DeviceName = migrationPlan.DeviceName;
-            MigrationPlanInProgressList = new MigrationPlanInfoMsgList(MigrationPlanStatus.InProgress);
-            MigrationPlanNotStartedList = new MigrationPlanInfoMsgList(MigrationPlanStatus.NotStarted);
-            MigrationPlanCompletedList = new MigrationPlanInfoMsgList(MigrationPlanStatus.Completed);
-            MigrationPlanFailedList = new MigrationPlanInfoMsgList(MigrationPlanStatus.Failed);
+            MigrationTimeEstimationInProgress = new MigrationPlanInfoMsgList(MigrationPlanStatus.InProgress);
+            MigrationTimeEstimationNotStarted = new MigrationPlanInfoMsgList(MigrationPlanStatus.NotStarted);
+            MigrationTimeEstimationCompleted = new MigrationPlanInfoMsgList(MigrationPlanStatus.Completed);
+            MigrationTimeEstimationFailed = new MigrationPlanInfoMsgList(MigrationPlanStatus.Failed);
 
-            foreach (MigrationPlanInfo migrationPlanInfo in migrationPlan.MigrationPlanInfo)
+            foreach (var migrationPlanInfo in migrationPlan.MigrationPlanInfo)
             {
                 MigrationPlanInfoMsg migrationPlanInfoMsg = new MigrationPlanInfoMsg(migrationPlanInfo);
                 
                 if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.InProgress)
                 {
-                    MigrationPlanInProgressList.MigrationPlanInfoList.Add(migrationPlanInfoMsg);
+                    MigrationTimeEstimationInProgress.MigrationTimeEstimationInfoList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.NotStarted)
                 {
-                    MigrationPlanNotStartedList.MigrationPlanInfoList.Add(migrationPlanInfoMsg);
+                    MigrationTimeEstimationNotStarted.MigrationTimeEstimationInfoList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Completed)
                 {
-                    MigrationPlanCompletedList.MigrationPlanInfoList.Add(migrationPlanInfoMsg);
+                    MigrationTimeEstimationCompleted.MigrationTimeEstimationInfoList.Add(migrationPlanInfoMsg);
                 }
                 else if (migrationPlanInfo.PlanStatus == MigrationPlanStatus.Failed)
                 {
-                    MigrationPlanFailedList.MigrationPlanInfoList.Add(migrationPlanInfoMsg);
+                    MigrationTimeEstimationFailed.MigrationTimeEstimationInfoList.Add(migrationPlanInfoMsg);
                 }
             }
         }
@@ -109,66 +108,90 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             DeviceName = migrationPlan.DeviceName;
         }
     }
-
+    
     /// <summary>
     /// Migration plan info message represents the actual migration plan 
     /// </summary>
-    public class MigrationPlanInfoMsg
+    public class MigrationPlanInfoMsg : MigrationModelCommon
     {
         public int AssumedBandwidthInMbps { get; set; }
-        public string VolumeContainerName { get; set; }
-        public int EstimatedTimeInMinutes { get; set; }
-        public int EstimatedTimeInMinutesForLargestBackup { get; set; }
+        public string CloudConfigurationName { get; set; }
+        public TimeSpan EstimatedTimeForAllBackups { get; set; }
+        public TimeSpan EstimatedTimeForLargestBackup { get; set; }
         public string PlanMessageInfo { get; set; }
+
+        public MigrationPlanStatus Status { get; set; }
 
         public MigrationPlanInfoMsg(MigrationPlanInfo migrationPlanInfo)
         {
             AssumedBandwidthInMbps = migrationPlanInfo.AssumedBandwidthInMbps;
-            VolumeContainerName = migrationPlanInfo.DataContainerName;
-            EstimatedTimeInMinutes = migrationPlanInfo.EstimatedTimeInMinutes;
-            EstimatedTimeInMinutesForLargestBackup = migrationPlanInfo.EstimatedTimeInMinutesForLargestBackup;
+            CloudConfigurationName = migrationPlanInfo.DataContainerName;
+            EstimatedTimeForAllBackups = new TimeSpan(0, migrationPlanInfo.EstimatedTimeInMinutes, 0);
+            EstimatedTimeForLargestBackup = new TimeSpan(0, migrationPlanInfo.EstimatedTimeInMinutesForLargestBackup, 0);
             PlanMessageInfo = GetPlanMessageInfo(new List<HcsMessageInfo>(migrationPlanInfo.PlanMessageInfoList));
+            Status = migrationPlanInfo.PlanStatus;
         }
 
         public string GetPlanMessageInfo(List<HcsMessageInfo> planMessageInfoList)
         {
             StringBuilder consoleOp = new StringBuilder();
-            foreach (HcsMessageInfo hcsMessageInfo in planMessageInfoList)
+            foreach (var hcsMessageInfo in planMessageInfoList)
             {
-                if (!string.IsNullOrEmpty(hcsMessageInfo.Message) ||
-                    !string.IsNullOrEmpty(hcsMessageInfo.Recommendation))
+                string consoleStrOp = HcsMessageInfoToString(hcsMessageInfo);
+                if(!string.IsNullOrEmpty(consoleStrOp))
                 {
-                    if (0 != hcsMessageInfo.ErrorCode || 0 != hcsMessageInfo.Severity)
-                    {
-                        consoleOp.AppendLine("ErrorCode : " + hcsMessageInfo.ErrorCode + " Severity : " +
-                                             hcsMessageInfo.Severity).AppendLine();
-                    }
-
-                    if (!string.IsNullOrEmpty(hcsMessageInfo.Message))
-                    {
-                        consoleOp.AppendLine("Message : " + hcsMessageInfo.Message);
-                    }
-
-                    if (!string.IsNullOrEmpty(hcsMessageInfo.Recommendation))
-                    {
-                        consoleOp.AppendLine("Recommendation : " + hcsMessageInfo.Recommendation);
-                    }
-
-                    consoleOp.AppendLine();
+                    consoleOp.AppendLine(consoleStrOp);
                 }
             }
 
             return consoleOp.ToString();
         }
 
+        /// <summary>
+        /// Format the timespan
+        /// </summary>
+        /// <param name="span">time span to displayed</param>
+        /// <returns>time span in string format</returns>
+        public static string FormatTimeSpan(TimeSpan span)
+        {
+            string timeFormat = string.Empty;
+            if (0 != span.Days)
+            {
+                timeFormat = string.Format("{0}Day{1} ", span.Days, ((1 == span.Days) ? "s" : string.Empty));
+            }
+            if (0 != span.Hours || 0 != span.Days)
+            {
+                timeFormat = string.Format("{0}{1}Hour{2} ", timeFormat, span.Hours, ((1 < span.Hours) ? "s" : string.Empty));
+            }
+            if (0 != span.Minutes || (0 == span.Days && 0 == span.Hours))
+            {
+                timeFormat = string.Format("{0}{1}Minute{2} ", timeFormat, span.Minutes, ((1 < span.Minutes) ? "s" : string.Empty));
+            }
+
+            return timeFormat;
+        }
+
         public override string ToString()
         {
-            StringBuilder consoleOp = new StringBuilder();
-            consoleOp.AppendLine("AssumedBandwidthInMbps : " + AssumedBandwidthInMbps);
-            consoleOp.AppendLine("VolumeContainerName : " + VolumeContainerName);
-            consoleOp.AppendLine("EstimatedTimeInMinutes : " + EstimatedTimeInMinutes);
-            consoleOp.AppendLine("EstimatedTimeInMinutesForLatestBackup : " + EstimatedTimeInMinutesForLargestBackup);
-            consoleOp.AppendLine("PlanMessageInfo : " + PlanMessageInfo);
+            StringBuilder consoleOp = new StringBuilder();        
+            consoleOp.AppendLine(
+                this.IntendAndConCat("CloudConfigurationName", CloudConfigurationName));
+            consoleOp.AppendLine(
+                this.IntendAndConCat("EstimatedTimeForLatestBackup", FormatTimeSpan(EstimatedTimeForLargestBackup)));
+            consoleOp.AppendLine(
+                this.IntendAndConCat("EstimatedTimeForAllBackups", FormatTimeSpan(EstimatedTimeForAllBackups)));
+
+            if (!string.IsNullOrEmpty(PlanMessageInfo))
+            {
+                consoleOp.AppendLine(
+                    this.IntendAndConCat("PlanMessageInfo", PlanMessageInfo));
+            }
+
+            if (MigrationPlanStatus.Completed == Status)
+            {
+                consoleOp.AppendLine(string.Format(Resources.MigrationTimeEstimationBWMsg, (AssumedBandwidthInMbps / 8)));
+            }
+
             return consoleOp.ToString();
         }
     }

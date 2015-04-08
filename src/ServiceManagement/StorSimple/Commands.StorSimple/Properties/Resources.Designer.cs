@@ -385,7 +385,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully imported config from the legacy appliance! Save the legacy config id and volume container(s) for future reference..
+        ///   Looks up a localized string similar to Successfully imported config from the legacy appliance! Save the legacy config id and cloud configuration(s) for future reference..
         /// </summary>
         internal static string ImportLegacyApplianceConfigSuccessMessage {
             get {
@@ -547,7 +547,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bandwidth Settings for below volume container needs attention. Please fix the same after migration completes..
+        ///   Looks up a localized string similar to Alert settings cannot be migrated. Please update alert settings after migration..
+        /// </summary>
+        internal static string MigrationAlertSettingNotMigrated {
+            get {
+                return ResourceManager.GetString("MigrationAlertSettingNotMigrated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bandwidth Settings for below Cloud Configuration needs attention. Please fix the same after migration completes..
         /// </summary>
         internal static string MigrationAssociatedBandwidthSettingIncomplete {
             get {
@@ -556,7 +565,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup schedules cannot be migrated. Please update the schedules onces migration completes..
+        ///   Looks up a localized string similar to Backup schedules cannot be migrated. Please update the schedules after migration completes..
         /// </summary>
         internal static string MigrationBackupSchedulesNotMigrated {
             get {
@@ -574,7 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to decrypt the config file..
+        ///   Looks up a localized string similar to Unable to decrypt the config file. Please check your config decryption key..
         /// </summary>
         internal static string MigrationConfigDecryptionFailed {
             get {
@@ -619,7 +628,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume containers with migration plan status {0} :.
+        ///   Looks up a localized string similar to Cloud Configuration(s) with migration plan status {0} :.
         /// </summary>
         internal static string MigrationDCWithGivenMigrationPlanStatus {
             get {
@@ -628,7 +637,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default policies assigned to volume containers..
+        ///   Looks up a localized string similar to Default policies assigned to cloud configuration..
         /// </summary>
         internal static string MigrationDefaultPolicyAssigned {
             get {
@@ -673,7 +682,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expected Volume container details not found, Volume container Id {0}.
+        ///   Looks up a localized string similar to Expected Cloud Configuration details not found, Cloud Configuration Id {0}.
         /// </summary>
         internal static string MigrationExpectedVolumeContainerNotFound {
             get {
@@ -754,7 +763,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No volume containers in {0} migration state.
+        ///   Looks up a localized string similar to No Cloud Configuration(s) in {0} migration state.
         /// </summary>
         internal static string MigrationNoDataContainerInGivenStateOfMigration {
             get {
@@ -817,7 +826,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have made a clone to a remote device, of any of the volume container(s) which is being rolledback , please ensure you have taken a cloudsnap shot. .
+        ///   Looks up a localized string similar to If you have made a clone to a remote device, of any of the Cloud Configuration(s) which is being rolledback, please ensure you have taken a cloudsnap shot. .
         /// </summary>
         internal static string MigrationRollbackRemoteCloneWarning {
             get {
@@ -835,7 +844,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume container(s) to be migrated together :.
+        ///   Looks up a localized string similar to These estimates are assuming {0} MBps bandwidth. Refer to migration guide to re-calculate for lower bandwidths..
+        /// </summary>
+        internal static string MigrationTimeEstimationBWMsg {
+            get {
+                return ResourceManager.GetString("MigrationTimeEstimationBWMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Cloud Configuration(s) for migration :.
         /// </summary>
         internal static string MigrationVolumeContainerRelatedGroupHeader {
             get {
@@ -853,7 +871,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Related VolumeContainer set: {0}.
+        ///   Looks up a localized string similar to Cloud Configuration(s) {0}.
         /// </summary>
         internal static string MigrationVolumeContainerRelatedGroupSubHeader {
             get {
@@ -862,7 +880,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume container {0} cannot be correctly identified for volume {1}. Please reimport config and retry..
+        ///   Looks up a localized string similar to Cloud Configuration {0} cannot be correctly identified for volume {1}. Please reimport config and retry..
         /// </summary>
         internal static string MigrationVolumeToVolumeContainerMapNotFound {
             get {

@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 if (string.IsNullOrEmpty(LegacyConfigId))
                 {
-                    MigrationPlanList migrationPlanList = StorSimpleClient.GetAllMigrationPlan();
+                    var migrationPlanList = StorSimpleClient.GetAllMigrationPlan();
                     if (migrationPlanList.MigrationPlans.Count == 0)
                     {
                         WriteVerbose(Resources.MigrationPlanNoConfigs);
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     else
                     {
                         WriteVerbose(Resources.MigrationPlanConfigList);
-                        foreach (MigrationPlan migrationPlan in migrationPlanList.MigrationPlans)
+                        foreach (var migrationPlan in migrationPlanList.MigrationPlans)
                         {
                             var migrationPlanConfig = new MigrationPlanConfig(migrationPlan);
                             WriteObject(migrationPlanConfig);
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     var taskResult = StorSimpleClient.UpdateMigrationPlanSync(LegacyConfigId);
-                    MigrationPlanList migrationPlanList = StorSimpleClient.GetMigrationPlan(LegacyConfigId);
+                    var migrationPlanList = StorSimpleClient.GetMigrationPlan(LegacyConfigId);
                     WriteVerbose(string.Format("Request Id : {0}, HttpResponse {1}", migrationPlanList.RequestId, migrationPlanList.StatusCode));
 
                     if (migrationPlanList.MigrationPlans.Count == 0)
@@ -100,7 +100,5 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 this.HandleException(except);
             }
         }
-    }
-
-    
+    }    
 }

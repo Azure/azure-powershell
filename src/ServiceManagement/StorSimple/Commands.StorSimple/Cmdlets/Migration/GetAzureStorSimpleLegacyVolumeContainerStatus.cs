@@ -37,16 +37,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var taskResult = StorSimpleClient.UpdateDataContainerMigrationStatusSync(LegacyConfigId);
-                MigrationDataContainerStatusList migrationDataContainerStatusList = StorSimpleClient.GetDataContainerMigrationStatus(LegacyConfigId);
-                List<MigrationDataContainerStatus> migrationStatusSubList = new List<MigrationDataContainerStatus>(migrationDataContainerStatusList.MigrationDataContainerStatuses);
+                var migrationDataContainerStatusList = StorSimpleClient.GetDataContainerMigrationStatus(LegacyConfigId);
+                var migrationStatusSubList = new List<MigrationDataContainerStatus>(migrationDataContainerStatusList.MigrationDataContainerStatuses);
 
                 if (null != LegacyContainerNames && 0 < LegacyContainerNames.Length)
                 {
                     List<string> containerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
-                    migrationStatusSubList = migrationStatusSubList.FindAll(status => containerNameList.Contains(status.DataContainerName));
+                    migrationStatusSubList = migrationStatusSubList.FindAll(status => containerNameList.Contains(status.CloudConfigurationName));
                 }
 
-                DataContainerMigrationStatus migrationStatus = new DataContainerMigrationStatus(LegacyConfigId, migrationStatusSubList);
+                var migrationStatus = new DataContainerMigrationStatus(LegacyConfigId, migrationStatusSubList);
 
                 WriteObject(migrationStatus);
             }

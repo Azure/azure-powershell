@@ -55,12 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                MigrationImportDataContainerRequest request = new MigrationImportDataContainerRequest();
+                var request = new MigrationImportDataContainerRequest();
                 request.DataContainerNames = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 request.ForceOnOtherDevice = force;
                 request.SkipACRs = skipACRs;
 
-                MigrationJobStatus migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, request);
+                var migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, request);
                 WriteObject(this.GetResultMessage(migrationJobStatus));
             }
             catch(Exception except)
@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             bool errorMessage = false;
             if (null != status.MessageInfoList)
             {   
-                foreach (HcsMessageInfo msgInfo in status.MessageInfoList)
+                foreach (var msgInfo in status.MessageInfoList)
                 {
                     if (!string.IsNullOrEmpty(msgInfo.Message))
                     {
@@ -88,10 +88,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                 }
             }
+
             if (!errorMessage)
             {
                 builder.AppendLine(Resources.MigrationImportDataContainerSuccessMessage);
             }
+
             return builder.ToString();
         }
     }

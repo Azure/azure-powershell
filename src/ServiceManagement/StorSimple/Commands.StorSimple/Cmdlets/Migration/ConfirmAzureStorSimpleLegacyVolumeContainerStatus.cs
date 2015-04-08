@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                MigrationConfirmStatusRequest request = new MigrationConfirmStatusRequest();
+                var request = new MigrationConfirmStatusRequest();
                 request.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
                 request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 if (Microsoft.WindowsAzure.Management.StorSimple.Models.MigrationOperation.Rollback == request.Operation)
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                 }
 
-                MigrationJobStatus status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
+                var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
                 WriteObject(this.GetResultMessage(status));
             }
             catch(Exception except)
@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             bool errorMessage = false;
             if (null != status.MessageInfoList)
             {
-                foreach (HcsMessageInfo msgInfo in status.MessageInfoList)
+                foreach (var msgInfo in status.MessageInfoList)
                 {
                     if (!string.IsNullOrEmpty(msgInfo.Message))
                     {
@@ -80,10 +80,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                 }
             }
+
             if (!errorMessage)
             {
                 builder.AppendLine(Resources.ConfirmMigrationSuccessMessage);
             }
+
             return builder.ToString();
         }
     }

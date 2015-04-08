@@ -58,22 +58,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     // creating the config file parser instance - parser decrypt the xml and parses the config xml
                     WriteVerbose(string.Format("Device id obtained {0}", deviceid));
-                    ServiceSecretEncryptor secretsEncryptor = new ServiceSecretEncryptor(this.StorSimpleClient);
-                    LegacyApplianceConfigParser parser = new LegacyApplianceConfigParser(secretsEncryptor); 
-                    LegacyApplianceConfiguration legacyApplianceMetaData = new LegacyApplianceConfiguration();
+                    var secretsEncryptor = new ServiceSecretEncryptor(this.StorSimpleClient);
+                    var parser = new LegacyApplianceConfigParser(secretsEncryptor); 
+                    var legacyApplianceMetaData = new LegacyApplianceConfiguration();
 
                     legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(filePath: ConfigFilePath, decryptionKey: ConfigDecryptionKey);
                     LegacyApplianceConfig config = legacyApplianceMetaData.Details;
                     legacyApplianceMetaData.LegacyConfigId = Guid.NewGuid().ToString();
                     config.InstanceId = config.Name = legacyApplianceMetaData.LegacyConfigId;
                     legacyApplianceMetaData.ConfigFile = ConfigFilePath;
-                    legacyApplianceMetaData.ImportedOn = DateTime.UtcNow;
+                    legacyApplianceMetaData.ImportedOn = DateTime.Now;
                     legacyApplianceMetaData.TargetApplianceName = TargetDeviceName;
                     config.DeviceId = deviceid;
 
-                    legacyApplianceMetaData.Result = this.ProcessParserResultText(parser.ParserMessages);
+                    legacyApplianceMetaData.Result = Resources.ImportLegacyApplianceConfigSuccessMessage;
                     WriteVerbose("Making service call to import config");
-                    List<LegacyApplianceConfig> configList = ConfigSplitHelper.Split(legacyApplianceMetaData.Details);
+                    var configList = ConfigSplitHelper.Split(legacyApplianceMetaData.Details);
                     foreach (var singleConfig in configList)
                     {
                         StorSimpleClient.ImportLegacyApplianceConfig(legacyApplianceMetaData.LegacyConfigId, singleConfig);
@@ -89,42 +89,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         }
 
         /// <summary>
-        /// Process the parser messages and generates a result string from the message
-        /// </summary>
-        /// <param name="parserMsg">parser message</param>
-        /// <returns>process parser message</returns>
-        private string ProcessParserResultText(List<LegacyParserMessage> parserMsg)
-        {
-            StringBuilder resultBuilder = new StringBuilder();
-            resultBuilder.AppendLine(Resources.ImportLegacyApplianceConfigSuccessMessage);
-            parserMsg.Sort(CompareMsgBasedOnType);
-            foreach(LegacyParserMessage msg in parserMsg)
-            {
-                resultBuilder.AppendLine(string.Format("[{0}] : {1}", msg.Type.ToString(), msg.Reason));
-                foreach (string customMsg in msg.CustomMessageList)
-                {
-                    if (!string.IsNullOrEmpty(customMsg))
-                    {
-                        resultBuilder.AppendLine("\t" + customMsg);
-                    }
-                }
-            }
-
-            return resultBuilder.ToString();
-        }
-
-        /// <summary>
-        /// Function compares the parser message based on category, to sort and group based on msg type
-        /// </summary>
-        /// <param name="lMsg">message for comparison</param>
-        /// <param name="rMsg">message to be compared with</param>
-        /// <returns>result of comparison</returns>
-        private int CompareMsgBasedOnType(LegacyParserMessage lMsg, LegacyParserMessage rMsg)
-        {
-            return lMsg.Type.CompareTo(rMsg.Type);
-        }
-
-        /// <summary>
         /// Handle exception
         /// </summary>
         /// <param name="exception">Handles the exceptions</param>
@@ -133,12 +97,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             // Parser throws missing member exception if any expected fields are missing, handling this as special case.
             if (typeof(MissingMemberException) == exception.GetType())
             {
-                WriteVerbose(exception.Message);
                 WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.ParserError, null));
             }
             else if (typeof(System.Security.Cryptography.CryptographicException) == exception.GetType())
             {
-                WriteVerbose(exception.Message);
                 WriteError(new ErrorRecord(new System.Security.Cryptography.CryptographicException(Resources.MigrationConfigDecryptionFailed), string.Empty, ErrorCategory.AuthenticationError, null));
             }
             else

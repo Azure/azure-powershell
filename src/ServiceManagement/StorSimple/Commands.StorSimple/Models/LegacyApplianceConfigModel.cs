@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         /// <summary>
         /// List of container names of volume containers to be migrated together
         /// </summary>
-        public List<string[]> RelatedVolumeContainerNames { get; set; }
+        public List<string[]> RelatedCloudConfigurationNames { get; set; }
 
         /// <summary>
         /// Displays the content in the desired format
@@ -54,60 +54,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             try
             {
                 StringBuilder consoleOutput = new StringBuilder();
-                if (null != this.VolumeGroupList)
+                MigrationModelCommon modelBase = new MigrationModelCommon();
+                int maxLength = this.GetType().GetProperties().ToList().Max(t => t.Name.Length);
+                if (null != this.VolumeGroups)
                 {
                     consoleOutput.Append(Resources.MigrationVolumeContainerRelatedGroupHeader).AppendLine();
                     int groupCount = 0;
                     List<List<MigrationDataContainer>> dataContainerGroupList = GetMigrationDataContainerGroups();
                     if (null != dataContainerGroupList)
                     {
-                        foreach (List<MigrationDataContainer> dataContainerGroup in dataContainerGroupList)
-                        {
-                            consoleOutput.Append("\t");
-                            consoleOutput.AppendFormat(Resources.MigrationVolumeContainerRelatedGroupSubHeader, ++groupCount).AppendLine();
-                            if (null != dataContainerGroup)
+                        foreach (var dataContainerGroup in dataContainerGroupList)
+                        {                            
+                            if (null != dataContainerGroup && 0 < dataContainerGroup.Count)
                             {
-                                foreach (MigrationDataContainer dataContainerName in dataContainerGroup)
-                                {
-                                    consoleOutput.AppendFormat("\t\t{0}", dataContainerName.Name).AppendLine();
-                                }
-                            }
+                                consoleOutput.Append("\t");
+                                string relatedDCNames = modelBase.ConcatStringList(dataContainerGroup.Select(dc => dc.Name).ToList());
+                                string relatedDCVar = string.Format(Resources.MigrationVolumeContainerRelatedGroupSubHeader, ++groupCount);
+                                consoleOutput.AppendFormat(modelBase.IntendAndConCat(relatedDCVar, relatedDCNames, Resources.MigrationVolumeContainerRelatedGroupSubHeader.Length + 1));
+                                consoleOutput.AppendLine();
+                            }                           
                         }
                     }
                     else
                     {
                         consoleOutput.AppendLine(Resources.MigrationVolumeContainerRelatedGroupingNotFound);
                     }
-                }
-
-                if (null != AccessControlRecordList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("AccessControlRecordList", AccessControlRecordList.Select(acr => acr.Name)));
-                }
-
-                if (null != BackupPolicyList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("BackupPolicyList", BackupPolicyList.Select(policy => policy.Name)));
-                }
-
-                if (null != BandwidthSettingList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("BandwidthSettingList", BandwidthSettingList.Select(bandwidthSetting => bandwidthSetting.Name)));
-                }
-
-                if (null != VolumeContainerList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("VolumeContainerList", VolumeContainerList.Select(dc => dc.Name)));
-                }
-
-                if (null != StorageAccountCredentialList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("StorageAccountCredentialList", StorageAccountCredentialList.Select(sac => sac.Name)));
-                }
-
-                if (null != VolumeList)
-                {
-                    consoleOutput.AppendLine(FormatStringList("VolumeList", VolumeList.Select(virtualDisk => virtualDisk.Name)));
                 }
 
                 return consoleOutput.ToString();
@@ -120,41 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         }
 
         /// <summary>
-        /// Formats the string array list for display.
-        /// Only two items are displayed and if more contents are present it will displayed as "..."
-        /// </summary>
-        /// <param name="contentListName">content list name</param>
-        /// <param name="contentList">content list</param>
-        /// <returns>formatted o/p</returns>
-        private string FormatStringList(string contentListName, IEnumerable<string> contentList)
-        {
-            const int itemDisplayCount = 2;
-            StringBuilder formattedStr = new StringBuilder();
-            formattedStr.Append("{");
-            if (null != contentList)
-            {
-                List<string> displayContentList = contentList.ToList();
-                for (int index = 0; index < displayContentList.Count && index < itemDisplayCount; index++)
-                {
-                    if (formattedStr.Length > "{".Length)
-                    {
-                        formattedStr.Append(", ");
-                    }
-
-                    formattedStr.Append(displayContentList[index]);
-                }
-
-                if (displayContentList.Count > itemDisplayCount)
-                {
-                    formattedStr.Append(", ...");
-                }
-            }
-
-            formattedStr.Append("}");
-            return string.Format("{0} : {1}", contentListName, formattedStr.ToString());
-        }
-
-        /// <summary>
         /// Update Migration Data Container Groups
         /// </summary>
         /// <returns></returns>
@@ -162,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         {
             List<List<MigrationDataContainer>> relatedDataContainerGroupList = this.GetMigrationDataContainerGroups();
             List<string[]> relatedDataContainerNameList = new List<string[]>();
-            foreach(List<MigrationDataContainer> relatedDCList in relatedDataContainerGroupList)
+            foreach(var relatedDCList in relatedDataContainerGroupList)
             {
                 if (null != relatedDCList && 0 < relatedDCList.Count)
                 {
@@ -181,14 +117,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         private List<List<MigrationDataContainer>> GetMigrationDataContainerGroups()
         {
             var dcDict = new Dictionary<string, DataContainerInfo>();
-            foreach (VirtualDiskGroup virtualDiskGroup in this.VolumeGroupList)
+            foreach (var virtualDiskGroup in this.VolumeGroups)
             {
                 List<string> diskIDList = virtualDiskGroup.VirtualDiskList.ToList();
                 string vDGIdentity = Guid.NewGuid().ToString();
                 foreach (string virtualDiskId in diskIDList)
                 {
-                    VirtualDisk virtualDisk = this.VolumeList.FirstOrDefault(volume => (volume.InstanceId == virtualDiskId));
-                    MigrationDataContainer dataContainer = this.VolumeContainerList.FirstOrDefault(volumeContainer => (volumeContainer.InstanceId == virtualDisk.DataContainerId));
+                    VirtualDisk virtualDisk = this.Volumes.FirstOrDefault(volume => (volume.InstanceId == virtualDiskId));
+                    MigrationDataContainer dataContainer = this.CloudConfigurations.FirstOrDefault(volumeContainer => (volumeContainer.InstanceId == virtualDisk.DataContainerId));
                     if (null != dataContainer)
                     {
                         if (!dcDict.ContainsKey(dataContainer.InstanceId))
@@ -214,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 }
             }
 
-            foreach (MigrationDataContainer dataContainer in this.VolumeContainerList)
+            foreach (var dataContainer in this.CloudConfigurations)
             {
                 if (!dcDict.Keys.Contains(dataContainer.InstanceId))
                 {

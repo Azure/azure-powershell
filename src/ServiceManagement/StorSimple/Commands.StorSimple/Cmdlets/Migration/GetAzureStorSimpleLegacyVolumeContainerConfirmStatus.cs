@@ -36,30 +36,31 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var taskResult = StorSimpleClient.UpdateMigrationConfirmStatusSync(LegacyConfigId);
-                ConfirmStatus confirmStatus = StorSimpleClient.GetMigrationConfirmStatus(LegacyConfigId);
+                var confirmStatus = StorSimpleClient.GetMigrationConfirmStatus(LegacyConfigId);
 
                 if (confirmStatus.ContainerConfirmStatus.Count > 0)
                 {
-                    List<ContainerConfirmStatus> filteredContainerConfirmStatus = new List<ContainerConfirmStatus>();
+                    var filteredContainerConfirmStatus = new List<ContainerConfirmStatus>();
                     if (LegacyContainerNames == null)
                     {
                         filteredContainerConfirmStatus = new List<ContainerConfirmStatus>(confirmStatus.ContainerConfirmStatus);
                     }
                     else
                     {
-                        List<string> legacyContainerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
-                        foreach (ContainerConfirmStatus singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
+                        var legacyContainerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
+                        foreach (var singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
                         {
-                            if (legacyContainerNameList.Contains(singleContainerConfirmStatus.ContainerName))
+                            if (legacyContainerNameList.Contains(singleContainerConfirmStatus.CloudConfigurationName))
                             {
                                 filteredContainerConfirmStatus.Add(singleContainerConfirmStatus);
                             }
                         }    
                     }
+
                     confirmStatus.ContainerConfirmStatus = filteredContainerConfirmStatus;
                 }
 
-                ConfirmMigrationStatusMsg confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);
+                var confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);
                 
                 WriteObject(confirmStatusMsg);
             }

@@ -36,11 +36,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                MigrationPlanStartRequest request = new MigrationPlanStartRequest();
+                var request = new MigrationPlanStartRequest();
                 request.ConfigId = LegacyConfigId;
                 request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 
-                MigrationJobStatus status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(request);
+                var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(request);
                 WriteObject(this.GetResultMessage(status));
             }
             catch(Exception except)
@@ -58,9 +58,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             StringBuilder builder = new StringBuilder();
             if(null != status.MessageInfoList)
             {
-                foreach(HcsMessageInfo msgInfo in status.MessageInfoList)
+                foreach(var msgInfo in status.MessageInfoList)
                 {
-                    if(string.IsNullOrEmpty(msgInfo.Message))
+                    if(!string.IsNullOrEmpty(msgInfo.Message))
                     {
                         builder.AppendLine(msgInfo.Message);
                     }

@@ -177,6 +177,7 @@
     <Compile Include="Library\LocalKeyStoreManager.cs" />
     <Compile Include="Library\MiscUtils.cs" />
     <Compile Include="Models\ConfirmMigrationStatusModels.cs" />
+    <Compile Include="Models\MigrationModelCommon.cs" />
     <Compile Include="Models\MigrationPlanModels.cs" />
     <Compile Include="Models\ImportDataContainerModels.cs" />
     <Compile Include="Models\NetworkConfig.cs" />

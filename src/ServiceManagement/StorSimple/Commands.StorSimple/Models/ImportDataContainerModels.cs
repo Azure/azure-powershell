@@ -43,14 +43,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public LegacyDataContainerMigrationStatus MigrationInprogress { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of migration state, where MigrationState is NotStarted
-        /// </summary>
-        public LegacyDataContainerMigrationStatus MigrationNotStarted { get; set; }
-
-        /// <summary>
         /// Gets or sets the list of migration state, where MigrationState is Failed
         /// </summary>
         public LegacyDataContainerMigrationStatus MigrationFailed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of migration state, where MigrationState is NotStarted
+        /// </summary>
+        public LegacyDataContainerMigrationStatus MigrationNotStarted { get; set; }
 
         /// <summary>
         /// Data container migration status
@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
     /// <summary>
     /// Status migration in one particular Migration state
     /// </summary>
-    public class LegacyDataContainerMigrationStatus
+    public class LegacyDataContainerMigrationStatus: MigrationModelCommon
     {
         /// <summary>
         /// Migration status in Migration state the state specified
@@ -84,7 +84,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         private MigrationStatus migrationState;
 
         /// <summary>
-        /// Constructor - Constructor LegacyDataContainerMigrationStatus object of given MigrationStatus, by filter from overall status list provided 
+        /// Constructor - Constructs LegacyDataContainerMigrationStatus object of given MigrationStatus type, 
+        /// by filtering from overall status list provided 
         /// </summary>
         /// <param name="overallStatusList">overall migration status</param>
         /// <param name="type">MigrationStatus of the list of stored</param>
@@ -109,31 +110,36 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 StringBuilder consoleop = new StringBuilder();
                 if (null != this.StatusList && 0 < this.StatusList.Count)
                 {
-                    foreach (MigrationDataContainerStatus status in this.StatusList)
+                    foreach (var status in this.StatusList)
                     {
-                        consoleop.AppendLine(string.Format("VolumeContainer : {0}", status.DataContainerName));
-                        consoleop.AppendLine(string.Format("PercentageCompleted : {0}", status.PercentageCompleted));
-                        consoleop.AppendLine(string.Format("MigrationStatus : {0}", status.Status.ToString()));
+                        int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
+                        consoleop.AppendLine(IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
+                        consoleop.AppendLine(IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
+                        consoleop.AppendLine(IntendAndConCat("MigrationStatus", status.Status.ToString(), maxLength));
                         if (null != status.BackupSets && 0 < status.BackupSets.Count)
                         {
-                            consoleop.AppendLine("BackupSets :");
+                            consoleop.AppendLine(IntendAndConCat("BackupSets", string.Empty, maxLength));
                             foreach (MigrationBackupSet backupSet in status.BackupSets)
                             {
-                                consoleop.AppendLine(string.Format("\tPolicy : {0}, Status : {1}", backupSet.BackupPolicyName, backupSet.Status.ToString()));
-                                if (!string.IsNullOrEmpty(backupSet.Message.Message))
+                                consoleop.AppendLine(string.Format("\tPolicy : {0}, Created On : {1}, Status : {2}",
+                                    backupSet.BackupPolicyName, backupSet.CreationTime.ToString("MM/dd/yyyy HH:mm:ss"), backupSet.Status.ToString()));
+                                string consoleStrOp = this.HcsMessageInfoToString(backupSet.Message);
+                                if (!string.IsNullOrEmpty(consoleStrOp))
                                 {
-                                    consoleop.Append(string.Format(", Message : {0}", backupSet.Message.Message));
-                                }
-
-                                if (!string.IsNullOrEmpty(backupSet.Message.Recommendation))
-                                {
-                                    consoleop.Append(string.Format(", Recommendation : {0}", backupSet.Message.Recommendation));
+                                    consoleop.AppendLine("\t");
+                                    consoleop.AppendLine(consoleStrOp);
                                 }
                             }
                         }
                         else
                         {
                             consoleop.AppendLine(Resources.MigrationBackupSetNotFound);
+                        }
+
+                        string statusStrOp = this.HcsMessageInfoToString(status.MessageInfo);
+                        if (!string.IsNullOrEmpty(statusStrOp))
+                        {
+                            consoleop.AppendLine(IntendAndConCat("Messages", statusStrOp, maxLength));
                         }
 
                         consoleop.AppendLine();

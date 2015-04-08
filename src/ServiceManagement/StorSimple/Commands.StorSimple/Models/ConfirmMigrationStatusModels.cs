@@ -24,112 +24,119 @@ using System.Text;
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 {
     /// <summary>
-    /// Confirm Migration status msg
+    /// Confirm Migration status msg - output of 
+    /// Get-AzureStorSimpleVolumeContainerConfirmStatus cmdlet
     /// </summary>
     public class ConfirmMigrationStatusMsg
     {
         public string LegacyConfigId { get; set;}
-        public ConfirmMigrationStatus CommitRollbackNotStarted { get; set; }
+        public ConfirmMigrationStatus CommitComplete { get; set; }
         public ConfirmMigrationStatus CommitInProgress  {get;set;}
-        public ConfirmMigrationStatus CommitComplete  {get;set;}
-        public ConfirmMigrationStatus CommitFailed  {get;set;}
-        public ConfirmMigrationStatus RollbackInProgress  {get;set;}
+        public ConfirmMigrationStatus CommitFailed  {get;set;}        
         public ConfirmMigrationStatus RollbackComplete  {get;set;}
+        public ConfirmMigrationStatus RollbackInProgress { get; set; }
         public ConfirmMigrationStatus RollbackFailed { get; set; }
-
+        public ConfirmMigrationStatus CommitOrRollbackNotStarted { get; set; }
         /// <summary>
-        /// Constructor - Groups the confirmation status based on status
+        /// Constructor of Overall ConfirmMigrationStatusMsg to be returned as an output 
+        /// Get-AzureStorSimpleVolumeContainerConfirmStatus cmdlet
         /// </summary>
         /// <param name="configID">config id</param>
         /// <param name="overallStatus">overall status of migration</param>
         public ConfirmMigrationStatusMsg(string configID, ConfirmStatus overallStatus)
         {
             this.LegacyConfigId = configID;
-            this.CommitRollbackNotStarted = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitRollbackNotStarted, overallStatus);
+            this.CommitOrRollbackNotStarted = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.CommitOrRollbackNotStarted, overallStatus);
 
-            this.CommitInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitInProgress, overallStatus);
-            this.CommitFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitFailed, overallStatus);
-            this.CommitComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.CommitComplete, overallStatus);
+            this.CommitInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.CommitInProgress, overallStatus);
+            this.CommitFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.CommitFailed, overallStatus);
+            this.CommitComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.CommitComplete, overallStatus);
 
-            this.RollbackInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackInProgress, overallStatus);
-            this.RollbackFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackFailed, overallStatus);
-            this.RollbackComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationDataContainerConfirmPortalStatus.RollbackComplete, overallStatus);
+            this.RollbackInProgress = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.RollbackInProgress, overallStatus);
+            this.RollbackFailed = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.RollbackFailed, overallStatus);
+            this.RollbackComplete = new ConfirmMigrationStatus(ConfirmMigrationStatus.MigrationVolumeContainerConfirmStatus.RollbackComplete, overallStatus);
         }
 
-        /// <summary>
-        /// Converts the Migration status message to string
-        /// </summary>
-        /// <returns>Message string</returns>
-        public override string ToString()
-        {
-            StringBuilder consoleop = new StringBuilder();
-            if ((null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count) ||
-                (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count) ||
-                (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count) ||
-                (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count) ||
-                (null != this.RollbackInProgress.ConfirmStatus && 0 < this.RollbackInProgress.ConfirmStatus.Count) ||
-                (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count) ||
-                (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count))
-            {
-                if (null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("MigrationNotStarted:");
-                    consoleop.AppendLine(this.CommitRollbackNotStarted.ToString());
-                }
-                if (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("CommitInProgress:");
-                    consoleop.AppendLine(this.CommitInProgress.ToString());
-                }
-                if (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("CommitComplete:");
-                    consoleop.AppendLine(this.CommitComplete.ToString());
-                }
-                if (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("CommitFailed:");
-                    consoleop.AppendLine(this.CommitFailed.ToString());
-                }
-                if (null != this.RollbackInProgress.ConfirmStatus && 0 < this.RollbackInProgress.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("RollbackInProgress:");
-                    consoleop.AppendLine(this.RollbackInProgress.ToString());
-                }
-                if (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("RollbackComplete:");
-                    consoleop.AppendLine(this.RollbackComplete.ToString());
-                }
-                if (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count)
-                {
-                    consoleop.AppendLine("RollbackFailed:");
-                    consoleop.AppendLine(this.RollbackFailed.ToString());
-                }
+        /////// <summary>
+        /////// Converts the Migration status message to string
+        /////// </summary>
+        /////// <returns>Message string</returns>
+        ////public override string ToString()
+        ////{
+        ////    StringBuilder consoleop = new StringBuilder();
+        ////    if ((null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count) ||
+        ////        (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count) ||
+        ////        (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count) ||
+        ////        (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count) ||
+        ////        (null != this.RollbackInProgress.ConfirmStatus && 0 < this.RollbackInProgress.ConfirmStatus.Count) ||
+        ////        (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count) ||
+        ////        (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count))
+        ////    {
+        ////        if (null != this.CommitRollbackNotStarted.ConfirmStatus && 0 < this.CommitRollbackNotStarted.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("MigrationNotStarted:");
+        ////            consoleop.AppendLine(this.CommitRollbackNotStarted.ToString());
+        ////        }
+        ////        if (null != this.CommitInProgress.ConfirmStatus && 0 < this.CommitInProgress.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("CommitInProgress:");
+        ////            consoleop.AppendLine(this.CommitInProgress.ToString());
+        ////        }
+        ////        if (null != this.CommitComplete.ConfirmStatus && 0 < this.CommitComplete.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("CommitComplete:");
+        ////            consoleop.AppendLine(this.CommitComplete.ToString());
+        ////        }
+        ////        if (null != this.CommitFailed.ConfirmStatus && 0 < this.CommitFailed.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("CommitFailed:");
+        ////            consoleop.AppendLine(this.CommitFailed.ToString());
+        ////        }
+        ////        if (null != this.RollbackInProgress.ConfirmStatus && 0 < this.RollbackInProgress.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("RollbackInProgress:");
+        ////            consoleop.AppendLine(this.RollbackInProgress.ToString());
+        ////        }
+        ////        if (null != this.RollbackComplete.ConfirmStatus && 0 < this.RollbackComplete.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("RollbackComplete:");
+        ////            consoleop.AppendLine(this.RollbackComplete.ToString());
+        ////        }
+        ////        if (null != this.RollbackFailed.ConfirmStatus && 0 < this.RollbackFailed.ConfirmStatus.Count)
+        ////        {
+        ////            consoleop.AppendLine("RollbackFailed:");
+        ////            consoleop.AppendLine(this.RollbackFailed.ToString());
+        ////        }
 
-                return consoleop.ToString();
-            }
+        ////        return consoleop.ToString();
+        ////    }
             
-            return string.Format(Resources.MigrationConfirmMigrationStatusReturnedEmpty, this.LegacyConfigId.ToString());
-        }
+        ////    return string.Format(Resources.MigrationConfirmMigrationStatusReturnedEmpty, this.LegacyConfigId.ToString());
+        ////}
     }
 
     /// <summary>
-    /// Status of confirm migration
+    /// Class represents the List of ConfirmStatus of MigrationVolumeContainerConfirmStatus status
     /// </summary>
-    public class ConfirmMigrationStatus
+    public class ConfirmMigrationStatus : MigrationModelCommon
     {
         public List<ContainerConfirmStatus> ConfirmStatus { get; set; }
 
-        public MigrationDataContainerConfirmPortalStatus Status { get; set; }
+        public MigrationVolumeContainerConfirmStatus Status { get; set; }
 
-        public ConfirmMigrationStatus(MigrationDataContainerConfirmPortalStatus statusType, ConfirmStatus overallStatus)
+        /// <summary>
+        /// Constructor - Constructs ConfirmMigrationStatus object of given statusType specified, 
+        /// by filtering from overallstatus list provided 
+        /// </summary>
+        /// <param name="type">MigrationStatus of the list of stored</param>
+        /// <param name="overallStatusList">overall migration status</param>        
+        public ConfirmMigrationStatus(MigrationVolumeContainerConfirmStatus statusType, ConfirmStatus overallStatus)
         {
             this.Status = statusType;
             if (null != overallStatus)
             {
-                List<ContainerConfirmStatus> statusList = new List<ContainerConfirmStatus>(overallStatus.ContainerConfirmStatus);
-                this.ConfirmStatus = statusList.FindAll(status => GetMigrationDataContainerConfirmPortalStatus(status.Status) == statusType);
+                var statusList = new List<ContainerConfirmStatus>(overallStatus.ContainerConfirmStatus);
+                this.ConfirmStatus = statusList.FindAll(status => GetMigrationVolumeContainerConfirmStatus(status.Status) == statusType);
             }
             else
             {
@@ -137,14 +144,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             }
         }
 
-        int CompareConfirmStatus(ContainerConfirmStatus rhs, ContainerConfirmStatus lhs)
+        /// <summary>
+        /// Volume container Confirm migration status enums
+        /// </summary>
+        public enum MigrationVolumeContainerConfirmStatus
         {
-            return rhs.Status.CompareTo(lhs.Status);
-        }
-
-        public enum MigrationDataContainerConfirmPortalStatus
-        {
-            CommitRollbackNotStarted,
+            CommitOrRollbackNotStarted,
             CommitInProgress,
             CommitComplete,
             CommitFailed,
@@ -153,7 +158,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             RollbackFailed,
         }
 
-        MigrationDataContainerConfirmPortalStatus GetMigrationDataContainerConfirmPortalStatus(MigrationDataContainerConfirmStatus status)
+        /// <summary>
+        /// Maps service enum to MigrationVolumeContainerConfirmStatus
+        /// </summary>
+        /// <param name="status">service confirm status enum</param>
+        /// <returns>MigrationVolumeContainerConfirmStatus enum value corresponding to given service status</returns>
+        private MigrationVolumeContainerConfirmStatus GetMigrationVolumeContainerConfirmStatus(MigrationDataContainerConfirmStatus status)
         {
             switch(status)
             {
@@ -161,57 +171,85 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 case MigrationDataContainerConfirmStatus.MigrationInProgress:
                 case MigrationDataContainerConfirmStatus.MigrationComplete:
                 case MigrationDataContainerConfirmStatus.MigrationFailed:
-                    return MigrationDataContainerConfirmPortalStatus.CommitRollbackNotStarted;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.CommitOrRollbackNotStarted;
+                    }
                 case MigrationDataContainerConfirmStatus.CommitInProgress:
-                    return MigrationDataContainerConfirmPortalStatus.CommitInProgress;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.CommitInProgress;
+                    }
                 case MigrationDataContainerConfirmStatus.CommitComplete:
-                    return MigrationDataContainerConfirmPortalStatus.CommitComplete;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.CommitComplete;
+                    }
                 case MigrationDataContainerConfirmStatus.CommitFailed:
-                    return MigrationDataContainerConfirmPortalStatus.CommitFailed;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.CommitFailed;
+                    }
                 case MigrationDataContainerConfirmStatus.RollbackInProgress:
-                    return MigrationDataContainerConfirmPortalStatus.RollbackInProgress;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.RollbackInProgress;
+                    }
                 case MigrationDataContainerConfirmStatus.RollbackComplete:
-                    return MigrationDataContainerConfirmPortalStatus.RollbackComplete;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.RollbackComplete;
+                    }
                 case MigrationDataContainerConfirmStatus.RollbackFailed:
-                    return MigrationDataContainerConfirmPortalStatus.RollbackFailed;
+                    {
+                        return MigrationVolumeContainerConfirmStatus.RollbackFailed;
+                    }
                 default:
-                    throw new Exception("Migration Data Container Confirm Status not found.");
+                    {
+                        throw new Exception("Migration Data Container Confirm Status not found.");
+                    }
             }
         }
 
+        /// <summary>
+        /// Compares two ContainerConfirmStatus based on status, used for sorting & group
+        /// ContainerConfirmStatus based on their status
+        /// </summary>
+        private int CompareConfirmStatus(ContainerConfirmStatus lhs, ContainerConfirmStatus rhs)
+        {
+            return lhs.Status.CompareTo(rhs.Status);
+        }
+
+        /// <summary>
+        /// Overridden to displays the content in the desired format
+        /// </summary>
+        /// <returns>format content to be displayed</returns>
         public override string ToString()
         {
             StringBuilder consoleop = new StringBuilder();
             if(null != ConfirmStatus && 0 < ConfirmStatus.Count)
             {
                 ConfirmStatus.Sort(CompareConfirmStatus);
-                foreach (ContainerConfirmStatus status in ConfirmStatus)
+                foreach (var status in ConfirmStatus)
                 {
-                    consoleop.AppendLine(string.Format("VolumeContainer : {0}", status.ContainerName));
-                    consoleop.AppendLine(string.Format("Operation : {0}", status.Operation));
-                    consoleop.AppendLine(string.Format("PercentageCompleted : {0}", status.PercentageComplete));
+                    int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
+                    consoleop.AppendLine(IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
+                    consoleop.AppendLine(IntendAndConCat("Operation", status.Operation, maxLength));
+                    consoleop.AppendLine(IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
                     if (null != status.StatusMessage && 0 < status.StatusMessage.Count)
                     {
-                        consoleop.AppendLine("Messages :");
-                        foreach(HcsMessageInfo msgInfo in status.StatusMessage)
+                        consoleop.AppendLine(IntendAndConCat("Messages", string.Empty, maxLength));
+                        foreach(var msgInfo in status.StatusMessage)
                         {
-                            if (!string.IsNullOrEmpty(msgInfo.Message) || !string.IsNullOrEmpty(msgInfo.Recommendation))
+                            string consoleStrOp = HcsMessageInfoToString(msgInfo);
+                            if (!string.IsNullOrEmpty(consoleStrOp))
                             {
                                 consoleop.AppendLine("\t");
-                                if (!string.IsNullOrEmpty(msgInfo.Message))
-                                {
-                                    consoleop.Append(string.Format(" Message : {0}.", msgInfo.Message));
-                                }
-                                if (!string.IsNullOrEmpty(msgInfo.Recommendation))
-                                {
-                                    consoleop.Append(string.Format(" Recommendation : {0}.", msgInfo.Recommendation));
-                                }
+                                consoleop.Append(consoleStrOp);
                             }
                         }
                     }
 
                     consoleop.AppendLine();
                 }
+            }
+            else
+            {
+                consoleop.Append("None");
             }
             
             return consoleop.ToString();

@@ -533,7 +533,7 @@ a special character</value>
     <value>You can check the commit or rollback status by using Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus cmdlet.</value>
   </data>
   <data name="ImportLegacyApplianceConfigSuccessMessage" xml:space="preserve">
-    <value>Successfully imported config from the legacy appliance! Save the legacy config id and volume container(s) for future reference.</value>
+    <value>Successfully imported config from the legacy appliance! Save the legacy config id and cloud configuration(s) for future reference.</value>
   </data>
   <data name="MigrationConfigFileNotFound" xml:space="preserve">
     <value>Legacy appliance config not found</value>
@@ -560,19 +560,19 @@ a special character</value>
     <value>Expected Storage account details not found, Storage account Id {0}</value>
   </data>
   <data name="MigrationExpectedVolumeContainerNotFound" xml:space="preserve">
-    <value>Expected Volume container details not found, Volume container Id {0}</value>
+    <value>Expected Cloud Configuration details not found, Cloud Configuration Id {0}</value>
   </data>
   <data name="MigrationExpectedVolumeNotFound" xml:space="preserve">
     <value>Expected Volume details not found, Volume {0}</value>
   </data>
   <data name="MigrationAssociatedBandwidthSettingIncomplete" xml:space="preserve">
-    <value>Bandwidth Settings for below volume container needs attention. Please fix the same after migration completes.</value>
+    <value>Bandwidth Settings for below Cloud Configuration needs attention. Please fix the same after migration completes.</value>
   </data>
   <data name="MigrationBackupSchedulesNotMigrated" xml:space="preserve">
-    <value>Backup schedules cannot be migrated. Please update the schedules onces migration completes.</value>
+    <value>Backup schedules cannot be migrated. Please update the schedules after migration completes.</value>
   </data>
   <data name="MigrationDefaultPolicyAssigned" xml:space="preserve">
-    <value>Default policies assigned to volume containers.</value>
+    <value>Default policies assigned to cloud configuration.</value>
   </data>
   <data name="MigrationInvalidPolicyNotSupported" xml:space="preserve">
     <value>Cloud clone cannot be migrated. Below polices are ignored </value>
@@ -596,10 +596,10 @@ a special character</value>
     <value>Unexpected error occured while displaying parsed details. Reimport config and retry or Contact microsoft support. Exception details {0}</value>
   </data>
   <data name="MigrationVolumeToVolumeContainerMapNotFound" xml:space="preserve">
-    <value>Volume container {0} cannot be correctly identified for volume {1}. Please reimport config and retry.</value>
+    <value>Cloud Configuration {0} cannot be correctly identified for volume {1}. Please reimport config and retry.</value>
   </data>
   <data name="MigrationVolumeContainerRelatedGroupHeader" xml:space="preserve">
-    <value>Volume container(s) to be migrated together :</value>
+    <value>Available Cloud Configuration(s) for migration :</value>
   </data>
   <data name="MigrationVolumeContainerRelatedGroupingNotFound" xml:space="preserve">
     <value>No volume container group list formed!</value>
@@ -617,7 +617,7 @@ a special character</value>
     <value>No Backup sets found</value>
   </data>
   <data name="MigrationNoDataContainerInGivenStateOfMigration" xml:space="preserve">
-    <value>No volume containers in {0} migration state</value>
+    <value>No Cloud Configuration(s) in {0} migration state</value>
   </data>
   <data name="MigrationConfirmMigrationStatusReturnedEmpty" xml:space="preserve">
     <value>No migration status found for ConfigID {0}. Execute Confirm-AzureStorSimpleLegacyVolumeContainerConfirmStatus to confirm/rollback migration. </value>
@@ -638,18 +638,24 @@ a special character</value>
     <value>List of volume containers:</value>
   </data>
   <data name="MigrationVolumeContainerRelatedGroupSubHeader" xml:space="preserve">
-    <value>Related VolumeContainer set: {0}</value>
+    <value>Cloud Configuration(s) {0}</value>
   </data>
   <data name="MigrationDCWithGivenMigrationPlanStatus" xml:space="preserve">
-    <value>Volume containers with migration plan status {0} :</value>
+    <value>Cloud Configuration(s) with migration plan status {0} :</value>
   </data>
   <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
-    <value>Unable to decrypt the config file.</value>
+    <value>Unable to decrypt the config file. Please check your config decryption key.</value>
   </data>
   <data name="MigrationRollbackRemoteCloneWarning" xml:space="preserve">
-    <value>If you have made a clone to a remote device, of any of the volume container(s) which is being rolledback , please ensure you have taken a cloudsnap shot. </value>
+    <value>If you have made a clone to a remote device, of any of the Cloud Configuration(s) which is being rolledback, please ensure you have taken a cloudsnap shot. </value>
   </data>
   <data name="MigrationRollbackConfirmation" xml:space="preserve">
     <value>Do you want to continue Rollback</value>
+  </data>
+  <data name="MigrationAlertSettingNotMigrated" xml:space="preserve">
+    <value>Alert settings cannot be migrated. Please update alert settings after migration.</value>
+  </data>
+  <data name="MigrationTimeEstimationBWMsg" xml:space="preserve">
+    <value>These estimates are assuming {0} MBps bandwidth. Refer to migration guide to re-calculate for lower bandwidths.</value>
   </data>
 </root>

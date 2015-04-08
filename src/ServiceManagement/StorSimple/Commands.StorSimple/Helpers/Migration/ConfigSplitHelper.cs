@@ -23,7 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     {
         private const int maxRank = 20;
 
-        // ACR, SAC, CHAP, VDG = 1, BW, BP = 3, DC = 4, Vol = 5
+        /// <summary>
+        /// Rank corresponds to number of objects which can be accomadeted in a single request of
+        /// Import Legacy config. ACR, SAC, CHAP, VDG = 1, BW, BP = 3, DC = 4, Vol = 5
+        /// </summary>
         private static Dictionary<Type, int> ranks = new Dictionary<Type, int>()
         {
             {typeof (AccessControlRecord), 1},
@@ -42,27 +45,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             var serialNumber = 1;
             var parentConfig = new LegacyApplianceConfig();
 
-            parentConfig.AccessControlRecordList = new List<AccessControlRecord>(inputConfig.AccessControlRecordList);
-            parentConfig.BackupPolicyList = new List<MigrationBackupPolicy>(inputConfig.BackupPolicyList);
-            parentConfig.BandwidthSettingList = new List<BandwidthSetting>(inputConfig.BandwidthSettingList);
+            parentConfig.AccessControlRecords = new List<AccessControlRecord>(inputConfig.AccessControlRecords);
+            parentConfig.BackupPolicies = new List<MigrationBackupPolicy>(inputConfig.BackupPolicies);
+            parentConfig.BandwidthSettings = new List<BandwidthSetting>(inputConfig.BandwidthSettings);
             parentConfig.DeviceId = inputConfig.DeviceId;
-            if (inputConfig.InboundChapSettingList != null)
+            if (inputConfig.InboundChapSettings != null)
             {
-                parentConfig.InboundChapSettingList = new List<MigrationChapSetting>(inputConfig.InboundChapSettingList);
+                parentConfig.InboundChapSettings = new List<MigrationChapSetting>(inputConfig.InboundChapSettings);
             }
             parentConfig.InstanceId = inputConfig.InstanceId;
             parentConfig.Name = inputConfig.Name;
             parentConfig.OperationInProgress = inputConfig.OperationInProgress;
             parentConfig.SerialNumber = inputConfig.SerialNumber;
-            parentConfig.StorageAccountCredentialList = new List<StorageAccountCredential>(inputConfig.StorageAccountCredentialList);
-            if (inputConfig.TargetChapSettingList != null)
+            parentConfig.StorageAccountCredentials = new List<StorageAccountCredential>(inputConfig.StorageAccountCredentials);
+            if (inputConfig.TargetChapSettings != null)
             {
-                parentConfig.TargetChapSettingList = new List<MigrationChapSetting>(inputConfig.TargetChapSettingList);
+                parentConfig.TargetChapSettings = new List<MigrationChapSetting>(inputConfig.TargetChapSettings);
             }
             parentConfig.TotalCount = inputConfig.TotalCount;
-            parentConfig.VolumeContainerList = new List<MigrationDataContainer>(inputConfig.VolumeContainerList);
-            parentConfig.VolumeGroupList = new List<VirtualDiskGroup>(inputConfig.VolumeGroupList);
-            parentConfig.VolumeList = new List<VirtualDisk>(inputConfig.VolumeList);
+            parentConfig.CloudConfigurations = new List<MigrationDataContainer>(inputConfig.CloudConfigurations);
+            parentConfig.VolumeGroups = new List<VirtualDiskGroup>(inputConfig.VolumeGroups);
+            parentConfig.Volumes = new List<VirtualDisk>(inputConfig.Volumes);
 
             while (!IsConfigEmpty(parentConfig))
             {
@@ -84,19 +87,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.VolumeList.Count);
-                    config.VolumeList =
+                        parentConfig.Volumes.Count);
+                    config.Volumes =
                         new List<VirtualDisk>(
-                            config.VolumeList.Concat(
-                                parentConfig.VolumeList.Take(objectsAccomodated)));
-                    parentConfig.VolumeList =
-                        RemoveFirstNItems(new List<VirtualDisk>(parentConfig.VolumeList),
+                            config.Volumes.Concat(
+                                parentConfig.Volumes.Take(objectsAccomodated)));
+                    parentConfig.Volumes =
+                        RemoveFirstNItems(new List<VirtualDisk>(parentConfig.Volumes),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.VolumeList = new List<VirtualDisk>();
+                    config.Volumes = new List<VirtualDisk>();
                 }
                 currRank += rank * objectsAccomodated;
 
@@ -105,19 +108,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.VolumeContainerList.Count);
-                    config.VolumeContainerList =
+                        parentConfig.CloudConfigurations.Count);
+                    config.CloudConfigurations =
                         new List<MigrationDataContainer>(
-                            config.VolumeContainerList.Concat(
-                                parentConfig.VolumeContainerList.Take(objectsAccomodated)));
-                    parentConfig.VolumeContainerList =
-                        RemoveFirstNItems(new List<MigrationDataContainer>(parentConfig.VolumeContainerList),
+                            config.CloudConfigurations.Concat(
+                                parentConfig.CloudConfigurations.Take(objectsAccomodated)));
+                    parentConfig.CloudConfigurations =
+                        RemoveFirstNItems(new List<MigrationDataContainer>(parentConfig.CloudConfigurations),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.VolumeContainerList = new List<MigrationDataContainer>();
+                    config.CloudConfigurations = new List<MigrationDataContainer>();
                 }
                 currRank += rank * objectsAccomodated;
 
@@ -126,19 +129,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.BackupPolicyList.Count);
-                    config.BackupPolicyList =
+                        parentConfig.BackupPolicies.Count);
+                    config.BackupPolicies =
                         new List<MigrationBackupPolicy>(
-                            config.BackupPolicyList.Concat(
-                                parentConfig.BackupPolicyList.Take(objectsAccomodated)));
-                    parentConfig.BackupPolicyList =
-                        RemoveFirstNItems(new List<MigrationBackupPolicy>(parentConfig.BackupPolicyList),
+                            config.BackupPolicies.Concat(
+                                parentConfig.BackupPolicies.Take(objectsAccomodated)));
+                    parentConfig.BackupPolicies =
+                        RemoveFirstNItems(new List<MigrationBackupPolicy>(parentConfig.BackupPolicies),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.BackupPolicyList = new List<MigrationBackupPolicy>();
+                    config.BackupPolicies = new List<MigrationBackupPolicy>();
                 }
                 currRank += rank * objectsAccomodated;
 
@@ -147,19 +150,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.BandwidthSettingList.Count);
-                    config.BandwidthSettingList =
+                        parentConfig.BandwidthSettings.Count);
+                    config.BandwidthSettings =
                         new List<BandwidthSetting>(
-                            config.BandwidthSettingList.Concat(
-                                parentConfig.BandwidthSettingList.Take(objectsAccomodated)));
-                    parentConfig.BandwidthSettingList =
-                        RemoveFirstNItems(new List<BandwidthSetting>(parentConfig.BandwidthSettingList),
+                            config.BandwidthSettings.Concat(
+                                parentConfig.BandwidthSettings.Take(objectsAccomodated)));
+                    parentConfig.BandwidthSettings =
+                        RemoveFirstNItems(new List<BandwidthSetting>(parentConfig.BandwidthSettings),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.BandwidthSettingList = new List<BandwidthSetting>();
+                    config.BandwidthSettings = new List<BandwidthSetting>();
                 }
                 currRank += rank * objectsAccomodated;
 
@@ -168,66 +171,66 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.VolumeGroupList.Count);
-                    config.VolumeGroupList =
+                        parentConfig.VolumeGroups.Count);
+                    config.VolumeGroups =
                         new List<VirtualDiskGroup>(
-                            config.VolumeGroupList.Concat(
-                                parentConfig.VolumeGroupList.Take(objectsAccomodated)));
-                    parentConfig.VolumeGroupList =
-                        RemoveFirstNItems(new List<VirtualDiskGroup>(parentConfig.VolumeGroupList),
+                            config.VolumeGroups.Concat(
+                                parentConfig.VolumeGroups.Take(objectsAccomodated)));
+                    parentConfig.VolumeGroups =
+                        RemoveFirstNItems(new List<VirtualDiskGroup>(parentConfig.VolumeGroups),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.VolumeGroupList = new List<VirtualDiskGroup>();
+                    config.VolumeGroups = new List<VirtualDiskGroup>();
                 }
                 currRank += rank * objectsAccomodated;
 
-                if (parentConfig.InboundChapSettingList != null)
+                if (parentConfig.InboundChapSettings != null)
                 {
                     rank = FindRank(typeof (MigrationChapSetting));
                     objectCountCanBeAccomodated = (maxRank - currRank)/rank;
                     if (objectCountCanBeAccomodated > 0)
                     {
                         objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                            parentConfig.InboundChapSettingList.Count);
-                        config.InboundChapSettingList =
+                            parentConfig.InboundChapSettings.Count);
+                        config.InboundChapSettings =
                             new List<MigrationChapSetting>(
-                                config.InboundChapSettingList.Concat(
-                                    parentConfig.InboundChapSettingList.Take(objectsAccomodated)));
-                        parentConfig.InboundChapSettingList =
-                            RemoveFirstNItems(new List<MigrationChapSetting>(parentConfig.InboundChapSettingList),
+                                config.InboundChapSettings.Concat(
+                                    parentConfig.InboundChapSettings.Take(objectsAccomodated)));
+                        parentConfig.InboundChapSettings =
+                            RemoveFirstNItems(new List<MigrationChapSetting>(parentConfig.InboundChapSettings),
                                 objectsAccomodated);
                     }
                     else
                     {
                         objectsAccomodated = 0;
-                        config.InboundChapSettingList = new List<MigrationChapSetting>();
+                        config.InboundChapSettings = new List<MigrationChapSetting>();
                     }
                     currRank += rank*objectsAccomodated;
                 }
 
-                if (parentConfig.TargetChapSettingList != null)
+                if (parentConfig.TargetChapSettings != null)
                 {
                     rank = FindRank(typeof (MigrationChapSetting));
                     objectCountCanBeAccomodated = (maxRank - currRank)/rank;
                     if (objectCountCanBeAccomodated > 0)
                     {
                         objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                            parentConfig.TargetChapSettingList.Count);
-                        config.TargetChapSettingList =
+                            parentConfig.TargetChapSettings.Count);
+                        config.TargetChapSettings =
                             new List<MigrationChapSetting>(
-                                config.TargetChapSettingList.Concat(
-                                    parentConfig.TargetChapSettingList.Take(objectsAccomodated)));
-                        parentConfig.TargetChapSettingList =
-                            RemoveFirstNItems(new List<MigrationChapSetting>(parentConfig.TargetChapSettingList),
+                                config.TargetChapSettings.Concat(
+                                    parentConfig.TargetChapSettings.Take(objectsAccomodated)));
+                        parentConfig.TargetChapSettings =
+                            RemoveFirstNItems(new List<MigrationChapSetting>(parentConfig.TargetChapSettings),
                                 objectsAccomodated);
                     }
                     else
                     {
                         objectsAccomodated = 0;
-                        config.TargetChapSettingList = new List<MigrationChapSetting>();
+                        config.TargetChapSettings = new List<MigrationChapSetting>();
                     }
                     currRank += rank*objectsAccomodated;
                 }
@@ -237,19 +240,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.StorageAccountCredentialList.Count);
-                    config.StorageAccountCredentialList =
+                        parentConfig.StorageAccountCredentials.Count);
+                    config.StorageAccountCredentials =
                         new List<StorageAccountCredential>(
-                            config.StorageAccountCredentialList.Concat(
-                                parentConfig.StorageAccountCredentialList.Take(objectsAccomodated)));
-                    parentConfig.StorageAccountCredentialList =
-                        RemoveFirstNItems(new List<StorageAccountCredential>(parentConfig.StorageAccountCredentialList),
+                            config.StorageAccountCredentials.Concat(
+                                parentConfig.StorageAccountCredentials.Take(objectsAccomodated)));
+                    parentConfig.StorageAccountCredentials =
+                        RemoveFirstNItems(new List<StorageAccountCredential>(parentConfig.StorageAccountCredentials),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.StorageAccountCredentialList = new List<StorageAccountCredential>();
+                    config.StorageAccountCredentials = new List<StorageAccountCredential>();
                 }
                 currRank += rank * objectsAccomodated;
 
@@ -258,21 +261,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if (objectCountCanBeAccomodated > 0)
                 {
                     objectsAccomodated = Math.Min(objectCountCanBeAccomodated,
-                        parentConfig.AccessControlRecordList.Count);
-                    config.AccessControlRecordList =
+                        parentConfig.AccessControlRecords.Count);
+                    config.AccessControlRecords =
                         new List<AccessControlRecord>(
-                            config.AccessControlRecordList.Concat(
-                                parentConfig.AccessControlRecordList.Take(objectsAccomodated)));
-                    parentConfig.AccessControlRecordList =
-                        RemoveFirstNItems(new List<AccessControlRecord>(parentConfig.AccessControlRecordList),
+                            config.AccessControlRecords.Concat(
+                                parentConfig.AccessControlRecords.Take(objectsAccomodated)));
+                    parentConfig.AccessControlRecords =
+                        RemoveFirstNItems(new List<AccessControlRecord>(parentConfig.AccessControlRecords),
                             objectsAccomodated);
                 }
                 else
                 {
                     objectsAccomodated = 0;
-                    config.AccessControlRecordList = new List<AccessControlRecord>();
+                    config.AccessControlRecords = new List<AccessControlRecord>();
                 }
-                //currRank += rank * objectsAccomodated;
 
                 splitConfig.Add(config);
             }
@@ -287,15 +289,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
         private static bool IsConfigEmpty(LegacyApplianceConfig config)
         {
-            return config.AccessControlRecordList.Count == 0 &&
-                   config.BackupPolicyList.Count == 0 &&
-                   config.BandwidthSettingList.Count == 0 &&
-                   (config.InboundChapSettingList == null || config.InboundChapSettingList.Count == 0) &&
-                   config.StorageAccountCredentialList.Count == 0 &&
-                   (config.TargetChapSettingList == null || config.TargetChapSettingList.Count == 0) &&  
-                   config.VolumeContainerList.Count == 0 &&
-                   config.VolumeGroupList.Count == 0 &&
-                   config.VolumeList.Count == 0;
+            return config.AccessControlRecords.Count == 0 &&
+                   config.BackupPolicies.Count == 0 &&
+                   config.BandwidthSettings.Count == 0 &&
+                   (config.InboundChapSettings == null || config.InboundChapSettings.Count == 0) &&
+                   config.StorageAccountCredentials.Count == 0 &&
+                   (config.TargetChapSettings == null || config.TargetChapSettings.Count == 0) &&
+                   config.CloudConfigurations.Count == 0 &&
+                   config.VolumeGroups.Count == 0 &&
+                   config.Volumes.Count == 0;
         }
 
         private static int FindRank(Type T)
