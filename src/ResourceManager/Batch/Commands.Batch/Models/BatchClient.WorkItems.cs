@@ -52,15 +52,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(Resources.GBWI_GetByOData);
+                    verboseLogString = Resources.GBWI_GetByOData;
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(Resources.GBWI_NoFilter);
+                    verboseLogString = Resources.GBWI_NoFilter;
                 }
+                WriteVerbose(verboseLogString);
+
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
                     IEnumerableAsyncExtended<ICloudWorkItem> workItems = wiManager.ListWorkItems(odata, options.AdditionalBehaviors);
