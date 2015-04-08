@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -172,7 +172,7 @@
     <Compile Include="NetworkClient.cs" />
     <Compile Include="NetworkCmdletBase.cs" />
     <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupConfig.cs" />
-    <Compile Include="NetworkSecurityGroup\Association\AddAzureNetworkSecurityGroupAssociation.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\SetAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="NetworkSecurityGroup\Association\GetAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="NetworkSecurityGroup\Association\RemoveAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />

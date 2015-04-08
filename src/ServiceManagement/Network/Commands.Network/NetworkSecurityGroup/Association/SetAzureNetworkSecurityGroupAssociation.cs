@@ -18,8 +18,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 {
-    [Cmdlet(VerbsCommon.Add, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
-    public class AddAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
+    public class SetAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
         protected const string AddNetworkSecurityGroupAssociationToSubnet = "AddNetworkSecurityGroupAssociationToSubnet";
         protected const string AddNetworkSecurityGroupAssociationToIaaSRole = "AddNetworkSecurityGroupAssociationToIaaSRole";
