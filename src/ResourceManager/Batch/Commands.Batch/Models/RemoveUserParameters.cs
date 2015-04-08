@@ -17,13 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveUserParameters
+    public class RemoveUserParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the pool containing the vm
         /// </summary>
@@ -38,10 +33,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The name of the user to delete
         /// </summary>
         public string UserName { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

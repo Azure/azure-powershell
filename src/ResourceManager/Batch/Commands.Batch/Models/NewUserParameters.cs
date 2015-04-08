@@ -19,13 +19,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewUserParameters
+    public class NewUserParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the pool containing the vm to create the user on.
         /// </summary>
@@ -60,10 +55,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The administrative privilege level of the user account.
         /// </summary>
         public bool IsAdmin { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }
