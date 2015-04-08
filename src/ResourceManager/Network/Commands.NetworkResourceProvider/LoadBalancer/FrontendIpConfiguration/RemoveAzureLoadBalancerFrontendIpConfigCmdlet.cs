@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            var frontendipConfiguration = this.LoadBalancer.Properties.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var frontendipConfiguration = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (frontendipConfiguration != null)
             {
-                this.LoadBalancer.Properties.FrontendIpConfigurations.Remove(frontendipConfiguration);
+                this.LoadBalancer.FrontendIpConfigurations.Remove(frontendipConfiguration);
             }
 
             WriteObject(this.LoadBalancer);

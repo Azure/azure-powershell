@@ -230,3 +230,131 @@ function Test-GetTaskFileContentPipeline
 		$stream.Dispose()
 	}
 }
+
+<#
+.SYNOPSIS
+Tests querying for a Batch vm file by name
+#>
+function Test-GetVMFileByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
+
+	Assert-AreEqual $vmFileName $vmFile.Name
+
+	# Verify positional parameters also work
+	$vmFile = Get-AzureBatchVMFile_ST $poolName $vmName $vmFileName -BatchContext $context
+
+	Assert-AreEqual $vmFileName $vmFile.Name
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files using a filter
+#>
+function Test-ListVMFilesByFilter
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFilePrefix, [string]$matches)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$filter = "startswith(name,'" + "$vmFilePrefix" + "')"
+
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+
+	Assert-AreEqual $matches $vmFiles.Length
+	foreach($vmFile in $vmFiles)
+	{
+		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+	}
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -Filter $filter -BatchContext $context
+
+	Assert-AreEqual $matches $vmFiles.Length
+	foreach($vmFile in $vmFiles)
+	{
+		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+	}
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files and supplying a max count
+#>
+function Test-ListVMFilesWithMaxCount
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$maxCount)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -MaxCount $maxCount -BatchContext $context
+
+	Assert-AreEqual $maxCount $vmFiles.Length
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -MaxCount $maxCount -BatchContext $context
+
+	Assert-AreEqual $maxCount $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files with the Recursive switch
+#>
+function Test-ListVMFilesRecursive
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$startupFolder, [string]$recursiveCount)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$filter = "startswith(name,'" + "$startupFolder" + "')"
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+
+	# Only the directory itself is returned
+	Assert-AreEqual 1 $vmFiles.Length
+	Assert-True { $vmFiles[0].IsDirectory }
+
+	# Verify the start task vm files are returned when using the Recursive switch
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -Recursive -BatchContext $context
+
+	Assert-AreEqual $recursiveCount $vmFiles.Length 
+	$files = $vmFiles | Where-Object { $_.Name.StartsWith("startup\st") -eq $true }
+	Assert-AreEqual 2 $files.Length # stdout, stderr
+}
+
+<#
+.SYNOPSIS
+Tests querying for all vm files under a VM
+#>
+function Test-ListAllVMFiles
+{
+	param([string]$accountName, [string]$poolName, [string] $vmName, [string]$count)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context
+
+	Assert-AreEqual $count $vmFiles.Length
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -BatchContext $context
+
+	Assert-AreEqual $count $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests pipelining scenarios
+#>
+function Test-ListVMFilePipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$count)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get VM into Get VM File
+	$vmFiles = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context | Get-AzureBatchVMFile_ST -BatchContext $context
+	Assert-AreEqual $count $vmFiles.Length
+}

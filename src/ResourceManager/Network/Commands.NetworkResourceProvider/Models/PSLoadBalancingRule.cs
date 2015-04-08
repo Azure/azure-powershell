@@ -15,8 +15,49 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSLoadBalancingRule : PSChildResource
     {
-        public PSLoadBalancingRuleProperties Properties { get; set; }
+        public List<PSResourceId> FrontendIPConfigurations { get; set; }
+
+        public PSResourceId BackendAddressPool { get; set; }
+
+        public PSResourceId Probe { get; set; }
+
+        public string Protocol { get; set; }
+
+        public int FrontendPort { get; set; }
+
+        public int BackendPort { get; set; }
+
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        public string LoadDistribution { get; set; }
+
+        public bool EnableFloatingIP { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string FrontendIPConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string BackendAddressPoolText
+        {
+            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string ProbeText
+        {
+            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented); }
+        }
+
     }
 }

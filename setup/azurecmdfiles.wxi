@@ -91,12 +91,6 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir130578A4F470BDF58FEC794CB8389E91" Name="Compute">
-                        <Component Id="cmp9F0624F1A60FEC6C92BD00C0FF6D3687" Guid="*">
-                            <File Id="fil0F1880F9AF225B647105636C1209B2AD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\AutoMapper.dll" />
-                        </Component>
-                        <Component Id="cmp8114720BD4403889B36408A1E7F419B1" Guid="*">
-                            <File Id="fil5A8265B48813A0104CB5DEEDA9CEAEAA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\AutoMapper.Net4.dll" />
-                        </Component>
                         <Component Id="cmp1A9472BC4D15B6030BB6F05D11229806" Guid="*">
                             <File Id="filF0631AB8794D12700657664AC8441ACA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Hyak.Common.dll" />
                         </Component>
@@ -482,9 +476,6 @@
                         </Component>
                         <Component Id="cmp376056F5367B9E5C189D8A246AFA0C97" Guid="*">
                             <File Id="filB9CCFF18187D11B090CC1D2F8C043600" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\Microsoft.Azure.Management.Storage.dll" />
-                        </Component>
-                        <Component Id="cmp143934D4D6CF1D6494CCBEAB5587D90C" Guid="*">
-                            <File Id="filAC769B36278D851238820D0CA032D9C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
                         <Component Id="cmp991B96F3B4C28D882491FA0E36AE2700" Guid="*">
                             <File Id="fil6C20A34C8E0239AE4D767C3527D93A0A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\NetworkResourceProvider\Microsoft.Data.Edm.dll" />
@@ -2764,8 +2755,6 @@
             <ComponentRef Id="cmp23BAA5F27F989B6A570DA6BAB5AF6468" />
             <ComponentRef Id="cmpEE1426977F06792DC1DF6EC28AA3443B" />
             <ComponentRef Id="cmp512146B64C58DFB3AB394B1E97621A38" />
-            <ComponentRef Id="cmp9F0624F1A60FEC6C92BD00C0FF6D3687" />
-            <ComponentRef Id="cmp8114720BD4403889B36408A1E7F419B1" />
             <ComponentRef Id="cmp1A9472BC4D15B6030BB6F05D11229806" />
             <ComponentRef Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" />
             <ComponentRef Id="cmp7F2719BE7827D3FDDF69D7ACB6135115" />
@@ -2892,7 +2881,6 @@
             <ComponentRef Id="cmpA51A23FDB8743E3EE5338D2FBA1CBD59" />
             <ComponentRef Id="cmp02282C55620BE455F3DA6F0140F930DB" />
             <ComponentRef Id="cmp376056F5367B9E5C189D8A246AFA0C97" />
-            <ComponentRef Id="cmp143934D4D6CF1D6494CCBEAB5587D90C" />
             <ComponentRef Id="cmp991B96F3B4C28D882491FA0E36AE2700" />
             <ComponentRef Id="cmp89B95B277B2F95B7715CDC501EA8EB3E" />
             <ComponentRef Id="cmpDAFB0D394D32CC8F7F173DD044C1F4CE" />

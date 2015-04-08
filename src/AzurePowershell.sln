@@ -183,6 +183,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "ResourceManager\Compute\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981} = {98CFD96B-A6BC-4F15-AE2C-603FC2B58981}
+		{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F} = {E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.Test", "ResourceManager\Compute\Commands.Compute.Test\Commands.Compute.Test.csproj", "{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}"

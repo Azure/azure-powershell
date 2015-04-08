@@ -14,8 +14,30 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using Newtonsoft.Json;
+
     public class PSNetworkInterfaceIpConfiguration : PSChildResource
     {
-        public PSNetworkInterfaceIpConfigurationProperties Properties { get; set; }
+        public string PrivateIpAddress { get; set; }
+
+        public string PrivateIpAllocationMethod { get; set; }
+
+        public PSResourceId Subnet { get; set; }
+
+        public PSResourceId PublicIpAddress { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string SubnetText
+        {
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpAddressText
+        {
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
+        }
     }
 }

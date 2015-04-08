@@ -34,12 +34,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var probe = new PSProbe();
             probe.Name = this.Name;
-            probe.Properties = new PSProbeProperties();
-            probe.Properties.Port = this.Port;
-            probe.Properties.Protocol = this.Protocol;
-            probe.Properties.RequestPath = this.RequestPath;
-            probe.Properties.IntervalInSeconds = this.IntervalInSeconds;
-            probe.Properties.NumberOfProbes = this.ProbeCount;
+            probe.Port = this.Port;
+            probe.Protocol = this.Protocol;
+            probe.RequestPath = this.RequestPath;
+            probe.IntervalInSeconds = this.IntervalInSeconds;
+            probe.NumberOfProbes = this.ProbeCount;
 
             probe.Id =
                 ChildResourceHelper.GetResourceNotSetId(

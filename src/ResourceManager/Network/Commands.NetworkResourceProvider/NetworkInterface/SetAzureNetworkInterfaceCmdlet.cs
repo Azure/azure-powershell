@@ -42,17 +42,18 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             // Verify if PublicIpAddress is empty
-            foreach(var ipconfig in NetworkInterface.Properties.IpConfigurations)
+            foreach(var ipconfig in NetworkInterface.IpConfigurations)
             {
-                if (ipconfig.Properties.PublicIpAddress != null &&
-                    string.IsNullOrEmpty(ipconfig.Properties.PublicIpAddress.Id))
+                if (ipconfig.PublicIpAddress != null &&
+                    string.IsNullOrEmpty(ipconfig.PublicIpAddress.Id))
                 {
-                    ipconfig.Properties.PublicIpAddress = null;
+                    ipconfig.PublicIpAddress = null;
                 }
             }
             
             // Map to the sdk object
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(this.NetworkInterface);
+            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
+            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);

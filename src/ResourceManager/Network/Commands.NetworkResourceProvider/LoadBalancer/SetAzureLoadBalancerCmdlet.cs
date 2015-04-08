@@ -40,9 +40,13 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 throw new ArgumentException(Resources.ResourceNotFound);
             }
-            
+
+            // Normalize the IDs
+            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer);
+
             // Map to the sdk object
-            var lbModel = Mapper.Map<MNM.LoadBalancerCreateOrUpdateParameters>(this.LoadBalancer);
+            var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
+            lbModel.Type = Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

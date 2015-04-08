@@ -23,6 +23,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
+    using Microsoft.Azure.Management.Network.Models;
+
     public abstract class NetworkInterfaceBaseClient : NetworkBaseClient
     {
         public INetworkInterfaceOperations NetworkInterfaceClient
@@ -62,12 +64,21 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
             
-            if (networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress == null)
+            if (networkInterface.IpConfigurations[0].PublicIpAddress == null)
             {
-                networkInterface.Properties.IpConfigurations[0].Properties.PublicIpAddress = new PSResourceId();
+                networkInterface.IpConfigurations[0].PublicIpAddress = new PSResourceId();
             }
 
             return networkInterface;
+        }
+
+        public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
+        {
+            var psNic = Mapper.Map<PSNetworkInterface>(nic);
+
+            psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
+
+            return psNic;
         }
     }
 }

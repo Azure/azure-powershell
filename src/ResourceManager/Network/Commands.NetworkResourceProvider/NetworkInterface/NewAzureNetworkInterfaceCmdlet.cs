@@ -53,17 +53,6 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The public IP address allocation method.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.IpAllocationMethod.Dynamic, 
-            MNM.IpAllocationMethod.Static, 
-            IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The private ip address of the Network Interface " +
@@ -102,12 +91,25 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "NetworkSecurityGroupId")]
+        public string NetworkSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "NetworkSecurityGroup")]
+        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
         public string IpConfigurationName { get; set; }
 
-        [Alias("Tags")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -145,45 +147,51 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 this.SubnetId = this.Subnet.Id;
 
-                if (PublicIpAddress != null)
+                if (this.PublicIpAddress != null)
                 {
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
+                }
+
+                if (this.NetworkSecurityGroup != null)
+                {
+                    this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
             }
 
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
-            networkInterface.Properties = new PSNetworkInterfaceProperties();
-            networkInterface.Properties.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
+            networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
             nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
-            nicIpConfiguration.Properties = new PSNetworkInterfaceIpConfigurationProperties();
-            nicIpConfiguration.Properties.PrivateIpAllocationMethod = this.AllocationMethod;
+            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Dynamic;
 
-            if (this.AllocationMethod.Equals(MNM.IpAllocationMethod.Static, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
-                if (string.IsNullOrEmpty(this.PrivateIpAddress))
-                {
-                    throw new ArgumentException(Resources.StaticIpAddressErrorMessage);
-                }
-
-                nicIpConfiguration.Properties.PrivateIpAddress = this.PrivateIpAddress;
+                nicIpConfiguration.PrivateIpAddress = this.PrivateIpAddress;
+                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Static;
             }
 
-            nicIpConfiguration.Properties.Subnet = new PSResourceId();
-            nicIpConfiguration.Properties.Subnet.Id = this.SubnetId;
+            nicIpConfiguration.Subnet = new PSResourceId();
+            nicIpConfiguration.Subnet.Id = this.SubnetId;
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                nicIpConfiguration.Properties.PublicIpAddress = new PSResourceId();
-                nicIpConfiguration.Properties.PublicIpAddress.Id = this.PublicIpAddressId;
+                nicIpConfiguration.PublicIpAddress = new PSResourceId();
+                nicIpConfiguration.PublicIpAddress.Id = this.PublicIpAddressId;
             }
-            networkInterface.Properties.IpConfigurations.Add(nicIpConfiguration);
 
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterfaceCreateOrUpdateParameters>(networkInterface);
+            if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
+            {
+                networkInterface.NetworkSecurityGroup = new PSResourceId();
+                networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
 
+            networkInterface.IpConfigurations.Add(nicIpConfiguration);
+
+            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

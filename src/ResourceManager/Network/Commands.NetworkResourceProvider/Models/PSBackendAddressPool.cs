@@ -15,8 +15,28 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSBackendAddressPool : PSChildResource
     {
-        public PSBackendAddressPoolProperties Properties { get; set; }
+        public List<PSResourceId> BackendIpConfigurations { get; set; }
+
+        public List<PSResourceId> LoadBalancingRules { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string BackendIpConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancingRulesText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+        }
     }
 }

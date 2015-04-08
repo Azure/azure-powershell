@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
             
-            var existingProbe = this.LoadBalancer.Properties.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var existingProbe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingProbe != null)
             {
@@ -49,12 +49,11 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             var probe = new PSProbe();
             probe.Name = this.Name;
-            probe.Properties = new PSProbeProperties();
-            probe.Properties.Port = this.Port;
-            probe.Properties.Protocol = this.Protocol;
-            probe.Properties.RequestPath = this.RequestPath;
-            probe.Properties.IntervalInSeconds = this.IntervalInSeconds;
-            probe.Properties.NumberOfProbes = this.ProbeCount;
+            probe.Port = this.Port;
+            probe.Protocol = this.Protocol;
+            probe.RequestPath = this.RequestPath;
+            probe.IntervalInSeconds = this.IntervalInSeconds;
+            probe.NumberOfProbes = this.ProbeCount;
 
             probe.Id =
                 ChildResourceHelper.GetResourceId(
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     Resources.LoadBalancerProbeName,
                     this.Name);
 
-            this.LoadBalancer.Properties.Probes.Add(probe);
+            this.LoadBalancer.Probes.Add(probe);
 
             WriteObject(this.LoadBalancer);
         }

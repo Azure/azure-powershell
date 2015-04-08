@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var loadBalancerRule =
-                    this.LoadBalancer.Properties.LoadBalancingRules.First(
+                    this.LoadBalancer.LoadBalancingRules.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
             else
             {
-                var loadBalancerRules = this.LoadBalancer.Properties.LoadBalancingRules;
+                var loadBalancerRules = this.LoadBalancer.LoadBalancingRules;
                 WriteObject(loadBalancerRules, true);
             }
             

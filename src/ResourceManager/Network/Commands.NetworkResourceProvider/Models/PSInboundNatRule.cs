@@ -15,8 +15,38 @@
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class PSInboundNatRule : PSChildResource
     {
-        public PSInboundNatRuleProperties Properties { get; set; }
+        public List<PSResourceId> FrontendIPConfigurations { get; set; }
+
+        public PSResourceId BackendIPConfiguration { get; set; }
+
+        public string Protocol { get; set; }
+
+        public int FrontendPort { get; set; }
+
+        public int BackendPort { get; set; }
+
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        public bool EnableFloatingIP { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string FrontendIPConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string BackendIPConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented); }
+        }
     }
 }
