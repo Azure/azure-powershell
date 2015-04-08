@@ -29,10 +29,6 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-	using System.Diagnostics.Eventing;
-
-	using Microsoft.WindowsAzure.Management.Scheduler.Models;
-
     public class StorSimpleCmdletBase : AzurePSCmdlet
     {
         //this property will determine whether before running the actual commandlet logic, should resource selection be verified
@@ -151,17 +147,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     {
 						if (response.StatusCode == HttpStatusCode.NotFound)
 						{
-							var notAvailableException = new Exception(Resources.NotFoundWebExceptionMessage);
-							errorRecord = new ErrorRecord(notAvailableException, string.Empty, ErrorCategory.InvalidOperation, null);
-							break;
+                            var notAvailableException = new Exception(Resources.NotFoundWebExceptionMessage);
+                            errorRecord = new ErrorRecord(notAvailableException, string.Empty, ErrorCategory.InvalidOperation, null);
+                            break;
 						}
 						else
 						{
-                        XDocument xDoc = XDocument.Parse(response.Content);
-                        StripNamespaces(xDoc);
-                        string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
-                        WriteVerbose(string.Format(Resources.CloudExceptionMessage, cloudErrorCode));
-                    }
+                            XDocument xDoc = XDocument.Parse(response.Content);
+                            StripNamespaces(xDoc);
+                            string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
+                            WriteVerbose(string.Format(Resources.CloudExceptionMessage, cloudErrorCode));
+                        }
 					}
                     catch (Exception)
                     {

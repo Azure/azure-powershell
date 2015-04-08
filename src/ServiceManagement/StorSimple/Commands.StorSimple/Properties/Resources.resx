@@ -530,7 +530,7 @@ a special character</value>
     <value>No settings were provided for updating device details.</value>
   </data>
   <data name="NotFoundWebExceptionMessage" xml:space="preserve">
-    <value>One or more inputs passed is wrong or the cmdlet that you are trying to use is not available or the StorSimple Manager service end point does not exist.</value>
+    <value>One or more inputs passed is wrong or the cmdlet that you are trying to use is not available.</value>
   </data>
   <data name="EncryptionKeyNotAcceptableMessage" xml:space="preserve">
     <value>Please provide an encryption key consisting of printable ASCII characters</value>

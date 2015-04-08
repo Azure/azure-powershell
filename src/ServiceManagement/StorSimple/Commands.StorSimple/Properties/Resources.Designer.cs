@@ -718,7 +718,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One or more inputs passed is wrong or the cmdlet that you are trying to use is not available or the StorSimple Manager service end point does not exist..
+        ///   Looks up a localized string similar to One or more inputs passed is wrong or the cmdlet that you are trying to use is not available..
         /// </summary>
         internal static string NotFoundWebExceptionMessage {
             get {
