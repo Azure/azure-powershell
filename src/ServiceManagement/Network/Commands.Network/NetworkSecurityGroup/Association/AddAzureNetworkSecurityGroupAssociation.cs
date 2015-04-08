@@ -87,29 +87,32 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
                 Client.SetNetworkSecurityGroupForSubnet(this.Name, this.SubnetName, this.VirtualNetworkName);
             }
 
-            this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);
-
-            if (string.Equals(this.ParameterSetName, AddNetworkSecurityGroupAssociationToIaaSRole))
-            {
-                this.RoleName = this.VM.Name;
-            }
-
-            if (string.IsNullOrEmpty(this.NetworkInterfaceName))
-            {
-                Client.SetNetworkSecurityGroupForRole(
-                    this.Name,
-                    this.ServiceName,
-                    this.obtainedDeploymentName,
-                    this.RoleName);
-            }
             else
             {
-                Client.SetNetworkSecurityGroupForNetworkInterface(
-                    this.Name,
-                    this.ServiceName,
-                    this.obtainedDeploymentName,
-                    this.RoleName,
-                    this.NetworkInterfaceName);
+                this.obtainedDeploymentName = Client.GetDeploymentName(this.VM, this.Slot, this.ServiceName);
+
+                if (string.Equals(this.ParameterSetName, AddNetworkSecurityGroupAssociationToIaaSRole))
+                {
+                    this.RoleName = this.VM.Name;
+                }
+
+                if (string.IsNullOrEmpty(this.NetworkInterfaceName))
+                {
+                    Client.SetNetworkSecurityGroupForRole(
+                        this.Name,
+                        this.ServiceName,
+                        this.obtainedDeploymentName,
+                        this.RoleName);
+                }
+                else
+                {
+                    Client.SetNetworkSecurityGroupForNetworkInterface(
+                        this.Name,
+                        this.ServiceName,
+                        this.obtainedDeploymentName,
+                        this.RoleName,
+                        this.NetworkInterfaceName);
+                }
             }
 
             if (PassThru.IsPresent)
