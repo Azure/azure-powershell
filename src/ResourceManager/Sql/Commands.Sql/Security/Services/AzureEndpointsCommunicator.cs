@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
                         TagName = null,
                         TagValue = null
                     });
-            List<Resource> allResources = new List<Resource>(res.Resources);
+            var allResources = new List<GenericResourceExtended>(res.Resources);
             
             if (allResources.Count != 0)
             {
-                Resource account = allResources.Find(r => r.Name == storageAccountName);
+                GenericResourceExtended account = allResources.Find(r => r.Name == storageAccountName);
                 if (account != null)
                 {
                     String resId =  account.Id;
