@@ -6043,7 +6043,7 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        New-AzureBatchUser
+        New-AzureBatchVMUser
       </command:name>
       <maml:description>
         <maml:para>Creates a new user on the specified Azure Batch vm.</maml:para>
@@ -6052,7 +6052,7 @@
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureBatchUser</command:noun>
+      <command:noun>AzureBatchVMUser</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -6061,7 +6061,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureBatchUser</maml:name>
+        <maml:name>New-AzureBatchVMUser</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolName</maml:name>
           <maml:description>
@@ -6119,7 +6119,7 @@
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>New-AzureBatchUser</maml:name>
+        <maml:name>New-AzureBatchVMUser</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
@@ -6334,7 +6334,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          New-AzureBatchUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $context
+          New-AzureBatchVMUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -6360,7 +6360,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureBatchVM &quot;myPool&quot; &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context | New-AzureBatchUser -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -BatchContext $context
+          Get-AzureBatchVM &quot;myPool&quot; &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context | New-AzureBatchVMUser -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -6389,7 +6389,7 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Remove-AzureBatchUser
+        Remove-AzureBatchVMUser
       </command:name>
       <maml:description>
         <maml:para>Deletes the specified user account from the specified Azure Batch vm.</maml:para>
@@ -6398,7 +6398,7 @@
         <maml:para></maml:para>
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureBatchUser</command:noun>
+      <command:noun>AzureBatchVMUser</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
@@ -6407,7 +6407,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchUser</maml:name>
+        <maml:name>Remove-AzureBatchVMUser</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>PoolName</maml:name>
           <maml:description>
@@ -6562,7 +6562,7 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Remove-AzureBatchUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;myUser&quot; -Force -BatchContext $context
+          Remove-AzureBatchVMUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;myUser&quot; -Force -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>

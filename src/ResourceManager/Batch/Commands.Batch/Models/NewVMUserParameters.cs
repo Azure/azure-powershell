@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewUserParameters : BatchClientParametersBase
+    public class NewVMUserParameters : BatchClientParametersBase
     {
         /// <summary>
         /// The name of the pool containing the vm to create the user on.

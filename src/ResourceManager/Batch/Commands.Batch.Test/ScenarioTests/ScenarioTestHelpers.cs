@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewUserParameters parameters = new NewUserParameters()
+            NewVMUserParameters parameters = new NewVMUserParameters()
             {
                 Context = context,
                 PoolName = poolName,
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 AdditionalBehaviors = behaviors
             };
 
-            client.CreateUser(parameters);
+            client.CreateVMUser(parameters);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            RemoveUserParameters parameters = new RemoveUserParameters()
+            RemoveVMUserParameters parameters = new RemoveVMUserParameters()
             {
                 Context = context,
                 PoolName = poolName,
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 UserName = userName,
                 AdditionalBehaviors = behaviors
             };
-            client.DeleteUser(parameters);
+            client.DeleteVMUser(parameters);
         }
 
         /// <summary>

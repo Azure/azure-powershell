@@ -25,7 +25,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class UserTests
+    public class VMUserTests
     {
         // NOTE: To save time on VM allocation when recording, these tests assume the following:
         //     - A Batch account named 'usertests' exists under the subscription being used for recording.
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.New, "AzureBatchUser_ST")]
-    public class NewBatchUserScenarioTestCommand : NewBatchUserCommand
+    [Cmdlet(VerbsCommon.New, "AzureBatchVMUser_ST")]
+    public class NewBatchVMUserScenarioTestCommand : NewBatchVMUserCommand
     {
         public override void ExecuteCmdlet()
         {
@@ -104,8 +104,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchUser_ST")]
-    public class RemoveBatchUserScenarioTestCommand : RemoveBatchUserCommand
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchVMUser_ST")]
+    public class RemoveBatchVMUserScenarioTestCommand : RemoveBatchVMUserCommand
     {
         public override void ExecuteCmdlet()
         {

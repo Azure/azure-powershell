@@ -26,17 +26,17 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Users
 {
-    public class RemoveBatchUserCommandTests
+    public class RemoveBatchVMUserCommandTests
     {
-        private RemoveBatchUserCommand cmdlet;
+        private RemoveBatchVMUserCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchUserCommandTests()
+        public RemoveBatchVMUserCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new RemoveBatchUserCommand()
+            cmdlet = new RemoveBatchVMUserCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,

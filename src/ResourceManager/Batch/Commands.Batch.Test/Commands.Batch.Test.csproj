@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -171,14 +171,14 @@
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
-    <Compile Include="ScenarioTests\UserTests.cs" />
+    <Compile Include="ScenarioTests\VMUserTests.cs" />
     <Compile Include="ScenarioTests\VMTests.cs" />
     <Compile Include="ScenarioTests\WorkItemTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
-    <Compile Include="Users\NewBatchUserCommandTests.cs" />
-    <Compile Include="Users\RemoveBatchUserCommandTests.cs" />
+    <Compile Include="VMUsers\NewBatchVMUserCommandTests.cs" />
+    <Compile Include="VMUsers\RemoveBatchVMUserCommandTests.cs" />
     <Compile Include="VMs\GetBatchVMCommandTests.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommandTests.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommandTests.cs" />
@@ -207,7 +207,7 @@
     <None Include="ScenarioTests\TaskTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\UserTests.ps1">
+    <None Include="ScenarioTests\VMUserTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VMTests.ps1">
@@ -351,13 +351,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTasksWithMaxCount.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestCreateUser.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestCreateUser.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestCreateUserPipeline.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestCreateUserPipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.UserTests\TestDeleteUser.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestDeleteUser.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMTests\TestGetVMByName.json">

@@ -28,16 +28,16 @@ function Test-CreateUser
 	{
 		$expiryTime = [DateTime]::Now.AddDays(5)
 		$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
-		$vm | New-AzureBatchUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
+		$vm | New-AzureBatchVMUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
 	}
 	else
 	{
-		New-AzureBatchUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Password $password -BatchContext $context
+		New-AzureBatchVMUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Password $password -BatchContext $context
 	}
 
 	# Verify that a user was created 
 	# There is currently no Get/List user API, so try to create the user again and verify that it fails.
-	Assert-Throws { New-AzureBatchUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Password $password -BatchContext $context }
+	Assert-Throws { New-AzureBatchVMUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Password $password -BatchContext $context }
 }
 
 <#
@@ -50,7 +50,7 @@ function Test-DeleteUser
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
-	Remove-AzureBatchUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Force -BatchContext $context
+	Remove-AzureBatchVMUser_ST -PoolName $poolName -VMName $vmName -Name $userName -Force -BatchContext $context
 
 	# Verify the user was deleted
 	# There is currently no Get/List user API, so try to delete the user again and verify that it fails.

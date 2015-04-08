@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Creates a new user
         /// </summary>
         /// <param name="options">The options to use when creating the user</param>
-        public void CreateUser(NewUserParameters options)
+        public void CreateVMUser(NewVMUserParameters options)
         {
             if (options == null)
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Deletes the specified user
         /// </summary>
         /// <param name="parameters">The parameters indicating which user to delete</param>
-        public void DeleteUser(RemoveUserParameters parameters)
+        public void DeleteVMUser(RemoveVMUserParameters parameters)
         {
             if (parameters == null)
             {

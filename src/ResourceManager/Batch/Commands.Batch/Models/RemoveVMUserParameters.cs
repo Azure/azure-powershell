@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveUserParameters : BatchClientParametersBase
+    public class RemoveVMUserParameters : BatchClientParametersBase
     {
         /// <summary>
         /// The name of the pool containing the vm

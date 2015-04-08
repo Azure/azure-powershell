@@ -21,8 +21,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchUser")]
-    public class NewBatchUserCommand : BatchObjectModelCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureBatchVMUser")]
+    public class NewBatchVMUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, HelpMessage = "The name of the pool containing the vm to create the user on.")]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewUserParameters parameters = new NewUserParameters()
+            NewVMUserParameters parameters = new NewVMUserParameters()
             {
                 Context = this.BatchContext,
                 PoolName = this.PoolName,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Batch
                 AdditionalBehaviors = this.AdditionalBehaviors
             };
 
-            BatchClient.CreateUser(parameters);
+            BatchClient.CreateVMUser(parameters);
         }
     }
 }

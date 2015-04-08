@@ -21,8 +21,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchUser")]
-    public class RemoveBatchUserCommand : BatchObjectModelCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchVMUser")]
+    public class RemoveBatchVMUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool that contains the vm.")]
         [ValidateNotNullOrEmpty]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            RemoveUserParameters parameters = new RemoveUserParameters()
+            RemoveVMUserParameters parameters = new RemoveVMUserParameters()
             {
                 Context = this.BatchContext,
                 PoolName = this.PoolName,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch
                 string.Format(Resources.RBU_RemoveConfirm, this.Name),
                 Resources.RBU_RemoveUser,
                 this.Name,
-                () => BatchClient.DeleteUser(parameters));
+                () => BatchClient.DeleteVMUser(parameters));
         }
     }
 }
