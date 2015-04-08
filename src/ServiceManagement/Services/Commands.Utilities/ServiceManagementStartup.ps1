@@ -57,7 +57,7 @@ $aliases = @{
 
     # Compute aliases
     "New-AzureDns" = "New-AzureDnsConfig";
-	
+    
     # HDInsight aliases
     "Invoke-Hive" = "Invoke-AzureHDInsightHiveJob";
     "hive" = "Invoke-AzureHDInsightHiveJob"

@@ -92,19 +92,12 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
-            {
-                AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
-                var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
+            AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
 
-                WriteObject(result);
-            }
-            catch (AggregateException ex)
-            {
-                throw ex.Flatten().InnerException;
-            }
+            WriteObject(result);
         }
 
         private AutoscaleSettingCreateOrUpdateParameters CreateSdkCallParameters()
