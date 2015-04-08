@@ -12,33 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Cmdlets;
+using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Management.Automation;
 using Xunit;
-using WebKey = Microsoft.Azure.Commands.KeyVault.WebKey;
+using WebKey = Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 {
-    public class SetKeyVaultKeyTests : KeyVaultUnitTestBase
+    public class SetKeyVaultKeyAttributeTests : KeyVaultUnitTestBase
     {
-        private SetAzureKeyVaultKey cmdlet;
+        private SetAzureKeyVaultKeyAttribute cmdlet;
         private KeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
         private KeyBundle keyBundle;
 
-        public SetKeyVaultKeyTests()
+        public SetKeyVaultKeyAttributeTests()
         {
             base.SetupTest();
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, null, null);
+            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, null, null, null);
             webKey = new WebKey.JsonWebKey();
             keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
 
-            cmdlet = new SetAzureKeyVaultKey()
+            cmdlet = new SetAzureKeyVaultKeyAttribute()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataServiceClient = keyVaultClientMock.Object,
@@ -46,16 +46,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Enable = (bool)keyAttributes.Enabled,
                 Expires = keyAttributes.Expires,
                 NotBefore = keyAttributes.NotBefore,
-                Name = KeyName
+                Name = KeyName,
+                PassThru = true
             };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanSetKeyTest()
+        public void CanSetKeyAttributeTest()
         {
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.SetKey(VaultName, KeyName, 
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void ErrorSetKeyTest()
         {
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.SetKey(VaultName, KeyName,
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore

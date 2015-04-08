@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Globalization;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,

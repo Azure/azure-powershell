@@ -15,10 +15,11 @@
 using System;
 using System.IO;
 using System.Security;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
 
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -163,6 +164,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
         public DateTime? NotBefore { get; set; }
 
+        /// <summary>
+        /// Key tags
+        /// </summary>
+        [Parameter(Mandatory = false,
+           ParameterSetName = CreateParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A hashtable represents key tags.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ImportParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable represents key tags.")]
+        public Hashtable Tags { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -207,7 +221,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Expires,
                 NotBefore,
                 keyType,
-                KeyOps);
+                KeyOps,
+                Tags);
         }
 
         internal JsonWebKey CreateWebKeyFromFile()
