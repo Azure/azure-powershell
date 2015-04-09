@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Access Control Record{1} found!.
+        ///   Looks up a localized string similar to Found {0} access control record{1}..
         /// </summary>
         internal static string ACRGet_StatusMessage {
             get {
@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More backups are available for your query. To access the next page of your result use \&quot;-First {0} -Skip {1}\&quot; in your commandlet.
+        ///   Looks up a localized string similar to More backups are available for your query. To access the next page of results, use \&quot;-First {0} -Skip {1}\&quot; in your cmdlet..
         /// </summary>
         internal static string BackupNextPageFormatMessage {
             get {
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More backups are available in the subsequent pages for your query. To access the next page use \&quot;-Skip {0}\&quot;  in your commandlet.
+        ///   Looks up a localized string similar to More backups are available in subsequent pages for your query. To access the next page, use \&quot;-Skip {0}\&quot; in your cmdlet..
         /// </summary>
         internal static string BackupNextPagewithNoFirstMessage {
             get {
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No more backup sets are present for your query!.
+        ///   Looks up a localized string similar to No more backup sets are available for your query..
         /// </summary>
         internal static string BackupNoMorePagesMessage {
             get {
@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BackupPolicy with id {0} found!.
+        ///   Looks up a localized string similar to Found a backup policy with ID {0}..
         /// </summary>
         internal static string BackupPolicyFound {
             get {
@@ -151,7 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About to configure the device : {0} !.
+        ///   Looks up a localized string similar to About to configure the device : {0}..
         /// </summary>
         internal static string BeginningDeviceConfiguration {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        ///   Looks up a localized string similar to Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the registration key again..
         /// </summary>
         internal static string CIKFetchFailed {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK could not be retrieved from Registration Key. Please provide the value as such from the portal!.
+        ///   Looks up a localized string similar to The registration key is invalid. Please provide the value that was displayed in  the portal..
         /// </summary>
         internal static string CIKInvalid {
             get {
@@ -178,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Registration Key, Please enter the valid registration key copied from the Portal..
+        ///   Looks up a localized string similar to Invalid registration key. Please enter the valid registration key copied from the portal..
         /// </summary>
         internal static string CIKInvalidWhileDecrypting {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid value for Registration Key. CIK provided couldnt be used to decrypt the secrets! The exact exception while decrypting is &quot;{0}&quot;!.
+        ///   Looks up a localized string similar to Invalid value for registration key. The Cryptographic Ignition Key (CIK) provided couldn&apos;t be used to decrypt the secrets. The exact exception while decrypting is &quot;{0}&quot;..
         /// </summary>
         internal static string CIKInvalidWithException {
             get {
@@ -196,7 +196,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        ///   Looks up a localized string similar to Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the registration key again..
         /// </summary>
         internal static string CIKNotPersisted {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call to service failed with error code: {0}.
+        ///   Looks up a localized string similar to The call to the service failed with error code: {0}..
         /// </summary>
         internal static string CloudExceptionMessage {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Source and Target device in a failover operation can not be the same..
+        ///   Looks up a localized string similar to The source and target devices in a failover operation cannot be the same..
         /// </summary>
         internal static string DeviceFailoverSourceAndTargetDeviceSameError {
             get {
@@ -241,7 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of your result use -First {0} -Skip {1} in your commandlet.
+        ///   Looks up a localized string similar to More jobs are available for your query. To access the next page of  results, use -First {0} -Skip {1} in your cmdlet..
         /// </summary>
         internal static string DeviceJobsNextPageFormatMessage {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More jobs are available in the subsequent pages for your query. To access the next page use -Skip {0}  in your commandlet.
+        ///   Looks up a localized string similar to More jobs are available in subsequent pages for your query. To access the next page, use -Skip {0} in your cmdlet..
         /// </summary>
         internal static string DeviceJobsNextPagewithNoFirstMessage {
             get {
@@ -259,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No more jobs are present for your query!.
+        ///   Looks up a localized string similar to No more jobs are available for your query..
         /// </summary>
         internal static string DeviceJobsNoMorePagesMessage {
             get {
@@ -268,7 +268,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Job{1} found!.
+        ///   Looks up a localized string similar to Found {0} job{1}..
         /// </summary>
         internal static string DeviceJobsReturnedCount {
             get {
@@ -277,7 +277,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The device name you have specified is not yet configured fully. Please complete the configuration and retry..
+        ///   Looks up a localized string similar to The device name is not fully configured. Please complete the configuration and retry..
         /// </summary>
         internal static string DeviceNotConfiguredMessage {
             get {
@@ -286,7 +286,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command..
+        ///   Looks up a localized string similar to No StorSimple device is currently registered with this resource. Please register at least one device with the resource and then rerun this command..
         /// </summary>
         internal static string DeviceNotRegisteredMessage {
             get {
@@ -295,7 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Device with device name {0} not found under resource {1}.
+        ///   Looks up a localized string similar to Found device with device name {0} under resource {1}..
         /// </summary>
         internal static string DeviceWithNameNotFoundInResourceMessage {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} operation failed, please check the task&apos;s status for more details..
+        ///   Looks up a localized string similar to The {0} operation failed. Please check the task&apos;s status for details..
         /// </summary>
         internal static string FailureMessageCompleteJob {
             get {
@@ -340,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} task failed to submit. .
+        ///   Looks up a localized string similar to The {0} task was not submitted..
         /// </summary>
         internal static string FailureMessageSubmitTask {
             get {
@@ -349,7 +349,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter First cannot be &lt;0.
+        ///   Looks up a localized string similar to The First parameter cannot be &lt;0..
         /// </summary>
         internal static string FirstParameterInvalidMessage {
             get {
@@ -358,7 +358,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume container with name: {0} is found..
+        ///   Looks up a localized string similar to A volume container with the name: {0} was found..
         /// </summary>
         internal static string FoundDataContainerMessage {
             get {
@@ -367,7 +367,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access Control Record with given name {0} is found!.
+        ///   Looks up a localized string similar to Found access control record named {0}..
         /// </summary>
         internal static string FoundMessageACR {
             get {
@@ -376,7 +376,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume with name: {0} is found..
+        ///   Looks up a localized string similar to A volume with the name: {0} was found..
         /// </summary>
         internal static string FoundVolumeMessage {
             get {
@@ -385,7 +385,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Registration key specified appears to be in an incorrect format. Please verify that the exact key is copied from the portal!.
+        ///   Looks up a localized string similar to The registration key specified appears to be in an incorrect format. Please verify that the exact key was copied from the portal..
         /// </summary>
         internal static string IncorrectFormatInRegistrationKey {
             get {
@@ -394,7 +394,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating StorageAccountCredential inline.
+        ///   Looks up a localized string similar to Creating storage account credentials inline..
         /// </summary>
         internal static string InlineSacCreationMessage {
             get {
@@ -403,7 +403,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify valid string for BackupId parameter.
+        ///   Looks up a localized string similar to Specify a valid string for the BackupId parameter..
         /// </summary>
         internal static string InvalidBackupIdParameter {
             get {
@@ -412,7 +412,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify valid Backup object for Backup parameter .
+        ///   Looks up a localized string similar to Specify a valid Backup object for the Backup parameter..
         /// </summary>
         internal static string InvalidBackupObjectParameter {
             get {
@@ -421,7 +421,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify valid Guid for BackupPolicyId parameter.
+        ///   Looks up a localized string similar to Specify a valid GUID for the BackupPolicyId parameter..
         /// </summary>
         internal static string InvalidBackupPolicyIdParameter {
             get {
@@ -430,7 +430,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify valid BackupPolicy object for BackupPolicy Parameter.
+        ///   Looks up a localized string similar to Specify a valid BackupPolicy object for the Backup parameter..
         /// </summary>
         internal static string InvalidBackupPolicyObjectParameter {
             get {
@@ -439,7 +439,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atleast one BackupSchedule should be present in BackupSchedulesToAdd parameter.
+        ///   Looks up a localized string similar to At least one backup schedule should be present in the BackupSchedulesToAdd parameter..
         /// </summary>
         internal static string InvalidBackupSchedulesToAddParameter {
             get {
@@ -448,7 +448,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide valid datetime string for From parameter!.
+        ///   Looks up a localized string similar to Provide a valid dateTime string for the From parameter..
         /// </summary>
         internal static string InvalidFromMessage {
             get {
@@ -466,7 +466,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is not a valid InterfaceAlias!.
+        ///   Looks up a localized string similar to {0} is not a valid interface alias..
         /// </summary>
         internal static string InvalidInterfaceId {
             get {
@@ -475,7 +475,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid IP address provided for {0} ! Please make sure it is in the correct format..
+        ///   Looks up a localized string similar to Invalid IP address provided for {0}. Please make sure that the address is in the correct format..
         /// </summary>
         internal static string InvalidIPAddressProvidedMessage {
             get {
@@ -484,7 +484,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide valid datetime string for To parameter!.
+        ///   Looks up a localized string similar to Provide a valid dateTime string for the To parameter!.
         /// </summary>
         internal static string InvalidToMessage {
             get {
@@ -493,7 +493,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atleast one VolumeId should be present in VolumeIdsToAdd parameter.
+        ///   Looks up a localized string similar to At least one VolumeId should be present in the VolumeIdsToAdd parameter..
         /// </summary>
         internal static string InvalidVolumeIdsToAddParameter {
             get {
@@ -502,7 +502,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IP Address information (IPv4Address and IPv4Netmask or IPv6Prefix)  must be provided for {0} network interface, since it is being enabled.
+        ///   Looks up a localized string similar to IP address information (IPv4Address and IPv4Netmask or IPv6Prefix) must be provided for the {0} network interface, because it is being enabled..
         /// </summary>
         internal static string IPAddressesNotProvidedForNetInterfaceBeingEnabled {
             get {
@@ -511,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Iscsi Connection{1} found!.
+        ///   Looks up a localized string similar to {0} iSCSI connection{1} found..
         /// </summary>
         internal static string IscsiConnectionGet_StatusMessage {
             get {
@@ -529,7 +529,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP Addresses along with TimeZone, Secondary DNS Server information and atleast 1 IscsiEnabled network interface is mandatory when configuring the device for the first time..
+        ///   Looks up a localized string similar to Data0 configuration with Controller0 and Controller1 IP addresses along with TimeZone and Primary DNS Server information is required when you configure the device for the first time..
         /// </summary>
         internal static string MandatoryParamsMissingForInitialDeviceConfiguration {
             get {
@@ -556,7 +556,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully created a StorSimple Network Configuration for interface {0}.
+        ///   Looks up a localized string similar to Successfully created a StorSimple network configuration for interface {0}..
         /// </summary>
         internal static string NewNetworkConfigCreated {
             get {
@@ -574,7 +574,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device found in your currently selected resource : {0}!.
+        ///   Looks up a localized string similar to Could not find a device in your currently selected resource : {0}..
         /// </summary>
         internal static string NoDeviceFoundInResourceMessage {
             get {
@@ -583,7 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with id : {1}!.
+        ///   Looks up a localized string similar to Could not find a device with ID {1} in your currently selected resource : {0}..
         /// </summary>
         internal static string NoDeviceFoundWithGivenIdInResourceMessage {
             get {
@@ -592,7 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with ModelDescription : {1}!.
+        ///   Looks up a localized string similar to Could not find a device with ModelDescription {1} in your currently selected resource : {0}..
         /// </summary>
         internal static string NoDeviceFoundWithGivenModelInResourceMessage {
             get {
@@ -601,7 +601,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with name : {1}!.
+        ///   Looks up a localized string similar to Could not find a device  named {1} in your currently selected resource : {0}..
         /// </summary>
         internal static string NoDeviceFoundWithGivenNameInResourceMessage {
             get {
@@ -610,7 +610,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No device found in your currently selected resource : {0} with Type : {1}!.
+        ///   Looks up a localized string similar to Could not find a device of type {1} in your currently selected resource : {0}..
         /// </summary>
         internal static string NoDeviceFoundWithGivenTypeInResourceMessage {
             get {
@@ -619,7 +619,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Job found with the specified Id : {0}.
+        ///   Looks up a localized string similar to Could not find a job with the specified Id : {0}..
         /// </summary>
         internal static string NoDeviceJobFoundWithGivenIdMessage {
             get {
@@ -628,7 +628,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No resource found in your subscription!.
+        ///   Looks up a localized string similar to Could not find the resource in your subscription..
         /// </summary>
         internal static string NoResourceFoundInSubscriptionMessage {
             get {
@@ -637,7 +637,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No resource found in your subscription with name : {0}!.
+        ///   Looks up a localized string similar to Could not find a resource named {0} in your subscription..
         /// </summary>
         internal static string NoResourceFoundWithGivenNameInSubscriptionMessage {
             get {
@@ -646,7 +646,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide the EncryptionKey..
+        ///   Looks up a localized string similar to Please provide the encryption key..
         /// </summary>
         internal static string NotAllowedErrorDataContainerEncryption {
             get {
@@ -655,7 +655,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume container with name: {0} is not found..
+        ///   Looks up a localized string similar to A volume container with the name: {0} was not found..
         /// </summary>
         internal static string NotFoundDataContainerMessage {
             get {
@@ -664,7 +664,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Access Control Record with given name {0} is found!.
+        ///   Looks up a localized string similar to Could not find an access control record with given name {0}..
         /// </summary>
         internal static string NotFoundMessageACR {
             get {
@@ -709,7 +709,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume with name: {0} is not found..
+        ///   Looks up a localized string similar to A volume with the name: {0} was not found..
         /// </summary>
         internal static string NotFoundVolumeMessage {
             get {
@@ -727,7 +727,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registration key parameter is not passed. Validating whether a registration key is already persisted for this resource!.
+        ///   Looks up a localized string similar to Could not pass the Registration Key parameter. Determining whether a registration key is already persisted for this resource..
         /// </summary>
         internal static string NotProvidedWarningRegistrationKey {
             get {
@@ -749,7 +749,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again..
+        ///   Looks up a localized string similar to The secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the registration key again..
         /// </summary>
         internal static string PersistedCIKCorrupted {
             get {
@@ -758,7 +758,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieved secret successfully, but was NULL..
+        ///   Looks up a localized string similar to Retrieved secret successfully, but it contained a NULL value..
         /// </summary>
         internal static string PersistedCIKIsNull {
             get {
@@ -785,7 +785,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registration key is provided. Persisting for later use!.
+        ///   Looks up a localized string similar to Registration key was provided. Persisting for later use..
         /// </summary>
         internal static string ProvidedRegistrationKey {
             get {
@@ -803,7 +803,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RecurrenceValue should be &gt;=0.
+        ///   Looks up a localized string similar to The RecurrenceValue must be &gt;=0..
         /// </summary>
         internal static string RecurrenceValueLessThanZero {
             get {
@@ -812,7 +812,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registrtion key not passed - validating that the secrets are already initialized.
+        ///   Looks up a localized string similar to Registration key was not passed; confirming that the secrets were already initialized..
         /// </summary>
         internal static string RegistrationKeyNotPassedMessage {
             get {
@@ -821,7 +821,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registration key passed - initializing secrets.
+        ///   Looks up a localized string similar to Registration key passed; initializing secrets..
         /// </summary>
         internal static string RegistrationKeyPassedMessage {
             get {
@@ -938,7 +938,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have a resource selected. Resource Name: {0} Id: {1}.
+        ///   Looks up a localized string similar to You selected resource named: {0} Id: {1}.
         /// </summary>
         internal static string ResourceContextFound {
             get {
@@ -947,7 +947,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Initializing resource context.
+        ///   Looks up a localized string similar to Initializing the resource context.
         /// </summary>
         internal static string ResourceContextInitializeMessage {
             get {
@@ -956,7 +956,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context..
+        ///   Looks up a localized string similar to The resource context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context..
         /// </summary>
         internal static string ResourceContextNotSetMessage {
             get {
@@ -965,7 +965,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} StorSimple resource{1} found!.
+        ///   Looks up a localized string similar to Found {0} StorSimple resource{1}..
         /// </summary>
         internal static string ResourceGet_StatusMessage {
             get {
@@ -983,7 +983,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RetentionCount value should be 1 - 64.
+        ///   Looks up a localized string similar to The RetentionCount value must be 1-64..
         /// </summary>
         internal static string RetentionCountRangeInvalid {
             get {
@@ -1019,7 +1019,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage Access Credential with name {0} found!.
+        ///   Looks up a localized string similar to Found storage access credential named {0}..
         /// </summary>
         internal static string SACFoundWithName {
             get {
@@ -1028,7 +1028,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} Storage Access Credential{1} found!.
+        ///   Looks up a localized string similar to Found {0} storage access credential{1}..
         /// </summary>
         internal static string SACGet_StatusMessage {
             get {
@@ -1037,7 +1037,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage Access Credential with name {0} not found!.
+        ///   Looks up a localized string similar to Could not find storage access credential named {0}..
         /// </summary>
         internal static string SACNotFoundWithName {
             get {
@@ -1064,7 +1064,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter Skip cannot be &lt;0.
+        ///   Looks up a localized string similar to The Skip parameter cannot be &lt;0..
         /// </summary>
         internal static string SkipParameterInvalidMessage {
             get {
@@ -1091,7 +1091,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backupId {0}?.
+        ///   Looks up a localized string similar to Are you sure you want to clone the backup with backup Id {0}?.
         /// </summary>
         internal static string StartAzureStorSimpleBackupCloneJobWarningMessage {
             get {
@@ -1136,7 +1136,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide valid dateTime for StartFrom parameter.
+        ///   Looks up a localized string similar to Provide a valid dateTime string for the StartFrom parameter..
         /// </summary>
         internal static string StartFromDateForBackupNotValid {
             get {
@@ -1145,7 +1145,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stopping job with id {0}.
+        ///   Looks up a localized string similar to Stopping job with id {0}..
         /// </summary>
         internal static string StopAzureStorSimpleJobMessage {
             get {
@@ -1154,7 +1154,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}.
+        ///   Looks up a localized string similar to Are you sure you want to stop the job with id {0}?.
         /// </summary>
         internal static string StopAzureStorSimpleJobWarningMessage {
             get {
@@ -1172,7 +1172,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About to stop a job! Id : {0} .
+        ///   Looks up a localized string similar to About to stop job Id : {0}..
         /// </summary>
         internal static string StoppingDeviceJob {
             get {
@@ -1226,7 +1226,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully updated configuration for device {0} with id {1}.
+        ///   Looks up a localized string similar to Successfully updated configuration for device {0} with Id {1}..
         /// </summary>
         internal static string StorSimpleDeviceUpdatedSuccessfully {
             get {
@@ -1235,7 +1235,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!.
+        ///   Looks up a localized string similar to Your resource has seen selected successfully. To change to another resource please use the Select-AzureStorSimpleResource cmdlet..
         /// </summary>
         internal static string SuccessfulResourceSelection {
             get {
@@ -1244,7 +1244,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The task created for your {0} operation has completed successfully..
+        ///   Looks up a localized string similar to The task created for your {0} operation completed successfully..
         /// </summary>
         internal static string SuccessMessageCompleteJob {
             get {
@@ -1262,7 +1262,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} job is triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} for tracking the job&apos;s status.
+        ///   Looks up a localized string similar to The {0} job was triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} to track the job&apos;s status..
         /// </summary>
         internal static string SuccessMessageSubmitDeviceJob {
             get {
@@ -1271,7 +1271,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task&apos;s status.
+        ///   Looks up a localized string similar to The {0} task was submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} to track the task&apos;s status..
         /// </summary>
         internal static string SuccessMessageSubmitTask {
             get {
@@ -1280,7 +1280,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The registration key has been validated successfully! .
+        ///   Looks up a localized string similar to The registration key was validated successfully! .
         /// </summary>
         internal static string ValidationSuccessfulRegistrationKey {
             get {
@@ -1289,7 +1289,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volume Container Group &quot;{0}&quot; is not eligible for failover due to the reason: {1}.
+        ///   Looks up a localized string similar to Volume Container Group \&quot;{0}\&quot; is not eligible for failover due to  reason: {1}..
         /// </summary>
         internal static string VolumeContainerGroupNotEligibleForFailoverError {
             get {
