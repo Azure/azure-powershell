@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using Hyak.Common;
 
 
-    public class AutomationClient : IAutomationClient
+    public partial class AutomationClient : IAutomationClient
     {
         private readonly AutomationManagement.IAutomationManagementClient automationManagementClient;
 
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Name = automationAccountName,
                 Properties = new AutomationAccountCreateOrUpdateProperties()
                 {
-                   Sku = new Sku()
-                   {
-                        Name  = String.IsNullOrWhiteSpace(plan) ? Constants.DefaultPlan : plan,
-                   }
+                    Sku = new Sku()
+                    {
+                        Name = String.IsNullOrWhiteSpace(plan) ? Constants.DefaultPlan : plan,
+                    }
                 },
                 Tags = accountTags
             };
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         Name = String.IsNullOrWhiteSpace(plan) ? automationAccount.Plan : plan,
                     }
                 },
-                Tags = accountTags, 
+                Tags = accountTags,
             };
 
             var account =

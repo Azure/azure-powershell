@@ -51,5 +51,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region Configurations
+
+        IEnumerable<DscConfiguration> ListAutomationConfigurations(string resourceGroupName, string automationAccountName);
+
+        DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
+
+        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string configurationName, string sourcePath, string description, bool? logVerbose);
+
+        #endregion
+
+        #region AgentRegistrationInforamtion
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
+
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
+        #endregion
     }
 }
