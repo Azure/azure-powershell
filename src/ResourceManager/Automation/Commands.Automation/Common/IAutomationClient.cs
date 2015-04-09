@@ -38,5 +38,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
         
         #endregion
+
+        #region dsccompilationjob
+
+        DscCompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid id);
+
+        IEnumerable<DscCompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        IEnumerable<DscCompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        DscCompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, IDictionary parameters);
+
+        #endregion
+
     }
 }
