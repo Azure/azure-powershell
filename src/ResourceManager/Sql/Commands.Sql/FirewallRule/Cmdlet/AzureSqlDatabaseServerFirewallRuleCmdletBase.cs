@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Azure Sql Database server to use
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = "The Azure Sql Database Server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }

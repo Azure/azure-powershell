@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
+            Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

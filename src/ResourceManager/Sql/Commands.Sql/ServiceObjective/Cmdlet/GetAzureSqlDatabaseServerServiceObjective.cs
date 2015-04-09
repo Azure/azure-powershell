@@ -28,7 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <summary>
         /// Gets or sets the name of service objective.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure Sql Database service objective name.")]
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "Azure Sql Database service objective name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 

@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }

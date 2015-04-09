@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database to remove.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database to remove.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }

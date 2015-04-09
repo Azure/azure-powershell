@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "The Azure Sql Database Server Firewall Rule name.")]
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }

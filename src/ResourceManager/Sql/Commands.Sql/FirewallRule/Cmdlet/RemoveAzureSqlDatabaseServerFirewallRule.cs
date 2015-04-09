@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Gets or sets the name of the firewall rule to remove
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "Azure Sql Database Server Firewall Rule name")]
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }

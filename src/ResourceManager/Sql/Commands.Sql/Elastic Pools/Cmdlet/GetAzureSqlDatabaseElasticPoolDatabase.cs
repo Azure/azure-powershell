@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database Elastic Pool to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
