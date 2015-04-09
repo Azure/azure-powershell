@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
-namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
+namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleVirtualDevice"), OutputType(typeof(string))]
     public class NewAzureStorSimpleVirtualDeviceCommand : StorSimpleCmdletBase
@@ -41,6 +41,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.CreateNewStorageAccount, ParameterSetName = StorSimpleCmdletParameterSet.CreateNewStorageAccount)]
         public SwitchParameter CreateNewStorageAccount { get; set; }
+
+        [Parameter(DontShow = true, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.PersistAzureVMOnFailrue)]
+        public SwitchParameter PersistAzureVMOnFailrue { get; set; }
         
         public override void ExecuteCmdlet()
         {
@@ -56,6 +59,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.VirtualDevice
                     CreateNewStorageAccount = CreateNewStorageAccount.IsPresent,
                     StorageAccountName = StorageAccountName
                 };
+
+                if (PersistAzureVMOnFailrue.IsPresent)
+                {
+                    applianceProvisiongInfo.DeleteAzureCisVMOnFailure = false;
+                }
 
                 var deviceJobResponse = StorSimpleClient.CreateVirtualDevice(applianceProvisiongInfo);
 
