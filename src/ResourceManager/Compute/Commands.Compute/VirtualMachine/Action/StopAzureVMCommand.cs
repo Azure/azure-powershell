@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.Force.IsPresent
              || this.ShouldContinue(Resources.VirtualMachineStoppingConfirmation, Resources.VirtualMachineStoppingCaption))
             {
-                Action<Func<string, string, LongRunningOperationResponse>> call = f =>
+                Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
                 {
                     var op = f(this.ResourceGroupName, this.Name);
                     WriteObject(op);

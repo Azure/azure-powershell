@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string RemoteDesktopThumbprint { get; set; }
 
-        public VMAgentInstanceView VMAgent { get; set; }
+        public VirtualMachineAgentInstanceView VMAgent { get; set; }
 
         public IList<InstanceViewStatus> Statuses { get; set; }
     }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 return null;
             }
 
-            return response.VirtualMachineInstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
+            return response.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
         }
     }
 }

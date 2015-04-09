@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 Caching = this.Caching,
                 Name = this.Name,
-                OperatingSystemType = this.Windows.IsPresent ? OperatingSystemType.Windows : this.Linux.IsPresent ? OperatingSystemType.Linux : null,
+                OperatingSystemType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : null,
                 VirtualHardDisk = new VirtualHardDisk
                 {
                     Uri = this.VhdUri

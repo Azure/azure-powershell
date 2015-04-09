@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string Publisher { get; set; }
 
-        public string Type { get; set; }
+        public string ExtensionType { get; set; }
 
         public string TypeHandlerVersion { get; set; }
 
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Name = ext.Name,
                 Location = ext.Location,
                 Etag = null, // TODO: Update CRP library for this field
-                Publisher = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.Publisher,
-                Type = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.Type,
-                TypeHandlerVersion = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.TypeHandlerVersion,
+                Publisher = ext == null ? null : ext.Publisher,
+                ExtensionType = ext == null ? null : ext.ExtensionType,
+                TypeHandlerVersion = ext == null ? null : ext.TypeHandlerVersion,
                 Id = ext.Id,
-                Properties = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProtectedSettings,
-                ProvisioningState = ext.VirtualMachineExtensionProperties == null ? null : ext.VirtualMachineExtensionProperties.ProvisioningState,
-                Statuses = ext.VirtualMachineExtensionProperties == null || ext.VirtualMachineExtensionProperties.InstanceView == null ? null : ext.VirtualMachineExtensionProperties.InstanceView.Statuses
+                Properties = ext == null ? null : ext.ProtectedSettings,
+                ProvisioningState = ext == null ? null : ext.ProvisioningState,
+                Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses
             };
 
             return result;
