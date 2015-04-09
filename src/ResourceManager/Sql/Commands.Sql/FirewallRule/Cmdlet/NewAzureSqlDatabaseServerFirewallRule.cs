@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// Azure Sql Database Server Firewall Rule Name.
         /// </summary>
         [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "Azure Sql Database Server Firewall Rule Name.",
             ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNullOrEmpty]
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// The start IP address for the firewall rule
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The start IP address for the firewall rule",
             ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNull]
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// The end IP address for the firewall rule
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The end IP address for the firewall rule",
             ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNullOrEmpty]

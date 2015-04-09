@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseElasticPoolModel> results;
 
-            if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("ElasticPoolName"))
             {
                 results = new List<AzureSqlDatabaseElasticPoolModel>();
                 results.Add(ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName));

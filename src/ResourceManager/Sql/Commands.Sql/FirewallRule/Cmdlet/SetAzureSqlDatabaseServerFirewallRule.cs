@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// The new start IP address for the rule.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new start IP address for the rule.")]
         [ValidateNotNull]
         public string StartIpAddress { get; set; }
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// The new end IP address for the rule.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new end IP address for the rule.")]
         [ValidateNotNull]
         public string EndIpAddress { get; set; }

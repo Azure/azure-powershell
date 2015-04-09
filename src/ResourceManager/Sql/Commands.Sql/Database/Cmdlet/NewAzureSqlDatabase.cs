@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the database to create.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Database to create.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the Azure SQL Database collation to use
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Database collation to use.")]
         [ValidateNotNullOrEmpty]
         public string CollationName { get; set; }
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the Azure SQL Database catalog collation to use
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Database catalog collation to use.")]
         [ValidateNotNullOrEmpty]
         public string CatalogCollation { get; set; }
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the maximum size of the Azure SQL Database in bytes
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The maximum size of the Azure SQL Database in bytes.")]
         [ValidateNotNullOrEmpty]
         public long MaxSizeBytes { get; set; }
@@ -68,7 +64,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the edition to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public DatabaseEdition Edition { get; set; }
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
@@ -86,7 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the Elastic Pool to put the database in
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Elastic Pool to put the database in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
@@ -95,7 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
         public Dictionary<string, string> Tags { get; set; }
 

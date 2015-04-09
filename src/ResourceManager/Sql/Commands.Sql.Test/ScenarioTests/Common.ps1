@@ -72,14 +72,49 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 }
 
 <#
+.SYNOPSIS
+Gets valid resource group name
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid server name
+#>
+function Get-ServerName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid database name
+#>
+function Get-DatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid elastic pool name
+#>
+function Get-ElasticPoolName
+{
+    return getAssetName
+}
+
+<#
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
 function Create-ResourceGroupForTest ()
 {
-	$guid = [System.Guid]::NewGuid().ToString()
-	$location = "Southeast Asia"
-	$rgName = "sql-ps-test-rg-" + $guid
+	$location = "Japan East"
+	$rgName = Get-ResourceGroupName
 	
 	$rg = New-AzureResourceGroup -Name $rgName -Location $location
 
@@ -100,18 +135,15 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup)
+function Create-ServerForTest ($resourceGroup, $location = "Japan East")
 {
-	$guid = [System.Guid]::NewGuid().ToString()
-	
-	$serverName = "sql-ps-test-server-" + $guid
+	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$location = "Southeast Asia"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureSqlDatabaseServer -ResourceGroupName  $resourceGroup.Name -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
+	$server = New-AzureSqlDatabaseServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
 	return $server
 }
 

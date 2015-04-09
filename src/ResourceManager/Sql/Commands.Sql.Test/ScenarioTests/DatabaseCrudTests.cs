@@ -18,34 +18,34 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerCrudTests : SqlTestsBase
+    public class DatabaseCrudTests : SqlTestsBase
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerCreate()
+        public void TestDatabaseCreate()
         {
-            RunPowerShellTest("Test-CreateServer");
+            RunPowerShellTest("Test-CreateDatabase");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerUpdate()
+        public void TestDatabaseUpdate()
         {
-            RunPowerShellTest("Test-UpdateServer");
+            RunPowerShellTest("Test-UpdateDatabase");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerGet()
+        public void TestDatabaseGet()
         {
-            RunPowerShellTest("Test-GetServer");
+            RunPowerShellTest("Test-GetDatabase");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerRemove()
+        public void TestDatabaseRemove()
         {
-            RunPowerShellTest("Test-RemoveServer");
+            RunPowerShellTest("Test-RemoveDatabase");
         }
     }
 }

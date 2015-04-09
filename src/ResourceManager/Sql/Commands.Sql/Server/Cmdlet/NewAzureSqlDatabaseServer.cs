@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Gets or sets the name of the database server to use.
         /// </summary>
         [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// The location in which to create the server
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location in which to create the server")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// The tags to associate with the Azure Sql Database Server
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
         public Dictionary<string, string> Tags { get; set; }
 

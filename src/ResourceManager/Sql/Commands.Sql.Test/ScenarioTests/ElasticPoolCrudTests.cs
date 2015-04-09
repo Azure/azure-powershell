@@ -18,34 +18,34 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerCrudTests : SqlTestsBase
+    public class ElasticPoolCrudTests : SqlTestsBase
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerCreate()
+        public void TestElasticPoolCreate()
         {
-            RunPowerShellTest("Test-CreateServer");
+            RunPowerShellTest("Test-CreateElasticPool");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerUpdate()
+        public void TestElasticPoolUpdate()
         {
-            RunPowerShellTest("Test-UpdateServer");
+            RunPowerShellTest("Test-UpdateElasticPool");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerGet()
+        public void TestElasticPoolGet()
         {
-            RunPowerShellTest("Test-GetServer");
+            RunPowerShellTest("Test-GetElasticPool");
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerRemove()
+        public void TestElasticPoolRemove()
         {
-            RunPowerShellTest("Test-RemoveServer");
+            RunPowerShellTest("Test-RemoveElasticPool");
         }
     }
 }

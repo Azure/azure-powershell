@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// The tags to associate with the server.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the server.")]
         [ValidateNotNull]
         public Dictionary<string, string> Tags { get; set; }
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Gets or sets the server version
         /// </summary>
         [Parameter(Mandatory = false, 
-            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "Which server version to change to.")]
         [ValidateNotNullOrEmpty]
         public string ServerVersion { get; set; }
@@ -89,6 +87,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             List<Model.AzureSqlDatabaseServerModel> updateData = new List<Model.AzureSqlDatabaseServerModel>();
             updateData.Add(new Model.AzureSqlDatabaseServerModel()
                 {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServerName = this.ServerName,
                     SqlAdminPassword = this.SqlAdminPassword,
                     Tags = this.Tags,
                     ServerVersion = this.ServerVersion,

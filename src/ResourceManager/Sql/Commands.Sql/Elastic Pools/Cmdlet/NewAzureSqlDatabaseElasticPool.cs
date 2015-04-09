@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the name of the database to create.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Database ElasticPool to create.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the edition to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public DatabaseEdition Edition { get; set; }
@@ -52,7 +50,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the total shared DTU for the Sql Azure Database Elastic Pool.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The total shared DTU for the Sql Azure Database Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public int Dtu { get; set; }
@@ -61,7 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the storage limit for the Sql Azure Database Elastic Pool in MB.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage limit for the Sql Azure Database Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
         public long StorageMB { get; set; }
@@ -70,7 +66,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The minimum DTU all Sql Azure Databases are guaranteed.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMin { get; set; }
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the maximum DTU any one Sql Azure Database can consume.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The maximum DTU any one Sql Azure Database can consume.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMax { get; set; }
@@ -88,7 +82,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
         public Dictionary<string, string> Tags { get; set; }
 
