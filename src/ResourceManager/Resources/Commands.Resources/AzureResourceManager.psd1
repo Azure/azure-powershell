@@ -78,6 +78,7 @@ NestedModules = @(
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
+	'.\TrafficManager\Microsoft.Azure.Commands.TrafficManager2.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',
     '.\Websites\Microsoft.Azure.Commands.Websites.dll'

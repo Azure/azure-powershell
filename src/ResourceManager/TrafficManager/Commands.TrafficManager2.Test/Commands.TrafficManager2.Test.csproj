@@ -8,8 +8,8 @@
     <ProjectGuid>{5764A3A4-586C-4536-8481-13007CAC111B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.TrafficManager.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.TrafficManager.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.TrafficManager2.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.TrafficManager2.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -87,9 +87,6 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.TrafficManager.0.16.0-preview\lib\net40\Microsoft.WindowsAzure.Management.TrafficManager.dll</HintPath>
-    </Reference>
     <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
@@ -148,16 +145,15 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.TrafficManager\Commands.TrafficManager.csproj">
+    <ProjectReference Include="..\Commands.TrafficManager2\Commands.TrafficManager2.csproj">
       <Project>{94e96a5c-b5ad-4e10-b13a-3bc16d102aed}</Project>
-      <Name>Commands.TrafficManager</Name>
+      <Name>Commands.TrafficManager2</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Endpoints\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
