@@ -16,9 +16,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using ProjectResources = Microsoft.Azure.Commands.Common.ResourceManager.Properties.Resources;
+using ProjectResources = Microsoft.Azure.Commands.Tags.Properties.Resources;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.Tags.Model
 {
     public class TagsConversionHelper
     {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             if (dictionary == null)
             {
-                return null;
+                return new Hashtable[0];
             }
 
             List<Hashtable> tagHashtable = new List<Hashtable>();

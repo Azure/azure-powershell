@@ -164,12 +164,10 @@
     <Compile Include="Models.ResourceGroups\TemplateValidationInfo.cs" />
     <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceManagerError.cs" />
-    <Compile Include="Models.ResourceGroups\PSTagValuePair.cs" />
     <Compile Include="Models.ResourceGroups\ResourceBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourceIdentifier.cs" />
     <Compile Include="Models.ResourceGroups\ResourcesBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourcesExtensions.cs" />
-    <Compile Include="Models.ResourceGroups\TagsConversionHelper.cs" />
     <Compile Include="Models.ResourceGroups\TemplateFileParameterV2.cs" />
     <Compile Include="Models.ResourceGroups\GetPSResourceGroupLogParameters.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />

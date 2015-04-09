@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure;
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
