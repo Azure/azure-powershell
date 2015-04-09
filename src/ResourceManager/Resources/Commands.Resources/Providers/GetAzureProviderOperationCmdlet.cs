@@ -23,14 +23,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSecurableAction"), OutputType(typeof(PSResourceProviderOperation))]
-    public class GetAzureSecurableActionCommand : ResourcesBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
-        /// <summary>
-        /// A string that indicates the value of the resource type name for the RP's operations api
-        /// </summary>
-        private const string Operations = "operations";
-
         private const string WildCardCharacter = "*";
 
         /// <summary>
@@ -46,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources
         public override void ExecuteCmdlet()
         {
             List<PSResourceProviderOperation> operationsToDisplay;
-            Dictionary<string, string> resourceProvidersWithOperationsApi = this.GetResourceProvidersWithOperationsSupport();
+            Dictionary<string, string> resourceProvidersWithOperationsApi = this.ResourcesClient.GetResourceProvidersWithOperationsSupport();
 
             if (this.ActionString.Contains(WildCardCharacter))
             {
@@ -61,40 +56,11 @@ namespace Microsoft.Azure.Commands.Resources
         }
 
         /// <summary>
-        /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
-        /// (Current logic is to sort the 'api-versions' list and choose the max value to store)
-        /// </summary>
-        private Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
-        {
-            PSResourceProvider[] allProviders = this.ResourcesClient.ListPSResourceProviders(listAvailable: true);
-
-            Dictionary<string, string> providersSupportingOperations = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            PSResourceProviderResourceType[] providerResourceTypes = null;
-
-            foreach (PSResourceProvider provider in allProviders)
-            {
-                providerResourceTypes = provider.ResourceTypes;
-                if (providerResourceTypes != null && providerResourceTypes.Any())
-                {
-                    PSResourceProviderResourceType operationsResourceType = providerResourceTypes.Where(r => r != null && r.ResourceTypeName == GetAzureSecurableActionCommand.Operations).FirstOrDefault();
-                    if (operationsResourceType != null &&
-                        operationsResourceType.ApiVersions != null &&
-                        operationsResourceType.ApiVersions.Any())
-                    {
-                        providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
-                    }
-                }
-            }
-
-            return providersSupportingOperations;
-        }
-
-        /// <summary>
         /// Get a list of Provider operations in the case that the Actionstring input contains a wildcard
         /// </summary>
         private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionString, Dictionary<string, string> resourceProvidersWithOperationsApi)
         {
-            Dictionary<string, string> resourceProvidersToQuery = GetAzureSecurableActionCommand.FilterResourceProvidersToQueryForOperations(actionString, resourceProvidersWithOperationsApi);
+            Dictionary<string, string> resourceProvidersToQuery = GetAzureProviderOperationCommand.FilterResourceProvidersToQueryForOperations(actionString, resourceProvidersWithOperationsApi);
             
             // Filter the list of all operation names to what matches the wildcard
             WildcardPattern wildcard = new WildcardPattern(actionString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
@@ -123,7 +89,7 @@ namespace Microsoft.Azure.Commands.Resources
         {
             Dictionary<string, string> resourceProvidersToQuery = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
              
-            string nonWildCardPrefix = GetAzureSecurableActionCommand.GetNonWildcardPrefix(actionString);
+            string nonWildCardPrefix = GetAzureProviderOperationCommand.GetNonWildcardPrefix(actionString);
 
             if (string.IsNullOrWhiteSpace(nonWildCardPrefix))
             {
@@ -133,7 +99,7 @@ namespace Microsoft.Azure.Commands.Resources
             else
             {
                 // Some string exists before the wild card character - potentially the full name of the provider.
-                string providerFullName = GetAzureSecurableActionCommand.GetResourceProviderFullName(nonWildCardPrefix);
+                string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(nonWildCardPrefix);
 
                 if (!string.IsNullOrWhiteSpace(providerFullName))
                 {
@@ -162,7 +128,7 @@ namespace Microsoft.Azure.Commands.Resources
         private List<PSResourceProviderOperation> ProcessProviderOperationsWithoutWildCard(string actionString, Dictionary<string, string> resourceProvidersWithOperationsApi)
         {
             Dictionary<string, string> resourceProvidersToQuery = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            string providerFullName = GetAzureSecurableActionCommand.GetResourceProviderFullName(actionString);
+            string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(actionString);
 
             string apiVersion;
             if (resourceProvidersWithOperationsApi.TryGetValue(providerFullName, out apiVersion))
