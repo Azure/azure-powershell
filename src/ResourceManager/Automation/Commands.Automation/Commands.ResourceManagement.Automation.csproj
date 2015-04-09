@@ -118,6 +118,7 @@
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAgentRegistrationInformation.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationConfiguration.cs" />
+    <Compile Include="Cmdlet\ImportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationKey.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />

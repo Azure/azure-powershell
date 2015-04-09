@@ -58,6 +58,22 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.State = configuration.Properties.State;
             this.JobCount = configuration.Properties.JobCount;
 
+            this.Source = null;
+            if (configuration.Properties.Source != null)
+            {
+                this.Source = new ContentSource()
+                {
+                    ContentHash = new ContentHash()
+                    {
+                        Algorithm = configuration.Properties.Source.ContentHash.Algorithm,
+                        Value = configuration.Properties.Source.ContentHash.Value
+                    },
+                    ContentType = configuration.Properties.Source.ContentType,
+                    Version = configuration.Properties.Source.Version,
+                    Value = configuration.Properties.Source.Value
+                };
+            }
+                
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in configuration.Properties.Parameters)
             {
@@ -131,5 +147,82 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets a value indicating whether log verbose is enabled.
         /// </summary>
         public bool LogVerbose { get; set; }
+
+        /// <summary>
+        /// Gets or sets the content source.
+        /// </summary>
+        public ContentSource Source { get; set; }
+    }
+
+    /// <summary>
+    /// The content source
+    /// </summary>
+    public class ContentSource
+    {
+        /// <summary>
+        /// Gets or sets the hash.
+        /// </summary>
+        public ContentHash ContentHash { get; set; }
+
+        /// <summary>
+        /// Gets or sets the content source type.
+        /// </summary>
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the content. This is based on the content source type.
+        /// </summary>
+        public string Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version of the content.
+        /// </summary>
+        public string Version { get; set; }
+    }
+
+    /// <summary>
+    /// The content link
+    /// </summary>
+    public class ContentLink
+    {
+        /// <summary>
+        /// Gets or sets the Uri.
+        /// </summary>
+        public Uri Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Content hash.
+        /// </summary>
+        public ContentHash ContentHash { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Version.
+        /// </summary>
+        public string Version { get; set; }
+    }
+
+    /// <summary>
+    /// The content Hash
+    /// </summary>
+    public class ContentHash
+    {
+        /// <summary>
+        /// Gets or sets the Algorithm.
+        /// </summary>
+        public string Algorithm { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Value.
+        /// </summary>
+        public string Value { get; set; }
+    }
+
+    /// <summary>
+    /// The allowed values for content source type
+    /// </summary>
+    public enum ContentSourceType
+    {
+        embeddedContent,
+        uri
     }
 }

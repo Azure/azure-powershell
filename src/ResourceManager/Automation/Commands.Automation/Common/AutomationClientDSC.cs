@@ -39,43 +39,94 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using Hyak.Common;
 
 
-    public partial  class AutomationClient : IAutomationClient
+    public partial class AutomationClient : IAutomationClient
     {
         #region DscConfiguration Operations
-       
-        public IEnumerable<Model.DscConfiguration> ListAutomationConfigurations(string resourceGroupName, string automationAccountName)
+
+        public IEnumerable<Model.DscConfiguration> ListAutomationConfigurations(
+            string resourceGroupName,
+            string automationAccountName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
             // todo fix paging
-            return AutomationManagementClient
-                .ContinuationTokenHandler(
-                    skipToken =>
-                        {
-                            var response = this.automationManagementClient.Configurations.List(
-                                resourceGroupName,
-                                automationAccountName);
+            return AutomationManagementClient.ContinuationTokenHandler(
+                skipToken =>
+                    {
+                        var response = this.automationManagementClient.Configurations.List(
+                            resourceGroupName,
+                            automationAccountName);
                         return new ResponseWithSkipToken<AutomationManagement.Models.DscConfiguration>(
-                            response, response.Configurations);
+                            response,
+                            response.Configurations);
                     }).Select(c => new Model.DscConfiguration(resourceGroupName, automationAccountName, c));
         }
-       
-        public Model.DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName)
+
+        public Model.DscConfiguration GetConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string configurationName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             Requires.Argument("ConfigurationName", configurationName).NotNull();
 
-            var configuration = this.automationManagementClient.Configurations.Get(
-                resourceGroupName,
-                automationAccountName,
-                configurationName).Configuration;
+            var configuration =
+                this.automationManagementClient.Configurations.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    configurationName).Configuration;
 
             return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
         }
 
-        #endregion
+        public Model.DscConfiguration CreateConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string configurationName,
+            string sourcePath,
+            string description,
+            bool? logVerbose)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("ConfigurationName", configurationName).NotNull();
+            Requires.Argument("SourcePath", sourcePath).NotNull();
+
+            string fileContent = null;
+
+            if (File.Exists(Path.GetFullPath(sourcePath)))
+            {
+                fileContent = System.IO.File.ReadAllText(sourcePath);
+            }
+
+            var configurationCreateParameters = new DscConfigurationCreateOrUpdateParameters()
+                                                    {
+                                                        Name = configurationName,
+                                                        Properties = new DscConfigurationCreateOrUpdateProperties()
+                                                                {
+                                                                    Description = String.IsNullOrEmpty(description) ? String.Empty : description,
+                                                                    LogVerbose = logVerbose.GetValueOrDefault(),
+                                                                    Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
+                                                                            {
+                                                                                // only embeddedContent supported for now
+                                                                                ContentType = "embeddedContent",
+                                                                                Value = fileContent
+                                                                            }
+                                                                }
+                                                    };
+
+            var configuration =
+                this.automationManagementClient.Configurations.CreateOrUpdate(
+                    resourceGroupName,
+                    automationAccountName,
+                    configurationCreateParameters).Configuration;
+
+            return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
+        }
+
+    #endregion
 
         #region AgentRegistration Operations
         public Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName)

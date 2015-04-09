@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation agent registration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
     public class GetAzureAutomationAgentRegistrationInformation : AzureAutomationBaseCmdlet
     {
@@ -32,10 +32,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the automation account name.
         /// </summary>
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
+        public string AutomationAccountName { get; set; }
+        
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -43,15 +42,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public override void ExecuteCmdlet()
         {
             IEnumerable<AgentRegistration> ret = null;
-            if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
-            {
-                ret = new List<AgentRegistration>
+
+            ret = new List<AgentRegistration>
                           {
                               this.AutomationClient.GetAgentRegistration(
                                   this.ResourceGroupName,
-                                  this.Name)
+                                  this.AutomationAccountName)
                           };
-            }
 
             this.GenerateCmdletOutput(ret);
         }

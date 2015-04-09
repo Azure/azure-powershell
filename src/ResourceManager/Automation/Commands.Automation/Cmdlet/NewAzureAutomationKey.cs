@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Regenerates the agent registration key based on the key name.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationKey", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationKey")]
     [OutputType(typeof(AgentRegistration))]
     public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {
@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the automation account name.
         /// </summary>
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AutomationAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the KeyType.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Key type of the agent registration key - primary or secondary")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The key type of the agent registration key - primary or secondary")]
+        [ValidateSet("Primary", "Secondary", IgnoreCase = true)]
         public string KeyType { get; set; }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.NewAgentRegistrationKey(this.ResourceGroupName, this.Name, this.KeyType);
-            this.WriteObject(account);
+            var agentRegistration = this.AutomationClient.NewAgentRegistrationKey(this.ResourceGroupName, this.AutomationAccountName, this.KeyType);
+            this.WriteObject(agentRegistration);
         }
     }
 }
