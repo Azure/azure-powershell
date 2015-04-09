@@ -18,15 +18,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
-    public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
+    [Cmdlet("Generalize", ProfileNouns.VirtualMachine)]
+    public class GeneralizeAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
-
+            var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
             WriteObject(op);
         }
     }
