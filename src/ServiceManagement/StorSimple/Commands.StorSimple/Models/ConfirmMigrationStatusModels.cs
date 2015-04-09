@@ -165,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         /// <returns>MigrationVolumeContainerConfirmStatus enum value corresponding to given service status</returns>
         private MigrationVolumeContainerConfirmStatus GetMigrationVolumeContainerConfirmStatus(MigrationDataContainerConfirmStatus status)
         {
-            switch(status)
+            switch (status)
             {
                 case MigrationDataContainerConfirmStatus.MigrationNotStarted:
                 case MigrationDataContainerConfirmStatus.MigrationInProgress:
@@ -221,37 +221,50 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public override string ToString()
         {
             StringBuilder consoleop = new StringBuilder();
-            if(null != ConfirmStatus && 0 < ConfirmStatus.Count)
+            if (null != ConfirmStatus && 0 < ConfirmStatus.Count)
             {
-                ConfirmStatus.Sort(CompareConfirmStatus);
-                foreach (var status in ConfirmStatus)
+                if (MigrationVolumeContainerConfirmStatus.CommitOrRollbackNotStarted == Status)
                 {
-                    int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
-                    consoleop.AppendLine(IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
-                    consoleop.AppendLine(IntendAndConCat("Operation", status.Operation, maxLength));
-                    consoleop.AppendLine(IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
-                    if (null != status.StatusMessage && 0 < status.StatusMessage.Count)
+                    List<string> volumeContainerNameList = ConfirmStatus.Select(dc => dc.CloudConfigurationName).ToList();
+                    consoleop.AppendLine("CloudConfigurationName(s) : " + ConcatStringList(volumeContainerNameList));
+                }
+                else
+                {
+                    ConfirmStatus.Sort(CompareConfirmStatus);
+                    foreach (var status in ConfirmStatus)
                     {
-                        consoleop.AppendLine(IntendAndConCat("Messages", string.Empty, maxLength));
-                        foreach(var msgInfo in status.StatusMessage)
+                        int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
+                        consoleop.AppendLine(
+                            IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
+
+                        consoleop.AppendLine(
+                            IntendAndConCat("Operation", status.Operation, maxLength));
+                        consoleop.AppendLine(
+                            IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
+                        if (null != status.StatusMessage && 0 < status.StatusMessage.Count)
                         {
-                            string consoleStrOp = HcsMessageInfoToString(msgInfo);
-                            if (!string.IsNullOrEmpty(consoleStrOp))
+                            consoleop.AppendLine(
+                                IntendAndConCat("Messages", string.Empty, maxLength));
+                            foreach (var msgInfo in status.StatusMessage)
                             {
-                                consoleop.AppendLine("\t");
-                                consoleop.Append(consoleStrOp);
+                                string consoleStrOp = HcsMessageInfoToString(msgInfo);
+                                if (!string.IsNullOrEmpty(consoleStrOp))
+                                {
+                                    consoleop.AppendLine("\t");
+                                    consoleop.Append(consoleStrOp);
+                                }
                             }
                         }
-                    }
 
-                    consoleop.AppendLine();
+                        consoleop.AppendLine();
+                    }
                 }
             }
             else
             {
                 consoleop.Append("None");
             }
-            
+
             return consoleop.ToString();
         }
     }

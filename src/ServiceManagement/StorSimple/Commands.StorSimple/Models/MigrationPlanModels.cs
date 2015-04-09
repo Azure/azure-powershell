@@ -32,9 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
         public MigrationPlanInfoMsgList MigrationTimeEstimationCompleted { get; set; }
         public MigrationPlanInfoMsgList MigrationTimeEstimationInProgress { get; set; }
         public MigrationPlanInfoMsgList MigrationTimeEstimationFailed { get; set; }
-        public MigrationPlanInfoMsgList MigrationTimeEstimationNotStarted { get; set; }      
+        public MigrationPlanInfoMsgList MigrationTimeEstimationNotStarted { get; set; }
 
-        public class MigrationPlanInfoMsgList
+        public class MigrationPlanInfoMsgList : MigrationModelCommon
         {
             public List<MigrationPlanInfoMsg> MigrationTimeEstimationInfoList { get; set; }
             public MigrationPlanStatus MigrationTimeEstimationStatus { get; set; }
@@ -47,13 +47,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             public override string ToString()
             {
                 StringBuilder consoleOp = new StringBuilder();
-                if (0 < MigrationTimeEstimationInfoList.Count)
+                if (null != MigrationTimeEstimationInfoList && 0 < MigrationTimeEstimationInfoList.Count)
                 {
-                    foreach (var migrationPlanInfoMsg in MigrationTimeEstimationInfoList)
+                    if (MigrationPlanStatus.NotStarted == MigrationTimeEstimationStatus ||
+                        MigrationPlanStatus.InProgress == MigrationTimeEstimationStatus)
                     {
-                        consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
-                        consoleOp.AppendLine();
-                    }                    
+                        List<string> volumeContainerNameList = 
+                            MigrationTimeEstimationInfoList.Select(dc => dc.CloudConfigurationName).ToList();
+                        consoleOp.AppendLine("CloudConfigurationName(s) : " + ConcatStringList(volumeContainerNameList));
+                    }
+                    else
+                    {
+                        foreach (var migrationPlanInfoMsg in MigrationTimeEstimationInfoList)
+                        {
+                            consoleOp.AppendLine(migrationPlanInfoMsg.ToString());
+                        }
+                    }
                 }
                 else
                 {
@@ -157,15 +166,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             string timeFormat = string.Empty;
             if (0 != span.Days)
             {
-                timeFormat = string.Format("{0}Day{1} ", span.Days, ((1 == span.Days) ? "s" : string.Empty));
+                timeFormat = string.Format("{0} Day{1} ", span.Days, ((1 == span.Days) ? "s" : string.Empty));
             }
             if (0 != span.Hours || 0 != span.Days)
             {
-                timeFormat = string.Format("{0}{1}Hour{2} ", timeFormat, span.Hours, ((1 < span.Hours) ? "s" : string.Empty));
+                timeFormat = string.Format("{0}{1} Hour{2} ", timeFormat, span.Hours, ((1 < span.Hours) ? "s" : string.Empty));
             }
             if (0 != span.Minutes || (0 == span.Days && 0 == span.Hours))
             {
-                timeFormat = string.Format("{0}{1}Minute{2} ", timeFormat, span.Minutes, ((1 < span.Minutes) ? "s" : string.Empty));
+                timeFormat = string.Format("{0}{1} Minute{2} ", timeFormat, span.Minutes, ((1 < span.Minutes) ? "s" : string.Empty));
             }
 
             return timeFormat;
@@ -173,9 +182,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
 
         public override string ToString()
         {
-            StringBuilder consoleOp = new StringBuilder();        
-            consoleOp.AppendLine(
-                this.IntendAndConCat("CloudConfigurationName", CloudConfigurationName));
+            StringBuilder consoleOp = new StringBuilder();
+            consoleOp.Append(
+                   this.IntendAndConCat("CloudConfigurationName", CloudConfigurationName));
+
+            consoleOp.AppendLine();
             consoleOp.AppendLine(
                 this.IntendAndConCat("EstimatedTimeForLatestBackup", FormatTimeSpan(EstimatedTimeForLargestBackup)));
             consoleOp.AppendLine(
@@ -191,6 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
             {
                 consoleOp.AppendLine(string.Format(Resources.MigrationTimeEstimationBWMsg, (AssumedBandwidthInMbps / 8)));
             }
+
 
             return consoleOp.ToString();
         }

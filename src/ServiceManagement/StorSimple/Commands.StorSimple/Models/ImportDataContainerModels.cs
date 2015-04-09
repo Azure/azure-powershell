@@ -110,40 +110,49 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Models
                 StringBuilder consoleop = new StringBuilder();
                 if (null != this.StatusList && 0 < this.StatusList.Count)
                 {
-                    foreach (var status in this.StatusList)
+                    if (MigrationStatus.NotStarted == migrationState)
                     {
-                        int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
-                        consoleop.AppendLine(IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
-                        consoleop.AppendLine(IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
-                        consoleop.AppendLine(IntendAndConCat("MigrationStatus", status.Status.ToString(), maxLength));
-                        if (null != status.BackupSets && 0 < status.BackupSets.Count)
+                        List<string> volumeContainerNameList = StatusList.Select(dc => dc.CloudConfigurationName).ToList();
+                        consoleop.AppendLine("CloudConfigurationName(s) : " + ConcatStringList(volumeContainerNameList));
+                    }
+                    else
+                    {
+                        foreach (var status in this.StatusList)
                         {
-                            consoleop.AppendLine(IntendAndConCat("BackupSets", string.Empty, maxLength));
-                            foreach (MigrationBackupSet backupSet in status.BackupSets)
+                            int maxLength = status.GetType().GetProperties().ToList().Max(t => t.Name.Length);
+                            consoleop.AppendLine(IntendAndConCat("CloudConfigurationName", status.CloudConfigurationName, maxLength));
+                        
+                            consoleop.AppendLine(IntendAndConCat("PercentageCompleted", status.PercentageCompleted, maxLength));
+                            consoleop.AppendLine(IntendAndConCat("MigrationStatus", status.Status.ToString(), maxLength));
+                            if (null != status.BackupSets && 0 < status.BackupSets.Count)
                             {
-                                consoleop.AppendLine(string.Format("\tPolicy : {0}, Created On : {1}, Status : {2}",
-                                    backupSet.BackupPolicyName, backupSet.CreationTime.ToString("MM/dd/yyyy HH:mm:ss"), backupSet.Status.ToString()));
-                                string consoleStrOp = this.HcsMessageInfoToString(backupSet.Message);
-                                if (!string.IsNullOrEmpty(consoleStrOp))
+                                consoleop.AppendLine(IntendAndConCat("BackupSets", string.Empty, maxLength));
+                                foreach (MigrationBackupSet backupSet in status.BackupSets)
                                 {
-                                    consoleop.AppendLine("\t");
-                                    consoleop.AppendLine(consoleStrOp);
+                                    consoleop.AppendLine(string.Format("\tPolicy : {0}, Created On : {1}, Status : {2}",
+                                        backupSet.BackupPolicyName, backupSet.CreationTime.ToString("MM/dd/yyyy HH:mm:ss"), backupSet.Status.ToString()));
+                                    string consoleStrOp = this.HcsMessageInfoToString(backupSet.Message);
+                                    if (!string.IsNullOrEmpty(consoleStrOp))
+                                    {
+                                        consoleop.AppendLine("\t");
+                                        consoleop.AppendLine(consoleStrOp);
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            consoleop.AppendLine(Resources.MigrationBackupSetNotFound);
-                        }
+                            else
+                            {
+                                consoleop.AppendLine(Resources.MigrationBackupSetNotFound);
+                            }
 
-                        string statusStrOp = this.HcsMessageInfoToString(status.MessageInfo);
-                        if (!string.IsNullOrEmpty(statusStrOp))
-                        {
-                            consoleop.AppendLine(IntendAndConCat("Messages", statusStrOp, maxLength));
-                        }
+                            string statusStrOp = this.HcsMessageInfoToString(status.MessageInfo);
+                            if (!string.IsNullOrEmpty(statusStrOp))
+                            {
+                                consoleop.AppendLine(IntendAndConCat("Messages", statusStrOp, maxLength));
+                            }
 
-                        consoleop.AppendLine();
-                    }                    
+                            consoleop.AppendLine();
+                        }
+                    }
                 }
                 else
                 {
