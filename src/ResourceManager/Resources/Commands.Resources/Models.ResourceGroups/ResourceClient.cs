@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
     public partial class ResourcesClient
     {
         /// <summary>
+        /// A string that indicates the value of the resource type name for the RP's operations api
+        /// </summary>
+        public const string Operations = "operations";
+
+        /// <summary>
         /// A string that indicates the value of the registering state enum for a provider
         /// </summary>
         public const string RegisteredStateName = "Registered";
@@ -456,6 +461,35 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 .Distinct(StringComparer.InvariantCultureIgnoreCase)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
+        }
+
+        /// <summary>
+        /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
+        /// (Current logic is to sort the 'api-versions' list and choose the max value to store)
+        /// </summary>
+        public Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
+        {
+            PSResourceProvider[] allProviders = this.ListPSResourceProviders(listAvailable: true);
+
+            Dictionary<string, string> providersSupportingOperations = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            PSResourceProviderResourceType[] providerResourceTypes = null;
+
+            foreach (PSResourceProvider provider in allProviders)
+            {
+                providerResourceTypes = provider.ResourceTypes;
+                if (providerResourceTypes != null && providerResourceTypes.Any())
+                {
+                    PSResourceProviderResourceType operationsResourceType = providerResourceTypes.Where(r => r != null && r.ResourceTypeName == ResourcesClient.Operations).FirstOrDefault();
+                    if (operationsResourceType != null &&
+                        operationsResourceType.ApiVersions != null &&
+                        operationsResourceType.ApiVersions.Any())
+                    {
+                        providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
+                    }
+                }
+            }
+
+            return providersSupportingOperations;
         }
 
         /// <summary>

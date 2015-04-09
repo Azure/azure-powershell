@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureSecurableAction()
+        public void TestAzureProviderOperation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureSecurableAction");
+            ResourcesController.NewInstance.RunPsTest("Test-AzureProviderOperation");
         }
     }
 }

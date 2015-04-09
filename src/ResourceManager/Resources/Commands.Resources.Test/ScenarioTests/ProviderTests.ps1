@@ -51,14 +51,14 @@ function Test-AzureProvider
     .SYNOPSIS
     Tests querying for a resource provider's operations/actions
 #>
-function Test-AzureSecurableAction
+function Test-AzureProviderOperation
 {
     # Get all actions by all providers
-    $allActions = Get-AzureSecurableAction *
+    $allActions = Get-AzureProviderOperation *
 	Assert-True { $allActions.Length -gt 0 }
 
 	# Get all actions of microsoft.insights provider
-	$insightsActions = Get-AzureSecurableAction Microsoft.Insights/*
+	$insightsActions = Get-AzureProviderOperation Microsoft.Insights/*
 	$insightsActions
 	Assert-True { $insightsActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
@@ -75,7 +75,7 @@ function Test-AzureSecurableAction
 	}
 
 	# Case insenstive search
-	$insightsCaseActions = Get-AzureSecurableAction MicROsoFt.InSIghTs/*
+	$insightsCaseActions = Get-AzureProviderOperation MicROsoFt.InSIghTs/*
 	Assert-True { $insightsCaseActions.Length -gt 0 }
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }
 	foreach ($action in $insightsCaseActions)
@@ -84,7 +84,7 @@ function Test-AzureSecurableAction
 	}
 
 	# Get all Read actions of microsoft.insights provider
-	$insightsReadActions = Get-AzureSecurableAction Microsoft.Insights/*/read
+	$insightsReadActions = Get-AzureProviderOperation Microsoft.Insights/*/read
 	Assert-True { $insightsReadActions.Length -gt 0 }
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
 	foreach ($action in $insightsReadActions)
@@ -94,7 +94,7 @@ function Test-AzureSecurableAction
 	}
 
 	# Get all Read actions of all providers
-	$readActions = Get-AzureSecurableAction */read
+	$readActions = Get-AzureProviderOperation */read
 	Assert-True { $readActions.Length -gt 0 }
 	Assert-True { $readActions.Length -lt $allActions.Length }
 	Assert-True { $readActions.Length -gt $insightsReadActions.Length }
@@ -105,10 +105,10 @@ function Test-AzureSecurableAction
 	}
 
 	# Get a particular action
-	$action = Get-AzureSecurableAction Microsoft.OperationalInsights/workspaces/usages/read
+	$action = Get-AzureProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
 	Assert-AreEqual $action.OperationName.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
 
 	# Get a non-existing action
-	$action = Get-AzureSecurableAction NonExistentProvider/* 
+	$action = Get-AzureProviderOperation NonExistentProvider/* 
 	Assert-True { $action.Length -eq 0 } 
  }
