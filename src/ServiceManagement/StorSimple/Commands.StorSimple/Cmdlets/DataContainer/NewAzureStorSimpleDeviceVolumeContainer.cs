@@ -60,25 +60,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceid == null)
                 {
-                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
+                    WriteObject(null);
+                    return;
                 }
 
-                // Get the current device details.
-                var deviceDetails = StorSimpleClient.GetDeviceDetails(deviceid);
-                if (deviceDetails == null || deviceDetails.DeviceProperties == null)
-                {
-                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                }
-
-                // If the device has not yet been configured with the mandatory params, then don't allow the volume-container creation
-                // TBD : This check should ideally be in the service code, but is being put here as we want to avoud a major change 
-                // to the service so late in the current release cycle. Once this fix has been migrated to the service, this check can be removed from here
-                if (!deviceDetails.DeviceProperties.IsConfigUpdated)
-                {
-                    throw new ArgumentException(Resources.DeviceNotConfiguredMessage);
-                }
-
-                if (EncryptionEnabled == true && (string.IsNullOrEmpty(EncryptionKey) || !IsValidAsciiString(EncryptionKey)))
+                if(EncryptionEnabled == true && (string.IsNullOrEmpty(EncryptionKey) || !IsValidAsciiString(EncryptionKey)))
                 {
                     throw new ArgumentException(Resources.EncryptionKeyNotAcceptableMessage);
                 }
