@@ -100,10 +100,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 fileContent = System.IO.File.ReadAllText(sourcePath);
             }
-
+            string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
             var configurationCreateParameters = new DscConfigurationCreateOrUpdateParameters()
                                                     {
                                                         Name = configurationName,
+                                                        Location = location,
                                                         Properties = new DscConfigurationCreateOrUpdateProperties()
                                                                 {
                                                                     Description = String.IsNullOrEmpty(description) ? String.Empty : description,

@@ -56,21 +56,33 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Description = configuration.Properties.Description;
             this.LogVerbose = configuration.Properties.LogVerbose;
             this.State = configuration.Properties.State;
-            this.JobCount = configuration.Properties.JobCount;
+            this.Location = configuration.Location;
+
+            this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in configuration.Tags)
+            {
+                this.Tags.Add(kvp.Key, kvp.Value);
+            }
 
             this.Source = null;
             if (configuration.Properties.Source != null)
             {
+                ContentHash hash = null;
+                if (!String.IsNullOrEmpty(configuration.Properties.Source.ContentHash.Value))
+                {
+                    hash = new ContentHash()
+                            {
+                                Algorithm = configuration.Properties.Source.ContentHash.Algorithm,
+                                Value = configuration.Properties.Source.ContentHash.Value
+                            };
+                }
+
                 this.Source = new ContentSource()
                 {
-                    ContentHash = new ContentHash()
-                    {
-                        Algorithm = configuration.Properties.Source.ContentHash.Algorithm,
-                        Value = configuration.Properties.Source.ContentHash.Value
-                    },
+                    ContentHash = hash,
                     ContentType = configuration.Properties.Source.ContentType,
+                    Value = configuration.Properties.Source.Value,
                     Version = configuration.Properties.Source.Version,
-                    Value = configuration.Properties.Source.Value
                 };
             }
                 
@@ -116,12 +128,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        public string[] Tags { get; set; }
-
-        /// <summary>
-        /// Gets or sets the JobCount.
-        /// </summary>
-        public int JobCount { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the creation time.

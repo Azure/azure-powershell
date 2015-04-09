@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc configuration script
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationDscConfiguration")]
+    [Cmdlet(VerbsData.Import, "AzureAutomationDscConfiguration")]
     [OutputType(typeof(DscConfiguration))]
-    public class NewAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
+    public class ImportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the automation account name.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var configuration = this.AutomationClient.CreateConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.SourcePath, this.Description, this.LogVerbose );
+            var configuration = this.AutomationClient.CreateConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.SourcePath, this.Description, this.LogVerbose);
             this.WriteObject(configuration);
         }
     }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -43,12 +44,25 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Location { get; set; }
 
         /// <summary>
+        /// Gets or sets the plan.
+        /// </summary>
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The plan of the automation account")]
+        public string Plan { get; set; }
+
+        /// <summary>
+        /// Gets or sets the module tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account tags.")]
+        [Alias("Tag")]
+        public IDictionary Tags { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location);
+            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags);
             this.WriteObject(account);
         }
     }

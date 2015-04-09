@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -41,6 +42,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccount.Name;
             this.Location = automationAccount.Location;
+
+            this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in automationAccount.Tags)
+            {
+                this.Tags.Add(kvp.Key, kvp.Value);
+            }
             
             if (automationAccount.Properties == null) return;
 
@@ -90,5 +97,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the LastPublishTime.
         /// </summary>
         public DateTimeOffset LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags.
+        /// </summary>
+        public Hashtable Tags { get; set; }
     }
 }

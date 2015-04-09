@@ -31,7 +31,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName);
 
-        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location);
+        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags);
+
+        AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
         

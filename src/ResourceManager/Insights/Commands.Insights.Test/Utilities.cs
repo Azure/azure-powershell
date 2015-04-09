@@ -127,6 +127,36 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
+        public static MetricListResponse InitializeMetricResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            EventData eventData = Utilities.CreateFakeEvent();
+            return new MetricListResponse
+            {
+                MetricCollection = new MetricCollection
+                {
+                    Value = new List<Metric>()
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        public static MetricDefinitionListResponse InitializeMetricDefinitionResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            EventData eventData = Utilities.CreateFakeEvent();
+            return new MetricDefinitionListResponse
+            {
+                MetricDefinitionCollection = new MetricDefinitionCollection
+                {
+                    Value = new MetricDefinition[] {}
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
         {
             // Calling with detailed output
