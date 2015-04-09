@@ -415,7 +415,7 @@
     <value>Could not persist secret</value>
   </data>
   <data name="DeviceNotConfiguredMessage" xml:space="preserve">
-    <value>The device name is not fully configured. Please complete the configuration and retry.</value>
+    <value>The device with the specified device name is not fully configured. Please complete the configuration and retry.</value>
   </data>
   <data name="DeviceNotRegisteredMessage" xml:space="preserve">
     <value>No StorSimple device is currently registered with this resource. Please register at least one device with the resource and then rerun this command.</value>

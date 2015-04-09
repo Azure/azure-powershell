@@ -277,7 +277,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The device name is not fully configured. Please complete the configuration and retry..
+        ///   Looks up a localized string similar to The device with the specified device name is not fully configured. Please complete the configuration and retry..
         /// </summary>
         internal static string DeviceNotConfiguredMessage {
             get {
