@@ -68,8 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -186,7 +187,7 @@
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
-	<Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
+    <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
     <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
     <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommand.cs" />
     <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommand.cs" />

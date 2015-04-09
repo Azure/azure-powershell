@@ -12,24 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class PSRoleDefinition
+    public class RoleDefinitionTests
     {
-        public string Name { get; set; }
-
-        public string Id { get; set; }
-
-        public bool IsCustom { get; set; }
-
-        public string Description { get; set; }
-
-        public List<string> Actions { get; set; }
-
-        public List<string> NotActions { get; set; }
-
-        public List<string> AssignableScopes { get; set; }
+        [Fact(Skip = "Not implemented")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RoleDefinitionCreateTests()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionCreateTests");
+        }
     }
 }

@@ -282,4 +282,7 @@
   <data name="RegisterProviderFeatureMessage" xml:space="preserve">
     <value>Registering provider feature ...</value>
   </data>
+  <data name="InvalidRoleDefinitionName" xml:space="preserve">
+    <value>RoleDefinitionName is invalid</value>
+  </data>
 </root>
