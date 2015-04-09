@@ -28,7 +28,10 @@ function Test-AvailabilitySet
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         $asetName = 'avs' + $rgname;
-        New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+        $nonDefaultUD = 2;
+        $nonDefaultFD = 3;
+
+        New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD;
 
         $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
@@ -37,6 +40,8 @@ function Test-AvailabilitySet
         $aset = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
         Assert-AreEqual $asetName $aset.Name;
+        Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
+        Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
 
         Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         

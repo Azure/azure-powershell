@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
