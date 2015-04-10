@@ -25,10 +25,38 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class SetAzureAutomationAccount : AzureAutomationBaseCmdlet
+    public class SetAzureAutomationAccount : AzurePSCmdlet
     {
+        /// <summary>
+        /// The automation client.
+        /// </summary>
+        private IAutomationClient automationClient;
+
+        /// <summary>
+        /// Gets or sets the automation client base.
+        /// </summary>
+        public IAutomationClient AutomationClient
+        {
+            get
+            {
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
+            }
+
+            set
+            {
+                this.automationClient = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
