@@ -57,9 +57,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 {
                     networkConfiguration.PublicIPs.First().IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
                 }
+
                 if (this.ParameterSpecified("DomainNameLabel"))
                 {
                     networkConfiguration.PublicIPs.First().DomainNameLabel = this.DomainNameLabel;
+                }
+                else
+                {
+                    networkConfiguration.PublicIPs.First().DomainNameLabel = null;
                 }
             }
             else
