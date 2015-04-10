@@ -17,13 +17,12 @@ using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.Resources.Models;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class PublicIpAddressBaseClient : NetworkBaseClient
     {
         public IPublicIpAddressOperations PublicIpAddressClient

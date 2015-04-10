@@ -17,7 +17,7 @@ using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Resources.Models;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
