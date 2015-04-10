@@ -192,9 +192,6 @@
                         <Component Id="cmp9F423DE1EC10EE4B17440C8718B09D66" Guid="*">
                             <File Id="fil7E49D23147E54A39C5AE61DDA4E74B61" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Dns\Hyak.Common.dll" />
                         </Component>
-                        <Component Id="cmp1F4A1CC3988AD9500AACA6F72A8675F2" Guid="*">
-                            <File Id="filBC80E790BEF96F5614BB1D90032D7C6E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Dns\Microsoft.Azure.Commands.Common.ResourceManager.dll" />
-                        </Component>
                         <Component Id="cmpE0580556FFE65EA7BDDC69B9CC434223" Guid="*">
                             <File Id="fil64779B6D8757862D4005A398189A7473" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Dns\Microsoft.Azure.Commands.Dns.dll" />
                         </Component>
@@ -2543,7 +2540,6 @@
             <ComponentRef Id="cmpBFF3EE7A4627288C2D2424BA1DF0FCE1" />
             <ComponentRef Id="cmpC04498A4FB0FD84163A4FABEFAFC86C4" />
             <ComponentRef Id="cmp9F423DE1EC10EE4B17440C8718B09D66" />
-            <ComponentRef Id="cmp1F4A1CC3988AD9500AACA6F72A8675F2" />
             <ComponentRef Id="cmpE0580556FFE65EA7BDDC69B9CC434223" />
             <ComponentRef Id="cmp9502ED70B8CD0376B466C356436D6362" />
             <ComponentRef Id="cmp1265B13B26AD7D7C99BAEEE3AA269B6E" />
