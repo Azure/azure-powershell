@@ -34,6 +34,8 @@ using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAc
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
+    using Microsoft.Azure.Management.Resources.Models;
+
     using AutomationManagement = Azure.Management.Automation;
     using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
@@ -86,33 +88,76 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string automationAccountName,
             string configurationName,
             string sourcePath,
+            IDictionary tags, 
             string description,
-            bool? logVerbose)
+            bool logVerbose,
+            bool logProgress,
+            bool published,
+            bool overWrite)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             Requires.Argument("ConfigurationName", configurationName).NotNull();
             Requires.Argument("SourcePath", sourcePath).NotNull();
 
+            // for the private preivew, configuration can be imported in Published mode only
+            // Draft mode is not implemented
+            if (!published)
+            {
+                throw new NotImplementedException(
+                                    string.Format(
+                                        CultureInfo.CurrentCulture,
+                                        Resources.ConfigurationNotPublished));
+            }
+
+            // if configuration already exists, ensure overwrite flag is specified
+            if (this.TryGetConfigurationModel(resourceGroupName, automationAccountName, configurationName) != null)
+            {
+                if (!overWrite)
+                {
+                    throw new ResourceCommonException(typeof(Model.DscConfiguration),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationAlreadyExists, configurationName));
+                }
+            }
+
             string fileContent = null;
 
-            if (File.Exists(Path.GetFullPath(sourcePath)))
+            try
             {
-                fileContent = System.IO.File.ReadAllText(sourcePath);
+                if (File.Exists(Path.GetFullPath(sourcePath)))
+                {
+                    fileContent = System.IO.File.ReadAllText(sourcePath);
+                }
             }
+            catch (Exception)
+            {
+                // exception in accessing the file path
+                throw new FileNotFoundException(
+                                    string.Format(
+                                        CultureInfo.CurrentCulture,
+                                        Resources.ConfigurationSourcePathInvalid));
+            }
+
+            // location of the configuration is set to same as that of automation account
             string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
+
+            IDictionary<string, string> configurationTags = null;
+            if (tags != null) configurationTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+
             var configurationCreateParameters = new DscConfigurationCreateOrUpdateParameters()
                                                     {
                                                         Name = configurationName,
                                                         Location = location,
+                                                        Tags = configurationTags,
                                                         Properties = new DscConfigurationCreateOrUpdateProperties()
                                                                 {
                                                                     Description = String.IsNullOrEmpty(description) ? String.Empty : description,
-                                                                    LogVerbose = logVerbose.GetValueOrDefault(),
+                                                                    LogVerbose = logVerbose,
+                                                                    LogProgress = logProgress,
                                                                     Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
                                                                             {
                                                                                 // only embeddedContent supported for now
-                                                                                ContentType = "embeddedContent",
+                                                                                ContentType = Model.ContentSourceType.embeddedContent.ToString(),
                                                                                 Value = fileContent
                                                                             }
                                                                 }
@@ -125,6 +170,30 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     configurationCreateParameters).Configuration;
 
             return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
+        }
+
+        private Model.DscConfiguration TryGetConfigurationModel(string resourceGroupName, string automationAccountName, string configurationName)
+        {
+            Model.DscConfiguration configuration = null;
+            try
+            {
+                configuration = this.GetConfiguration(
+                                                resourceGroupName,
+                                                automationAccountName,
+                                                configurationName);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    configuration = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return configuration;
         }
 
     #endregion

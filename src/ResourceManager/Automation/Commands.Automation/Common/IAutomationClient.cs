@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
 
-        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string configurationName, string sourcePath, string description, bool? logVerbose);
+        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string configurationName, string sourcePath, IDictionary tags, string description, bool logVerbose, bool logProgress, bool published, bool overWrite);
 
         #endregion
 

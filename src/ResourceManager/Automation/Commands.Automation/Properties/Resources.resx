@@ -275,4 +275,16 @@
     <value>Create account arguments are invalid. Provide valid account name and location. Account Name: {0}, Location: {1} </value>
     <comment>Automation</comment>
   </data>
+  <data name="ConfigurationAlreadyExists" xml:space="preserve">
+    <value>Configuration already exists. Specify the parameter to force an overwrite. Configuration name: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationNotPublished" xml:space="preserve">
+    <value>Configuration can be imported in published state only in the current preview. Use the -Published switch.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationSourcePathInvalid" xml:space="preserve">
+    <value>Invalid SourcePath. Verify file path is valid and file exists.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

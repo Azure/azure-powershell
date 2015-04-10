@@ -115,6 +115,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuration already exists. Specify the parameter to force an overwrite. Configuration name: {0}.
+        /// </summary>
+        internal static string ConfigurationAlreadyExists {
+            get {
+                return ResourceManager.GetString("ConfigurationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration can be imported in published state only in the current preview. Use the -Published switch..
+        /// </summary>
+        internal static string ConfigurationNotPublished {
+            get {
+                return ResourceManager.GetString("ConfigurationNotPublished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid SourcePath. Verify file path is valid and file exists..
+        /// </summary>
+        internal static string ConfigurationSourcePathInvalid {
+            get {
+                return ResourceManager.GetString("ConfigurationSourcePathInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Connection already exists. Connection name: {0}..
         /// </summary>
         internal static string ConnectionAlreadyExists {
