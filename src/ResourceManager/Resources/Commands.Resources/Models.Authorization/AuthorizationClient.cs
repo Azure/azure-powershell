@@ -92,11 +92,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
-                Properties = { PrincipalId = principalId, RoleDefinitionId = roleDefinitionId }
+                Properties = new RoleAssignmentProperties() { PrincipalId = principalId, RoleDefinitionId = roleDefinitionId }
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
-            return AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+            return
+                AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId)
+                    .RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
         }
 
         /// <summary>
