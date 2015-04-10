@@ -12,8 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-
 <#
 .SYNOPSIS
 Tests verify scenarios for RoleDefinitions creation.
@@ -50,7 +48,7 @@ function Test-RoleDefinitionCreateTests
 	Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
 	Assert-AreEqual $true $roleDef.IsCustom
 }
-=======
+
 <#
 .SYNOPSIS
 Tests verify negative scenarios for RoleDefinitions
@@ -73,7 +71,7 @@ function Test-RdNegativeScenarios
     $rdNull = Get-AzureRoleDefinition -Name $rdName
 
     # Create a role definition
-    # $rd = New-AzureRoleDefinition -InputFile .Resources\RoleDefinition.json
+    $rd = New-AzureRoleDefinition -InputFile .Resources\RoleDefinition.json
 
     # Role Defintion not provided.
     $roleDefNotProvided = "Role definition not provided."
@@ -98,7 +96,7 @@ function Test-RDPositiveScenarios
 {
     # Create a role definition with Name rdNamme.
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-    # $rd = New-AzureRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = New-AzureRoleDefinition -InputFile .\Resources\RoleDefinition.json
     $rd = Get-AzureRoleDefinition -Name $rdName
 
     # Update the role definition with name $rdName that was created in the step above.
@@ -117,7 +115,6 @@ function Test-RDPositiveScenarios
     $readRd = Get-AzureRoleDefinition -Name $rd.Name
     Assert-Null $readRd
 
-    # $rdReCreated = New-AzureRoleDefinition -Role $rd
+    $rdReCreated = New-AzureRoleDefinition -Role $rd
     $rdReDeleted = Get-AzureRoleDefinition -Name $rd.Name | Remove-AzureRoleDefinition -Force
 }
->>>>>>> 74b2c872d8648ba3f9c7695f9f851c7a287b02d3
