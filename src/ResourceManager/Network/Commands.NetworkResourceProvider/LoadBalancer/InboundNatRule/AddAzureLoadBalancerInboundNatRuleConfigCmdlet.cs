@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Resources.LoadBalancerInBoundNatRuleName,
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerInBoundNatRuleName,
                     this.Name);
 
             this.LoadBalancer.InboundNatRules.Add(inboundNatRule);

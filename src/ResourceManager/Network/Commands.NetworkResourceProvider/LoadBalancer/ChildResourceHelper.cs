@@ -14,7 +14,6 @@
 
 using System;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -24,14 +23,14 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         public static string GetResourceId(string subscriptionId, string resourceGroupName, string loadBalancerName,
             string resource, string resourceName)
         {
-            return string.Format(Resources.LoadBalancerChildResourceId, subscriptionId, resourceGroupName,
+            return string.Format(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerChildResourceId, subscriptionId, resourceGroupName,
                 loadBalancerName, resource, resourceName);
         }
 
         public static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
         {
-            return string.Format(Resources.LoadBalancerChildResourceId, subscriptionId, Resources.ResourceGroupNotSet,
-                Resources.LoadBalancerNameNotSet, resource, resourceName);
+            return string.Format(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerChildResourceId, subscriptionId, Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.ResourceGroupNotSet,
+                Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerNameNotSet, resource, resourceName);
         }
 
         private static string NormalizeLoadBalancerChildResourceIds(string id, string resourceGroupName, string loadBalancerName)

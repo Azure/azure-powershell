@@ -17,7 +17,6 @@ using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             if (!this.IsNetworkInterfacePresent(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name))
             {
-                throw new ArgumentException(Resources.ResourceNotFound);
+                throw new ArgumentException(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.ResourceNotFound);
             }
 
             // Verify if PublicIpAddress is empty
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
-            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
+            networkInterfaceModel.Type = Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);

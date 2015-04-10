@@ -16,7 +16,6 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Resources.LoadBalancerProbeName,
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerProbeName,
                     this.Name);
 
             this.LoadBalancer.Probes.Add(probe);

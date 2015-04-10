@@ -17,7 +17,6 @@ using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             if (!this.IsLoadBalancerPresent(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name))
             {
-                throw new ArgumentException(Resources.ResourceNotFound);
+                throw new ArgumentException(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.ResourceNotFound);
             }
 
             // Normalize the IDs
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
-            lbModel.Type = Resources.LoadBalancerType;
+            lbModel.Type = Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

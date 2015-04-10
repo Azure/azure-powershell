@@ -17,7 +17,6 @@ using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -38,12 +37,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
             {
-                throw new ArgumentException(Resources.ResourceNotFound);
+                throw new ArgumentException(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.ResourceNotFound);
             }
             
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
-            nsgModel.Type = Resources.NetworkSecurityGroupType;
+            nsgModel.Type = Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.NetworkSecurityGroupType;
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkSecurityGroup.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

@@ -15,7 +15,6 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Resources.SetByResource))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.SetByResource))
             {
                 this.BackendAddressPoolId = this.BackendAddressPool.Id;
                 this.ProbeId = this.Probe.Id;

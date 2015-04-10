@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Resources.LoadBalancerBackendAddressPoolName,
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerBackendAddressPoolName,
                     this.Name);
 
             this.LoadBalancer.BackendAddressPools.Add(backendAddressPool);

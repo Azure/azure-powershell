@@ -14,7 +14,6 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -51,8 +50,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingResource, Name),
-                Resources.RemoveResourceMessage,
+                string.Format(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.RemovingResource, Name),
+                Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.RemoveResourceMessage,
                 Name,
                 () => this.VirtualNetworkClient.Delete(this.ResourceGroupName, this.Name));
 

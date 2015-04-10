@@ -15,7 +15,6 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             inboundNatRule.Id =
                 ChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    Resources.LoadBalancerInBoundNatRuleName,
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerInBoundNatRuleName,
                     this.Name);
 
             WriteObject(inboundNatRule);

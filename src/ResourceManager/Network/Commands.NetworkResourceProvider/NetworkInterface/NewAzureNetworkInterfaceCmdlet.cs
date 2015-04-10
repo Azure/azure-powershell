@@ -14,14 +14,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -129,8 +127,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.OverwritingResource, Name),
-                    Resources.OverwritingResourceMessage,
+                    string.Format(Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.OverwritingResource, Name),
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateNetworkInterface());
             }
@@ -143,7 +141,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         private PSNetworkInterface CreateNetworkInterface()
         {
             // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, Resources.SetByResource))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.SetByResource))
             {
                 this.SubnetId = this.Subnet.Id;
 
@@ -191,7 +189,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
-            networkInterfaceModel.Type = Resources.NetworkInterfaceType;
+            networkInterfaceModel.Type = Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

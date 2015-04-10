@@ -16,7 +16,6 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
-using Microsoft.Azure.Commands.NetworkResourceProvider.Properties;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName, 
                     this.LoadBalancer.Name,
-                    Resources.LoadBalancerFrontendIpConfigName, 
+                    Microsoft.Azure.Commands.NetworkResourceProvider.Properties.Resources.LoadBalancerFrontendIpConfigName, 
                     this.Name);
 
             this.LoadBalancer.FrontendIpConfigurations.Add(frontendIpConfig);
