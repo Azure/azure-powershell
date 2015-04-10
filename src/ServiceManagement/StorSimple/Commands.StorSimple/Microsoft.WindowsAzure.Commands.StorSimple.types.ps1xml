@@ -5,11 +5,11 @@
     <Members>
       <ScriptProperty>
         <Name>GetSteps</Name>
-        <GetScriptBlock>if( ($_.TaskSteps | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(", `n", ($_.TaskSteps | Select -ExpandProperty Message)) } else { "No Steps" }</GetScriptBlock>
+        <GetScriptBlock>if( ($_.TaskSteps | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(" `n", ($_.TaskSteps | Select -ExpandProperty Message)) } else { "No Steps" }</GetScriptBlock>
       </ScriptProperty>
       <ScriptProperty>
         <Name>GetErrors</Name>
-        <GetScriptBlock>if( ($_.Error | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(", `n", ($_.Error | Select -ExpandProperty Message)) } else { "No Errors" }</GetScriptBlock>
+        <GetScriptBlock>if( ($_.Error | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(" `n", ($_.Error | Select -ExpandProperty Message)) } else { "No Errors" }</GetScriptBlock>
       </ScriptProperty>
     </Members>
   </Type>
