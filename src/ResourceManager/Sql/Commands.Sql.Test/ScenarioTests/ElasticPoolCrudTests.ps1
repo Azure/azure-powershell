@@ -30,20 +30,19 @@ function Test-CreateElasticPool
             -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 200
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
-        Assert-AreEqual 200 $ep1.StorageMB
+        Assert-AreEqual 204800 $ep1.StorageMB
         Assert-AreEqual Standard $ep1.Edition
         Assert-AreEqual 10 $ep1.DatabaseDtuMin
         Assert-AreEqual 100 $ep1.DatabaseDtuMax
 
-        # Create a pool using piping
+        # Create a pool using piping and default values
         $poolName = Get-ElasticPoolName
-        $ep2 = $server | New-AzureSqlDatabaseElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
-            -DatabaseDtuMax 100 -StorageMB 400
+        $ep2 = $server | New-AzureSqlDatabaseElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
-        Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 400 $ep2.StorageMB
+        Assert-AreEqual 200 $ep2.Dtu 
+        Assert-AreEqual 204800 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 10 $ep2.DatabaseDtuMin
+        Assert-AreEqual 0 $ep2.DatabaseDtuMin
         Assert-AreEqual 100 $ep2.DatabaseDtuMax
     }
     finally
@@ -68,7 +67,7 @@ function Test-UpdateElasticPool
     Assert-NotNull $ep1
     
     $poolName = Get-ElasticPoolName
-    $ep2 = $server | New-AzureSqlDatabaseElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 5 `
+    $ep2 = $server | New-AzureSqlDatabaseElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
          -DatabaseDtuMax 100
     Assert-NotNull $ep2
 
@@ -121,7 +120,6 @@ function Test-GetElasticPool
     $ep2 = $server | New-AzureSqlDatabaseElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 5 `
          -DatabaseDtuMax 100
     Assert-NotNull $ep2
-
 
     try
     {

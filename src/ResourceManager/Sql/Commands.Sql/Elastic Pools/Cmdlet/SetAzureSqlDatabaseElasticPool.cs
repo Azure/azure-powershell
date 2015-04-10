@@ -102,19 +102,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseElasticPoolModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseElasticPoolModel> model)
         {
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlDatabaseElasticPoolModel> newEntity = new List<AzureSqlDatabaseElasticPoolModel>();
             newEntity.Add(new AzureSqlDatabaseElasticPoolModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 Tags = Tags,
-                DatabaseDtuMax = DatabaseDtuMax,
-                DatabaseDtuMin = DatabaseDtuMin,
-                Dtu = Dtu,
-                Edition = Edition,
+                Location = location,
                 ElasticPoolName = ElasticPoolName,
-                StorageMB = StorageMB,
-                Location = model.FirstOrDefault().Location,
+                DatabaseDtuMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (int?)DatabaseDtuMax : null,
+                DatabaseDtuMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (int?)DatabaseDtuMin : null,
+                Dtu = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null,
+                Edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null,
+                StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)StorageMB : null,
             });
             return newEntity;
         }

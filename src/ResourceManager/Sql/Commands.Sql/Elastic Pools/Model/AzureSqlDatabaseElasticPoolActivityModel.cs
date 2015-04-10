@@ -21,66 +21,86 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
     /// <summary>
     /// Represents an Azure Sql Database
     /// </summary>
-    public class AzureSqlDatabaseElasticPoolModel
+    public class AzureSqlDatabaseElasticPoolActivityModel
     {
         /// <summary>
-        /// Gets or sets the name of the resource group
+        /// Gets or sets the operation id
         /// </summary>
-        public string ResourceGroupName { get; set; }
+        public Guid OperationId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the elastic pool
+        /// Gets or sets the resource pool name
         /// </summary>
         public string ElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the location for the resource pool.  Must be the same as server location
-        /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the creation date of the elastic pool
-        /// </summary>
-        public DateTime CreationDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the state of the elastic pool
+        /// Gets or sets the state
         /// </summary>
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets the edition of the elastic pool
+        /// Gets or sets operation
         /// </summary>
-        public DatabaseEdition? Edition { get; set; }
+        public string Operation { get; set; }
 
         /// <summary>
-        /// Gets or sets the Dtu for the elastic pool
+        /// Gets or sets the error code
         /// </summary>
-        public int? Dtu{ get; set; }
+        public int? ErrorCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the max Dtu per database in the elastic pool
+        /// Gets or sets the error message
         /// </summary>
-        public int? DatabaseDtuMax { get; set; }
+        public string ErrorMessage { get; set; }
 
         /// <summary>
-        /// Gets or sets the min Dtu per database in the elastic pool
+        /// Gets or sets the error severity
         /// </summary>
-        public int? DatabaseDtuMin { get; set; }
+        public int? ErrorSeverity { get; set; }
 
         /// <summary>
-        /// Gets or sets the amount of storage the elastic pool has
+        /// Gets or sets the start time
         /// </summary>
-        public long? StorageMB { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the server.
+        /// Gets or sets the end time
         /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public DateTime? EndTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the percent complete
+        /// </summary>
+        public int? PercentComplete { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested resource pool name
+        /// </summary>
+        public string RequestedElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested DTU
+        /// </summary>
+        public int? RequestedDtu { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested DTU max
+        /// </summary>
+        public int? RequestedDatabaseDtuMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested DTU min
+        /// </summary>
+        public int? RequestedDatabaseDtuMin{ get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested storage limit in MB
+        /// </summary>
+        public long? RequestedStorageLimitInMB { get; set; }
     }
 }

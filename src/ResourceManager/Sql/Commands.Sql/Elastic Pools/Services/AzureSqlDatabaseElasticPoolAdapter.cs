@@ -154,6 +154,97 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
+        /// Gets a list of Elastic Pool Activity
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="poolName">The name of the elastic pool</param>
+        /// <returns>A list of Elastic Pool Activities</returns>
+        internal IList<AzureSqlDatabaseElasticPoolActivityModel> GetElasticPoolActivity(string resourceGroupName, string serverName, string poolName)
+        {
+            var resp = Communicator.ListActivity(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+
+            return resp.Select((activity) =>
+            {
+                return CreateActivityModelFromResponse(activity);
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Gets a list of Elastic Pool Database Activity
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="poolName">The name of the elastic pool</param>
+        /// <returns>A list of Elastic Pool Database Activities</returns>
+        internal IList<AzureSqlDatabaseElasticPoolDatabaseActivityModel> ListElasticPoolDatabaseActivity(string resourceGroupName, string serverName, string poolName)
+        {
+            var resp = Communicator.ListDatabaseActivity(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+
+            return resp.Select((activity) =>
+            {
+                return CreateDatabaseActivityModelFromResponse(activity);
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Converts a model received from the server to a powershell model
+        /// </summary>
+        /// <param name="model">The model to transform</param>
+        /// <returns>The transformed model</returns>
+        private AzureSqlDatabaseElasticPoolDatabaseActivityModel CreateDatabaseActivityModelFromResponse(ElasticPoolDatabaseActivity model)
+        {
+            AzureSqlDatabaseElasticPoolDatabaseActivityModel activity = new AzureSqlDatabaseElasticPoolDatabaseActivityModel();
+
+            activity.CurrentElasticPoolName = model.Properties.CurrentElasticPoolName;
+            activity.CurrentServiceObjectiveName = model.Properties.CurrentServiceObjectiveName;
+            activity.DatabaseName = model.Properties.DatabaseName;
+            activity.EndTime = model.Properties.EndTime;
+            activity.ErrorCode = model.Properties.ErrorCode;
+            activity.ErrorMessage = model.Properties.ErrorMessage;
+            activity.ErrorSeverity = model.Properties.ErrorSeverity;
+            activity.Operation = model.Properties.Operation;
+            activity.OperationId = model.Properties.OperationId;
+            activity.PercentComplete = model.Properties.PercentComplete;
+            activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
+            activity.RequestedServiceObjectiveName = model.Properties.RequestedServiceObjectiveName;
+            activity.ServerName = model.Properties.ServerName;
+            activity.StartTime = model.Properties.StartTime;
+            activity.State = model.Properties.State;
+
+            return activity;
+        }
+
+        /// <summary>
+        /// Converts a ElascitPoolAcitivy model to the powershell model.
+        /// </summary>
+        /// <param name="model">The model from the service</param>
+        /// <returns>The converted model</returns>
+        private AzureSqlDatabaseElasticPoolActivityModel CreateActivityModelFromResponse(ElasticPoolActivity model)
+        {
+            AzureSqlDatabaseElasticPoolActivityModel activity = new AzureSqlDatabaseElasticPoolActivityModel();
+
+            activity.ElasticPoolName = model.Properties.ElasticPoolName;
+            activity.EndTime = model.Properties.EndTime;
+            activity.ErrorCode = model.Properties.ErrorCode;
+            activity.ErrorMessage = model.Properties.ErrorMessage;
+            activity.ErrorSeverity = model.Properties.ErrorSeverity;
+            activity.Operation = model.Properties.Operation;
+            activity.OperationId = model.Properties.OperationId;
+            activity.PercentComplete = model.Properties.PercentComplete;
+            activity.RequestedDatabaseDtuMax = model.Properties.RequestedDatabaseDtuMax;
+            activity.RequestedDatabaseDtuMin = model.Properties.RequestedDatabaseDtuMin;
+            activity.RequestedDtu = model.Properties.RequestedDtu;
+            activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
+            activity.RequestedStorageLimitInMB = model.Properties.RequestedStorageLimitInMB;
+            activity.ServerName = model.Properties.ServerName;
+            activity.StartTime = model.Properties.StartTime;
+            activity.State = model.Properties.State;
+
+            return activity;
+        }
+
+        /// <summary>
         /// Gets the Location of the server.
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
@@ -180,13 +271,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             model.ResourceGroupName = resourceGroup;
             model.ServerName = serverName;
             model.ElasticPoolName = pool.Name;
-            model.CreationDate = pool.Properties.CreationDate?? DateTime.MinValue;
+            model.CreationDate = pool.Properties.CreationDate ?? DateTime.MinValue;
             model.DatabaseDtuMax = (int)pool.Properties.DatabaseDtuMax;
             model.DatabaseDtuMin = (int)pool.Properties.DatabaseDtuMin;
             model.Dtu = (int)pool.Properties.Dtu;
             model.State = pool.Properties.State;
             model.StorageMB = pool.Properties.StorageMB;
-            model.Tags = pool.Tags as Dictionary<string,string>;
+            model.Tags = pool.Tags as Dictionary<string, string>;
             model.Location = pool.Location;
 
             DatabaseEdition edition = DatabaseEdition.None;
