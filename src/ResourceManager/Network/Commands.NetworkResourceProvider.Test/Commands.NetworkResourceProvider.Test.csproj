@@ -141,6 +141,7 @@
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
+    <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
   </ItemGroup>
@@ -158,19 +159,55 @@
     <None Include="ScenarioTests\LoadBalancerTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\NetworkSecurityGroupTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalDynamic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalStatic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalUsingId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicNoInboundNATRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicPublicNoLbRule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicUsingId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDUsingId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDEditDomainNameLavel.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDNoDomainNameLabel.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDStaticAllocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
@@ -188,13 +225,13 @@
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerChildResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDUsingId.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerSet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupSecurityRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -227,6 +264,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

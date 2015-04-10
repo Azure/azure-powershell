@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource name.")]
-        [ValidateSet("Mircosoft.Network",
-                     "Mircosoft.Compute",
-                     "Mircosoft.Storage",
+        [ValidateSet("Microsoft.Network",
+                     "Microsoft.Compute",
+                     "Microsoft.Storage",
                      IgnoreCase = true)]
         public virtual string Name { get; set; }
 
