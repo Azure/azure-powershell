@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Properties {
+namespace Microsoft.Azure.Commands.Resources.Test.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Tags.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Test.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,60 +57,6 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can not remove tag/tag value because it&apos;s being referenced by other resources..
-        /// </summary>
-        internal static string CanNotDeleteTag {
-            get {
-                return ResourceManager.GetString("CanNotDeleteTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
-        /// </summary>
-        internal static string InvalidTagFormat {
-            get {
-                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
-        /// </summary>
-        internal static string InvalidTagFormatNotUniqueName {
-            get {
-                return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing tag .....
-        /// </summary>
-        internal static string RemoveTagMessage {
-            get {
-                return ResourceManager.GetString("RemoveTagMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove tag &apos;{0}&apos;.
-        /// </summary>
-        internal static string RemovingTag {
-            get {
-                return ResourceManager.GetString("RemovingTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tag &apos;{0}&apos; not found.
-        /// </summary>
-        internal static string TagNotFoundMessage {
-            get {
-                return ResourceManager.GetString("TagNotFoundMessage", resourceCulture);
             }
         }
     }

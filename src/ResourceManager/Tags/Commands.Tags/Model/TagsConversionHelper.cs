@@ -15,9 +15,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+using ProjectResources = Microsoft.Azure.Commands.Tags.Properties.Resources;
+
+namespace Microsoft.Azure.Commands.Tags.Model
 {
     public class TagsConversionHelper
     {
@@ -81,6 +82,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
         {
+            if (dictionary == null)
+            {
+                return new Hashtable[0];
+            }
+
             List<Hashtable> tagHashtable = new List<Hashtable>();
             foreach (string key in dictionary.Keys)
             {

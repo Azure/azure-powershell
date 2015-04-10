@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+namespace Microsoft.Azure.Commands.Dns.Models
 {
-    public class PSTagValuePair
+    public abstract class DnsBaseCmdlet : AzurePSCmdlet
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        private DnsClient dnsClient;
+
+        public DnsClient DnsClient
+        {
+            get
+            {
+                if (dnsClient == null)
+                {
+                    dnsClient = new DnsClient(this.Profile);
+                }
+                return dnsClient;
+            }
+
+            set { dnsClient = value; }
+        }
     }
 }

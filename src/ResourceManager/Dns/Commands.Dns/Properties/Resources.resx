@@ -117,22 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CanNotDeleteTag" xml:space="preserve">
-    <value>Can not remove tag/tag value because it's being referenced by other resources.</value>
+  <data name="Confirm_OverwriteRecord" xml:space="preserve">
+    <value>Are you sure you want to overwrite any existing record set '{0}' of type {1} in zone '{2}'? You will lose any existing records in that record set.</value>
   </data>
-  <data name="InvalidTagFormat" xml:space="preserve">
-    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
+  <data name="Confirm_RemoveRecordSet" xml:space="preserve">
+    <value>Are you sure you want to permanently remove record set '{0}' from zone '{1}'?</value>
   </data>
-  <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
-    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
+  <data name="Confirm_RemoveZone" xml:space="preserve">
+    <value>Are you sure you want to permanently remove zone '{0}'?</value>
   </data>
-  <data name="RemoveTagMessage" xml:space="preserve">
-    <value>Removing tag ....</value>
+  <data name="Error_AddRecordMultipleCnames" xml:space="preserve">
+    <value>There already exists a CNAME record in this set. A CNAME record set can only contain one record.</value>
   </data>
-  <data name="RemovingTag" xml:space="preserve">
-    <value>Are you sure you want to remove tag '{0}'</value>
+  <data name="Error_AddRecordTypeMismatch" xml:space="preserve">
+    <value>Cannot add a record of type {0} to a record set of type {1}. The types must match.</value>
   </data>
-  <data name="TagNotFoundMessage" xml:space="preserve">
-    <value>Tag '{0}' not found</value>
+  <data name="Error_EtagNotSpecified" xml:space="preserve">
+    <value>The ETag property of the {0} object is empty or "*". In order to perform this operation with optimistic concurrency checks, please set the Etag property (you may need to Get the {0} first). In order to perform the operation without optimistic concurrency checks, please specify the -IgnoreEtag switch. </value>
+  </data>
+  <data name="Error_RemoveRecordTypeMismatch" xml:space="preserve">
+    <value>Cannot remove a record of type {0} from a record set of type {1}. The types must match.</value>
+  </data>
+  <data name="Progress_CreatingEmptyRecordSet" xml:space="preserve">
+    <value>Creating empty record set ...</value>
+  </data>
+  <data name="Progress_RemovingRecordSet" xml:space="preserve">
+    <value>Removing record set ...</value>
+  </data>
+  <data name="Progress_RemovingZone" xml:space="preserve">
+    <value>Removing zone ...</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="Success_NewRecordSet" xml:space="preserve">
+    <value>Record set '{0}' was created in zone '{1}'.The record set is empty. Use Add-AzureDnsRecordConfig to add {2} records to it and Set-AzureDnsRecordSet to save your changes.</value>
+  </data>
+  <data name="Success_NewZone" xml:space="preserve">
+    <value>Zone '{0}' was created in resource group '{1}'. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzureDnsRecordSet to retrieve them</value>
+  </data>
+  <data name="Success_RecordAdded" xml:space="preserve">
+    <value>Record added. Use Set-AzureDnsRecordSet to save your change to this record set.</value>
+  </data>
+  <data name="Success_RecordRemoved" xml:space="preserve">
+    <value>Record removed. Use Set-AzureDnsRecordSet to save your change to this record set.</value>
+  </data>
+  <data name="Success_RecordSetFqdn" xml:space="preserve">
+    <value>After you create {2} records in this record set you will be able to query them in DNS using the FQDN '{0}.{1}.'</value>
+  </data>
+  <data name="Success_RemoveRecordSet" xml:space="preserve">
+    <value>Record set '{0}' was removed from zone '{1}'.</value>
+  </data>
+  <data name="Success_RemoveZone" xml:space="preserve">
+    <value>Zone '{0}' was removed from resource group '{1}'. The SOA and authoritative NS records for this zone have also been deleted.</value>
   </data>
 </root>
