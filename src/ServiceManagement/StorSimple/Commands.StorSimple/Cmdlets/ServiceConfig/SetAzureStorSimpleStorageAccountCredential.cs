@@ -55,8 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingSac == null)
                 {
-                    WriteVerbose(string.Format(Resources.SACNotFoundWithName,StorageAccountName));
-                    return;
+                    throw new ArgumentException(string.Format(Resources.SACNotFoundWithName, StorageAccountName));
                 }
 
                 string encryptedKey;

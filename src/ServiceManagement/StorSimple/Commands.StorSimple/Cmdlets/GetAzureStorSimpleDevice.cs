@@ -88,7 +88,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     WriteObject(deviceDetailsList, true);
                 }
-
                 else
                 {
                     WriteObject(deviceInfos, true);

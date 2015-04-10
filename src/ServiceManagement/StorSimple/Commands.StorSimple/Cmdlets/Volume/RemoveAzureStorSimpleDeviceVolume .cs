@@ -55,9 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                                   if (deviceid == null)
                                   {
-                                      WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                                      WriteObject(null);
-                                      return;
+                                      throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                                   }
 
                                   string volumeId = string.Empty;
@@ -70,8 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                           var volumeInfo = StorSimpleClient.GetVolumeByName(deviceid, VolumeName);
                                           if (volumeInfo == null || volumeInfo.VirtualDiskInfo == null || volumeInfo.VirtualDiskInfo.InstanceId == null)
                                           {
-                                              WriteVerbose(Resources.NotFoundMessageVirtualDisk);
-                                              return;
+                                              throw new ArgumentException(Resources.NotFoundMessageVirtualDisk);
                                           }
                                           volumeId = volumeInfo.VirtualDiskInfo.InstanceId;
                                           break;

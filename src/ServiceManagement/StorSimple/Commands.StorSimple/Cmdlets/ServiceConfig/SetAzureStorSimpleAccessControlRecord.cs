@@ -54,8 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingAcr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingAcr == null)
                 {
-                    WriteVerbose(string.Format(Resources.NotFoundMessageACR,ACRName));
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NotFoundMessageACR, ACRName));
                 }
                 
                 var serviceConfig = new ServiceConfiguration()
