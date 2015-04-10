@@ -473,7 +473,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// Validate that all mandatory data for the first Device Configuration has been provided.
         /// </summary>
         /// <returns>bool indicating whether all mandatory data is there or not.</returns>
-        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone, string secondaryDnsServer)
+        internal bool ValidParamsForFirstDeviceConfiguration(NetworkConfig[] netConfigs, TimeZoneInfo timeZone)
         {
             if (netConfigs == null)
             {
@@ -485,8 +485,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 return false;
             }
-            // Timezone and Secondary Dns Server are also mandatory
-            if (timeZone == null || string.IsNullOrEmpty(secondaryDnsServer))
+            // Timezone is also mandatory
+            if (timeZone == null)
             {
                 return false;
             }
