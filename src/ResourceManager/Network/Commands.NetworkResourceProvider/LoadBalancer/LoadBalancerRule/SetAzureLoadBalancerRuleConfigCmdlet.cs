@@ -55,10 +55,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             {
                 loadBalancingRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
-            if (!string.IsNullOrEmpty(this.LoadDistribution))
-            {
-                loadBalancingRule.LoadDistribution = this.LoadDistribution;
-            }
+
+            loadBalancingRule.LoadDistribution = string.IsNullOrEmpty(this.LoadDistribution) ? "Default" : this.LoadDistribution;
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             loadBalancingRule.BackendAddressPool = new PSResourceId();

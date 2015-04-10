@@ -17,34 +17,20 @@ using Xunit;
 
 namespace Commands.NetworkResourceProvider.Test.ScenarioTests
 {
-    public class PublicIpAddressTests
+    public class NetworkSecurityGroupTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPublicIpAddressCRUD()
+        public void TestNetworkSecurityGroupCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkSecurityGroupCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPublicIpAddressCRUDNoDomainNameLabel()
+        public void TestNetworkSecurityGroupSecurityRuleCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-NoDomainNameLabel");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPublicIpAddressCRUDStaticAllocation()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-StaticAllocation");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestPublicIpAddressCRUDEditDomainNameLavel()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-EditDomainNameLavel");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkSecurityGroup-SecurityRuleCRUD");
         }
     }
 }

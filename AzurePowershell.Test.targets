@@ -9,6 +9,7 @@
     <CommonTestDebug>.\src\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
     <SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
     <ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
+    <NetworkResourceProviderTestDebug>.\src\ResourceManager\Network\Commands.NetworkResourceProvider.Test\bin\Debug\Commands.NetworkResourceProvider.Test.dll</NetworkResourceProviderTestDebug>
     <AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
     <AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
     <StorageScenarioTestDebug>src\ServiceManagement\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
@@ -43,6 +44,7 @@
     <XUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\Network\Commands.NetworkResourceProvider.Test\bin\Debug\Commands.NetworkResourceProvider.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Batch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
@@ -109,6 +111,11 @@
 
   <Target Name="TestCompute">
     <Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTestDebug.xunit.dll.html" Verbose="false"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+  </Target>
+
+  <Target Name="NetworkResourceProviderTestDebug">
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(NetworkResourceProviderTestDebug)" Html="$(TestOutputDirectory)\NetworkResourceProviderTestDebug.xunit.dll.html" Verbose="false"
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 

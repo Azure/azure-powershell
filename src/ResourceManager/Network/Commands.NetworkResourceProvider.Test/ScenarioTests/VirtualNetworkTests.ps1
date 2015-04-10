@@ -39,13 +39,13 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual $expected.ResourceGroupName $rgname	
         Assert-AreEqual $expected.Name $actual.Name	
         Assert-AreEqual $expected.Location $actual.Location
-        Assert-AreEqual "Succeeded" $expected.Properties.ProvisioningState
-        Assert-AreEqual "10.0.0.0/16" $expected.Properties.AddressSpace.AddressPrefixes[0]
-        Assert-AreEqual 1 @($expected.Properties.DhcpOptions.DnsServers).Count
-        Assert-AreEqual "8.8.8.8" $expected.Properties.DhcpOptions.DnsServers[0]
-        Assert-AreEqual 1 @($expected.Properties.Subnets).Count
-        Assert-AreEqual $subnetName $expected.Properties.Subnets[0].Name
-        Assert-AreEqual "10.0.1.0/24" $expected.Properties.Subnets[0].Properties.AddressPrefix
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-AreEqual "10.0.0.0/16" $expected.AddressSpace.AddressPrefixes[0]
+        Assert-AreEqual 1 @($expected.DhcpOptions.DnsServers).Count
+        Assert-AreEqual "8.8.8.8" $expected.DhcpOptions.DnsServers[0]
+        Assert-AreEqual 1 @($expected.Subnets).Count
+        Assert-AreEqual $subnetName $expected.Subnets[0].Name
+        Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
         
         # List virtual Network
         $list = Get-AzurevirtualNetwork -ResourceGroupName $rgname
@@ -53,11 +53,11 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $list[0].Name $actual.Name	
         Assert-AreEqual $list[0].Location $actual.Location
-        Assert-AreEqual "Succeeded" $list[0].Properties.ProvisioningState
-        Assert-AreEqual "10.0.0.0/16" $list[0].Properties.AddressSpace.AddressPrefixes[0]
-        Assert-AreEqual 1 @($list[0].Properties.Subnets).Count
-        Assert-AreEqual $subnetName $list[0].Properties.Subnets[0].Name
-        Assert-AreEqual "10.0.1.0/24" $list[0].Properties.Subnets[0].Properties.AddressPrefix
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+        Assert-AreEqual "10.0.0.0/16" $list[0].AddressSpace.AddressPrefixes[0]
+        Assert-AreEqual 1 @($list[0].Subnets).Count
+        Assert-AreEqual $subnetName $list[0].Subnets[0].Name
+        Assert-AreEqual "10.0.1.0/24" $list[0].Subnets[0].AddressPrefix
         Assert-AreEqual $expected.Etag $list[0].Etag
         
         # Delete VirtualNetwork
@@ -109,19 +109,19 @@ function Test-subnetCRUD
         # Get VirtualNetwork
         $vnetExpected = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
-        Assert-AreEqual 2 @($vnetExpected.Properties.Subnets).Count
-        Assert-AreEqual $subnetName $vnetExpected.Properties.Subnets[0].Name
-        Assert-AreEqual $subnet2Name $vnetExpected.Properties.Subnets[1].Name
-        Assert-AreEqual "10.0.2.0/24" $vnetExpected.Properties.Subnets[1].Properties.AddressPrefix
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
         
         # Edit a subnet
         Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzureVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/24 | Set-AzureVirtualNetwork
         
         $vnetExpected = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 2 @($vnetExpected.Properties.Subnets).Count
-        Assert-AreEqual $subnetName $vnetExpected.Properties.Subnets[0].Name
-        Assert-AreEqual $subnet2Name $vnetExpected.Properties.Subnets[1].Name
-        Assert-AreEqual "10.0.3.0/24" $vnetExpected.Properties.Subnets[1].Properties.AddressPrefix
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.3.0/24" $vnetExpected.Subnets[1].AddressPrefix
         
         # Get subnet
         $subnet2 = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureVirtualNetworkSubnetConfig -Name $subnet2Name
@@ -136,8 +136,8 @@ function Test-subnetCRUD
         Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzureVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzureVirtualNetwork
         
         $vnetExpected = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual 1 @($vnetExpected.Properties.Subnets).Count
-        Assert-AreEqual $subnetName $vnetExpected.Properties.Subnets[0].Name		
+        Assert-AreEqual 1 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name		
     }
     finally
     {
