@@ -18,13 +18,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewTaskParameters
+    public class NewTaskParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the WorkItem to create the Task under.
         /// </summary>
@@ -74,10 +69,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The Task Constraints.
         /// </summary>
         public PSTaskConstraints TaskConstraints { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

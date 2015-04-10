@@ -90,7 +90,7 @@ function Test-VirtualMachineExtension
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd';
+        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
@@ -116,14 +116,14 @@ function Test-VirtualMachineExtension
         # Set extension settings by raw strings
         $settingstr = '{"fileUris":[],"commandToExecute":""}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
+        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
 
         # Get VM Extension
         $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
-        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
@@ -132,7 +132,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
-        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
@@ -141,14 +141,14 @@ function Test-VirtualMachineExtension
         # Set extension settings by hash table
         $settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
-        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
+        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
 
         # Get VM Extension
         $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
-        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
@@ -157,7 +157,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
-        Assert-AreEqual $ext.Type $exttype;
+        Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
@@ -178,10 +178,10 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $vm1.Resources.Extensions.Count 1;
         Assert-AreEqual $vm1.Resources.Extensions[0].Name $extname;
         Assert-AreEqual $vm1.Resources.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Resources.Extensions[0].VirtualMachineExtensionProperties.Publisher $publisher;
-        Assert-AreEqual $vm1.Resources.Extensions[0].VirtualMachineExtensionProperties.Type $exttype;
-        Assert-AreEqual $vm1.Resources.Extensions[0].VirtualMachineExtensionProperties.TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Resources.Extensions[0].VirtualMachineExtensionProperties.Settings;
+        Assert-AreEqual $vm1.Resources.Extensions[0].Publisher $publisher;
+        Assert-AreEqual $vm1.Resources.Extensions[0].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Resources.Extensions[0].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Resources.Extensions[0].Settings;
 
         <# *** TODO: The removal call did not return. 12/12/2014.
 

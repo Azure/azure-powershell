@@ -47,17 +47,30 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Platform Update Domain Count.")]
+        [ValidateNotNullOrEmpty]
+        public int PlatformUpdateDomainCount { get; set; }
+
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Platform Fault Domain Count.")]
+        [ValidateNotNullOrEmpty]
+        public int PlatformFaultDomainCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var avSetParams = new AvailabilitySetCreateOrUpdateParameters
+            var avSetParams = new AvailabilitySet
             {
-                AvailabilitySet = new AvailabilitySet
-                {
-                    Name = this.Name,
-                    Location = this.Location
-                }
+                Name = this.Name,
+                Location = this.Location,
+                PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
+                PlatformFaultDomainCount = this.PlatformFaultDomainCount
             };
 
             var op = this.AvailabilitySetClient.CreateOrUpdate(
