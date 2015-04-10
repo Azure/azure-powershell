@@ -83,16 +83,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Handles interrupts.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            // Ctrl + C and etc
-            base.StopProcessing();
-            this.StopProcessingFlag = true;
-        }
-
-        /// <summary>
         /// Associates protection profile with one enterprise based and an Azure protection container
         /// </summary>
         private void EnterpriseToAzureAssociation()
