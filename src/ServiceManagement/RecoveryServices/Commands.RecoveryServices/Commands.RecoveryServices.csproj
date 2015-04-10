@@ -150,6 +150,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStoragePoolMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultExtendedInfoClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMGroupClient.cs" />
@@ -164,10 +165,13 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryStoragePoolMapping.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVault.cs" />
     <Compile Include="Service\RemoveAzureSiteRecoverySite.cs" />
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryStoragePoolMapping.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryStoragePoolMapping.cs" />
     <Compile Include="Service\RemoveAzureSiteRecoveryVault.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryProtectionProfile.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
