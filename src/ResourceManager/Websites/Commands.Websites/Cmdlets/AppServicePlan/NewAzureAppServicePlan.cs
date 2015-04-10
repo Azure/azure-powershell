@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
                 }
             }
 
-            WriteObject(WebsitesClient.CreateWebHostingPlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
 
         }
 

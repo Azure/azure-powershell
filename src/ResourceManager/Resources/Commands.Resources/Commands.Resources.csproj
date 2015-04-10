@@ -54,9 +54,9 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
+    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.21-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -69,8 +69,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.1-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -132,6 +131,7 @@
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
     <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
     <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
@@ -186,6 +186,7 @@
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
+    <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
     <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
@@ -197,6 +198,8 @@
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\RemoveAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
     <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommand.cs" />
     <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommand.cs" />
