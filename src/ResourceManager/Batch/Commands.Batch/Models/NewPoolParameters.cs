@@ -19,13 +19,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewPoolParameters
+    public class NewPoolParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the Pool to create.
         /// </summary>
@@ -90,10 +85,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Certificate References for the Pool.
         /// </summary>
         public PSCertificateReference[] CertificateReferences { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

@@ -193,7 +193,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
@@ -220,7 +219,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteWorkItem(controller, context, workItemName);
                     ScenarioTestHelpers.CleanupTestAccount(controller, resourceGroupName, accountName);
                 },
                 TestUtilities.GetCallingClass(),
