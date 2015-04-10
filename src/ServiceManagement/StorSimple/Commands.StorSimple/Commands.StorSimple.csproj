@@ -194,6 +194,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.WindowsAzure.Commands.StorSimple.types.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
