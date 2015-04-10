@@ -198,6 +198,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
     #endregion
 
+        #region DscMetaConfig Operations
+        public Model.DscOnboardingMetaconfig GetDscMetaConfig(string resourceGroupName, string automationAccountName)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            
+            var dscMetaConfig = this.automationManagementClient.AgentRegistrationInformation.Get(
+                resourceGroupName,
+                automationAccountName).AgentRegistration;
+
+            return new DscOnboardingMetaconfig(resourceGroupName, automationAccountName, dscMetaConfig);
+        }
+
+        #endregion
+
         #region AgentRegistration Operations
         public Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName)
         {

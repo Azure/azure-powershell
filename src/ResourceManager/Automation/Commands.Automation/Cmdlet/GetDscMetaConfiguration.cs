@@ -22,11 +22,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation agent registration information for a given account.
+    /// Gets azure automation dsc onboarding meta configuration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo")]
-    [OutputType(typeof(AgentRegistration))]
-    public class GetAzureAutomationAgentRegistrationInformation : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscOnboardingMetaconfig")]
+    [OutputType(typeof(DscOnboardingMetaconfig))]
+    public class GetDscMetaConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Execute this cmdlet.
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            IEnumerable<AgentRegistration> ret = null;
+            IEnumerable<DscOnboardingMetaconfig> ret = null;
 
-            ret = new List<AgentRegistration>
+            ret = new List<DscOnboardingMetaconfig>
                           {
-                              this.AutomationClient.GetAgentRegistration(
+                              this.AutomationClient.GetDscMetaConfig(
                                   this.ResourceGroupName,
                                   this.AutomationAccountName)
                           };

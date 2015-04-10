@@ -29,13 +29,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class GetAzureAutomationConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
-        /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The configuration name.")]

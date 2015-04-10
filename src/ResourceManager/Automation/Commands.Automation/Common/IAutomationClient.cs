@@ -54,5 +54,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Microsoft.Azure.Commands.Automation.Model.AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
         #endregion
+
+        #region DscMetaConfiguration
+        Microsoft.Azure.Commands.Automation.Model.DscOnboardingMetaconfig GetDscMetaConfig(string resourceGroupName, string automationAccountName);
+        #endregion
     }
 }

@@ -31,13 +31,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class ImportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
-        /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration name.")]
