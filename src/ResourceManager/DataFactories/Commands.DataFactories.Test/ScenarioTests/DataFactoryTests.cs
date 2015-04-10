@@ -27,14 +27,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactory()
         {
             RunPowerShellTest("Test-CreateDataFactory");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteDataFactoryWithDataFactoryParameter()
         {
             RunPowerShellTest("Test-DeleteDataFactoryWithDataFactoryParameter");
@@ -55,7 +53,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryPiping()
         {
             RunPowerShellTest("Test-DataFactoryPiping");

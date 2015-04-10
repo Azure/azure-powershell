@@ -18,13 +18,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class DownloadTaskFileOptions
+    public class DownloadTaskFileOptions : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the WorkItem
         /// </summary>
@@ -59,10 +54,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Used for testing. If not null, the file contents will be copied to this Stream instead of hitting the file system.
         /// </summary>
         internal Stream Stream { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

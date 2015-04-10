@@ -12,25 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using System.Management.Automation;
+using Microsoft.Azure.Batch;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Batch.Models
 {
-    /// <summary>
-    /// Returns the auditing policy of a specific database server.
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerAuditingSetting"), OutputType(typeof(AuditingPolicy))]
-    public class GetAzureSqlServerAuditingSetting : SqlDatabaseSecurityCmdletBase
+    public class RemoveVMUserParameters : BatchClientParametersBase
     {
         /// <summary>
-        /// Provides the auditing policy that this cmdlet operates on
+        /// The name of the pool containing the vm
         /// </summary>
-        /// <returns>An auditingPolicy object</returns>
-        protected override AuditingPolicy GetPolicy()
-        {
-            return this.PolicyHandler.GetServerAuditingPolicy(this.ResourceGroupName, this.ServerName, this.clientRequestId);
-        }
+        public string PoolName { get; set; }
+
+        /// <summary>
+        /// The name of the vm containing the user
+        /// </summary>
+        public string VMName { get; set; }
+
+        /// <summary>
+        /// The name of the user to delete
+        /// </summary>
+        public string UserName { get; set; }
     }
 }

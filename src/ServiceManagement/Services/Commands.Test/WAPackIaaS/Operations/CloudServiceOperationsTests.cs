@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
@@ -35,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         private const string cloudServiceLabel = "CloudService01-Label";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldCreateOneCloudService()
@@ -67,6 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneCloudService()
@@ -85,6 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneCloudServiceByName()
@@ -103,6 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnMultipleCloudServices()
@@ -130,6 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldDeleteCloudService()
@@ -150,6 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         [Trait("Type", "WAPackIaaS-Negative")]
