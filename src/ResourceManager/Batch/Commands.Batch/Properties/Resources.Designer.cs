@@ -142,15 +142,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No workitem was specified.  Supply a workitem name or PSCloudWorkItem object to query for jobs..
-        /// </summary>
-        internal static string GBJ_NoWorkItem {
-            get {
-                return ResourceManager.GetString("GBJ_NoWorkItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting pool &quot;{0}&quot;.
         /// </summary>
         internal static string GBP_GetByName {
@@ -205,15 +196,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a workitem name and job name to query for tasks..
-        /// </summary>
-        internal static string GBT_NoJob {
-            get {
-                return ResourceManager.GetString("GBT_NoJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting task file &quot;{0}&quot; from task &quot;{1}&quot;.
         /// </summary>
         internal static string GBTF_GetByName {
@@ -241,15 +223,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name..
-        /// </summary>
-        internal static string GBTF_NoTaskSpecified {
-            get {
-                return ResourceManager.GetString("GBTF_NoTaskSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Downloading task file &quot;{0}&quot; to: {1}.
         /// </summary>
         internal static string GBTFC_Downloading {
@@ -264,15 +237,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GBTFC_NoDestinationPath {
             get {
                 return ResourceManager.GetString("GBTFC_NoDestinationPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No task file was specified to download. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name..
-        /// </summary>
-        internal static string GBTFC_NoTaskFileSpecified {
-            get {
-                return ResourceManager.GetString("GBTFC_NoTaskFileSpecified", resourceCulture);
             }
         }
         
@@ -304,15 +268,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool name to query for vms..
-        /// </summary>
-        internal static string GBVM_NoPoolSpecified {
-            get {
-                return ResourceManager.GetString("GBVM_NoPoolSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting vm file &quot;{0}&quot; from vm &quot;{1}&quot;.
         /// </summary>
         internal static string GBVMF_GetByName {
@@ -336,15 +291,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GBVMF_NoFilter {
             get {
                 return ResourceManager.GetString("GBVMF_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name to query for files..
-        /// </summary>
-        internal static string GBVMF_NoVMSpecified {
-            get {
-                return ResourceManager.GetString("GBVMF_NoVMSpecified", resourceCulture);
             }
         }
         
@@ -484,15 +430,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No job specified to create the new task under.  Supply a PSCloudJob object or a workitem name and job name..
-        /// </summary>
-        internal static string NBT_NoJobSpecified {
-            get {
-                return ResourceManager.GetString("NBT_NoJobSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating user {0} on vm {1}.
         /// </summary>
         internal static string NBU_CreatingUser {
@@ -502,20 +439,74 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No vm was specified to create the new user on. Supply a PSVM object or a pool name and vm name..
-        /// </summary>
-        internal static string NBU_NoVMSpecified {
-            get {
-                return ResourceManager.GetString("NBU_NoVMSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating workitem {0}.
         /// </summary>
         internal static string NBWI_CreatingWorkItem {
             get {
                 return ResourceManager.GetString("NBWI_CreatingWorkItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a workitem name and job name..
+        /// </summary>
+        internal static string NoJob {
+            get {
+                return ResourceManager.GetString("NoJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool name..
+        /// </summary>
+        internal static string NoPool {
+            get {
+                return ResourceManager.GetString("NoPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name..
+        /// </summary>
+        internal static string NoTask {
+            get {
+                return ResourceManager.GetString("NoTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No task file was specified. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name..
+        /// </summary>
+        internal static string NoTaskFile {
+            get {
+                return ResourceManager.GetString("NoTaskFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name..
+        /// </summary>
+        internal static string NoVM {
+            get {
+                return ResourceManager.GetString("NoVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vm user specified. Supply a pool name, vm name, and user name..
+        /// </summary>
+        internal static string NoVMUser {
+            get {
+                return ResourceManager.GetString("NoVMUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No workitem was specified.  Supply a workitem name or PSCloudWorkItem object..
+        /// </summary>
+        internal static string NoWorkItem {
+            get {
+                return ResourceManager.GetString("NoWorkItem", resourceCulture);
             }
         }
         
@@ -534,15 +525,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBA_RemoveResource {
             get {
                 return ResourceManager.GetString("RBA_RemoveResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No job specified for deletion. Supply a PSCloudJob object or a workitem name and job name..
-        /// </summary>
-        internal static string RBJ_NoJobSpecified {
-            get {
-                return ResourceManager.GetString("RBJ_NoJobSpecified", resourceCulture);
             }
         }
         
@@ -583,15 +565,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No task specified for deletion. Supply a PSCloudTask object or a workitem name, job name, and task name..
-        /// </summary>
-        internal static string RBT_NoTaskSpecified {
-            get {
-                return ResourceManager.GetString("RBT_NoTaskSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove task {0}?.
         /// </summary>
         internal static string RBT_RemoveConfirm {
@@ -606,15 +579,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBT_RemoveTask {
             get {
                 return ResourceManager.GetString("RBT_RemoveTask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No user specified for deletion. Supply a pool name, vm name, and user name..
-        /// </summary>
-        internal static string RBU_NoUserSpecified {
-            get {
-                return ResourceManager.GetString("RBU_NoUserSpecified", resourceCulture);
             }
         }
         

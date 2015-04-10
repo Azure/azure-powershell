@@ -18,32 +18,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class DownloadTaskFileOptions : BatchClientParametersBase
+    public class DownloadTaskFileOptions : TaskFileOperationParameters
     {
-        /// <summary>
-        /// The name of the WorkItem
-        /// </summary>
-        public string WorkItemName { get; set; }
-
-        /// <summary>
-        /// The name of the Job
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// The name of the Task
-        /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The name of the Task file to download
-        /// </summary>
-        public string TaskFileName { get; set; }
-
-        /// <summary>
-        /// The Task file to download
-        /// </summary>
-        public PSTaskFile TaskFile { get; set; }
+        public DownloadTaskFileOptions(BatchAccountContext context, string workItemName, string jobName, string taskName, string taskFileName,
+            PSTaskFile taskFile, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, workItemName, jobName, taskName, taskFileName, taskFile, additionalBehaviors)
+        { }
 
         /// <summary>
         /// The path to the directory where the Task file will be downloaded

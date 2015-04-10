@@ -55,17 +55,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            DownloadTaskFileOptions options = new DownloadTaskFileOptions()
+            DownloadTaskFileOptions options = new DownloadTaskFileOptions(this.BatchContext, this.WorkItemName, this.JobName, 
+                this.TaskName, this.Name, this.InputObject, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.TaskName,
-                TaskFileName = this.Name,
-                TaskFile = this.InputObject,
                 DestinationPath = this.DestinationPath,
-                Stream = this.Stream,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                Stream = this.Stream
             };
 
             BatchClient.DownloadTaskFile(options);

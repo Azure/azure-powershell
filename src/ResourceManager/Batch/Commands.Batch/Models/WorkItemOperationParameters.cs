@@ -12,33 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class BatchClientParametersBase
+    public class WorkItemOperationParameters : BatchClientParametersBase
     {
-        protected BatchClientParametersBase(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public WorkItemOperationParameters(BatchAccountContext context, string workItemName, PSCloudWorkItem workItem,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if (context == null)
+            if (string.IsNullOrWhiteSpace(workItemName) && workItem == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(Resources.NoWorkItem);
             }
 
-            this.Context = context;
-            this.AdditionalBehaviors = additionalBehaviors;
+            this.WorkItemName = workItemName;
+            this.WorkItem = workItem;
         }
 
         /// <summary>
-        /// The account details
+        /// The name of the workitem
         /// </summary>
-        public BatchAccountContext Context { get; private set; }
+        public string WorkItemName { get; private set; }
 
         /// <summary>
-        /// Additional client behaviors to perform
+        /// The PSCloudWorkItem object representing the target workitem
         /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; private set; }
+        public PSCloudWorkItem WorkItem { get; private set; }
     }
 }

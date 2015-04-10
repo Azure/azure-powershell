@@ -12,33 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class BatchClientParametersBase
+    public class VMOperationParameters : BatchClientParametersBase
     {
-        protected BatchClientParametersBase(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public VMOperationParameters(BatchAccountContext context, string poolName, string vmName, PSVM vm,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if (context == null)
+            if ((string.IsNullOrWhiteSpace(poolName) || string.IsNullOrWhiteSpace(vmName)) && vm == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(Resources.NoVM);
             }
 
-            this.Context = context;
-            this.AdditionalBehaviors = additionalBehaviors;
+            this.PoolName = poolName;
+            this.VMName = vmName;
+            this.VM = vm;
         }
 
         /// <summary>
-        /// The account details
+        /// The name of the pool containing the vm
         /// </summary>
-        public BatchAccountContext Context { get; private set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
-        /// Additional client behaviors to perform
+        /// The name of the vm
         /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; private set; }
+        public string VMName { get; private set; }
+
+        /// <summary>
+        /// The PSVM object representing the target vm
+        /// </summary>
+        public PSVM VM { get; private set; }
     }
 }

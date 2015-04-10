@@ -13,25 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveVMUserParameters : BatchClientParametersBase
+    public class VMUserOperationParameters : BatchClientParametersBase
     {
+        public VMUserOperationParameters(BatchAccountContext context, string poolName, string vmName, string vmUserName,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(poolName) || string.IsNullOrWhiteSpace(vmName) || string.IsNullOrWhiteSpace(vmUserName))
+            {
+                throw new ArgumentNullException(Resources.NoVMUser);
+            }
+
+            this.PoolName = poolName;
+            this.VMName = vmName;
+            this.VMUserName = vmUserName;
+        }
+
         /// <summary>
         /// The name of the pool containing the vm
         /// </summary>
-        public string PoolName { get; set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
-        /// The name of the vm containing the user
+        /// The name of the vm containing the vm user
         /// </summary>
-        public string VMName { get; set; }
+        public string VMName { get; private set; }
 
         /// <summary>
-        /// The name of the user to delete
+        /// The name of the vm user
         /// </summary>
-        public string UserName { get; set; }
+        public string VMUserName { get; private set; }
     }
 }
