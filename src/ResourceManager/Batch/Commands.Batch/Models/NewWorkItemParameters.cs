@@ -18,13 +18,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewWorkItemParameters
+    public class NewWorkItemParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the WorkItem to create
         /// </summary>
@@ -49,10 +44,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Metadata to add to the new WorkItem
         /// </summary>
         public IDictionary Metadata { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

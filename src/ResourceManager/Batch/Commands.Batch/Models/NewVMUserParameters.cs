@@ -12,36 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListVMOptions : BatchClientParametersBase
+    public class NewVMUserParameters : BatchClientParametersBase
     {
         /// <summary>
-        /// The name of the pool to query for vms
+        /// The name of the pool containing the vm to create the user on.
         /// </summary>
         public string PoolName { get; set; }
 
         /// <summary>
-        /// If specified, the single vm with this name will be returned
+        /// The name of the vm to create the user on.
         /// </summary>
         public string VMName { get; set; }
 
         /// <summary>
-        /// The PSCloudPool object representing the pool to query for vms
+        /// The name of the local windows account created.
         /// </summary>
-        public PSCloudPool Pool { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
-        /// The OData filter to use when querying for vms
+        /// The PSVM object representing the vm to create the user on.
         /// </summary>
-        public string Filter { get; set; }
+        public PSVM VM { get; set; }
 
         /// <summary>
-        /// The maximum number of vms to return
+        /// The account password.
         /// </summary>
-        public int MaxCount { get; set; }
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The expiry time.
+        /// </summary>
+        public DateTime ExpiryTime { get; set; }
+
+        /// <summary>
+        /// The administrative privilege level of the user account.
+        /// </summary>
+        public bool IsAdmin { get; set; }
     }
 }

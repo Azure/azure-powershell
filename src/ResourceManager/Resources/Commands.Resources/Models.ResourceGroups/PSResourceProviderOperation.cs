@@ -12,36 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.Batch.Models
+namespace Microsoft.Azure.Commands.Resources.Models
 {
-    public class ListVMOptions : BatchClientParametersBase
+    /// <summary>
+    /// Definition of a resource provider and its registration state
+    /// </summary>
+    public class PSResourceProviderOperation
     {
         /// <summary>
-        /// The name of the pool to query for vms
+        /// Gets or sets the name of the provider operation.
         /// </summary>
-        public string PoolName { get; set; }
+        public string OperationName { get; set; }
 
         /// <summary>
-        /// If specified, the single vm with this name will be returned
+        /// Gets or sets the name of the operation provider.
         /// </summary>
-        public string VMName { get; set; }
+        public string ProviderNamespace { get; set; }
 
         /// <summary>
-        /// The PSCloudPool object representing the pool to query for vms
+        /// Gets or sets the name of the operation resource.
         /// </summary>
-        public PSCloudPool Pool { get; set; }
+        public string ResourceName { get; set; }
 
         /// <summary>
-        /// The OData filter to use when querying for vms
+        /// Gets or sets the name of the operation description.
         /// </summary>
-        public string Filter { get; set; }
-
-        /// <summary>
-        /// The maximum number of vms to return
-        /// </summary>
-        public int MaxCount { get; set; }
+        public string Description { get; set; }
     }
 }

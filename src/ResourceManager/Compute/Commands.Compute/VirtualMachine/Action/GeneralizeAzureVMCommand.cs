@@ -12,26 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Batch.Models
+namespace Microsoft.Azure.Commands.Compute
 {
-    public class RemoveJobParameters : BatchClientParametersBase
+    [Cmdlet("Generalize", ProfileNouns.VirtualMachine)]
+    public class GeneralizeAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        /// <summary>
-        /// The name of the WorkItem containing the Job to delete
-        /// </summary>
-        public string WorkItemName { get; set; }
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
 
-        /// <summary>
-        /// The name of the Job to delete
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// The Job to delete
-        /// </summary>
-        public PSCloudJob Job { get; set; }
+            var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
+            WriteObject(op);
+        }
     }
 }
