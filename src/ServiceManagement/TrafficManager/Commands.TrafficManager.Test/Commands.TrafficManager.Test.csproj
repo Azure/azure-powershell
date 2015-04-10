@@ -143,7 +143,6 @@
     <Compile Include="Profiles\NewTrafficManagerProfileTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
