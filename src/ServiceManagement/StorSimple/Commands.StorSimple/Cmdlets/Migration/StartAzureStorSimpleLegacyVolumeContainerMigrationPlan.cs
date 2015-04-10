@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private string GetResultMessage(MigrationJobStatus status)
         {
             StringBuilder builder = new StringBuilder();
-            if(null != status.MessageInfoList)
+            if(null != status.MessageInfoList && status.MessageInfoList.Count > 0)
             {
                 foreach(var msgInfo in status.MessageInfoList)
                 {
@@ -67,7 +67,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 }
             }
 
-            builder.AppendLine(Resources.StartMigrationPlanSuccessMessage);
+            else
+            {
+                builder.AppendLine(Resources.StartMigrationPlanSuccessMessage);
+            }
             return builder.ToString();
         }
     }
