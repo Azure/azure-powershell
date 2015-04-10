@@ -61,6 +61,42 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hidden-link:.
+        /// </summary>
+        internal static string AlertTagHiddenLinkKey {
+            get {
+                return ResourceManager.GetString("AlertTagHiddenLinkKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource.
+        /// </summary>
+        internal static string AlertTagHiddenLinkValue {
+            get {
+                return ResourceManager.GetString("AlertTagHiddenLinkValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to $type.
+        /// </summary>
+        internal static string AlertTagTypeKey {
+            get {
+                return ResourceManager.GetString("AlertTagTypeKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage.
+        /// </summary>
+        internal static string AlertTagTypeValue {
+            get {
+                return ResourceManager.GetString("AlertTagTypeValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rule condition type &apos;{0}&apos; not supported..
         /// </summary>
         internal static string RuleConditionTypeNotSupported {

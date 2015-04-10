@@ -17,7 +17,7 @@
 Checks whether the first string contains the second one
 #>
 
-$accountName='safeer'
+$accountName='account'
 $location = "East US"
 
 function AssertContains

@@ -16,11 +16,11 @@ using Microsoft.Azure.Commands.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp;
 using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
+
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
@@ -28,11 +28,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppCollectionUsageDetails"), OutputType(typeof(string))]
     public class GetAzureRemoteAppCollectionUsageDetails : RdsCmdlet
     {
-        [Parameter(
-                   Position = 0,
-                   Mandatory = true,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "RemoteApp collection name")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -47,13 +48,84 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidatePattern(FullYearPattern)]
         public string UsageYear { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Allows running the cmdlet in the background as a PS job.")]
+        public SwitchParameter AsJob { get; set; }
+
+        private LongRunningTask<GetAzureRemoteAppCollectionUsageDetails> task = null;
+
+        private void GetUsageDetails(CollectionUsageDetailsResult detailsUsage)
+        {
+            RemoteAppOperationStatusResult operationResult = null;
+
+            // The request is async and we have to wait for the usage details to be produced here
+            do
+            {
+                System.Threading.Thread.Sleep(5000);
+
+                operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
+            }
+            while (operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success &&
+                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed);
+
+            if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Success)
+            {
+                WriteUsageDetails(detailsUsage);
+            }
+            else
+            {
+                ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                    Commands_RemoteApp.DetailedUsageFailureMessage,
+                    String.Empty,
+                    Client.Collections,
+                    ErrorCategory.ResourceUnavailable);
+
+                WriteError(error);
+            }
+        }
+
+        private void WriteUsageDetails(CollectionUsageDetailsResult detailsUsage)
+        {
+            // 
+            // Display the content pointed to by the returned URI
+            //
+            WebResponse response = null;
+
+            WebRequest request = WebRequest.Create(detailsUsage.UsageDetails.SasUri);
+
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+                if (response == null)
+                {
+                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                "Unable to retrieve Usage data", String.Empty, null, ErrorCategory.InvalidResult);
+                    WriteError(error);
+                    return;
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, Client.Collections, ErrorCategory.InvalidResult);
+                WriteError(error);
+                return;
+            }
+
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                using (StreamReader reader = new StreamReader(dataStream))
+                {
+                    String csvContent = reader.ReadToEnd();
+                    WriteObject(csvContent);
+                }
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             DateTime today = DateTime.Now;
             CollectionUsageDetailsResult detailsUsage = null;
             string locale = String.Empty;
-            RemoteAppOperationStatusResult operationResult = null;
-            int maxRetryCount = 60;
 
             if (String.IsNullOrWhiteSpace(UsageMonth))
             {
@@ -74,75 +146,23 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 return;
             }
 
-            // The request is async and we have to wait for the usage details to be produced here
-            do
+            if (AsJob.IsPresent)
             {
+                task = new LongRunningTask<GetAzureRemoteAppCollectionUsageDetails>(this, "RemoteAppBackgroundTask", Commands_RemoteApp.UsageDetails);
 
-                System.Threading.Thread.Sleep(5000);
+                task.ProcessJob(() =>
+                {
+                    task.SetStatus(Commands_RemoteApp.DownloadingUsageDetails);
+                    GetUsageDetails(detailsUsage);
+                    task.SetStatus(Commands_RemoteApp.JobComplete);
+                });
 
-                operationResult = CallClient(() => Client.OperationResults.Get(detailsUsage.UsageDetails.OperationTrackingId), Client.OperationResults);
-            }
-            while(operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Success &&
-                operationResult.RemoteAppOperationResult.Status != RemoteAppOperationStatus.Failed &&
-                --maxRetryCount > 0);
+                WriteObject(task);
 
-            if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Success)
-            {
-                WriteUsageDetails(detailsUsage);
             }
             else
             {
-                if (operationResult.RemoteAppOperationResult.Status == RemoteAppOperationStatus.Failed)
-                {
-                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        Commands_RemoteApp.DetailedUsageFailureMessage,
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.ResourceUnavailable);
-
-                    WriteError(error);
-                }
-                else if (maxRetryCount <= 0)
-                {
-                    ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format(System.Globalization.CultureInfo.InvariantCulture, 
-                            Commands_RemoteApp.RequestTimedOutFormat,
-                            detailsUsage.UsageDetails.OperationTrackingId),
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.OperationTimeout);
-
-                    WriteError(error);
-                }
-            }
-        }
-
-        private void WriteUsageDetails(CollectionUsageDetailsResult detailsUsage)
-        {
-            // 
-            // Display the content pointed to by the returned URI
-            //
-            WebResponse response = null;
-
-            WebRequest request = WebRequest.Create(detailsUsage.UsageDetails.SasUri);
-
-            try
-            {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (Exception e)
-            {
-                ErrorRecord error = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, Client.Collections, ErrorCategory.InvalidResult);
-                WriteError(error);
-            }
-
-            using (Stream dataStream = response.GetResponseStream())
-            {
-                using (StreamReader reader = new StreamReader(dataStream))
-                {
-                    String csvContent = reader.ReadToEnd();
-                    WriteObject(csvContent);
-                }
+                GetUsageDetails(detailsUsage);
             }
         }
     }
