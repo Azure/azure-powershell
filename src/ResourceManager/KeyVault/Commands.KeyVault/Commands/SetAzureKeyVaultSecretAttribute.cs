@@ -20,9 +20,9 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret")]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute")]
     [OutputType(typeof(Secret))]
-    public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
+    public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -48,26 +48,30 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Name { get; set; }
 
         /// <summary>
-        /// Secret value
+        /// Key version.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
-            HelpMessage = "Secret value")]
-        public SecureString SecretValue { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
+        [Alias("SecretVersion")]
+        public string Version { get; set; }
 
         /// <summary>
-        /// Set secret in disabled state if present       
-        /// </summary>        
+        /// If present, enable a secret if value is true. 
+        /// Disable a secret if value is false.
+        /// If not present, no change on current secret enabled/disabled state.
+        /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Set secret in disabled state if present. If not present, secret is enabled.")]
-        public SwitchParameter Disable { get; set; }
-
+            HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not present, no change on current secret enabled/disabled state.")]
+        public bool? Enable { get; set; }
+       
         /// <summary>
         /// Secret expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a secret in UTC time. If not present, secret will not expire.")]
+            HelpMessage = "The expiration time of a secret in UTC time. If not present, no change on current secret expiration time.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -75,15 +79,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which secret can't be used. If not present, no limitation.")]
+            HelpMessage = "The UTC time before which secret can't be used. If not present, no change on current secret NotBefore attribute.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
         /// Content type
+        /// TODO: check if content type is null, will it replace the server data
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Secret's content type.")]
+            HelpMessage = "Secret's content type. If not present, no change on current secret's content type. Removing existing content type by setting a empty string.")]
         public string ContentType { get; set; }
 
         /// <summary>
@@ -91,19 +96,27 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable represents secret tags.")]
+            HelpMessage = "A hashtable represents secret tags. If not present, no change on current secret's tags. Removing a tag by setting a empty Hashtable.")]
         public Hashtable Tags { get; set; }
+
+        [Parameter(Mandatory = false,
+           HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
+        public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
-        {
-            var secret = DataServiceClient.SetSecret(
-                VaultName, 
-                Name, 
-                SecretValue,
-                new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tags));
-            WriteObject(secret);
+        {            
+            var secret = DataServiceClient.UpdateSecret(
+                VaultName,
+                Name,
+                Version,
+                new SecretAttributes(Enable, Expires, NotBefore, ContentType, Tags));
+
+            if (PassThru)
+            {
+                WriteObject(secret);
+            }
         }
     }
 }

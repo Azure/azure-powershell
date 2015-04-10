@@ -12,20 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Client.Protocol;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.KeyVault.Client
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    [JsonObject]
-    public class KeyItem
+    public class KeyVaultObjectFilterOptions
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, 
-            NullValueHandling = NullValueHandling.Ignore, PropertyName = MessagePropertyNames.Kid, Required = Required.Always)]
-        public string Kid { get; set; }
+        public string VaultName { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, 
-            NullValueHandling = NullValueHandling.Ignore, PropertyName = MessagePropertyNames.Attributes, Required = Required.Always)]
-        public KeyAttributes Attributes { get; set; }
+        public string Name { get; set; }
+               
+        /// <summary>
+        /// Used internally to track the paging for the listing, do not change manually.
+        /// </summary>
+        public string NextLink { get; set; }
+
     }
 }
