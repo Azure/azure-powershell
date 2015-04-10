@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 // If the device is being configured for the first time, validate that mandatory params 
                 // for first setup have been provided
-                if (!deviceDetails.DeviceProperties.IsConfigUpdated && !ValidParamsForFirstDeviceConfiguration(StorSimpleNetworkConfig, TimeZone))
+                if (!deviceDetails.DeviceProperties.IsConfigUpdated && !ValidParamsForFirstDeviceConfiguration(StorSimpleNetworkConfig, TimeZone, SecondaryDnsServer))
                 {
                     throw new ArgumentException(Resources.MandatoryParamsMissingForInitialDeviceConfiguration);
                 }
