@@ -57,7 +57,8 @@ ScriptsToProcess = @()
 TypesToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml',
     '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml'
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+	'.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
 
 # Format files (.ps1xml) to be loaded when importing this module
@@ -70,7 +71,8 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
-    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml'
+    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
+	'.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
