@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -92,14 +92,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
-                Properties = new RoleAssignmentProperties {
-                    PrincipalId = principalId,
-                    RoleDefinitionId = roleDefinitionId
-                }
+                Properties = new RoleAssignmentProperties() { PrincipalId = principalId, RoleDefinitionId = roleDefinitionId }
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
-            return AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+            return
+                AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId)
+                    .RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
         }
 
         /// <summary>
@@ -167,6 +166,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roleAssignment;
         }
 
+        /// <summary>
+        /// Deletes a role definition based on the id.
+        /// </summary>
+        /// <param name="id">The role definition id.</param>
+        /// <returns>The deleted role definition.</returns>
+        public PSRoleDefinition RemoveRoleDefinition(string id)
+        {
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(id);
+            if (roleDefinition != null)
+            {
+                AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinition.Id);
+            }
+            else
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, id));
+            }
+
+            return roleDefinition;
+        }
+
         public PSRoleDefinition GetRoleRoleDefinition(string name)
         {
             PSRoleDefinition role = FilterRoleDefinitions(name).FirstOrDefault();
@@ -177,6 +196,56 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return role;
+        }
+
+        /// <summary>
+        /// Updates a role definiton.
+        /// </summary>
+        /// <param name="role">The role definition to update.</param>
+        /// <returns>The updated role definition.</returns>
+        public PSRoleDefinition UpdateRoleDefinition(PSRoleDefinition role)
+        {
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(role.Id);
+            if (roleDefinition == null)
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, role.Id));
+            }
+
+            roleDefinition.Name = role.Name ?? roleDefinition.Name;
+            roleDefinition.Actions = role.Actions ?? roleDefinition.Actions;
+            roleDefinition.NotActions = role.NotActions ?? roleDefinition.NotActions;
+
+            // TODO: confirm with ARM on what exception will be thrown when the last segment of the roleDefinition's ID is not a GUID.
+            // This will be done after their API is designed.
+            string[] scopes = roleDefinition.Id.Split('/');
+            Guid roleDefinitionId = Guid.Parse(scopes.Last());
+
+            // TODO: update to include assignable scopes.
+            return
+                AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
+                    roleDefinitionId,
+                    new RoleDefinitionCreateOrUpdateParameters()
+                    {
+                        RoleDefinition = new RoleDefinition()
+                        {
+                            Id = roleDefinition.Id,
+                            Name = roleDefinitionId,
+                            Properties =
+                                new RoleDefinitionProperties()
+                                {
+                                    RoleName = roleDefinition.Name,
+                                    Permissions =
+                                        new List<Permission>()
+                                        {
+                                            new Permission()
+                                            {
+                                                Actions = roleDefinition.Actions,
+                                                NotActions = roleDefinition.NotActions
+                                            }
+                                        }
+                                }
+                        }
+                    }).RoleDefinition.ToPSRoleDefinition();
         }
     }
 }
