@@ -26,5 +26,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionCreateTests");
         }
+
+        [Fact(Skip="Not implemented")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RdNegativeScenarios()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
+        }
+
+        [Fact(Skip = "Not implemented")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RdPositiveScenarios()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
+        }
     }
 }

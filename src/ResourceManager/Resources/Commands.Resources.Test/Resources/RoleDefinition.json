@@ -1,0 +1,7 @@
+{
+    "Id": "/providers/Microsoft.Authorization/roleDefinitions/2ABB0DE9-E2FA-4865-BDCE-772C5BBC501A",
+    "Actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*"
+    ]
+}

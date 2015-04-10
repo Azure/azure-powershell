@@ -349,6 +349,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove role definition with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveRoleDefinition {
+            get {
+                return ResourceManager.GetString("RemoveRoleDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing service principal ....
         /// </summary>
         internal static string RemoveServicePrincipal {
@@ -484,11 +493,20 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find role definition with name &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Cannot find role definition with name &apos;{0}&apos;..
         /// </summary>
         internal static string RoleDefinitionNotFound {
             get {
                 return ResourceManager.GetString("RoleDefinitionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find role definition with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RoleDefinitionWithIdNotFound {
+            get {
+                return ResourceManager.GetString("RoleDefinitionWithIdNotFound", resourceCulture);
             }
         }
         

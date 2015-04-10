@@ -17,13 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveTaskParameters
+    public class RemoveTaskParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the WorkItem containing the Task to delete
         /// </summary>
@@ -43,10 +38,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The Task to delete
         /// </summary>
         public PSCloudTask Task { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }
