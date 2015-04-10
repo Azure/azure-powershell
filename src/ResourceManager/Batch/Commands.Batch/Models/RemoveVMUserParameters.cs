@@ -17,31 +17,21 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListVMOptions : BatchClientParametersBase
+    public class RemoveVMUserParameters : BatchClientParametersBase
     {
         /// <summary>
-        /// The name of the pool to query for vms
+        /// The name of the pool containing the vm
         /// </summary>
         public string PoolName { get; set; }
 
         /// <summary>
-        /// If specified, the single vm with this name will be returned
+        /// The name of the vm containing the user
         /// </summary>
         public string VMName { get; set; }
 
         /// <summary>
-        /// The PSCloudPool object representing the pool to query for vms
+        /// The name of the user to delete
         /// </summary>
-        public PSCloudPool Pool { get; set; }
-
-        /// <summary>
-        /// The OData filter to use when querying for vms
-        /// </summary>
-        public string Filter { get; set; }
-
-        /// <summary>
-        /// The maximum number of vms to return
-        /// </summary>
-        public int MaxCount { get; set; }
+        public string UserName { get; set; }
     }
 }

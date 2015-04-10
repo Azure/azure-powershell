@@ -170,11 +170,14 @@
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
+    <Compile Include="ScenarioTests\VMUserTests.cs" />
     <Compile Include="ScenarioTests\VMTests.cs" />
     <Compile Include="ScenarioTests\WorkItemTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
+    <Compile Include="VMUsers\NewBatchVMUserCommandTests.cs" />
+    <Compile Include="VMUsers\RemoveBatchVMUserCommandTests.cs" />
     <Compile Include="VMs\GetBatchVMCommandTests.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommandTests.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommandTests.cs" />
@@ -201,6 +204,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\VMUserTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VMTests.ps1">
@@ -344,6 +350,15 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTasksWithMaxCount.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestCreateUser.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestCreateUserPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMUserTests\TestDeleteUser.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.VMTests\TestGetVMByName.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -405,6 +420,7 @@
   <ItemGroup>
     <Content Include="about.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
