@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.Gallery], "http://galleryendpoint.com");
         }
 
-        [Fact(Skip = "Failed @ Assert.True(env.OnPremise);")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
         {
