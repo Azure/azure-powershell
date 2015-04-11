@@ -147,7 +147,6 @@
     <Compile Include="ConversionUtilities.cs" />
     <Compile Include="DebugStreamTraceListener.cs" />
     <Compile Include="GeneralUtilities.cs" />
-    <Compile Include="Models\PSTagValuePair.cs" />
     <Compile Include="PowerShellUtilities.cs" />
     <Compile Include="RecordingTracingInterceptor.cs" />
     <Compile Include="ProfileClientExtensions.cs" />
@@ -176,8 +175,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\ResourcesExtensions.cs" />
-    <Compile Include="Utilities\TagsConversionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -12,24 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCheckDnsAvailability")]
-    public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+    public class RemoveAzureLoadBalancerBackendAddressPoolConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Domain Qualified Name name.")]
+            HelpMessage = "The name of the backendAddressPool")]
         [ValidateNotNullOrEmpty]
-        public string DomainQualifiedName { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The loadbalancer")]
+        public PSLoadBalancer LoadBalancer { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability("nrp8", DomainQualifiedName);
-            WriteObject(result);
+            base.ExecuteCmdlet();
+
+            var backendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (backendAddressPool != null)
+            {
+                this.LoadBalancer.BackendAddressPools.Remove(backendAddressPool);
+            }
+
+            WriteObject(this.LoadBalancer);
         }
     }
 }
