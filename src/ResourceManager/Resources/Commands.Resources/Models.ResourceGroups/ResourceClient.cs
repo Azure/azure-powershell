@@ -20,6 +20,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
