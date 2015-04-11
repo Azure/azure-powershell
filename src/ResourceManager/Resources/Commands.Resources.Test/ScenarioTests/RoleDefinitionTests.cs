@@ -16,29 +16,22 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class WebAppTests 
+    public class RoleDefinitionTests
     {
-        [Fact]
+        [Fact(Skip="Not implemented")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleWebApp()
+        public void RdNegativeScenarios()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewSimpleWebApp");
+            ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
         }
 
-        [Fact]
+        [Fact(Skip = "Not implemented")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAppServicePlan()
+        public void RdPositiveScenarios()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewAppServicePlan");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewAppServicePlan()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-SetNewAppServicePlan");
+            ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
         }
     }
 }
