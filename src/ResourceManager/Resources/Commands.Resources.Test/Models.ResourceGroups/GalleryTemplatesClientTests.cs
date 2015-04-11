@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(true, result["bool"].Value);
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetTemplateParametersFromFileWithSchema2MergesObjects()
         {
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             }
         }
 
-        [Fact]
+        [Fact(Skip = "crp2")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ParseTemplateParameterFileContents_DeserializeWithCorrectType()
         {

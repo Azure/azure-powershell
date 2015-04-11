@@ -19,8 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
-    public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
+    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage)]
+    [OutputType(typeof(ComputeLongRunningOperationResponse))]
+    public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -30,52 +31,53 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName", "AvailabilitySetName")]
         [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+           Mandatory = true,
+           Position = 1,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
+           Mandatory = true,
+           Position = 2,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The Destination Container Name.")]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string DestinationContainerName { get; set; }
 
         [Parameter(
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Update Domain Count.")]
+           Mandatory = true,
+           Position = 3,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "To Overwrite.")]
         [ValidateNotNullOrEmpty]
-        public int? PlatformUpdateDomainCount { get; set; }
+        public bool Overwrite { get; set; }
 
         [Parameter(
-            Position = 4,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Fault Domain Count.")]
+           Mandatory = true,
+           Position = 4,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The Virtual Hard Disk Name Prefix.")]
         [ValidateNotNullOrEmpty]
-        public int? PlatformFaultDomainCount { get; set; }
+        public string VirtualHardDiskNamePrefix { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var avSetParams = new AvailabilitySet
+            var parameters = new VirtualMachineCaptureParameters
             {
-                Name = this.Name,
-                Location = this.Location,
-                PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                PlatformFaultDomainCount = this.PlatformFaultDomainCount
+                DestinationContainerName = DestinationContainerName,
+                Overwrite = Overwrite,
+                VirtualHardDiskNamePrefix = VirtualHardDiskNamePrefix
             };
 
-            var op = this.AvailabilitySetClient.CreateOrUpdate(
+            var op = this.VirtualMachineClient.Capture(
                 this.ResourceGroupName,
-                avSetParams);
+                this.Name,
+                parameters);
 
             WriteObject(op);
         }
