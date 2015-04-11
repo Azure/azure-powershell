@@ -12,24 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.NetworkResourceProvider.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCheckDnsAvailability")]
-    public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
+    public class RemoveAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Domain Qualified Name name.")]
+            HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
-        public string DomainQualifiedName { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The virtualNetwork")]
+        public PSVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability("nrp8", DomainQualifiedName);
-            WriteObject(result);
+            base.ExecuteCmdlet();
+
+            // Verify if the subnet exists in the VirtualNetwork
+            var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (subnet != null)
+            {
+                this.VirtualNetwork.Subnets.Remove(subnet);
+            }
+
+            WriteObject(this.VirtualNetwork);
         }
     }
 }

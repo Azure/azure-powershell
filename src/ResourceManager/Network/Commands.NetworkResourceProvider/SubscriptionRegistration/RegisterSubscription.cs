@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Join, "AzureCoreResourceProvider")]
-    public class JoinAzureCoreResourceProvider : NetworkBaseClient
+    public class JoinAzureCoreResourceProvider : NetworkBaseCmdlet
     {
         [Alias("ResourceProviderName")]
         [Parameter(
