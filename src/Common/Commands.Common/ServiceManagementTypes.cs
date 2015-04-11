@@ -1157,16 +1157,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
-        [DataMember(Name = "VipName", EmitDefaultValue = false, Order = 12)]
-        public string VipName
+        [DataMember(Name = "VirtualIPName", EmitDefaultValue = false, Order = 12)]
+        public string VirtualIPName
         {
             get
             {
-                return base.GetValue<string>("VipName");
+                return base.GetValue<string>("VirtualIPName");
             }
             set
             {
-                base.SetValue("VipName", value);
+                base.SetValue("VirtualIPName", value);
             }
         }
     }

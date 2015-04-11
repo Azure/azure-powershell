@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
 
         [Parameter(HelpMessage = "The Virtual IP Name of the Virtual IP on which the endpoint is to be added.")]
         [ValidateNotNullOrEmpty]
-        public string VipName
+        public string VirtualIPName
         {
             get;
             set;
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                 LoadBalancerName = this.InternalLoadBalancerName,
                 IdleTimeoutInMinutes = this.ParameterSpecified("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : null,
                 LoadBalancerDistribution = this.ParameterSpecified("LoadBalancerDistribution") ? this.LoadBalancerDistribution : null,
-                VipName = this.ParameterSpecified("VipName") ? this.VipName : null, 
+                VirtualIPName = this.ParameterSpecified("VirtualIPName") ? this.VirtualIPName : null, 
             };
 
             if (this.ParameterSetName == AddAzureEndpoint.LBNoProbeParameterSet

@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public string InternalLoadBalancerName { get; set; }
 
         public string LoadBalancerDistribution { get; set; }
-        public string VipName { get; set; }
+        public string VirtualIPName { get; set; }
 
         public AzureEndPointConfigInfo()
         {
@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string internalLoadBalancer = null,
             string serviceName = null,
             string loadBalancerDistribution = null,
-            string vipName = null)
+            string VirtualIPName = null)
         {
             this.Initialize(
                 endpointProtocol,
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 internalLoadBalancer,
                 serviceName,
                 loadBalancerDistribution,
-                vipName);
+                VirtualIPName);
         }
 
         // LoadBalancedNoProbe/DefaultProbe parameter set
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string internalLoadBalancer = null,
             string serviceName = null,
             string loadBalancerDistribution = null,
-            string vipName = null)
+            string VirtualIPName = null)
         {
             if ( (paramset == ParameterSet.LoadBalancedNoProbe) || (paramset == ParameterSet.DefaultProbe) )
             {
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     internalLoadBalancer,
                     serviceName,
                     loadBalancerDistribution,
-                    vipName);
+                    VirtualIPName);
             }
         }
 
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string internalLoadBalancer= null,
             string serviceName = null,
             string loadBalancerDistribution = null,
-            string vipName = null)
+            string VirtualIPName = null)
         {
                 this.Initialize(
                     endpointProtocol,
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     internalLoadBalancer,
                     serviceName,
                     loadBalancerDistribution,
-                    vipName);
+                    VirtualIPName);
         }
 
         public AzureEndPointConfigInfo(AzureEndPointConfigInfo other)
@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 other.InternalLoadBalancerName,
                 other.ServiceName,
                 other.LoadBalancerDistribution,
-                other.VipName);
+                other.VirtualIPName);
         }
 
         private void Initialize(
@@ -194,7 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string internalLoadBalancer,
             string serviceName,
             string loadBalancerDistribution,
-            string vipName)
+            string VirtualIPName)
         {
             this.EndpointLocalPort = internalPort;
             this.EndpointProtocol = protocol;
@@ -213,7 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.InternalLoadBalancerName = internalLoadBalancer;
             this.ServiceName = serviceName;
             this.LoadBalancerDistribution = loadBalancerDistribution;
-            this.VipName = vipName;
+            this.VirtualIPName = VirtualIPName;
         }
 
         public bool CheckInputEndpointContext(InputEndpointContext context)

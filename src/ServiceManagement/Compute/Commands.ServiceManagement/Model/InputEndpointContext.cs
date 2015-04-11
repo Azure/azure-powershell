@@ -48,6 +48,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         public string LoadBalancerDistribution { get; set; }
 
-        public string VipName { get; set; }
+        public string VirtualIPName { get; set; }
     }
 }

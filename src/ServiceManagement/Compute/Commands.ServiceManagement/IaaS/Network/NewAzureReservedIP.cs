@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Deployment slot [Staging | Production].")]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPParamSet, HelpMessage = "Deployment slot [Staging | Production].")]
         [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Slot

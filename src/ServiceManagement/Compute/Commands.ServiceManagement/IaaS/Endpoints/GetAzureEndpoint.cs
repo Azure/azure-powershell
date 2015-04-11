@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                     InternalLoadBalancerName = ep.LoadBalancerName,
                     IdleTimeoutInMinutes = ep.IdleTimeoutInMinutes,
                     LoadBalancerDistribution = ep.LoadBalancerDistribution,
-                    VipName = ep.VipName
+                    VirtualIPName = ep.VirtualIPName
                 };
 
                 if (ep.LoadBalancerProbe != null && string.IsNullOrEmpty(endpointCtx.LBSetName) == false)
