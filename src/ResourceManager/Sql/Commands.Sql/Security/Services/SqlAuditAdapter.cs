@@ -207,11 +207,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
         { 
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(Constants.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
-            if (eventTypesToAudit.IndexOf(Constants.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
-            if (eventTypesToAudit.IndexOf(Constants.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
-            if (eventTypesToAudit.IndexOf(Constants.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
-            if (eventTypesToAudit.IndexOf(Constants.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
+            if (eventTypesToAudit.IndexOf(Constants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
+            if (eventTypesToAudit.IndexOf(Constants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
+            if (eventTypesToAudit.IndexOf(Constants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
+            if (eventTypesToAudit.IndexOf(Constants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
+            if (eventTypesToAudit.IndexOf(Constants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
+            if (eventTypesToAudit.IndexOf(Constants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
+            if (eventTypesToAudit.IndexOf(Constants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
+            if (eventTypesToAudit.IndexOf(Constants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
+            if (eventTypesToAudit.IndexOf(Constants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
+            if (eventTypesToAudit.IndexOf(Constants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
             model.EventType = events.ToArray();
         }
 
@@ -313,25 +318,45 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
             HashSet<AuditEventType> eventTypes = new HashSet<AuditEventType>(model.EventType);
             StringBuilder events = new StringBuilder();
-            if(IsEventTypeOn(AuditEventType.DataAccess, model.EventType))
+            if (IsEventTypeOn(AuditEventType.PlainSQL_Success, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.DataAccess).Append(",");
+                events.Append(Constants.AuditingEndpoint.PlainSQL_Success).Append(",");
             }
-            if (IsEventTypeOn(AuditEventType.DataChanges, model.EventType))
+            if (IsEventTypeOn(AuditEventType.PlainSQL_Failure, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.DataChanges).Append(",");
+                events.Append(Constants.AuditingEndpoint.PlainSQL_Failure).Append(",");
             }
-            if (IsEventTypeOn(AuditEventType.RevokePermissions, model.EventType))
+            if (IsEventTypeOn(AuditEventType.ParameterizedSQL_Success, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.RevokePermissions).Append(",");
+                events.Append(Constants.AuditingEndpoint.ParameterizedSQL_Success).Append(",");
             }
-            if (IsEventTypeOn(AuditEventType.SchemaChanges, model.EventType))
+            if (IsEventTypeOn(AuditEventType.ParameterizedSQL_Failure, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.SchemaChanges).Append(",");
+                events.Append(Constants.AuditingEndpoint.ParameterizedSQL_Failure).Append(",");
             }
-            if (IsEventTypeOn(AuditEventType.SecurityExceptions, model.EventType))
+            if (IsEventTypeOn(AuditEventType.StoredProcedure_Success, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.SecurityExceptions).Append(",");
+                events.Append(Constants.AuditingEndpoint.StoredProcedure_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.StoredProcedure_Failure, model.EventType))
+            {
+                events.Append(Constants.AuditingEndpoint.StoredProcedure_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.Login_Success, model.EventType))
+            {
+                events.Append(Constants.AuditingEndpoint.Login_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.Login_Failure, model.EventType))
+            {
+                events.Append(Constants.AuditingEndpoint.Login_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.TransactionManagement_Success, model.EventType))
+            {
+                events.Append(Constants.AuditingEndpoint.TransactionManagement_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.TransactionManagement_Failure, model.EventType))
+            {
+                events.Append(Constants.AuditingEndpoint.TransactionManagement_Failure).Append(",");
             }
             if(events.Length != 0) 
             {
