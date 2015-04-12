@@ -196,9 +196,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.Azure.Commands.Compute.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
