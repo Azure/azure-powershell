@@ -124,6 +124,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The configuration has no published version. Configuration name {0}..
+        /// </summary>
+        internal static string ConfigurationHasNoPublishedVersion {
+            get {
+                return ResourceManager.GetString("ConfigurationHasNoPublishedVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration parameter cannot be serialized to json. Parameter name {0}..
+        /// </summary>
+        internal static string ConfigurationParameterCannotBeSerializedToJson {
+            get {
+                return ResourceManager.GetString("ConfigurationParameterCannotBeSerializedToJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration mandatory parameter not specified. Parameter name {0}..
+        /// </summary>
+        internal static string ConfigurationParameterValueRequired {
+            get {
+                return ResourceManager.GetString("ConfigurationParameterValueRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Connection already exists. Connection name: {0}..
         /// </summary>
         internal static string ConnectionAlreadyExists {
@@ -156,6 +183,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string CredentialNotFound {
             get {
                 return ResourceManager.GetString("CredentialNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration parameters..
+        /// </summary>
+        internal static string InvalidConfigurationParameters {
+            get {
+                return ResourceManager.GetString("InvalidConfigurationParameters", resourceCulture);
             }
         }
         

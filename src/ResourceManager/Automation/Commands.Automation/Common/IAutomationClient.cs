@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         
         #endregion
 
-        #region dsccompilationjob
+        #region Compilationjobs
 
         DscCompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid id);
 
@@ -47,8 +47,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<DscCompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
 
-        DscCompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, IDictionary parameters);
+        DscCompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters);
 
+        IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
         #endregion
 
         #region Configurations
