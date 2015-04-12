@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
 
             if (this.Force.IsPresent
-             || this.ShouldContinue(Resources.VirtualMachineRemovalConfirmation, Resources.VirtualMachineRemovalCaption))
+             || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
             {
                 var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
                 WriteObject(op);

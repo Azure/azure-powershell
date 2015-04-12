@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
 
             if (this.Force.IsPresent
-             || this.ShouldContinue(Resources.VirtualMachineExtensionRemovalConfirmation, Resources.VirtualMachineExtensionRemovalCaption))
+             || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
             {
                 var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
                 WriteObject(op);

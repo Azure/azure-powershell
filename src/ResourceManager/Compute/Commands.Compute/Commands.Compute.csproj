@@ -132,7 +132,6 @@
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ExtensionSettingBuilder.cs" />
-    <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
@@ -141,7 +140,6 @@
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
-    <Compile Include="Common\SecureStringExtension.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
@@ -191,6 +189,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
