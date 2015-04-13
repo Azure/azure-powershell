@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Models;
-using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,17 +34,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var taskResult = StorSimpleClient.UpdateDataContainerMigrationStatusSync(LegacyConfigId);
-                var migrationDataContainerStatusList = StorSimpleClient.GetDataContainerMigrationStatus(LegacyConfigId);
-                var migrationStatusSubList = new List<MigrationDataContainerStatus>(migrationDataContainerStatusList.MigrationDataContainerStatuses);
-
+                StorSimpleClient.UpdateDataContainerMigrationStatusSync(LegacyConfigId);
+                var overallMigrationStatusList = StorSimpleClient.GetDataContainerMigrationStatus(LegacyConfigId);
+                var migrationDataContainerStatusList = overallMigrationStatusList.MigrationDataContainerStatuses.ToList();
                 if (null != LegacyContainerNames && 0 < LegacyContainerNames.Length)
                 {
-                    List<string> containerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
-                    migrationStatusSubList = migrationStatusSubList.FindAll(status => containerNameList.Contains(status.CloudConfigurationName));
+                    List<string> containerNameList = LegacyContainerNames.ToList();
+                    migrationDataContainerStatusList = migrationDataContainerStatusList.ToList().FindAll(
+                        status => containerNameList.Contains(status.CloudConfigurationName));
                 }
 
-                var migrationStatus = new DataContainerMigrationStatus(LegacyConfigId, migrationStatusSubList);
+                var migrationStatus = new DataContainerMigrationStatus(
+                    LegacyConfigId, migrationDataContainerStatusList);
 
                 WriteObject(migrationStatus);
             }

@@ -14,6 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections;
@@ -46,50 +47,33 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                     else
                     {
-                        WriteVerbose(Resources.MigrationPlanConfigList);
                         foreach (var migrationPlan in migrationPlanList.MigrationPlans)
                         {
-                            var migrationPlanConfig = new MigrationPlanConfig(migrationPlan);
+                            var migrationPlanConfig = new MigrationConfig(migrationPlan);
                             WriteObject(migrationPlanConfig);
                         }
                     }
                 }
                 else
                 {
-                    var taskResult = StorSimpleClient.UpdateMigrationPlanSync(LegacyConfigId);
+                    StorSimpleClient.UpdateMigrationPlanSync(LegacyConfigId);
                     var migrationPlanList = StorSimpleClient.GetMigrationPlan(LegacyConfigId);
-                    WriteVerbose(string.Format("Request Id : {0}, HttpResponse {1}", migrationPlanList.RequestId, migrationPlanList.StatusCode));
-
-                    if (migrationPlanList.MigrationPlans.Count == 0)
+                    if (0 >= migrationPlanList.MigrationPlans.Count)
                     {
                         WriteVerbose(Resources.MigrationPlanNotFound);
                     }
-
                     else
                     {
-                        WriteVerbose(Resources.VolumeContainerList);
-
-                        MigrationPlan migrationPlan = migrationPlanList.MigrationPlans[0];
-                        var filteredMigrationPlanInfos = new List<MigrationPlanInfo>();
-                        
-                        if (LegacyContainerNames == null)
+                        MigrationPlan migrationPlan = migrationPlanList.MigrationPlans.First();
+                        if (null != LegacyContainerNames)
                         {
-                            filteredMigrationPlanInfos = new List<MigrationPlanInfo>(migrationPlan.MigrationPlanInfo);
-                        }
-                        else
-                        {
-                            var legacyContainerNamesList = new List<string>(LegacyContainerNames.ToList().Distinct());
-                            foreach (var migrationPlanInfo in migrationPlan.MigrationPlanInfo)
-                            {
-                                if (legacyContainerNamesList.Contains(migrationPlanInfo.DataContainerName))
-                                {
-                                    filteredMigrationPlanInfos.Add(migrationPlanInfo);
-                                }
-                            }
+                            var legacyContainerNamesList = LegacyContainerNames.ToList();
+                            migrationPlan.MigrationPlanInfo =
+                                migrationPlan.MigrationPlanInfo.ToList().FindAll(
+                                plan => legacyContainerNamesList.Contains(plan.DataContainerName));
                         }
 
-                        migrationPlanList.MigrationPlans[0].MigrationPlanInfo = filteredMigrationPlanInfos;
-                        var migrationPlanMsg = new MigrationPlanMsg(migrationPlanList.MigrationPlans[0]);
+                        var migrationPlanMsg = new MigrationPlanMsg(migrationPlan);
                         WriteObject(migrationPlanMsg);
                     }
                 }

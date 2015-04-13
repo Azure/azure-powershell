@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
@@ -19,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
     public partial class StorSimpleClient
     {
-        public ImportConfigResponse ImportLegacyApplianceConfig(string configId, LegacyApplianceConfig legacyApplConfig)
+        public AzureOperationResponse ImportLegacyApplianceConfig(string configId, LegacyApplianceConfig legacyApplConfig)
         {
             return this.GetStorSimpleClient().MigrateLegacyAppliance.ImportLegacyApplianceConfig(configId, legacyApplConfig, this.GetCustomRequestHeaders());
         }
@@ -36,12 +37,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         public TaskResponse UpdateMigrationPlanAsync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationPlan(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.BeginUpdateMigrationPlan(configId, this.GetCustomRequestHeaders());
         }
 
         public TaskStatusInfo UpdateMigrationPlanSync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationPlanEnd(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationPlan(configId, this.GetCustomRequestHeaders());
         }
 
         public MigrationPlanList GetMigrationPlan(string configId)
@@ -60,12 +61,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         public TaskStatusInfo UpdateDataContainerMigrationStatusSync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateDataContainerMigrationStatusEnd(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateDataContainerMigrationStatus(configId, this.GetCustomRequestHeaders());
         }
 
         public TaskResponse UpdateDataContainerMigrationStatusAsync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateDataContainerMigrationStatus(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.BeginUpdateDataContainerMigrationStatus(configId, this.GetCustomRequestHeaders());
         }
 
         public MigrationDataContainerStatusList GetDataContainerMigrationStatus(string configId)
@@ -75,15 +76,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         public TaskResponse UpdateMigrationConfirmStatusAsync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationConfirmStatus(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.BeginUpdateMigrationConfirmStatus(configId, this.GetCustomRequestHeaders());
         }
 
         public TaskStatusInfo UpdateMigrationConfirmStatusSync(string configId)
         {
-            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationConfirmStatusEnd(configId, this.GetCustomRequestHeaders());
+            return this.GetStorSimpleClient().MigrateLegacyAppliance.UpdateMigrationConfirmStatus(configId, this.GetCustomRequestHeaders());
         }
 
-        public ConfirmStatus GetMigrationConfirmStatus(string configId)
+        public MigrationConfirmStatus GetMigrationConfirmStatus(string configId)
         {
             return this.GetStorSimpleClient().MigrateLegacyAppliance.GetMigrationConfirmStatus(configId, this.GetCustomRequestHeaders());
         }

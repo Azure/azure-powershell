@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-//using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Confirm, "AzureStorSimpleLegacyVolumeContainerStatus", SupportsShouldProcess=true, ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet(VerbsLifecycle.Confirm, "AzureStorSimpleLegacyVolumeContainerStatus")]
     public class ConfirmAzureStorSimpleLegacyVolumeContainerStatus : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
@@ -41,52 +41,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var request = new MigrationConfirmStatusRequest();
-                request.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
-                request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
-                if (Microsoft.WindowsAzure.Management.StorSimple.Models.MigrationOperation.Rollback == request.Operation)
-                {
-                    if (!ShouldContinue(Resources.MigrationRollbackConfirmation, Resources.MigrationRollbackRemoteCloneWarning))
-                    {
-                        return;
-                    }
-                }
-
-                var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, request);
-                WriteObject(this.GetResultMessage(status));
+                var confirmMigrationRequest = new MigrationConfirmStatusRequest();
+                confirmMigrationRequest.Operation = (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
+                confirmMigrationRequest.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
+                var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, confirmMigrationRequest);
+                MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
+                WriteObject(opFormatter.GetResultMessage(Resources.ConfirmMigrationSuccessMessage, status));
             }
             catch(Exception except)
             {
                 this.HandleException(except);
             }
-        }
-
-        /// <summary>
-        /// Gets Confirm migration success message to be displayed with error string obtained from service
-        /// </summary>
-        /// <param name="status">migration job status</param>
-        private string GetResultMessage(MigrationJobStatus status)
-        {
-            StringBuilder builder = new StringBuilder();
-            bool errorMessage = false;
-            if (null != status.MessageInfoList)
-            {
-                foreach (var msgInfo in status.MessageInfoList)
-                {
-                    if (!string.IsNullOrEmpty(msgInfo.Message))
-                    {
-                        builder.AppendLine(msgInfo.Message);
-                        errorMessage = true;
-                    }
-                }
-            }
-
-            if (!errorMessage)
-            {
-                builder.AppendLine(Resources.ConfirmMigrationSuccessMessage);
-            }
-
-            return builder.ToString();
         }
     }
 }

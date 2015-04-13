@@ -15,19 +15,11 @@
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    /// <summary>
-    /// Service secret encryptor, the encryptor should be encrypting the secrets in way understandable by Saas service
-    /// </summary>
-    public interface IServiceSecretEncryptor
-    {
-        string EncryptSecret(string secretToBeEncrypted);
-        string GetSecretsEncryptionThumbprint();
-    }
-
     /// <summary>
     /// Internal wrapper implementation of the encryptor which cmdlet will use
     /// </summary>
@@ -36,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private StorSimpleCryptoManager storSimpleCryptoManager;
 
         /// <summary>
-        /// 
+        /// Constructs the encryptor to encrypt the secrets like password/key before sharing with service
         /// </summary>
         /// <param name="client"></param>
         public ServiceSecretEncryptor(StorSimpleClient client)

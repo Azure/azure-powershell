@@ -535,127 +535,37 @@ a special character</value>
   <data name="ImportLegacyApplianceConfigSuccessMessage" xml:space="preserve">
     <value>Successfully imported config from the legacy appliance! Save the legacy config id and cloud configuration(s) for future reference.</value>
   </data>
-  <data name="MigrationConfigFileNotFound" xml:space="preserve">
-    <value>Legacy appliance config not found</value>
-  </data>
   <data name="StartMigrationPlanSuccessMessage" xml:space="preserve">
     <value>Successfully started estimating the migration plan. You can check the migration plan status with Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan cmdlet.</value>
-  </data>
-  <data name="MigrationSchemaParsingError" xml:space="preserve">
-    <value>Error parsing Xml Schema. Schema Input : {0}. </value>
   </data>
   <data name="ServiceSecretEncryptionFailure" xml:space="preserve">
     <value>Unable to encrypt the secrets. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
   </data>
-  <data name="MigrationConfigDecryptionKeyNotFound" xml:space="preserve">
-    <value>Key Null or Empty</value>
+  <data name="VolumeContainerList" xml:space="preserve">
+    <value>List of volume containers:</value>
   </data>
-  <data name="MigrationConfigFileEmpty" xml:space="preserve">
-    <value>Config file is empty</value>
+  <data name="MigrationMsgDeviceFound" xml:space="preserve">
+    <value>Device id obtained {0}</value>
   </data>
-  <data name="MigrationExpectedACRNotFound" xml:space="preserve">
-    <value>Expected Access control record details not found, Access control record Id {0}</value>
+  <data name="MigrationMsgQueringDeviceId" xml:space="preserve">
+    <value>Getting device id for device {0}</value>
   </data>
-  <data name="MigrationExpectedSACNotFound" xml:space="preserve">
-    <value>Expected Storage account details not found, Storage account Id {0}</value>
+  <data name="MigrationMsgUploadingConfig" xml:space="preserve">
+    <value>Making service call to import config</value>
   </data>
-  <data name="MigrationExpectedVolumeContainerNotFound" xml:space="preserve">
-    <value>Expected Cloud Configuration details not found, Cloud Configuration Id {0}</value>
+  <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
+    <value>Unable to decrypt the config file. Please check your config decryption key.</value>
   </data>
-  <data name="MigrationExpectedVolumeNotFound" xml:space="preserve">
-    <value>Expected Volume details not found, Volume {0}</value>
-  </data>
-  <data name="MigrationAssociatedBandwidthSettingIncomplete" xml:space="preserve">
-    <value>Bandwidth Settings for below Cloud Configuration needs attention. Please fix the same after migration completes.</value>
-  </data>
-  <data name="MigrationBackupSchedulesNotMigrated" xml:space="preserve">
-    <value>Backup schedules cannot be migrated. Please update the schedules after migration completes.</value>
-  </data>
-  <data name="MigrationDefaultPolicyAssigned" xml:space="preserve">
-    <value>Default policies assigned to cloud configuration.</value>
-  </data>
-  <data name="MigrationInvalidPolicyNotSupported" xml:space="preserve">
-    <value>Cloud clone cannot be migrated. Below polices are ignored </value>
-  </data>
-  <data name="MigrationLocalSnapshotPolicyNotSupported" xml:space="preserve">
-    <value>Local snapshots cannot be migrated. Below polices are ignored</value>
-  </data>
-  <data name="MigrationManagementVersionNotFound" xml:space="preserve">
-    <value>Management Version not found in the config xml. Please reimport config and retry.</value>
-  </data>
-  <data name="MigrationManagementVersionNotSupported" xml:space="preserve">
-    <value>Management Version not supported, Current Version {0}, Minimum supported version {1}. Please import the config after updating the legacy appliance and retry.</value>
-  </data>
-  <data name="MigrationNonCloudSnapshotVDGIgnored" xml:space="preserve">
-    <value>Volume group not associated any Cloud snapshots are not migrated. Below volume groups are ignored</value>
-  </data>
-  <data name="MigrationPolicyUpdated" xml:space="preserve">
-    <value>Default policy {0} will be assigned to volume group {1}</value>
-  </data>
-  <data name="MigrationErrorInDisplayingDetails" xml:space="preserve">
-    <value>Unexpected error occured while displaying parsed details. Reimport config and retry or Contact microsoft support. Exception details {0}</value>
-  </data>
-  <data name="MigrationVolumeToVolumeContainerMapNotFound" xml:space="preserve">
-    <value>Cloud Configuration {0} cannot be correctly identified for volume {1}. Please reimport config and retry.</value>
-  </data>
-  <data name="MigrationVolumeContainerRelatedGroupHeader" xml:space="preserve">
-    <value>Available Cloud Configuration(s) for migration :</value>
-  </data>
-  <data name="MigrationVolumeContainerRelatedGroupingNotFound" xml:space="preserve">
-    <value>No volume container group list formed!</value>
-  </data>
-  <data name="MigrationMultiplePolicyIgnored" xml:space="preserve">
-    <value>Ignoring below policies. Already a policy is associated with corresponding volume group.</value>
-  </data>
-  <data name="MigrationErrorInParsingDisplayContent" xml:space="preserve">
-    <value>Unexpected error occured in displaying the output. You can continue to next step or contact Microsoft support.</value>
-  </data>
-  <data name="MigrationInfoNoDisplayContent" xml:space="preserve">
-    <value>No status obtained. Please retry after sometime.</value>
-  </data>
-  <data name="MigrationBackupSetNotFound" xml:space="preserve">
-    <value>No Backup sets found</value>
-  </data>
-  <data name="MigrationNoDataContainerInGivenStateOfMigration" xml:space="preserve">
-    <value>No Cloud Configuration(s) in {0} migration state</value>
-  </data>
-  <data name="MigrationConfirmMigrationStatusReturnedEmpty" xml:space="preserve">
-    <value>No migration status found for ConfigID {0}. Execute Confirm-AzureStorSimpleLegacyVolumeContainerConfirmStatus to confirm/rollback migration. </value>
+  <data name="MigrationConfigFileNotFound" xml:space="preserve">
+    <value>Legacy appliance config not found</value>
   </data>
   <data name="MigrationImportDataContainerSuccessMessage" xml:space="preserve">
     <value>Import started. You can check the import status with Get-AzureStorSimpleLegacyVolumeContainerStatus cmdlet.</value>
-  </data>
-  <data name="MigrationPlanConfigList" xml:space="preserve">
-    <value>List of LegacyConfig Ids on the resource:</value>
   </data>
   <data name="MigrationPlanNoConfigs" xml:space="preserve">
     <value>There are no configs on the resource.</value>
   </data>
   <data name="MigrationPlanNotFound" xml:space="preserve">
     <value>No migration plan found corresponding to the LegacyConfigId.</value>
-  </data>
-  <data name="VolumeContainerList" xml:space="preserve">
-    <value>List of volume containers:</value>
-  </data>
-  <data name="MigrationVolumeContainerRelatedGroupSubHeader" xml:space="preserve">
-    <value>Cloud Configuration(s) {0}</value>
-  </data>
-  <data name="MigrationDCWithGivenMigrationPlanStatus" xml:space="preserve">
-    <value>Cloud Configuration(s) with migration plan status {0} :</value>
-  </data>
-  <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
-    <value>Unable to decrypt the config file. Please check your config decryption key.</value>
-  </data>
-  <data name="MigrationRollbackRemoteCloneWarning" xml:space="preserve">
-    <value>If you have made a clone to a remote device, of any of the Cloud Configuration(s) which is being rolledback, please ensure you have taken a cloudsnap shot. </value>
-  </data>
-  <data name="MigrationRollbackConfirmation" xml:space="preserve">
-    <value>Do you want to continue Rollback</value>
-  </data>
-  <data name="MigrationAlertSettingNotMigrated" xml:space="preserve">
-    <value>Alert settings cannot be migrated. Please update alert settings after migration.</value>
-  </data>
-  <data name="MigrationTimeEstimationBWMsg" xml:space="preserve">
-    <value>These estimates are assuming {0} MBps bandwidth. Refer to migration guide to re-calculate for lower bandwidths.</value>
   </data>
 </root>

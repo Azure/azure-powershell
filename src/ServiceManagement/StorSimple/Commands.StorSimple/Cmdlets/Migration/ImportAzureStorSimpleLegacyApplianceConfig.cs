@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -44,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                WriteVerbose(string.Format("Getting device id for device {0}", TargetDeviceName));
+                WriteVerbose(string.Format(Resources.MigrationMsgQueringDeviceId, TargetDeviceName));
                 string deviceid = StorSimpleClient.GetDeviceId(TargetDeviceName);
                 if (!File.Exists(ConfigFilePath))
                 {
@@ -57,12 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 else
                 {
                     // creating the config file parser instance - parser decrypt the xml and parses the config xml
-                    WriteVerbose(string.Format("Device id obtained {0}", deviceid));
+                    WriteVerbose(string.Format(Resources.MigrationMsgDeviceFound, deviceid));
                     var secretsEncryptor = new ServiceSecretEncryptor(this.StorSimpleClient);
                     var parser = new LegacyApplianceConfigParser(secretsEncryptor); 
                     var legacyApplianceMetaData = new LegacyApplianceConfiguration();
 
-                    legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(filePath: ConfigFilePath, decryptionKey: ConfigDecryptionKey);
+                    legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(ConfigFilePath, ConfigDecryptionKey);
                     LegacyApplianceConfig config = legacyApplianceMetaData.Details;
                     legacyApplianceMetaData.LegacyConfigId = Guid.NewGuid().ToString();
                     config.InstanceId = config.Name = legacyApplianceMetaData.LegacyConfigId;
@@ -72,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     config.DeviceId = deviceid;
 
                     legacyApplianceMetaData.Result = Resources.ImportLegacyApplianceConfigSuccessMessage;
-                    WriteVerbose("Making service call to import config");
+                    WriteVerbose(Resources.MigrationMsgUploadingConfig);
                     var configList = ConfigSplitHelper.Split(legacyApplianceMetaData.Details);
                     foreach (var singleConfig in configList)
                     {

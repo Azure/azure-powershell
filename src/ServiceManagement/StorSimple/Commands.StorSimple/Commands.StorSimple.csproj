@@ -148,13 +148,9 @@
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerConfirmStatus.cs" />
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerStatus.cs" />
     <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyVolumeContainer.cs" />
-    <Compile Include="Helpers\Migration\ConfigSplitHelper.cs" />
-    <Compile Include="Helpers\Migration\MigrationServiceSecretsEncryptor.cs" />
-    <Compile Include="Helpers\Migration\LegacyApplianceConfigDecryptor.cs" />
     <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
     <Compile Include="Cmdlets\Migration\StartAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
     <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyApplianceConfig.cs" />
-    <Compile Include="Helpers\Migration\LegacyApplianceConfigParser.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
@@ -176,12 +172,8 @@
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
     <Compile Include="Library\MiscUtils.cs" />
-    <Compile Include="Models\ConfirmMigrationStatusModels.cs" />
-    <Compile Include="Models\MigrationModelCommon.cs" />
-    <Compile Include="Models\MigrationPlanModels.cs" />
-    <Compile Include="Models\ImportDataContainerModels.cs" />
+    <Compile Include="Models\MigrationServiceSecretsEncryptor.cs" />
     <Compile Include="Models\NetworkConfig.cs" />
-    <Compile Include="Models\LegacyApplianceConfigModel.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

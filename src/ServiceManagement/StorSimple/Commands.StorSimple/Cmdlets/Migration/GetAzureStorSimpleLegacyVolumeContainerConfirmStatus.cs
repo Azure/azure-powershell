@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Models;
-using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -26,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleLegacyVolumeContainerConfirmStatus : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
+        [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
@@ -35,33 +33,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var taskResult = StorSimpleClient.UpdateMigrationConfirmStatusSync(LegacyConfigId);
+                StorSimpleClient.UpdateMigrationConfirmStatusSync(LegacyConfigId);
                 var confirmStatus = StorSimpleClient.GetMigrationConfirmStatus(LegacyConfigId);
-
-                if (confirmStatus.ContainerConfirmStatus.Count > 0)
+                if (0 < confirmStatus.ContainerConfirmStatus.Count)
                 {
-                    var filteredContainerConfirmStatus = new List<ContainerConfirmStatus>();
-                    if (LegacyContainerNames == null)
+                    if (null != LegacyContainerNames)
                     {
-                        filteredContainerConfirmStatus = new List<ContainerConfirmStatus>(confirmStatus.ContainerConfirmStatus);
+                        var legacyContainerNameList = LegacyContainerNames.ToList();
+                        confirmStatus.ContainerConfirmStatus = confirmStatus.ContainerConfirmStatus.ToList().FindAll(
+                            status => legacyContainerNameList.Contains(status.CloudConfigurationName));
                     }
-                    else
-                    {
-                        var legacyContainerNameList = new List<string>(LegacyContainerNames.ToList().Distinct());
-                        foreach (var singleContainerConfirmStatus in confirmStatus.ContainerConfirmStatus)
-                        {
-                            if (legacyContainerNameList.Contains(singleContainerConfirmStatus.CloudConfigurationName))
-                            {
-                                filteredContainerConfirmStatus.Add(singleContainerConfirmStatus);
-                            }
-                        }    
-                    }
-
-                    confirmStatus.ContainerConfirmStatus = filteredContainerConfirmStatus;
                 }
 
-                var confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);
-                
+                var confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);                
                 WriteObject(confirmStatusMsg);
             }
             catch (Exception except)

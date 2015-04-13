@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -36,42 +36,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                var request = new MigrationPlanStartRequest();
-                request.ConfigId = LegacyConfigId;
-                request.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
+                var startMigrationPlanRequest = new MigrationPlanStartRequest();
+                startMigrationPlanRequest.ConfigId = LegacyConfigId;
+                startMigrationPlanRequest.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
                 
-                var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(request);
-                WriteObject(this.GetResultMessage(status));
+                var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);
+                MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
+                WriteObject(opFormatter.GetResultMessage(Resources.StartMigrationPlanSuccessMessage, status));
             }
             catch(Exception except)
             {
                 this.HandleException(except);
             }
-        }
-
-        /// <summary>
-        /// Gets Start Migration status job success message to be displayed with error string obtained from service
-        /// </summary>
-        /// <param name="status">migration job status</param>
-        private string GetResultMessage(MigrationJobStatus status)
-        {
-            StringBuilder builder = new StringBuilder();
-            if(null != status.MessageInfoList && status.MessageInfoList.Count > 0)
-            {
-                foreach(var msgInfo in status.MessageInfoList)
-                {
-                    if(!string.IsNullOrEmpty(msgInfo.Message))
-                    {
-                        builder.AppendLine(msgInfo.Message);
-                    }
-                }
-            }
-
-            else
-            {
-                builder.AppendLine(Resources.StartMigrationPlanSuccessMessage);
-            }
-            return builder.ToString();
         }
     }
 }

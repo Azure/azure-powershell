@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using Microsoft.WindowsAzure.Management.Scheduler.Models;
+using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -33,68 +32,29 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
-        public SwitchParameter SkipACRs
-        {
-            get { return skipACRs; }
-            set { skipACRs = value; }
-        }
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
+        public SwitchParameter SkipACRs { get; set; }
 
-        private bool skipACRs;
-
-        [Parameter(HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCByForce)]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-
-        private bool force;
+        [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCByForce)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                var request = new MigrationImportDataContainerRequest();
-                request.DataContainerNames = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
-                request.ForceOnOtherDevice = force;
-                request.SkipACRs = skipACRs;
+                var importDataContainerRequest = new MigrationImportDataContainerRequest();
+                importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
+                importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
+                importDataContainerRequest.SkipACRs = SkipACRs.IsPresent;
 
-                var migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, request);
-                WriteObject(this.GetResultMessage(migrationJobStatus));
+                var migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, importDataContainerRequest);
+                MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
+                WriteObject(opFormatter.GetResultMessage(Resources.MigrationImportDataContainerSuccessMessage, migrationJobStatus));
             }
-            catch(Exception except)
+            catch (Exception except)
             {
                 this.HandleException(except);
             }
-        }
-
-        /// <summary>
-        /// Gets Import data container job success message to be displayed with error string obtained from service
-        /// </summary>
-        /// <param name="status">migration job status</param>
-        private string GetResultMessage(MigrationJobStatus status)
-        {
-            StringBuilder builder = new StringBuilder();
-            bool errorMessage = false;
-            if (null != status.MessageInfoList)
-            {   
-                foreach (var msgInfo in status.MessageInfoList)
-                {
-                    if (!string.IsNullOrEmpty(msgInfo.Message))
-                    {
-                        builder.AppendLine(msgInfo.Message);
-                        errorMessage = true;
-                    }
-                }
-            }
-
-            if (!errorMessage)
-            {
-                builder.AppendLine(Resources.MigrationImportDataContainerSuccessMessage);
-            }
-
-            return builder.ToString();
         }
     }
 }

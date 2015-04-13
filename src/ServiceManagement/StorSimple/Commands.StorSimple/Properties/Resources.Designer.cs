@@ -547,65 +547,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert settings cannot be migrated. Please update alert settings after migration..
-        /// </summary>
-        internal static string MigrationAlertSettingNotMigrated {
-            get {
-                return ResourceManager.GetString("MigrationAlertSettingNotMigrated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bandwidth Settings for below Cloud Configuration needs attention. Please fix the same after migration completes..
-        /// </summary>
-        internal static string MigrationAssociatedBandwidthSettingIncomplete {
-            get {
-                return ResourceManager.GetString("MigrationAssociatedBandwidthSettingIncomplete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Backup schedules cannot be migrated. Please update the schedules after migration completes..
-        /// </summary>
-        internal static string MigrationBackupSchedulesNotMigrated {
-            get {
-                return ResourceManager.GetString("MigrationBackupSchedulesNotMigrated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Backup sets found.
-        /// </summary>
-        internal static string MigrationBackupSetNotFound {
-            get {
-                return ResourceManager.GetString("MigrationBackupSetNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Unable to decrypt the config file. Please check your config decryption key..
         /// </summary>
         internal static string MigrationConfigDecryptionFailed {
             get {
                 return ResourceManager.GetString("MigrationConfigDecryptionFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Key Null or Empty.
-        /// </summary>
-        internal static string MigrationConfigDecryptionKeyNotFound {
-            get {
-                return ResourceManager.GetString("MigrationConfigDecryptionKeyNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Config file is empty.
-        /// </summary>
-        internal static string MigrationConfigFileEmpty {
-            get {
-                return ResourceManager.GetString("MigrationConfigFileEmpty", resourceCulture);
             }
         }
         
@@ -619,87 +565,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No migration status found for ConfigID {0}. Execute Confirm-AzureStorSimpleLegacyVolumeContainerConfirmStatus to confirm/rollback migration. .
-        /// </summary>
-        internal static string MigrationConfirmMigrationStatusReturnedEmpty {
-            get {
-                return ResourceManager.GetString("MigrationConfirmMigrationStatusReturnedEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cloud Configuration(s) with migration plan status {0} :.
-        /// </summary>
-        internal static string MigrationDCWithGivenMigrationPlanStatus {
-            get {
-                return ResourceManager.GetString("MigrationDCWithGivenMigrationPlanStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default policies assigned to cloud configuration..
-        /// </summary>
-        internal static string MigrationDefaultPolicyAssigned {
-            get {
-                return ResourceManager.GetString("MigrationDefaultPolicyAssigned", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unexpected error occured while displaying parsed details. Reimport config and retry or Contact microsoft support. Exception details {0}.
-        /// </summary>
-        internal static string MigrationErrorInDisplayingDetails {
-            get {
-                return ResourceManager.GetString("MigrationErrorInDisplayingDetails", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unexpected error occured in displaying the output. You can continue to next step or contact Microsoft support..
-        /// </summary>
-        internal static string MigrationErrorInParsingDisplayContent {
-            get {
-                return ResourceManager.GetString("MigrationErrorInParsingDisplayContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expected Access control record details not found, Access control record Id {0}.
-        /// </summary>
-        internal static string MigrationExpectedACRNotFound {
-            get {
-                return ResourceManager.GetString("MigrationExpectedACRNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expected Storage account details not found, Storage account Id {0}.
-        /// </summary>
-        internal static string MigrationExpectedSACNotFound {
-            get {
-                return ResourceManager.GetString("MigrationExpectedSACNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expected Cloud Configuration details not found, Cloud Configuration Id {0}.
-        /// </summary>
-        internal static string MigrationExpectedVolumeContainerNotFound {
-            get {
-                return ResourceManager.GetString("MigrationExpectedVolumeContainerNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Expected Volume details not found, Volume {0}.
-        /// </summary>
-        internal static string MigrationExpectedVolumeNotFound {
-            get {
-                return ResourceManager.GetString("MigrationExpectedVolumeNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Import started. You can check the import status with Get-AzureStorSimpleLegacyVolumeContainerStatus cmdlet..
         /// </summary>
         internal static string MigrationImportDataContainerSuccessMessage {
@@ -709,83 +574,29 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No status obtained. Please retry after sometime..
+        ///   Looks up a localized string similar to Device id obtained {0}.
         /// </summary>
-        internal static string MigrationInfoNoDisplayContent {
+        internal static string MigrationMsgDeviceFound {
             get {
-                return ResourceManager.GetString("MigrationInfoNoDisplayContent", resourceCulture);
+                return ResourceManager.GetString("MigrationMsgDeviceFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloud clone cannot be migrated. Below polices are ignored .
+        ///   Looks up a localized string similar to Getting device id for device {0}.
         /// </summary>
-        internal static string MigrationInvalidPolicyNotSupported {
+        internal static string MigrationMsgQueringDeviceId {
             get {
-                return ResourceManager.GetString("MigrationInvalidPolicyNotSupported", resourceCulture);
+                return ResourceManager.GetString("MigrationMsgQueringDeviceId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Local snapshots cannot be migrated. Below polices are ignored.
+        ///   Looks up a localized string similar to Making service call to import config.
         /// </summary>
-        internal static string MigrationLocalSnapshotPolicyNotSupported {
+        internal static string MigrationMsgUploadingConfig {
             get {
-                return ResourceManager.GetString("MigrationLocalSnapshotPolicyNotSupported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Management Version not found in the config xml. Please reimport config and retry..
-        /// </summary>
-        internal static string MigrationManagementVersionNotFound {
-            get {
-                return ResourceManager.GetString("MigrationManagementVersionNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Management Version not supported, Current Version {0}, Minimum supported version {1}. Please import the config after updating the legacy appliance and retry..
-        /// </summary>
-        internal static string MigrationManagementVersionNotSupported {
-            get {
-                return ResourceManager.GetString("MigrationManagementVersionNotSupported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ignoring below policies. Already a policy is associated with corresponding volume group..
-        /// </summary>
-        internal static string MigrationMultiplePolicyIgnored {
-            get {
-                return ResourceManager.GetString("MigrationMultiplePolicyIgnored", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Cloud Configuration(s) in {0} migration state.
-        /// </summary>
-        internal static string MigrationNoDataContainerInGivenStateOfMigration {
-            get {
-                return ResourceManager.GetString("MigrationNoDataContainerInGivenStateOfMigration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Volume group not associated any Cloud snapshots are not migrated. Below volume groups are ignored.
-        /// </summary>
-        internal static string MigrationNonCloudSnapshotVDGIgnored {
-            get {
-                return ResourceManager.GetString("MigrationNonCloudSnapshotVDGIgnored", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to List of LegacyConfig Ids on the resource:.
-        /// </summary>
-        internal static string MigrationPlanConfigList {
-            get {
-                return ResourceManager.GetString("MigrationPlanConfigList", resourceCulture);
+                return ResourceManager.GetString("MigrationMsgUploadingConfig", resourceCulture);
             }
         }
         
@@ -804,87 +615,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string MigrationPlanNotFound {
             get {
                 return ResourceManager.GetString("MigrationPlanNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default policy {0} will be assigned to volume group {1}.
-        /// </summary>
-        internal static string MigrationPolicyUpdated {
-            get {
-                return ResourceManager.GetString("MigrationPolicyUpdated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do you want to continue Rollback.
-        /// </summary>
-        internal static string MigrationRollbackConfirmation {
-            get {
-                return ResourceManager.GetString("MigrationRollbackConfirmation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If you have made a clone to a remote device, of any of the Cloud Configuration(s) which is being rolledback, please ensure you have taken a cloudsnap shot. .
-        /// </summary>
-        internal static string MigrationRollbackRemoteCloneWarning {
-            get {
-                return ResourceManager.GetString("MigrationRollbackRemoteCloneWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error parsing Xml Schema. Schema Input : {0}. .
-        /// </summary>
-        internal static string MigrationSchemaParsingError {
-            get {
-                return ResourceManager.GetString("MigrationSchemaParsingError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to These estimates are assuming {0} MBps bandwidth. Refer to migration guide to re-calculate for lower bandwidths..
-        /// </summary>
-        internal static string MigrationTimeEstimationBWMsg {
-            get {
-                return ResourceManager.GetString("MigrationTimeEstimationBWMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Available Cloud Configuration(s) for migration :.
-        /// </summary>
-        internal static string MigrationVolumeContainerRelatedGroupHeader {
-            get {
-                return ResourceManager.GetString("MigrationVolumeContainerRelatedGroupHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No volume container group list formed!.
-        /// </summary>
-        internal static string MigrationVolumeContainerRelatedGroupingNotFound {
-            get {
-                return ResourceManager.GetString("MigrationVolumeContainerRelatedGroupingNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cloud Configuration(s) {0}.
-        /// </summary>
-        internal static string MigrationVolumeContainerRelatedGroupSubHeader {
-            get {
-                return ResourceManager.GetString("MigrationVolumeContainerRelatedGroupSubHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cloud Configuration {0} cannot be correctly identified for volume {1}. Please reimport config and retry..
-        /// </summary>
-        internal static string MigrationVolumeToVolumeContainerMapNotFound {
-            get {
-                return ResourceManager.GetString("MigrationVolumeToVolumeContainerMapNotFound", resourceCulture);
             }
         }
         
