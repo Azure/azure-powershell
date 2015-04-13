@@ -1130,7 +1130,8 @@ The output of this Cmdlet is suitable to be processed by the Export-csv Cmdlet.<
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1142,7 +1143,8 @@ The output of this Cmdlet is suitable to be processed by the Export-csv Cmdlet.<
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1170,8 +1172,7 @@ foreach($e in $s2) { Export-csv -Path ./metrics.csv -input $e -Append -NoTypeInf
 				<maml:para>&quot;Name&quot;,&quot;TimestampUTC&quot;,&quot;Count&quot;,&quot;Last&quot;,&quot;Maximum&quot;,&quot;Minimum&quot;,&quot;Total&quot;,&quot;Average&quot;,&quot;StartTimeUTC&quot;,&quot;EndTimeUTC&quot;,&quot;TimeGrain&quot;,&quot;Unit&quot;,&quot;DimensionName&quot;,&quot;DimensionValue&quot;,&quot;ResourceId&quot;
 &quot;AverageResponseTime&quot;,&quot;2015-03-20 16:15:00&quot;,&quot;1&quot;,,,,&quot;0&quot;,&quot;0&quot;,&quot;2015-03-20 16:14:00&quot;,&quot;2015-03-20 17:14:35&quot;,&quot;00:01:00&quot;,&quot;Seconds&quot;,,,&quot;/subscriptions/b91eb07f-89c3-40be-bf3b-40fdcba10f6c/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website1&quot;
 &quot;AverageResponseTime&quot;,&quot;2015-03-20 16:17:00&quot;,&quot;1&quot;,,,,&quot;0&quot;,&quot;0&quot;,&quot;2015-03-20 16:14:00&quot;,&quot;2015-03-20 17:14:35&quot;,&quot;00:01:00&quot;,&quot;Seconds&quot;,,,&quot;/subscriptions/b91eb07f-89c3-40be-bf3b-40fdcba10f6c/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website1&quot;
-&quot;AverageResponseTime&quot;,&quot;2015-03-20 16:18:00&quot;,&quot;1&quot;,,,,&quot;0&quot;,&quot;0&quot;,&quot;2015-03-20 16:14:00&quot;,&quot;2015-03-20 17:14:35&quot;,&quot;00:01:00&quot;,&quot;Seconds&quot;,,,&quot;/subscriptions/b91eb07f-89c3-40be-bf3b-40fdcba10f6c/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website1&quot;
-</maml:para>
+&quot;AverageResponseTime&quot;,&quot;2015-03-20 16:18:00&quot;,&quot;1&quot;,,,,&quot;0&quot;,&quot;0&quot;,&quot;2015-03-20 16:14:00&quot;,&quot;2015-03-20 17:14:35&quot;,&quot;00:01:00&quot;,&quot;Seconds&quot;,,,&quot;/subscriptions/b91eb07f-89c3-40be-bf3b-40fdcba10f6c/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website1&quot;</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -1192,7 +1193,7 @@ foreach($e in $s2) { Export-csv -Path ./metrics.csv -input $e -Append -NoTypeInf
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText></maml:linkText>
+			<maml:linkText>Unknown</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -4216,7 +4217,8 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4228,7 +4230,8 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4246,8 +4249,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>get-metricdefinitions -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2
-</dev:code>
+			<dev:code>get-metricdefinitions -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2</dev:code>
 			<dev:remarks>
 				<maml:para>Gets all the metrics definitions for the given resource (identified by the ResourceId)</maml:para>
 				<maml:para />
@@ -4440,8 +4442,7 @@ Unit                   : Bytes</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EndTime</maml:name>
 				<maml:description>
-					<maml:para>Latest Time/Date to search for metric values.
-</maml:para>
+					<maml:para>Latest Time/Date to search for metric values.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
@@ -4508,8 +4509,7 @@ Unit                   : Bytes</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EndTime</maml:name>
 			<maml:description>
-				<maml:para>Latest Time/Date to search for metric values.
-</maml:para>
+				<maml:para>Latest Time/Date to search for metric values.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
@@ -4563,7 +4563,8 @@ Unit                   : Bytes</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4575,7 +4576,8 @@ Unit                   : Bytes</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4620,8 +4622,7 @@ Properties     : {}
 ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
 StartTime      : 3/20/2015 5:40:00 PM
 TimeGrain      : 00:01:00
-Unit           : Bytes
-</maml:para>
+Unit           : Bytes</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4674,8 +4675,7 @@ EndTime        : 3/20/2015 6:43:33 PM
 ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
 StartTime      : 3/20/2015 5:43:00 PM
 TimeGrain      : 00:01:00
-Unit           : Seconds
-</maml:para>
+Unit           : Seconds</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4744,8 +4744,7 @@ EndTime        : 3/20/2015 6:47:56 PM
 ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
 StartTime      : 3/20/2015 5:47:00 PM
 TimeGrain      : 00:01:00
-Unit           : Count
-</maml:para>
+Unit           : Count</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -4774,6 +4773,205 @@ Unit           : Count
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Get-UsageMetrics</command:name>
+		<maml:description>
+			<maml:para>Retrieves the usage metric values of a resource.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>UsageMetrics</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Retrieves the usage metric values of a resource that comply with certain criteria.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-UsageMetrics</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceId</maml:name>
+				<maml:description>
+					<maml:para>The id of the resource the metric is associated to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ApiVersion</maml:name>
+				<maml:description>
+					<maml:para>Api version string, e.g.: 2014-04-01 (default values), accepted by the resource provider.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StartTime</maml:name>
+				<maml:description>
+					<maml:para>Earliest Date/Time to search for metric values.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>EndTime</maml:name>
+				<maml:description>
+					<maml:para>Latest Time/Date to search for metric values.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MetricNames</maml:name>
+				<maml:description>
+					<maml:para>An array of names of metrics to retrieve their values.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para>In-memory profile (AzureProfile).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceId</maml:name>
+			<maml:description>
+				<maml:para>The id of the resource the metric is associated to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ApiVersion</maml:name>
+			<maml:description>
+				<maml:para>Api version string, e.g.: 2014-04-01 (default values), accepted by the resource provider.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StartTime</maml:name>
+			<maml:description>
+				<maml:para>Earliest Date/Time to search for metric values.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>EndTime - 1 hour</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>EndTime</maml:name>
+			<maml:description>
+				<maml:para>Latest Time/Date to search for metric values.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Local current date/time.</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>MetricNames</maml:name>
+			<maml:description>
+				<maml:para>An array of names of metrics to retrieve their values.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+			<dev:type>
+				<maml:name>String[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>In-memory profile (AzureProfile).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Querying with resaourceId only  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>get-usagemetrics -res /subscriptions/bcdeb07f-1c43-20be-1f3b-4f0febc10f5b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/johnsmith</dev:code>
+			<dev:remarks>
+				<maml:para>Query the usage metrics for a website</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Online Version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkID=397618</maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>New-AutoscaleProfile</command:name>
 		<maml:description>
 			<maml:para>Creates an autoscale profile.</maml:para>
@@ -4789,6 +4987,86 @@ Unit           : Count
 		<maml:para>Creates an autoscale profile.</maml:para>
 	</maml:description>
 	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AutoscaleProfile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>DefaultCapacity</maml:name>
+				<maml:description>
+					<maml:para>The default capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MaximumCapacity</maml:name>
+				<maml:description>
+					<maml:para>The maximum capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>MinimumCapacity</maml:name>
+				<maml:description>
+					<maml:para>The minimum capacity.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RecurrenceFrequency</maml:name>
+				<maml:description>
+					<maml:para>The frequency of recurrence. The allowed values are: None, Second, Minute, Hour, Day, Week, Month, Year. Not all those values are supported.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">RecurrenceFrequency</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleDays</maml:name>
+				<maml:description>
+					<maml:para>A list of days scheduled.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleHours</maml:name>
+				<maml:description>
+					<maml:para>A list of scheduled hours.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleMinutes</maml:name>
+				<maml:description>
+					<maml:para>List of scheduled minutes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ScheduleTimeZone</maml:name>
+				<maml:description>
+					<maml:para>The time zone of the schedule.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Rules</maml:name>
+				<maml:description>
+					<maml:para>The list of rules to add to the newly created profile.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para>In-memory profile (AzureProfile).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>New-AutoscaleProfile</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
@@ -4900,86 +5178,6 @@ Unit           : Count
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AutoscaleProfile</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>The name of the profile.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DefaultCapacity</maml:name>
-				<maml:description>
-					<maml:para>The default capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MaximumCapacity</maml:name>
-				<maml:description>
-					<maml:para>The maximum capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>MinimumCapacity</maml:name>
-				<maml:description>
-					<maml:para>The minimum capacity.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>RecurrenceFrequency</maml:name>
-				<maml:description>
-					<maml:para>The frequency of recurrence. The allowed values are: None, Second, Minute, Hour, Day, Week, Month, Year. Not all those values are supported.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">RecurrenceFrequency</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleDays</maml:name>
-				<maml:description>
-					<maml:para>A list of days scheduled.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleHours</maml:name>
-				<maml:description>
-					<maml:para>A list of scheduled hours.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleMinutes</maml:name>
-				<maml:description>
-					<maml:para>List of scheduled minutes.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[Int32]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ScheduleTimeZone</maml:name>
-				<maml:description>
-					<maml:para>The time zone of the schedule.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Rules</maml:name>
-				<maml:description>
-					<maml:para>The list of rules to add to the newly created profile.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para>In-memory profile (AzureProfile).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
@@ -5026,66 +5224,6 @@ Unit           : Count
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StartTimeWindow</maml:name>
-			<maml:description>
-				<maml:para>The start of the time window.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>EndTimeWindow</maml:name>
-			<maml:description>
-				<maml:para>The end of the time window.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-			<dev:type>
-				<maml:name>DateTime</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TimeWindowTimeZone</maml:name>
-			<maml:description>
-				<maml:para>The time zone of the time window.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Rules</maml:name>
-			<maml:description>
-				<maml:para>The list of rules to add to the newly created profile.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
-			<dev:type>
-				<maml:name>List`1[ScaleRule]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para>In-memory profile (AzureProfile).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			<dev:type>
-				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5142,6 +5280,66 @@ Unit           : Count
 			<maml:name>ScheduleTimeZone</maml:name>
 			<maml:description>
 				<maml:para>The time zone of the schedule.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Rules</maml:name>
+			<maml:description>
+				<maml:para>The list of rules to add to the newly created profile.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">List`1[ScaleRule]</command:parameterValue>
+			<dev:type>
+				<maml:name>List`1[ScaleRule]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para>In-memory profile (AzureProfile).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StartTimeWindow</maml:name>
+			<maml:description>
+				<maml:para>The start of the time window.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>EndTimeWindow</maml:name>
+			<maml:description>
+				<maml:para>The end of the time window.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>TimeWindowTimeZone</maml:name>
+			<maml:description>
+				<maml:para>The time zone of the time window.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>

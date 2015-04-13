@@ -157,6 +157,21 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
+        public static UsageMetricListResponse InitializeUsageMetricResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            // EventData eventData = Utilities.CreateFakeEvent();
+            return new UsageMetricListResponse
+            {
+                UsageMetricCollection = new UsageMetricCollection
+                {
+                    Value = new List<UsageMetric>()
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
         {
             // Calling with detailed output
