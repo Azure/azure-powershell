@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         /// Handle exception
         /// </summary>
         /// <param name="exception">Handles the exceptions</param>
-        internal override void HandleException(Exception exception)
+        private override void HandleException(Exception exception)
         {
             // Parser throws missing member exception if any expected fields are missing, handling this as special case.
             if (typeof(MissingMemberException) == exception.GetType())
