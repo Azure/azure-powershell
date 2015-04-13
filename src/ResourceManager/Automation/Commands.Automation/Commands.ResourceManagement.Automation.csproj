@@ -134,6 +134,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\PowerShellJsonConverter.cs" />
+    <Compile Include="Common\RequestSettings.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />

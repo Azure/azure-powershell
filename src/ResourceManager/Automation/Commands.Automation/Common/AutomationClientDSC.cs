@@ -166,202 +166,217 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public Model.DscCompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
-            var job = this.automationManagementClient.CompilationJobs.Get(resourceGroupName, automationAccountName, Id).DscCompilationJob;
-            if (job == null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                throw new ResourceNotFoundException(typeof(Job),
-                    string.Format(CultureInfo.CurrentCulture, Resources.CompilationJobNotFound, Id));
-            }
+                var job = this.automationManagementClient.CompilationJobs.Get(resourceGroupName, automationAccountName, Id).DscCompilationJob;
+                if (job == null)
+                {
+                    throw new ResourceNotFoundException(typeof(Job),
+                        string.Format(CultureInfo.CurrentCulture, Resources.CompilationJobNotFound, Id));
+                }
 
-            return new Model.DscCompilationJob(automationAccountName, job);
+                return new Model.DscCompilationJob(automationAccountName, job);
+            }
         }
 
         public IEnumerable<Model.DscCompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            IEnumerable<AutomationManagement.Models.DscCompilationJob> jobModels;
-
-            if (startTime.HasValue && endTime.HasValue)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response =
-                            this.automationManagementClient.CompilationJobs.List(
+                IEnumerable<AutomationManagement.Models.DscCompilationJob> jobModels;
+
+                if (startTime.HasValue && endTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.CompilationJobs.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscCompilationJobListParameters
+                                    {
+                                        StartTime = FormatDateTime(startTime.Value),
+                                        EndTime = FormatDateTime(endTime.Value),
+                                        ConfigurationName = configurationName,
+                                        Status = jobStatus,
+                                    });
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
+                else if (startTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                         skipToken =>
+                         {
+                             var response =
+                                  this.automationManagementClient.CompilationJobs.List(
+                                     resourceGroupName,
+                                     automationAccountName,
+                                       new AutomationManagement.Models.DscCompilationJobListParameters
+                                       {
+                                           StartTime = FormatDateTime(startTime.Value),
+                                           ConfigurationName = configurationName,
+                                           Status = jobStatus
+                                       });
+                             return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                         });
+                }
+                else if (endTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.CompilationJobs.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscCompilationJobListParameters
+                                    {
+                                        EndTime = FormatDateTime(endTime.Value),
+                                        ConfigurationName = configurationName,
+                                        Status = jobStatus,
+                                    });
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
+                else
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response = this.automationManagementClient.CompilationJobs.List(
                                 resourceGroupName,
                                 automationAccountName,
                                 new AutomationManagement.Models.DscCompilationJobListParameters
                                 {
-                                    StartTime = FormatDateTime(startTime.Value),
-                                    EndTime = FormatDateTime(endTime.Value),
-                                    ConfigurationName = configurationName,
                                     Status = jobStatus,
+                                    ConfigurationName = configurationName
                                 });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
-            else if (startTime.HasValue)
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                     skipToken =>
-                     {
-                         var response =
-                              this.automationManagementClient.CompilationJobs.List(
-                                 resourceGroupName,
-                                 automationAccountName,
-                                   new AutomationManagement.Models.DscCompilationJobListParameters
-                                   {
-                                       StartTime = FormatDateTime(startTime.Value),
-                                       ConfigurationName = configurationName,
-                                       Status = jobStatus
-                                   });
-                         return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                     });
-            }
-            else if (endTime.HasValue)
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response =
-                            this.automationManagementClient.CompilationJobs.List(
-                                resourceGroupName,
-                                automationAccountName,
-                                new AutomationManagement.Models.DscCompilationJobListParameters
-                                {
-                                    EndTime = FormatDateTime(endTime.Value),
-                                    ConfigurationName = configurationName,
-                                    Status = jobStatus,
-                                });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
-            else
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response = this.automationManagementClient.CompilationJobs.List(
-                            resourceGroupName,
-                            automationAccountName,
-                            new AutomationManagement.Models.DscCompilationJobListParameters
-                            {
-                                Status = jobStatus,
-                                ConfigurationName = configurationName
-                            });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
 
-            return jobModels.Select(jobModel => new Commands.Automation.Model.DscCompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Commands.Automation.Model.DscCompilationJob(automationAccountName, jobModel));
+            }
         }
 
         public IEnumerable<Model.DscCompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
-            IEnumerable<AutomationManagement.Models.DscCompilationJob> jobModels;
-
-            if (startTime.HasValue && endTime.HasValue)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response =
-                            this.automationManagementClient.CompilationJobs.List(
+                IEnumerable<AutomationManagement.Models.DscCompilationJob> jobModels;
+
+                if (startTime.HasValue && endTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.CompilationJobs.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscCompilationJobListParameters
+                                    {
+                                        StartTime = FormatDateTime(startTime.Value),
+                                        EndTime = FormatDateTime(endTime.Value),
+                                        Status = jobStatus,
+                                    });
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
+                else if (startTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                         skipToken =>
+                         {
+                             var response =
+                                  this.automationManagementClient.CompilationJobs.List(
+                                       resourceGroupName,
+                                       automationAccountName,
+                                       new AutomationManagement.Models.DscCompilationJobListParameters
+                                       {
+                                           StartTime = FormatDateTime(startTime.Value),
+                                           Status = jobStatus,
+                                       });
+                             return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                         });
+                }
+                else if (endTime.HasValue)
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.CompilationJobs.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscCompilationJobListParameters
+                                    {
+                                        EndTime = FormatDateTime(endTime.Value),
+                                        Status = jobStatus,
+                                    });
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
+                else
+                {
+                    jobModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response = this.automationManagementClient.CompilationJobs.List(
                                 resourceGroupName,
                                 automationAccountName,
-                                new AutomationManagement.Models.DscCompilationJobListParameters
-                                {
-                                    StartTime = FormatDateTime(startTime.Value),
-                                    EndTime = FormatDateTime(endTime.Value),
-                                    Status = jobStatus,
-                                });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
-            else if (startTime.HasValue)
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                     skipToken =>
-                     {
-                         var response =
-                              this.automationManagementClient.CompilationJobs.List(
-                                   resourceGroupName,
-                                   automationAccountName,
-                                   new AutomationManagement.Models.DscCompilationJobListParameters
-                                   {
-                                       StartTime = FormatDateTime(startTime.Value),
-                                       Status = jobStatus,
-                                   });
-                         return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                     });
-            }
-            else if (endTime.HasValue)
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response =
-                            this.automationManagementClient.CompilationJobs.List(
-                                resourceGroupName,
-                                automationAccountName,
-                                new AutomationManagement.Models.DscCompilationJobListParameters
-                                {
-                                    EndTime = FormatDateTime(endTime.Value),
-                                    Status = jobStatus,
-                                });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
-            else
-            {
-                jobModels = AutomationManagementClient.ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response = this.automationManagementClient.CompilationJobs.List(
-                            resourceGroupName,
-                            automationAccountName,
-                            new AutomationManagement.Models.DscCompilationJobListParameters { Status = jobStatus });
-                        return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
-                    });
-            }
+                                new AutomationManagement.Models.DscCompilationJobListParameters { Status = jobStatus });
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscCompilationJob>(response, response.DscCompilationJobs);
+                        });
+                }
 
-            return jobModels.Select(jobModel => new Model.DscCompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Model.DscCompilationJob(automationAccountName, jobModel));
+            }
         }
 
         public Model.DscCompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
         {
-            var createJobParameters = new DscCompilationJobCreateParameters()
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                Properties = new DscCompilationJobCreateProperties()
+                var createJobParameters = new DscCompilationJobCreateParameters()
                 {
-                    Configuration = new DscConfigurationAssociationProperty()
+                    Properties = new DscCompilationJobCreateProperties()
                     {
-                        Name = configurationName
-                    },
-                    Parameters = this.ProcessConfigurationParameters(resourceGroupName, automationAccountName, configurationName, parameters)
-                }
-            };
-            
-            var job = this.automationManagementClient.CompilationJobs.Compile(resourceGroupName, automationAccountName, createJobParameters);
+                        Configuration = new DscConfigurationAssociationProperty()
+                        {
+                            Name = configurationName
+                        },
+                        Parameters = this.ProcessConfigurationParameters(resourceGroupName, automationAccountName, configurationName, parameters)
+                    }
+                };
 
-            return new Model.DscCompilationJob(automationAccountName, job.DscCompilationJob);
+                var job = this.automationManagementClient.CompilationJobs.Create(resourceGroupName, automationAccountName, createJobParameters);
+
+                return new Model.DscCompilationJob(automationAccountName, job.DscCompilationJob);
+            }
         }
 
         public IEnumerable<Model.JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountName, Guid jobId, DateTimeOffset? time, string streamType)
         {
-            var listParams = new AutomationManagement.Models.JobStreamListParameters();
-
-            if (time.HasValue)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                listParams.Time = this.FormatDateTime(time.Value);
-            }
+                var listParams = new AutomationManagement.Models.JobStreamListParameters();
 
-            if (streamType != null)
-            {
-                listParams.StreamType = streamType;
-            }
+                if (time.HasValue)
+                {
+                    listParams.Time = this.FormatDateTime(time.Value);
+                }
 
-            var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
-            return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
+                if (streamType != null)
+                {
+                    listParams.StreamType = streamType;
+                }
+
+                var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
+                return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
+            }
         }
 
         #endregion
