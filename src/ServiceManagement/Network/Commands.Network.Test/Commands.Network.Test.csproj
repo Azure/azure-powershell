@@ -95,6 +95,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.9.3.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
@@ -173,6 +176,14 @@
     <ProjectReference Include="..\Commands.Network\Commands.Network.csproj">
       <Project>{46c06ed8-43d9-41fd-b73b-41547d9c04e1}</Project>
       <Name>Commands.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
+      <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
+      <Name>Commands.Common.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
+      <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>
+      <Name>Commands.ServiceManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
