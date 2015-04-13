@@ -127,6 +127,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set to either Apps or Desktop."
+        )]
+        [ValidateNotNullOrEmpty]
+        public CollectionMode? ResourceType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // register the subscription for this service if it has not been before
@@ -142,7 +149,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 PlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
-                Mode = CollectionMode.Apps
+                Mode = ResourceType ?? CollectionMode.Apps
             };
             OperationResultWithTrackingId response = null;
 
