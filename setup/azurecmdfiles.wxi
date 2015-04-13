@@ -106,6 +106,9 @@
                         <Component Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" Guid="*">
                             <File Id="fil3E1AD32F04CFF244686C4DD4C07D2F19" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll" />
                         </Component>
+                        <Component Id="cmp7F2719BE7827D3FDDF69D7ACB6135115" Guid="*">
+                            <File Id="fil5F7831CF20346B8506EC74012F655FD2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll-Help.psd1" />
+                        </Component>
                         <Component Id="cmpD5624BF8D78E80B0526773DE6E4FD2D2" Guid="*">
                             <File Id="fil81AE4D49FE4C59DD6526396037D718F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll-Help.xml" />
                         </Component>
@@ -3041,6 +3044,7 @@
             <ComponentRef Id="cmp2E3CCDF954A1857E106A7052882B0C1F" />
             <ComponentRef Id="cmp1A9472BC4D15B6030BB6F05D11229806" />
             <ComponentRef Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" />
+            <ComponentRef Id="cmp7F2719BE7827D3FDDF69D7ACB6135115" />
             <ComponentRef Id="cmpD5624BF8D78E80B0526773DE6E4FD2D2" />
             <ComponentRef Id="cmp62942A24352ADC631A6C9DAE39D62F70" />
             <ComponentRef Id="cmp479E4B1EF0A49C9845DB071F542F5392" />
