@@ -16,8 +16,13 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
+using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using System.Net;
+    using Hyak.Common;
+
     [Cmdlet(VerbsCommon.New, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
@@ -33,17 +38,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string RelativeDnsName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of the DNS configurations.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Ttl value of the DNS configurations.")]
         [ValidateNotNullOrEmpty]
         public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The traffic routing method of the profile.")]
-        [ValidateSet("Performance", "Weighted", "Priority", IgnoreCase = false)]
+        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The protocol of the monitor.")]
-        [ValidateSet("HTTP", "HTTPS", IgnoreCase = false)]
+        [ValidateSet(Constants.HTTP, Constants.HTTPS, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string MonitorProtocol { get; set; }
 
@@ -57,17 +62,37 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                this.ResourceGroupName, 
-                this.Name, 
-                this.TrafficRoutingMethod, 
-                this.RelativeDnsName, 
-                this.Ttl,
-                this.MonitorProtocol,
-                this.MonitorPort,
-                this.MonitorPath);
+            // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
+            // Since our create operation is implemented using PUT, it will overwrite by default.
+            // Therefore, we need to check whether the Profile exists before we actually try to create it.
+            try
+            {
+                this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 
-            this.WriteObject(profile);
+                throw new PSArgumentException(string.Format(ProjectResources.Error_CreateExistingProfile, this.Name, this.ResourceGroupName));
+            }
+            catch (CloudException exception)
+            {
+                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                {
+                    TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
+                    this.ResourceGroupName,
+                    this.Name,
+                    this.TrafficRoutingMethod,
+                    this.RelativeDnsName,
+                    this.Ttl,
+                    this.MonitorProtocol,
+                    this.MonitorPort,
+                    this.MonitorPath);
+
+                    this.WriteVerbose(ProjectResources.Success);
+                    this.WriteObject(profile);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
     }
 }

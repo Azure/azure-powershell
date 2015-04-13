@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using System.Net;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
@@ -66,6 +67,33 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 });
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile.Properties);
+        }
+
+        public TrafficManagerProfile GetTrafficManagerProfile(string resourceGroupName, string profileName)
+        {
+            ProfileGetResponse response = this.TrafficManagerManagementClient.Profiles.Get(resourceGroupName, profileName);
+
+            return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile.Properties);
+        }
+
+        public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
+        {
+            ProfileUpdateResponse response = this.TrafficManagerManagementClient.Profiles.Update(
+                profile.ResourceGroupName,
+                profile.Name, 
+                new ProfileUpdateParameters
+                {
+                    Profile = profile.ToSDKProfile()
+                });
+
+            return TrafficManagerClient.GetPowershellTrafficManagerProfile(profile.ResourceGroupName, profile.Name, response.Profile.Properties);
+        }
+
+        public bool DeleteTrafficManagerProfile(TrafficManagerProfile profile)
+        {
+            AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Delete(profile.ResourceGroupName, profile.Name);
+
+            return response.StatusCode.Equals(HttpStatusCode.NoContent) || response.StatusCode.Equals(HttpStatusCode.OK);
         }
 
         private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, ProfileProperties mamlProfileProperties)

@@ -16,32 +16,17 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
 {
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.TrafficManager;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class RemoveAzureTrafficManagerEndpointConfigTests
+    public class AddAzureTrafficManagerEndpointConfigTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RemoveAzureTrafficManagerEndpointConfig_ThrowsExceptionWhenNullEndpoints()
+        public void AddAzureTrafficManagerEndpointConfig_ThrowsExceptionIfAddingExistingEndpoint()
         {
-            var cmdlet = new RemoveAzureTrafficManagerEndpointConfig
-            {
-                Profile = new TrafficManagerProfile(),
-                EndpointName = "Name"
-            };
-
-            var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Equal("The profile provided does not have any endpoints with name 'Name'.", exception.Message);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RemoveAzureTrafficManagerEndpointConfig_ThrowsExceptionWhenNoEndpointWithName()
-        {
-            var cmdlet = new RemoveAzureTrafficManagerEndpointConfig
+            var cmdlet = new AddAzureTrafficManagerEndpointConfig
             {
                 Profile = new TrafficManagerProfile
                 {
@@ -49,7 +34,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
                     {
                         new Endpoint
                         {
-                            Name = "My external endpoint"
+                            Name = "Name"
                         }
                     }
                 },
@@ -57,7 +42,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
             };
 
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Equal("The profile provided does not have any endpoints with name 'Name'.", exception.Message);
+            Assert.Equal("There is already an existing endpoint with name 'Name'.", exception.Message);
         }
     }
 }

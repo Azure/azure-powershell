@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Azure.Management.TrafficManager.Models;
 
     public class TrafficManagerProfile
     {
@@ -34,6 +36,30 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string MonitorPath { get; set; }
 
-        public List<Endpoint> Endpoints { get; set; } 
+        public List<Endpoint> Endpoints { get; set; }
+
+        public Profile ToSDKProfile()
+        {
+            return new Profile
+            {
+                Name = this.Name,
+                Location = TrafficManagerClient.ProfileResourceLocation,
+                Properties = new ProfileProperties
+                {
+                    TrafficRoutingMethod = this.TrafficRoutingMethod,
+                    DnsConfig = new DnsConfig
+                    {
+                        RelativeName = this.RelativeDnsName,
+                        Ttl = this.Ttl
+                    },
+                    MonitorConfig = new MonitorConfig
+                    {
+                        Protocol = this.MonitorProtocol,
+                        Port = this.MonitorPort,
+                        Path = this.MonitorPath
+                    }
+                }
+            };
+        }
     }
 }

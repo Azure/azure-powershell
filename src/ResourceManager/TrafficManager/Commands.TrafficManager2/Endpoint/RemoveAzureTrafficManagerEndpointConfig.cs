@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EndpointNotFound, this.EndpointName));
             }
 
+            this.WriteVerbose(ProjectResources.Success);
             this.WriteObject(this.Profile);
         }
     }

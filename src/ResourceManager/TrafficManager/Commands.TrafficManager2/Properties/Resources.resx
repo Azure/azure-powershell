@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Confirm_RemoveProfile" xml:space="preserve">
+    <value>Are you sure you want to permanently remove profile '{0}'?</value>
+  </data>
+  <data name="Error_AddExistingEndpoint" xml:space="preserve">
+    <value>There is already an existing endpoint with name '{0}'.</value>
+  </data>
+  <data name="Error_CreateExistingProfile" xml:space="preserve">
+    <value>There is already an existing profile with name '{0}' in the resource group '{1}'</value>
+  </data>
   <data name="Error_EndpointNotFound" xml:space="preserve">
-    <value>The profile provided does not have any endpoints with name {0}.</value>
+    <value>The profile provided does not have any endpoints with name '{0}'.</value>
+  </data>
+  <data name="Progress_RemovingProfile" xml:space="preserve">
+    <value>Removing profile ...</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
+  </data>
+  <data name="Success_RemoveProfile" xml:space="preserve">
+    <value>Profile '{0}' was removed from resource group '{1}'.</value>
   </data>
 </root>

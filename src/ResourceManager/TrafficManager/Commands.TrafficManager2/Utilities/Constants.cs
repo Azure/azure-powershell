@@ -12,37 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.TrafficManager.Models
+namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
-    using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
-    public class Endpoint
+    public class Constants
     {
-        public string Name { get; set; }
+        public const string AzureEndpoint = "AzureEndpoint";
+        public const string ExternalEndpoint = "ExternalEndpoint";
+        public const string NestedEndpoint = "NestedEndpoint";
 
-        private string type;
+        public const string StatusEnabled = "Enabled";
+        public const string StatusDisabled = "Disabled";
 
-        public string Type
-        {
-            get { return this.type; }
+        public const string Performance = "Performance";
+        public const string Weighted = "Weighted";
+        public const string Priority = "Priority";
 
-            set
-            {
-                if (!value.StartsWith(Constants.ProfileType))
-                {
-                    this.type = string.Format("{0}/{1}", Constants.ProfileType, value);
-                }
-            }
-        }
+        public const string HTTP = "HTTP";
+        public const string HTTPS = "HTTPS";
 
-        public string Target { get; set; }
-
-        public string EndpointStatus { get; set; }
-
-        public uint? Weight { get; set; }
-
-        public uint? Priority { get; set; }
-
-        public string Location { get; set; }
+        public const string ProfileType = "Microsoft.Networking/TrafficManagerProfiles";
     }
 }

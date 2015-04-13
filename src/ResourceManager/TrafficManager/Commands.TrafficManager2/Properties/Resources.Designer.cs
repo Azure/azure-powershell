@@ -61,11 +61,47 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The profile provided does not have any endpoints with name {0}..
+        ///   Looks up a localized string similar to Are you sure you want to permanently remove profile &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_RemoveProfile {
+            get {
+                return ResourceManager.GetString("Confirm_RemoveProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string Error_AddExistingEndpoint {
+            get {
+                return ResourceManager.GetString("Error_AddExistingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;.
+        /// </summary>
+        internal static string Error_CreateExistingProfile {
+            get {
+                return ResourceManager.GetString("Error_CreateExistingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The profile provided does not have any endpoints with name &apos;{0}&apos;..
         /// </summary>
         internal static string Error_EndpointNotFound {
             get {
                 return ResourceManager.GetString("Error_EndpointNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing profile ....
+        /// </summary>
+        internal static string Progress_RemovingProfile {
+            get {
+                return ResourceManager.GetString("Progress_RemovingProfile", resourceCulture);
             }
         }
         
@@ -75,6 +111,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string Success_RemoveProfile {
+            get {
+                return ResourceManager.GetString("Success_RemoveProfile", resourceCulture);
             }
         }
     }

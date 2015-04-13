@@ -16,8 +16,13 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
+using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     [Cmdlet(VerbsCommon.Add, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
     public class AddAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
     {
@@ -30,7 +35,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public new TrafficManagerProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the endpoint.")]
-        [ValidateSet("AzureEndpoint", "ExternalEndpoint", "NestedEndpoint", IgnoreCase = false)]
+        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
@@ -39,7 +44,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string Target { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the endpoint.")]
-        [ValidateSet("Enabled", "Disabled", IgnoreCase = false)]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string EndpointStatus { get; set; }
 
@@ -57,18 +62,30 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            // TODO: 
-            /*TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                this.ResourceGroupName, 
-                this.Name, 
-                this.TrafficRoutingMethod, 
-                this.RelativeDnsName, 
-                this.Ttl,
-                this.MonitorProtocol,
-                this.MonitorPort,
-                this.MonitorPath);
+            if (this.Profile.Endpoints == null)
+            {
+                this.Profile.Endpoints = new List<Endpoint>();
+            }
 
-            this.WriteObject(profile);*/
+            if (this.Profile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.Error_AddExistingEndpoint, this.EndpointName));
+            }
+
+            this.Profile.Endpoints.Add(
+                new Endpoint
+                {
+                    Name = this.EndpointName,
+                    Type = this.Type,
+                    Target = this.Target,
+                    EndpointStatus = this.EndpointStatus,
+                    Weight = this.Weight,
+                    Priority = this.Priority,
+                    Location = this.EndpointLocation
+                });
+
+            this.WriteVerbose(ProjectResources.Success);
+            this.WriteObject(this.Profile);
         }
     }
 }

@@ -16,6 +16,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
+using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet(VerbsCommon.Set, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
@@ -27,18 +29,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            // TODO: 
-            /*TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                this.ResourceGroupName, 
-                this.Name, 
-                this.TrafficRoutingMethod, 
-                this.RelativeDnsName, 
-                this.Ttl,
-                this.MonitorProtocol,
-                this.MonitorPort,
-                this.MonitorPath);
+            TrafficManagerProfile profile = this.TrafficManagerClient.SetTrafficManagerProfile(this.Profile);
 
-            this.WriteObject(profile);*/
+            this.WriteVerbose(ProjectResources.Success);
+            this.WriteObject(profile);
         }
     }
 }

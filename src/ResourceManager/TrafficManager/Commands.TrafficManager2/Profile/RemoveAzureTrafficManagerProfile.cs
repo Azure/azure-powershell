@@ -16,16 +16,18 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
+using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -33,20 +35,39 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public new TrafficManagerProfile Profile { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // TODO: 
-            /*TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                this.ResourceGroupName, 
-                this.Name, 
-                this.TrafficRoutingMethod, 
-                this.RelativeDnsName, 
-                this.Ttl,
-                this.MonitorProtocol,
-                this.MonitorPort,
-                this.MonitorPath);
+            var deleted = false;
+            TrafficManagerProfile profileToDelete = null;
 
-            this.WriteObject(profile);*/
+            if (this.ParameterSetName == "Fields")
+            {
+                profileToDelete = new TrafficManagerProfile
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName
+                };
+            }
+            else if (this.ParameterSetName == "Object")
+            {
+                profileToDelete = this.Profile;
+            }
+
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(ProjectResources.Confirm_RemoveProfile, profileToDelete.Name),
+                ProjectResources.Progress_RemovingProfile,
+                this.Name,
+                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete); });
+
+            if (deleted)
+            {
+                this.WriteVerbose(ProjectResources.Success);
+                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
+            }
         }
     }
 }
