@@ -22,15 +22,15 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Join, "AzureCoreResourceProvider")]
-    public class JoinAzureCoreResourceProvider : NetworkBaseClient
+    public class JoinAzureCoreResourceProvider : NetworkBaseCmdlet
     {
         [Alias("ResourceProviderName")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource name.")]
-        [ValidateSet("Mircosoft.Network",
-                     "Mircosoft.Compute",
-                     "Mircosoft.Storage",
+        [ValidateSet("Microsoft.Network",
+                     "Microsoft.Compute",
+                     "Microsoft.Storage",
                      IgnoreCase = true)]
         public virtual string Name { get; set; }
 

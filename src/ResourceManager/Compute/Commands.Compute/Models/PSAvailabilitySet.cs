@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Id = avSet.Id,
                 Location = avSet.Location,
                 Statuses = avSet.Statuses,
-                PlatformFaultDomainCount = avSet.PlatformFaultDomainCount,
-                PlatformUpdateDomainCount = avSet.PlatformUpdateDomainCount,
-                VirtualMachines = avSet.VirtualMachinesReferences
+                PlatformFaultDomainCount = avSet == null ? null : avSet.PlatformFaultDomainCount,
+                PlatformUpdateDomainCount = avSet == null ? null : avSet.PlatformUpdateDomainCount,
+                VirtualMachines = avSet == null ? null : avSet.VirtualMachinesReferences
             };
 
             return result;

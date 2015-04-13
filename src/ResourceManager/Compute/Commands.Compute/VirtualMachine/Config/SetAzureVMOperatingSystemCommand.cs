@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Compute.Models;
-using System;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
-                AdminPassword = SecureStringExtension.ConvertToUnsecureString(this.Credential.Password),
+                AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
                 WindowsConfiguration = !this.ProvisionVMAgent ? null : new WindowsConfiguration
                 {
                     ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?)true : null

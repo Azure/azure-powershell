@@ -2224,9 +2224,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.InternalLoadBalancerContext>(new GetAzureInternalLoadBalancerCmdletInfo(serviceName));
         }
 
-        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm)
+        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm, string domainNameLabel = null)
         {
-            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm));
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm, domainNameLabel));
         }
 
         internal SM.AssignPublicIP GetAzurePublicIpName(string publicIpName, SM.IPersistentVM vm)

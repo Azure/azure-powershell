@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Storage;
-using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {

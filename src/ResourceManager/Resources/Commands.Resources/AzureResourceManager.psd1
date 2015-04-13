@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.16'
+ModuleVersion = '0.8.16.1'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -69,7 +69,8 @@ FormatsToProcess = @(
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
-    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml'
+    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -86,7 +87,8 @@ NestedModules = @(
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',
     '.\Websites\Microsoft.Azure.Commands.Websites.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
-    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll'
+    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
 )
 
 # Functions to export from this module

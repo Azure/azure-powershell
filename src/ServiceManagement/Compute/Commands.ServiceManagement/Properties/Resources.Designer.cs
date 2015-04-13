@@ -1295,6 +1295,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specified PublicIP not found in NetworkConfiguration.
+        /// </summary>
+        public static string PublicIPNotFoundInNetworkConfiguration {
+            get {
+                return ResourceManager.GetString("PublicIPNotFoundInNetworkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {

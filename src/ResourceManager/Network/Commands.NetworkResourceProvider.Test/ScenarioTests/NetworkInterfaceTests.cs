@@ -25,6 +25,13 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUD");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceCRUDUsingId()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDUsingId");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

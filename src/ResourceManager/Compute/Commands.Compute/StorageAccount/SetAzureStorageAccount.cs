@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using Common;
-    using Models;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>

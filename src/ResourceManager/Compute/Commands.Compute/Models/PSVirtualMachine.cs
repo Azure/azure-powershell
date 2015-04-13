@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public VirtualMachineChildResources Resources { get; set; }
+
         public VirtualMachineInstanceView Status { get; set; }
 
         public HardwareProfile HardwareProfile { get; set; }

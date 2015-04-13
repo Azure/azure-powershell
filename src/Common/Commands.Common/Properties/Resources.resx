@@ -1358,10 +1358,4 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="AzureProfileMustNotBeNull" xml:space="preserve">
     <value>Selected profile must not be null.</value>
   </data>
-  <data name="InvalidTagFormat" xml:space="preserve">
-    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
-  </data>
-  <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
-    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
-  </data>
 </root>

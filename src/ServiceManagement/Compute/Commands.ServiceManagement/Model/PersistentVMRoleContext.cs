@@ -39,6 +39,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public List<ResourceExtensionStatus> ResourceExtensionStatusList { get; set; }
         public string PublicIPAddress { get; set; }
         public string PublicIPName { get; set; }
+        public string PublicIPDomainNameLabel { get; set; }
+        public List<string> PublicIPFqdns { get; set; }
         public NetworkInterfaceList NetworkInterfaces { get; set; }
         public string VirtualNetworkName { get; set; }
 
