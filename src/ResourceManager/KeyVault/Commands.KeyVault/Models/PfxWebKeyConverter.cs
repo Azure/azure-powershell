@@ -18,7 +18,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -32,17 +32,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
         {
             if (CanProcess(fileInfo, password))
-            {
                 return Convert(fileInfo.FullName, password);
-            }
             else if (next != null)
-            {
                 return next.ConvertKeyFromFile(fileInfo, password);
-            }
             else
-            {
                 throw new ArgumentException(string.Format(Resources.UnsupportedFileFormat, fileInfo.Name));
-            }            
         }
 
         private bool CanProcess(FileInfo fileInfo, SecureString password)
@@ -61,28 +55,41 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             X509Certificate2 certificate;
 
             if (pfxPassword != null)
-            {
                 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
-            }
             else
-            {
                 certificate = new X509Certificate2(pfxFileName);
-            }
-
+          
             if (!certificate.HasPrivateKey)
-            {
                 throw new ArgumentException(string.Format(Resources.InvalidKeyBlob, "pfx"));
-            }
-
+          
             var key = certificate.PrivateKey as RSA;
 
             if (key == null)
-            {
                 throw new ArgumentException(string.Format(Resources.InvalidKeyBlob, "pfx"));
-            }
+
+            return CreateJWK(key);
+        }
+
+        private static JsonWebKey CreateJWK(RSA rsa)
+        {
+            if (rsa == null)
+                throw new ArgumentNullException("rsa");
+            RSAParameters rsaParameters = rsa.ExportParameters(true);
+            var webKey = new JsonWebKey() 
+            { 
+                Kty = JsonWebKeyType.Rsa,
+                E = rsaParameters.Exponent,
+                N = rsaParameters.Modulus,
+                D = rsaParameters.D,
+                DP = rsaParameters.DP,
+                DQ = rsaParameters.DQ,
+                QI = rsaParameters.InverseQ,
+                P = rsaParameters.P,
+                Q = rsaParameters.Q
+            };
             
-            return new JsonWebKey(key, true);
-        }             
+            return webKey;
+        }
 
         private IWebKeyConverter next;
         private const string PfxFileExtension = ".pfx";

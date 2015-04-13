@@ -150,8 +150,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Test", "ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\Commands.RecoveryServices.Test.csproj", "{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.ResourceManager", "ResourceManager\Common\Commands.Common.ResourceManager\Commands.Common.ResourceManager.csproj", "{AF98DEE9-F6AE-4E00-825A-5B9BC1052CED}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns", "ResourceManager\Dns\Commands.Dns\Commands.Dns.csproj", "{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "ResourceManager\Dns\Commands.Dns.Test\Commands.Dns.Test.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
@@ -386,10 +384,6 @@ Global
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF98DEE9-F6AE-4E00-825A-5B9BC1052CED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF98DEE9-F6AE-4E00-825A-5B9BC1052CED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF98DEE9-F6AE-4E00-825A-5B9BC1052CED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF98DEE9-F6AE-4E00-825A-5B9BC1052CED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
