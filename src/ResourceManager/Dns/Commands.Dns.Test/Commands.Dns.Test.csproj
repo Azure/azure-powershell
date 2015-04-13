@@ -166,7 +166,7 @@
       <Name>Commands.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Dns\Commands.Dns.csproj">
-      <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
+      <Project>{3cae1b57-ffec-4945-a6c5-6e5e8dea4ba9}</Project>
       <Name>Commands.Dns</Name>
     </ProjectReference>
   </ItemGroup>
