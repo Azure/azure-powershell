@@ -96,8 +96,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Azure.Management.Network">
       <HintPath>..\..\..\lib\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
