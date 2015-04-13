@@ -161,6 +161,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 netInterface.NicIPv6Settings.IPv6Gateway = netConfig.IPv6Gateway.ToString();
             }
+
+            // Make sure that the interface gets enabled as well
+            netInterface.IsEnabled = true;
         }
 
         /// <summary>
