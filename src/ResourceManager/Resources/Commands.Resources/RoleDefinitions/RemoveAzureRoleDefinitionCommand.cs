@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRoleDefinition"), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]
