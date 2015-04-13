@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet(VerbsCommon.Remove, "AzureDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class RemoveAzureDnsRecordConfig : DnsBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set from which to remove the record.")]
         [ValidateNotNullOrEmpty]
         public DnsRecordSet RecordSet { get; set; }
 
