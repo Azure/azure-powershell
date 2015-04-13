@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// starts azure automation compilation job
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureAutomationDscCompilationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByConfigurationName)]
-    [OutputType(typeof(DscCompilationJob))]
+    [OutputType(typeof(CompilationJob))]
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            DscCompilationJob job = null;
+            CompilationJob job = null;
 
             job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters);
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
     /// <summary>
     /// The Dsc Compilation Job
     /// </summary>
-    public class DscCompilationJob
+    public class CompilationJob
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscCompilationJob"/> class.
+        /// Initializes a new instance of the <see cref="CompilationJob"/> class.
         /// </summary>
         /// <param name="accountName">
         /// The account name.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public DscCompilationJob(string accountName, AutomationManagement.Models.DscCompilationJob job)
+        public CompilationJob(string accountName, AutomationManagement.Models.DscCompilationJob job)
         {
             Requires.Argument("job", job).NotNull();
             Requires.Argument("accountName", accountName).NotNull();
@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
             foreach (var kvp in job.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
                 CompareOptions.IgnoreCase)))
             {
-                this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                this.JobParameters.Add(kvp.Key, (object)(kvp.Value));
             }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscCompilationJob"/> class.
+        /// Initializes a new instance of the <see cref="CompilationJob"/> class.
         /// </summary>
-        public DscCompilationJob()
+        public CompilationJob()
         {
         }
 

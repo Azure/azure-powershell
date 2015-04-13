@@ -294,4 +294,8 @@
     <value>Invalid configuration parameters.</value>
     <comment>Automation</comment>
   </data>
+  <data name="NodeConfigurationNotFound" xml:space="preserve">
+    <value>NodeConfiguration {0} not found.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

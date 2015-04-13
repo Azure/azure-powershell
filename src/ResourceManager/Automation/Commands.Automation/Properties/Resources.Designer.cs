@@ -241,6 +241,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NodeConfiguration {0} not found..
+        /// </summary>
+        internal static string NodeConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("NodeConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is empty..
         /// </summary>
         internal static string ParameterEmpty {

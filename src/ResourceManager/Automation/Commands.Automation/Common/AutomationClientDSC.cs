@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region compilationjob
 
-        public Model.DscCompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid Id)
+        public Model.CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -175,11 +175,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         string.Format(CultureInfo.CurrentCulture, Resources.CompilationJobNotFound, Id));
                 }
 
-                return new Model.DscCompilationJob(automationAccountName, job);
+                return new Model.CompilationJob(automationAccountName, job);
             }
         }
 
-        public IEnumerable<Model.DscCompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
+        public IEnumerable<Model.CompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -257,11 +257,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         });
                 }
 
-                return jobModels.Select(jobModel => new Commands.Automation.Model.DscCompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Commands.Automation.Model.CompilationJob(automationAccountName, jobModel));
             }
         }
 
-        public IEnumerable<Model.DscCompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
+        public IEnumerable<Model.CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -332,11 +332,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         });
                 }
 
-                return jobModels.Select(jobModel => new Model.DscCompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Model.CompilationJob(automationAccountName, jobModel));
             }
         }
 
-        public Model.DscCompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
+        public Model.CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 var job = this.automationManagementClient.CompilationJobs.Create(resourceGroupName, automationAccountName, createJobParameters);
 
-                return new Model.DscCompilationJob(automationAccountName, job.DscCompilationJob);
+                return new Model.CompilationJob(automationAccountName, job.DscCompilationJob);
             }
         }
 
@@ -376,6 +376,70 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
                 return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
+            }
+        }
+
+        #endregion
+
+        #region node configuration
+        public Model.NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                var nodeConfiguration = this.automationManagementClient.NodeConfigurations.Get(resourceGroupName, automationAccountName, nodeConfigurationName).NodeConfiguration;
+                if (nodeConfiguration == null)
+                {
+                    throw new ResourceNotFoundException(typeof(NodeConfiguration),
+                        string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, nodeConfigurationName));
+                }
+
+                return new Model.NodeConfiguration(automationAccountName, nodeConfiguration);
+            }
+        }
+
+        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                IEnumerable<AutomationManagement.Models.DscNodeConfiguration> nodeConfigModels;
+
+                nodeConfigModels = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.NodeConfigurations.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new AutomationManagement.Models.DscNodeConfigurationListParameters
+                            {
+                                ConfigurationName = configurationName
+                            });
+                        return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
+                    });
+
+
+                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel));
+            }
+        }
+
+        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                IEnumerable<AutomationManagement.Models.DscNodeConfiguration> nodeConfigModels;
+
+                nodeConfigModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response = this.automationManagementClient.NodeConfigurations.List(
+                                resourceGroupName,
+                                automationAccountName,
+                                new AutomationManagement.Models.DscNodeConfigurationListParameters());
+
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
+                        });
+
+
+                return nodeConfigModels.Select(nodeConfigModel => new Model.NodeConfiguration(automationAccountName, nodeConfigModel));
             }
         }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Gets Azure automation compilation job
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationDscCompilationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
-    [OutputType(typeof(DscCompilationJob))]
+    [OutputType(typeof(CompilationJob))]
     public class GetAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<DscCompilationJob> jobs;
+            IEnumerable<CompilationJob> jobs;
 
             if (this.Id != null && !Guid.Empty.Equals(this.Id))
             {
                 // ByJobId 
-                jobs = new List<DscCompilationJob> { this.AutomationClient.GetCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.Id) };
+                jobs = new List<CompilationJob> { this.AutomationClient.GetCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.Id) };
             }
             else if (this.ConfigurationName != null)
             {
