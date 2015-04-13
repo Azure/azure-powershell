@@ -21,8 +21,8 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using Hyak.Common;
 
 
-    public class AutomationClient : IAutomationClient
+    public partial class AutomationClient : IAutomationClient
     {
         private readonly AutomationManagement.IAutomationManagementClient automationManagementClient;
 
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Name = automationAccountName,
                 Properties = new AutomationAccountCreateOrUpdateProperties()
                 {
-                   Sku = new Sku()
-                   {
-                        Name  = String.IsNullOrWhiteSpace(plan) ? Constants.DefaultPlan : plan,
-                   }
+                    Sku = new Sku()
+                    {
+                        Name = String.IsNullOrWhiteSpace(plan) ? Constants.DefaultPlan : plan,
+                    }
                 },
                 Tags = accountTags
             };
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         Name = String.IsNullOrWhiteSpace(plan) ? automationAccount.Plan : plan,
                     }
                 },
-                Tags = accountTags, 
+                Tags = accountTags,
             };
 
             var account =
@@ -190,5 +190,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         #endregion
+       
     }
 }

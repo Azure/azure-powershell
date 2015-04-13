@@ -69,6 +69,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByRunbookName = "ByRunbookName";
 
         /// <summary>
+        /// The Configuration name parameter set.
+        /// </summary>
+        internal const string ByConfigurationName = "ByConfigurationName";
+
+        /// <summary>
+        /// The Node Configuration name parameter set.
+        /// </summary>
+        internal const string ByNodeConfigurationName = "ByNodeConfigurationName";
+
+        /// <summary>
         /// The Schedule name parameter set.
         /// </summary>
         internal const string ByScheduleName = "ByScheduleName";

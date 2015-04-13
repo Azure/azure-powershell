@@ -38,5 +38,42 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
         
         #endregion
+
+        #region Compilationjobs
+
+        CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid id);
+
+        IEnumerable<CompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters);
+
+        IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
+        #endregion
+
+        #region NodeConfiguration
+        NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName);
+
+        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName);
+
+        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName);
+        #endregion
+
+        #region Configurations
+
+        IEnumerable<DscConfiguration> ListAutomationConfigurations(string resourceGroupName, string automationAccountName);
+
+        DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
+
+        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string configurationName, string sourcePath, string description, bool? logVerbose);
+
+        #endregion
+
+        #region AgentRegistrationInforamtion
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
+
+        Microsoft.Azure.Commands.Automation.Model.AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
+        #endregion
     }
 }
