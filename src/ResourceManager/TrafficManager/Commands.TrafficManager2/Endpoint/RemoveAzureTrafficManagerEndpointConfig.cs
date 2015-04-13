@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
         [ValidateNotNullOrEmpty]
         public new TrafficManagerProfile Profile { get; set; }
 
