@@ -39,12 +39,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var startMigrationPlanRequest = new MigrationPlanStartRequest();
                 startMigrationPlanRequest.ConfigId = LegacyConfigId;
                 startMigrationPlanRequest.DataContainerNameList = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
-                
+
                 var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
                 WriteObject(opFormatter.GetResultMessage(Resources.StartMigrationPlanSuccessMessage, status));
             }
-            catch(Exception except)
+            catch (Exception except)
             {
                 this.HandleException(except);
             }

@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -77,7 +73,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         WriteObject(migrationPlanMsg);
                     }
                 }
-
             }
             catch (Exception except)
             {
