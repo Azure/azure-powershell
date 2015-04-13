@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
@@ -84,11 +81,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
+            
             if (deviceId == null)
             {
-                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                WriteObject(null);
-                return false;
+                throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
             }
 
             ProcessAddSchedules();

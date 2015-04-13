@@ -46,8 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var sac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (sac == null)
                 {
-                    WriteVerbose(string.Format(Resources.SACNotFoundWithName, StorageAccountName));
-                    WriteObject(null);
+                    throw new ArgumentException(string.Format(Resources.SACNotFoundWithName, StorageAccountName));
                 }
                 else
                 {

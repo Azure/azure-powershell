@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using System.Net;

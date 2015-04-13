@@ -74,13 +74,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 targetDeviceId = StorSimpleClient.GetDeviceId(TargetDeviceName);
                                 if (deviceId == null)
                                 {
-                                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
-                                        StorSimpleContext.ResourceName, DeviceName));
+                                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                                 }
                                 if (targetDeviceId == null)
                                 {
-                                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, 
-                                        StorSimpleContext.ResourceName, TargetDeviceName));
+                                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
                                 }
                                 break;
                             default:

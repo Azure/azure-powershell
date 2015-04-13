@@ -117,16 +117,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                     if (this.sourceDeviceId == null)
                     {
-                        WriteVerbose(Resources.NoDeviceFoundWithGivenNameInResourceMessage);
-                        return false;
+                        throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, SourceDeviceName));
                     }
 
                     this.targetDeviceId = StorSimpleClient.GetDeviceId(TargetDeviceName);
 
                     if (this.targetDeviceId == null)
                     {
-                        WriteVerbose(Resources.NoDeviceFoundWithGivenNameInResourceMessage);
-                        return false;
+                        throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
                     }
                     break;
             }
@@ -134,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             return true;
         }
 
-    }//End Class
+    }
 
-}//End namespace
+}
 

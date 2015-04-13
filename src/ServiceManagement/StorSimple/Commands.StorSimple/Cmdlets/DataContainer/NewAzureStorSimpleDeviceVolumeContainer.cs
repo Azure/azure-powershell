@@ -60,9 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceid == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 }
 
                 if(EncryptionEnabled == true && (string.IsNullOrEmpty(EncryptionKey) || !IsValidAsciiString(EncryptionKey)))

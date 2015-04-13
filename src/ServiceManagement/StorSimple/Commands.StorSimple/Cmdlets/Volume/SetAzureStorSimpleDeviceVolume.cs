@@ -69,9 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 }
 
                 VirtualDisk diskDetails = null;
@@ -90,9 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                 if (diskDetails == null)
                 {
-                    WriteVerbose(Resources.NotFoundMessageVirtualDisk);
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(Resources.NotFoundMessageVirtualDisk);
                 }
                 
                 if (Online != null)

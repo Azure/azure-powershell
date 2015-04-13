@@ -48,15 +48,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         }
                         else
                         {
-                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
+                            throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenIdInResourceMessage, StorSimpleContext.ResourceName, DeviceId));
                         }
                         break;
                     case StorSimpleCmdletParameterSet.IdentifyByName:
                         deviceid = StorSimpleClient.GetDeviceId(DeviceName);
                         if (deviceid == null)
                         {
-                            WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
-                                StorSimpleContext.ResourceName, DeviceName));
+                            throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                         }
                         break;
                     default:
