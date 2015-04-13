@@ -14,26 +14,20 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System.Collections.Generic;
-
-    public class TrafficManagerProfile
+    public class Endpoint
     {
         public string Name { get; set; }
 
-        public string ResourceGroupName { get; set; }
+        public string Type { get; set; }
 
-        public string RelativeDnsName { get; set; }
+        public string Target { get; set; }
 
-        public uint Ttl { get; set; }
+        public string EndpointStatus { get; set; }
 
-        public string TrafficRoutingMethod { get; set; }
+        public uint? Weight { get; set; }
 
-        public string MonitorProtocol { get; set; }
+        public uint? Priority { get; set; }
 
-        public uint MonitorPort { get; set; }
-
-        public string MonitorPath { get; set; }
-
-        public List<Endpoint> Endpoints { get; set; } 
+        public string Location { get; set; }
     }
 }

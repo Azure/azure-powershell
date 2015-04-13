@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The profile provided does not have any endpoints with name {0}..
+        /// </summary>
+        internal static string Error_EndpointNotFound {
+            get {
+                return ResourceManager.GetString("Error_EndpointNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success!.
         /// </summary>
         internal static string Success {

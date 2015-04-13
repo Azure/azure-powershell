@@ -16,6 +16,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
+using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
@@ -31,18 +33,19 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            // TODO: 
-            /*TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                this.ResourceGroupName, 
-                this.Name, 
-                this.TrafficRoutingMethod, 
-                this.RelativeDnsName, 
-                this.Ttl,
-                this.MonitorProtocol,
-                this.MonitorPort,
-                this.MonitorPath);
+            if (this.Profile.Endpoints == null)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.Error_EndpointNotFound, this.EndpointName));
+            }
 
-            this.WriteObject(profile);*/
+            int endpointsRemoved = this.Profile.Endpoints.RemoveAll(endpoint => string.Equals(this.EndpointName, endpoint.Name));
+
+            if (endpointsRemoved == 0)
+            {
+                throw new PSArgumentException(string.Format(ProjectResources.Error_EndpointNotFound, this.EndpointName));
+            }
+
+            this.WriteObject(this.Profile);
         }
     }
 }
