@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
 
     public class NetworkClient
     {
-        private readonly NetworkManagementClient client;
-        private readonly ComputeManagementClient computeClient;
-        private readonly ManagementClient managementClient;
+        private readonly INetworkManagementClient client;
+        private readonly IComputeManagementClient computeClient;
+        private readonly IManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
 
         public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
                    commandRuntime)
         {   
         }
-        public NetworkClient(NetworkManagementClient client, ComputeManagementClient computeClient, ManagementClient managementClient, ICommandRuntime commandRuntime)
+        public NetworkClient(INetworkManagementClient client, IComputeManagementClient computeClient, IManagementClient managementClient, ICommandRuntime commandRuntime)
         {
             this.client = client;
             this.computeClient = computeClient;
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.DeleteRule(securityGroupName, securityRuleName);
         }
 
-        public NetworkSecurityGroupGetForSubnetResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
         {
             return client.NetworkSecurityGroups.GetForSubnet(virtualNetworkName, subnetName);
         }
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string subnetName, string virtualNetworkName)
         {
-            var parameters = new NetworkSecurityGroupAddToSubnetParameters()
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
             {
                 Name = networkSecurityGroupName
             };

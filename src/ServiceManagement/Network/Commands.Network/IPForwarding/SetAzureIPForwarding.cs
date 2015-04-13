@@ -18,12 +18,12 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 namespace Microsoft.Azure.Commands.Network.IPForwarding
 {
     [Cmdlet(VerbsCommon.Set, "AzureIPForwarding"), OutputType(typeof(bool))]
-    public class SetAzureIPForwardingTo : NetworkCmdletBase
+    public class SetAzureIPForwarding : NetworkCmdletBase
     {
-        protected const string EnableIaaSIPForwardingParamSet = "EnableIaaSIPForwardingParamSet";
-        protected const string DisableIaaSIPForwardingParamSet = "DisableIaaSIPForwardingParamSet";
-        protected const string EnableSlotIPForwardingParamSet = "EnableSlotIPForwardingParamSet";
-        protected const string DisableSlotIPForwardingParamSet = "DisableSlotIPForwardingParamSet";
+        public const string EnableIaaSIPForwardingParamSet = "EnableIaaSIPForwardingParamSet";
+        public const string DisableIaaSIPForwardingParamSet = "DisableIaaSIPForwardingParamSet";
+        public const string EnableSlotIPForwardingParamSet = "EnableSlotIPForwardingParamSet";
+        public const string DisableSlotIPForwardingParamSet = "DisableSlotIPForwardingParamSet";
         private string obtainedDeploymentName { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = EnableIaaSIPForwardingParamSet)]
