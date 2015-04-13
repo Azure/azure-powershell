@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(Constants.DataAccess, Constants.SchemaChanges, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.All, Constants.None, IgnoreCase = false)]
+        [ValidateSet(Constants.PlainSQL_Success, Constants.PlainSQL_Failure, Constants.ParameterizedSQL_Success, Constants.ParameterizedSQL_Failure, Constants.StoredProcedure_Success, Constants.StoredProcedure_Failure, Constants.Login_Success, Constants.Login_Failure, Constants.TransactionManagement_Success, Constants.TransactionManagement_Failure, Constants.All, Constants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -80,12 +80,18 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             ProcessShortcuts();
             if (EventType != null) // the user provided event types to audit
             {
-                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>(){
-                    {Constants.DataAccess, AuditEventType.DataAccess},
-                    {Constants.DataChanges, AuditEventType.DataChanges},
-                    {Constants.SecurityExceptions, AuditEventType.SecurityExceptions},
-                    {Constants.RevokePermissions, AuditEventType.RevokePermissions},
-                    {Constants.SchemaChanges, AuditEventType.SchemaChanges}
+                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>
+                {
+                    {Constants.PlainSQL_Success, AuditEventType.PlainSQL_Success},
+                    {Constants.PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
+                    {Constants.ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
+                    {Constants.ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
+                    {Constants.StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
+                    {Constants.StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
+                    {Constants.Login_Success, AuditEventType.Login_Success},
+                    {Constants.Login_Failure, AuditEventType.Login_Failure},
+                    {Constants.TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
+                    {Constants.TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
                 };
                 model.EventType = EventType.Select(s => events[s]).ToArray();
             }
@@ -109,7 +115,19 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
                 }
                 else if (EventType[0] == Constants.All)
                 {
-                    EventType = new string[] { Constants.DataAccess, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.SchemaChanges };
+                    EventType = new[]
+                    {
+                        Constants.PlainSQL_Success,
+                        Constants.PlainSQL_Failure,
+                        Constants.ParameterizedSQL_Success,
+                        Constants.ParameterizedSQL_Failure,
+                        Constants.StoredProcedure_Success,
+                        Constants.StoredProcedure_Failure,
+                        Constants.Login_Success,
+                        Constants.Login_Failure,
+                        Constants.TransactionManagement_Success,
+                        Constants.TransactionManagement_Failure
+                    };
                 }
             }
             else
