@@ -29,7 +29,31 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public new TrafficManagerProfile Profile { get; set; }
 
-        // TODO: add parameters
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the endpoint.")]
+        [ValidateSet("AzureEndpoint", "ExternalEndpoint", "NestedEndpoint", IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string Type { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public string Target { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the endpoint.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string EndpointStatus { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The weight of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public uint? Weight { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public uint? Priority { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public string EndpointLocation { get; set; }
 
         public override void ExecuteCmdlet()
         {

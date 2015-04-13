@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpointConfig.cs" />
     <Compile Include="Endpoint\AddAzureTrafficManagerEndpointConfig.cs" />
+    <Compile Include="Models\Endpoint.cs" />
     <Compile Include="Models\TrafficManagerProfile.cs" />
     <Compile Include="Profile\RemoveAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\SetAzureTrafficManagerProfile.cs" />
