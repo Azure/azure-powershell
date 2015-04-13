@@ -235,6 +235,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 throw new ArgumentException(ProjectResources.InvalidRoleDefinitionName);
             }
+
+            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
+            }
+
+            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidActions);
+            }
         }
 
         /// <summary>

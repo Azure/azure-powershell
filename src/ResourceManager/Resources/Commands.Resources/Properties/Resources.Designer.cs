@@ -142,6 +142,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Actions.
+        /// </summary>
+        internal static string InvalidActions {
+            get {
+                return ResourceManager.GetString("InvalidActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for AssignableScopes.
+        /// </summary>
+        internal static string InvalidAssignableScopes {
+            get {
+                return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource identifier..
         /// </summary>
         internal static string InvalidFormatOfResourceId {
@@ -151,7 +169,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RoleDefinitionName is invalid.
+        ///   Looks up a localized string similar to RoleDefinition Name is invalid.
         /// </summary>
         internal static string InvalidRoleDefinitionName {
             get {
