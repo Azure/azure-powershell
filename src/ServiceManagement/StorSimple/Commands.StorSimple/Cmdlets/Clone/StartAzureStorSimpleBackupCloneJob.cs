@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
+using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
