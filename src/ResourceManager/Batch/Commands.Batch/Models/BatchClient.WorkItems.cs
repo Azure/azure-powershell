@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Linq;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Commands.Batch.Utils;
 using System;
 using System.Collections.Generic;
 
@@ -36,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             // Get the single WorkItem matching the specified name
-            if (!string.IsNullOrEmpty(options.WorkItemName))
+            if (!string.IsNullOrWhiteSpace(options.WorkItemName))
             {
                 WriteVerbose(string.Format(Resources.GBWI_GetByName, options.WorkItemName));
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
@@ -49,26 +51,92 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // List WorkItems using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 ODATADetailLevel odata = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_GetByOData, options.MaxCount));
+                    WriteVerbose(Resources.GBWI_GetByOData);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBWI_NoFilter, options.MaxCount));
+                    WriteVerbose(Resources.GBWI_NoFilter);
                 }
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
                     IEnumerableAsyncExtended<ICloudWorkItem> workItems = wiManager.ListWorkItems(odata, options.AdditionalBehaviors);
                     Func<ICloudWorkItem, PSCloudWorkItem> mappingFunction = w => { return new PSCloudWorkItem(w); };
-                    return new PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>(workItems, mappingFunction).Take(options.MaxCount);
+                    return PSAsyncEnumerable<PSCloudWorkItem, ICloudWorkItem>.CreateWithMaxCount(
+                        workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Creates a new WorkItem
+        /// </summary>
+        /// <param name="parameters">The parameters to use when creating the WorkItem</param>
+        public void CreateWorkItem(NewWorkItemParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+            if (string.IsNullOrWhiteSpace(parameters.WorkItemName))
+            {
+                throw new ArgumentNullException("WorkItemName");
+            }
+
+            using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+            {
+                ICloudWorkItem workItem = wiManager.CreateWorkItem(parameters.WorkItemName);
+
+                if (parameters.Schedule != null)
+                {
+                    workItem.Schedule = parameters.Schedule.omObject;
+                }
+
+                if (parameters.JobSpecification != null)
+                {
+                    Utils.Utils.JobSpecificationSyncCollections(parameters.JobSpecification);
+                    workItem.JobSpecification = parameters.JobSpecification.omObject;
+                }
+
+                if (parameters.JobExecutionEnvironment != null)
+                {
+                    Utils.Utils.JobExecutionEnvironmentSyncCollections(parameters.JobExecutionEnvironment);
+                    workItem.JobExecutionEnvironment = parameters.JobExecutionEnvironment.omObject;
+                }
+
+                if (parameters.Metadata != null)
+                {
+                    workItem.Metadata = new List<IMetadataItem>();
+                    foreach (DictionaryEntry d in parameters.Metadata)
+                    {
+                        MetadataItem metadata = new MetadataItem(d.Key.ToString(), d.Value.ToString());
+                        workItem.Metadata.Add(metadata);
+                    }
+                }
+                WriteVerbose(string.Format(Resources.NBWI_CreatingWorkItem, parameters.WorkItemName));
+                workItem.Commit(parameters.AdditionalBehaviors);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified WorkItem
+        /// </summary>
+        /// <param name="context">The account to use</param>
+        /// <param name="workItemName">The name of the WorkItem to delete</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform</param>
+        public void DeleteWorkItem(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(workItemName))
+            {
+                throw new ArgumentNullException("workItemName");
+            }
+
+            using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
+            {
+                wiManager.DeleteWorkItem(workItemName, additionBehaviors);
             }
         }
     }

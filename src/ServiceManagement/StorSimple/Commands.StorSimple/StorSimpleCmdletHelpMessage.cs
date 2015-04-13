@@ -121,6 +121,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string DeviceJobType = "Type of job.";
         public const string AdministratorPasswd = "Administrator password for the device.";
         public const string SnapshotManagerPasswd = "Password for snapshot manager";
+        public const string PersistAzureVMOnFailrue =
+            "The switch parameter to debug any Provisioning Failrues by skipping deletion of the VM on failrue";
         public const string MigrationConfigFilePath = "The legacy appliance's config file for migration";
         public const string MigrationTargetDevice = "The target appliance to which migration needs to be performed";
         public const string MigrationConfigDecryptionKey = "The key to decrypt the legacy appliance config file";

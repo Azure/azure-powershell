@@ -145,10 +145,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     var response = cloudEx.Response;
                     try
                     {
-                        XDocument xDoc = XDocument.Parse(response.Content);
-                        StripNamespaces(xDoc);
-                        string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
-                        WriteVerbose(string.Format(Resources.CloudExceptionMessage, cloudErrorCode));
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            var notAvailableException = new Exception(Resources.NotFoundWebExceptionMessage);
+                            errorRecord = new ErrorRecord(notAvailableException, string.Empty, ErrorCategory.InvalidOperation, null);
+                            break;
+                        }
+                        else
+                        {
+                            XDocument xDoc = XDocument.Parse(response.Content);
+                            StripNamespaces(xDoc);
+                            string cloudErrorCode = xDoc.Descendants("ErrorCode").FirstOrDefault().Value;
+                            WriteVerbose(string.Format(Resources.CloudExceptionMessage, cloudErrorCode));
+                        }
                     }
                     catch (Exception)
                     {
@@ -380,7 +389,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             }
             return data0Configured;
         }
-	
+    
         /// <summary>
         /// this method verifies that the devicename parameter specified is completely configured
         /// most operations are not allowed on a non-configured device
@@ -476,8 +485,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 return false;
             }
-            // Timezone and Secondary Dns Server are also mandatory
-            if (timeZone == null || string.IsNullOrEmpty(secondaryDnsServer))
+            // Timezone is also mandatory
+            if (timeZone == null || secondaryDnsServer == null)
             {
                 return false;
             }

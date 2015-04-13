@@ -53,5 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const int PsCommandValueDepth = 10;
 
+        public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
+
     }
 }

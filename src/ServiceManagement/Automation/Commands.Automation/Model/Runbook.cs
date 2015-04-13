@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountName;
             this.Name = runbook.Name;
             this.Location = runbook.Location;
-            this.Tags = null;
 
             if (runbook.Properties == null) return;
 
@@ -61,6 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.State = runbook.Properties.State;
             this.JobCount = runbook.Properties.JobCount;
             this.RunbookType = runbook.Properties.RunbookType;
+            this.Tags = runbook.Properties.ServiceManagementTags != null ? runbook.Properties.ServiceManagementTags.Split(Constants.RunbookTagsSeparatorChar) : new string[] { };
 
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in runbook.Properties.Parameters)

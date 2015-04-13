@@ -53,6 +53,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         private IRemoteAppManagementClient client = null;
 
+        private Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = null;
+
         public IRemoteAppManagementClient Client
         {
             get
@@ -77,6 +79,27 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             set
             {
                 client = value;  // Test Hook
+                Profile = InitializeDefaultProfile();
+                SetTokenCacheForProfile(Profile);
+            }
+        }
+
+        public Microsoft.WindowsAzure.Management.ManagementClient MgmtClient
+        {
+            get
+            {
+                if (mgmtClient == null)
+                {
+                    mgmtClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
+                                        (Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+
+                }
+
+                return mgmtClient;
+            }
+            set
+            {
+                mgmtClient = value;
             }
         }
 
@@ -184,20 +207,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                                         String.Format("Collection {0} does not exist",
                                             CollectionName),
                                         String.Empty,
-                                        Client.Principals,
+                                        Client.Collections,
                                         ErrorCategory.ObjectNotFound
-                    );
-
-                    WriteError(er);
-                }
-                else if (!String.Equals(response.Collection.Status, "Active", StringComparison.OrdinalIgnoreCase))
-                {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format("Collection {0} is not in the Active state",
-                            response.Collection.Name),
-                        String.Empty,
-                        Client.Principals,
-                        ErrorCategory.InvalidOperation
                     );
 
                     WriteError(er);
@@ -212,12 +223,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             System.Threading.CancellationToken cancelationToken = new System.Threading.CancellationToken();
 
             // register the subscription with RDFE to use the RemoteApp resource
-            Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = 
-                AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
-
             try
             {
-                AzureOperationResponse azureOperationResponse = mgmtClient.Subscriptions.RegisterResourceAsync(Client.RdfeNamespace, cancelationToken).Result;
+                AzureOperationResponse azureOperationResponse = MgmtClient.Subscriptions.RegisterResourceAsync(Client.RdfeNamespace, cancelationToken).Result;
             }
             catch (Exception e)
             {
@@ -234,12 +242,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     // ignore the 'ConflictError' which is returned if the subscription is already registered for the resource
                     if (ce.Error.Code != "ConflictError")
                     {
-                        HandleCloudException(mgmtClient.Subscriptions, ce);
+                        HandleCloudException(MgmtClient.Subscriptions, ce);
                     }
                 }
                 else
                 {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, mgmtClient.Subscriptions, ErrorCategory.NotSpecified);
+                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, MgmtClient.Subscriptions, ErrorCategory.NotSpecified);
 
                     ThrowTerminatingError(er);
                 }
