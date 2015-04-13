@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty()]
         public string UserUpn { get; set; }
 
+        private bool showAllUsers = false;
+
         public class ServicePrincipalComparer : IComparer<SecurityPrincipalInfo>
         {
             public int Compare(SecurityPrincipalInfo first, SecurityPrincipalInfo second)
@@ -67,68 +69,83 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
         }
 
+        private bool ProccessUsers(SecurityPrincipalInfoListResult response)
+        {
+            ConsentStatusModel model = null;
+            bool found = false;
+
+            if (ExactMatch)
+            {
+                SecurityPrincipalInfo userconsent = null;
+
+                userconsent = response.SecurityPrincipalInfoList.FirstOrDefault(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User &&
+                String.Equals(user.SecurityPrincipal.Name, UserUpn, StringComparison.OrdinalIgnoreCase));
+
+                if (userconsent == null)
+                {
+                    WriteErrorWithTimestamp("User: " + UserUpn + " does not exist in collection " + CollectionName);
+                    found = false;
+                }
+                else
+                {
+                    model = new ConsentStatusModel(userconsent);
+                    WriteObject(model);
+                    found = true;
+                }
+            }
+            else
+            {
+                IEnumerable<SecurityPrincipalInfo> spList = null;
+
+                if (showAllUsers)
+                {
+                    spList = response.SecurityPrincipalInfoList.Where(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User);
+                }
+                else
+                {
+                    spList = response.SecurityPrincipalInfoList.Where(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User &&
+                    Wildcard.IsMatch(user.SecurityPrincipal.Name));
+                }
+
+                if (spList != null && spList.Count() > 0)
+                {
+                    List<SecurityPrincipalInfo> userConsents = new List<SecurityPrincipalInfo>(spList);
+                    IComparer<SecurityPrincipalInfo> comparer = new ServicePrincipalComparer();
+
+                    userConsents.Sort(comparer);
+                    foreach (SecurityPrincipalInfo consent in userConsents)
+                    {
+                        model = new ConsentStatusModel(consent);
+                        WriteObject(model);
+                    }
+                    found = true;
+                }
+            }
+
+            return found;
+        }
         public override void ExecuteCmdlet()
         {
             SecurityPrincipalInfoListResult response = null;
-            ConsentStatusModel model = null;
-            bool showAllUsers = String.IsNullOrWhiteSpace(UserUpn);
             bool found = false;
+            string padding = "";
+
+            showAllUsers =  String.IsNullOrWhiteSpace(UserUpn);
 
             if (showAllUsers == false)
             {
                 CreateWildcardPattern(UserUpn);
             }
 
-            response = CallClient(() => Client.Principals.List(CollectionName), Client.Principals);
+            response = CallClient(() => Client.Principals.List(CollectionName, padding), Client.Principals);
 
-            if (response != null && response.SecurityPrincipalInfoList != null)
+            if (response != null && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0)
             {
-                if (ExactMatch)
+                found = ProccessUsers(response);
+                while (response != null && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0 && !String.IsNullOrWhiteSpace(response.ContinunationToken))
                 {
-                    SecurityPrincipalInfo userconsent = null;
-
-                    userconsent = response.SecurityPrincipalInfoList.FirstOrDefault(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User &&
-                         String.Equals(user.SecurityPrincipal.Name, UserUpn, StringComparison.OrdinalIgnoreCase));
-
-                    if (userconsent == null)
-                    {
-                        WriteErrorWithTimestamp("User: " + UserUpn + " does not exist in collection " + CollectionName);
-                        found = false;
-                    }
-                    else
-                    {
-                        model = new ConsentStatusModel(userconsent);
-                        WriteObject(model);
-                        found = true;
-                    }
-                }
-                else
-                {
-                    IEnumerable<SecurityPrincipalInfo> spList = null;
-
-                    if (showAllUsers)
-                    {
-                        spList = response.SecurityPrincipalInfoList.Where(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User);
-                    }
-                    else
-                    {
-                        spList = response.SecurityPrincipalInfoList.Where(user => user.SecurityPrincipal.SecurityPrincipalType == PrincipalType.User &&
-                            Wildcard.IsMatch(user.SecurityPrincipal.Name));
-                    }
-
-                    if (spList != null && spList.Count() > 0)
-                    {
-                        List<SecurityPrincipalInfo> userConsents = new List<SecurityPrincipalInfo>(spList);
-                        IComparer<SecurityPrincipalInfo> comparer = new ServicePrincipalComparer();
-
-                        userConsents.Sort(comparer);
-                        foreach (SecurityPrincipalInfo consent in spList)
-                        {
-                            model = new ConsentStatusModel(consent);
-                            WriteObject(model);
-                        }
-                        found = true;
-                    }
+                    response = CallClient(() => Client.Principals.List(CollectionName, response.ContinunationToken), Client.Principals);
+                    ProccessUsers(response);
                 }
             }
 
