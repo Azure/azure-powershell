@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             StringBuilder output = new StringBuilder();
             output.AppendLine();
-            output.AppendLine("    DataSource          : " + this.DataSource.ToString(2));
+            output.AppendLine("    DataSource          : " + this.DataSource.ToString(indentationTabs: 2));
             output.AppendLine("    Operator            : " + this.Operator);
             output.AppendLine("    Threshold           : " + this.Threshold);
             output.AppendLine("    Aggregation operator: " + this.TimeAggregation);

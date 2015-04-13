@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Commands.Websites.Utilities;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -26,7 +26,7 @@ using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 {
     public class WebsitesController
     {
@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);

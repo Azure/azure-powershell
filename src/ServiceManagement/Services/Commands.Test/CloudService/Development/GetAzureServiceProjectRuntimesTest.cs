@@ -52,9 +52,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
 
                 cmdlet.GetAzureRuntimesProcess(string.Empty, manifest);
 
-                List<CloudRuntimePackage> actual = mockCommandRuntime.OutputPipeline[0] as List<CloudRuntimePackage>;
+                IEnumerable<CloudRuntimePackage> actual = System.Management.Automation.LanguagePrimitives.GetEnumerable( mockCommandRuntime.OutputPipeline).Cast<CloudRuntimePackage>();
 
-                Assert.Equal<int>(runtimes.Count, actual.Count);
+                Assert.Equal<int>(runtimes.Count, actual.Count());
                 Assert.True(runtimes.All<CloudRuntimePackage>(p => actual.Any<CloudRuntimePackage>(p2 => p2.PackageUri.Equals(p.PackageUri))));
             }
         }
