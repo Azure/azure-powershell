@@ -26,15 +26,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
-    public class GetAzureAutomationAgentRegistrationInformation : AzureAutomationBaseCmdlet
+    public class GetAzureAutomationRegistrationInfo : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-        
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>

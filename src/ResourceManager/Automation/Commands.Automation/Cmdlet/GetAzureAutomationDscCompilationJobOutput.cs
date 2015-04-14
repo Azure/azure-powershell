@@ -31,23 +31,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class GetAzureAutomationDscCompilationJobOutput : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
-        /// <summary>
         /// Gets or sets the job id
         /// </summary>
         [Alias("JobId")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The compilation job Id")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The job Id")]
         public Guid Id { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type.")]
-        [ValidateSet("Progress", "Output", "Warning", "Error", "Debug", "Verbose", "Any")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type. Defaults to Any.")]
         public StreamType Stream { get; set; }
-        
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]
         public DateTimeOffset? StartTime { get; set; }
 

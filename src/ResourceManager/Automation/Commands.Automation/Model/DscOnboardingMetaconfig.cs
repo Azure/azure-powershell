@@ -15,18 +15,20 @@
 using System;
 using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
-using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
+    using Microsoft.Azure.Management.Automation.Models;
+
+    using AutomationManagement = Microsoft.Azure.Management.Automation;
+
     /// <summary>
-    /// The Agent Registration.
+    /// DSC Onboarding Meta Configuration
     /// </summary>
-    public class AgentRegistration
+    public class DscOnboardingMetaconfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AgentRegistration"/> class.
+        /// Initializes a new instance of the <see cref="DscOnboardingMetaconfig"/> class.
         /// </summary>
         /// <param name="resourceGroupName">
         /// The resource group name.
@@ -34,29 +36,23 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="automationAccountName">
         /// The automation account.
         /// </param>
-        /// <param name="agentRegistration">
-        /// The automation account agent registration
+        /// <param name="dscOnboardingMetaConfig">
+        /// The dsc onboarding meta configuration.
         /// </param>/// 
-        public AgentRegistration(string resourceGroupName, string automationAccountName, AutomationManagement.Models.AgentRegistration agentRegistration)
+        public DscOnboardingMetaconfig(string resourceGroupName, string automationAccountName, AutomationManagement.Models.AgentRegistration dscOnboardingMetaConfig)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            if (agentRegistration.Keys != null)
-            {
-                this.PrimaryKey = agentRegistration.Keys.Primary;
-                this.SecondaryKey = agentRegistration.Keys.Secondary;
-            }
-
-            this.Endpoint = agentRegistration.Endpoint;
+            this.DscMetaConfiguration = dscOnboardingMetaConfig.DscMetaConfiguration;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AgentRegistration"/> class.
+        /// Initializes a new instance of the <see cref="DscOnboardingMetaconfig"/> class.
         /// </summary>
-        public AgentRegistration()
+        public DscOnboardingMetaconfig()
         {
         }
 
@@ -71,18 +67,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string AutomationAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the agent registration information primary key
+        /// Gets or sets the dsc meta configuration information
         /// </summary>
-        public string PrimaryKey { get; set; }
+        public string DscMetaConfiguration { get; set; }
 
-        /// <summary>
-        /// Gets or sets the agent registration information secondary key
-        /// </summary>
-        public string SecondaryKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets the pull server end point
-        /// </summary>
-        public string Endpoint{ get; set; }
     }
 }

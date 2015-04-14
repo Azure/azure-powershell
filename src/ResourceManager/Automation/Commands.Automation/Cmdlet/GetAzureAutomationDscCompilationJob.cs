@@ -30,13 +30,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(CompilationJob))]
     public class GetAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
         /// <summary> 
         /// Gets or sets the job id. 
         /// </summary> 
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the runbook name of the job. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name of the compilation job.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name of the job.")]
         [Alias("Name")]
         public string ConfigurationName { get; set; }
 
@@ -55,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the status of a job. 
         /// </summary> 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "The configuration name of the job.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter compilation jobs based on their status.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs based on their status.")]
         [ValidateSet("Completed", "Failed", "Queued", "Starting", "Resuming", "Running", "Stopped", "Stopping", "Suspended", "Suspending", "Activating")]
         public string Status { get; set; }
 

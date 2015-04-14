@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security;
@@ -62,18 +63,37 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Configurations
 
-        IEnumerable<DscConfiguration> ListAutomationConfigurations(string resourceGroupName, string automationAccountName);
+        IEnumerable<DscConfiguration> ListDscConfigurations(string resourceGroupName, string automationAccountName);
 
         DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
 
-        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string configurationName, string sourcePath, string description, bool? logVerbose);
+        DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags, string description, bool? logVerbose, bool published, bool overWrite);
 
         #endregion
 
         #region AgentRegistrationInforamtion
-        Microsoft.Azure.Commands.Automation.Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
+        AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName);
 
-        Microsoft.Azure.Commands.Automation.Model.AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
+        AgentRegistration NewAgentRegistrationKey(string resourceGroupName, string automationAccountName, string keyType);
+        #endregion
+
+        #region DscMetaConfiguration
+        DirectoryInfo GetDscMetaConfig(string resourceGroupName, string automationAccountName, string outputFolder, string[] computerNames, bool overwriteExistingFile);
+        #endregion
+
+        #region DscNode Operations
+        
+        DscNode GetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId);
+
+        IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status);
+
+        IEnumerable<DscNode> ListDscNodesByName(string resourceGroupName, string automationAccountName, string nodeName, string status);
+        IEnumerable<DscNode> ListDscNodesByNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string status);
+
+        DscNode SetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId, string nodeConfigurationName, bool force);
+
+        void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
+
         #endregion
     }
 }

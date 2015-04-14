@@ -18,6 +18,7 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -26,8 +27,36 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class RemoveAzureAutomationAccount : AzureAutomationBaseCmdlet
+    public class RemoveAzureAutomationAccount : AzurePSCmdlet
     {
+        /// <summary>
+        /// The automation client.
+        /// </summary>
+        private IAutomationClient automationClient;
+
+        /// <summary>
+        /// Gets or sets the automation client base.
+        /// </summary>
+        public IAutomationClient AutomationClient
+        {
+            get
+            {
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
+            }
+
+            set
+            {
+                this.automationClient = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
