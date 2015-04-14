@@ -122,12 +122,16 @@
     <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAgentRegistrationInformation.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationConfiguration.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNode.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscOnboardingMetaconfig.cs" />
     <Compile Include="Cmdlet\ImportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationKey.cs" />
+    <Compile Include="Cmdlet\UnregisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationAccount.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAccount.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationDscNode.cs" />
     <Compile Include="Common\AutomationClient.cs" />
     <Compile Include="Common\AutomationClientDSC.cs" />
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
@@ -148,6 +152,8 @@
     <Compile Include="Model\AutomationAccount.cs" />
     <Compile Include="Model\CompilationJob.cs" />
     <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\DscNode.cs" />
+    <Compile Include="Model\DscOnboardingMetaconfig.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -160,6 +166,7 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Automation.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

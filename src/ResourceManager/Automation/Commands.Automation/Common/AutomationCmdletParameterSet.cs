@@ -20,6 +20,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
+    using System.Runtime.Remoting.Messaging;
+
     internal static class AutomationCmdletParameterSets
     {
         /// <summary>
@@ -37,6 +39,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// </summary>
         internal const string ByPath = "ByPath";
 
+        /// <summary>
+        /// By Id parameter set
+        /// </summary>
+        internal const string ById = "ById";
 
         /// <summary>
         /// The one time schedule parameter set.
@@ -117,5 +123,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// Parameter set for updating variable description
         /// </summary>
         internal const string UpdateVariableDescription = "UpdateVariableDescription";
+
+        /// <summary>
+        /// Parameter set for NodeConfiguration
+        /// </summary>
+        internal const string ByNodeConfiguration = "ByNodeConfiguration";
     }
 }

@@ -26,15 +26,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscConfiguration))]
-    public class GetAzureAutomationConfiguration : AzureAutomationBaseCmdlet
+    public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
         /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
@@ -59,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                ret = this.AutomationClient.ListAutomationConfigurations(this.ResourceGroupName, this.AutomationAccountName);
+                ret = this.AutomationClient.ListDscConfigurations(this.ResourceGroupName, this.AutomationAccountName);
             }
 
             this.GenerateCmdletOutput(ret);

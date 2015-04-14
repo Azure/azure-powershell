@@ -15,11 +15,10 @@
 using System;
 using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
+using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Microsoft.Azure.Management.Automation;
-
     /// <summary>
     /// The Configuration.
     /// </summary>
@@ -64,28 +63,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
                 this.Tags.Add(kvp.Key, kvp.Value);
             }
 
-            this.Source = null;
-            if (configuration.Properties.Source != null)
-            {
-                ContentHash hash = null;
-                if (!String.IsNullOrEmpty(configuration.Properties.Source.ContentHash.Value))
-                {
-                    hash = new ContentHash()
-                            {
-                                Algorithm = configuration.Properties.Source.ContentHash.Algorithm,
-                                Value = configuration.Properties.Source.ContentHash.Value
-                            };
-                }
-
-                this.Source = new ContentSource()
-                {
-                    ContentHash = hash,
-                    ContentType = configuration.Properties.Source.ContentType,
-                    Value = configuration.Properties.Source.Value,
-                    Version = configuration.Properties.Source.Version,
-                };
-            }
-                
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in configuration.Properties.Parameters)
             {
@@ -155,10 +132,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </summary>
         public bool LogVerbose { get; set; }
 
+        /*
         /// <summary>
         /// Gets or sets the content source.
         /// </summary>
         public ContentSource Source { get; set; }
+         */ 
     }
 
     /// <summary>

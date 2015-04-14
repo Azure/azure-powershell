@@ -15,48 +15,42 @@
 using System;
 using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     /// <summary>
-    /// The Agent Registration.
+    /// The Dsc Node.
     /// </summary>
-    public class AgentRegistration
+    public class DscNode
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AgentRegistration"/> class.
+        /// Initializes a new instance of the <see cref="DscNode"/> class.
         /// </summary>
-        /// <param name="resourceGroupName">
-        /// The resource group name.
-        /// </param>
-        /// <param name="automationAccountName">
-        /// The automation account.
-        /// </param>
-        /// <param name="agentRegistration">
-        /// The automation account agent registration
-        /// </param>/// 
-        public AgentRegistration(string resourceGroupName, string automationAccountName, AutomationManagement.Models.AgentRegistration agentRegistration)
+        /// <param name="resourceGroupName">The resource group name.</param>
+        /// <param name="automationAccountName">The automation account.</param>
+        /// <param name="node">The dsc node.</param>
+        public DscNode(string resourceGroupName, string automationAccountName, AutomationManagement.Models.DscNode node)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("Node", node).NotNull();
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            if (agentRegistration.Keys != null)
-            {
-                this.PrimaryKey = agentRegistration.Keys.Primary;
-                this.SecondaryKey = agentRegistration.Keys.Secondary;
-            }
-
-            this.Endpoint = agentRegistration.Endpoint;
+            this.Name = node.Name;
+            this.Id = node.Id;
+            this.Ip = node.Ip;
+            this.LastSeen = node.LastSeen.ToLocalTime();
+            this.RegistrationTime = node.RegistrationTime.ToLocalTime();
+            this.Status = node.Status;
+            this.NodeConfigurationName = node.NodeConfiguration.Name;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AgentRegistration"/> class.
+        /// Initializes a new instance of the <see cref="DscNode"/> class.
         /// </summary>
-        public AgentRegistration()
+        public DscNode()
         {
         }
 
@@ -71,18 +65,38 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string AutomationAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the agent registration information primary key
+        /// Gets or sets the name.
         /// </summary>
-        public string PrimaryKey { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the agent registration information secondary key
+        /// Gets or sets the registration time.
         /// </summary>
-        public string SecondaryKey { get; set; }
+        public DateTimeOffset RegistrationTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the pull server end point
+        /// Gets or sets the last seen time.
         /// </summary>
-        public string Endpoint{ get; set; }
+        public DateTimeOffset LastSeen { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IP address.
+        /// </summary>
+        public string Ip { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nodeconfiguration.
+        /// </summary>
+        public string NodeConfigurationName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        public string Status { get; set; }
     }
 }

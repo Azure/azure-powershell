@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -29,55 +31,77 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class ImportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
+        /// True to overwrite the existing configuration; false otherwise.
+        /// </summary>        
+        private bool overwriteExistingConfiguration;
 
         /// <summary>
-        /// Gets or sets the configuration name.
-        /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration name.")]
-        public string ConfigurationName { get; set; }
+        /// True to publish the configuration; false otherwise.
+        /// </summary>        
+        private bool publishConfiguration;
 
         /// <summary>
         /// Gets or sets the source path.
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The source path for importing the configuration script.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The source path for importing the configuration script.")]
+        [ValidateNotNullOrEmpty]
         public string SourcePath { get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration tags.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc configuration tags.")]
+        [Alias("Tag")]
+        public IDictionary Tags { get; set; }
+        
+        /// <summary>
         /// Gets or sets the description.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the configuration being imported.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description of the configuration being imported.")]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the switch parameter to 
+        /// Gets or sets the switch parameter to publish the configuration
         /// </summary>
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Import the configuration in published state.")]
-        public SwitchParameter Published { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Import the configuration in published state.")]
+        public SwitchParameter Published
+        {
+            get { return this.publishConfiguration; }
+            set { this.publishConfiguration = value; }
+        }
 
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configurations.
         /// </summary>
-        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Overwrites an existing configuration with same name.")]
-        public SwitchParameter Overwrite { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Overwrites an existing configuration with same name.")]
+        public SwitchParameter Overwrite
+        {
+            get { return this.overwriteExistingConfiguration; }
+            set { this.overwriteExistingConfiguration = value; }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether verbose logging should be turned on or off.
         /// </summary>
-        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicate whether verbose logging should be turned on or off.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicate whether verbose logging should be turned on or off.")]
         public bool? LogVerbose { get; set; }
-        
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var configuration = this.AutomationClient.CreateConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.SourcePath, this.Description, this.LogVerbose);
+            var configuration = this.AutomationClient.CreateConfiguration(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.SourcePath,
+                    this.Tags,
+                    this.Description,
+                    this.LogVerbose,
+                    this.Published,
+                    this.Overwrite);
+
             this.WriteObject(configuration);
         }
     }

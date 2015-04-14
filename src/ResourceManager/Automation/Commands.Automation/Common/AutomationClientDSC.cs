@@ -19,38 +19,31 @@ using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Net;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Management.Automation;
+using AutomationManagement = Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
+using Hyak.Common;
 
-using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
-
-
-namespace Microsoft.Azure.Commands.Automation.Common
+ namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using AutomationManagement = Azure.Management.Automation;
-    using Microsoft.Azure.Common.Authentication;
-    using Hyak.Common;
+    
 
+    using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
 
     public partial class AutomationClient : IAutomationClient
     {
         #region DscConfiguration Operations
 
-        public IEnumerable<Model.DscConfiguration> ListAutomationConfigurations(
+        public IEnumerable<Model.DscConfiguration> ListDscConfigurations(
             string resourceGroupName,
             string automationAccountName)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
-            // todo fix paging
             return AutomationManagementClient.ContinuationTokenHandler(
                 skipToken =>
                     {
@@ -84,35 +77,82 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public Model.DscConfiguration CreateConfiguration(
             string resourceGroupName,
             string automationAccountName,
-            string configurationName,
             string sourcePath,
+            IDictionary tags, 
             string description,
-            bool? logVerbose)
+            bool? logVerbose,
+            bool published,
+            bool overWrite)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            Requires.Argument("ConfigurationName", configurationName).NotNull();
             Requires.Argument("SourcePath", sourcePath).NotNull();
 
             string fileContent = null;
+            string configurationName = String.Empty;
 
-            if (File.Exists(Path.GetFullPath(sourcePath)))
+            try
             {
-                fileContent = System.IO.File.ReadAllText(sourcePath);
+                if (File.Exists(Path.GetFullPath(sourcePath)))
+                {
+                    fileContent = System.IO.File.ReadAllText(sourcePath);
+                }
             }
+            catch (Exception)
+            {
+                // exception in accessing the file path
+                throw new FileNotFoundException(
+                                    string.Format(
+                                        CultureInfo.CurrentCulture,
+                                        Resources.ConfigurationSourcePathInvalid));
+            }
+
+            // configuration name is same as filename
+            configurationName = Path.GetFileNameWithoutExtension(sourcePath);
+
+            // for the private preivew, configuration can be imported in Published mode only
+            // Draft mode is not implemented
+            if (!published)
+            {
+                throw new NotImplementedException(
+                                    string.Format(
+                                        CultureInfo.CurrentCulture,
+                                        Resources.ConfigurationNotPublished));
+            }
+
+            // if configuration already exists, ensure overwrite flag is specified
+            var configurationModel = this.TryGetConfigurationModel(
+                resourceGroupName,
+                automationAccountName,
+                configurationName);
+            if (configurationModel != null)
+            {
+                if (!overWrite)
+                {
+                    throw new ResourceCommonException(typeof(Model.DscConfiguration),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationAlreadyExists, configurationName));
+                }
+            }
+
+            // location of the configuration is set to same as that of automation account
             string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
+
+            IDictionary<string, string> configurationTags = null;
+            if (tags != null) configurationTags = tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+
             var configurationCreateParameters = new DscConfigurationCreateOrUpdateParameters()
                                                     {
                                                         Name = configurationName,
                                                         Location = location,
+                                                        Tags = configurationTags,
                                                         Properties = new DscConfigurationCreateOrUpdateProperties()
                                                                 {
                                                                     Description = String.IsNullOrEmpty(description) ? String.Empty : description,
-                                                                    LogVerbose = logVerbose.GetValueOrDefault(),
+                                                                    LogVerbose = (logVerbose.HasValue) ? logVerbose.Value : false,
                                                                     Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
                                                                             {
                                                                                 // only embeddedContent supported for now
-                                                                                ContentType = "embeddedContent",
+                                                                                ContentType = Model.ContentSourceType.embeddedContent.ToString(),
                                                                                 Value = fileContent
                                                                             }
                                                                 }
@@ -127,7 +167,162 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
         }
 
+        private Model.DscConfiguration TryGetConfigurationModel(string resourceGroupName, string automationAccountName, string configurationName)
+        {
+            Model.DscConfiguration configuration = null;
+            try
+            {
+                configuration = this.GetConfiguration(
+                                                resourceGroupName,
+                                                automationAccountName,
+                                                configurationName);
+            }
+            catch (CloudException e)
+            {
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    configuration = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return configuration;
+        }
+
     #endregion
+
+        #region DscMetaConfig Operations
+        public DirectoryInfo GetDscMetaConfig(string resourceGroupName, string automationAccountName, string outputFolder, string[] computerNames, bool overwriteExistingFile)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+
+            string outputFolderFullPath = this.GetCurrentDirectory(); // initialize with current directory;
+
+            if (!String.IsNullOrEmpty(outputFolder))
+            {
+                outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
+            }
+
+            var dscMetaConfig = this.automationManagementClient.AgentRegistrationInformation.Get(
+                resourceGroupName,
+                automationAccountName).AgentRegistration;
+
+            // get the metaconfig value
+            string dscMetaConfigValue = new DscOnboardingMetaconfig(resourceGroupName, automationAccountName, dscMetaConfig).DscMetaConfiguration;
+
+            if (computerNames == null)
+            {
+                computerNames = new[] { "localhost" }; // No computer specified. Initialize with Localhost
+            }
+
+            string outputFilePath = String.Empty;
+            const string FileExtension = ".meta.mof"; // this will be .meta.mof
+            const string DscMetaConfigsFolder = "DscMetaConfigs"; // Folder name where metaconfigs are stored
+            
+            outputFolderFullPath = System.IO.Path.Combine(outputFolderFullPath, DscMetaConfigsFolder);
+
+            this.CreateOutputFolder(outputFolderFullPath);
+            
+            foreach (string computerName in computerNames)
+            {
+                outputFilePath = outputFolderFullPath + "\\" + computerName + FileExtension;
+
+                // file exists and overwrite Not specified
+                if (File.Exists(outputFilePath) && !overwriteExistingFile)
+                {
+                    throw new ArgumentException(
+                            string.Format(CultureInfo.CurrentCulture, Resources.MetaconfigAlreadyExists, outputFilePath));
+                }
+                
+                // Write to the file
+                this.WriteMetaConfigMofFile(outputFilePath, dscMetaConfigValue);
+            }
+
+            return new DirectoryInfo(outputFolderFullPath);
+        }
+
+        private void CreateOutputFolder(string folderPath)
+        {
+            try
+            {
+                if (!Directory.Exists(folderPath))
+                {
+                    System.IO.Directory.CreateDirectory(folderPath);
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new UnauthorizedAccessException(
+                        string.Format(CultureInfo.CurrentCulture, Resources.UnauthorizedAccess, folderPath));
+            }
+        }
+
+        /// <summary>
+        /// Get the current directory path
+        /// </summary>
+        /// <returns>full path of the current directory</returns>
+        private string GetCurrentDirectory()
+        {
+            string currentDirectory = String.Empty;
+
+            try
+            {
+                currentDirectory = Directory.GetCurrentDirectory();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new UnauthorizedAccessException(
+                        string.Format(CultureInfo.CurrentCulture, Resources.UnauthorizedAccess, currentDirectory));
+            }
+
+            return currentDirectory;
+        }
+
+        /// <summary>
+        /// Validate and return the full folder path
+        /// </summary>
+        /// <param name="folderPath">Folder path to be validated</param>
+        private string ValidateAndGetFullPath(string folderPath)
+        {
+            string fullPath = String.Empty;
+
+            // check if folder exists - path can be absolute or relative
+            if (Directory.Exists(folderPath))
+            {
+                // get the full path
+                fullPath  = Path.GetFullPath(folderPath);
+            }
+            else
+            {
+                throw new ArgumentException(
+                    string.Format(CultureInfo.CurrentCulture, Resources.InvalidFolderPath, folderPath));
+            }
+            
+            return fullPath;
+        }
+
+        private void WriteMetaConfigMofFile(string outputFilePath, string fileContent)
+        {
+            try
+            {
+                File.WriteAllText(outputFilePath, fileContent);
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException(
+                    string.Format(CultureInfo.CurrentCulture, Resources.InvalidFilePath, outputFilePath));
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw new UnauthorizedAccessException(
+                    string.Format(CultureInfo.CurrentCulture, Resources.UnauthorizedAccess, outputFilePath));
+            }    
+        }
+
+        #endregion
 
         #region AgentRegistration Operations
         public Model.AgentRegistration GetAgentRegistration(string resourceGroupName, string automationAccountName)
@@ -160,6 +355,224 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return new Model.AgentRegistration(resourceGroupName, automationAccountName, agentRegistration);
         }
+        #endregion
+
+        #region DscNode Operations
+        public Model.DscNode GetDscNodeById(
+            string resourceGroupName,
+            string automationAccountName,
+            Guid nodeId)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeId", nodeId).NotNull();
+
+            var node =
+                this.automationManagementClient.Nodes.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    nodeId).Node;
+
+            return new Model.DscNode(resourceGroupName, automationAccountName, node);
+        }
+
+        public IEnumerable<Model.DscNode> ListDscNodesByName(
+            string resourceGroupName,
+            string automationAccountName,
+            string nodeName,
+            string status)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeName", nodeName).NotNull();
+
+            IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
+
+            if (!String.IsNullOrEmpty(status))
+            {
+                dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                        {
+                            var response = this.automationManagementClient.Nodes.List(
+                                resourceGroupName,
+                                automationAccountName,
+                                new DscNodeListParameters { Status = status, Name = nodeName });
+                            
+                            return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                        });
+            }
+            else
+            {
+                dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.Nodes.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new DscNodeListParameters { Name = nodeName });
+
+                        return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                    });
+            }
+            
+            return dscNodes.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
+        }
+
+        public IEnumerable<Model.DscNode> ListDscNodesByNodeConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string nodeConfigurationName,
+            string status)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeConfigurationName", nodeConfigurationName).NotNull();
+
+            IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
+
+            if (!String.IsNullOrEmpty(status))
+            {
+                dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.Nodes.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new DscNodeListParameters { Status = status, NodeConfigurationName = nodeConfigurationName });
+
+                        return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                    });
+            }
+            else
+            {
+                dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.Nodes.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new DscNodeListParameters { NodeConfigurationName = nodeConfigurationName });
+
+                        return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                    });
+            }
+
+            return dscNodes.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
+        }
+        
+        public IEnumerable<Model.DscNode> ListDscNodes(
+            string resourceGroupName,
+            string automationAccountName,
+            string status)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+
+            IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
+
+            if (!String.IsNullOrEmpty(status))
+                {
+                    dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response = this.automationManagementClient.Nodes.List(
+                                resourceGroupName,
+                                automationAccountName,
+                                new DscNodeListParameters { Status = status });
+
+                            return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                        });
+                }
+                else
+                {
+                    dscNodes = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response = this.automationManagementClient.Nodes.List(
+                                resourceGroupName,
+                                automationAccountName,
+                                new DscNodeListParameters {});
+
+                            return new ResponseWithSkipToken<DscNode>(response, response.Nodes);
+                        });
+                }
+
+            return dscNodes.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
+        }
+
+        public Model.DscNode SetDscNodeById(
+            string resourceGroupName,
+            string automationAccountName,
+            Guid nodeId,
+            string nodeConfigurationName,
+            bool force)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeId", nodeId).NotNull();
+            Requires.Argument("NodeConfigurationName", nodeConfigurationName).NotNull();
+
+            string existingConfigurationName = String.Empty;
+
+            try
+            {
+                var getNode = this.automationManagementClient.Nodes.Get(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeId).Node;
+
+                existingConfigurationName = getNode.NodeConfiguration.Name;
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.NodeNotFound), cloudException);
+                }
+
+                throw;
+            }
+
+            if (!String.IsNullOrEmpty(existingConfigurationName) && !force)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationAlreadyExists));
+            }
+
+            var nodeConfiguration = new DscNodeConfigurationAssociationProperty { Name = nodeConfigurationName };
+
+            var node =
+                this.automationManagementClient.Nodes.Patch(
+                    resourceGroupName,
+                    automationAccountName,
+                    new DscNodePatchParameters
+                        {
+                            Id = nodeId,
+                            NodeConfiguration = nodeConfiguration
+                        }).Node;
+
+            return new Model.DscNode(resourceGroupName, automationAccountName, node);            
+        }
+
+        public void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId)
+        {
+            try
+            {
+                this.automationManagementClient.Nodes.Delete(
+                    resourceGroupName,
+                    automationAccountName,
+                    nodeId);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(DscNode),
+                        string.Format(CultureInfo.CurrentCulture, Resources.DscNodeNotFound, nodeId.ToString()));
+                }
+
+                throw;
+            }
+	}
         #endregion
 
         #region compilationjob

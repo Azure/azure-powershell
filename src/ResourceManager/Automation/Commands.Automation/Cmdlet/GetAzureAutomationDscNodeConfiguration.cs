@@ -30,13 +30,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(CompilationJob))]
     public class GetAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
         /// <summary> 
         /// Gets or sets the job id. 
         /// </summary> 
