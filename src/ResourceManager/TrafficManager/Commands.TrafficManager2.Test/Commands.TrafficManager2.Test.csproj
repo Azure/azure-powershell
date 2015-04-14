@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\ProfileTests.cs" />
     <Compile Include="ScenarioTests\EndpointTests.cs" />
     <Compile Include="ScenarioTests\WatmV2TestsBase.cs" />
     <Compile Include="UnitTests\AddAzureTrafficManagerEndpointConfigTests.cs" />
