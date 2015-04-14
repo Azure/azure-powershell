@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    throw new ResourceNotFoundException(typeof(Schedule),
+                    throw new ResourceNotFoundException(typeof(AutomationAccount),
                         string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound, automationAccountName));
                 }
 
