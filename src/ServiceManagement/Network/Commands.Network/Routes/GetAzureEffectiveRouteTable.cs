@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Network.Routes
     [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(IEnumerable<EffectiveRouteTable>))]
     public class GetAzureEffectiveRouteTable : NetworkCmdletBase
     {
-        protected const string IaaSGetEffectiveRouteTableParamSet = "IaaSGetEffectiveRouteTableParamSet";
-        protected const string SlotGetEffectiveRouteTableParamSet = "SlotGetEffectiveRouteTableParamSet";
+        public const string IaaSGetEffectiveRouteTableParamSet = "IaaSGetEffectiveRouteTableParamSet";
+        public const string SlotGetEffectiveRouteTableParamSet = "SlotGetEffectiveRouteTableParamSet";
 
         private string obtainedDeploymentName { get; set; }
 
