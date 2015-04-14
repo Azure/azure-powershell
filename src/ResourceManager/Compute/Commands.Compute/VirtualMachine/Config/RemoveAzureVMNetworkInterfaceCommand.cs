@@ -22,15 +22,17 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+    using System;
+
     /// <summary>
     /// Setup the network interface.
     /// </summary>
     [Cmdlet(
-        VerbsCommon.Add,
+        VerbsCommon.Remove,
         ProfileNouns.NetworkInterface),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class AddAzureVMNetworkInterfaceCommand : AzurePSCmdlet
+    public class RemoveAzureVMNetworkInterfaceCommand : AzurePSCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -51,51 +53,19 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Primary { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            if (networkProfile == null)
+            if (networkProfile != null && networkProfile.NetworkInterfaces != null && networkProfile.NetworkInterfaces.Any(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase)))
             {
-                networkProfile = new NetworkProfile
-                {
-                    NetworkInterfaces = new List<NetworkInterfaceReference>()
-                };
-            }
+                var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase));
+                networkProfile.NetworkInterfaces.Remove(nicReference);
 
-            if (networkProfile.NetworkInterfaces == null)
-            {
-                networkProfile.NetworkInterfaces = new List<NetworkInterfaceReference>();
-            }
-
-            if (!this.Primary.IsPresent)
-            {
-                networkProfile.NetworkInterfaces.Add(
-                    new NetworkInterfaceReference
-                    {
-                        ReferenceUri = this.Id,
-                    });
-            }
-            else
-            {
-                foreach (var networkInterfaceReference in networkProfile.NetworkInterfaces)
+                if (!networkProfile.NetworkInterfaces.Any())
                 {
-                    networkInterfaceReference.Primary = false;
+                    networkProfile = null;
                 }
-
-                networkProfile.NetworkInterfaces.Add(
-                    new NetworkInterfaceReference
-                    {
-                        ReferenceUri = this.Id,
-                        Primary = true
-                    });
             }
 
             this.VM.NetworkProfile = networkProfile;
