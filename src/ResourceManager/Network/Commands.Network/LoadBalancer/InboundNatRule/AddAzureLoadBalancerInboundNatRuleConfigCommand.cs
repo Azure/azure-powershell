@@ -58,8 +58,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             inboundNatRule.BackendIPConfiguration = new PSResourceId();
-            inboundNatRule.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
-            inboundNatRule.FrontendIPConfigurations = new List<PSResourceId>();
+
+            if (!string.IsNullOrEmpty(this.BackendIpConfigurationId))
+            {
+                inboundNatRule.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
+                inboundNatRule.FrontendIPConfigurations = new List<PSResourceId>();
+            }
 
             foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
             {

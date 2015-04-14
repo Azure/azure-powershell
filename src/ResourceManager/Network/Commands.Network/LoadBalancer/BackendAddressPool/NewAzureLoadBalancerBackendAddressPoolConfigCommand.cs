@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Network
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
-            backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
-
+            
             if (this.BackendIpConfigurationId != null)
             {
+                backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
                 foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
                 {
                     var resourceId = new PSResourceId();

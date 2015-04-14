@@ -59,24 +59,29 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancingRule.LoadDistribution = string.IsNullOrEmpty(this.LoadDistribution) ? "Default" : this.LoadDistribution;
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            loadBalancingRule.BackendAddressPool = new PSResourceId();
-            loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
 
-            if (this.ProbeId == null)
+            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
             {
-                throw new ArgumentException("Probe missing, please associate a probe with a rule");
+                loadBalancingRule.BackendAddressPool = new PSResourceId();
+                loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
             }
 
-            loadBalancingRule.Probe = new PSResourceId();
-            loadBalancingRule.Probe.Id = this.ProbeId;
-
-            loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
-
-            foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
+            if (!string.IsNullOrEmpty(this.ProbeId))
             {
-                var resourceId = new PSResourceId();
-                resourceId.Id = frontendIPConfigurationId;
-                loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
+                loadBalancingRule.Probe = new PSResourceId();
+                loadBalancingRule.Probe.Id = this.ProbeId;
+            }
+
+            if (this.FrontendIPConfigurationId != null)
+            {
+                loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
+
+                foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
+                {
+                    var resourceId = new PSResourceId();
+                    resourceId.Id = frontendIPConfigurationId;
+                    loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
+                }
             }
 
             WriteObject(this.LoadBalancer);

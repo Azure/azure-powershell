@@ -41,24 +41,36 @@ namespace Microsoft.Azure.Commands.Network
             {
                 loadBalancingRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
+
             if (!string.IsNullOrEmpty(this.LoadDistribution))
             {
                 loadBalancingRule.LoadDistribution = this.LoadDistribution;
             }
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            loadBalancingRule.BackendAddressPool = new PSResourceId();
-            loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
-            loadBalancingRule.Probe = new PSResourceId();
-            loadBalancingRule.Probe.Id = this.ProbeId;
 
-            loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
-
-            foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
+            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
             {
-                var resourceId = new PSResourceId();
-                resourceId.Id = frontendIPConfigurationId;
-                loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
+                loadBalancingRule.BackendAddressPool = new PSResourceId();
+                loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
+            }
+
+            if (!string.IsNullOrEmpty(this.ProbeId))
+            {
+                loadBalancingRule.Probe = new PSResourceId();
+                loadBalancingRule.Probe.Id = this.ProbeId;
+            }
+
+            if (this.FrontendIPConfigurationId != null)
+            {
+                loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
+
+                foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
+                {
+                    var resourceId = new PSResourceId();
+                    resourceId.Id = frontendIPConfigurationId;
+                    loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
+                }
             }
 
             loadBalancingRule.Id =
