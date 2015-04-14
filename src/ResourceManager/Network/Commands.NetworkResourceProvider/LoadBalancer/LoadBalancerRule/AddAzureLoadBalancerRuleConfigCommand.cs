@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             loadBalancingRule.BackendAddressPool = new PSResourceId();
             loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
+            
+            if (this.ProbeId == null)
+            {
+                throw new ArgumentException("Probe missing, please associate a probe with a rule");
+            }
+
             loadBalancingRule.Probe = new PSResourceId();
             loadBalancingRule.Probe.Id = this.ProbeId;
 
