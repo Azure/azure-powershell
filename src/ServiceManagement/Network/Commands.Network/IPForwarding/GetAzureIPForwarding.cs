@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Network.IPForwarding
     [Cmdlet(VerbsCommon.Get, "AzureIPForwarding"), OutputType(typeof(string))]
     public class GetAzureIPForwarding : NetworkCmdletBase
     {
-        protected const string IaaSIPForwardingParamSet = "IaaSIPForwardingParamSet";
-        protected const string SlotIPForwardingParamSet = "SlotIPForwardingParamSet";
+        public const string IaaSIPForwardingParamSet = "IaaSIPForwardingParamSet";
+        public const string SlotIPForwardingParamSet = "SlotIPForwardingParamSet";
 
         private string obtainedDeploymentName { get; set; }
 
