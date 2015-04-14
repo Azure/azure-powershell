@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
     public class RemoveAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 

@@ -26,37 +26,37 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.New, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The relative name of the profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The relative name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string RelativeDnsName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Ttl value of the DNS configurations.")]
+        [Parameter(Mandatory = true, HelpMessage = "The Ttl value of the DNS configurations.")]
         [ValidateNotNullOrEmpty]
         public uint Ttl { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The traffic routing method of the profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The traffic routing method of the profile.")]
         [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The protocol of the monitor.")]
+        [Parameter(Mandatory = true, HelpMessage = "The protocol of the monitor.")]
         [ValidateSet(Constants.HTTP, Constants.HTTPS, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string MonitorProtocol { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The port of the monitor.")]
+        [Parameter(Mandatory = true, HelpMessage = "The port of the monitor.")]
         [ValidateNotNullOrEmpty]
         public uint MonitorPort { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The path of the monitor.")]
+        [Parameter(Mandatory = true, HelpMessage = "The path of the monitor.")]
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
 

@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Get, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

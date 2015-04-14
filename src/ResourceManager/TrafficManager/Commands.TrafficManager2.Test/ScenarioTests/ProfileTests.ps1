@@ -50,7 +50,7 @@ function Test-ProfileCrud
 
 <#
 .SYNOPSIS
-Full Profile CRUD cycle
+Delete a profile using the object instead of the parameters
 #>
 function Test-CreateDeleteUsingProfile
 {
@@ -67,4 +67,45 @@ function Test-CreateDeleteUsingProfile
 	Remove-AzureTrafficManagerProfile -Profile $createdProfile -Force
 
 	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
+Create a Profile that already exists
+#>
+function Test-ProfileNewAlreadyExists
+{
+	$zoneName = getAssetname
+    $createdZone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+	$resourceGroupName = $createdZone.ResourceGroupName
+	Assert-NotNull $createdZone
+	
+	Assert-Throws { New-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied."
+
+	$createdZone | Remove-AzureDnsZone -PassThru -Force
+}
+
+<#
+.SYNOPSIS
+Set a Profile that does not exist
+#>
+function Test-ProfileSetNotFound
+{
+	$zoneName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	Assert-Throws { Set-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "PreconditionFailed: The condition '*' in the If-Match header was not satisfied."
+}
+
+<#
+.SYNOPSIS
+Remove a Profile that does not exist
+#>
+function Test-ProfileRemoveNonExisting
+{
+	$zoneName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	$removed = Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
+	Assert-True { $removed }
 }

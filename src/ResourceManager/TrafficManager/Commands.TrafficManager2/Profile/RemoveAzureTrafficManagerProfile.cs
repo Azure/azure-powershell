@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

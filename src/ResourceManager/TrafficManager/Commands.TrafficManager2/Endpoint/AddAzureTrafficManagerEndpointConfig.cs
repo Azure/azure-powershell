@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Add, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
     public class AddAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
@@ -34,29 +34,29 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public new TrafficManagerProfile Profile { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target of the endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The target of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Target { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The status of the endpoint.")]
         [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string EndpointStatus { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The weight of the endpoint.")]
+        [Parameter(Mandatory = false, HelpMessage = "The weight of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public uint? Weight { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority of the endpoint.")]
+        [Parameter(Mandatory = false, HelpMessage = "The priority of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public uint? Priority { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the endpoint.")]
+        [Parameter(Mandatory = false, HelpMessage = "The location of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
