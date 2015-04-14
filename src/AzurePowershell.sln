@@ -78,9 +78,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "ResourceManager\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B} = {52643BD5-6378-49BD-9F6E-DAC9DD8A867B}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Test", "ResourceManager\Resources\Commands.Resources.Test\Commands.Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -182,6 +179,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NetworkResourcePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "ResourceManager\Compute\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 	ProjectSection(ProjectDependencies) = postProject
+		{E1F5201D-6067-430E-B303-4E367652991B} = {E1F5201D-6067-430E-B303-4E367652991B}
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981} = {98CFD96B-A6BC-4F15-AE2C-603FC2B58981}
 		{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F} = {E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}
 	EndProjectSection

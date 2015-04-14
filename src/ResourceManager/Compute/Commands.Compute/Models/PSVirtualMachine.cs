@@ -122,7 +122,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public VirtualMachineSubResources Resources { get; set; }
+        public VirtualMachineChildResources Resources { get; set; }
+
         public VirtualMachineInstanceView Status { get; set; }
 
         public HardwareProfile HardwareProfile { get; set; }
@@ -153,22 +154,22 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 ResourceGroupName = rgName,
                 Name = virtualMachine == null ? null : virtualMachine.Name,
                 Location = virtualMachine == null ? null : virtualMachine.Location,
-                ProvisioningState = virtualMachine.VirtualMachineProperties.ProvisioningState,
+                ProvisioningState = virtualMachine.ProvisioningState,
                 Tags = virtualMachine.Tags,
-                Resources = virtualMachine.VirtualMachineSubResources,
+                Resources = virtualMachine.Resources,
                 Status = null, // TODO: VM response does not return Status info yet
             };
 
-            var asetRef = virtualMachine.VirtualMachineProperties.AvailabilitySetReference;
+            var asetRef = virtualMachine.AvailabilitySetReference;
             if (asetRef != null)
             {
-                result.AvailabilitySetId = virtualMachine.VirtualMachineProperties.AvailabilitySetReference.ReferenceUri;
+                result.AvailabilitySetId = virtualMachine.AvailabilitySetReference.ReferenceUri;
             }
 
-            result.OSProfile = virtualMachine.VirtualMachineProperties.OSProfile;
-            result.HardwareProfile = virtualMachine.VirtualMachineProperties.HardwareProfile;
-            result.StorageProfile = virtualMachine.VirtualMachineProperties.StorageProfile;
-            result.NetworkProfile = virtualMachine.VirtualMachineProperties.NetworkProfile;
+            result.OSProfile = virtualMachine.OSProfile;
+            result.HardwareProfile = virtualMachine.HardwareProfile;
+            result.StorageProfile = virtualMachine.StorageProfile;
+            result.NetworkProfile = virtualMachine.NetworkProfile;
 
             return result;
         }

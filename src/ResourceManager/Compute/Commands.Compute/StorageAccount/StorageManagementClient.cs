@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using System;
 

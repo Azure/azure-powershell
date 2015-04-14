@@ -208,7 +208,7 @@
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
   </data>
   <data name="RoleDefinitionNotFound" xml:space="preserve">
-    <value>Can not find role definition with name '{0}'.</value>
+    <value>Cannot find role definition with name '{0}'.</value>
   </data>
   <data name="RemoveApplication" xml:space="preserve">
     <value>Removing application ...</value>
@@ -281,5 +281,20 @@
   </data>
   <data name="RegisterProviderFeatureMessage" xml:space="preserve">
     <value>Registering provider feature ...</value>
+  </data>
+  <data name="InvalidRoleDefinitionName" xml:space="preserve">
+    <value>RoleDefinition Name is invalid</value>
+  </data>
+  <data name="RoleDefinitionWithIdNotFound" xml:space="preserve">
+    <value>Cannot find role definition with id '{0}'.</value>
+  </data>
+  <data name="RemoveRoleDefinition" xml:space="preserve">
+    <value>Are you sure you want to remove role definition with id '{0}'.</value>
+  </data>
+  <data name="InvalidActions" xml:space="preserve">
+    <value>Invalid value for Actions</value>
+  </data>
+  <data name="InvalidAssignableScopes" xml:space="preserve">
+    <value>Invalid value for AssignableScopes</value>
   </data>
 </root>

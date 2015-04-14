@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {

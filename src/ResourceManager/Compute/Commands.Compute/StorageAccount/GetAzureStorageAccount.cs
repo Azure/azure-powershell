@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Management.Automation;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {

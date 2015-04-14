@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
-    [OutputType(typeof(object))]
+    [OutputType(typeof(ComputeLongRunningOperationResponse))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type.")]
         [ValidateNotNullOrEmpty]
-        public string Type { get; set; }
+        public string ExtensionType { get; set; }
 
         [Alias("HandlerVersion", "Version")]
         [Parameter(
@@ -131,22 +130,16 @@ namespace Microsoft.Azure.Commands.Compute
                 this.ProtectedSettingString = new JsonSettingBuilder(this.ProtectedSettings).ToString();
             }
 
-            var parameters = new VirtualMachineExtensionCreateOrUpdateParameters
+            var parameters = new VirtualMachineExtension
             {
-                VirtualMachineExtension = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
-                    VirtualMachineExtensionProperties = new VirtualMachineExtensionProperties
-                    {
-                        Publisher = this.Publisher,
-                        Type = this.Type,
-                        TypeHandlerVersion = this.TypeHandlerVersion,
-                        Settings = this.SettingString,
-                        ProtectedSettings = this.ProtectedSettingString
-                    }
-                }
+                Location = this.Location,
+                Name = this.Name,
+                Type = VirtualMachineExtensionType,
+                Publisher = this.Publisher,
+                ExtensionType = this.ExtensionType,
+                TypeHandlerVersion = this.TypeHandlerVersion,
+                Settings = this.SettingString,
+                ProtectedSettings = this.ProtectedSettingString
             };
 
             var op = this.VirtualMachineExtensionClient.CreateOrUpdate(

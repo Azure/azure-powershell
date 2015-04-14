@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Commands.NetworkResourceProvider
 {
     [Cmdlet(VerbsCommon.Get, "AzureCheckDnsAvailability")]
-    public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseClient
+    public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,

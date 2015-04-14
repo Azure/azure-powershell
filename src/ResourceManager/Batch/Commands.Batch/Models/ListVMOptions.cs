@@ -17,13 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListVMOptions
+    public class ListVMOptions : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
         /// <summary>
         /// The name of the pool to query for vms
         /// </summary>
@@ -48,10 +43,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The maximum number of vms to return
         /// </summary>
         public int MaxCount { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

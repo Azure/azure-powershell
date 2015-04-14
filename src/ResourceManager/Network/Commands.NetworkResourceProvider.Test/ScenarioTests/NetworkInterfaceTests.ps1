@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Tests creating new simple virtualNetwork.
+Tests creating new simple public networkinterface.
 #>
 function Test-NetworkInterfaceCRUD
 {
@@ -26,7 +26,7 @@ function Test-NetworkInterfaceCRUD
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -42,26 +42,29 @@ function Test-NetworkInterfaceCRUD
         $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -AllocationMethod dynamic -Subnet $vnet.Properties.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
         $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $expectedNic.Properties.ProvisioningState
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Name $actualNic.Properties.IpConfigurations[0].Name
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $actualNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $actualNic.Properties.IpConfigurations[0].Properties.Subnet.Id
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+
         
         # Check publicIp address reference
         $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $publicip.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $publicip.Properties.IpConfiguration.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
         $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $vnet.Properties.Subnets[0].Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $vnet.Properties.Subnets[0].Properties.IpConfigurations[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
         # list
         $list = Get-AzureNetworkInterface -ResourceGroupName $rgname
@@ -69,7 +72,84 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $list[0].Name $actualNic.Name	
         Assert-AreEqual $list[0].Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $list[0].Properties.ProvisioningState
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+        Assert-AreEqual $actualNic.Etag $list[0].Etag
+
+        # Delete NetworkInterface
+        $delete = Remove-AzureNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzureNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating new simple public networkinterface.
+#>
+function Test-NetworkInterfaceCRUDUsingId
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicip.Id
+        $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $expectedNic.Name $actualNic.Name	
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+
+        
+        # Check publicIp address reference
+        $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
+
+        # Check Subnet address reference
+        $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+
+        # list
+        $list = Get-AzureNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $list[0].Name $actualNic.Name	
+        Assert-AreEqual $list[0].Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
         # Delete NetworkInterface
@@ -100,7 +180,7 @@ function Test-NetworkInterfaceCRUDStaticAllocation
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -113,31 +193,31 @@ function Test-NetworkInterfaceCRUDStaticAllocation
         $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
 
         # Create NetworkInterface
-        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -AllocationMethod Static -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Properties.Subnets[0] -PublicIpAddress $publicip
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -PrivateIpAddress "10.0.1.5" -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
         $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $expectedNic.Properties.ProvisioningState
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Name $actualNic.Properties.IpConfigurations[0].Name
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $actualNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id
-        Assert-AreEqual "Static" $actualNic.Properties.IpConfigurations[0].Properties.PrivateIpAllocationMethod
-        Assert-AreEqual "10.0.1.5" $actualNic.Properties.IpConfigurations[0].Properties.PrivateIpAddress
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $actualNic.Properties.IpConfigurations[0].Properties.Subnet.Id
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual "Static" $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "10.0.1.5" $actualNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         
         # Check publicIp address reference
         $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $publicip.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $publicip.Properties.IpConfiguration.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
         $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $vnet.Properties.Subnets[0].Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $vnet.Properties.Subnets[0].Properties.IpConfigurations[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
     }
     finally
     {
@@ -159,7 +239,7 @@ function Test-NetworkInterfaceNoPublicIpAddress
     $subnetName = Get-ResourceName
     $nicName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -172,21 +252,21 @@ function Test-NetworkInterfaceNoPublicIpAddress
         $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkInterface
-        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -AllocationMethod dynamic -Subnet $vnet.Properties.Subnets[0]
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0]
         $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $expectedNic.Properties.ProvisioningState
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Name $actualNic.Properties.IpConfigurations[0].Name
-        Assert-Null $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $actualNic.Properties.IpConfigurations[0].Properties.Subnet.Id
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-Null $expectedNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         
         # Check Subnet address reference
         $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $vnet.Properties.Subnets[0].Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $vnet.Properties.Subnets[0].Properties.IpConfigurations[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
         # list
         $list = Get-AzureNetworkInterface -ResourceGroupName $rgname
@@ -194,7 +274,7 @@ function Test-NetworkInterfaceNoPublicIpAddress
         Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $list[0].Name $actualNic.Name	
         Assert-AreEqual $list[0].Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $list[0].Properties.ProvisioningState
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
         # Delete NetworkInterface
@@ -227,7 +307,7 @@ function Test-NetworkInterfaceSet
     $domainNameLabel = Get-ResourceName
     $domainNameLabel2 = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
@@ -243,33 +323,33 @@ function Test-NetworkInterfaceSet
         $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -AllocationMethod dynamic -SubnetId $vnet.Properties.Subnets[0].Id -PublicIpAddressId $publicip.Id
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicip.Id
         $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $expectedNic.Properties.ProvisioningState
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Name $actualNic.Properties.IpConfigurations[0].Name
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $actualNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $actualNic.Properties.IpConfigurations[0].Properties.Subnet.Id
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         
         # Check publicIp address reference
         $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $publicip.Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $publicip.Properties.IpConfiguration.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
         $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Properties.Subnet.Id $vnet.Properties.Subnets[0].Id
-        Assert-AreEqual $expectedNic.Properties.IpConfigurations[0].Id $vnet.Properties.Subnets[0].Properties.IpConfigurations[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
         # Create the publicip
         $publicip2 = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
         $nic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Edit Nic with a new publicIpAddress
-        $nic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id = $publicip2.Id
+        $nic.IpConfigurations[0].PublicIpAddress = $publicip2
 
         $nic | Set-AzureNetworkInterface
 
@@ -277,17 +357,17 @@ function Test-NetworkInterfaceSet
 
         # Check publicIp address reference
         $publicip2 = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName2
-        Assert-AreEqual $nic.Properties.IpConfigurations[0].Properties.PublicIpAddress.Id $publicip2.Id
-        Assert-AreEqual $nic.Properties.IpConfigurations[0].Id $publicip2.Properties.IpConfiguration.Id
+        Assert-AreEqual $nic.IpConfigurations[0].PublicIpAddress.Id $publicip2.Id
+        Assert-AreEqual $nic.IpConfigurations[0].Id $publicip2.IpConfiguration.Id
 
         # Check the old publicIp address reference
         $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-        Assert-Null $publicip.Properties.IpConfiguration
+        Assert-Null $publicip.IpConfiguration
 
         # Check Subnet address reference
         $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $nic.Properties.IpConfigurations[0].Properties.Subnet.Id $vnet.Properties.Subnets[0].Id
-        Assert-AreEqual $nic.Properties.IpConfigurations[0].Id $vnet.Properties.Subnets[0].Properties.IpConfigurations[0].Id
+        Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 
     }
     finally

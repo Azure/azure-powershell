@@ -56,7 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.18-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -69,19 +69,21 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.1-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Compute">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.3.4.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -119,10 +121,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-
-    <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\lib\Microsoft.Azure.Management.Compute.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\lib\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
@@ -133,7 +131,6 @@
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ExtensionSettingBuilder.cs" />
-    <Compile Include="Common\TagsConversionHelper.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
@@ -142,7 +139,6 @@
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
-    <Compile Include="Common\SecureStringExtension.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
@@ -151,6 +147,10 @@
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
+    <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
+    <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
+    <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
+    <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
@@ -188,6 +188,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

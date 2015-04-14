@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
 
             resourceOperationsMock.Setup(f => f.GetAsync(resourceGroupName, It.IsAny<ResourceIdentity>(), It.IsAny<CancellationToken>()))
-                .Returns(() => { throw new CloudException("GenericResourceExtended does not exist."); });
+                .Returns(() => { throw new CloudException("Resource does not exist."); });
 
             Assert.Throws<ArgumentException>(() => resourcesClient.UpdatePSResource(parameters));
         }
@@ -1213,13 +1213,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(deploymentName, deploymentName);
             Assert.Equal(ProvisioningState.Succeeded, result.ProvisioningState);
             progressLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Accepted.ToLower())),
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Accepted.ToLower())),
                 Times.Once());
             progressLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Running.ToLower())),
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Running.ToLower())),
                 Times.Once());
             progressLoggerMock.Verify(
-                f => f(string.Format("GenericResourceExtended {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Succeeded.ToLower())),
+                f => f(string.Format("Resource {0} '{1}' provisioning status is {2}", "Microsoft.Website", resourceName, ProvisioningState.Succeeded.ToLower())),
                 Times.Once());
         }
 

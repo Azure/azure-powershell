@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 {

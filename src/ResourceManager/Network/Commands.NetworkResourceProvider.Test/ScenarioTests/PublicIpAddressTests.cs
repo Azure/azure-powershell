@@ -25,5 +25,26 @@ namespace Commands.NetworkResourceProvider.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressCRUDNoDomainNameLabel()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-NoDomainNameLabel");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressCRUDStaticAllocation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-StaticAllocation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressCRUDEditDomainNameLavel()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressCRUD-EditDomainNameLavel");
+        }
     }
 }

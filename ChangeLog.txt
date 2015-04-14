@@ -1,3 +1,9 @@
+﻿2015.04.28 version 0.8.17
+* Azure Batch
+  * Added cmdlets
+    * New-AzureBatchVMUser
+    * Remove-AzureBatchVMUser
+
 2015.03.31 version 0.8.16
 * Azure Data Factory:
   * Fixes for clean install and subscription registration issues

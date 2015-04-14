@@ -1,0 +1,10 @@
+{
+    "Name": "CustomRole Test Role",
+    "Description": "Test role",
+    "Actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*"
+    ],
+    "NotActions": [],
+    "AssignableScopes": ["Scope1" , "Scope2"]
+}
