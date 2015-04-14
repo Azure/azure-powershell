@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Gateway.Model;    
+    using Gateway.Model;
+    using Microsoft.Azure;
     using NetworkSecurityGroup.Model;
     using Routes.Model;
-    using WindowsAzure;
-    using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Common;
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;

@@ -141,9 +141,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\Batch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "ServiceManagement\Network\Commands.Network\Commands.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network", "ServiceManagement\Network\Commands.Network\Commands.ServiceManagement.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network.Test", "ServiceManagement\Network\Commands.Network.Test\Commands.Network.Test.csproj", "{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network.Test", "ServiceManagement\Network\Commands.Network.Test\Commands.ServiceManagement.Network.Test.csproj", "{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.KeyVault", "ResourceManager\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj", "{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}"
 EndProject
