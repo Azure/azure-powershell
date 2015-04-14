@@ -178,5 +178,54 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             return role;
         }
+
+        public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition)
+        {
+            AuthorizationClient.ValidateRoleDefinition(roleDefinition);
+            
+            Guid newRoleDefinitionId = Guid.NewGuid();
+            RoleDefinitionCreateOrUpdateParameters parameters = new RoleDefinitionCreateOrUpdateParameters()
+            {
+                RoleDefinition = new RoleDefinition()
+                {
+                    Name = newRoleDefinitionId,
+                    Properties = new RoleDefinitionProperties()
+                    {
+                        AssignableScopes = roleDefinition.AssignableScopes,
+                        Description = roleDefinition.Description,
+                        Permissions = new List<Permission>()
+                        {
+                            new Permission()
+                            {
+                                Actions = roleDefinition.Actions,
+                                NotActions = roleDefinition.NotActions
+                            }
+                        },
+                        RoleName = roleDefinition.Name,
+                        Type = "CustomRole"
+                    }
+                }
+            };
+
+            return AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, parameters).RoleDefinition.ToPSRoleDefinition();
+        }
+
+        private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
+        {
+            if (string.IsNullOrWhiteSpace(roleDefinition.Name))
+            {
+                throw new ArgumentException(ProjectResources.InvalidRoleDefinitionName);
+            }
+
+            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
+            }
+
+            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidActions);
+            }
+        }
     }
 }
