@@ -19,7 +19,10 @@ Add an endpoint to an existing profile
 function Test-AddEndpoint
 {
 	$endpointName = getAssetname
-	$profile = TestSetup-CreateProfile
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$profileName = getAssetname
+
+	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
     TestSetup-AddEndpoint $endpointName $profile
 
@@ -33,7 +36,10 @@ Remove an endpoint from a profile
 function Test-DeleteEndpoint
 {
 	$endpointName = getAssetname
-	$profile = TestSetup-CreateProfile
+	$profileName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+
+	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
     TestSetup-AddEndpoint $endpointName $profile
 

@@ -18,7 +18,7 @@ Full Profile CRUD cycle
 #>
 function Test-ProfileCrud
 {
-	$profileName = getAssetname
+	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
 	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
@@ -43,7 +43,29 @@ function Test-ProfileCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
 	Assert-AreEqual "Priority" $updatedProfile.TrafficRoutingMethod
 
-	Remove-AzureTrafficManagerProfile -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	$removed = Remove-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
+Full Profile CRUD cycle
+#>
+function Test-ProfileCrudWithPiping
+{
+	$profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$createdProfile.TrafficRoutingMethod = "Priority"
+
+	$removed = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Set-AzureTrafficManagerProfile | Remove-AzureTrafficManagerProfile
+
+	Assert-True { $removed }
 
 	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
 }
@@ -54,7 +76,7 @@ Delete a profile using the object instead of the parameters
 #>
 function Test-CreateDeleteUsingProfile
 {
-	$profileName = getAssetname
+	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
 	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
@@ -75,26 +97,17 @@ Create a Profile that already exists
 #>
 function Test-ProfileNewAlreadyExists
 {
-	$zoneName = getAssetname
-    $createdZone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
-	$resourceGroupName = $createdZone.ResourceGroupName
-	Assert-NotNull $createdZone
-	
-	Assert-Throws { New-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied."
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$profileName = getAssetName
 
-	$createdZone | Remove-AzureDnsZone -PassThru -Force
-}
+    $createdProfile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
+	$resourceGroupName = $createdProfile.ResourceGroupName
 
-<#
-.SYNOPSIS
-Set a Profile that does not exist
-#>
-function Test-ProfileSetNotFound
-{
-	$zoneName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup
+	Assert-NotNull $createdProfile
 	
-	Assert-Throws { Set-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "PreconditionFailed: The condition '*' in the If-Match header was not satisfied."
+	Assert-Throws { TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName } 
+
+	$createdProfile | Remove-AzureTrafficManagerProfile -Force
 }
 
 <#
@@ -103,9 +116,9 @@ Remove a Profile that does not exist
 #>
 function Test-ProfileRemoveNonExisting
 {
-	$zoneName = getAssetname
+	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
-	$removed = Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
-	Assert-True { $removed }
+	$removed = Remove-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force 
+	Assert-False { $removed }
 }

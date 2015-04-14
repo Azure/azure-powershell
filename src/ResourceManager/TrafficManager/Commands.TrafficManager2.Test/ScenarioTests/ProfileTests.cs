@@ -18,20 +18,41 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class EndpointTests : WatmV2TestsBase
+    public class ProfileTests : WatmV2TestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddEndpoint()
+        public void TestProfileCrud()
         {
-            this.RunPowerShellTest("Test-AddEndpoint");
+            this.RunPowerShellTest("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteEndpoint()
+        public void TestProfileCrudWithPiping()
         {
-            this.RunPowerShellTest("Test-DeleteEndpoint");
+            this.RunPowerShellTest("Test-ProfileCrudWithPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteUsingProfile()
+        {
+            this.RunPowerShellTest("Test-CreateDeleteUsingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileNewAlreadyExists()
+        {
+            this.RunPowerShellTest("Test-ProfileNewAlreadyExists");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileRemoveNonExisting()
+        {
+            this.RunPowerShellTest("Test-ProfileRemoveNonExisting");
         }
     }
 }

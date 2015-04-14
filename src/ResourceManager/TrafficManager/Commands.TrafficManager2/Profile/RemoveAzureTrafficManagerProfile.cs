@@ -68,6 +68,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
             }
+
+            this.WriteObject(deleted);
         }
     }
 }
