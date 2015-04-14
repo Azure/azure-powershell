@@ -165,70 +165,70 @@
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalDynamic.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalDynamic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalStatic.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalStatic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalUsingId.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalUsingId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublic.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublic.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicNoInboundNATRule.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicNoInboundNATRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicPublicNoLbRule.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicPublicNoLbRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicUsingId.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicUsingId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDUsingId.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDUsingId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDEditDomainNameLavel.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDEditDomainNameLavel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDNoDomainNameLabel.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDNoDomainNameLabel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDStaticAllocation.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDStaticAllocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceNoPublicIpAddress.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceNoPublicIpAddress.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerChildResource.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerChildResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerSet.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerSet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.NetworkResourceProvider.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupSecurityRuleCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupSecurityRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
