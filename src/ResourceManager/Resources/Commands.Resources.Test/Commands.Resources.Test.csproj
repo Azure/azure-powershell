@@ -247,8 +247,9 @@
     <Content Include="ScenarioTests\AuthorizationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\NewRoleDefinition.json" />
-    <None Include="Resources\RoleDefinition.json" />
+    <None Include="Resources\NewRoleDefinition.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\ActiveDirectoryTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -270,7 +271,9 @@
     <None Include="ScenarioTests\RoleAssignmentTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\RoleDefinitionTests.ps1" />
+    <None Include="ScenarioTests\RoleDefinitionTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestGetADUserWithMail.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
