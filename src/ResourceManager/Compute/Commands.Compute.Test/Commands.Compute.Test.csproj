@@ -70,9 +70,11 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.1.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
-    </Reference>    <Reference Include="Microsoft.Azure.Management.Network">
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.1.0.8-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
-    </Reference>    <Reference Include="Microsoft.Azure.ResourceManager">
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
@@ -156,10 +158,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Network\Commands.NetworkResourceProvider\Commands.NetworkResourceProvider.csproj">
-      <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
-      <Name>Commands.NetworkResourceProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
