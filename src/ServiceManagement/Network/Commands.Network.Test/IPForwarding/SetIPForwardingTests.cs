@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
         private const string RoleName = "roleName";
         private const string NetworkInterfaceName = "networkInterfaceName";
 
+        private PersistentVMRoleContext VM = new PersistentVMRoleContext()
+        {
+            // these are the only 2 properties being used in the cmdlet
+            Name = RoleName,
+            DeploymentName = DeploymentName
+        };
+
         private MockCommandRuntime mockCommandRuntime;
 
         private SetAzureIPForwarding cmdlet;
@@ -162,13 +169,6 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
         private void SetIPForwardingOnVM(bool enable, bool disable)
         {
             // Setup
-            var VM = new PersistentVMRoleContext()
-            {
-                // these are the only 2 properties being used in the cmdlet
-                Name = RoleName,
-                DeploymentName = DeploymentName
-            };
-
             cmdlet = new SetAzureIPForwarding
             {
                 ServiceName = ServiceName,
@@ -208,12 +208,6 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
         private void SetIPForwardingOnVMNic(bool enable, bool disable)
         {
             // Setup
-            var VM = new PersistentVMRoleContext()
-            {
-                // these are the only 2 properties being used in the cmdlet
-                Name = RoleName,
-                DeploymentName = DeploymentName
-            };
 
             cmdlet = new SetAzureIPForwarding
             {

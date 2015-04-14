@@ -69,7 +69,10 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
                     DeploymentName,
                     RoleName,
                     It.IsAny<CancellationToken>()))
-                .Returns(Task.Factory.StartNew(() => new IPForwardingGetResponse()));
+                .Returns(Task.Factory.StartNew(() => new IPForwardingGetResponse()
+                {
+                    State = "Enabled"
+                }));
 
             this.networkingClientMock
                 .Setup(c => c.IPForwarding.GetForNetworkInterfaceAsync(
@@ -78,7 +81,10 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
                     RoleName,
                     NetworkInterfaceName,
                     It.IsAny<CancellationToken>()))
-                .Returns(Task.Factory.StartNew(() => new IPForwardingGetResponse()));
+                .Returns(Task.Factory.StartNew(() => new IPForwardingGetResponse()
+                {
+                    State = "Disabled"
+                }));
         }
 
         [Fact]
@@ -133,6 +139,7 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
                 Times.Once());
 
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Enabled", mockCommandRuntime.OutputPipeline[0]);
         }
 
         private void GetIPForwardingForVM()
@@ -174,6 +181,7 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
                 Times.Once());
 
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Enabled", mockCommandRuntime.OutputPipeline[0]);
         }
 
         private void GetIPForwardingForVMNic()
@@ -217,6 +225,7 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
                 Times.Once());
 
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Disabled", mockCommandRuntime.OutputPipeline[0]);
         }
 
         #endregion
