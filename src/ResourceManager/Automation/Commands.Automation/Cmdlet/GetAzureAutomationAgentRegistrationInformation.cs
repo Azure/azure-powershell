@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
-    public class GetAzureAutomationAgentRegistrationInformation : AzureAutomationBaseCmdlet
+    public class GetAzureAutomationRegistrationInfo : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Execute this cmdlet.

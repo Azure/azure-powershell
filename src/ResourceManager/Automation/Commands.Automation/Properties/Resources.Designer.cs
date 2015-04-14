@@ -178,6 +178,33 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Dsc node was not found. Node id {0}..
+        /// </summary>
+        internal static string DscNodeNotFound {
+            get {
+                return ResourceManager.GetString("DscNodeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid path {0}..
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid folder path. Folder {0}..
+        /// </summary>
+        internal static string InvalidFolderPath {
+            get {
+                return ResourceManager.GetString("InvalidFolderPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
@@ -214,11 +241,47 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Metaconfig already exists. Specify the parameter to force an overwrite. File: {0}.
+        /// </summary>
+        internal static string MetaconfigAlreadyExists {
+            get {
+                return ResourceManager.GetString("MetaconfigAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The module was not found. Module name: {0}..
         /// </summary>
         internal static string ModuleNotFound {
             get {
                 return ResourceManager.GetString("ModuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A node configuration already exists. Specify the parameter to force an overwrite..
+        /// </summary>
+        internal static string NodeConfigurationAlreadyExists {
+            get {
+                return ResourceManager.GetString("NodeConfigurationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The node was not found..
+        /// </summary>
+        internal static string NodeNotFound {
+            get {
+                return ResourceManager.GetString("NodeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} File(s) written to output folder.
+        /// </summary>
+        internal static string NumberOfFilesWritten {
+            get {
+                return ResourceManager.GetString("NumberOfFilesWritten", resourceCulture);
             }
         }
         
@@ -237,6 +300,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string PowershellJsonDecrypterFailed {
             get {
                 return ResourceManager.GetString("PowershellJsonDecrypterFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation Dsc node ?.
+        /// </summary>
+        internal static string RemovDscNodeWarning {
+            get {
+                return ResourceManager.GetString("RemovDscNodeWarning", resourceCulture);
             }
         }
         
@@ -300,6 +372,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveAzureAutomationScheduleWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureAutomationScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing the Dsc node with Id {0}..
+        /// </summary>
+        internal static string RemoveDscNodeDescription {
+            get {
+                return ResourceManager.GetString("RemoveDscNodeDescription", resourceCulture);
             }
         }
         
@@ -417,6 +498,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string SetCertificateInvalidArgs {
             get {
                 return ResourceManager.GetString("SetCertificateInvalidArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unauthorized access to {0}..
+        /// </summary>
+        internal static string UnauthorizedAccess {
+            get {
+                return ResourceManager.GetString("UnauthorizedAccess", resourceCulture);
             }
         }
         

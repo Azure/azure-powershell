@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscConfiguration))]
-    public class GetAzureAutomationConfiguration : AzureAutomationBaseCmdlet
+    public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the configuration name.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                ret = this.AutomationClient.ListAutomationConfigurations(this.ResourceGroupName, this.AutomationAccountName);
+                ret = this.AutomationClient.ListDscConfigurations(this.ResourceGroupName, this.AutomationAccountName);
             }
 
             this.GenerateCmdletOutput(ret);

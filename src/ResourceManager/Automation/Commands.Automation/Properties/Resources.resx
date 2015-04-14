@@ -287,4 +287,43 @@
     <value>Invalid SourcePath. Verify file path is valid and file exists.</value>
     <comment>Automation</comment>
   </data>
+  <data name="InvalidFolderPath" xml:space="preserve">
+    <value>Invalid folder path. Folder {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Unauthorized access to {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NumberOfFilesWritten" xml:space="preserve">
+    <value>{0} File(s) written to output folder</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidFilePath" xml:space="preserve">
+    <value>Invalid path {0}.</value>
+  </data>
+  <data name="MetaconfigAlreadyExists" xml:space="preserve">
+    <value>Metaconfig already exists. Specify the parameter to force an overwrite. File: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeConfigurationAlreadyExists" xml:space="preserve">
+    <value>A node configuration already exists. Specify the parameter to force an overwrite.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeNotFound" xml:space="preserve">
+    <value>The node was not found.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="DscNodeNotFound" xml:space="preserve">
+    <value>The Dsc node was not found. Node id {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemovDscNodeWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation Dsc node ?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveDscNodeDescription" xml:space="preserve">
+    <value>Removing the Dsc node with Id {0}.</value>
+    <comment>Automation</comment>
+  </data>
 </root>
