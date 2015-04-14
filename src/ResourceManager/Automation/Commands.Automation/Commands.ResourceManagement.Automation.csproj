@@ -116,6 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJob.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJobOutput.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfiguration.cs" />
+    <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAgentRegistrationInformation.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationConfiguration.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNode.cs" />
@@ -135,6 +139,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\PowerShellJsonConverter.cs" />
+    <Compile Include="Common\RequestSettings.cs" />
     <Compile Include="Common\Requires.cs" />
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />
@@ -145,9 +150,12 @@
     <Compile Include="DataContract\OdataErrorMessage.cs" />
     <Compile Include="Model\AgentRegistration.cs" />
     <Compile Include="Model\AutomationAccount.cs" />
+    <Compile Include="Model\CompilationJob.cs" />
     <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\DscNode.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
+    <Compile Include="Model\JobStream.cs" />
+    <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

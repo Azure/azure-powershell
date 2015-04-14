@@ -21,8 +21,8 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -190,5 +190,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         #endregion
+       
     }
 }

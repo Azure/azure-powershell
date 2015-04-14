@@ -40,6 +40,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
         
         #endregion
 
+        #region Compilationjobs
+
+        CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid id);
+
+        IEnumerable<CompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+
+        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters);
+
+        IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
+        #endregion
+
+        #region NodeConfiguration
+        NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName);
+
+        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName);
+
+        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName);
+        #endregion
+
         #region Configurations
 
         IEnumerable<DscConfiguration> ListDscConfigurations(string resourceGroupName, string automationAccountName);
