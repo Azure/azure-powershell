@@ -14,16 +14,19 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachine)]
-    public class SaveAzureVMCommand : VirtualMachineBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = GeneralizeVirtualMachineParamSet)]
+    [OutputType(typeof(AzureOperationResponse))]
+    public class SetAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        protected const string GeneralizeVirtualMachineParamSet = "GeneralizeVirtualMachineParamSet";
+
         [Parameter(
            Mandatory = true,
+           ParameterSetName = GeneralizeVirtualMachineParamSet,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
@@ -32,6 +35,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = true,
+           ParameterSetName = GeneralizeVirtualMachineParamSet,
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
@@ -39,45 +43,19 @@ namespace Microsoft.Azure.Commands.Compute
         public override string Name { get; set; }
 
         [Parameter(
-           Mandatory = true,
-           Position = 2,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The Destination Container Name.")]
+            Mandatory = true,
+            ParameterSetName = GeneralizeVirtualMachineParamSet,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "To generalize virtual machine.")]
         [ValidateNotNullOrEmpty]
-        public string DestinationContainerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 3,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "To Overwrite.")]
-        [ValidateNotNullOrEmpty]
-        public bool Overwrite { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 4,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The Virtual Hard Disk Name Prefix.")]
-        [ValidateNotNullOrEmpty]
-        public string VirtualHardDiskNamePrefix { get; set; }
+        public SwitchParameter Generalized { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineCaptureParameters
-            {
-                DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite,
-                VirtualHardDiskNamePrefix = VirtualHardDiskNamePrefix
-            };
-
-            var op = this.VirtualMachineClient.Capture(
-                this.ResourceGroupName,
-                this.Name,
-                parameters);
-
+            var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
             WriteObject(op);
         }
     }

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
-    [OutputType(typeof(object))]
+    [OutputType(typeof(ComputeLongRunningOperationResponse))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";

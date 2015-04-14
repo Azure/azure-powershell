@@ -12,21 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Compute
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    [Cmdlet("Generalize", ProfileNouns.VirtualMachine)]
-    public class GeneralizeAzureVMCommand : VirtualMachineBaseCmdlet
+    public class RoleDefinitionTests
     {
-        public override void ExecuteCmdlet()
+        [Fact(Skip="Not implemented")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RdNegativeScenarios()
         {
-            base.ExecuteCmdlet();
+            ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
+        }
 
-            var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
-            WriteObject(op);
+        [Fact(Skip = "Not implemented")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RdPositiveScenarios()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
         }
     }
 }
