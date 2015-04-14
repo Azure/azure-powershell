@@ -21,7 +21,7 @@ $sourcePath = "."
 
 if (Test-Path -Path $sourcePath) {
     Write-Output -InputObject "Copying '$sourcePath' to directory '$destDir'";
-    Copy-Item -Path $sourcePath -Destination $destDir -Recurse;
+    Copy-Item -Path $sourcePath -Destination $destDir -Recurse -Force;
 }
 
 Write-Output -InputObject 'Finished post-build script';
