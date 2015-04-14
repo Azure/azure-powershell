@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
 
     /// <summary>
     /// The possible audit event types
-    /// </summary>
-    public enum AuditEventType {DataAccess, DataChanges, RevokePermissions, SchemaChanges, SecurityExceptions};
+    /// </summary> 
+    public enum AuditEventType {PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure, StoredProcedure_Success, StoredProcedure_Failure, Login_Success, Login_Failure, TransactionManagement_Success, TransactionManagement_Failure};
 
     /// <summary>
     /// The possible states in which an auditing policy may be in

@@ -23,17 +23,17 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
-    /// Updates an existing role definition.
+    /// Creates a new role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
-    public class SetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
+    public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.InputFile, HelpMessage = "File name containing a single role definition.")]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName =  ParameterSet.InputFile, HelpMessage = "File name containing a single role definition.")]
         public string InputFile { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
         public PSRoleDefinition Role { get; set; }
 
         public override void ExecuteCmdlet()
@@ -57,9 +57,12 @@ namespace Microsoft.Azure.Commands.Resources
                     throw;
                 }
             }
+            else
+            {
+                role = Role;
+            }
 
-            role = role ?? Role;
-            WriteObject(PoliciesClient.UpdateRoleDefinition(role));
+            WriteObject(PoliciesClient.CreateRoleDefinition(role));
         }
     }
 }
