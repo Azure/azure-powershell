@@ -47,13 +47,21 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             backendAddressPool.Name = this.Name;
-            backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
+            
 
-            foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
+            if (this.BackendIpConfigurationId != null)
             {
-                var resourceId = new PSResourceId();
-                resourceId.Id = backendIpConfigurationId;
-                backendAddressPool.BackendIpConfigurations.Add(resourceId);
+                backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
+                foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
+                {
+                    var resourceId = new PSResourceId();
+                    resourceId.Id = backendIpConfigurationId;
+                    backendAddressPool.BackendIpConfigurations.Add(resourceId);
+                }
+            }
+            else
+            {
+                backendAddressPool.BackendIpConfigurations = null;
             }
 
             WriteObject(this.LoadBalancer);

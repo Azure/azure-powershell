@@ -109,9 +109,12 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider
             }
 
             // Normalize BackendAddressPool
-            foreach (var backendAddressPool in loadBalancer.BackendAddressPools)
+            if (loadBalancer.BackendAddressPools != null)
             {
-                backendAddressPool.Id = string.Empty;
+                foreach (var backendAddressPool in loadBalancer.BackendAddressPools)
+                {
+                    backendAddressPool.Id = string.Empty;
+                }
             }
         }
     }

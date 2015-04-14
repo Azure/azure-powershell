@@ -216,6 +216,10 @@
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Primary</Label>
+                <PropertyName>Primary</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

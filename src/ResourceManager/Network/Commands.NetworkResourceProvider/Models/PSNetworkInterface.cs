@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.NetworkResourceProvider.Models
 
         public string MacAddress { get; set; }
 
+        public bool Primary { get; set; }
+
         public PSResourceId NetworkSecurityGroup { get; set; }
 
         public string ProvisioningState { get; set; }
