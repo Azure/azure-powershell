@@ -116,12 +116,12 @@ function Test-SingleNetworkInterface
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
-		
-		# Get NetworkInterface
-		$getnic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
-		Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
-		Assert-AreEqual $getnic.Primary true;
-		Assert-NotNull $getnic.MacAddress;
+        
+        # Get NetworkInterface
+        $getnic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
+        Assert-AreEqual $getnic.Primary true;
+        Assert-NotNull $getnic.MacAddress;
 
         # Remove
         Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
@@ -160,19 +160,19 @@ function Test-MultipleNetworkInterface
         $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $nic1 = New-AzureNetworkInterface -Force -Name ('nic1' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
-		$nic2 = New-AzureNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic2 = New-AzureNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
         
         $p = Add-AzureVMNetworkInterface -VM $p -Id $nic1.Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
-		Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
+        Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
         
-		$p = Add-AzureVMNetworkInterface -VM $p -Id $nic2.Id -Primary;
+        $p = Add-AzureVMNetworkInterface -VM $p -Id $nic2.Id -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 2;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
 
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].Primary true;
-		Assert-AreNotEqual $p.NetworkProfile.NetworkInterfaces[0].Primary true;
+        Assert-AreNotEqual $p.NetworkProfile.NetworkInterfaces[0].Primary true;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -235,23 +235,23 @@ function Test-MultipleNetworkInterface
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 2;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
-		Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
         Assert-AreEqual $vm1.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
-		
-		# Get NetworkInterface
-		$getnic1 = Get-AzureNetworkInterface -Name ('nic1' + $rgname) -ResourceGroupName $rgname;
-		Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic1.Id;
-		Assert-AreNotEqual  $getnic1.Primary true;
-		Assert-NotNull $getnic1.MacAddress;
+        
+        # Get NetworkInterface
+        $getnic1 = Get-AzureNetworkInterface -Name ('nic1' + $rgname) -ResourceGroupName $rgname;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic1.Id;
+        Assert-AreNotEqual  $getnic1.Primary true;
+        Assert-NotNull $getnic1.MacAddress;
 
-		$getnic2 = Get-AzureNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
-		Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $getnic2.Id;
-		Assert-AreEqual $getnic2.Primary true;
-		Assert-NotNull $getnic2.MacAddress;
+        $getnic2 = Get-AzureNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $getnic2.Id;
+        Assert-AreEqual $getnic2.Primary true;
+        Assert-NotNull $getnic2.MacAddress;
 
         # Remove
         Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
