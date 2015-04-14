@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (string.IsNullOrEmpty(this.Name))
             {
-                var listResponse = this.StorageClient.StorageAccounts.List(this.ResourceGroupName);
+                var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
                 WriteObject(listResponse.StorageAccounts, true);
             }
