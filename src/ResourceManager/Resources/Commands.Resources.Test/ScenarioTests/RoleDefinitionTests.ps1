@@ -14,6 +14,43 @@
 
 <#
 .SYNOPSIS
+Tests verify scenarios for RoleDefinitions creation.
+#>
+function Test-RoleDefinitionCreateTests
+{
+    # Basic positive case - read from file
+    $rdName = 'CustomRole Test Role'
+    New-AzureRoleDefinition -InputFile .\Resources\NewRoleDefinition.json
+    $rd = Get-AzureRoleDefinition -Name $rdName
+	Assert-NotNull $rd
+	Assert-AreEqual "Test role" $rd.Description 
+	Assert-AreEqual $true $rd.IsCustom
+	Assert-NotNull $rd.Actions
+	Assert-AreEqual "Microsoft.Authorization/*/read" $rd.Actions[0]
+	Assert-AreEqual "Microsoft.Support/*" $rd.Actions[1]
+	Assert-NotNull $rd.AssignableScopes
+	# The below scopes may need to be changed to actual scope values like /subscriptions/.... to satisfy the ARM access checks for PUT requests
+	Assert-AreEqual "Scope1" $rd.AssignableScopes[0]
+	Assert-AreEqual "Scope2" $rd.AssignableScopes[1]
+
+	# Basic positive case - read from object
+	$roleDef = Get-AzureRoleDefinition -Name "Virtual Machine Contributor"
+	$roleDef.Id = $null
+	$roleDef.Name = "Virtual machine restarter"
+	$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+	$roleDef.Description = "Can monitor and restart virtual machines"
+	
+	New-AzureRoleDefinition -Role $roleDef
+	$addedRoleDef = Get-AzureRoleDefinition -Name "Virtual machine restarter"
+
+	Assert-AreEqual $roleDef.Actions $addedRoleDef.Actions
+	Assert-AreEqual $roleDef.Description $addedRoleDef.Description
+	Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
+	Assert-AreEqual $true $roleDef.IsCustom
+}
+
+<#
+.SYNOPSIS
 Tests verify negative scenarios for RoleDefinitions
 #>
 function Test-RdNegativeScenarios
@@ -34,7 +71,7 @@ function Test-RdNegativeScenarios
     $rdNull = Get-AzureRoleDefinition -Name $rdName
 
     # Create a role definition
-    # $rd = New-AzureRoleDefinition -InputFile .Resources\RoleDefinition.json
+    $rd = New-AzureRoleDefinition -InputFile .Resources\RoleDefinition.json
 
     # Role Defintion not provided.
     $roleDefNotProvided = "Role definition not provided."
@@ -59,7 +96,7 @@ function Test-RDPositiveScenarios
 {
     # Create a role definition with Name rdNamme.
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-    # $rd = New-AzureRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = New-AzureRoleDefinition -InputFile .\Resources\RoleDefinition.json
     $rd = Get-AzureRoleDefinition -Name $rdName
 
     # Update the role definition with name $rdName that was created in the step above.
@@ -78,6 +115,6 @@ function Test-RDPositiveScenarios
     $readRd = Get-AzureRoleDefinition -Name $rd.Name
     Assert-Null $readRd
 
-    # $rdReCreated = New-AzureRoleDefinition -Role $rd
+    $rdReCreated = New-AzureRoleDefinition -Role $rd
     $rdReDeleted = Get-AzureRoleDefinition -Name $rd.Name | Remove-AzureRoleDefinition -Force
 }
