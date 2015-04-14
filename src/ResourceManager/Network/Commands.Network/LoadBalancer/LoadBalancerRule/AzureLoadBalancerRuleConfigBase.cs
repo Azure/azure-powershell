@@ -103,13 +103,24 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
-                this.BackendAddressPoolId = this.BackendAddressPool.Id;
-                this.ProbeId = this.Probe.Id;
-                this.FrontendIPConfigurationId = new List<string>();
-
-                foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                if (this.BackendAddressPool != null)
                 {
-                    this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                    this.BackendAddressPoolId = this.BackendAddressPool.Id;
+                }
+
+                if (this.Probe != null)
+                {
+                    this.ProbeId = this.Probe.Id;
+                }
+
+                if (this.FrontendIpConfiguration != null)
+                {
+                    this.FrontendIPConfigurationId = new List<string>();
+
+                    foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                    {
+                        this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                    }
                 }
             }
         }

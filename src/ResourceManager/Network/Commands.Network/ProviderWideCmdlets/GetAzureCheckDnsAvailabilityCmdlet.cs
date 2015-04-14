@@ -21,14 +21,20 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The Domain Qualified Name name.")]
+            Mandatory = true,
+            HelpMessage = "The Domain Qualified Name.")]
         [ValidateNotNullOrEmpty]
         public string DomainQualifiedName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability("nrp8", DomainQualifiedName);
+            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);
             WriteObject(result);
         }
     }

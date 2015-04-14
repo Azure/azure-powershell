@@ -83,13 +83,19 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
-                this.BackendIpConfigurationId = this.BackendIpConfiguration.Id;
-                
-                this.FrontendIPConfigurationId = new List<string>();
-
-                foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                if (this.BackendIpConfiguration != null)
                 {
-                    this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                    this.BackendIpConfigurationId = this.BackendIpConfiguration.Id;
+                }
+
+                if (this.FrontendIpConfiguration != null)
+                {
+                    this.FrontendIPConfigurationId = new List<string>();
+
+                    foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
+                    {
+                        this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
+                    }
                 }
             }
         }
