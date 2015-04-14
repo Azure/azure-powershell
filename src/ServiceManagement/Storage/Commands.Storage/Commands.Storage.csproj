@@ -282,7 +282,7 @@
   <PropertyGroup>
     <PostBuildEvent>
         cd $(ProjectDir)
-        set ResourceOutDir="..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Storage\"
+        set ResourceOutDir="$(OutDir)..\..\..\ResourceManager\AzureResourceManager\Storage\"
         IF NOT EXIST "%25ResourceOutDir%25" mkdir "%25ResourceOutDir%25"
         copy $(OutDir) "%25ResourceOutDir%25" /y</PostBuildEvent>
   </PropertyGroup>
