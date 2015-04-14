@@ -62,14 +62,12 @@ Creates a resource group to use in tests
 #>
 function TestSetup-CreateProfile
 {
-    $resourceGroupName = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation "microsoft.compute"
-    $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation
+    $resourceGroup = TestSetup-CreateResourceGroup
 
 	$profileName = getAssetName
 	$relativeName = getAssetName
 
-	$profile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -LoadBalancingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$profile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	return $profile
 }

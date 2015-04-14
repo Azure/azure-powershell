@@ -12,3 +12,59 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Full Profile CRUD cycle
+#>
+function Test-ProfileCrud
+{
+	$profileName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual $profileName $createdProfile.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
+	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
+
+	$retrievedProfile = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual $profileName $retrievedProfile.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedProfile.ResourceGroupName
+
+	$createdProfile.TrafficRoutingMethod = "Priority"
+
+	$updatedProfile = Set-AzureTrafficManagerProfile -Profile $createdProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual $profileName $updatedProfile.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
+	Assert-AreEqual "Priority" $updatedProfile.TrafficRoutingMethod
+
+	Remove-AzureTrafficManagerProfile -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
+Full Profile CRUD cycle
+#>
+function Test-CreateDeleteUsingProfile
+{
+	$profileName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual $profileName $createdProfile.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
+	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
+
+	Remove-AzureTrafficManagerProfile -Profile $createdProfile -Force
+
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
