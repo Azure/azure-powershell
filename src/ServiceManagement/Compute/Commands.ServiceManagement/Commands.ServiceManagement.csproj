@@ -528,9 +528,9 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
+    <ProjectReference Include="..\..\Network\Commands.Network\Commands.ServiceManagement.Network.csproj">
       <Project>{40fee0bb-fd45-4efc-85bc-0d602a6892c4}</Project>
-      <Name>Commands.Network</Name>
+      <Name>Commands.ServiceManagement.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>

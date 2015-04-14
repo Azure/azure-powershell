@@ -44,8 +44,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Pow
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.Azure.Commands.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -1579,9 +1578,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<GatewayGetOperationStatusResponse>(new NewAzureVNetGatewayCmdletInfo(vnetName));
         }
 
-        public Collection<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
+        public Collection<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
         {
-            return RunPSCmdletAndReturnAll<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
+            return RunPSCmdletAndReturnAll<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
         }
 
         public GatewayGetOperationStatusResponse SetAzureVNetGateway(string option, string vnetName, string localNetwork)
