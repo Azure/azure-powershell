@@ -64,6 +64,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 {
                     applianceProvisiongInfo.DeleteAzureCisVMOnFailure = false;
                 }
+                else
+                {
+                    applianceProvisiongInfo.DeleteAzureCisVMOnFailure = true;
+                }
 
                 var deviceJobResponse = StorSimpleClient.CreateVirtualDevice(applianceProvisiongInfo);
 

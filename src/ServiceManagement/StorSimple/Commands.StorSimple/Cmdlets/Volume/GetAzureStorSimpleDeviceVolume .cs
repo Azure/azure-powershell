@@ -43,9 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var deviceId = StorSimpleClient.GetDeviceId(DeviceName);
                 if (deviceId == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 }
                 
                 switch (ParameterSetName)
@@ -66,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         }
                         else
                         {
-                            WriteVerbose(string.Format(Resources.NotFoundVolumeMessage, VolumeName));
+                            throw new ArgumentException(string.Format(Resources.NotFoundVolumeMessage, VolumeName));
                         }
                         break;
                 }

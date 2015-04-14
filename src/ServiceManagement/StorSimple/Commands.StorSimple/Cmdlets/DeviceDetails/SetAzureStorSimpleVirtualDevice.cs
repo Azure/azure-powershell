@@ -13,15 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using System.Net.Sockets;
-using System.Net;
 using Microsoft.WindowsAzure.Commands.StorSimple.Encryption;
-using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {

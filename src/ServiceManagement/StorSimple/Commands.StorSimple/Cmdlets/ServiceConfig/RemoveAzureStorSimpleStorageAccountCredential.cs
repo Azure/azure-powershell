@@ -70,21 +70,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                   }
                                   if (existingSac == null)
                                   {
-                                      WriteObject(null);
-                                      WriteVerbose(string.Format(Resources.SACNotFoundWithName, sacName));
-                                      return;
+                                      throw new ArgumentException(string.Format(Resources.SACNotFoundWithName, sacName));
                                   }
-                                  
-                                    var serviceConfig = new ServiceConfiguration()
-                                    {
-                                    AcrChangeList = new AcrChangeList(),
-                                    CredentialChangeList = new SacChangeList()
-                                    {
-                                        Added = new List<StorageAccountCredential>(),
-                                        Deleted = new[] { existingSac.InstanceId },
-                                        Updated = new List<StorageAccountCredential>()
-                                    }
-                                    };
+
+                                  var serviceConfig = new ServiceConfiguration()
+                                  {
+                                      AcrChangeList = new AcrChangeList(),
+                                      CredentialChangeList = new SacChangeList()
+                                      {
+                                          Added = new List<StorageAccountCredential>(),
+                                          Deleted = new[] {existingSac.InstanceId},
+                                          Updated = new List<StorageAccountCredential>()
+                                      }
+                                  };
 
                                     if (WaitForComplete.IsPresent)
                                     {

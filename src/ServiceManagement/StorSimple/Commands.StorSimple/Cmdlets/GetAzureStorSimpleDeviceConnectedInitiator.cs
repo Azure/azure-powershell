@@ -51,9 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var deviceToUse = StorSimpleClient.GetAllDevices().Where(x => x.FriendlyName.Equals(DeviceName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                     if (deviceToUse == null)
                     {
-                        WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, currentResourceName , DeviceName));
-                        WriteObject(null);
-                        return;
+                        throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, currentResourceName, DeviceName));
                     }
                     deviceIdFinal = deviceToUse.DeviceId;
                 }

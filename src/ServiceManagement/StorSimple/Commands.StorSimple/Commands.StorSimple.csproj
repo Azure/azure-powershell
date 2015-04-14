@@ -83,9 +83,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.StorSimple, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.StorSimple">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.1.0.1-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.1.0.2-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
