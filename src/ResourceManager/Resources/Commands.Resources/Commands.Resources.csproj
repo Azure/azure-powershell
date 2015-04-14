@@ -68,8 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.1-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -132,6 +133,11 @@
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
     <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
@@ -198,6 +204,7 @@
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\RemoveAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
@@ -215,11 +222,6 @@
     <Compile Include="Models.ResourceGroups\SetResourceMode.cs" />
     <Compile Include="Models.ResourceGroups\TemplateFile.cs" />
     <Compile Include="Models.ResourceGroups\TemplateFileParameterV1.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceGroupDeployments\StopAzureResourceGroupDeploymentCommand.cs" />
@@ -268,8 +270,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
