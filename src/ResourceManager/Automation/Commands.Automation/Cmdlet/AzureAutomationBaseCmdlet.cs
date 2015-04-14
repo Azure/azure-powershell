@@ -62,13 +62,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
-        [ValidateNotNullOrEmpty]
-        public string AutomationAccountName { get; set; }
-
         protected virtual void AutomationExecuteCmdlet()
         {
             // Do nothing.
@@ -79,7 +72,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             try
             {
                 Requires.Argument("ResourceGroupName", this.ResourceGroupName).NotNull();
-                Requires.Argument("AutomationAccountName", this.AutomationAccountName).NotNull();
                 this.AutomationExecuteCmdlet();
             }
             catch (CloudException cloudException)

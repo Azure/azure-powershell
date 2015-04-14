@@ -29,6 +29,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {
         /// <summary>
+        /// Gets or sets the automation account name.
+        /// </summary>
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
+        [ValidateNotNullOrEmpty]
+        public string AutomationAccountName { get; set; }
+
+        /// <summary>
         /// Gets or sets the KeyType.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The key type of the agent registration key - primary or secondary")]

@@ -26,36 +26,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
-    public class GetAzureAutomationAccount : AzurePSCmdlet
+    public class GetAzureAutomationAccount : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// The automation client.
-        /// </summary>
-        private IAutomationClient automationClient;
-
-        /// <summary>
-        /// Gets or sets the automation client base.
-        /// </summary>
-        public IAutomationClient AutomationClient
-        {
-            get
-            {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
-            }
-
-            set
-            {
-                this.automationClient = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
@@ -83,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 ret = this.AutomationClient.ListAutomationAccounts(this.ResourceGroupName);
             }
 
-            this.WriteObject(ret, true);
+            this.GenerateCmdletOutput(ret);
         }
     }
 }

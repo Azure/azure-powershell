@@ -15,11 +15,13 @@
 using System;
 using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Management.Automation.Models;
-using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
+    using Microsoft.Azure.Management.Automation.Models;
+
+    using AutomationManagement = Microsoft.Azure.Management.Automation;
+
     /// <summary>
     /// The Agent Registration.
     /// </summary>
@@ -44,12 +46,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            if (agentRegistration.Keys != null)
-            {
-                this.PrimaryKey = agentRegistration.Keys.Primary;
-                this.SecondaryKey = agentRegistration.Keys.Secondary;
-            }
-
+            this.PrimaryKey = agentRegistration.Keys.Primary;
+            this.SecondaryKey = agentRegistration.Keys.Secondary;
             this.Endpoint = agentRegistration.Endpoint;
         }
 
