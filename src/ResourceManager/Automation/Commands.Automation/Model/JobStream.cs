@@ -15,10 +15,10 @@
 using System;
 using Microsoft.Azure.Commands.Automation.Common;
 
+using AutomationManagement = Microsoft.Azure.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Microsoft.Azure.Management.Automation;
-
     /// <summary>
     /// The Job Stream.
     /// </summary>

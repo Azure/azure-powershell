@@ -40,14 +40,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the runbook name of the job. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name of the job.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name of the compilation job.")]
         [Alias("Name")]
         public string ConfigurationName { get; set; }
 
         /// <summary> 
         /// Gets or sets the status of a job. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "The configuration name of the job.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter jobs based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs based on their status.")]
         [ValidateSet("Completed", "Failed", "Queued", "Starting", "Resuming", "Running", "Stopped", "Stopping", "Suspended", "Suspending", "Activating")]
         public string Status { get; set; }
@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the start time filter. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "The configuration name of the job.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job start time >= StartTime.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job start time >= StartTime.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job start time >= StartTime.")]
         public DateTimeOffset? StartTime { get; set; }
 
         /// <summary> 
         /// Gets or sets the end time filter. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "The configuration name of the job.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter jobs so that job end time <= EndTime.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job end time <= EndTime.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter compilation jobs so that the compilation job end time <= EndTime.")]
         public DateTimeOffset? EndTime { get; set; } 
 
         /// <summary>

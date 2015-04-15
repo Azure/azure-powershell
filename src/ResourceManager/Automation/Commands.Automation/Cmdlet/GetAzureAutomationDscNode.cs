@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string NodeConfigurationName { get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name.")]
+        [ValidateNotNullOrEmpty]
+        public string ConfigurationName { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -88,6 +95,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.NodeConfigurationName,
+                    this.Status);
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfigurationName)
+            {
+                ret = this.AutomationClient.ListDscNodesByConfiguration(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.ConfigurationName,
                     this.Status);
             }
             else

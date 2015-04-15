@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public NodeConfiguration(string accountName, AutomationManagement.Models.DscNodeConfiguration nodeConfiguration)
+        public NodeConfiguration(string accountName, AutomationManagement.Models.DscNodeConfiguration nodeConfiguration, string rollUpStatus)
         {
             Requires.Argument("nodeConfiguration", nodeConfiguration).NotNull();
             Requires.Argument("accountName", accountName).NotNull();
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Name = nodeConfiguration.Name;
             this.CreationTime = nodeConfiguration.CreationTime.ToLocalTime();
             this.LastModifiedTime = nodeConfiguration.LastModifiedTime.ToLocalTime();
+            this.RollupStatus = rollUpStatus;
             if (nodeConfiguration.Configuration != null)
             {
                 this.ConfigurationName = nodeConfiguration.Configuration.Name;
@@ -86,5 +87,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the configuration.
         /// </summary>
         public string ConfigurationName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rollup status.
+        /// </summary>
+        public string RollupStatus { get; set; }
     }
 }

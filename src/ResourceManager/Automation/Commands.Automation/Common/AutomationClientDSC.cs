@@ -459,7 +459,46 @@ using Hyak.Common;
 
             return dscNodes.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
         }
-        
+
+        public IEnumerable<Model.DscNode> ListDscNodesByConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string configurationName,
+            string status)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("ConfigurationName", configurationName).NotNull();
+
+            IEnumerable<Model.DscNode> listOfNodes = Enumerable.Empty<Model.DscNode>();
+            
+            // first get the list of node configurations for the given configuration
+            IEnumerable<Model.NodeConfiguration> listOfNodeConfigurations = this.EnumerateNodeConfigurationsByConfigurationName(
+                resourceGroupName,
+                automationAccountName,
+                configurationName);
+
+             IEnumerable<Model.DscNode> listOfNodesForGivenNodeConfiguration;
+
+            // for each nodeconfiguration, get the list of nodes and concatenate
+            foreach (var nodeConfiguration in listOfNodeConfigurations)
+            {
+                listOfNodesForGivenNodeConfiguration =
+                    this.ListDscNodesByNodeConfiguration(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeConfiguration.Name, 
+                        status);
+
+                if (listOfNodesForGivenNodeConfiguration != null)
+                {
+                    listOfNodes = listOfNodes.Concat(listOfNodesForGivenNodeConfiguration);
+                }
+            }
+
+            return listOfNodes;
+        }
+
         public IEnumerable<Model.DscNode> ListDscNodes(
             string resourceGroupName,
             string automationAccountName,
@@ -786,6 +825,10 @@ using Hyak.Common;
                 {
                     listParams.StreamType = streamType;
                 }
+                else
+                {
+                    listParams.StreamType = StreamType.Any.ToString();
+                }
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
                 return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
@@ -795,7 +838,7 @@ using Hyak.Common;
         #endregion
 
         #region node configuration
-        public Model.NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName)
+        public Model.NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -806,11 +849,18 @@ using Hyak.Common;
                         string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, nodeConfigurationName));
                 }
 
-                return new Model.NodeConfiguration(automationAccountName, nodeConfiguration);
+                string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfigurationName);
+
+                if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
+                {
+                    return new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus);                            
+                }
+                
+                return null;
             }
         }
 
-        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName)
+        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -829,12 +879,22 @@ using Hyak.Common;
                         return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
                     });
 
+                var nodeConfigurations = new List<Model.NodeConfiguration>();
+                foreach (var nodeConfiguration in nodeConfigModels)
+                {
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
+                    
+                    if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
+                    {
+                        nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
+                    }
+                }
 
-                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel));
+                return nodeConfigurations.AsEnumerable<Model.NodeConfiguration>();
             }
         }
 
-        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName)
+        public IEnumerable<Model.NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -851,14 +911,67 @@ using Hyak.Common;
                             return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
                         });
 
+                var nodeConfigurations = new List<Model.NodeConfiguration>();
+                foreach (var nodeConfiguration in nodeConfigModels)
+                {
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
 
-                return nodeConfigModels.Select(nodeConfigModel => new Model.NodeConfiguration(automationAccountName, nodeConfigModel));
+                    if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
+                    {
+                        nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
+                    }
+                }
+
+                return nodeConfigurations.AsEnumerable<Model.NodeConfiguration>();
             }
         }
 
         #endregion
 
         #region privatemethods
+        /// <summary>
+        /// Enumerate the list of NodeConfigurations for given configuration - without any rollup status
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="automationAccountName">Automation account</param>
+        /// <param name="configurationName">Name of configuration</param>
+        /// <returns>List of NodeConfigurations</returns>
+        private IEnumerable<Model.NodeConfiguration> EnumerateNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                IEnumerable<AutomationManagement.Models.DscNodeConfiguration> nodeConfigModels;
+
+                nodeConfigModels = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.NodeConfigurations.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new AutomationManagement.Models.DscNodeConfigurationListParameters
+                            {
+                                ConfigurationName = configurationName
+                            });
+                        return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
+                    });
+
+                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel, null));
+            }
+        }
+
+        private string GetRollupStatus(string resourceGroupName, string automationAccountName, string nodeConfigurationName)
+        {
+            var nodes = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, null);
+            foreach (var node in nodes)
+            {
+                if (node.Status.Equals("Not Compliant") || node.Status.Equals("Failed") || node.Status.Equals("Unresponsive"))
+                {
+                    return "Bad";
+                }
+            }
+
+            return "Good";
+        }
 
         private string FormatDateTime(DateTimeOffset dateTime)
         {
