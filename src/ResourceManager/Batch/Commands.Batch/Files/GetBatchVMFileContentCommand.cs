@@ -56,17 +56,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            DownloadVMFileOptions options = new DownloadVMFileOptions()
-            {
-                Context = this.BatchContext,
-                PoolName = this.PoolName,
-                VMName = this.VMName,
-                VMFileName = this.Name,
-                VMFile = this.InputObject,
-                DestinationPath = this.DestinationPath,
-                Stream = this.DestinationStream,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            DownloadVMFileOptions options = new DownloadVMFileOptions(this.BatchContext, this.PoolName, this.VMName,
+                this.Name, this.InputObject, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);
 
             BatchClient.DownloadVMFile(options);
         }

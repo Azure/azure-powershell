@@ -12,38 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class DownloadVMFileOptions
+    public class DownloadVMFileOptions : VMFileOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public DownloadVMFileOptions(BatchAccountContext context, string poolName, string vmName, string vmFileName, PSVMFile vmFile, string destinationPath, 
+            Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolName, vmName, vmFileName, vmFile, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(destinationPath) || stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
 
-        /// <summary>
-        /// The name of the pool containing the vm
-        /// </summary>
-        public string PoolName { get; set; }
-
-        /// <summary>
-        /// The name of the vm
-        /// </summary>
-        public string VMName { get; set; }
-
-        /// <summary>
-        /// The name of the vm file to download
-        /// </summary>
-        public string VMFileName { get; set; }
-
-        /// <summary>
-        /// The PSVMFile object representing the vm file to download
-        /// </summary>
-        public PSVMFile VMFile { get; set; }
+            this.DestinationPath = destinationPath;
+            this.Stream = stream;
+        }
 
         /// <summary>
         /// The path to the directory where the vm file will be downloaded
@@ -54,10 +43,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The Stream into which the vm file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
         internal Stream Stream { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

@@ -12,33 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO;
+using System.Security.Cryptography;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Batch.Properties;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class DownloadRDPFileOptions
+    public class DownloadRDPFileOptions : VMOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public DownloadRDPFileOptions(BatchAccountContext context, string poolName, string vmName, PSVM vm, string destinationPath, 
+            Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolName, vmName, vm, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(destinationPath) || stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
 
-        /// <summary>
-        /// The name of the pool containing the vm
-        /// </summary>
-        public string PoolName { get; set; }
-
-        /// <summary>
-        /// The name of the vm to which the RDP file will point
-        /// </summary>
-        public string VMName { get; set; }
-
-        /// <summary>
-        /// The PSVM object representing the vm to which the RDP file will point
-        /// </summary>
-        public PSVM VM { get; set; }
+            this.DestinationPath = destinationPath;
+            this.Stream = stream;
+        }
 
         /// <summary>
         /// The path to the directory where the RDP file will be downloaded
@@ -49,10 +44,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
         public Stream Stream { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

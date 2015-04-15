@@ -53,15 +53,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListJobOptions options = new ListJobOptions()
+            ListJobOptions options = new ListJobOptions(this.BatchContext, this.WorkItemName, this.WorkItem, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
                 JobName = this.Name,
-                WorkItem = this.WorkItem,
                 Filter = this.Filter,
-                MaxCount = this.MaxCount,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                MaxCount = this.MaxCount
             };
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate

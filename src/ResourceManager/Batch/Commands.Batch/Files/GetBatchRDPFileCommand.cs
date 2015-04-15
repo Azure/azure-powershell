@@ -51,16 +51,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            DownloadRDPFileOptions options = new DownloadRDPFileOptions()
-            {
-                Context = this.BatchContext,
-                PoolName = this.PoolName,
-                VMName = this.VMName,
-                VM = this.VM,
-                Stream = this.DestinationStream,
-                DestinationPath = this.DestinationPath,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            DownloadRDPFileOptions options = new DownloadRDPFileOptions(this.BatchContext, this.PoolName, this.VMName,
+                this.VM, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);
 
             this.BatchClient.DownloadRDPFile(options);
         }

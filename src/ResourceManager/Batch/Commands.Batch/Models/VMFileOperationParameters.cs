@@ -12,48 +12,49 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewWorkItemParameters : BatchClientParametersBase
+    public class VMFileOperationParameters : BatchClientParametersBase
     {
-        public NewWorkItemParameters(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public VMFileOperationParameters(BatchAccountContext context, string poolName, string vmName, string vmFileName,
+            PSVMFile vmFile, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(workItemName))
+            if ((string.IsNullOrWhiteSpace(poolName) || string.IsNullOrWhiteSpace(vmName) || string.IsNullOrWhiteSpace(vmFileName)) 
+                && vmFile == null)
             {
-                throw new ArgumentNullException("poolName");
+                throw new ArgumentNullException(Resources.NoVMFile);
             }
 
-            this.WorkItemName = workItemName;
+            this.PoolName = poolName;
+            this.VMName = vmName;
+            this.VMFileName = vmFileName;
+            this.VMFile = vmFile;
         }
-        /// <summary>
-        /// The name of the WorkItem to create
-        /// </summary>
-        public string WorkItemName { get; private set; }
 
         /// <summary>
-        /// The Schedule to use when creating a new WorkItem
+        /// The name of the pool containing the vm
         /// </summary>
-        public PSWorkItemSchedule Schedule { get; set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
-        /// The Job Specification to use when creating a new WorkItem
+        /// The name of the vm
         /// </summary>
-        public PSJobSpecification JobSpecification { get; set; }
+        public string VMName { get; private set; }
 
         /// <summary>
-        /// The Job Execution Enviornment to use when creating a new WorkItem
+        /// The name of the vm file
         /// </summary>
-        public PSJobExecutionEnvironment JobExecutionEnvironment { get; set; }
+        public string VMFileName { get; private set; }
 
         /// <summary>
-        /// Metadata to add to the new WorkItem
+        /// The PSVMFile object representing the target vm file
         /// </summary>
-        public IDictionary Metadata { get; set; }
+        public PSVMFile VMFile { get; private set; }
     }
 }

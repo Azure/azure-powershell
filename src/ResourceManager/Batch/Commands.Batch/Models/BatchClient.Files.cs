@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Task files matching the specified filter options
+        /// Lists the task files matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Task files</param>
-        /// <returns>The Task files matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for task files</param>
+        /// <returns>The task files matching the specified filter options</returns>
         public IEnumerable<PSTaskFile> ListTaskFiles(ListTaskFileOptions options)
         {
             if (options == null)
@@ -37,13 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName)) 
-                && options.Task == null)
-            {
-                throw new ArgumentNullException(Resources.GBTF_NoTaskSpecified);
-            }
-
-            // Get the single Task file matching the specified name
+            // Get the single task file matching the specified name
             if (!string.IsNullOrEmpty(options.TaskFileName))
             {
                 WriteVerbose(string.Format(Resources.GBTF_GetByName, options.TaskFileName, options.TaskName));
@@ -54,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSTaskFile[] { psTaskFile };
                 }
             }
-            // List Task files using the specified filter
+            // List task files using the specified filter
             else
             {
                 string tName = options.Task == null ? options.TaskName : options.Task.Name;
@@ -90,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Downloads a Task file using the specified options.
+        /// Downloads a task file using the specified options.
         /// </summary>
         /// <param name="options">The download options</param>
         public void DownloadTaskFile(DownloadTaskFileOptions options)
@@ -98,17 +92,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (options == null)
             {
                 throw new ArgumentNullException("options");
-            }
-
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName) 
-                || string.IsNullOrWhiteSpace(options.TaskFileName)) && options.TaskFile == null)
-            {
-                throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
-            }
-
-            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
-            {
-                throw new ArgumentNullException(Resources.NoDownloadDestination);
             }
 
             ITaskFile taskFile = null;
@@ -137,11 +120,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (options == null)
             {
                 throw new ArgumentNullException("options");
-            }
-
-            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) && options.VM == null)
-            {
-                throw new ArgumentNullException(Resources.GBVMF_NoVMSpecified);
             }
 
             // Get the single vm file matching the specified name
@@ -201,17 +179,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName) || string.IsNullOrWhiteSpace(options.VMFileName)) 
-                && options.VMFile == null)
-            {
-                throw new ArgumentNullException(Resources.GBVMFC_NoVMFileSpecified);
-            }
-
-            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
-            {
-                throw new ArgumentNullException(Resources.NoDownloadDestination);
-            }
-
             ITaskFile vmFile = null;
             if (options.VMFile == null)
             {
@@ -237,16 +204,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (options == null)
             {
                 throw new ArgumentNullException("options");
-            }
-
-            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) && options.VM == null)
-            {
-                throw new ArgumentNullException(Resources.GRDP_NoVM);
-            }
-
-            if (string.IsNullOrWhiteSpace(options.DestinationPath) && options.Stream == null)
-            {
-                throw new ArgumentNullException(Resources.NoDownloadDestination);
             }
 
             if (options.Stream != null)
