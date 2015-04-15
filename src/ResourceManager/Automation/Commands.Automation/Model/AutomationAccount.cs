@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Plan = automationAccount.Properties.Sku != null ? automationAccount.Properties.Sku.Name : null;
             this.CreationTime = automationAccount.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = automationAccount.Properties.LastModifiedTime.ToLocalTime();
+            this.State = automationAccount.Properties.State;
+            this.LastModifiedBy = automationAccount.Properties.LastModifiedBy;
         }
 
         /// <summary>
@@ -97,6 +99,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the LastPublishTime.
         /// </summary>
         public DateTimeOffset LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LastModifiedBy.
+        /// </summary>
+        public string LastModifiedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
