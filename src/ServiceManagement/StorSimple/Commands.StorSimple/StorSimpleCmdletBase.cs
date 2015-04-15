@@ -360,8 +360,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 //validate storage account credentials
                 if (!ValidStorageAccountCred(name, key, endpoint))
                 {
-                    WriteVerbose(Resources.StorageCredentialVerificationFailureMessage);
-                    return false;
+                    throw new ArgumentException(Resources.StorageCredentialVerificationFailureMessage);
                 }
                 WriteVerbose(Resources.StorageCredentialVerificationSuccessMessage);
                 WriteVerbose(Resources.EncryptionInProgressMessage);

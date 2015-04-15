@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceBackup", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),OutputType(typeof(GetBackupResponse))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceBackup", DefaultParameterSetName = StorSimpleCmdletParameterSet.Empty),OutputType(typeof(IList<Backup>))]
     public class GetAzureStorSimpleDeviceBackup: StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
@@ -73,13 +70,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         {
             try
             {
-                if (!ProcessParameters()) return;
+                if (!ProcessParameters()) 
+                    return;
                 GetBackupResponse backupList = null;
                 backupList = StorSimpleClient.GetAllBackups(deviceId, filterType, isAllSelected, IdToPass,
                     FromDateTime.ToString(),
                     ToDateTime.ToString(), Skip == null ? "0" : Skip.ToString(), First == null ? null : First.ToString());
                 WriteObject(backupList.BackupSetsList, true);
                 WriteVerbose(string.Format(Resources.BackupsReturnedCount, backupList.BackupSetsList.Count));
+                
                 if (backupList.NextPageUri != null 
                     && backupList.NextPageStartIdentifier!="1")
                 {
@@ -113,9 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             if (deviceId == null)
             {
-                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                WriteObject(null);
-                return false;
+                throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
             }
 
             if (string.IsNullOrEmpty(From))

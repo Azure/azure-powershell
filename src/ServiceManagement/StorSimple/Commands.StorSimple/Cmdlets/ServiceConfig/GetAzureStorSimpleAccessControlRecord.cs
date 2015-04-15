@@ -46,8 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var acr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (acr == null)
                 {
-                    WriteObject(null);
-                    WriteVerbose(string.Format(Resources.NotFoundMessageACR,ACRName));
+                    throw new ArgumentException(string.Format(Resources.NotFoundMessageACR, ACRName));
                 }
                 else
                 {
