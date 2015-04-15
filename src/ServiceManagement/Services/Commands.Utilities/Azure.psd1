@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.14'
+ModuleVersion = '0.8.16'
 
 # ID used to uniquely identify this module
 GUID = 'D48CF693-4125-4D2D-8790-1514F44CE325'
@@ -86,6 +86,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
                 '.\Network\Microsoft.Azure.Commands.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
+                '.\RemoteApp\Microsoft.Azure.Commands.RemoteApp.dll',
                 '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
 
 # Functions to export from this module

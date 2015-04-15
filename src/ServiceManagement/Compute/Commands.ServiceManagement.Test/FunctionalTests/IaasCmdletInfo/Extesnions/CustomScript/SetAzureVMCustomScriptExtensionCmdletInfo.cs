@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
     public class SetAzureVMCustomScriptExtensionCmdletInfo:CmdletsInfo
     {
 
-        private SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version)
+        private SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version, bool forceUpdate)
         {
             cmdletName = Utilities.SetAzureVMCustomScriptExtensionCmdletName;
             cmdletParams.Add(new CmdletParam("VM", vm));
@@ -32,10 +32,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 cmdletParams.Add(new CmdletParam("ReferenceName", referenceName));
             }
+            if (forceUpdate)
+            {
+                cmdletParams.Add(new CmdletParam("ForceUpdate"));
+            }
         }
 
-        private SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string run, string argument, string referenceName, string version)
-            :this(vm, referenceName, version)
+        private SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string run, string argument, string referenceName, string version, bool forceUpdate)
+            : this(vm, referenceName, version, forceUpdate)
         {
             if (!string.IsNullOrEmpty(run))
             {
@@ -47,9 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        //SetCustomScriptExtensionByUrisParamSetName
-        public SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version, string[] fileUri, string run, string argument)
-            :this(vm,run,argument,referenceName,version)
+        // SetCustomScriptExtensionByUrisParamSetName
+        public SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version, string[] fileUri, string run, string argument, bool forceUpdate)
+            :this(vm, run, argument, referenceName, version, forceUpdate)
         {
             if (fileUri != null)
             {
@@ -57,9 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        //DisableCustomScriptExtensionParamSetName
-        public SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version, bool disable)
-            : this(vm, referenceName, version)
+        // DisableCustomScriptExtensionParamSetName
+        public SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string referenceName, string version, bool disable, bool forceUpdate)
+            : this(vm, referenceName, version, forceUpdate)
         {
             if (disable)
             {
@@ -67,10 +71,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        //SetCustomScriptExtensionByContainerBlobsParamSetName
+        // SetCustomScriptExtensionByContainerBlobsParamSetName
         public SetAzureVMCustomScriptExtensionCmdletInfo(PersistentVM vm, string[] fileName, string storageAccountName, string storageEndpointSuffix, string containerName,
-              string storageAccountKey, string run, string argument, string referenceName, string version)
-            : this(vm, run, argument, referenceName, version)
+              string storageAccountKey, string run, string argument, string referenceName, string version, bool forceUpdate)
+            : this(vm, run, argument, referenceName, version, forceUpdate)
         {
             if (fileName.Length > 0)
             {

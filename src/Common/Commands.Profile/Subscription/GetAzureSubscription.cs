@@ -35,7 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     [OutputType(typeof(AzureSubscription))]
     public class GetAzureSubscriptionCommand : SubscriptionCmdletBase
     {
-        public GetAzureSubscriptionCommand() : base(true)
+        public GetAzureSubscriptionCommand()
+            : base(true)
         {
 
         }
@@ -64,8 +65,17 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             switch (ParameterSetName)
             {
                 case "ByName":
-                    WriteSubscriptions(ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
-                        .Where(s => SubscriptionName == null || s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase)));
+                    IEnumerable<AzureSubscription> subscriptions = new AzureSubscription[0];
+                    if (Profile.Context != null && Profile.Context.Environment != null)
+                    {
+                        subscriptions = ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
+                            .Where(
+                                s =>
+                                    SubscriptionName == null ||
+                                    s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase));
+                    }
+
+                    WriteSubscriptions(subscriptions);
                     break;
                 case "ById":
                     WriteSubscriptions(ProfileClient.GetSubscription(new Guid(SubscriptionId)));
@@ -86,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             if (defaultSubscription == null)
             {
                 WriteError(new ErrorRecord(
-                    new InvalidOperationException(Resources.InvalidDefaultSubscription), 
+                    new InvalidOperationException(Resources.InvalidDefaultSubscription),
                     string.Empty,
                     ErrorCategory.InvalidData, null));
             }
@@ -118,7 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         private void WriteSubscriptions(params AzureSubscription[] subscriptions)
         {
-            WriteSubscriptions((IEnumerable<AzureSubscription>) subscriptions);
+            WriteSubscriptions((IEnumerable<AzureSubscription>)subscriptions);
         }
 
         private void WriteSubscriptions(IEnumerable<AzureSubscription> subscriptions)

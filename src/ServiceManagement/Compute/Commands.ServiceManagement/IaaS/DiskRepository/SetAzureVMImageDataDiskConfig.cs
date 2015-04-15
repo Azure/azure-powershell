@@ -99,7 +99,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             }
 
             var diskConfig = DiskConfig.DataDiskConfigurations.FirstOrDefault(
-                d => string.Equals(d.Name, this.DataDiskName, StringComparison.OrdinalIgnoreCase));
+                d => this.ParameterSetName == UpdateAzureVMImageParamSet
+                    ? string.Equals(d.Name, this.DataDiskName, StringComparison.OrdinalIgnoreCase)
+                    : d.MediaLink == this.MediaLink);
 
             if (diskConfig == null)
             {

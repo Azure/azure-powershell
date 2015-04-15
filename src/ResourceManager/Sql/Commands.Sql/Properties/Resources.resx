@@ -144,4 +144,31 @@
   <data name="UseServerWithoutStorageAccount" xml:space="preserve">
     <value>Cannot use a server's auditing policy before it is configured.</value>
   </data>
+  <data name="RemoveDatabaseDataMaskingRuleDescription" xml:space="preserve">
+    <value>Removing firewall rule "{0}" for Microsoft Azure Sql Database "{1}".</value>
+  </data>
+  <data name="RemoveDatabaseDataMaskingRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the data masking rule "{0}" for Microsoft Azure Sql Database "{1}"?</value>
+  </data>
+  <data name="ShouldProcessCaption" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DataMaskingAliasAlreadyUsedError" xml:space="preserve">
+    <value>A data masking rule for alias '{0}' is already exists</value>
+  </data>
+  <data name="DataMaskingTableAndColumnUsedError" xml:space="preserve">
+    <value>A data masking rule for the table '{0}' and column '{1}' already exists</value>
+  </data>
+  <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
+    <value>A data masking rule with the id '{0}' already exist</value>
+  </data>
+  <data name="SetDataMaskingRuleIdDoesNotExistError" xml:space="preserve">
+    <value>A data masking rule with the id '{0}' does not exist</value>
+  </data>
+  <data name="DataMaskingNumberRuleIntervalDefinitionError" xml:space="preserve">
+    <value>Cannot set a lower bound which is larger than the higher bound</value>
+  </data>
+  <data name="DataMaskingRuleDoesNotExist" xml:space="preserve">
+    <value>The rule {0} does not exist</value>
+  </data>
 </root>
