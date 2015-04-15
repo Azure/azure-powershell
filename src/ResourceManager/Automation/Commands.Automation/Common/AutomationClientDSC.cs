@@ -459,7 +459,46 @@ using Hyak.Common;
 
             return dscNodes.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
         }
-        
+
+        public IEnumerable<Model.DscNode> ListDscNodesByConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string configurationName,
+            string status)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("ConfigurationName", configurationName).NotNull();
+
+            IEnumerable<Model.DscNode> listOfNodes = Enumerable.Empty<Model.DscNode>();
+            
+            // first get the list of node configurations for the given configuration
+            IEnumerable < Model.NodeConfiguration > listOfNodeConfigurations = this.ListNodeConfigurationsByConfigurationName(
+                resourceGroupName,
+                automationAccountName,
+                configurationName);
+
+             IEnumerable<Model.DscNode> listOfNodesForGivenNodeConfiguration;
+
+            // for each nodeconfiguration, get the list of nodes and concatenate
+            foreach (var nodeConfiguration in listOfNodeConfigurations)
+            {
+                listOfNodesForGivenNodeConfiguration =
+                    this.ListDscNodesByNodeConfiguration(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeConfiguration.Name, 
+                        status);
+
+                if (listOfNodesForGivenNodeConfiguration != null)
+                {
+                    listOfNodes = listOfNodes.Concat(listOfNodesForGivenNodeConfiguration);
+                }
+            }
+
+            return listOfNodes;
+        }
+
         public IEnumerable<Model.DscNode> ListDscNodes(
             string resourceGroupName,
             string automationAccountName,

@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<DscNode> ListDscNodesByName(string resourceGroupName, string automationAccountName, string nodeName, string status);
         IEnumerable<DscNode> ListDscNodesByNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string status);
 
+        IEnumerable<DscNode> ListDscNodesByConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string configurationName,
+            string status);
         DscNode SetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId, string nodeConfigurationName, bool force);
 
         void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
