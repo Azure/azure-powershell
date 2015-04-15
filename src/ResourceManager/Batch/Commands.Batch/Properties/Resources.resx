@@ -264,6 +264,12 @@
   <data name="NBT_NoJobSpecified" xml:space="preserve">
     <value>No job specified to create the new task under.  Supply a PSCloudJob object or a workitem name and job name.</value>
   </data>
+  <data name="NBU_CreatingUser" xml:space="preserve">
+    <value>Creating user {0} on vm {1}</value>
+  </data>
+  <data name="NBU_NoVMSpecified" xml:space="preserve">
+    <value>No vm was specified to create the new user on. Supply a PSVM object or a pool name and vm name.</value>
+  </data>
   <data name="NBWI_CreatingWorkItem" xml:space="preserve">
     <value>Creating workitem {0}</value>
   </data>
@@ -299,6 +305,15 @@
   </data>
   <data name="RBT_RemoveTask" xml:space="preserve">
     <value>Removing task ...</value>
+  </data>
+  <data name="RBU_NoUserSpecified" xml:space="preserve">
+    <value>No user specified for deletion. Supply a pool name, vm name, and user name.</value>
+  </data>
+  <data name="RBU_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove user {0}?</value>
+  </data>
+  <data name="RBU_RemoveUser" xml:space="preserve">
+    <value>Removing user ...</value>
   </data>
   <data name="RBWI_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove workitem {0}?</value>

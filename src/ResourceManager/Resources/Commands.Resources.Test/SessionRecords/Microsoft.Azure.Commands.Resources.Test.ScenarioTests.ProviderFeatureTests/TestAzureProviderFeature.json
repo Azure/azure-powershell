@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/features?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvZmVhdHVyZXM/YXBpLXZlcnNpb249MjAxNC0wOC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -53,7 +52,6 @@
     },
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/features?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvZmVhdHVyZXM/YXBpLXZlcnNpb249MjAxNC0wOC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -104,7 +102,6 @@
     },
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9mZWF0dXJlcz9hcGktdmVyc2lvbj0yMDE0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -155,7 +152,6 @@
     },
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9mZWF0dXJlcz9hcGktdmVyc2lvbj0yMDE0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -206,7 +202,6 @@
     },
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3/register?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9mZWF0dXJlcy9iZXRhQWNjZXNzMy9yZWdpc3Rlcj9hcGktdmVyc2lvbj0yMDE0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -257,7 +252,6 @@
     },
     {
       "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features?api-version=2014-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTYxYjlkZjEtZWE3MC00YTZjLWJkMzMtNDlhODRmNjZmMTBmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRmVhdHVyZXMvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9mZWF0dXJlcz9hcGktdmVyc2lvbj0yMDE0LTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

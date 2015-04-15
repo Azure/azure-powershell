@@ -502,6 +502,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating user {0} on vm {1}.
+        /// </summary>
+        internal static string NBU_CreatingUser {
+            get {
+                return ResourceManager.GetString("NBU_CreatingUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No vm was specified to create the new user on. Supply a PSVM object or a pool name and vm name..
+        /// </summary>
+        internal static string NBU_NoVMSpecified {
+            get {
+                return ResourceManager.GetString("NBU_NoVMSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating workitem {0}.
         /// </summary>
         internal static string NBWI_CreatingWorkItem {
@@ -606,6 +624,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBT_RemoveTask {
             get {
                 return ResourceManager.GetString("RBT_RemoveTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No user specified for deletion. Supply a pool name, vm name, and user name..
+        /// </summary>
+        internal static string RBU_NoUserSpecified {
+            get {
+                return ResourceManager.GetString("RBU_NoUserSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove user {0}?.
+        /// </summary>
+        internal static string RBU_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBU_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing user ....
+        /// </summary>
+        internal static string RBU_RemoveUser {
+            get {
+                return ResourceManager.GetString("RBU_RemoveUser", resourceCulture);
             }
         }
         
