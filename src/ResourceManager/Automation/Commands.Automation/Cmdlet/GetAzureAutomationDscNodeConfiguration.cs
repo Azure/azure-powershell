@@ -43,6 +43,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name.")]
         public string ConfigurationName { get; set; }
 
+        /// <summary> 
+        /// Gets or sets the status of a job. 
+        /// </summary> 
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfigurationName, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
+        [ValidateSet("Good", "Bad")]
+        public string RollupStatus { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -54,17 +63,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             if (this.Name != null && !Guid.Empty.Equals(this.Name))
             {
                 // ByJobId 
-                nodeConfigurations = new List<NodeConfiguration> { this.AutomationClient.GetNodeConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.Name) };
+                nodeConfigurations = new List<NodeConfiguration> { this.AutomationClient.GetNodeConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.RollupStatus) };
             }
             else if (this.ConfigurationName != null)
             {
                 // ByConfiguration 
-                nodeConfigurations = this.AutomationClient.ListNodeConfigurationsByConfigurationName(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName);
+                nodeConfigurations = this.AutomationClient.ListNodeConfigurationsByConfigurationName(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.RollupStatus);
             }
             else
             {
                 // ByAll 
-                nodeConfigurations = this.AutomationClient.ListNodeConfigurations(this.ResourceGroupName, this.AutomationAccountName);
+                nodeConfigurations = this.AutomationClient.ListNodeConfigurations(this.ResourceGroupName, this.AutomationAccountName, this.RollupStatus);
             }
 
             this.WriteObject(nodeConfigurations, true); 

@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region NodeConfiguration
-        NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName);
+        NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus);
 
-        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName);
+        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus);
 
-        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName);
+        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
         #endregion
 
         #region Configurations
