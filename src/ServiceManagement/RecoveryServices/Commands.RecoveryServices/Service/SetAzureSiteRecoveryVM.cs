@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 return;
             }
 
-            UpdateVmPropertiesInput updateVmPropertiesInput = new UpdateVmPropertiesInput();
-            updateVmPropertiesInput.RecoveryAzureVmGivenName = this.Name;
-            updateVmPropertiesInput.RecoveryAzureVmSize = this.Size;
-            updateVmPropertiesInput.SelectedPrimaryNicId = this.PrimaryNic;
-            updateVmPropertiesInput.RecoveryAzureNetworkId = this.RecoveryNetworkId;
+            VMProperties updateVmPropertiesInput = new VMProperties();
+            updateVmPropertiesInput.RecoveryAzureVMName = this.Name;
+            updateVmPropertiesInput.RecoveryAzureVMSize = this.Size;
+            //// updateVmPropertiesInput.SelectedPrimaryNicId = this.PrimaryNic;
+            updateVmPropertiesInput.SelectedRecoveryAzureNetworkId = this.RecoveryNetworkId;
 
             this.jobResponse = RecoveryServicesClient.UpdateVmProperties(
                 this.VirtualMachine.ProtectionContainerId,
