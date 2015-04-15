@@ -473,7 +473,7 @@ using Hyak.Common;
             IEnumerable<Model.DscNode> listOfNodes = Enumerable.Empty<Model.DscNode>();
             
             // first get the list of node configurations for the given configuration
-            IEnumerable < Model.NodeConfiguration > listOfNodeConfigurations = this.ListNodeConfigurationsByConfigurationName(
+            IEnumerable<Model.NodeConfiguration> listOfNodeConfigurations = this.EnumerateNodeConfigurationsByConfigurationName(
                 resourceGroupName,
                 automationAccountName,
                 configurationName);
@@ -892,6 +892,37 @@ using Hyak.Common;
 
 
                 return nodeConfigModels.Select(nodeConfigModel => new Model.NodeConfiguration(automationAccountName, nodeConfigModel));
+            }
+        }
+
+        /// <summary>
+        /// Enumerate the list of NodeConfigurations for given configuration - without any rollup status
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="automationAccountName">Automation account</param>
+        /// <param name="configurationName">Name of configuration</param>
+        /// <returns>List of NodeConfigurations</returns>
+        private IEnumerable<Model.NodeConfiguration> EnumerateNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                IEnumerable<AutomationManagement.Models.DscNodeConfiguration> nodeConfigModels;
+
+                nodeConfigModels = AutomationManagementClient.ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.NodeConfigurations.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            new AutomationManagement.Models.DscNodeConfigurationListParameters
+                            {
+                                ConfigurationName = configurationName
+                            });
+                        return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
+                    });
+
+
+                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel));
             }
         }
 
