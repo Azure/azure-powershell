@@ -72,5 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineSize = "AzureVMSize";
 
         public const string VirtualMachineImage = "AzureVMImage";
+
+        public const string VirtualMachineUsage = "AzureVMUsage";
     }
 }
