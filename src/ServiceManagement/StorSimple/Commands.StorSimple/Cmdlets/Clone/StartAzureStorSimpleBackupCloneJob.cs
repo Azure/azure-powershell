@@ -91,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             SourceSnapshot = Snapshot,
                             ReturnWorkflowId = true,
                             TargetVolName = CloneVolumeName,
-                            TargetACRList = TargetAccessControlRecords
+                            TargetACRList = TargetAccessControlRecords ?? new List<AccessControlRecord>()
                         };
                         response = StorSimpleClient.CloneVolume(sourceDeviceId, request);
                         HandleDeviceJobResponse(response, "start");
