@@ -20,42 +20,42 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    public class AzureSqlDatabaseServerFirewallRuleAttributeTests
+    public class AzureSqlServerFirewallRuleAttributeTests
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void NewAzureSqlDatabaseServerFirewallRuleAttributes()
+        public void NewAzureSqlServerFirewallRuleAttributes()
         {
-            Type type = typeof(NewAzureSqlDatabaseServerFirewallRule);
+            Type type = typeof(NewAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "AllowAllAzureIPs", isMandatory: false, valueFromPipelineByName: false);
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void SetAzureSqlDatabaseServerFirewallRuleAttributes()
+        public void SetAzureSqlServerFirewallRuleAttributes()
         {
-            Type type = typeof(SetAzureSqlDatabaseServerFirewallRule);
+            Type type = typeof(SetAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "StartIpAddress", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "EndIpAddress", isMandatory: true, valueFromPipelineByName: false);
         }
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void RemoveAzureSqlDatabaseServerFirewallRuleAttributes()
+        public void RemoveAzureSqlServerFirewallRuleAttributes()
         {
-            Type type = typeof(RemoveAzureSqlDatabaseServerFirewallRule);
+            Type type = typeof(RemoveAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void GetAzureSqlDatabaseServerFirewallRuleAttributes()
+        public void GetAzureSqlServerFirewallRuleAttributes()
         {
-            Type type = typeof(GetAzureSqlDatabaseServerFirewallRule);
+            Type type = typeof(GetAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 

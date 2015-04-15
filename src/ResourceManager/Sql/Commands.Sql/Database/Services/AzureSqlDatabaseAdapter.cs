@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns></returns>
         public string GetServerLocation(string resourceGroupName, string serverName)
         {
-            AzureSqlDatabaseServerAdapter serverAdapter = new AzureSqlDatabaseServerAdapter(Profile, _subscription);
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
         }

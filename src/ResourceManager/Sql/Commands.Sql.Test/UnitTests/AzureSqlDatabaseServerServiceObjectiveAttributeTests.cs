@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.Sql, Category.CheckIn)]
         public void GetAzureSqlDatabaseServerServiceObjectiveAttributes()
         {
-            Type type = typeof(GetAzureSqlDatabaseServerServiceObjective);
+            Type type = typeof(GetAzureSqlServerServiceObjective);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 

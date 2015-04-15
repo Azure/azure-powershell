@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "CollationName", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "CatalogCollation", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "MaxSizeBytes", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Edition", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "RequestedServiceObjectiveName", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "CollationName", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "CatalogCollation", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "MaxSizeBytes", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Edition", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "RequestedServiceObjectiveName", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: false);
         }
 
         [Fact]
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "MaxSizeBytes", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Edition", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "RequestedServiceObjectiveName", isMandatory: false, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "MaxSizeBytes", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Edition", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "RequestedServiceObjectiveName", isMandatory: false, valueFromPipelineByName: false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Tags", isMandatory: false, valueFromPipelineByName: false);
         }
 
         [Fact]
