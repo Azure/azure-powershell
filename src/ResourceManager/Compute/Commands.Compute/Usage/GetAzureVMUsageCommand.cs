@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage, DefaultParameterSetName = GetVirtualMachineUsageParamSet)]
     [OutputType(typeof(Usage))]
-    public class GetAzureVMUsageCommand : UsageBaseCmdlet
+    public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
         protected const string GetVirtualMachineUsageParamSet = "GetVirtualMachineUsageParamSet";
 

@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class UsageBaseCmdlet : AzurePSCmdlet
+    public abstract class VirtualMachineUsageBaseCmdlet : AzurePSCmdlet
     {
         private ComputeClient computeClient;
 

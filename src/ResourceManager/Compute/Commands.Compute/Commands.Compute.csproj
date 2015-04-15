@@ -150,7 +150,7 @@
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
-    <Compile Include="Usage\UsageBaseCmdlet.cs" />
+    <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
