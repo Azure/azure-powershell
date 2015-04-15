@@ -42,20 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetDataFactoryWithEmptyName()
-        {
-            RunPowerShellTest("Test-GetDataFactoryWithEmptyName");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetDataFactoryWithWhiteSpaceName()
-        {
-            RunPowerShellTest("Test-GetDataFactoryWithWhiteSpaceName");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryPiping()
         {
             RunPowerShellTest("Test-DataFactoryPiping");
