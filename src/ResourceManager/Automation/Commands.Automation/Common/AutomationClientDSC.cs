@@ -825,6 +825,10 @@ using Hyak.Common;
                 {
                     listParams.StreamType = streamType;
                 }
+                else
+                {
+                    listParams.StreamType = StreamType.Any.ToString();
+                }
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
                 return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();

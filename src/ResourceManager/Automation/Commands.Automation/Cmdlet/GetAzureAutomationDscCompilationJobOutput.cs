@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
+            if (Stream.Equals(StreamType.Progress))
+            {
+                Stream = StreamType.Any;
+            }
+
             var ret = this.AutomationClient.GetDscCompilationJobStream(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString());
 
             this.GenerateCmdletOutput(ret);
