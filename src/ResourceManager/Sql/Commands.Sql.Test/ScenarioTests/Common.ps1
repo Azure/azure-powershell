@@ -44,7 +44,7 @@ Creates the test environment needed to perform the Sql auditing tests
 function Create-TestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
+	Azure\New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
 	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
 }
 
@@ -68,7 +68,7 @@ function Remove-TestEnvironment ($testSuffix)
 	try
 	{
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
+	Azure\Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
 	}
 	catch
 	{

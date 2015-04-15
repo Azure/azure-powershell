@@ -8,8 +8,8 @@
     <ProjectGuid>{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Network</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Network</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.ServiceManagement.Network</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.ServiceManagement.Network</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -176,7 +176,7 @@
     <Compile Include="Routes\RemoveAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\SetAzureRoute.cs" />
     <Compile Include="Routes\SetAzureSubnetRouteTable.cs" />
-    <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
+    <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
@@ -219,7 +219,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Network.dll-help.xml">
+    <Content Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

@@ -8,8 +8,8 @@
     <ProjectGuid>{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Network.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Network.Test</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -172,9 +172,9 @@
       <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Network\Commands.Network.csproj">
+    <ProjectReference Include="..\..\ManagedCache\Commands.ManagedCache\Commands.ManagedCache.csproj">
       <Project>{46c06ed8-43d9-41fd-b73b-41547d9c04e1}</Project>
-      <Name>Commands.Network</Name>
+      <Name>Commands.ManagedCache</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
