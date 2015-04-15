@@ -25,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleLegacyVolumeContainerMigrationPlan : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = false, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
+        [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
         [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
@@ -39,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var migrationPlanList = StorSimpleClient.GetAllMigrationPlan();
                     if (migrationPlanList.MigrationPlans.Count == 0)
                     {
-                        WriteVerbose(Resources.MigrationPlanNoConfigs);
+                        throw new ArgumentException(Resources.MigrationPlanNoConfigs);
                     }
                     else
                     {
@@ -56,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var migrationPlanList = StorSimpleClient.GetMigrationPlan(LegacyConfigId);
                     if (0 >= migrationPlanList.MigrationPlans.Count)
                     {
-                        WriteVerbose(Resources.MigrationPlanNotFound);
+                        throw new ArgumentException(Resources.MigrationPlanNotFound);
                     }
                     else
                     {
