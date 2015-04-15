@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -96,6 +98,49 @@ namespace Microsoft.Azure.Commands.Compute
                 return AccountType.PremiumLRS;
             }
             throw new ArgumentOutOfRangeException("accountType");
+        }
+
+        private static string ParseResourceGroupFromId(string idFromServer)
+        {
+            string[] tokens = idFromServer.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            
+            return tokens[3];
+        }
+
+        protected PSObject ConstructPSStorageAccountObject(StorageAccount storageAccount)
+        { 
+            string resourceGroup = ParseResourceGroupFromId(storageAccount.Id);
+            return base.ConstructPSObject(
+                        null,
+                        "Name", storageAccount.Name,
+                        "ResourceGroupName", resourceGroup,
+                        "AccountType", storageAccount.AccountType,
+                        "CreationTime", storageAccount.CreationTime,
+                        "CustomDomain", storageAccount.CustomDomain,
+                        "LastGeoFailoverTime", storageAccount.LastGeoFailoverTime,
+                        "PrimaryEndpoints", storageAccount.PrimaryEndpoints,
+                        "PrimaryLocation", storageAccount.PrimaryLocation,
+                        "ProvisioningState", storageAccount.ProvisioningState,
+                        "SecondaryEndpoints", storageAccount.SecondaryEndpoints,
+                        "SecondaryLocation", storageAccount.SecondaryLocation,
+                        "StatusOfPrimary", storageAccount.StatusOfPrimary,
+                        "StatusOfSecondary", storageAccount.StatusOfSecondary,
+                        "Id", storageAccount.Id,
+                        "Type", storageAccount.Type,
+                        "Location", storageAccount.Location,
+                        "Tags", storageAccount.Tags);
+        }
+
+        protected void WriteStorageAccount(StorageAccount storageAccount)
+        {
+            WriteObject(this.ConstructPSStorageAccountObject(storageAccount));
+        }
+
+        protected void WriteStorageAccountList(IList<StorageAccount> storageAccounts)
+        {
+            List<PSObject> output = new List<PSObject>();
+            storageAccounts.ForEach(storageAccount => output.Add(this.ConstructPSStorageAccountObject(storageAccount)));
+            WriteObject(output, true);
         }
     }
 }

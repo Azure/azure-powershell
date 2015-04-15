@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.Compute
             AccountTypeString.StandardZRS,
             AccountTypeString.StandardGRS,
             AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
         public string Type { get; set; }
 
@@ -75,7 +74,9 @@ namespace Microsoft.Azure.Commands.Compute
                 this.Name,
                 createParameters);
 
-            WriteObject(createAccountResponse.StorageAccount);
+            var getAccountResponse = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+
+            this.WriteStorageAccount(getAccountResponse.StorageAccount);
         }
     }
 }
