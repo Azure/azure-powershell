@@ -845,15 +845,7 @@ using Hyak.Common;
                         string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, nodeConfigurationName));
                 }
 
-                string computedRollupStatus = "Good";
-                var nodes = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, null);
-                foreach (var node in nodes)
-                {
-                    if (node.Status.Equals("Not Compliant") || node.Status.Equals("Failed") || node.Status.Equals("Unresponsive"))
-                    {
-                        computedRollupStatus = "Bad";
-                    }
-                }
+                string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfigurationName);
 
                 if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                 {
@@ -883,9 +875,18 @@ using Hyak.Common;
                         return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
                     });
 
-                string computedRollUpStatus = "Good";
+                var nodeConfigurations = new List<Model.NodeConfiguration>();
+                foreach (var nodeConfiguration in nodeConfigModels)
+                {
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
+                    
+                    if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
+                    {
+                        nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
+                    }
+                }
 
-                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel, computedRollUpStatus));
+                return nodeConfigurations.AsEnumerable<Model.NodeConfiguration>();
             }
         }
 
@@ -909,16 +910,8 @@ using Hyak.Common;
                 var nodeConfigurations = new List<Model.NodeConfiguration>();
                 foreach (var nodeConfiguration in nodeConfigModels)
                 {
-                    string computedRollupStatus = "Good";
-                    var configName = nodeConfiguration.Configuration != null ? nodeConfiguration.Configuration.Name : null;
-                    var nodes = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, configName, null);
-                    foreach (var node in nodes)
-                    {
-                        if (node.Status.Equals("Not Compliant") || node.Status.Equals("Failed") || node.Status.Equals("Unresponsive"))
-                        {
-                            computedRollupStatus = "Bad";
-                        }
-                    }
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
+
                     if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                     {
                         nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
@@ -929,6 +922,9 @@ using Hyak.Common;
             }
         }
 
+        #endregion
+
+        #region privatemethods
         /// <summary>
         /// Enumerate the list of NodeConfigurations for given configuration - without any rollup status
         /// </summary>
@@ -955,14 +951,23 @@ using Hyak.Common;
                         return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
                     });
 
-
-                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel));
+                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel, null));
             }
         }
 
-        #endregion
+        private string GetRollupStatus(string resourceGroupName, string automationAccountName, string nodeConfigurationName)
+        {
+            var nodes = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, null);
+            foreach (var node in nodes)
+            {
+                if (node.Status.Equals("Not Compliant") || node.Status.Equals("Failed") || node.Status.Equals("Unresponsive"))
+                {
+                    return "Bad";
+                }
+            }
 
-        #region privatemethods
+            return "Good";
+        }
 
         private string FormatDateTime(DateTimeOffset dateTime)
         {

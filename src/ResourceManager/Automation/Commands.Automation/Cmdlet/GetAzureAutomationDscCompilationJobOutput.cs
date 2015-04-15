@@ -34,10 +34,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the job id
         /// </summary>
         [Alias("JobId")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The job Id")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The compilation job Id")]
         public Guid Id { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type. Defaults to Any.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type.")]
+        [ValidateSet("Output", "Warning", "Error", "Debug", "Verbose", "Any")]
         public StreamType Stream { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]

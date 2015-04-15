@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// starts azure automation compilation job
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationDscCompilationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByConfigurationName)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationDscCompilationJob")]
     [OutputType(typeof(CompilationJob))]
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the configuration parameters.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration parameters.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The compilation job parameters.")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>
