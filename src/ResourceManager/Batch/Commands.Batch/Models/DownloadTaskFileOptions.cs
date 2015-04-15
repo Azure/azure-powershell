@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PSTaskFile taskFile, string destinationPath, Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, workItemName, jobName, taskName, taskFileName, taskFile, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(destinationPath) || stream == null)
+            if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
             {
                 throw new ArgumentNullException(Resources.NoDownloadDestination);
             }

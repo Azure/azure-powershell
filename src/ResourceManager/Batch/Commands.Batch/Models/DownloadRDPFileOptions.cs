@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public DownloadRDPFileOptions(BatchAccountContext context, string poolName, string vmName, PSVM vm, string destinationPath, 
             Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolName, vmName, vm, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(destinationPath) || stream == null)
+            if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
             {
                 throw new ArgumentNullException(Resources.NoDownloadDestination);
             }
