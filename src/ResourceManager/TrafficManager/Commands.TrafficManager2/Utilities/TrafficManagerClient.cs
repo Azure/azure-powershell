@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using System.Collections.Generic;
     using System.Net;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.TrafficManager;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using Endpoint = Microsoft.Azure.Management.TrafficManager.Models.Endpoint;
 
     public class TrafficManagerClient 
     {
@@ -39,10 +41,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath)
         {
-            ProfileCreateResponse response = this.TrafficManagerManagementClient.Profiles.Create(
+            ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName, 
                 profileName,
-                new ProfileCreateParameters
+                new ProfileCreateOrUpdateParameters
                 {
                     Profile = new Profile
                     {
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         Location = TrafficManagerClient.ProfileResourceLocation,
                         Properties = new ProfileProperties
                         {
+                            ProfileStatus = "Enabled", // TODO: Remove
                             TrafficRoutingMethod = trafficRoutingMethod,
                             DnsConfig = new DnsConfig
                             {
@@ -61,6 +64,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                                 Protocol = monitorProtocol,
                                 Port = monitorPort,
                                 Path = monitorPath
+                            },
+                            Endpoints = new [] // TODO: remove when bug is fixed
+                            {
+                                new Endpoint
+                                {
+                                    Name = "My fake external endpoint",
+                                    Type = "microsoft.network/trafficmanagerprofiles/externalendpoints",
+                                    Properties = new EndpointProperties
+                                    {
+                                        Target = "fake.com",
+                                        EndpointStatus = "Enabled"
+                                    }
+                                }
                             }
                         }
                     }
@@ -78,10 +94,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
         {
-            ProfileUpdateResponse response = this.TrafficManagerManagementClient.Profiles.Update(
+            ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 profile.ResourceGroupName,
                 profile.Name, 
-                new ProfileUpdateParameters
+                new ProfileCreateOrUpdateParameters
                 {
                     Profile = profile.ToSDKProfile()
                 });
@@ -93,7 +109,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         {
             AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Delete(profile.ResourceGroupName, profile.Name);
 
-            return response.StatusCode.Equals(HttpStatusCode.NoContent) || response.StatusCode.Equals(HttpStatusCode.OK);
+            return response.StatusCode.Equals(HttpStatusCode.OK);
         }
 
         private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, ProfileProperties mamlProfileProperties)

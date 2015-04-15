@@ -93,7 +93,7 @@
     <Compile Include="Utilities\TrafficManagerClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.TrafficManager2.dll-help.xml">
+    <Content Include="Microsoft.Azure.Commands.TrafficManager.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -104,7 +104,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.Azure.Commands.TrafficManager2.dll-help.psd1" />
+    <None Include="Microsoft.Azure.Commands.TrafficManager.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
