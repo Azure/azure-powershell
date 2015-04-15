@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests
 {
-    using Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 

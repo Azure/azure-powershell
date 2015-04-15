@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.TrafficManager.Test")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.TrafficManager.Test")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright("Copyright (c) 2014")]

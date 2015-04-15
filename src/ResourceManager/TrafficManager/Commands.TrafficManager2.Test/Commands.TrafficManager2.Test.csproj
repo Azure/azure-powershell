@@ -8,8 +8,8 @@
     <ProjectGuid>{5764A3A4-586C-4536-8481-13007CAC111B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.TrafficManager.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.TrafficManager.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -152,9 +152,15 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="ScenarioTests\Common.ps1" />
-    <None Include="ScenarioTests\EndpointTests.ps1" />
-    <None Include="ScenarioTests\ProfileTests.ps1" />
+    <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\EndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
