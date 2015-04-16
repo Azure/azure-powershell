@@ -60,28 +60,24 @@ namespace Microsoft.Azure.Commands.Network
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
 
+            loadBalancingRule.BackendAddressPool = null;
             if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
             {
                 loadBalancingRule.BackendAddressPool = new PSResourceId();
                 loadBalancingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
             }
 
+            loadBalancingRule.Probe = null;
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 loadBalancingRule.Probe = new PSResourceId();
                 loadBalancingRule.Probe.Id = this.ProbeId;
             }
 
-            if (this.FrontendIPConfigurationId != null)
+            loadBalancingRule.FrontendIPConfiguration = null;
+            if (string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
-                loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
-
-                foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
-                {
-                    var resourceId = new PSResourceId();
-                    resourceId.Id = frontendIPConfigurationId;
-                    loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
-                }
+                loadBalancingRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
             }
 
             WriteObject(this.LoadBalancer);

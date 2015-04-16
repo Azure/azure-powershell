@@ -21,6 +21,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    /// <summary>
+    /// TODO: MUST REMOVE before release
+    /// </summary>
     [Cmdlet(VerbsCommon.Join, "AzureCoreResourceProvider")]
     public class JoinAzureCoreResourceProvider : NetworkBaseCmdlet
     {

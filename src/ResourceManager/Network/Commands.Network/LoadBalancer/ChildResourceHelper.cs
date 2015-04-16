@@ -20,17 +20,31 @@ namespace Microsoft.Azure.Commands.Network
 {
     public static class ChildResourceHelper
     {
-        public static string GetResourceId(string subscriptionId, string resourceGroupName, string loadBalancerName,
-            string resource, string resourceName)
+        public static string GetResourceId(
+            string subscriptionId,
+            string resourceGroupName,
+            string loadBalancerName,
+            string resource,
+            string resourceName)
         {
-            return string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerChildResourceId, subscriptionId, resourceGroupName,
-                loadBalancerName, resource, resourceName);
+            return string.Format(
+                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerChildResourceId,
+                subscriptionId,
+                resourceGroupName,
+                loadBalancerName,
+                resource,
+                resourceName);
         }
 
         public static string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
         {
-            return string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerChildResourceId, subscriptionId, Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet, resource, resourceName);
+            return string.Format(
+                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerChildResourceId,
+                subscriptionId,
+                Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
+                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
+                resource,
+                resourceName);
         }
 
         private static string NormalizeLoadBalancerChildResourceIds(string id, string resourceGroupName, string loadBalancerName)
@@ -62,13 +76,13 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     loadBalancingRule.Id = string.Empty;
 
-                    if (loadBalancingRule.FrontendIPConfigurations != null)
+                    if (loadBalancingRule.FrontendIPConfiguration != null)
                     {
-                        foreach (var frontendIpConfiguration in loadBalancingRule.FrontendIPConfigurations)
-                        {
-                            frontendIpConfiguration.Id = NormalizeLoadBalancerChildResourceIds(frontendIpConfiguration.Id,
-                                loadBalancer.ResourceGroupName, loadBalancer.Name);
-                        }
+                        loadBalancingRule.FrontendIPConfiguration.Id =
+                            NormalizeLoadBalancerChildResourceIds(
+                                loadBalancingRule.FrontendIPConfiguration.Id,
+                                loadBalancer.ResourceGroupName,
+                                loadBalancer.Name);
                     }
 
                     if (loadBalancingRule.BackendAddressPool != null)
@@ -82,10 +96,11 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (loadBalancingRule.Probe != null)
                     {
-                        loadBalancingRule.Probe.Id = NormalizeLoadBalancerChildResourceIds(
-                            loadBalancingRule.Probe.Id,
-                            loadBalancer.ResourceGroupName,
-                            loadBalancer.Name);
+                        loadBalancingRule.Probe.Id = 
+                            NormalizeLoadBalancerChildResourceIds(
+                                loadBalancingRule.Probe.Id,
+                                loadBalancer.ResourceGroupName,
+                                loadBalancer.Name);
                     }
                 }
             }
@@ -97,16 +112,13 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     inboundNatRule.Id = string.Empty;
 
-                    if (inboundNatRule.FrontendIPConfigurations != null)
+                    if (inboundNatRule.FrontendIPConfiguration != null)
                     {
-                        foreach (var frontendIpConfiguration in inboundNatRule.FrontendIPConfigurations)
-                        {
-                            frontendIpConfiguration.Id =
-                                NormalizeLoadBalancerChildResourceIds(
-                                    frontendIpConfiguration.Id,
-                                    loadBalancer.ResourceGroupName,
-                                    loadBalancer.Name);
-                        }
+                        inboundNatRule.FrontendIPConfiguration.Id =
+                            NormalizeLoadBalancerChildResourceIds(
+                                inboundNatRule.FrontendIPConfiguration.Id,
+                                loadBalancer.ResourceGroupName,
+                                loadBalancer.Name);
                     }
                 }
             }

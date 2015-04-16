@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            var frontendIpConfig = new PSFrontendIpConfiguration();
+            var frontendIpConfig = new PSFrontendIPConfiguration();
             frontendIpConfig.Name = this.Name;
            
             if (!string.IsNullOrEmpty(this.SubnetId))

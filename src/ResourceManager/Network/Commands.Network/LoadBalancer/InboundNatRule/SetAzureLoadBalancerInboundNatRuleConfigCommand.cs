@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
@@ -21,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
+    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSFrontendIPConfiguration))]
     public class SetAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(
@@ -58,17 +57,10 @@ namespace Microsoft.Azure.Commands.Network
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
             inboundNatRule.BackendIPConfiguration = new PSResourceId();
 
-            if (!string.IsNullOrEmpty(this.BackendIpConfigurationId))
+            inboundNatRule.FrontendIPConfiguration = null;
+            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
-                inboundNatRule.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
-                inboundNatRule.FrontendIPConfigurations = new List<PSResourceId>();
-            }
-
-            foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
-            {
-                var resourceId = new PSResourceId();
-                resourceId.Id = frontendIPConfigurationId;
-                inboundNatRule.FrontendIPConfigurations.Add(resourceId);
+                inboundNatRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
             }
 
             WriteObject(this.LoadBalancer);

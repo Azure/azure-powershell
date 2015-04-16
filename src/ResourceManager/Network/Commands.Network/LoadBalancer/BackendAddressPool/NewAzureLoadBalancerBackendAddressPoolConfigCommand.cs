@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
@@ -34,17 +33,6 @@ namespace Microsoft.Azure.Commands.Network
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
             
-            if (this.BackendIpConfigurationId != null)
-            {
-                backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
-                foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
-                {
-                    var resourceId = new PSResourceId();
-                    resourceId.Id = backendIpConfigurationId;
-                    backendAddressPool.BackendIpConfigurations.Add(resourceId);
-                }
-            }
-
             backendAddressPool.Id =
                 ChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,

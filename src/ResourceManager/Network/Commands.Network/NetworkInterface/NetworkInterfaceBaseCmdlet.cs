@@ -22,6 +22,8 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System.Collections.Generic;
+
     using Microsoft.Azure.Management.Network.Models;
 
     public abstract class NetworkInterfaceBaseCmdlet : NetworkBaseCmdlet
@@ -77,6 +79,12 @@ namespace Microsoft.Azure.Commands.Network
 
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
+            foreach (var ipconfig in psNic.IpConfigurations)
+            {
+                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSResourceId>();
+                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSResourceId>();
+            }
+            
             return psNic;
         }
     }

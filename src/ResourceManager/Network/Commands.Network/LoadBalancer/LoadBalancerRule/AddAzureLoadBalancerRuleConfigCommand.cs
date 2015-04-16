@@ -77,16 +77,9 @@ namespace Microsoft.Azure.Commands.Network
                 loadBalancingRule.Probe.Id = this.ProbeId;
             }
 
-            if (this.FrontendIPConfigurationId != null)
+            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
-                loadBalancingRule.FrontendIPConfigurations = new List<PSResourceId>();
-
-                foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
-                {
-                    var resourceId = new PSResourceId();
-                    resourceId.Id = frontendIPConfigurationId;
-                    loadBalancingRule.FrontendIPConfigurations.Add(resourceId);
-                }
+                loadBalancingRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
             }
 
             loadBalancingRule.Id =

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using Newtonsoft.Json;
 
-    public class PSFrontendIpConfiguration : PSChildResource
+    public class PSFrontendIPConfiguration : PSChildResource
     {
         public string PrivateIpAddress { get; set; }
 
