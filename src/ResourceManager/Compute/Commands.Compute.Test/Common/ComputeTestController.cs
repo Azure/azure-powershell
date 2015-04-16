@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\ComputeTestCommon.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    AzureModule.AzureResourceManager,
+                    "Scripts\\Common.ps1",
+                    "Scripts\\ComputeTestCommon.ps1",
+                    "Scripts\\" + callingClassName + ".ps1");
 
                 try
                 {

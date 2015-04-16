@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachine()
+        public void TestVirtualMachineSizeAndUsage()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
         }
     }
 }
