@@ -17,9 +17,14 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     /// <summary>
     /// All the constants used by sql cmdlets
     /// </summary>
-    public class Constants
+    public class SecurityConstants
     {        
         // Event types
+        public const string DataAccess = "DataAccess";
+        public const string SchemaChanges = "SchemaChanges";
+        public const string DataChanges = "DataChanges";
+        public const string SecurityExceptions = "SecurityExceptions";
+        public const string RevokePermissions = "RevokePermissions";
         public const string PlainSQL_Success = "PlainSQL_Success";
         public const string PlainSQL_Failure = "PlainSQL_Failure";
         public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
@@ -76,6 +81,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             public const string Disabled = "Disabled";
 
             // Event types
+            public const string DataAccess = "DataAccess";
+            public const string SchemaChanges = "SchemaChanges";
+            public const string DataChanges = "DataChanges";
+            public const string SecurityExceptions = "SecurityExceptions";
+            public const string RevokePermissions = "RevokePermissions";
             public const string PlainSQL_Success = "PlainSQL_Success";
             public const string PlainSQL_Failure = "PlainSQL_Failure";
             public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
@@ -86,7 +96,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             public const string Login_Failure = "Login_Failure";
             public const string TransactionManagement_Success = "TransactionManagement_Success";
             public const string TransactionManagement_Failure = "TransactionManagement_Failure";
-
         }
 
         /// <summary>
