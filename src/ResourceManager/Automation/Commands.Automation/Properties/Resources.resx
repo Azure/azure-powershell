@@ -275,7 +275,77 @@
     <value>Create account arguments are invalid. Provide valid account name and location. Account Name: {0}, Location: {1} </value>
     <comment>Automation</comment>
   </data>
+  <data name="ConfigurationAlreadyExists" xml:space="preserve">
+    <value>Configuration already exists. Specify the parameter to force an overwrite. Configuration name: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationNotPublished" xml:space="preserve">
+    <value>Configuration can be imported in published state only in the current preview. Use the -Published switch.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationSourcePathInvalid" xml:space="preserve">
+    <value>Invalid SourcePath. Verify file path is valid and file exists.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidFolderPath" xml:space="preserve">
+    <value>Invalid folder path. Folder {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="UnauthorizedAccess" xml:space="preserve">
+    <value>Unauthorized access to {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NumberOfFilesWritten" xml:space="preserve">
+    <value>{0} File(s) written to output folder</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidFilePath" xml:space="preserve">
+    <value>Invalid path {0}.</value>
+  </data>
+  <data name="MetaconfigAlreadyExists" xml:space="preserve">
+    <value>Metaconfig already exists. Specify the parameter to force an overwrite. File: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeConfigurationAlreadyExists" xml:space="preserve">
+    <value>A node configuration already exists. Specify the parameter to force an overwrite.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeNotFound" xml:space="preserve">
+    <value>The node was not found.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="DscNodeNotFound" xml:space="preserve">
+    <value>The Dsc node was not found. Node id {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemovDscNodeWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation Dsc node ?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveDscNodeDescription" xml:space="preserve">
+    <value>Removing the Dsc node with Id {0}.</value>
+  </data>
   <data name="CompilationJobNotFound" xml:space="preserve">
     <value>The Compilation Job having Id: {0} was not found.</value>
+  </data>
+  <data name="ConfigurationHasNoPublishedVersion" xml:space="preserve">
+    <value>The configuration has no published version. Configuration name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationParameterCannotBeSerializedToJson" xml:space="preserve">
+    <value>Configuration parameter cannot be serialized to json. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationParameterValueRequired" xml:space="preserve">
+    <value>Configuration mandatory parameter not specified. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidConfigurationParameters" xml:space="preserve">
+    <value>Invalid configuration parameters.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeConfigurationNotFound" xml:space="preserve">
+    <value>NodeConfiguration {0} not found.</value>
+    <comment>Automation</comment>
   </data>
 </root>
