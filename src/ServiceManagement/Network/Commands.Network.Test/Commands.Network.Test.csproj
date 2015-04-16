@@ -146,6 +146,7 @@
     <Compile Include="IPForwarding\GetIPForwardingTests.cs" />
     <Compile Include="IPForwarding\SetIPForwardingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\IPForwarding\IPForwardingScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroup\NSGScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkTests.cs" />
     <Compile Include="ScenarioTests\NetworkTestsBase.cs" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\IPForwarding\IPForwardingTests.ps1" />
     <None Include="ScenarioTests\NetworkSecurityGroup\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
