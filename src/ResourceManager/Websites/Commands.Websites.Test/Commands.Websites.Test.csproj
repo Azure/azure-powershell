@@ -131,6 +131,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.WebApp.Test.ScenarioTests.WebAppTests\TestCreatesNewSimpleWebApp.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.WebApp.Test.ScenarioTests.WebAppTests\TestSetNewAppServicePlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.HDInsight.Model.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
@@ -41,6 +42,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         IInvokeHiveCommand CreateInvokeHive();
 
         IManageAzureHDInsightHttpAccessCommand CreateManageHttpAccess();
+
+        IManageAzureHDInsightRdpAccessCommand CreateManageRdpAccess();
 
         INewAzureHDInsightClusterConfigCommand CreateNewConfig();
 

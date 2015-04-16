@@ -108,6 +108,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework">
       <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core">
       <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
@@ -161,6 +162,7 @@
     <Compile Include="HDInsight\CmdLetTests\GetJobOutputCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GetJobsCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GetPropertiesCmdletTests.cs" />
+    <Compile Include="HDInsight\CmdLetTests\GrantRdpAccessCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GrantHttpAccessCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\HDInsightTestCaseBase.cs" />
     <Compile Include="HDInsight\CmdLetTests\InvokeHiveCmdletTests.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="HDInsight\CommandTests\HDInsightGetJobsCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\HDInsightGetPropertiesCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\InvokeHiveCommandTests.cs" />
+    <Compile Include="HDInsight\CommandTests\ManageAzureHDInsightRdpAccessCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\ManageAzureHDInsightHttpAccessCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\NewHDInsightMapReduceJobCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\NewHDInsightPigJobCommandTests.cs" />
@@ -231,6 +234,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
