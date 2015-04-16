@@ -83,7 +83,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.ExpressRoute, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.18.2-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.18.3-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -122,6 +122,9 @@
     <Compile Include="BgpPeerings\NewAzureBGPPeering.cs" />
     <Compile Include="BgpPeerings\RemoveAzureBGPPeering.cs" />
     <Compile Include="BgpPeerings\SetAzureBGPPeering.cs" />
+    <Compile Include="CrossConnections\GetAzureCrossConnection.cs" />
+    <Compile Include="CrossConnections\NewAzureCrossConnections.cs" />
+    <Compile Include="CrossConnections\SetAzureCrossConnection.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizationMicrosoftIds\NewAzureDedicatedCircuitLinkAuthorizationMicrosoftIds.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizationMicrosoftIds\RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIds.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizations\GetAzureDedicatedCircuitLinkAuthorization.cs" />
