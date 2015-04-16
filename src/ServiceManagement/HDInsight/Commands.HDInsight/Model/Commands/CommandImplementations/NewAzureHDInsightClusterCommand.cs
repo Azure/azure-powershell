@@ -132,7 +132,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public override async Task EndProcessing()
         {
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             client.ClusterProvisioning += this.ClientOnClusterProvisioning;
             ClusterCreateParametersV2 createClusterRequest = this.GetClusterCreateParameters();
             var cluster = await client.CreateClusterAsync(createClusterRequest);

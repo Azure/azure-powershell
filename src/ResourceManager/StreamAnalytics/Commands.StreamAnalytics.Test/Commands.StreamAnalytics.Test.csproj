@@ -158,9 +158,9 @@
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
       <Name>Commands.Test.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.StreamAnalytics\Commands.StreamAnalytics.csproj">
+    <ProjectReference Include="..\..\DataFactories\Commands.DataFactories\Commands.DataFactories.csproj">
       <Project>{9577252e-0a6b-4d61-86e8-95f7f309a987}</Project>
-      <Name>Commands.StreamAnalytics</Name>
+      <Name>Commands.DataFactories</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
