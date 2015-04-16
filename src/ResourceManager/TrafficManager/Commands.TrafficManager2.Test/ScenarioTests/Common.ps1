@@ -51,7 +51,7 @@ Creates a resource group to use in tests
 function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
-	$rglocation = Get-ProviderLocation "microsoft.compute"
+	$rglocation = Get-ProviderLocation "North Europe"
     $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	return $resourceGroup
 }

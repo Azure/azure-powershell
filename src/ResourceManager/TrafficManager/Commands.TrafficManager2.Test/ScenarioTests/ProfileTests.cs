@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
     public class ProfileTests : WatmV2TestsBase
     {
-        [Fact]
+        [Fact(Skip = "Bug on the server side")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
             WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrud");
         }
 
-        [Fact]
+        [Fact(Skip = "Bug on the server side")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
