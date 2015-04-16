@@ -278,11 +278,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.DisableHttpAsync(dnsName, location).Wait();
         }
 
-        public void EnableRdp(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiry)
-        {
-            this.EnableRdpAsync(dnsName, location, rdpUserName, rdpPassword, expiry).Wait();
-        }
-
         public void DisableRdp(string dnsName, string location)
         {
             this.DisableRdpAsync(dnsName, location);
@@ -304,14 +299,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             cluster.RdpUserName = rdpUserName;
             Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
 		}
-
-        public async Task DisableRdpAsync(string dnsName, string location)
-        {
-            ClusterDetails cluster = await this.GetClusterAsync(dnsName);
-            Clusters.Remove(GetClusterInternal(dnsName));
-            cluster.RdpUserName = null;
-            Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
-        }
 
         public void EnableHttp(string dnsName, string location, string httpUserName, string httpPassword)
         {
@@ -394,23 +381,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             return listTask.Result;
         }
 
-<<<<<<< HEAD
-        public Collection<string> ListAvailableLocations(OSType osType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Collection<string>> ListAvailableLocationsAsync()
-=======
         public Task<Collection<string>> ListAvailableLocationsAsync(OSType osType)
->>>>>>> 5ccf9618160502e01958c012d8fd98369b3a5942
         {
             return TaskEx2.FromResult(new Collection<string> { "East US", "East US 2", "West US", "North Europe" });
-        }
-
-        public Task<Collection<string>> ListAvailableLocationsAsync(OSType osType)
-        {
-            throw new NotImplementedException();
         }
 
         public Collection<HDInsightVersion> ListAvailableVersions()

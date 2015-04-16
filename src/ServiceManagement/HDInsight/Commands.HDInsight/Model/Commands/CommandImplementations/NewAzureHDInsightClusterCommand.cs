@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public PSCredential RdpCredential { get; set; }
 
-        public DateTime RdpAccessExpiry { get; set; }
+        public DateTime? RdpAccessExpiry { get; set; }
 
         public ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; private set; }
 

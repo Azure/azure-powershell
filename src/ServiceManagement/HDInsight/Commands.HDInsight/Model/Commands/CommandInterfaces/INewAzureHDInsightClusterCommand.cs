@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
     {
         PSCredential RdpCredential { get; set; }
 
-        DateTime RdpAccessExpiry { get; set; }
+        DateTime? RdpAccessExpiry { get; set; }
 
         ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; }
 
