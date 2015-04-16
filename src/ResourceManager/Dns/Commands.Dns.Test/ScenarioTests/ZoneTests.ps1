@@ -124,7 +124,7 @@ function Test-ZoneSetEtagMismatch
 
 	Assert-Throws { $createdZone | Set-AzureDnsZone } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
 
-	$updatedZone = $createdZone | Set-AzureDnsZone -IgnoreEtag
+	$updatedZone = $createdZone | Set-AzureDnsZone -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedZone.Etag
 	Assert-AreNotEqual $createdZone.Etag $updatedZone.Etag
@@ -157,7 +157,7 @@ function Test-ZoneRemoveEtagMismatch
 
 	Assert-Throws { $createdZone | Remove-AzureDnsZone -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
 
-	$removed = $createdZone | Remove-AzureDnsZone -IgnoreEtag -Force -PassThru
+	$removed = $createdZone | Remove-AzureDnsZone -Overwrite -Force -PassThru
 
 	Assert-True { $removed }
 }

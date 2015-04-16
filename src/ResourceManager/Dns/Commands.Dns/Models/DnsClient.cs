@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             };
         }
 
-        public DnsZone UpdateDnsZone(DnsZone zone, bool ignoreEtag)
+        public DnsZone UpdateDnsZone(DnsZone zone, bool overwrite)
         {
             ZoneCreateOrUpdateResponse response = this.DnsManagementClient.Zones.CreateOrUpdate(
                 zone.ResourceGroupName,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
                         Properties = new ZoneProperties
                         {
-                            ETag = ignoreEtag ? "*" : zone.Etag,
+                            ETag = overwrite ? "*" : zone.Etag,
                         }
                     }
                 });
@@ -101,14 +101,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
             };
         }
 
-        public bool DeleteDnsZone(DnsZone zone, bool ignoreEtag)
+        public bool DeleteDnsZone(DnsZone zone, bool overwrite)
         {
             AzureOperationResponse resp = this.DnsManagementClient.Zones.Delete(
                 zone.ResourceGroupName,
                 zone.Name,
                 new ZoneDeleteParameters
                 {
-                    IfMatch = ignoreEtag ? null : zone.Etag,
+                    IfMatch = overwrite ? null : zone.Etag,
                 });
 
             return resp.StatusCode == System.Net.HttpStatusCode.NoContent || resp.StatusCode == System.Net.HttpStatusCode.OK ? true : false;
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response.RecordSet);
         }
 
-        public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool ignoreEtag)
+        public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
         {
             RecordSetCreateOrUpdateResponse response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 recordSet.ResourceGroupName,
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Tags = TagsConversionHelper.CreateTagDictionary(recordSet.Tags, validate: true),
                         Properties = new RecordSetProperties
                         {
-                            ETag = ignoreEtag ? "*" : recordSet.Etag,
+                            ETag = overwrite ? "*" : recordSet.Etag,
                             Ttl = recordSet.Ttl,
                             AaaaRecords = recordSet.RecordType == RecordType.AAAA ? GetMamlRecords<AaaaRecord, Management.Dns.Models.AaaaRecord>(recordSet.Records) : null,
                             ARecords = recordSet.RecordType == RecordType.A ? GetMamlRecords<ARecord, Management.Dns.Models.ARecord>(recordSet.Records) : null,
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(recordSet.ZoneName, recordSet.ResourceGroupName, response.RecordSet);
         }
 
-        public bool DeleteDnsRecordSet(DnsRecordSet recordSet, bool ignoreEtag)
+        public bool DeleteDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
         {
             AzureOperationResponse response = this.DnsManagementClient.RecordSets.Delete(
                 recordSet.ResourceGroupName,
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.RecordType,
                 new RecordSetDeleteParameters
                 {
-                    IfMatch = ignoreEtag ? "*" : recordSet.Etag
+                    IfMatch = overwrite ? "*" : recordSet.Etag
                 });
 
             return response.StatusCode == System.Net.HttpStatusCode.NoContent || response.StatusCode == System.Net.HttpStatusCode.OK ? true : false;

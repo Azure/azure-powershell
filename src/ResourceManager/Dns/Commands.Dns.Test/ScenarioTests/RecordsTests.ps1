@@ -529,14 +529,14 @@ function Test-RecordSetEtagMismatch
 
 	Assert-Throws { $recordSet | Set-AzureDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
 
-	$updatedRecordSet = $recordSet | Set-AzureDnsRecordSet -IgnoreEtag
+	$updatedRecordSet = $recordSet | Set-AzureDnsRecordSet -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedRecordSet.Etag
 	Assert-AreNotEqual $recordSet.Etag $updatedRecordSet.Etag
 
 	Assert-Throws { $recordSet | Remove-AzureDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
 
-	Assert-True { $recordSet | Remove-AzureDnsRecordSet -IgnoreEtag -Force -PassThru }
+	Assert-True { $recordSet | Remove-AzureDnsRecordSet -Overwrite -Force -PassThru }
 
 	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $recordSet.ResourceGroupName -Force
 }
@@ -582,7 +582,7 @@ function Test-RecordSetGet
 	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
 	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
 
-	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
+	$zone | Remove-AzureDnsZone -Force -Overwrite
 }
 
 <#
@@ -628,5 +628,5 @@ function Test-RecordSetGetWithEndsWith
 	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
 	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
 
-	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
+	$zone | Remove-AzureDnsZone -Force -Overwrite
 }
