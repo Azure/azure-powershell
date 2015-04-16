@@ -54,7 +54,9 @@ RequiredAssemblies = @()
 ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+TypesToProcess = @(
+    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+)
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
@@ -65,7 +67,10 @@ FormatsToProcess = @(
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
+    '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
+    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -81,7 +86,10 @@ NestedModules = @(
 	'.\TrafficManager\Microsoft.Azure.Commands.TrafficManager2.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',
-    '.\Websites\Microsoft.Azure.Commands.Websites.dll'
+    '.\Websites\Microsoft.Azure.Commands.Websites.dll',
+    '.\Compute\Microsoft.Azure.Commands.Compute.dll',
+    '.\Network\Microsoft.Azure.Commands.Network.dll',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
 )
 
 # Functions to export from this module
