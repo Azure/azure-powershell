@@ -180,6 +180,8 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestCreateDeleteUsingProfile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileCrud.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileCrudWithPiping.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileNewAlreadyExists.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
