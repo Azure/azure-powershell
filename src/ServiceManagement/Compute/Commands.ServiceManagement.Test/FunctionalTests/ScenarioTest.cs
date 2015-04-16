@@ -66,6 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 if (string.IsNullOrEmpty(imageName))
                     imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
                 
+                var retriableErrorMessages = new string[]
+                {
+                    "The server encountered an internal error. Please retry the request.",
+                    "Windows Azure is currently performing an operation on this hosted service that requires exclusive access."
+                };
+
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
@@ -76,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
 
                     vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
-                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                }, retriableErrorMessages, 10, 30);
 
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
@@ -84,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
-                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                }, retriableErrorMessages, 10, 30);
 
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
