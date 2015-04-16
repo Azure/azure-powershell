@@ -56,7 +56,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.21-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.1-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.1-preview\lib\portable-net45+sl50+wp80+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
