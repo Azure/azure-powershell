@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         }
 
-        public Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters)
+        public Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters, string runOn)
         {
             IDictionary<string, string> processedParameters = this.ProcessRunbookParameters(automationAccountName, runbookName, parameters);
             var job = this.automationManagementClient.Jobs.Create(
@@ -427,6 +427,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                             {
                                                 Name = runbookName
                                             },
+                                            RunOn = String.IsNullOrWhiteSpace(runOn) ? null : runOn, 
                                             Parameters = processedParameters ?? null
                                         }
                                      }).Job;
