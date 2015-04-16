@@ -511,12 +511,12 @@
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para>This cmdlet allows you to get the properties of a specified Storage Account or all Storage Accounts within a Resource Group</maml:para>
+		<maml:para>This cmdlet allows you to get the properties of a specified Storage Account or all Storage Accounts within a Resource Group or the subscription.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Resource Group</maml:para>
@@ -533,7 +533,7 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Resource Group</maml:para>
@@ -615,6 +615,25 @@
 			<dev:code>PS C:\&gt; # Get all Storage Accounts in a Resource Group
           Get-AzureStorageAccount -ResourceGroupName &quot;RG1&quot;</dev:code>
 			<dev:remarks>
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Get all Storage Accounts in the subscription  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; # Get all Storage Accounts in the subscription
+          Get-AzureStorageAccount</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
 				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
