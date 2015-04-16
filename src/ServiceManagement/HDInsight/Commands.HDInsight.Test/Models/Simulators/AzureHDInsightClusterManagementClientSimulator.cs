@@ -157,6 +157,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
         {
         }
 
+        public async Task DisableRdpAsync(string dnsName, string location)
+        {
+            ClusterDetails cluster = await this.GetClusterAsync(dnsName);
+            Clusters.Remove(GetClusterInternal(dnsName));
+            cluster.RdpUserName = string.Empty;
+            Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
+        }
+
         public event EventHandler<ClusterProvisioningStatusEventArgs> ClusterProvisioning;
         public CancellationToken CancellationToken { get; private set; }
         public IHDInsightSubscriptionCredentials Credentials { get; private set; }
@@ -270,6 +278,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.DisableHttpAsync(dnsName, location).Wait();
         }
 
+        public void DisableRdp(string dnsName, string location)
+        {
+            this.DisableRdpAsync(dnsName, location);
+        }
+
         public async Task DisableHttpAsync(string dnsName, string location)
         {
             ClusterDetails cluster = await this.GetClusterAsync(dnsName);
@@ -279,15 +292,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
         }
 
-        public void DisableRdp(string dnsName, string location)
+        public async Task EnableRdpAsync(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiry)
         {
-            this.DisableRdpAsync(dnsName, location).Wait();
-        }
-
-        public async Task DisableRdpAsync(string dnsName, string location)
-        {
-            throw new NotImplementedException();
-        }
+            ClusterDetails cluster = await this.GetClusterAsync(dnsName);
+            Clusters.Remove(GetClusterInternal(dnsName));
+            cluster.RdpUserName = rdpUserName;
+            Clusters.Add(new SimulatorClusterContainer { Cluster = cluster });
+		}
 
         public void EnableHttp(string dnsName, string location, string httpUserName, string httpPassword)
         {
@@ -306,11 +317,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
         public void EnableRdp(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiryDate)
         {
             this.EnableRdpAsync(dnsName, location, rdpUserName, rdpPassword, expiryDate).Wait();
-        }
-
-        public async Task EnableRdpAsync(string dnsName, string location, string rdpUserName, string rdpPassword, DateTime expiryDate)
-        {
-            throw new NotImplementedException();
         }
 
         public ClusterDetails GetCluster(string dnsName)

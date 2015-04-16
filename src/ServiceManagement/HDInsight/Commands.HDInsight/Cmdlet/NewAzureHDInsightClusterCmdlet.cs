@@ -63,7 +63,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
          *      Position 09: Version
          *      Position 10: OSType
          *      Position 11: SshCredential
-         *      Position 11: SshPublicKey
+         *      Position 12: SshPublicKey
+         *      Position 13: RdpCredential
+         *      Position 14: RdpAccessExpiry
          *      
          * ParameterSetClusterByNameWithSpecificSubscriptionCredentials
          *      Position 00: Name
@@ -88,6 +90,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
          *      Position 19: OSType
          *      Position 20: SshCredential
          *      Position 21: SshPublicKey
+         *      Position 22: RdpCredential
+         *      Position 23: RdpAccessExpiry
          */
 
         /// <inheritdoc />
@@ -389,6 +393,28 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             get { return this.command.SshPublicKey; }
             set { this.command.SshPublicKey = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 22, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 13, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public PSCredential RdpCredential
+        {
+            get { return this.command.RdpCredential; }
+            set { this.command.RdpCredential = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 23, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 14, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public DateTime? RdpAccessExpiry
+        {
+            get { return this.command.RdpAccessExpiry; }
+            set { this.command.RdpAccessExpiry = value; }
         }
 
         /// <inheritdoc />
