@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private static AzureSubscription Subscription {get ; set; }
 
         /// <summary>
-        /// The resources management client used by this communcator
+        /// The resources management client used by this communicator
         /// </summary>
         private static ResourceManagementClient ResourcesClient { get; set; }
 
@@ -204,8 +204,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
+            SqlClient.HttpClient.DefaultRequestHeaders.Remove(SecurityConstants.ClientRequestIdHeaderName);
+            SqlClient.HttpClient.DefaultRequestHeaders.Add(SecurityConstants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

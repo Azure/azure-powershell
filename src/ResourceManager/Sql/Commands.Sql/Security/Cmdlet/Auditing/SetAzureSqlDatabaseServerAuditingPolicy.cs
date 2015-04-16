@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(Constants.PlainSQL_Success, Constants.PlainSQL_Failure, Constants.ParameterizedSQL_Success, Constants.ParameterizedSQL_Failure, Constants.StoredProcedure_Success, Constants.StoredProcedure_Failure, Constants.Login_Success, Constants.Login_Failure, Constants.TransactionManagement_Success, Constants.TransactionManagement_Failure, Constants.All, Constants.None, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.DataAccess, SecurityConstants.SchemaChanges, SecurityConstants.DataChanges, SecurityConstants.SecurityExceptions, SecurityConstants.RevokePermissions, SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the storage key")]
-        [ValidateSet(Constants.Primary, Constants.Secondary, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
             if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
-                model.StorageKeyType = (StorageKeyType == Constants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
             ProcessShortcuts();
@@ -82,16 +82,21 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             {
                 Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>
                 {
-                    {Constants.PlainSQL_Success, AuditEventType.PlainSQL_Success},
-                    {Constants.PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
-                    {Constants.ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
-                    {Constants.ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
-                    {Constants.StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
-                    {Constants.StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
-                    {Constants.Login_Success, AuditEventType.Login_Success},
-                    {Constants.Login_Failure, AuditEventType.Login_Failure},
-                    {Constants.TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
-                    {Constants.TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
+                    {SecurityConstants.DataAccess, AuditEventType.DataAccess},
+                    {SecurityConstants.DataChanges, AuditEventType.DataChanges},
+                    {SecurityConstants.SecurityExceptions, AuditEventType.SecurityExceptions},
+                    {SecurityConstants.RevokePermissions, AuditEventType.RevokePermissions},
+                    {SecurityConstants.SchemaChanges, AuditEventType.SchemaChanges},
+                    {SecurityConstants.PlainSQL_Success, AuditEventType.PlainSQL_Success},
+                    {SecurityConstants.PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
+                    {SecurityConstants.ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
+                    {SecurityConstants.ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
+                    {SecurityConstants.StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
+                    {SecurityConstants.StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
+                    {SecurityConstants.Login_Success, AuditEventType.Login_Success},
+                    {SecurityConstants.Login_Failure, AuditEventType.Login_Failure},
+                    {SecurityConstants.TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
+                    {SecurityConstants.TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
                 };
                 model.EventType = EventType.Select(s => events[s]).ToArray();
             }
@@ -109,36 +114,41 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
             if (EventType.Length == 1)
             {
-                if (EventType[0] == Constants.None)
+                if (EventType[0] == SecurityConstants.None)
                 {
                     EventType = new string[] { };
                 }
-                else if (EventType[0] == Constants.All)
+                else if (EventType[0] == SecurityConstants.All)
                 {
                     EventType = new[]
                     {
-                        Constants.PlainSQL_Success,
-                        Constants.PlainSQL_Failure,
-                        Constants.ParameterizedSQL_Success,
-                        Constants.ParameterizedSQL_Failure,
-                        Constants.StoredProcedure_Success,
-                        Constants.StoredProcedure_Failure,
-                        Constants.Login_Success,
-                        Constants.Login_Failure,
-                        Constants.TransactionManagement_Success,
-                        Constants.TransactionManagement_Failure
+                        SecurityConstants.DataAccess, 
+                        SecurityConstants.DataChanges,
+                        SecurityConstants.SecurityExceptions, 
+                        SecurityConstants.RevokePermissions,
+                        SecurityConstants.SchemaChanges,
+                        SecurityConstants.PlainSQL_Success,
+                        SecurityConstants.PlainSQL_Failure,
+                        SecurityConstants.ParameterizedSQL_Success,
+                        SecurityConstants.ParameterizedSQL_Failure,
+                        SecurityConstants.StoredProcedure_Success,
+                        SecurityConstants.StoredProcedure_Failure,
+                        SecurityConstants.Login_Success,
+                        SecurityConstants.Login_Failure,
+                        SecurityConstants.TransactionManagement_Success,
+                        SecurityConstants.TransactionManagement_Failure
                     };
                 }
             }
             else
             {
-                if (EventType.Contains(Constants.All))
+                if (EventType.Contains(SecurityConstants.All))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.All));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
                 }
-                if (EventType.Contains(Constants.None))
+                if (EventType.Contains(SecurityConstants.None))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.None));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
             }
         }
