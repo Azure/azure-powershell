@@ -192,6 +192,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network.Test", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "ResourceManager\Network\Commands.Network\Commands.Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2", "ResourceManager\TrafficManager\Commands.TrafficManager2\Commands.TrafficManager2.csproj", "{270CBB5F-BB8A-4E33-B35B-95698E607D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2.Test", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager2.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -458,6 +462,14 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270CBB5F-BB8A-4E33-B35B-95698E607D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270CBB5F-BB8A-4E33-B35B-95698E607D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270CBB5F-BB8A-4E33-B35B-95698E607D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270CBB5F-BB8A-4E33-B35B-95698E607D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -496,5 +508,6 @@ Global
 		{CA82D500-1940-4068-A076-D7A8AD459FB0} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{5764A3A4-586C-4536-8481-13007CAC111B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
