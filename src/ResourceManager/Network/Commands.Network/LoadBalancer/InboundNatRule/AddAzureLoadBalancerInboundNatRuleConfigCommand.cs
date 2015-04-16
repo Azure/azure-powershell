@@ -56,8 +56,7 @@ namespace Microsoft.Azure.Commands.Network
                 inboundNatRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            inboundNatRule.BackendIPConfiguration = new PSResourceId();
-
+            
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 inboundNatRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
