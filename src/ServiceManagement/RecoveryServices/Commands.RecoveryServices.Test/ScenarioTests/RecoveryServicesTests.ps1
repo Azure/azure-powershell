@@ -177,7 +177,7 @@ function Test-RecoveryServicesEnumerationTests
 		Assert-NotNull($protectionContainer.ID)
 
 		# Enumerate Protection Entities under each configured Protection Containers
-		if ($protectionContainer.ConfigurationStatus -eq "Configured")
+		if ($protectionContainer.Role -eq "Primary")
 		{
 			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
 			Assert-NotNull($protectionEntities)
