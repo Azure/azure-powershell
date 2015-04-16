@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
-    using System.Collections.Generic;
     using System.Net;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Common.Authentication;
@@ -52,7 +51,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         Location = TrafficManagerClient.ProfileResourceLocation,
                         Properties = new ProfileProperties
                         {
-                            ProfileStatus = "Enabled", // TODO: Remove
                             TrafficRoutingMethod = trafficRoutingMethod,
                             DnsConfig = new DnsConfig
                             {
@@ -64,19 +62,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                                 Protocol = monitorProtocol,
                                 Port = monitorPort,
                                 Path = monitorPath
-                            },
-                            Endpoints = new [] // TODO: remove when bug is fixed
-                            {
-                                new Endpoint
-                                {
-                                    Name = "My fake external endpoint",
-                                    Type = "microsoft.network/trafficmanagerprofiles/externalendpoints",
-                                    Properties = new EndpointProperties
-                                    {
-                                        Target = "fake.com",
-                                        EndpointStatus = "Enabled"
-                                    }
-                                }
                             }
                         }
                     }

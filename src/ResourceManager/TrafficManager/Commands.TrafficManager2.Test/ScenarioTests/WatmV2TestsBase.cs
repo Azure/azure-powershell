@@ -14,14 +14,40 @@
 
 namespace Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests
 {
+    using System;
+    using System.Linq;
     using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Gallery;
+    using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.TrafficManager;
+    using Microsoft.Azure.Subscriptions.Csm;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     public class WatmV2TestsBase
     {
-        private EnvironmentSetupHelper helper;
+        private CSMTestEnvironmentFactory csmTestFactory;
+
+        private readonly EnvironmentSetupHelper helper;
+
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public SubscriptionClient SubscriptionClient { get; private set; }
+
+        public GalleryClient GalleryClient { get; private set; }
+
+        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
+        public TrafficManagerManagementClient TrafficManagerManagementClient { get; private set; }
+
+        public static WatmV2TestsBase NewInstance
+        {
+            get
+            {
+                return new WatmV2TestsBase();
+            }
+        }
 
         protected WatmV2TestsBase()
         {
@@ -30,32 +56,111 @@ namespace Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests
 
         protected void SetupManagementClients()
         {
-            ResourceManagementClient resourcesClient = this.GetResourcesClient();
-            this.helper.SetupSomeOfManagementClients(resourcesClient);
+            this.ResourceManagementClient = this.GetResourceManagementClient();
+            this.SubscriptionClient = this.GetSubscriptionClient();
+            this.GalleryClient = this.GetGalleryClient();
+            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
+            this.TrafficManagerManagementClient = this.GetFeatureClient();
+
+            this.helper.SetupManagementClients(
+                this.ResourceManagementClient, 
+                this.SubscriptionClient,
+                this.GalleryClient, 
+                this.AuthorizationManagementClient,
+                this.TrafficManagerManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(params string[] scripts)
         {
-            // Enable undo functionality as well as mock recording
+            string callingClassType = TestUtilities.GetCallingClass(2);
+            string mockName = TestUtilities.GetCurrentMethodName(2);
+
+            this.RunPsTestWorkflow(
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
+        public void RunPsTestWorkflow(
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
+            Action cleanup,
+            string callingClassType,
+            string mockName)
+        {
             using (UndoContext context = UndoContext.Current)
             {
-                // Configure recordings
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                context.Start(callingClassType, mockName);
+
+                this.csmTestFactory = new CSMTestEnvironmentFactory();
+
+                if (initialize != null)
+                {
+                    initialize(this.csmTestFactory);
+                }
 
                 this.SetupManagementClients();
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                this.helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                string callingClassName = callingClassType
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                                        .Last();
 
-                this.helper.RunPowerShellTest(scripts);
+                this.helper.SetupModules(
+                    AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1");
+
+                try
+                {
+                    if (scriptBuilder != null)
+                    {
+                        string[] psScripts = scriptBuilder();
+
+                        if (psScripts != null)
+                        {
+                            this.helper.RunPowerShellTest(psScripts);
+                        }
+                    }
+                }
+                finally
+                {
+                    if (cleanup != null)
+                    {
+                        cleanup();
+                    }
+                }
             }
         }
 
-        protected ResourceManagementClient GetResourcesClient()
+        protected ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        {
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+        }
+
+        private SubscriptionClient GetSubscriptionClient()
+        {
+            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+        }
+
+        private GalleryClient GetGalleryClient()
+        {
+            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+        }
+
+        private TrafficManagerManagementClient GetFeatureClient()
+        {
+            return TestBase.GetServiceClient<TrafficManagerManagementClient>(this.csmTestFactory);
         }
     }
 }

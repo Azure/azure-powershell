@@ -23,35 +23,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            this.RunPowerShellTest("Test-ProfileCrud");
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            this.RunPowerShellTest("Test-ProfileCrudWithPiping");
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteUsingProfile()
         {
-            this.RunPowerShellTest("Test-CreateDeleteUsingProfile");
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CreateDeleteUsingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
-            this.RunPowerShellTest("Test-ProfileNewAlreadyExists");
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileRemoveNonExisting()
         {
-            this.RunPowerShellTest("Test-ProfileRemoveNonExisting");
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
         }
     }
 }
