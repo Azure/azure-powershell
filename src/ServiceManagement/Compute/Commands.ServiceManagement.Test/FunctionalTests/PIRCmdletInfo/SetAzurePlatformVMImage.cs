@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo
@@ -29,6 +30,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (locations != null)
             {
                 this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
+            }
+        }
+
+        public SetAzurePlatformVMImageCmdletInfo(string imageName, string permission, string[] locations, PlatformComputeImageConfig compCfg, PlatformMarketplaceImageConfig marketCfg)
+        {
+            this.cmdletName = Utilities.SetAzurePlatformVMImageCmdletName;
+            this.cmdletParams.Add(new CmdletParam("ImageName", imageName));
+
+            if (permission != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("Permission", permission));
+            }
+
+            if (locations != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
+            }
+
+            if (compCfg != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("PlatformComputeImageConfig", compCfg));
+            }
+
+            if (marketCfg != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("PlatformMarketplaceImageConfig", marketCfg));
             }
         }
     }
