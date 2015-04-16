@@ -50,9 +50,9 @@ Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
 {
-    $resourceGroupName = "Microsoft.Azure.Commands.Resources.Models.PSResourceGroup"
+    $resourceGroupName = getAssetName
 	$rglocation = Get-ProviderLocation "microsoft.compute"
-    $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -Force
+    $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	return $resourceGroup
 }
 

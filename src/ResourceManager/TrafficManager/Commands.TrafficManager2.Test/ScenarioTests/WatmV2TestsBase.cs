@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ScenarioTest.WatmV2Tests
+namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using System;
     using System.Linq;
