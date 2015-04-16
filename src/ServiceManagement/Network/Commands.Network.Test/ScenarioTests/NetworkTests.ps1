@@ -14,7 +14,7 @@
 
 $VirtualNetworkName = "VirtualNetworkSiteName"
 $SubnetName = "FrontEndSubnet"
-#$locations = Get-AzureLocation
+$locations = Get-AzureLocation
 #$Location = $locations[0].Name
 $Location = "usnorth"
 
