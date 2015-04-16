@@ -221,9 +221,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            IEnumerable<AzureDedicatedCircuitLink> actual =
-                mockCommandRuntime.OutputPipeline[0] as IEnumerable<AzureDedicatedCircuitLink>;
-            Assert.Equal(actual.ToArray().Count(), 2);
+            IEnumerable<AzureDedicatedCircuitLink> actual = 
+                System.Management.Automation.LanguagePrimitives.GetEnumerable(mockCommandRuntime.OutputPipeline ).Cast<AzureDedicatedCircuitLink>();
+
+            Assert.Equal(actual.Count(), 2);
         }
     }
 }

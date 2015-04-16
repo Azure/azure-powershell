@@ -28,6 +28,8 @@ using ConfigurationSet = Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 using DataVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DataVirtualHardDisk;
 using OSVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.OSVirtualHardDisk;
 using RoleInstance = Microsoft.WindowsAzure.Management.Compute.Models.RoleInstance;
+using CSM = Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using MCM = Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
 {
@@ -127,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             return result;
         }
 
-        public static  IList<Management.Compute.Models.ConfigurationSet> MapConfigurationSets(Collection<ConfigurationSet> configurationSets)
+        public static  IList<MCM.ConfigurationSet> MapConfigurationSets(Collection<ConfigurationSet> configurationSets)
         {
             var result = new Collection<Management.Compute.Models.ConfigurationSet>();
             foreach (var networkConfig in configurationSets.OfType<NetworkConfigurationSet>())
@@ -185,6 +187,39 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             }
 
             return name;
+        }
+
+        public static MCM.VMImageInput MapVMImageInput(CSM.VMImageInput vmImageInput)
+        {
+            var result = new MCM.VMImageInput();
+
+            if (vmImageInput == null)
+            {
+                return null;
+            }
+
+            if (vmImageInput.OSDiskConfiguration != null)
+            {
+                result.OSDiskConfiguration = new MCM.OSDiskConfiguration()
+                    {
+                        ResizedSizeInGB = vmImageInput.OSDiskConfiguration.ResizedSizeInGB
+                    };
+            }
+
+            if (vmImageInput.DataDiskConfigurations != null)
+            {
+                result.DataDiskConfigurations = new Collection<MCM.DataDiskConfiguration>();
+                foreach (var dataDiskConfig in vmImageInput.DataDiskConfigurations)
+                {
+                    result.DataDiskConfigurations.Add(
+                        new MCM.DataDiskConfiguration()
+                        {
+                            DiskName = dataDiskConfig.Name,
+                            ResizedSizeInGB = dataDiskConfig.ResizedSizeInGB
+                        });
+                }
+            }
+            return result;
         }
 
         public static string ConvertCustomDataFileToBase64(string fileName)

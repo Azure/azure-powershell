@@ -69,12 +69,20 @@ namespace Microsoft.WindowsAzure.Commands.Profile
            HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        [Parameter(Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
+        public SwitchParameter EnableADFSAuthentication { get; set; }
+
         public AddAzureEnvironmentCommand() : base(true) { }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var newEnvironment = new AzureEnvironment {Name = Name};
+            var newEnvironment = new AzureEnvironment
+            {
+                Name = Name,
+                OnPremise = EnableADFSAuthentication
+            };
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = ResourceManagerEndpoint;

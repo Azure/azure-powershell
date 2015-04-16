@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public ManagementClient CreateClient()
         {
-            return AzureSession.ClientFactory.CreateClient<ManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public ComputeManagementClient CreateComputeClient()

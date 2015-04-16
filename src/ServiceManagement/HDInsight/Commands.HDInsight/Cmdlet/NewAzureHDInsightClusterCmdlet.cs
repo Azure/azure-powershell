@@ -47,6 +47,49 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             this.command = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateCreate();
         }
 
+        /*
+         * Parameter Sets:
+         * 
+         * ParameterSetClusterByConfigWithSpecificSubscriptionCredentials
+         *      Position 00: Name
+         *      Position 01: Config
+         *      Position 02: Subscription
+         *      Position 03: Certificate
+         *      Position 04: Location
+         *      Position 05: Credential
+         *      Position 06: ??? (Missed. To be fixed.)
+         *      Position 07: Endpoint
+         *      Position 08: HostedService
+         *      Position 09: Version
+         *      Position 10: OSType
+         *      Position 11: SshCredential
+         *      Position 11: SshPublicKey
+         *      
+         * ParameterSetClusterByNameWithSpecificSubscriptionCredentials
+         *      Position 00: Name
+         *      Position 01: Subscription
+         *      Position 02: Certificate
+         *      Position 03: Location
+         *      Position 04: DefaultStorageAccountName
+         *      Position 05: DefaultStorageAccountKey
+         *      Position 06: DefaultStorageContainerName
+         *      Position 07: Credential
+         *      Position 08: ??? (Missed. To be fixed.)
+         *      Position 09: ClusterSizeInNodes
+         *      Position 10: Endpoint
+         *      Position 11: HostedService
+         *      Position 12: Version
+         *      Position 13: HeadNodeVMSize
+         *      Position 14: ClusterType
+         *      Position 15: VirtualNetworkId
+         *      Position 16: SubnetName
+         *      Position 17: DataNodeVMSize
+         *      Position 18: ZookeeperNodeVMSize
+         *      Position 19: OSType
+         *      Position 20: SshCredential
+         *      Position 21: SshPublicKey
+         */
+
         /// <inheritdoc />
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The management certificate used to manage the Azure subscription.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
@@ -117,6 +160,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 result.SparkConfiguration.AddRange(this.command.SparkConfiguration);
                 result.HBaseConfiguration.AdditionalLibraries = this.command.HBaseConfiguration.AdditionalLibraries;
                 result.HBaseConfiguration.ConfigurationCollection.AddRange(this.command.HBaseConfiguration.ConfigurationCollection);
+
                 return result;
             }
 
@@ -312,6 +356,39 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             get { return this.command.ZookeeperNodeSize; }
             set { this.command.ZookeeperNodeSize = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "The type of operating system to install on cluster nodes.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "The type of operating system to install on cluster nodes.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public OSType OSType
+        {
+            get { return this.command.OSType; }
+            set { this.command.OSType = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 11, Mandatory = false, HelpMessage = "The credentials for SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 20, Mandatory = false, HelpMessage = "The credentials for SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public PSCredential SshCredential
+        {
+            get { return this.command.SshCredential; }
+            set { this.command.SshCredential = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 12, Mandatory = false, HelpMessage = "The public key to use to configure SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 21, Mandatory = false, HelpMessage = "The public key to use to configure SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string SshPublicKey
+        {
+            get { return this.command.SshPublicKey; }
+            set { this.command.SshPublicKey = value; }
         }
 
         /// <inheritdoc />
