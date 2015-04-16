@@ -67,6 +67,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
 
         string SubnetName { get; set; }
 
+        OSType OSType { get; set; }
+
+        PSCredential SshCredential { get; set; }
+
+        string SshPublicKey { get; set; }
+
         ConfigValuesCollection StormConfiguration { get; set; }
 
         ConfigValuesCollection SparkConfiguration { get; set; }

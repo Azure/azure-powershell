@@ -50,7 +50,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             const string name = "test";
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzurePSCmdlet.CurrentProfile = profile;
+            ProfileClient client = new ProfileClient(profile);
             client.AddOrSetEnvironment(new AzureEnvironment
             {
                 Name = name

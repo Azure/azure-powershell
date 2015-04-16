@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
@@ -24,6 +26,9 @@ namespace Microsoft.Azure.Commands.Batch
     /// </summary>
     public class BatchAccountContext
     {
+        private AccountKeyType keyInUse;
+        private IBatchClient batchOMClient;
+
         public string Id { get; private set; }
 
         public string AccountEndpoint { get; private set; }
@@ -51,9 +56,45 @@ namespace Microsoft.Azure.Commands.Batch
             get { return Helpers.FormatTagsTable(Tags); }
         }
 
-        internal BatchAccountContext() { }
+        public AccountKeyType KeyInUse 
+        { 
+            get { return this.keyInUse; }
+            set
+            {
+                if (value != this.keyInUse)
+                {
+                    this.batchOMClient.Dispose();
+                    this.batchOMClient = null;
+                }
+                this.keyInUse = value;
+            } 
+        }
 
-        internal BatchAccountContext(string accountEndpoint)
+        internal IBatchClient BatchOMClient
+        {
+            get
+            {
+                if (this.batchOMClient == null)
+                {
+                    if ((KeyInUse == AccountKeyType.Primary && string.IsNullOrEmpty(PrimaryAccountKey)) ||
+                        (KeyInUse == AccountKeyType.Secondary && string.IsNullOrEmpty(SecondaryAccountKey)))
+                    {
+                        throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
+                    }
+                    string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
+                    BatchCredentials credentials = new BatchCredentials(AccountName, key);
+                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Connect(TaskTenantUrl, credentials);
+                }
+                return this.batchOMClient;
+            }
+        }
+
+        internal BatchAccountContext()
+        {
+            this.keyInUse = AccountKeyType.Primary;
+        }
+
+        internal BatchAccountContext(string accountEndpoint) : this()
         {
             this.AccountEndpoint = accountEndpoint;
         }

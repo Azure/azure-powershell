@@ -40,8 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineSqlServerExtensionCmdletBase
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
-        protected const string AutoPatchingStatusMessageName = "Automatic Patching";
-        protected const string AutoBackupStatusMessageName = "Automatic Backup";
+        protected const string AutoPatchingStatusMessageName = "Automated Patching";
+        protected const string AutoBackupStatusMessageName = "Automated Backup";
 
         internal void ExecuteCommand()
         {
@@ -89,17 +89,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             // Note: valid reference to an extension status list is returned by GetResourceExtensionStatusList()
             foreach (NSM.ResourceExtensionStatus res in extensionStatusList)
             {
-                // Extension handler name  in format publisher.ReferenceName
-                string extensionHandlerName = string.Format(CultureInfo.InvariantCulture,
-                    "{0}.{1}",
-                    r.Publisher,
-                    r.ReferenceName);
-
-                // skip all non-sql extensions
-                if (!res.HandlerName.Equals(extensionHandlerName, System.StringComparison.InvariantCulture))
+                // Expected ReferenceName = "Microsoft.SqlServer.Management.SqlIaaSAgent"
+                if (!res.HandlerName.Equals(r.ReferenceName, System.StringComparison.InvariantCulture))
                 {
+                    // skip all non-sql extensions
                     continue;
                 }
+
+                WriteVerboseWithTimestamp("Found SQL Extension:" + r.ReferenceName);
 
                 if (null != res.ExtensionSettingStatus)
                 {

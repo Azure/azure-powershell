@@ -46,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Fact]
         public void AddsAzureEnvironment()
         {
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
@@ -55,14 +56,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 ServiceEndpoint = "endpoint.net",
                 ManagementPortalUrl = "management portal url",
                 StorageEndpoint = "endpoint.net",
-                GalleryEndpoint = "http://galleryendpoint.com"
+                GalleryEndpoint = "http://galleryendpoint.com",
+                Profile = profile
             };
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSObject>()), Times.Once());
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(profile);
             AzureEnvironment env = client.GetEnvironmentOrDefault("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
@@ -74,12 +76,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Fact]
         public void AddsEnvironmentWithMinimumInformation()
         {
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
-                PublishSettingsFileUrl = "http://microsoft.com"
+                PublishSettingsFileUrl = "http://microsoft.com",
+                EnableADFSAuthentication = true,
+                Profile = profile
             };
 
             cmdlet.InvokeBeginProcessing();
@@ -87,15 +92,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSObject>()), Times.Once());
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(profile);
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
+            Assert.True(env.OnPremise);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
         }
 
         [Fact]
         public void IgnoresAddingDuplicatedEnvironment()
         {
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
@@ -109,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(profile);
             int count = client.Profile.Environments.Count;
 
             // Add again
@@ -134,6 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Fact]
         public void AddsEnvironmentWithStorageEndpoint()
         {
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             PSObject actual = null;
             commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<object>()))
@@ -143,7 +151,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
                 PublishSettingsFileUrl = "http://microsoft.com",
-                StorageEndpoint = "core.windows.net"
+                StorageEndpoint = "core.windows.net",
+                Profile = profile
             };
 
             cmdlet.InvokeBeginProcessing();
@@ -151,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSObject>()), Times.Once());
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(profile);
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], actual.GetVariableValue<string>(AzureEnvironment.Endpoint.PublishSettingsFileUrl.ToString()));

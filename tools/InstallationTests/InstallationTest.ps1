@@ -43,12 +43,10 @@ function Test-UpdateStorageAccount
   Assert-AreEqual $storageAccountName $accounts[1].StorageAccountName
 }
 
-function Test-GetBatchAccountWithSubscriptionDataFile
+[CmdletBinding]
+function Get-IncompleteHelp
 {
-  param([PSCredential] $credential)
-  Get-AzureSubscription | Remove-AzureSubscription -Force
-  $account = Add-AzureAccount -Credential $credential -SubscriptionDataFile "File.txt"
-  Select-AzureSubscription -SubscriptionId $account.Subscriptions.Split("`r`n")[0] -SubscriptionDataFile "File.txt"
-  Get-AzureBatchAccount
-  Add-AzureAccount -Credential $credential
+  Get-Help azure | where {[System.String]::IsNullOrEmpty($_.Synopsis) -or `
+  [System.String]::Equals($_.Synopsis, (Get-Command $_.Name).Definition, `
+  [System.StringComparison]::OrdinalIgnoreCase)} | % {Write-Output $_.Name}
 }
