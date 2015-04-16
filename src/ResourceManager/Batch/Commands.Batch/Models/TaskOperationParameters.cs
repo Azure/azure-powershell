@@ -12,48 +12,47 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewWorkItemParameters : BatchClientParametersBase
+    public class TaskOperationParameters : BatchClientParametersBase
     {
-        public NewWorkItemParameters(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-            : base(context, additionalBehaviors)
+        public TaskOperationParameters(BatchAccountContext context, string workItemName, string jobName, string taskName, PSCloudTask task,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(workItemName))
+            if ((string.IsNullOrWhiteSpace(workItemName) || string.IsNullOrWhiteSpace(jobName) || string.IsNullOrWhiteSpace(taskName)) && task == null)
             {
-                throw new ArgumentNullException("poolName");
+                throw new ArgumentNullException(Resources.NoTask);
             }
 
             this.WorkItemName = workItemName;
+            this.JobName = jobName;
+            this.TaskName = taskName;
+            this.Task = task;
         }
+
         /// <summary>
-        /// The name of the WorkItem to create
+        /// The name of the workitem containing the task
         /// </summary>
         public string WorkItemName { get; private set; }
 
         /// <summary>
-        /// The Schedule to use when creating a new WorkItem
+        /// The name of the job containing the task
         /// </summary>
-        public PSWorkItemSchedule Schedule { get; set; }
+        public string JobName { get; private set; }
 
         /// <summary>
-        /// The Job Specification to use when creating a new WorkItem
+        /// The name of the task
         /// </summary>
-        public PSJobSpecification JobSpecification { get; set; }
+        public string TaskName { get; private set; }
 
         /// <summary>
-        /// The Job Execution Enviornment to use when creating a new WorkItem
+        /// The PSCloudTask object representing the target task
         /// </summary>
-        public PSJobExecutionEnvironment JobExecutionEnvironment { get; set; }
-
-        /// <summary>
-        /// Metadata to add to the new WorkItem
-        /// </summary>
-        public IDictionary Metadata { get; set; }
+        public PSCloudTask Task { get; private set; }
     }
 }

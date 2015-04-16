@@ -13,30 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveTaskParameters : BatchClientParametersBase
+    public class PoolOperationParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The name of the WorkItem containing the Task to delete
-        /// </summary>
-        public string WorkItemName { get; set; }
+        public PoolOperationParameters(BatchAccountContext context, string poolName, PSCloudPool pool,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(poolName) && pool == null)
+            {
+                throw new ArgumentNullException(Resources.NoPool);
+            }
+
+            this.PoolName = poolName;
+            this.Pool = pool;
+        }
 
         /// <summary>
-        /// The name of the Job containing the Task to delete
+        /// The name of the pool
         /// </summary>
-        public string JobName { get; set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
-        /// The name of the Task to delete
+        /// The PSCloudPool object representing the target pool
         /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The Task to delete
-        /// </summary>
-        public PSCloudTask Task { get; set; }
+        public PSCloudPool Pool { get; private set; }
     }
 }

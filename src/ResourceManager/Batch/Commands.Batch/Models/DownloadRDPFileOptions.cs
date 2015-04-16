@@ -13,32 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using System.Security.Cryptography;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Batch.Properties;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class BatchClientParametersBase
+    public class DownloadRDPFileOptions : VMOperationParameters
     {
-        protected BatchClientParametersBase(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public DownloadRDPFileOptions(BatchAccountContext context, string poolName, string vmName, PSVM vm, string destinationPath, 
+            Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolName, vmName, vm, additionalBehaviors)
         {
-            if (context == null)
+            if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
             }
 
-            this.Context = context;
-            this.AdditionalBehaviors = additionalBehaviors;
+            this.DestinationPath = destinationPath;
+            this.Stream = stream;
         }
 
         /// <summary>
-        /// The account details
+        /// The path to the directory where the RDP file will be downloaded
         /// </summary>
-        public BatchAccountContext Context { get; private set; }
+        public string DestinationPath { get; set; }
 
         /// <summary>
-        /// Additional client behaviors to perform
+        /// The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; private set; }
+        public Stream Stream { get; set; }
     }
 }

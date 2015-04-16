@@ -30,17 +30,17 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class GetBatchTaskFileContentCommandTests
+    public class GetBatchRDPFileCommandTests
     {
-        private GetBatchTaskFileContentCommand cmdlet;
+        private GetBatchRDPFileCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchTaskFileContentCommandTests()
+        public GetBatchRDPFileCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchTaskFileContentCommand()
+            cmdlet = new GetBatchRDPFileCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -49,32 +49,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchTaskFileParametersTest()
+        public void GetBatchRDPFileParametersTest()
         {
             // Setup cmdlet without required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = null;
-            cmdlet.JobName = null;
-            cmdlet.TaskName = null;
-            cmdlet.Name = null;
-            cmdlet.InputObject = null;
+            cmdlet.PoolName = null;
+            cmdlet.VMName = null;
+            cmdlet.VM = null;
             cmdlet.DestinationPath = null;
 
-            string fileName = "stdout.txt";
-
-            // Don't go to the service on a GetTaskFile call or GetTaskFileProperties call
+            // Don't go to the service on a GetTVMRDPFile call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
-                if (request is GetTaskFilePropertiesRequest)
+                if (request is GetTVMRDPFileRequest)
                 {
-                    GetTaskFilePropertiesResponse response = BatchTestHelpers.CreateGetTaskFilePropertiesResponse(fileName);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
-                    return task;
-                }
-                if (request is GetTaskFileRequest)
-                {
-                    GetTaskFileResponse response = new GetTaskFileResponse();
+                    GetTVMRDPFileResponse response = new GetTVMRDPFileResponse();
                     Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
                     return task;
                 }
@@ -90,10 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
                 // Fill required Task file details
-                cmdlet.WorkItemName = "workItem";
-                cmdlet.JobName = "job-0000000001";
-                cmdlet.TaskName = "task";
-                cmdlet.Name = fileName;
+                cmdlet.PoolName = "pool";
+                cmdlet.VMName = "vm1";
 
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();

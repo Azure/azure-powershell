@@ -12,33 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class BatchClientParametersBase
+    public class DownloadVMFileOptions : VMFileOperationParameters
     {
-        protected BatchClientParametersBase(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public DownloadVMFileOptions(BatchAccountContext context, string poolName, string vmName, string vmFileName, PSVMFile vmFile, string destinationPath, 
+            Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolName, vmName, vmFileName, vmFile, additionalBehaviors)
         {
-            if (context == null)
+            if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
             }
 
-            this.Context = context;
-            this.AdditionalBehaviors = additionalBehaviors;
+            this.DestinationPath = destinationPath;
+            this.Stream = stream;
         }
 
         /// <summary>
-        /// The account details
+        /// The path to the directory where the vm file will be downloaded
         /// </summary>
-        public BatchAccountContext Context { get; private set; }
+        public string DestinationPath { get; set; }
 
         /// <summary>
-        /// Additional client behaviors to perform
+        /// The Stream into which the vm file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; private set; }
+        internal Stream Stream { get; set; }
     }
 }

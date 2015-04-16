@@ -65,20 +65,15 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters()
+            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.WorkItemName, this.JobName, this.Job, 
+                this.Name, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                Job = this.Job,
-                TaskName = this.Name,
                 CommandLine = this.CommandLine,
                 ResourceFiles = this.ResourceFiles,
                 EnvironmentSettings = this.EnvironmentSettings,
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
-                TaskConstraints = this.TaskConstraints,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                TaskConstraints = this.TaskConstraints
             };
 
             BatchClient.CreateTask(parameters);

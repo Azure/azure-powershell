@@ -13,25 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveJobParameters : BatchClientParametersBase
+    public class JobOperationParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The name of the WorkItem containing the Job to delete
-        /// </summary>
-        public string WorkItemName { get; set; }
+        public JobOperationParameters(BatchAccountContext context, string workItemName, string jobName, PSCloudJob job,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
+        {
+            if ((string.IsNullOrWhiteSpace(workItemName) || string.IsNullOrWhiteSpace(jobName)) && job == null)
+            {
+                throw new ArgumentNullException(Resources.NoJob);
+            }
+
+            this.WorkItemName = workItemName;
+            this.JobName = jobName;
+            this.Job = job;
+        }
 
         /// <summary>
-        /// The name of the Job to delete
+        /// The name of the workitem containing the job
         /// </summary>
-        public string JobName { get; set; }
+        public string WorkItemName { get; private set; }
 
         /// <summary>
-        /// The Job to delete
+        /// The name of the job
         /// </summary>
-        public PSCloudJob Job { get; set; }
+        public string JobName { get; private set; }
+
+        /// <summary>
+        /// The PSCloudJob object representing the target job
+        /// </summary>
+        public PSCloudJob Job { get; private set; }
     }
 }
