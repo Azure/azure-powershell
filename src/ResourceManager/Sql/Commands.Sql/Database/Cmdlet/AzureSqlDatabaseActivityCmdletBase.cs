@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    public abstract class AzureSqlElasticPoolDatabaseActivityCmdletBase 
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolDatabaseActivityModel>, AzureSqlElasticPoolAdapter>
+    public abstract class AzureSqlDatabaseActivityCmdletBase
+        : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseActivityModel>, AzureSqlDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -36,21 +37,38 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Gets or sets the name of the ElasticPool to use.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 2,
             HelpMessage = "The name of the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the ElasticPool to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Database.")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the ElasticPool to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Database.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? OperationId { get; set; }
 
         /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolAdapter(Profile, subscription);
+            return new AzureSqlDatabaseAdapter(Profile, subscription);
         }
     }
 }

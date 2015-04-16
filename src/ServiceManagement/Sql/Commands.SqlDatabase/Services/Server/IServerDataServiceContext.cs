@@ -16,6 +16,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
+    using Microsoft.WindowsAzure.Management.Sql.Models;
     using DatabaseCopyModel = Model.DatabaseCopy;
 
     /// <summary>
@@ -58,6 +59,13 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <param name="databaseName">The database to retrieve.</param>
         /// <returns>An object containing the information about the specific database.</returns>
         Database GetDatabase(string databaseName);
+
+        /// <summary>
+        /// Retrieve information on database with the name <paramref name="databaseName"/>.
+        /// </summary>
+        /// <param name="databaseName">The database to retrieve.</param>
+        /// <returns>An object containing the information about the specific database.</returns>
+        DatabaseUsageMetric GetDatabase(string databaseName);
 
         /// <summary>
         /// Creates a new Sql Database.

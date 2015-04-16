@@ -14,15 +14,30 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
+namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
     /// <summary>
     /// Represents an Azure Sql Database
     /// </summary>
-    public class AzureSqlElasticPoolDatabaseActivityModel
+    public class AzureSqlDatabaseActivityModel
     {
+        /// <summary>
+        /// Represents the state of the properties
+        /// </summary>
+        public class DatabaseState
+        {
+            /// <summary>
+            /// Gets or sets the properties of the database at the time of the start of the operation
+            /// </summary>
+            public IDictionary<string, string> Current { get; set; }
+            
+            /// <summary>
+            /// Gets or sets the requested properties for the database
+            /// </summary>
+            public IDictionary<string, string> Requested { get; set; }
+        }
+
         /// <summary>
         /// Gets or sets the operation id
         /// </summary>
@@ -79,23 +94,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public int? PercentComplete { get; set; }
 
         /// <summary>
-        /// Gets or sets the current service objective
+        /// Gets or sets the state of the properties associated with the request
         /// </summary>
-        public string CurrentServiceObjectiveName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the requested service objective
-        /// </summary>
-        public string RequestedServiceObjectiveName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the current resource pool name
-        /// </summary>
-        public string CurrentElasticPoolName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the requested resource pool name
-        /// </summary>
-        public string RequestedElasticPoolName { get; set; }
+        public DatabaseState Properties { get; set; }
     }
 }

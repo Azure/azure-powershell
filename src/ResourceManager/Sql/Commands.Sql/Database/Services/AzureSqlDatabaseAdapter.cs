@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -31,9 +32,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
     public class AzureSqlDatabaseAdapter
     {
         /// <summary>
-        /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
+        /// Gets or sets the AzureSqlDatabaseCommunicator which has all the needed management clients
         /// </summary>
         private AzureSqlDatabaseCommunicator Communicator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AzureSqlElasticPoolCommunicator which has all the needed management clients
+        /// </summary>
+        private AzureSqlElasticPoolCommunicator ElasticPoolCommunicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -174,6 +180,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             model.RequestedServiceObjectiveId = id;
 
             return model;
+        }
+
+        internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
+        {
+            List<AzureSqlDatabaseActivityModel> list = new List<AzureSqlDatabaseActivityModel>();
+
+            if(!string.IsNullOrEmpty(elasticPoolName))
+            {
+                var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
+            }
+            else
+            {
+
+            }
+
+            return list;
         }
     }
 }

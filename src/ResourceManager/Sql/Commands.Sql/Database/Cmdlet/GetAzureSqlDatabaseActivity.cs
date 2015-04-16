@@ -15,21 +15,20 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolDatabaseActivity",
+    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseActivity",
         ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlElasticPoolDatabaseActivity : AzureSqlElasticPoolDatabaseActivityCmdletBase
+    public class GetAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
     {
         /// <summary>
         /// Gets database activity in an Elastic Pool
         /// </summary>
         /// <returns>List of Database activity</returns>
-        protected override IEnumerable<AzureSqlElasticPoolDatabaseActivityModel> GetEntity()
+        protected override IEnumerable<AzureSqlDatabaseActivityModel> GetEntity()
         {
-            return ModelAdapter.ListElasticPoolDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
+            return ModelAdapter.ListDatabaseActivity(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName, this.OperationId);
         }
 
         /// <summary>
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlElasticPoolDatabaseActivityModel> ApplyUserInputToModel(IEnumerable<AzureSqlElasticPoolDatabaseActivityModel> model)
+        protected override IEnumerable<AzureSqlDatabaseActivityModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseActivityModel> model)
         {
             return model;
         }
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlElasticPoolDatabaseActivityModel> PersistChanges(IEnumerable<AzureSqlElasticPoolDatabaseActivityModel> entity)
+        protected override IEnumerable<AzureSqlDatabaseActivityModel> PersistChanges(IEnumerable<AzureSqlDatabaseActivityModel> entity)
         {
             return entity;
         }

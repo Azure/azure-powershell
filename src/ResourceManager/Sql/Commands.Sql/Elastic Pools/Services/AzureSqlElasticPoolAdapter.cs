@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="poolName">The name of the elastic pool</param>
         /// <returns>A list of Elastic Pool Database Activities</returns>
-        internal IList<AzureSqlElasticPoolDatabaseActivityModel> ListElasticPoolDatabaseActivity(string resourceGroupName, string serverName, string poolName)
+        internal IList<AzureSqlDatabaseActivityModel> ListElasticPoolDatabaseActivity(string resourceGroupName, string serverName, string poolName)
         {
             var resp = Communicator.ListDatabaseActivity(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
 
@@ -192,25 +192,25 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         /// <param name="model">The model to transform</param>
         /// <returns>The transformed model</returns>
-        private AzureSqlElasticPoolDatabaseActivityModel CreateDatabaseActivityModelFromResponse(ElasticPoolDatabaseActivity model)
+        private AzureSqlDatabaseActivityModel CreateDatabaseActivityModelFromResponse(ElasticPoolDatabaseActivity model)
         {
-            AzureSqlElasticPoolDatabaseActivityModel activity = new AzureSqlElasticPoolDatabaseActivityModel();
+            AzureSqlDatabaseActivityModel activity = new AzureSqlDatabaseActivityModel();
 
-            activity.CurrentElasticPoolName = model.Properties.CurrentElasticPoolName;
-            activity.CurrentServiceObjectiveName = model.Properties.CurrentServiceObjectiveName;
-            activity.DatabaseName = model.Properties.DatabaseName;
-            activity.EndTime = model.Properties.EndTime;
-            activity.ErrorCode = model.Properties.ErrorCode;
-            activity.ErrorMessage = model.Properties.ErrorMessage;
-            activity.ErrorSeverity = model.Properties.ErrorSeverity;
-            activity.Operation = model.Properties.Operation;
-            activity.OperationId = model.Properties.OperationId;
-            activity.PercentComplete = model.Properties.PercentComplete;
-            activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
-            activity.RequestedServiceObjectiveName = model.Properties.RequestedServiceObjectiveName;
-            activity.ServerName = model.Properties.ServerName;
-            activity.StartTime = model.Properties.StartTime;
-            activity.State = model.Properties.State;
+            //activity.CurrentElasticPoolName = model.Properties.CurrentElasticPoolName;
+            //activity.CurrentServiceObjectiveName = model.Properties.CurrentServiceObjectiveName;
+            //activity.DatabaseName = model.Properties.DatabaseName;
+            //activity.EndTime = model.Properties.EndTime;
+            //activity.ErrorCode = model.Properties.ErrorCode;
+            //activity.ErrorMessage = model.Properties.ErrorMessage;
+            //activity.ErrorSeverity = model.Properties.ErrorSeverity;
+            //activity.Operation = model.Properties.Operation;
+            //activity.OperationId = model.Properties.OperationId;
+            //activity.PercentComplete = model.Properties.PercentComplete;
+            //activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
+            //activity.RequestedServiceObjectiveName = model.Properties.RequestedServiceObjectiveName;
+            //activity.ServerName = model.Properties.ServerName;
+            //activity.StartTime = model.Properties.StartTime;
+            //activity.State = model.Properties.State;
 
             return activity;
         }
