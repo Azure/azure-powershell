@@ -56,15 +56,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName));
+                    verboseLogString = string.Format(Resources.GBJ_GetByOData, wiName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName));
+                    verboseLogString = string.Format(Resources.GBJ_GetNoFilter, wiName);
                 }
+                WriteVerbose(verboseLogString);
 
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {

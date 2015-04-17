@@ -1,3 +1,40 @@
+﻿2015.04.28 version 0.8.17
+* Azure Batch
+  * Added cmdlets
+    * New-AzureBatchVMUser
+    * Remove-AzureBatchVMUser
+
+2015.03.31 version 0.8.16
+* Azure Data Factory:
+  * Fixes for clean install and subscription registration issues
+* Azure HDInsight:
+  * Support for creating, deleting, listing, and submitting jobs to HDInsight clusters with Linux Operating System.
+* Azure Compute
+  * Fix pipeline issues with Get-AzureVM (#3047)
+  * Fixed DateTime Overflow issue
+* Azure Batch
+  * Added cmdlets
+    * Add/Remove Batch Pools
+    * Get-BatchTaskFileContent
+    * Get-BatchTaskFile
+* Azure Insights
+  * Added cmdlets
+   * Add-AutoscaleSetting
+   * Get-AutoscaleHistory
+   * Get-AutoscaleSetting
+   * New-AutoscaleProfile
+   * New-AutoscaleRule
+   * Remove-AutoscaleSetting
+   * Get-Metrics
+   * Get-MetricDefinitions
+   * Format-MetricsAsTable
+* Azure Websites
+  * Added cmdlet Get-AzureWebhostingPlanMetrics
+  * Added Premium support
+  * Renamed WebSites to WebApp
+* AzureProfile
+  * Made AzureProfile serializable to support workflow scenarios
+
 2015.03.11 version 0.8.15.1
 * Fixes for clean install and subscription registration issues
 

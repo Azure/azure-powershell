@@ -19,6 +19,7 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
 
-            var updateddCertificate = this.AutomationClient.UpdateCertificate(this.AutomationAccountName, this.Name, this.Path, this.Password, this.Description, this.Exportable);
+            var updateddCertificate = this.AutomationClient.UpdateCertificate(this.AutomationAccountName, this.Name, this.ResolvePath(this.Path), this.Password, this.Description, this.Exportable);
 
             this.WriteObject(updateddCertificate);
         }

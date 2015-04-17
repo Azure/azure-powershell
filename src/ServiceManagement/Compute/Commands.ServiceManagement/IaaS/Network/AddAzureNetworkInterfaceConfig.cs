@@ -33,8 +33,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The static ip address.")]
         public string StaticVNetIPAddress { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The network security group.")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The network security group for this network interface.")]
         public string NetworkSecurityGroup { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The IP Forwarding state for this network interface.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = false)]
+        public string IPForwarding { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -77,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                         ipConfig
                     },
                     NetworkSecurityGroup = this.NetworkSecurityGroup,
+                    IPForwarding = this.IPForwarding,
                 });
             WriteObject(VM);
         }

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Globalization;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey", 
         SupportsShouldProcess = true, 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 Name,
                 () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });
 
-            if (PassThru.IsPresent)
+            if (PassThru)
             {
                 WriteObject(keyBundle);
             }

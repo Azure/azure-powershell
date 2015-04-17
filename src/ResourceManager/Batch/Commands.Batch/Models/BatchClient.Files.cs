@@ -59,15 +59,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 string tName = options.Task == null ? options.TaskName : options.Task.Name;
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBTF_GetByOData, tName));
+                    verboseLogString = string.Format(Resources.GBTF_GetByOData, tName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBTF_NoFilter, tName));
+                    verboseLogString = string.Format(Resources.GBTF_NoFilter, tName);
                 }
+                WriteVerbose(verboseLogString);
 
                 IEnumerableAsyncExtended<ITaskFile> taskFiles = null;
                 if (options.Task != null)
@@ -143,6 +145,69 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 {
                     taskFile.CopyToStream(fs, options.AdditionalBehaviors);
                 }   
+            }
+        }
+
+        /// <summary>
+        /// Lists the vm files matching the specified filter options
+        /// </summary>
+        /// <param name="options">The options to use when querying for vm files</param>
+        /// <returns>The vm files matching the specified filter options</returns>
+        public IEnumerable<PSVMFile> ListVMFiles(ListVMFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) && options.VM == null)
+            {
+                throw new ArgumentNullException(Resources.GBVMF_NoVMSpecified);
+            }
+
+            // Get the single vm file matching the specified name
+            if (!string.IsNullOrEmpty(options.VMFileName))
+            {
+                WriteVerbose(string.Format(Resources.GBVMF_GetByName, options.VMFileName, options.VMName));
+                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
+                {
+                    ITaskFile vmFile = poolManager.GetVMFile(options.PoolName, options.VMName, options.VMFileName, options.AdditionalBehaviors);
+                    PSVMFile psVMFile = new PSVMFile(vmFile);
+                    return new PSVMFile[] { psVMFile };
+                }
+            }
+            // List vm files using the specified filter
+            else
+            {
+                string vmName = options.VM == null ? options.VMName : options.VM.Name;
+                ODATADetailLevel odata = null;
+                string verboseLogString = null;
+                if (!string.IsNullOrEmpty(options.Filter))
+                {
+                    verboseLogString = string.Format(Resources.GBVMF_GetByOData, vmName);
+                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                }
+                else
+                {
+                    verboseLogString = string.Format(Resources.GBVMF_NoFilter, vmName);
+                }
+                WriteVerbose(verboseLogString);
+
+                IEnumerableAsyncExtended<ITaskFile> vmFiles = null;
+                if (options.VM != null)
+                {
+                    vmFiles = options.VM.omObject.ListVMFiles(options.Recursive, odata, options.AdditionalBehaviors);
+                }
+                else
+                {
+                    using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
+                    {
+                        vmFiles = poolManager.ListVMFiles(options.PoolName, options.VMName, options.Recursive, odata, options.AdditionalBehaviors);
+                    }
+                }
+                Func<ITaskFile, PSVMFile> mappingFunction = f => { return new PSVMFile(f); };
+                return PSAsyncEnumerable<PSVMFile, ITaskFile>.CreateWithMaxCount(
+                    vmFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
     }

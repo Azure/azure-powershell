@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -32,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         public void GetsPublishSettingsFileUrl()
         {
             // Setup
-            AzureSession.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             GetAzurePublishSettingsFileCommand cmdlet = new GetAzurePublishSettingsFileCommand()
             {

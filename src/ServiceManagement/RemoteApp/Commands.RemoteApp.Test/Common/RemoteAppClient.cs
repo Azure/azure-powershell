@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
                 StatusCode = System.Net.HttpStatusCode.OK
             };
             mgmtClient = new Mock<WindowsAzure.Management.ManagementClient>();
-            setup = mgmtClient.Setup(c => c.Subscriptions.RegisterResourceAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()));
+            setup = mgmtClient.Setup(c => c.Subscriptions.RegisterResourceAsync("remoteapp", It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
 
             RemoteAppCmdlet = new T()
