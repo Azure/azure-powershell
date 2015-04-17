@@ -30,6 +30,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
+using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 
 
 namespace Microsoft.Azure.Commands.Automation.Common
@@ -183,6 +184,103 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     throw new ResourceNotFoundException(typeof(AutomationAccount),
                         string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound, automationAccountName));
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
+        #region Modules
+        public Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName)
+        {
+            var createdModule = this.automationManagementClient.Modules.CreateOrUpdate(resourceGroupName, automationAccountName,
+                new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+                {
+                    Name = moduleName,
+                    Properties = new AutomationManagement.Models.ModuleCreateOrUpdateProperties()
+                    {
+                        ContentLink = new AutomationManagement.Models.ContentLink()
+                        {
+                            Uri = contentLink,
+                            ContentHash = null,
+                            Version = null
+                        }
+                    },
+                });
+
+            return this.GetModule(resourceGroupName, automationAccountName, moduleName);
+        }
+
+        public Module GetModule(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var module = this.automationManagementClient.Modules.Get(resourceGroupName, automationAccountName, name).Module;
+                return new Module(resourceGroupName, automationAccountName, module);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName)
+        {
+            IList<AutomationManagement.Models.Module> modulesModels = AutomationManagementClient
+                .ContinuationTokenHandler(
+                    skipToken =>
+                    {
+                        var response = this.automationManagementClient.Modules.List(resourceGroupName, automationAccountName);
+                        return new ResponseWithSkipToken<AutomationManagement.Models.Module>(
+                            response, response.Modules);
+                    });
+
+            return modulesModels.Select(c => new Module(resourceGroupName, automationAccountName, c));
+        }
+
+        public Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLinkUri, string contentLinkVersion)
+        {
+            var moduleModel = this.automationManagementClient.Modules.Get(resourceGroupName, automationAccountName, name).Module;
+            if (contentLinkUri != null)
+            {
+                var modulePatchParameters = new AutomationManagement.Models.ModulePatchParameters();
+
+                modulePatchParameters.Name = name;
+                modulePatchParameters.Properties = new ModulePatchProperties();
+                modulePatchParameters.Properties.ContentLink = new AutomationManagement.Models.ContentLink();
+                modulePatchParameters.Properties.ContentLink.Uri = contentLinkUri;
+                modulePatchParameters.Properties.ContentLink.Version =
+                    (String.IsNullOrWhiteSpace(contentLinkVersion))
+                        ? Guid.NewGuid().ToString()
+                        : contentLinkVersion;
+
+                modulePatchParameters.Tags = moduleModel.Tags;
+
+                this.automationManagementClient.Modules.Patch(resourceGroupName, automationAccountName, modulePatchParameters);
+            }
+
+            var updatedModule = this.automationManagementClient.Modules.Get(resourceGroupName, automationAccountName, name).Module;
+            return new Module(resourceGroupName, automationAccountName, updatedModule);
+        }
+
+        public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var module = this.automationManagementClient.Modules.Delete(resourceGroupName, automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Module), string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
                 }
 
                 throw;

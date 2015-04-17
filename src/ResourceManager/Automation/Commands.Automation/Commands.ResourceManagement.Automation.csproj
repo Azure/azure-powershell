@@ -118,6 +118,10 @@
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJobOutput.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfiguration.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAgentRegistrationInformation.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationConfiguration.cs" />
@@ -154,6 +158,7 @@
     <Compile Include="Model\DscNode.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
     <Compile Include="Model\JobStream.cs" />
+    <Compile Include="Model\Module.cs" />
     <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -100,5 +100,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
 
         #endregion
+
+        #region Modules
+
+        Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+
+        Module GetModule(string resourceGroupName, string automationAccountName, string name);
+
+        Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+
+        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName);
+
+        void DeleteModule(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
     }
 }
