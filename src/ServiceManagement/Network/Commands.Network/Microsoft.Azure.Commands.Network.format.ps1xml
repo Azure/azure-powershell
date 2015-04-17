@@ -231,7 +231,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Next hop type</Label>
-            <Width>15</Width>
+            <Width>16</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Next hop IP address</Label>
