@@ -93,6 +93,24 @@ function Test-CreateDeleteUsingProfile
 
 <#
 .SYNOPSIS
+Delete a profile using the object instead of the parameters
+#>
+function Test-CrudWithEndpoint
+{
+	$profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profileWithEndpoint = Add-AzureTrafficManagerEndpointConfig -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+
+	$updatedProfile = Set-AzureTrafficManagerProfile -TrafficManagerProfile $profileWithEndpoint
+
+	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
+}
+
+<#
+.SYNOPSIS
 Create a Profile that already exists
 #>
 function Test-ProfileNewAlreadyExists

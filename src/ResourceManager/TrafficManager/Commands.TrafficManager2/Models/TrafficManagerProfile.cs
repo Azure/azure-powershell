@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public Profile ToSDKProfile()
         {
-            return new Profile
+            var profile = new Profile
             {
                 Name = this.Name,
+                Type = Constants.ProfileType,
                 Location = TrafficManagerClient.ProfileResourceLocation,
                 Properties = new ProfileProperties
                 {
@@ -60,6 +61,30 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     }
                 }
             };
+
+            if (this.Endpoints.Count > 0)
+            {
+                profile.Properties.Endpoints = new List<Management.TrafficManager.Models.Endpoint>();
+
+                foreach (Endpoint endpoint in this.Endpoints)
+                {
+                    profile.Properties.Endpoints.Add(new Management.TrafficManager.Models.Endpoint
+                    {
+                        Name = endpoint.Name,
+                        Type = endpoint.Type,
+                        Properties = new EndpointProperties
+                        {
+                            Target = endpoint.Target,
+                            EndpointStatus = endpoint.EndpointStatus,
+                            Weight = endpoint.Weight,
+                            Priority = endpoint.Priority,
+                            EndpointLocation = endpoint.Location
+                        }
+                    });
+                }    
+            }
+
+            return profile;
         }
     }
 }
