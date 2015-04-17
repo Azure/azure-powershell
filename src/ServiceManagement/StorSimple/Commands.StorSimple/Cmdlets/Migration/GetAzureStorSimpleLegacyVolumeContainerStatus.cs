@@ -27,7 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
+        [Parameter(Mandatory = false, Position = 1,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
         public override void ExecuteCmdlet()
@@ -36,7 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 StorSimpleClient.UpdateDataContainerMigrationStatusSync(LegacyConfigId);
                 var overallMigrationStatusList = StorSimpleClient.GetDataContainerMigrationStatus(LegacyConfigId);
-                var migrationDataContainerStatusList = overallMigrationStatusList.MigrationDataContainerStatuses.ToList();
+                var migrationDataContainerStatusList =
+                    overallMigrationStatusList.MigrationDataContainerStatuses.ToList();
                 if (null != LegacyContainerNames && 0 < LegacyContainerNames.Length)
                 {
                     List<string> containerNameList = LegacyContainerNames.ToList();

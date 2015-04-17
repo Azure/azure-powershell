@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
+using System.Security.Cryptography;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -34,7 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string TargetDeviceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigDecryptionKey)]
+        [Parameter(Position = 2, Mandatory = true,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigDecryptionKey)]
         [ValidateNotNullOrEmpty]
         public string ConfigDecryptionKey { get; set; }
 
@@ -46,21 +48,24 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 string deviceid = StorSimpleClient.GetDeviceId(TargetDeviceName);
                 if (!File.Exists(ConfigFilePath))
                 {
-                    throw new System.IO.FileNotFoundException(String.Format(Resources.MigrationConfigFileNotFound, StorSimpleContext.ResourceName, ConfigFilePath));
+                    throw new FileNotFoundException(String.Format(Resources.MigrationConfigFileNotFound,
+                        StorSimpleContext.ResourceName, ConfigFilePath));
                 }
                 else if (string.IsNullOrEmpty(deviceid))
                 {
-                    throw new Exception(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, TargetDeviceName));
-                }                
+                    throw new ArgumentException(String.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage,
+                        StorSimpleContext.ResourceName, TargetDeviceName));
+                }
                 else
                 {
                     // creating the config file parser instance - parser decrypt the xml and parses the config xml
                     WriteVerbose(string.Format(Resources.MigrationMsgDeviceFound, deviceid));
                     var secretsEncryptor = new ServiceSecretEncryptor(this.StorSimpleClient);
-                    var parser = new LegacyApplianceConfigParser(secretsEncryptor); 
+                    var parser = new LegacyApplianceConfigParser(secretsEncryptor);
                     var legacyApplianceMetaData = new LegacyApplianceConfiguration();
 
-                    legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(ConfigFilePath, ConfigDecryptionKey);
+                    legacyApplianceMetaData.Details = parser.ParseLegacyApplianceConfig(ConfigFilePath,
+                        ConfigDecryptionKey);
                     LegacyApplianceConfig config = legacyApplianceMetaData.Details;
                     legacyApplianceMetaData.LegacyConfigId = Guid.NewGuid().ToString();
                     config.InstanceId = config.Name = legacyApplianceMetaData.LegacyConfigId;
@@ -74,7 +79,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var configList = ConfigSplitHelper.Split(legacyApplianceMetaData.Details);
                     foreach (var singleConfig in configList)
                     {
-                        StorSimpleClient.ImportLegacyApplianceConfig(legacyApplianceMetaData.LegacyConfigId, singleConfig);
+                        StorSimpleClient.ImportLegacyApplianceConfig(legacyApplianceMetaData.LegacyConfigId,
+                            singleConfig);
                     }
 
                     WriteObject(legacyApplianceMetaData);
@@ -93,13 +99,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         internal override void HandleException(Exception exception)
         {
             // Parser throws missing member exception if any expected fields are missing, handling this as special case.
-            if (typeof(MissingMemberException) == exception.GetType())
+            if (typeof (MissingMemberException) == exception.GetType())
             {
                 WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.ParserError, null));
             }
-            else if (typeof(System.Security.Cryptography.CryptographicException) == exception.GetType())
+            else if (typeof (CryptographicException) == exception.GetType())
             {
-                WriteError(new ErrorRecord(new System.Security.Cryptography.CryptographicException(Resources.MigrationConfigDecryptionFailed), string.Empty, ErrorCategory.AuthenticationError, null));
+                WriteError(
+                    new ErrorRecord(
+                        new CryptographicException(
+                            Resources.MigrationConfigDecryptionFailed), string.Empty, ErrorCategory.AuthenticationError,
+                        null));
             }
             else
             {

@@ -29,10 +29,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
+        [Parameter(Mandatory = false, Position = 1,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2, HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
+        [Parameter(Mandatory = false, Position = 2,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
         public SwitchParameter SkipACRs { get; set; }
 
         [Parameter(Mandatory = false, Position = 3, HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCByForce)]
@@ -43,13 +45,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var importDataContainerRequest = new MigrationImportDataContainerRequest();
-                importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames) ? new List<string>(LegacyContainerNames.ToList().Distinct()) : new List<string>();
+                importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames)
+                    ? new List<string>(LegacyContainerNames.ToList().Distinct())
+                    : new List<string>();
                 importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
                 importDataContainerRequest.SkipACRs = SkipACRs.IsPresent;
 
-                var migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId, importDataContainerRequest);
+                var migrationJobStatus = StorSimpleClient.MigrationImportDataContainer(LegacyConfigId,
+                    importDataContainerRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
-                WriteObject(opFormatter.GetResultMessage(Resources.MigrationImportDataContainerSuccessMessage, migrationJobStatus));
+                WriteObject(opFormatter.GetResultMessage(Resources.MigrationImportDataContainerSuccessMessage,
+                    migrationJobStatus));
             }
             catch (Exception except)
             {

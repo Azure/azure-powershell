@@ -26,7 +26,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
+        [Parameter(Mandatory = false, Position = 1,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
         public override void ExecuteCmdlet()
@@ -45,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     }
                 }
 
-                var confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);                
+                var confirmStatusMsg = new ConfirmMigrationStatusMsg(LegacyConfigId, confirmStatus);
                 WriteObject(confirmStatusMsg);
             }
             catch (Exception except)
