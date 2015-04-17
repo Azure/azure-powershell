@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using System.Collections.Generic;
     using System.Net;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.Azure.Common.Authentication;
@@ -79,13 +80,16 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
         {
+            var parameteres = new ProfileCreateOrUpdateParameters
+            {
+                Profile = profile.ToSDKProfile()
+            };
+
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 profile.ResourceGroupName,
                 profile.Name, 
-                new ProfileCreateOrUpdateParameters
-                {
-                    Profile = profile.ToSDKProfile()
-                });
+                parameteres
+                );
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(profile.ResourceGroupName, profile.Name, response.Profile.Properties);
         }
@@ -99,7 +103,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, ProfileProperties mamlProfileProperties)
         {
-            return new TrafficManagerProfile
+            var profile = new TrafficManagerProfile
             {
                 Name = profileName,
                 ResourceGroupName = resourceGroupName,
@@ -110,6 +114,27 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 MonitorPort = mamlProfileProperties.MonitorConfig.Port,
                 MonitorPath = mamlProfileProperties.MonitorConfig.Path
             };
+
+            if (mamlProfileProperties.Endpoints != null)
+            {
+                profile.Endpoints = new List<Models.Endpoint>();
+
+                foreach (Endpoint endpoint in mamlProfileProperties.Endpoints)
+                {
+                    profile.Endpoints.Add(new Models.Endpoint
+                    {
+                        Name = endpoint.Name,
+                        Type = endpoint.Type,
+                        Target = endpoint.Properties.Target,
+                        EndpointStatus = endpoint.Properties.EndpointStatus,
+                        Location = endpoint.Properties.EndpointLocation,
+                        Priority = endpoint.Properties.Priority,
+                        Weight = endpoint.Properties.Weight
+                    });
+                }
+            }
+
+            return profile;
         }
     }
 }
