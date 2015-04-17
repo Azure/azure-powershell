@@ -49,10 +49,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string Permission { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
-        public ComputeImageConfig PlatformComputeImageConfig { get; set; }
+        public ComputeImageConfig ComputeImageConfig { get; set; }
 
         [Parameter(ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
-        public MarketplaceImageConfig PlatformMarketplaceImageConfig { get; set; }
+        public MarketplaceImageConfig MarketplaceImageConfig { get; set; }
 
         public void SetAzurePlatformVMImageProcess()
         {
@@ -125,19 +125,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                                 TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList(),
                                 ComputeImageAttributes = new ComputeImageAttributes
                                 {
-                                    Offer = this.PlatformComputeImageConfig.Offer,
-                                    Sku = this.PlatformComputeImageConfig.Sku,
-                                    Version = this.PlatformComputeImageConfig.Version
+                                    Offer = this.ComputeImageConfig.Offer,
+                                    Sku = this.ComputeImageConfig.Sku,
+                                    Version = this.ComputeImageConfig.Version
                                 },
-                                MarketplaceImageAttributes = this.PlatformMarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
+                                MarketplaceImageAttributes = this.MarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
                                 {
                                     Plan = new Plan
                                     {
-                                        Name = this.PlatformMarketplaceImageConfig.PlanName,
-                                        Product = this.PlatformMarketplaceImageConfig.Product,
-                                        Publisher = this.PlatformMarketplaceImageConfig.Publisher
+                                        Name = this.MarketplaceImageConfig.PlanName,
+                                        Product = this.MarketplaceImageConfig.Product,
+                                        Publisher = this.MarketplaceImageConfig.Publisher
                                     },
-                                    PublisherId = this.PlatformMarketplaceImageConfig.PublisherId
+                                    PublisherId = this.MarketplaceImageConfig.PublisherId
                                 }
                             });
                     });
