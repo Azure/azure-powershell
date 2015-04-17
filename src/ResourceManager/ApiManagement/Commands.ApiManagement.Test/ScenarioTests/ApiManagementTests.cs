@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
+    using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
@@ -109,6 +110,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         public void TestUpdateApiManagementDeploymentWithHelpersAndPipline()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportApiManagementCertificate()
+        {
+            RunPowerShellTest("Test-ImportApiManagementCertificate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetApiManagementVirtualNetworks()
+        {
+            RunPowerShellTest("Test-SetApiManagementVirtualNetworks");
         }
 
         private void RunPowerShellTest(params string[] scripts)

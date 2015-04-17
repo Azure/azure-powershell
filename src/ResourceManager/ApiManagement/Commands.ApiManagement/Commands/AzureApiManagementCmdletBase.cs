@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    public class ApiManagementCmdletBase : AzurePSCmdlet
+    public class AzureApiManagementCmdletBase : AzurePSCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             {
                 if (_client == null)
                 {
-                    _client = new ApiManagementClient(Profile.Context);
+                    _client = new ApiManagementClient(Profile);
                 }
                 return _client;
             }
@@ -72,6 +72,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             try
             {
                 action();
+            }
+            catch (ArgumentException ex)
+            {
+                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
+        protected void ExecuteLongRunningCmdletWrap(Func<ApiManagementLongRunningOperation> func)
+        {
+            try
+            {
+                var longRunningOperation = func();
+
+                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
+                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
+                if (!success)
+                {
+                    WriteErrorWithTimestamp(longRunningOperation.Error);
+                }
+                else
+                {
+                    WriteObject(longRunningOperation.ApiManagement);
+                }
             }
             catch (ArgumentException ex)
             {

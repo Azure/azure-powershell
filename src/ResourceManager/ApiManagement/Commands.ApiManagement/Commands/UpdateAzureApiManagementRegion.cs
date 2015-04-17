@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
     [Cmdlet(VerbsData.Update, "AzureApiManagementRegion"), OutputType(typeof(ApiManagement))]
-    public class UpdateAzureApiManagementRegion : ApiManagementCmdletBase
+    public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
           ValueFromPipeline = true,

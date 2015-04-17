@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet("Upload", "AzureApiManagementCertificate")]
-    public class UploadAzureApiManagementCertificate : ApiManagementCmdletBase
+    [Cmdlet(VerbsData.Import, "AzureApiManagementCertificate"), OutputType(typeof(ApiManagementCertificate))]
+    public class ImportAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,

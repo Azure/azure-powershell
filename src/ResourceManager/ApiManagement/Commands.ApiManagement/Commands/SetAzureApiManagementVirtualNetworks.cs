@@ -11,41 +11,37 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureApiManagementRegion"), OutputType(typeof (ApiManagement))]
-    public class RemoveAzureApiManagementRegion : AzureApiManagementCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureApiManagementVirtualNetworks"), OutputType(typeof (ApiManagement))]
+    public class SetAzureApiManagementVirtualNetworks : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
-        [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+            HelpMessage = "Name of resource group under which want to create API Management service.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Location of the region to remove.")]
+            HelpMessage = "Name of API Management service.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = false)]
-        public string Location { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Virtual networks configuration. Default value is $null.")]
+        public ApiManagementVirtualNetwork[] VirtualNetworks { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                ApiManagement.RemoveRegion(Location);
-
-                WriteObject(ApiManagement);
-            });
+            ExecuteLongRunningCmdletWrap(() => Client.BeginManageVirtualNetworks(ResourceGroupName, Name, VirtualNetworks));
         }
     }
 }

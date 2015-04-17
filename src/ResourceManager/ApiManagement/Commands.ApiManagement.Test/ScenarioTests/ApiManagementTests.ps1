@@ -104,6 +104,9 @@ function Test-CrudApiManagement
 
     $allServices = Get-AzureApiManagement
     Assert-AreEqual 0 $allServices.Count
+
+    # Remove resource group
+    Remove-AzureResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -168,7 +171,7 @@ function Test-BackupRestoreApiManagement
 
 <#
 .SYNOPSIS
-Tests tests tests.
+Tests UpdateAzureApiManagementDeployment.
 #>
 function Test-UpdateApiManagementDeployment
 {
@@ -208,7 +211,7 @@ function Test-UpdateApiManagementDeployment
     $region2Capacity = 3
     $service.AddRegion($region2Location, $region2Sku, $region2Capacity)
 
-    Update-AzureApiManagementDeployment -ApiManagement $service
+    Update-AzureApiManagementDeployments -ApiManagement $service
 
     $service = Get-ApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
@@ -250,7 +253,7 @@ function Test-UpdateApiManagementDeployment
 
 <#
 .SYNOPSIS
-Tests tests.
+Tests UpdateAzureApiManagementDeployment using pipline and helper cmdlets.
 #>
 function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 {
@@ -288,7 +291,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     Update-AzureApiManagementRegion -Sku $sku -Capacity $capacity |
     Add-AzureApiManagementRegion -Location $region1Location -Sku $region1Sku |
     Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
-    Update-AzureApiManagementDeployment
+    Update-AzureApiManagementDeployments
 
     $service = Get-ApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
@@ -326,4 +329,91 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
     # Remove resource group
     Remove-AzureResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests ImportApiManagmentCertificate.
+#>
+function Test-ImportApiManagementCertificate
+{
+    $certFilePath = ".\_.preview.int-azure-api.net.pfx";
+    $certPassword = "Password!12";
+
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+
+    # Create resource group
+    $resourceGroupName = Get-ResourceGroupName
+    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+
+    # Create API Management service
+    $result = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
+    Get-AzureApiManagement |
+    Import-AzureApiManagementCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword
+
+    Assert-AreEqual "CN=*.preview.int-azure-api.net" $result.Subject
+    Assert-AreEqual "A9B7C36DE11C29F38B9DCDA5D96BA36B9C777106" $result.Thumbprint
+
+    # Remove the service
+    Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+
+    # Remove resource group
+    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests SetApiManagmentVirtualNetworks.
+#>
+function Test-SetApiManagementVirtualNetworks
+{
+    #Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+
+    # Create resource group
+    $resourceGroupName = Get-ResourceGroupName
+    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+
+    # Create API Management service
+    New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
+
+    $vnetLocation = "East US"
+    $vnetId = "53F96AC5-9F46-46CE-BA0F-77DE89943258"
+    $subnetName = "Subnet-1"
+
+    $networksList = @()
+    $networksList += New-AzureApiManagementVirtualNetwork -Location $vnetLocation -VnetId $vnetId -SubnetName $subnetName
+
+    try
+    {
+        try
+        {
+            Set-AzureApiManagementVirtualNetworks -ResourceGroupName $resourceGroupName -Name $apiManagementName -VirtualNetworks $networksList
+        }
+        catch
+        {
+            Assert-True {$_.Exception.Message.Contains("InvalidOperation: Configure VPN capability is not supported for Sku Type 'Developer'")}
+        }
+    }
+    finally
+    {
+        # Remove the service
+        Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+
+        # Remove resource group
+        Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    }
 }

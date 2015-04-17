@@ -24,48 +24,49 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     public class ApiManagementClient
     {
-        private readonly AzureContext _context;
+        private readonly AzureProfile _azureProfile;
         private Management.ApiManagement.ApiManagementClient _client;
 
-        public ApiManagementClient(AzureContext context)
+        public ApiManagementClient(AzureProfile azureProfile)
         {
-            if (context == null)
+            if (azureProfile == null)
             {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException("azureProfile");
             }
 
-            _context = context;
+            _azureProfile = azureProfile;
         }
 
         public ApiManagement GetApiManagement(string resourceGroupName, string serviceName)
         {
 #if DEBUG
-            //var resource = new ApiServiceResource
-            //{
-            //    Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
-            //    Name = serviceName,
-            //    Location = "Central US",
-            //    Properties = new ApiServiceProperties
-            //    {
-            //        SkuProperties = new ApiServiceSkuProperties
-            //        {
-            //            SkuType = SkuType.Developer,
-            //            Capacity = 1
-            //        },
-            //        ProvisioningState = "Succeeded",
-            //        ProxyEndpoint = "sdsdsdsd",
-            //        ManagementPortalEndpoint = "wewewewe",
-            //        StaticIPs = new string[0]
-            //    }
-            //};
+            var resource = new ApiServiceResource
+            {
+                Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
+                Name = serviceName,
+                Location = "Central US",
+                Properties = new ApiServiceProperties
+                {
+                    SkuProperties = new ApiServiceSkuProperties
+                    {
+                        SkuType = SkuType.Developer,
+                        Capacity = 1
+                    },
+                    ProvisioningState = "Succeeded",
+                    ProxyEndpoint = "sdsdsdsd",
+                    ManagementPortalEndpoint = "wewewewe",
+                    StaticIPs = new string[0]
+                }
+            };
 
-            //return new ApiManagement(resource);
+            return new ApiManagement(resource);
 #endif
-            ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
-            return new ApiManagement(response.Value);
+            //ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
+            //return new ApiManagement(response.Value);
         }
 
         public IEnumerable<ApiManagement> ListApiManagements(string resourceGroupName)
@@ -126,7 +127,16 @@ namespace Microsoft.Azure.Commands.ApiManagement
 #endif
 
             var longrunningResponse = Client.ApiManagement.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
             return ApiManagementLongRunningOperation.CreateLongRunningOperation("New-AzureApiManagement", longrunningResponse);
+        }
+
+        private static void AdjustRetryAfter(LongRunningOperationResponse longrunningResponse, int longRunningOperationInitialTimeout)
+        {
+            if (longRunningOperationInitialTimeout >= 0)
+            {
+                longrunningResponse.RetryAfter = longRunningOperationInitialTimeout;
+            }
         }
 
         public ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)
@@ -138,6 +148,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                     .GetAwaiter()
                     .GetResult();
 
+            AdjustRetryAfter(response, _client.LongRunningOperationInitialTimeout);
             var result = ApiManagementLongRunningOperation.CreateLongRunningOperation(longRunningOperation.OperationName, response);
 
             return result;
@@ -160,6 +171,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             };
 
             var longrunningResponse = Client.ApiManagement.BeginBackup(resourceGroupName, serviceName, parameters);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
             return ApiManagementLongRunningOperation.CreateLongRunningOperation("Backup-AzureApiManagement", longrunningResponse);
         }
 
@@ -185,10 +197,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
             };
 
             var longrunningResponse = Client.ApiManagement.BeginRestoring(resourceGroupName, serviceName, parameters);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
             return ApiManagementLongRunningOperation.CreateLongRunningOperation("Restore-AzureApiManagement", longrunningResponse);
         }
 
-        public ApiManagementLongRunningOperation BeginManageDeployments(
+        public ApiManagementLongRunningOperation BeginUpdateDeployments(
             string resourceGroupName,
             string serviceName,
             string location,
@@ -235,7 +248,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
             }
 
             var longrunningResponse = Client.ApiManagement.BeginManagingDeployments(resourceGroupName, serviceName, parameters);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementDeployment", longrunningResponse);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureApiManagementDeployments", longrunningResponse);
         }
 
         public ApiManagementCertificate UploadCertificate(
@@ -256,10 +270,10 @@ namespace Microsoft.Azure.Commands.ApiManagement
             var parameters = new ApiServiceUploadCertificateParameters(MapHostnameType(hostnameType), encodedCertificate, pfxPassword);
             var result = Client.ApiManagement.UploadCertificate(resourceGroupName, serviceName, parameters);
 
-            return new ApiManagementCertificate(hostnameType, result.Value);
+            return new ApiManagementCertificate(result.Value);
         }
 
-        public ApiManagementLongRunningOperation BeginSetHostname(
+        public ApiManagementLongRunningOperation BeginSetHostnames(
             string resourceGroupName,
             string serviceName,
             ApiManagementHostnameConfiguration portalHostnameConfiguration,
@@ -275,7 +289,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
             };
 
             var longrunningResponse = Client.ApiManagement.BeginUpdatingHostname(resourceGroupName, serviceName, parameters);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementHostname", longrunningResponse);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementHostnames", longrunningResponse);
         }
 
         public string GetSsoToken(string resourceGroupName, string serviceName)
@@ -287,15 +302,45 @@ namespace Microsoft.Azure.Commands.ApiManagement
         {
             get
             {
-                //if (_client == null)
+                if (_client == null)
                 {
                     _client =
                         AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
-                            _context,
+                            _azureProfile,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
 
+#if DEBUG
+                RefreshTokenIfRequired();
+#endif
+
                 return _client;
+            }
+        }
+
+        private void RefreshTokenIfRequired()
+        {
+            if (_client != null && TokenCache.DefaultShared != null)
+            {
+                var tokenCredentials = _client.Credentials as TokenCloudCredentials;
+                if (tokenCredentials != null)
+                {
+                    var token =
+                        TokenCache.DefaultShared
+                            .ReadItems()
+                            .FirstOrDefault(item => !string.IsNullOrWhiteSpace(item.AccessToken) && item.IsMultipleResourceRefreshToken);
+
+                    if (token != null &&
+                        !string.IsNullOrWhiteSpace(token.RefreshToken) &&
+                        DateTime.UtcNow + TimeSpan.FromMinutes(5) >= token.ExpiresOn.UtcDateTime)
+                    {
+                        var authenticationContex = new AuthenticationContext(token.Authority);
+
+                        var result = authenticationContex.AcquireToken(token.Resource, token.ClientId, new Uri("urn:ietf:wg:oauth:2.0:oob"), PromptBehavior.Auto);
+                        var newToken = authenticationContex.AcquireTokenByRefreshToken(result.RefreshToken, token.ClientId, token.Resource);
+                        tokenCredentials.Token = newToken.AccessToken;
+                    }
+                }
             }
         }
 
@@ -351,6 +396,29 @@ namespace Microsoft.Azure.Commands.ApiManagement
             {
                 yield return HostnameType.Proxy;
             }
+        }
+
+        public ApiManagementLongRunningOperation BeginManageVirtualNetworks(
+            string resourceGroupName, 
+            string serviceName, 
+            IList<ApiManagementVirtualNetwork> virtualNetworks)
+        {
+            var parameters = new ApiServiceManageVirtualNetworksParameters
+            {
+                VirtualNetworkConfigurations = (virtualNetworks == null || virtualNetworks.Count == 0)
+                    ? null
+                    : virtualNetworks.Select(vn =>
+                        new VirtualNetworkConfiguration
+                        {
+                            Location = vn.Location,
+                            SubnetName = vn.SubnetName,
+                            VnetId = vn.VnetId
+                        }).ToList()
+            };
+
+            var longrunningResponse = Client.ApiManagement.BeginManagingVirtualNetworks(resourceGroupName, serviceName, parameters);
+            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementVirtualNetworks", longrunningResponse);
         }
     }
 }

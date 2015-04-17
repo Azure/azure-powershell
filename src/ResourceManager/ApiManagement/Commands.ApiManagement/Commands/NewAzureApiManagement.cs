@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
-    public class NewAzureApiManagement : ApiManagementCmdletBase
+    public class NewAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -76,29 +76,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                var longRunningOperation =
-                    Client.BeginCreateApiManagementService(
-                        ResourceGroupName,
-                        Name,
-                        Location,
-                        Organization,
-                        AdminEmail,
-                        Sku ?? ApiManagementSku.Developer,
-                        Capacity ?? 1,
-                        Tags);
-
-                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                if (!string.IsNullOrWhiteSpace(longRunningOperation.Error))
-                {
-                    WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-                else if (longRunningOperation.ApiManagement != null)
-                {
-                    WriteObject(longRunningOperation.ApiManagement);
-                }
-            });
+            ExecuteLongRunningCmdletWrap(
+                () => Client.BeginCreateApiManagementService(
+                    ResourceGroupName,
+                    Name,
+                    Location,
+                    Organization,
+                    AdminEmail,
+                    Sku ?? ApiManagementSku.Developer,
+                    Capacity ?? 1,
+                    Tags)
+                );
         }
     }
 }

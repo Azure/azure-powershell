@@ -23,21 +23,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         {
         }
 
-        internal ApiManagementCertificate(ApiManagementHostnameType hostnameType, CertificateInformation value)
+        internal ApiManagementCertificate(CertificateInformation value)
             : this()
         {
-            HostnameType = hostnameType;
             Expiry = value.Expiry;
             Subject = value.Subject;
             Thumbprint = value.Thumbprint;
         }
 
-        public ApiManagementHostnameType HostnameType { get; set; }
-
         public string Thumbprint { get; set; }
 
-        public string Subject { get; set; }
+        public string Subject { get; private set; }
 
-        public DateTime Expiry { get; set; }
+        public DateTime Expiry { get; private set; }
     }
 }

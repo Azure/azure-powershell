@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, "AzureApiManagementSsoToken"), OutputType(typeof (string))]
-    public class GetAzureApiManagementSsoToken : ApiManagementCmdletBase
+    public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,

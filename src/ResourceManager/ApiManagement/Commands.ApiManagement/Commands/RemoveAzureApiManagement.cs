@@ -19,18 +19,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
     [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
-    public class RemoveAzureApiManagement : ApiManagementCmdletBase
+    public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which API Management service exists.")]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of API Management service.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false)]

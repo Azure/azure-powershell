@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\ApiManagement\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -129,18 +129,24 @@
   <ItemGroup>
     <Compile Include="ApiManagementClient.cs" />
     <Compile Include="Commands\AddAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\ApiManagementCmdletBase.cs" />
+    <Compile Include="Commands\AzureApiManagementCmdletBase.cs" />
     <Compile Include="Commands\GetAzureApiManagementSsoToken.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\NewAzureApiManagementHostnameConfiguration.cs" />
     <Compile Include="Commands\NewAzureApiManagementVirtualNetwork.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\SetAzureApiManagementHostname.cs" />
-    <Compile Include="Commands\UpdateAzureApiManagementDeployment.cs">
+    <Compile Include="Commands\SetAzureApiManagementHostnames.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\SetAzureApiManagementVirtualNetworks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\UpdateAzureApiManagementDeployments.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\UpdateAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\UploadAzureApiManagementCertificate.cs" />
+    <Compile Include="Commands\ImportAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\BackupAzureApiManagement.cs" />
     <Compile Include="Commands\GetAzureApiManagement.cs" />
     <Compile Include="Commands\NewAzureApiManagement.cs" />

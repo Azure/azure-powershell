@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         {
         }
 
-        internal ApiManagementHostnameConfiguration(ApiManagementHostnameType hostnameType, HostnameConfiguration hostnameConfigurationResource)
+        internal ApiManagementHostnameConfiguration(HostnameConfiguration hostnameConfigurationResource)
             :this()
         {
             if (hostnameConfigurationResource == null)
@@ -31,13 +31,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("hostnameConfigurationResource");
             }
 
-            HostnameType = hostnameType;
-            Certificate = new ApiManagementCertificate(hostnameType, hostnameConfigurationResource.Certificate);
+            Certificate = new ApiManagementCertificate(hostnameConfigurationResource.Certificate);
         }
 
         public ApiManagementCertificate Certificate { get; set; }
-
-        public ApiManagementHostnameType HostnameType { get; set; }
 
         public string Hostname { get; set; }
     }

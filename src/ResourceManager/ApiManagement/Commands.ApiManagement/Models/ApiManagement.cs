@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Threading;
     using AutoMapper;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
@@ -68,13 +69,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var portalHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(ApiManagementHostnameType.Portal, portalHostnameResource);
+                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(portalHostnameResource);
                 }
 
                 var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(ApiManagementHostnameType.Proxy, proxyHostnameResource);
+                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(proxyHostnameResource);
                 }
             }
 
@@ -83,8 +84,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 Tags = apiServiceResource.Tags;
             }
         }
-
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public string[] StaticIPs { get; private set; }
 
@@ -104,13 +103,38 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string PortalUrl { get; private set; }
 
-        public IList<ApiManagementRegion> AdditionalRegions { get; private set; }
+        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public ApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
         public ApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
+
+        public IList<ApiManagementRegion> AdditionalRegions { get; private set; }
+
+        public string ResourceGroupName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Id))
+                {
+                    return null;
+                }
+
+                var match = ResourceGroupRegex.Match(Id);
+                if (match.Success)
+                {
+                    var resourceGroupNameGroup = match.Groups["resourceGroupName"];
+                    if (resourceGroupNameGroup != null && resourceGroupNameGroup.Success)
+                    {
+                        return resourceGroupNameGroup.Value;
+                    }
+                }
+
+                return null;
+            }
+        }
 
         public ApiManagementRegion AddRegion(
             string location,
@@ -216,29 +240,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             else
             {
                 throw new ArgumentException(string.Format(Properties.Resources.UpdateRegionDoesNotExistsMessage, location), "location");
-            }
-        }
-
-        public string ResourceGroupName
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(Id))
-                {
-                    return null;
-                }
-
-                var match = ResourceGroupRegex.Match(Id);
-                if (match.Success)
-                {
-                    var resourceGroupNameGroup = match.Groups["resourceGroupName"];
-                    if (resourceGroupNameGroup != null && resourceGroupNameGroup.Success)
-                    {
-                        return resourceGroupNameGroup.Value;
-                    }
-                }
-
-                return null;
             }
         }
     }

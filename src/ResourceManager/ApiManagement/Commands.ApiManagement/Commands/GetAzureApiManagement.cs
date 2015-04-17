@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, "AzureApiManagement", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof (List<ApiManagement>))]
-    public class GetAzureApiManagement : ApiManagementCmdletBase
+    public class GetAzureApiManagement : AzureApiManagementCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";
         internal const string ResourceGroupParameterSetName = "All In Resource Group";

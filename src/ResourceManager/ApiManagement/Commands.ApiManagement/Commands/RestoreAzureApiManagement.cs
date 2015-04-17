@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
     [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
-    public class RestoreAzureApiManagement : ApiManagementCmdletBase
+    public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -61,28 +61,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                var longRunningOperation =
-                    Client.BeginRestoreApiManagement(
-                        ResourceGroupName,
-                        Name,
-                        StorageContext.StorageAccount.Credentials.AccountName,
-                        StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
-                        Container,
-                        Blob);
-
-                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                var success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
-                if (!success)
-                {
-                    WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-                else
-                {
-                    WriteObject(longRunningOperation.ApiManagement);
-                }
-            });
+            ExecuteLongRunningCmdletWrap(
+                () => Client.BeginRestoreApiManagement(
+                    ResourceGroupName,
+                    Name,
+                    StorageContext.StorageAccount.Credentials.AccountName,
+                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    Container,
+                    Blob)
+                );
         }
     }
 }
