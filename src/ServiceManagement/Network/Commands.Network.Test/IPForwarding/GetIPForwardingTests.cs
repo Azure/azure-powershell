@@ -90,25 +90,6 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
         [Fact]
         public void GetIPForwardingOnRoleSucceeds()
         {
-            GetIPForwardingForRole();
-        }
-
-        [Fact]
-        public void GetIPForwardingOnVMSucceeds()
-        {
-            GetIPForwardingForVM();
-        }
-
-        [Fact]
-        public void GetIPForwardingOnVMNicSucceeds()
-        {
-            GetIPForwardingForVMNic();
-        }
-
-        #region helpers
-
-        private void GetIPForwardingForRole()
-        {
             // Setup
             cmdlet = new GetAzureIPForwarding
             {
@@ -142,7 +123,8 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
             Assert.Equal("Enabled", mockCommandRuntime.OutputPipeline[0]);
         }
 
-        private void GetIPForwardingForVM()
+        [Fact]
+        public void GetIPForwardingOnVMSucceeds()
         {
             // Setup
             var VM = new PersistentVMRoleContext()
@@ -184,7 +166,8 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
             Assert.Equal("Enabled", mockCommandRuntime.OutputPipeline[0]);
         }
 
-        private void GetIPForwardingForVMNic()
+        [Fact]
+        public void GetIPForwardingOnVMNicSucceeds()
         {
             // Setup
             var VM = new PersistentVMRoleContext()
@@ -227,7 +210,5 @@ namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.Equal("Disabled", mockCommandRuntime.OutputPipeline[0]);
         }
-
-        #endregion
     }
 }
