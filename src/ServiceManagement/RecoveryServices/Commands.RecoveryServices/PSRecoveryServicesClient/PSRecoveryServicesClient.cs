@@ -32,7 +32,6 @@ using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
-using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -87,26 +86,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureSubscription">Azure Subscription</param>
         public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
-            if (ServicePointManager.ServerCertificateValidationCallback == null)
-            {
-                ServicePointManager.ServerCertificateValidationCallback =
-                    IgnoreCertificateErrorHandler;
-
-            }
-
             this.Profile = azureProfile;
             this.recoveryServicesClient =
                 AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        private static bool IgnoreCertificateErrorHandler
-           (object sender,
-           System.Security.Cryptography.X509Certificates.X509Certificate certificate,
-           System.Security.Cryptography.X509Certificates.X509Chain chain,
-           SslPolicyErrors sslPolicyErrors)
-        {
-            return true;
-
         }
 
         /// <summary>
