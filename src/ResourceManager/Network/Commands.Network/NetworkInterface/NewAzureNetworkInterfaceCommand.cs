@@ -139,6 +139,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Dns Servers")]
+        public List<string> DnsServer { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
@@ -248,6 +254,12 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     networkInterface.IpConfigurations[0].LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
                 }
+            }
+
+            if (this.DnsServer != null)
+            {
+                networkInterface.DnsSettings = new PSDnsSettings();
+                networkInterface.DnsSettings.DnsServers = this.DnsServer;
             }
 
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
