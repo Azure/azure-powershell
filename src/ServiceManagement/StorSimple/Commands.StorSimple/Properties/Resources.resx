@@ -265,7 +265,7 @@
     <value>{0} volume{1} found for your volume container!</value>
   </data>
   <data name="ClientRequestIdMessage" xml:space="preserve">
-    <value>ClientRequestId: {0}</value>
+    <value>{1} ClientRequestId: {0}</value>
   </data>
   <data name="DeviceWithNameNotFoundInResourceMessage" xml:space="preserve">
     <value>Found device with device name {0} under resource {1}.</value>
@@ -531,5 +531,44 @@ a special character</value>
   </data>
   <data name="EncryptionKeyNotAcceptableMessage" xml:space="preserve">
     <value>Please provide an encryption key consisting of printable ASCII characters</value>
+  </data>
+  <data name="ConfirmMigrationSuccessMessage" xml:space="preserve">
+    <value>You can check the commit or rollback status by using Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus cmdlet.</value>
+  </data>
+  <data name="ImportLegacyApplianceConfigSuccessMessage" xml:space="preserve">
+    <value>Successfully imported config from the legacy appliance! Save the legacy config id and cloud configuration(s) for future reference.</value>
+  </data>
+  <data name="StartMigrationPlanSuccessMessage" xml:space="preserve">
+    <value>Successfully started estimating the migration plan. You can check the migration plan status with Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan cmdlet.</value>
+  </data>
+  <data name="ServiceSecretEncryptionFailure" xml:space="preserve">
+    <value>Unable to encrypt the secrets. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="VolumeContainerList" xml:space="preserve">
+    <value>List of volume containers:</value>
+  </data>
+  <data name="MigrationMsgDeviceFound" xml:space="preserve">
+    <value>Device id obtained {0}</value>
+  </data>
+  <data name="MigrationMsgQueringDeviceId" xml:space="preserve">
+    <value>Getting device id for device {0}</value>
+  </data>
+  <data name="MigrationMsgUploadingConfig" xml:space="preserve">
+    <value>Making service call to import config</value>
+  </data>
+  <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
+    <value>Unable to decrypt the config file. Please check your config decryption key.</value>
+  </data>
+  <data name="MigrationConfigFileNotFound" xml:space="preserve">
+    <value>Legacy appliance config not found</value>
+  </data>
+  <data name="MigrationImportDataContainerSuccessMessage" xml:space="preserve">
+    <value>Import started. You can check the import status with Get-AzureStorSimpleLegacyVolumeContainerStatus cmdlet.</value>
+  </data>
+  <data name="MigrationPlanNoConfigs" xml:space="preserve">
+    <value>There are no configs on the resource.</value>
+  </data>
+  <data name="MigrationPlanNotFound" xml:space="preserve">
+    <value>No migration plan found corresponding to the LegacyConfigId.</value>
   </data>
 </root>
