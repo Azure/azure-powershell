@@ -1,4 +1,9 @@
 ﻿2015.04.28 version 0.8.17
+* Azure HDInsight:
+  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
+  * Added cmdlets
+	* Grant-AzureHdinsightRdpAccess
+	* Revoke-AzureHdinsightRdpAccess
 * Azure Batch
   * Added cmdlets
     * New-AzureBatchVMUser

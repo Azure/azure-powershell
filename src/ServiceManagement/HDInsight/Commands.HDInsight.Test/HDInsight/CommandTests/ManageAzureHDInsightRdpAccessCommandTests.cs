@@ -15,7 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests;
 using Microsoft.WindowsAzure.Management.HDInsight;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
@@ -26,19 +27,15 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 
 namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
 {
-    [TestClass]
-    public class ManageAzureHDInsightRdpAccessCommandTests : HDInsightTestCaseBase
+    public class ManageAzureHDInsightRdpAccessCommandTests : HDInsightTestCaseBase, IDisposable
     {
-        [TestCleanup]
-        public override void TestCleanup()
+        public void Dispose()
         {
             base.TestCleanup();
         }
 
-        [TestMethod]
-        [TestCategory("Integration")]
-        [TestCategory("CheckIn")]
-        [TestCategory("Rdfe")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGrantHDInsightRdpAccess()
         {
             var rdpUserName = "rdpuser";
@@ -46,14 +43,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             AzureHDInsightCluster testCluster = GetClusterWithRdpAccessDisabled(creds);
             AzureHDInsightCluster cluster = EnableRdpAccessToCluster(
                 creds, testCluster, rdpUserName, TestCredentials.AzurePassword, DateTime.UtcNow.AddDays(6));
-            Assert.IsNotNull(cluster);
-            Assert.AreEqual(cluster.RdpUserName, rdpUserName);
+            Assert.NotNull(cluster);
+            Assert.Equal(cluster.RdpUserName, rdpUserName);
         }
 
-        [TestMethod]
-        [TestCategory("Integration")]
-        [TestCategory("CheckIn")]
-        [TestCategory("Rdfe")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRevokeAccessToRdpServices()
         {
             IHDInsightCertificateCredential creds = GetValidCredentials();
@@ -61,12 +56,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             EnableRdpAccessToCluster(creds, testCluster, TestCredentials.AzureUserName, TestCredentials.AzurePassword,
                 DateTime.UtcNow.AddDays(6));
             AzureHDInsightCluster cluster = DisableRdpAccessToCluster(creds, testCluster);
-            Assert.IsNotNull(cluster);
-            Assert.IsTrue(string.IsNullOrEmpty(cluster.RdpUserName));
+            Assert.NotNull(cluster);
+            Assert.True(string.IsNullOrEmpty(cluster.RdpUserName));
         }
 
-        [TestInitialize]
-        public override void Initialize()
+        public ManageAzureHDInsightRdpAccessCommandTests()
         {
             base.Initialize();
         }

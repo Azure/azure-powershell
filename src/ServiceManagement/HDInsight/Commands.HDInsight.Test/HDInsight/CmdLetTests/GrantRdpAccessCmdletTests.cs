@@ -15,7 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Interfaces;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities;
 using Microsoft.WindowsAzure.Management.HDInsight;
@@ -24,20 +25,15 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCluste
 
 namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
 {
-    [TestClass]
-    public class GrantRdpAccessCmdletTests : HDInsightTestCaseBase
+    public class GrantRdpAccessCmdletTests : HDInsightTestCaseBase, IDisposable
     {
-        [TestCleanup]
-        public override void TestCleanup()
+        public new void Dispose()
         {
             base.TestCleanup();
         }
 
-        [TestMethod]
-        [TestCategory("CheckIn")]
-        [TestCategory("Integration")]
-        [TestCategory("PowerShell")]
-
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGrantRdpAccessToHDInsightCluster()
         {
             IHDInsightCertificateCredential creds = GetValidCredentials();
@@ -54,13 +50,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                             .Invoke();
 
                 AzureHDInsightCluster accessgrantedCluster = GetCluster(creds, cluster.Name, runspace);
-                Assert.IsNotNull(accessgrantedCluster);
-                Assert.AreEqual(accessgrantedCluster.RdpUserName, TestCredentials.AzureUserName);
+                Assert.NotNull(accessgrantedCluster);
+                Assert.Equal(accessgrantedCluster.RdpUserName, TestCredentials.AzureUserName);
             }
         }
 
-        [TestInitialize]
-        public override void Initialize()
+        public GrantRdpAccessCmdletTests()
         {
             base.Initialize();
         }
@@ -95,8 +90,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                         .Invoke();
 
             AzureHDInsightCluster accessRevokedCluster = GetCluster(connectionCredentials, cluster.Name, runspace);
-            Assert.IsNotNull(accessRevokedCluster);
-            Assert.IsTrue(string.IsNullOrEmpty(accessRevokedCluster.RdpUserName));
+            Assert.NotNull(accessRevokedCluster);
+            Assert.True(string.IsNullOrEmpty(accessRevokedCluster.RdpUserName));
         }
 
         internal static AzureHDInsightCluster GetCluster(
