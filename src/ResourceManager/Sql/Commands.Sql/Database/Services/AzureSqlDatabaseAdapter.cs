@@ -189,6 +189,36 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if(!string.IsNullOrEmpty(elasticPoolName))
             {
                 var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
+                list = response.Select((r) =>
+                    {
+                        return new AzureSqlDatabaseActivityModel()
+                        {
+                            DatabaseName = r.Properties.DatabaseName,
+                            EndTime = r.Properties.EndTime,
+                            ErrorCode = r.Properties.ErrorCode,
+                            ErrorMessage = r.Properties.ErrorMessage,
+                            ErrorSeverity = r.Properties.ErrorSeverity,
+                            Operation = r.Properties.Operation,
+                            OperationId = r.Properties.OperationId,
+                            PercentComplete = r.Properties.PercentComplete,
+                            ServerName = r.Properties.ServerName,
+                            StartTime = r.Properties.StartTime,
+                            State = r.Properties.State,
+                            Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
+                            {
+                                Current = new Dictionary<string, string>()
+                                {
+                                    {"CurrentElasticPoolName", r.Properties.CurrentElasticPoolName},
+                                    {"CurrentServiceObjectiveName", r.Properties.CurrentServiceObjectiveName},
+                                },
+                                Requested = new Dictionary<string, string>()
+                                {
+                                    {"RequestedElasticPoolName", r.Properties.RequestedElasticPoolName},
+                                    {"RequestedServiceObjectiveName", r.Properties.RequestedServiceObjectiveName},
+                                }
+                            }
+                        };
+                    }).ToList();
             }
             else
             {

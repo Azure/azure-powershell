@@ -53,6 +53,7 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseActivity.cs" />
     <Compile Include="Database\Cmdlet\RemoveAzureSqlDatabase.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="Database\Model\DatabaseEdition.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
-    <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
