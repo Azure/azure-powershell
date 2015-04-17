@@ -139,6 +139,7 @@
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
+    <Compile Include="ScenarioTests\CheckDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
   </ItemGroup>
@@ -159,11 +160,17 @@
     <None Include="ScenarioTests\NetworkSecurityGroupTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\CheckDnsAvailabilityTest.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CheckDnsAvailabilityTest\TestCheckDnsAvailability.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestCreateEmptyLoadBalancer.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
