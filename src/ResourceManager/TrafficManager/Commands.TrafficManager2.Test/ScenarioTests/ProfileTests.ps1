@@ -19,7 +19,7 @@ Full Profile CRUD cycle
 function Test-ProfileCrud
 {
 	$profileName = getAssetName
-    $resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
 	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
@@ -93,12 +93,12 @@ function Test-CreateDeleteUsingProfile
 
 <#
 .SYNOPSIS
-Delete a profile using the object instead of the parameters
+Full cycle to create an Endpoint in a Profile
 #>
 function Test-CrudWithEndpoint
 {
 	$profileName = getAssetName
-    $resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
 	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
