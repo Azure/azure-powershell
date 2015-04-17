@@ -100,44 +100,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             pass = false;
             testStartTime = DateTime.Now;
         }
-        
-        /// <summary>
-        /// This test covers negative test on Set-AzurePlatformVMImage cmdlets
-        /// </summary>
-        [TestMethod(), TestCategory("PIRTest"), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Get,Set,Remove)-AzurePlatformVMImage)")]
-        public void AzurePlatformVMImageNegativeTest()
-        {
-            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
-
-            try
-            {
-                // starting the test.
-                PrintOSImageDetailsContext(vmPowershellCmdlets.GetAzurePlatformVMImage(image));
-
-                // Replicate the user image to "West US" and wait until the replication process is completed.
-                ComputeImageConfig compCfg = new ComputeImageConfig
-                {
-                    Offer = "test",
-                    Sku = "test",
-                    Version = "test"
-                };
-                MarketplaceImageConfig marketCfg = null;
-                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1 }, compCfg, marketCfg);
-
-            }
-            catch (Exception e)
-            {
-                if (e.Message.Contains("Subscription"))
-                {
-                    pass = true;
-                }
-                else 
-                {
-                    Console.WriteLine(e.ToString());
-                    throw;
-                }
-            }
-        }
 
         /// <summary>
         /// This test covers Get-AzurePlatformVMImage, Set-AzurePlatformVMImage and Remove-AzurePlatformVMImage cmdlets
