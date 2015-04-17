@@ -538,11 +538,16 @@
 				<maml:description>
 					<maml:para>Specifies the event types to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
           Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.
@@ -619,11 +624,16 @@
 			<maml:description>
 				<maml:para>Specifies the event types to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
           Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>
@@ -738,11 +748,16 @@
 				<maml:description>
 					<maml:para>Specifies the event types to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
           Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>
@@ -795,11 +810,16 @@
 			<maml:description>
 				<maml:para>Specifies the event types to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
           Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>

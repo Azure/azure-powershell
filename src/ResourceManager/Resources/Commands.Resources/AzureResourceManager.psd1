@@ -69,7 +69,7 @@ FormatsToProcess = @(
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
-    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.format.ps1xml',
+    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
 )
 
@@ -87,7 +87,7 @@ NestedModules = @(
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',
     '.\Websites\Microsoft.Azure.Commands.Websites.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
-    '.\NetworkResourceProvider\Microsoft.Azure.Commands.NetworkResourceProvider.dll',
+    '.\Network\Microsoft.Azure.Commands.Network.dll',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
 )
 

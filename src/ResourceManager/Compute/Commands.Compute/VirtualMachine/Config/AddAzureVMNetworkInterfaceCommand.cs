@@ -51,6 +51,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Primary { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
@@ -68,11 +75,28 @@ namespace Microsoft.Azure.Commands.Compute
                 networkProfile.NetworkInterfaces = new List<NetworkInterfaceReference>();
             }
 
-            networkProfile.NetworkInterfaces.Add(
-                new NetworkInterfaceReference
+            if (!this.Primary.IsPresent)
+            {
+                networkProfile.NetworkInterfaces.Add(
+                    new NetworkInterfaceReference
+                    {
+                        ReferenceUri = this.Id,
+                    });
+            }
+            else
+            {
+                foreach (var networkInterfaceReference in networkProfile.NetworkInterfaces)
                 {
-                    ReferenceUri = this.Id
-                });
+                    networkInterfaceReference.Primary = false;
+                }
+
+                networkProfile.NetworkInterfaces.Add(
+                    new NetworkInterfaceReference
+                    {
+                        ReferenceUri = this.Id,
+                        Primary = true
+                    });
+            }
 
             this.VM.NetworkProfile = networkProfile;
 

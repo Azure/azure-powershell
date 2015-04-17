@@ -42,14 +42,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var keys = this.StorageAccountService.GetStorageAccountKeys(
-                 base.SubscriptionId,
+            var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,
-                 this.Name,
-                 base.ApiVersion,
-                 base.AuthorizationToken);
+                 this.Name);
 
-            WriteObject(keys);
+            WriteObject(listKeyResponse.StorageAccountKeys);
         }
     }
 }

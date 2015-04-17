@@ -19,22 +19,22 @@ using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public partial class StorageManagementClient
+    public partial class StorageManagementClientWrapper
     {
-        public ISrpManagementClient SrpManagementClient { get; set; }
+        public IStorageManagementClient StorageManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
 
-        public StorageManagementClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<SrpManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public StorageManagementClientWrapper(AzureContext context)
+            : this(AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
-        public StorageManagementClient(ISrpManagementClient resourceManagementClient)
+        public StorageManagementClientWrapper(IStorageManagementClient resourceManagementClient)
         {
-            SrpManagementClient = resourceManagementClient;
+            StorageManagementClient = resourceManagementClient;
         }
     }
 }
