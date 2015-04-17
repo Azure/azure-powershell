@@ -57,9 +57,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Location = DnsResourceLocation,
                         Name = name,
                         Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
+                        ETag = null,
                         Properties = new ZoneProperties
                         {
-                            ETag = null,
+                            NumberOfRecordSets = null,
+                            MaxNumberOfRecordSets = null,
                         }
                     }
                 });
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 Name = response.Zone.Name,
                 ResourceGroupName = resourceGroupName,
-                Etag = response.Zone.Properties.ETag,
+                Etag = response.Zone.ETag,
                 Tags = TagsConversionHelper.CreateTagHashtable(response.Zone.Tags),
             };
         }
@@ -85,9 +87,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Location = DnsResourceLocation,
                         Name = zone.Name,
                         Tags = TagsConversionHelper.CreateTagDictionary(zone.Tags, validate: true),
+                        ETag = overwrite ? "*" : zone.Etag,
                         Properties = new ZoneProperties
                         {
-                            ETag = overwrite ? "*" : zone.Etag,
                         }
                     }
                 });
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 Name = response.Zone.Name,
                 ResourceGroupName = zone.ResourceGroupName,
-                Etag = response.Zone.Properties.ETag,
+                Etag = response.Zone.ETag,
                 Tags = TagsConversionHelper.CreateTagHashtable(response.Zone.Tags),
             };
         }
@@ -121,7 +123,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 Name = getResponse.Zone.Name,
                 ResourceGroupName = resourceGroupName,
-                Etag = getResponse.Zone.Properties.ETag,
+                Etag = getResponse.Zone.ETag,
                 Tags = TagsConversionHelper.CreateTagHashtable(getResponse.Zone.Tags),
             };
         }
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 Name = zoneInResponse.Name,
                 ResourceGroupName = resourceGroupName,
-                Etag = zoneInResponse.Properties.ETag,
+                Etag = zoneInResponse.ETag,
                 Tags = TagsConversionHelper.CreateTagHashtable(zoneInResponse.Tags),
             })
             .ToList();
@@ -159,9 +161,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Name = relativeRecordSetName,
                         Location = DnsResourceLocation,
                         Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
+                        ETag = null,
                         Properties = new RecordSetProperties
                         {
-                            ETag = null,
                             Ttl = ttl,
                             AaaaRecords = recordType == RecordType.AAAA ? new List<Management.Dns.Models.AaaaRecord>() : null,
                             ARecords = recordType == RecordType.A ? new List<Management.Dns.Models.ARecord>() : null,
@@ -194,9 +196,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         Name = recordSet.Name,
                         Location = DnsResourceLocation,
                         Tags = TagsConversionHelper.CreateTagDictionary(recordSet.Tags, validate: true),
+                        ETag = overwrite ? "*" : recordSet.Etag,
                         Properties = new RecordSetProperties
                         {
-                            ETag = overwrite ? "*" : recordSet.Etag,
                             Ttl = recordSet.Ttl,
                             AaaaRecords = recordSet.RecordType == RecordType.AAAA ? GetMamlRecords<AaaaRecord, Management.Dns.Models.AaaaRecord>(recordSet.Records) : null,
                             ARecords = recordSet.RecordType == RecordType.A ? GetMamlRecords<ARecord, Management.Dns.Models.ARecord>(recordSet.Records) : null,
@@ -271,7 +273,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
             return new DnsRecordSet
             {
-                Etag = mamlRecordSet.Properties.ETag,
+                Etag = mamlRecordSet.ETag,
                 Name = mamlRecordSet.Name,
                 RecordType = recordType,
                 Records = GetPowerShellRecords(mamlRecordSet),
