@@ -49,10 +49,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string Permission { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
-        public PlatformComputeImageConfig PlatformComputeImageConfig { get; set; }
+        public ComputeImageConfig PlatformComputeImageConfig { get; set; }
 
         [Parameter(ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
-        public PlatformMarketplaceImageConfig PlatformMarketplaceImageConfig { get; set; }
+        public MarketplaceImageConfig PlatformMarketplaceImageConfig { get; set; }
 
         public void SetAzurePlatformVMImageProcess()
         {

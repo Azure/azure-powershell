@@ -830,8 +830,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzurePlatformVMImage
 
+        internal ComputeImageConfig NewAzurePlatformComputeImageConfig(string offer, string sku, string version)
+        {
+            return RunPSCmdletAndReturnFirst<ComputeImageConfig>(new NewAzurePlatformComputeImageConfigCmdletInfo(offer, sku, version));
+        }
 
-        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations, PlatformComputeImageConfig compCfg, PlatformMarketplaceImageConfig marketCfg)
+        internal MarketplaceImageConfig NewAzurePlatformMarketplaceImageConfig(string planName, string product, string publisher, string publisherId)
+        {
+            return RunPSCmdletAndReturnFirst<MarketplaceImageConfig>(new NewAzurePlatformMarketplaceImageConfigCmdletInfo(planName, product, publisher, publisherId));
+        }
+
+        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new  SetAzurePlatformVMImageCmdletInfo(imageName, null, locations, compCfg, marketCfg));
         }

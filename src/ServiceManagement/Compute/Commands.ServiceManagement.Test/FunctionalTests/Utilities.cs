@@ -129,6 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzurePlatformVMImageCmdletName = "Set-AzurePlatformVMImage";
         public const string GetAzurePlatformVMImageCmdletName = "Get-AzurePlatformVMImage";
         public const string RemoveAzurePlatformVMImageCmdletName = "Remove-AzurePlatformVMImage";
+        public const string NewAzurePlatformComputeImageConfigCmdletName = "New-AzurePlatformComputeImageConfig";
+        public const string NewAzurePlatformMarketplaceImageConfigCmdletName = "New-AzurePlatformMarketplaceImageConfig";
         
         // AzureRemoteDesktopFile
         public const string GetAzureRemoteDesktopFileCmdletName = "Get-AzureRemoteDesktopFile";

@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Compute.Models;
-
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model
 {
-    public class PlatformMarketplaceImageConfig
+    public class ComputeImageConfig
     {
-        public string PlanName { get; set; }
+        public string Offer { get; set; }
 
-        public string Product { get; set; }
+        public string Sku { get; set; }
 
-        public string Publisher { get; set; }
-
-        public string PublisherId { get; set; }
+        public string Version { get; set; }
     }
 }

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ImagePublishing
 {
-    [Cmdlet(VerbsCommon.New, "AzurePlatformComputeImageConfig"), OutputType(typeof(PlatformComputeImageConfig))]
+    [Cmdlet(VerbsCommon.New, "AzurePlatformComputeImageConfig"), OutputType(typeof(ComputeImageConfig))]
     public class NewAzurePlatformComputeImageConfig : PSCmdlet
     {
         [Parameter, ValidateNotNullOrEmpty]
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         {
             ServiceManagementProfile.Initialize();
 
-            var result = new PlatformComputeImageConfig
+            var result = new ComputeImageConfig
             {
                 Offer = Offer,
                 Sku = Sku,

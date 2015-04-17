@@ -172,8 +172,8 @@
     <Compile Include="Model\ExtensionCertificateConfig.cs" />
     <Compile Include="Model\OSImageDetailsContext.cs" />
     <Compile Include="Model\ReplicationProgressContext.cs" />
-    <Compile Include="Model\PlatformComputeImageConfig.cs" />
-    <Compile Include="Model\PlatformMarketplaceImageConfig.cs" />
+    <Compile Include="Model\ComputeImageConfig.cs" />
+    <Compile Include="Model\MarketplaceImageConfig.cs" />
     <Compile Include="Model\VMImageDetailsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
