@@ -13,19 +13,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System.Collections.Generic;
-
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class NetworkInterfaceBaseCmdlet : NetworkBaseCmdlet
     {
         public INetworkInterfaceOperations NetworkInterfaceClient
