@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
             AccountTypeString.StandardZRS,
             AccountTypeString.StandardGRS,
             AccountTypeString.StandardRAGRS,
+            AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
         public string Type { get; set; }
 
