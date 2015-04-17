@@ -123,11 +123,17 @@
   <data name="BadParameterSetName" xml:space="preserve">
     <value>Bad Parameter Set Name</value>
   </data>
+  <data name="ImportByokAsSoftkeyError" xml:space="preserve">
+    <value>BYOK key can not be imported as software key</value>
+  </data>
   <data name="InvalidAzureEnvironment" xml:space="preserve">
     <value>Invalid AzureEnvironment.</value>
   </data>
   <data name="InvalidCurrentSubscription" xml:space="preserve">
     <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+  </data>
+  <data name="InvalidKeyAttributes" xml:space="preserve">
+    <value>Invalid key attributes</value>
   </data>
   <data name="InvalidKeyBlob" xml:space="preserve">
     <value>Invalid '{0}' key blob.</value>
@@ -138,11 +144,20 @@
   <data name="InvalidKeyDestination" xml:space="preserve">
     <value>Can not create given key material in specified destination.</value>
   </data>
+  <data name="InvalidKeyIdentifier" xml:space="preserve">
+    <value>Invalid key identifier</value>
+  </data>
   <data name="InvalidKeyName" xml:space="preserve">
     <value>Invalid key name.</value>
   </data>
   <data name="InvalidKeyUri" xml:space="preserve">
     <value>Invalid key uri '{0}'.</value>
+  </data>
+  <data name="InvalidSecretAttributes" xml:space="preserve">
+    <value>Invalid secret attributes</value>
+  </data>
+  <data name="InvalidSecretIdentifier" xml:space="preserve">
+    <value>Invalid secret identifier</value>
   </data>
   <data name="InvalidSecretName" xml:space="preserve">
     <value>Invalid secret name.</value>

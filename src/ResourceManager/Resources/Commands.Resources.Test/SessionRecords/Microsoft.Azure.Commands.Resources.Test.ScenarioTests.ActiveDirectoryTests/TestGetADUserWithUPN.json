@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/2ee94052-bf34-4e83-aa6f-f82125c65d74/users?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzJlZTk0MDUyLWJmMzQtNGU4My1hYTZmLWY4MjEyNWM2NWQ3NC91c2Vycz9hcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"userPrincipalName\": \"aduser8327@soochi.onmicrosoft.com\",\r\n  \"accountEnabled\": true,\r\n  \"displayName\": \"aduser8327\",\r\n  \"mailNickname\": \"aduser8327test\",\r\n  \"passwordProfile\": {\r\n    \"password\": \"adpass28240#$\",\r\n    \"forceChangePasswordNextLogin\": false\r\n  }\r\n}",
       "RequestHeaders": {
@@ -81,7 +80,6 @@
     },
     {
       "RequestUri": "/2ee94052-bf34-4e83-aa6f-f82125c65d74/users/aduser8327@soochi.onmicrosoft.com?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzJlZTk0MDUyLWJmMzQtNGU4My1hYTZmLWY4MjEyNWM2NWQ3NC91c2Vycy9hZHVzZXI4MzI3QHNvb2NoaS5vbm1pY3Jvc29mdC5jb20/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -151,7 +149,6 @@
     },
     {
       "RequestUri": "/2ee94052-bf34-4e83-aa6f-f82125c65d74/users/f318c942-5aa1-4405-bb6b-37102e7b92e4?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzJlZTk0MDUyLWJmMzQtNGU4My1hYTZmLWY4MjEyNWM2NWQ3NC91c2Vycy9mMzE4Yzk0Mi01YWExLTQ0MDUtYmI2Yi0zNzEwMmU3YjkyZTQ/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

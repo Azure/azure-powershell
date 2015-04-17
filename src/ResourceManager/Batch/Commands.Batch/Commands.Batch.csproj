@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -49,14 +49,14 @@
       <HintPath>..\..\..\packages\Azure.Batch.1.2.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.17-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -64,23 +64,24 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,7 +97,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.0.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
@@ -144,6 +145,7 @@
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileCommand.cs" />
     <Compile Include="Files\GetBatchTaskFileContentCommand.cs" />
+    <Compile Include="Files\GetBatchVMFileCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.cs" />
@@ -155,15 +157,21 @@
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
+    <Compile Include="Models\BatchClient.VMUsers.cs" />
+    <Compile Include="Models\BatchClient.VMs.cs" />
     <Compile Include="Models\BatchClient.WorkItems.cs" />
+    <Compile Include="Models\BatchClientParametersBase.cs" />
     <Compile Include="Models\DownloadTaskFileOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
     <Compile Include="Models\ListTaskFileOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
+    <Compile Include="Models\ListVMFileOptions.cs" />
+    <Compile Include="Models\ListVMOptions.cs" />
     <Compile Include="Models\ListWorkItemOptions.cs" />
     <Compile Include="Models\NewPoolParameters.cs" />
     <Compile Include="Models\NewTaskParameters.cs" />
+    <Compile Include="Models\NewVMUserParameters.cs" />
     <Compile Include="Models\NewWorkItemParameters.cs" />
     <Compile Include="Models\PSAffinityInformation.cs" />
     <Compile Include="Models\PSAsyncEnumerable.cs" />
@@ -206,12 +214,14 @@
     <Compile Include="Models\PSUser.cs" />
     <Compile Include="Models\PSVM.cs" />
     <Compile Include="Models\PSVMError.cs" />
+    <Compile Include="Models\PSVMFile.cs" />
     <Compile Include="Models\PSVMInformation.cs" />
     <Compile Include="Models\PSWorkItemExecutionInformation.cs" />
     <Compile Include="Models\PSWorkItemSchedule.cs" />
     <Compile Include="Models\PSWorkItemStatistics.cs" />
     <Compile Include="Models\RemoveJobParameters.cs" />
     <Compile Include="Models\RemoveTaskParameters.cs" />
+    <Compile Include="Models\RemoveVMUserParameters.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
@@ -224,8 +234,11 @@
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
+    <Compile Include="VMUsers\NewBatchVMUserCommand.cs" />
+    <Compile Include="VMUsers\RemoveBatchVMUserCommand.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <Compile Include="VMs\GetBatchVMCommand.cs" />
     <Compile Include="WorkItems\GetBatchWorkItemCommand.cs" />
     <Compile Include="WorkItems\NewBatchWorkItemCommand.cs" />
     <Compile Include="WorkItems\RemoveBatchWorkItemCommand.cs" />

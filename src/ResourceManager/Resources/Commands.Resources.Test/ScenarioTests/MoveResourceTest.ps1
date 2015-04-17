@@ -39,7 +39,7 @@ function Test-MoveAzureResource
 
     while ([DateTime]::UtcNow -lt $endTime -and (@(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -gt 0))
     {
-        sleep 1
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
     Assert-True { @(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -eq 0 }

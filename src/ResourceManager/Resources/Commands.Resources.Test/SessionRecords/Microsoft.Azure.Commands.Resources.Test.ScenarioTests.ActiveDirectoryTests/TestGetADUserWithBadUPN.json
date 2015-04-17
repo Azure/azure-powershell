@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/baduser@rbactest.onmicrosoft.com?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycy9iYWR1c2VyQHJiYWN0ZXN0Lm9ubWljcm9zb2Z0LmNvbT9hcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

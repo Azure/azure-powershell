@@ -25,25 +25,25 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Jobs to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem which contains the jobs.")]
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string WorkItemName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Job to query.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the job to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The WorkItem containing the Jobs to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSCloudWorkItem object representing the workitem which contains the jobs.")]
         [ValidateNotNullOrEmpty]
         public PSCloudWorkItem WorkItem { get; set; }
             
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Jobs.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The OData filter clause to use when querying for jobs.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Jobs to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of jobs to return.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         public int MaxCount
         {

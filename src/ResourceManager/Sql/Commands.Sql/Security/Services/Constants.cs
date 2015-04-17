@@ -20,11 +20,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     public class Constants
     {        
         // Event types
-        public const string DataAccess = "DataAccess";
-        public const string SchemaChanges = "SchemaChanges";
-        public const string DataChanges = "DataChanges";
-        public const string SecurityExceptions = "SecurityExceptions";
-        public const string RevokePermissions = "RevokePermissions";
+        public const string PlainSQL_Success = "PlainSQL_Success";
+        public const string PlainSQL_Failure = "PlainSQL_Failure";
+        public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
+        public const string ParameterizedSQL_Failure = "ParameterizedSQL_Failure";
+        public const string StoredProcedure_Success = "StoredProcedure_Success";
+        public const string StoredProcedure_Failure = "StoredProcedure_Failure";
+        public const string Login_Success = "Login_Success";
+        public const string Login_Failure = "Login_Failure";
+        public const string TransactionManagement_Success = "TransactionManagement_Success";
+        public const string TransactionManagement_Failure = "TransactionManagement_Failure";
 
         public const string All = "All";
         public const string None = "None";
@@ -71,11 +76,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             public const string Disabled = "Disabled";
 
             // Event types
-            public const string DataAccess = "DataAccess";
-            public const string SchemaChanges = "SchemaChanges";
-            public const string DataChanges = "DataChanges";
-            public const string SecurityExceptions = "SecurityExceptions";
-            public const string RevokePermissions = "RevokePermissions";
+            public const string PlainSQL_Success = "PlainSQL_Success";
+            public const string PlainSQL_Failure = "PlainSQL_Failure";
+            public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
+            public const string ParameterizedSQL_Failure = "ParameterizedSQL_Failure";
+            public const string StoredProcedure_Success = "StoredProcedure_Success";
+            public const string StoredProcedure_Failure = "StoredProcedure_Failure";
+            public const string Login_Success = "Login_Success";
+            public const string Login_Failure = "Login_Failure";
+            public const string TransactionManagement_Success = "TransactionManagement_Success";
+            public const string TransactionManagement_Failure = "TransactionManagement_Failure";
 
         }
 

@@ -18,7 +18,7 @@ using System;
 using System.IO;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         private string GetDefaultFile()
         {
             var currentPath = CurrentPath();
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.Commands.KeyVault.Client.UnixEpoch.Now());
+            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());
             File.Create(filename).Dispose();
             return filename;
         }
