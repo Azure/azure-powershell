@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
         {
             var cmdlet = new RemoveAzureTrafficManagerEndpointConfig
             {
-                Profile = new TrafficManagerProfile(),
+                TrafficManagerProfile = new TrafficManagerProfile(),
                 EndpointName = "Name"
             };
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
         {
             var cmdlet = new RemoveAzureTrafficManagerEndpointConfig
             {
-                Profile = new TrafficManagerProfile
+                TrafficManagerProfile = new TrafficManagerProfile
                 {
                     Endpoints = new List<Endpoint>
                     {

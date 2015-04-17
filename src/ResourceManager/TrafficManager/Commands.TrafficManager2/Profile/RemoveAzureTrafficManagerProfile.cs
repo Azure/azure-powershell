@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
-        public new TrafficManagerProfile Profile { get; set; }
+        public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
             else if (this.ParameterSetName == "Object")
             {
-                profileToDelete = this.Profile;
+                profileToDelete = this.TrafficManagerProfile;
             }
 
             this.ConfirmAction(

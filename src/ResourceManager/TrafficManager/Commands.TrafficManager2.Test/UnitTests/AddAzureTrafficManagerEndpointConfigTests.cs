@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
         {
             var cmdlet = new AddAzureTrafficManagerEndpointConfig
             {
-                Profile = new TrafficManagerProfile
+                TrafficManagerProfile = new TrafficManagerProfile
                 {
                     Endpoints = new List<Endpoint>
                     {

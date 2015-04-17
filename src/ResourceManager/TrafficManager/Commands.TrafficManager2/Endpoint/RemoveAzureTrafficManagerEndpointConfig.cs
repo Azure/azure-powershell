@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
         [ValidateNotNullOrEmpty]
-        public new TrafficManagerProfile Profile { get; set; }
+        public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.Profile.Endpoints == null)
+            if (this.TrafficManagerProfile.Endpoints == null)
             {
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EndpointNotFound, this.EndpointName));
             }
 
-            int endpointsRemoved = this.Profile.Endpoints.RemoveAll(endpoint => string.Equals(this.EndpointName, endpoint.Name));
+            int endpointsRemoved = this.TrafficManagerProfile.Endpoints.RemoveAll(endpoint => string.Equals(this.EndpointName, endpoint.Name));
 
             if (endpointsRemoved == 0)
             {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.WriteVerbose(ProjectResources.Success);
-            this.WriteObject(this.Profile);
+            this.WriteObject(this.TrafficManagerProfile);
         }
     }
 }

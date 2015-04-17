@@ -36,7 +36,7 @@ function Test-ProfileCrud
 
 	$createdProfile.TrafficRoutingMethod = "Priority"
 
-	$updatedProfile = Set-AzureTrafficManagerProfile -Profile $createdProfile
+	$updatedProfile = Set-AzureTrafficManagerProfile -TrafficManagerProfile $createdProfile
 
 	Assert-NotNull $updatedProfile
 	Assert-AreEqual $profileName $updatedProfile.Name 
@@ -86,7 +86,7 @@ function Test-CreateDeleteUsingProfile
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
 	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
 
-	Remove-AzureTrafficManagerProfile -Profile $createdProfile -Force
+	Remove-AzureTrafficManagerProfile -TrafficManagerProfile $createdProfile -Force
 
 	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
 }

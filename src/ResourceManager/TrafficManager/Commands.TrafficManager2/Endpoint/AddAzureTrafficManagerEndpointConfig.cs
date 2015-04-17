@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
         [ValidateNotNullOrEmpty]
-        public new TrafficManagerProfile Profile { get; set; }
+        public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
@@ -62,17 +62,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            if (this.Profile.Endpoints == null)
+            if (this.TrafficManagerProfile.Endpoints == null)
             {
-                this.Profile.Endpoints = new List<Endpoint>();
+                this.TrafficManagerProfile.Endpoints = new List<Endpoint>();
             }
 
-            if (this.Profile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
+            if (this.TrafficManagerProfile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
             {
                 throw new PSArgumentException(string.Format(ProjectResources.Error_AddExistingEndpoint, this.EndpointName));
             }
 
-            this.Profile.Endpoints.Add(
+            this.TrafficManagerProfile.Endpoints.Add(
                 new Endpoint
                 {
                     Name = this.EndpointName,
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 });
 
             this.WriteVerbose(ProjectResources.Success);
-            this.WriteObject(this.Profile);
+            this.WriteObject(this.TrafficManagerProfile);
         }
     }
 }

@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
         [ValidateNotNullOrEmpty]
-        public new TrafficManagerProfile Profile { get; set; }
+        public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            TrafficManagerProfile profile = this.TrafficManagerClient.SetTrafficManagerProfile(this.Profile);
+            TrafficManagerProfile profile = this.TrafficManagerClient.SetTrafficManagerProfile(this.TrafficManagerProfile);
 
             this.WriteVerbose(ProjectResources.Success);
             this.WriteObject(profile);

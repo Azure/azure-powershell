@@ -43,7 +43,7 @@ function Test-DeleteEndpoint
 
     TestSetup-AddEndpoint $endpointName $profile
 
-	Remove-AzureTrafficManagerEndpointConfig -EndpointName $endpointName -Profile $profile
+	Remove-AzureTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile
 
 	Assert-AreEqual 0 $profile.Endpoints.Count
 }
