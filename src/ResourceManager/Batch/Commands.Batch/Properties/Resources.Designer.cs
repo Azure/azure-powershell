@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Jobs matching the specified OData filter from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting Jobs matching the specified OData filter from WorkItem &quot;{0}&quot;. .
         /// </summary>
         internal static string GBJ_GetByOData {
             get {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Jobs from WorkItem &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting all Jobs from WorkItem &quot;{0}&quot;. .
         /// </summary>
         internal static string GBJ_GetNoFilter {
             get {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Pools matching the specified OData filter. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting Pools matching the specified OData filter. .
         /// </summary>
         internal static string GBP_GetByOData {
             get {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Pools associated with the Batch account. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting all Pools associated with the Batch account. .
         /// </summary>
         internal static string GBP_NoFilter {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Tasks matching the specified OData filter from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting Tasks matching the specified OData filter from Job &quot;{0}&quot;..
         /// </summary>
         internal static string GBT_GetByOData {
             get {
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all Tasks from Job &quot;{0}&quot;. A max count of {1} will be returned..
+        ///   Looks up a localized string similar to Getting all Tasks from Job &quot;{0}&quot;..
         /// </summary>
         internal static string GBT_GetNoFilter {
             get {
@@ -205,11 +205,74 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem namd and Job name to query for Tasks..
+        ///   Looks up a localized string similar to No Job was specified. Supply a Job object or a WorkItem name and Job name to query for Tasks..
         /// </summary>
         internal static string GBT_NoJob {
             get {
                 return ResourceManager.GetString("GBT_NoJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Task file &quot;{0}&quot; from Task &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBTF_GetByName {
+            get {
+                return ResourceManager.GetString("GBTF_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting Task files matching the specified OData filter from Task &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBTF_GetByOData {
+            get {
+                return ResourceManager.GetString("GBTF_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all Task files under Task &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBTF_NoFilter {
+            get {
+                return ResourceManager.GetString("GBTF_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task was specified. Supply a Task object or a WorkItem name, Job name, and Task name..
+        /// </summary>
+        internal static string GBTF_NoTaskSpecified {
+            get {
+                return ResourceManager.GetString("GBTF_NoTaskSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading Task file &quot;{0}&quot; to: {1}.
+        /// </summary>
+        internal static string GBTFC_Downloading {
+            get {
+                return ResourceManager.GetString("GBTFC_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No destination path was specified. Supply a path where the Task file should be downloaded..
+        /// </summary>
+        internal static string GBTFC_NoDestinationPath {
+            get {
+                return ResourceManager.GetString("GBTFC_NoDestinationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task file was specified to download. Supply a Task file object or a WorkItem name, Job name, Task name, and Task file name..
+        /// </summary>
+        internal static string GBTFC_NoTaskFileSpecified {
+            get {
+                return ResourceManager.GetString("GBTFC_NoTaskFileSpecified", resourceCulture);
             }
         }
         
@@ -223,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting WorkItems matching the specified OData filter. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting WorkItems matching the specified OData filter. .
         /// </summary>
         internal static string GBWI_GetByOData {
             get {
@@ -232,7 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all WorkItems associated with the Batch account. A max count of {0} will be returned..
+        ///   Looks up a localized string similar to Getting all WorkItems associated with the Batch account. .
         /// </summary>
         internal static string GBWI_NoFilter {
             get {
@@ -286,6 +349,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A max count of {0} will be returned..
+        /// </summary>
+        internal static string MaxCount {
+            get {
+                return ResourceManager.GetString("MaxCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find resource group name in ID property: {0}.
         /// </summary>
         internal static string MissingResGroupName {
@@ -322,7 +394,43 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}.
+        ///   Looks up a localized string similar to Creating Pool {0}.
+        /// </summary>
+        internal static string NBP_CreatingPool {
+            get {
+                return ResourceManager.GetString("NBP_CreatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Task {0}.
+        /// </summary>
+        internal static string NBT_CreatingTask {
+            get {
+                return ResourceManager.GetString("NBT_CreatingTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job specified to create the new Task under.  Supply a Job object or a WorkItem name and Job name..
+        /// </summary>
+        internal static string NBT_NoJobSpecified {
+            get {
+                return ResourceManager.GetString("NBT_NoJobSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating WorkItem {0}.
+        /// </summary>
+        internal static string NBWI_CreatingWorkItem {
+            get {
+                return ResourceManager.GetString("NBWI_CreatingWorkItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}?.
         /// </summary>
         internal static string RBA_RemoveConfirm {
             get {
@@ -336,6 +444,96 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBA_RemoveResource {
             get {
                 return ResourceManager.GetString("RBA_RemoveResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Job specified for deletion. Supply a Job object or a WorkItem name and Job name..
+        /// </summary>
+        internal static string RBJ_NoJobSpecified {
+            get {
+                return ResourceManager.GetString("RBJ_NoJobSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Job {0}?.
+        /// </summary>
+        internal static string RBJ_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBJ_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Job ....
+        /// </summary>
+        internal static string RBJ_RemoveJob {
+            get {
+                return ResourceManager.GetString("RBJ_RemoveJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Pool {0}?.
+        /// </summary>
+        internal static string RBP_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBP_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Pool ....
+        /// </summary>
+        internal static string RBP_RemovePool {
+            get {
+                return ResourceManager.GetString("RBP_RemovePool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Task specified for deletion. Supply a Task object or a WorkItem name, Job name, and Task name..
+        /// </summary>
+        internal static string RBT_NoTaskSpecified {
+            get {
+                return ResourceManager.GetString("RBT_NoTaskSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Task {0}?.
+        /// </summary>
+        internal static string RBT_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBT_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Task ....
+        /// </summary>
+        internal static string RBT_RemoveTask {
+            get {
+                return ResourceManager.GetString("RBT_RemoveTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove WorkItem {0}?.
+        /// </summary>
+        internal static string RBWI_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBWI_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing WorkItem ....
+        /// </summary>
+        internal static string RBWI_RemoveWorkItem {
+            get {
+                return ResourceManager.GetString("RBWI_RemoveWorkItem", resourceCulture);
             }
         }
         

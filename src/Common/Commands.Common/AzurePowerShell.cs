@@ -27,9 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
-        public const string AssemblyVersion = "0.8.15";
+        public const string AssemblyVersion = "0.8.16";
 
-        public const string AssemblyFileVersion = "0.8.15";
+        public const string AssemblyFileVersion = "0.8.16";
 
         public const string ProfileFile = "AzureProfile.json";
 

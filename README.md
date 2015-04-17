@@ -139,12 +139,12 @@ For detail descriptions and examples of the cmdlets, type
 2. Open Microsoft Web Platform Installer and search for __Microsoft Azure PowerShell__.
 3. Install.
 
-You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-sdk-tools/releases)
+You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
 
 ### Source Code
 
 1. Download the source code from GitHub repo
-2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-sdk-tools/wiki/Windows-Azure-PowerShell-Developer-Guide)
+2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide)
 
 ### Supported PowerShell Versions
 
@@ -290,7 +290,7 @@ Be sure to check out the [Microsoft Azure Developer Forums on Stack Overflow](ht
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-tools/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
 
 # Learn More
 
