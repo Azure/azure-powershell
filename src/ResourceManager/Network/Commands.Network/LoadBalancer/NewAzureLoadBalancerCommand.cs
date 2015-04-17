@@ -116,8 +116,11 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
-            loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
-            loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            if (this.FrontendIpConfiguration != null)
+            {
+                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
+                loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            }
 
             if (this.BackendAddressPool != null)
             {

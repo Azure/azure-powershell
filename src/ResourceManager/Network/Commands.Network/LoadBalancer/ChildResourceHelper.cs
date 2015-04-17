@@ -124,9 +124,12 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize FrontendIpconfig
-            foreach (var frontendIpConfig in loadBalancer.FrontendIpConfigurations)
+            if (loadBalancer.FrontendIpConfigurations != null)
             {
-                frontendIpConfig.Id = string.Empty;
+                foreach (var frontendIpConfig in loadBalancer.FrontendIpConfigurations)
+                {
+                    frontendIpConfig.Id = string.Empty;
+                }
             }
 
             // Normalize Probe

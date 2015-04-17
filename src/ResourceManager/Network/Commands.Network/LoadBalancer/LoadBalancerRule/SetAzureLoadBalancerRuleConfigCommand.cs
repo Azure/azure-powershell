@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             loadBalancingRule.FrontendIPConfiguration = null;
-            if (string.IsNullOrEmpty(this.FrontendIpConfigurationId))
+            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 loadBalancingRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
             }
