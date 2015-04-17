@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Platform Update Domain Count.")]
         [ValidateNotNullOrEmpty]
-        public int PlatformUpdateDomainCount { get; set; }
+        public int? PlatformUpdateDomainCount { get; set; }
 
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Platform Fault Domain Count.")]
         [ValidateNotNullOrEmpty]
-        public int PlatformFaultDomainCount { get; set; }
+        public int? PlatformFaultDomainCount { get; set; }
 
         public override void ExecuteCmdlet()
         {

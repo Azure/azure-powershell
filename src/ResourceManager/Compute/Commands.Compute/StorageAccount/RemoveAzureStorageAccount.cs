@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Management.Automation;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageAccountNounStr), OutputType(typeof(OperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, StorageAccountNounStr), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -45,12 +45,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var op = this.StorageAccountService.DeleteStorageAccount(
-                base.SubscriptionId,
+            var op = this.StorageClient.StorageAccounts.Delete(
                 this.ResourceGroupName,
-                this.Name,
-                base.ApiVersion,
-                base.AuthorizationToken);
+                this.Name);
 
             WriteObject(op);
         }

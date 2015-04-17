@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Management.Automation;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
@@ -44,24 +44,17 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (string.IsNullOrEmpty(this.Name))
             {
-                var storageAccounts = this.StorageAccountService.ListStorageAccounts(
-                    base.SubscriptionId,
-                    this.ResourceGroupName,
-                    base.ApiVersion,
-                    base.AuthorizationToken);
+                var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
-                WriteObject(storageAccounts.Value, true);
+                WriteObject(listResponse.StorageAccounts, true);
             }
             else
             {
-                var storageAccount = this.StorageAccountService.GetStorageAccount(
-                    base.SubscriptionId,
+                var getResponse = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name,
-                    base.ApiVersion,
-                    base.AuthorizationToken);
+                    this.Name);
 
-                WriteObject(storageAccount);
+                WriteObject(getResponse.StorageAccount);
             }
         }
     }

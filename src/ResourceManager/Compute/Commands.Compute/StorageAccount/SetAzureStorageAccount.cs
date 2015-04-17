@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using Common;
-    using Models;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
@@ -55,7 +54,12 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = UpdateAccountTypeParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Type.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(AccountTypeString.StandardLRS,
+            AccountTypeString.StandardZRS,
+            AccountTypeString.StandardGRS,
+            AccountTypeString.StandardRAGRS,
+            AccountTypeString.PremiumLRS,
+            IgnoreCase = true)]
         public string Type { get; set; }
 
         [Parameter(
@@ -73,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To Use Sub Domain Name.")]
         [ValidateNotNullOrEmpty]
-        public bool? UseSubDomainName { get; set; }
+        public bool? UseSubDomain { get; set; }
 
         [Parameter(
             Position = 2,
@@ -88,54 +92,43 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            StorageAccountProperties storageAccountProperties = null;
             Dictionary<string, string> tagDictionary = null;
+            StorageAccountUpdateParameters updateParameters = null;
 
             if (ParameterSetName == UpdateAccountTypeParamSet)
             {
-                storageAccountProperties = new StorageAccountProperties
-                {
-                    AccountType = this.Type,
-                    CustomDomains = null,
-                    PrimaryEndpoints = null,
-                    SecondaryEndpoints = null
-                };
+                updateParameters = new StorageAccountUpdateParameters
+                    {
+                        AccountType = ParseAccountType(this.Type)
+                    };
             }
             else if (ParameterSetName == UpdateCustomDomainParamSet)
             {
-                storageAccountProperties = new StorageAccountProperties
-                {
-                    AccountType = null,
-                    CustomDomains = new List<StorageCustomDomain>()
+                updateParameters = new StorageAccountUpdateParameters
                     {
-                        new StorageCustomDomain
+                        CustomDomain = new CustomDomain
                         {
                             Name = CustomDomainName,
-                            UseSubDomainName = UseSubDomainName
+                            UseSubDomain = UseSubDomain
                         }
-                    },
-                    PrimaryEndpoints = null,
-                    SecondaryEndpoints = null
-                };
+                    };
             }
             else
             {
                 tagDictionary = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+
+                updateParameters = new StorageAccountUpdateParameters
+                    {
+                        Tags = tagDictionary
+                    };
             }
 
-            var updatedAccount = this.StorageAccountService.PatchStorageAccount(
-                base.SubscriptionId,
+            var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                 this.ResourceGroupName,
                 this.Name,
-                new StorageAccount
-                {
-                    Tags = tagDictionary,
-                    Properties = storageAccountProperties
-                },
-                base.ApiVersion,
-                base.AuthorizationToken);
+                updateParameters);
 
-            WriteObject(updatedAccount);
+            WriteObject(updatedAccountResponse.StorageAccount);
         }
     }
 }

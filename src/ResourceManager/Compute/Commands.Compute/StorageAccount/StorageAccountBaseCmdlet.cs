@@ -12,21 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.Storage;
 using System;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class StorageAccountBaseCmdlet : AzurePSCmdlet
     {
-        private StorageManagementClient storageClient;
-
-        protected const string alphaApiVersion = "2014-12-01-preview";
-        protected const string authorizationToken = "none";
-        protected const string validating = null;
-
+        private StorageManagementClientWrapper storageClientWrapper;
+        
         protected const string StorageAccountNounStr = "AzureStorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
 
@@ -36,23 +32,32 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
 
-        public StorageManagementClient StorageClient
+        protected struct AccountTypeString
+        {
+            internal const string StandardLRS = "Standard_LRS";
+            internal const string StandardZRS = "Standard_ZRS";
+            internal const string StandardGRS = "Standard_GRS";
+            internal const string StandardRAGRS = "Standard_RAGRS";
+            internal const string PremiumLRS = "Premium_LRS";
+        }
+        
+        public IStorageManagementClient StorageClient
         {
             get
             {
-                if (storageClient == null)
+                if (storageClientWrapper == null)
                 {
-                    storageClient = new StorageManagementClient(Profile.Context)
+                    storageClientWrapper = new StorageManagementClientWrapper(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
                     };
                 }
 
-                return storageClient;
+                return storageClientWrapper.StorageManagementClient;
             }
 
-            set { storageClient = value; }
+            set { storageClientWrapper = new StorageManagementClientWrapper(value); }
         }
 
         public string SubscriptionId
@@ -63,41 +68,34 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public string ApiVersion
-        {
-            get
-            {
-                return alphaApiVersion;
-            }
-        }
-
-        public string AuthorizationToken
-        {
-            get
-            {
-                return authorizationToken;
-            }
-        }
-
-        public string Validating
-        {
-            get
-            {
-                return validating;
-            }
-        }
-
-        public IStorageAccountService StorageAccountService
-        {
-            get
-            {
-                return StorageClient.SrpManagementClient.StorageAccountService;
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
+
+        protected static AccountType ParseAccountType(string accountType)
+        {
+            if ("Standard_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            {
+                return AccountType.StandardLRS;
+            }
+            if ("Standard_ZRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            {
+                return AccountType.StandardZRS;
+            }
+            if ("Standard_GRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            {
+                return AccountType.StandardGRS;
+            }
+            if ("Standard_RAGRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            {
+                return AccountType.StandardRAGRS;
+            }
+            if ("Premium_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            {
+                return AccountType.PremiumLRS;
+            }
+            throw new ArgumentOutOfRangeException("accountType");
         }
     }
 }

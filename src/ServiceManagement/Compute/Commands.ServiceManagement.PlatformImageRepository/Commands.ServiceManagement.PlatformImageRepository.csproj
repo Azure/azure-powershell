@@ -111,8 +111,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.9.2.1\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=12.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -158,6 +159,8 @@
     <Compile Include="ExtensionPublishing\NewAzurePlatformExtensionCertificateConfig.cs" />
     <Compile Include="ExtensionPublishing\SetAzurePlatformExtension.cs" />
     <Compile Include="ExtensionPublishing\UnpublishAzurePlatformExtension.cs" />
+    <Compile Include="ImagePublishing\NewAzurePlatformMarketplaceImageConfig.cs" />
+    <Compile Include="ImagePublishing\NewAzurePlatformComputeImageConfig.cs" />
     <Compile Include="ImagePublishing\RemoveAzurePlatformVMImage.cs" />
     <Compile Include="ImagePublishing\GetAzurePlatformVMImage.cs" />
     <Compile Include="ImagePublishing\SetAzurePlatformVMImage.cs" />
@@ -169,6 +172,8 @@
     <Compile Include="Model\ExtensionCertificateConfig.cs" />
     <Compile Include="Model\OSImageDetailsContext.cs" />
     <Compile Include="Model\ReplicationProgressContext.cs" />
+    <Compile Include="Model\ComputeImageConfig.cs" />
+    <Compile Include="Model\MarketplaceImageConfig.cs" />
     <Compile Include="Model\VMImageDetailsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

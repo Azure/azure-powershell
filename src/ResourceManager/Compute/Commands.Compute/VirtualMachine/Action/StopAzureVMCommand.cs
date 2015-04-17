@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
 
             if (this.Force.IsPresent
-             || this.ShouldContinue(Resources.VirtualMachineStoppingConfirmation, Resources.VirtualMachineStoppingCaption))
+             || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
             {
                 Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
                 {

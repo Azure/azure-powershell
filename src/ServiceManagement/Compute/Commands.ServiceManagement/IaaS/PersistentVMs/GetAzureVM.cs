@@ -160,6 +160,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                                             : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
                                             : !string.IsNullOrEmpty(roleInstance.PublicIPs.First().Name) ? roleInstance.PublicIPs.First().Name
                                             : PersistentVMHelper.GetPublicIPName(vmRole),
+                PublicIPDomainNameLabel     = roleInstance == null ? string.Empty
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
+                                            : roleInstance.PublicIPs.First().DomainNameLabel,
+                PublicIPFqdns               = roleInstance == null ? new List<string>()
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? new List<string>()
+                                            : roleInstance.PublicIPs.First().Fqdns.ToList(),
                 InstanceStateDetails        = roleInstance == null ? string.Empty : roleInstance.InstanceStateDetails,
                 PowerState                  = roleInstance == null ? string.Empty : roleInstance.PowerState.ToString(),
                 HostName                    = roleInstance == null ? string.Empty : roleInstance.HostName,

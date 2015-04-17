@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Management.Automation;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
@@ -44,7 +44,12 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Type.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias)]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(AccountTypeString.StandardLRS,
+            AccountTypeString.StandardZRS,
+            AccountTypeString.StandardGRS,
+            AccountTypeString.StandardRAGRS,
+            AccountTypeString.PremiumLRS,
+            IgnoreCase = true)]
         public string Type { get; set; }
 
         [Parameter(
@@ -59,24 +64,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var storageAccount = this.StorageAccountService.PutStorageAccount(
-                base.SubscriptionId,
+            StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
+            {
+                Location = this.Location,
+                AccountType = ParseAccountType(this.Type)
+            };
+
+            var createAccountResponse = this.StorageClient.StorageAccounts.Create(
                 this.ResourceGroupName,
                 this.Name,
-                base.ApiVersion,
-                new StorageAccount
-                {
-                    Location = this.Location,
-                    Name = this.Name,
-                    Properties = new StorageAccountProperties
-                    {
-                        AccountType = this.Type
-                    }
-                },
-                base.Validating,
-                base.AuthorizationToken);
+                createParameters);
 
-            WriteObject(storageAccount);
+            WriteObject(createAccountResponse.StorageAccount);
         }
     }
 }

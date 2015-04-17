@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using System.Management.Automation;
-    using Azure.Management.Storage;
-    using Azure.Management.Storage.Models;
-
     [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
     public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
@@ -42,14 +42,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var keys = this.StorageAccountService.GetStorageAccountKeys(
-                 base.SubscriptionId,
+            var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,
-                 this.Name,
-                 base.ApiVersion,
-                 base.AuthorizationToken);
+                 this.Name);
 
-            WriteObject(keys);
+            WriteObject(listKeyResponse.StorageAccountKeys);
         }
     }
 }

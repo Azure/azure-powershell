@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -25,10 +27,19 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string GetVirtualMachineParamSet = "GetVirtualMachineParamSet";
         protected const string ListVirtualMachineParamSet = "ListVirtualMachineParamSet";
+        protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
+        protected const string ListNextVirtualMachinesParamSet = "ListNextVirtualMachinesParamSet";
 
         [Parameter(
            Mandatory = true,
            Position = 0,
+            ParameterSetName = ListVirtualMachineParamSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+            ParameterSetName = GetVirtualMachineParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -36,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ResourceName", "VMName")]
         [Parameter(
+            Mandatory = true,
             Position = 1,
             ParameterSetName = GetVirtualMachineParamSet,
             ValueFromPipelineByPropertyName = true,
@@ -50,6 +62,24 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ListAllVirtualMachinesParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "To list all virtual machines.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter All { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ListNextVirtualMachinesParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The link to the next page of virtual machines.")]
+        [ValidateNotNullOrEmpty]
+        public Uri NextLink { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,7 +100,22 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                var result = this.VirtualMachineClient.List(this.ResourceGroupName);
+                VirtualMachineListResponse result = null;
+
+                if (this.All.IsPresent)
+                {
+                    var listParams = new ListParameters();
+                    result = this.VirtualMachineClient.ListAll(listParams);
+                }
+                else if (this.NextLink != null)
+                {
+                    result = this.VirtualMachineClient.ListNext(this.NextLink.ToString());
+                }
+                else
+                {
+                    result = this.VirtualMachineClient.List(this.ResourceGroupName);
+                }
+
                 WriteObject(result.ToPSVirtualMachineList(this.ResourceGroupName), true);
             }
         }

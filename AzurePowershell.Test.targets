@@ -9,6 +9,7 @@
     <CommonTestDebug>.\src\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
     <SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
     <ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
+    <NetworkTestDebug>.\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll</NetworkTestDebug>
     <AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
     <AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
     <StorageScenarioTestDebug>src\ServiceManagement\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
@@ -43,6 +44,7 @@
     <XUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Batch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
@@ -52,6 +54,7 @@
     <XUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
     <XUnitTests Include=".\src\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
   </ItemGroup>
   
   <Target Name="InvokeMSTest">
@@ -109,6 +112,11 @@
 
   <Target Name="TestCompute">
     <Xunit.Runner.MSBuild.xunit Assemblies="$(ComputeTestDebug)" Html="$(TestOutputDirectory)\ComputeTestDebug.xunit.dll.html" Verbose="false"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
+  </Target>
+
+  <Target Name="NetworkTestDebug">
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(NetworkTestDebug)" Html="$(TestOutputDirectory)\NetworkTestDebug.xunit.dll.html" Verbose="false"
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
@@ -267,7 +275,7 @@
     <Message Importance="high" Text="Running a specific tests..." />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
-      Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(TestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
+      Command="for /l %%x in (1, 1, $(RepeatTimes)) do MSTest.exe /testcontainer:$(AzureRTTestContainer) /testsettings:$(AzureRTTestSettings) /test:$(TestName) /resultsfile:$(TestOutputDirectory)\RTFunctionalDebug%%x.trx"
       ContinueOnError="false" />
   </Target>
 
