@@ -15,7 +15,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
@@ -910,14 +913,69 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
             {
-                AzureVmDiskDetails diskDetails;
-                DataContractUtils.Deserialize<AzureVmDiskDetails>(
-                    pe.ReplicationProviderSettings, out diskDetails);
+                if (pe.ReplicationProvider == Constants.HyperVReplicaAzure)
+                {
+                    ReplicationProviderSpecificSettings providerDetails;
+                    DataContractUtils.Deserialize<ReplicationProviderSpecificSettings>(
+                        pe.ReplicationProviderSettings, out providerDetails);
 
-                this.Disks = diskDetails.Disks;
-                this.OSDiskId = diskDetails.VHDId;
-                this.OSDiskName = diskDetails.OsDisk;
-                this.OS = diskDetails.OsType;
+                    this.RecoveryAzureVMName = providerDetails.VMProperties.RecoveryAzureVMName;
+                    this.RecoveryAzureVMSize = providerDetails.VMProperties.RecoveryAzureVMSize;
+                    this.SelectedRecoveryAzureNetworkId =
+                        providerDetails.VMProperties.SelectedRecoveryAzureNetworkId;
+                    this.VMNics = new List<VMNic>();
+
+                    // Missing Nic details on serializing, going with the below workaround.
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(pe.ReplicationProviderSettings);
+                    XmlNodeList parentNode = xmlDoc.GetElementsByTagName("VMNicDetails");
+                    foreach (XmlNode childrenNode in parentNode)
+                    {
+                        VMNic vmnicDetails = new VMNic();
+                        foreach (XmlNode childNode in childrenNode.ChildNodes)
+                        {
+                            switch (childNode.Name)
+                            {
+                                case "NicId":
+                                    vmnicDetails.NicId = childNode.InnerText;
+                                    break;
+                                case "VMSubnetName":
+                                    vmnicDetails.VMSubnetName = childNode.InnerText;
+                                    break;
+                                case "VMNetworkName":
+                                    vmnicDetails.VMNetworkName = childNode.InnerText;
+                                    break;
+                                case "RecoveryVMNetworkId":
+                                    vmnicDetails.RecoveryVMNetworkId = childNode.InnerText;
+                                    break;
+                                case "RecoveryVMSubnetName":
+                                    vmnicDetails.RecoveryVMSubnetName = childNode.InnerText;
+                                    break;
+                                case "ReplicaNicStaticIPAddress":
+                                    vmnicDetails.RecoveryNicStaticIPAddress = childNode.InnerText;
+                                    break;
+                            }
+                        }
+
+                        this.VMNics.Add(vmnicDetails);
+                    }
+
+                    this.Disks = providerDetails.AzureVMDiskDetails.Disks;
+                    this.OSDiskId = providerDetails.AzureVMDiskDetails.VHDId;
+                    this.OSDiskName = providerDetails.AzureVMDiskDetails.OsDisk;
+                    this.OS = providerDetails.AzureVMDiskDetails.OsType;
+                }
+                else
+                {
+                    AzureVmDiskDetails diskDetails;
+                    DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                        pe.ReplicationProviderSettings, out diskDetails);
+
+                    this.Disks = diskDetails.Disks;
+                    this.OSDiskId = diskDetails.VHDId;
+                    this.OSDiskName = diskDetails.OsDisk;
+                    this.OS = diskDetails.OsType;
+                }
             }
 
             if (pe.ProtectionProfile != null &&
@@ -1082,6 +1140,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Replication provider.
         /// </summary>
         public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure VM Name
+        /// </summary>
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Recovery Azure VM size.
+        /// </summary>
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected recovery azure network Id.
+        /// </summary>
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of VM NIC details.
+        /// </summary>
+        public List<VMNic> VMNics { get; set; }
     }
 
     /// <summary>
@@ -1664,5 +1742,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public string Name { get; set; }
+    }
+
+    /// <summary>
+    /// Partial details of a NIC of a VM.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class VMNic
+    {
+        /// <summary>
+        /// Gets or sets ID of the NIC.
+        /// </summary>
+        [DataMember]
+        public string NicId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name of the VM subnet.
+        /// </summary>
+        [DataMember]
+        public string VMSubnetName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name of the VM network.
+        /// </summary>
+        [DataMember]
+        public string VMNetworkName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Id of the recovery VM Network.
+        /// </summary>
+        [DataMember]
+        public string RecoveryVMNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the recovery VM subnet.
+        /// </summary>
+        [DataMember]
+        public string RecoveryVMSubnetName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the static IP address of the replica NIC.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicStaticIPAddress { get; set; }
     }
 }
