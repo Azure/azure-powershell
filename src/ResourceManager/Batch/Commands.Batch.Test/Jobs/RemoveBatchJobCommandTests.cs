@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.WorkItemName = "testWorkItem";
             cmdlet.Name = "job-0000000001";

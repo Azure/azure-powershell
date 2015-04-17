@@ -96,7 +96,7 @@
     <Compile Include="Security\Services\DataMaskingEndpointsCommunicator.cs" />
     <Compile Include="Security\Services\SecureConnectionEndpointsCommunicator.cs" />
     <Compile Include="Security\Services\AzureEndpointsCommunicator.cs" />
-    <Compile Include="Security\Services\Constants.cs" />
+    <Compile Include="Security\Services\SecurityConstants.cs" />
     <Compile Include="Security\Services\SqlDataMaskingAdapter.cs" />
     <Compile Include="Security\Services\SqlSecureConnectionAdapter.cs" />
     <Compile Include="Security\Services\SqlAuditAdapter.cs" />

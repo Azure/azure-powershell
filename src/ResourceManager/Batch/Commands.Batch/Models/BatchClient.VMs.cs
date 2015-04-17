@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if (string.IsNullOrWhiteSpace(options.PoolName) && options.Pool == null)
-            {
-                throw new ArgumentNullException(Resources.GBVM_NoPoolSpecified);
-            }
             string poolName = options.Pool == null ? options.PoolName : options.Pool.Name;
 
             // Get the single vm matching the specified name

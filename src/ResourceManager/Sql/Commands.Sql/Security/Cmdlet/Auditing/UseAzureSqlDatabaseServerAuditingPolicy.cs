@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// <returns>A storage account name</returns>
         protected string GetStorageAccountName()
         {
-            string storageAccountName = this.ModelAdapter.GetServerStorageAccount(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+            string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
                 throw new Exception(string.Format(Resources.UseServerWithoutStorageAccount));

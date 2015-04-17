@@ -3,6 +3,8 @@
   * Added cmdlets
     * New-AzureBatchVMUser
     * Remove-AzureBatchVMUser
+    * Get-AzureBatchRDPFile
+    * Get-AzureBatchVMFileContents
 
 2015.03.31 version 0.8.16
 * Azure Data Factory:
