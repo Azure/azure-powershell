@@ -42,14 +42,9 @@ namespace Microsoft.Azure.Commands.Batch
         public override void ExecuteCmdlet()
         {
             string jobName = InputObject == null ? this.Name : InputObject.Name;
-            RemoveJobParameters parameters = new RemoveJobParameters()
-            {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.Name,
-                Job = this.InputObject,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            JobOperationParameters parameters = new JobOperationParameters(this.BatchContext, this.WorkItemName,
+                this.Name, this.InputObject, this.AdditionalBehaviors);
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RBJ_RemoveConfirm, jobName),

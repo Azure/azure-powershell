@@ -189,17 +189,17 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
                 if(rule.PrefixSize == null)
                 {
-                    rule.PrefixSize = Constants.PrefixSizeDefaultValue;
+                    rule.PrefixSize = SecurityConstants.PrefixSizeDefaultValue;
                 }
 
                 if (string.IsNullOrEmpty(rule.ReplacementString))
                 {
-                    rule.ReplacementString = Constants.ReplacementStringDefaultValue;
+                    rule.ReplacementString = SecurityConstants.ReplacementStringDefaultValue;
                 }
 
                 if (rule.SuffixSize == null)
                 {
-                    rule.SuffixSize = Constants.SuffixSizeDefaultValue;
+                    rule.SuffixSize = SecurityConstants.SuffixSizeDefaultValue;
                 }
             }
 
@@ -217,12 +217,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
                 if (rule.NumberFrom == null)
                 {
-                    rule.NumberFrom = Constants.NumberFromDefaultValue;
+                    rule.NumberFrom = SecurityConstants.NumberFromDefaultValue;
                 }
 
                 if (rule.NumberTo == null)
                 {
-                    rule.NumberTo = Constants.NumberToDefaultValue;
+                    rule.NumberTo = SecurityConstants.NumberToDefaultValue;
                 }
 
                 if(rule.NumberFrom > rule.NumberTo)
@@ -239,12 +239,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>The model representation of the user provided masking function</returns>
         private MaskingFunction ModelizeMaskingFunction()
         {
-            if (MaskingFunction == Constants.CCN) return Model.MaskingFunction.CreditCardNumber;
-            if (MaskingFunction == Constants.NoMasking) return Model.MaskingFunction.NoMasking;
-            if (MaskingFunction == Constants.Number) return Model.MaskingFunction.Number;
-            if (MaskingFunction == Constants.Text) return Model.MaskingFunction.Text;
-            if (MaskingFunction == Constants.Email) return Model.MaskingFunction.Email;
-            if (MaskingFunction == Constants.SSN) return Model.MaskingFunction.SocialSecurityNumber;
+            if (MaskingFunction == SecurityConstants.CCN) return Model.MaskingFunction.CreditCardNumber;
+            if (MaskingFunction == SecurityConstants.NoMasking) return Model.MaskingFunction.NoMasking;
+            if (MaskingFunction == SecurityConstants.Number) return Model.MaskingFunction.Number;
+            if (MaskingFunction == SecurityConstants.Text) return Model.MaskingFunction.Text;
+            if (MaskingFunction == SecurityConstants.Email) return Model.MaskingFunction.Email;
+            if (MaskingFunction == SecurityConstants.SSN) return Model.MaskingFunction.SocialSecurityNumber;
             return Model.MaskingFunction.Default;
         }
 

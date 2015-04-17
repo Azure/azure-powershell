@@ -53,17 +53,13 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewVMUserParameters parameters = new NewVMUserParameters()
+            NewVMUserParameters parameters = new NewVMUserParameters(this.BatchContext, this.PoolName, this.VMName,
+                this.VM, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                PoolName = this.PoolName,
-                VMName = this.VMName,
-                UserName = this.Name,
-                VM = this.VM,
+                VMUserName = this.Name,
                 Password = this.Password,
                 ExpiryTime = this.ExpiryTime,
-                IsAdmin = this.IsAdmin.IsPresent,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                IsAdmin = this.IsAdmin.IsPresent
             };
 
             BatchClient.CreateVMUser(parameters);

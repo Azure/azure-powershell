@@ -41,14 +41,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            RemoveVMUserParameters parameters = new RemoveVMUserParameters()
-            {
-                Context = this.BatchContext,
-                PoolName = this.PoolName,
-                VMName = this.VMName,
-                UserName = this.Name,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            VMUserOperationParameters parameters = new VMUserOperationParameters(this.BatchContext, this.PoolName, this.VMName,
+                this.Name, this.AdditionalBehaviors);
 
             ConfirmAction(
                 Force.IsPresent,

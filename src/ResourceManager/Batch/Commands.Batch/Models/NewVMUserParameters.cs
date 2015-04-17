@@ -19,27 +19,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewVMUserParameters : BatchClientParametersBase
+    public class NewVMUserParameters : VMOperationParameters
     {
-        /// <summary>
-        /// The name of the pool containing the vm to create the user on.
-        /// </summary>
-        public string PoolName { get; set; }
-
-        /// <summary>
-        /// The name of the vm to create the user on.
-        /// </summary>
-        public string VMName { get; set; }
+        public NewVMUserParameters(BatchAccountContext context, string poolName, string vmName, PSVM vm, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, poolName, vmName, vm, additionalBehaviors)
+        { }
 
         /// <summary>
         /// The name of the local windows account created.
         /// </summary>
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// The PSVM object representing the vm to create the user on.
-        /// </summary>
-        public PSVM VM { get; set; }
+        public string VMUserName { get; set; }
 
         /// <summary>
         /// The account password.
