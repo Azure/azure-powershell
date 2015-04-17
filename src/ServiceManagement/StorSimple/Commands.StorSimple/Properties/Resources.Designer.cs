@@ -763,15 +763,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified device does not exist..
-        /// </summary>
-        internal static string NotFoundMessageDevice {
-            get {
-                return ResourceManager.GetString("NotFoundMessageDevice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The specified resource does not exist..
         /// </summary>
         internal static string NotFoundMessageResource {

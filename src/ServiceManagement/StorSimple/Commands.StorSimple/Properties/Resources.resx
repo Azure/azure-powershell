@@ -135,9 +135,6 @@
   <data name="NotFoundMessageACR" xml:space="preserve">
     <value>Could not find an access control record with given name {0}.</value>
   </data>
-  <data name="NotFoundMessageDevice" xml:space="preserve">
-    <value>The specified device does not exist.</value>
-  </data>
   <data name="NotFoundMessageResource" xml:space="preserve">
     <value>The specified resource does not exist.</value>
   </data>

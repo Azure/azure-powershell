@@ -15,12 +15,9 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using System.Net.Sockets;
 using System.Net;
-using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {

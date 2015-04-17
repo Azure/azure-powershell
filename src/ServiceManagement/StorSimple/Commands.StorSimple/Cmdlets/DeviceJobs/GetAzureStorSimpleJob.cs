@@ -13,13 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using Microsoft.WindowsAzure.Commands.StorSimple;
-using System.Net.Sockets;
 using System.Collections.Generic;
 using System.Xml;
 

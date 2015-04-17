@@ -69,9 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                   }
                                   if (existingAcr == null)
                                   {
-                                      WriteObject(null);
-                                      WriteVerbose(string.Format(Resources.NotFoundMessageACR, acrName));
-                                      return;
+                                      throw new ArgumentException(string.Format(Resources.NotFoundMessageACR, acrName));
                                   }
                                   
                                     var serviceConfig = new ServiceConfiguration()
