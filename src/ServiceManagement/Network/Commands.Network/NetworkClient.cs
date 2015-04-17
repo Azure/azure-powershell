@@ -902,6 +902,7 @@ namespace Microsoft.Azure.Commands.Network
                 deploymentName,
                 roleInstanceName,
                 networkInterfaceName);
+        }
 
         public void SetIPForwardingForRole(string serviceName, string deploymentName, string roleName, bool ipForwarding)
         {
