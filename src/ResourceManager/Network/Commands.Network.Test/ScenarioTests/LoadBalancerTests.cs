@@ -88,5 +88,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-CreateEmptyLoadBalancer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerNicAssociation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociation");
+        }
     }
 }
