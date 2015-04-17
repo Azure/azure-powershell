@@ -19,6 +19,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ExpressRoute;
@@ -27,6 +28,7 @@ using Microsoft.WindowsAzure.Management.ExpressRoute;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 using Moq;
 using Microsoft.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
@@ -44,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureDedicatedCircuitSuccessful()
         {
             // Setup
@@ -114,6 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureDedicatedCircuitSuccessful()
         {
             // Setup
@@ -171,6 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureDedicatedCircuitSuccessful()
         {
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
@@ -204,6 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAzureDedicatedCircuitSuccessful()
         {
             // Setup
@@ -251,9 +257,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            IEnumerable<AzureDedicatedCircuit> actual =
-                mockCommandRuntime.OutputPipeline[0] as IEnumerable<AzureDedicatedCircuit>;
-            Assert.Equal(actual.ToArray().Count(), 2);
+            IEnumerable<AzureDedicatedCircuit> actual = LanguagePrimitives.GetEnumerable(mockCommandRuntime.OutputPipeline).Cast<AzureDedicatedCircuit>();
+
+            Assert.Equal(actual.Count(), 2);
         }
     }
 }

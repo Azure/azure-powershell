@@ -46,32 +46,30 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.15-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.Authentication">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Insights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Azure.Insights">
       <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.7.2-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.Azure.ResourceManager">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.12.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
@@ -81,6 +79,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alerts\AddAlertRuleCommandBase.cs" />
@@ -89,6 +88,12 @@
     <Compile Include="Alerts\GetAlertHistoryCommand.cs" />
     <Compile Include="Alerts\GetAlertRuleCommand.cs" />
     <Compile Include="Alerts\RemoveAlertRuleCommand.cs" />
+    <Compile Include="Autoscale\NewAutoscaleProfileCommand.cs" />
+    <Compile Include="Autoscale\NewAutoscaleRuleCommand.cs" />
+    <Compile Include="Autoscale\AddAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
+    <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureCorrelationIdLogCommand.cs" />
     <Compile Include="Events\GetAzureResourceGroupLogCommand.cs" />
@@ -96,22 +101,38 @@
     <Compile Include="Events\GetAzureResourceProviderLogCommand.cs" />
     <Compile Include="Events\GetAzureSubscriptionIdLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
+    <Compile Include="InsightsCmdletBase.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
-    <Compile Include="OutputClasses\PSLocationThresholdRuleCondition.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
+    <Compile Include="Metrics\FormatMetricsAsTableCommand.cs" />
+    <Compile Include="Metrics\GetMetricDefinitionsCommand.cs" />
+    <Compile Include="Metrics\GetMetricsCommand.cs" />
+    <Compile Include="OutputClasses\ConversionExtensions.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
-    <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
-    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
+    <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
+    <Compile Include="OutputClasses\PSAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
+    <Compile Include="OutputClasses\PSDimensionCollection.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
     <Compile Include="OutputClasses\PSEventDataHttpRequest.cs" />
     <Compile Include="OutputClasses\PSEventDataNoDetails.cs" />
-    <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSEventRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSLocationThresholdRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSManagementItemDescriptor.cs" />
+    <Compile Include="OutputClasses\PSManagementItemDescriptorWithDetails.cs" />
+    <Compile Include="OutputClasses\PSManagementPropertyDescriptor.cs" />
+    <Compile Include="OutputClasses\PSMetric.cs" />
+    <Compile Include="OutputClasses\PSMetricDefinition.cs" />
+    <Compile Include="OutputClasses\PSMetricDefinitionNoDetails.cs" />
+    <Compile Include="OutputClasses\PSMetricNoDetails.cs" />
+    <Compile Include="OutputClasses\PSMetricValue.cs" />
+    <Compile Include="OutputClasses\PSMetricValuesCollection.cs" />
+    <Compile Include="OutputClasses\PSMetricTabularResult.cs" />
     <Compile Include="OutputClasses\PSThresholdRuleCondition.cs" />
     <Compile Include="OutputClasses\PSToStringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +145,11 @@
       <DependentUpon>ResourcesForEventCmdlets.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ResourcesForAutoscaleCmdlets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
@@ -152,6 +178,11 @@
     <EmbeddedResource Include="Properties\ResourcesForEventCmdlets.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesForEventCmdlets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourcesForAutoscaleCmdlets.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesForAutoscaleCmdlets.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

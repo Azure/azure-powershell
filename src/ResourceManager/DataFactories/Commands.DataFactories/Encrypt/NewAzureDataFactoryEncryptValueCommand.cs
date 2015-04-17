@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(ParameterSetName = ByFactoryObject, Position = 4, Mandatory = false, HelpMessage = "The linked service type.")]
         [Parameter(ParameterSetName = ByFactoryName, Position = 5, Mandatory = false, HelpMessage = "The linked service type.")]
-        [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", IgnoreCase = true)]
+        [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService", IgnoreCase = true)]
         public string Type { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             if (String.IsNullOrWhiteSpace(GatewayName))
             {
                 // Cloud encryption without Gateway
-                encryptedValue = DataFactoryClient.CloudEncryptString(Value, ResourceGroupName, DataFactoryName);
+                WriteWarning("Cloud encryption has already been deprecated. Please run get-help new-azuredatafactoryencryptvalue to see other option of this command");
             }
             else
             {

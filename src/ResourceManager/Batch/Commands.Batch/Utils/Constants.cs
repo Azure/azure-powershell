@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
 
         public const string NameParameterSet = "Name";
         public const string ODataFilterParameterSet = "ODataFilter";
+        public const string InputObjectParameterSet = "InputObject";
         public const string ParentObjectParameterSet = "ParentObject";
+        public const string NameAndPathParameterSet = "Name_Path";
+        public const string NameAndStreamParameterSet = "Name_Stream";
+        public const string InputObjectAndPathParameterSet = "InputObject_Path";
+        public const string InputObjectAndStreamParameterSet = "InputObject_Stream";
     }
 }

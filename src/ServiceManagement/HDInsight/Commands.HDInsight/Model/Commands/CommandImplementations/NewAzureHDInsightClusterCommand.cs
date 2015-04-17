@@ -40,6 +40,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.StormConfiguration = new ConfigValuesCollection();
             this.SparkConfiguration = new ConfigValuesCollection();
             this.HBaseConfiguration = new HBaseConfiguration();
+
+            // By default set OSType = Windows
+            this.OSType = OSType.Windows;
         }
 
         public ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; private set; }
@@ -118,9 +121,18 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         /// <inheritdoc />
         public string Version { get; set; }
 
+        /// <inheritdoc />
+        public OSType OSType { get; set; }
+
+        /// <inheritdoc />
+        public PSCredential SshCredential { get; set; }
+
+        /// <inheritdoc />
+        public string SshPublicKey { get; set; }
+
         public override async Task EndProcessing()
         {
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             client.ClusterProvisioning += this.ClientOnClusterProvisioning;
             ClusterCreateParametersV2 createClusterRequest = this.GetClusterCreateParameters();
             var cluster = await client.CreateClusterAsync(createClusterRequest);
@@ -198,6 +210,20 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             if (!string.IsNullOrEmpty(this.ZookeeperNodeSize))
             {
                 createClusterRequest.ZookeeperNodeSize = this.ZookeeperNodeSize;
+            }
+
+            // Set IaaS specific parameters
+            createClusterRequest.OSType = this.OSType;
+
+            if (SshCredential != null)
+            {
+                createClusterRequest.SshUserName = this.SshCredential.UserName;
+                createClusterRequest.SshPassword = this.SshCredential.GetCleartextPassword();
+            }
+
+            if (!string.IsNullOrEmpty(SshPublicKey))
+            {
+                createClusterRequest.SshPublicKey = this.SshPublicKey;
             }
 
             return createClusterRequest;

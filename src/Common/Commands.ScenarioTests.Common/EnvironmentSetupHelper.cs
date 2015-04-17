@@ -12,36 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Diagnostics;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure;
-using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class EnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
+        
         private static string testSubscriptionName = "__test-subscriptions";
+        
         private AzureSubscription testSubscription;
+        
         private AzureAccount testAccount;
+
+        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+
         protected List<string> modules;
+        
         protected ProfileClient ProfileClient { get; set; }
 
         public EnvironmentSetupHelper()
         {
-            var datastore = new MockDataStore();
+            var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
             var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             AzurePSCmdlet.CurrentProfile = profile;
@@ -50,6 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
+
             // Set RunningMocked
             if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
             {
@@ -201,21 +208,29 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(@"ServiceManagement\Azure\Azure.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else
             {
                 throw new ArgumentException("Unknown command type for testing");
             }
+            this.modules.Add("Assert.ps1");
+            this.modules.Add("Common.ps1");
+            this.modules.AddRange(modules);
+        }
+
+        public void SetupModules(params string[] modules)
+        {
+            this.modules = new List<string>();
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);

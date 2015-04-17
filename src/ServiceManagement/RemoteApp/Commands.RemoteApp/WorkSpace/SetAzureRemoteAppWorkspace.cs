@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRemoteAppWorkspace"), OutputType(typeof(TrackingResult))]
+    [Cmdlet(VerbsCommon.Set, "AzureRemoteAppWorkspace")]
     public class SetAzureRemoteAppWorkspace : RdsCmdlet
     {
         [Parameter(Mandatory = true,
@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            OperationResultWithTrackingId response = null;
             AccountDetailsParameter details = new AccountDetailsParameter()
             {
                 AccountInfo = new AccountDetails()
@@ -38,12 +37,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
             };
 
-            response = CallClient(() => Client.Account.Set(details), Client.Account);
-
-            if (response != null)
-            {
-                WriteTrackingId(response);
-            }
+            CallClient(() => Client.Account.Set(details), Client.Account);
         }
 
     }

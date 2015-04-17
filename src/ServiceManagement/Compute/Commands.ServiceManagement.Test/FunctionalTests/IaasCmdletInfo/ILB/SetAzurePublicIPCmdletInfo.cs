@@ -20,11 +20,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class SetAzurePublicIPCmdletInfo: CmdletsInfo
     {
-        
-        public SetAzurePublicIPCmdletInfo(string publicIPName,IPersistentVM vm)
+        public SetAzurePublicIPCmdletInfo(string publicIPName, IPersistentVM vm, string domainNameLabel = null)
         {
             this.cmdletName = Utilities.SetAzurePublicIPCmdletName;
             this.parameters.Add(new CmdletParam("PublicIPName", publicIPName));
+            if (!string.IsNullOrEmpty(domainNameLabel))
+            {
+                this.parameters.Add(new CmdletParam("DomainNameLabel", domainNameLabel));
+            }
+
             this.parameters.Add(new CmdletParam("VM", vm));
         }
     }
