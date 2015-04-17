@@ -151,6 +151,10 @@
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureAdditionalUnattendContentCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureSshPublicKeyCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVaultCertificateCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVaultSecretGroupCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />

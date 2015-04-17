@@ -72,5 +72,10 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineSize = "AzureVMSize";
 
         public const string VirtualMachineImage = "AzureVMImage";
+
+        public const string SshPublicKey = "AzureSshPublicKey";
+        public const string AdditionalUnattendContent = "AzureAdditionalUnattendContent";
+        public const string VaultCertificate = "AzureVaultCertificate";
+        public const string VaultSecretGroup = "AzureVaultSecretGroup";
     }
 }
