@@ -265,7 +265,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 this.automationManagementClient.Modules.Patch(resourceGroupName, automationAccountName, modulePatchParameters);
             }
-
             var updatedModule = this.automationManagementClient.Modules.Get(resourceGroupName, automationAccountName, name).Module;
             return new Module(resourceGroupName, automationAccountName, updatedModule);
         }

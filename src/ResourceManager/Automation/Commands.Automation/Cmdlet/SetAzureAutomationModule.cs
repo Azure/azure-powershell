@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the contentLink
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The url zip file of module.")]
+            HelpMessage = "The url to module zip file package.")]
         public Uri ContentLinkUri { get; set; }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
             var updatedModule = this.AutomationClient.UpdateModule(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
-            
+           
             this.WriteObject(updatedModule);
         }
     }
