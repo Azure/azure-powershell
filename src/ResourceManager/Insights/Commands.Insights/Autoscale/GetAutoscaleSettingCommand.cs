@@ -57,28 +57,21 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletInternal()
         {
-            try
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
-                if (string.IsNullOrWhiteSpace(this.Name))
-                {
-                    // Retrieve all the Autoscale settings for a resource group
-                    AutoscaleSettingListResponse result = this.InsightsManagementClient.AutoscaleOperations.ListSettingsAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: null).Result;
+                // Retrieve all the Autoscale settings for a resource group
+                AutoscaleSettingListResponse result = this.InsightsManagementClient.AutoscaleOperations.ListSettingsAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: null).Result;
 
-                    var records = result.AutoscaleSettingResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
-                    WriteObject(sendToPipeline: records, enumerateCollection: true);
-                }
-                else
-                {
-                    // Retrieve a single Autoscale setting determined by the resource group and the rule name
-                    AutoscaleSettingGetResponse result = this.InsightsManagementClient.AutoscaleOperations.GetSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-                    WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result.ToAutoscaleSettingGetResponse());
-                }
+                var records = result.AutoscaleSettingResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
+                WriteObject(sendToPipeline: records, enumerateCollection: true);
             }
-            catch(AggregateException ex)
+            else
             {
-                throw ex.Flatten().InnerException;
+                // Retrieve a single Autoscale setting determined by the resource group and the rule name
+                AutoscaleSettingGetResponse result = this.InsightsManagementClient.AutoscaleOperations.GetSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+                WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result.ToAutoscaleSettingGetResponse());
             }
         }
     }

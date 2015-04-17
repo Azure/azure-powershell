@@ -200,6 +200,5 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-
     }
 }

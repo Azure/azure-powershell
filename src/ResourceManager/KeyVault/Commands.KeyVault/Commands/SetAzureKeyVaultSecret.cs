@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Security;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret")]
     [OutputType(typeof(Secret))]
@@ -54,11 +55,54 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
             HelpMessage = "Secret value")]
         public SecureString SecretValue { get; set; }
 
+        /// <summary>
+        /// Set secret in disabled state if present       
+        /// </summary>        
+        [Parameter(Mandatory = false,
+            HelpMessage = "Set secret in disabled state if present. If not present, secret is enabled.")]
+        public SwitchParameter Disable { get; set; }
+
+        /// <summary>
+        /// Secret expires time in UTC time
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The expiration time of a secret in UTC time. If not present, secret will not expire.")]
+        public DateTime? Expires { get; set; }
+
+        /// <summary>
+        /// The UTC time before which secret can't be used 
+        /// </summary>
+        [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The UTC time before which secret can't be used. If not present, no limitation.")]
+        public DateTime? NotBefore { get; set; }
+
+        /// <summary>
+        /// Content type
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Secret's content type.")]
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Secret tags
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable represents secret tags.")]
+        public Hashtable Tags { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var secret = DataServiceClient.SetSecret(VaultName, Name, SecretValue);
+            var secret = DataServiceClient.SetSecret(
+                VaultName, 
+                Name, 
+                SecretValue,
+                new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tags));
             WriteObject(secret);
         }
     }

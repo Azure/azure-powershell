@@ -14,6 +14,7 @@
 
 using System;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -39,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobEndpointUri()
         {
             string accountName = "azure awesome account";

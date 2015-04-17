@@ -6,109 +6,112 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem</TypeName>
       </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Vault Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Id</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Expires</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Not Before</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Vault Name</Label>
                 <PropertyName>VaultName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
                 <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>             
+              <ListItem>
+                <Label>Id</Label>
                 <PropertyName>Id</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Enabled</Label>
                 <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Expires</Label>
                 <PropertyName>Expires</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Not Before</Label>
                 <PropertyName>NotBefore</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
+              </ListItem>
+              <ListItem>
+                <Label>Created</Label>
+                <PropertyName>Created</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Updated</Label>
+                <PropertyName>Updated</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>     
     </View>
     <View>
       <Name>Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem</TypeName>
       </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Vault Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Version</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Id</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Vault Name</Label>
                 <PropertyName>VaultName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
                 <PropertyName>Version</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
                 <PropertyName>Id</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
+              </ListItem>
+              <ListItem>
+                <Label>Enabled</Label>
+                <PropertyName>Enabled</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Expires</Label>
+                <PropertyName>Expires</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Not Before</Label>
+                <PropertyName>NotBefore</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Created</Label>
+                <PropertyName>Created</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Updated</Label>
+                <PropertyName>Updated</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Content Type</Label>
+                <PropertyName>ContentType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
   </ViewDefinitions>
 </Configuration>

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -24,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
     public class ServicePrincipalStoreTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanStoreAndRetrieveSingleKeyCorrectly()
         {
             const string appId = "myServiceKeyTest";
@@ -52,6 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RetrievingNonExistingKeyReturnsNull()
         {
             const string appId = "myKeyTest";
@@ -73,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeletingKeyWorks()
         {
             const string appId = "myKeyTest";
@@ -97,6 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanStoreMultipleKeysIndependently()
         {
             const string appId = "myKeyTest";
