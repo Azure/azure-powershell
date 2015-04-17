@@ -54,15 +54,17 @@ function Test-SetIPForwardingOnNICAndUpdateVM
     # Setup
     Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
     $name = getAssetName
+    $nicName = getAssetName
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
 
     # Test
-    New-AzureVMConfig -ImageName $image -Name $name -InstanceSize Small |
+    New-AzureVMConfig -ImageName $image -Name $name -InstanceSize Large |
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     Set-AzureSubnet -SubnetNames $SubnetName |
+    Add-AzureNetworkInterfaceConfig -Name $nicName -SubnetName $SubnetName |
     New-AzureVM -VNetName $VirtualNetworkName -ServiceName $name -Location $Location
 
-    Get-AzureVM $name | Set-AzureIPForwarding -Enable
+    Get-AzureVM $name | Set-AzureIPForwarding -Enable -NetworkInterfaceName $nicName
 
     # update VM
     Get-AzureVM $name |
@@ -70,6 +72,6 @@ function Test-SetIPForwardingOnNICAndUpdateVM
     Update-AzureVM
 
     # Assert
-    $ipForwarding = Get-AzureVM $name | Get-AzureIPForwarding
+    $ipForwarding = Get-AzureVM $name | Get-AzureIPForwarding -NetworkInterfaceName $nicName
     Assert-AreEqual "Enabled" $ipForwarding
 }
