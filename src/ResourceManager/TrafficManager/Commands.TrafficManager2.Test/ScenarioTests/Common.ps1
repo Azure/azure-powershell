@@ -75,7 +75,7 @@ Creates a resource group to use in tests
 #>
 function TestSetup-AddEndpoint($endpointName, $profile)
 {
-	$profile = Add-AzureTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoint" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$profile = Add-AzureTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	return $profile
 }
