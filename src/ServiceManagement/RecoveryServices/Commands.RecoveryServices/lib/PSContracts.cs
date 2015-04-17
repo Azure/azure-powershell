@@ -1322,6 +1322,64 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         [DataMember]
         public ulong MaxSizeMB { get; set; }
     }
+
+    /// <summary>
+    /// VM properties.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class VMProps
+    {
+        /// <summary>
+        /// Gets or sets Recovery Azure given name.
+        /// </summary>
+        [DataMember]
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Recovery Azure VM size.
+        /// </summary>
+        [DataMember]
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected recovery azure network Id.
+        /// </summary>
+        [DataMember]
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of VM NIC details.
+        /// </summary>
+        [DataMember]
+        public List<VMNic> VMNics { get; set; }
+    }
+
+    /// <summary>
+    /// Replication provider specific settings.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class ReplicationProviderSpecificSettings
+    {
+        /// <summary>
+        /// Gets or sets Azure VM Disk details.
+        /// </summary>
+        [DataMember]
+        public AzureVmDiskDetails AzureVMDiskDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets VM properties.
+        /// </summary>
+        [DataMember]
+        public VMProps VMProperties { get; set; }
+    }
 }
 
 namespace Microsoft.Azure.Portal.HybridServicesCore
