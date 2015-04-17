@@ -24,7 +24,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// The SqlDataMaskingClient class is resposible for transforming the data that was recevied form the ednpoints to the cmdlets model of data masking policy and vice versa
+    /// The SqlDataMaskingClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of data masking policy and vice versa
     /// </summary>
     public class SqlDataMaskingAdapter
     {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Sets a data masking rule based on the infromation provided by the model object
+        /// Sets a data masking rule based on the information provided by the model object
         /// </summary>
         public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Removes a data masking rule based on the infromation provided by the model object
+        /// Removes a data masking rule based on the information provided by the model object
         /// </summary>
         public void RemoveDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="policy">The data masking Policy object</param>
+        /// <param name="model">The data masking Policy model object</param>
         /// <returns>The communication model object</returns>
         private DataMaskingRuleCreateOrUpdateParameters PolicizeDatabaseDataRuleModel(DatabaseDataMaskingRuleModel model)
         {
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         {
             switch(maskingFunction)
             {
-                case MaskingFunction.NoMasking: return Constants.DataMaskingEndpoint.NoMasking;
-                case MaskingFunction.Default: return Constants.DataMaskingEndpoint.Default;
-                case MaskingFunction.CreditCardNumber: return Constants.DataMaskingEndpoint.CCN;
-                case MaskingFunction.SocialSecurityNumber: return Constants.DataMaskingEndpoint.SSN;
-                case MaskingFunction.Number: return Constants.DataMaskingEndpoint.Number;
-                case MaskingFunction.Text: return Constants.DataMaskingEndpoint.Text;
-                case MaskingFunction.Email: return Constants.DataMaskingEndpoint.Email;
+                case MaskingFunction.NoMasking: return SecurityConstants.DataMaskingEndpoint.NoMasking;
+                case MaskingFunction.Default: return SecurityConstants.DataMaskingEndpoint.Default;
+                case MaskingFunction.CreditCardNumber: return SecurityConstants.DataMaskingEndpoint.CCN;
+                case MaskingFunction.SocialSecurityNumber: return SecurityConstants.DataMaskingEndpoint.SSN;
+                case MaskingFunction.Number: return SecurityConstants.DataMaskingEndpoint.Number;
+                case MaskingFunction.Text: return SecurityConstants.DataMaskingEndpoint.Text;
+                case MaskingFunction.Email: return SecurityConstants.DataMaskingEndpoint.Email;
             }
             return null;
         }
@@ -174,13 +174,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// Transforms a data masking function from its string representation to its model representation
         /// </summary>
         private MaskingFunction ModelizeMaskingFunction(string maskingFunction)
-        {        
-            if (maskingFunction == Constants.DataMaskingEndpoint.Text) return MaskingFunction.Text;
-            if (maskingFunction == Constants.DataMaskingEndpoint.Default) return MaskingFunction.Default;
-            if (maskingFunction == Constants.DataMaskingEndpoint.Number) return MaskingFunction.Number;
-            if (maskingFunction == Constants.DataMaskingEndpoint.SSN) return MaskingFunction.SocialSecurityNumber;
-            if (maskingFunction == Constants.DataMaskingEndpoint.CCN) return MaskingFunction.CreditCardNumber;
-            if (maskingFunction == Constants.DataMaskingEndpoint.Email) return MaskingFunction.Email;
+        {
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.Text) return MaskingFunction.Text;
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.Default) return MaskingFunction.Default;
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.Number) return MaskingFunction.Number;
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.SSN) return MaskingFunction.SocialSecurityNumber;
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.CCN) return MaskingFunction.CreditCardNumber;
+            if (maskingFunction == SecurityConstants.DataMaskingEndpoint.Email) return MaskingFunction.Email;
             return MaskingFunction.NoMasking;
         }
 
@@ -215,8 +215,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         {
             DatabaseDataMaskingPolicyModel dbPolicyModel = new DatabaseDataMaskingPolicyModel();
             DataMaskingPolicyProperties properties = policy.Properties;
-            dbPolicyModel.DataMaskingState = (properties.DataMaskingState == Constants.DataMaskingEndpoint.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
-            dbPolicyModel.MaskingLevel = (properties.MaskingLevel == Constants.DataMaskingEndpoint.Standard) ? MaskingLevelType.Standard : MaskingLevelType.Extended;
+            dbPolicyModel.DataMaskingState = (properties.DataMaskingState == SecurityConstants.DataMaskingEndpoint.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
+            dbPolicyModel.MaskingLevel = (properties.MaskingLevel == SecurityConstants.DataMaskingEndpoint.Standard) ? MaskingLevelType.Standard : MaskingLevelType.Extended;
             dbPolicyModel.PrivilegedLogins = properties.ExemptPrincipals;
             return dbPolicyModel;
         }
@@ -224,15 +224,15 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="policy">The data masking Policy object</param>
+        /// <param name="model">The data masking Policy model object</param>
         /// <returns>The communication model object</returns>
         private DataMaskingPolicyCreateOrUpdateParameters PolicizeDatabaseDataMaskingModel(DatabaseDataMaskingPolicyModel model)
         {
             DataMaskingPolicyCreateOrUpdateParameters updateParameters = new DataMaskingPolicyCreateOrUpdateParameters();
             DataMaskingPolicyProperties properties = new DataMaskingPolicyProperties();
             updateParameters.Properties = properties;
-            properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Enabled) ? Constants.DataMaskingEndpoint.Enabled : Constants.DataMaskingEndpoint.Disabled;
-            properties.MaskingLevel = (model.MaskingLevel == MaskingLevelType.Standard) ? Constants.DataMaskingEndpoint.Standard: Constants.DataMaskingEndpoint.Extended;
+            properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Enabled) ? SecurityConstants.DataMaskingEndpoint.Enabled : SecurityConstants.DataMaskingEndpoint.Disabled;
+            properties.MaskingLevel = (model.MaskingLevel == MaskingLevelType.Standard) ? SecurityConstants.DataMaskingEndpoint.Standard : SecurityConstants.DataMaskingEndpoint.Extended;
             properties.ExemptPrincipals = (model.PrivilegedLogins == null) ? "" : model.PrivilegedLogins;
             return updateParameters;
         }

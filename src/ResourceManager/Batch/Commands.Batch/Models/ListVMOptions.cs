@@ -17,22 +17,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListVMOptions : BatchClientParametersBase
+    public class ListVMOptions : PoolOperationParameters
     {
-        /// <summary>
-        /// The name of the pool to query for vms
-        /// </summary>
-        public string PoolName { get; set; }
+        public ListVMOptions(BatchAccountContext context, string poolName, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, poolName, pool, additionalBehaviors)
+        { }
 
         /// <summary>
         /// If specified, the single vm with this name will be returned
         /// </summary>
         public string VMName { get; set; }
-
-        /// <summary>
-        /// The PSCloudPool object representing the pool to query for vms
-        /// </summary>
-        public PSCloudPool Pool { get; set; }
 
         /// <summary>
         /// The OData filter to use when querying for vms

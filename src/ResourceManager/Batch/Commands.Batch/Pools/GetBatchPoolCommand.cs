@@ -44,13 +44,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListPoolOptions options = new ListPoolOptions()
+            ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
                 PoolName = this.Name,
                 Filter = this.Filter,
-                MaxCount = this.MaxCount,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                MaxCount = this.MaxCount
             };
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate

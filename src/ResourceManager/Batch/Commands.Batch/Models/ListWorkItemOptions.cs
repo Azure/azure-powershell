@@ -19,6 +19,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ListWorkItemOptions : BatchClientParametersBase
     {
+        public ListWorkItemOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        { }
+
         /// <summary>
         /// If specified, the single WorkItem with this name will be returned
         /// </summary>
