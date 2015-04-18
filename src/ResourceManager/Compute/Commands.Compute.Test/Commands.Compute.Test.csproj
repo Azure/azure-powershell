@@ -185,34 +185,34 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1">
-      <Link>Scripts\Assert.ps1</Link>
+      <Link>ScenarioTests\Assert.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1">
-      <Link>Scripts\Common.ps1</Link>
+      <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="Scripts\StorageAccountTests.ps1">
+    <None Include="ScenarioTests\StorageAccountTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\VirtualMachineProfileTests.ps1">
+    <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\AvailabilitySetTests.ps1">
+    <None Include="ScenarioTests\AvailabilitySetTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\ComputeTestCommon.ps1">
+    <None Include="ScenarioTests\ComputeTestCommon.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\VirtualMachineExtensionTests.ps1">
+    <None Include="ScenarioTests\VirtualMachineExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\VirtualMachineNetworkInterfaceTests.ps1">
+    <None Include="ScenarioTests\VirtualMachineNetworkInterfaceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\VirtualMachineTests.ps1">
+    <None Include="ScenarioTests\VirtualMachineTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AvailabilitySetTests\TestAvailabilitySet.json">
@@ -255,6 +255,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineProfileTests\TestVirtualMachineProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineSizeAndUsage.json">

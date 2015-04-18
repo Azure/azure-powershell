@@ -115,9 +115,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    "Scripts\\Common.ps1",
-                    "Scripts\\ComputeTestCommon.ps1",
-                    "Scripts\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\ComputeTestCommon.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
                 {
