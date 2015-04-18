@@ -32,18 +32,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
-        public void TestGetLinkedServiceWithEmptyName()
-        {
-            RunPowerShellTest("Test-GetLinkedServiceWithEmptyName");
-        }
-
-        [Fact]
-        public void TestGetLinkedServiceWithWhiteSpaceName()
-        {
-            RunPowerShellTest("Test-GetLinkedServiceWithWhiteSpaceName");
-        }
-
-        [Fact]
         public void TestLinkedServicePiping()
         {
             RunPowerShellTest("Test-LinkedServicePiping");

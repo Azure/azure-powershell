@@ -46,15 +46,8 @@ namespace Microsoft.Azure.Commands.Batch
         public override void ExecuteCmdlet()
         {
             string taskName = InputObject == null ? this.Name : InputObject.Name;
-            RemoveTaskParameters parameters = new RemoveTaskParameters()
-            {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.Name,
-                Task = this.InputObject,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.WorkItemName, this.JobName,
+                this.Name, this.InputObject, this.AdditionalBehaviors);
 
             ConfirmAction(
                 Force.IsPresent,

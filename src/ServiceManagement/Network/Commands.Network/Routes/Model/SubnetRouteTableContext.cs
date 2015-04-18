@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Routes.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model
 {
     public class SubnetRouteTableContext
     {
