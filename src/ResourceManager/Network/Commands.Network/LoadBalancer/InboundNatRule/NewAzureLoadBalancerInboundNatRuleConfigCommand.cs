@@ -42,19 +42,10 @@ namespace Microsoft.Azure.Commands.Network
                 inboundNatRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
-            inboundNatRule.BackendIPConfiguration = new PSResourceId();
 
-            if (!string.IsNullOrEmpty(this.BackendIpConfigurationId))
+            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
-                inboundNatRule.BackendIPConfiguration.Id = this.BackendIpConfigurationId;
-                inboundNatRule.FrontendIPConfigurations = new List<PSResourceId>();
-            }
-
-            foreach (var frontendIPConfigurationId in this.FrontendIPConfigurationId)
-            {
-                var resourceId = new PSResourceId();
-                resourceId.Id = frontendIPConfigurationId;
-                inboundNatRule.FrontendIPConfigurations.Add(resourceId);
+                inboundNatRule.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
             }
 
             inboundNatRule.Id =

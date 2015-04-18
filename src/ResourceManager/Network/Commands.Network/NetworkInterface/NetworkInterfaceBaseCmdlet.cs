@@ -13,17 +13,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class NetworkInterfaceBaseCmdlet : NetworkBaseCmdlet
     {
         public INetworkInterfaceOperations NetworkInterfaceClient
@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Commands.Network
 
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
+            foreach (var ipconfig in psNic.IpConfigurations)
+            {
+                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSResourceId>();
+                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSResourceId>();
+            }
+            
             return psNic;
         }
     }

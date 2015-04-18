@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "IDs of the FrontendIpConfigurations")]
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "ID of the FrontendIpConfiguration")]
         [ValidateNotNullOrEmpty]
-        public List<string> FrontendIPConfigurationId { get; set; }
+        public string FrontendIpConfigurationId { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.Network
         public string ProbeId { get; set; }
 
         [Parameter(
-             ParameterSetName = "SetByResource",
-             HelpMessage = "The list of frontend Ip config")]
+              ParameterSetName = "SetByResource",
+              HelpMessage = "Frontend Ip config")]
         [ValidateNotNullOrEmpty]
-        public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
+        public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
         [Parameter(
              ParameterSetName = "SetByResource",
@@ -115,12 +115,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.FrontendIpConfiguration != null)
                 {
-                    this.FrontendIPConfigurationId = new List<string>();
-
-                    foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
-                    {
-                        this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
-                    }
+                    this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
                 }
             }
         }

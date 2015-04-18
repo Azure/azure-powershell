@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudWithEndpoint()
+        {
+            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CrudWithEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
             WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");

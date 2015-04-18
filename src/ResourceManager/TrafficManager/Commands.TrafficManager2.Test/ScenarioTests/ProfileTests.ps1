@@ -19,7 +19,7 @@ Full Profile CRUD cycle
 function Test-ProfileCrud
 {
 	$profileName = getAssetName
-    $resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
 	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
@@ -89,6 +89,24 @@ function Test-CreateDeleteUsingProfile
 	Remove-AzureTrafficManagerProfile -TrafficManagerProfile $createdProfile -Force
 
 	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
+Full cycle to create an Endpoint in a Profile
+#>
+function Test-CrudWithEndpoint
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profileWithEndpoint = Add-AzureTrafficManagerEndpointConfig -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+
+	$updatedProfile = Set-AzureTrafficManagerProfile -TrafficManagerProfile $profileWithEndpoint
+
+	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
 }
 
 <#

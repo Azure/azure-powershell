@@ -1,9 +1,67 @@
-﻿2015.04.28 version 0.8.17
+﻿2015.05.17 version 0.8.18
 * Azure HDInsight:
   * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
   * Added cmdlets
 	* Grant-AzureHdinsightRdpAccess
 	* Revoke-AzureHdinsightRdpAccess
+* Azure Network
+  * Added Cmdlets
+    * Get-AzureVirtualNetwork
+    * New-AzureVirtualNetwork
+    * Remove-AzureVirtualNetwork
+    * Set-AzureVirtualNetwork
+    * Get-AzureVirtualNetworkSubnetConfig
+    * New-AzureVirtualNetworkSubnetConfig
+    * Add-AzureVirtualNetworkSubnetConfig
+    * Set-AzureVirtualNetworkSubnetConfig
+    * Remove-AzureVirtualNetworkSubnetConfig
+    * Get-AzureNetworkInterface
+    * New-AzureNetworkInterface
+    * Remove-AzureNetworkInterface
+    * Set-AzureNetworkInterface
+    * Get-AzurePublicIpAddress
+    * New-AzurePublicIpAddress
+    * Remove-AzurePublicIpAddress
+    * Set-AzurePublicIpAddress
+    * Add-AzureLoadBalancerBackendAddressPoolConfig
+    * Add-AzureLoadBalancerFrontendIpConfig
+    * Add-AzureLoadBalancerInboundNatRuleConfig
+    * Add-AzureLoadBalancerProbeConfig
+    * Add-AzureLoadBalancerRuleConfig
+    * Get-AzureLoadBalancer
+    * Get-AzureLoadBalancerBackendAddressPoolConfig
+    * Get-AzureLoadBalancerFrontendIpConfig
+    * Get-AzureLoadBalancerInboundNatRuleConfig
+    * Get-AzureLoadBalancerProbeConfig*
+    * Get-AzureLoadBalancerRuleConfig
+    * New-AzureLoadBalancer
+    * New-AzureLoadBalancerBackendAddressPoolConfig
+    * New-AzureLoadBalancerFrontendIpConfig
+    * New-AzureLoadBalancerInboundNatRuleConfig
+    * New-AzureLoadBalancerProbeConfig
+    * New-AzureLoadBalancerRuleConfig
+    * Remove-AzureLoadBalancer
+    * Remove-AzureLoadBalancerBackendAddressPoolConfig
+    * Remove-AzureLoadBalancerFrontendIpConfig
+    * Remove-AzureLoadBalancerInboundNatRuleConfig
+    * Remove-AzureLoadBalancerProbeConfig
+    * Remove-AzureLoadBalancerRuleConfig
+    * Set-AzureLoadBalancer
+    * Set-AzureLoadBalancerFrontendIpConfig
+    * Set-AzureLoadBalancerInboundNatRuleConfig
+    * Set-AzureLoadBalancerProbeConfig
+    * Set-AzureLoadBalancerRuleConfig
+    * Get-AzureNetworkSecurityGroup
+    * New-AzureNetworkSecurityGroup
+    * Remove-AzureNetworkSecurityGroup
+    * Set-AzureNetworkSecurityGroup
+    * Get-AzureNetworkSecurityRuleConfig
+    * New-AzureNetworkSecurityRuleConfig
+    * Remove-AzureNetworkSecurityRuleConfig
+    * Add-AzureNetworkSecurityRuleConfig
+    * Set-AzureNetworkSecurityRuleConfig
+
+2015.04.28 version 0.8.17
 * Azure Batch
   * Added cmdlets
     * New-AzureBatchVMUser
