@@ -213,6 +213,10 @@
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>AppliedDnsSettings</Label>
+                <PropertyName>AppliedDnsSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
@@ -265,6 +269,14 @@
               <ListItem>
                 <Label>PublicIpAddress</Label>
                 <PropertyName>PublicIpAddressText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LoadBalancerBackendAddressPools</Label>
+                <PropertyName>LoadBalancerBackendAddressPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LoadBalancerInboundNatRules</Label>
+                <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -433,8 +445,8 @@
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FrontendIpConfigurations</Label>
-                <PropertyName>FrontendIpConfigurationsText</PropertyName>
+                <Label>PSFrontendIPConfigurations</Label>
+                <PropertyName>PSFrontendIPConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendAddressPools</Label>
@@ -458,9 +470,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSFrontendIpConfiguration</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPSFrontendIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSFrontendIpConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPSFrontendIPConfiguration</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -649,8 +661,8 @@
                 <PropertyName>EnableFloatingIP</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FrontendIPConfigurations</Label>
-                <PropertyName>FrontendIPConfigurationsText</PropertyName>
+                <Label>FrontendIPConfiguration</Label>
+                <PropertyName>FrontendIPConfigurationText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendIPConfiguration</Label>
@@ -711,8 +723,8 @@
                 <PropertyName>EnableFloatingIP</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FrontendIPConfigurations</Label>
-                <PropertyName>FrontendIPConfigurationsText</PropertyName>
+                <Label>FrontendIPConfiguration</Label>
+                <PropertyName>FrontendIPConfigurationText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendAddressPool</Label>

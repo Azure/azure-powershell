@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIpConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIPConfiguration))]
     public class NewAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         [Parameter(
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            var frontendIpConfig = new PSFrontendIpConfiguration();
+            var frontendIpConfig = new PSFrontendIPConfiguration();
             frontendIpConfig.Name = this.Name;
 
             if (!string.IsNullOrEmpty(this.SubnetId))
