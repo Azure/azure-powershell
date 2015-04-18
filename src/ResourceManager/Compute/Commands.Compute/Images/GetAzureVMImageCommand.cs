@@ -13,21 +13,69 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = GetVirtualMachineImageParamSet)]
-    [OutputType(typeof(VirtualMachineImage))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ListVirtualMachineImageParamSet)]
+    [OutputType(typeof(VirtualMachineImageResourceList), typeof(VirtualMachineImageGetResponse))]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
-        protected const string GetVirtualMachineImageParamSet = "GetVirtualMachineImageParamSet";
+        protected const string GetVirtualMachineImageDetailsParamSet = "GetVirtualMachineImageDetailsParamSet";
+        protected const string ListVirtualMachineImageParamSet = "ListVirtualMachineImageParamSet";
+
+        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        public string Offer { get; set; }
+
+        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        public string PublisherName { get; set; }
+
+        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        public string Skus { get; set; }
+
+        [Parameter, ValidateNotNullOrEmpty]
+        public string Version { get; set; }
+
+        [Parameter, ValidateNotNullOrEmpty]
+        public string FilterExpression { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            if (this.ParameterSetName == GetVirtualMachineImageDetailsParamSet)
+            {
+                var parameters = new VirtualMachineImageGetParameters
+                {
+                    Location = Location,
+                    Offer = Offer,
+                    Publishername = PublisherName,
+                    Skus = Skus,
+                    Version = Version
+                };
+
+                var result = this.VirtualMachineImageClient.Get(parameters);
+                WriteObject(result);
+            }
+            else if (this.ParameterSetName == ListVirtualMachineImageParamSet)
+            {
+                var parameters = new VirtualMachineImageListParameters
+                {
+                    Location = Location,
+                    Offer = Offer,
+                    Publishername = PublisherName,
+                    Skus = Skus,
+                    FilterExpression = FilterExpression
+                };
+
+                var result = this.VirtualMachineImageClient.List(parameters);
+                WriteObject(result);
+            }
         }
     }
 }

@@ -19,12 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage, DefaultParameterSetName = ListExtensionImageTypesParamSet)]
-    [OutputType(typeof(VirtualMachineExtensionImage))]
-    public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer, DefaultParameterSetName = ListVirtualMachineImageOffersParamSet)]
+    [OutputType(typeof(VirtualMachineImageResourceList))]
+    public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {
-        protected const string ListExtensionImageTypesParamSet = "ListExtensionImageTypesParamSet";
-        protected const string ListExtensionImageVersionsParamSet = "ListExtensionImageVersionsParamSet";
+        protected const string ListVirtualMachineImageOffersParamSet = "ListVirtualMachineImageOffersParamSet";
 
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -32,39 +31,19 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter, ValidateNotNullOrEmpty]
-        public string FilterExpression { get; set; }
-
-        [Parameter, ValidateNotNullOrEmpty]
-        public string Type { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (this.ParameterSetName == ListExtensionImageTypesParamSet)
+            if (this.ParameterSetName == ListVirtualMachineImageOffersParamSet)
             {
-                var parameters = new VirtualMachineExtensionImageListTypesParameters
+                var parameters = new VirtualMachineImageListOffersParameters
                 {
                     Location = Location,
                     Publishername = PublisherName
                 };
 
-                var result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
-                WriteObject(result);
-            }
-            else if (this.ParameterSetName == ListExtensionImageVersionsParamSet)
-            {
-
-                var parameters = new VirtualMachineExtensionImageListVersionsParameters
-                {
-                    Location = Location,
-                    Publishername = PublisherName,
-                    FilterExpression = FilterExpression,
-                    Type = Type
-                };
-
-                var result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+                var result = this.VirtualMachineImageClient.ListOffers(parameters);
                 WriteObject(result);
             }
         }

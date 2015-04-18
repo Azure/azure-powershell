@@ -139,6 +139,9 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageSkuCommand.cs" />
+    <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
