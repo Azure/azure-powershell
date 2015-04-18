@@ -147,6 +147,7 @@
     <Compile Include="IPForwarding\GetIPForwardingTests.cs" />
     <Compile Include="IPForwarding\SetIPForwardingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routes\GetEffectiveRouteTests.cs" />
     <Compile Include="ScenarioTests\IPForwarding\IPForwardingScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroup\NSGScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkTests.cs" />
