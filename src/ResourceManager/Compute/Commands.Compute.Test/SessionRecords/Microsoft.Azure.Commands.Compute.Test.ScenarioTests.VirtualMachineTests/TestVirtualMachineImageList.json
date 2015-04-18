@@ -25,7 +25,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "102f1178-d028-4131-bfcd-89ea0086d8c4"
+          "d376cd5c-2138-4149-a5cf-10e7763a585c"
         ],
         "Cache-Control": [
           "no-cache"
@@ -35,26 +35,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "31993"
         ],
         "x-ms-correlation-request-id": [
-          "83984780-53bb-4dce-b9c0-3f86bfec9ac6"
+          "8b7fdbb5-e402-4ced-a4b5-8fa6c5a63684"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212509Z:83984780-53bb-4dce-b9c0-3f86bfec9ac6"
+          "WESTUS:20150418T215643Z:8b7fdbb5-e402-4ced-a4b5-8fa6c5a63684"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:09 GMT"
+          "Sat, 18 Apr 2015 21:56:43 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg5854/artifacttypes/vmimage/offers?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzU4NTQvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmimage/offers?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -62,7 +62,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: pstestrg5854 was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: pstestrg2059 was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "105"
@@ -77,7 +77,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "980fdbed-66cf-451f-aa9e-d0e56109b5c7"
+          "1cfd4d89-a14d-48ed-9101-9fb0b6c2cffa"
         ],
         "Cache-Control": [
           "no-cache"
@@ -87,26 +87,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31998"
+          "31992"
         ],
         "x-ms-correlation-request-id": [
-          "71cadc7f-bbba-408f-9b6a-2818aeb008a5"
+          "e354420f-73cc-4459-bd47-228918847ef2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212512Z:71cadc7f-bbba-408f-9b6a-2818aeb008a5"
+          "WESTUS:20150418T215647Z:e354420f-73cc-4459-bd47-228918847ef2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:12 GMT"
+          "Sat, 18 Apr 2015 21:56:46 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg5854/artifacttypes/vmimage/offers/pstestrg6108/skus?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzU4NTQvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzYxMDgvc2t1cz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmimage/offers/pstestrg9000/skus?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzkwMDAvc2t1cz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -114,7 +114,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: offer: pstestrg6108 was not found. was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: offer: pstestrg9000 was not found. was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "126"
@@ -129,7 +129,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "141f8f9d-3d8d-4945-9298-3f244543c91d"
+          "ab4d3c5f-1028-47ef-a061-efe9c51f7ffd"
         ],
         "Cache-Control": [
           "no-cache"
@@ -139,26 +139,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31997"
+          "31991"
         ],
         "x-ms-correlation-request-id": [
-          "9f457614-bee1-46b7-a0b2-47ae7a7f9152"
+          "b037e331-adca-40a2-ad09-141cac7046c0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212514Z:9f457614-bee1-46b7-a0b2-47ae7a7f9152"
+          "WESTUS:20150418T215648Z:b037e331-adca-40a2-ad09-141cac7046c0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:13 GMT"
+          "Sat, 18 Apr 2015 21:56:47 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg5854/artifacttypes/vmimage/offers/pstestrg6108/skus/pstestrg230/versions?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzU4NTQvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzYxMDgvc2t1cy9wc3Rlc3RyZzIzMC92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmimage/offers/pstestrg9000/skus/pstestrg7320/versions?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzkwMDAvc2t1cy9wc3Rlc3RyZzczMjAvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -166,10 +166,10 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg230 was not found. was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg7320 was not found. was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "123"
+          "124"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -181,7 +181,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c56335d3-bc02-4969-ac3e-06368e228394"
+          "516e4e15-4471-420f-a324-8a5726b68972"
         ],
         "Cache-Control": [
           "no-cache"
@@ -191,26 +191,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31996"
+          "31990"
         ],
         "x-ms-correlation-request-id": [
-          "6dbd42c5-5a54-4780-bf87-d6a89a711582"
+          "57e995a0-c0f6-4a30-b848-684830e6d754"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212515Z:6dbd42c5-5a54-4780-bf87-d6a89a711582"
+          "WESTUS:20150418T215649Z:57e995a0-c0f6-4a30-b848-684830e6d754"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:14 GMT"
+          "Sat, 18 Apr 2015 21:56:48 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg5854/artifacttypes/vmimage/offers/pstestrg6108/skus/pstestrg230/versions?api-version=2015-05-01-preview&name%20eq%20'latest'",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzU4NTQvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzYxMDgvc2t1cy9wc3Rlc3RyZzIzMC92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXcmbmFtZSUyMGVxJTIwJ2xhdGVzdCc=",
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmimage/offers/pstestrg9000/skus/pstestrg7320/versions?api-version=2015-05-01-preview&name%20eq%20'latest'",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzkwMDAvc2t1cy9wc3Rlc3RyZzczMjAvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3Jm5hbWUlMjBlcSUyMCdsYXRlc3Qn",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -218,10 +218,10 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg230 was not found. was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg7320 was not found. was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "123"
+          "124"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -233,7 +233,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "18837d9d-aa5b-4212-b05d-b5f170524f99"
+          "167598d4-de6b-42fc-ba77-b999d50a5e0a"
         ],
         "Cache-Control": [
           "no-cache"
@@ -243,26 +243,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31995"
+          "31989"
         ],
         "x-ms-correlation-request-id": [
-          "52929318-c92e-4d9c-a674-6199f31fa9e7"
+          "d4d13432-8468-4269-aa3a-f42f152fec3d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212517Z:52929318-c92e-4d9c-a674-6199f31fa9e7"
+          "WESTUS:20150418T215650Z:d4d13432-8468-4269-aa3a-f42f152fec3d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:16 GMT"
+          "Sat, 18 Apr 2015 21:56:49 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg5854/artifacttypes/vmimage/offers/pstestrg6108/skus/pstestrg230/versions?api-version=2015-05-01-preview&name%20eq%20'latest'",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzU4NTQvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzYxMDgvc2t1cy9wc3Rlc3RyZzIzMC92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXcmbmFtZSUyMGVxJTIwJ2xhdGVzdCc=",
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmimage/offers/pstestrg9000/skus/pstestrg7320/versions?api-version=2015-05-01-preview&name%20eq%20'latest'",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWltYWdlL29mZmVycy9wc3Rlc3RyZzkwMDAvc2t1cy9wc3Rlc3RyZzczMjAvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3Jm5hbWUlMjBlcSUyMCdsYXRlc3Qn",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -270,10 +270,10 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg230 was not found. was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: sku: pstestrg7320 was not found. was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "123"
+          "124"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -285,7 +285,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b24c12b4-f02d-4d84-b854-8d87ba2fe443"
+          "f7888615-7384-4083-8e0d-5d5782c703df"
         ],
         "Cache-Control": [
           "no-cache"
@@ -295,19 +295,175 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31994"
+          "31988"
         ],
         "x-ms-correlation-request-id": [
-          "4653fb83-7884-41a8-b89d-e1a433867af3"
+          "3056283a-b08b-4045-894a-222c35598c3b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T212518Z:4653fb83-7884-41a8-b89d-e1a433867af3"
+          "WESTUS:20150418T215651Z:3056283a-b08b-4045-894a-222c35598c3b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 21:25:17 GMT"
+          "Sat, 18 Apr 2015 21:56:50 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmextension/types/pstestrg1779/versions/1.0.0?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWV4dGVuc2lvbi90eXBlcy9wc3Rlc3RyZzE3NzkvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Artifact: VMExtension was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "103"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c6eedc6f-7f5c-43b6-a6a1-2982f0bd5ddd"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31987"
+        ],
+        "x-ms-correlation-request-id": [
+          "82942eaa-14dc-4ac7-b0c6-276c524c97af"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T215652Z:82942eaa-14dc-4ac7-b0c6-276c524c97af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 21:56:52 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmextension/types?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWV4dGVuc2lvbi90eXBlcz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: pstestrg2059 was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "105"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0a0ca2c1-ecf0-4def-a42c-a04639701fb0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31986"
+        ],
+        "x-ms-correlation-request-id": [
+          "f5a815f0-2f8f-47ec-a134-b0ab7d34d002"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T215653Z:f5a815f0-2f8f-47ec-a134-b0ab7d34d002"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 21:56:53 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/locations/EastAsia/publishers/pstestrg2059/artifacttypes/vmextension/types/pstestrg1779/versions?api-version=2015-05-01-preview&name%20eq%20'latest'",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvRWFzdEFzaWEvcHVibGlzaGVycy9wc3Rlc3RyZzIwNTkvYXJ0aWZhY3R0eXBlcy92bWV4dGVuc2lvbi90eXBlcy9wc3Rlc3RyZzE3NzkvdmVyc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3Jm5hbWUlMjBlcSUyMCdsYXRlc3Qn",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Publisher: pstestrg2059 was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "105"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bbb115c4-6ed8-4c27-9e3a-fcb1fad9e0a6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31985"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a48a584-6fec-444e-9129-3d2579cf6438"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T215654Z:1a48a584-6fec-444e-9129-3d2579cf6438"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 21:56:54 GMT"
         ]
       },
       "StatusCode": 404
@@ -315,9 +471,10 @@
   ],
   "Names": {
     "Test-VirtualMachineImageList": [
-      "pstestrg5854",
-      "pstestrg6108",
-      "pstestrg230"
+      "pstestrg2059",
+      "pstestrg9000",
+      "pstestrg7320",
+      "pstestrg1779"
     ]
   },
   "Variables": {

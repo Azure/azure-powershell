@@ -213,6 +213,8 @@ function Test-VirtualMachineImageList
     try
     {
         $locStr = 'EastAsia';
+
+        # VM Images
         $s1 = Get-AzureVMImagePublisher -Location $locStr;
         Assert-NotNull $s1;
 
@@ -229,7 +231,15 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
 
         $version = '1.0.0';
-        Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter -Version $version; } "was not found";
+        Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter -Version $version; } "was not found";
+
+        # Extension Images
+        $type = Get-ComputeTestResourceName;
+        Assert-ThrowsContains { $s7 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
+        
+        Assert-ThrowsContains { $s8 = Get-AzureVMExtensionImageType -Location $locStr -PublisherName $publisherName; } "was not found";
+
+        Assert-ThrowsContains { $s9 = Get-AzureVMExtensionImageVersion -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter; } "was not found";
 
         $passed = $true;
     }

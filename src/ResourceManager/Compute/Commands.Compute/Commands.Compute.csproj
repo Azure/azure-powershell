@@ -134,6 +134,8 @@
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageVersionCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />

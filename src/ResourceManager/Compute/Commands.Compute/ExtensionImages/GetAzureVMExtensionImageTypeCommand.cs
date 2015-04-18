@@ -19,11 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage, DefaultParameterSetName = GetExtensionImageParamSet)]
-    [OutputType(typeof(VirtualMachineExtensionImage))]
-    public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType, DefaultParameterSetName = ListExtensionImageTypeParamSet)]
+    [OutputType(typeof(VirtualMachineImageResource))]
+    public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        protected const string GetExtensionImageParamSet = "GetExtensionImageParamSet";
+        protected const string ListExtensionImageTypeParamSet = "ListExtensionImageTypeParamSet";
 
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -31,29 +31,17 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
-        public string Type { get; set; }
-
-        [Parameter, ValidateNotNullOrEmpty]
-        public string FilterExpression { get; set; }
-
-        [Parameter, ValidateNotNullOrEmpty]
-        public string Version { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineExtensionImageGetParameters
+            var parameters = new VirtualMachineExtensionImageListTypesParameters
             {
                 Location = Location,
-                Publishername = PublisherName,
-                Type = Type,
-                FilterExpression = FilterExpression,
-                Version = Version
+                Publishername = PublisherName
             };
 
-            var result = this.VirtualMachineExtensionImageClient.Get(parameters);
+            var result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
             WriteObject(result);
         }
     }
