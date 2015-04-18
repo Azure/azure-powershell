@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListVirtualMachineParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter Status { get; set; }
 
         [Parameter(
-            Mandatory = true,
             Position = 1,
             ParameterSetName = ListAllVirtualMachinesParamSet,
             ValueFromPipelineByPropertyName = true,
@@ -102,10 +101,9 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 VirtualMachineListResponse result = null;
 
-                if (this.All.IsPresent)
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    var listParams = new ListParameters();
-                    result = this.VirtualMachineClient.ListAll(listParams);
+                    result = this.VirtualMachineClient.List(this.ResourceGroupName);
                 }
                 else if (this.NextLink != null)
                 {
@@ -113,7 +111,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    result = this.VirtualMachineClient.List(this.ResourceGroupName);
+                    var listParams = new ListParameters();
+                    result = this.VirtualMachineClient.ListAll(listParams);
                 }
 
                 WriteObject(result.ToPSVirtualMachineList(this.ResourceGroupName), true);

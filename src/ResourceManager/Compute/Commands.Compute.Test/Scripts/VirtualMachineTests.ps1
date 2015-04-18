@@ -177,6 +177,29 @@ function Test-VirtualMachine
     }
 }
 
+<#
+.SYNOPSIS
+Test Virtual Machine Size and Usage
+#>
+function Test-VirtualMachineList
+{
+    # Setup
+    $passed = $false;
+
+    try
+    {
+        $s1 = Get-AzureVM -All;
+        $s2 = Get-AzureVM;
+
+        Assert-ThrowsContains { $s3 = Get-AzureVM -NextLink "http://www.test.com/test"; } "Unexpected character"
+
+        $passed = $true;
+    }
+    finally
+    {
+        Assert-True { $passed };
+    }
+}
 
 <#
 .SYNOPSIS
