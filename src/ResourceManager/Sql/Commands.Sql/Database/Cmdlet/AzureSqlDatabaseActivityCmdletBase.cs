@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database.")]
+            HelpMessage = "The ID of the operation to retrieve.")]
         [ValidateNotNullOrEmpty]
         public Guid? OperationId { get; set; }
 

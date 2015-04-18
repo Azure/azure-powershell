@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlElasticPool",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the database to create.
+        /// Gets or sets the name of the Elastic Pool to create.
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the Azure SQL ElasticPool to create.")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public string ElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the edition to assign to the Azure SQL Database
+        /// Gets or sets the edition to assign to the Azure SQL Elastic Pool
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]

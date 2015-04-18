@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(NewAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
+            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: false);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(SetAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
+            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);

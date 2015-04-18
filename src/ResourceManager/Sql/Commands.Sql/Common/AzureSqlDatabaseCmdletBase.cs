@@ -22,6 +22,16 @@ namespace Microsoft.Azure.Commands.Sql.Common
     public abstract class AzureSqlDatabaseCmdletBase<M, A> : AzureSqlCmdletBase<M, A>
     {
         /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "SQL Database server name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -30,15 +40,5 @@ namespace Microsoft.Azure.Commands.Sql.Common
             HelpMessage = "SQL Database name.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database server to use.
-        /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
-            Position = 1,
-            HelpMessage = "SQL Database server name.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
     }
 }

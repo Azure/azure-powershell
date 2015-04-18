@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(NewAzureSqlDatabase);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Medium);
+            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: false);

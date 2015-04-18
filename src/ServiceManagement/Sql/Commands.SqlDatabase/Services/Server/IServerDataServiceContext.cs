@@ -61,13 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         Database GetDatabase(string databaseName);
 
         /// <summary>
-        /// Retrieve information on database with the name <paramref name="databaseName"/>.
-        /// </summary>
-        /// <param name="databaseName">The database to retrieve.</param>
-        /// <returns>An object containing the information about the specific database.</returns>
-        DatabaseUsageMetric GetDatabase(string databaseName);
-
-        /// <summary>
         /// Creates a new Sql Database.
         /// </summary>
         /// <param name="databaseName">The name for the new database.</param>

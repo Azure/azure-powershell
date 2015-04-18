@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             this.Profile = Profile;
             this._subscription = subscription;
             Communicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
+            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Profile, subscription);
         }
 
         /// <summary>
