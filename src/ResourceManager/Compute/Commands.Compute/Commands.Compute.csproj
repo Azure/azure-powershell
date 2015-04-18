@@ -134,9 +134,13 @@
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
+    <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageCommand.cs" />
+    <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
@@ -226,6 +230,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
