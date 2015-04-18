@@ -99,8 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public int? RequestedDatabaseDtuMin{ get; set; }
 
         /// <summary>
-        /// Gets or sets the requested storage limit in MB
+        /// Gets or sets the requested storage limit in GB
         /// </summary>
-        public long? RequestedStorageLimitInMB { get; set; }
+        public long? RequestedStorageLimitInGB { get; set; }
     }
 }

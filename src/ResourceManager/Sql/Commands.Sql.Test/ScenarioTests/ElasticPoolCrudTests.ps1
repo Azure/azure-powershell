@@ -20,14 +20,14 @@ function Test-CreateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Southeast Asia"
+	$server = Create-ServerForTest $rg "Japan East"
 
     try
     {
         # Create a pool with all values
         $poolName = Get-ElasticPoolName
         $ep1 = New-AzureSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 200
+            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
         Assert-AreEqual 204800 $ep1.StorageMB
@@ -59,7 +59,7 @@ function Test-UpdateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Southeast Asia"
+	$server = Create-ServerForTest $rg "Japan East"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -76,20 +76,20 @@ function Test-UpdateElasticPool
     {
         # Create a pool with all values
         $sep1 = Set-AzureSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 400
+            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600
         Assert-NotNull $sep1
         Assert-AreEqual 400 $sep1.Dtu 
-        Assert-AreEqual 400 $sep1.StorageMB
+        Assert-AreEqual 409600 $sep1.StorageMB
         Assert-AreEqual Standard $sep1.Edition
         Assert-AreEqual 0 $sep1.DatabaseDtuMin
         Assert-AreEqual 50 $sep1.DatabaseDtuMax
 
         # Create a pool using piping
         $sep2 = $server | Set-AzureSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Dtu 200 `
-            -DatabaseDtuMin 10 -DatabaseDtuMax 50  -Edition Standard -StorageMB 200
+            -DatabaseDtuMin 10 -DatabaseDtuMax 50  -Edition Standard -StorageMB 204800
         Assert-NotNull $sep2
         Assert-AreEqual 200 $sep2.Dtu 
-        Assert-AreEqual 200 $sep2.StorageMB
+        Assert-AreEqual 204800 $sep2.StorageMB
         Assert-AreEqual Standard $sep2.Edition
         Assert-AreEqual 10 $sep2.DatabaseDtuMin
         Assert-AreEqual 50 $sep2.DatabaseDtuMax
@@ -109,7 +109,7 @@ function Test-GetElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Southeast Asia"
+	$server = Create-ServerForTest $rg "Japan East"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -117,7 +117,7 @@ function Test-GetElasticPool
     Assert-NotNull $ep1
     
     $poolName = Get-ElasticPoolName
-    $ep2 = $server | New-AzureSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 5 `
+    $ep2 = $server | New-AzureSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
          -DatabaseDtuMax 100
     Assert-NotNull $ep2
 
@@ -128,19 +128,19 @@ function Test-GetElasticPool
             -ElasticPoolName $ep1.ElasticPoolName 
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
-        Assert-AreEqual 200 $ep1.StorageMB
+        Assert-AreEqual 204800 $ep1.StorageMB
         Assert-AreEqual Standard $ep1.Edition
         Assert-AreEqual 10 $ep1.DatabaseDtuMin
-        Assert-AreEqual 100 $ep1.DatabaseDtyMax
+        Assert-AreEqual 100 $ep1.DatabaseDtuMax
 
         # Create a pool using piping
         $gep2 = $ep2 | Get-AzureSqlElasticPool
         Assert-NotNull $ep2
         Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 400 $ep2.StorageMB
+        Assert-AreEqual 204800 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 5 $ep2.DatabaseDtuMin
-        Assert-AreEqual 100 $ep2.DatabaseDtyMax
+        Assert-AreEqual 0 $ep2.DatabaseDtuMin
+        Assert-AreEqual 100 $ep2.DatabaseDtuMax
 
         $all = $server | Get-AzureSqlElasticPool
         Assert-AreEqual $all.Count 2
@@ -160,7 +160,7 @@ function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Southeast Asia"
+	$server = Create-ServerForTest $rg "Japan East"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -168,17 +168,17 @@ function Test-RemoveElasticPool
     Assert-NotNull $ep1
     
     $poolName = Get-ElasticPoolName
-    $ep2 = $server | New-AzureSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 5 `
+    $ep2 = $server | New-AzureSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 0 `
          -DatabaseDtuMax 100
     Assert-NotNull $ep2
 
     try
     {
         # Create a pool with all values
-        Remove-AzureSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName 
+        Remove-AzureSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -Force
         
         # Create a pool using piping
-        $ep2 | Remove-AzureSqlElasticPool
+        $ep2 | Remove-AzureSqlElasticPool -Force
 
         $all = $server | Get-AzureSqlElasticPool
         Assert-AreEqual $all.Count 0

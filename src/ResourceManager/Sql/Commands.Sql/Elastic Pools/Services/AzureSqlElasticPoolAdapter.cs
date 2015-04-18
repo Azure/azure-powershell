@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             activity.RequestedDatabaseDtuMin = model.Properties.RequestedDatabaseDtuMin;
             activity.RequestedDtu = model.Properties.RequestedDtu;
             activity.RequestedElasticPoolName = model.Properties.RequestedElasticPoolName;
-            activity.RequestedStorageLimitInMB = model.Properties.RequestedStorageLimitInMB;
+            activity.RequestedStorageLimitInGB = model.Properties.RequestedStorageLimitInGB;
             activity.ServerName = model.Properties.ServerName;
             activity.StartTime = model.Properties.StartTime;
             activity.State = model.Properties.State;
