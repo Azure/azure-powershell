@@ -205,6 +205,29 @@ function Test-VirtualMachineList
 .SYNOPSIS
 Test Virtual Machine Size and Usage
 #>
+function Test-VirtualMachineImageList
+{
+    # Setup
+    $passed = $false;
+
+    try
+    {
+        $locStr = 'EastAsia';
+        $s1 = Get-AzureVMImagePublisher -Location $locStr;
+        Assert-NotNull $s1;
+
+        $passed = $true;
+    }
+    finally
+    {
+        Assert-True { $passed };
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Size and Usage
+#>
 function Test-VirtualMachineSizeAndUsage
 {
     # Setup
