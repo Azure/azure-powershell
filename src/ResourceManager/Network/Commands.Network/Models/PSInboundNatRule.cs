@@ -15,13 +15,11 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
 
     public class PSInboundNatRule : PSChildResource
     {
-        public List<PSResourceId> FrontendIPConfigurations { get; set; }
+        public PSResourceId FrontendIPConfiguration { get; set; }
 
         public PSResourceId BackendIPConfiguration { get; set; }
 
@@ -38,9 +36,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
-        public string FrontendIPConfigurationsText
+        public string FrontendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
         }
 
         [JsonIgnore]

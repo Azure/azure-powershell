@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Network
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class AzureLoadBalancerBackendAddressPoolConfigBase : NetworkBaseCmdlet
+    public class CheckDnsAvailabilityTest
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the BackendAddressPool")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCheckDnsAvailability()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-CheckDnsAvailability");
+        }
     }
 }

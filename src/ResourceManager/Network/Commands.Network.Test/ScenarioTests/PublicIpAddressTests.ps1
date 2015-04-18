@@ -220,3 +220,54 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests edit the domain name label of a publicIpAddress.
+#>
+function Test-PublicIpAddressCRUD-ReverseFqdn
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      
+      # Create publicIpAddres
+      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $publicip.Name $actual.Name	
+      Assert-AreEqual $publicip.Location $actual.Location
+      Assert-AreEqual "Dynamic" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Succeeded" $publicip.ProvisioningState
+      Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
+      
+      $publicip.DnsSettings.ReverseFqdn = $publicip.DnsSettings.Fqdn
+
+      # Set publicIpAddress
+      $publicip | Set-AzurePublicIpAddress
+
+      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $publicip.DnsSettings.Fqdn $publicip.DnsSettings.ReverseFqdn
+      
+      # delete
+      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
