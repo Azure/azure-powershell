@@ -225,6 +225,12 @@ function Test-VirtualMachineImageList
         $skusName = Get-ComputeTestResourceName;
         Assert-ThrowsContains { $s4 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "$skusName was not found";
 
+        $filter = "name eq 'latest'";
+        Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
+
+        $version = '1.0.0';
+        Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter -Version $version; } "was not found";
+
         $passed = $true;
     }
     finally
