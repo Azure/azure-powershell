@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (Status)
                 {
-                    var result = this.VirtualMachineClient.GetInstanceView(this.ResourceGroupName, this.Name);
-                    WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName));
+                    var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
+                    WriteObject(result.ToPSVirtualMachine(this.ResourceGroupName));
                 }
                 else
                 {
