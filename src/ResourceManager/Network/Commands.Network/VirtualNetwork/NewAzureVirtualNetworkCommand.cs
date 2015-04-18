@@ -105,8 +105,12 @@ namespace Microsoft.Azure.Commands.Network
             vnet.Location = this.Location;
             vnet.AddressSpace = new PSAddressSpace();
             vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
-            vnet.DhcpOptions = new PSDhcpOptions();
-            vnet.DhcpOptions.DnsServers = this.DnsServer;
+
+            if (this.DnsServer != null)
+            {
+                vnet.DhcpOptions = new PSDhcpOptions();
+                vnet.DhcpOptions.DnsServers = this.DnsServer;
+            }
 
             vnet.Subnets = new List<PSSubnet>();
             vnet.Subnets = this.Subnet;

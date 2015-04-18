@@ -67,19 +67,14 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListTaskFileOptions options = new ListTaskFileOptions()
+            ListTaskFileOptions options = new ListTaskFileOptions(this.BatchContext, this.WorkItemName, this.JobName, 
+                this.TaskName, this.Task, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.TaskName,
                 TaskFileName = this.Name,
-                Task = this.Task,
                 Filter = this.Filter,
                 MaxCount = this.MaxCount,
-                Recursive = this.Recursive.IsPresent,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+                Recursive = this.Recursive.IsPresent
+            }; 
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate
             // the entire collection first and then write the items out one by one in a single group.  Using foreach, we can take 

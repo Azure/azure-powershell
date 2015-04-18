@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Users
             cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.PoolName = "testPool";
             cmdlet.VMName = "vm1";

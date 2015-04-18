@@ -20,7 +20,7 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// The SqlSecureConnectionClient class is resposible for transforming the data that was recevied form the ednpoints to the cmdlets model of auditing policy and vice versa
+    /// The SqlSecureConnectionClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
     public class SqlSecureConnectionAdapter
     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseSecureConnectionPolicyProperties properties = policy.Properties;
             dbPolicyModel.ProxyDnsName = properties.ProxyDnsName;
             dbPolicyModel.ProxyPort = properties.ProxyPort;
-            dbPolicyModel.SecureConnectionState = properties.SecurityEnabledAccess == Constants.SecureConnectionEndpoint.Required ? SecureConnectionStateType.Required : SecureConnectionStateType.Optional;
+            dbPolicyModel.SecureConnectionState = properties.SecurityEnabledAccess == SecurityConstants.SecureConnectionEndpoint.Required ? SecureConnectionStateType.Required : SecureConnectionStateType.Optional;
             return dbPolicyModel;
         }
 
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="policy">The Secure Connection Policy object</param>
+        /// <param name="model">The Secure Connection Policy model object</param>
         /// <returns>The communication model object</returns>
         private DatabaseSecureConnectionPolicyCreateOrUpdateParameters PolicizeDatabaseSecureConnectionModel(DatabaseSecureConnectionPolicyModel model)
         {
             DatabaseSecureConnectionPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecureConnectionPolicyCreateOrUpdateParameters();
             DatabaseSecureConnectionPolicyCreateOrUpdateProperties properties = new DatabaseSecureConnectionPolicyCreateOrUpdateProperties();
             updateParameters.Properties = properties;
-            properties.SecurityEnabledAccess = model.SecureConnectionState == SecureConnectionStateType.Required ? Constants.SecureConnectionEndpoint.Required : Constants.SecureConnectionEndpoint.Optional;
+            properties.SecurityEnabledAccess = model.SecureConnectionState == SecureConnectionStateType.Required ? SecurityConstants.SecureConnectionEndpoint.Required : SecurityConstants.SecureConnectionEndpoint.Optional;
             return updateParameters;
         }
     }

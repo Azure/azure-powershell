@@ -3917,314 +3917,437 @@
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-  <command:details>
-    <command:name>
-      Get-AzureBatchTaskFileContent
-    </command:name>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchTaskFileContent
+      </command:name>
+      <maml:description>
+        <maml:para>Downloads the specified task file.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchTaskFileContent</command:noun>
+      <dev:version></dev:version>
+    </command:details>
     <maml:description>
-      <maml:para>Downloads the specified task file.</maml:para>
+      <maml:para>Downloads the specified task file to the specified file location or to the user supplied stream.</maml:para>
     </maml:description>
-    <maml:copyright>
-      <maml:para></maml:para>
-    </maml:copyright>
-    <command:verb>Get</command:verb>
-    <command:noun>AzureBatchTaskFileContent</command:noun>
-    <dev:version></dev:version>
-  </command:details>
-  <maml:description>
-    <maml:para>Downloads the specified task file to the specified location. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
-  </maml:description>
-  <!-- Cmdlet syntax section-->
-  <command:syntax>
-    <command:syntaxItem>
-      <maml:name>Get-AzureBatchTaskFileContent</maml:name>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-        <maml:name>InputObject</maml:name>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the task file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>WorkItemName</maml:name>
+          <maml:description>
+            <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>JobName</maml:name>
+          <maml:description>
+            <maml:para>The name of the job containing the specified target task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+          <maml:name>TaskName</maml:name>
+          <maml:description>
+            <maml:para>The name of the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the task file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchTaskFileContent</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>WorkItemName</maml:name>
+          <maml:description>
+            <maml:para>The name of the workitem which contains the specified target task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>JobName</maml:name>
+          <maml:description>
+            <maml:para>The name of the job containing the specified target task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TaskName</maml:name>
+          <maml:description>
+            <maml:para>The name of the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationPath</maml:name>
+        <maml:description>
+          <maml:para>The file path where the task file will be downloaded.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationStream</maml:name>
+        <maml:description>
+          <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        <dev:type>
+          <maml:name>Stream</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
         <maml:name>InputObject</maml:name>
         <maml:description>
           <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-        <maml:name>BatchContext</maml:name>
-        <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DestinationPath</maml:name>
-        <maml:description>
-          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the current directory.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      </command:parameter>
-    </command:syntaxItem>
-    <command:syntaxItem>
-      <maml:name>Get-AzureBatchTaskFileContent</maml:name>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>WorkItemName</maml:name>
-        <maml:description>
-          <maml:para>The name of the workitem which contains the specified target task.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-        <maml:name>InputObject</maml:name>
-        <maml:description>
-          <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
+        <dev:type>
+          <maml:name>PSTaskFile</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
         <maml:name>JobName</maml:name>
         <maml:description>
           <maml:para>The name of the job containing the specified target task.</maml:para>
+
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-        <maml:name>TaskName</maml:name>
-        <maml:description>
-          <maml:para>The name of the task.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
+
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-        <maml:name>BatchContext</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+        <maml:name>TaskName</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DestinationPath</maml:name>
-        <maml:description>
-          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+          <maml:para>The name of the task.</maml:para>
+
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-    </command:syntaxItem>
-  </command:syntax>
-  <!-- Cmdlet parameter section  -->
-  <command:parameters>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-      <maml:name>BatchContext</maml:name>
-      <maml:description>
-        <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>WorkItemName</maml:name>
+        <maml:description>
+          <maml:para>The name of the workitem which contains the specified target task.</maml:para>
 
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-      <dev:type>
-        <maml:name>BatchAccountContext</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-      <maml:name>DestinationPath</maml:name>
-      <maml:description>
-        <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
 
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
-      <maml:name>InputObject</maml:name>
-      <maml:description>
-        <maml:para>The PSTaskFile object representing the file to download. Use the Get-AzureBatchTaskFile cmdlet to get a PSTaskFile object.</maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
 
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">PSTaskFile</command:parameterValue>
-      <dev:type>
-        <maml:name>PSTaskFile</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-      <maml:name>JobName</maml:name>
-      <maml:description>
-        <maml:para>The name of the job containing the specified target task.</maml:para>
-
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
-      <maml:name>Name</maml:name>
-      <maml:description>
-        <maml:para>The name of the task file to download. Wildcards are not permitted.</maml:para>
-
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
-      <maml:name>TaskName</maml:name>
-      <maml:description>
-        <maml:para>The name of the task.</maml:para>
-
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-      <maml:name>WorkItemName</maml:name>
-      <maml:description>
-        <maml:para>The name of the workitem which contains the specified target task.</maml:para>
-
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-  </command:parameters>
-  <!-- Input - Output section-->
-  <command:inputTypes>
-    <command:inputType>
-      <dev:type>
-        <maml:name></maml:name>
-        <maml:uri/>
-        <maml:description />
-      </dev:type>
-      <maml:description>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
         <maml:para>
-          <!-- description  -->
 
         </maml:para>
-      </maml:description>
-    </command:inputType>
-  </command:inputTypes>
-  <command:returnValues>
-    <command:returnValue>
-      <dev:type>
-        <maml:name></maml:name>
-        <maml:uri />
-        <maml:description />
-      </dev:type>
-      <maml:description>
-        <maml:para>
-          <!-- description  -->
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
 
-        </maml:para>
-      </maml:description>
-    </command:returnValue>
-  </command:returnValues>
-  <!-- Error section-->
-  <command:terminatingErrors />
-  <command:nonTerminatingErrors />
-  <!-- Notes section  -->
-  <maml:alertSet>
-    <maml:title></maml:title>
-    <maml:alert>
-      <maml:para>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchTaskFileContent -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -TaskName &quot;myTask&quot; -Name &quot;stdout.txt&quot; -DestinationPath &quot;E:\PowerShell\stdout.txt&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads the task file named &quot;stdout.txt&quot; to the &quot;E:\PowerShell\stdout.txt&quot; file path. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
 
-      </maml:para>
-    </maml:alert>
-    <maml:alert>
-      <maml:para></maml:para>
-    </maml:alert>
-  </maml:alertSet>
-  <!-- Example section  -->
-  <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchTaskFile &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask&quot; &quot;stderr.txt&quot; -BatchContext $context | Get-AzureBatchTaskFileContent -DestinationPath &quot;E:\PowerShell\stdout.txt&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads the task file named &quot;stderr.txt&quot; to the &quot;E:\PowerShell\stdout.txt&quot; file path. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
 
-    <command:example>
-      <maml:title>
-        -------------------------- EXAMPLE 1 --------------------------
-      </maml:title>
-      <maml:introduction>
-        <maml:para>C:\PS&gt;</maml:para>
-      </maml:introduction>
-      <dev:code>
-        Get-AzureBatchTaskFileContent -WorkItemName &quot;myWorkItem&quot; -JobName &quot;job-0000000001&quot; -TaskName &quot;myTask&quot; -Name &quot;stdout.txt&quot; -DestinationPath &quot;E:\PowerShell&quot; -BatchContext $context
-      </dev:code>
-      <dev:remarks>
-        <maml:para>Description</maml:para>
-        <maml:para>-----------</maml:para>
-        <maml:para>Downloads the task file named &quot;stdout.txt&quot; to the &quot;E:\PowerShell&quot; directory. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-      </dev:remarks>
-      <command:commandLines>
-        <command:commandLine>
-          <command:commandText></command:commandText>
-        </command:commandLine>
-      </command:commandLines>
-    </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $stream = New-Object System.IO.MemoryStream; Get-AzureBatchTaskFileContent &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask&quot; &quot;stdout.txt&quot; -DestinationStream $stream -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads the task file named &quot;stdout.txt&quot; from task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;. The file contents are copied to the user supplied Stream.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
 
-    <command:example>
-      <maml:title>
-        -------------------------- EXAMPLE 2 --------------------------
-      </maml:title>
-      <maml:introduction>
-        <maml:para>C:\PS&gt;</maml:para>
-      </maml:introduction>
-      <dev:code>
-        Get-AzureBatchTaskFile &quot;myWorkItem&quot; &quot;job-0000000001&quot; &quot;myTask&quot; &quot;stderr.txt&quot; -BatchContext $context | Get-AzureBatchTaskFileContent -DestinationPath &quot;E:\PowerShell&quot; -BatchContext $context
-      </dev:code>
-      <dev:remarks>
-        <maml:para>Description</maml:para>
-        <maml:para>-----------</maml:para>
-        <maml:para>Downloads the task file named &quot;stderr.txt&quot; to the &quot;E:\PowerShell&quot; directory. The &quot;stdout.txt&quot; task file is associated with task &quot;myTask&quot; under job &quot;job-0000000001&quot; under workitem &quot;myWorkItem&quot;.</maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-        <maml:para></maml:para>
-      </dev:remarks>
-      <command:commandLines>
-        <command:commandLine>
-          <command:commandText></command:commandText>
-        </command:commandLine>
-      </command:commandLines>
-    </command:example>
-  </command:examples>
-  <!-- Link section  -->
-  <maml:relatedLinks>
-    <maml:navigationLink>
-      <maml:linkText></maml:linkText>
-      <maml:uri/>
-    </maml:navigationLink>
-  </maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
   <command:details>
     <command:name>
       New-AzureBatchPool
@@ -6043,6 +6166,790 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
+        Get-AzureBatchVMFileContent
+      </command:name>
+      <maml:description>
+        <maml:para>Downloads the specified vm file.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchVMFileContent</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Downloads the specified vm file to the specified file location or to the user supplied stream.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFileContent</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the vm file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFileContent</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFileContent</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool containing the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm file to download. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the vm file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFileContent</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm file to download. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool containing the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationPath</maml:name>
+        <maml:description>
+          <maml:para>The file path where the vm file will be downloaded.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationStream</maml:name>
+        <maml:description>
+          <maml:para>The Stream into which the vm file contents will be written. This stream will not be closed or rewound by this call.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        <dev:type>
+          <maml:name>Stream</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>The PSVMFile object representing the file to download. Use the Get-AzureBatchVMFile cmdlet to get a PSVMFile object.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSVMFile</command:parameterValue>
+        <dev:type>
+          <maml:name>PSVMFile</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm file to download. Wildcards are not permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool containing the vm.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVMFileContent -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;startup\stdout.txt&quot; -DestinationPath &quot;E:\PowerShell\stdout.txt&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads the &quot;startup\stdout.txt&quot; file to the &quot;E:\PowerShell\stdout.txt&quot; file path. The file is from the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVMFile -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;startup\stdout.txt&quot; -BatchContext $context | Get-AzureBatchVMFileContent -DestinationPath &quot;E:\PowerShell\stdout.txt&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads the &quot;startup\stdout.txt&quot; file to the &quot;E:\PowerShell\stdout.txt&quot; file path. The file is from the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $stream = New-Object System.IO.MemoryStream; Get-AzureBatchVMFileContent &quot;myPool&quot; &quot;tvm-1900272697_1-20150330t205553z&quot; &quot;startup\stdout.txt&quot; -DestinationStream $stream -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads vm file &quot;startup\stdout.txt&quot; from the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;. The file contents are copied to the user supplied Stream.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchRDPFile
+      </command:name>
+      <maml:description>
+        <maml:para>Downloads an RDP file pointing to the specified vm.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchRDPFile</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Downloads an RDP file pointing to the specified vm to the specified file location or to the user supplied stream.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRDPFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the RDP file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRDPFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRDPFile</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool containing the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>
+              The name of the vm to which the RDP file will point.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationPath</maml:name>
+          <maml:description>
+            <maml:para>The file path where the RDP file will be downloaded.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchRDPFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DestinationStream</maml:name>
+          <maml:description>
+            <maml:para>The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool containing the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>
+              The name of the vm to which the RDP file will point.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationPath</maml:name>
+        <maml:description>
+          <maml:para>The file path where the RDP file will be downloaded.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DestinationStream</maml:name>
+        <maml:description>
+          <maml:para>The Stream into which the RDP file data will be written. This stream will not be closed or rewound by this call.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+        <dev:type>
+          <maml:name>Stream</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool containing the vm.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The PSVM object representing the vm to which the RDP file will point. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        <dev:type>
+          <maml:name>PSVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>
+            The name of the vm to which the RDP file will point.
+          </maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchRDPFile -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -DestinationPath &quot;E:\PowerShell\vm.rdp&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads an RDP file to the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;. The file is downloaded to the &quot;E:\PowerShell\vm.rdp&quot; file path.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVM -PoolName &quot;myPool&quot; -Name &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context | Get-AzureBatchRDPFile -DestinationPath &quot;E:\PowerShell\vm.rdp&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads an RDP file to the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;. The file is downloaded to the &quot;E:\PowerShell\vm.rdp&quot; file path.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          $stream = New-Object System.IO.MemoryStream; Get-AzureBatchRDPFile &quot;myPool&quot; &quot;tvm-1900272697_1-20150330t205553z&quot; -DestinationStream $stream -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Downloads an RDP file to the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; in the pool named &quot;myPool&quot;. The file contents are copied to the user supplied Stream.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
         New-AzureBatchVMUser
       </command:name>
       <maml:description>
@@ -6588,5 +7495,4 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-
 </helpItems>
