@@ -12,51 +12,182 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    public class DnsTestsBase
-    {
-        private EnvironmentSetupHelper helper;
+    using System; 
+    using System.Linq; 
+    using Microsoft.Azure.Common.Authentication; 
+    using Microsoft.Azure.Gallery; 
+    using Microsoft.Azure.Management.Authorization; 
+    using Microsoft.Azure.Management.Resources; 
+    using Microsoft.Azure.Subscriptions.Csm; 
+    using Microsoft.Azure.Test; 
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.Azure.Commands.Dns.Models; 
 
-        protected DnsTestsBase()
-        {
-            helper = new EnvironmentSetupHelper();
-        }
 
-        protected void SetupManagementClients()
-        {
-            var resourcesClient = GetResourcesClient();
-            helper.SetupSomeOfManagementClients(resourcesClient);
-        }
+    public class DnsTestsBase 
+    { 
+        private CSMTestEnvironmentFactory csmTestFactory; 
 
-        protected void RunPowerShellTest(params string[] scripts)
-        {
-            // Enable undo functionality as well as mock recording
-            using (UndoContext context = UndoContext.Current)
-            {
-                // Configure recordings
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                SetupManagementClients();
+        private readonly EnvironmentSetupHelper helper; 
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+        public ResourceManagementClient ResourceManagementClient { get; private set; } 
 
-                helper.RunPowerShellTest(scripts);
-            }
-        }
 
-        protected ResourceManagementClient GetResourcesClient()
-        {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-        }
-    }
-}
+        public SubscriptionClient SubscriptionClient { get; private set; } 
+
+
+        public GalleryClient GalleryClient { get; private set; } 
+
+
+        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; } 
+
+
+        public DnsClient DnsClient { get; private set; } 
+
+
+        public static DnsTestsBase NewInstance 
+        { 
+            get 
+            { 
+                return new DnsTestsBase(); 
+            } 
+        } 
+
+
+        protected DnsTestsBase() 
+        { 
+            this.helper = new EnvironmentSetupHelper(); 
+        } 
+
+
+        protected void SetupManagementClients() 
+        { 
+            this.ResourceManagementClient = this.GetResourceManagementClient(); 
+            this.SubscriptionClient = this.GetSubscriptionClient(); 
+            this.GalleryClient = this.GetGalleryClient(); 
+            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient(); 
+            this.DnsClient = this.GetFeatureClient(); 
+
+
+            this.helper.SetupManagementClients( 
+                this.ResourceManagementClient,  
+                this.SubscriptionClient, 
+                this.GalleryClient,  
+                this.AuthorizationManagementClient, 
+                this.DnsClient); 
+        } 
+
+
+        public void RunPowerShellTest(params string[] scripts) 
+        { 
+            string callingClassType = TestUtilities.GetCallingClass(2); 
+            string mockName = TestUtilities.GetCurrentMethodName(2); 
+
+
+            this.RunPsTestWorkflow( 
+                () => scripts, 
+                // no custom initializer 
+                null, 
+                // no custom cleanup  
+                null, 
+                callingClassType, 
+                mockName); 
+        } 
+
+
+        public void RunPsTestWorkflow( 
+            Func<string[]> scriptBuilder, 
+            Action<CSMTestEnvironmentFactory> initialize, 
+            Action cleanup, 
+            string callingClassType, 
+            string mockName) 
+        { 
+            using (UndoContext context = UndoContext.Current) 
+            { 
+                context.Start(callingClassType, mockName); 
+
+
+                this.csmTestFactory = new CSMTestEnvironmentFactory(); 
+
+
+                if (initialize != null) 
+                { 
+                    initialize(this.csmTestFactory); 
+                } 
+
+
+                this.SetupManagementClients(); 
+
+
+                this.helper.SetupEnvironment(AzureModule.AzureResourceManager); 
+
+
+                string callingClassName = callingClassType 
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries) 
+                                        .Last(); 
+
+
+                this.helper.SetupModules( 
+                    AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1"); 
+
+
+                try 
+                { 
+                    if (scriptBuilder != null) 
+                    { 
+                        string[] psScripts = scriptBuilder(); 
+
+
+                        if (psScripts != null) 
+                        { 
+                            this.helper.RunPowerShellTest(psScripts); 
+                        } 
+                    } 
+                } 
+                finally 
+                { 
+                    if (cleanup != null) 
+                    { 
+                        cleanup(); 
+                    } 
+                } 
+            } 
+        } 
+
+
+        protected ResourceManagementClient GetResourceManagementClient() 
+        { 
+            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory); 
+        } 
+
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient() 
+        { 
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory); 
+        } 
+
+
+        private SubscriptionClient GetSubscriptionClient() 
+        { 
+            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory); 
+        } 
+
+
+        private GalleryClient GetGalleryClient() 
+        { 
+            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory); 
+        } 
+
+
+        private DnsClient GetFeatureClient() 
+        { 
+            return TestBase.GetServiceClient<DnsClient>(this.csmTestFactory); 
+        } 
+    } 
+} 
