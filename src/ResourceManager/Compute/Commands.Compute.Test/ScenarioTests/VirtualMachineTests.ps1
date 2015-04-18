@@ -19,7 +19,7 @@ Test Virtual Machines
 function Test-VirtualMachine
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
@@ -216,11 +216,20 @@ function Test-VirtualMachineImageList
         $s1 = Get-AzureVMImagePublisher -Location $locStr;
         Assert-NotNull $s1;
 
+        $publisherName = Get-ComputeTestResourceName;
+        Assert-ThrowsContains { $s2 = Get-AzureVMImageOffer -Location $locStr -PublisherName $publisherName; } "$publisherName was not found";
+
+        $offerName = Get-ComputeTestResourceName;
+        Assert-ThrowsContains { $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $publisherName -Offer $offerName; } "$offerName was not found";
+        
+        $skusName = Get-ComputeTestResourceName;
+        Assert-ThrowsContains { $s4 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "$skusName was not found";
+
         $passed = $true;
     }
     finally
     {
-        Assert-True { $passed };
+        #Assert-True { $passed };
     }
 }
 
@@ -231,7 +240,7 @@ Test Virtual Machine Size and Usage
 function Test-VirtualMachineSizeAndUsage
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
     $passed = $false;
 
     try

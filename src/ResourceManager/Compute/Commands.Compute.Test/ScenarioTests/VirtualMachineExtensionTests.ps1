@@ -19,7 +19,7 @@ Test Virtual Machine Extensions
 function Test-VirtualMachineExtension
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
