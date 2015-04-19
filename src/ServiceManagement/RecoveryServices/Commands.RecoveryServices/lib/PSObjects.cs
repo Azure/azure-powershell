@@ -15,7 +15,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
@@ -153,6 +156,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
 
         /// <summary>
+        /// Represents San string constant.
+        /// </summary>
+        public const string San = "San";
+
+        /// <summary>
         /// Represents HyperVReplica string constant.
         /// </summary>
         public const string AzureContainer = "Microsoft Azure";
@@ -241,6 +249,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string NineHundred = "900";
+
+        /// <summary>
+        /// Replication type - async.
+        /// </summary>
+        public const string Sync = "Sync";
+
+        /// <summary>
+        /// Replication type - async.
+        /// </summary>
+        public const string Async = "Async";
     }
 
     /// <summary>
@@ -524,6 +542,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.HyperVReplicaProviderSettingsObject = new HyperVReplicaProviderSettings();
                 this.HyperVReplicaProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
             }
+            else if (profile.ReplicationProvider == Constants.San)
+            {
+                this.SanProviderSettingsObject = new SanProviderSettings();
+                this.SanProviderSettingsObject.AssociationDetail = new List<ASRProtectionProfileAssociationDetails>();
+            }
 
             foreach (var profileAssosicationDetail in profile.AssociationDetail)
             {
@@ -541,6 +564,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 else if (profile.ReplicationProvider == Constants.HyperVReplica)
                 {
                     this.HyperVReplicaProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
+                }
+                else if (profile.ReplicationProvider == Constants.San)
+                {
+                    this.SanProviderSettingsObject.AssociationDetail.Add(asrProfileDetail);
                 }
             }
 
@@ -564,6 +591,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     = details.RecoveryPointHistoryDuration;
 
                 this.HyperVReplicaAzureProviderSettingsObject.CanDissociate = profile.CanDissociate;
+                this.HyperVReplicaAzureProviderSettingsObject.EncryptStoredData = details.EncryptionEnabled;
             }
             else if (profile.ReplicationProvider == Constants.HyperVReplica)
             {
@@ -588,6 +616,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.HyperVReplicaProviderSettingsObject.ReplicationStartTime = details.OnlineReplicationStartTime;
                 this.HyperVReplicaProviderSettingsObject.CanDissociate = profile.CanDissociate;
             }
+            else if (profile.ReplicationProvider == Constants.San)
+            {
+                // San does not have a protection profile associated with it for now. So ReplicationProviderSetting might be empty. 
+                // If we are unable to deserialze, ignore it for now.
+                try
+                {
+                    var details = DataContractUtils<SanProtectionProfileInput>.Deserialize(
+                        profile.ReplicationProviderSetting);
+                    this.SanProviderSettingsObject.CloudId = details.CloudId;
+                    this.SanProviderSettingsObject.RemoteCloudId = details.RemoteCloudId;
+                    this.SanProviderSettingsObject.ArrayUniqueId = details.ArrayUniqueId;
+                    this.SanProviderSettingsObject.RemoteArrayUniqueId = details.RemoteArrayUniqueId;
+                }
+                catch
+                {
+                    // ignore. 
+                }
+
+                this.SanProviderSettingsObject.CanDissociate = profile.CanDissociate;
+            }
 
             this.ID = profile.ID;
             this.Name = profile.Name;
@@ -606,7 +654,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure)
+        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure, San)
         /// </summary>
         public string ReplicationProvider { get; set; }
 
@@ -619,6 +667,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets HyperVReplicaAzureProviderSettings
         /// </summary>
         public HyperVReplicaAzureProviderSettings HyperVReplicaAzureProviderSettingsObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets SanProviderSettings
+        /// </summary>
+        public SanProviderSettings SanProviderSettingsObject { get; set; }
 
         #endregion Properties
     }
@@ -860,14 +913,69 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!string.IsNullOrWhiteSpace(pe.ReplicationProviderSettings))
             {
-                AzureVmDiskDetails diskDetails;
-                DataContractUtils.Deserialize<AzureVmDiskDetails>(
-                    pe.ReplicationProviderSettings, out diskDetails);
+                if (pe.ReplicationProvider == Constants.HyperVReplicaAzure)
+                {
+                    ReplicationProviderSpecificSettings providerDetails;
+                    DataContractUtils.Deserialize<ReplicationProviderSpecificSettings>(
+                        pe.ReplicationProviderSettings, out providerDetails);
 
-                this.Disks = diskDetails.Disks;
-                this.OSDiskId = diskDetails.VHDId;
-                this.OSDiskName = diskDetails.OsDisk;
-                this.OS = diskDetails.OsType;
+                    this.RecoveryAzureVMName = providerDetails.VMProperties.RecoveryAzureVMName;
+                    this.RecoveryAzureVMSize = providerDetails.VMProperties.RecoveryAzureVMSize;
+                    this.SelectedRecoveryAzureNetworkId =
+                        providerDetails.VMProperties.SelectedRecoveryAzureNetworkId;
+                    this.VMNics = new List<VMNic>();
+
+                    // Missing Nic details on serializing, going with the below workaround.
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(pe.ReplicationProviderSettings);
+                    XmlNodeList parentNode = xmlDoc.GetElementsByTagName("VMNicDetails");
+                    foreach (XmlNode childrenNode in parentNode)
+                    {
+                        VMNic vmnicDetails = new VMNic();
+                        foreach (XmlNode childNode in childrenNode.ChildNodes)
+                        {
+                            switch (childNode.Name)
+                            {
+                                case "NicId":
+                                    vmnicDetails.NicId = childNode.InnerText;
+                                    break;
+                                case "VMSubnetName":
+                                    vmnicDetails.VMSubnetName = childNode.InnerText;
+                                    break;
+                                case "VMNetworkName":
+                                    vmnicDetails.VMNetworkName = childNode.InnerText;
+                                    break;
+                                case "RecoveryVMNetworkId":
+                                    vmnicDetails.RecoveryVMNetworkId = childNode.InnerText;
+                                    break;
+                                case "RecoveryVMSubnetName":
+                                    vmnicDetails.RecoveryVMSubnetName = childNode.InnerText;
+                                    break;
+                                case "ReplicaNicStaticIPAddress":
+                                    vmnicDetails.RecoveryNicStaticIPAddress = childNode.InnerText;
+                                    break;
+                            }
+                        }
+
+                        this.VMNics.Add(vmnicDetails);
+                    }
+
+                    this.Disks = providerDetails.AzureVMDiskDetails.Disks;
+                    this.OSDiskId = providerDetails.AzureVMDiskDetails.VHDId;
+                    this.OSDiskName = providerDetails.AzureVMDiskDetails.OsDisk;
+                    this.OS = providerDetails.AzureVMDiskDetails.OsType;
+                }
+                else
+                {
+                    AzureVmDiskDetails diskDetails;
+                    DataContractUtils.Deserialize<AzureVmDiskDetails>(
+                        pe.ReplicationProviderSettings, out diskDetails);
+
+                    this.Disks = diskDetails.Disks;
+                    this.OSDiskId = diskDetails.VHDId;
+                    this.OSDiskName = diskDetails.OsDisk;
+                    this.OS = diskDetails.OsType;
+                }
             }
 
             if (pe.ProtectionProfile != null &&
@@ -1032,6 +1140,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets Replication provider.
         /// </summary>
         public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Azure VM Name
+        /// </summary>
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Recovery Azure VM size.
+        /// </summary>
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected recovery azure network Id.
+        /// </summary>
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of VM NIC details.
+        /// </summary>
+        public List<VMNic> VMNics { get; set; }
     }
 
     /// <summary>
@@ -1614,5 +1742,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public string Name { get; set; }
+    }
+
+    /// <summary>
+    /// Partial details of a NIC of a VM.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class VMNic
+    {
+        /// <summary>
+        /// Gets or sets ID of the NIC.
+        /// </summary>
+        [DataMember]
+        public string NicId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name of the VM subnet.
+        /// </summary>
+        [DataMember]
+        public string VMSubnetName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name of the VM network.
+        /// </summary>
+        [DataMember]
+        public string VMNetworkName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Id of the recovery VM Network.
+        /// </summary>
+        [DataMember]
+        public string RecoveryVMNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the recovery VM subnet.
+        /// </summary>
+        [DataMember]
+        public string RecoveryVMSubnetName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the static IP address of the replica NIC.
+        /// </summary>
+        [DataMember]
+        public string RecoveryNicStaticIPAddress { get; set; }
     }
 }

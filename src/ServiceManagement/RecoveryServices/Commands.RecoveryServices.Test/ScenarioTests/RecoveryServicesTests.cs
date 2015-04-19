@@ -132,7 +132,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-DisableProtection -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void E2E_DeleteAndDissociateTest()
         {
@@ -180,6 +179,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         public void CommitRPTest()
         {
             this.RunPowerShellTest("Test-CommitRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RecoveryServicesSanE2ETest()
+        {
+            this.RunPowerShellTest("Test-SanE2E -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
     }
 }
