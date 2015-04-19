@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
-    [OutputType(typeof(VirtualMachineExtensionImage))]
+    [OutputType(typeof(VirtualMachineExtensionImageGetResponse))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Version = Version
             };
 
-            var result = this.VirtualMachineExtensionImageClient.Get(parameters);
+            VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
             WriteObject(result);
         }
     }

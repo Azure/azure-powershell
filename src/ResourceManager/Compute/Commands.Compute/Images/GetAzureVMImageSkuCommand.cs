@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Offer = Offer
             };
 
-            var result = this.VirtualMachineImageClient.ListSkus(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
             WriteObject(result);
         }
     }

@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
-    [OutputType(typeof(VirtualMachineImageResource))]
+    [OutputType(typeof(VirtualMachineImageResourceList))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Publishername = PublisherName
             };
 
-            var result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
             WriteObject(result);
         }
     }

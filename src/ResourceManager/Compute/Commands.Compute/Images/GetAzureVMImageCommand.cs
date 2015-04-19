@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ListVirtualMachineImageParamSet)]
-    [OutputType(typeof(VirtualMachineImageResourceList), typeof(VirtualMachineImageGetResponse))]
+    [OutputType(typeof(VirtualMachineImageGetResponse), typeof(VirtualMachineImageResourceList))]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         protected const string GetVirtualMachineImageDetailsParamSet = "GetVirtualMachineImageDetailsParamSet";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Version = Version
                 };
 
-                var result = this.VirtualMachineImageClient.Get(parameters);
+                VirtualMachineImageGetResponse result = this.VirtualMachineImageClient.Get(parameters);
                 WriteObject(result);
             }
             else if (this.ParameterSetName == ListVirtualMachineImageParamSet)
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
                     FilterExpression = FilterExpression
                 };
 
-                var result = this.VirtualMachineImageClient.List(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
                 WriteObject(result);
             }
         }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Location = Location
             };
 
-            var result = this.VirtualMachineImageClient.ListPublishers(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
             WriteObject(result);
         }
     }

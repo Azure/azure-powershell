@@ -382,7 +382,7 @@ function Test-VirtualMachineSizeAndUsage
 
         # Test Usage
         $u1 = Get-AzureVMUsage -Location ($loc -replace ' ');
-        Validate-VirtualMachineUsage $u1;
+        Validate-VirtualMachineUsage $u1.Usages;
 
         $passed = $true;
     }

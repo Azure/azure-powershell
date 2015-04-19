@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Publishername = PublisherName
             };
 
-            var result = this.VirtualMachineImageClient.ListOffers(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
             WriteObject(result);
         }
     }
