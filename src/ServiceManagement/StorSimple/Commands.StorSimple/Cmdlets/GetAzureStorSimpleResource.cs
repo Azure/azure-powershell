@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleResource : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = false, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageResourceName)]
+        [Parameter(Position = 0, Mandatory = false, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.ResourceName)]
         [ValidateNotNullOrEmpty]
         public string ResourceName { get; set; }
 
@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 if(serviceList == null 
                     || serviceList.Count() == 0)
                 {
+                    //This is not an error scenario. Hence writing verbose is fine
                     WriteVerbose(Resources.NoResourceFoundInSubscriptionMessage);
                     WriteObject(null);
                     return;
@@ -52,9 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     serviceList = serviceList.Where(x => x.ResourceName.Equals(ResourceName, System.StringComparison.InvariantCultureIgnoreCase)).Cast<ResourceCredentials>().ToList();
                     if (serviceList.Count() == 0)
                     {
-                        WriteVerbose(string.Format(Resources.NoResourceFoundWithGivenNameInSubscriptionMessage, ResourceName));
-                        WriteObject(null);
-                        return;
+                        throw new ArgumentException(string.Format(Resources.NoResourceFoundWithGivenNameInSubscriptionMessage, ResourceName));
                     }
                 }
                 this.WriteObject(serviceList, true);
