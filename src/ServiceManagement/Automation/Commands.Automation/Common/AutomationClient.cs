@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public CertificateInfo UpdateCertificate(string automationAccountName, string name, string path, SecureString password,
             string description, bool? exportable)
         {
-            if (String.IsNullOrWhiteSpace(path) && password != null && exportable.HasValue)
+            if (String.IsNullOrWhiteSpace(path) && (password != null || exportable.HasValue))
             {
                 throw new ResourceCommonException(typeof(CertificateInfo),
                     string.Format(CultureInfo.CurrentCulture, Resources.SetCertificateInvalidArgs, name));
@@ -1634,8 +1634,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             SecureString password, string description, bool exportable)
         {
             var cert = (password == null)
-                ? new X509Certificate2(path)
-                : new X509Certificate2(path, password);
+                ? new X509Certificate2(path, String.Empty, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet)
+                : new X509Certificate2(path, password, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
 
             var ccprop = new CertificateCreateProperties()
             {
