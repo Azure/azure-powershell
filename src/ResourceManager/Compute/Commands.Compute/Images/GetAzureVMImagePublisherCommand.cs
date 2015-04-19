@@ -19,12 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher, DefaultParameterSetName = ListVirtualMachineImagePublishersParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher)]
     [OutputType(typeof(VirtualMachineImageResourceList))]
     public class GetAzureVMImagePublisherCommand : VirtualMachineImageBaseCmdlet
     {
-        protected const string ListVirtualMachineImagePublishersParamSet = "ListVirtualMachineImagePublishersParamSet";
-
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -32,16 +30,13 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.ParameterSetName == ListVirtualMachineImagePublishersParamSet)
+            var parameters = new VirtualMachineImageListPublishersParameters
             {
-                var parameters = new VirtualMachineImageListPublishersParameters
-                {
-                    Location = Location
-                };
+                Location = Location
+            };
 
-                var result = this.VirtualMachineImageClient.ListPublishers(parameters);
-                WriteObject(result);
-            }
+            var result = this.VirtualMachineImageClient.ListPublishers(parameters);
+            WriteObject(result);
         }
     }
 }

@@ -19,12 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer, DefaultParameterSetName = ListVirtualMachineImageOffersParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
     [OutputType(typeof(VirtualMachineImageResourceList))]
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {
-        protected const string ListVirtualMachineImageOffersParamSet = "ListVirtualMachineImageOffersParamSet";
-
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -35,17 +33,14 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.ParameterSetName == ListVirtualMachineImageOffersParamSet)
+            var parameters = new VirtualMachineImageListOffersParameters
             {
-                var parameters = new VirtualMachineImageListOffersParameters
-                {
-                    Location = Location,
-                    Publishername = PublisherName
-                };
+                Location = Location,
+                Publishername = PublisherName
+            };
 
-                var result = this.VirtualMachineImageClient.ListOffers(parameters);
-                WriteObject(result);
-            }
+            var result = this.VirtualMachineImageClient.ListOffers(parameters);
+            WriteObject(result);
         }
     }
 }

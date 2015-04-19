@@ -19,12 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku, DefaultParameterSetName = ListVirtualMachineImageSkusParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
     [OutputType(typeof(VirtualMachineImageResourceList))]
     public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {
-        protected const string ListVirtualMachineImageSkusParamSet = "ListVirtualMachineImageSkusParamSet";
-
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -38,18 +36,15 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.ParameterSetName == ListVirtualMachineImageSkusParamSet)
+            var parameters = new VirtualMachineImageListSkusParameters
             {
-                var parameters = new VirtualMachineImageListSkusParameters
-                {
-                    Location = Location,
-                    Publishername = PublisherName,
-                    Offer = Offer
-                };
+                Location = Location,
+                Publishername = PublisherName,
+                Offer = Offer
+            };
 
-                var result = this.VirtualMachineImageClient.ListSkus(parameters);
-                WriteObject(result);
-            }
+            var result = this.VirtualMachineImageClient.ListSkus(parameters);
+            WriteObject(result);
         }
     }
 }

@@ -19,12 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageVersion, DefaultParameterSetName = ListExtensionImageVersionParamSet)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageVersion)]
     [OutputType(typeof(VirtualMachineImageResource))]
     public class GetAzureVMExtensionImageVersionCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        protected const string ListExtensionImageVersionParamSet = "ListExtensionImageVersionParamSet";
-
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
