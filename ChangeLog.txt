@@ -1,4 +1,9 @@
 ﻿2015.05.17 version 0.8.18
+* Azure HDInsight:
+  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
+  * Added cmdlets
+	* Grant-AzureHdinsightRdpAccess
+	* Revoke-AzureHdinsightRdpAccess
 * Azure Network
   * Added Cmdlets
     * Get-AzureVirtualNetwork
