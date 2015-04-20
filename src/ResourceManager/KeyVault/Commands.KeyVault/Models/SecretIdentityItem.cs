@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Collections;
 using System.Security;
 using Microsoft.Azure.KeyVault;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (secretItem == null)
                 throw new ArgumentNullException("secretItem");            
             if (secretItem.Attributes == null)
-                throw new ArgumentException(Resources.InvalidSecretAttributes);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretAttributes);
             if (secretItem.Identifier == null)
-                throw new ArgumentException(Resources.InvalidSecretIdentifier);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretIdentifier);
             
             SetObjectIdentifier(vaultUriHelper, secretItem.Identifier);
             Enabled = secretItem.Attributes.Enabled;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (secret == null)
                 throw new ArgumentNullException("secret");
             if (secret.Attributes == null)
-                throw new ArgumentException(Resources.InvalidSecretAttributes);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretAttributes);
 
             SetObjectIdentifier(secret);
 

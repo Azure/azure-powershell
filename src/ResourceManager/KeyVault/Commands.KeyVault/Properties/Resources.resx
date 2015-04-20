@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'</value>
+  </data>
   <data name="BackupKeyFileNotFound" xml:space="preserve">
     <value>Cannot find backup key file '{0}'</value>
   </data>
@@ -168,6 +171,9 @@
   <data name="InvalidSubscriptionState" xml:space="preserve">
     <value>Your Azure credentials have not been set up or have expired, please run Add-AzureAccount to set up your Azure credentials.</value>
   </data>
+  <data name="InvalidTagFormat" xml:space="preserve">
+    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
+  </data>
   <data name="InvalidVaultName" xml:space="preserve">
     <value>Invalid vault name.</value>
   </data>
@@ -176,6 +182,15 @@
   </data>
   <data name="KeyFileNotFound" xml:space="preserve">
     <value>Can not find key file '{0}'.</value>
+  </data>
+  <data name="NoDefaultUserAccount" xml:space="preserve">
+    <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
+  </data>
+  <data name="PermissionSetIncludesAllPlusOthers" xml:space="preserve">
+    <value>Invalid permissions to {0}. The list contains "all" along with other permissions. Please remove "all" from the list or include only "all" in the list.</value>
+  </data>
+  <data name="PermissionsNotSpecified" xml:space="preserve">
+    <value>At least one permission should be selected for key access or secret access.</value>
   </data>
   <data name="RemoveKeyWarning" xml:space="preserve">
     <value>Are you sure you want to remove key '{0}'.</value>
@@ -189,10 +204,22 @@
   <data name="RemoveSecretWhatIfMessage" xml:space="preserve">
     <value>Remove secret</value>
   </data>
+  <data name="RemoveVaultWarning" xml:space="preserve">
+    <value>Are you sure you want to remove vault '{0}'.</value>
+  </data>
+  <data name="RemoveVaultWhatIfMessage" xml:space="preserve">
+    <value>Remove vault</value>
+  </data>
   <data name="UnsupportedAccountType" xml:space="preserve">
     <value>Key vault cmdlet does not support account type '{0}'.</value>
   </data>
   <data name="UnsupportedFileFormat" xml:space="preserve">
     <value>The file format of '{0}' is not supported.</value>
+  </data>
+  <data name="VaultAlreadyExists" xml:space="preserve">
+    <value>The specified vault already exists.</value>
+  </data>
+  <data name="VaultNotFound" xml:space="preserve">
+    <value>Cannot find vault '{0}' in resource group '{1}'.</value>
   </data>
 </root>

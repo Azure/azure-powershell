@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret")]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Set secret in disabled state if present       
         /// </summary>        
         [Parameter(Mandatory = false,
-            HelpMessage = "Set secret in disabled state if present. If not present, secret is enabled.")]
+            HelpMessage = "Set secret in disabled state if present. If not specified, the secret is enabled.")]
         public SwitchParameter Disable { get; set; }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a secret in UTC time. If not present, secret will not expire.")]
+            HelpMessage = "The expiration time of a secret in UTC time. If not specified, the secret will not expire.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which secret can't be used. If not present, no limitation.")]
+            HelpMessage = "The UTC time before which secret can't be used. If not specified, there is no limitation.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable represents secret tags.")]
+            HelpMessage = "A hashtable representing secret tags.")]
         public Hashtable Tags { get; set; }
 
         #endregion

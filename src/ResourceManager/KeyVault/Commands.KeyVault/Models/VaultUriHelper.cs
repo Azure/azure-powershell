@@ -14,7 +14,7 @@
 
 using System;
 using System.Linq;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("vaultAddress");
           
             Uri vaultUri;
-            if (!Uri.TryCreate(vaultAddress, UriKind.Absolute, out vaultUri))
-                throw new ArgumentException(string.Format(Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
-       
+            if (!Uri.TryCreate(vaultAddress, UriKind.Absolute, out vaultUri))            
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));            
+
             if (vaultUri.HostNameType != UriHostNameType.Dns ||
-                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix))
-                throw new ArgumentException(string.Format(Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
-       
+                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix))            
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));            
+
             return vaultUri;
         }
 

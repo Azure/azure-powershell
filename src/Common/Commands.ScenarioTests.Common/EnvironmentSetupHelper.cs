@@ -32,17 +32,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     public class EnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
-        
+
         private static string testSubscriptionName = "__test-subscriptions";
-        
+
         private AzureSubscription testSubscription;
-        
+
         private AzureAccount testAccount;
 
         private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
-        
+
         protected ProfileClient ProfileClient { get; set; }
 
         public EnvironmentSetupHelper()
@@ -86,14 +86,39 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
-        public void SetupEnvironment(AzureModule mode)
+        public void SetupEnvironment(AzureModule mode, bool setupUserAndTenant = false)
         {
-            SetupAzureEnvironmentFromEnvironmentVariables(mode);
+            SetupAzureEnvironmentFromEnvironmentVariables(mode, setupUserAndTenant);
 
             ProfileClient.Profile.Save();
         }
 
-        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
+        private string GetTenantId(TestEnvironment environment)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenatId;
+                return environment.AuthorizationContext.TenatId;
+            }
+            else 
+                {
+                    return HttpMockServer.Variables["TenantId"];
+                }            
+        }
+
+        private string GetUser(TestEnvironment environment)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
+                return environment.AuthorizationContext.UserId;
+            }
+            else
+            {
+                return HttpMockServer.Variables["User"];
+            }
+        }
+        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode, bool setupUserAndTenant)
         {
             TestEnvironment rdfeEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
             TestEnvironment csmEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
@@ -154,6 +179,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                         {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
                     }
                 };
+
+                if (setupUserAndTenant)
+                {
+                    testSubscription.Account = GetUser(currentEnvironment);
+                    testSubscription.Properties.Add(AzureSubscription.Property.Tenants, GetTenantId(currentEnvironment));
+                    testAccount.Id = testSubscription.Account;
+                }
 
                 ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;

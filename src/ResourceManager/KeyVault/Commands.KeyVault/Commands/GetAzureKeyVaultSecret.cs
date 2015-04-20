@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+        DefaultParameterSetName = ByVaultNameParameterSet, 
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = true,
             ParameterSetName = BySecretVersionsParameterSet,
-            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies whether to include the versions of the secret in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
         #endregion
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 default:
-                    throw new ArgumentException(Resources.BadParameterSetName);
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
