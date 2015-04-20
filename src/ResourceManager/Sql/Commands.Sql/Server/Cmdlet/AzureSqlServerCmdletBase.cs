@@ -12,20 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
-    /// <summary>
-    /// The base class for all Azure Sql database cmdlets
-    /// </summary>
-    public abstract class SqlDatabaseCmdletBase<M, A> : SqlCmdletBase<M, A>
+    public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the database to use.
+        /// Intializes the model adapter
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL Database name.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        /// <param name="subscription">The subscription the cmdlets are operation under</param>
+        /// <returns>The server adapter</returns>
+        protected override AzureSqlServerAdapter InitModelAdapter(AzureSubscription subscription)
+        {
+            return new AzureSqlServerAdapter(Profile, subscription);
+        }
     }
 }
