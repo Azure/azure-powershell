@@ -104,6 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xComputerManagement", results.RequiredModules[0]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -117,6 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xActiveDirectory", results.RequiredModules[1]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -129,6 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xPSDesiredStateConfiguration", results.RequiredModules[0]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -143,6 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xPSDesiredStateConfiguration", results.RequiredModules[2]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -156,6 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xActiveDirectory", results.RequiredModules[1]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -169,6 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xActiveDirectory", results.RequiredModules[1]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -181,6 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xComputerManagement", results.RequiredModules[0]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -205,6 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xComputerManagement", results.RequiredModules[0]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
@@ -218,6 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Assert.AreEqual("xNetworking", results.RequiredModules[1]);
         }
 
+        [Ignore]
         [TestMethod]
         [TestCategory("Scenario")]
         [TestCategory("x64_only")]
