@@ -933,13 +933,12 @@ namespace Microsoft.Azure.Commands.Network
                         slotType).Name;
         }
 
-        public string GetDeploymentName(IPersistentVM vm, string slot, string serviceName)
+        public string GetDeploymentName(PersistentVMRoleContext vm, string slot, string serviceName)
         {
             string deploymentName = null;
-            var vmRoleContext = vm as PersistentVMRoleContext;
-            if (vmRoleContext != null)
+            if (vm != null)
             {
-                deploymentName = vmRoleContext.DeploymentName;
+                deploymentName = vm.DeploymentName;
             }
 
             if (string.IsNullOrEmpty(slot) && string.IsNullOrEmpty(deploymentName))
