@@ -421,6 +421,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInNicWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInNicWarningSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInRoleWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInRoleWarningSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is already a Network Security Group associated with Subnet &quot;{0}&quot; in Virtual Network &quot;{1}&quot;. Are you sure you want to replace it with Network Security Group &quot;{2}&quot;?.
         /// </summary>
         internal static string ReplaceNetworkSecurityGroupInSubnetWarning {
@@ -453,6 +471,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string SetAzureApplicationGatewayConfigCompletedOperation {
             get {
                 return ResourceManager.GetString("SetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string SetNSGNicAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGNicAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string SetNSGRoleAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGRoleAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Virtual Network: &quot;{1}&quot;, Subnet &quot;{2}&quot;.
+        /// </summary>
+        internal static string SetNSGSubnetAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGSubnetAssociationTarget", resourceCulture);
             }
         }
         

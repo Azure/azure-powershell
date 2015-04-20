@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
 using System.Management.Automation;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Network.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
@@ -21,9 +24,9 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
     [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
     public class SetAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
-        protected const string AddNetworkSecurityGroupAssociationToSubnet = "AddNetworkSecurityGroupAssociationToSubnet";
-        protected const string AddNetworkSecurityGroupAssociationToIaaSRole = "AddNetworkSecurityGroupAssociationToIaaSRole";
-        protected const string AddNetworkSecurityGroupAssociationToPaaSRole = "AddNetworkSecurityGroupAssociationToPaaSRole";
+        public const string AddNetworkSecurityGroupAssociationToSubnet = "AddNetworkSecurityGroupAssociationToSubnet";
+        public const string AddNetworkSecurityGroupAssociationToIaaSRole = "AddNetworkSecurityGroupAssociationToIaaSRole";
+        public const string AddNetworkSecurityGroupAssociationToPaaSRole = "AddNetworkSecurityGroupAssociationToPaaSRole";
         private string obtainedDeploymentName { get; set; }
 
         #region Common
@@ -82,9 +85,45 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 
         public override void ExecuteCmdlet()
         {
+            Func<string> getAssociation;
+            Action setAssociation;
+            Action<string> removeAssociation;
+            string actionMessage = "";
+            string processMessage = "";
+            string finishMessage = "";
+            string cmdletTarget = "";
+
             if (string.Equals(this.ParameterSetName, AddNetworkSecurityGroupAssociationToSubnet))
             {
-                Client.SetNetworkSecurityGroupForSubnet(this.Name, this.SubnetName, this.VirtualNetworkName);
+                getAssociation = () =>
+                {
+                    return Client.GetNetworkSecurityGroupForSubnet(
+                        this.VirtualNetworkName,
+                        this.SubnetName)
+                        .Name;
+                };
+
+                setAssociation = () =>
+                {
+                    Client.SetNetworkSecurityGroupForSubnet(this.Name, this.VirtualNetworkName, this.SubnetName);
+                };
+
+                removeAssociation = (currentNetworkSecurityGroup) =>
+                {
+                    Client.RemoveNetworkSecurityGroupFromSubnet(currentNetworkSecurityGroup, this.VirtualNetworkName, this.SubnetName);
+                };
+
+                cmdletTarget = string.Format(
+                    Resources.SetNSGSubnetAssociationTarget,
+                    this.Name,
+                    this.VirtualNetworkName,
+                    this.SubnetName);
+
+                finishMessage = string.Format(
+                    Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded,
+                    this.Name,
+                    this.SubnetName,
+                    this.VirtualNetworkName);
             }
 
             else
@@ -98,20 +137,122 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 
                 if (string.IsNullOrEmpty(this.NetworkInterfaceName))
                 {
-                    Client.SetNetworkSecurityGroupForRole(
+                    getAssociation = () =>
+                    {
+                        return Client.GetNetworkSecurityGroupForRole(
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName)
+                            .Name;
+                    };
+
+                    setAssociation = () =>
+                    {
+                        Client.SetNetworkSecurityGroupForRole(
+                            this.Name,
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName);
+                    };
+
+                    removeAssociation = (currentNetworkSecurityGroup) =>
+                    {
+                        Client.RemoveNetworkSecurityGroupFromRole(
+                            currentNetworkSecurityGroup,
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName);
+                    };
+
+                    cmdletTarget = string.Format(
+                        Resources.SetNSGRoleAssociationTarget,
                         this.Name,
-                        this.ServiceName,
+                        this.RoleName,
                         this.obtainedDeploymentName,
-                        this.RoleName);
+                        this.ServiceName);
+
+                    finishMessage = string.Format(
+                        Resources.ReplaceNetworkSecurityGroupInRoleWarningSucceeded,
+                        this.Name,
+                        this.RoleName,
+                        this.obtainedDeploymentName,
+                        this.ServiceName);
+
                 }
                 else
                 {
-                    Client.SetNetworkSecurityGroupForNetworkInterface(
+                    getAssociation = () =>
+                    {
+                        return Client.GetNetworkSecurityGroupForNetworkInterface(
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName,
+                            this.NetworkInterfaceName)
+                            .Name;
+                    };
+
+                    setAssociation = () =>
+                    {
+                        Client.SetNetworkSecurityGroupForNetworkInterface(
+                            this.Name,
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName,
+                            this.NetworkInterfaceName);
+                    };
+
+                    removeAssociation = (currentNetworkSecurityGroup) =>
+                    {
+                        Client.RemoveNetworkSecurityGroupFromNetworkInterface(
+                            currentNetworkSecurityGroup,
+                            this.ServiceName,
+                            this.obtainedDeploymentName,
+                            this.RoleName,
+                            this.NetworkInterfaceName);
+                    };
+
+                    cmdletTarget = string.Format(
+                        Resources.SetNSGNicAssociationTarget,
+                        this.NetworkInterfaceName,
                         this.Name,
-                        this.ServiceName,
-                        this.obtainedDeploymentName,
                         this.RoleName,
-                        this.NetworkInterfaceName);
+                        this.obtainedDeploymentName,
+                        this.ServiceName);
+
+                    finishMessage = string.Format(
+                        Resources.ReplaceNetworkSecurityGroupInNicWarningSucceeded,
+                        this.NetworkInterfaceName,
+                        this.Name,
+                        this.RoleName,
+                        this.obtainedDeploymentName,
+                        this.ServiceName);
+                }
+            }
+
+            try
+            {
+                setAssociation();
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Error.Code.Equals("BadRequest") && ce.Error.Message.Contains("already"))
+                {
+                    ConfirmAction(
+                        Force.IsPresent,
+                        actionMessage,
+                        processMessage,
+                        cmdletTarget,
+                        () =>
+                        {
+                            var currentNetworkSecurityGroup = getAssociation();
+                            removeAssociation(currentNetworkSecurityGroup);
+                            setAssociation();
+                            WriteVerboseWithTimestamp(finishMessage);
+                        });
+                }
+                else
+                {
+                    throw;
                 }
             }
 
