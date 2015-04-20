@@ -52,6 +52,12 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+                }
+
                 zoneToUpdate = new DnsZone
                 {
                     Name = this.Name,

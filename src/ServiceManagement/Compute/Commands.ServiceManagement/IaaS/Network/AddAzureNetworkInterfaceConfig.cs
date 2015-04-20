@@ -33,6 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The static ip address.")]
         public string StaticVNetIPAddress { get; set; }
 
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The IP Forwarding state for this network interface.")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = false)]
+        public string IPForwarding { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -72,7 +76,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                     IPConfigurations = new AssignIPConfigurationCollection()
                     {
                         ipConfig
-                    }
+                    },
+                    IPForwarding = this.IPForwarding,
                 });
             WriteObject(VM);
         }

@@ -59,6 +59,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights.Test", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManagement.Automation", "ResourceManager\Automation\Commands.Automation\Commands.ResourceManagement.Automation.csproj", "{90DEF35A-F7FF-40D0-B008-F489A4C092DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns", "ResourceManager\Dns\Commands.Dns\Commands.Dns.csproj", "{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "ResourceManager\Dns\Commands.Dns.Test\Commands.Dns.Test.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +165,14 @@ Global
 		{90DEF35A-F7FF-40D0-B008-F489A4C092DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90DEF35A-F7FF-40D0-B008-F489A4C092DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90DEF35A-F7FF-40D0-B008-F489A4C092DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CAE1B57-FFEC-4945-A6C5-6E5E8DEA4BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,5 +189,8 @@ Global
 		{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
