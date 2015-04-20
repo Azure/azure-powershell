@@ -60,7 +60,7 @@
     * Remove-AzureNetworkSecurityRuleConfig
     * Add-AzureNetworkSecurityRuleConfig
     * Set-AzureNetworkSecurityRuleConfig
-*Azure Storage
+* Azure Storage
   * Added cmdlets in AzureResourceManager Mode
     * New-AzureStorageAccount
     * Get-AzureStorageAccount
