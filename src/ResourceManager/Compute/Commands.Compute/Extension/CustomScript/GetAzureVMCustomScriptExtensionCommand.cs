@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (Status)
             {
-                var result = this.VirtualMachineExtensionClient.GetInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+                var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
                 var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
 
                 if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&

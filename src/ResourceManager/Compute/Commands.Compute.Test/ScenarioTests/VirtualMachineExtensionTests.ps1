@@ -18,6 +18,7 @@ Test Virtual Machine Extensions
 #>
 function Test-VirtualMachineExtension
 {
+    Switch-AzureMode -Name AzureResourceManager;
     # Setup
     $rgname = Get-ComputeTestResourceName
 
@@ -208,7 +209,7 @@ Test Virtual Machine Custom Script Extensions
 function Test-VirtualMachineCustomScriptExtension
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
@@ -315,7 +316,7 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
 		Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-		Assert-True $ext.Uri.Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+		Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -325,7 +326,7 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
 		Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-		Assert-True $ext.Uri.Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+		Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
 
@@ -376,7 +377,7 @@ Test Virtual Machine Custom Script Extensions
 function Test-VirtualMachineAccessExtension
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
