@@ -192,7 +192,87 @@
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
-    </View>    
-    
+    </View>
+
+
+    <View>
+      <Name>Microsoft.WindowsAzure.Management.Network.Models.EffectiveRouteTable</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Management.Network.Models.EffectiveRouteTable</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label> </Label>
+                <ScriptBlock>$_.EffectiveRoutes | Format-Table | Out-String </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
+    <View>
+      <Name>Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Management.Network.Models.EffectiveRoute</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>15</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Address Prefix</Label>
+            <Width>17</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Next hop type</Label>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Next hop IP address</Label>
+            <Width>19</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+            <Width>8</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+            <Width>11</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AddressPrefixes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EffectiveNextHop.Type</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>$_.EffectiveNextHop.IpAddresses</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
   </ViewDefinitions>
 </Configuration>

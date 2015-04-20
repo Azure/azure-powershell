@@ -36,11 +36,17 @@ namespace Microsoft.Azure.Commands.Dns
         {
             if (this.Name != null)
             {
-                WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+                }
+
+                this.WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName));
+                this.WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName));
             }
         }
     }

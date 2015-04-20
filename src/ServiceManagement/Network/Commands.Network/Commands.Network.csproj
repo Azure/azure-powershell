@@ -174,6 +174,7 @@
     <Compile Include="IPForwarding\SetAzureIPForwarding.cs" />
     <Compile Include="NetworkClient.cs" />
     <Compile Include="NetworkCmdletBase.cs" />
+    <Compile Include="Routes\GetAzureEffectiveRouteTable.cs" />
     <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupConfig.cs" />
     <Compile Include="NetworkSecurityGroup\Association\SetAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="NetworkSecurityGroup\Association\GetAzureNetworkSecurityGroupAssociation.cs" />
