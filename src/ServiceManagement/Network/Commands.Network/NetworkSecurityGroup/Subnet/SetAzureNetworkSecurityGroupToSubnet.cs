@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
         {
             try
             {
-                Client.SetNetworkSecurityGroupForSubnet(Name, SubnetName, VirtualNetworkName);
+                Client.SetNetworkSecurityGroupForSubnet(Name, VirtualNetworkName, SubnetName);
                 if (PassThru.IsPresent)
                 {
                     WriteObject(true);
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                         Name,
                         () =>
                         {
-                            var existingNetworkSecurityGroup = Client.GetNetworkSecurityGroupForSubnet(VirtualNetworkName, SubnetName).Name;
-                            Client.RemoveNetworkSecurityGroupFromSubnet(existingNetworkSecurityGroup, VirtualNetworkName, SubnetName);
-                            Client.SetNetworkSecurityGroupForSubnet(Name, SubnetName, VirtualNetworkName);
-                            WriteVerboseWithTimestamp(Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded, Name, VirtualNetworkName, SubnetName);
+                            var currentNetworkSecurityGroup = Client.GetNetworkSecurityGroupForSubnet(VirtualNetworkName, SubnetName).Name;
+                            Client.RemoveNetworkSecurityGroupFromSubnet(currentNetworkSecurityGroup, VirtualNetworkName, SubnetName);
+                            Client.SetNetworkSecurityGroupForSubnet(Name, VirtualNetworkName, SubnetName);
+                            WriteVerboseWithTimestamp(Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded, Name, SubnetName, VirtualNetworkName);
                             if (PassThru.IsPresent)
                             {
                                 WriteObject(true);

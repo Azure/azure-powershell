@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.RemoveFromSubnet(virtualNetworkName, subnetName, networkSecurityGroupName);
         }
 
-        public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string subnetName, string virtualNetworkName)
+        public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string virtualNetworkName, string subnetName)
         {
             var parameters = new NetworkSecurityGroupAddAssociationParameters()
             {
