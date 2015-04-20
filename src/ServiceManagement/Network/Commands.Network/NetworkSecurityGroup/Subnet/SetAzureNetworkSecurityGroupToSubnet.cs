@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                         Name,
                         () =>
                         {
-                            Client.RemoveNetworkSecurityGroupFromSubnet(Name, SubnetName, VirtualNetworkName);
+                            var existingNetworkSecurityGroup = Client.GetNetworkSecurityGroupForSubnet(VirtualNetworkName, SubnetName).Name;
+                            Client.RemoveNetworkSecurityGroupFromSubnet(existingNetworkSecurityGroup, VirtualNetworkName, SubnetName);
                             Client.SetNetworkSecurityGroupForSubnet(Name, SubnetName, VirtualNetworkName);
                             WriteVerboseWithTimestamp(Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded, Name, VirtualNetworkName, SubnetName);
                             if (PassThru.IsPresent)
