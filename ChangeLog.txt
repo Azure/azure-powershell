@@ -68,7 +68,7 @@
     * Remove-AzureStorageAccount
     * New-AzureStorageAccountKey
     * Get-AzureStorageAccountKey
-  * Make azure storage data cmdlets work in AzureResourceManager Mode
+  * Made Azure Storage data cmdlets work in AzureResourceManager Mode
 
 2015.04.28 version 0.8.17
 * Azure Batch
