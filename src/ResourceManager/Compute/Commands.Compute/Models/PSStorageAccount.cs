@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
             this.Name = storageAccount.Name;
             this.Id = storageAccount.Id;
+            this.Location = storageAccount.Location;
             this.AccountType = storageAccount.AccountType;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             this.SecondaryLocation = storageAccount.SecondaryLocation;
             this.StatusOfPrimary = storageAccount.StatusOfPrimary;
             this.StatusOfSecondary = storageAccount.StatusOfSecondary;
+            this.Tags = storageAccount.Tags;
         }
 
         public string ResourceGroupName { get; set; }
@@ -32,6 +34,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Name { get; set; }
 
         public string Id { get; set; }
+
+        public string Location { get; set; }
 
         public AccountType? AccountType { get; set; }
         
@@ -54,6 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public AccountStatus? StatusOfPrimary { get; set; }
 
         public AccountStatus? StatusOfSecondary { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
 
         private static string ParseResourceGroupFromId(string idFromServer)
         {
