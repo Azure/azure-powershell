@@ -101,6 +101,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+	<Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -131,11 +135,22 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
-    <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />
+    <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\SetAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\VirtualMachineAccessExtensionContext.cs" />
+    <Compile Include="Extension\VMAccess\VMAccessExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\VMAccess\VMAccessExtensionPublicSettings.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
@@ -227,6 +242,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

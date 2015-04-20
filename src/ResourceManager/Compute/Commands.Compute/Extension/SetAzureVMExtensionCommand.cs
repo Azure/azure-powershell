@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Management.Automation;
 
@@ -124,10 +125,12 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+
+
             if (this.Settings != null)
             {
-                this.SettingString = new JsonSettingBuilder(this.Settings).ToString();
-                this.ProtectedSettingString = new JsonSettingBuilder(this.ProtectedSettings).ToString();
+                this.SettingString = JsonConvert.SerializeObject(Settings);
+                this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
             }
 
             var parameters = new VirtualMachineExtension
@@ -139,7 +142,7 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtensionType = this.ExtensionType,
                 TypeHandlerVersion = this.TypeHandlerVersion,
                 Settings = this.SettingString,
-                ProtectedSettings = this.ProtectedSettingString
+                ProtectedSettings = this.ProtectedSettingString,
             };
 
             var op = this.VirtualMachineExtensionClient.CreateOrUpdate(

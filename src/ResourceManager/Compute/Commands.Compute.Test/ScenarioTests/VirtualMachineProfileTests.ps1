@@ -105,7 +105,7 @@ function Test-VirtualMachineProfile
 	Assert-AreEqual $encodedCustom $p.OSProfile.CustomData;
 
 	# Verify WinRM
-	Assert-AreEqual $null $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].CertificateUrl;
+	Assert-Null $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].CertificateUrl;
     Assert-AreEqual "http" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].Protocol ;
     Assert-AreEqual $winRMCertUrl $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].CertificateUrl ;
     Assert-AreEqual "https" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].Protocol ;
