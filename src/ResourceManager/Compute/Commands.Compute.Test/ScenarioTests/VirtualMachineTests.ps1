@@ -214,6 +214,65 @@ function Test-VirtualMachineImageList
     {
         $locStr = 'EastAsia';
 
+        # List Tests
+        $foundAnyImage = $false;
+        $pubNames = Get-AzureVMImagePublisher -Location $locStr | select -ExpandProperty Resources | select -ExpandProperty Name;
+        $maxPubCheck = 3;
+        $numPubCheck = 1;
+        $pubNameFilter = '*Windows*';
+        foreach ($pub in $pubNames)
+        {
+            # Filter Windows Images
+            if (-not ($pub -like $pubNameFilter)) { continue; }
+
+            $s2 = Get-AzureVMImageOffer -Location $locStr -PublisherName $pub;
+            if ($s2.Resources.Count -gt 0)
+            {
+                # Check "$maxPubCheck" publishers at most
+                $numPubCheck = $numPubCheck + 1;
+                if ($numPubCheck -gt $maxPubCheck) { break; }
+
+                $offerNames = $s2.Resources | select -ExpandProperty Name;
+                foreach ($offer in $offerNames)
+                {
+                    $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $pub -Offer $offer;
+                    if ($s3.Resources.Count -gt 0)
+                    {
+                        $skus = $s3.Resources | select -ExpandProperty Name;
+                        foreach ($sku in $skus)
+                        {
+                            $s4 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
+                            if ($s4.Resources.Count -gt 0)
+                            {
+                                $versions = $s4.Resources | select -ExpandProperty Name;
+
+                                $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
+                                Assert-NotNull $s6;
+                                Assert-NotNull $s6.Resources;
+                                $verNames = $s6.Resources | select -ExpandProperty Name;
+
+                                foreach ($ver in $versions)
+                                {
+                                    $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
+                                    Assert-NotNull $s6;
+                                    Assert-NotNull $s6.VirtualMachineImage;
+                                    $s6.VirtualMachineImage;
+
+                                    Assert-True { $verNames -contains $ver };
+                                    Assert-True { $verNames -contains $s6.VirtualMachineImage.Name };
+
+                                    $foundAnyImage = $true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Assert-True { $foundAnyImage };
+
+        # Negative Tests
         # VM Images
         $s1 = Get-AzureVMImagePublisher -Location $locStr;
         Assert-NotNull $s1;

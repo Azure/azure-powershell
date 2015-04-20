@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
-        [Parameter, ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = GetVirtualMachineImageDetailsParamSet), ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter, ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ListVirtualMachineImageParamSet), ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
 
         public override void ExecuteCmdlet()
