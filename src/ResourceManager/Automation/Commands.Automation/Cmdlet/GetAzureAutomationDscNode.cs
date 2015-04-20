@@ -1,0 +1,117 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+namespace Microsoft.Azure.Commands.Automation.Cmdlet
+{
+    /// <summary>
+    /// Gets azure automation dsc node.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscNode", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(DscNode))]
+    public class GetAzureAutomationDscNode : AzureAutomationBaseCmdlet
+    {
+        /// <summary> 
+        /// Gets or sets the job id. 
+        /// </summary> 
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node id.")]
+        [Alias("NodeId")]
+        public Guid Id { get; set; } 
+        
+        /// <summary> 
+        /// Gets or sets the status of a dsc node. 
+        /// </summary> 
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
+        [ValidateSet("Compliant", "Not Compliant", "Failed", "Pending", "Received", "Unresponsive")]
+        public string Status { get; set; } 
+        
+        /// <summary>
+        /// Gets or sets the node name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The node name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nodeconfiguration name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = true, HelpMessage = "The nodeconfiguration name.")]
+        [ValidateNotNullOrEmpty]
+        public string NodeConfigurationName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name.")]
+        [ValidateNotNullOrEmpty]
+        public string ConfigurationName { get; set; }
+
+        /// <summary>
+        /// Execute this cmdlet.
+        /// </summary>
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        public override void ExecuteCmdlet()
+        {
+            IEnumerable<DscNode> ret = null;
+
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ById)
+            {
+                ret = new List<DscNode> 
+                { 
+                   this.AutomationClient.GetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id)
+                };
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
+            {
+                ret = this.AutomationClient.ListDscNodesByName(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.Name,
+                    this.Status);
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByNodeConfiguration)
+            {
+                ret = this.AutomationClient.ListDscNodesByNodeConfiguration(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.NodeConfigurationName,
+                    this.Status);
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfigurationName)
+            {
+                ret = this.AutomationClient.ListDscNodesByConfiguration(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.ConfigurationName,
+                    this.Status);
+            }
+            else
+            {
+                // ByAll
+                ret = this.AutomationClient.ListDscNodes(this.ResourceGroupName, this.AutomationAccountName, this.Status);
+            }
+
+            this.GenerateCmdletOutput(ret);
+        }
+    }
+}
