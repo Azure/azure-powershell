@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -1671,6 +1672,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 if (e.ToString().Contains("while in use"))
                 {
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// This test covers negative test on Set-AzurePlatformVMImage cmdlets
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Get,Set,Remove)-AzurePlatformVMImage)")]
+        public void AzurePlatformVMImageNegativeTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            var imgName = Utilities.GetUniqueShortName("img");
+
+            try
+            {
+                var scripts = new string[]
+                {
+                    "Import-Module '.\\" + Utilities.AzurePowershellModuleServiceManagementPirModule + "';",
+                    "$c1 = New-AzurePlatformComputeImageConfig -Offer test -Sku test -Version test;",
+                    "$c2 = New-AzurePlatformMarketplaceImageConfig -PlanName test -Product test -Publisher test -PublisherId test;",
+                    "Set-AzurePlatformVMImage -ImageName " + imgName + " -ReplicaLocations 'West US' -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
+                };
+
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ResourceNotFound: The image with the specified name does not exist.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
                     Console.WriteLine(e.InnerException.ToString());
                 }
                 else

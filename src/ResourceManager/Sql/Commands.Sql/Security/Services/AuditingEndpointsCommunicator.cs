@@ -17,6 +17,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -100,8 +101,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(SecurityConstants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(SecurityConstants.ClientRequestIdHeaderName, clientRequestId);
+            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

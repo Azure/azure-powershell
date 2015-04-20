@@ -72,8 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.3.4.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Compute, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.4.0.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.1.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -133,9 +134,18 @@
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageVersionCommand.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
+    <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageSkuCommand.cs" />
+    <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageCommand.cs" />
+    <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
@@ -148,6 +158,8 @@
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
+    <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
+    <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
@@ -223,6 +235,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

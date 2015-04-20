@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineTests
+    public partial class VirtualMachineTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

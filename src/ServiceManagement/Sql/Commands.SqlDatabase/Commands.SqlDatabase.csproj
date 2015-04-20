@@ -105,7 +105,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Sql, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Sql.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Sql.5.2.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -149,6 +149,7 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Database\Cmdlet\CmdletCommon.cs" />
+    <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseUsages.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlRecoverableDatabase.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="Database\Cmdlet\StartAzureSqlDatabaseImport.cs" />

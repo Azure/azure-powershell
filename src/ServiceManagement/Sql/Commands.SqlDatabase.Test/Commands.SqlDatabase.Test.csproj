@@ -100,8 +100,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Sql.5.0.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Sql, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Sql.5.2.0\lib\net40\Microsoft.WindowsAzure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>

@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public VirtualMachineChildResources Resources { get; set; }
+        public IList<VirtualMachineExtension> Extensions { get; set; }
 
         public VirtualMachineInstanceView Status { get; set; }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Location = virtualMachine == null ? null : virtualMachine.Location,
                 ProvisioningState = virtualMachine.ProvisioningState,
                 Tags = virtualMachine.Tags,
-                Resources = virtualMachine.Resources,
+                Extensions = virtualMachine.Extensions,
                 Status = null, // TODO: VM response does not return Status info yet
             };
 
