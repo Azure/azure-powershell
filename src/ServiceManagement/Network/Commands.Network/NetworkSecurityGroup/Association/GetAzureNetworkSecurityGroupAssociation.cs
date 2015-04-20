@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
     [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
-        protected const string GetNetworkSecurityGroupAssociationForSubnet = "GetNetworkSecurityGroupAssociationForSubnet";
-        protected const string GetNetworkSecurityGroupAssociationForIaaSRole = "GetNetworkSecurityGroupAssociationForIaaSRole";
-        protected const string GetNetworkSecurityGroupAssociationForPaaSRole = "GetNetworkSecurityGroupAssociationForPaaSRole";
+        public const string GetNetworkSecurityGroupAssociationForSubnet = "GetNetworkSecurityGroupAssociationForSubnet";
+        public const string GetNetworkSecurityGroupAssociationForIaaSRole = "GetNetworkSecurityGroupAssociationForIaaSRole";
+        public const string GetNetworkSecurityGroupAssociationForPaaSRole = "GetNetworkSecurityGroupAssociationForPaaSRole";
         private string obtainedDeploymentName { get; set; }
 
         #region Subnet

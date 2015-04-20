@@ -268,10 +268,10 @@
     <value>Completed Operation: Update-AzureApplicationGateway</value>
   </data>
   <data name="RemoveNetworkSecurityGroupFromNicSucceeded" xml:space="preserve">
-    <value>Successfully removed Network Security Group with name "{0}" from Network Interface "{1"} in VM "{2}" in Cloud Service "{3}".</value>
+    <value>Successfully removed Network Security Group with name "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}".</value>
   </data>
   <data name="RemoveNetworkSecurityGroupFromNicWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Network Security Group "{0}" from Network Interface "{1"} in VM "{2}" in Cloud Service "{3}"?</value>
+    <value>Are you sure you want to remove the Network Security Group "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}"?</value>
   </data>
   <data name="RemoveNetworkSecurityGroupFromRoleSucceeded" xml:space="preserve">
     <value>Successfully removed Network Security Group with name "{0}" from VM "{1}" in Cloud Service "{2}".</value>

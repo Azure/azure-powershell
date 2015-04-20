@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
     [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(bool))]
     public class RemoveAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
-        protected const string RemoveNetworkSecurityGroupAssociationFromSubnet = "RemoveNetworkSecurityGroupAssociationFromSubnet";
-        protected const string RemoveNetworkSecurityGroupAssociationFromIaaSRole = "RemoveNetworkSecurityGroupAssociationFromIaaSRole";
-        protected const string RemoveNetworkSecurityGroupAssociationFromPaaSRole = "RemoveNetworkSecurityGroupAssociationFromPaaSRole";
+        public const string RemoveNetworkSecurityGroupAssociationFromSubnet = "RemoveNetworkSecurityGroupAssociationFromSubnet";
+        public const string RemoveNetworkSecurityGroupAssociationFromIaaSRole = "RemoveNetworkSecurityGroupAssociationFromIaaSRole";
+        public const string RemoveNetworkSecurityGroupAssociationFromPaaSRole = "RemoveNetworkSecurityGroupAssociationFromPaaSRole";
         private string obtainedDeploymentName { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false)]

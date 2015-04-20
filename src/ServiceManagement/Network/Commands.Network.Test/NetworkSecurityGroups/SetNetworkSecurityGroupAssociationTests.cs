@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading;
-using System.Threading.Tasks;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Network.IPForwarding;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -26,6 +23,8 @@ using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Moq;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
@@ -116,43 +115,43 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                 .Returns(Task.Factory.StartNew(() => new Azure.OperationStatusResponse()));
 
             this.networkingClientMock
-            .Setup(c =>
-                c.NetworkSecurityGroups.GetForSubnetAsync(
-                    VirtualNetworkName,
-                    SubnetName,
-                    It.IsAny<CancellationToken>()))
-            .Returns(Task.Factory.StartNew(() =>
-                new NetworkSecurityGroupGetAssociationResponse()
-                {
-                    Name = CurrentNetworkSecurityGroup
-                }));
+                .Setup(c =>
+                    c.NetworkSecurityGroups.GetForSubnetAsync(
+                        VirtualNetworkName,
+                        SubnetName,
+                        It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new NetworkSecurityGroupGetAssociationResponse()
+                    {
+                        Name = CurrentNetworkSecurityGroup
+                    }));
 
             this.networkingClientMock
-            .Setup(c =>
-                c.NetworkSecurityGroups.GetForRoleAsync(
-                    ServiceName,
-                    DeploymentName,
-                    RoleName,
-                    It.IsAny<CancellationToken>()))
-            .Returns(Task.Factory.StartNew(() =>
-                new NetworkSecurityGroupGetAssociationResponse()
-                {
-                    Name = CurrentNetworkSecurityGroup
-                }));
+                .Setup(c =>
+                    c.NetworkSecurityGroups.GetForRoleAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new NetworkSecurityGroupGetAssociationResponse()
+                    {
+                        Name = CurrentNetworkSecurityGroup
+                    }));
 
             this.networkingClientMock
-            .Setup(c =>
-                c.NetworkSecurityGroups.GetForNetworkInterfaceAsync(
-                    ServiceName,
-                    DeploymentName,
-                    RoleName,
-                    NetworkInterfaceName,
-                    It.IsAny<CancellationToken>()))
-            .Returns(Task.Factory.StartNew(() =>
-                new NetworkSecurityGroupGetAssociationResponse()
-                {
-                    Name = CurrentNetworkSecurityGroup
-                }));
+                .Setup(c =>
+                    c.NetworkSecurityGroups.GetForNetworkInterfaceAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        NetworkInterfaceName,
+                        It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() =>
+                    new NetworkSecurityGroupGetAssociationResponse()
+                    {
+                        Name = CurrentNetworkSecurityGroup
+                    }));
 
         }
 
@@ -176,6 +175,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             cmdlet.ExecuteCmdlet();
 
             // Assert
+
+            #region Never called
             computeClientMock.Verify(
                 c => c.Deployments.GetBySlotAsync(
                     It.IsAny<string>(),
@@ -201,6 +202,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
                     It.IsAny<CancellationToken>()),
                 Times.Never);
+            #endregion
 
             networkingClientMock.Verify(
                 c => c.NetworkSecurityGroups.AddToSubnetAsync(
@@ -215,7 +217,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
-        public void SetNSGOnIaaSRoleNoPreviousNSG()
+        public void SetNSGOnVMRoleNoPreviousNSG()
         {
             // Setup
             cmdlet = new SetAzureNetworkSecurityGroupAssociation
@@ -232,6 +234,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             cmdlet.ExecuteCmdlet();
 
             // Assert
+
+            #region Never called
             computeClientMock.Verify(
                 c => c.Deployments.GetBySlotAsync(
                     ServiceName,
@@ -256,6 +260,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
                     It.IsAny<CancellationToken>()),
                 Times.Never);
+            #endregion
 
             networkingClientMock.Verify(
                 c => c.NetworkSecurityGroups.AddToRoleAsync(
@@ -271,7 +276,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
-        public void SetNSGOnIaaSNicNoPreviousNSG()
+        public void SetNSGOnVMNicNoPreviousNSG()
         {
             // Setup
             cmdlet = new SetAzureNetworkSecurityGroupAssociation
@@ -289,6 +294,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             cmdlet.ExecuteCmdlet();
 
             // Assert
+
+            #region Never called
             computeClientMock.Verify(
                 c => c.Deployments.GetBySlotAsync(
                     ServiceName,
@@ -312,6 +319,126 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
                     It.IsAny<CancellationToken>()),
                 Times.Never);
+            #endregion
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                    ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    NetworkInterfaceName,
+                    It.Is<NetworkSecurityGroupAddAssociationParameters>(
+                        parameters => string.Equals(NetworkSecurityGroupName, parameters.Name)),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
+        }
+
+
+        [Fact]
+        public void SetNSGOnRoleByNameNoPreviousNSG()
+        {
+            // Setup
+            cmdlet = new SetAzureNetworkSecurityGroupAssociation
+            {
+                Name = NetworkSecurityGroupName,
+                ServiceName = ServiceName,
+                RoleName = RoleName,
+                CommandRuntime = mockCommandRuntime,
+                Client = this.client
+            };
+            cmdlet.SetParameterSet(SetAzureNetworkSecurityGroupAssociation.AddNetworkSecurityGroupAssociationToPaaSRole);
+
+            // Action
+            cmdlet.ExecuteCmdlet();
+
+            // Assert
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    ServiceName,
+                    DeploymentSlot.Production,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            #region Never called
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToSubnetAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+            #endregion
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToRoleAsync(
+                    ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    It.Is<NetworkSecurityGroupAddAssociationParameters>(
+                        parameters => string.Equals(NetworkSecurityGroupName, parameters.Name)),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
+        }
+
+        [Fact]
+        public void SetNSGOnNicByNameNoPreviousNSG()
+        {
+            // Setup
+            cmdlet = new SetAzureNetworkSecurityGroupAssociation
+            {
+                Name = NetworkSecurityGroupName,
+                ServiceName = ServiceName,
+                RoleName = RoleName,
+                NetworkInterfaceName = NetworkInterfaceName,
+                CommandRuntime = mockCommandRuntime,
+                Client = this.client
+            };
+            cmdlet.SetParameterSet(SetAzureNetworkSecurityGroupAssociation.AddNetworkSecurityGroupAssociationToPaaSRole);
+
+            // Action
+            cmdlet.ExecuteCmdlet();
+
+            // Assert
+
+            #region Never called
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToRoleAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToSubnetAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+            #endregion
+
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    ServiceName,
+                    DeploymentSlot.Production,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
 
             networkingClientMock.Verify(
                 c => c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
@@ -438,7 +565,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
-        public void SetNSGOnIaaSRoleWithPreviousNSG()
+        public void SetNSGOnVMRoleWithPreviousNSG()
         {
             // Setup
 
@@ -548,7 +675,7 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
-        public void SetNSGOnIaaSNicWithPreviousNSG()
+        public void SetNSGOnVMNicWithPreviousNSG()
         {
             // Setup
 
@@ -657,6 +784,232 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     DeploymentName,
                     RoleName,
                     NetworkInterfaceName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
+        }
+
+        [Fact]
+        public void SetNSGOnRoleByNameWithPreviousNSG()
+        {
+            // Setup
+
+            this.networkingClientMock
+                .Setup(c =>
+                    c.NetworkSecurityGroups.AddToRoleAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                        It.IsAny<CancellationToken>()))
+                .ThrowsAsync(AlreadySetException);
+
+            this.networkingClientMock
+                .Setup(c =>
+                    c.NetworkSecurityGroups.RemoveFromRoleAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        CurrentNetworkSecurityGroup,
+                        It.IsAny<CancellationToken>()))
+                .Returns(() =>
+                {
+                    // after we remove the current association, Set shouldn't throw an exception any more
+                    this.networkingClientMock
+                    .Setup(c =>
+                        c.NetworkSecurityGroups.AddToRoleAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                        It.IsAny<CancellationToken>()))
+                    .Returns(Task.Factory.StartNew(() => new Azure.OperationStatusResponse()));
+
+                    return Task.Factory.StartNew(() => new Azure.OperationStatusResponse());
+                });
+
+            cmdlet = new SetAzureNetworkSecurityGroupAssociation
+            {
+                ServiceName = ServiceName,
+                RoleName = RoleName,
+                Name = NetworkSecurityGroupName,
+                CommandRuntime = mockCommandRuntime,
+                Client = this.client
+            };
+            cmdlet.SetParameterSet(SetAzureNetworkSecurityGroupAssociation.AddNetworkSecurityGroupAssociationToPaaSRole);
+
+            // Action
+            cmdlet.ExecuteCmdlet();
+
+            // Assert
+            #region Never called
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToSubnetAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+            #endregion
+
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<DeploymentSlot>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToRoleAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    It.Is<NetworkSecurityGroupAddAssociationParameters>(
+                        parameters => string.Equals(NetworkSecurityGroupName, parameters.Name)),
+                    It.IsAny<CancellationToken>()),
+                Times.Exactly(2));
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.RemoveFromRoleAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    CurrentNetworkSecurityGroup,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetForRoleAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            Assert.Equal(0, mockCommandRuntime.OutputPipeline.Count);
+        }
+
+        [Fact]
+        public void SetNSGOnNicByNameWithPreviousNSG()
+        {
+            // Setup
+
+            this.networkingClientMock
+                .Setup(c =>
+                    c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        NetworkInterfaceName,
+                        It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                        It.IsAny<CancellationToken>()))
+                .ThrowsAsync(AlreadySetException);
+
+            this.networkingClientMock
+                .Setup(c =>
+                    c.NetworkSecurityGroups.RemoveFromNetworkInterfaceAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        NetworkInterfaceName,
+                        CurrentNetworkSecurityGroup,
+                        It.IsAny<CancellationToken>()))
+                .Returns(() =>
+                {
+                    // after we remove the current association, Set shouldn't throw an exception any more
+                    this.networkingClientMock
+                    .Setup(c =>
+                        c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                        ServiceName,
+                        DeploymentName,
+                        RoleName,
+                        NetworkInterfaceName,
+                        It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                        It.IsAny<CancellationToken>()))
+                    .Returns(Task.Factory.StartNew(() => new Azure.OperationStatusResponse()));
+
+                    return Task.Factory.StartNew(() => new Azure.OperationStatusResponse());
+                });
+
+            cmdlet = new SetAzureNetworkSecurityGroupAssociation
+            {
+                ServiceName = ServiceName,
+                RoleName = RoleName,
+                NetworkInterfaceName = NetworkInterfaceName,
+                Name = NetworkSecurityGroupName,
+                CommandRuntime = mockCommandRuntime,
+                Client = this.client
+            };
+            cmdlet.SetParameterSet(SetAzureNetworkSecurityGroupAssociation.AddNetworkSecurityGroupAssociationToPaaSRole);
+
+            // Action
+            cmdlet.ExecuteCmdlet();
+
+            // Assert
+            #region Never called
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToSubnetAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToRoleAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<NetworkSecurityGroupAddAssociationParameters>(),
+                    It.IsAny<CancellationToken>()),
+                Times.Never);
+            #endregion
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.AddToNetworkInterfaceAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    NetworkInterfaceName,
+                    It.Is<NetworkSecurityGroupAddAssociationParameters>(
+                        parameters => string.Equals(NetworkSecurityGroupName, parameters.Name)),
+                    It.IsAny<CancellationToken>()),
+                Times.Exactly(2));
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.RemoveFromNetworkInterfaceAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    NetworkInterfaceName,
+                    CurrentNetworkSecurityGroup,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetForNetworkInterfaceAsync(
+                    cmdlet.ServiceName,
+                    DeploymentName,
+                    RoleName,
+                    NetworkInterfaceName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<DeploymentSlot>(),
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 

@@ -146,6 +146,8 @@
   <ItemGroup>
     <Compile Include="IPForwarding\GetIPForwardingTests.cs" />
     <Compile Include="IPForwarding\SetIPForwardingTests.cs" />
+    <Compile Include="NetworkSecurityGroups\GetNetworkSecurityGroupAssociationTests.cs" />
+    <Compile Include="NetworkSecurityGroups\RemoveNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="NetworkSecurityGroups\SetNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes\GetEffectiveRouteTests.cs" />

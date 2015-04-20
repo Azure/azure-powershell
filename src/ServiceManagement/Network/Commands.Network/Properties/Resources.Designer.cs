@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Network Interface &quot;{1&quot;} in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;..
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;..
         /// </summary>
         internal static string RemoveNetworkSecurityGroupFromNicSucceeded {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from Network Interface &quot;{1&quot;} in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;?.
         /// </summary>
         internal static string RemoveNetworkSecurityGroupFromNicWarning {
             get {
