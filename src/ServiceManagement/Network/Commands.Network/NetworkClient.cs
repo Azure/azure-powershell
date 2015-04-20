@@ -14,42 +14,46 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using Gateway.Model;
+    using Hyak.Common;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using NetworkSecurityGroup.Model;
+    using Routes.Model;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Gateway.Model;    
-    using NetworkSecurityGroup.Model;
-    using Routes.Model;
-    using WindowsAzure;
-    using WindowsAzure.Commands.Common;
+    using System.Security.Cryptography.X509Certificates;
     using WindowsAzure.Commands.Common.Storage;
     using WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Common;
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
     using WindowsAzure.Storage.Auth;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Hyak.Common;
-    using System.Security.Cryptography.X509Certificates;
-    using PowerShellAppGwModel = ApplicationGateway.Model;    
+    using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
+    using PowerShellAppGwModel = ApplicationGateway.Model;
+
     public class NetworkClient
     {
-        private readonly NetworkManagementClient client;
-        private readonly ManagementClient managementClient;
+        private readonly INetworkManagementClient client;
+        private readonly IComputeManagementClient computeClient;
+        private readonly IManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
 
         public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
+                   CreateClient<ComputeManagementClient>(profile, subscription),
                    CreateClient<ManagementClient>(profile, subscription),
                    commandRuntime)
         {   
         }
-        public NetworkClient(NetworkManagementClient client, ManagementClient managementClient, ICommandRuntime commandRuntime)
+        public NetworkClient(INetworkManagementClient client, IComputeManagementClient computeClient, IManagementClient managementClient, ICommandRuntime commandRuntime)
         {
             this.client = client;
+            this.computeClient = computeClient;
             this.managementClient = managementClient;
             this.commandRuntime = commandRuntime;
         }
@@ -657,11 +661,12 @@ namespace Microsoft.Azure.Commands.Network
             return client.Routes.DeleteRouteTable(routeTableName);
         }
 
-        public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType)
+        public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType, string ipAddress)
         {
             NextHop nextHop = new NextHop()
             {
                 Type = nextHopType,
+                IpAddress = ipAddress
             };
             SetRouteParameters parameters = new SetRouteParameters()
             {
@@ -814,7 +819,7 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.DeleteRule(securityGroupName, securityRuleName);
         }
 
-        public NetworkSecurityGroupGetForSubnetResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForSubnet(string virtualNetworkName, string subnetName)
         {
             return client.NetworkSecurityGroups.GetForSubnet(virtualNetworkName, subnetName);
         }
@@ -826,7 +831,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string subnetName, string virtualNetworkName)
         {
-            var parameters = new NetworkSecurityGroupAddToSubnetParameters()
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
             {
                 Name = networkSecurityGroupName
             };
@@ -834,5 +839,100 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.AddToSubnet(virtualNetworkName, subnetName, parameters);
         }
 
+        public string GetDeploymentBySlot(string serviceName, string slot)
+        {
+            if (string.IsNullOrEmpty(serviceName))
+            {
+                throw new ArgumentNullException(serviceName);
+            }
+
+            if (string.IsNullOrEmpty(slot))
+            {
+                throw new ArgumentNullException(slot);
+            }
+
+            var slotType = (ComputeModels.DeploymentSlot)Enum.Parse(typeof(ComputeModels.DeploymentSlot), slot, true);
+
+            return this.computeClient.Deployments.GetBySlot(
+                        serviceName,
+                        slotType).Name;
+        }
+
+        public string GetDeploymentName(IPersistentVM vm, string slot, string serviceName)
+        {
+            string deploymentName = null;
+            var vmRoleContext = vm as PersistentVMRoleContext;
+            if (vmRoleContext != null)
+            {
+                deploymentName = vmRoleContext.DeploymentName;
+            }
+
+            if (string.IsNullOrEmpty(slot) && string.IsNullOrEmpty(deploymentName))
+            {
+                slot = DeploymentSlotType.Production;
+            }
+
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = this.GetDeploymentBySlot(serviceName, slot);
+            }
+
+            return deploymentName;
+        }
+
+        public GetEffectiveRouteTableResponse GetEffectiveRouteTableForRoleInstance(
+            string serviceName,
+            string deploymentName,
+            string roleInstanceName)
+        {
+            return this.client.Routes.GetEffectiveRouteTableForRoleInstance(
+                serviceName,
+                deploymentName,
+                roleInstanceName);
+        }
+
+        public GetEffectiveRouteTableResponse GetEffectiveRouteTableForNetworkInterface(
+            string serviceName,
+            string deploymentName,
+            string roleInstanceName,
+            string networkInterfaceName)
+        {
+            return this.client.Routes.GetEffectiveRouteTableForNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleInstanceName,
+                networkInterfaceName);
+        }
+
+        public void SetIPForwardingForRole(string serviceName, string deploymentName, string roleName, bool ipForwarding)
+        {
+            var parameters = new IPForwardingSetParameters()
+            {
+                State = ipForwarding ? "Enabled" : "Disabled"
+            };
+
+            client.IPForwarding.SetOnRole(serviceName, deploymentName, roleName, parameters);
+        }
+
+        public void SetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName, bool ipForwarding)
+        {
+            var parameters = new IPForwardingSetParameters()
+            {
+                State = ipForwarding ? "Enabled" : "Disabled"
+            };
+
+            client.IPForwarding.SetOnNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName, parameters);
+        }
+
+        public string GetIPForwardingForRole(string serviceName, string deploymentName, string roleName)
+        {
+            IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForRole(serviceName, deploymentName, roleName);
+            return ipForwardingGetResponse.State;
+        }
+        public string GetIPForwardingForNetworkInterface(string serviceName, string deploymentName, string roleName, string networkInterfaceName)
+        {
+            IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName);
+            return ipForwardingGetResponse.State;
+        }
     }
 }

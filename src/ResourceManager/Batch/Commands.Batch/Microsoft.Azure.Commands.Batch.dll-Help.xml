@@ -3165,26 +3165,7 @@
         <maml:para>C:\PS&gt;</maml:para>
       </maml:introduction>
       <dev:code>
-        AffinityInformation         :
-        CommandLine                 : cmd /c dir /s
-        CreationTime                : 3/24/2015 10:21:51 PM
-        EnvironmentSettings         :
-        ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSTaskExecutionInformation
-        LastModified                : 3/24/2015 10:21:51 PM
-        Name                        : myTask
-        PreviousState               : Running
-        PreviousStateTransitionTime : 3/24/2015 10:22:00 PM
-        RunElevated                 : False
-        State                       : Completed
-        StateTransitionTime         : 3/24/2015 10:22:00 PM
-        Statistics                  :
-        TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
-        Url                         : https://cmdletexample.batch-test.windows-int.net/workitems/myWorkItem/jobs/job-0000000001/tasks/myTask
-        VMInformation               : Microsoft.Azure.Commands.Batch.Models.PSVMInformation
-        ResourceFiles               :
-
-        AffinityInformation         :
-        CommandLine
+        Get-AzureBatchJob -WorkItemName "myWorkItem" -Name "job-0000000001" -BatchContext $context | Get-AzureBatchTask -BatchContext $context
 
         AffinityInformation         :
         CommandLine                 : cmd /c dir /s
@@ -3982,7 +3963,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DestinationPath</maml:name>
         <maml:description>
-          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the local directory.</maml:para>
+          <maml:para>The path to the directory where the Task file will be downloaded. If no destination directory is specified, then the task file will be downloaded to the current directory.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -5239,4 +5220,1373 @@
     </maml:navigationLink>
   </maml:relatedLinks>
 </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchVM
+      </command:name>
+      <maml:description>
+        <maml:para>Gets Azure Batch vms under the specified pool.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchVM</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the Azure Batch vms under the pool specified by either the PoolName or Pool parameters. You can use the Name parameter to get a single vm, or you can use the Filter parameter to get the vms that match an OData filter. </maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVM</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use when querying for vms. If no filter is specified, then all vms under the pool specified with either the PoolName or the Pool parameter will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool which contains the vms.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of vms to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVM</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool which contains the vms.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm to retrieve from the pool. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVM</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use when querying for vms. If no filter is specified, then all vms under the pool specified with either the PoolName or the Pool parameter will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>Pool</maml:name>
+          <maml:description>
+            <maml:para>The PSCloudPool object representing the pool which contains the vms. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of vms to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for vms. If no filter is specified, then all vms under the pool specified with either the PoolName or the Pool parameter will be returned.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of vms to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm to retrieve from the pool. Wildcards are not permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>Pool</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudPool object representing the pool which contains the vms. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCloudPool</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool which contains the vms.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSVM</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVM -PoolName &quot;myPool&quot; -Name &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context
+
+          Name                  : tvm-1900272697_1-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_1-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 8:59:59 PM
+          LastBootTime          : 3/30/2015 8:59:59 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.128.7
+          AffinityId            : TVM:tvm-1900272697_1-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Gets the vm named &quot;tvm-1900272697_1-20150330t205553z&quot; from pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVM -PoolName &quot;myPool&quot; -Filter &quot;state eq 'idle'&quot; -BatchContext $context
+
+          Name                  : tvm-1900272697_1-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_1-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 8:59:59 PM
+          LastBootTime          : 3/30/2015 8:59:59 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.128.7
+          AffinityId            : TVM:tvm-1900272697_1-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+
+          Name                  : tvm-1900272697_2-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_2-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 9:00:26 PM
+          LastBootTime          : 3/30/2015 9:00:26 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.128.17
+          AffinityId            : TVM:tvm-1900272697_2-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Gets the idle vms under pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchPool -Name &quot;myPool&quot; -BatchContext $context | Get-AzureBatchVM -BatchContext $context
+
+          Name                  : tvm-1900272697_1-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_1-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 8:59:59 PM
+          LastBootTime          : 3/30/2015 8:59:59 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.128.7
+          AffinityId            : TVM:tvm-1900272697_1-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+
+          Name                  : tvm-1900272697_2-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_2-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 9:00:26 PM
+          LastBootTime          : 3/30/2015 9:00:26 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.128.17
+          AffinityId            : TVM:tvm-1900272697_2-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+
+          Name                  : tvm-1900272697_3-20150330t205553z
+          Url                   : https://cmdletexample.batch-test.windows-int.net/pools/myPool/tvms/tvm-1900272697_3-20150330t205553z
+          State                 : Idle
+          StateTransitionTime   : 3/30/2015 8:59:50 PM
+          LastBootTime          : 3/30/2015 8:59:50 PM
+          VMAllocationTime      : 3/30/2015 8:55:53 PM
+          IPAddress             : 10.215.112.35
+          AffinityId            : TVM:tvm-1900272697_3-20150330t205553z
+          VMSize                : small
+          TotalTasksRun         : 0
+          StartTaskInformation  : Microsoft.Azure.Commands.Batch.Models.PSStartTaskInformation
+          RecentTasks           :
+          StartTask             : Microsoft.Azure.Commands.Batch.Models.PSStartTask
+          CertificateReferences :
+          VMErrors              :
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Gets all vms under pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchVMFile
+      </command:name>
+      <maml:description>
+        <maml:para>Gets the properties of the files associated with the specified Azure Batch vm.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchVMFile</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the properties of the files associated with the Azure Batch vm specified by either the PoolName and VMName parameters or the VM parameter. You can use the Name parameter to get a single vm file, or you can use the Filter parameter to get the vm files that match an OData filter. You can use the Recursive parameter to perform a recursive list of all files of the vm.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use when querying for vm files. If no filter is specified, then all vm files on the vm specified with either the PoolName and VMName parameters or the VM parameter will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool which contains the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm containing the files.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of vm files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If present, performs a recursive list of files of the vm. Otherwise, returns only the files at the vm directory root.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFile</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool which contains the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the file to retrieve from the vm. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If present, performs a recursive list of files of the vm. Otherwise, returns only the files at the vm directory root.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm containing the files.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchVMFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para>The OData filter clause to use when querying for vm files. If no filter is specified, then all vm files on the vm specified with either the PoolName and VMName parameters or the VM parameter will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm which contains the files. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of vm files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Recursive</maml:name>
+          <maml:description>
+            <maml:para>If present, performs a recursive list of files of the vm. Otherwise, returns only the files at the vm directory root.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para>The OData filter clause to use when querying for vm files. If no filter is specified, then all vm files on the vm specified with either the PoolName and VMName parameters or the VM parameter will be returned.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of vm files to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the file to retrieve from the vm. Wildcards are not permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool which contains the vm.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Recursive</maml:name>
+        <maml:description>
+          <maml:para>If present, performs a recursive list of files of the vm. Otherwise, returns only the files at the vm directory root.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The PSVM object representing the vm which contains the files. Use the Get-AzureBatchVM cmdlet to get a PSVM object.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        <dev:type>
+          <maml:name>PSVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm containing the files.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSVMFile</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVMFile -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_3-20150330t205553z&quot; -Name &quot;startup\stdout.txt&quot; -BatchContext $context
+
+          IsDirectory Name                    Properties                                      Url
+          ----------- ----                    ----------                                      ---
+          False startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Gets the file named &quot;startup\stdout.txt&quot; from the vm named &quot;tvm-1900272697_3-20150330t205553z&quot; in the pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVMFile -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_3-20150330t205553z&quot; -Filter &quot;startswith(name,'startup')&quot; -Recursive -BatchContext $context
+
+          IsDirectory Name                      Properties                                      Url
+          ----------- ----                      ----------                                      ---
+          True startup                                                                   https://cmdletexample.batch-test.windows-in...
+          False startup\ProcessEnv.cmd    Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+          False startup\stderr.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+          False startup\stdout.txt        Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.batch-test.windows-in...
+          True startup\wd                                                                https://cmdletexample.batch-test.windows-in...
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Gets the files under the &quot;startup&quot; directory from the vm named &quot;tvm-1900272697_3-20150330t205553z&quot; in pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVM &quot;myPool&quot; &quot;tvm-1900272697_3-20150330t205553z&quot; -BatchContext $context | Get-AzureBatchVMFile -BatchContext $context
+
+          IsDirectory Name           Properties       Url
+          ----------- ----           ----------       ---
+          True shared                          https://cmdletexample.batch-test.windows-in...
+          True startup                         https://cmdletexample.batch-test.windows-in...
+          True workitems                       https://cmdletexample.batch-test.windows-in...
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>
+            Gets all the files at the root directory of the vm named &quot;tvm-1900272697_3-20150330t205553z&quot; in pool &quot;myPool&quot;.
+          </maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        New-AzureBatchVMUser
+      </command:name>
+      <maml:description>
+        <maml:para>Creates a new user on the specified Azure Batch vm.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureBatchVMUser</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Creates a new user on the specified Azure Batch vm.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureBatchVMUser</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool containing the vm to create the user on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The name of the vm to create the user on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the local windows account created.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpiryTime</maml:name>
+          <maml:description>
+            <maml:para>The expiry time.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>IsAdmin</maml:name>
+          <maml:description>
+            <maml:para>If present, the user is created with administrator privilege.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Password</maml:name>
+          <maml:description>
+            <maml:para>The account password.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to create the user on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureBatchVMUser</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the local windows account created.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpiryTime</maml:name>
+          <maml:description>
+            <maml:para>The expiry time.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>IsAdmin</maml:name>
+          <maml:description>
+            <maml:para>If present, the user is created with administrator privilege.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Password</maml:name>
+          <maml:description>
+            <maml:para>The account password.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to create the user on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VM</maml:name>
+          <maml:description>
+            <maml:para>The PSVM object representing the vm to create the user on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ExpiryTime</maml:name>
+        <maml:description>
+          <maml:para>The expiry time.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>IsAdmin</maml:name>
+        <maml:description>
+          <maml:para>If present, the user is created with administrator privilege.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the local windows account created.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Password</maml:name>
+        <maml:description>
+          <maml:para>The account password.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool containing the vm to create the user on.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VM</maml:name>
+        <maml:description>
+          <maml:para>The PSVM object representing the vm to create the user on.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSVM</command:parameterValue>
+        <dev:type>
+          <maml:name>PSVM</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm to create the user on.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          New-AzureBatchVMUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Creates a new user on the &quot;tvm-1900272697_1-20150330t205553z&quot; vm in the pool named &quot;myPool&quot;. The user name is &quot;testUser&quot;, the password is &quot;Password1234!&quot;, the account expiry time is 7 days from now, and the account is created with administrator privilege.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchVM &quot;myPool&quot; &quot;tvm-1900272697_1-20150330t205553z&quot; -BatchContext $context | New-AzureBatchVMUser -Name &quot;testUser&quot; -Password &quot;Password1234!&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Creates a new user on the &quot;tvm-1900272697_1-20150330t205553z&quot; vm in the pool named &quot;myPool&quot;. The user name is &quot;testUser&quot;, the password is &quot;Password1234!&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Remove-AzureBatchVMUser
+      </command:name>
+      <maml:description>
+        <maml:para>Deletes the specified user account from the specified Azure Batch vm.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureBatchVMUser</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Deletes the specified user account from the specified Azure Batch vm.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchVMUser</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>PoolName</maml:name>
+          <maml:description>
+            <maml:para>The name of the pool that contains the vm.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The name of the user to delete. Wildcards are not permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the user is deleted. Use this parameter to delete the user without being asked for confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the user is deleted. Use this parameter to delete the user without being asked for confirmation.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The name of the user to delete. Wildcards are not permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>PoolName</maml:name>
+        <maml:description>
+          <maml:para>The name of the pool that contains the vm.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>The name of the vm that contains the user.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Remove-AzureBatchVMUser -PoolName &quot;myPool&quot; -VMName &quot;tvm-1900272697_1-20150330t205553z&quot; -Name &quot;myUser&quot; -Force -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Deletes the user named &quot;myUser&quot; from vm &quot;tvm-1900272697_1-20150330t205553z&quot; in pool &quot;myPool&quot;. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+
 </helpItems>

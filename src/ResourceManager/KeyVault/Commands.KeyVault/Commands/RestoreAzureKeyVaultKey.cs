@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Restores the backup key into a vault 

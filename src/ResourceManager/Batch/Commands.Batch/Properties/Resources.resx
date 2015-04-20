@@ -189,6 +189,30 @@
   <data name="GBT_NoJob" xml:space="preserve">
     <value>No job was specified. Supply a PSCloudJob object or a workitem name and job name to query for tasks.</value>
   </data>
+  <data name="GBVMF_GetByName" xml:space="preserve">
+    <value>Getting vm file "{0}" from vm "{1}"</value>
+  </data>
+  <data name="GBVMF_GetByOData" xml:space="preserve">
+    <value>Getting vm files matching the specified OData filter from vm "{0}".</value>
+  </data>
+  <data name="GBVMF_NoFilter" xml:space="preserve">
+    <value>Getting all vm files from vm "{0}".</value>
+  </data>
+  <data name="GBVMF_NoVMSpecified" xml:space="preserve">
+    <value>No vm was specified. Supply a PSVM object or a pool name and vm name to query for files.</value>
+  </data>
+  <data name="GBVM_GetByName" xml:space="preserve">
+    <value>Getting vm "{0}" from pool "{1}".</value>
+  </data>
+  <data name="GBVM_GetByOData" xml:space="preserve">
+    <value>Getting vms matching the specified OData filter from pool "{0}".</value>
+  </data>
+  <data name="GBVM_NoFilter" xml:space="preserve">
+    <value>Getting all vms under pool "{0}".</value>
+  </data>
+  <data name="GBVM_NoPoolSpecified" xml:space="preserve">
+    <value>No pool was specified. Supply a PSCloudPool object or a pool name to query for vms.</value>
+  </data>
   <data name="GBWI_GetByName" xml:space="preserve">
     <value>Getting workitem "{0}"</value>
   </data>
@@ -237,6 +261,12 @@
   <data name="NBT_NoJobSpecified" xml:space="preserve">
     <value>No job specified to create the new task under.  Supply a PSCloudJob object or a workitem name and job name.</value>
   </data>
+  <data name="NBU_CreatingUser" xml:space="preserve">
+    <value>Creating user {0} on vm {1}</value>
+  </data>
+  <data name="NBU_NoVMSpecified" xml:space="preserve">
+    <value>No vm was specified to create the new user on. Supply a PSVM object or a pool name and vm name.</value>
+  </data>
   <data name="NBWI_CreatingWorkItem" xml:space="preserve">
     <value>Creating workitem {0}</value>
   </data>
@@ -269,6 +299,15 @@
   </data>
   <data name="RBT_RemoveTask" xml:space="preserve">
     <value>Removing task ...</value>
+  </data>
+  <data name="RBU_NoUserSpecified" xml:space="preserve">
+    <value>No user specified for deletion. Supply a pool name, vm name, and user name.</value>
+  </data>
+  <data name="RBU_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove user {0}?</value>
+  </data>
+  <data name="RBU_RemoveUser" xml:space="preserve">
+    <value>Removing user ...</value>
   </data>
   <data name="RBWI_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove workitem {0}?</value>
