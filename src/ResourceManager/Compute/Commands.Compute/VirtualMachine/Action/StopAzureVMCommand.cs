@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.StayProvisioned)
                 {
-                    call(this.VirtualMachineClient.Stop);
+                    call(this.VirtualMachineClient.PowerOff);
                 }
                 else
                 {
