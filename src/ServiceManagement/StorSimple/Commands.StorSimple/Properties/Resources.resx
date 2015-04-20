@@ -566,7 +566,7 @@ a special character</value>
     <value>Import started. You can check the import status with Get-AzureStorSimpleLegacyVolumeContainerStatus cmdlet.</value>
   </data>
   <data name="MigrationPlanNoConfigs" xml:space="preserve">
-    <value>There are no configs on the resource.</value>
+    <value>No ConfigFile imported.</value>
   </data>
   <data name="MigrationPlanNotFound" xml:space="preserve">
     <value>No migration plan found corresponding to the LegacyConfigId.</value>

@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var startMigrationPlanRequest = new MigrationPlanStartRequest();
                 startMigrationPlanRequest.ConfigId = LegacyConfigId;
                 startMigrationPlanRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct())
+                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.OrdinalIgnoreCase))
                     : new List<string>();
 
                 var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);

@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var migrationPlanList = StorSimpleClient.GetAllMigrationPlan();
                     if (migrationPlanList.MigrationPlans.Count == 0)
                     {
-                        throw new ArgumentException(Resources.MigrationPlanNoConfigs);
+                        WriteWarning(Resources.MigrationPlanNoConfigs);
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             var legacyContainerNamesList = LegacyContainerNames.ToList();
                             migrationPlan.MigrationPlanInfo =
                                 migrationPlan.MigrationPlanInfo.ToList().FindAll(
-                                    plan => legacyContainerNamesList.Contains(plan.DataContainerName));
+                                    plan => legacyContainerNamesList.Contains(plan.DataContainerName, StringComparer.OrdinalIgnoreCase));
                         }
 
                         var migrationPlanMsg = new MigrationPlanMsg(migrationPlan);

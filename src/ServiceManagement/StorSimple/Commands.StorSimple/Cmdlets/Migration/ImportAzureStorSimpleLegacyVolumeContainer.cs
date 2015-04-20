@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 var importDataContainerRequest = new MigrationImportDataContainerRequest();
                 importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct())
+                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.OrdinalIgnoreCase))
                     : new List<string>();
                 importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
                 importDataContainerRequest.SkipACRs = SkipACRs.IsPresent;
