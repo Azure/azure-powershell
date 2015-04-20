@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override IEnumerable<DatabaseDataMaskingRuleModel> UpdateModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> ApplyUserInputToModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             string errorMessage = ValidateRuleTarget(rules);
             if (string.IsNullOrEmpty(errorMessage))
@@ -275,9 +275,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId); 
+            return null;
         }
 
         /// <summary>

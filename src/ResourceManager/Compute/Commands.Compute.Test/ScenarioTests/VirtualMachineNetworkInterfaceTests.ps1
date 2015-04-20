@@ -19,7 +19,7 @@ Test Virtual Machines with single NetworkInterface
 function Test-SingleNetworkInterface
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
@@ -140,7 +140,7 @@ Test Virtual Machines with a NetworkInterface with DnsSettings
 function Test-SingleNetworkInterfaceDnsSettings
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
@@ -235,7 +235,7 @@ Test Virtual Machines with multiple NetworkInterface
 function Test-MultipleNetworkInterface
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {
