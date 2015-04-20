@@ -261,6 +261,8 @@ function Test-VirtualMachineImageList
                                     Assert-True { $verNames -contains $ver };
                                     Assert-True { $verNames -contains $s6.VirtualMachineImage.Name };
 
+                                    $s6.VirtualMachineImage.Id;
+
                                     $foundAnyImage = $true;
                                 }
                             }
@@ -271,6 +273,41 @@ function Test-VirtualMachineImageList
         }
 
         Assert-True { $foundAnyImage };
+
+        # Test Extension Image
+        $foundAnyExtensionImage = $false;
+        $pubNameFilter = '*Microsoft.Compute*';
+
+        foreach ($pub in $pubNames)
+        {
+            # Filter Windows Images
+            if (-not ($pub -like $pubNameFilter)) { continue; }
+
+            $s1 = Get-AzureVMExtensionImageType -Location $locStr -PublisherName $pub;
+            $types = $s1.Resources | select -ExpandProperty Name;
+            if ($types.Count -gt 0)
+            {
+                foreach ($type in $types)
+                {
+                    $s2 = Get-AzureVMExtensionImageVersion -Location $locStr -PublisherName $pub -Type $type -FilterExpression '*';
+                    $versions = $s2.Resources | select -ExpandProperty Name;
+                    foreach ($ver in $versions)
+                    {
+                        $s3 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
+                
+                        Assert-NotNull $s3;
+                        Assert-NotNull $s3.VirtualMachineExtensionImage;
+                        Assert-True { $s3.VirtualMachineExtensionImage.Name -eq $ver; }
+                        
+                        $s3.VirtualMachineExtensionImage.Id;
+
+                        $foundAnyExtensionImage = $true;
+                    }
+                }
+            }
+        }
+
+        Assert-True { $foundAnyExtensionImage };
 
         # Negative Tests
         # VM Images
@@ -290,7 +327,7 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
 
         $version = '1.0.0';
-        Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter -Version $version; } "was not found";
+        Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
 
         # Extension Images
         $type = Get-ComputeTestResourceName;
