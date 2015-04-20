@@ -34,12 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) &&
-                options.VM == null)
-            {
-                throw new ArgumentNullException(Resources.NBU_NoVMSpecified);
-            }
-
             IUser user = null;
             string vmName = null;
             if (options.VM != null)
@@ -56,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 vmName = options.VMName;
             }
 
-            user.Name = options.UserName;
+            user.Name = options.VMUserName;
             user.Password = options.Password;
             user.ExpiryTime = options.ExpiryTime;
             user.IsAdmin = options.IsAdmin;
@@ -70,20 +64,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Deletes the specified user
         /// </summary>
         /// <param name="parameters">The parameters indicating which user to delete</param>
-        public void DeleteVMUser(RemoveVMUserParameters parameters)
+        public void DeleteVMUser(VMUserOperationParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
             }
-            if (string.IsNullOrWhiteSpace(parameters.PoolName) || string.IsNullOrWhiteSpace(parameters.VMName) || string.IsNullOrWhiteSpace(parameters.UserName))
-            {
-                throw new ArgumentException(Resources.RBU_NoUserSpecified);
-            }
 
             using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
             {
-                poolManager.DeleteUser(parameters.PoolName, parameters.VMName, parameters.UserName, parameters.AdditionalBehaviors);
+                poolManager.DeleteUser(parameters.PoolName, parameters.VMName, parameters.VMUserName, parameters.AdditionalBehaviors);
             }
         }
     }

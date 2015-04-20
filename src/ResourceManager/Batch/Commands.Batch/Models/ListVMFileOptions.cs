@@ -17,27 +17,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListVMFileOptions : BatchClientParametersBase
+    public class ListVMFileOptions : VMOperationParameters
     {
-        /// <summary>
-        /// The name of the pool
-        /// </summary>
-        public string PoolName { get; set; }
-
-        /// <summary>
-        /// The name of the vm
-        /// </summary>
-        public string VMName { get; set; }
+        public ListVMFileOptions(BatchAccountContext context, string poolName, string vmName, PSVM vm, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, poolName, vmName, vm, additionalBehaviors)
+        { }
 
         /// <summary>
         /// If specified, the single vm file with this name will be returned
         /// </summary>
         public string VMFileName { get; set; }
-
-        /// <summary>
-        /// The PSVM object representing the vm to query for files
-        /// </summary>
-        public PSVM VM { get; set; }
 
         /// <summary>
         /// The OData filter to use when querying for vm files

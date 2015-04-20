@@ -32,5 +32,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-MultipleNetworkInterface");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSingleNetworkInterfaceDnsSettings()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
+        }
     }
 }

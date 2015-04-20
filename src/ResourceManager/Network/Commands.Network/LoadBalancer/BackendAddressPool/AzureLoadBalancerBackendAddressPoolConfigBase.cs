@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -25,31 +23,5 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
-
-        [Parameter(
-            HelpMessage = "IPConfig IDs of NetworkInterfaces")]
-        [ValidateNotNullOrEmpty]
-        public List<string> BackendIpConfigurationId { get; set; }
-
-        [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "IPConfig of NetworkInterface")]
-        [ValidateNotNullOrEmpty]
-        public List<PSNetworkInterfaceIpConfiguration> BackendIpConfiguration { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
-            {
-                this.BackendIpConfigurationId = new List<string>();
-
-                foreach (var backendIpConfiguration in this.BackendIpConfiguration)
-                {
-                    this.BackendIpConfigurationId.Add(backendIpConfiguration.Id);
-                }
-            }
-        }
     }
 }

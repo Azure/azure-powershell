@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend Ip config")]
         [ValidateNotNullOrEmpty]
-        public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
+        public List<PSFrontendIPConfiguration> FrontendIpConfiguration { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -116,8 +116,11 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
-            loadBalancer.FrontendIpConfigurations = new List<PSFrontendIpConfiguration>();
-            loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            if (this.FrontendIpConfiguration != null)
+            {
+                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
+                loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            }
 
             if (this.BackendAddressPool != null)
             {

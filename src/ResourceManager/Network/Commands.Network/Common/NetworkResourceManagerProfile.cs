@@ -118,10 +118,10 @@ namespace Microsoft.Azure.Commands.Network
             
             // FrontendIpConfiguration
             // CNM to MNM
-            Mapper.CreateMap<CNM.PSFrontendIpConfiguration, MNM.FrontendIpConfiguration>();
+            Mapper.CreateMap<CNM.PSFrontendIPConfiguration, MNM.FrontendIpConfiguration>();
 
             // MNM to CNM
-            Mapper.CreateMap<MNM.FrontendIpConfiguration, CNM.PSFrontendIpConfiguration>();
+            Mapper.CreateMap<MNM.FrontendIpConfiguration, CNM.PSFrontendIPConfiguration>();
 
             // BackendAddressPool
             // CNM to MNM
