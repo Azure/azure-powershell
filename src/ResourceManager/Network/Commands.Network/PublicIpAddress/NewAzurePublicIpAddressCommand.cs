@@ -69,6 +69,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Reverse FQDN.")]
+        public string ReverseFqdn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IdleTimeoutInMinutes")]
         public int IdleTimeoutInMinutes { get; set; }
 
@@ -118,6 +124,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
                 publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
+                publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
             var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(publicIp);

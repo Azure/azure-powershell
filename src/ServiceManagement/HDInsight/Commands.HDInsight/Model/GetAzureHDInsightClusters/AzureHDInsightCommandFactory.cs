@@ -80,6 +80,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return Help.SafeCreate<ManageAzureHDInsightHttpAccessCommand>();
         }
 
+        public IManageAzureHDInsightRdpAccessCommand CreateManageRdpAccess()
+        {
+            return Help.SafeCreate<ManageAzureHDInsightRdpAccessCommand>();
+        }
+
         public INewAzureHDInsightClusterConfigCommand CreateNewConfig()
         {
             return Help.SafeCreate<NewAzureHDInsightClusterConfigCommand>();

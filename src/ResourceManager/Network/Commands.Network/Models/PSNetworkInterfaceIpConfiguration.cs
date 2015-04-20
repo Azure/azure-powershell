@@ -14,6 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Collections.Generic;
+
     using Newtonsoft.Json;
 
     public class PSNetworkInterfaceIpConfiguration : PSChildResource
@@ -25,6 +27,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId Subnet { get; set; }
 
         public PSResourceId PublicIpAddress { get; set; }
+
+        public List<PSResourceId> LoadBalancerBackendAddressPools { get; set; }
+
+        public List<PSResourceId> LoadBalancerInboundNatRules { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -38,6 +44,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PublicIpAddressText
         {
             get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancerBackendAddressPoolsText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string LoadBalancerInboundNatRulesText
+        {
+            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented); }
         }
     }
 }

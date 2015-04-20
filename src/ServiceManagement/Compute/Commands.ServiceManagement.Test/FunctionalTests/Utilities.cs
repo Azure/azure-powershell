@@ -129,6 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzurePlatformVMImageCmdletName = "Set-AzurePlatformVMImage";
         public const string GetAzurePlatformVMImageCmdletName = "Get-AzurePlatformVMImage";
         public const string RemoveAzurePlatformVMImageCmdletName = "Remove-AzurePlatformVMImage";
+        public const string NewAzurePlatformComputeImageConfigCmdletName = "New-AzurePlatformComputeImageConfig";
+        public const string NewAzurePlatformMarketplaceImageConfigCmdletName = "New-AzurePlatformMarketplaceImageConfig";
         
         // AzureRemoteDesktopFile
         public const string GetAzureRemoteDesktopFileCmdletName = "Get-AzureRemoteDesktopFile";
@@ -561,6 +563,60 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         continue;
                     }
                     else
+                    {
+                        Console.WriteLine(e);
+                        if (e.InnerException != null)
+                        {
+                            Console.WriteLine(e.InnerException);
+                        }
+                        throw;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///  Retry the given action until success or timed out.
+        /// </summary>
+        /// <param name="act">the action</param>
+        /// <param name="errorMessages">retry for this error messages</param>
+        /// <param name="maxTry">the max number of retries</param>
+        /// <param name="intervalSeconds">the interval between retries</param>
+        public static void RetryActionUntilSuccess(Action act, string[] errorMessages, int maxTry, int intervalSeconds)
+        {
+            int i = 0;
+            while (i < maxTry)
+            {
+                try
+                {
+                    act();
+                    return;
+                }
+                catch (Exception e)
+                {
+                    bool found = false;
+                    foreach (var errorMessage in errorMessages)
+                    {
+                        if (e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)))
+                        {
+                            found = true;
+                            i++;
+                            if (i == maxTry)
+                            {
+                                Console.WriteLine("Max number of retry is reached: {0}", errorMessage);
+                                throw;
+                            }
+                            Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
+                            if (e.InnerException != null)
+                            {
+                                Console.WriteLine(e.InnerException);
+                            }
+                            Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
+                            break;
+                        }
+                    }
+
+                    if (!found)
                     {
                         Console.WriteLine(e);
                         if (e.InnerException != null)

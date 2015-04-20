@@ -53,15 +53,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListVMOptions options = new ListVMOptions()
+            ListVMOptions options = new ListVMOptions(this.BatchContext, this.PoolName, this.Pool, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                PoolName = this.PoolName,
                 VMName = this.Name,
-                Pool = this.Pool,
                 Filter = this.Filter,
-                MaxCount = this.MaxCount,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                MaxCount = this.MaxCount
             };
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate

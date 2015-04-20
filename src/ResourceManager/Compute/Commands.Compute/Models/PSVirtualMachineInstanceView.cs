@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public static PSVirtualMachineInstanceView ToPSVirtualMachineInstanceView(
-            this VirtualMachineGetInstanceViewResponse response,
+            this VirtualMachineGetResponse response,
             string resourceGroupName = null,
             string vmName = null)
         {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 return null;
             }
 
-            return response.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
+            return response.VirtualMachine.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
         }
     }
 }
