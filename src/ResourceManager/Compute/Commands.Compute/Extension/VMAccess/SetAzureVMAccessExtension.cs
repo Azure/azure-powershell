@@ -25,9 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension),
-    OutputType(
-        typeof(ComputeLongRunningOperationResponse))]
+        ProfileNouns.VirtualMachineAccessExtension)]
     public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private const string userNameKey = "userName";
