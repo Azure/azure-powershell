@@ -150,7 +150,7 @@ function Get-DefaultCRPImage
 {
     param([string] $loca = "eastasia", [string] $query = '*Microsoft*Windows*Server')
 
-    $result = (Get-AzureVMImagePublisher -Location $loc).Resources | select -ExpandProperty Name | where { $_ -like $query };
+    $result = (Get-AzureVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
     {
         $defaultPublisher = $result;
@@ -160,7 +160,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureVMImageOffer -Location $loc -PublisherName $defaultPublisher).Resources | select -ExpandProperty Name | where { $_ -like '*Windows*' };
+    $result = (Get-AzureVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -170,7 +170,7 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzureVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer).Resources | select -ExpandProperty Name;
+    $result = (Get-AzureVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
@@ -180,7 +180,7 @@ function Get-DefaultCRPImage
         $defaultSku = $result[0];
     }
 
-    $result = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku).Resources | select -ExpandProperty Name;
+    $result = (Get-AzureVMImageVersion -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
     if ($result.Count -eq 1)
     {
         $defaultVersion = $result;
@@ -190,7 +190,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion).VirtualMachineImage;
+    $vmimg = Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }

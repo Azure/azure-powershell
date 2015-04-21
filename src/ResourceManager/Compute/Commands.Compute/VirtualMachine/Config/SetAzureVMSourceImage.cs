@@ -22,13 +22,13 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.SourceImage),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceParameterSet),
+    OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMSourceImageCommand : AzurePSCmdlet
     {
+        protected const string ImageReferenceParameterSet = "ImageReferenceParameterSet";
+        protected const string SourceImageParameterSet = "SourceImageParameterSet";
+
         [Alias("VMProfile")]
         [Parameter(
             Mandatory = true,
@@ -41,12 +41,23 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("SourceImageName", "ImageName")]
         [Parameter(
+            ParameterSetName = SourceImageParameterSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMSourceImageName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+        
+        [Alias("ImageConfig", "Image")]
+        [Parameter(
+            ParameterSetName = ImageReferenceParameterSet,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMImageReference)]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachineImage ImageReference { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -55,11 +66,24 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            this.VM.StorageProfile.SourceImage = string.IsNullOrEmpty(this.Name) ? null :
-                new SourceImageReference
+            if (this.ParameterSetName == SourceImageParameterSet)
+            {
+                this.VM.StorageProfile.SourceImage = string.IsNullOrEmpty(this.Name) ? null :
+                    new SourceImageReference
+                    {
+                        ReferenceUri = this.Name
+                    }.Normalize(this.Profile.Context.Subscription.Id.ToString());
+            }
+            else if (this.ParameterSetName == ImageReferenceParameterSet)
+            {
+                this.VM.StorageProfile.ImageReference = new ImageReference
                 {
-                    ReferenceUri = this.Name
-                }.Normalize(this.Profile.Context.Subscription.Id.ToString());
+                    Publisher = ImageReference.PublisherName,
+                    Offer = ImageReference.Offer,
+                    Sku = ImageReference.Skus,
+                    Version = ImageReference.Version
+                };
+            }
 
             WriteObject(this.VM);
         }

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMComputerName = "The virtual machine's omputer name.";
         public const string VMCredential = "The virtual machine's credential.";
         public const string VMSourceImageName = "The virtual machine's source image name.";
+        public const string VMImageReference = "The virtual machine's image reference.";
         public const string VMVHDContainer = "The virtual machine's Vhd container.";
         public const string VMOSDiskName = "The virtual machine OS disk's name.";
         public const string VMOSDiskVhdUri = "The virtual machine OS disk's Vhd Uri.";
