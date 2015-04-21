@@ -13,24 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage)]
-    [OutputType(typeof(VirtualMachineImageGetResponse))]
+    [OutputType(typeof(PSVirtualMachineImageDetails))]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string Offer { get; set; }
+        public string PublisherName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string PublisherName { get; set; }
+        public string Offer { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Skus { get; set; }
@@ -45,14 +47,31 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineImageGetParameters
             {
                 Location = Location,
-                Offer = Offer,
                 PublisherName = PublisherName,
+                Offer = Offer,
                 Skus = Skus,
                 Version = Version
             };
 
-            VirtualMachineImageGetResponse result = this.VirtualMachineImageClient.Get(parameters);
-            WriteObject(result);
+            VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+
+            var image = new PSVirtualMachineImageDetails
+            {
+                RequestId = response.RequestId,
+                StatusCode = response.StatusCode,
+                Id = response.VirtualMachineImage.Id,
+                Location = response.VirtualMachineImage.Location,
+                Name = response.VirtualMachineImage.Name,
+                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                PublisherName = this.PublisherName,
+                Offer = this.Offer,
+                Skus = this.Skus,
+                Version = this.Version
+            };
+
+            WriteObject(image);
         }
     }
 }

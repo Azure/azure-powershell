@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
@@ -20,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
-    [OutputType(typeof(VirtualMachineExtensionImageGetResponse))]
+    [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -52,7 +53,25 @@ namespace Microsoft.Azure.Commands.Compute
             };
 
             VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
-            WriteObject(result);
+
+            var image = new PSVirtualMachineExtensionImageDetails
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.StatusCode,
+                Id = result.VirtualMachineExtensionImage.Id,
+                Location = result.VirtualMachineExtensionImage.Location,
+                Name = result.VirtualMachineExtensionImage.Name,
+                HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                PublisherName = this.PublisherName,
+                Type = this.Type,
+                Version = this.Version
+            };
+
+            WriteObject(image);
         }
     }
 }

@@ -168,6 +168,11 @@
     <Compile Include="Models\PSSshPublicKey.cs" />
     <Compile Include="Models\PSVaultCertificate.cs" />
     <Compile Include="Models\PSVaultSecretGroup.cs" />
+    <Compile Include="Models\PSOperationContext.cs" />
+    <Compile Include="Models\PSVirtualMachineExtensionImageDetails.cs" />
+    <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
+    <Compile Include="Models\PSVirtualMachineImageDetails.cs" />
+    <Compile Include="Models\PSVirtualMachineImage.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />

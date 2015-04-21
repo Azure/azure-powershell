@@ -213,7 +213,7 @@ function Test-VirtualMachineImageList
 
         # List Tests
         $foundAnyImage = $false;
-        $pubNames = Get-AzureVMImagePublisher -Location $locStr | select -ExpandProperty Resources | select -ExpandProperty Name;
+        $pubNames = Get-AzureVMImagePublisher -Location $locStr | select -ExpandProperty PublisherName;
         $maxPubCheck = 3;
         $numPubCheck = 1;
         $pubNameFilter = '*Windows*';
@@ -223,43 +223,42 @@ function Test-VirtualMachineImageList
             if (-not ($pub -like $pubNameFilter)) { continue; }
 
             $s2 = Get-AzureVMImageOffer -Location $locStr -PublisherName $pub;
-            if ($s2.Resources.Count -gt 0)
+            if ($s2.Count -gt 0)
             {
                 # Check "$maxPubCheck" publishers at most
                 $numPubCheck = $numPubCheck + 1;
                 if ($numPubCheck -gt $maxPubCheck) { break; }
 
-                $offerNames = $s2.Resources | select -ExpandProperty Name;
+                $offerNames = $s2 | select -ExpandProperty Offer;
                 foreach ($offer in $offerNames)
                 {
                     $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $pub -Offer $offer;
-                    if ($s3.Resources.Count -gt 0)
+                    if ($s3.Count -gt 0)
                     {
-                        $skus = $s3.Resources | select -ExpandProperty Name;
+                        $skus = $s3 | select -ExpandProperty Skus;
                         foreach ($sku in $skus)
                         {
                             $s4 = Get-AzureVMImageVersion -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
-                            if ($s4.Resources.Count -gt 0)
+                            if ($s4.Count -gt 0)
                             {
-                                $versions = $s4.Resources | select -ExpandProperty Name;
+                                $versions = $s4 | select -ExpandProperty Version;
 
                                 $s6 = Get-AzureVMImageVersion -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
                                 Assert-NotNull $s6;
-                                Assert-NotNull $s6.Resources;
-                                $verNames = $s6.Resources | select -ExpandProperty Name;
+                                Assert-NotNull $s6.Count -gt 0;
+                                $verNames = $s6 | select -ExpandProperty Version;
 
                                 foreach ($ver in $versions)
                                 {
                                     if ($ver -eq $null -or $ver -eq '') { continue; }
                                     $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
                                     Assert-NotNull $s6;
-                                    Assert-NotNull $s6.VirtualMachineImage;
-                                    $s6.VirtualMachineImage;
+                                    $s6;
 
                                     Assert-True { $verNames -contains $ver };
-                                    Assert-True { $verNames -contains $s6.VirtualMachineImage.Name };
+                                    Assert-True { $verNames -contains $s6.Name };
 
-                                    $s6.VirtualMachineImage.Id;
+                                    $s6.Id;
 
                                     $foundAnyImage = $true;
                                 }
@@ -282,22 +281,21 @@ function Test-VirtualMachineImageList
             if (-not ($pub -like $pubNameFilter)) { continue; }
 
             $s1 = Get-AzureVMExtensionImageType -Location $locStr -PublisherName $pub;
-            $types = $s1.Resources | select -ExpandProperty Name;
+            $types = $s1 | select -ExpandProperty Type;
             if ($types.Count -gt 0)
             {
                 foreach ($type in $types)
                 {
                     $s2 = Get-AzureVMExtensionImageVersion -Location $locStr -PublisherName $pub -Type $type -FilterExpression '*';
-                    $versions = $s2.Resources | select -ExpandProperty Name;
+                    $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {
                         $s3 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
                 
                         Assert-NotNull $s3;
-                        Assert-NotNull $s3.VirtualMachineExtensionImage;
-                        Assert-True { $s3.VirtualMachineExtensionImage.Name -eq $ver; }
+                        Assert-True { $s3.Version -eq $ver; }
                         
-                        $s3.VirtualMachineExtensionImage.Id;
+                        $s3.Id;
 
                         $foundAnyExtensionImage = $true;
                     }
@@ -306,6 +304,15 @@ function Test-VirtualMachineImageList
         }
 
         Assert-True { $foundAnyExtensionImage };
+
+        # Test Piping
+        $pubNameFilter = '*Microsoft*Windows*Server*';
+        $imgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImageVersion | Get-AzureVMImage;
+        Assert-True { $imgs.Count -gt 0 };
+
+        $pubNameFilter = '*Microsoft.Compute*';
+        $extimgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMExtensionImageType | Get-AzureVMExtensionImageVersion | Get-AzureVMExtensionImage;
+        Assert-True { $extimgs.Count -gt 0 };
 
         # Negative Tests
         # VM Images

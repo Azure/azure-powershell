@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
-    [OutputType(typeof(VirtualMachineImageResourceList))]
+    [OutputType(typeof(PSVirtualMachineExtensionImage))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -40,7 +42,19 @@ namespace Microsoft.Azure.Commands.Compute
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
-            WriteObject(result);
+
+            var images = from r in result.Resources
+                         select new PSVirtualMachineExtensionImage
+                         {
+                             RequestId = result.RequestId,
+                             StatusCode = result.StatusCode,
+                             Id = r.Id,
+                             Location = r.Location,
+                             Type = r.Name,
+                             PublisherName = this.PublisherName
+                         };
+
+            WriteObject(images, true);
         }
     }
 }
