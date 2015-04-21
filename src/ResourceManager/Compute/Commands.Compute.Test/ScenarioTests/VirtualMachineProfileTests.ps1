@@ -133,12 +133,12 @@ function Test-VirtualMachineProfile
 	$sshKey = New-AzureSshPublicKey -KeyData $sshPublicKey -Path $sshPath;
 
     $p = Set-AzureVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -CustomData $custom -Secrets $vaultSG -SSHPublicKeys $sshKey -DisablePasswordAuthentication;
-    $p = Set-AzureVMSourceImage -VM $p -Name $img -DestinationVhdsContainer $vhdContainer;
+    $p = Set-AzureVMSourceImage -VM $p -Name $img # -DestinationVhdsContainer $vhdContainer;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-    Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
+    # Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
     Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
 	Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
 	Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
