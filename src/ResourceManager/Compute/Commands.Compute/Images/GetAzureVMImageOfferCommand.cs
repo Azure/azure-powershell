@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineImageListOffersParameters
             {
                 Location = Location,
-                Publishername = PublisherName
+                PublisherName = PublisherName
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);

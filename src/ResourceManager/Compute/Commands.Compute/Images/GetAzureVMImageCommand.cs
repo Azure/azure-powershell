@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = Location,
                     Offer = Offer,
-                    Publishername = PublisherName,
+                    PublisherName = PublisherName,
                     Skus = Skus,
                     Version = Version
                 };
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = Location,
                     Offer = Offer,
-                    Publishername = PublisherName,
+                    PublisherName = PublisherName,
                     Skus = Skus,
                     FilterExpression = FilterExpression
                 };

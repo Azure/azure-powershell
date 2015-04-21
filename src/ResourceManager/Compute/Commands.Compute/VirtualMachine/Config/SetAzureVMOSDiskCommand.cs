@@ -68,16 +68,24 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
         public string Caching { get; set; }
 
+        [Alias("SourceImage")]
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMSourceImageUri)]
+        [ValidateNotNullOrEmpty]
+        public string SourceImageUri { get; set; }
+
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 4,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         public SwitchParameter Windows { get; set; }
 
         [Parameter(
             ParameterSetName = LinuxParamSet,
-            Position = 4,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
@@ -97,6 +105,10 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualHardDisk = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
+                },
+                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                {
+                    Uri = SourceImageUri
                 }
             };
 

@@ -95,13 +95,12 @@ function Test-VirtualMachineExtension
 
         $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img -DestinationVhdsContainer $vhdContainer;
+        $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
-        Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
 
         # Virtual Machine
@@ -169,7 +168,6 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
@@ -275,13 +273,12 @@ function Test-VirtualMachineCustomScriptExtension
 
         $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img -DestinationVhdsContainer $vhdContainer;
+        $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
-        Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
 
         # Virtual Machine
@@ -291,12 +288,12 @@ function Test-VirtualMachineCustomScriptExtension
         # Virtual Machine Extension
         $extname = 'csetest';
         $extver = '1.1';
-		$publisher = 'Microsoft.Compute';
+        $publisher = 'Microsoft.Compute';
         $exttype = 'CustomScriptExtension';
-		$fileToExecute = "a.exe";
-		$containderName = "script"
+        $fileToExecute = "a.exe";
+        $containderName = "script"
 
-		# Set custom script extension
+        # Set custom script extension
         Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containderName;
 
         # Get VM Extension
@@ -306,8 +303,8 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.Publisher $publisher;
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
-		Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-		Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+        Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
+        Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -316,8 +313,8 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.Publisher $publisher;
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
-		Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-		Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+        Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
+        Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
 
@@ -326,7 +323,6 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
@@ -434,13 +430,12 @@ function Test-VirtualMachineAccessExtension
 
         $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img -DestinationVhdsContainer $vhdContainer;
+        $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
-        Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
 
         # Virtual Machine
@@ -450,13 +445,13 @@ function Test-VirtualMachineAccessExtension
         # Virtual Machine Extension
         $extname = 'csetest';
         $extver = '2.0';
-		$user2 = "Bar12";
+        $user2 = "Bar12";
         $password2 = 'FoO@123' + $rgname;
 
-		# Set custom script extension
+        # Set custom script extension
         Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -UserName $user2 -Password $password2;
 
-		$publisher = 'Microsoft.Compute';
+        $publisher = 'Microsoft.Compute';
         $exttype = 'VMAccessAgent';
 
         # Get VM Extension
@@ -466,7 +461,7 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $ext.Publisher $publisher;
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
-		Assert-AreEqual $ext.UserName $user2;
+        Assert-AreEqual $ext.UserName $user2;
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -483,7 +478,6 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
         Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;

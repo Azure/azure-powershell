@@ -83,3 +83,131 @@ function Retry-IfException
 
     $ErrorActionPreference = $oldErrorActionPreferenceValue;
 }
+
+<#
+.SYNOPSIS
+Gets random resource name
+#>
+function Get-RandomItemName
+{
+    param([string] $prefix = "pslibtest")
+    
+    if ($prefix -eq $null -or $prefix -eq '')
+    {
+        $prefix = "pslibtest";
+    }
+
+    $str = $prefix + ((Get-Random) % 10000);
+    return $str;
+}
+
+<#
+.SYNOPSIS
+Gets default VM size string
+#>
+function Get-DefaultVMSize
+{
+    param([string] $location = "eastasia")
+
+    $vmSizes = Get-AzureVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+
+    foreach ($sz in $vmSizes)
+    {
+        if ($sz.Name -eq 'Standard_A3')
+        {
+            return $sz.Name;
+        }
+    }
+
+    return $vmSizes[0].Name;
+}
+
+<#
+.SYNOPSIS
+Gets default RDFE Image
+#>
+function Get-DefaultRDFEImage
+{
+    param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
+
+    $d = (Azure\Get-AzureVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
+
+    if ($d -eq $null)
+    {
+        return $null;
+    }
+    else
+    {
+        return $d[-1].ImageName;
+    }
+}
+
+<#
+.SYNOPSIS
+Gets default RDFE Image
+#>
+function Get-DefaultCRPImage
+{
+    param([string] $loca = "eastasia", [string] $query = '*Microsoft*Windows*Server')
+
+    $result = (Get-AzureVMImagePublisher -Location $loc).Resources | select -ExpandProperty Name | where { $_ -like $query };
+    if ($result.Count -eq 1)
+    {
+        $defaultPublisher = $result;
+    }
+    else
+    {
+        $defaultPublisher = $result[0];
+    }
+
+    $result = (Get-AzureVMImageOffer -Location $loc -PublisherName $defaultPublisher).Resources | select -ExpandProperty Name | where { $_ -like '*Windows*' };
+    if ($result.Count -eq 1)
+    {
+        $defaultOffer = $result;
+    }
+    else
+    {
+        $defaultOffer = $result[0];
+    }
+
+    $result = (Get-AzureVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer).Resources | select -ExpandProperty Name;
+    if ($result.Count -eq 1)
+    {
+        $defaultSku = $result;
+    }
+    else
+    {
+        $defaultSku = $result[0];
+    }
+
+    $result = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku).Resources | select -ExpandProperty Name;
+    if ($result.Count -eq 1)
+    {
+        $defaultVersion = $result;
+    }
+    else
+    {
+        $defaultVersion = $result[0];
+    }
+    
+    $vmimg = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion).VirtualMachineImage;
+
+    return $vmimg;
+}
+
+<#
+.SYNOPSIS
+Gets default VM config object
+#>
+function Get-DefaultVMConfig
+{
+    param([string] $location = "eastasia")
+
+    # VM Profile & Hardware
+    $vmsize = Get-DefaultVMSize $location;
+    $vmname = Get-RandomItemName 'pstestvm';
+
+    $vm = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+
+    return $vm;
+}

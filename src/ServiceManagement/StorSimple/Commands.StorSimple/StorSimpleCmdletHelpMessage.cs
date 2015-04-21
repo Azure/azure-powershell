@@ -123,5 +123,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string SnapshotManagerPasswd = "Password for snapshot manager";
         public const string PersistAzureVMOnFailrue =
             "The switch parameter to debug any Provisioning Failrues by skipping deletion of the VM on failrue";
+        public const string MigrationConfigFilePath = "The legacy appliance's config file for migration";
+        public const string MigrationTargetDevice = "The target appliance to which migration needs to be performed";
+        public const string MigrationConfigDecryptionKey = "The key to decrypt the legacy appliance config file";
+        public const string MigrationLegacyDataContainers = "Names of data containers to be migrated seperated by ','";
+        public const string MigrationConfigId = "Legacy config id";
+        public const string MigrationOperation = "Commit or Rollback";
+        public const string MigrationImportDCByForce = "Force import data container on a different device even if data container has been imported on a different device";
+        public const string MigrationImportDCWithSkipACRs = "Skip ACRs from migration";
     }
 }
