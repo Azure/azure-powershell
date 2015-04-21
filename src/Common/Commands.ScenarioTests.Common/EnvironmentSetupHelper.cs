@@ -32,17 +32,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     public class EnvironmentSetupHelper
     {
         private static string testEnvironmentName = "__test-environment";
-        
+
         private static string testSubscriptionName = "__test-subscriptions";
-        
+
         private AzureSubscription testSubscription;
-        
+
         private AzureAccount testAccount;
 
         private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
-        
+
         protected ProfileClient ProfileClient { get; set; }
 
         public EnvironmentSetupHelper()
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             ProfileClient.Profile.Save();
         }
-
+        
         private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment rdfeEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();

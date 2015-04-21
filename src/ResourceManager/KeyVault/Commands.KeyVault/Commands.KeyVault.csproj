@@ -49,6 +49,19 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\Constants.cs" />
+    <Compile Include="Models\VaultManagementClient.cs" />
+    <Compile Include="Models\ModelExtensions.cs" />
+    <Compile Include="Models\PSVault.cs" />
+    <Compile Include="Models\PSVaultAccessPolicy.cs" />
+    <Compile Include="Models\VaultCreationParameters.cs" />
+    <Compile Include="Models\PSVaultIdentityItem.cs" />
+    <Compile Include="Commands\GetAzureKeyVault.cs" />
+    <Compile Include="Commands\NewAzureKeyVault.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVault.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultAccessPolicy.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultAccessPolicy.cs" />
+    <Compile Include="Models\KeyVaultManagementCmdletBase.cs" />
     <None Include="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -109,6 +122,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.0.9.0-preview\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Graph.RBAC">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.0-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.KeyVault, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.0.9.0-preview\lib\net40\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -148,6 +172,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
@@ -166,17 +191,20 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.KeyVault.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
