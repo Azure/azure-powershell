@@ -20,11 +20,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineCustomScriptExtension),
-    OutputType(
-        typeof(object))]
-
-
+        ProfileNouns.VirtualMachineCustomScriptExtension)]
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
 

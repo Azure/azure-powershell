@@ -20,9 +20,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineAccessExtension),
-    OutputType(
-        typeof(object))]
+        ProfileNouns.VirtualMachineAccessExtension)]
     public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(HelpMessage = "To force the removal.")]
