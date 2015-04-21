@@ -22,7 +22,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultAccessPolicy", DefaultParameterSetName = ByObjectId, HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.Vault))]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
         [ValidateNotNullOrEmpty()]
+        [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
         /// <summary>
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the user principal name of the user to whom to grant permissions. This user principal name must exist in the directory associated with the current subscription.")]
         [ValidateNotNullOrEmpty()]
+        [Alias("UPN")]
         public string UserPrincipalName { get; set; }
 
         /// <summary>
@@ -124,19 +126,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ByObjectId,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, the key vault will be enabled for deployment.")]
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ByServicePrincipalName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, the key vault will be enabled for deployment.")]
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ByUserPrincipalName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, the key vault will be enabled for deployment.")]
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         [Parameter(Mandatory = true,
             ParameterSetName = "None",
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, the key vault will be enabled for deployment.")]
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
 
         [Parameter(Mandatory = false,
@@ -148,7 +150,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public override void ExecuteCmdlet()
         {
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-            PSKeyVaultModels.Vault vault = null;
+            PSKeyVaultModels.PSVault vault = null;
 
             // Get the vault to be updated
             if (!string.IsNullOrWhiteSpace(ResourceGroupName))                
@@ -161,7 +163,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // Update vault policies
-            PSKeyVaultModels.VaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
+            PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
             if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != null && ObjectId != Guid.Empty))
             {
                 Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
@@ -193,7 +195,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         (existingPolicy != null && existingPolicy.PermissionsToSecrets != null ?
                          existingPolicy.PermissionsToSecrets.ToArray() : null);
 
-                    var policy = new PSKeyVaultModels.VaultAccessPolicy(vault.TenantId, objId, keys, secrets);
+                    var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, keys, secrets);
 
                     //Remove old policies for this object ID and add a new one with the right permission arrays
                     updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => ap.ObjectId != objId).Concat(new[] { policy }).ToArray();

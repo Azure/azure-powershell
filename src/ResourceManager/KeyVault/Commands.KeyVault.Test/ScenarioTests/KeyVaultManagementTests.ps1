@@ -257,7 +257,7 @@ function Test-SetRemoveAccessPolicyBySPN
 	
 	Assert-AreEqual $spn (Get-AzureADServicePrincipal -ObjectId $vault.AccessPolicies[0].ObjectId)[0].ServicePrincipalName
 
-	$vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ServicePrincipalName $spn -PassThru
+	$vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $spn -PassThru
 	Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -292,7 +292,7 @@ function Test-ModifyAccessPolicy
 	# Add perms to start off
 	$PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
 	$PermToSecrets = @("get", "list", "set", "delete")
-	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
 
 	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 	Assert-AreEqual $upn (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
@@ -335,7 +335,7 @@ function Test-SetAccessPolicyNegativeCases
 function Test-RemoveNonExistentAccessPolicyDoesNotThrow
 {
 	Param($existingVaultName, $rgName, $upn)		
-	$vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
+	$vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PassThru
 	Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 

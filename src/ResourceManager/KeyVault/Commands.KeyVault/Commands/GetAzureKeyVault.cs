@@ -23,7 +23,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.Vault), typeof(List<PSKeyVaultModels.VaultIdentityItem>))]
+    [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVaultModels.Vault vault = null;
+                    PSKeyVaultModels.PSVault vault = null;
 
                     if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(

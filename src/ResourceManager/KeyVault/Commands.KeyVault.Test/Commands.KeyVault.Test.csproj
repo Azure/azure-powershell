@@ -143,6 +143,7 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\KeyVaultEnvSetupHelper.cs" />
     <Compile Include="ScenarioTests\KeyVaultManagementController.cs" />
     <Compile Include="ScenarioTests\KeyVaultManagementTests.cs" />
     <Compile Include="ScenarioTests\KeyVaultTestFixture.cs" />

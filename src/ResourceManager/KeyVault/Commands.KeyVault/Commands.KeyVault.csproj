@@ -52,10 +52,10 @@
     <Compile Include="Commands\Constants.cs" />
     <Compile Include="Models\VaultManagementClient.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
-    <Compile Include="Models\Vault.cs" />
-    <Compile Include="Models\VaultAccessPolicy.cs" />
+    <Compile Include="Models\PSVault.cs" />
+    <Compile Include="Models\PSVaultAccessPolicy.cs" />
     <Compile Include="Models\VaultCreationParameters.cs" />
-    <Compile Include="Models\VaultIdentityItem.cs" />
+    <Compile Include="Models\PSVaultIdentityItem.cs" />
     <Compile Include="Commands\GetAzureKeyVault.cs" />
     <Compile Include="Commands\NewAzureKeyVault.cs" />
     <Compile Include="Commands\RemoveAzureKeyVault.cs" />

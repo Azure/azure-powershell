@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public Vault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
+        public PSVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
         {            
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
                 );
 
-            return new Vault(response.Vault, adClient);
+            return new PSVault(response.Vault, adClient);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <returns></returns>
-        public Vault GetVault(string vaultName, string resourceGroupName, ActiveDirectoryClient adClient = null)
+        public PSVault GetVault(string vaultName, string resourceGroupName, ActiveDirectoryClient adClient = null)
         {
             if (string.IsNullOrWhiteSpace(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 var response = this.KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
 
-                return new Vault(response.Vault, adClient);
+                return new PSVault(response.Vault, adClient);
             }
             catch(CloudException ce)
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="existingVault"></param>
         /// <returns></returns>
-        public Vault UpdateVault(Vault existingVault, VaultAccessPolicy[] updatedPolicies, bool updatedEnabledForDeployment, ActiveDirectoryClient adClient = null)
+        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool updatedEnabledForDeployment, ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
                 throw new ArgumentNullException("existingVault");
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Properties = properties
                 }
                 );
-            return new Vault(response.Vault, adClient);
+            return new PSVault(response.Vault, adClient);
         }
 
         /// <summary>

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { this._resourcesClient = value;  }
         }
 
-        protected List<PSKeyVaultModels.VaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        protected List<PSKeyVaultModels.PSVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
         {
             IResourceManagementClient armClient = this.ResourcesClient.ResourceManagementClient;
 
@@ -105,10 +105,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                 TagValue = tagValuePair.Value                
             });
 
-            List<PSKeyVaultModels.VaultIdentityItem> vaults = new List<PSKeyVaultModels.VaultIdentityItem>();
+            List<PSKeyVaultModels.PSVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSVaultIdentityItem>();
             if (listResult.Resources != null)
             {
-                vaults.AddRange(listResult.Resources.Where(r => r.Type == KeyVaultManagementClient.VaultsResourceType).Select(r => new PSKeyVaultModels.VaultIdentityItem(r)));
+                vaults.AddRange(listResult.Resources.Where(r => r.Type == KeyVaultManagementClient.VaultsResourceType).Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
             }
 
             while (!string.IsNullOrEmpty(listResult.NextLink))
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 listResult = armClient.Resources.ListNext(listResult.NextLink);
                 if (listResult.Resources != null)
                 {
-                    vaults.AddRange(listResult.Resources.Select(r => new PSKeyVaultModels.VaultIdentityItem(r)));
+                    vaults.AddRange(listResult.Resources.Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
                 }
             }
 

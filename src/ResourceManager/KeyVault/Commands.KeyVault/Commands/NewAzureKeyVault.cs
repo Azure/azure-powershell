@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Create a new key vault. 
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof (PSKeyVaultModels.Vault))]
+    [OutputType(typeof (PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
-                "If specified, the key vault will be enabled for deployment."
+                "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation."
             )]
         public SwitchParameter EnabledForDeployment { get; set; }        
 

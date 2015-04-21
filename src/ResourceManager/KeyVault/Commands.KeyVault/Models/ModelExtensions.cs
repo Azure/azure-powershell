@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         //    };
         //}
 
-        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.VaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return sb.ToString();
         }
 
-        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.VaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 

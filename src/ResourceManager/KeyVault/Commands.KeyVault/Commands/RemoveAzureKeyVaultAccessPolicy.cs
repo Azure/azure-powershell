@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
         [ValidateNotNullOrEmpty()]
+        [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
         /// <summary>
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the user principal name of the user whose access you want to remove.")]
         [ValidateNotNullOrEmpty()]
+        [Alias("UPN")]
         public string UserPrincipalName { get; set; }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, the key vault will be disabled for deployment.")]
+            HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
 
         /// <summary>
@@ -107,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
 
             // Get the vault to be updated
-            PSKeyVaultModels.Vault existingVault = null;
+            PSKeyVaultModels.PSVault existingVault = null;
 
             if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                 existingVault = KeyVaultManagementClient.GetVault(

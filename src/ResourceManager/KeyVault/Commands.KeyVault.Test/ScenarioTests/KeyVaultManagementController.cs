@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
     {
 
         private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private KeyVaultEnvSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
         
@@ -58,10 +58,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             }
         }
 
-
         public KeyVaultManagementController()
         {
-            helper = new EnvironmentSetupHelper();            
+            helper = new KeyVaultEnvSetupHelper();            
         }
 
         public void RunPsTest(params string[] scripts)
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager, true);
+                helper.SetupEnvironment();
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 }
             }
         }
-
+        
         private void SetupManagementClients()
         {            
             ResourceManagementClient = GetResourceManagementClient();

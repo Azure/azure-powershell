@@ -86,39 +86,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
-        public void SetupEnvironment(AzureModule mode, bool setupUserAndTenant = false)
+        public void SetupEnvironment(AzureModule mode)
         {
-            SetupAzureEnvironmentFromEnvironmentVariables(mode, setupUserAndTenant);
+            SetupAzureEnvironmentFromEnvironmentVariables(mode);
 
             ProfileClient.Profile.Save();
         }
-
-        private string GetTenantId(TestEnvironment environment)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenatId;
-                return environment.AuthorizationContext.TenatId;
-            }
-            else 
-                {
-                    return HttpMockServer.Variables["TenantId"];
-                }            
-        }
-
-        private string GetUser(TestEnvironment environment)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
-                return environment.AuthorizationContext.UserId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["User"];
-            }
-        }
-        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode, bool setupUserAndTenant)
+        
+        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment rdfeEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
             TestEnvironment csmEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
@@ -179,13 +154,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                         {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
                     }
                 };
-
-                if (setupUserAndTenant)
-                {
-                    testSubscription.Account = GetUser(currentEnvironment);
-                    testSubscription.Properties.Add(AzureSubscription.Property.Tenants, GetTenantId(currentEnvironment));
-                    testAccount.Id = testSubscription.Account;
-                }
 
                 ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;

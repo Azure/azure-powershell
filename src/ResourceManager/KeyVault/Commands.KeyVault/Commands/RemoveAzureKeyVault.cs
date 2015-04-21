@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High, 
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.Vault))]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class RemoveAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
