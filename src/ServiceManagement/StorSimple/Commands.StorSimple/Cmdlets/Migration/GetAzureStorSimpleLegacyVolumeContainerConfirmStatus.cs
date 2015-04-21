@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         confirmStatus.ContainerConfirmStatus = confirmStatus.ContainerConfirmStatus.ToList().FindAll(
                             status =>
                                 legacyContainerNameList.Contains(status.CloudConfigurationName,
-                                    StringComparer.OrdinalIgnoreCase));
+                                    StringComparer.InvariantCultureIgnoreCase));
                     }
                 }
 

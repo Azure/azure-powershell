@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 confirmMigrationRequest.Operation =
                     (MigrationOperation) Enum.Parse(typeof (MigrationOperation), MigrationOperation, true);
                 confirmMigrationRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.OrdinalIgnoreCase))
+                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
                     : new List<string>();
                 var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, confirmMigrationRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();

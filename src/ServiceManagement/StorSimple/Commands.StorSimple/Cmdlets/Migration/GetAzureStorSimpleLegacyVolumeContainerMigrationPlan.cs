@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 migrationPlan.MigrationPlanInfo.ToList().FindAll(
                                     plan =>
                                         legacyContainerNamesList.Contains(plan.DataContainerName,
-                                            StringComparer.OrdinalIgnoreCase));
+                                            StringComparer.InvariantCultureIgnoreCase));
                         }
 
                         var migrationPlanMsg = new MigrationPlanMsg(migrationPlan);
