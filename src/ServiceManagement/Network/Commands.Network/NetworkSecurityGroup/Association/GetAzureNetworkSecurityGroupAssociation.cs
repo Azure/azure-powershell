@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 
                     warningAssociationNotFullyCrated = string.Format(
                         Resources.NetworkSecurityGroupNotActiveInRole,
+                        assocResponse.Name,
                         this.ServiceName,
                         this.obtainedDeploymentName,
                         this.RoleName);
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
 
                     warningAssociationNotFullyCrated = string.Format(
                         Resources.NetworkSecurityGroupNotActiveInNIC,
+                        assocResponse.Name,
                         this.ServiceName,
                         this.obtainedDeploymentName,
                         this.RoleName,
