@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
