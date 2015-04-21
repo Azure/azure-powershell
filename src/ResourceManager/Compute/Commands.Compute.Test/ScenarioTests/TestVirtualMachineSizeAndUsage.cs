@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        [Fact(Skip="TODO: Record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSizeAndUsage()
         {
