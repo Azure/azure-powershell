@@ -194,6 +194,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         [Fact]
@@ -231,6 +233,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         [Fact]
@@ -270,6 +274,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         #endregion
@@ -314,7 +320,6 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);
@@ -359,7 +364,6 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);
@@ -406,7 +410,6 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);
