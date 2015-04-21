@@ -25,7 +25,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = Get-ProviderLocation ResourceManagement;;
+        $loc = 'West US';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
