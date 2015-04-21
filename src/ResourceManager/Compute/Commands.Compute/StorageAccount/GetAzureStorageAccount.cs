@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
     {
         [Parameter(
             Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.")]
         [ValidateNotNullOrEmpty]
@@ -42,11 +42,17 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Name))
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                var listResponse = this.StorageClient.StorageAccounts.List();
+
+                WriteStorageAccountList(listResponse.StorageAccounts);
+            }
+            else if (string.IsNullOrEmpty(this.Name))
             {
                 var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
-                WriteObject(listResponse.StorageAccounts, true);
+                WriteStorageAccountList(listResponse.StorageAccounts);
             }
             else
             {
@@ -54,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.ResourceGroupName,
                     this.Name);
 
-                WriteObject(getResponse.StorageAccount);
+                WriteStorageAccount(getResponse.StorageAccount);
             }
         }
     }
