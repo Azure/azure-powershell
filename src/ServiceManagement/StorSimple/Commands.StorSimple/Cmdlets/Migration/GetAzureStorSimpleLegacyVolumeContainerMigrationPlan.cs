@@ -68,7 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                             var legacyContainerNamesList = LegacyContainerNames.ToList();
                             migrationPlan.MigrationPlanInfo =
                                 migrationPlan.MigrationPlanInfo.ToList().FindAll(
-                                    plan => legacyContainerNamesList.Contains(plan.DataContainerName, StringComparer.OrdinalIgnoreCase));
+                                    plan =>
+                                        legacyContainerNamesList.Contains(plan.DataContainerName,
+                                            StringComparer.OrdinalIgnoreCase));
                         }
 
                         var migrationPlanMsg = new MigrationPlanMsg(migrationPlan);

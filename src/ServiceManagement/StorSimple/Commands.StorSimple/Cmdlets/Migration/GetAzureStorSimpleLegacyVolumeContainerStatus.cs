@@ -44,7 +44,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
                     var containerNameList = LegacyContainerNames.ToList();
                     migrationDataContainerStatusList = migrationDataContainerStatusList.ToList().FindAll(
-                        status => containerNameList.Contains(status.CloudConfigurationName, StringComparer.OrdinalIgnoreCase));
+                        status =>
+                            containerNameList.Contains(status.CloudConfigurationName, StringComparer.OrdinalIgnoreCase));
                 }
 
                 var migrationStatus = new DataContainerMigrationStatus(
