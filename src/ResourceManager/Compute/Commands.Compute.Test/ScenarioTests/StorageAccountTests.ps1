@@ -19,7 +19,7 @@ Test StorageAccount
 function Test-StorageAccount
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -97,7 +97,7 @@ Test New-AzureStorageAccount
 function Test-NewAzureStorageAccount
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -126,7 +126,7 @@ Test Get-AzureStorageAccount
 function Test-GetAzureStorageAccount
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -166,7 +166,7 @@ Test Set-AzureStorageAccount
 function Test-SetAzureStorageAccount
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -217,7 +217,7 @@ Test Remove-AzureStorageAccount
 function Test-RemoveAzureStorageAccount
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -246,7 +246,7 @@ Test Get-AzureStorageAccountKey
 function Test-GetAzureStorageAccountKey
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -278,7 +278,7 @@ Test New-AzureStorageAccountKey
 function Test-NewAzureStorageAccountKey
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {
@@ -322,7 +322,7 @@ Test Get-AzureStorageAccount | Get-AzureStorageAccountKey
 function Test-PipingGetAccountToGetKey
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName;
+    $rgname = Get-ComputeTestResourceName;
 
     try
     {

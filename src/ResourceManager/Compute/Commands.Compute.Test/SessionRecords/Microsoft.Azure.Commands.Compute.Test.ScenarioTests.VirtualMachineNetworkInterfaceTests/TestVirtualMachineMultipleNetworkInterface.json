@@ -1081,8 +1081,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Storage/storageAccounts/stopstestrg4897?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDg5Nz9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Storage/storageAccounts/stopstestrg4897?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDg5Nz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -1123,7 +1123,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2014-12-01-preview"
+          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2015-05-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1148,8 +1148,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zL2VjMmVmZGQyLTNhOWMtNDI3Yi1hMjYyLTUzY2Q5ZDY3YTVmYj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zL2VjMmVmZGQyLTNhOWMtNDI3Yi1hMjYyLTUzY2Q5ZDY3YTVmYj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1184,7 +1184,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2014-12-01-preview"
+          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2015-05-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -1209,8 +1209,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zL2VjMmVmZGQyLTNhOWMtNDI3Yi1hMjYyLTUzY2Q5ZDY3YTVmYj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNC0xMi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Storage/operations/ec2efdd2-3a9c-427b-a262-53cd9d67a5fb?monitor=true&api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zL2VjMmVmZGQyLTNhOWMtNDI3Yi1hMjYyLTUzY2Q5ZDY3YTVmYj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1264,8 +1264,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Storage/storageAccounts/stopstestrg4897?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDg5Nz9hcGktdmVyc2lvbj0yMDE0LTEyLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Storage/storageAccounts/stopstestrg4897?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNDg5Nz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1319,8 +1319,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_A4\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"sourceImage\": {\r\n        \"id\": \"/9532a63e-f2eb-4649-bb23-5ed01077ce80/services/images/a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd\"\r\n      },\r\n      \"destinationVhdsContainer\": \"https://stopstestrg4897.blob.core.windows.net/test\",\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 0,\r\n          \"diskSizeGB\": 10,\r\n          \"name\": \"testDataDisk1\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stopstestrg4897.blob.core.windows.net/test/data1.vhd\"\r\n          },\r\n          \"caching\": \"ReadOnly\"\r\n        },\r\n        {\r\n          \"lun\": 1,\r\n          \"diskSizeGB\": 11,\r\n          \"name\": \"testDataDisk2\",\r\n          \"vhd\": {\r\n            \"uri\": \"https://stopstestrg4897.blob.core.windows.net/test/data2.vhd\"\r\n          },\r\n          \"caching\": \"ReadOnly\"\r\n        }\r\n      ]\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"test\",\r\n      \"adminUsername\": \"Foo12\",\r\n      \"adminPassword\": \"BaR@123pstestrg4897\"\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"properties\": {\r\n            \"primary\": false\r\n          },\r\n          \"id\": \"/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Network/networkInterfaces/nic1pstestrg4897\"\r\n        },\r\n        {\r\n          \"properties\": {\r\n            \"primary\": true\r\n          },\r\n          \"id\": \"/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Network/networkInterfaces/nic2pstestrg4897\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"name\": \"vmpstestrg4897\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -1349,7 +1349,7 @@
           "no-cache"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview"
+          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1380,19 +1380,19 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1435,19 +1435,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1490,19 +1490,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1545,19 +1545,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1600,19 +1600,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1655,19 +1655,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1710,19 +1710,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1765,19 +1765,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1820,19 +1820,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1875,19 +1875,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1930,19 +1930,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -1985,19 +1985,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2040,19 +2040,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2095,19 +2095,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2150,19 +2150,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2205,19 +2205,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2260,19 +2260,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2315,19 +2315,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2370,19 +2370,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2425,19 +2425,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2480,19 +2480,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2535,19 +2535,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2590,19 +2590,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2645,19 +2645,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2700,19 +2700,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2755,19 +2755,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2810,19 +2810,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2865,19 +2865,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2920,19 +2920,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -2975,19 +2975,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3030,19 +3030,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3085,19 +3085,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3140,19 +3140,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3195,19 +3195,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3250,19 +3250,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3305,19 +3305,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3360,19 +3360,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3415,19 +3415,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3470,19 +3470,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3525,19 +3525,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3580,19 +3580,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3635,19 +3635,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/e87194e5-e85f-49ac-a30a-9f208cb9050a?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvZTg3MTk0ZTUtZTg1Zi00OWFjLWEzMGEtOWYyMDhjYjkwNTBhP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"Failed\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\",\r\n  \"endTime\": \"2015-04-17T18:59:51.3236431-07:00\",\r\n  \"error\": {\r\n    \"code\": \"InternalExecutionError\",\r\n    \"message\": \"An internal execution error occurred.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"e87194e5-e85f-49ac-a30a-9f208cb9050a\",\r\n  \"status\": \"Failed\",\r\n  \"startTime\": \"2015-04-17T18:39:20.4685654-07:00\",\r\n  \"endTime\": \"2015-04-17T18:59:51.3236431-07:00\",\r\n  \"error\": {\r\n    \"code\": \"InternalExecutionError\",\r\n    \"message\": \"An internal execution error occurred.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "294"
@@ -3690,8 +3690,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3742,8 +3742,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/resourceGroups/pstestrg4897/providers/Microsoft.Compute/virtualMachines/vmpstestrg4897?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNDg5Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL3ZtcHN0ZXN0cmc0ODk3P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3763,7 +3763,7 @@
           "no-cache"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview"
+          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3775,7 +3775,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?monitor=true&api-version=2014-12-01-preview"
+          "https://management.azure.com/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?monitor=true&api-version=2015-05-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -3797,19 +3797,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3852,19 +3852,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3907,19 +3907,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -3962,19 +3962,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -4017,19 +4017,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -4072,19 +4072,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "132"
@@ -4127,19 +4127,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2014-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTQtMTItMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/9532a63e-f2eb-4649-bb23-5ed01077ce80/providers/Microsoft.Compute/locations/westus/operations/7d6cffa5-79cc-46a4-a3c5-763327154193?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTUzMmE2M2UtZjJlYi00NjQ5LWJiMjMtNWVkMDEwNzdjZTgwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnMvN2Q2Y2ZmYTUtNzljYy00NmE0LWEzYzUtNzYzMzI3MTU0MTkzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
-        "x-ms-version": [
-          "2014-12-01-preview"
-        ],
+
+
+
         "User-Agent": [
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\",\r\n  \"endTime\": \"2015-04-17T19:02:53.7292946-07:00\"\r\n}",
+      "ResponseBody": "{\r\n  \"operationId\": \"7d6cffa5-79cc-46a4-a3c5-763327154193\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2015-04-17T19:00:11.1204976-07:00\",\r\n  \"endTime\": \"2015-04-17T19:02:53.7292946-07:00\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "182"

@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Gets valid resource group name for compute management test
+Gets valid resource name for compute test
 #>
-function Get-ComputeTestResourceGroupName
+function Get-ComputeTestResourceName
 {
     $stack = Get-PSCallStack
     $testName = $null;
@@ -24,7 +24,7 @@ function Get-ComputeTestResourceGroupName
     {
         if ($frame.Command.StartsWith("Test-", "CurrentCultureIgnoreCase"))
         {
-            $testName = $frame.Command
+            $testName = $frame.Command;
         }
     }
     
