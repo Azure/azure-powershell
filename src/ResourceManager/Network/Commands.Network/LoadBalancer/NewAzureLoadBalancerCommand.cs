@@ -102,11 +102,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateLoadBalancer());
+
+                WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var loadBalancer = this.CreateLoadBalancer();
 
-            var loadBalancer = this.CreateLoadBalancer();
-
-            WriteObject(loadBalancer);
+                WriteObject(loadBalancer);
+            }
         }
 
         private PSLoadBalancer CreateLoadBalancer()

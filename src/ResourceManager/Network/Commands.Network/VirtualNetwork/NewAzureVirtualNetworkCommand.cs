@@ -90,11 +90,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateVirtualNetwork());
+
+                WriteObject(this.GetVirtualNetwork(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var virtualNetwork = CreateVirtualNetwork();
 
-            var virtualNetwork = CreateVirtualNetwork();
-
-            WriteObject(virtualNetwork);
+                WriteObject(virtualNetwork);
+            }
         }
 
         private PSVirtualNetwork CreateVirtualNetwork()
