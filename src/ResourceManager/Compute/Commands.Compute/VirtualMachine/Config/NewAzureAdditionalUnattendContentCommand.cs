@@ -14,62 +14,63 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
-    [OutputType(typeof(PSVirtualMachineExtension))]
-    public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    /// <summary>
+    /// Create Additional Unattend Content Object
+    /// </summary>
+    [Cmdlet(
+        VerbsCommon.New,
+        ProfileNouns.AdditionalUnattendContent),
+    OutputType(
+        typeof(PSAdditionalUnattendContent))]
+    public class NewAzureAdditionalUnattendContentCommand : AzurePSCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
+        private const string defaultPassName = "oobeSystem";
 
-        [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            DontShow = true, // Currently, the only allowable value is 'Microsoft-Windows-Shell-Setup'.
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Component Name.")]
+        [ValidateNotNullOrEmpty]
+        public string ComponentName { get; set; }
+
+        [Parameter(
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
+            HelpMessage = "XML Formatted Content.")]
         [ValidateNotNullOrEmpty]
-        public override string VMName { get; set; }
+        public string Content { get; set; }
 
-        [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            DontShow = true, // Currently, the only allowable value is 'oobeSystem'.
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
+            HelpMessage = "Pass name")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string PassName { get; set; }
 
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To show the status.")]
+            HelpMessage = "Setting Name.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Status { get; set; }
+        public string SettingName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            if (Status.IsPresent)
+            WriteObject(new PSAdditionalUnattendContent
             {
-                var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
-            }
-            else
-            {
-                var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
-            }
+                ComponentName = defaultComponentName,
+                Content = this.Content,
+                PassName = defaultPassName,
+                SettingName = this.SettingName,
+            });
         }
     }
 }
