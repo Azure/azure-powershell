@@ -28,7 +28,7 @@ function Test-VirtualMachine
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
@@ -62,11 +62,11 @@ function Test-VirtualMachine
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
@@ -75,11 +75,11 @@ function Test-VirtualMachine
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         # OS & Image
@@ -91,7 +91,7 @@ function Test-VirtualMachine
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
-        $p.StorageProfile.OSDisk = $null;
+        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
         $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
@@ -99,6 +99,9 @@ function Test-VirtualMachine
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        # TODO: Remove Data Disks for now
+        $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
@@ -415,11 +418,11 @@ function Test-VirtualMachineSizeAndUsage
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
@@ -428,11 +431,11 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         # OS & Image
@@ -452,6 +455,9 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+        
+        # TODO: Remove Data Disks for now
+        $p.StorageProfile.DataDisks = $null;
 
         # Create VM
         New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
