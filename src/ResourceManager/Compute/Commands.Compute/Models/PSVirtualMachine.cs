@@ -70,19 +70,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public Uri DestinationVHDsContainer
-        {
-            get
-            {
-                if (this.StorageProfile != null && this.StorageProfile.DestinationVhdsContainer != null)
-                {
-                    return this.StorageProfile.DestinationVhdsContainer;
-                }
-
-                return null;
-            }
-        }
-
         public string OSDisk
         {
             get

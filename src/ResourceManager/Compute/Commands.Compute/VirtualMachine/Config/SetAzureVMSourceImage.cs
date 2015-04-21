@@ -48,13 +48,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMVHDContainer)]
-        [ValidateNotNullOrEmpty]
-        public string DestinationVhdsContainer { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -67,8 +60,6 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     ReferenceUri = this.Name
                 }.Normalize(this.Profile.Context.Subscription.Id.ToString());
-
-            this.VM.StorageProfile.DestinationVhdsContainer = string.IsNullOrEmpty(this.DestinationVhdsContainer) ? null : new Uri(this.DestinationVhdsContainer);
 
             WriteObject(this.VM);
         }

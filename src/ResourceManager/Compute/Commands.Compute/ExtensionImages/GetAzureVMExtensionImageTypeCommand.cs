@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineExtensionImageListTypesParameters
             {
                 Location = Location,
-                Publishername = PublisherName
+                PublisherName = PublisherName
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
