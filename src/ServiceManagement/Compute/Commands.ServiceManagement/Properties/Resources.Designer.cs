@@ -1590,6 +1590,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Virtual IP from service.
+        /// </summary>
+        public static string RemoveVirtualIP {
+            get {
+                return ResourceManager.GetString("RemoveVirtualIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the reserved ip association from the specified service. Do you want to continue?.
         /// </summary>
         public static string ReservedIPAssociationWillBeRemoved {
@@ -1937,6 +1946,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string VIPSwapBetweenStagingAndProduction {
             get {
                 return ResourceManager.GetString("VIPSwapBetweenStagingAndProduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the virtual IP from the specified service. Do you want to continue?.
+        /// </summary>
+        public static string VirtualIPWillBeRemoved {
+            get {
+                return ResourceManager.GetString("VirtualIPWillBeRemoved", resourceCulture);
             }
         }
         
