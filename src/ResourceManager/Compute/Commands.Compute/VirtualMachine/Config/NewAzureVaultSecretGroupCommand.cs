@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.VaultSecretGroup),
     OutputType(
-        typeof(VaultSecretGroup))]
+        typeof(PSVaultSecretGroup))]
     public class NewAzureVaultSecretGroupCommand : AzurePSCmdlet
     {
         [Parameter(
@@ -42,11 +43,11 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "URL referencing a secret in a Key Vault.")]
         [ValidateNotNullOrEmpty]
-        public List<VaultCertificate> VaultCertificates { get; set; }
+        public List<PSVaultCertificate> VaultCertificates { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new VaultSecretGroup
+            WriteObject(new PSVaultSecretGroup
             {
                 SourceVault = new SourceVaultReference { ReferenceUri = this.ReferenceUri },
                 VaultCertificates = this.VaultCertificates,

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.AdditionalUnattendContent),
     OutputType(
-        typeof(AdditionalUnattendContent))]
+        typeof(PSAdditionalUnattendContent))]
     public class NewAzureAdditionalUnattendContentCommand : AzurePSCmdlet
     {
         private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new AdditionalUnattendContent
+            WriteObject(new PSAdditionalUnattendContent
             {
                 ComponentName = defaultComponentName,
                 Content = this.Content,

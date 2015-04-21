@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.VaultCertificate),
     OutputType(
-        typeof(VaultCertificate))]
+        typeof(PSVaultCertificate))]
     public class NewAzureVaultCertificateCommand : AzurePSCmdlet
     {
         [Parameter(
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new VaultCertificate
+            WriteObject(new PSVaultCertificate
             {
                 CertificateStore = this.CertificateStore,
                 CertificateUrl = this.CertificateUrl,

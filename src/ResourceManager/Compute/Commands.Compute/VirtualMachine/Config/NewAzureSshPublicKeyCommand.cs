@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.New,
         ProfileNouns.SshPublicKey),
     OutputType(
-        typeof(SshPublicKey))]
+        typeof(PSSshPublicKey))]
     public class NewAzureSshPublicKeyCommand : AzurePSCmdlet
     {
         [Parameter(
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new SshPublicKey
+            WriteObject(new PSSshPublicKey
             {
                 KeyData = this.KeyData,
                 Path = this.Path,

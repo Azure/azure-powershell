@@ -31,39 +31,12 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string GetCustomScriptExtensionParamSetName = "GetCustomScriptExtension";
 
-        //[Parameter(
-        //   Mandatory = true,
-        //   Position = 0,
-        //   ValueFromPipelineByPropertyName = true,
-        //   HelpMessage = "The resource group name.")]
-        //[ValidateNotNullOrEmpty]
-        //public override string ResourceGroupName { get; set; }
-
-        //[Alias("ResourceName")]
-        //[Parameter(
-        //    Mandatory = true,
-        //    Position = 1,
-        //    ValueFromPipelineByPropertyName = true,
-        //    HelpMessage = "The virtual machine name.")]
-        //[ValidateNotNullOrEmpty]
-        //public override string VMName { get; set; }
-
-        //[Alias("ExtensionName")]
-        //[Parameter(
-        //    Mandatory = true,
-        //    Position = 2,
-        //    ValueFromPipelineByPropertyName = true,
-        //    HelpMessage = "The extension name.")]
-        //[ValidateNotNullOrEmpty]
-        //public override string Name { get; set; }
-
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
-
 
         public override void ExecuteCmdlet()
         {

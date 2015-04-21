@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
-            Position = 5,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type handler version.")]
         [ValidateNotNullOrEmpty]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = true,
-            Position = 2,
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Name of the Container.")]
         [ValidateNotNullOrEmpty]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = true,
-            Position = 3,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Blob Files in the Container.")]
         [ValidateNotNullOrEmpty]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
              ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
              Mandatory = false,
-             Position = 4,
+             Position = 6,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The Storage Account Name.")]
         [ValidateNotNullOrEmpty]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 5,
+            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Endpoint Suffix.")]
         [ValidateNotNullOrEmpty]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 6,
+            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Storage Account Key.")]
         [ValidateNotNullOrEmpty]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
             Mandatory = false,
-            Position = 2,
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The File URIs.")]
         [ValidateNotNullOrEmpty]
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 7,
+            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Run File to Execute in PowerShell on the VM.")]
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
             Mandatory = true,
-            Position = 3,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Run File to Execute in PowerShell on the VM.")]
         [ValidateNotNullOrEmpty]
@@ -131,20 +131,20 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName,
             Mandatory = false,
-            Position = 8,
+            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Argument String for the Run File.")]
         [Parameter(
             ParameterSetName = SetCustomScriptExtensionByUrisParamSetName,
             Mandatory = false,
-            Position = 4,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Argument String for the Run File.")]
         [ValidateNotNullOrEmpty]
         public string Argument { get; set; }
 
         [Parameter(
-            Position = 8,
+            Position = 11,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]

@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of Certificates for Addition to the VM.")]
         [ValidateNotNullOrEmpty]
-        public List<VaultSecretGroup> Secrets { get; set; }
+        public List<PSVaultSecretGroup> Secrets { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Additional Unattend Content")]
         [ValidateNotNullOrEmpty]
-        public List<AdditionalUnattendContent> AdditionalUnattendContents { get; set; }
+        public List<PSAdditionalUnattendContent> AdditionalUnattendContents { get; set; }
 
         // Linux Parameter Sets
         [Parameter(
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "SSH Public Keys")]
         [ValidateNotNullOrEmpty]
-        public List<SshPublicKey> SSHPublicKeys { get; set; }
+        public List<PSSshPublicKey> SSHPublicKeys { get; set; }
 
         [Parameter(
             ParameterSetName = LinuxParamSet,
@@ -177,26 +177,27 @@ namespace Microsoft.Azure.Commands.Compute
                 AdminUsername = this.Credential.UserName,
                 AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
                 CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
-                Secrets = this.Secrets,
+                Secrets = (this.Secrets == null) ? null : this.Secrets.ConvertAll<VaultSecretGroup>(e => e.ToVaultSecretGroup()),
             };
 
             if (this.ParameterSetName == LinuxParamSet)
             {
-                this.VM.OSProfile.LinuxConfiguration = (!this.DisablePasswordAuthentication.IsPresent && this.SSHPublicKeys == null)
-                                                       ? null
-                                                       : new LinuxConfiguration
-                                                       {
-                                                           DisablePasswordAuthentication = this.DisablePasswordAuthentication.IsPresent
-                                                                                           ? (bool?) true
-                                                                                           : null,
+                this.VM.OSProfile.LinuxConfiguration =
+                    (!this.DisablePasswordAuthentication.IsPresent && this.SSHPublicKeys == null)
+                    ? null
+                    : new LinuxConfiguration
+                    {
+                        DisablePasswordAuthentication = this.DisablePasswordAuthentication.IsPresent
+                                                      ? (bool?) true
+                                                      : null,
 
-                                                           SshConfiguration = (this.SSHPublicKeys == null)
-                                                                              ? null
-                                                                              : new SshConfiguration
-                                                                              {
-                                                                                  PublicKeys = this.SSHPublicKeys,
-                                                                              }
-                                                       };
+                        SshConfiguration = (this.SSHPublicKeys == null)
+                                         ? null
+                                         : new SshConfiguration
+                                         {
+                                             PublicKeys = this.SSHPublicKeys.ConvertAll<SshPublicKey>(e => e.ToSshPublicKey()),
+                                         }
+                    };
             }
             else
             {
@@ -221,22 +222,25 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // OS Profile
-                this.VM.OSProfile.WindowsConfiguration = ! (this.ProvisionVMAgent.IsPresent || this.EnableAutoUpdate.IsPresent || this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent) &&
-                                                           string.IsNullOrEmpty(this.TimeZone) && AdditionalUnattendContents == null
-                                                         ? null
-                                                         : new WindowsConfiguration
-                                                         {
-                                                             ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?) true : null,
-                                                             EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent ? (bool?) true : null,
-                                                             TimeZone = this.TimeZone,
-                                                             AdditionalUnattendContents = this.AdditionalUnattendContents,
-                                                             WinRMConfiguration = ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
-                                                                                  ? null
-                                                                                  : new WinRMConfiguration
-                                                                                  {
-                                                                                      Listeners = listenerList,
-                                                                                  },
-                                                         };
+                this.VM.OSProfile.WindowsConfiguration =
+                    ! (this.ProvisionVMAgent.IsPresent || this.EnableAutoUpdate.IsPresent || this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent) &&
+                      string.IsNullOrEmpty(this.TimeZone) && AdditionalUnattendContents == null
+                    ? null
+                    : new WindowsConfiguration
+                    {
+                        ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?) true : null,
+                        EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent ? (bool?) true : null,
+                        TimeZone = this.TimeZone,
+                        AdditionalUnattendContents = (this.AdditionalUnattendContents == null)
+                                                   ? null
+                                                   : this.AdditionalUnattendContents.ConvertAll<AdditionalUnattendContent>(e => e.ToAdditionalUnattendContent()),
+                        WinRMConfiguration = ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
+                                           ? null
+                                           : new WinRMConfiguration
+                                           {
+                                               Listeners = listenerList,
+                                           },
+                    };
             }
             WriteObject(this.VM);
         }

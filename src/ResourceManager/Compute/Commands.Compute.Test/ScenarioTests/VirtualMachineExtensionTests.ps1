@@ -25,7 +25,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ProviderLocation ResourceManagement;;
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -184,16 +184,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Extensions[0].Settings;
 
-        <# *** TODO: The removal call did not return. 12/12/2014.
-
-        # Remove Extension
-        Remove-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
-        
-        # Check Extensions in VM
-        $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Assert-Null $vm2.Resources;
-
-        #>
+        # *** TODO: The removal call did not return. 12/12/2014
     }
     finally
     {
@@ -214,7 +205,7 @@ function Test-VirtualMachineCustomScriptExtension
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ProviderLocation ResourceManagement;
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
@@ -350,16 +341,7 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $vm1.Resources.Extensions[0].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Resources.Extensions[0].Settings;
 
-        <# *** TODO: The removal call did not return. 12/12/2014.
-
-        # Remove Extension
-        Remove-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
-
-        # Check Extensions in VM
-        $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Assert-Null $vm2.Resources;
-
-        #>
+        # *** TODO: The removal call did not return. 12/12/2014
     }
     finally
     {
@@ -382,7 +364,7 @@ function Test-VirtualMachineAccessExtension
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ProviderLocation ResourceManagement;;
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
@@ -516,16 +498,7 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $vm1.Resources.Extensions[0].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Resources.Extensions[0].Settings;
 
-        <# *** TODO: The removal call did not return. 12/12/2014.
-
-        # Remove Extension
-        Remove-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
-
-        # Check Extensions in VM
-        $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Assert-Null $vm2.Resources;
-
-        #>
+        # *** TODO: The removal call did not return. 12/12/2014
     }
     finally
     {
