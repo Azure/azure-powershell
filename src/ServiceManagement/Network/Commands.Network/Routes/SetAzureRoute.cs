@@ -13,15 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Routes.Model;
+using Microsoft.Azure.Commands.Network.Routes.Utilities;
 using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRoute"), OutputType(typeof(ManagementOperationContext))]
 namespace Microsoft.Azure.Commands.Network.Routes
-    public class SetAzureRoute : NetworkCmdletBase
+{
+    [Cmdlet(VerbsCommon.Set, "AzureRoute"), OutputType(typeof(IRouteTable))]
+    public class SetAzureRoute : RouteTableConfigurationBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The existing route table's name.")]
-        public string RouteTableName { get; set; }
-
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The new route's name.")]
         public string RouteName { get; set; }
 
@@ -37,7 +36,10 @@ namespace Microsoft.Azure.Commands.Network.Routes
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.SetRoute(RouteTableName, RouteName, AddressPrefix, NextHopType, NextHopIpAddress));
+            string routeTableName = this.RouteTable.GetInstance().Name;
+
+            Client.SetRoute(routeTableName, RouteName, AddressPrefix, NextHopType, NextHopIpAddress);
+            WriteObject(Client.GetRouteTable(routeTableName, true));
         }
     }
 }

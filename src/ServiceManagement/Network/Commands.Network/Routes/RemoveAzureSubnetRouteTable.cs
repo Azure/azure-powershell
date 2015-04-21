@@ -12,23 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Properties;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Network.Routes
 {
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
-
-    [Cmdlet(VerbsCommon.Remove, "AzureSubnetRouteTable"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Remove, "AzureSubnetRouteTable"), OutputType(typeof(bool))]
     public class RemoveAzureSubnetRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the virtual network.")]
-        public string VNetName { get; set; }
+        public string VirtualNetworkName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the subnet that will have its route table removed.")]
         public string SubnetName { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.RemoveRouteTableFromSubnet(VNetName, SubnetName));
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveRouteTableFromSubnetWarning, SubnetName, VirtualNetworkName),
+                Resources.RemoveRouteTableFromSubnetWarning,
+                SubnetName,
+                () =>
+                {
+                    Client.RemoveRouteTableFromSubnet(VirtualNetworkName, SubnetName);
+
+                    WriteVerboseWithTimestamp(Resources.RemoveRouteTableFromSubnetSucceeded, VirtualNetworkName, SubnetName);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

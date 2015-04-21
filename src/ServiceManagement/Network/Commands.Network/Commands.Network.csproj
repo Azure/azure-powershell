@@ -181,6 +181,10 @@
     <Compile Include="NetworkSecurityGroup\Association\RemoveAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
     <Compile Include="Routes\GetAzureSubnetRouteTable.cs" />
+    <Compile Include="Routes\Model\IRouteTable.cs" />
+    <Compile Include="Routes\Model\Route.cs" />
+    <Compile Include="Routes\Model\RouteTableWithRoutes.cs" />
+    <Compile Include="Routes\Model\SimpleRouteTable.cs" />
     <Compile Include="Routes\Model\SubnetRouteTableContext.cs" />
     <Compile Include="Routes\NewAzureRouteTable.cs" />
     <Compile Include="Routes\RemoveAzureRoute.cs" />
@@ -188,6 +192,7 @@
     <Compile Include="Routes\RemoveAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\SetAzureRoute.cs" />
     <Compile Include="Routes\SetAzureSubnetRouteTable.cs" />
+    <Compile Include="Routes\Utilities\RouteTableConfigurationBaseCmdlet.cs" />
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

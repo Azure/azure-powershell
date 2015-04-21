@@ -12,20 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Properties;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Network.Routes
 {
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
-
-    [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(bool))]
     public class RemoveAzureRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the route table to remove.")]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return whether the specified route table is successfully removed")]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm Route Table deletion")]
+        public SwitchParameter Force { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.DeleteRouteTable(Name));
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveRouteTableWarning, Name),
+                Resources.RemoveRouteTableWarning,
+                Name,
+                () =>
+                {
+                    Client.DeleteRouteTable(Name);
+
+                    WriteVerboseWithTimestamp(Resources.RemoveRouteTableSucceeded, Name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

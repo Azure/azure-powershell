@@ -18,28 +18,47 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.Routes
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRouteTable"), OutputType(typeof(IEnumerable<RouteTable>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRouteTable"), OutputType(typeof(IEnumerable<IRouteTable>))]
     public class GetAzureRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The new route table's name.")]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The level of detail that will be returned about the route table(s). Valid values are: \"Routes\" or \"Full\".")]
-        public string DetailLevel { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Set this parameter to include in the response the routes in this route table.")]
+        public SwitchParameter Detailed { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            IEnumerable<RouteTable> routeTables;
             if (string.IsNullOrEmpty(Name))
             {
-                routeTables = Client.ListRouteTables();
+                GetNoName();
             }
             else
             {
-                RouteTable routeTable = Client.GetRouteTable(Name, DetailLevel);
-                routeTables = new List<RouteTable>() { routeTable };
+                GetByName();
             }
-            WriteObject(routeTables);
+        }
+
+        private void GetByName()
+        {
+            IRouteTable routeTable = Client.GetRouteTable(Name, this.Detailed);
+            WriteRouteTable(routeTable);
+        }
+
+        private void GetNoName()
+        {
+            IEnumerable<IRouteTable> routeTables = Client.ListRouteTables(this.Detailed);
+            WriteRouteTables(routeTables);
+        }
+
+        private void WriteRouteTable(IRouteTable networkSecurityGroup)
+        {
+            WriteObject(networkSecurityGroup, true);
+        }
+
+        private void WriteRouteTables(IEnumerable<IRouteTable> routeTables)
+        {
+            WriteObject(routeTables, true);
         }
     }
 }
