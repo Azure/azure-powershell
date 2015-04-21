@@ -27,12 +27,14 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMOSDiskCaching = "The virtual machine OS disk's caching.";
         public const string VMOSDiskWindowsOSType = "The virtual machine disk's OS is Windows.";
         public const string VMOSDiskLinuxOSType = "The virtual machine disk's OS is Linux.";
+        public const string VMSourceImageUri = "The virtual machine OS disk's source image Uri.";
 
         public const string VMDataDiskName = "The virtual machine data disk's name.";
         public const string VMDataDiskVhdUri = "The virtual machine data disk's Vhd Uri.";
         public const string VMDataDiskCaching = "The virtual machine data disk's caching.";
         public const string VMDataDiskSizeInGB = "The virtual machine data disk's size in GB.";
         public const string VMDataDiskLun = "The virtual machine data disk's Lun.";
+        public const string VMDataDiskCreateOption = "The virtual machine data disk's create option.";
 
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";

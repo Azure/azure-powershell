@@ -79,6 +79,23 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public int? Lun { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskCreateOption)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(DiskCreateOptionTypes.Empty, DiskCreateOptionTypes.Attach, DiskCreateOptionTypes.FromImage)]
+        public string CreateOption { get; set; }
+
+        [Alias("SourceImage")]
+        [Parameter(
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMSourceImageUri)]
+        [ValidateNotNullOrEmpty]
+        public string SourceImageUri { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var storageProfile = this.VM.StorageProfile;
@@ -102,6 +119,11 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualHardDisk = this.VhdUri == null ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri.ToString()
+                },
+                CreateOption = string.IsNullOrEmpty(CreateOption) ? DiskCreateOptionTypes.Empty : CreateOption,
+                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                {
+                    Uri = SourceImageUri
                 }
             });
 

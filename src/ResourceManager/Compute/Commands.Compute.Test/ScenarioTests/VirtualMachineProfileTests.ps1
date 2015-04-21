@@ -76,11 +76,11 @@ function Test-VirtualMachineProfile
     $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
     
     $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-    $p = Set-AzureVMSourceImage -VM $p -Name $img -DestinationVhdsContainer $vhdContainer;
+    $p = Set-AzureVMSourceImage -VM $p -Name $img # -DestinationVhdsContainer $vhdContainer;
         
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-    Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
+    # Assert-AreEqual $p.StorageProfile.DestinationVhdsContainer.ToString() $vhdContainer;
     Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
 }
