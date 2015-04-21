@@ -77,6 +77,25 @@
     * Remove-AzureBatchVMUser
     * Get-AzureBatchRDPFile
     * Get-AzureBatchVMFileContents
+* StorSimple: New StorSimple commands in AzureServiceManagement mode
+  * Added cmdlets
+    * Confirm-AzureStorSimpleLegacyVolumeContainerStatus
+    * Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus
+    * Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan
+    * Get-AzureStorSimpleLegacyVolumeContainerStatus
+    * Import-AzureStorSimpleLegacyApplianceConfig
+    * Import-AzureStorSimpleLegacyVolumeContainer
+    * Start-AzureStorSimpleLegacyVolumeContainerMigrationPlan
+    * New-AzureStorSimpleVirtualDeviceCommand
+    * Get-AzureStorSimpleJob
+    * Stop-AzureStorSimpleJob
+    * Start-AzureStorSimpleBackupCloneJob
+    * Get-AzureStorSimpleFailoverVolumeContainers
+    * Start-AzureStorSimpleDeviceFailoverJob
+    * New-AzureStorSimpleNetworkConfig
+    * Set-AzureStorSimpleDevice
+    * Set-AzureStorSimpleVirtualDevice
+
 
 2015.03.31 version 0.8.16
 * Azure Data Factory:
@@ -148,9 +167,9 @@
   * Set-AzureRemoteAppWorkspace
   * Unpublish-AzureRemoteAppProgram
   * Update-AzureRemoteAppCollection
-  
+
 * Storage: new cmdlets
-  * Get-AzureStorageContainerStoredAccessPolicy 
+  * Get-AzureStorageContainerStoredAccessPolicy
   * Get-AzureStorageQueueStoredAccessPolicy
   * Get-AzureStorageTableStoredAccessPolicy
   * New-AzureStorageContainerStoredAccessPolicy
@@ -194,7 +213,7 @@
     * Start-AzureSiteRecoveryCommitFailoverJob
     * Start-AzureSiteRecoveryPlannedFailoverJob
     * Start-AzureSiteRecoveryTestFailoverJob
-    
+
 * Azure ExpressRoute cmdlet updates
   * Fixed bugs in:
     * New-AzureDedicatedCircuit
@@ -207,12 +226,12 @@
     * Update-AzureDedicatedCircuitBandwidth
 
 * Azure SQL Database: new cmdlets for managing database dynamic data masking policies:
-  * Get-AzureSqlDatabaseDataMaskingPolicy 
-  * Set-AzureSqlDatabaseDataMaskingPolicy 
-  * New-AzureSqlDatabaseDataMaskingRule 
-  * Get-AzureSqlDatabaseDataMaskingRule 
-  * Set-AzureSqlDatabaseDataMaskingRule 
-  * Remove-AzureSqlDatabaseDataMaskingRule 
+  * Get-AzureSqlDatabaseDataMaskingPolicy
+  * Set-AzureSqlDatabaseDataMaskingPolicy
+  * New-AzureSqlDatabaseDataMaskingRule
+  * Get-AzureSqlDatabaseDataMaskingRule
+  * Set-AzureSqlDatabaseDataMaskingRule
+  * Remove-AzureSqlDatabaseDataMaskingRule
 
 * Azure Batch: new cmdlets:
   * Get-AzureBatchPool
@@ -230,13 +249,13 @@
     * Update-AzureDisk
     * Set-AzureOSDisk
     * Set-AzureDataDisk (DiskName parameter is also added along with ResizedSizeInGB)
-    
-* AzureProfile: 
+
+* AzureProfile:
   * New cmdlets to manage in-memory profiles
     * New-AzureProfile: Create a new in-memory Profile
     * Select-AzureProfile: Select the profile to be used in the current session
   * Added -Profile parameter to every cmdlet - the cmdlet will use the passed-in profile to authenticate with Azure
-  
+
 2015.02.12 version 0.8.14
 * StorSimple: New StorSimple commands in AzureServiceManagement mode:
   * GetAzureStorSimpleAccessControlRecord
@@ -244,8 +263,8 @@
   * RemoveAzureStorSimpleAccessControlRecord
   * RemoveAzureStorSimpleStorageAccountCredential
   * SetAzureStorSimpleAccessControlRecord
-  * GetAzureStorSimpleDeviceVolume 
-  * RemoveAzureStorSimpleDeviceVolume 
+  * GetAzureStorSimpleDeviceVolume
+  * RemoveAzureStorSimpleDeviceVolume
   * GetAzureStorSimpleDeviceVolumeContainer
   * RemoveAzureStorSimpleDeviceVolumeContainer
   * GetAzureStorSimpleDevice
@@ -277,19 +296,19 @@
   * ClusterType (update): New value (Spark) can be specified as cluster type
   * Add-AzureHDInsightConfigValues cmdlet:
     * Spark (new): collection of configuration properties can be passed in to customize the Spark service
-    
+
  * Azure Insights cmdlets in AzureResourceManager Mode:
    * Get-AzureCrrelationLogId
    * Get-AzureResourceGroupLog
    * Get-AzureResourceLog
    * Get-AzureResourceProviderLog
    * Get-AzureSubscriptionIdLog
-   
+
 * Azure VM cmdlets
   * Get-AzureVMDscExtentionStatus: Get the DSC Extension status for a cloud service or VM
-  
+
  * Updates and bug fixes for AzureAutomation and AzureDataFactory cmdlets
- 
+
 2015.01.08 version 0.8.13
 * Key Vault Service - new cmdlets in AzureResourceManager mode:
   * Keys:
@@ -371,7 +390,7 @@
     * Remove-AzureSqlDatabaseServerAuditing
     * Use-AzureSqlDatabaseServerAuditingPolicy
   * Allow users to define which storage account key (Primary or Secondary) to use when defining audit policy, using the “StorageKeyType” parameter.
-  
+
 2014.10.27 Version 0.8.10
 * Azure Data Factory cmdlets in AzureResourceManager mode
     * New-AzureDataFactory

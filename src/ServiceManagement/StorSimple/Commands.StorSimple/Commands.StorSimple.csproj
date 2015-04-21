@@ -81,8 +81,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.StorSimple">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.1.0.3-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.StorSimple.1.0.4-preview\lib\net40\Microsoft.WindowsAzure.Management.StorSimple.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -137,6 +136,13 @@
     <Compile Include="Cmdlets\GetAzureStorSimpleResource.cs" />
     <Compile Include="Cmdlets\GetAzureStorSimpleResourceContext.cs" />
     <Compile Include="Cmdlets\Task\GetAzureStorSimpleTask.cs" />
+    <Compile Include="Cmdlets\Migration\ConfirmAzureStorSimpleLegacyVolumeContainerStatus.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerConfirmStatus.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerStatus.cs" />
+    <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyVolumeContainer.cs" />
+    <Compile Include="Cmdlets\Migration\GetAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
+    <Compile Include="Cmdlets\Migration\StartAzureStorSimpleLegacyVolumeContainerMigrationPlan.cs" />
+    <Compile Include="Cmdlets\Migration\ImportAzureStorSimpleLegacyApplianceConfig.cs" />
     <Compile Include="Cmdlets\ServiceConfig\GetAzureStorSimpleStorageAccountCredential.cs" />
     <Compile Include="Cmdlets\ServiceConfig\NewAzureStorSimpleAccessControlRecord.cs" />
     <Compile Include="Cmdlets\SelectAzureStorSimpleResource.cs" />
@@ -158,6 +164,7 @@
     <Compile Include="Library\IKeyManager.cs" />
     <Compile Include="Library\LocalKeyStoreManager.cs" />
     <Compile Include="Library\MiscUtils.cs" />
+    <Compile Include="Encryption\MigrationServiceSecretsEncryptor.cs" />
     <Compile Include="Models\NetworkConfig.cs" />
     <Compile Include="Models\TaskReport.cs" />
     <Compile Include="Models\PSContracts.cs" />
@@ -172,6 +179,7 @@
     <Compile Include="ServiceClients\StorSimpleClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\StorSimpleContextClient.cs" />
+    <Compile Include="ServiceClients\StorSimpleMigrationClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDCClient.cs" />
     <Compile Include="ServiceClients\StorSimpleJobsClient.cs" />
     <Compile Include="ServiceClients\StorSimpleDeviceFailoverClient.cs" />
