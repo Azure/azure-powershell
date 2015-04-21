@@ -23,20 +23,20 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(VirtualMachineExtensionImageGetResponse))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Type { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
         [Parameter, ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
-
-        [Parameter, ValidateNotNullOrEmpty]
-        public string Version { get; set; }
 
         public override void ExecuteCmdlet()
         {
