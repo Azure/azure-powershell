@@ -106,7 +106,23 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
         }
-        
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetNSGOnRoleAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnRoleAndUpdateVM");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetNSGOnNICAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnNICAndUpdateVM");
+        }
+
         #region Test setup
         protected void SetupManagementClients()
         {

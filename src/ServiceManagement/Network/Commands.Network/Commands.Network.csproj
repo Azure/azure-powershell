@@ -176,6 +176,9 @@
     <Compile Include="NetworkCmdletBase.cs" />
     <Compile Include="Routes\GetAzureEffectiveRouteTable.cs" />
     <Compile Include="NetworkSecurityGroup\GetAzureNetworkSecurityGroupConfig.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\SetAzureNetworkSecurityGroupAssociation.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\GetAzureNetworkSecurityGroupAssociation.cs" />
+    <Compile Include="NetworkSecurityGroup\Association\RemoveAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
     <Compile Include="Routes\GetAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\Model\SubnetRouteTableContext.cs" />
