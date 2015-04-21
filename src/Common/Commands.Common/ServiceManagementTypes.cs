@@ -863,7 +863,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("PublicIPs", value);
             }
         }
-        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 7)]
+
+        [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
+        public AssignNetworkInterfaceCollection NetworkInterfaces
+        {
+            get
+            {
+                return this.GetValue<AssignNetworkInterfaceCollection>("NetworkInterfaces");
+            }
+            set
+            {
+                this.SetValue("NetworkInterfaces", value);
+            }
+        }
+
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 8)]
         public string NetworkSecurityGroup
         {
             get
@@ -876,16 +890,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
-        [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
-        public AssignNetworkInterfaceCollection NetworkInterfaces
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 9)]
+        public string IPForwarding
         {
             get
             {
-                return this.GetValue<AssignNetworkInterfaceCollection>("NetworkInterfaces");
+                return this.GetValue<string>("IPForwarding");
             }
             set
             {
-                this.SetValue("NetworkInterfaces", value);
+                this.SetValue("IPForwarding", value);
             }
         }
     }
@@ -948,6 +962,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 3)]
+        public string NetworkSecurityGroup { get; set; }
+
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 4)]
+        public string IPForwarding { get; set; }
     }
 
     [CollectionDataContract(Name = "IPConfigurations", ItemName = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]

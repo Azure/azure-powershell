@@ -106,7 +106,23 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
         }
-        
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetNSGOnRoleAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnRoleAndUpdateVM");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetNSGOnNICAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnNICAndUpdateVM");
+        }
+
         #region Test setup
         protected void SetupManagementClients()
         {
@@ -122,6 +138,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
                 List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup", "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
                 modules.Add("Common.ps1"); 
                 
                 SetupManagementClients();

@@ -70,6 +70,7 @@ FormatsToProcess = @(
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
+    '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.dll',
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',
@@ -77,7 +78,7 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
-    '.\Dns\Microsoft.Azure.Commands.Dns.dll'
+    '.\Dns\Microsoft.Azure.Commands.Dns.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
     '.\Insights\Microsoft.Azure.Commands.Insights.dll',

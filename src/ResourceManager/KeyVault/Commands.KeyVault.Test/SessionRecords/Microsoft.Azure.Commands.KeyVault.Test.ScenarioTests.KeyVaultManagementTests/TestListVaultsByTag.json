@@ -1,0 +1,62 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resources?$filter=tagname%20eq%20'testtag'%20and%20tagvalue%20eq%20'testvalue'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlcz8kZmlsdGVyPXRhZ25hbWUlMjBlcSUyMCd0ZXN0dGFnJyUyMGFuZCUyMHRhZ3ZhbHVlJTIwZXElMjAndGVzdHZhbHVlJyZhcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809\",\r\n      \"name\": \"pshtestvault6809\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg2734/providers/Microsoft.KeyVault/vaults/pshtestvault945\",\r\n      \"name\": \"pshtestvault945\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg6619/providers/Microsoft.KeyVault/vaults/pshtestvault592\",\r\n      \"name\": \"pshtestvault592\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "703"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31991"
+        ],
+        "x-ms-request-id": [
+          "e3d4f559-6fda-48d5-a32e-90f889e5b9af"
+        ],
+        "x-ms-correlation-request-id": [
+          "e3d4f559-6fda-48d5-a32e-90f889e5b9af"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T035547Z:e3d4f559-6fda-48d5-a32e-90f889e5b9af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 03:55:47 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "ResourceGroupName": "pshtestrg1197",
+    "Location": "northcentralus",
+    "PreCreatedVault": "pshtestvault6809",
+    "SubscriptionId": "c2619f08-57f7-492b-a9c3-45dee233805b",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com",
+    "User": "kmsngtu@microsoft.com"
+  }
+}

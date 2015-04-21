@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute")]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// If not present, no change on current secret enabled/disabled state.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not present, no change on current secret enabled/disabled state.")]
+            HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
        
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a secret in UTC time. If not present, no change on current secret expiration time.")]
+            HelpMessage = "The expiration time of a secret in UTC time. If not specified, the existing value of the secret's expiration time remains unchanged.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which secret can't be used. If not present, no change on current secret NotBefore attribute.")]
+            HelpMessage = "The UTC time before which secret can't be used. If not specified, the existing value of the secret's NotBefore attribute remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Secret's content type. If not present, no change on current secret's content type. Removing existing content type by setting a empty string.")]
+            HelpMessage = "Secret's content type. If not specified, the existing value of the secret's content type remains unchanged. Remove the existing content type value by specifying an empty string.")]
         public string ContentType { get; set; }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable represents secret tags. If not present, no change on current secret's tags. Removing a tag by setting a empty Hashtable.")]
+            HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
         public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false,

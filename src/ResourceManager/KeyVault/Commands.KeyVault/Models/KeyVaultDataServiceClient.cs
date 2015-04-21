@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Common.Authentication;
@@ -25,6 +24,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (context == null)
                 throw new ArgumentNullException("context");
             if (context.Environment == null)
-                throw new ArgumentException(Resources.InvalidAzureEnvironment);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
             if (httpClient == null)
                 throw new ArgumentNullException("httpClient");
             
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (webKey == null)
                 throw new ArgumentNullException("webKey");
             if (webKey.Kty == JsonWebKeyType.RsaHsm && (importToHsm.HasValue && !importToHsm.Value))
-                throw new ArgumentException(Resources.ImportByokAsSoftkeyError);
+                throw new ArgumentException(KeyVaultProperties.Resources.ImportByokAsSoftkeyError);
                       
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
             
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("options");
            
             if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(Resources.InvalidVaultName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
            
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
             
@@ -206,10 +206,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("options");
 
             if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(Resources.InvalidVaultName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
             if (string.IsNullOrEmpty(options.Name))
-                throw new ArgumentException(Resources.InvalidKeyName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyName);
             
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
 
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (options == null)
                 throw new ArgumentNullException("options");
             if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(Resources.InvalidVaultName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
         
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
                        
@@ -362,9 +362,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (options == null)
                 throw new ArgumentNullException("options");
             if (string.IsNullOrEmpty(options.VaultName))
-                throw new ArgumentException(Resources.InvalidVaultName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
             if (string.IsNullOrEmpty(options.Name))
-                throw new ArgumentException(Resources.InvalidSecretName);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretName);
             
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
             
