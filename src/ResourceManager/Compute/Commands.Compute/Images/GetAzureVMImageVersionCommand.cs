@@ -19,27 +19,39 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageVersion)]
     [OutputType(typeof(VirtualMachineImageResourceList))]
-    public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
+    public class GetAzureVMImageVersionCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Offer { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Skus { get; set; }
+
+        [Parameter, ValidateNotNullOrEmpty]
+        public string FilterExpression { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListOffersParameters
+            var parameters = new VirtualMachineImageListParameters
             {
                 Location = Location,
-                PublisherName = PublisherName
+                Offer = Offer,
+                PublisherName = PublisherName,
+                Skus = Skus,
+                FilterExpression = FilterExpression
             };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
             WriteObject(result);
         }
     }

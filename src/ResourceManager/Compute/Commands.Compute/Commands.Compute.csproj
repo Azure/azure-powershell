@@ -151,6 +151,7 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageVersionCommand.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />

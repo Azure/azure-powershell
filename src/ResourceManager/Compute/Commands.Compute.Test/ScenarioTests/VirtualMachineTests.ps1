@@ -238,18 +238,19 @@ function Test-VirtualMachineImageList
                         $skus = $s3.Resources | select -ExpandProperty Name;
                         foreach ($sku in $skus)
                         {
-                            $s4 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
+                            $s4 = Get-AzureVMImageVersion -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku;
                             if ($s4.Resources.Count -gt 0)
                             {
                                 $versions = $s4.Resources | select -ExpandProperty Name;
 
-                                $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
+                                $s6 = Get-AzureVMImageVersion -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
                                 Assert-NotNull $s6;
                                 Assert-NotNull $s6.Resources;
                                 $verNames = $s6.Resources | select -ExpandProperty Name;
 
                                 foreach ($ver in $versions)
                                 {
+                                    if ($ver -eq $null -or $ver -eq '') { continue; }
                                     $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
                                     Assert-NotNull $s6;
                                     Assert-NotNull $s6.VirtualMachineImage;
@@ -318,10 +319,10 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $publisherName -Offer $offerName; } "$offerName was not found";
         
         $skusName = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s4 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "$skusName was not found";
+        Assert-ThrowsContains { $s4 = Get-AzureVMImageVersion -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "$skusName was not found";
 
         $filter = "name eq 'latest'";
-        Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
+        Assert-ThrowsContains { $s5 = Get-AzureVMImageVersion -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
 
         $version = '1.0.0';
         Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";

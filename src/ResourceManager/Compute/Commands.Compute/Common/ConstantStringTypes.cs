@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
         public const string VirtualMachineImageOffer = "AzureVMImageOffer";
         public const string VirtualMachineImageSku = "AzureVMImageSku";
+        public const string VirtualMachineImageVersion = "AzureVMImageVersion";
 
         public const string VirtualMachineUsage = "AzureVMUsage";
 
