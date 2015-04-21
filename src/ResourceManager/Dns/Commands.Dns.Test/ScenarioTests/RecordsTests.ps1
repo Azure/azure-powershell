@@ -447,7 +447,7 @@ function Test-RecordSetNewAlreadyExists
 	$record = $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType A | Add-AzureDnsRecordConfig -Ipv4Address 1.2.9.8
 
 	# error the second time
-	Assert-Throws {  $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 212 -RecordType A } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied."
+	Assert-Throws {  $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 212 -RecordType A } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied. The current was 'n/a'."
 
 	$zone | New-AzureDnsRecordSet -Name $recordName -Ttl 999 -RecordType A -Overwrite -Force
 
@@ -525,16 +525,17 @@ function Test-RecordSetEtagMismatch
 	$zoneName = getAssetname
 	$recordName = getAssetname
     $recordSet = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType AAAA
+	$originalEtag = $recordSet.Etag
 	$recordSet.Etag = "gibberish"
 
-	Assert-Throws { $recordSet | Set-AzureDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $recordSet | Set-AzureDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
 	$updatedRecordSet = $recordSet | Set-AzureDnsRecordSet -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedRecordSet.Etag
 	Assert-AreNotEqual $recordSet.Etag $updatedRecordSet.Etag
 
-	Assert-Throws { $recordSet | Remove-AzureDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $recordSet | Remove-AzureDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$($updatedRecordSet.Etag)'."
 
 	Assert-True { $recordSet | Remove-AzureDnsRecordSet -Overwrite -Force -PassThru }
 

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Azure.Subscriptions.Csm; 
     using Microsoft.Azure.Test; 
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Commands.Dns.Models; 
+    using Microsoft.Azure.Management.Dns;
 
 
     public class DnsTestsBase 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; } 
 
 
-        public DnsClient DnsClient { get; private set; } 
+        public DnsManagementClient DnsClient { get; private set; } 
 
 
         public static DnsTestsBase NewInstance 
@@ -182,12 +182,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         private GalleryClient GetGalleryClient() 
         { 
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory); 
-        } 
+        }
 
 
-        private DnsClient GetFeatureClient() 
-        { 
-            return TestBase.GetServiceClient<DnsClient>(this.csmTestFactory); 
+        private DnsManagementClient GetFeatureClient() 
+        {
+            return TestBase.GetServiceClient<DnsManagementClient>(this.csmTestFactory); 
         } 
     } 
 } 
