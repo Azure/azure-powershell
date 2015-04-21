@@ -183,6 +183,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
@@ -210,6 +217,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     ServiceName,
                     DeploymentName,
                     RoleName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
@@ -245,6 +259,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
@@ -276,6 +297,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                 c => c.NetworkSecurityGroups.GetForSubnetAsync(
                     VirtualNetworkName,
                     SubnetName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
@@ -317,6 +345,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<NetworkSecurityGroupWithRules>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (NetworkSecurityGroupWithRules)(mockCommandRuntime.OutputPipeline.Single());
@@ -354,6 +389,13 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
                     DeploymentName,
                     RoleName,
                     NetworkInterfaceName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
