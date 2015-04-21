@@ -141,8 +141,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseAuditingPolicyProperties properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
             dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
-            ModelizeStorageInfo(dbPolicyModel,properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
+            ModelizeStorageInfo(dbPolicyModel,properties.StorageAccountName, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(dbPolicyModel, properties.EventTypesToAudit);
+            ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return dbPolicyModel;
         }
 
@@ -154,8 +155,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             ServerAuditingPolicyModel serverPolicyModel = new ServerAuditingPolicyModel();
             ServerAuditingPolicyProperties properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
+            ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(serverPolicyModel, properties.EventTypesToAudit);
+            ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return serverPolicyModel;
         }
 
@@ -172,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Updates the content of the model object with all the storage related information
         /// </summary>
-        private void ModelizeStorageInfo(BaseAuditingPolicyModel model, string accountName, string primary, string secondary)
+        private void ModelizeStorageInfo(BaseAuditingPolicyModel model, string accountName, string secondary)
         {
             model.StorageAccountName = accountName;
             if (!String.IsNullOrEmpty(secondary))
@@ -208,11 +210,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
         { 
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
             if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
@@ -226,6 +228,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             model.EventType = events.ToArray();
         }
         
+        /// <summary>
+        /// Updates the content of the model object with all the retention information
+        /// </summary>
+        private void ModelizeRetentionInfo(BaseAuditingPolicyModel model, string retentionDays, string auditLogsTableName)
+        {
+            model.TableIdentifier = auditLogsTableName;
+            uint retentionDaysForModel;
+            if (!(UInt32.TryParse(retentionDays, out retentionDaysForModel)))
+            {
+                retentionDaysForModel = 0;
+            }
+            model.RetentionInDays = retentionDaysForModel;
+        }
+
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
@@ -263,6 +279,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
+            properties.RetentionDays = model.RetentionInDays.ToString();
+            properties.AuditLogsTableName = model.TableIdentifier;
             return updateParameters;
         }
 
@@ -284,6 +302,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
+            properties.RetentionDays = model.RetentionInDays.ToString();
+            properties.AuditLogsTableName = model.TableIdentifier;
             return updateParameters;
         }
 

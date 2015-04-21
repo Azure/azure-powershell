@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
@@ -36,7 +37,15 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(SecurityConstants.DataAccess, SecurityConstants.SchemaChanges, SecurityConstants.DataChanges, SecurityConstants.SecurityExceptions, SecurityConstants.RevokePermissions, SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.DeprecatedAuditEvents.DataAccess,
+            SecurityConstants.DeprecatedAuditEvents.SchemaChanges, SecurityConstants.DeprecatedAuditEvents.DataChanges,
+            SecurityConstants.DeprecatedAuditEvents.SecurityExceptions,
+            SecurityConstants.DeprecatedAuditEvents.RevokePermissions, SecurityConstants.PlainSQL_Success,
+            SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success,
+            SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success,
+            SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure,
+            SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure,
+            SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -53,6 +62,22 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of retention days for the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The number of retention days for the audit logs table")]
+        [ValidateNotNullOrEmpty]
+        public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the name of the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the audit logs table")]
+        [ValidateNotNullOrEmpty]
+        public string TableIdentifier { get; internal set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -77,80 +102,32 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
                 model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
-            ProcessShortcuts();
+            EventType = Util.ProcessAuditEvents(EventType);
+
             if (EventType != null) // the user provided event types to audit
             {
-                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>
-                {
-                    {SecurityConstants.DataAccess, AuditEventType.DataAccess},
-                    {SecurityConstants.DataChanges, AuditEventType.DataChanges},
-                    {SecurityConstants.SecurityExceptions, AuditEventType.SecurityExceptions},
-                    {SecurityConstants.RevokePermissions, AuditEventType.RevokePermissions},
-                    {SecurityConstants.SchemaChanges, AuditEventType.SchemaChanges},
-                    {SecurityConstants.PlainSQL_Success, AuditEventType.PlainSQL_Success},
-                    {SecurityConstants.PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
-                    {SecurityConstants.ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
-                    {SecurityConstants.ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
-                    {SecurityConstants.StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
-                    {SecurityConstants.StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
-                    {SecurityConstants.Login_Success, AuditEventType.Login_Success},
-                    {SecurityConstants.Login_Failure, AuditEventType.Login_Failure},
-                    {SecurityConstants.TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
-                    {SecurityConstants.TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
-                };
-                model.EventType = EventType.Select(s => events[s]).ToArray();
+                model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
-            return model;
-        }
 
-        /// <summary>
-        /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values
-        /// </summary>
-        private void ProcessShortcuts()
-        {
-            if (EventType == null)
+            if (RetentionInDays != null)
             {
-                return;
+                model.RetentionInDays = RetentionInDays;
             }
-            if (EventType.Length == 1)
+
+            if (TableIdentifier == null)
             {
-                if (EventType[0] == SecurityConstants.None)
+                if ((model.AuditState == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
-                    EventType = new string[] { };
-                }
-                else if (EventType[0] == SecurityConstants.All)
-                {
-                    EventType = new[]
-                    {
-                        SecurityConstants.DataAccess, 
-                        SecurityConstants.DataChanges,
-                        SecurityConstants.SecurityExceptions, 
-                        SecurityConstants.RevokePermissions,
-                        SecurityConstants.SchemaChanges,
-                        SecurityConstants.PlainSQL_Success,
-                        SecurityConstants.PlainSQL_Failure,
-                        SecurityConstants.ParameterizedSQL_Success,
-                        SecurityConstants.ParameterizedSQL_Failure,
-                        SecurityConstants.StoredProcedure_Success,
-                        SecurityConstants.StoredProcedure_Failure,
-                        SecurityConstants.Login_Success,
-                        SecurityConstants.Login_Failure,
-                        SecurityConstants.TransactionManagement_Success,
-                        SecurityConstants.TransactionManagement_Failure
-                    };
+                    // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
+                    throw new Exception(string.Format(Resources.InvalidRetentionTypeSet, model.TableIdentifier));
                 }
             }
             else
             {
-                if (EventType.Contains(SecurityConstants.All))
-                {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
-                }
-                if (EventType.Contains(SecurityConstants.None))
-                {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
-                }
+                model.TableIdentifier = TableIdentifier;
             }
+
+            return model;
         }
     }
 }
