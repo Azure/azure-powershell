@@ -15,46 +15,26 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using Newtonsoft.Json;
+using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
-    [OutputType(typeof(PSVirtualMachineExtension))]
-    public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    [Cmdlet(
+        VerbsCommon.Get,
+        ProfileNouns.VirtualMachineAccessExtension),
+    OutputType(typeof(VirtualMachineAccessExtensionContext))]
+    public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public override string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -63,12 +43,32 @@ namespace Microsoft.Azure.Commands.Compute
             if (Status.IsPresent)
             {
                 var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+                if (returnedExtension.Publisher.Equals(VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(VirtualMachineAccessExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    WriteObject(new VirtualMachineAccessExtensionContext(returnedExtension));
+                }
+                else
+                {
+                    WriteObject(null);
+                }
             }
             else
             {
                 var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
+                var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+                if (returnedExtension.Publisher.Equals(VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                    returnedExtension.ExtensionType.Equals(VirtualMachineAccessExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    WriteObject(new VirtualMachineAccessExtensionContext(returnedExtension));
+                }
+                else
+                {
+                    WriteObject(null);
+                }
             }
         }
     }

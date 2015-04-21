@@ -103,6 +103,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -133,21 +137,36 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
-    <Compile Include="Common\ExtensionSettingBuilder.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageVersionCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
+    <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />
+    <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
+    <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
+    <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\SetAzureVMAccessExtension.cs" />
+    <Compile Include="Extension\VMAccess\VirtualMachineAccessExtensionContext.cs" />
+    <Compile Include="Extension\VMAccess\VMAccessExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\VMAccess\VMAccessExtensionPublicSettings.cs" />
     <Compile Include="Images\GetAzureVMImageSkuCommand.cs" />
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
+    <Compile Include="Models\PSAdditionalUnattendContent.cs" />
+    <Compile Include="Models\PSSshPublicKey.cs" />
+    <Compile Include="Models\PSVaultCertificate.cs" />
+    <Compile Include="Models\PSVaultSecretGroup.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
@@ -166,6 +185,10 @@
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureAdditionalUnattendContentCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureSshPublicKeyCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVaultCertificateCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVaultSecretGroupCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
