@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Network
         private readonly IManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
 
-        public static readonly string RoutesDetailLevel = "full";
+        public static readonly string WithRoutesDetailLevel = "full";
+        public static readonly string WithoutRoutesDetailLevel = "noroutes";
 
         public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
@@ -630,7 +631,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public IRouteTable GetRouteTable(string routeTableName, bool detailed)
         {
-            var getResponse = client.Routes.GetRouteTableWithDetails(routeTableName, detailed ? RoutesDetailLevel : "noroutes");
+            var getResponse = client.Routes.GetRouteTableWithDetails(routeTableName, detailed ? WithRoutesDetailLevel : WithoutRoutesDetailLevel);
             return detailed
                 ? new RouteTableWithRoutes(getResponse.RouteTable)
                 : new SimpleRouteTable(getResponse.RouteTable);
