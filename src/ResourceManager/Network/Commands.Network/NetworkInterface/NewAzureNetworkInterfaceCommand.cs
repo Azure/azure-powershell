@@ -103,10 +103,44 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerBackendAddressPoolId")]
+        public List<string> LoadBalancerBackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerBackendAddressPools")]
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerInboundNatRuleId")]
+        public List<string> LoadBalancerInboundNatRuleId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerInboundNatRule")]
+        public List<PSInboundNatRule> LoadBalancerInboundNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
         public string IpConfigurationName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Dns Servers")]
+        public List<string> DnsServer { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -154,6 +188,24 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
+
+                if (this.LoadBalancerBackendAddressPool != null)
+                {
+                    foreach (var bepool in this.LoadBalancerBackendAddressPool)
+                    {
+                        this.LoadBalancerBackendAddressPoolId = new List<string>();
+                        this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
+                    }
+                }
+
+                if (this.LoadBalancerInboundNatRule != null)
+                {
+                    foreach (var natRule in this.LoadBalancerInboundNatRule)
+                    {
+                        this.LoadBalancerInboundNatRuleId = new List<string>();
+                        this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
+                    }
+                }
             }
 
             var networkInterface = new PSNetworkInterface();
@@ -184,6 +236,30 @@ namespace Microsoft.Azure.Commands.Network
             {
                 networkInterface.NetworkSecurityGroup = new PSResourceId();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (this.LoadBalancerBackendAddressPoolId != null)
+            {
+                networkInterface.IpConfigurations[0].LoadBalancerBackendAddressPools = new List<PSResourceId>();
+                foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
+                {
+                    networkInterface.IpConfigurations[0].LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
+                }
+            }
+
+            if (this.LoadBalancerInboundNatRuleId != null)
+            {
+                networkInterface.IpConfigurations[0].LoadBalancerInboundNatRules = new List<PSResourceId>();
+                foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
+                {
+                    networkInterface.IpConfigurations[0].LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
+                }
+            }
+
+            if (this.DnsServer != null)
+            {
+                networkInterface.DnsSettings = new PSDnsSettings();
+                networkInterface.DnsSettings.DnsServers = this.DnsServer;
             }
 
             networkInterface.IpConfigurations.Add(nicIpConfiguration);

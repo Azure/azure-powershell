@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.Name.ArgumentNotNullOrEmpty("Name");
             this.Location.ArgumentNotNullOrEmpty("Location");
 
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             if (this.Enable)
             {
                 this.Credential.ArgumentNotNull("Credential");

@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         {
             Name.ArgumentNotNull("Name");
             Location.ArgumentNotNull("Location");
-            var client = GetClient();
+            var client = GetClient(IgnoreSslErrors);
             var cluster = await client.ChangeClusterSizeAsync(Name, Location, ClusterSizeInNodes);
             if (cluster != null)
             {

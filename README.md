@@ -122,7 +122,6 @@ For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
 * ```help node-dev``` to get all Node.js development related cmdlets.
 * ```help php-dev``` to get all PHP development related cmdlets.
-* ```help python-dev``` to get all Python development related cmdlets.
 * ```help <cmdlet name>``` to get the details of a specific cmdlet.
 
 ## Supported Environments

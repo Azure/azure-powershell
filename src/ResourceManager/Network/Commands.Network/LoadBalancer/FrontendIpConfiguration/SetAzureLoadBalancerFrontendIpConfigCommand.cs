@@ -80,12 +80,14 @@ namespace Microsoft.Azure.Commands.Network
                 frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
             }
 
+            frontendIpConfig.Subnet = null;
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 frontendIpConfig.Subnet = new PSResourceId();
                 frontendIpConfig.Subnet.Id = this.SubnetId;
             }
 
+            frontendIpConfig.PublicIpAddress = null;
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
                 frontendIpConfig.PublicIpAddress = new PSResourceId();

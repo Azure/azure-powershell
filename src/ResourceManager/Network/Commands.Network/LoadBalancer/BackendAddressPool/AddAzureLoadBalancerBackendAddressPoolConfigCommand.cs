@@ -49,17 +49,6 @@ namespace Microsoft.Azure.Commands.Network
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
             
-            if (this.BackendIpConfigurationId != null)
-            {
-                backendAddressPool.BackendIpConfigurations = new List<PSResourceId>();
-                foreach (var backendIpConfigurationId in this.BackendIpConfigurationId)
-                {
-                    var resourceId = new PSResourceId();
-                    resourceId.Id = backendIpConfigurationId;
-                    backendAddressPool.BackendIpConfigurations.Add(resourceId);
-                }
-            }
-
             backendAddressPool.Id =
                 ChildResourceHelper.GetResourceId(
                     this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,

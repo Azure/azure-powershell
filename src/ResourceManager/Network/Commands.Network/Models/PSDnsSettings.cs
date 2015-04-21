@@ -19,5 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSDnsSettings
     {
         public List<string> DnsServers { get; set; }
+
+        public List<string> AppliedDnsServers { get; set; }
     }
 }
