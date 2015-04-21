@@ -850,10 +850,10 @@ namespace Microsoft.Azure.Commands.Network
         public void RemoveNetworkSecurityGroupFromRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
         {
             client.NetworkSecurityGroups.RemoveFromRole(
-            serviceName,
-            deploymentName,
-            roleName,
-            networkSecurityGroupName);
+                serviceName,
+                deploymentName,
+                roleName,
+                networkSecurityGroupName);
         }
 
         public void SetNetworkSecurityGroupForRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
@@ -887,11 +887,11 @@ namespace Microsoft.Azure.Commands.Network
             string networkInterfaceName)
         {
             client.NetworkSecurityGroups.RemoveFromNetworkInterface(
-            serviceName,
-            deploymentName,
-            roleName,
-            networkInterfaceName,
-            networkSecurityGroupName);
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName,
+                networkSecurityGroupName);
         }
 
         public void SetNetworkSecurityGroupForNetworkInterface(
