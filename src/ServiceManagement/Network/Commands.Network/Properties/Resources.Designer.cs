@@ -241,6 +241,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;, network interface &quot;{4}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInNIC {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInNIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInRole {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in Subnet &quot;{1}&quot; in Virtual Network &quot;{2}&quot;..
         /// </summary>
         internal static string NetworkSecurityGroupNotActiveInSubnet {

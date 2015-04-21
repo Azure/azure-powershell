@@ -80,16 +80,16 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
         public override void ExecuteCmdlet()
         {
             NetworkSecurityGroupGetAssociationResponse assocResponse = null;
+            string warningAssociationNotFullyCrated = null;
             if (string.Equals(this.ParameterSetName, GetNetworkSecurityGroupAssociationForSubnet))
             {
                 assocResponse = Client.GetNetworkSecurityGroupForSubnet(VirtualNetworkName, SubnetName);
 
-                if (assocResponse.State != "Created")
-                {
-                    WriteWarningWithTimestamp(
-                        string.Format(Resources.NetworkSecurityGroupNotActiveInSubnet, assocResponse.Name, VirtualNetworkName, SubnetName));
-
-                }
+                warningAssociationNotFullyCrated = string.Format(
+                    Resources.NetworkSecurityGroupNotActiveInSubnet,
+                    assocResponse.Name,
+                    VirtualNetworkName,
+                    SubnetName);
             }
             else
             {
@@ -105,6 +105,12 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
                         this.ServiceName,
                         this.obtainedDeploymentName,
                         this.RoleName);
+
+                    warningAssociationNotFullyCrated = string.Format(
+                        Resources.NetworkSecurityGroupNotActiveInRole,
+                        this.ServiceName,
+                        this.obtainedDeploymentName,
+                        this.RoleName);
                 }
                 else
                 {
@@ -113,7 +119,19 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association
                         this.obtainedDeploymentName,
                         this.RoleName,
                         this.NetworkInterfaceName);
+
+                    warningAssociationNotFullyCrated = string.Format(
+                        Resources.NetworkSecurityGroupNotActiveInNIC,
+                        this.ServiceName,
+                        this.obtainedDeploymentName,
+                        this.RoleName,
+                        this.NetworkInterfaceName);
                 }
+            }
+
+            if (assocResponse.State != "Created")
+            {
+                WriteWarningWithTimestamp(warningAssociationNotFullyCrated);
             }
 
             INetworkSecurityGroup securityGroup = Client.GetNetworkSecurityGroup(assocResponse.Name, Detailed);

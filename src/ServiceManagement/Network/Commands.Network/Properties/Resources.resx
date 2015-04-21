@@ -294,4 +294,10 @@
   <data name="SetNSGSubnetAssociationTarget" xml:space="preserve">
     <value>Network Security Group "{0}", Virtual Network: "{1}", Subnet "{2}"</value>
   </data>
+  <data name="NetworkSecurityGroupNotActiveInNIC" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}", network interface "{4}".</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInRole" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}".</value>
+  </data>
 </root>
