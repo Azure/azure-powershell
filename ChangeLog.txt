@@ -60,6 +60,15 @@
     * Remove-AzureNetworkSecurityRuleConfig
     * Add-AzureNetworkSecurityRuleConfig
     * Set-AzureNetworkSecurityRuleConfig
+* Azure Storage
+  * Added cmdlets in AzureResourceManager Mode
+    * New-AzureStorageAccount
+    * Get-AzureStorageAccount
+    * Set-AzureStorageAccount
+    * Remove-AzureStorageAccount
+    * New-AzureStorageAccountKey
+    * Get-AzureStorageAccountKey
+  * Made Azure Storage data cmdlets work in AzureResourceManager Mode
 
 2015.04.28 version 0.8.17
 * Azure Batch
