@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway
+namespace Microsoft.Azure.Commands.Network.Routes
 {
     using System.Management.Automation;
     using WindowsAzure.Commands.Utilities.Common;

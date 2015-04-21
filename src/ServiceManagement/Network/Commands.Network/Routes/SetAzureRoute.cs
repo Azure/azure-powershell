@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway
-{
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Network.Routes.Model;
+using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, "AzureRoute"), OutputType(typeof(ManagementOperationContext))]
+namespace Microsoft.Azure.Commands.Network.Routes
     public class SetAzureRoute : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The existing route table's name.")]

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Routes.Model;
+using System.Collections.Generic;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Network.Routes
 {
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using WindowsAzure.Management.Network.Models;
-
     [Cmdlet(VerbsCommon.Get, "AzureRouteTable"), OutputType(typeof(IEnumerable<RouteTable>))]
     public class GetAzureRouteTable : NetworkCmdletBase
     {
