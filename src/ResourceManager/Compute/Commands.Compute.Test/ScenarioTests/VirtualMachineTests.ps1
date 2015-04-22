@@ -637,7 +637,7 @@ function Test-VirtualMachinePIRv2
         New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
 
         # Remove
-        Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;
+        # Remove-AzureVM -ResourceGroupName $rgname -Name $vmname -Force;
     }
     finally
     {
