@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
     /// <summary>
     /// Get the list of usage metrics for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "UsageMetrics"), OutputType(typeof(UsageMetric[]))]
+    [Cmdlet(VerbsCommon.Get, "UsageMetrics"), OutputType(typeof(PSUsageMetric[]))]
     public class GetUsageMetricsCommand : InsightsClientCmdletBase
     {
         /// <summary>
@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         public static readonly TimeSpan DefaultTimeRange = TimeSpan.FromHours(1);
 
+        /// <summary>
+        /// Default API version string for the underlying RP.
+        /// The Insights backend gets the data from the RPs, and the RPs don not necessarily use the same API version.
+        /// </summary>
         public static readonly string DefaultApiVersion = "2014-04-01";
 
         /// <summary>
@@ -77,7 +81,9 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             var buffer = new StringBuilder();
             if (this.MetricNames != null)
             {
-                var metrics = this.MetricNames.Select(n => string.Concat("name.value eq '", n, "'")).Aggregate((a, b) => string.Concat(a, " or ", b));
+                var metrics = this.MetricNames
+                    .Select(n => string.Concat("name.value eq '", n, "'"))
+                    .Aggregate((a, b) => string.Concat(a, " or ", b));
 
                 buffer.Append("(");
                 buffer.Append(metrics);
@@ -120,8 +126,12 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations.ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None).Result;
-            var records = response.UsageMetricCollection.Value.Select(e => new PSUsageMetric(e)).ToArray();
+            UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations
+                .ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None)
+                .Result;
+            var records = response.UsageMetricCollection.Value
+                .Select(e => new PSUsageMetric(e))
+                .ToArray();
 
             WriteObject(sendToPipeline: records);
         }
