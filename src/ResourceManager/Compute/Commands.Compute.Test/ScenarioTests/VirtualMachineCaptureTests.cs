@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePIRv2()
+        public void TestVirtualMachineCapture()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
         }
     }
 }
