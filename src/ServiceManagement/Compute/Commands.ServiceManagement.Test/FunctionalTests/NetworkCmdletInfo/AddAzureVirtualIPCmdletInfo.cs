@@ -12,31 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo
 {
-    public class NewAzureReservedIPCmdletInfo : CmdletsInfo
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+
+    public class AddAzureVirtualIPCmdletInfo : CmdletsInfo
     {
-        public NewAzureReservedIPCmdletInfo(string name, string location, string label)
+        public AddAzureVirtualIPCmdletInfo(string virtualIPName, string serviceName)
         {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
-
-            this.cmdletParams.Add(new CmdletParam("ReservedIPName", name));
-            this.cmdletParams.Add(new CmdletParam("Location", location));
-
-            if (!string.IsNullOrEmpty(label))
-            {
-                this.cmdletParams.Add(new CmdletParam("Label", label));
-            }
-        }
-
-        public NewAzureReservedIPCmdletInfo(string name, string location, string serviceName, string slot, string label): this(name, location, label)
-        {
-            this.cmdletName = Utilities.NewAzureReservedIPCmdletName;
-
+            this.cmdletName = Utilities.AddAzureVirtualIPCmdletName;
+            this.cmdletParams.Add(new CmdletParam("VirtualIPName", virtualIPName));
             this.cmdletParams.Add(new CmdletParam("ServiceName", serviceName));
-            this.cmdletParams.Add(new CmdletParam("Slot", slot));
+
         }
     }
 }
