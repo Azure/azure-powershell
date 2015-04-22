@@ -90,15 +90,8 @@ namespace Microsoft.Azure.Commands.Compute
         public string CustomData { get; set; }
 
         [Parameter(
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "List of Certificates for Addition to the VM.")]
-        [ValidateNotNullOrEmpty]
-        public List<PSVaultSecretGroup> Secrets { get; set; }
-
-        [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 6,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]
@@ -106,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 7,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable Automatic Update")]
         [ValidateNotNullOrEmpty]
@@ -114,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 8,
+            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Time Zone")]
         [ValidateNotNullOrEmpty]
@@ -122,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 9,
+            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Http protocol")]
         [ValidateNotNullOrEmpty]
@@ -130,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 10,
+            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Https protocol")]
         [ValidateNotNullOrEmpty]
@@ -138,32 +131,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 11,
+            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Url for WinRM certificate")]
         [ValidateNotNullOrEmpty]
         public Uri WinRMCertUrl { get; set; }
 
-        [Parameter(
-            ParameterSetName = WindowsParamSet,
-            Position = 12,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Additional Unattend Content")]
-        [ValidateNotNullOrEmpty]
-        public List<PSAdditionalUnattendContent> AdditionalUnattendContents { get; set; }
-
         // Linux Parameter Sets
         [Parameter(
             ParameterSetName = LinuxParamSet,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "SSH Public Keys")]
-        [ValidateNotNullOrEmpty]
-        public List<PSSshPublicKey> SSHPublicKeys { get; set; }
-
-        [Parameter(
-            ParameterSetName = LinuxParamSet,
-            Position = 7,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Https protocol")]
         [ValidateNotNullOrEmpty]
@@ -177,30 +154,37 @@ namespace Microsoft.Azure.Commands.Compute
                 AdminUsername = this.Credential.UserName,
                 AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
                 CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
-                Secrets = (this.Secrets == null) ? null : this.Secrets.ConvertAll<VaultSecretGroup>(e => e.ToVaultSecretGroup()),
             };
 
             if (this.ParameterSetName == LinuxParamSet)
             {
-                this.VM.OSProfile.LinuxConfiguration =
-                    (!this.DisablePasswordAuthentication.IsPresent && this.SSHPublicKeys == null)
-                    ? null
-                    : new LinuxConfiguration
-                    {
-                        DisablePasswordAuthentication = this.DisablePasswordAuthentication.IsPresent
-                                                      ? (bool?) true
-                                                      : null,
+                if (this.VM.OSProfile.WindowsConfiguration != null)
+                {
+                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                }
 
-                        SshConfiguration = (this.SSHPublicKeys == null)
-                                         ? null
-                                         : new SshConfiguration
-                                         {
-                                             PublicKeys = this.SSHPublicKeys.ConvertAll<SshPublicKey>(e => e.ToSshPublicKey()),
-                                         }
-                    };
+                if (this.VM.OSProfile.LinuxConfiguration == null)
+                {
+                    this.VM.OSProfile.LinuxConfiguration = new LinuxConfiguration();
+                }
+
+                this.VM.OSProfile.LinuxConfiguration.DisablePasswordAuthentication =
+                    (this.DisablePasswordAuthentication.IsPresent)
+                    ? (bool?)true
+                    : null;
             }
             else
             {
+                if (this.VM.OSProfile.LinuxConfiguration != null)
+                {
+                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                }
+
+                if (this.VM.OSProfile.WindowsConfiguration == null)
+                {
+                    this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
+                }
+
                 var listenerList  = new List<WinRMListener>();
 
                 if (this.WinRMHttp.IsPresent)
@@ -222,26 +206,27 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // OS Profile
-                this.VM.OSProfile.WindowsConfiguration =
-                    ! (this.ProvisionVMAgent.IsPresent || this.EnableAutoUpdate.IsPresent || this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent) &&
-                      string.IsNullOrEmpty(this.TimeZone) && AdditionalUnattendContents == null
+                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent =
+                    (this.ProvisionVMAgent.IsPresent)
+                    ? (bool?) true
+                    : null;
+
+                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates =
+                    this.EnableAutoUpdate.IsPresent
+                    ? (bool?) true
+                    : null;
+
+                this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+
+                this.VM.OSProfile.WindowsConfiguration.WinRMConfiguration =
+                    ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
                     ? null
-                    : new WindowsConfiguration
+                    : new WinRMConfiguration
                     {
-                        ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?) true : null,
-                        EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent ? (bool?) true : null,
-                        TimeZone = this.TimeZone,
-                        AdditionalUnattendContents = (this.AdditionalUnattendContents == null)
-                                                   ? null
-                                                   : this.AdditionalUnattendContents.ConvertAll<AdditionalUnattendContent>(e => e.ToAdditionalUnattendContent()),
-                        WinRMConfiguration = ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
-                                           ? null
-                                           : new WinRMConfiguration
-                                           {
-                                               Listeners = listenerList,
-                                           },
+                        Listeners = listenerList,
                     };
             }
+
             WriteObject(this.VM);
         }
     }

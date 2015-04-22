@@ -59,7 +59,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
+        /// </summary>
+        public static string BothWindowsAndLinuxConfigurationsSpecified {
+            get {
+                return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>

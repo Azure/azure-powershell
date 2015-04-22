@@ -163,10 +163,6 @@
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
-    <Compile Include="Models\PSAdditionalUnattendContent.cs" />
-    <Compile Include="Models\PSSshPublicKey.cs" />
-    <Compile Include="Models\PSVaultCertificate.cs" />
-    <Compile Include="Models\PSVaultSecretGroup.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
@@ -185,10 +181,9 @@
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\Config\NewAzureAdditionalUnattendContentCommand.cs" />
-    <Compile Include="VirtualMachine\Config\NewAzureSshPublicKeyCommand.cs" />
-    <Compile Include="VirtualMachine\Config\NewAzureVaultCertificateCommand.cs" />
-    <Compile Include="VirtualMachine\Config\NewAzureVaultSecretGroupCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentConfigCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyConfigCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMSecretConfigCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />

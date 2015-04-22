@@ -14,34 +14,47 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// Create Additional Unattend Content Object
+    /// Add an Additional Unattend Content Object to VM
     /// </summary>
     [Cmdlet(
-        VerbsCommon.New,
+        VerbsCommon.Add,
         ProfileNouns.AdditionalUnattendContent),
     OutputType(
-        typeof(PSAdditionalUnattendContent))]
+        typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : AzurePSCmdlet
     {
         private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
         private const string defaultPassName = "oobeSystem";
 
+        [Alias("VMProfile")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMProfile)]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachine VM { get; set; }
+
         [Parameter(
             DontShow = true, // Currently, the only allowable value is 'Microsoft-Windows-Shell-Setup'.
-            Position = 0,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Component Name.")]
         [ValidateNotNullOrEmpty]
         public string ComponentName { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "XML Formatted Content.")]
         [ValidateNotNullOrEmpty]
@@ -49,14 +62,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             DontShow = true, // Currently, the only allowable value is 'oobeSystem'.
-            Position = 2,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Pass name")]
         [ValidateNotNullOrEmpty]
         public string PassName { get; set; }
 
         [Parameter(
-            Position = 3,
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Setting Name.")]
         [ValidateNotNullOrEmpty]
@@ -64,13 +77,35 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new PSAdditionalUnattendContent
+            if (this.VM.OSProfile == null)
             {
-                ComponentName = defaultComponentName,
-                Content = this.Content,
-                PassName = defaultPassName,
-                SettingName = this.SettingName,
-            });
+                this.VM.OSProfile = new OSProfile();
+            }
+
+            if (this.VM.OSProfile.WindowsConfiguration == null && this.VM.OSProfile.LinuxConfiguration == null)
+            {
+                this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
+            }
+            else if (this.VM.OSProfile.WindowsConfiguration == null && this.VM.OSProfile.LinuxConfiguration != null)
+            {
+                throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+            }
+
+            if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents == null)
+            {
+                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents = new List<AdditionalUnattendContent> ();
+            }
+
+            this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents.Add(
+                new AdditionalUnattendContent
+                {
+                    ComponentName = defaultComponentName,
+                    Content = this.Content,
+                    PassName = defaultPassName,
+                    SettingName = this.SettingName,
+                });
+
+            WriteObject(this.VM);
         }
     }
 }
