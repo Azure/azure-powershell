@@ -25,7 +25,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = 'East Asia';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -64,11 +64,11 @@ function Test-VirtualMachineExtension
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
@@ -77,11 +77,11 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         # OS & Image
@@ -93,7 +93,6 @@ function Test-VirtualMachineExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
-        $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
         $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
@@ -203,11 +202,11 @@ function Test-VirtualMachineCustomScriptExtension
     try
     {
         # Common
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = 'East Asia';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
@@ -240,14 +239,11 @@ function Test-VirtualMachineCustomScriptExtension
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -255,11 +251,11 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         # OS & Image
@@ -271,7 +267,6 @@ function Test-VirtualMachineCustomScriptExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
-        $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
         $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
@@ -290,21 +285,24 @@ function Test-VirtualMachineCustomScriptExtension
         $extver = '1.1';
         $publisher = 'Microsoft.Compute';
         $exttype = 'CustomScriptExtension';
-        $fileToExecute = "a.exe";
-        $containderName = "script"
+        $fileToExecute = 'a.exe';
+        $containderName = 'script';
 
         # Set custom script extension
         Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containderName;
 
         # Get VM Extension
         $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+
+        $expCommand = 'powershell -ExecutionPolicy Unrestricted -file ' + $fileToExecute + ' ';
+        $expUri = $stoname + '.blob.core.windows.net/' + $containderName + '/' + $fileToExecute;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
-        Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-        Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+        Assert-AreEqual $ext.CommandToExecute $expCommand;
+        Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -313,8 +311,8 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.Publisher $publisher;
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
-        Assert-AreEqual $ext.CommandToExecute "powershell -ExecutionPolicy Unrestricted -file " + $fileToExecute + " ";
-        Assert-True $ext.Uri[0].Contains($stoname + ".blob.core.windows.net/" + $containderName + "/" + $fileToExecute);
+        Assert-AreEqual $ext.CommandToExecute $expCommand;
+        Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
 
@@ -329,13 +327,13 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Resources.Extensions.Count 1;
-        Assert-AreEqual $vm1.Resources.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Resources.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Resources.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Resources.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Resources.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Resources.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 1;
+        Assert-AreEqual $vm1.Extensions[0].Name $extname;
+        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[0].Settings;
 
         # *** TODO: The removal call did not return. 12/12/2014
     }
@@ -360,11 +358,11 @@ function Test-VirtualMachineAccessExtension
     try
     {
         # Common
-        $loc = Get-ProviderLocation ResourceManagement;;
+        $loc = 'East Asia';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
@@ -397,14 +395,11 @@ function Test-VirtualMachineAccessExtension
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -412,11 +407,11 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
         # OS & Image
@@ -428,7 +423,6 @@ function Test-VirtualMachineAccessExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
-        $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
         $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
@@ -484,13 +478,13 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Resources.Extensions.Count 1;
-        Assert-AreEqual $vm1.Resources.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Resources.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Resources.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Resources.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Resources.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Resources.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 1;
+        Assert-AreEqual $vm1.Extensions[0].Name $extname;
+        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[0].Settings;
 
         # *** TODO: The removal call did not return. 12/12/2014
     }
