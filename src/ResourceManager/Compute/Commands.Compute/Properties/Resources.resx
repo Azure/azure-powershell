@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BothWindowsAndLinuxConfigurationsSpecified" xml:space="preserve">
+    <value>Cannot specify both Windows and Linux configurations.</value>
+  </data>
   <data name="CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript" xml:space="preserve">
     <value>No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File.</value>
   </data>

@@ -15,29 +15,15 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class VirtualMachineExtensionTests
+    public class UsageMetricsTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineExtension()
+        public void TestGetUsageMetrics()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtension()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineAccessExtension()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineAccessExtension");
+            TestsController.NewInstance.RunPsTest("Test-GetUsageMetrics");
         }
     }
 }
