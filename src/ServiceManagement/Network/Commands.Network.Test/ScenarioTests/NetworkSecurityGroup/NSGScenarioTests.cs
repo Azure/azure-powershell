@@ -28,17 +28,12 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 
     public class NSGScenarioTests
     {
-        public NSGScenarioTests()
-        {
-            this.RunPowerShellTest("Initialize-NetworkSecurityGroupTest");
-        }
-
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndRemoveNSG()
+        public void CreateAndRemoveNSG()
         {
             this.RunPowerShellTest("Test-CreateAndRemoveNetworkSecurityGroup");
         }
@@ -46,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSGWithNonExistingName()
+        public void RemoveNSGWithNonExistingName()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityGroupWithNonExistingName");
         }
@@ -54,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetMultipleNSGs()
+        public void GetMultipleNSGs()
         {
             this.RunPowerShellTest("Test-GetMultipleNetworkSecurityGroups");
         }
@@ -62,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNSR()
+        public void SetNSR()
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityRule");
         }
@@ -70,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNSRWithInvalidParameter()
+        public void SetNSRWithInvalidParameter()
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityRuleWithInvalidParameter");
         }
@@ -78,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSR()
+        public void RemoveNSR()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityRule");
         }
@@ -86,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAndGetNSGForSubnet()
+        public void SetAndGetNSGForSubnet()
         {
             this.RunPowerShellTest("Test-SetAndGetNetworkSecurityGroupForSubnet");
         }
@@ -94,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSGFromSubnet()
+        public void RemoveNSGFromSubnet()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityGroupFromSubnet");
         }
@@ -102,14 +97,14 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNSGToSubnetInDiffRegion()
+        public void SetNSGToSubnetInDiffRegion()
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
         }
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void SetNSGOnRoleAndUpdateVM()
         {
             this.RunPowerShellTest("Test-SetNSGOnRoleAndUpdateVM");
@@ -117,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void SetNSGOnNICAndUpdateVM()
         {
             this.RunPowerShellTest("Test-SetNSGOnNICAndUpdateVM");
