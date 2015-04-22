@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => CleanupService(serviceName), "Delete service");
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"),
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Preview), Owner("avgupt"),
          Description(
              "Test the cmdlets (Add-AzureVirtualIP, Add-AzureEndpoint, Remove-AzureEndpoint, Get-AzureDeployment,Remove-AzureVirtualIP)"
              )]
@@ -133,6 +133,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 deployment = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 retrievedVip = deployment.VirtualIPs.FirstOrDefault(vip => string.Equals(vip.Name, vipName));
                 Assert.IsNull(retrievedVip);
+                cleanupIfPassed = false;
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, "Production", true);
+                pass = true;
             }
             catch (Exception ex)
             {

@@ -91,11 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
 
         [Parameter(HelpMessage = "The Virtual IP Name of the Virtual IP on which the endpoint is to be added.")]
         [ValidateNotNullOrEmpty]
-        public string VirtualIPName
-        {
-            get;
-            set;
-        }
+        public string VirtualIPName { get; set; }
 
         protected override void ExecuteCommand()
         {

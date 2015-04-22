@@ -163,6 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
             {
                 endpoint.LoadBalancerDistribution = this.LoadBalancerDistribution;
             }
+
             if (this.ParameterSpecified("VirtualIPName"))
             {
                 endpoint.VirtualIPName = this.VirtualIPName;

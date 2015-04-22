@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using AutoMapper.Impl;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model

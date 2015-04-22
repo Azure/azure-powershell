@@ -26,11 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        public string VirtualIPName { get; set; }
+        public string ServiceName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
+        public string VirtualIPName { get; set; }
 
         public override void ExecuteCmdlet()
         {
