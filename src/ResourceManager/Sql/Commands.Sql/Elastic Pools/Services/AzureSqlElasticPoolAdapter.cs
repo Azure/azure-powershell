@@ -268,6 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         {
             AzureSqlElasticPoolModel model = new AzureSqlElasticPoolModel();
 
+            model.ResourceId = pool.Id;
             model.ResourceGroupName = resourceGroup;
             model.ServerName = serverName;
             model.ElasticPoolName = pool.Name;

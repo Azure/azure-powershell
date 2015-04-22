@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
+        public void TestElasticPoolMetricGet()
+        {
+            RunPowerShellTest("Test-GetElasticPoolMetric");
+        }
+
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestElasticPoolRemove()
         {
             RunPowerShellTest("Test-RemoveElasticPool");
