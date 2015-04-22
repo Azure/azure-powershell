@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
     public class AzureSqlElasticPoolModel
     {
         /// <summary>
+        /// Gets or sets the resource id for this resource
+        /// </summary>
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource group
         /// </summary>
         public string ResourceGroupName { get; set; }

@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
