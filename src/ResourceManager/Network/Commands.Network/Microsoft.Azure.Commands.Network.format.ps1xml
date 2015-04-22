@@ -445,8 +445,8 @@
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PSFrontendIPConfigurations</Label>
-                <PropertyName>PSFrontendIPConfigurationsText</PropertyName>
+                <Label>FrontendIPConfigurations</Label>
+                <PropertyName>FrontendIPConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendAddressPools</Label>
