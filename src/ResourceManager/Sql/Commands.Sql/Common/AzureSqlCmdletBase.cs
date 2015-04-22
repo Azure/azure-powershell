@@ -96,11 +96,17 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
             if(responseModel != null)
             {
-                if (WriteResult()) this.WriteObject(responseModel);
+                if (WriteResult())
+                {
+                    this.WriteObject(responseModel, true);
+                }
             }
             else
             {
-                if (WriteResult()) this.WriteObject(updatedModel);
+                if (WriteResult())
+                {
+                    this.WriteObject(updatedModel);
+                }
             }
         }
     }
