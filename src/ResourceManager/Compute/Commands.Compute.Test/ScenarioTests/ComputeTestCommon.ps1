@@ -148,7 +148,7 @@ Gets default RDFE Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loca = "eastasia", [string] $query = '*Microsoft*Windows*Server')
+    param([string] $loc = "eastasia", [string] $query = '*Microsoft*Windows*Server')
 
     $result = (Get-AzureVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
