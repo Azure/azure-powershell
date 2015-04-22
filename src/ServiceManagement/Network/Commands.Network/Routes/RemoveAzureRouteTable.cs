@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Routes
     [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(bool))]
     public class RemoveAzureRouteTable : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the route table to remove.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the route table to remove.")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified route table is successfully removed")]

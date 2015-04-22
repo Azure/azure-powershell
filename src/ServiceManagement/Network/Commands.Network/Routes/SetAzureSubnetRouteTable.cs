@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Routes
     public class SetAzureSubnetRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the virtual network.")]
-        public string VNetName { get; set; }
+        public string VirtualNetworkName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the subnet that the provided route table will be applied to.")]
         public string SubnetName { get; set; }
@@ -29,9 +29,16 @@ namespace Microsoft.Azure.Commands.Network.Routes
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The name of the route table to set on the provided subnet.")]
         public string RouteTableName { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.AddRouteTableToSubnet(VNetName, SubnetName, RouteTableName));
+            Client.AddRouteTableToSubnet(VirtualNetworkName, SubnetName, RouteTableName);
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }
