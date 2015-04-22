@@ -165,11 +165,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateNetworkInterface());
-            }
 
-            var networkInterface = CreateNetworkInterface();
-            
-            WriteObject(networkInterface);
+                WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
+            }
+            else
+            {
+                var networkInterface = CreateNetworkInterface();
+
+                WriteObject(networkInterface);
+            }
         }
 
         private PSNetworkInterface CreateNetworkInterface()
@@ -240,19 +244,19 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.LoadBalancerBackendAddressPoolId != null)
             {
-                networkInterface.IpConfigurations[0].LoadBalancerBackendAddressPools = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSResourceId>();
                 foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
                 {
-                    networkInterface.IpConfigurations[0].LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
+                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
                 }
             }
 
             if (this.LoadBalancerInboundNatRuleId != null)
             {
-                networkInterface.IpConfigurations[0].LoadBalancerInboundNatRules = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSResourceId>();
                 foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
                 {
-                    networkInterface.IpConfigurations[0].LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
+                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
                 }
             }
 

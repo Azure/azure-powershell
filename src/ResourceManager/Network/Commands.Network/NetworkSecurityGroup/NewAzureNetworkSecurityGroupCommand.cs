@@ -77,11 +77,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => this.CreateNetworkSecurityGroup());
+
+                WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var virtualNetwork = this.CreateNetworkSecurityGroup();
 
-            var virtualNetwork = this.CreateNetworkSecurityGroup();
-
-            WriteObject(virtualNetwork);
+                WriteObject(virtualNetwork);
+            }
         }
 
         private PSNetworkSecurityGroup CreateNetworkSecurityGroup()
