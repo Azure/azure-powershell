@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Management.Network.Models;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Network.Test.Routes
@@ -102,18 +103,24 @@ namespace Microsoft.Azure.Commands.Network.Test.Routes
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetEffectiveRouteTableOnRoleSucceeds()
         {
             GetEffectiveRouteTableForRoleInstance();
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetEffectiveRouteTableOnVMSucceeds()
         {
             GetEffectiveRouteTableForVM();
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetEffectiveRouteTableOnVMNicSucceeds()
         {
             GetEffectiveRouteTableForVMNic();

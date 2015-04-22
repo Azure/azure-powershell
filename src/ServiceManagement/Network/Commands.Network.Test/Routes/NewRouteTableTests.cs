@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Network.Routes;
 using Microsoft.Azure.Commands.Network.Routes.Model;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Moq;
@@ -82,6 +83,8 @@ namespace Microsoft.Azure.Commands.Network.Test.Routes
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewRouteTable()
         {
             // Setup

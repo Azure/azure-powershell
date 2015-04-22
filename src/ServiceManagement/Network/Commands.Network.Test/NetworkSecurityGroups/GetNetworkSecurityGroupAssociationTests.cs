@@ -21,6 +21,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association;
 using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
@@ -161,6 +162,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         #region No Details
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForSubnetNoDetails()
         {
             // Setup
@@ -199,6 +202,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMRoleNoDetails()
         {
             // Setup
@@ -238,6 +243,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMNicNoDetails()
         {
             // Setup
@@ -283,6 +290,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         #region With Details
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForSubnetWithDetails()
         {
             // Setup
@@ -326,6 +335,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMRoleDetails()
         {
             // Setup
@@ -370,6 +381,8 @@ namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMNicDetails()
         {
             // Setup

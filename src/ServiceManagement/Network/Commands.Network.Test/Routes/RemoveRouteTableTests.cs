@@ -20,6 +20,7 @@ using Moq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Network.Routes;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Network.Test.Routes
@@ -57,6 +58,8 @@ namespace Microsoft.Azure.Commands.Network.Test.Routes
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveRouteTable()
         {
             // Setup

@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Models = Microsoft.WindowsAzure.Management.Network.Models;
 
@@ -118,6 +119,8 @@ namespace Microsoft.Azure.Commands.Network.Test.Routes
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRouteTableForSubnetNoDetails()
         {
             // Setup
@@ -156,6 +159,8 @@ namespace Microsoft.Azure.Commands.Network.Test.Routes
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRouteTableForSubnetDetails()
         {
             // Setup
