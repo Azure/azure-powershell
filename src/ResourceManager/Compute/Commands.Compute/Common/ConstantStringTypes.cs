@@ -80,5 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImageSku = "AzureVMImageSku";
 
         public const string VirtualMachineUsage = "AzureVMUsage";
+
+        public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
     }
 }
