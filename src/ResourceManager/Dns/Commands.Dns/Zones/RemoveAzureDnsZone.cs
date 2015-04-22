@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Dns
         public DnsZone Zone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the Zone parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
-        public SwitchParameter IgnoreEtag { get; set; }
+        public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (this.ParameterSetName == "Object")
             {
-                if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.IgnoreEtag.IsPresent)
+                if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.Overwrite.IsPresent)
                 {
                     throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsZone).Name));
                 }
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneToDelete = this.Zone;
             }
 
-            bool ignoreEtag = this.IgnoreEtag.IsPresent || this.ParameterSetName != "Object";
+            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                 ProjectResources.Progress_RemovingZone,
                 this.Name,
-                () => { deleted = DnsClient.DeleteDnsZone(zoneToDelete, ignoreEtag); });
+                () => { deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite); });
 
             if (deleted)
             {

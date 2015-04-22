@@ -17,8 +17,8 @@ using System.Security;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.WebKey;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             else if (next != null)
                 return next.ConvertKeyFromFile(fileInfo, password);
             else
-                throw new ArgumentException(string.Format(Resources.UnsupportedFileFormat, fileInfo.Name));
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
         private bool CanProcess(FileInfo fileInfo, SecureString password)
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 certificate = new X509Certificate2(pfxFileName);
           
             if (!certificate.HasPrivateKey)
-                throw new ArgumentException(string.Format(Resources.InvalidKeyBlob, "pfx"));
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
           
             var key = certificate.PrivateKey as RSA;
 
             if (key == null)
-                throw new ArgumentException(string.Format(Resources.InvalidKeyBlob, "pfx"));
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
             return CreateJWK(key);
         }

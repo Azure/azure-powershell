@@ -106,7 +106,7 @@ function Test-ZoneNewAlreadyExists
 	$resourceGroupName = $createdZone.ResourceGroupName
 	Assert-NotNull $createdZone
 	
-	Assert-Throws { New-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied."
+	Assert-Throws { New-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied. The current was 'n/a'."
 
 	$createdZone | Remove-AzureDnsZone -PassThru -Force
 }
@@ -122,9 +122,9 @@ function Test-ZoneSetEtagMismatch
 	$originalEtag = $createdZone.Etag
 	$createdZone.Etag = "gibberish"
 
-	Assert-Throws { $createdZone | Set-AzureDnsZone } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $createdZone | Set-AzureDnsZone } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
-	$updatedZone = $createdZone | Set-AzureDnsZone -IgnoreEtag
+	$updatedZone = $createdZone | Set-AzureDnsZone -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedZone.Etag
 	Assert-AreNotEqual $createdZone.Etag $updatedZone.Etag
@@ -141,7 +141,7 @@ function Test-ZoneSetNotFound
 	$zoneName = getAssetname
     $resourceGroup = TestSetup-CreateResourceGroup
 	
-	Assert-Throws { Set-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "PreconditionFailed: The condition '*' in the If-Match header was not satisfied."
+	Assert-Throws { Set-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "PreconditionFailed: The condition '*' in the If-Match header was not satisfied. The current was 'n/a'."
 }
 
 <#
@@ -155,9 +155,9 @@ function Test-ZoneRemoveEtagMismatch
 	$originalEtag = $createdZone.Etag
 	$createdZone.Etag = "gibberish"
 
-	Assert-Throws { $createdZone | Remove-AzureDnsZone -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $createdZone | Remove-AzureDnsZone -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
-	$removed = $createdZone | Remove-AzureDnsZone -IgnoreEtag -Force -PassThru
+	$removed = $createdZone | Remove-AzureDnsZone -Overwrite -Force -PassThru
 
 	Assert-True { $removed }
 }
@@ -200,6 +200,31 @@ function Test-ZoneList
 	Assert-AreEqual $createdZone2.Name $result[1].Name
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[1].ResourceGroupName
 	Assert-AreEqual 0 $result[1].Tags.Count 
+
+	$result | Remove-AzureDnsZone -PassThru -Force
+}
+
+<#
+.SYNOPSIS
+Zone List With EndsWith
+#>
+function Test-ZoneListWithEndsWith
+{
+	$suffix = ".com"
+	$suffixWithDot = ".com."
+	$zoneName1 = getAssetname
+	$zoneName2 = $zoneName1 + $suffix
+	$resourceGroup = TestSetup-CreateResourceGroup
+    $createdZone1 = $resourceGroup | New-AzureDnsZone -Name $zoneName1 
+	$createdZone2 = $resourceGroup | New-AzureDnsZone -Name $zoneName2
+
+	$result = Get-AzureDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -EndsWith $suffixWithDot
+
+	Assert-AreEqual 1 $result.Count
+
+	Assert-AreEqual $createdZone2.Etag $result[0].Etag
+	Assert-AreEqual $createdZone2.Name $result[0].Name
+	Assert-NotNull $resourceGroup.ResourceGroupName $result[0].ResourceGroupName
 
 	$result | Remove-AzureDnsZone -PassThru -Force
 }
