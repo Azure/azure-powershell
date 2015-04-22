@@ -46,30 +46,14 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-            DontShow = true, // Currently, the only allowable value is 'Microsoft-Windows-Shell-Setup'.
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Component Name.")]
-        [ValidateNotNullOrEmpty]
-        public string ComponentName { get; set; }
-
-        [Parameter(
-            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "XML Formatted Content.")]
         [ValidateNotNullOrEmpty]
         public string Content { get; set; }
 
         [Parameter(
-            DontShow = true, // Currently, the only allowable value is 'oobeSystem'.
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Pass name")]
-        [ValidateNotNullOrEmpty]
-        public string PassName { get; set; }
-
-        [Parameter(
-            Position = 4,
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Setting Name.")]
         [ValidateNotNullOrEmpty]

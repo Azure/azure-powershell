@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute
                     break;
                 }
 
-                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri == this.ReferenceUri)
+                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri.Equals(this.ReferenceUri))
                 {
                     if (this.VM.OSProfile.Secrets[i].VaultCertificates == null)
                     {
