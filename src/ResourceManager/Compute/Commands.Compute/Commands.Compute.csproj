@@ -139,8 +139,8 @@
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
-    <Compile Include="ExtensionImages\GetAzureVMExtensionImageVersionCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
+    <Compile Include="ExtensionImages\GetAzureVMExtensionImageDetailCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
@@ -151,7 +151,7 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
-    <Compile Include="Images\GetAzureVMImageVersionCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
@@ -162,16 +162,14 @@
     <Compile Include="Images\GetAzureVMImageSkuCommand.cs" />
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
-    <Compile Include="Images\GetAzureVMImageCommand.cs" />
+    <Compile Include="Images\GetAzureVMImageDetailCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
     <Compile Include="Models\PSAdditionalUnattendContent.cs" />
     <Compile Include="Models\PSSshPublicKey.cs" />
     <Compile Include="Models\PSVaultCertificate.cs" />
     <Compile Include="Models\PSVaultSecretGroup.cs" />
     <Compile Include="Models\PSOperationContext.cs" />
-    <Compile Include="Models\PSVirtualMachineExtensionImageDetails.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
-    <Compile Include="Models\PSVirtualMachineImageDetails.cs" />
     <Compile Include="Models\PSVirtualMachineImage.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />

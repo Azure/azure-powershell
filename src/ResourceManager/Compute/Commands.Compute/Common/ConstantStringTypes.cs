@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";
+        public const string VirtualMachineExtensionImageDetail = "AzureVMExtensionImageDetail";
 
         public const string AvailabilitySet = "AzureAvailabilitySet";
         public const string VirtualMachineConfig = "AzureVMConfig";
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
         public const string VirtualMachineImageOffer = "AzureVMImageOffer";
         public const string VirtualMachineImageSku = "AzureVMImageSku";
+        public const string VirtualMachineImageDetail = "AzureVMImageDetail";
         public const string VirtualMachineImageVersion = "AzureVMImageVersion";
 
         public const string VirtualMachineUsage = "AzureVMUsage";

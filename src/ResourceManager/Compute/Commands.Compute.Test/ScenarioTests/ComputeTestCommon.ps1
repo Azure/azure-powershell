@@ -180,7 +180,7 @@ function Get-DefaultCRPImage
         $defaultSku = $result[0];
     }
 
-    $result = (Get-AzureVMImageVersion -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
+    $result = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
     if ($result.Count -eq 1)
     {
         $defaultVersion = $result;
@@ -190,7 +190,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+    $vmimg = Get-AzureVMImageDetail -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }

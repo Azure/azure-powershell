@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher)]
-    [OutputType(typeof(PSVirtualMachineImage))]
+    [OutputType(typeof(PSVirtualMachineImagePublisher))]
     public class GetAzureVMImagePublisherCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
 
             var images = from r in result.Resources
-                         select new PSVirtualMachineImage
+                         select new PSVirtualMachineImagePublisher
                          {
                              RequestId = result.RequestId,
                              StatusCode = result.StatusCode,
