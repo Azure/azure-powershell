@@ -21,9 +21,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageVersion)]
     [OutputType(typeof(PSVirtualMachineImage))]
-    public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
+    public class GetAzureVMImageVersionCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -34,18 +34,26 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Offer { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Skus { get; set; }
+
+        [Parameter, ValidateNotNullOrEmpty]
+        public string FilterExpression { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListSkusParameters
+            var parameters = new VirtualMachineImageListParameters
             {
                 Location = Location,
+                Offer = Offer,
                 PublisherName = PublisherName,
-                Offer = Offer
+                Skus = Skus,
+                FilterExpression = FilterExpression
             };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
 
             var images = from r in result.Resources
                          select new PSVirtualMachineImage
@@ -54,9 +62,11 @@ namespace Microsoft.Azure.Commands.Compute
                              StatusCode = result.StatusCode,
                              Id = r.Id,
                              Location = r.Location,
+                             Version = r.Name,
                              PublisherName = this.PublisherName,
                              Offer = this.Offer,
-                             Skus = r.Name
+                             Skus = this.Skus,
+                             FilterExpression = this.FilterExpression
                          };
 
             WriteObject(images, true);

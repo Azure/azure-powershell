@@ -101,11 +101,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreatePublicIpAddress());
+
+                WriteObject(this.GetPublicIpAddress(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var publicIp = CreatePublicIpAddress();
 
-            var publicIp = CreatePublicIpAddress();
-
-            WriteObject(publicIp);
+                WriteObject(publicIp);
+            }
         }
 
         private PSPublicIpAddress CreatePublicIpAddress()

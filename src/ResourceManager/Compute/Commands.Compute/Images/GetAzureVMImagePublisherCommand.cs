@@ -13,17 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher)]
-    [OutputType(typeof(VirtualMachineImageResourceList))]
+    [OutputType(typeof(PSVirtualMachineImage))]
     public class GetAzureVMImagePublisherCommand : VirtualMachineImageBaseCmdlet
     {
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         public override void ExecuteCmdlet()
@@ -36,7 +38,18 @@ namespace Microsoft.Azure.Commands.Compute
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
-            WriteObject(result);
+
+            var images = from r in result.Resources
+                         select new PSVirtualMachineImage
+                         {
+                             RequestId = result.RequestId,
+                             StatusCode = result.StatusCode,
+                             Id = r.Id,
+                             Location = r.Location,
+                             PublisherName = r.Name
+                         };
+
+            WriteObject(images, true);
         }
     }
 }

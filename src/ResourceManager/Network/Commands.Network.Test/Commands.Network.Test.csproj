@@ -200,6 +200,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerNicAssociation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerNicAssociationDuringCreate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

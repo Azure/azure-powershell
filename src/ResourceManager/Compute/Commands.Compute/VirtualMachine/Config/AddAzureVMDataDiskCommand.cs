@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
         public int? Lun { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
@@ -116,14 +116,14 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun == null ? 0 : this.Lun.Value,
-                VirtualHardDisk = this.VhdUri == null ? null : new VirtualHardDisk
+                VirtualHardDisk = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
                 {
-                    Uri = this.VhdUri.ToString()
+                    Uri = this.VhdUri
                 },
-                CreateOption = string.IsNullOrEmpty(CreateOption) ? DiskCreateOptionTypes.Empty : CreateOption,
+                CreateOption = this.CreateOption,
                 SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
-                    Uri = SourceImageUri
+                    Uri = this.SourceImageUri
                 }
             });
 

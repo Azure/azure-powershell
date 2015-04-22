@@ -153,6 +153,7 @@
     <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineNetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\TestVirtualMachineSizeAndUsage.cs" />
+    <Compile Include="ScenarioTests\VirtualMachinePIRv2Tests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
