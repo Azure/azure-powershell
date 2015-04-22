@@ -26,17 +26,15 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
         }
 
-        [Fact
-        (Skip = "Disable this test until the breaking api is checked in.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
         }
 
-        [Fact
-        (Skip = "Disable this test until the breaking api is checked in.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)] // disable this test until the breaking api is checked in.
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineAccessExtension");
