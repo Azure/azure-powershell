@@ -168,6 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public static void SetTestSettings()
         {
+            // Please remove this line once all tests are done
             System.Net.ServicePointManager.ServerCertificateValidationCallback +=
                 delegate(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
                     System.Security.Cryptography.X509Certificates.X509Chain chain,

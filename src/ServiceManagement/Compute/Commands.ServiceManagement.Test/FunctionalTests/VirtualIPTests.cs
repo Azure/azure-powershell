@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void ClassInitialize(TestContext context)
         {
             var vnetConfig = vmPowershellCmdlets.GetAzureVNetConfig(null);
-            vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\VnetconfigWithLocation.netcfg");
+            vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\Resources\\VnetconfigWithLocation.netcfg");
             var sites = vmPowershellCmdlets.GetAzureVNetSite(null);
             subNet = sites[0].Subnets.First().Name;
             vnetName = sites[0].Name;
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 };
 
                 var updatedVM = vmPowershellCmdlets.AddAzureEndPoint(endpointInfo);
-
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, updatedVM);
                 deployment = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 retrievedVip = deployment.VirtualIPs.FirstOrDefault(vip => string.Equals(vip.Name, vipName));
                 Assert.IsNotNull(retrievedVip);
@@ -120,8 +120,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Vm = updatedVM
                 };
 
-                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.RemoveAzureEndPoint(endpointName, updatedVM), "Removing Azure Endpoint");
-                
+                updatedVM = vmPowershellCmdlets.RemoveAzureEndPoint(endpointName, updatedVM);
+                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, updatedVM);
+
                 deployment = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 retrievedVip = deployment.VirtualIPs.FirstOrDefault(vip => string.Equals(vip.Name, vipName));
                 Assert.IsNotNull(retrievedVip);
