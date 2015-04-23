@@ -24,56 +24,63 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrud()
         {
-            RunPowerShellTest("Test-ZoneCrud");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudWithPiping()
         {
-            RunPowerShellTest("Test-ZoneCrudWithPiping");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudWithPiping");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneList()
         {
-            RunPowerShellTest("Test-ZoneList");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneList");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneListWithEndsWith()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListWithEndsWith");
         }
         
         [Fact(Skip = "Service does not yet support this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneNewAlreadyExists()
         {
-            RunPowerShellTest("Test-ZoneNewAlreadyExists");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneNewAlreadyExists");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneSetEtagMismatch()
         {
-            RunPowerShellTest("Test-ZoneSetEtagMismatch");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneSetEtagMismatch");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneSetNotFound()
         {
-            RunPowerShellTest("Test-ZoneSetNotFound");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneSetNotFound");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneRemoveEtagMismatch()
         {
-            RunPowerShellTest("Test-ZoneRemoveEtagMismatch");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneRemoveEtagMismatch");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneRemoveNotFound()
         {
-            RunPowerShellTest("Test-ZoneRemoveNonExisting");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneRemoveNonExisting");
         }
     }
 }

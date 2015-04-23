@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Network.Routes
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(bool))]
     public class RemoveAzureRouteTable : NetworkCmdletBase

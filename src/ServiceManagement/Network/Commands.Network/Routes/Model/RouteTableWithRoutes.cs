@@ -17,7 +17,7 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.Routes.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model
 {
     public class RouteTableWithRoutes : SimpleRouteTable
     {

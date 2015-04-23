@@ -12,15 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Network;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Management.Network;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {

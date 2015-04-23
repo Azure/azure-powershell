@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Routes
-{
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
+{
     [Cmdlet(VerbsCommon.Set, "AzureSubnetRouteTable"), OutputType(typeof(ManagementOperationContext))]
     public class SetAzureSubnetRouteTable : NetworkCmdletBase
     {

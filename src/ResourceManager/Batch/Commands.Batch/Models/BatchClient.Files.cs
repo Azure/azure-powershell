@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Task files matching the specified filter options
+        /// Lists the task files matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Task files</param>
-        /// <returns>The Task files matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for task files</param>
+        /// <returns>The task files matching the specified filter options</returns>
         public IEnumerable<PSTaskFile> ListTaskFiles(ListTaskFileOptions options)
         {
             if (options == null)
@@ -37,13 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName)) 
-                && options.Task == null)
-            {
-                throw new ArgumentNullException(Resources.GBTF_NoTaskSpecified);
-            }
-
-            // Get the single Task file matching the specified name
+            // Get the single task file matching the specified name
             if (!string.IsNullOrEmpty(options.TaskFileName))
             {
                 WriteVerbose(string.Format(Resources.GBTF_GetByName, options.TaskFileName, options.TaskName));
@@ -54,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSTaskFile[] { psTaskFile };
                 }
             }
-            // List Task files using the specified filter
+            // List task files using the specified filter
             else
             {
                 string tName = options.Task == null ? options.TaskName : options.Task.Name;
@@ -90,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Downloads a Task file using the specified options.
+        /// Downloads a task file using the specified options.
         /// </summary>
         /// <param name="options">The download options</param>
         public void DownloadTaskFile(DownloadTaskFileOptions options)
@@ -98,12 +92,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (options == null)
             {
                 throw new ArgumentNullException("options");
-            }
-
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName) 
-                || string.IsNullOrWhiteSpace(options.TaskFileName)) && options.TaskFile == null)
-            {
-                throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
             }
 
             ITaskFile taskFile = null;
@@ -119,33 +107,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 taskFile = options.TaskFile.omObject;
             }
 
-            string path = null;
-            // The task file object's name is a relative path that includes directories.
-            string fileName = Path.GetFileName(taskFile.Name);
-            if (string.IsNullOrWhiteSpace(options.DestinationPath))
-            {
-                // If no destination is specified, just save the file to the local directory 
-                path = fileName;
-            }
-            else
-            {
-                path = Path.Combine(options.DestinationPath, fileName);
-            }
-
-            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, path));
-            if (options.Stream != null)
-            {
-                // Used for testing.
-                // Don't dispose supplied Stream
-                taskFile.CopyToStream(options.Stream, options.AdditionalBehaviors);
-            }
-            else
-            {
-                using (FileStream fs = new FileStream(path, FileMode.Create))
-                {
-                    taskFile.CopyToStream(fs, options.AdditionalBehaviors);
-                }   
-            }
+            DownloadITaskFile(taskFile, options.DestinationPath, "task", options.Stream, options.AdditionalBehaviors);
         }
 
         /// <summary>
@@ -158,11 +120,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (options == null)
             {
                 throw new ArgumentNullException("options");
-            }
-
-            if ((string.IsNullOrWhiteSpace(options.PoolName) || string.IsNullOrWhiteSpace(options.VMName)) && options.VM == null)
-            {
-                throw new ArgumentNullException(Resources.GBVMF_NoVMSpecified);
             }
 
             // Get the single vm file matching the specified name
@@ -208,6 +165,96 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 Func<ITaskFile, PSVMFile> mappingFunction = f => { return new PSVMFile(f); };
                 return PSAsyncEnumerable<PSVMFile, ITaskFile>.CreateWithMaxCount(
                     vmFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+            }
+        }
+
+        /// <summary>
+        /// Downloads a vm file using the specified options.
+        /// </summary>
+        /// <param name="options">The download options</param>
+        public void DownloadVMFile(DownloadVMFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            ITaskFile vmFile = null;
+            if (options.VMFile == null)
+            {
+                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
+                {
+                    vmFile = poolManager.GetVMFile(options.PoolName, options.VMName, options.VMFileName, options.AdditionalBehaviors);
+                }
+            }
+            else
+            {
+                vmFile = options.VMFile.omObject;
+            }
+
+            DownloadITaskFile(vmFile, options.DestinationPath, "vm", options.Stream, options.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Downloads an RDP file using the specified options.
+        /// </summary>
+        /// <param name="options">The download options</param>
+        public void DownloadRDPFile(DownloadRDPFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
+            }
+
+            if (options.Stream != null)
+            {
+                // Don't dispose supplied Stream
+                CopyRDPStream(options.Stream, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
+            }
+            else
+            {
+                string vmName = options.VM == null ? options.VMName : options.VM.Name;
+                string verboseLogFileName = string.Format("for vm {0}", vmName);
+                WriteVerbose(string.Format(Resources.Downloading, "RDP", verboseLogFileName, options.DestinationPath));
+
+                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
+                {
+                    CopyRDPStream(fs, options.Context.BatchOMClient, options.PoolName, options.VMName, options.VM, options.AdditionalBehaviors);
+                }
+            }
+        }
+
+        private void CopyRDPStream(Stream destinationStream, IBatchClient client, string poolName, string vmName,
+            PSVM vm, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (vm == null)
+            {
+                using (IPoolManager poolManager = client.OpenPoolManager())
+                {
+                    poolManager.GetRDPFile(poolName, vmName, destinationStream, additionalBehaviors);
+                }
+            }
+            else
+            {
+                vm.omObject.GetRDPFile(destinationStream, additionalBehaviors);
+            }
+        }
+
+        // Downloads the file represented by an ITaskFile instance to the specified path
+        private void DownloadITaskFile(ITaskFile file, string destinationPath, string loggingFileType, Stream stream = null, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (stream != null)
+            {
+                // Don't dispose supplied Stream
+                file.CopyToStream(stream, additionalBehaviors);
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.Downloading, loggingFileType, file.Name, destinationPath));
+                using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
+                {
+                    file.CopyToStream(fs, additionalBehaviors);
+                }
             }
         }
     }

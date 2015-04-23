@@ -12,38 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Properties;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class DownloadTaskFileOptions : BatchClientParametersBase
+    public class DownloadTaskFileOptions : TaskFileOperationParameters
     {
-        /// <summary>
-        /// The name of the WorkItem
-        /// </summary>
-        public string WorkItemName { get; set; }
+        public DownloadTaskFileOptions(BatchAccountContext context, string workItemName, string jobName, string taskName, string taskFileName, 
+            PSTaskFile taskFile, string destinationPath, Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, workItemName, jobName, taskName, taskFileName, taskFile, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
+            {
+                throw new ArgumentNullException(Resources.NoDownloadDestination);
+            }
 
-        /// <summary>
-        /// The name of the Job
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// The name of the Task
-        /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The name of the Task file to download
-        /// </summary>
-        public string TaskFileName { get; set; }
-
-        /// <summary>
-        /// The Task file to download
-        /// </summary>
-        public PSTaskFile TaskFile { get; set; }
+            this.DestinationPath = destinationPath;
+            this.Stream = stream;
+        }
 
         /// <summary>
         /// The path to the directory where the Task file will be downloaded
@@ -51,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string DestinationPath { get; set; }
 
         /// <summary>
-        /// Used for testing. If not null, the file contents will be copied to this Stream instead of hitting the file system.
+        /// The Stream into which the task file data will be written. This stream will not be closed or rewound by this call.
         /// </summary>
         internal Stream Stream { get; set; }
     }

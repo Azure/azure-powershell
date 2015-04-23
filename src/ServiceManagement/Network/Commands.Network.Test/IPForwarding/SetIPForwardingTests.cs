@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.IPForwarding;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.IPForwarding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Network.Test.IPForwarding
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwarding
 {
     public class SetIPForwardingTests
     {

@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Routes.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
 
-namespace Microsoft.Azure.Commands.Network.Routes.Utilities
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Utilities
 {
     public class RouteTableConfigurationBaseCmdlet : NetworkCmdletBase
     {

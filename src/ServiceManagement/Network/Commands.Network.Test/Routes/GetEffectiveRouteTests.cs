@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Network.Routes;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Network.Test.Routes
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Routes
 {
     public class GetEffectiveRouteTests
     {

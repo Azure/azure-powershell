@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Routes.Model;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
 
-namespace Microsoft.Azure.Commands.Network.Routes
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
     [Cmdlet(VerbsCommon.New, "AzureRouteTable"), OutputType(typeof(IRouteTable))]
     public class NewAzureRouteTable : NetworkCmdletBase

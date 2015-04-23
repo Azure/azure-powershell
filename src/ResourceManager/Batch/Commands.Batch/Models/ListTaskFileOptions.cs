@@ -17,32 +17,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListTaskFileOptions : BatchClientParametersBase
+    public class ListTaskFileOptions : TaskOperationParameters
     {
-        /// <summary>
-        /// The name of the WorkItem
-        /// </summary>
-        public string WorkItemName { get; set; }
-
-        /// <summary>
-        /// The name of the Job
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// The name of the Task
-        /// </summary>
-        public string TaskName { get; set; }
+        public ListTaskFileOptions(BatchAccountContext context, string workItemName, string jobName, string taskName, PSCloudTask task, 
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, workItemName, jobName, taskName, task, additionalBehaviors)
+        { }
 
         /// <summary>
         /// If specified, the single Task file with this name will be returned
         /// </summary>
         public string TaskFileName { get; set; }
-
-        /// <summary>
-        /// The Task to query for files
-        /// </summary>
-        public PSCloudTask Task { get; set; }
 
         /// <summary>
         /// The OData filter to use when querying for Task files

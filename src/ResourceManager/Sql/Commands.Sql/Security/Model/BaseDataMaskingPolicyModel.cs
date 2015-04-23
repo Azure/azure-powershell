@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         public DataMaskingStateType DataMaskingState { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of the priviledge logins
+        /// Gets or sets the list of the privilege logins
         /// </summary>
         public string PrivilegedLogins { get; set; }
     }

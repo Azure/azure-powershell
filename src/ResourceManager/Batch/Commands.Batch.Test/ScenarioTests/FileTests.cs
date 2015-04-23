@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string accountName = "filetests";
         private const string poolName = "testPool";
         private const string vmName = "tvm-1900272697_1-20150331t200107z"; // Use the following command to get a VM name: (Get-AzureBatchVM -PoolName "testPool" -BatchContext $context)[0].Name
+        private const string startTaskStdOutName = "startup\\stdout.txt";
+        private const string startTaskStdOutContent = "hello";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -324,6 +326,38 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 3; // shared, startup, workitems
             controller.RunPsTest(string.Format("Test-ListVMFilePipeline '{0}' '{1}' '{2}' '{3}'", accountName, poolName, vmName, count));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMFileContentByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetVMFileContentByName '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, startTaskStdOutName, startTaskStdOutContent));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMFileContentPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetVMFileContentPipeline '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, startTaskStdOutName, startTaskStdOutContent));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRDPFileByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetRDPFileByName '{0}' '{1}' '{2}'", accountName, poolName, vmName));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRDPFilePipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetRDPFilePipeline '{0}' '{1}' '{2}'", accountName, poolName, vmName));
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -340,12 +374,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchTaskFileContent_ST")]
     public class GetBatchTaskFileContentScenarioTestCommand : GetBatchTaskFileContentCommand
     {
-        [Parameter]
-        public MemoryStream MemStream { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            this.Stream = MemStream;
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }
@@ -353,6 +383,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsCommon.Get, "AzureBatchVMFile_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchVMFileScenarioTestCommand : GetBatchVMFileCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchVMFileContent_ST")]
+    public class GetBatchVMFileContentScenarioTestCommand : GetBatchVMFileContentCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile_ST")]
+    public class GetBatchRDPFileScenarioTestCommand : GetBatchRDPFileCommand
     {
         public override void ExecuteCmdlet()
         {

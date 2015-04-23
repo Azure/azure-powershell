@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.IPForwarding.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.IPForwarding.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
-namespace Microsoft.Azure.Commands.Network.IPForwarding
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.IPForwarding
 {
     [Cmdlet(VerbsCommon.Get, "AzureIPForwarding"), OutputType(typeof(string))]
     public class GetAzureIPForwarding : NetworkCmdletBase

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Routes
-{
-    using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Management.Network.Models;
 
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
+{
     [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(IEnumerable<EffectiveRouteTable>))]
     public class GetAzureEffectiveRouteTable : NetworkCmdletBase
     {

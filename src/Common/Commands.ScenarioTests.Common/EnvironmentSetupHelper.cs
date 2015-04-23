@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             ProfileClient.Profile.Save();
         }
-        
+
         private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment rdfeEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
