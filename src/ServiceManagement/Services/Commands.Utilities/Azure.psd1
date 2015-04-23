@@ -61,6 +61,7 @@ TypesToProcess = @(
 	'.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
 
+
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.format.ps1xml',
@@ -71,8 +72,8 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
-    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
-	'.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
+    '.\Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml',
+    '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -85,7 +86,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
                 '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
-                '.\Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
+                '.\Network\Microsoft.Azure.Commands.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
                 '.\RemoteApp\Microsoft.Azure.Commands.RemoteApp.dll',
                 '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
