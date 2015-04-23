@@ -55,14 +55,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the nodeconfiguration name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = true, HelpMessage = "The nodeconfiguration name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = true, HelpMessage = "Filter dsc nodes based on their node configuration name.")]
         [ValidateNotNullOrEmpty]
         public string NodeConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfiguration, Mandatory = true, HelpMessage = "Filter dsc nodes based on their configuration name.")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationName { get; set; }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.NodeConfigurationName,
                     nodeStatus);
             }
-            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfigurationName)
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfiguration)
             {
                 ret = this.AutomationClient.ListDscNodesByConfiguration(
                     this.ResourceGroupName,

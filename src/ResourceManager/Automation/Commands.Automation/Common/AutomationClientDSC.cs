@@ -15,9 +15,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.IO;
+using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Automation.Model;
@@ -26,6 +28,9 @@ using AutomationManagement = Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Newtonsoft.Json;
 using Hyak.Common;
+using System.Management.Automation.Runspaces;
+using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
+using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
  namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -584,24 +589,20 @@ using Hyak.Common;
             string resourceGroupName,
             string automationAccountName,
             Guid nodeId,
-            string nodeConfigurationName,
-            bool force)
+            string nodeConfigurationName
+            )
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             Requires.Argument("NodeId", nodeId).NotNull();
             Requires.Argument("NodeConfigurationName", nodeConfigurationName).NotNull();
-
-            string existingConfigurationName = String.Empty;
-
+            
             try
             {
                 var getNode = this.automationManagementClient.Nodes.Get(
                         resourceGroupName,
                         automationAccountName,
                         nodeId).Node;
-
-                existingConfigurationName = getNode.NodeConfiguration.Name;
             }
             catch (CloudException cloudException)
             {
@@ -613,10 +614,9 @@ using Hyak.Common;
                 throw;
             }
 
-            if (!String.IsNullOrEmpty(existingConfigurationName) && !force)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationAlreadyExists));
-            }
+            // ***
+            // Note: No need to check if an existing configuration is already assigned. The confirmation is obtained when the cmdlet is executed
+            // *** 
 
             var nodeConfiguration = new DscNodeConfigurationAssociationProperty { Name = nodeConfigurationName };
 
@@ -653,6 +653,61 @@ using Hyak.Common;
                 throw;
             }
 	}
+
+        public void RegisterDscNode(string resourceGroupName,
+                                            string automationAccountName,
+                                            string azureVMName,
+                                            string nodeconfigurationName,
+                                            string configurationMode,
+                                            int configurationModeFrequencyMins,
+                                            int refreshFrequencyMins,
+                                            bool rebootFlag,
+                                            string actionAfterReboot,
+                                            bool moduleOverwriteFlag)
+        {
+            // get the location from AutomationAccountName. This will validate the account too
+            string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
+
+            string deploymentName = System.DateTimeOffset.Now.LocalDateTime.ToString("yyyyMMddhhmmss");
+
+            // get the endpoint and keys
+            Model.AgentRegistration agentRegistrationInfo = this.GetAgentRegistration(
+                resourceGroupName,
+                automationAccountName);
+
+            // prepare the parameters to be used in New-AzureResourceGroupDeployment cmdlet
+            Hashtable templateParameters = new Hashtable();
+            templateParameters.Add("vmName", azureVMName);
+            templateParameters.Add("location", location);
+            templateParameters.Add("modulesUrl", Constants.ModulesUrl);
+            templateParameters.Add("configurationFunction", Constants.ConfigurationFunction);
+            templateParameters.Add("registrationUrl", agentRegistrationInfo.Endpoint);
+            templateParameters.Add("registrationKey", agentRegistrationInfo.PrimaryKey);
+            templateParameters.Add("nodeConfigurationName", nodeconfigurationName);
+            templateParameters.Add("configurationMode", configurationMode);
+            templateParameters.Add("configurationModeFrequencyMins", configurationModeFrequencyMins);
+            templateParameters.Add("refreshFrequencyMins", refreshFrequencyMins);
+            templateParameters.Add("rebootNodeIfNeeded", rebootFlag);
+            templateParameters.Add("actionAfterReboot", actionAfterReboot);
+            templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
+
+            // invoke the New-AzureResourceGroupDeployment cmdlet
+            using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
+            {
+                Command invokeCommand = new Command("New-AzureResourceGroupDeployment");
+                invokeCommand.Parameters.Add("Name", deploymentName);
+                invokeCommand.Parameters.Add("ResourceGroupName", resourceGroupName);
+                invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);
+                invokeCommand.Parameters.Add("TemplateFile", Constants.TemplateFile);
+
+                pipe.Commands.Add(invokeCommand);
+
+                pipe.Commands.Add("Out-Default");
+
+                Collection<PSObject> results = pipe.Invoke();
+            }
+        }
+
         #endregion
 
         #region compilationjob
@@ -668,7 +723,7 @@ using Hyak.Common;
                         string.Format(CultureInfo.CurrentCulture, Resources.CompilationJobNotFound, Id));
                 }
 
-                return new Model.CompilationJob(automationAccountName, job);
+                return new Model.CompilationJob(resourceGroupName, automationAccountName, job);
             }
         }
 
@@ -750,7 +805,7 @@ using Hyak.Common;
                         });
                 }
 
-                return jobModels.Select(jobModel => new Commands.Automation.Model.CompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Commands.Automation.Model.CompilationJob(resourceGroupName, automationAccountName, jobModel));
             }
         }
 
@@ -825,7 +880,7 @@ using Hyak.Common;
                         });
                 }
 
-                return jobModels.Select(jobModel => new Model.CompilationJob(automationAccountName, jobModel));
+                return jobModels.Select(jobModel => new Model.CompilationJob(resourceGroupName, automationAccountName, jobModel));
             }
         }
 
@@ -847,7 +902,7 @@ using Hyak.Common;
 
                 var job = this.automationManagementClient.CompilationJobs.Create(resourceGroupName, automationAccountName, createJobParameters);
 
-                return new Model.CompilationJob(automationAccountName, job.DscCompilationJob);
+                return new Model.CompilationJob(resourceGroupName, automationAccountName, job.DscCompilationJob);
             }
         }
 
@@ -872,7 +927,7 @@ using Hyak.Common;
                 }
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
-                return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList();
+                return jobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, resourceGroupName, automationAccountName, jobId)).ToList();
             }
         }
 
@@ -894,7 +949,7 @@ using Hyak.Common;
 
                 if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                 {
-                    return new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus);                            
+                    return new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, computedRollupStatus);                            
                 }
                 
                 return null;
@@ -927,7 +982,7 @@ using Hyak.Common;
                     
                     if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                     {
-                        nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
+                        nodeConfigurations.Add(new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, computedRollupStatus));
                     }
                 }
 
@@ -959,7 +1014,7 @@ using Hyak.Common;
 
                     if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                     {
-                        nodeConfigurations.Add(new Model.NodeConfiguration(automationAccountName, nodeConfiguration, computedRollupStatus));
+                        nodeConfigurations.Add(new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, computedRollupStatus));
                     }
                 }
 
@@ -1162,7 +1217,7 @@ using Hyak.Common;
                         return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
                     });
 
-                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(automationAccountName, nodeConfigModel, null));
+                return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfigModel, null));
             }
         }
 
@@ -1235,12 +1290,13 @@ using Hyak.Common;
             return configuration.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (DscConfigurationParameter)k.Value);
         }
 
-        private Model.JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId)
+        private Model.JobStream CreateJobStreamFromJobStreamModel(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId)
         {
             Requires.Argument("jobStream", jobStream).NotNull();
+            Requires.Argument("resourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("automationAccountName", automationAccountName).NotNull();
             Requires.Argument("jobId", jobId).NotNull();
-            return new Model.JobStream(jobStream, automationAccountName, jobId);
+            return new Model.JobStream(jobStream, resourceGroupName, automationAccountName, jobId);
         }
 
         #endregion

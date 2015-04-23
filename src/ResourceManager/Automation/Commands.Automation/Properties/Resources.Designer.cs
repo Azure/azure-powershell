@@ -232,6 +232,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generating the metaconfiguration.
+        /// </summary>
+        internal static string DscMetaMofHasKeysDescription {
+            get {
+                return ResourceManager.GetString("DscMetaMofHasKeysDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: The files downloaded by this cmdlet contain the registration key for the specified Azure Automation account. This registration key allows computers to onboard to this Automation Account. Store these files in a secure location or delete them after use..
+        /// </summary>
+        internal static string DscMetaMofHasKeysWarning {
+            get {
+                return ResourceManager.GetString("DscMetaMofHasKeysWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Dsc node was not found. Node id {0}..
         /// </summary>
         internal static string DscNodeNotFound {
@@ -385,15 +403,6 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation Dsc node ?.
-        /// </summary>
-        internal static string RemovDscNodeWarning {
-            get {
-                return ResourceManager.GetString("RemovDscNodeWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Disassociating the Azure Automation runbook and schedule..
         /// </summary>
         internal static string RemoveAzureAutomationJobScheduleDescription {
@@ -462,6 +471,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveDscNodeDescription {
             get {
                 return ResourceManager.GetString("RemoveDscNodeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unregister Dsc node from Azure Automation?.
+        /// </summary>
+        internal static string RemoveDscNodeWarning {
+            get {
+                return ResourceManager.GetString("RemoveDscNodeWarning", resourceCulture);
             }
         }
         
@@ -579,6 +597,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string SetCertificateInvalidArgs {
             get {
                 return ResourceManager.GetString("SetCertificateInvalidArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the node configuration assignment for this node.
+        /// </summary>
+        internal static string SetnodeconfigurationDescription {
+            get {
+                return ResourceManager.GetString("SetnodeconfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the node configuration assignment for this node?.
+        /// </summary>
+        internal static string SetnodeconfigurationWarning {
+            get {
+                return ResourceManager.GetString("SetnodeconfigurationWarning", resourceCulture);
             }
         }
         

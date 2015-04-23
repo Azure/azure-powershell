@@ -57,5 +57,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const int PsCommandValueDepth = 10;
 
+        // The template file is a json
+        public const string TemplateFile = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/azuredeploy.json";
+
+        // The metaconfig file
+        public const string ModulesUrl = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfig.zip";
+
+        public const string ConfigurationFunction = @"RegistrationMetaConfig.ps1\RegistrationMetaConfig";
     }
 }

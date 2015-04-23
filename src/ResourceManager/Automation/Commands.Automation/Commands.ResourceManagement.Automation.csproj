@@ -125,6 +125,7 @@
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeReport.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\RegisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
