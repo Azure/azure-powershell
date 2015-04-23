@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage)]
-    [OutputType(typeof(ListUsagesResponse))]
+    [OutputType(typeof(PSUsage))]
     public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
         [Parameter(
@@ -36,7 +39,15 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
 
             ListUsagesResponse result = this.UsageClient.List(this.Location);
-            WriteObject(result);
+
+            List<PSUsage> psResultList = new List<PSUsage>();
+            foreach (var item in result.Usages)
+            {
+                var psItem = Mapper.Map<PSUsage>(item);
+                psResultList.Add(psItem);
+            }
+
+            WriteObject(psResultList, true);
         }
     }
 }

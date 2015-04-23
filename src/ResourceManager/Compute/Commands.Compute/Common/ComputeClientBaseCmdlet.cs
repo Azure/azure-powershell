@@ -38,5 +38,10 @@ namespace Microsoft.Azure.Commands.Compute
 
             set { computeClient = value; }
         }
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ComputeAutoMapperProfile.Initialize();
+        }
     }
 }
