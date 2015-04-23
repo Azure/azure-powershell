@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Generating the files.
+        ///   Looks up a localized string similar to Generating the metaconfiguration.
         /// </summary>
         internal static string DscMetaMofHasKeysDescription {
             get {

@@ -354,7 +354,7 @@
     <comment>Automation</comment>
   </data>
   <data name="DscMetaMofHasKeysDescription" xml:space="preserve">
-    <value>Generating the files</value>
+    <value>Generating the metaconfiguration</value>
     <comment>Automation</comment>
   </data>
   <data name="SetnodeconfigurationDescription" xml:space="preserve">
