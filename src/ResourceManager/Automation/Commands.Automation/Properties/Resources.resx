@@ -143,6 +143,7 @@
   </data>
   <data name="CredentialNotFound" xml:space="preserve">
     <value>The credential was not found. Credential name: {0}.</value>
+    <comment>Automation</comment>
   </data>
   <data name="JobNotFound" xml:space="preserve">
     <value>The Job having Id: {0} was not found.</value>
@@ -150,6 +151,7 @@
   </data>
   <data name="ModuleNotFound" xml:space="preserve">
     <value>The module was not found. Module name: {0}.</value>
+    <comment>Automation</comment>
   </data>
   <data name="ParameterEmpty" xml:space="preserve">
     <value>{0} is empty.</value>
@@ -301,6 +303,7 @@
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>Invalid path {0}.</value>
+    <comment>Automation</comment>
   </data>
   <data name="MetaconfigAlreadyExists" xml:space="preserve">
     <value>Metaconfig already exists. Specify the parameter to force an overwrite. File: {0}</value>
@@ -328,6 +331,7 @@
   </data>
   <data name="CompilationJobNotFound" xml:space="preserve">
     <value>The Compilation Job having Id: {0} was not found.</value>
+    <comment>Automation</comment>
   </data>
   <data name="ConfigurationHasNoPublishedVersion" xml:space="preserve">
     <value>The configuration has no published version. Configuration name {0}.</value>
@@ -348,6 +352,17 @@
   <data name="NodeConfigurationNotFound" xml:space="preserve">
     <value>NodeConfiguration {0} not found.</value>
     <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationContentNotFound" xml:space="preserve">
+    <value>Configuration Content is not found for configuration name: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationDraftMode" xml:space="preserve">
+    <value>Configuration content can not be in edit/draft mode in current preview. Use the Published option.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeReportAlreadyExists" xml:space="preserve">
+    <value>NodeReport already exists. Specify force switch an overwrite. File: {0}</value>
   </data>
   <data name="DscMetaMofHasKeysWarning" xml:space="preserve">
     <value>Warning: The files downloaded by this cmdlet contain the registration key for the specified Azure Automation account. This registration key allows computers to onboard to this Automation Account. Store these files in a secure location or delete them after use.</value>
