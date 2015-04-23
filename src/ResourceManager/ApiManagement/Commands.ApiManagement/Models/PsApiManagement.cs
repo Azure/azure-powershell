@@ -18,22 +18,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using System.Threading;
     using AutoMapper;
+    using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagement
+    public class PsApiManagement
     {
         private static readonly Regex ResourceGroupRegex = 
             new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
 
-        public ApiManagement()
+        public PsApiManagement()
         {
             Tags = new Dictionary<string, string>();
-            AdditionalRegions = new List<ApiManagementRegion>();
+            AdditionalRegions = new List<PsApiManagementRegion>();
         }
 
-        internal ApiManagement(ApiServiceResource apiServiceResource)
+        internal PsApiManagement(ApiServiceResource apiServiceResource)
             : this()
         {
             if (apiServiceResource == null)
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = Mapper.Map<SkuType, ApiManagementSku>(apiServiceResource.Properties.SkuProperties.SkuType);
+            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.Properties.SkuProperties.SkuType);
             Capacity = apiServiceResource.Properties.SkuProperties.Capacity ?? 1;
             ProvisioningState = apiServiceResource.Properties.ProvisioningState;
             RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
@@ -55,13 +55,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 AdditionalRegions =
                     apiServiceResource.Properties.AdditionalRegions
-                        .Select(region => new ApiManagementRegion(region))
+                        .Select(region => new PsApiManagementRegion(region))
                         .ToList();
             }
 
             if (apiServiceResource.Properties.VirtualNetworkConfiguration != null)
             {
-                VirtualNetwork = new ApiManagementVirtualNetwork(apiServiceResource.Properties.VirtualNetworkConfiguration);
+                VirtualNetwork = new PsApiManagementVirtualNetwork(apiServiceResource.Properties.VirtualNetworkConfiguration);
             }
 
             if (apiServiceResource.Properties.HostnameConfigurations != null)
@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var portalHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(portalHostnameResource);
+                    PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
                 }
 
                 var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new ApiManagementHostnameConfiguration(proxyHostnameResource);
+                    PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string Location { get; private set; }
 
-        public ApiManagementSku Sku { get; set; }
+        public PsApiManagementSku Sku { get; set; }
 
         public int Capacity { get; set; }
 
@@ -103,15 +103,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string PortalUrl { get; private set; }
 
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
-        public ApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
+        public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
-        public ApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
+        public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
-        public IList<ApiManagementRegion> AdditionalRegions { get; private set; }
+        public IList<PsApiManagementRegion> AdditionalRegions { get; private set; }
 
         public string ResourceGroupName
         {
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
         }
 
-        public ApiManagementRegion AddRegion(
+        public PsApiManagementRegion AddRegion(
             string location,
-            ApiManagementSku sku = ApiManagementSku.Developer,
+            PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
-            ApiManagementVirtualNetwork virtualNetwork = null)
+            PsApiManagementVirtualNetwork virtualNetwork = null)
         {
             if (location == null)
             {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 throw new ArgumentException(
                     string.Format(
-                        Properties.Resources.InvalidLocation,
+                        Resources.InvalidLocation,
                         location,
                         string.Join(",", CommonConstants.ValidLocationsSet)
                         ),
@@ -160,10 +160,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
             if (location.Equals(Location) || AdditionalRegions.Any(r => location.Equals(r.Location)))
             {
-                throw new ArgumentException(string.Format(Properties.Resources.AddRegionExistsMessage, location), "location");
+                throw new ArgumentException(string.Format(Resources.AddRegionExistsMessage, location), "location");
             }
 
-            var newRegion = new ApiManagementRegion
+            var newRegion = new PsApiManagementRegion
             {
                 Location = location,
                 Sku = sku,
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 throw new ArgumentException(
                     string.Format(
-                        Properties.Resources.InvalidLocation,
+                        Resources.InvalidLocation,
                         location,
                         string.Join(",", CommonConstants.ValidLocationsSet)
                         ),
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             if (location.Equals(Location))
             {
                 throw new ArgumentException(
-                    string.Format(Properties.Resources.RemoveRegionCannotRemoveMasterRegion, location),
+                    string.Format(Resources.RemoveRegionCannotRemoveMasterRegion, location),
                     "location");
             }
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             return regionToRemove != null && AdditionalRegions.Remove(regionToRemove);
         }
 
-        public void UpdateRegion(string location, ApiManagementSku sku, int capacity, ApiManagementVirtualNetwork virtualNetwork)
+        public void UpdateRegion(string location, PsApiManagementSku sku, int capacity, PsApiManagementVirtualNetwork virtualNetwork)
         {
             if (location == null)
             {
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 throw new ArgumentException(
                     string.Format(
-                        Properties.Resources.InvalidLocation,
+                        Resources.InvalidLocation,
                         location,
                         string.Join(",", CommonConstants.ValidLocationsSet)
                         ),
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
             else
             {
-                throw new ArgumentException(string.Format(Properties.Resources.UpdateRegionDoesNotExistsMessage, location), "location");
+                throw new ArgumentException(string.Format(Resources.UpdateRegionDoesNotExistsMessage, location), "location");
             }
         }
     }

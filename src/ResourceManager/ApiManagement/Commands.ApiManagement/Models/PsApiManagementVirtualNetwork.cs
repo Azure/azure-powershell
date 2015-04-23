@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagementVirtualNetwork
+    public class PsApiManagementVirtualNetwork
     {
-        public ApiManagementVirtualNetwork()
+        public PsApiManagementVirtualNetwork()
         {
         }
 
-        internal ApiManagementVirtualNetwork(VirtualNetworkConfiguration vnetConfigurationResource)
+        internal PsApiManagementVirtualNetwork(VirtualNetworkConfiguration vnetConfigurationResource)
             :this()
         {
             if (vnetConfigurationResource == null)

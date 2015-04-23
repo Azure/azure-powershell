@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Update, "AzureApiManagementDeployments", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(ApiManagement))]
-    public class UpdateAzureApiManagementDeployments : AzureApiManagementCmdletBase
+    [Cmdlet(VerbsData.Update, "AzureApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
+    public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
     {
         internal const string FromApiManagementInstanceSetName = "Set from ApiManagement instance";
         internal const string DefaultParameterSetName = "Specific API Management service";
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use Sku, Capacity, VirtualNetwork and " +
                           "AdditionalRegions properties to manage deployments.")]
         [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+        public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium .")]
         [ValidateNotNullOrEmpty]
-        public ApiManagementSku Sku { get; set; }
+        public PsApiManagementSku Sku { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
@@ -84,52 +84,64 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Virtual Network Configuration of master Azure API Management service deployment.")]
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Additional deployment regions of Azure API Management service.")]
-        public IList<ApiManagementRegion> AdditionalRegions { get; set; }
+        public IList<PsApiManagementRegion> AdditionalRegions { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends updated PsApiManagement to pipeline if operation succeeds.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteLongRunningCmdletWrap(() =>
+            string resourceGroupName, name, location;
+            PsApiManagementSku sku;
+            int capacity;
+            PsApiManagementVirtualNetwork virtualNetwork;
+            IList<PsApiManagementRegion> additionalRegions;
+
+            if (ParameterSetName.Equals(DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                string resourceGroupName, name, location;
-                ApiManagementSku sku;
-                int capacity;
-                ApiManagementVirtualNetwork virtualNetwork;
-                IList<ApiManagementRegion> additionalRegions;
+                resourceGroupName = ResourceGroupName;
+                name = Name;
+                location = Location;
+                sku = Sku;
+                capacity = Capacity;
+                virtualNetwork = VirtualNetwork;
+                additionalRegions = AdditionalRegions;
+            }
+            else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
+            {
+                resourceGroupName = ApiManagement.ResourceGroupName;
+                name = ApiManagement.Name;
+                location = ApiManagement.Location;
+                sku = ApiManagement.Sku;
+                capacity = ApiManagement.Capacity;
+                virtualNetwork = ApiManagement.VirtualNetwork;
+                additionalRegions = ApiManagement.AdditionalRegions;
+            }
+            else
+            {
+                throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
+            }
 
-                if (ParameterSetName.Equals(DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceGroupName = ResourceGroupName;
-                    name = Name;
-                    location = Location;
-                    sku = Sku;
-                    capacity = Capacity;
-                    virtualNetwork = VirtualNetwork;
-                    additionalRegions = AdditionalRegions;
-                }
-                else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceGroupName = ApiManagement.ResourceGroupName;
-                    name = ApiManagement.Name;
-                    location = ApiManagement.Location;
-                    sku = ApiManagement.Sku;
-                    capacity = ApiManagement.Capacity;
-                    virtualNetwork = ApiManagement.VirtualNetwork;
-                    additionalRegions = ApiManagement.AdditionalRegions;
-                }
-                else
-                {
-                    throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
-                }
-
-                return Client.BeginUpdateDeployments(resourceGroupName, name, location, sku, capacity, virtualNetwork, additionalRegions);
-            });
+            ExecuteLongRunningCmdletWrap(
+                () => Client.BeginUpdateDeployments(
+                    resourceGroupName,
+                    name,
+                    location,
+                    sku,
+                    capacity,
+                    virtualNetwork,
+                    additionalRegions),
+                PassThru.IsPresent
+                );
         }
     }
 }

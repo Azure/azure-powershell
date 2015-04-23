@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    public enum ApiManagementSku
+    public enum PsApiManagementSku
     {
         Developer = 1,
         Standard = 2,

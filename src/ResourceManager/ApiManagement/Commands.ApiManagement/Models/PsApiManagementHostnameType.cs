@@ -11,30 +11,13 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+//
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
-    using Microsoft.Azure.Management.ApiManagement.Models;
-
-    public class ApiManagementCertificate
+    public enum PsApiManagementHostnameType
     {
-        public ApiManagementCertificate()
-        {
-        }
-
-        internal ApiManagementCertificate(CertificateInformation value)
-            : this()
-        {
-            Expiry = value.Expiry;
-            Subject = value.Subject;
-            Thumbprint = value.Thumbprint;
-        }
-
-        public string Thumbprint { get; set; }
-
-        public string Subject { get; private set; }
-
-        public DateTime Expiry { get; private set; }
+        Proxy = 1,
+        Portal = 2,
     }
 }

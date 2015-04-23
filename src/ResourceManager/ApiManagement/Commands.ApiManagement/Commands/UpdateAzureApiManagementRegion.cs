@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Update, "AzureApiManagementRegion"), OutputType(typeof(ApiManagement))]
+    [Cmdlet(VerbsData.Update, "AzureApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
           Mandatory = true,
           HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+        public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "New tier value for region. Valid values are Developer, Standard and Premium.")]
-        public ApiManagementSku Sku { get; set; }
+        public PsApiManagementSku Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Virtual network configuration. Default value is $null.")]
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {

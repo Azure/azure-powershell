@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         {
         }
 
-        public static ApiManagementLongRunningOperation CreateLongRunningOperation(
+        internal static ApiManagementLongRunningOperation CreateLongRunningOperation(
             string operationName,
             LongRunningOperationResponse longRunningResponse)
         {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             var apiServiceLongRunnigResponse = longRunningResponse as ApiServiceLongRunningOperationResponse;
             if (apiServiceLongRunnigResponse != null && apiServiceLongRunnigResponse.Value != null)
             {
-                result.ApiManagement = new ApiManagement(apiServiceLongRunnigResponse.Value);
+                result.ApiManagement = new PsApiManagement(apiServiceLongRunnigResponse.Value);
             }
 
             return result;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string OperationLink { get; private set; }
 
-        public ApiManagement ApiManagement { get; private set; }
+        public PsApiManagement ApiManagement { get; private set; }
 
         public string Error { get; private set; }
     }

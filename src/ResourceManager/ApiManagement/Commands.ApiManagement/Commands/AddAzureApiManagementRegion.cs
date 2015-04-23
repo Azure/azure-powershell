@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Add, "AzureApiManagementRegion"), OutputType(typeof(ApiManagement))]
+    [Cmdlet(VerbsCommon.Add, "AzureApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
           Mandatory = true,
           HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+        public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false, 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "The tier of the region. Valid values are Developer, Standard and Premium. Default value is Developer")]
-        public ApiManagementSku? Sku { get; set; }
+        public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Vnet configuration. Default value is $null")]
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(() =>
             {
-                ApiManagement.AddRegion(Location, Sku ?? ApiManagementSku.Developer, Capacity ?? 1, VirtualNetwork);
+                ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Developer, Capacity ?? 1, VirtualNetwork);
 
                 WriteObject(ApiManagement);
             });

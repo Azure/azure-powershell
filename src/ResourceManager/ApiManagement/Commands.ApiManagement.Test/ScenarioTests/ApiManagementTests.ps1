@@ -145,12 +145,10 @@ function Test-BackupRestoreApiManagement
     $backupName = $apiManagementName + ".apimbackup"
 
     # Backup API Management service
-    $backupResult = Backup-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -Container $containerName -Blob $backupName -PassThru
-
-    Assert-IsTrue $backupResult
+    Backup-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName
 
     # Restore API Management service
-    $restoreResult = Restore-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -Container $containerName -Blob $backupName
+    $restoreResult = Restore-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName
 
     Assert-AreEqual $resourceGroupName $restoreResult.ResourceGroupName
     Assert-AreEqual $apiManagementName $restoreResult.Name
@@ -205,15 +203,15 @@ function Test-UpdateApiManagementDeployment
     $region1Sku = "Premium"
     $service.AddRegion($region1Location, $region1Sku)
 
-    # - 3) Add one more region 3 units
-    $region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
-    $region2Sku = "Premium"
-    $region2Capacity = 3
-    $service.AddRegion($region2Location, $region2Sku, $region2Capacity)
+    ## - 3) Add one more region 3 units
+    #$region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
+    #$region2Sku = "Premium"
+    #$region2Capacity = 3
+    #$service.AddRegion($region2Location, $region2Sku, $region2Capacity)
 
-    Update-AzureApiManagementDeployments -ApiManagement $service
+    Update-AzureApiManagementDeployment -ApiManagement $service
 
-    $service = Get-ApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     Assert-AreEqual $resourceGroupName $service.ResourceGroupName
     Assert-AreEqual $apiManagementName $service.Name
@@ -222,7 +220,8 @@ function Test-UpdateApiManagementDeployment
     Assert-AreEqual $capacity $service.Capacity
     Assert-AreEqual "Succeeded" $service.ProvisioningState
 
-    Assert-AreEqual 2 $service.AdditionalRegions.Count
+    #Assert-AreEqual 2 $service.AdditionalRegions.Count
+    Assert-AreEqual 1 $service.AdditionalRegions.Count
     $found = 0
     for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++)
     {
@@ -242,7 +241,8 @@ function Test-UpdateApiManagementDeployment
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
     }
-    Assert-True {$found -eq 2} "Api Management regions created earlier is not found."
+    #Assert-True {$found -eq 2} "Api Management regions created earlier is not found."
+    Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
 
     # Remove the service
     Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
@@ -282,18 +282,18 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     $region1Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1
     $region1Sku = "Premium"
 
-    # - 3) Add new 'Premium' region 3 units
-    $region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
-    $region2Sku = "Premium"
-    $region2Capacity = 3
+    ## - 3) Add new 'Premium' region 3 units
+    #$region2Location = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {($_ -ne $location) -and ($_ -ne $region1Location)} | Select -First 1
+    #$region2Sku = "Premium"
+    #$region2Capacity = 3
 
     Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName |
     Update-AzureApiManagementRegion -Sku $sku -Capacity $capacity |
     Add-AzureApiManagementRegion -Location $region1Location -Sku $region1Sku |
     Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
-    Update-AzureApiManagementDeployments
+    Update-AzureApiManagementDeployment
 
-    $service = Get-ApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     Assert-AreEqual $resourceGroupName $service.ResourceGroupName
     Assert-AreEqual $apiManagementName $service.Name
@@ -302,7 +302,9 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     Assert-AreEqual $capacity $service.Capacity
     Assert-AreEqual "Succeeded" $service.ProvisioningState
 
-    Assert-AreEqual 2 $service.AdditionalRegions.Count
+    #Assert-AreEqual 2 $service.AdditionalRegions.Count
+    Assert-AreEqual 1 $service.AdditionalRegions.Count
+
     $found = 0
     for ($i = 0; $i -lt $service.AdditionalRegions.Count; $i++)
     {
@@ -314,15 +316,17 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
             Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
         }
 
-        if ($service.AdditionalRegions[$i].Location -eq $region2Location)
-        {
-            $found = $found + 1
-            Assert-AreEqual $region2Sku $service.AdditionalRegions[$i].Sku
-            Assert-AreEqual $region2Capacity $service.AdditionalRegions[$i].Capacity
-            Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
-        }
+        #if ($service.AdditionalRegions[$i].Location -eq $region2Location)
+        #{
+        #    $found = $found + 1
+        #    Assert-AreEqual $region2Sku $service.AdditionalRegions[$i].Sku
+        #    Assert-AreEqual $region2Capacity $service.AdditionalRegions[$i].Capacity
+        #    Assert-Null $service.AdditionalRegions[$i].VirtualNetwork
+        #}
     }
-    Assert-True {$found -eq 2} "Api Management regions created earlier is not found."
+    #Assert-True {$found -eq 2} "Api Management regions created earlier is not found."
+    Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
+
 
     # Remove the service
     Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
@@ -333,9 +337,9 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
 <#
 .SYNOPSIS
-Tests ImportApiManagmentCertificate.
+Tests ImportApiManagementHostnameCertificate.
 #>
-function Test-ImportApiManagementCertificate
+function Test-ImportApiManagementHostnameCertificate
 {
     $certFilePath = ".\_.preview.int-azure-api.net.pfx";
     $certPassword = "Password!12";
@@ -356,7 +360,7 @@ function Test-ImportApiManagementCertificate
     # Create API Management service
     $result = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
     Get-AzureApiManagement |
-    Import-AzureApiManagementCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword
+    Import-AzureApiManagementHostnameCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword
 
     Assert-AreEqual "CN=*.preview.int-azure-api.net" $result.Subject
     Assert-AreEqual "A9B7C36DE11C29F38B9DCDA5D96BA36B9C777106" $result.Thumbprint

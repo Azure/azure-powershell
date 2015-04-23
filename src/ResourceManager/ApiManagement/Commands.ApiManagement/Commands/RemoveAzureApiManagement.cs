@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
@@ -46,35 +48,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                var actionDescription = string.Format(
+            var actionDescription = string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.RemoveAzureApiManagementDescription,
                     Name);
 
-                var actionWarning = string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.RemoveAzureApiManagementWarning,
-                    Name);
+            var actionWarning = string.Format(
+                CultureInfo.InvariantCulture,
+                Resources.RemoveAzureApiManagementWarning,
+                Name);
 
-                // Do nothing if force is not specified and user cancelled the operation
-                if (!Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
-                {
-                    return;
-                }
+            // Do nothing if force is not specified and user cancelled the operation
+            if (!Force.IsPresent &&
+                !ShouldProcess(
+                    actionDescription,
+                    actionWarning,
+                    Resources.ShouldProcessCaption))
+            {
+                return;
+            }
 
-                Client.DeleteApiManagement(ResourceGroupName, Name);
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(true);
-                }
-            });
+            ExecuteCmdLetWrap(
+                () => Client.DeleteApiManagement(ResourceGroupName, Name),
+                PassThru.IsPresent,
+                true);
         }
     }
 }

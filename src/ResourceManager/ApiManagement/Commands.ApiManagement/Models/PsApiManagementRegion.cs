@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using AutoMapper;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagementRegion
+    public class PsApiManagementRegion
     {
-        public ApiManagementRegion()
+        public PsApiManagementRegion()
         {
         }
 
-        internal ApiManagementRegion(AdditionalRegion regionResource)
+        internal PsApiManagementRegion(AdditionalRegion regionResource)
             : this()
         {
             if (regionResource == null)
@@ -34,23 +34,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             Location = regionResource.Location;
-            Sku = Mapper.Map<SkuType, ApiManagementSku>(regionResource.SkuType);
+            Sku = Mapper.Map<SkuType, PsApiManagementSku>(regionResource.SkuType);
             Capacity = regionResource.SkuUnitCount ?? 1;
             StaticIPs = regionResource.StaticIPs.ToArray();
 
             if (regionResource.VirtualNetworkConfiguration != null)
             {
-                VirtualNetwork = new ApiManagementVirtualNetwork(regionResource.VirtualNetworkConfiguration);
+                VirtualNetwork = new PsApiManagementVirtualNetwork(regionResource.VirtualNetworkConfiguration);
             }
         }
 
-        public ApiManagementVirtualNetwork VirtualNetwork { get; set; }
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public string[] StaticIPs { get; private set; }
 
         public int Capacity { get; set; }
 
-        public ApiManagementSku Sku { get; set; }
+        public PsApiManagementSku Sku { get; set; }
 
         public string Location { get; set; }
     }

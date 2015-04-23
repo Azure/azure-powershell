@@ -67,11 +67,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             return longRunningOperation;
         }
 
-        protected void ExecuteCmdLetWrap(Action action)
+        protected void ExecuteCmdLetWrap(Action action, bool passThru = false, object passThruValue = null)
         {
             try
             {
                 action();
+
+                if (passThru && passThruValue != null)
+                {
+                    WriteObject(passThruValue);
+                }
             }
             catch (ArgumentException ex)
             {
@@ -83,7 +88,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<ApiManagementLongRunningOperation> func)
+        protected void ExecuteLongRunningCmdletWrap(Func<ApiManagementLongRunningOperation> func, bool passThru = false, object passThruValue = null)
         {
             try
             {
@@ -95,9 +100,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 {
                     WriteErrorWithTimestamp(longRunningOperation.Error);
                 }
-                else
+                else if (passThru)
                 {
-                    WriteObject(longRunningOperation.ApiManagement);
+                    WriteObject(passThruValue ?? longRunningOperation.ApiManagement);
                 }
             }
             catch (ArgumentException ex)

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementVirtualNetwork"), OutputType(typeof(ApiManagementVirtualNetwork))]
+    [Cmdlet(VerbsCommon.New, "AzureApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
     public class NewAzureApiManagementVirtualNetwork : AzurePSCmdlet
     {
         [Parameter(
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             WriteObject(
-                new ApiManagementVirtualNetwork
+                new PsApiManagementVirtualNetwork
                 {
                     Location = Location,
                     SubnetName = SubnetName,

@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Import, "AzureApiManagementCertificate"), OutputType(typeof(ApiManagementCertificate))]
-    public class ImportAzureApiManagementCertificate : AzureApiManagementCmdletBase
+    [Cmdlet(VerbsData.Import, "AzureApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
+    public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "Host name type to upload certificate for.")]
         [ValidateNotNullOrEmpty]
-        public ApiManagementHostnameType HostnameType { get; set; }
+        public PsApiManagementHostnameType HostnameType { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string PfxPassword { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(() =>
@@ -65,7 +70,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     PfxPath,
                     PfxPassword);
 
-                WriteObject(result);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(result);
+                }
             });
         }
     }

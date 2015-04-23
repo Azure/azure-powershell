@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureApiManagementRegion"), OutputType(typeof (ApiManagement))]
+    [Cmdlet(VerbsCommon.Remove, "AzureApiManagementRegion"), OutputType(typeof (PsApiManagement))]
     public class RemoveAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
         [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+        public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

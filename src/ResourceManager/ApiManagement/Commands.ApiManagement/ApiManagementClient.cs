@@ -41,38 +41,38 @@ namespace Microsoft.Azure.Commands.ApiManagement
             _azureProfile = azureProfile;
         }
 
-        public ApiManagement GetApiManagement(string resourceGroupName, string serviceName)
+        public PsApiManagement GetApiManagement(string resourceGroupName, string serviceName)
         {
 #if DEBUG
-            var resource = new ApiServiceResource
-            {
-                Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
-                Name = serviceName,
-                Location = "Central US",
-                Properties = new ApiServiceProperties
-                {
-                    SkuProperties = new ApiServiceSkuProperties
-                    {
-                        SkuType = SkuType.Developer,
-                        Capacity = 1
-                    },
-                    ProvisioningState = "Succeeded",
-                    ProxyEndpoint = "sdsdsdsd",
-                    ManagementPortalEndpoint = "wewewewe",
-                    StaticIPs = new string[0]
-                }
-            };
+            //var resource = new ApiServiceResource
+            //{
+            //    Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
+            //    Name = serviceName,
+            //    Location = "Central US",
+            //    Properties = new ApiServiceProperties
+            //    {
+            //        SkuProperties = new ApiServiceSkuProperties
+            //        {
+            //            SkuType = SkuType.Developer,
+            //            Capacity = 1
+            //        },
+            //        ProvisioningState = "Succeeded",
+            //        ProxyEndpoint = "sdsdsdsd",
+            //        ManagementPortalEndpoint = "wewewewe",
+            //        StaticIPs = new string[0]
+            //    }
+            //};
 
-            return new ApiManagement(resource);
+            //return new ApiManagement(resource);
 #endif
-            //ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
-            //return new ApiManagement(response.Value);
+            ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
+            return new PsApiManagement(response.Value);
         }
 
-        public IEnumerable<ApiManagement> ListApiManagements(string resourceGroupName)
+        public IEnumerable<PsApiManagement> ListApiManagements(string resourceGroupName)
         {
             var response = Client.ApiManagement.List(resourceGroupName);
-            return response.Value.Select(resource => new ApiManagement(resource));
+            return response.Value.Select(resource => new PsApiManagement(resource));
         }
 
         public ApiManagementLongRunningOperation BeginCreateApiManagementService(
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string location,
             string organization,
             string administratorEmail,
-            ApiManagementSku sku = ApiManagementSku.Developer,
+            PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
             IDictionary<string, string> tags = null)
         {
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             }
         }
 
-        public ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)
+        internal ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)
         {
             var response =
                 Client.ApiManagement
@@ -162,6 +162,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string backupContainer,
             string backupBlob)
         {
+            if (string.IsNullOrWhiteSpace(backupBlob))
+            {
+                backupBlob = string.Format("{0}-{1:yyyy-MM-dd-HH-mm}.apimbackup", serviceName, DateTime.Now);
+            }
+
             var parameters = new ApiServiceBackupRestoreParameters
             {
                 StorageAccount = storageAccountName,
@@ -205,10 +210,10 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string resourceGroupName,
             string serviceName,
             string location,
-            ApiManagementSku sku,
+            PsApiManagementSku sku,
             int capacity,
-            ApiManagementVirtualNetwork vnetConfiguration,
-            IList<ApiManagementRegion> additionalRegions)
+            PsApiManagementVirtualNetwork vnetConfiguration,
+            IList<PsApiManagementRegion> additionalRegions)
         {
             var parameters = new ApiServiceManageDeploymentsParameters(location, MapSku(sku))
             {
@@ -249,13 +254,13 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ApiManagement.BeginManagingDeployments(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureApiManagementDeployments", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureApiManagementDeployment", longrunningResponse);
         }
 
-        public ApiManagementCertificate UploadCertificate(
+        public PsApiManagementHostnameCertificate UploadCertificate(
             string resourceGroupName,
             string serviceName,
-            ApiManagementHostnameType hostnameType,
+            PsApiManagementHostnameType hostnameType,
             string pfxPath,
             string pfxPassword)
         {
@@ -270,17 +275,17 @@ namespace Microsoft.Azure.Commands.ApiManagement
             var parameters = new ApiServiceUploadCertificateParameters(MapHostnameType(hostnameType), encodedCertificate, pfxPassword);
             var result = Client.ApiManagement.UploadCertificate(resourceGroupName, serviceName, parameters);
 
-            return new ApiManagementCertificate(result.Value);
+            return new PsApiManagementHostnameCertificate(result.Value);
         }
 
         public ApiManagementLongRunningOperation BeginSetHostnames(
             string resourceGroupName,
             string serviceName,
-            ApiManagementHostnameConfiguration portalHostnameConfiguration,
-            ApiManagementHostnameConfiguration proxyHostnameConfiguration)
+            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
+            PsApiManagementHostnameConfiguration proxyHostnameConfiguration)
         {
             var currentStateResource = Client.ApiManagement.Get(resourceGroupName, serviceName);
-            var currentState = new ApiManagement(currentStateResource.Value);
+            var currentState = new PsApiManagement(currentStateResource.Value);
 
             var parameters = new ApiServiceUpdateHostnameParameters
             {
@@ -344,20 +349,20 @@ namespace Microsoft.Azure.Commands.ApiManagement
             }
         }
 
-        private static HostnameType MapHostnameType(ApiManagementHostnameType hostnameType)
+        private static HostnameType MapHostnameType(PsApiManagementHostnameType hostnameType)
         {
-            return Mapper.Map<ApiManagementHostnameType, HostnameType>(hostnameType);
+            return Mapper.Map<PsApiManagementHostnameType, HostnameType>(hostnameType);
         }
 
-        private static SkuType MapSku(ApiManagementSku sku)
+        private static SkuType MapSku(PsApiManagementSku sku)
         {
-            return Mapper.Map<ApiManagementSku, SkuType>(sku);
+            return Mapper.Map<PsApiManagementSku, SkuType>(sku);
         }
 
         private static IEnumerable<HostnameConfiguration> GetHostnamesToCreateOrUpdate(
-            ApiManagementHostnameConfiguration portalHostnameConfiguration,
-            ApiManagementHostnameConfiguration proxyHostnameConfiguration,
-            ApiManagement currentState)
+            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
+            PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
+            PsApiManagement currentState)
         {
             if (portalHostnameConfiguration != null && currentState.PortalHostnameConfiguration != null)
             {
@@ -365,9 +370,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
                     HostnameType.Portal,
                     portalHostnameConfiguration.Hostname,
                     new CertificateInformation(
-                        portalHostnameConfiguration.Certificate.Expiry,
-                        portalHostnameConfiguration.Certificate.Thumbprint,
-                        portalHostnameConfiguration.Certificate.Subject));
+                        portalHostnameConfiguration.HostnameCertificate.Expiry,
+                        portalHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        portalHostnameConfiguration.HostnameCertificate.Subject));
             }
 
             if (proxyHostnameConfiguration != null && currentState.ProxyHostnameConfiguration != null)
@@ -376,16 +381,16 @@ namespace Microsoft.Azure.Commands.ApiManagement
                     HostnameType.Proxy,
                     proxyHostnameConfiguration.Hostname,
                     new CertificateInformation(
-                        proxyHostnameConfiguration.Certificate.Expiry,
-                        proxyHostnameConfiguration.Certificate.Thumbprint,
-                        proxyHostnameConfiguration.Certificate.Subject));
+                        proxyHostnameConfiguration.HostnameCertificate.Expiry,
+                        proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        proxyHostnameConfiguration.HostnameCertificate.Subject));
             }
         }
 
         private static IEnumerable<HostnameType> GetHostnamesToDelete(
-            ApiManagementHostnameConfiguration portalHostnameConfiguration,
-            ApiManagementHostnameConfiguration proxyHostnameConfiguration,
-            ApiManagement currentState)
+            PsApiManagementHostnameConfiguration portalHostnameConfiguration,
+            PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
+            PsApiManagement currentState)
         {
             if (portalHostnameConfiguration == null && currentState.PortalHostnameConfiguration != null)
             {
@@ -401,7 +406,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
         public ApiManagementLongRunningOperation BeginManageVirtualNetworks(
             string resourceGroupName, 
             string serviceName, 
-            IList<ApiManagementVirtualNetwork> virtualNetworks)
+            IList<PsApiManagementVirtualNetwork> virtualNetworks)
         {
             var parameters = new ApiServiceManageVirtualNetworksParameters
             {

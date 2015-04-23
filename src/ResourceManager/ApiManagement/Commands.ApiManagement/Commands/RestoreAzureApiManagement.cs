@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
+    [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -50,14 +50,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "Name of Azure Storage container.")]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string SourceContainerName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of Azure Storage blob.")]
         [ValidateNotNullOrEmpty]
-        public string Blob { get; set; }
+        public string SourceBlobName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends restored PsApiManagement to pipeline if operation succeeds.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -67,8 +72,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Name,
                     StorageContext.StorageAccount.Credentials.AccountName,
                     StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
-                    Container,
-                    Blob)
+                    SourceContainerName,
+                    SourceBlobName),
+                PassThru.IsPresent
                 );
         }
     }

@@ -142,25 +142,25 @@
     <Compile Include="Commands\SetAzureApiManagementVirtualNetworks.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\UpdateAzureApiManagementDeployments.cs">
+    <Compile Include="Commands\UpdateAzureApiManagementDeployment.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\UpdateAzureApiManagementRegion.cs" />
-    <Compile Include="Commands\ImportAzureApiManagementCertificate.cs" />
+    <Compile Include="Commands\ImportAzureApiManagementHostnameCertificate.cs" />
     <Compile Include="Commands\BackupAzureApiManagement.cs" />
     <Compile Include="Commands\GetAzureApiManagement.cs" />
     <Compile Include="Commands\NewAzureApiManagement.cs" />
     <Compile Include="Commands\RemoveAzureApiManagement.cs" />
     <Compile Include="Commands\RestoreAzureApiManagement.cs" />
     <Compile Include="CommonConstants.cs" />
-    <Compile Include="Models\ApiManagement.cs" />
-    <Compile Include="Models\ApiManagementCertificate.cs" />
-    <Compile Include="Models\ApiManagementHostnameConfiguration.cs" />
-    <Compile Include="Models\ApiManagementHostnameType.cs" />
+    <Compile Include="Models\PsApiManagement.cs" />
+    <Compile Include="Models\PsApiManagementHostnameCertificate.cs" />
+    <Compile Include="Models\PsApiManagementHostnameConfiguration.cs" />
+    <Compile Include="Models\PsApiManagementHostnameType.cs" />
     <Compile Include="Models\ApiManagementLongRunningOperation.cs" />
-    <Compile Include="Models\ApiManagementRegion.cs" />
-    <Compile Include="Models\ApiManagementSku.cs" />
-    <Compile Include="Models\ApiManagementVirtualNetwork.cs" />
+    <Compile Include="Models\PsApiManagementRegion.cs" />
+    <Compile Include="Models\PsApiManagementSku.cs" />
+    <Compile Include="Models\PsApiManagementVirtualNetwork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -14,10 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet(VerbsData.Backup, "AzureApiManagement"), OutputType(typeof (bool))]
+      
+    [Cmdlet(VerbsData.Backup, "AzureApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -45,19 +48,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public AzureStorageContext StorageContext { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of Azure Storage container.")]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string TargetContainerName { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Name of Azure Storage blob.")]
-        public string Blob { get; set; }
+        public string TargetBlobName { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends backed up PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -68,8 +71,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Name,
                     StorageContext.StorageAccount.Credentials.AccountName,
                     StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
-                    Container,
-                    Blob)
+                    TargetContainerName,
+                    TargetBlobName),
+                PassThru.IsPresent
                 );
         }
     }

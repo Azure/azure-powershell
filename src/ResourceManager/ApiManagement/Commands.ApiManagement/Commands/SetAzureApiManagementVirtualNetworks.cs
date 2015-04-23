@@ -11,13 +11,13 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureApiManagementVirtualNetworks"), OutputType(typeof (ApiManagement))]
+    [Cmdlet(VerbsCommon.Set, "AzureApiManagementVirtualNetworks"), OutputType(typeof (PsApiManagement))]
     public class SetAzureApiManagementVirtualNetworks : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -37,11 +37,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             Mandatory = false,
             HelpMessage = "Virtual networks configuration. Default value is $null.")]
-        public ApiManagementVirtualNetwork[] VirtualNetworks { get; set; }
+        public PsApiManagementVirtualNetwork[] VirtualNetworks { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends updated PsApiManagement to pipeline if operation succeeds.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteLongRunningCmdletWrap(() => Client.BeginManageVirtualNetworks(ResourceGroupName, Name, VirtualNetworks));
+            ExecuteLongRunningCmdletWrap(
+                () => Client.BeginManageVirtualNetworks(ResourceGroupName, Name, VirtualNetworks),
+                PassThru.IsPresent);
         }
     }
 }

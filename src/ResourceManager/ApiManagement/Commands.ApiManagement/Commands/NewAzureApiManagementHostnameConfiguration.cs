@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementHostnameConfiguration"), OutputType(typeof (ApiManagementHostnameConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
     public class NewAzureApiManagementHostnameConfiguration : AzurePSCmdlet
     {
         [Parameter(
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             WriteObject(
-                new ApiManagementHostnameConfiguration
+                new PsApiManagementHostnameConfiguration
                 {
                     Hostname = Hostname,
-                    Certificate = new ApiManagementCertificate
+                    HostnameCertificate = new PsApiManagementHostnameCertificate
                     {
                         Thumbprint = CertificateThumbprint
                     }

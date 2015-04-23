@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(ApiManagement))]
+    [Cmdlet(VerbsCommon.Set, "AzureApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
         internal const string FromApiManagementInstanceSetName = "Set from ApiManagement instance";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use PortalHostnameConfiguration and ProxyHostnameConfiguration to set hostnames.")]
         [ValidateNotNull]
-        public ApiManagement ApiManagement { get; set; }
+        public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
@@ -51,43 +51,47 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Custom portal hostname configuration. Default value is $null.")]
-        public ApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
+        public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Custom proxy hostname configuration. Default value is $null.")]
-        public ApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
+        public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sends updated PsApiManagement to pipeline if operation succeeds.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteLongRunningCmdletWrap(() =>
+            string resourceGroupName, name;
+            PsApiManagementHostnameConfiguration portalHostName, proxyHostName;
+
+            if (ParameterSetName.Equals(DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                string resourceGroupName, name;
-                ApiManagementHostnameConfiguration portalHostName, proxyHostName;
+                resourceGroupName = ResourceGroupName;
+                name = Name;
+                portalHostName = PortalHostnameConfiguration;
+                proxyHostName = ProxyHostnameConfiguration;
+            }
+            else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
+            {
+                resourceGroupName = ApiManagement.ResourceGroupName;
+                name = ApiManagement.Name;
+                portalHostName = ApiManagement.PortalHostnameConfiguration;
+                proxyHostName = ApiManagement.ProxyHostnameConfiguration;
+            }
+            else
+            {
+                throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
+            }
 
-                if (ParameterSetName.Equals(DefaultParameterSetName, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceGroupName = ResourceGroupName;
-                    name = Name;
-                    portalHostName = PortalHostnameConfiguration;
-                    proxyHostName = ProxyHostnameConfiguration;
-                }
-                else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceGroupName = ApiManagement.ResourceGroupName;
-                    name = ApiManagement.Name;
-                    portalHostName = ApiManagement.PortalHostnameConfiguration;
-                    proxyHostName = ApiManagement.ProxyHostnameConfiguration;
-                }
-                else
-                {
-                    throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
-                }
-
-                return Client.BeginSetHostnames(resourceGroupName, name, portalHostName, proxyHostName);
-            });
+            ExecuteLongRunningCmdletWrap(
+                () => Client.BeginSetHostnames(resourceGroupName, name, portalHostName, proxyHostName),
+                PassThru.IsPresent);
         }
     }
 }

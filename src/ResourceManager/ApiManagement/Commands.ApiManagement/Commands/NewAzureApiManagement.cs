@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (ApiManagement))]
+    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer")]
-        public ApiManagementSku? Sku { get; set; }
+        public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Location,
                     Organization,
                     AdminEmail,
-                    Sku ?? ApiManagementSku.Developer,
+                    Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     Tags)
                 );

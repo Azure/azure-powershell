@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
 
-    public class ApiManagementHostnameConfiguration
+    public class PsApiManagementHostnameConfiguration
     {
-        public ApiManagementHostnameConfiguration()
+        public PsApiManagementHostnameConfiguration()
         {
         }
 
-        internal ApiManagementHostnameConfiguration(HostnameConfiguration hostnameConfigurationResource)
+        internal PsApiManagementHostnameConfiguration(HostnameConfiguration hostnameConfigurationResource)
             :this()
         {
             if (hostnameConfigurationResource == null)
@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("hostnameConfigurationResource");
             }
 
-            Certificate = new ApiManagementCertificate(hostnameConfigurationResource.Certificate);
+            HostnameCertificate = new PsApiManagementHostnameCertificate(hostnameConfigurationResource.Certificate);
         }
 
-        public ApiManagementCertificate Certificate { get; set; }
+        public PsApiManagementHostnameCertificate HostnameCertificate { get; set; }
 
         public string Hostname { get; set; }
     }
