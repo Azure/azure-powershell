@@ -133,6 +133,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public OSProfile OSProfile { get; set; }
 
         public StorageProfile StorageProfile { get; set; }
+
+        public VirtualMachineInstanceView InstanceView { get; set; }
+
+        public Plan Plan { get; set; }
+
+        public string Id { get; set; }
     }
 
     public static class PSVirtualMachineConversions
@@ -157,23 +163,24 @@ namespace Microsoft.Azure.Commands.Compute.Models
             PSVirtualMachine result = new PSVirtualMachine
             {
                 ResourceGroupName = rgName,
-                Name = virtualMachine == null ? null : virtualMachine.Name,
-                Location = virtualMachine == null ? null : virtualMachine.Location,
+                Id                = virtualMachine.Id,
+                Name              = virtualMachine.Name,
+                Location          = virtualMachine.Location,
                 ProvisioningState = virtualMachine.ProvisioningState,
-                Tags = virtualMachine.Tags,
-                Extensions = virtualMachine.Extensions
+                Tags              = virtualMachine.Tags,
+                Extensions        = virtualMachine.Extensions,
+                InstanceView      = virtualMachine.InstanceView,
+                Plan              = virtualMachine.Plan,
+                OSProfile         = virtualMachine.OSProfile,
+                HardwareProfile   = virtualMachine.HardwareProfile,
+                StorageProfile    = virtualMachine.StorageProfile,
+                NetworkProfile    = virtualMachine.NetworkProfile,
             };
 
-            var asetRef = virtualMachine.AvailabilitySetReference;
-            if (asetRef != null)
+            if (virtualMachine.AvailabilitySetReference != null)
             {
                 result.AvailabilitySetId = virtualMachine.AvailabilitySetReference.ReferenceUri;
             }
-
-            result.OSProfile = virtualMachine.OSProfile;
-            result.HardwareProfile = virtualMachine.HardwareProfile;
-            result.StorageProfile = virtualMachine.StorageProfile;
-            result.NetworkProfile = virtualMachine.NetworkProfile;
 
             return result;
         }
