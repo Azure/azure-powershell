@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the plan.
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The plan of the automation account")]
+        [ValidateSet("Free", "Basic", IgnoreCase = true)]
         public string Plan { get; set; }
 
         /// <summary>

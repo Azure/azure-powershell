@@ -15,14 +15,15 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey", 
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High, 
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return a bool to enable pipeline.")]
+            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the cmdlet returns the key object that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
@@ -68,11 +69,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Force.IsPresent,
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.RemoveKeyWarning,
+                    KeyVaultProperties.Resources.RemoveKeyWarning,
                     Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.RemoveKeyWhatIfMessage,
+                    KeyVaultProperties.Resources.RemoveKeyWhatIfMessage,
                     Name),
                 Name,
                 () => { keyBundle = DataServiceClient.DeleteKey(VaultName, Name); });

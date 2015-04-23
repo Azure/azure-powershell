@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey")]
+    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 OutputFile = GetDefaultFile();
             }
 
-            var filePath = ResolvePath(OutputFile, Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(OutputFile, KeyVaultProperties.Resources.BackupKeyFileNotFound);
 
             var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
 

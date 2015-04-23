@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Commands.Network
             client.NetworkSecurityGroups.RemoveFromSubnet(virtualNetworkName, subnetName, networkSecurityGroupName);
         }
 
-        public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string subnetName, string virtualNetworkName)
+        public void SetNetworkSecurityGroupForSubnet(string networkSecurityGroupName, string virtualNetworkName, string subnetName)
         {
             var parameters = new NetworkSecurityGroupAddAssociationParameters()
             {
@@ -837,6 +837,81 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             client.NetworkSecurityGroups.AddToSubnet(virtualNetworkName, subnetName, parameters);
+        }
+
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForRole(
+            string serviceName,
+            string deploymentName,
+            string roleName)
+        {
+            return client.NetworkSecurityGroups.GetForRole(serviceName, deploymentName, roleName);
+        }
+
+        public void RemoveNetworkSecurityGroupFromRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
+        {
+            client.NetworkSecurityGroups.RemoveFromRole(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkSecurityGroupName);
+        }
+
+        public void SetNetworkSecurityGroupForRole(string networkSecurityGroupName, string serviceName, string deploymentName, string roleName)
+        {
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
+            {
+                Name = networkSecurityGroupName
+            };
+
+            client.NetworkSecurityGroups.AddToRole(serviceName, deploymentName, roleName, parameters);
+        }
+
+        public NetworkSecurityGroupGetAssociationResponse GetNetworkSecurityGroupForNetworkInterface(
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            return client.NetworkSecurityGroups.GetForNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName);
+        }
+
+        public void RemoveNetworkSecurityGroupFromNetworkInterface(
+            string networkSecurityGroupName,
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            client.NetworkSecurityGroups.RemoveFromNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName,
+                networkSecurityGroupName);
+        }
+
+        public void SetNetworkSecurityGroupForNetworkInterface(
+            string networkSecurityGroupName,
+            string serviceName,
+            string deploymentName,
+            string roleName,
+            string networkInterfaceName)
+        {
+            var parameters = new NetworkSecurityGroupAddAssociationParameters()
+            {
+                Name = networkSecurityGroupName
+            };
+
+            client.NetworkSecurityGroups.AddToNetworkInterface(
+                serviceName,
+                deploymentName,
+                roleName,
+                networkInterfaceName,
+                parameters);
         }
 
         public string GetDeploymentBySlot(string serviceName, string slot)
@@ -858,13 +933,12 @@ namespace Microsoft.Azure.Commands.Network
                         slotType).Name;
         }
 
-        public string GetDeploymentName(IPersistentVM vm, string slot, string serviceName)
+        public string GetDeploymentName(PersistentVMRoleContext vm, string slot, string serviceName)
         {
             string deploymentName = null;
-            var vmRoleContext = vm as PersistentVMRoleContext;
-            if (vmRoleContext != null)
+            if (vm != null)
             {
-                deploymentName = vmRoleContext.DeploymentName;
+                deploymentName = vm.DeploymentName;
             }
 
             if (string.IsNullOrEmpty(slot) && string.IsNullOrEmpty(deploymentName))

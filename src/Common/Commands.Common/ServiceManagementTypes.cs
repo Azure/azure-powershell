@@ -962,6 +962,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 3)]
+        public string NetworkSecurityGroup { get; set; }
+
         [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 4)]
         public string IPForwarding { get; set; }
     }

@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
             if (keyBundle.Key == null || keyBundle.Attributes == null)
-                throw new ArgumentException(Resources.InvalidKeyBundle);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyBundle);
            
             SetObjectIdentifier(vaultUriHelper,keyBundle.KeyIdentifier);
 
