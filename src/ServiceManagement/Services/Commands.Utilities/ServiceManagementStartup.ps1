@@ -60,7 +60,57 @@ $aliases = @{
     
     # HDInsight aliases
     "Invoke-Hive" = "Invoke-AzureHDInsightHiveJob";
-    "hive" = "Invoke-AzureHDInsightHiveJob"
+    "hive" = "Invoke-AzureHDInsightHiveJob";
+
+    #StorSimple aliases
+    "Get-SSAccessControlRecord" = "Get-AzureStorSimpleAccessControlRecord" ;
+    "Get-SSDevice"= "Get-AzureStorSimpleDevice" ;
+    "Get-SSDeviceBackup" = "Get-AzureStorSimpleDeviceBackup" ;
+    "Get-SSDeviceBackupPolicy" = "Get-AzureStorSimpleDeviceBackupPolicy" ;
+    "Get-SSDeviceConnectedInitiator" = "Get-AzureStorSimpleDeviceConnectedInitiator" ;
+    "Get-SSDeviceVolume" = "Get-AzureStorSimpleDeviceVolume" ;
+    "Get-SSDeviceVolumeContainer" = "Get-AzureStorSimpleDeviceVolumeContainer" ;
+    "Get-SSFailoverVolumeContainers" = "Get-AzureStorSimpleFailoverVolumeContainers" ;
+    "Get-SSJob" = "Get-AzureStorSimpleJob" ;
+    "Get-SSResource" = "Get-AzureStorSimpleResource" ;
+    "Get-SSResourceContext" = "Get-AzureStorSimpleResourceContext" ;
+    "Get-SSStorageAccountCredential" = "Get-AzureStorSimpleStorageAccountCredential" ;
+    "Get-SSTask" = "Get-AzureStorSimpleTask" ;
+    "New-SSAccessControlRecord" = "New-AzureStorSimpleAccessControlRecord" ;
+    "New-SSDeviceBackupPolicy" = "New-AzureStorSimpleDeviceBackupPolicy" ;
+    "New-SSDeviceBackupScheduleAddConfig" = "New-AzureStorSimpleDeviceBackupScheduleAddConfig" ;
+    "New-SSDeviceBackupScheduleUpdateConfig" = "New-AzureStorSimpleDeviceBackupScheduleUpdateConfig" ;
+    "New-SSDeviceVolume" = "New-AzureStorSimpleDeviceVolume";
+    "New-SSDeviceVolumeContainer" = "New-AzureStorSimpleDeviceVolumeContainer" ;
+    "New-SSInlineStorageAccountCredential" = "New-AzureStorSimpleInlineStorageAccountCredential" ;
+    "New-SSNetworkConfig" = "New-AzureStorSimpleNetworkConfig";
+    "New-SSStorageAccountCredential" = "New-AzureStorSimpleStorageAccountCredential";
+    "New-SSVirtualDevice" = "New-AzureStorSimpleVirtualDevice";
+    "Remove-SSAccessControlRecord" = "Remove-AzureStorSimpleAccessControlRecord";
+    "Remove-SSDeviceBackup" = "Remove-AzureStorSimpleDeviceBackup";
+    "Remove-SSDeviceBackupPolicy" = "Remove-AzureStorSimpleDeviceBackupPolicy";
+    "Remove-SSDeviceVolume" = "Remove-AzureStorSimpleDeviceVolume";
+    "Remove-SSDeviceVolumeContainer" = "Remove-AzureStorSimpleDeviceVolumeContainer";
+    "Remove-SSStorageAccountCredential" = "Remove-AzureStorSimpleStorageAccountCredential";
+    "Select-SSResource" = "Select-AzureStorSimpleResource";
+    "Set-SSAccessControlRecord" = "Set-AzureStorSimpleAccessControlRecord";
+    "Set-SSDevice" = "Set-AzureStorSimpleDevice";
+    "Set-SSDeviceBackupPolicy" = "Set-AzureStorSimpleDeviceBackupPolicy";
+    "Set-SSDeviceVolume" = "Set-AzureStorSimpleDeviceVolume";
+    "Set-SSStorageAccountCredential" = "Set-AzureStorSimpleStorageAccountCredential";
+    "Set-SSVirtualDevice" = "Set-AzureStorSimpleVirtualDevice";
+    "Start-SSBackupCloneJob" = "Start-AzureStorSimpleBackupCloneJob";
+    "Start-SSDeviceBackupJob" = "Start-AzureStorSimpleDeviceBackupJob";
+    "Start-SSDeviceBackupRestoreJob" = "Start-AzureStorSimpleDeviceBackupRestoreJob";
+    "Start-SSDeviceFailoverJob" = "Start-AzureStorSimpleDeviceFailoverJob";
+    "Stop-SSJob" = "Stop-AzureStorSimpleJob";	
+    "Confirm-SSLegacyVolumeContainerStatus" = "Confirm-AzureStorSimpleLegacyVolumeContainerStatus";
+    "Get-SSLegacyVolumeContainerConfirmStatus" = "Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus";
+    "Get-SSLegacyVolumeContainerMigrationPlan" = "Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan";
+    "Get-SSLegacyVolumeContainerStatus" = "Get-AzureStorSimpleLegacyVolumeContainerStatus";
+    "Import-SSLegacyApplianceConfig" = "Import-AzureStorSimpleLegacyApplianceConfig";
+    "Import-SSLegacyVolumeContainer" = "Import-AzureStorSimpleLegacyVolumeContainer";
+    "Start-SSLegacyVolumeContainerMigrationPlan" = "Start-AzureStorSimpleLegacyVolumeContainerMigrationPlan";
 }
 
 $aliases.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
