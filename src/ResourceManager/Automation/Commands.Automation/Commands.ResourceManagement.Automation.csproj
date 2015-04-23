@@ -67,9 +67,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Automation, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Automation, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.0.50.0-prerelease\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.2.0.0.0-prerelease\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,9 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
+    <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJobOutput.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfiguration.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNodeReport.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
@@ -157,7 +160,9 @@
     <Compile Include="Model\AutomationAccount.cs" />
     <Compile Include="Model\CompilationJob.cs" />
     <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\ConfigurationContent.cs" />
     <Compile Include="Model\DscNode.cs" />
+    <Compile Include="Model\DscNodeReport.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Module.cs" />

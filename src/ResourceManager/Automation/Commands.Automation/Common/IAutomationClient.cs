@@ -69,6 +69,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags, string description, bool? logVerbose, bool published, bool overWrite);
 
+        DirectoryInfo GetConfigurationContent(string resourceGroupName, string automationAccountName, string configurationName, bool? isDraft, string outputFolder, bool overwriteExistingFile);
+
         #endregion
 
         #region AgentRegistrationInforamtion
@@ -113,6 +115,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void DeleteModule(string resourceGroupName, string automationAccountName, string name);
 
+        #endregion
+
+        #region dscreports
+
+        DscNodeReport GetLatestDscNodeReport(string resourceGroupName, string automationAccountName, Guid nodeId);
+
+        IEnumerable<DscNodeReport> ListDscNodeReports(string resourceGroupName, string automationAccountName, Guid nodeId, DateTimeOffset? startTime, DateTimeOffset? endTime);
+
+        DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId);
+
+        DirectoryInfo GetDscNodeReportContent(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId, string outputFolder, bool overwriteExistingFile);
         #endregion
     }
 }
