@@ -128,7 +128,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             SecurityPrincipalInfoListResult response = null;
             bool found = false;
-            string padding = "";
 
             showAllUsers =  String.IsNullOrWhiteSpace(UserUpn);
 
@@ -137,14 +136,15 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 CreateWildcardPattern(UserUpn);
             }
 
-            response = CallClient(() => Client.Principals.List(CollectionName, padding), Client.Principals);
+            // You must pass in an empty string to this call. After that pass in the token returned by the previous call
+            response = CallClient(() => Client.Principals.ListByPage(CollectionName, ""), Client.Principals);
 
             if (response != null && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0)
             {
                 found = ProccessUsers(response);
-                while (response != null && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0 && !String.IsNullOrWhiteSpace(response.ContinunationToken))
+                while (response != null && !String.IsNullOrWhiteSpace(response.ContinuationToken) && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0)
                 {
-                    response = CallClient(() => Client.Principals.List(CollectionName, response.ContinunationToken), Client.Principals);
+                    response = CallClient(() => Client.Principals.ListByPage(CollectionName, response.ContinuationToken), Client.Principals);
                     ProccessUsers(response);
                 }
             }
