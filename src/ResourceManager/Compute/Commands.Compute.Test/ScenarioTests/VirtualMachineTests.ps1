@@ -166,6 +166,7 @@ function Test-VirtualMachine
         $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
         Assert-AreEqual $vm2.AvailabilitySetId $asetId;
+        Assert-True { $vm2.ResourceGroupName -eq $rgname }
         
         # Remove
         Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;
@@ -190,6 +191,11 @@ function Test-VirtualMachineList
     {
         $s1 = Get-AzureVM -All;
         $s2 = Get-AzureVM;
+
+        if ($s2 -ne $null)
+        {
+            Assert-True { $s2[0].ResourceGroupName -ne $null; }
+        }
 
         Assert-ThrowsContains { $s3 = Get-AzureVM -NextLink "http://www.test.com/test"; } "Unexpected character"
 
@@ -627,6 +633,8 @@ function Test-VirtualMachinePIRv2
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
         $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        Assert-True { $p.ImageReference -ne $null };
+        Assert-True { $p.SourceImageId -eq $null };
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
