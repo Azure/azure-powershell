@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADObjectNotFound" xml:space="preserve">
-    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'</value>
+    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'get-AzureSubscription -current' is the current subscription's Azure Active directory.</value>
   </data>
   <data name="BackupKeyFileNotFound" xml:space="preserve">
     <value>Cannot find backup key file '{0}'</value>
