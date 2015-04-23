@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -41,7 +41,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public IDictionary<string, string> Tags { get; set; }
+
         public string AvailabilitySetId { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public string OSConfiguration
@@ -70,16 +72,29 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public string OSDisk
+        public ImageReference ImageReference
+        {
+            get
+            {
+                if (this.StorageProfile != null && this.StorageProfile.SourceImage != null)
+                {
+                    return this.StorageProfile.ImageReference;
+                }
+
+                return null;
+            }
+        }
+
+        public OSDisk OSDisk
         {
             get
             {
                 if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
                 {
-                    return this.StorageProfile.OSDisk.Name;
+                    return this.StorageProfile.OSDisk;
                 }
 
-                return string.Empty;
+                return null;
             }
         }
 
@@ -111,8 +126,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public IList<VirtualMachineExtension> Extensions { get; set; }
 
-        public VirtualMachineInstanceView Status { get; set; }
-
         public HardwareProfile HardwareProfile { get; set; }
 
         public NetworkProfile NetworkProfile { get; set; }
@@ -136,6 +149,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public static PSVirtualMachine ToPSVirtualMachine(this VirtualMachine virtualMachine, string rgName = null)
         {
+            if (string.IsNullOrEmpty(rgName))
+            {
+                bool parsed = TryParseResourceGroupName(virtualMachine.Id, out rgName);
+            }
+
             PSVirtualMachine result = new PSVirtualMachine
             {
                 ResourceGroupName = rgName,
@@ -143,8 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Location = virtualMachine == null ? null : virtualMachine.Location,
                 ProvisioningState = virtualMachine.ProvisioningState,
                 Tags = virtualMachine.Tags,
-                Extensions = virtualMachine.Extensions,
-                Status = null, // TODO: VM response does not return Status info yet
+                Extensions = virtualMachine.Extensions
             };
 
             var asetRef = virtualMachine.AvailabilitySetReference;
@@ -175,6 +192,26 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
 
             return results;
+        }
+
+        private static bool TryParseResourceGroupName(string virtualMachineId, out string rgName)
+        {
+            const string group = "rgname";
+            const string pattern = @"(.*?)/resourcegroups/(?<" + group + @">\S+)/providers/Microsoft.Compute/virtualMachines/(.*?)";
+
+            Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+            Match m = r.Match(virtualMachineId);
+
+            if (m.Success)
+            {
+                rgName = m.Groups[group].Value;
+                return true;
+            }
+            else
+            {
+                rgName = null;
+                return false;
+            }
         }
     }
 }

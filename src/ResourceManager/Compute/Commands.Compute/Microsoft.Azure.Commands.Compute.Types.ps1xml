@@ -18,6 +18,7 @@
               <Name>ProvisioningState</Name>
               <Name>OSConfiguration</Name>
               <Name>SourceImageId</Name>
+              <Name>ImageReference</Name>
               <Name>DestinationVHDsContainer</Name>
               <Name>OSDisk</Name>
               <Name>DataDisks</Name>

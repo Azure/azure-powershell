@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
 
         public int? PlatformFaultDomain { get; set; }
+
         public int? PlatformUpdateDomain { get; set; }
 
         public string RemoteDesktopThumbprint { get; set; }
