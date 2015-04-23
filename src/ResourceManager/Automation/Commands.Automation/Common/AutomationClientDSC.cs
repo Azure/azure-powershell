@@ -868,7 +868,7 @@ using Hyak.Common;
                 }
                 else
                 {
-                    listParams.StreamType = StreamType.Any.ToString();
+                    listParams.StreamType = CompilationJobStreamType.Any.ToString();
                 }
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;

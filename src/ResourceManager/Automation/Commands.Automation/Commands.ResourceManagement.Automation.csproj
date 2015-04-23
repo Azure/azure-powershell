@@ -145,6 +145,7 @@
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
     <Compile Include="Common\AzureAutomationOperationException.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\DscNodeStatus.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\PowerShellJsonConverter.cs" />
     <Compile Include="Common\RequestSettings.cs" />
@@ -181,7 +182,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\StreamType.cs" />
+    <Compile Include="Common\CompilationJobStreamType.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

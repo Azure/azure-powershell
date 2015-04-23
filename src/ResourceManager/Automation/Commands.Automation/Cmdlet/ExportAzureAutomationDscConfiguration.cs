@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets configuration script for given configuration name and account name.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureAutomationDscConfiguration")]
+    [Cmdlet(VerbsData.Export, "AzureAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
+        /// <summary>
+        /// True to overwrite the existing dsc configuration; false otherwise.
+        /// </summary>        
+        private bool overwriteExistingFile;
+
         /// <summary> 
         /// Gets or sets the configfuration name. 
         /// </summary> 
@@ -52,6 +57,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string OutputFolder { get; set; }
 
         /// <summary>
+        /// Gets or sets switch parameter to confirm overwriting of existing configuration script.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation and overwrites an existing configuration with same name.")]
+        public SwitchParameter Force
+        {
+            get { return this.overwriteExistingFile; }
+            set { this.overwriteExistingFile = value; }
+        }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -59,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             bool? isDraft = this.IsDraft();
 
-            var ret = this.AutomationClient.GetConfigurationContent(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft, OutputFolder, true);
+            var ret = this.AutomationClient.GetConfigurationContent(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft, OutputFolder, this.Force);
 
             this.WriteObject(ret, true);
         }

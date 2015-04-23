@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public Guid Id { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type.")]
-        [ValidateSet("Output", "Warning", "Error", "Debug", "Verbose", "Any")]
-        public StreamType Stream { get; set; }
+        [ValidateSet("Warning", "Error", "Debug", "Verbose", "Any")]
+        public CompilationJobStreamType Stream { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]
         public DateTimeOffset? StartTime { get; set; }
@@ -50,11 +50,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            if (Stream.Equals(StreamType.Progress))
-            {
-                Stream = StreamType.Any;
-            }
-
             var ret = this.AutomationClient.GetDscCompilationJobStream(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString());
 
             this.GenerateCmdletOutput(ret);

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets node report for a given node and report id
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureAutomationDscNodeReportContent")]
+    [Cmdlet(VerbsData.Export, "AzureAutomationDscNodeReportContent", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
     {
