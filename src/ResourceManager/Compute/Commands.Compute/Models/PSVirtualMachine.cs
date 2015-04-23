@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.StorageProfile != null && this.StorageProfile.SourceImage != null)
+                if (this.StorageProfile != null)
                 {
                     return this.StorageProfile.ImageReference;
                 }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
+                if (this.StorageProfile != null)
                 {
                     return this.StorageProfile.OSDisk;
                 }

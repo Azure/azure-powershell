@@ -633,6 +633,8 @@ function Test-VirtualMachinePIRv2
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
         $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        Assert-True { $p.ImageReference -ne $null };
+        Assert-True { $p.SourceImageId -eq $null };
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
