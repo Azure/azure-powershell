@@ -97,6 +97,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of a public load balancer. .
+        /// </summary>
+        public static string VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer {
+            get {
+                return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer..
+        /// </summary>
+        public static string VirtualMachineNotAssociatedWithPublicLoadBalancer {
+            get {
+                return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicLoadBalancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer..
+        /// </summary>
+        public static string VirtualMachineReferencesInternalNetworkInterface {
+            get {
+                return ResourceManager.GetString("VirtualMachineReferencesInternalNetworkInterface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Virtual machine removal operation.
         /// </summary>
         public static string VirtualMachineRemovalCaption {

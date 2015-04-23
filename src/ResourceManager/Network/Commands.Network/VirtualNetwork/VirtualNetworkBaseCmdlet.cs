@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             virtualNetwork.Tag =
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.VirtualNetwork.Tags);
 
+            if (virtualNetwork.DhcpOptions == null)
+            {
+                virtualNetwork.DhcpOptions = new PSDhcpOptions();
+            }
+
             return virtualNetwork;
         }
 
