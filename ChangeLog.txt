@@ -32,7 +32,7 @@
     * Get-AzureLoadBalancerBackendAddressPoolConfig
     * Get-AzureLoadBalancerFrontendIpConfig
     * Get-AzureLoadBalancerInboundNatRuleConfig
-    * Get-AzureLoadBalancerProbeConfig*
+    * Get-AzureLoadBalancerProbeConfig
     * Get-AzureLoadBalancerRuleConfig
     * New-AzureLoadBalancer
     * New-AzureLoadBalancerBackendAddressPoolConfig
@@ -60,6 +60,7 @@
     * Remove-AzureNetworkSecurityRuleConfig
     * Add-AzureNetworkSecurityRuleConfig
     * Set-AzureNetworkSecurityRuleConfig
+    * Get-AzureRemoteDesktopFile
 * Azure Storage
   * Added cmdlets in AzureResourceManager Mode
     * New-AzureStorageAccount
