@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Commands.Compute
                 },
                 SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
-                    Uri = SourceImageUri
+                    Uri = this.SourceImageUri
                 },
-                CreateOption = CreateOption
+                CreateOption = this.CreateOption
             };
 
             WriteObject(this.VM);

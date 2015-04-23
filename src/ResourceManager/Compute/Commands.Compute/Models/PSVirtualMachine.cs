@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -41,7 +41,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public IDictionary<string, string> Tags { get; set; }
+
         public string AvailabilitySetId { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public string OSConfiguration
@@ -70,16 +72,29 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
-        public string OSDisk
+        public ImageReference ImageReference
         {
             get
             {
-                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
+                if (this.StorageProfile != null)
                 {
-                    return this.StorageProfile.OSDisk.Name;
+                    return this.StorageProfile.ImageReference;
                 }
 
-                return string.Empty;
+                return null;
+            }
+        }
+
+        public OSDisk OSDisk
+        {
+            get
+            {
+                if (this.StorageProfile != null)
+                {
+                    return this.StorageProfile.OSDisk;
+                }
+
+                return null;
             }
         }
 
@@ -111,8 +126,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public IList<VirtualMachineExtension> Extensions { get; set; }
 
-        public VirtualMachineInstanceView Status { get; set; }
-
         public HardwareProfile HardwareProfile { get; set; }
 
         public NetworkProfile NetworkProfile { get; set; }
@@ -120,6 +133,12 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public OSProfile OSProfile { get; set; }
 
         public StorageProfile StorageProfile { get; set; }
+
+        public VirtualMachineInstanceView InstanceView { get; set; }
+
+        public Plan Plan { get; set; }
+
+        public string Id { get; set; }
     }
 
     public static class PSVirtualMachineConversions
@@ -136,27 +155,32 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public static PSVirtualMachine ToPSVirtualMachine(this VirtualMachine virtualMachine, string rgName = null)
         {
+            if (string.IsNullOrEmpty(rgName))
+            {
+                bool parsed = TryParseResourceGroupName(virtualMachine.Id, out rgName);
+            }
+
             PSVirtualMachine result = new PSVirtualMachine
             {
                 ResourceGroupName = rgName,
-                Name = virtualMachine == null ? null : virtualMachine.Name,
-                Location = virtualMachine == null ? null : virtualMachine.Location,
+                Id                = virtualMachine.Id,
+                Name              = virtualMachine.Name,
+                Location          = virtualMachine.Location,
                 ProvisioningState = virtualMachine.ProvisioningState,
-                Tags = virtualMachine.Tags,
-                Extensions = virtualMachine.Extensions,
-                Status = null, // TODO: VM response does not return Status info yet
+                Tags              = virtualMachine.Tags,
+                Extensions        = virtualMachine.Extensions,
+                InstanceView      = virtualMachine.InstanceView,
+                Plan              = virtualMachine.Plan,
+                OSProfile         = virtualMachine.OSProfile,
+                HardwareProfile   = virtualMachine.HardwareProfile,
+                StorageProfile    = virtualMachine.StorageProfile,
+                NetworkProfile    = virtualMachine.NetworkProfile,
             };
 
-            var asetRef = virtualMachine.AvailabilitySetReference;
-            if (asetRef != null)
+            if (virtualMachine.AvailabilitySetReference != null)
             {
                 result.AvailabilitySetId = virtualMachine.AvailabilitySetReference.ReferenceUri;
             }
-
-            result.OSProfile = virtualMachine.OSProfile;
-            result.HardwareProfile = virtualMachine.HardwareProfile;
-            result.StorageProfile = virtualMachine.StorageProfile;
-            result.NetworkProfile = virtualMachine.NetworkProfile;
 
             return result;
         }
@@ -175,6 +199,26 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
 
             return results;
+        }
+
+        private static bool TryParseResourceGroupName(string virtualMachineId, out string rgName)
+        {
+            const string group = "rgname";
+            const string pattern = @"(.*?)/resourcegroups/(?<" + group + @">\S+)/providers/Microsoft.Compute/virtualMachines/(.*?)";
+
+            Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+            Match m = r.Match(virtualMachineId);
+
+            if (m.Success)
+            {
+                rgName = m.Groups[group].Value;
+                return true;
+            }
+            else
+            {
+                rgName = null;
+                return false;
+            }
         }
     }
 }

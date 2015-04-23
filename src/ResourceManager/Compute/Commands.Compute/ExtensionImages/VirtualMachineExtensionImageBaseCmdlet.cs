@@ -13,33 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class VirtualMachineExtensionImageBaseCmdlet : AzurePSCmdlet
+    public abstract class VirtualMachineExtensionImageBaseCmdlet : ComputeClientBaseCmdlet
     {
-        private ComputeClient computeClient;
-
-        public ComputeClient ComputeClient
-        {
-            get
-            {
-                if (computeClient == null)
-                {
-                    computeClient = new ComputeClient(Profile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
-                }
-
-                return computeClient;
-            }
-
-            set { computeClient = value; }
-        }
-
         public IVirtualMachineExtensionImageOperations VirtualMachineExtensionImageClient
         {
             get
