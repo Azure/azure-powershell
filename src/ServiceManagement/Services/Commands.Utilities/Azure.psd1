@@ -198,7 +198,14 @@ AliasesToExport = @(
 'Start-SSDeviceBackupJob',
 'Start-SSDeviceBackupRestoreJob',
 'Start-SSDeviceFailoverJob',
-'Stop-SSJob'
+'Stop-SSJob',
+'Confirm-SSLegacyVolumeContainerStatus',
+'Get-SSLegacyVolumeContainerConfirmStatus',
+'Get-SSLegacyVolumeContainerMigrationPlan',
+'Get-SSLegacyVolumeContainerStatus',
+'Import-SSLegacyApplianceConfig',
+'Import-SSLegacyVolumeContainer',
+'Start-SSLegacyVolumeContainerMigrationPlan'
 )
 
 # List of all modules packaged with this module

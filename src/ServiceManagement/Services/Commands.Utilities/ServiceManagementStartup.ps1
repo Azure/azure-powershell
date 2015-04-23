@@ -103,7 +103,14 @@ $aliases = @{
     "Start-SSDeviceBackupJob" = "Start-AzureStorSimpleDeviceBackupJob";
     "Start-SSDeviceBackupRestoreJob" = "Start-AzureStorSimpleDeviceBackupRestoreJob";
     "Start-SSDeviceFailoverJob" = "Start-AzureStorSimpleDeviceFailoverJob";
-    "Stop-SSJob" = "Stop-AzureStorSimpleJob";
+    "Stop-SSJob" = "Stop-AzureStorSimpleJob";	
+	"Confirm-SSLegacyVolumeContainerStatus" = "Confirm-AzureStorSimpleLegacyVolumeContainerStatus";
+    "Get-SSLegacyVolumeContainerConfirmStatus" = "Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus";
+    "Get-SSLegacyVolumeContainerMigrationPlan" = "Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan";
+    "Get-SSLegacyVolumeContainerStatus" = "Get-AzureStorSimpleLegacyVolumeContainerStatus";
+    "Import-SSLegacyApplianceConfig" = "Import-AzureStorSimpleLegacyApplianceConfig";
+    "Import-SSLegacyVolumeContainer" = "Import-AzureStorSimpleLegacyVolumeContainer";
+    "Start-SSLegacyVolumeContainerMigrationPlan" = "Start-AzureStorSimpleLegacyVolumeContainerMigrationPlan";
 }
 
 $aliases.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
