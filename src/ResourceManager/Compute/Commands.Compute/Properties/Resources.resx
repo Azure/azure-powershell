@@ -123,6 +123,15 @@
   <data name="VirtualMachineExtensionRemovalConfirmation" xml:space="preserve">
     <value>This cmdlet will remove the specified virtual machine extension. Do you want to continue?</value>
   </data>
+  <data name="VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer" xml:space="preserve">
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of a public load balancer. </value>
+  </data>
+  <data name="VirtualMachineNotAssociatedWithPublicLoadBalancer" xml:space="preserve">
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer.</value>
+  </data>
+  <data name="VirtualMachineReferencesInternalNetworkInterface" xml:space="preserve">
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer.</value>
+  </data>
   <data name="VirtualMachineRemovalCaption" xml:space="preserve">
     <value>Virtual machine removal operation</value>
   </data>
