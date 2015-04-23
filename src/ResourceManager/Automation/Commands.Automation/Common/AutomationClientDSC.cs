@@ -550,7 +550,7 @@ using Hyak.Common;
 
             IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
 
-            if (!String.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(status))
                 {
                     dscNodes = AutomationManagementClient.ContinuationTokenHandler(
                         skipToken =>
