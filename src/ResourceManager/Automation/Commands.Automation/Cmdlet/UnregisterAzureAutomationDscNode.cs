@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.RemovDscNodeWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveDscNodeWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveDscNodeDescription, this.Id.ToString()),
                 this.Id.ToString(),
                 () =>
