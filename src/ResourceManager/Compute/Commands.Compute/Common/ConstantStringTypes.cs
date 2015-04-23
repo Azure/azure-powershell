@@ -91,5 +91,6 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string SshPublicKey = "AzureVMSshPublicKeyConfig";
         public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContentConfig";
         public const string VaultCertificate = "AzureVMVaultCertificateConfig";
-        public const string VaultSecretGroup = "AzureVMSecretConfig";    }
+        public const string VaultSecretGroup = "AzureVMSecretConfig";
+    }
 }
