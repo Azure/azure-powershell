@@ -479,7 +479,7 @@ function Test_GetSecretVersions
     BulkCreateSecretVersions $keyVault $secretname $total
         
     $secs=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -IncludeVersions
-    Assert-True { $secs.Count -ge $total+1 }
+    Assert-True { $secs.Count -ge $total }
 }
 
 <#

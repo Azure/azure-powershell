@@ -289,7 +289,14 @@ function Test-ModifyAccessPolicy
 {
 	Param($existingVaultName, $rgName, $upn)
 	
-	# Add perms to start off
+	# Adding nothing should not change the vault
+	$PermToKeys = @()
+	$PermToSecrets = @()	
+	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
+	Assert-NotNull $vault
+	Assert-AreEqual 0 $vault.AccessPolicies.Count
+
+	# Add some perms now
 	$PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
 	$PermToSecrets = @("get", "list", "set", "delete")
 	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
@@ -311,10 +318,16 @@ function Test-ModifyAccessPolicy
 	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets $PermToSecrets -PassThru
 	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
-	# Remove just the secrets perms
+	# Remove just the keys perms
 	$PermToKeys = @()
 	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
-	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets	
+	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
+	
+	# Remove secret perms too
+	$PermToSecrets = @()	
+	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+	Assert-NotNull $vault
+	Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
 function Test-SetAccessPolicyNegativeCases
@@ -327,9 +340,6 @@ function Test-SetAccessPolicyNegativeCases
 
 	# random string in perms
 	Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets blah, get }
-
-	# empty perms
-	Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets @() -PermissionsToKeys @() }
 }
 
 function Test-RemoveNonExistentAccessPolicyDoesNotThrow
