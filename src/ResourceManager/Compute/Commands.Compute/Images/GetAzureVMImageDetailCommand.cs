@@ -21,9 +21,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageVersion)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage))]
-    public class GetAzureVMExtensionImageVersionCommand : VirtualMachineExtensionImageBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageDetail)]
+    [OutputType(typeof(PSVirtualMachineImageDetail))]
+    public class GetAzureVMImageDetailCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -32,39 +32,46 @@ namespace Microsoft.Azure.Commands.Compute
         public string PublisherName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string Type { get; set; }
+        public string Offer { get; set; }
 
-        [Parameter, ValidateNotNullOrEmpty]
-        public string FilterExpression { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Skus { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineExtensionImageListVersionsParameters
+            var parameters = new VirtualMachineImageGetParameters
             {
                 Location = Location,
                 PublisherName = PublisherName,
-                Type = Type,
-                FilterExpression = FilterExpression
+                Offer = Offer,
+                Skus = Skus,
+                Version = Version
             };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+            VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Version = r.Name,
-                             PublisherName = this.PublisherName,
-                             Type = this.Type,
-                             FilterExpression = this.FilterExpression
-                         };
+            var image = new PSVirtualMachineImageDetail
+            {
+                RequestId = response.RequestId,
+                StatusCode = response.StatusCode,
+                Id = response.VirtualMachineImage.Id,
+                Location = response.VirtualMachineImage.Location,
+                Name = response.VirtualMachineImage.Name,
+                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                PublisherName = this.PublisherName,
+                Offer = this.Offer,
+                Skus = this.Skus,
+                Version = this.Version
+            };
 
-            WriteObject(images, true);
+            WriteObject(image);
         }
     }
 }

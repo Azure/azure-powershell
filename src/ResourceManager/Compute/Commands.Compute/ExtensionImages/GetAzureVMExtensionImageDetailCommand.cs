@@ -16,14 +16,13 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageVersion)]
-    [OutputType(typeof(PSVirtualMachineImage))]
-    public class GetAzureVMImageVersionCommand : VirtualMachineImageBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageDetail)]
+    [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
+    public class GetAzureVMExtensionImageDetailCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -32,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string PublisherName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string Offer { get; set; }
+        public string Type { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string Skus { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
         [Parameter, ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
@@ -44,32 +43,35 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListParameters
+            var parameters = new VirtualMachineExtensionImageGetParameters
             {
                 Location = Location,
-                Offer = Offer,
                 PublisherName = PublisherName,
-                Skus = Skus,
-                FilterExpression = FilterExpression
+                Type = Type,
+                FilterExpression = FilterExpression,
+                Version = Version
             };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
+            VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Version = r.Name,
-                             PublisherName = this.PublisherName,
-                             Offer = this.Offer,
-                             Skus = this.Skus,
-                             FilterExpression = this.FilterExpression
-                         };
+            var image = new PSVirtualMachineExtensionImageDetails
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.StatusCode,
+                Id = result.VirtualMachineExtensionImage.Id,
+                Location = result.VirtualMachineExtensionImage.Location,
+                Name = result.VirtualMachineExtensionImage.Name,
+                HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                PublisherName = this.PublisherName,
+                Type = this.Type,
+                Version = this.Version
+            };
 
-            WriteObject(images, true);
+            WriteObject(image);
         }
     }
 }
