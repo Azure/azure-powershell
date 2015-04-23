@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseDataMaskingPolicyModel UpdateModel(DatabaseDataMaskingPolicyModel model)
+        protected override DatabaseDataMaskingPolicyModel ApplyUserInputToModel(DatabaseDataMaskingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
 
             if (PrivilegedLogins != null) // empty string here means that the user clears the logins list
             {

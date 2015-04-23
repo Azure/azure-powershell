@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
+    using System;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
     public class Endpoint
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
             set
             {
-                if (!value.StartsWith(Constants.ProfileType))
+                if (!value.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase))
                 {
                     this.type = string.Format("{0}/{1}", Constants.ProfileType, value);
                 }

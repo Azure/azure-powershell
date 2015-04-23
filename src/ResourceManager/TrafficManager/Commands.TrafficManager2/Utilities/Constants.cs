@@ -16,9 +16,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
     public class Constants
     {
-        public const string AzureEndpoint = "AzureEndpoint";
-        public const string ExternalEndpoint = "ExternalEndpoint";
-        public const string NestedEndpoint = "NestedEndpoint";
+        public const string AzureEndpoint = "AzureEndpoints";
+        public const string ExternalEndpoint = "ExternalEndpoints";
+        public const string NestedEndpoint = "NestedEndpoints";
 
         public const string StatusEnabled = "Enabled";
         public const string StatusDisabled = "Disabled";
@@ -30,6 +30,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public const string HTTP = "HTTP";
         public const string HTTPS = "HTTPS";
 
-        public const string ProfileType = "Microsoft.Network/TrafficManagerProfiles";
+        public const string ProfileType = "Microsoft.Network/trafficManagerProfiles";
     }
 }

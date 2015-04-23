@@ -17,7 +17,10 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -82,32 +85,147 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Custom data")]
+        [ValidateNotNullOrEmpty]
+        public string CustomData { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ProvisionVMAgent { get; set; }
 
         [Parameter(
-            DontShow = true, /* Not in the client library yet */
+            ParameterSetName = WindowsParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable Automatic Update")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EnableAutoUpdate { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Zone")]
+        [ValidateNotNullOrEmpty]
+        public string TimeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Http protocol")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter WinRMHttp { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Https protocol")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter WinRMHttps { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Url for WinRM certificate")]
+        [ValidateNotNullOrEmpty]
+        public Uri WinRMCertUrl { get; set; }
+
+        // Linux Parameter Sets
+        [Parameter(
             ParameterSetName = LinuxParamSet,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "SSH Public Keys")]
+            HelpMessage = "Enable WinRM Https protocol")]
         [ValidateNotNullOrEmpty]
-        public string[] SSHPublicKey { get; set; }
+        public SwitchParameter DisablePasswordAuthentication { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // OS Profile
             this.VM.OSProfile = new OSProfile
             {
                 ComputerName = this.ComputerName,
                 AdminUsername = this.Credential.UserName,
                 AdminPassword = SecureStringExtensions.ConvertToString(this.Credential.Password),
-                WindowsConfiguration = !this.ProvisionVMAgent ? null : new WindowsConfiguration
-                {
-                    ProvisionVMAgent = this.ProvisionVMAgent.IsPresent ? (bool?)true : null
-                }
+                CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
             };
+
+            if (this.ParameterSetName == LinuxParamSet)
+            {
+                if (this.VM.OSProfile.WindowsConfiguration != null)
+                {
+                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                }
+
+                if (this.VM.OSProfile.LinuxConfiguration == null)
+                {
+                    this.VM.OSProfile.LinuxConfiguration = new LinuxConfiguration();
+                }
+
+                this.VM.OSProfile.LinuxConfiguration.DisablePasswordAuthentication =
+                    (this.DisablePasswordAuthentication.IsPresent)
+                    ? (bool?)true
+                    : null;
+            }
+            else
+            {
+                if (this.VM.OSProfile.LinuxConfiguration != null)
+                {
+                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                }
+
+                if (this.VM.OSProfile.WindowsConfiguration == null)
+                {
+                    this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
+                }
+
+                var listenerList  = new List<WinRMListener>();
+
+                if (this.WinRMHttp.IsPresent)
+                {
+                    listenerList.Add(new WinRMListener
+                    {
+                        Protocol = ProtocolTypes.Http,
+                        CertificateUrl = null,
+                    });
+                }
+
+                if (this.WinRMHttps.IsPresent)
+                {
+                    listenerList.Add(new WinRMListener
+                    {
+                        Protocol = ProtocolTypes.Https,
+                        CertificateUrl = this.WinRMCertUrl,
+                    });
+                }
+
+                // OS Profile
+                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent =
+                    (this.ProvisionVMAgent.IsPresent)
+                    ? (bool?) true
+                    : null;
+
+                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates =
+                    this.EnableAutoUpdate.IsPresent
+                    ? (bool?) true
+                    : null;
+
+                this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+
+                this.VM.OSProfile.WindowsConfiguration.WinRMConfiguration =
+                    ! (this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
+                    ? null
+                    : new WinRMConfiguration
+                    {
+                        Listeners = listenerList,
+                    };
+            }
 
             WriteObject(this.VM);
         }

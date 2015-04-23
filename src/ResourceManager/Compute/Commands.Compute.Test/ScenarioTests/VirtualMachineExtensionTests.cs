@@ -25,5 +25,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineAccessExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineAccessExtension");
+        }
     }
 }

@@ -68,16 +68,33 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
         public string Caching { get; set; }
 
+        [Alias("SourceImage")]
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMSourceImageUri)]
+        [ValidateNotNullOrEmpty]
+        public string SourceImageUri { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskCreateOption)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(DiskCreateOptionTypes.Empty, DiskCreateOptionTypes.Attach, DiskCreateOptionTypes.FromImage)]
+        public string CreateOption { get; set; }
+
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Position = 4,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         public SwitchParameter Windows { get; set; }
 
         [Parameter(
             ParameterSetName = LinuxParamSet,
-            Position = 4,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
@@ -94,10 +111,15 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 Name = this.Name,
                 OperatingSystemType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : null,
-                VirtualHardDisk = new VirtualHardDisk
+                VirtualHardDisk = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri
-                }
+                },
+                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                {
+                    Uri = SourceImageUri
+                },
+                CreateOption = CreateOption
             };
 
             WriteObject(this.VM);

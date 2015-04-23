@@ -29,28 +29,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             ParameterSetName = "SetByResourceId",
-            HelpMessage = "IDs of the FrontendIpConfigurations")]
+            HelpMessage = "ID of the FrontendIpConfiguration")]
         [ValidateNotNullOrEmpty]
-        public List<string> FrontendIPConfigurationId { get; set; }
+        public string FrontendIpConfigurationId { get; set; }
 
-        [Parameter(
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "IPConfig ID of NetworkInterface")]
-        [ValidateNotNullOrEmpty]
-        public string BackendIpConfigurationId { get; set; }
-
-        [Parameter(
+       [Parameter(
              ParameterSetName = "SetByResource",
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "Frontend Ip config")]
         [ValidateNotNullOrEmpty]
-        public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
+        public PSFrontendIPConfiguration FrontendIpConfiguration { get; set; }
 
-        [Parameter(
-            ParameterSetName = "SetByResource",
-            HelpMessage = "IPConfig of NetworkInterface")]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkInterfaceIpConfiguration BackendIpConfiguration { get; set; }
-        
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
@@ -83,19 +71,9 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
-                if (this.BackendIpConfiguration != null)
-                {
-                    this.BackendIpConfigurationId = this.BackendIpConfiguration.Id;
-                }
-
                 if (this.FrontendIpConfiguration != null)
                 {
-                    this.FrontendIPConfigurationId = new List<string>();
-
-                    foreach (var frontendIpConfiguration in this.FrontendIpConfiguration)
-                    {
-                        this.FrontendIPConfigurationId.Add(frontendIpConfiguration.Id);
-                    }
+                    this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
                 }
             }
         }

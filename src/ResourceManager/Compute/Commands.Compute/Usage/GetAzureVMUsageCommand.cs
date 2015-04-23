@@ -19,12 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage, DefaultParameterSetName = GetVirtualMachineUsageParamSet)]
-    [OutputType(typeof(Usage))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage)]
+    [OutputType(typeof(ListUsagesResponse))]
     public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
-        protected const string GetVirtualMachineUsageParamSet = "GetVirtualMachineUsageParamSet";
-
         [Parameter(
            Mandatory = true,
            Position = 0,
@@ -38,8 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
 
             ListUsagesResponse result = this.UsageClient.List(this.Location);
-
-            WriteObject(result.Usages, true);
+            WriteObject(result);
         }
     }
 }

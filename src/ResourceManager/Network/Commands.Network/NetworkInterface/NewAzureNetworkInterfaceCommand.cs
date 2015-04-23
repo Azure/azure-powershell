@@ -103,10 +103,44 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerBackendAddressPoolId")]
+        public List<string> LoadBalancerBackendAddressPoolId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerBackendAddressPools")]
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "LoadBalancerInboundNatRuleId")]
+        public List<string> LoadBalancerInboundNatRuleId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "LoadBalancerInboundNatRule")]
+        public List<PSInboundNatRule> LoadBalancerInboundNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
         public string IpConfigurationName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of Dns Servers")]
+        public List<string> DnsServer { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -131,11 +165,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateNetworkInterface());
-            }
 
-            var networkInterface = CreateNetworkInterface();
-            
-            WriteObject(networkInterface);
+                WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
+            }
+            else
+            {
+                var networkInterface = CreateNetworkInterface();
+
+                WriteObject(networkInterface);
+            }
         }
 
         private PSNetworkInterface CreateNetworkInterface()
@@ -153,6 +191,24 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.NetworkSecurityGroup != null)
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
+                }
+
+                if (this.LoadBalancerBackendAddressPool != null)
+                {
+                    foreach (var bepool in this.LoadBalancerBackendAddressPool)
+                    {
+                        this.LoadBalancerBackendAddressPoolId = new List<string>();
+                        this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
+                    }
+                }
+
+                if (this.LoadBalancerInboundNatRule != null)
+                {
+                    foreach (var natRule in this.LoadBalancerInboundNatRule)
+                    {
+                        this.LoadBalancerInboundNatRuleId = new List<string>();
+                        this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
+                    }
                 }
             }
 
@@ -184,6 +240,30 @@ namespace Microsoft.Azure.Commands.Network
             {
                 networkInterface.NetworkSecurityGroup = new PSResourceId();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (this.LoadBalancerBackendAddressPoolId != null)
+            {
+                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSResourceId>();
+                foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
+                {
+                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
+                }
+            }
+
+            if (this.LoadBalancerInboundNatRuleId != null)
+            {
+                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSResourceId>();
+                foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
+                {
+                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
+                }
+            }
+
+            if (this.DnsServer != null)
+            {
+                networkInterface.DnsSettings = new PSDnsSettings();
+                networkInterface.DnsSettings.DnsServers = this.DnsServer;
             }
 
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
