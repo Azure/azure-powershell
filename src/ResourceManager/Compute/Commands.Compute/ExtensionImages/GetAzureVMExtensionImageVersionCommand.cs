@@ -13,23 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageVersion)]
-    [OutputType(typeof(VirtualMachineImageResourceList))]
+    [OutputType(typeof(PSVirtualMachineExtensionImage))]
     public class GetAzureVMExtensionImageVersionCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter(Mandatory = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
         [Parameter, ValidateNotNullOrEmpty]
@@ -42,13 +44,27 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineExtensionImageListVersionsParameters
             {
                 Location = Location,
-                Publishername = PublisherName,
+                PublisherName = PublisherName,
                 Type = Type,
                 FilterExpression = FilterExpression
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
-            WriteObject(result);
+
+            var images = from r in result.Resources
+                         select new PSVirtualMachineExtensionImage
+                         {
+                             RequestId = result.RequestId,
+                             StatusCode = result.StatusCode,
+                             Id = r.Id,
+                             Location = r.Location,
+                             Version = r.Name,
+                             PublisherName = this.PublisherName,
+                             Type = this.Type,
+                             FilterExpression = this.FilterExpression
+                         };
+
+            WriteObject(images, true);
         }
     }
 }

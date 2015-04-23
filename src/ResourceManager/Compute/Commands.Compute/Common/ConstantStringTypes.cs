@@ -21,18 +21,21 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMComputerName = "The virtual machine's omputer name.";
         public const string VMCredential = "The virtual machine's credential.";
         public const string VMSourceImageName = "The virtual machine's source image name.";
+        public const string VMImageReference = "The virtual machine's image reference.";
         public const string VMVHDContainer = "The virtual machine's Vhd container.";
         public const string VMOSDiskName = "The virtual machine OS disk's name.";
         public const string VMOSDiskVhdUri = "The virtual machine OS disk's Vhd Uri.";
         public const string VMOSDiskCaching = "The virtual machine OS disk's caching.";
         public const string VMOSDiskWindowsOSType = "The virtual machine disk's OS is Windows.";
         public const string VMOSDiskLinuxOSType = "The virtual machine disk's OS is Linux.";
+        public const string VMSourceImageUri = "The virtual machine OS disk's source image Uri.";
 
         public const string VMDataDiskName = "The virtual machine data disk's name.";
         public const string VMDataDiskVhdUri = "The virtual machine data disk's Vhd Uri.";
         public const string VMDataDiskCaching = "The virtual machine data disk's caching.";
         public const string VMDataDiskSizeInGB = "The virtual machine data disk's size in GB.";
         public const string VMDataDiskLun = "The virtual machine data disk's Lun.";
+        public const string VMDataDiskCreateOption = "The virtual machine data disk's create option.";
 
         public const string VMNetworkInterfaceName = "The virtual machine network interface's name.";
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
@@ -65,6 +68,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string VirtualMachine = "AzureVM";
         public const string VirtualMachineExtension = "AzureVMExtension";
+        public const string VirtualMachineCustomScriptExtension = "AzureVMCustomScriptExtension";
+        public const string VirtualMachineAccessExtension = "AzureVMAccessExtension";
         public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";
@@ -78,9 +83,13 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
         public const string VirtualMachineImageOffer = "AzureVMImageOffer";
         public const string VirtualMachineImageSku = "AzureVMImageSku";
+        public const string VirtualMachineImageVersion = "AzureVMImageVersion";
 
         public const string VirtualMachineUsage = "AzureVMUsage";
 
         public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
-    }
+        public const string SshPublicKey = "AzureVMSshPublicKeyConfig";
+        public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContentConfig";
+        public const string VaultCertificate = "AzureVMVaultCertificateConfig";
+        public const string VaultSecretGroup = "AzureVMSecretConfig";    }
 }

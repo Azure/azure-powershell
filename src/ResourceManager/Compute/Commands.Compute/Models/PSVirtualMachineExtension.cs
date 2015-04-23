@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string Id { get; set; }
 
-        public string Properties { get; set; }
+        public string PublicSettings { get; set; }
+
+        public string ProtectedSettings { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -66,7 +68,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 ExtensionType = ext == null ? null : ext.ExtensionType,
                 TypeHandlerVersion = ext == null ? null : ext.TypeHandlerVersion,
                 Id = ext.Id,
-                Properties = ext == null ? null : ext.ProtectedSettings,
+                PublicSettings = ext == null ? null : ext.Settings,
+                ProtectedSettings = ext == null ? null : ext.ProtectedSettings,
                 ProvisioningState = ext == null ? null : ext.ProvisioningState,
                 Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses
             };
