@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the cmdlets (New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\packageReservedIP.csv", "package#csv", DataAccessMethod.Sequential)]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\packageReservedIP.csv", "packageReservedIP#csv", DataAccessMethod.Sequential)]
         public void CreateReservedIPThenPaaSVM()
         {
             try
@@ -195,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (Remove-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Preview), Owner("avgupt"), Description("Test the cmdlets (Remove-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreatePaaSDeploymentAssociateAndDisassociateReservedIp()
         {
             try
@@ -262,7 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (Set-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Preview), Owner("avgupt"), Description("Test the cmdlets (Set-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreateWindowsVMThenAssociateReservedIP()
         {
             try
@@ -356,7 +356,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             throw new Exception("Test Did not fail as expected when association was tried on stage slot in IaaS");
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (Remove-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Preview), Owner("avgupt"), Description("Test the cmdlets (Remove-AzureReservedIPAssociation, New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreateWindowsVMWithReservedIPThenDisassociateReservedIP()
         {
             try
@@ -406,7 +406,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("avgupt"), Description("Test the cmdlets (New-AzureReservedIP, Remove-AzureReservedIPAssociation, Get-AzureReservedIP,Remove-AzureReservedIP)")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Preview), Owner("avgupt"), Description("Test the cmdlets (New-AzureReservedIP, Remove-AzureReservedIPAssociation, Get-AzureReservedIP,Remove-AzureReservedIP)")]
         public void CreateWindowsVMThenReservedExistingIP()
         {
             try

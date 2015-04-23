@@ -21,7 +21,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
     {
         #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
         [Fact]
-        [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyConfig()
         {
@@ -29,7 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait("StorSimpleCmdlets", "New-BackupPolicyConfig")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyAddConfigDefaultValues()
         {

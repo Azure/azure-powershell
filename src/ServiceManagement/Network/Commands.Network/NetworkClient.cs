@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+using Microsoft.Azure;
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
     using Gateway.Model;
     using Hyak.Common;

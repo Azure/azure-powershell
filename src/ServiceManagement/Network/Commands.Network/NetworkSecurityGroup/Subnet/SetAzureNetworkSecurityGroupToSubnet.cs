@@ -14,12 +14,12 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure;
 using Hyak.Common;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Subnet
 {
     [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupToSubnet"), OutputType(typeof(bool))]
     public class SetAzureNetworkSecurityGroupToSubnet : NetworkCmdletBase

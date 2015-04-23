@@ -44,15 +44,12 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewWorkItemParameters parameters = new NewWorkItemParameters()
+            NewWorkItemParameters parameters = new NewWorkItemParameters(this.BatchContext, this.Name, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.Name,
                 Schedule = this.Schedule,
                 JobSpecification = this.JobSpecification,
                 JobExecutionEnvironment = this.JobExecutionEnvironment,
-                Metadata = this.Metadata,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                Metadata = this.Metadata
             };
 
             BatchClient.CreateWorkItem(parameters);
