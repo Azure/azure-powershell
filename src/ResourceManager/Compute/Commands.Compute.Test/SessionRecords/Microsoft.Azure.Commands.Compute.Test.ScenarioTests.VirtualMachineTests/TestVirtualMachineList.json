@@ -1,0 +1,139 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31999"
+        ],
+        "x-ms-request-id": [
+          "7fccdb8b-bdfa-4578-930a-d4248b1bf4ba"
+        ],
+        "x-ms-correlation-request-id": [
+          "7fccdb8b-bdfa-4578-930a-d4248b1bf4ba"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T013602Z:7fccdb8b-bdfa-4578-930a-d4248b1bf4ba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 01:36:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31998"
+        ],
+        "x-ms-request-id": [
+          "4acb4a5c-6f97-4b33-bb4d-6902992f3348"
+        ],
+        "x-ms-correlation-request-id": [
+          "4acb4a5c-6f97-4b33-bb4d-6902992f3348"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150418T013602Z:4acb4a5c-6f97-4b33-bb4d-6902992f3348"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 01:36:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/test",
+      "EncodedRequestUri": "L3Rlc3Q=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.0.0.0"
+        ]
+      },
+      "ResponseBody": "<html>\r\n  <body onload=\"challenge();\">\r\n    <script>eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);return p}('g l(){a.j=\\'7=n; h-5=e; i=/\\';c.k.1()};o 6(){3.m=\\'f=0; d-9=8; p=/\\';b.4.2()}',26,26,'1ddae90d1314569990e496307402856b6b3f02b6|reload|reload|document|location|age|challenge|SENGINX-ROBOT-MITIGATION        |600 |age|document|window|window|max|600 |SENGINX-ROBOT-MITIGATION        |function|max|path|cookie|location|challenge_f|cookie|418b499229a73d216cac9b2277427f69eeb7fa7d|function|path'.split('|'),0,{}))</script>\r\n  </body>\r\n</html>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "732"
+        ],
+        "Content-Type": [
+          "text/html"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Sat, 18 Apr 2015 01:40:53 GMT"
+        ],
+        "Server": [
+          "BlockDos.net"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "015b5c33-7725-4fc2-9c81-c9b07de44668",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
+  }
+}

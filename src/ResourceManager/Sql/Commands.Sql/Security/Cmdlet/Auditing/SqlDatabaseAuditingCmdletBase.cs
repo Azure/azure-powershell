@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -21,13 +22,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase  : SqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseAuditingCmdletBase  : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseAuditingPolicyModel GetModel()
+        protected override DatabaseAuditingPolicyModel GetEntity()
         {
             return ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
@@ -47,9 +48,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(DatabaseAuditingPolicyModel model)
+        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
         {
             ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId);
+            return null;
         }
     }
 }

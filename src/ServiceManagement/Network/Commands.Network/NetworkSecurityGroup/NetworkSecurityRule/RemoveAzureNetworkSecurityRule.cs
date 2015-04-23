@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Utilities;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Utilities;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup
 {
     [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityRule"), OutputType(typeof(INetworkSecurityGroup))]
     public class RemoveAzureNetworkSecurityRule : NetworkSecurityGroupConfigurationBaseCmdlet
