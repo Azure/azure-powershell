@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
-                AvailabilitySetReference = new AvailabilitySetReference
+                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new AvailabilitySetReference
                 {
                     ReferenceUri = this.AvailabilitySetId
                 }
