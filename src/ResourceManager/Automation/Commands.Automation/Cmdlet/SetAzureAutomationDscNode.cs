@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the nodeconfiguration name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The node configuration name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The node configuration name that the node should now be mapped to.")]
         [ValidateNotNullOrEmpty]
         public string NodeConfigurationName { get; set; }
 

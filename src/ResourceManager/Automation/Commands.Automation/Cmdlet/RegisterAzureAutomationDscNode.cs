@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the node configuration name.
         /// </summary> 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The node configuration name the VM should be configured to grab from Azure Automation DSC.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the node configuration that the VM should be configured to pull from Azure Automation DSC.")]
         public string NodeConfigurationName
         {
             get { return this.nodeConfigurationName; }
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the refresh frequency in minutes.
         /// </summary> 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Represents the frequency (in minutes) at which the Local Configuration Manager contacts the pull server to download the current configuration.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Represents the frequency (in minutes) at which the Local Configuration Manager contacts the Azure Automation DSC pull server to download the latest node configuration.")]
         [ValidateRange(30, 44640)]
         public int RefreshFrequencyMins
         {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets a value indicating whether to overwrite the module.
         /// </summary> 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Controls whether new configurations downloaded from the configuration server are allowed to overwrite the old ones on the target node.")]
+            HelpMessage = "Controls whether new configurations downloaded from the Azure Automation DSC pull server are allowed to overwrite the old modules already on the target node.")]
         public bool AllowModuleOverwrite
         {
             get { return this.overwriteModulesFlag; }
