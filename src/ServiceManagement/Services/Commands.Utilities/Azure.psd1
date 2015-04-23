@@ -58,7 +58,7 @@ TypesToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml',
     '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml'
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
-	'.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
+    '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
 
 
