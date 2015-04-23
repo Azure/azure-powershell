@@ -11,11 +11,11 @@
                         <Component Id="cmpCBE516C3EB8B0C94FD1B235D0806CC33" Guid="*">
                             <File Id="fil0DD0F16890E95B85B2B03CBB03E6CF07" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Hyak.Common.dll" />
                         </Component>
-                        <Component Id="cmp68BDEE6A58AAA5F726580770E9601A3D" Guid="*">
-                            <File Id="fil5C98DD8F02F6AD1FA2DAB0082AF93CD5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll" />
-                        </Component>
                         <Component Id="cmpAED5C5457E91FCFC34AB7C4734D3E8E0" Guid="*">
                             <File Id="fil1AD0E938948206F4BFB4C07C8A7BC5ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.Automation.dll-help.xml" />
+                        </Component>
+                        <Component Id="cmp9C538B9F96F953FD1A81796FC970EE9B" Guid="*">
+                            <File Id="filF256BE77EB57EFCA89959865C5AB0EED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll" />
                         </Component>
                         <Component Id="cmp43D0BBEF842D51EF47A01BB491C5FE91" Guid="*">
                             <File Id="filCD14219FE6648B06D2ED55AA4D03D139" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Common.Authentication.dll" />
@@ -2876,8 +2876,8 @@
         <ComponentGroup Id="azurecmdfiles">
             <ComponentRef Id="cmp96F13C307DA6E4AAC35F3D147F21553F" />
             <ComponentRef Id="cmpCBE516C3EB8B0C94FD1B235D0806CC33" />
-            <ComponentRef Id="cmp68BDEE6A58AAA5F726580770E9601A3D" />
             <ComponentRef Id="cmpAED5C5457E91FCFC34AB7C4734D3E8E0" />
+            <ComponentRef Id="cmp9C538B9F96F953FD1A81796FC970EE9B" />
             <ComponentRef Id="cmp43D0BBEF842D51EF47A01BB491C5FE91" />
             <ComponentRef Id="cmp121FE264F0774940E8B7D4B8454AA11A" />
             <ComponentRef Id="cmp8880FFE618D68E10E47597CBF47E2761" />
