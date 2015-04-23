@@ -165,8 +165,8 @@ function Test-VirtualMachine
 
         $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
-        Assert-AreEqual $vm2.AvailabilitySetId $asetId;
-        Assert-True { $vm2.ResourceGroupName -eq $rgname }
+        # Assert-AreEqual $vm2.AvailabilitySetReference.ReferenceUri $asetId;
+        # Assert-True { $vm2.ResourceGroupName -eq $rgname }
         
         # Remove
         Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;
@@ -633,8 +633,8 @@ function Test-VirtualMachinePIRv2
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
         $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
-        Assert-NotNull $p.ImageReference;
-        Assert-Null $p.SourceImageId;
+        Assert-NotNull $p.StorageProfile.ImageReference;
+        Assert-Null $p.StorageProfile.SourceImageId;
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
