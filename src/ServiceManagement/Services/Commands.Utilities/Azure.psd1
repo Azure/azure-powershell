@@ -85,7 +85,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
                 '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
-                '.\Network\Microsoft.Azure.Commands.Network.dll',
+                '.\Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
                 '.\RemoteApp\Microsoft.Azure.Commands.RemoteApp.dll',
                 '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
