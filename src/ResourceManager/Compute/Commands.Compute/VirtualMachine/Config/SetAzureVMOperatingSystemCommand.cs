@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Url for WinRM certificate")]
         [ValidateNotNullOrEmpty]
-        public Uri WinRMCertUrl { get; set; }
+        public Uri WinRMCertificateUrl { get; set; }
 
         // Linux Parameter Sets
         [Parameter(
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
                     listenerList.Add(new WinRMListener
                     {
                         Protocol = ProtocolTypes.Https,
-                        CertificateUrl = this.WinRMCertUrl,
+                        CertificateUrl = this.WinRMCertificateUrl,
                     });
                 }
 
