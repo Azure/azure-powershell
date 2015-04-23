@@ -194,7 +194,7 @@ function Test-VirtualMachineList
 
         if ($s2 -ne $null)
         {
-            Assert-True { $s2[0].ResourceGroupName -ne $null; }
+            Assert-NotNull $s2[0].ResourceGroupName;
         }
 
         Assert-ThrowsContains { $s3 = Get-AzureVM -NextLink "http://www.test.com/test"; } "Unexpected character"
@@ -633,8 +633,8 @@ function Test-VirtualMachinePIRv2
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
         $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
-        Assert-True { $p.ImageReference -ne $null };
-        Assert-True { $p.SourceImageId -eq $null };
+        Assert-NotNull $p.ImageReference;
+        Assert-Null $p.SourceImageId;
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;

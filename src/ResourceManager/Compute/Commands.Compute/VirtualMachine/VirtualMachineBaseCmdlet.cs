@@ -19,29 +19,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class VirtualMachineBaseCmdlet : AzurePSCmdlet
+    public abstract class VirtualMachineBaseCmdlet : ComputeClientBaseCmdlet
     {
-        private ComputeClient computeClient;
-
-        public ComputeClient ComputeClient
-        {
-            get
-            {
-                if (computeClient == null)
-                {
-                    computeClient = new ComputeClient(Profile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
-                }
-
-                return computeClient;
-            }
-
-            set { computeClient = value; }
-        }
-
         public IVirtualMachineOperations VirtualMachineClient
         {
             get
@@ -66,10 +45,5 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
     }
 }
