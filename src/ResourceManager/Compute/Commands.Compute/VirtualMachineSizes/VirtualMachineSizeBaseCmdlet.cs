@@ -13,33 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class VirtualMachineSizeBaseCmdlet : AzurePSCmdlet
+    public abstract class VirtualMachineSizeBaseCmdlet : ComputeClientBaseCmdlet
     {
-        private ComputeClient computeClient;
-
-        public ComputeClient ComputeClient
-        {
-            get
-            {
-                if (computeClient == null)
-                {
-                    computeClient = new ComputeClient(Profile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
-                }
-
-                return computeClient;
-            }
-
-            set { computeClient = value; }
-        }
-
         public IVirtualMachineSizeOperations VirtualMachineSizeClient
         {
             get
@@ -62,11 +40,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 return ComputeClient.ComputeManagementClient.AvailabilitySets;
             }
-        }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
         }
     }
 }

@@ -13,26 +13,48 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineImage : PSOperationContext
+    public class PSVirtualMachineImageBase : PSOperationContext
     {
         public string Id { get; set; }
 
         public string Location { get; set; }
+    }
+
+    public class PSVirtualMachineImagePublisher : PSVirtualMachineImageBase
+    {
 
         public string PublisherName { get; set; }
+    }
 
+    public class PSVirtualMachineImageOffer : PSVirtualMachineImagePublisher
+    {
         public string Offer { get; set; }
+    }
 
+    public class PSVirtualMachineImageSku : PSVirtualMachineImageOffer
+    {
         public string Skus { get; set; }
+    }
 
+    public class PSVirtualMachineImage : PSVirtualMachineImageSku
+    {
         public string Version { get; set; }
 
         public string FilterExpression { get; set; }
+    }
+
+    public class PSVirtualMachineImageDetail : PSVirtualMachineImage
+    {
+        public string Name { get; set; }
+
+        public OSDiskImage OSDiskImage { get; set; }
+
+        public PurchasePlan PurchasePlan { get; set; }
+
+        public IList<DataDiskImage> DataDiskImages { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,168 +13,94 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachine
     {
-        public string ResourceGroupName { get; set; }
+        public AvailabilitySetReference AvailabilitySetReference { get; set; }
 
-        public string Name { get; set; }
-
-        public string Location { get; set; }
-
-        public string VMSize
+        [JsonIgnore]
+        public string AvailabilitySetReferenceText
         {
-            get
-            {
-                if (this.HardwareProfile != null)
-                {
-                    return this.HardwareProfile.VirtualMachineSize;
-                }
-
-                return null;
-            }
-        }
-
-        public IDictionary<string, string> Tags { get; set; }
-        public string AvailabilitySetId { get; set; }
-        public string ProvisioningState { get; set; }
-
-        public string OSConfiguration
-        {
-            get
-            {
-                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
-                {
-                    return this.StorageProfile.OSDisk.OperatingSystemType;
-                }
-
-                return null;
-            }
-        }
-
-        public string SourceImageId
-        {
-            get
-            {
-                if (this.StorageProfile != null && this.StorageProfile.SourceImage != null)
-                {
-                    return this.StorageProfile.SourceImage.ReferenceUri;
-                }
-
-                return null;
-            }
-        }
-
-        public string OSDisk
-        {
-            get
-            {
-                if (this.StorageProfile != null && this.StorageProfile.OSDisk != null)
-                {
-                    return this.StorageProfile.OSDisk.Name;
-                }
-
-                return string.Empty;
-            }
-        }
-
-        public IList<DataDisk> DataDisks
-        {
-            get
-            {
-                if (this.StorageProfile != null && this.StorageProfile.DataDisks != null)
-                {
-                    return this.StorageProfile.DataDisks;
-                }
-
-                return null;
-            }
-        }
-
-        public IList<string> NetworkInterfaces
-        {
-            get
-            {
-                if (this.NetworkProfile != null && this.NetworkProfile.NetworkInterfaces != null)
-                {
-                    return this.NetworkProfile.NetworkInterfaces.Select(t => t.ReferenceUri).ToList();
-                }
-
-                return null;
-            }
+            get { return JsonConvert.SerializeObject(AvailabilitySetReference, Formatting.Indented); }
         }
 
         public IList<VirtualMachineExtension> Extensions { get; set; }
 
-        public VirtualMachineInstanceView Status { get; set; }
+        [JsonIgnore]
+        public string ExtensionsText
+        {
+            get { return JsonConvert.SerializeObject(Extensions, Formatting.Indented); }
+        }
 
         public HardwareProfile HardwareProfile { get; set; }
 
+        [JsonIgnore]
+        public string HardwareProfileText
+        {
+            get { return JsonConvert.SerializeObject(HardwareProfile, Formatting.Indented); }
+        }
+
+        public string Id { get; set; }
+
+        public VirtualMachineInstanceView InstanceView { get; set; }
+
+        [JsonIgnore]
+        public string InstanceViewText
+        {
+            get { return JsonConvert.SerializeObject(InstanceView, Formatting.Indented); }
+        }
+
+        public string Location { get; set; }
+
+        public string Name { get; set; }
+
         public NetworkProfile NetworkProfile { get; set; }
-        
+
+        [JsonIgnore]
+        public string NetworkProfileText
+        {
+            get { return JsonConvert.SerializeObject(NetworkProfile, Formatting.Indented); }
+        }
+
         public OSProfile OSProfile { get; set; }
 
+        [JsonIgnore]
+        public string OSProfileText
+        {
+            get { return JsonConvert.SerializeObject(OSProfile, Formatting.Indented); }
+        }
+
+        public Plan Plan { get; set; }
+
+        [JsonIgnore]
+        public string PlanText
+        {
+            get { return JsonConvert.SerializeObject(Plan, Formatting.Indented); }
+        }
+
+        public string ProvisioningState { get; set; }
+
         public StorageProfile StorageProfile { get; set; }
-    }
 
-    public static class PSVirtualMachineConversions
-    {
-        public static PSVirtualMachine ToPSVirtualMachine(this VirtualMachineGetResponse response, string rgName = null)
+        [JsonIgnore]
+        public string StorageProfileText
         {
-            if (response == null)
-            {
-                return null;
-            }
-
-            return response.VirtualMachine.ToPSVirtualMachine(rgName);
+            get { return JsonConvert.SerializeObject(StorageProfile, Formatting.Indented); }
         }
 
-        public static PSVirtualMachine ToPSVirtualMachine(this VirtualMachine virtualMachine, string rgName = null)
+        public IDictionary<string, string> Tags { get; set; }
+
+        [JsonIgnore]
+        public string TagsText
         {
-            PSVirtualMachine result = new PSVirtualMachine
-            {
-                ResourceGroupName = rgName,
-                Name = virtualMachine == null ? null : virtualMachine.Name,
-                Location = virtualMachine == null ? null : virtualMachine.Location,
-                ProvisioningState = virtualMachine.ProvisioningState,
-                Tags = virtualMachine.Tags,
-                Extensions = virtualMachine.Extensions,
-                Status = null, // TODO: VM response does not return Status info yet
-            };
-
-            var asetRef = virtualMachine.AvailabilitySetReference;
-            if (asetRef != null)
-            {
-                result.AvailabilitySetId = virtualMachine.AvailabilitySetReference.ReferenceUri;
-            }
-
-            result.OSProfile = virtualMachine.OSProfile;
-            result.HardwareProfile = virtualMachine.HardwareProfile;
-            result.StorageProfile = virtualMachine.StorageProfile;
-            result.NetworkProfile = virtualMachine.NetworkProfile;
-
-            return result;
+            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
         }
 
-        public static List<PSVirtualMachine> ToPSVirtualMachineList(this VirtualMachineListResponse response, string rgName = null)
-        {
-            List<PSVirtualMachine> results = new List<PSVirtualMachine>();
-
-            if (response != null && response.VirtualMachines != null)
-            {
-                foreach (var item in response.VirtualMachines)
-                {
-                    var vm = item.ToPSVirtualMachine(rgName);
-                    results.Add(vm);
-                }
-            }
-
-            return results;
-        }
+        public string Type { get; set; }
     }
 }
+

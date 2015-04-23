@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        //[Fact(Skip = "TODO: Record")]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");

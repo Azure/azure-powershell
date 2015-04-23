@@ -77,11 +77,20 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!this.Primary.IsPresent)
             {
-                networkProfile.NetworkInterfaces.Add(
-                    new NetworkInterfaceReference
+
+                networkProfile.NetworkInterfaces.Add(new NetworkInterfaceReference
                     {
                         ReferenceUri = this.Id,
                     });
+
+                if (networkProfile.NetworkInterfaces.Count > 1)
+                {
+                    // run through the entire list of networkInterfaces and if Primary is not set, set them to false
+                    foreach (var nic in networkProfile.NetworkInterfaces)
+                    {
+                        nic.Primary = nic.Primary ?? false;
+                    }
+                }
             }
             else
             {

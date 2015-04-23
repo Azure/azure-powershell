@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -94,7 +96,8 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-                    WriteObject(result.ToPSVirtualMachine(this.ResourceGroupName));
+                    var psResult = Mapper.Map<PSVirtualMachine>(result.VirtualMachine);
+                    WriteObject(psResult);
                 }
             }
             else
@@ -115,7 +118,15 @@ namespace Microsoft.Azure.Commands.Compute
                     result = this.VirtualMachineClient.ListAll(listParams);
                 }
 
-                WriteObject(result.ToPSVirtualMachineList(this.ResourceGroupName), true);
+                var psResultList = new List<PSVirtualMachine>();
+                foreach (var item in result.VirtualMachines)
+                {
+                    var psItem = Mapper.Map<PSVirtualMachine>(item);
+                    psResultList.Add(psItem);
+                }
+
+
+                WriteObject(psResultList, true);
             }
         }
     }

@@ -18,29 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class AvailabilitySetBaseCmdlet : AzurePSCmdlet
+    public abstract class AvailabilitySetBaseCmdlet : ComputeClientBaseCmdlet
     {
-        private ComputeClient computeClient;
-
-        public ComputeClient ComputeClient
-        {
-            get
-            {
-                if (computeClient == null)
-                {
-                    computeClient = new ComputeClient(Profile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
-                }
-
-                return computeClient;
-            }
-
-            set { computeClient = value; }
-        }
-
         public IAvailabilitySetOperations AvailabilitySetClient
         {
             get
@@ -65,10 +44,5 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
     }
 }

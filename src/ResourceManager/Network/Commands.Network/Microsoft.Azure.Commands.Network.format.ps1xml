@@ -44,11 +44,11 @@
               </ListItem>
               <ListItem>
                 <Label>DhcpOptions</Label>
-                <PropertyName>DhcpOptionsTest</PropertyName>
+                <PropertyName>DhcpOptionsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>NetworkInterfaces</Label>
-                <PropertyName>NetworkInterfacesTest</PropertyName>
+                <PropertyName>NetworkInterfacesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Subnets</Label>

@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachineExtensionImage : PSOperationContext
@@ -32,5 +27,20 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Version { get; set; }
 
         public string FilterExpression { get; set; }
+    }
+
+    public class PSVirtualMachineExtensionImageDetails : PSVirtualMachineExtensionImage
+    {
+        public string Name { get; set; }
+
+        public string HandlerSchema { get; set; }
+
+        public string OperatingSystem { get; set; }
+
+        public string ComputeRole { get; set; }
+
+        public bool SupportsMultipleExtensions { get; set; }
+
+        public bool VMScaleSetEnabled { get; set; }
     }
 }

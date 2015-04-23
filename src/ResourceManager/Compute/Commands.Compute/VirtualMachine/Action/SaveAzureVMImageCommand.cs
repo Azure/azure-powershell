@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(ComputeLongRunningOperationResponse))]
     public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
     {
+        public override string Name { get; set; }
+
         [Parameter(
            Mandatory = true,
            Position = 0,
@@ -37,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string VMName { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -47,21 +49,22 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string DestinationContainerName { get; set; }
 
+        [Alias("VirtualHardDiskNamePrefix")]
         [Parameter(
            Mandatory = true,
            Position = 3,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "To Overwrite.")]
-        [ValidateNotNullOrEmpty]
-        public bool Overwrite { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 4,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "The Virtual Hard Disk Name Prefix.")]
         [ValidateNotNullOrEmpty]
-        public string VirtualHardDiskNamePrefix { get; set; }
+        public string VHDNamePrefix { get; set; }
+
+        [Parameter(
+           Position = 4,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "To Overwrite.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Overwrite { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -70,13 +73,13 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineCaptureParameters
             {
                 DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite,
-                VirtualHardDiskNamePrefix = VirtualHardDiskNamePrefix
+                Overwrite = Overwrite.IsPresent,
+                VirtualHardDiskNamePrefix = VHDNamePrefix
             };
 
             var op = this.VirtualMachineClient.Capture(
                 this.ResourceGroupName,
-                this.Name,
+                this.VMName,
                 parameters);
 
             WriteObject(op);

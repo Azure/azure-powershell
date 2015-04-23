@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Models
+namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class PSVirtualMachineImageDetails : PSVirtualMachineImage
+    public class UsageMetricsTests
     {
-        public string Name { get; set; }
-
-        public OSDiskImage OSDiskImage { get; set; }
-
-        public PurchasePlan PurchasePlan { get; set; }
-
-        public IList<DataDiskImage> DataDiskImages { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUsageMetrics()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetUsageMetrics");
+        }
     }
 }
