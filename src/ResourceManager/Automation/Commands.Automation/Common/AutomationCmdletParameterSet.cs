@@ -80,6 +80,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByConfigurationName = "ByConfigurationName";
 
         /// <summary>
+        /// The Configuration name parameter set.
+        /// </summary>
+        internal const string ByConfiguration = "ByConfiguration";
+
+        /// <summary>
         /// The Node Configuration name parameter set.
         /// </summary>
         internal const string ByNodeConfigurationName = "ByNodeConfigurationName";

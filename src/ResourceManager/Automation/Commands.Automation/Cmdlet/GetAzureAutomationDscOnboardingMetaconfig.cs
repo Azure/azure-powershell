@@ -40,20 +40,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the output folder for the metaconfig mof files
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where metaconfig mof files to be placed.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where metaconfig mof folder to be placed.")]
         public string OutputFolder { get; set; }
 
         /// <summary>
         /// Gets or sets the list of computer names
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The names of computers. If not specified Localhost will be used.")]
-        [Alias("ComputerName")]
-        public string[] ComputerNames { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The names of computers to generate a metaconfig mof for. If not specified localhost will be used.")]
+        public string[] ComputerName { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configurations.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Overwrites an existing configuration with same name.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation and overwrites an existing configuration with same name.")]
         public SwitchParameter Force
         {
             get { return this.overwriteExistingFile; }
@@ -66,10 +65,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var ret = 
-                this.AutomationClient.GetDscMetaConfig(this.ResourceGroupName, this.AutomationAccountName, this.OutputFolder, this.ComputerNames, this.Force);
-
-            this.WriteObject(ret, true);
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(CultureInfo.CurrentCulture, Resources.DscMetaMofHasKeysWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.DscMetaMofHasKeysDescription),
+                this.OutputFolder,
+                () =>
+                {
+                    var ret = this.AutomationClient.GetDscMetaConfig(this.ResourceGroupName, this.AutomationAccountName, this.OutputFolder, this.ComputerName, this.Force);
+                    this.WriteObject(ret, true);
+                });
         }
     }
 }
