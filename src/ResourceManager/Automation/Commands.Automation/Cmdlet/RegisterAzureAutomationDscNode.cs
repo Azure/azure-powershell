@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the azure VM resource group name.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure VM resource group name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure VM resource group name.")]
         public string AzureVMResourceGroup 
         {
             get { return this.azureVmResourceGroup; }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the azure VM location.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure VM location.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure VM location.")]
         public string AzureVMLocation
         {
             get { return this.azureVmLocation; }
