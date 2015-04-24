@@ -20320,29 +20320,29 @@ The default value is Production.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
--			<maml:name>Confirm</maml:name>
--			<maml:description>
--				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
--			</maml:description>
--			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
--			<dev:type>
--				<maml:name>switchparameter</maml:name>
--				<maml:uri/>
--			</dev:type>
--			<dev:defaultValue></dev:defaultValue>
--		</command:parameter>
--		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
--			<maml:name>WhatIf</maml:name>
--			<maml:description>
--				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
--			</maml:description>
--			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
--			<dev:type>
--				<maml:name>switchparameter</maml:name>
--				<maml:uri/>
--			</dev:type>
--			<dev:defaultValue></dev:defaultValue>
--		</command:parameter>
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
+			<dev:type>
+				<maml:name>switchparameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
+			<dev:type>
+				<maml:name>switchparameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 	</command:parameters>
 	<!-- Input - Output section-->
 	<command:inputTypes>
