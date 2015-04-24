@@ -152,6 +152,7 @@
     <Compile Include="NetworkSecurityGroups\SetNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes\GetEffectiveRouteTests.cs" />
+    <Compile Include="Routes\GetRouteTableTests.cs" />
     <Compile Include="Routes\GetSubnetRouteTableTests.cs" />
     <Compile Include="Routes\NewRouteTableTests.cs" />
     <Compile Include="Routes\RemoveRouteTableTests.cs" />

@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Routes
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetEffectiveRouteTableOnRoleSucceeds()
+        public void GetEffectiveRouteTableOnRole()
         {
             GetEffectiveRouteTableForRoleInstance();
         }
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Routes
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetEffectiveRouteTableOnVMSucceeds()
+        public void GetEffectiveRouteTableOnVM()
         {
             GetEffectiveRouteTableForVM();
         }
@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Routes
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetEffectiveRouteTableOnVMNicSucceeds()
+        public void GetEffectiveRouteTableOnVMNic()
         {
             GetEffectiveRouteTableForVMNic();
         }

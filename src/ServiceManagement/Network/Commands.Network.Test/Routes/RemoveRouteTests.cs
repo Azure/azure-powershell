@@ -15,19 +15,19 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Network.Routes;
-using Microsoft.Azure.Commands.Network.Routes.Model;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
+using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
-using Moq;
-using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Network.Models;
+using Moq;
 using Xunit;
 using Models = Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.Test.Routes
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Routes
 {
     public class RemoveRouteTests
     {
