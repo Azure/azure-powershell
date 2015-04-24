@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Association
 {
-    [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(INetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(bool))]
     public class SetAzureNetworkSecurityGroupAssociation : NetworkCmdletBase
     {
         public const string AddNetworkSecurityGroupAssociationToSubnet = "AddNetworkSecurityGroupAssociationToSubnet";

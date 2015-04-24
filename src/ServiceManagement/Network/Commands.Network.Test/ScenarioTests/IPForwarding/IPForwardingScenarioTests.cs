@@ -26,16 +26,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
     public class IPForwardingScenarioTests
     {
-        public IPForwardingScenarioTests()
-        {
-            this.RunPowerShellTest("Initialize-NetworkTest");
-        }
-
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void SetIPForwardingOnVMAndUpdateVM()
         {
             RunPowerShellTest("Test-SetIPForwardingOnVMAndUpdateVM");
@@ -43,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void SetIPForwardingOnNICAndUpdateVM()
         {
             RunPowerShellTest("Test-SetIPForwardingOnNICAndUpdateVM");

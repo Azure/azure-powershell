@@ -25,6 +25,7 @@ using Moq;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwarding
@@ -84,18 +85,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
         #region Enable
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableIPForwardingOnRoleSucceeds()
         {
             SetIPForwardingOnRole(enable: true, disable: false);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableIPForwardingOnVMSucceeds()
         {
             SetIPForwardingOnVM(enable: true, disable: false);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableIPForwardingOnVMNicSucceeds()
         {
             SetIPForwardingOnVMNic(enable: true, disable: false);
@@ -106,18 +113,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
         #region Disable
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableIPForwardingOnRoleSucceeds()
         {
             SetIPForwardingOnRole(enable: false, disable: true);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableIPForwardingOnVMSucceeds()
         {
             SetIPForwardingOnVM(enable: false, disable: true);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisbableIPForwardingOnVMNicSucceeds()
         {
             SetIPForwardingOnVMNic(enable: false, disable: true);

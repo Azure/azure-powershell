@@ -34,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     using WindowsAzure.Management;
     using WindowsAzure.Management.Network;
     using WindowsAzure.Management.Network.Models;
+    using ManagementNextHop = WindowsAzure.Management.Network.Models.NextHop;
     using WindowsAzure.Storage.Auth;
     using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
     using PowerShellAppGwModel = ApplicationGateway.Model;
@@ -44,6 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         private readonly IComputeManagementClient computeClient;
         private readonly IManagementClient managementClient;
         private readonly ICommandRuntime commandRuntime;
+
+        public static readonly string WithRoutesDetailLevel = "full";
+        public static readonly string WithoutRoutesDetailLevel = "noroutes";
 
         public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
@@ -627,23 +631,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             return client.Gateways.GetIPsecParameters(vnetName, localNetworkName).IPsecParameters;
         }
 
-        public RouteTable GetRouteTable(string routeTableName, string detailLevel)
+        public IRouteTable GetRouteTable(string routeTableName, bool detailed)
         {
-            RouteTable result;
-            if (string.IsNullOrEmpty(detailLevel))
-            {
-                result = client.Routes.GetRouteTable(routeTableName).RouteTable;
-            }
-            else
-            {
-                result = client.Routes.GetRouteTableWithDetails(routeTableName, detailLevel).RouteTable;
-            }
-            return result;
+            var getResponse = client.Routes.GetRouteTableWithDetails(routeTableName, detailed ? WithRoutesDetailLevel : WithoutRoutesDetailLevel);
+            return detailed
+                ? new RouteTableWithRoutes(getResponse.RouteTable)
+                : new SimpleRouteTable(getResponse.RouteTable);
         }
 
-        public IEnumerable<RouteTable> ListRouteTables()
+        public IEnumerable<IRouteTable> ListRouteTables(bool detailed)
         {
-            return client.Routes.ListRouteTables().RouteTables;
+            var routeTableList = client.Routes.ListRouteTables().RouteTables;
+            IEnumerable<IRouteTable> result;
+
+            if (detailed)
+            {
+                // to get the routes, need to specifically call Get for each group
+                result = routeTableList.Select(route => GetRouteTable(route.Name, true));
+            }
+
+            else
+            {
+                result = routeTableList.Select(route => new SimpleRouteTable(route.Name, route.Location, route.Label));
+            }
+
+            return result;
         }
 
         public AzureOperationResponse CreateRouteTable(string routeTableName, string label, string location)
@@ -665,7 +677,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 
         public AzureOperationResponse SetRoute(string routeTableName, string routeName, string addressPrefix, string nextHopType, string ipAddress)
         {
-            NextHop nextHop = new NextHop()
+            ManagementNextHop nextHop = new ManagementNextHop()
             {
                 Type = nextHopType,
                 IpAddress = ipAddress

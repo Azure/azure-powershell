@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Management.Network.Models;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwarding
@@ -88,6 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetIPForwardingOnRoleSucceeds()
         {
             // Setup
@@ -124,6 +127,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetIPForwardingOnVMSucceeds()
         {
             // Setup
@@ -167,6 +172,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.IPForwa
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetIPForwardingOnVMNicSucceeds()
         {
             // Setup
