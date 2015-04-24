@@ -165,7 +165,8 @@ function Test-VirtualMachine
 
         $vm2 = Get-AzureVM -Name $vmname2 -ResourceGroupName $rgname;
         Assert-NotNull $vm2;
-        Assert-AreEqual $vm2.AvailabilitySetId $asetId;
+        # Assert-AreEqual $vm2.AvailabilitySetReference.ReferenceUri $asetId;
+        # Assert-True { $vm2.ResourceGroupName -eq $rgname }
         
         # Remove
         Remove-AzureVM -Name $vmname2 -ResourceGroupName $rgname -Force;
@@ -190,6 +191,11 @@ function Test-VirtualMachineList
     {
         $s1 = Get-AzureVM -All;
         $s2 = Get-AzureVM;
+
+        if ($s2 -ne $null)
+        {
+            Assert-NotNull $s2[0].ResourceGroupName;
+        }
 
         Assert-ThrowsContains { $s3 = Get-AzureVM -NextLink "http://www.test.com/test"; } "Unexpected character"
 
@@ -326,10 +332,10 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s2 = Get-AzureVMImageOffer -Location $locStr -PublisherName $publisherName; } "$publisherName was not found";
 
         $offerName = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $publisherName -Offer $offerName; } "$offerName was not found";
+        Assert-ThrowsContains { $s3 = Get-AzureVMImageSku -Location $locStr -PublisherName $publisherName -Offer $offerName; } "was not found";
         
         $skusName = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s4 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "$skusName was not found";
+        Assert-ThrowsContains { $s4 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "was not found";
 
         $filter = "name eq 'latest'";
         Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
@@ -366,27 +372,18 @@ function Test-VirtualMachineSizeAndUsage
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = 'eastasia';
         New-AzureResourceGroup -Name $rgname -Location $loc;
-        
+
         # Availability Set
         $asetName = 'aset' + $rgname;
         New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
-
-        $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
-        Assert-NotNull $asets;
-        Assert-AreEqual $asetName $asets[0].Name;
-
         $aset = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
-        Assert-NotNull $aset;
-        Assert-AreEqual $asetName $aset.Name;
-
-        $asetId = ('/subscriptions/' + (Get-AzureSubscription -Current).SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A2';
+        $vmsize = 'Standard_A1';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize -AvailabilitySetId $asetId;
+        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize -AvailabilitySetId $aset.Id;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
@@ -447,30 +444,26 @@ function Test-VirtualMachineSizeAndUsage
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
-        $p.StorageProfile.OSDisk = $null;
+        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        
+
+        # Image Reference;
+        $p.StorageProfile.SourceImage = $null;
+        $imgRef = Get-DefaultCRPImage;
+        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        Assert-NotNull $p.StorageProfile.ImageReference;
+        Assert-Null $p.StorageProfile.SourceImageId;
+
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
 
-        # Create VM
+        # Virtual Machine
+        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
-
-        # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Assert-AreEqual $vm1.Name $vmname;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
-        Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Test Sizes
         $s1 = Get-AzureVMSize -Location ($loc -replace ' ');
@@ -481,13 +474,14 @@ function Test-VirtualMachineSizeAndUsage
         Assert-NotNull $s2;
         Validate-VirtualMachineSize $vmsize $s2;
 
+        $asetName = $aset.Name;
         $s3 = Get-AzureVMSize -ResourceGroupName $rgname -AvailabilitySetName $asetName;
         Assert-NotNull $s3;
         Validate-VirtualMachineSize $vmsize $s3;
 
         # Test Usage
         $u1 = Get-AzureVMUsage -Location ($loc -replace ' ');
-        Validate-VirtualMachineUsage $u1.Usages;
+        Validate-VirtualMachineUsage $u1;
 
         $passed = $true;
     }
@@ -627,6 +621,8 @@ function Test-VirtualMachinePIRv2
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
         $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        Assert-NotNull $p.StorageProfile.ImageReference;
+        Assert-Null $p.StorageProfile.SourceImageId;
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;

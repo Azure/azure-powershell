@@ -13,35 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class VirtualMachineExtensionBaseCmdlet : AzurePSCmdlet
+    public abstract class VirtualMachineExtensionBaseCmdlet : ComputeClientBaseCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
-
-        private ComputeClient computeClient;
-
-        public ComputeClient ComputeClient
-        {
-            get
-            {
-                if (computeClient == null)
-                {
-                    computeClient = new ComputeClient(Profile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
-                }
-
-                return computeClient;
-            }
-
-            set { computeClient = value; }
-        }
 
         public IVirtualMachineExtensionOperations VirtualMachineExtensionClient
         {
@@ -76,10 +54,5 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The extension name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
     }
 }

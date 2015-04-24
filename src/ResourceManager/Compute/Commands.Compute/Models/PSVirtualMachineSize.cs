@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public abstract class VirtualMachineImageBaseCmdlet : ComputeClientBaseCmdlet
+    public class PSVirtualMachineSize
     {
-        public IVirtualMachineImageOperations VirtualMachineImageClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.VirtualMachineImages;
-            }
-        }
+        public int? MaxDataDiskCount { get; set; }
+
+        public int MemoryInMB { get; set; }
+
+        public string Name { get; set; }
+
+        public int NumberOfCores { get; set; }
+
+        public int OSDiskSizeInMB { get; set; }
+
+        public int ResourceDiskSizeInMB { get; set; }
     }
 }
+

@@ -18,42 +18,26 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSAvailabilitySet
+    public class PSUsage
     {
-        public string Id { get; set; }
+        public int CurrentValue { get; set; }
 
-        public string Location { get; set; }
+        public uint Limit { get; set; }
 
-        public string Name { get; set; }
-
-        public int? PlatformFaultDomainCount { get; set; }
-
-        public int? PlatformUpdateDomainCount { get; set; }
-
-        public IList<InstanceViewStatus> Statuses { get; set; }
+        public UsageName Name { get; set; }
 
         [JsonIgnore]
-        public string StatusesText
+        public string NameText
         {
-            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
         }
 
-        public IDictionary<string, string> Tags { get; set; }
+        public UsageUnit Unit { get; set; }
 
         [JsonIgnore]
-        public string TagsText
+        public string UnitText
         {
-            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
-        }
-
-        public string Type { get; set; }
-
-        public IList<VirtualMachineReference> VirtualMachinesReferences { get; set; }
-
-        [JsonIgnore]
-        public string VirtualMachinesReferencesText
-        {
-            get { return JsonConvert.SerializeObject(VirtualMachinesReferences, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Unit, Formatting.Indented); }
         }
     }
 }

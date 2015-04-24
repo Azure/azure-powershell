@@ -12,34 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class VirtualMachineSizeBaseCmdlet : ComputeClientBaseCmdlet
+    public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
     {
-        public IVirtualMachineSizeOperations VirtualMachineSizeClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.VirtualMachineSizes;
-            }
-        }
+        private ComputeClient computeClient;
 
-        public IVirtualMachineOperations VirtualMachineClient
+        public ComputeClient ComputeClient
         {
             get
             {
-                return ComputeClient.ComputeManagementClient.VirtualMachines;
-            }
-        }
+                if (computeClient == null)
+                {
+                    computeClient = new ComputeClient(Profile.Context)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp
+                    };
+                }
 
-        public IAvailabilitySetOperations AvailabilitySetClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.AvailabilitySets;
+                return computeClient;
             }
+
+            set { computeClient = value; }
+        }
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ComputeAutoMapperProfile.Initialize();
         }
     }
 }
