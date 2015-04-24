@@ -89,10 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string VirtualMachineUsage = "AzureVMUsage";
 
+        public const string SshPublicKey = "AzureVMSshPublicKey";
+        public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContent";
+        public const string VaultSecretGroup = "AzureVMSecret";
         public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
-        public const string SshPublicKey = "AzureVMSshPublicKeyConfig";
-        public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContentConfig";
-        public const string VaultCertificate = "AzureVMVaultCertificateConfig";
-        public const string VaultSecretGroup = "AzureVMSecretConfig";
     }
 }
