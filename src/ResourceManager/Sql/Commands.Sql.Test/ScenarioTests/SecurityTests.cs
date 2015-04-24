@@ -183,5 +183,53 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             RunPowerShellTest("Test-ServerStorageKeyRotation");
         }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-ServerRetentionKeepProperties");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerRetentionMissing()
+        {
+            RunPowerShellTest("Test-ServerRetentionMissing");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseRetentionMissing()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionMissing");
+        }
     }
 }
