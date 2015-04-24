@@ -308,7 +308,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestNewResourceGroupInNonExistingLocation.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestNewResourceGroupWithTemplateThenGetWithAndWithoutDetails.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestNewResourceGroupWithTemplate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestRemoveNonExistingResourceGroup.json">
