@@ -16,6 +16,8 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 
+using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
@@ -32,15 +34,29 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the zone name.")]
+        [ValidateNotNullOrEmpty]
+        public string EndsWith { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (this.Name != null)
+            if (this.Name != null && this.EndsWith != null)
             {
-                WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
+                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
+            }
+            else if (this.Name != null)
+            {
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+                }
+
+                this.WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName));
+                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName, this.EndsWith));
             }
         }
     }

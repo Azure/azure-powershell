@@ -50,6 +50,10 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string RecordType { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the relative name.")]
+        [ValidateNotNullOrEmpty]
+        public string EndsWith { get; set; }
+
         public override void ExecuteCmdlet()
         {
             RecordType recordType = default(RecordType);
@@ -63,6 +67,12 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
+                if (this.ZoneName.EndsWith("."))
+                {
+                    this.ZoneName = this.ZoneName.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.ZoneName));
+                }
+
                 zoneName = this.ZoneName;
                 resourceGroupName = this.ResourceGroupName;
             }
@@ -72,11 +82,21 @@ namespace Microsoft.Azure.Commands.Dns
                 resourceGroupName = this.Zone.ResourceGroupName;
             }
 
-            if (this.Name != null)
+            if (this.Name != null && this.EndsWith != null)
+            {
+                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
+            }
+            else if (this.Name != null)
             {
                 if (this.RecordType == null)
                 {
                     throw new PSArgumentException("If you specify the Name parameter you must also specify the RecordType parameter.");
+                }
+
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
                 }
 
                 DnsRecordSet result = this.DnsClient.GetDnsRecordSet(this.Name, zoneName, resourceGroupName, recordType);
@@ -87,11 +107,11 @@ namespace Microsoft.Azure.Commands.Dns
                 List<DnsRecordSet> result = null;
                 if (this.RecordType == null)
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, this.EndsWith);
                 }
                 else
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, recordType);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, recordType, this.EndsWith);
                 }
 
                 this.WriteObject(result);

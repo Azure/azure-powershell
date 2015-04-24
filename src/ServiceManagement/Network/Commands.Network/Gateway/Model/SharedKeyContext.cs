@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model
 {
     using WindowsAzure.Commands.Utilities.Common;
 

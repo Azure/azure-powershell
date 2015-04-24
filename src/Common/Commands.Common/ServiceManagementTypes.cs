@@ -292,6 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Order = 3, EmitDefaultValue = false)]
         public string Name { get; set; }
 
+        [DataMember(Order = 4, EmitDefaultValue = false)]
+        public string ReservedIPName { get; set; }
+
         public ExtensionDataObject ExtensionData { get; set; }
 
         #region Implements Equals
@@ -962,6 +965,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 3)]
+        public string NetworkSecurityGroup { get; set; }
+
         [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 4)]
         public string IPForwarding { get; set; }
     }
@@ -1169,6 +1175,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 base.SetValue("LoadBalancerDistribution", value);
+            }
+        }
+
+        [DataMember(Name = "VirtualIPName", EmitDefaultValue = false, Order = 12)]
+        public string VirtualIPName
+        {
+            get
+            {
+                return base.GetValue<string>("VirtualIPName");
+            }
+            set
+            {
+                base.SetValue("VirtualIPName", value);
             }
         }
     }

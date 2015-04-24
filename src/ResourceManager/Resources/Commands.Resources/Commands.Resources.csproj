@@ -56,7 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -190,7 +190,7 @@
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
-	<Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
+    <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
     <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
@@ -202,7 +202,6 @@
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
-    <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
     <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommand.cs" />
     <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommand.cs" />

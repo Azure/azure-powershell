@@ -34,8 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> model) 
-        { 
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> model) 
+        {
+            return null;
         }
     }
 }

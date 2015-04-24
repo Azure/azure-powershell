@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Dns
         public DnsZone Zone { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the Zone parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
-        public SwitchParameter IgnoreEtag { get; set; }
+        public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+                }
+
                 zoneToDelete = new DnsZone 
                 {
                     Name = this.Name,
@@ -64,22 +70,22 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (this.ParameterSetName == "Object")
             {
-                zoneToDelete = this.Zone;
-
-                if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.IgnoreEtag.IsPresent)
+                if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.Overwrite.IsPresent)
                 {
                     throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsZone).Name));
                 }
+
+                zoneToDelete = this.Zone;
             }
 
-            bool ignoreEtag = this.IgnoreEtag.IsPresent || this.ParameterSetName != "Object";
+            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                 ProjectResources.Progress_RemovingZone,
                 this.Name,
-                () => { deleted = DnsClient.DeleteDnsZone(zoneToDelete, ignoreEtag); });
+                () => { deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite); });
 
             if (deleted)
             {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Properties {
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Network.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -241,6 +241,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;, network interface &quot;{4}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInNIC {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInNIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInRole {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in Subnet &quot;{1}&quot; in Virtual Network &quot;{2}&quot;..
         /// </summary>
         internal static string NetworkSecurityGroupNotActiveInSubnet {
@@ -322,6 +340,42 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Subnet &quot;{1}&quot; in Virtual Network &quot;{2}&quot;..
         /// </summary>
         internal static string RemoveNetworkSecurityGroupFromSubnetSucceeded {
@@ -385,6 +439,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInNicWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInNicWarningSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInRoleWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInRoleWarningSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is already a Network Security Group associated with Subnet &quot;{0}&quot; in Virtual Network &quot;{1}&quot;. Are you sure you want to replace it with Network Security Group &quot;{2}&quot;?.
         /// </summary>
         internal static string ReplaceNetworkSecurityGroupInSubnetWarning {
@@ -417,6 +489,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string SetAzureApplicationGatewayConfigCompletedOperation {
             get {
                 return ResourceManager.GetString("SetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string SetNSGNicAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGNicAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string SetNSGRoleAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGRoleAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Virtual Network: &quot;{1}&quot;, Subnet &quot;{2}&quot;.
+        /// </summary>
+        internal static string SetNSGSubnetAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGSubnetAssociationTarget", resourceCulture);
             }
         }
         

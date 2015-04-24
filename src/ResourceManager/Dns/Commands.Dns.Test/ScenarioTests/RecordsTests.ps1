@@ -447,7 +447,7 @@ function Test-RecordSetNewAlreadyExists
 	$record = $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType A | Add-AzureDnsRecordConfig -Ipv4Address 1.2.9.8
 
 	# error the second time
-	Assert-Throws {  $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 212 -RecordType A } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied."
+	Assert-Throws {  $zone | New-AzureDnsRecordSet -Name $recordName -Ttl 212 -RecordType A } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied. The current was 'n/a'."
 
 	$zone | New-AzureDnsRecordSet -Name $recordName -Ttl 999 -RecordType A -Overwrite -Force
 
@@ -518,32 +518,33 @@ function Test-RecordSetRemoveRecordTypeMismatch
 
 <#
 .SYNOPSIS
-Zone CRUD with piping
+Record Set Etag Mismatch
 #>
 function Test-RecordSetEtagMismatch
 {
 	$zoneName = getAssetname
 	$recordName = getAssetname
     $recordSet = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType AAAA
+	$originalEtag = $recordSet.Etag
 	$recordSet.Etag = "gibberish"
 
-	Assert-Throws { $recordSet | Set-AzureDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $recordSet | Set-AzureDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
-	$updatedRecordSet = $recordSet | Set-AzureDnsRecordSet -IgnoreEtag
+	$updatedRecordSet = $recordSet | Set-AzureDnsRecordSet -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedRecordSet.Etag
 	Assert-AreNotEqual $recordSet.Etag $updatedRecordSet.Etag
 
-	Assert-Throws { $recordSet | Remove-AzureDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied."
+	Assert-Throws { $recordSet | Remove-AzureDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$($updatedRecordSet.Etag)'."
 
-	Assert-True { $recordSet | Remove-AzureDnsRecordSet -IgnoreEtag -Force -PassThru }
+	Assert-True { $recordSet | Remove-AzureDnsRecordSet -Overwrite -Force -PassThru }
 
 	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $recordSet.ResourceGroupName -Force
 }
 
 <#
 .SYNOPSIS
-Zone CRUD with piping
+Record Set Get
 #>
 function Test-RecordSetGet
 {
@@ -582,5 +583,51 @@ function Test-RecordSetGet
 	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
 	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
 
-	$zone | Remove-AzureDnsZone -Force -IgnoreEtag
+	$zone | Remove-AzureDnsZone -Force -Overwrite
+}
+
+<#
+.SYNOPSIS
+Record Set Get using EndsWith parameter
+#>
+function Test-RecordSetGetWithEndsWith
+{
+	$rootRecordName = "@"
+	$recordSuffix = ".com"
+	$anotherSuffix = ".con"
+
+	$zoneName = getAssetname
+
+	$recordName1 = (getAssetname) + $recordSuffix
+	$recordName2 = (getAssetname) + $anotherSuffix
+	$recordName3 = (getAssetname) + $recordSuffix
+
+	$zone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+
+	# test for root records
+	$rootRecords = $zone | Get-AzureDnsRecordSet -EndsWith $rootRecordName
+
+	Assert-AreEqual 2 $rootRecords.Count -Message ("Expected 2 root records. Actual: " + $rootRecords.Count)
+	
+    New-AzureDnsRecordSet -Zone $zone -Name $recordName1 -Ttl 100 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName2 -Ttl 1200 -RecordType AAAA
+	New-AzureDnsRecordSet -Zone $zone -Name $recordName3 -Ttl 1500 -RecordType MX
+
+	# test for records within type
+	$aaaaRecords = $zone | Get-AzureDnsRecordSet -RecordType AAAA -EndsWith $recordSuffix
+	$mxRecords = $zone | Get-AzureDnsRecordSet -RecordType MX -EndsWith $recordSuffix
+
+	Assert-AreEqual 1 $aaaaRecords.Count -Message ("Expected 1 AAAA record. Actual: " + $aaaaRecords.Count)
+	Assert-AreEqual 1 $mxRecords.Count -Message ("Expected 1 MX record. Actual: " + $mxRecords.Count)
+
+	# all records
+	$allRecords = $zone | Get-AzureDnsRecordSet -EndsWith $recordSuffix
+
+	Assert-AreEqual 2 $allRecords.Count -Message ("Expected 2 records across types. Actual: " + $allRecords.Count)
+
+	$zone | Remove-AzureDnsRecordSet -Name $recordName1 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName2 -RecordType AAAA -Force
+	$zone | Remove-AzureDnsRecordSet -Name $recordName3 -RecordType MX -Force
+
+	$zone | Remove-AzureDnsZone -Force -Overwrite
 }

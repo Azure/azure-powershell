@@ -15,7 +15,7 @@
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
-namespace Microsoft.Azure.Commands.Network.IPForwarding
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.IPForwarding
 {
     [Cmdlet(VerbsCommon.Set, "AzureIPForwarding"), OutputType(typeof(bool))]
     public class SetAzureIPForwarding : NetworkCmdletBase

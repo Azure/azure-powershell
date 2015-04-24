@@ -113,5 +113,127 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Vault Name</Label>
+                <PropertyName>VaultName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Resource Group Name</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Resource ID</Label>
+                <PropertyName>ResourceId</PropertyName>
+              </ListItem>              
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVault</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVault</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Vault Name</Label>
+                <PropertyName>VaultName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Resource Group Name</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Resource ID</Label>
+                <PropertyName>ResourceId</PropertyName>
+              </ListItem>              
+              <ListItem>
+                <Label>Vault URI</Label>
+                <PropertyName>VaultUri</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tenant ID</Label>
+                <PropertyName>TenantName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SKU</Label>
+                <PropertyName>Sku</PropertyName>
+              </ListItem>              
+              <ListItem>
+                <Label>Enabled For Deployment?</Label>
+                <PropertyName>EnabledForDeployment</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Access Policies</Label>
+                <PropertyName>AccessPoliciesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Tenant ID</Label>
+                <PropertyName>TenantName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Object ID</Label>
+                <PropertyName>ObjectId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Display Name</Label>
+                <PropertyName>DisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Permissions to Keys</Label>
+                <PropertyName>PermissionsToKeys</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Permissions to Secrets</Label>
+                <PropertyName>PermissionsToSecrets</PropertyName>
+              </ListItem>              
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

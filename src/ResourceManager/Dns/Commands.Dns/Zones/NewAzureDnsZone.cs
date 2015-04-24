@@ -40,10 +40,16 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
+            if (this.Name.EndsWith("."))
+            {
+                this.Name = this.Name.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+            }
+
             DnsZone result = this.DnsClient.CreateDnsZone(this.Name, this.ResourceGroupName, this.Tag);
-            WriteVerbose(ProjectResources.Success);
-            WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
-            WriteObject(result);
+            this.WriteVerbose(ProjectResources.Success);
+            this.WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
+            this.WriteObject(result);
         }
     }
 }

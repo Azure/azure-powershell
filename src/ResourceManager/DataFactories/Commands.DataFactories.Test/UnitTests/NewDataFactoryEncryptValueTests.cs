@@ -37,6 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             SecureString secureString = new SecureString();
             string expectedOutput = "My encrypted string " + Guid.NewGuid();
             string linkedServiceType = "OnPremisesSqlLinkedService";
+            string nonCredentialValue = "Driver=mydriver;server=myserver";
+            string authenticationType = "Basic";
 
             var cmdlet = new NewAzureDataFactoryEncryptValueCommand
             {
@@ -46,17 +48,19 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
                 GatewayName = GatewayName,
-                Type = linkedServiceType
+                Type = linkedServiceType,
+                NonCredentialValue = nonCredentialValue,
+                AuthenticationType = authenticationType
             };
 
             // Arrange
-            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType)).Returns(expectedOutput);
+            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType)).Returns(expectedOutput);
 
             // Action
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType), Times.Once());
+            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput), Times.Once());
         }
 
@@ -70,6 +74,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             SecureString winAuthPassword = new SecureString();
             PSCredential credential = new PSCredential(winAuthUserName, winAuthPassword);
             string linkedServiceType = "OnPremisesFileSystemLinkedService";
+            string nonCredentialValue = "Driver=mydriver;server=myserver";
+            string authenticationType = "Basic";
 
             var cmdlet = new NewAzureDataFactoryEncryptValueCommand
             {
@@ -80,17 +86,19 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 DataFactoryName = DataFactoryName,
                 GatewayName = GatewayName,
                 Credential = credential,
-                Type = linkedServiceType
+                Type = linkedServiceType,
+                NonCredentialValue = nonCredentialValue,
+                AuthenticationType = authenticationType
             };
 
             // Arrange
-            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType)).Returns(expectedOutput);
+            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType)).Returns(expectedOutput);
 
             // Action
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType), Times.Once());
+            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput), Times.Once());
         }
     }

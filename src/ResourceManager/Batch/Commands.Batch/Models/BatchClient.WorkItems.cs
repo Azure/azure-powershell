@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the WorkItems matching the specified filter options
+        /// Lists the workitems matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for WorkItems</param>
-        /// <returns>The WorkItems matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for workitems</param>
+        /// <returns>The workitems matching the specified filter options</returns>
         public IEnumerable<PSCloudWorkItem> ListWorkItems(ListWorkItemOptions options)
         {
             if (options == null)
@@ -75,18 +75,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Creates a new WorkItem
+        /// Creates a new workitem
         /// </summary>
-        /// <param name="parameters">The parameters to use when creating the WorkItem</param>
+        /// <param name="parameters">The parameters to use when creating the workitem</param>
         public void CreateWorkItem(NewWorkItemParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
-            }
-            if (string.IsNullOrWhiteSpace(parameters.WorkItemName))
-            {
-                throw new ArgumentNullException("WorkItemName");
             }
 
             using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
@@ -125,10 +121,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Deletes the specified WorkItem
+        /// Deletes the specified workitem
         /// </summary>
         /// <param name="context">The account to use</param>
-        /// <param name="workItemName">The name of the WorkItem to delete</param>
+        /// <param name="workItemName">The name of the workitem to delete</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform</param>
         public void DeleteWorkItem(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
