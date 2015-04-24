@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             //    }
             //};
 
-            //return new ApiManagement(resource);
+            //return new PsApiManagement(resource);
 #endif
             ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
             return new PsApiManagement(response.Value);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             //        {
             //            SkuProperties = new ApiServiceSkuProperties
             //            {
-            //                SkuType = Mapper.Map<ApiManagementSku, SkuType>(sku),
+            //                SkuType = Mapper.Map<PsApiManagementSku, SkuType>(sku),
             //                Capacity = capacity
             //            },
             //            ProvisioningState = "Succeeded",

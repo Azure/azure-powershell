@@ -148,7 +148,7 @@ function Test-BackupRestoreApiManagement
     Backup-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName
 
     # Restore API Management service
-    $restoreResult = Restore-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName
+    $restoreResult = Restore-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -PassThru
 
     Assert-AreEqual $resourceGroupName $restoreResult.ResourceGroupName
     Assert-AreEqual $apiManagementName $restoreResult.Name
@@ -157,14 +157,20 @@ function Test-BackupRestoreApiManagement
     Assert-AreEqual 1 $restoreResult.Capacity
     Assert-AreEqual "Succeeded" $restoreResult.ProvisioningState
 
-    # Remove the service
-    Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    try
+    {
+        # Remove the service
+        Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
-    # Remove storage account
-    Remove-AzureStorageAccount -StorageAccountName $storageAccountName
+        # Remove storage account
+        Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 
-    # Remove resource group
-    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+        # Remove resource group
+        Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    }
+    catch
+    {
+    }
 }
 
 <#
@@ -290,7 +296,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName |
     Update-AzureApiManagementRegion -Sku $sku -Capacity $capacity |
     Add-AzureApiManagementRegion -Location $region1Location -Sku $region1Sku |
-    Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
+    #Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
     Update-AzureApiManagementDeployment
 
     $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
@@ -341,8 +347,8 @@ Tests ImportApiManagementHostnameCertificate.
 #>
 function Test-ImportApiManagementHostnameCertificate
 {
-    $certFilePath = ".\_.preview.int-azure-api.net.pfx";
-    $certPassword = "Password!12";
+    $certFilePath = ".\testcertificate.pfx";
+    $certPassword = "powershelltest";
 
     # Setup
     $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
@@ -360,10 +366,10 @@ function Test-ImportApiManagementHostnameCertificate
     # Create API Management service
     $result = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
     Get-AzureApiManagement |
-    Import-AzureApiManagementHostnameCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword
+    Import-AzureApiManagementHostnameCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword -PassThru
 
-    Assert-AreEqual "CN=*.preview.int-azure-api.net" $result.Subject
-    Assert-AreEqual "A9B7C36DE11C29F38B9DCDA5D96BA36B9C777106" $result.Thumbprint
+    Assert-AreEqual "CN=ailn.redmond.corp.microsoft.com" $result.Subject
+    Assert-AreEqual "51A702569BADEDB90A75141B070F2D4B5DDFA447" $result.Thumbprint
 
     # Remove the service
     Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force

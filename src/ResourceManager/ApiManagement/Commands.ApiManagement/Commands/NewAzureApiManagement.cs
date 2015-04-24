@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
-                    Tags)
+                    Tags),
+                passThru: true
                 );
         }
     }

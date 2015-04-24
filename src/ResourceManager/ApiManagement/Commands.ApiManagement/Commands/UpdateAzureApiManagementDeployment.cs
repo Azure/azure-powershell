@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group of the API Management service.")]
-        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
             HelpMessage = "Name of API Management service.")]
-        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
             HelpMessage = "Location of master API Management service deployment.")]
-        [ValidateNotNullOrEmpty]
         [ValidateSet(
             "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
@@ -68,7 +65,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium .")]
-        [ValidateNotNullOrEmpty]
         public PsApiManagementSku Sku { get; set; }
 
         [Parameter(
@@ -76,7 +72,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Sku capacity of the Azure API Management service.")]
-        [ValidateNotNullOrEmpty]
         public int Capacity { get; set; }
 
         [Parameter(
