@@ -15204,11 +15204,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -15251,11 +15252,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -15318,11 +15320,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -27538,12 +27541,13 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
             The GeoReplicationEnabled parameter functionality is the same as specifying Standard_GRS in Type parameter
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -27607,12 +27611,13 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
             The GeoReplicationEnabled parameter functionality is the same as specifying Standard_GRS in Type parameter
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>

@@ -42,12 +42,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
+        [Alias("Id")]
         [Parameter(
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "the relative URL")]
+            HelpMessage = "The ID for Source Vault")]
         [ValidateNotNullOrEmpty]
-        public string ReferenceUri { get; set; }
+        public string SourceVaultId { get; set; }
 
         [Parameter(
             Position = 2,
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (i == this.VM.OSProfile.Secrets.Count)
                 {
                     var sourceVault = new SourceVaultReference {
-                        ReferenceUri = this.ReferenceUri
+                        ReferenceUri = this.SourceVaultId
                     };
 
                     var vaultCertificates = new List<VaultCertificate>{
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
                     break;
                 }
 
-                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri.Equals(this.ReferenceUri))
+                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri.Equals(this.SourceVaultId))
                 {
                     if (this.VM.OSProfile.Secrets[i].VaultCertificates == null)
                     {
