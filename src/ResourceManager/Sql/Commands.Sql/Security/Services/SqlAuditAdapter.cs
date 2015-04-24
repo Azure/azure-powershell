@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseAuditingPolicyProperties properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
             dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
-            ModelizeStorageInfo(dbPolicyModel,properties.StorageAccountName, properties.StorageAccountSecondaryKey);
+            ModelizeStorageInfo(dbPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(dbPolicyModel, properties.EventTypesToAudit);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return dbPolicyModel;
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             ServerAuditingPolicyModel serverPolicyModel = new ServerAuditingPolicyModel();
             ServerAuditingPolicyProperties properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountSecondaryKey);
+            ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(serverPolicyModel, properties.EventTypesToAudit);
             ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return serverPolicyModel;
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Updates the content of the model object with all the storage related information
         /// </summary>
-        private void ModelizeStorageInfo(BaseAuditingPolicyModel model, string accountName, string secondary)
+        private void ModelizeStorageInfo(BaseAuditingPolicyModel model, string accountName, string primary, string secondary)
         {
             model.StorageAccountName = accountName;
             if (!String.IsNullOrEmpty(secondary))
