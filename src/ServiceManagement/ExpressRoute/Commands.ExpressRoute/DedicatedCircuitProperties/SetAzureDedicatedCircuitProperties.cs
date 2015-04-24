@@ -20,8 +20,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
     using Management.ExpressRoute.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureDedicatedCircuitBandwidth"), OutputType(typeof(AzureDedicatedCircuit))]
-    public class SetAzureDedicatedCircuitBandwidthCommand : ExpressRouteBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureDedicatedCircuitProperties"), OutputType(typeof(AzureDedicatedCircuit))]
+    public class SetAzureDedicatedCircuitPropertiesCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key of Azure Dedicated Circuit to be removed")]
@@ -29,9 +29,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [ValidateNotNullOrEmpty]
         public string ServiceKey { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Bandwidth")]
-        [ValidateNotNullOrEmpty]
-        public UInt32 Bandwidth { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Bandwidth")]
+        public UInt32? Bandwidth { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Sku")]
+        public CircuitSku? Sku { get; set; }
 
         [Parameter(HelpMessage = "Do not confirm Azure Dedicated Circuit Update")]
         public SwitchParameter Force { get; set; }
@@ -45,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 ServiceKey,
                 () =>
                 {
-                    var circuit = ExpressRouteClient.SetAzureDedicatedCircuitBandwidth(ServiceKey, Bandwidth);
+                    var circuit = ExpressRouteClient.SetAzureDedicatedCircuitProperties(ServiceKey, Bandwidth, Sku);
                     
                     WriteObject(circuit);
                     
