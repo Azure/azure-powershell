@@ -65,6 +65,14 @@
     <Compile Include="Database\Model\DatabaseEdition.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
+    <Compile Include="Recommended Elastic Pools\Cmdlet\AzureSqlElasticPoolRecommendationCmdletBase.cs" />
+    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendation.cs" />
+    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendationMetrics.cs" />
+    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendationDatabase.cs" />
+    <Compile Include="Recommended Elastic Pools\Model\AzureSqlElasticPoolRecommendationMetricModel.cs" />
+    <Compile Include="Recommended Elastic Pools\Model\AzureSqlElasticPoolRecommendationModel.cs" />
+    <Compile Include="Recommended Elastic Pools\Services\AzureSqlElasticPoolRecommendationAdapter.cs" />
+    <Compile Include="Recommended Elastic Pools\Services\AzureSqlElasticPoolRecommendationCommunicator.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
