@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
@@ -19,14 +20,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class BatchClientParametersBase
     {
+        protected BatchClientParametersBase(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+
+            this.Context = context;
+            this.AdditionalBehaviors = additionalBehaviors;
+        }
+
         /// <summary>
         /// The account details
         /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public BatchAccountContext Context { get; private set; }
 
         /// <summary>
         /// Additional client behaviors to perform
         /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
+        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; private set; }
     }
 }

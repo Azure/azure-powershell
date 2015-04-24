@@ -14,10 +14,10 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Subnet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityGroupAssociation"), OutputType(typeof(bool))]
     public class RemoveAzureNetworkSecurityGroupAssociation : NetworkCmdletBase

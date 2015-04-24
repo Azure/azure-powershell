@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     secret = DataServiceClient.GetSecret(VaultName, Name, null);
                     if (secret != null)
                         WriteObject(new SecretIdentityItem(secret));
-                    GetAndWriteSecretVersions(VaultName, Name);
+                    GetAndWriteSecretVersions(VaultName, Name, secret.Version);
                     break;
                 case ByVaultNameParameterSet:
                     GetAndWriteSecrets(VaultName);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
 
-        private void GetAndWriteSecretVersions(string vaultName, string name)
+        private void GetAndWriteSecretVersions(string vaultName, string name, string currentSecretVersion)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -141,7 +141,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             
             do
             {
-                WriteObject(DataServiceClient.GetSecretVersions(options), true);
+                var secrets = DataServiceClient.GetSecretVersions(options).Where(s => s.Version != currentSecretVersion);
+                WriteObject(secrets, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

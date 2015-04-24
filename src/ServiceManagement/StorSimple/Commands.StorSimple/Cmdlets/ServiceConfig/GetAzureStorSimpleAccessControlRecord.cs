@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleAccessControlRecord : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageACRName)]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.ACRName)]
         public string ACRName { get; set; }
 
         public override void ExecuteCmdlet()
@@ -46,8 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var acr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (acr == null)
                 {
-                    WriteObject(null);
-                    WriteVerbose(string.Format(Resources.NotFoundMessageACR,ACRName));
+                    throw new ArgumentException(string.Format(Resources.NotFoundMessageACR, ACRName));
                 }
                 else
                 {

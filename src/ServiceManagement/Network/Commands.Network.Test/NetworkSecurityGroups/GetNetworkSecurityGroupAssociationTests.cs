@@ -18,8 +18,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Association;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Association;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -30,7 +30,7 @@ using Models = Microsoft.WindowsAzure.Management.Network.Models;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Network.Test.NetworkSecurityGroups
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.NetworkSecurityGroups
 {
     public class GetNetworkSecurityGroupAssociationTests
     {

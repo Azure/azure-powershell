@@ -170,10 +170,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 //Both arrays cannot be null
                 if (PermissionsToKeys == null && PermissionsToSecrets == null)
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
-                //Both arrays cannot be empty
-                else if ((PermissionsToSecrets != null && PermissionsToSecrets.Length == 0) && (PermissionsToKeys != null && PermissionsToKeys.Length == 0))
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);                
                 else
                 {
                     //Validate 
@@ -193,12 +190,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                     var secrets = PermissionsToSecrets != null ? PermissionsToSecrets :
                         (existingPolicy != null && existingPolicy.PermissionsToSecrets != null ?
-                         existingPolicy.PermissionsToSecrets.ToArray() : null);
+                         existingPolicy.PermissionsToSecrets.ToArray() : null);                    
 
-                    var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, keys, secrets);
-
-                    //Remove old policies for this object ID and add a new one with the right permission arrays
-                    updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => ap.ObjectId != objId).Concat(new[] { policy }).ToArray();
+                    //Remove old policies for this object ID and add a new one with the right permissions, iff there were some non-empty permissions
+                    updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => ap.ObjectId != objId).ToArray();
+                    if ((keys != null && keys.Length > 0) || (secrets != null && secrets.Length > 0))
+                    {
+                        var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, keys, secrets);
+                        updatedListOfAccessPolicies = updatedListOfAccessPolicies.Concat(new[] { policy }).ToArray();
+                    }
 
                 }
             }

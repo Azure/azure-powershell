@@ -157,7 +157,7 @@ function Test-GetTaskFileContentByName
 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -179,7 +179,7 @@ function Test-GetTaskFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST $wiName $jobName $taskName $taskFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -212,7 +212,7 @@ function Test-GetTaskFileContentPipeline
 	try
 	{
 		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
-		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -MemStream $stream
+		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -357,4 +357,180 @@ function Test-ListVMFilePipeline
 	# Get VM into Get VM File
 	$vmFiles = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context | Get-AzureBatchVMFile_ST -BatchContext $context
 	Assert-AreEqual $count $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests downloading vm file contents by name
+#>
+function Test-GetVMFileContentByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		Get-AzureBatchVMFileContent_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+
+	# Verify positional parameters also work
+	$stream = New-Object System.IO.MemoryStream 
+	try
+	{
+		Get-AzureBatchVMFileContent_ST $poolName $vmName $vmFileName -BatchContext $context -DestinationStream $stream
+
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading vm file contents using the pipeline
+#>
+function Test-GetVMFileContentPipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
+		$vmFile | Get-AzureBatchVMFileContent_ST -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading an RDP file by name
+#>
+function Test-GetRDPFileByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+	$rdpContents = "full address"
+
+	try
+	{
+		Get-AzureBatchRDPFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+
+	# Verify positional parameters also work
+	$stream = New-Object System.IO.MemoryStream 
+	try
+	{
+		Get-AzureBatchRDPFile_ST $poolName $vmName -BatchContext $context -DestinationStream $stream
+
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading an RDP file using the pipeline
+#>
+function Test-GetRDPFilePipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+	$rdpContents = "full address"
+
+	try
+	{
+		$vm = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context
+		$vm | Get-AzureBatchRDPFile_ST -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
 }

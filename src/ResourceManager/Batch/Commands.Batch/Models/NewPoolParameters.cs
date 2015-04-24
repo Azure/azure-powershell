@@ -21,10 +21,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewPoolParameters : BatchClientParametersBase
     {
+        public NewPoolParameters(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(poolName))
+            {
+                throw new ArgumentNullException("poolName");
+            }
+
+            this.PoolName = poolName;
+        }
+
         /// <summary>
         /// The name of the Pool to create.
         /// </summary>
-        public string PoolName { get; set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
         /// The size of the VMs in the Pool.
