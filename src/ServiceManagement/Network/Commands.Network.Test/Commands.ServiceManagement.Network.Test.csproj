@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -151,6 +151,14 @@
     <Compile Include="NetworkSecurityGroups\SetNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes\GetEffectiveRouteTests.cs" />
+    <Compile Include="Routes\GetRouteTableTests.cs" />
+    <Compile Include="Routes\GetSubnetRouteTableTests.cs" />
+    <Compile Include="Routes\NewRouteTableTests.cs" />
+    <Compile Include="Routes\RemoveRouteTableTests.cs" />
+    <Compile Include="Routes\RemoveRouteTests.cs" />
+    <Compile Include="Routes\RemoveSubnetRouteTableTests.cs" />
+    <Compile Include="Routes\SetRouteTests.cs" />
+    <Compile Include="Routes\SetSubnetRouteTableTests.cs" />
     <Compile Include="ScenarioTests\IPForwarding\IPForwardingScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroup\NSGScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkTests.cs" />
@@ -202,40 +210,31 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.IPForwardingScenarioTests\SetIPForwardingOnNICAndUpdateVM.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\CreateAndRemoveNSG.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.IPForwardingScenarioTests\SetIPForwardingOnVMAndUpdateVM.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\GetMultipleNSGs.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\SetNSGOnNICAndUpdateVM.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSGFromSubnet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\SetNSGOnRoleAndUpdateVM.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSGWithNonExistingName.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestCreateAndRemoveNSG.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSR.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestGetMultipleNSGs.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetAndGetNSGForSubnet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestRemoveNSGFromSubnet.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSGToSubnetInDiffRegion.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestRemoveNSGWithNonExistingName.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSR.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestRemoveNSR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestSetAndGetNSGForSubnet.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestSetNSR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Network.Test.ScenarioTests.NSGScenarioTests\TestSetNSRWithInvalidParameter.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSRWithInvalidParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestData\EmptyNetworkConfiguration.xml">

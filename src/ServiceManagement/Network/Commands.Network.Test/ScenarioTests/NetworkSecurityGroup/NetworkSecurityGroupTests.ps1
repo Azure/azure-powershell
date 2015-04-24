@@ -188,7 +188,7 @@ function Test-SetNetworkSecurityGroupToSubnetInDifferentRegion
     Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
 
     # Assert
-    $expectedMessage = "BadRequest : The region europewest specified for the Network Security Group $securityGroupName is different than the region europenorth that Virtual Network $VirtualNetworkName belongs to, they need to belong to the same region."
+    $expectedMessage = "BadRequest : The region uswest specified for the Network Security Group $securityGroupName is different than the region usnorth that Virtual Network $VirtualNetworkName belongs to, they need to belong to the same region."
     Assert-Throws { Set-AzureNetworkSecurityGroupToSubnet -Name $securityGroupName -VirtualNetwork $VirtualNetworkName -Subnet $SubnetName -Force } $expectedMessage
 }
 

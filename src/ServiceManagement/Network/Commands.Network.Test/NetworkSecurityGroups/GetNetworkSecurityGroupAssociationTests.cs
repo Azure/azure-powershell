@@ -21,6 +21,7 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Association;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
@@ -161,6 +162,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         #region No Details
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForSubnetNoDetails()
         {
             // Setup
@@ -183,13 +186,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMRoleNoDetails()
         {
             // Setup
@@ -213,13 +227,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMNicNoDetails()
         {
             // Setup
@@ -245,10 +270,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    null,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<SimpleNetworkSecurityGroup>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (SimpleNetworkSecurityGroup)(mockCommandRuntime.OutputPipeline.Single());
             Assert.Equal(NetworkSecurityGroupName, nsg.Name);
+            Assert.Equal(NSGLocation, nsg.Location);
+            Assert.Equal(NSGLabel, nsg.Label);
         }
 
         #endregion
@@ -256,6 +290,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         #region With Details
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForSubnetWithDetails()
         {
             // Setup
@@ -279,6 +315,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<NetworkSecurityGroupWithRules>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (NetworkSecurityGroupWithRules)(mockCommandRuntime.OutputPipeline.Single());
@@ -286,13 +329,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMRoleDetails()
         {
             // Setup
@@ -317,6 +361,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<NetworkSecurityGroupWithRules>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (NetworkSecurityGroupWithRules)(mockCommandRuntime.OutputPipeline.Single());
@@ -324,13 +375,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNSGForVMNicDetails()
         {
             // Setup
@@ -357,6 +409,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
+            networkingClientMock.Verify(
+                c => c.NetworkSecurityGroups.GetAsync(
+                    NetworkSecurityGroupName,
+                    "Full",
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.IsType<NetworkSecurityGroupWithRules>(mockCommandRuntime.OutputPipeline.Single());
             var nsg = (NetworkSecurityGroupWithRules)(mockCommandRuntime.OutputPipeline.Single());
@@ -364,7 +423,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
             Assert.Equal(NSGLabel, nsg.Label);
             Assert.Equal(NSGLocation, nsg.Location);
             Assert.NotEmpty(nsg.Rules);
-            Assert.Equal<string>("", "");
             Assert.Equal(Rules.First().Name, nsg.Rules.First().Name);
             Assert.Equal(Rules.First().Action, nsg.Rules.First().Action);
             Assert.Equal(Rules.First().Protocol, nsg.Rules.First().Protocol);

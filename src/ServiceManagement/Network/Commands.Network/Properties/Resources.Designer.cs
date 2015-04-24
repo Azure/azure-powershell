@@ -421,6 +421,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string RemoveRouteTableFromSubnetSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableFromSubnetSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the currently associated Route Table from Subnet &quot;{0}&quot; in Virtual Network &quot;{1}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteTableFromSubnetWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableFromSubnetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Route Table with name &quot;{0}&quot;..
+        /// </summary>
+        internal static string RemoveRouteTableSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Route Table &quot;{0}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteTableWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Route &quot;{0}&quot; from Route Table &quot;{1}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing cache service.
         /// </summary>
         internal static string RemoveServiceMessage {
