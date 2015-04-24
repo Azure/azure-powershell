@@ -34,8 +34,6 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
  namespace Microsoft.Azure.Commands.Automation.Common
 {
-    
-
     using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
 
     public partial class AutomationClient : IAutomationClient
@@ -79,6 +77,49 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
         }
 
+        public DirectoryInfo GetConfigurationContent(string resourceGroupName, string automationAccountName, string configurationName, bool? isDraft, string outputFolder, bool overwriteExistingFile)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                if (isDraft != null)
+                {
+                    throw new NotImplementedException(string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationDraftMode));
+                }
+
+                var configuration = this.automationManagementClient.Configurations.GetContent(resourceGroupName, automationAccountName, configurationName);
+                if (configuration == null)
+                {
+                    throw new ResourceNotFoundException(typeof(ConfigurationContent),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationContentNotFound, configurationName));
+                }
+
+                string outputFolderFullPath = this.GetCurrentDirectory();
+
+                if (!string.IsNullOrEmpty(outputFolder))
+                {
+                    outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
+                }
+
+                var slot = (isDraft == null) ? Constants.Published : Constants.Draft;
+
+                const string FileExtension = ".ps1"; 
+                
+                var outputFilePath = outputFolderFullPath + "\\" + configurationName + FileExtension;
+
+                // file exists and overwrite Not specified
+                if (File.Exists(outputFilePath) && !overwriteExistingFile)
+                {
+                    throw new ArgumentException(
+                            string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationAlreadyExists, outputFilePath));
+                }
+
+                // Write to the file
+                this.WriteFile(outputFilePath, configuration.Content);
+
+                return new DirectoryInfo(configurationName + FileExtension);
+            }
+        }
+
         public Model.DscConfiguration CreateConfiguration(
             string resourceGroupName,
             string automationAccountName,
@@ -115,7 +156,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             // configuration name is same as filename
             configurationName = Path.GetFileNameWithoutExtension(sourcePath);
 
-            // for the private preivew, configuration can be imported in Published mode only
+            // for the private preview, configuration can be imported in Published mode only
             // Draft mode is not implemented
             if (!published)
             {
@@ -243,7 +284,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 }
                 
                 // Write to the file
-                this.WriteMetaConfigMofFile(outputFilePath, dscMetaConfigValue);
+                this.WriteFile(outputFilePath, dscMetaConfigValue);
             }
 
             return new DirectoryInfo(outputFolderFullPath);
@@ -309,7 +350,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             return fullPath;
         }
 
-        private void WriteMetaConfigMofFile(string outputFilePath, string fileContent)
+        private void WriteFile(string outputFilePath, string fileContent)
         {
             try
             {
@@ -514,7 +555,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
             IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
 
-            if (!String.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(status))
                 {
                     dscNodes = AutomationManagementClient.ContinuationTokenHandler(
                         skipToken =>
@@ -896,7 +937,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 }
                 else
                 {
-                    listParams.StreamType = StreamType.Any.ToString();
+                    listParams.StreamType = CompilationJobStreamType.Any.ToString();
                 }
 
                 var jobStreams = this.automationManagementClient.JobStreams.List(resourceGroupName, automationAccountName, jobId, listParams).JobStreams;
@@ -996,6 +1037,172 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
         }
 
         #endregion
+
+        #region dsc reports
+        public Model.DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeId", nodeId).NotNull();
+            Requires.Argument("ReportId", reportId).NotNull();
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                var nodeReport =
+                    this.automationManagementClient.NodeReports.Get(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeId,
+                        reportId).NodeReport;
+
+                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeReport);
+            }
+        }
+
+        public DirectoryInfo GetDscNodeReportContent(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId, string outputFolder, bool overwriteExistingFile)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeId", nodeId).NotNull();
+            Requires.Argument("ReportId", reportId).NotNull();
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                var nodeReportContent =
+                    this.automationManagementClient.NodeReports.GetContent(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeId,
+                        reportId).Content;
+
+                string outputFolderFullPath = this.GetCurrentDirectory(); 
+
+                if (!string.IsNullOrEmpty(outputFolder))
+                {
+                    outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
+                }
+
+                const string FileExtension = ".txt";
+
+                var outputFilePath = outputFolderFullPath + "\\" + nodeId + "_" + reportId + FileExtension;
+
+                // file exists and overwrite Not specified
+                if (File.Exists(outputFilePath) && !overwriteExistingFile)
+                {
+                    throw new ArgumentException(
+                            string.Format(CultureInfo.CurrentCulture, Resources.NodeReportAlreadyExists, outputFilePath));
+                }
+
+                // Write to the file
+                this.WriteFile(outputFilePath, nodeReportContent);
+
+                return new DirectoryInfo(outputFilePath);
+            }
+        }
+
+        public Model.DscNodeReport GetLatestDscNodeReport(string resourceGroupName, string automationAccountName, Guid nodeId)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeId", nodeId).NotNull();
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                var nodeReport =
+                    this.automationManagementClient.NodeReports.List(
+                        resourceGroupName,
+                        automationAccountName,
+                        new DscNodeReportListParameters { NodeId = nodeId }
+                        ).NodeReports.OrderByDescending(report => report.StartTime).FirstOrDefault();
+
+                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeReport);
+            }
+        }
+
+        public IEnumerable<Model.DscNodeReport> ListDscNodeReports(string resourceGroupName, string automationAccountName, Guid nodeId, DateTimeOffset? startTime, DateTimeOffset? endTime)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                IEnumerable<AutomationManagement.Models.DscNodeReport> nodeReportModels;
+
+                if (startTime.HasValue && endTime.HasValue)
+                {
+                    nodeReportModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.NodeReports.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscNodeReportListParameters
+                                    {
+                                        NodeId = nodeId,
+                                        StartTime = FormatDateTime(startTime.Value),
+                                        EndTime = FormatDateTime(endTime.Value)
+                                    });
+
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeReport>(response, response.NodeReports);
+                        });
+                }
+                else if (startTime.HasValue)
+                {
+                    nodeReportModels = AutomationManagementClient.ContinuationTokenHandler(
+                         skipToken =>
+                         {
+                             var response =
+                                 this.automationManagementClient.NodeReports.List(
+                                     resourceGroupName,
+                                     automationAccountName,
+                                     new AutomationManagement.Models.DscNodeReportListParameters
+                                     {
+                                         NodeId = nodeId,
+                                         StartTime = FormatDateTime(startTime.Value)
+                                     });
+
+                             return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeReport>(response, response.NodeReports);
+                         });
+                }
+                else if (endTime.HasValue)
+                {
+                    nodeReportModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.NodeReports.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscNodeReportListParameters
+                                    {
+                                        NodeId = nodeId,
+                                        EndTime = FormatDateTime(endTime.Value)
+                                    });
+
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeReport>(response, response.NodeReports);
+                        });
+                }
+                else
+                {
+                    nodeReportModels = AutomationManagementClient.ContinuationTokenHandler(
+                        skipToken =>
+                        {
+                            var response =
+                                this.automationManagementClient.NodeReports.List(
+                                    resourceGroupName,
+                                    automationAccountName,
+                                    new AutomationManagement.Models.DscNodeReportListParameters
+                                    {
+                                        NodeId = nodeId
+                                    });
+
+                            return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeReport>(response, response.NodeReports);
+                        });
+                }
+
+                return nodeReportModels.Select(jobModel => new Commands.Automation.Model.DscNodeReport(resourceGroupName, automationAccountName, jobModel));
+            }
+        }
+        #endregion 
+
 
         #region privatemethods
         /// <summary>

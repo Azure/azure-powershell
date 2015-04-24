@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
-        [ValidateSet("Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive", IgnoreCase = true)]
-        public string Status { get; set; } 
+        [ValidateSet("Any", "Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive", IgnoreCase = true)]
+        public DscNodeStatus Status { get; set; } 
         
         /// <summary>
         /// Gets or sets the node name.
@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             IEnumerable<DscNode> ret = null;
 
+            var nodeStatus = this.Status.ToString();
+            if (nodeStatus.Equals(DscNodeStatus.Any))
+            {
+                nodeStatus = string.Empty;
+            }
+
             if (this.ParameterSetName == AutomationCmdletParameterSets.ById)
             {
                 ret = new List<DscNode> 
@@ -87,7 +93,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.Name,
-                    this.Status);
+                    nodeStatus);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByNodeConfiguration)
             {
@@ -95,7 +101,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.NodeConfigurationName,
-                    this.Status);
+                    nodeStatus);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfiguration)
             {
@@ -103,12 +109,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.ConfigurationName,
-                    this.Status);
+                    nodeStatus);
             }
             else
             {
                 // ByAll
-                ret = this.AutomationClient.ListDscNodes(this.ResourceGroupName, this.AutomationAccountName, this.Status);
+                ret = this.AutomationClient.ListDscNodes(this.ResourceGroupName, this.AutomationAccountName, nodeStatus);
             }
 
             this.GenerateCmdletOutput(ret);
