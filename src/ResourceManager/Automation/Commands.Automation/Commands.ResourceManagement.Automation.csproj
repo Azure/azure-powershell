@@ -117,11 +117,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
+    <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscCompilationJobOutput.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfiguration.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationDscNodeReport.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\RegisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
@@ -142,6 +146,7 @@
     <Compile Include="Common\AutomationCmdletParameterSet.cs" />
     <Compile Include="Common\AzureAutomationOperationException.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\DscNodeStatus.cs" />
     <Compile Include="Common\IAutomationClient.cs" />
     <Compile Include="Common\PowerShellJsonConverter.cs" />
     <Compile Include="Common\RequestSettings.cs" />
@@ -157,7 +162,9 @@
     <Compile Include="Model\AutomationAccount.cs" />
     <Compile Include="Model\CompilationJob.cs" />
     <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\ConfigurationContent.cs" />
     <Compile Include="Model\DscNode.cs" />
+    <Compile Include="Model\DscNodeReport.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Module.cs" />
@@ -176,7 +183,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\StreamType.cs" />
+    <Compile Include="Common\CompilationJobStreamType.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -20,37 +20,35 @@ using AutomationManagement = Microsoft.Azure.Management.Automation;
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     /// <summary>
-    /// The Dsc Node.
+    /// The Dsc Node Report.
     /// </summary>
-    public class DscNode
+    public class DscNodeReport
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscNode"/> class.
+        /// Initializes a new instance of the <see cref="DscNodeReport"/> class.
         /// </summary>
         /// <param name="resourceGroupName">The resource group name.</param>
         /// <param name="automationAccountName">The automation account.</param>
-        /// <param name="node">The dsc node.</param>
-        public DscNode(string resourceGroupName, string automationAccountName, AutomationManagement.Models.DscNode node)
+        /// <param name="dscNodeReport">The dsc node report.</param>
+        public DscNodeReport(string resourceGroupName, string automationAccountName, AutomationManagement.Models.DscNodeReport dscNodeReport)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            Requires.Argument("Node", node).NotNull();
+            Requires.Argument("dscNodeReport", dscNodeReport).NotNull();
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
-            this.Name = node.Name;
-            this.Id = node.Id;
-            this.IpAddress = node.Ip;
-            this.LastSeen = node.LastSeen.ToLocalTime();
-            this.RegistrationTime = node.RegistrationTime.ToLocalTime();
-            this.Status = node.Status;
-            this.NodeConfigurationName = node.NodeConfiguration.Name;
+            this.StartTime = dscNodeReport.StartTime;
+            this.EndTime = dscNodeReport.EndTime;
+            this.LastModifiedTime = dscNodeReport.LastModifiedTime;
+            this.ReportType = dscNodeReport.Type;
+            this.Id = dscNodeReport.Id;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscNode"/> class.
+        /// Initializes a new instance of the <see cref="DscNodeReport"/> class.
         /// </summary>
-        public DscNode()
+        public DscNodeReport()
         {
         }
 
@@ -65,38 +63,28 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string AutomationAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the start time.
         /// </summary>
-        public string Name { get; set; }
+        public DateTimeOffset StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the registration time.
+        /// Gets or sets the last modified time.
         /// </summary>
-        public DateTimeOffset RegistrationTime { get; set; }
+        public DateTimeOffset LastModifiedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the last seen time.
+        /// Gets or sets the end time.
         /// </summary>
-        public DateTimeOffset LastSeen { get; set; }
+        public DateTimeOffset EndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the IP address.
+        /// Gets or sets the report type.
         /// </summary>
-        public string IpAddress { get; set; }
+        public string ReportType { get; set; }
 
         /// <summary>
-        /// Gets or sets the Id.
+        /// Gets or sets the id of the node report.
         /// </summary>
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the nodeconfiguration.
-        /// </summary>
-        public string NodeConfigurationName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the status.
-        /// </summary>
-        public string Status { get; set; }
     }
 }

@@ -18,17 +18,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
     /// <summary>
     /// StreamType enum represents the 6 types of Powershell Streams supported.
     /// </summary>
-    public enum StreamType
+    public enum CompilationJobStreamType
     {
         /// <summary>
-        /// Indicates Progress Record streams
+        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
         /// </summary>
-        Progress,
-
-        /// <summary>
-        /// Indicates Output Record streams
-        /// </summary>
-        Output,
+        Any,
 
         /// <summary>
         /// Indicates Warning Record streams
@@ -48,11 +43,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <summary>
         /// Indicates Verbose Record streams
         /// </summary>
-        Verbose,
-
-        /// <summary>
-        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
-        /// </summary>
-        Any
+        Verbose
     }
 }

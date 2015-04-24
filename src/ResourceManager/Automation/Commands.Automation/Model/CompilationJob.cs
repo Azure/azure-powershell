@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CompilationJob"/> class.
         /// </summary>
+        /// <param name="resourceGroupName">
+        /// The resource group name.
+        /// </param>
         /// <param name="accountName">
         /// The account name.
         /// </param>
@@ -39,11 +42,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public CompilationJob(string accountName, AutomationManagement.Models.DscCompilationJob job)
+        public CompilationJob(string resourceGroupName, string accountName, AutomationManagement.Models.DscCompilationJob job)
         {
             Requires.Argument("job", job).NotNull();
             Requires.Argument("accountName", accountName).NotNull();
 
+            this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = accountName;
 
             if (job.Properties == null) return;
@@ -72,6 +76,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public CompilationJob()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the resource group name.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the automaiton account name.

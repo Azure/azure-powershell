@@ -39,11 +39,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public NodeConfiguration(string accountName, AutomationManagement.Models.DscNodeConfiguration nodeConfiguration, string rollUpStatus)
+        public NodeConfiguration(string resourceGroupName, string accountName, AutomationManagement.Models.DscNodeConfiguration nodeConfiguration, string rollUpStatus)
         {
             Requires.Argument("nodeConfiguration", nodeConfiguration).NotNull();
             Requires.Argument("accountName", accountName).NotNull();
 
+            this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = accountName;
 
             this.Name = nodeConfiguration.Name;
@@ -57,11 +58,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DscNodeConfiguration"/> class.
+        /// Initializes a new instance of the <see cref="NodeConfiguration"/> class.
         /// </summary>
         public NodeConfiguration()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the resource group name.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the automaiton account name.

@@ -115,6 +115,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Compilation Job having Id: {0} was not found..
+        /// </summary>
+        internal static string CompilationJobNotFound {
+            get {
+                return ResourceManager.GetString("CompilationJobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration already exists. Specify the parameter to force an overwrite. Configuration name: {0}.
         /// </summary>
         internal static string ConfigurationAlreadyExists {
@@ -122,13 +131,31 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("ConfigurationAlreadyExists", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The Compilation Job having Id: {0} was not found..
+        ///   Looks up a localized string similar to Configuration Content is not found for configuration name: {0}.
         /// </summary>
-        internal static string CompilationJobNotFound {
+        internal static string ConfigurationContentNotFound {
             get {
-                return ResourceManager.GetString("CompilationJobNotFound", resourceCulture);
+                return ResourceManager.GetString("ConfigurationContentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration content can not be in edit/draft mode in current preview. Use the Published option..
+        /// </summary>
+        internal static string ConfigurationDraftMode {
+            get {
+                return ResourceManager.GetString("ConfigurationDraftMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The configuration has no published version. Configuration name {0}..
+        /// </summary>
+        internal static string ConfigurationHasNoPublishedVersion {
+            get {
+                return ResourceManager.GetString("ConfigurationHasNoPublishedVersion", resourceCulture);
             }
         }
         
@@ -140,25 +167,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("ConfigurationNotPublished", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The configuration has no published version. Configuration name {0}..
-        /// </summary>
-        internal static string ConfigurationHasNoPublishedVersion {
-            get {
-                return ResourceManager.GetString("ConfigurationHasNoPublishedVersion", resourceCulture);
-            }
-        }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid SourcePath. Verify file path is valid and file exists..
-        /// </summary>
-        internal static string ConfigurationSourcePathInvalid {
-            get {
-                return ResourceManager.GetString("ConfigurationSourcePathInvalid", resourceCulture);
-            }
-        }
-
         /// <summary>
         ///   Looks up a localized string similar to Configuration parameter cannot be serialized to json. Parameter name {0}..
         /// </summary>
@@ -174,6 +183,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string ConfigurationParameterValueRequired {
             get {
                 return ResourceManager.GetString("ConfigurationParameterValueRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid SourcePath. Verify file path is valid and file exists..
+        /// </summary>
+        internal static string ConfigurationSourcePathInvalid {
+            get {
+                return ResourceManager.GetString("ConfigurationSourcePathInvalid", resourceCulture);
             }
         }
         
@@ -214,11 +232,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generating the metaconfiguration.
+        /// </summary>
+        internal static string DscMetaMofHasKeysDescription {
+            get {
+                return ResourceManager.GetString("DscMetaMofHasKeysDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: The files downloaded by this cmdlet contain the registration key for the specified Azure Automation account. This registration key allows computers to onboard to this Automation Account. Store these files in a secure location or delete them after use..
+        /// </summary>
+        internal static string DscMetaMofHasKeysWarning {
+            get {
+                return ResourceManager.GetString("DscMetaMofHasKeysWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Dsc node was not found. Node id {0}..
         /// </summary>
         internal static string DscNodeNotFound {
             get {
                 return ResourceManager.GetString("DscNodeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration parameters..
+        /// </summary>
+        internal static string InvalidConfigurationParameters {
+            get {
+                return ResourceManager.GetString("InvalidConfigurationParameters", resourceCulture);
             }
         }
         
@@ -237,15 +282,6 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string InvalidFolderPath {
             get {
                 return ResourceManager.GetString("InvalidFolderPath", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid configuration parameters..
-        /// </summary>
-        internal static string InvalidConfigurationParameters {
-            get {
-                return ResourceManager.GetString("InvalidConfigurationParameters", resourceCulture);
             }
         }
         
@@ -313,6 +349,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NodeConfiguration {0} not found..
+        /// </summary>
+        internal static string NodeConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("NodeConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The node was not found..
         /// </summary>
         internal static string NodeNotFound {
@@ -322,20 +367,20 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NodeReport already exists. Specify force switch an overwrite. File: {0}.
+        /// </summary>
+        internal static string NodeReportAlreadyExists {
+            get {
+                return ResourceManager.GetString("NodeReportAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} File(s) written to output folder.
         /// </summary>
         internal static string NumberOfFilesWritten {
             get {
                 return ResourceManager.GetString("NumberOfFilesWritten", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NodeConfiguration {0} not found..
-        /// </summary>
-        internal static string NodeConfigurationNotFound {
-            get {
-                return ResourceManager.GetString("NodeConfigurationNotFound", resourceCulture);
             }
         }
         
@@ -354,15 +399,6 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string PowershellJsonDecrypterFailed {
             get {
                 return ResourceManager.GetString("PowershellJsonDecrypterFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation Dsc node ?.
-        /// </summary>
-        internal static string RemovDscNodeWarning {
-            get {
-                return ResourceManager.GetString("RemovDscNodeWarning", resourceCulture);
             }
         }
         
@@ -435,6 +471,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveDscNodeDescription {
             get {
                 return ResourceManager.GetString("RemoveDscNodeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unregister Dsc node from Azure Automation?.
+        /// </summary>
+        internal static string RemoveDscNodeWarning {
+            get {
+                return ResourceManager.GetString("RemoveDscNodeWarning", resourceCulture);
             }
         }
         
@@ -552,6 +597,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string SetCertificateInvalidArgs {
             get {
                 return ResourceManager.GetString("SetCertificateInvalidArgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the node configuration assignment for this node.
+        /// </summary>
+        internal static string SetnodeconfigurationDescription {
+            get {
+                return ResourceManager.GetString("SetnodeconfigurationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the node configuration assignment for this node?.
+        /// </summary>
+        internal static string SetnodeconfigurationWarning {
+            get {
+                return ResourceManager.GetString("SetnodeconfigurationWarning", resourceCulture);
             }
         }
         

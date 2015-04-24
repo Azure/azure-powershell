@@ -30,9 +30,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="jobStream">
         /// The job stream.
         /// </param>
+        /// <param name="resourceGroupName">
+        /// The resource group name.
+        /// </param>
+        /// <param name="automationAccountName">
+        /// The automation account name
+        /// </param>
+        /// <param name="jobId">
+        /// The job Id
+        /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream, string automationAccountName, Guid jobId )
+        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
@@ -41,6 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Text = jobStream.Properties.Summary;
             this.Time = jobStream.Properties.Time;
             this.AutomationAccountName = automationAccountName;
+            this.ResourceGroupName = resourceGroupName;
             this.Id = jobId;
         }
 
@@ -50,6 +60,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public JobStream()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the resource group name.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the automation account name.

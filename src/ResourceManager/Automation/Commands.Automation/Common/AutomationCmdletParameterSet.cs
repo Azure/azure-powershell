@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByJobId = "ByJobId";
 
         /// <summary>
+        /// By Latest parameter set
+        /// </summary>
+        internal const string ByLatest = "ByLatest";
+
+        /// <summary>
         /// The automation account name parameter set.
         /// </summary>
         internal const string ByAutomationAccountName = "ByAutomationAccountName";
@@ -78,6 +83,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Configuration name parameter set.
         /// </summary>
         internal const string ByConfigurationName = "ByConfigurationName";
+
+        /// <summary>
+        /// The Configuration name parameter set.
+        /// </summary>
+        internal const string ByConfiguration = "ByConfiguration";
 
         /// <summary>
         /// The Node Configuration name parameter set.

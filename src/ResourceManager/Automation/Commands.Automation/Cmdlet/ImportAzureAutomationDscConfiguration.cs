@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the source path.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The source path for importing the configuration script.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Path to the configuration script .ps1 to import.")]
+        [Alias("Path")]
         [ValidateNotNullOrEmpty]
         public string SourcePath { get; set; }
 
@@ -73,8 +74,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configurations.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Overwrites an existing configuration with same name.")]
-        public SwitchParameter Overwrite
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing configuration.")]
+        public SwitchParameter Force
         {
             get { return this.overwriteExistingConfiguration; }
             set { this.overwriteExistingConfiguration = value; }
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.Description,
                     this.LogVerbose,
                     this.Published,
-                    this.Overwrite);
+                    this.Force);
 
             this.WriteObject(configuration);
         }
