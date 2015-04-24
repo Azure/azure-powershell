@@ -48,8 +48,9 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -65,14 +66,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.3.4.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Compute, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.5.0.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.1.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.0-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.1.0.8-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -140,12 +144,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ScenarioTests\ComputeTestController.cs" />
+    <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\StorageAccountTests.cs" />
+    <Compile Include="ScenarioTests\TestVirtualMachineImageList.cs" />
+    <Compile Include="ScenarioTests\TestVirtualMachineList.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineDataDiskTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineCaptureTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
     <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineNetworkInterfaceTests.cs" />
+    <Compile Include="ScenarioTests\TestVirtualMachineSizeAndUsage.cs" />
+    <Compile Include="ScenarioTests\VirtualMachinePIRv2Tests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -239,7 +249,16 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestStorageAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\TestVirtualMachineAccessExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\TestVirtualMachineCustomScriptExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\TestVirtualMachineExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestSingleNetworkInterfaceDnsSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestVirtualMachineMultipleNetworkInterface.json">
@@ -252,6 +271,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineProfileTests\TestVirtualMachineProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineDataDisk.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineImageList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineCapture.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachinePIRv2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineSizeAndUsage.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

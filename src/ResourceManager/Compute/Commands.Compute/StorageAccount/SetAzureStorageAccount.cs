@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using System.Collections;
@@ -128,7 +129,9 @@ namespace Microsoft.Azure.Commands.Compute
                 this.Name,
                 updateParameters);
 
-            WriteObject(updatedAccountResponse.StorageAccount);
+            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+
+            WriteStorageAccount(accountProperties.StorageAccount);
         }
     }
 }

@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -96,6 +99,18 @@ namespace Microsoft.Azure.Commands.Compute
                 return AccountType.PremiumLRS;
             }
             throw new ArgumentOutOfRangeException("accountType");
+        }
+
+        protected void WriteStorageAccount(StorageAccount storageAccount)
+        {
+            WriteObject(new PSStorageAccount(storageAccount));
+        }
+
+        protected void WriteStorageAccountList(IList<StorageAccount> storageAccounts)
+        {
+            List<PSStorageAccount> output = new List<PSStorageAccount>();
+            storageAccounts.ForEach(storageAccount => output.Add(new PSStorageAccount(storageAccount)));
+            WriteObject(output, true);
         }
     }
 }

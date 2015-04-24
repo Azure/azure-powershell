@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
@@ -77,11 +78,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => this.CreateNetworkSecurityGroup());
+
+                WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var virtualNetwork = this.CreateNetworkSecurityGroup();
 
-            var virtualNetwork = this.CreateNetworkSecurityGroup();
-
-            WriteObject(virtualNetwork);
+                WriteObject(virtualNetwork);
+            }
         }
 
         private PSNetworkSecurityGroup CreateNetworkSecurityGroup()

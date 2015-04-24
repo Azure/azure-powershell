@@ -32,9 +32,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The new route's next hop type. Valid values are \"VPNGateway\".")]
         public string NextHopType { get; set; }
 
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The new route's next hop ip address." +
+                                                                 " This parameter can only be specifide for \"VirtualAppliance\" next hops.")]
+        public string NextHopIpAddress { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.SetRoute(RouteTableName, RouteName, AddressPrefix, NextHopType));
+            WriteObject(Client.SetRoute(RouteTableName, RouteName, AddressPrefix, NextHopType, NextHopIpAddress));
         }
     }
 }

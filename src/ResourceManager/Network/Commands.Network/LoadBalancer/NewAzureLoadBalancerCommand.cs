@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend Ip config")]
         [ValidateNotNullOrEmpty]
-        public List<PSFrontendIpConfiguration> FrontendIpConfiguration { get; set; }
+        public List<PSFrontendIPConfiguration> FrontendIpConfiguration { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -102,11 +103,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateLoadBalancer());
+
+                WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var loadBalancer = this.CreateLoadBalancer();
 
-            var loadBalancer = this.CreateLoadBalancer();
-
-            WriteObject(loadBalancer);
+                WriteObject(loadBalancer);
+            }
         }
 
         private PSLoadBalancer CreateLoadBalancer()
@@ -116,8 +121,11 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
-            loadBalancer.FrontendIpConfigurations = new List<PSFrontendIpConfiguration>();
-            loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            if (this.FrontendIpConfiguration != null)
+            {
+                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
+                loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+            }
 
             if (this.BackendAddressPool != null)
             {

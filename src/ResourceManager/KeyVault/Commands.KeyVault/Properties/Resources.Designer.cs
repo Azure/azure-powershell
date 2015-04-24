@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;get-AzureSubscription -current&apos; is the current subscription&apos;s Azure Active directory..
+        /// </summary>
+        internal static string ADObjectNotFound {
+            get {
+                return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find backup key file &apos;{0}&apos;.
         /// </summary>
         internal static string BackupKeyFileNotFound {
@@ -79,6 +88,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BYOK key can not be imported as software key.
+        /// </summary>
+        internal static string ImportByokAsSoftkeyError {
+            get {
+                return ResourceManager.GetString("ImportByokAsSoftkeyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid AzureEnvironment..
         /// </summary>
         internal static string InvalidAzureEnvironment {
@@ -93,6 +111,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidCurrentSubscription {
             get {
                 return ResourceManager.GetString("InvalidCurrentSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid key attributes.
+        /// </summary>
+        internal static string InvalidKeyAttributes {
+            get {
+                return ResourceManager.GetString("InvalidKeyAttributes", resourceCulture);
             }
         }
         
@@ -124,6 +151,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid key identifier.
+        /// </summary>
+        internal static string InvalidKeyIdentifier {
+            get {
+                return ResourceManager.GetString("InvalidKeyIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid key name..
         /// </summary>
         internal static string InvalidKeyName {
@@ -138,6 +174,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyUri {
             get {
                 return ResourceManager.GetString("InvalidKeyUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid secret attributes.
+        /// </summary>
+        internal static string InvalidSecretAttributes {
+            get {
+                return ResourceManager.GetString("InvalidSecretAttributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid secret identifier.
+        /// </summary>
+        internal static string InvalidSecretIdentifier {
+            get {
+                return ResourceManager.GetString("InvalidSecretIdentifier", resourceCulture);
             }
         }
         
@@ -169,6 +223,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        /// </summary>
+        internal static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid vault name..
         /// </summary>
         internal static string InvalidVaultName {
@@ -192,6 +255,33 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string KeyFileNotFound {
             get {
                 return ResourceManager.GetString("KeyFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault..
+        /// </summary>
+        internal static string NoDefaultUserAccount {
+            get {
+                return ResourceManager.GetString("NoDefaultUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid permissions to {0}. The list contains &quot;all&quot; along with other permissions. Please remove &quot;all&quot; from the list or include only &quot;all&quot; in the list..
+        /// </summary>
+        internal static string PermissionSetIncludesAllPlusOthers {
+            get {
+                return ResourceManager.GetString("PermissionSetIncludesAllPlusOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one permission should be selected for key access or secret access..
+        /// </summary>
+        internal static string PermissionsNotSpecified {
+            get {
+                return ResourceManager.GetString("PermissionsNotSpecified", resourceCulture);
             }
         }
         
@@ -232,6 +322,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove vault &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveVaultWarning {
+            get {
+                return ResourceManager.GetString("RemoveVaultWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove vault.
+        /// </summary>
+        internal static string RemoveVaultWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key vault cmdlet does not support account type &apos;{0}&apos;..
         /// </summary>
         internal static string UnsupportedAccountType {
@@ -246,6 +354,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string UnsupportedFileFormat {
             get {
                 return ResourceManager.GetString("UnsupportedFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified vault already exists..
+        /// </summary>
+        internal static string VaultAlreadyExists {
+            get {
+                return ResourceManager.GetString("VaultAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find vault &apos;{0}&apos; in resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string VaultNotFound {
+            get {
+                return ResourceManager.GetString("VaultNotFound", resourceCulture);
             }
         }
     }

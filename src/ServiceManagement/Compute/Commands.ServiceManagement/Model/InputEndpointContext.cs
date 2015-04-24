@@ -47,5 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public int? IdleTimeoutInMinutes { get; set; }
 
         public string LoadBalancerDistribution { get; set; }
+
+        public string VirtualIPName { get; set; }
     }
 }

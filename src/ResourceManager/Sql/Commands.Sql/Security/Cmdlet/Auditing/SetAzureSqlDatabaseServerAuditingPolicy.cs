@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingPolicyModel UpdateModel(ServerAuditingPolicyModel model)
+        protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Enabled;
             if (StorageAccountName != null)
             {

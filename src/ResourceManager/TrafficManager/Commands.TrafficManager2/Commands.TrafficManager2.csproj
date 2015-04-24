@@ -51,9 +51,9 @@
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
+    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.21-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.1-preview\lib\portable-net45+sl50+wp80+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
@@ -96,7 +96,9 @@
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.TrafficManager.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

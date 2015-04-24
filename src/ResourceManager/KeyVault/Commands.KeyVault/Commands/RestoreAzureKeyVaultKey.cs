@@ -13,16 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Management.Automation;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Restores the backup key into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey")]
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   HelpMessage = "Input file. The input file containing the backed up blob")]
+                   HelpMessage = "Input file. The input file containing the backed-up blob")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            var filePath = ResolvePath(InputFile, Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(InputFile, KeyVaultProperties.Resources.BackupKeyFileNotFound);
 
             var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 

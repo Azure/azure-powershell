@@ -32,13 +32,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Optional credential")]
+        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
         
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Optional tenant name or ID")]
+       [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+       [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Tenant name or ID")]
         public string Tenant { get; set; }
      
         public AddAzureAccount() : base(true)

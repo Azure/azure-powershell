@@ -52,6 +52,39 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
+    <Compile Include="Database\Cmdlet\AzureSqlDatabaseCmdletBase.cs" />
+    <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseActivity.cs" />
+    <Compile Include="Database\Cmdlet\RemoveAzureSqlDatabase.cs" />
+    <Compile Include="Database\Cmdlet\SetAzureSqlDatabase.cs" />
+    <Compile Include="Database\Cmdlet\NewAzureSqlDatabase.cs" />
+    <Compile Include="Database\Cmdlet\GetAzureSqlDatabase.cs" />
+    <Compile Include="Database\Model\AzureSqlDatabaseActivityModel.cs" />
+    <Compile Include="Database\Model\AzureSqlDatabaseModel.cs" />
+    <Compile Include="Database\Model\DatabaseEdition.cs" />
+    <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
+    <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolDatabase.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\NewAzureSqlElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\RemoveAzureSqlElasticPool.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\SetAzureSqlElasticPool.cs" />
+    <Compile Include="Elastic Pools\Model\AzureSqlElasticPoolActivityModel.cs" />
+    <Compile Include="Elastic Pools\Model\AzureSqlElasticPoolModel.cs" />
+    <Compile Include="Elastic Pools\Services\AzureSqlElasticPoolAdapter.cs" />
+    <Compile Include="Elastic Pools\Services\AzureSqlElasticPoolCommunicator.cs" />
+    <Compile Include="FirewallRule\Cmdlet\AzureSqlServerFirewallRuleCmdletBase.cs" />
+    <Compile Include="FirewallRule\Cmdlet\GetAzureSqlServerFirewallRule.cs" />
+    <Compile Include="FirewallRule\Cmdlet\NewAzureSqlServerFirewallRule.cs" />
+    <Compile Include="FirewallRule\Cmdlet\RemoveAzureSqlServerFirewallRule.cs" />
+    <Compile Include="FirewallRule\Cmdlet\SetAzureSqlServerFirewallRule.cs" />
+    <Compile Include="FirewallRule\Model\AzureSqlServerFirewallRuleModel.cs" />
+    <Compile Include="FirewallRule\Services\AzureSqlServerFirewallRuleCommunicator.cs" />
+    <Compile Include="FirewallRule\Services\AzureSqlServerFirewallRuleAdapter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,8 +112,8 @@
     <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlDatabaseAuditingPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseAuditingCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\SqlDatabaseCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\SqlCmdletBase.cs" />
+    <Compile Include="Common\AzureSqlDatabaseCmdletBase.cs" />
+    <Compile Include="Common\AzureSqlCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Model\DatabaseDataMaskingRuleModel.cs" />
     <Compile Include="Security\Model\DatabaseDataMaskingPolicyModel.cs" />
@@ -95,13 +128,25 @@
     <Compile Include="Security\Services\AuditingEndpointsCommunicator.cs" />
     <Compile Include="Security\Services\DataMaskingEndpointsCommunicator.cs" />
     <Compile Include="Security\Services\SecureConnectionEndpointsCommunicator.cs" />
-    <Compile Include="Security\Services\AzureEndpointsCommunicator.cs" />
+    <Compile Include="Common\AzureEndpointsCommunicator.cs" />
     <Compile Include="Security\Services\SecurityConstants.cs" />
     <Compile Include="Security\Services\SqlDataMaskingAdapter.cs" />
     <Compile Include="Security\Services\SqlSecureConnectionAdapter.cs" />
     <Compile Include="Security\Services\SqlAuditAdapter.cs" />
+    <Compile Include="Server\Services\AzureSqlServerCommunicator.cs" />
+    <Compile Include="ServiceObjective\Cmdlet\AzureSqlServerServiceObjectiveCmdletBase.cs" />
+    <Compile Include="ServiceObjective\Cmdlet\GetAzureSqlServerServiceObjective.cs" />
+    <Compile Include="Server\Cmdlet\SetAzureSqlServer.cs" />
+    <Compile Include="Server\Cmdlet\RemoveAzureSqlServer.cs" />
+    <Compile Include="Server\Cmdlet\NewAzureSqlServer.cs" />
+    <Compile Include="Server\Services\AzureSqlServerAdapter.cs" />
+    <Compile Include="Server\Cmdlet\AzureSqlServerCmdletBase.cs" />
+    <Compile Include="Server\Model\AzureSqlServerModel.cs" />
+    <Compile Include="Server\Cmdlet\GetAzureSqlServer.cs" />
+    <Compile Include="ServiceObjective\Model\AzureSqlServerServiceObjectiveModel.cs" />
+    <Compile Include="ServiceObjective\Service\AzureSqlServerServiceObjectiveCommunicator.cs" />
+    <Compile Include="ServiceObjective\Service\AzureSqlServerServiceObjectiveAdapter.cs" />
     <Compile Include="Services\Util.cs" />
-    <Compile Include="SqlDatabaseCmdletBase.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,16 +165,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.22-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.20.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Sql">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.22.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

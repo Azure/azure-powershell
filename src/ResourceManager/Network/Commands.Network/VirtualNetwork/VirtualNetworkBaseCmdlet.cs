@@ -16,6 +16,7 @@
 using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Resources.Models;
 using Hyak.Common;
@@ -63,6 +64,11 @@ namespace Microsoft.Azure.Commands.Network
 
             virtualNetwork.Tag =
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.VirtualNetwork.Tags);
+
+            if (virtualNetwork.DhcpOptions == null)
+            {
+                virtualNetwork.DhcpOptions = new PSDhcpOptions();
+            }
 
             return virtualNetwork;
         }

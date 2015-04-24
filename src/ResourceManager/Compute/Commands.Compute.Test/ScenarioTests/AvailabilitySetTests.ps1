@@ -19,7 +19,7 @@ Test Availability Set
 function Test-AvailabilitySet
 {
     # Setup
-    $rgname = Get-ComputeTestResourceGroupName
+    $rgname = Get-ComputeTestResourceName
 
     try
     {

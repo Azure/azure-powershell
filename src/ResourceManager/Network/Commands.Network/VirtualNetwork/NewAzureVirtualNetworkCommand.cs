@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
@@ -90,11 +91,15 @@ namespace Microsoft.Azure.Commands.Network
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
                     () => CreateVirtualNetwork());
+
+                WriteObject(this.GetVirtualNetwork(this.ResourceGroupName, this.Name));
             }
+            else
+            {
+                var virtualNetwork = CreateVirtualNetwork();
 
-            var virtualNetwork = CreateVirtualNetwork();
-
-            WriteObject(virtualNetwork);
+                WriteObject(virtualNetwork);
+            }
         }
 
         private PSVirtualNetwork CreateVirtualNetwork()
@@ -105,8 +110,12 @@ namespace Microsoft.Azure.Commands.Network
             vnet.Location = this.Location;
             vnet.AddressSpace = new PSAddressSpace();
             vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
-            vnet.DhcpOptions = new PSDhcpOptions();
-            vnet.DhcpOptions.DnsServers = this.DnsServer;
+
+            if (this.DnsServer != null)
+            {
+                vnet.DhcpOptions = new PSDhcpOptions();
+                vnet.DhcpOptions.DnsServers = this.DnsServer;
+            }
 
             vnet.Subnets = new List<PSSubnet>();
             vnet.Subnets = this.Subnet;
