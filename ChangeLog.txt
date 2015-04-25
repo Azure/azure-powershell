@@ -445,6 +445,12 @@
         * Get-AzureNetworkSecurityGroupForSubnet
         * Get-AzureNetworkSecurityGroupConfig
         * Get-AzureNetworkSecurityGroup
+	* VipMobility Support
+		*Set-AzureReservedIPAssociation
+		*Remove-AzureReservedIPAssociation
+	* MultiVip Support
+		* Add-AzureVirtualIP
+		* Remove-AzureVirtualIP
 * Azure Virtual Machine
     * Added Add PublicConfigKey and PrivateConfigKey parameters to SetAzureVMExtension
 * Azure Website
@@ -605,13 +611,14 @@
     * Tag parameter in Get-AzureResourceGroup and Get-AzureResource
 * Compute
     * ReverseDnsFqdn parameter in New-AzureService, Set-AzureService, New-AzureVM and New-AzureQuickVM
+	* Added VirtualIPName parameter to Set-AzureEndpoint, Add-AzureEndpoint, Set-AzureLoadBalancedEndpoint for Multivip support
 * Network
     * Set-AzureInternalLoadBalancer
     * Add-AzureDns
     * Set-AzureDns
     * Remove-AzureDns
     * Added IdealTimeoutInMinutes parameter to Set-AzurePublicIP, Add-AzureEndpoint and Set-AzureLoadBalancedEndpoint
-
+	
 2014.06.30 Version 0.8.4
 * Compute
     * New-AzurePlatformExtensionCertificateConfig
