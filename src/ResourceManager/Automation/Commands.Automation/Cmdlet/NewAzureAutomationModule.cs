@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the contentLink
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The url to a module zip package.")]
         [ValidateNotNullOrEmpty]
         public Uri ContentLink { get; set; }
