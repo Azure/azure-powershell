@@ -67,6 +67,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         private string configurationMode = "ApplyAndMonitor";
 
+        /// <summary>
+        /// Default value for AzureVMResourceGroup
+        /// </summary>
+        private string azureVmResourceGroup = String.Empty;
+
+        /// <summary>
+        /// Default value for AzureVmLocation
+        /// </summary>
+        private string azureVmLocation = String.Empty;
+
         /// <summary> 
         /// Gets or sets the VM name.
         /// </summary> 
@@ -88,7 +98,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the configuration mode
         /// </summary> 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "DSC configuration mode.")]
-        [ValidateSet("ApplyAndMonitor", "ApplyAndAutocorrect", "ApplyOnly")]
+        [ValidateSet("ApplyAndMonitor", "ApplyAndAutocorrect", "ApplyOnly", IgnoreCase = true)]
         public string ConfigurationMode
         {
             get { return this.configurationMode; }
@@ -111,10 +121,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Represents the frequency (in minutes) at which the Local Configuration Manager contacts the Azure Automation DSC pull server to download the latest node configuration.")]
         [ValidateRange(30, 44640)]
-        public int RefreshFrequencyMins
+        public int RefreshFrequencyMins 
         {
             get { return this.refreshFrequencyMins; }
-            set { this.refreshFrequencyMins = value; }
+            set { this.refreshFrequencyMins = value; } 
         }
 
         /// <summary> 
@@ -131,7 +141,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the action to perform post reboot.
         /// </summary> 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Action to perform after a reboot.")]
-        [ValidateSet("ContinueConfiguration", "StopConfiguration")]
+        [ValidateSet("ContinueConfiguration", "StopConfiguration", IgnoreCase = true)]
         public string ActionAfterReboot
         {
             get { return this.actionAfterReboot; }
@@ -150,12 +160,32 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
 
         /// <summary>
+        /// Gets or sets the azure VM resource group name.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure VM resource group name.")]
+        public string AzureVMResourceGroup 
+        {
+            get { return this.azureVmResourceGroup; }
+            set { this.azureVmResourceGroup = value; } 
+        }
+
+        /// <summary>
+        /// Gets or sets the azure VM location.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure VM location.")]
+        public string AzureVMLocation
+        {
+            get { return this.azureVmLocation; }
+            set { this.azureVmLocation = value; }
+        }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName,this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite);
+            this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation);
         }
     }
 }

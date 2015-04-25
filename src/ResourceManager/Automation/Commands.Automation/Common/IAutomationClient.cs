@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
 
-        void RegisterDscNode(string resourceGroupName, string automationAccountName, string azureVMName, string nodeconfigurationName, string configurationMode, int configurationModeFrequencyMins, int refreshFrequencyMins, bool rebootFlag, string actionAfterReboot, bool moduleOverwriteFlag);
+        void RegisterDscNode(string resourceGroupName, string automationAccountName, string azureVMName, string nodeconfigurationName, string configurationMode, int configurationModeFrequencyMins, int refreshFrequencyMins, bool rebootFlag, string actionAfterReboot, bool moduleOverwriteFlag, string azureVmResourceGroup, string azureVmLocation);
 
         #endregion
 

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
-        [ValidateSet("Any", "Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive")]
+        [ValidateSet("Any", "Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive", IgnoreCase = true)]
         public DscNodeStatus Status { get; set; } 
         
         /// <summary>

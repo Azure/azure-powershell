@@ -322,7 +322,7 @@
     <comment>Automation</comment>
   </data>
   <data name="RemoveDscNodeWarning" xml:space="preserve">
-    <value>Are you sure you want to unregister Dsc node from Azure Automation?</value>
+    <value>Are you sure you want to unregister this node from Azure Automation DSC?</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveDscNodeDescription" xml:space="preserve">
