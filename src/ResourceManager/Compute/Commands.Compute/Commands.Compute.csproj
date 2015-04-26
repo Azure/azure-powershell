@@ -202,6 +202,7 @@
     <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMPlan.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />

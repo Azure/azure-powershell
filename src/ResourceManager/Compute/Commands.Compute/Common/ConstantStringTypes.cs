@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string AvailabilitySet = "AzureAvailabilitySet";
         public const string VirtualMachineConfig = "AzureVMConfig";
+        public const string VirtualMachinePlan = "AzureVMPlan";
 
         public const string VirtualMachineSize = "AzureVMSize";
 
