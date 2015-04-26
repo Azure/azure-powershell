@@ -194,7 +194,7 @@ function Test-VirtualMachineList
 
         if ($s2 -ne $null)
         {
-            Assert-NotNull $s2[0].ResourceGroupName;
+            Assert-NotNull $s2[0].Id;
         }
 
         Assert-ThrowsContains { $s3 = Get-AzureVM -NextLink "http://www.test.com/test"; } "Unexpected character"
