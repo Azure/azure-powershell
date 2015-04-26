@@ -562,6 +562,30 @@
         </maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionInDays</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+				<dev:type>
+				  <maml:name>uint?</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue>0</dev:defaultValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TableIdentifier</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+				  <maml:name>String</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			  </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
@@ -659,7 +683,31 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionInDays</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+				<dev:type>
+				  <maml:name>uint?</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue>0</dev:defaultValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TableIdentifier</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+				  <maml:name>String</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			  </command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ServerName</maml:name>
 			<maml:description>
@@ -787,6 +835,30 @@
             </maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>RetentionInDays</maml:name>
+        <maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+        <dev:type>
+          <maml:name>uint?</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>0</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>TableIdentifier</maml:name>
+        <maml:description>
+          <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
@@ -862,6 +934,30 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>RetentionInDays</maml:name>
+			<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+			<dev:type>
+			  <maml:name>uint?</maml:name>
+			  <maml:uri/>
+			</dev:type>
+			<dev:defaultValue>0</dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>TableIdentifier</maml:name>
+			<maml:description>
+			  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+			  <maml:name>String</maml:name>
+			  <maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ServerName</maml:name>
 			<maml:description>

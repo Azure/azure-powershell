@@ -207,4 +207,10 @@
   <data name="RemoveAzureSqlDatabaseElasticPoolWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Elastic Pool '{0}' on server '{1}'?</value>
   </data>
+  <data name="InvalidRetentionTypeSet" xml:space="preserve">
+    <value>Cannot use audit table retention without specifying TableIdentifier. You may want to use '{0}'.</value>
+  </data>
+  <data name="InvalidDeprecatedEventTypeSet" xml:space="preserve">
+    <value>Cannot use deprecated audit events with the current audit events in the same policy.</value>
+  </data>
 </root>
