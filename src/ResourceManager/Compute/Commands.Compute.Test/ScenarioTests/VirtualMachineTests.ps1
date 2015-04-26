@@ -915,3 +915,85 @@ function Test-VirtualMachinePlan
         Clean-ResourceGroup $rgname
     }
 }
+
+
+
+<#
+.SYNOPSIS
+Test Virtual Machines Plan 2
+#>
+function Test-VirtualMachinePlan2
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = 'eastasia';
+        New-AzureResourceGroup -Name $rgname -Location $loc;
+        
+        # VM Profile & Hardware
+        $vmsize = 'Standard_A0';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        # NRP
+        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+
+        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = 'BaR@123' + $rgname;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
+
+        # $p.StorageProfile.OSDisk = $null;
+        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        # Image Reference
+        $p.StorageProfile.SourceImage = $null;
+
+        # Pick a VMM Image
+        $vmmImgPubName = 'a10networks';
+        $vmmImgOfferName = 'a10-vthunder-adc';
+        $vmmImgSkusName = 'vthunder_byol';
+        $vmmImgVerName = '1.0.0';
+        $imgRef = Get-AzureVMImageDetail -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
+        $plan = $imgRef.PurchasePlan;
+        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = Set-AzureVMPlan -VM $p -PlanName $plan.Name -Publisher $plan.Publisher -Product $plan.Product;
+        $p.OSProfile.WindowsConfiguration = $null;
+
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
