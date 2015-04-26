@@ -40,14 +40,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary> 
         /// Gets or sets the runbook name of the job. 
         /// </summary> 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = true, HelpMessage = "The configuration name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The configuration name.")]
         public string ConfigurationName { get; set; }
 
         /// <summary> 
         /// Gets or sets the status of a job. 
         /// </summary> 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfigurationName, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
         [ValidateSet("Good", "Bad")]
         public string RollupStatus { get; set; }
@@ -60,9 +59,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             IEnumerable<NodeConfiguration> nodeConfigurations;
 
-            if (this.Name != null && !Guid.Empty.Equals(this.Name))
+            if (this.Name != null)
             {
-                // ByJobId 
                 nodeConfigurations = new List<NodeConfiguration> { this.AutomationClient.GetNodeConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.RollupStatus) };
             }
             else if (this.ConfigurationName != null)

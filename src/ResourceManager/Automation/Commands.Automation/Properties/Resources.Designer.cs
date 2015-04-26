@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Dsc Configuration was not found. Configuration name {0}..
+        /// </summary>
+        internal static string ConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("ConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration can be imported in published state only in the current preview. Use the -Published switch..
         /// </summary>
         internal static string ConfigurationNotPublished {
