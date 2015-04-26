@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Management.Network;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.NetworkSecurityGroups
@@ -115,6 +116,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNSGFromSubnet()
         {
             // Setup
@@ -172,6 +175,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNSGFromVMRole()
         {
             // Setup
@@ -229,6 +234,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNSGFromVMNic()
         {
             // Setup
@@ -287,6 +294,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNSGFromVMRoleByName()
         {
             // Setup
@@ -345,6 +354,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNSGFromVMNicByName()
         {
             // Setup

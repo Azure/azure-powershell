@@ -80,9 +80,8 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=12.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.1.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,6 +180,10 @@
     <Compile Include="NetworkSecurityGroup\Association\RemoveAzureNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Routes\GetAzureRouteTable.cs" />
     <Compile Include="Routes\GetAzureSubnetRouteTable.cs" />
+    <Compile Include="Routes\Model\IRouteTable.cs" />
+    <Compile Include="Routes\Model\Route.cs" />
+    <Compile Include="Routes\Model\RouteTableWithRoutes.cs" />
+    <Compile Include="Routes\Model\SimpleRouteTable.cs" />
     <Compile Include="Routes\Model\SubnetRouteTableContext.cs" />
     <Compile Include="Routes\NewAzureRouteTable.cs" />
     <Compile Include="Routes\RemoveAzureRoute.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="Routes\RemoveAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\SetAzureRoute.cs" />
     <Compile Include="Routes\SetAzureSubnetRouteTable.cs" />
+    <Compile Include="Routes\Utilities\RouteTableConfigurationBaseCmdlet.cs" />
     <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
