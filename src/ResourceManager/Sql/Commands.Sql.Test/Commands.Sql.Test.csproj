@@ -241,6 +241,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseDisableEnableKeepProperties.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseStorageKeyRotation.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -251,6 +254,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseUpdatePolicyWithEventTypeShortcuts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseUpdatePolicyWithRetention.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseUpdatePolicyWithStorage.json">
@@ -283,6 +289,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerDisableEnableKeepProperties.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerStorageKeyRotation.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -293,6 +302,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerUpdatePolicyWithEventTypeShortcuts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerUpdatePolicyWithRetention.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerUpdatePolicyWithStorage.json">
