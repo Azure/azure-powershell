@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to unregister Dsc node from Azure Automation?.
+        ///   Looks up a localized string similar to Are you sure you want to unregister this node from Azure Automation DSC?.
         /// </summary>
         internal static string RemoveDscNodeWarning {
             get {

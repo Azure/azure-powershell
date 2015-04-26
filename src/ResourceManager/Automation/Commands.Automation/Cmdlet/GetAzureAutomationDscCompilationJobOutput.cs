@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public Guid Id { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type.")]
-        [ValidateSet("Warning", "Error", "Verbose", "Any")]
+        [ValidateSet("Warning", "Error", "Verbose", "Any", IgnoreCase = true)]
         public CompilationJobStreamType Stream { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]

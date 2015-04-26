@@ -739,10 +739,24 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                                             int refreshFrequencyMins,
                                             bool rebootFlag,
                                             string actionAfterReboot,
-                                            bool moduleOverwriteFlag)
+                                            bool moduleOverwriteFlag,
+                                            string azureVmResourceGroup,
+                                            string azureVmLocation)
         {
             // get the location from AutomationAccountName. This will validate the account too
             string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
+
+            // if vm location is specified, use that
+            if (!String.IsNullOrEmpty(azureVmLocation))
+            {
+                location = azureVmLocation;
+            }
+
+            // if azureVmResourceGroup not specified, use the resource group
+            if (String.IsNullOrEmpty(azureVmResourceGroup))
+            {
+                azureVmResourceGroup = resourceGroupName;
+            }
 
             string deploymentName = System.DateTimeOffset.Now.LocalDateTime.ToString("yyyyMMddhhmmss");
 
@@ -772,7 +786,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             {
                 Command invokeCommand = new Command("New-AzureResourceGroupDeployment");
                 invokeCommand.Parameters.Add("Name", deploymentName);
-                invokeCommand.Parameters.Add("ResourceGroupName", resourceGroupName);
+                invokeCommand.Parameters.Add("ResourceGroupName", azureVmResourceGroup);
                 invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);
                 invokeCommand.Parameters.Add("TemplateFile", Constants.TemplateFile);
 

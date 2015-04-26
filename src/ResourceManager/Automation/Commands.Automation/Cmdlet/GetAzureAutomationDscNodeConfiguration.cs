@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfigurationName, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter node configurations by RollupStatus.")]
-        [ValidateSet("Good", "Bad")]
+        [ValidateSet("Good", "Bad", IgnoreCase = true)]
         public string RollupStatus { get; set; }
 
         /// <summary>
