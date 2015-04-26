@@ -1151,7 +1151,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         nodeId,
                         reportId).NodeReport;
 
-                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeReport);
+                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeId.ToString("D"), nodeReport);
             }
         }
 
@@ -1211,7 +1211,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         new DscNodeReportListParameters { NodeId = nodeId }
                         ).NodeReports.OrderByDescending(report => report.StartTime).FirstOrDefault();
 
-                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeReport);
+                return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeId.ToString("D"), nodeReport);
             }
         }
 
@@ -1294,7 +1294,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         });
                 }
 
-                return nodeReportModels.Select(jobModel => new Commands.Automation.Model.DscNodeReport(resourceGroupName, automationAccountName, jobModel));
+                return nodeReportModels.Select(jobModel => new Commands.Automation.Model.DscNodeReport(resourceGroupName, automationAccountName, nodeId.ToString("D"), jobModel));
             }
         }
         #endregion 
