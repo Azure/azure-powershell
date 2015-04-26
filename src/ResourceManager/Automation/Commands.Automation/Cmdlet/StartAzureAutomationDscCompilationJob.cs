@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the configuration parameters.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The compilation job parameters.")]
+        [Parameter(Mandatory = false, HelpMessage = "The compilation job parameters.")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>
