@@ -28,13 +28,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "890571d3a71c9705b2205fb5adb6fd25"
+          "3a38e122ddcc9260987f191ab4eab0f4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:37:04 GMT"
+          "Mon, 27 Apr 2015 18:00:33 GMT"
         ],
         "Location": [
           "https://management.core.windows.net/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/storage/auditcmdlets206"
@@ -48,8 +48,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/890571d3a71c9705b2205fb5adb6fd25",
-      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzg5MDU3MWQzYTcxYzk3MDViMjIwNWZiNWFkYjZmZDI1",
+      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/3a38e122ddcc9260987f191ab4eab0f4",
+      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzNhMzhlMTIyZGRjYzkyNjA5ODdmMTkxYWI0ZWFiMGY0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -60,7 +60,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>890571d3-a71c-9705-b220-5fb5adb6fd25</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3a38e122-ddcc-9260-987f-191ab4eab0f4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -72,13 +72,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "b9762a0dd0939478a8b06f186cb68f7e"
+          "72e124e2f68f9c6485d5be20181ba8bd"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:37:05 GMT"
+          "Mon, 27 Apr 2015 18:00:33 GMT"
         ],
         "Server": [
           "1.0.6199.65",
@@ -89,8 +89,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/890571d3a71c9705b2205fb5adb6fd25",
-      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzg5MDU3MWQzYTcxYzk3MDViMjIwNWZiNWFkYjZmZDI1",
+      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/3a38e122ddcc9260987f191ab4eab0f4",
+      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzNhMzhlMTIyZGRjYzkyNjA5ODdmMTkxYWI0ZWFiMGY0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -101,7 +101,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>890571d3-a71c-9705-b220-5fb5adb6fd25</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3a38e122-ddcc-9260-987f-191ab4eab0f4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -113,13 +113,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "c0475abd5bf49b11b58fc74e013baef2"
+          "cd5302dbe6e9968f9777d72d81235693"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:37:35 GMT"
+          "Mon, 27 Apr 2015 18:01:03 GMT"
         ],
         "Server": [
           "1.0.6199.65",
@@ -130,8 +130,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/890571d3a71c9705b2205fb5adb6fd25",
-      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzg5MDU3MWQzYTcxYzk3MDViMjIwNWZiNWFkYjZmZDI1",
+      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/3a38e122ddcc9260987f191ab4eab0f4",
+      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzNhMzhlMTIyZGRjYzkyNjA5ODdmMTkxYWI0ZWFiMGY0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -142,7 +142,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>890571d3-a71c-9705-b220-5fb5adb6fd25</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3a38e122-ddcc-9260-987f-191ab4eab0f4</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -154,13 +154,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "ab1038e946459f19989583880228e3ce"
+          "62db7f498bc495b7a178516d1e8d25a8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:06 GMT"
+          "Mon, 27 Apr 2015 18:01:34 GMT"
         ],
         "Server": [
           "1.0.6199.65",
@@ -198,16 +198,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "31869"
         ],
         "x-ms-request-id": [
-          "bb92f2b6-8156-4cb2-b4e5-e37d12227698"
+          "40bd8fa2-4eca-4dff-8f4e-84b52f6312fd"
         ],
         "x-ms-correlation-request-id": [
-          "bb92f2b6-8156-4cb2-b4e5-e37d12227698"
+          "40bd8fa2-4eca-4dff-8f4e-84b52f6312fd"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163807Z:bb92f2b6-8156-4cb2-b4e5-e37d12227698"
+          "WESTEUROPE:20150427T180144Z:40bd8fa2-4eca-4dff-8f4e-84b52f6312fd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -216,7 +216,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:07 GMT"
+          "Mon, 27 Apr 2015 18:01:44 GMT"
         ]
       },
       "StatusCode": 404
@@ -255,13 +255,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "61914289-bdf3-4caf-bea9-37cf060c9bdb"
+          "87f01b85-cc92-4238-bd6e-665f0eded02d"
         ],
         "x-ms-correlation-request-id": [
-          "61914289-bdf3-4caf-bea9-37cf060c9bdb"
+          "87f01b85-cc92-4238-bd6e-665f0eded02d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163809Z:61914289-bdf3-4caf-bea9-37cf060c9bdb"
+          "WESTEUROPE:20150427T180157Z:87f01b85-cc92-4238-bd6e-665f0eded02d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -270,7 +270,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:08 GMT"
+          "Mon, 27 Apr 2015 18:01:56 GMT"
         ]
       },
       "StatusCode": 201
@@ -279,7 +279,7 @@
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/validate?api-version=2014-04-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXAvdmFsaWRhdGU/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"administratorLogin\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"testlogin\"\r\n        },\r\n        \"administratorLoginPassword\": {\r\n          \"type\": \"securestring\",\r\n          \"defaultValue\": \"testp@ssMakingIt1007Longer\"\r\n        },\r\n        \"collation\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n        },\r\n        \"databaseName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"edition\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"Basic\"\r\n        },\r\n        \"configuredServiceLevelObjectiveId\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n        },\r\n        \"EnvLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"serverName\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2.0\",\r\n          \"location\": \"[parameters('EnvLocation')]\",\r\n          \"name\": \"[parameters('serverName')]\",\r\n          \"properties\": {\r\n            \"administratorLogin\": \"[parameters('administratorLogin')]\",\r\n            \"administratorLoginPassword\": \"[parameters('administratorLoginPassword')]\"\r\n          },\r\n          \"resources\": [\r\n            {\r\n              \"apiVersion\": \"2.0\",\r\n              \"dependsOn\": [\r\n                \"[concat('Microsoft.Sql/servers/', parameters('serverName'))]\"\r\n              ],\r\n              \"location\": \"[parameters('EnvLocation')]\",\r\n              \"name\": \"[parameters('databaseName')]\",\r\n              \"properties\": {\r\n                \"collation\": \"[parameters('collation')]\",\r\n                \"edition\": \"[parameters('edition')]\",\r\n                \"maxSizeBytes\": \"1073741824\"\r\n              },\r\n              \"type\": \"databases\"\r\n            }\r\n          ],\r\n          \"type\": \"Microsoft.Sql/servers\"\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"databaseName\": {\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"serverName\": {\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      },\r\n      \"EnvLocation\": {\r\n        \"value\": \"West US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"administratorLogin\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"testlogin\"\r\n        },\r\n        \"administratorLoginPassword\": {\r\n          \"type\": \"securestring\",\r\n          \"defaultValue\": \"testp@ssMakingIt1007Longer\"\r\n        },\r\n        \"collation\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n        },\r\n        \"databaseName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"edition\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"Basic\"\r\n        },\r\n        \"configuredServiceLevelObjectiveId\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n        },\r\n        \"EnvLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"serverName\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2.0\",\r\n          \"location\": \"[parameters('EnvLocation')]\",\r\n          \"name\": \"[parameters('serverName')]\",\r\n          \"properties\": {\r\n            \"administratorLogin\": \"[parameters('administratorLogin')]\",\r\n            \"administratorLoginPassword\": \"[parameters('administratorLoginPassword')]\"\r\n          },\r\n          \"resources\": [\r\n            {\r\n              \"apiVersion\": \"2.0\",\r\n              \"dependsOn\": [\r\n                \"[concat('Microsoft.Sql/servers/', parameters('serverName'))]\"\r\n              ],\r\n              \"location\": \"[parameters('EnvLocation')]\",\r\n              \"name\": \"[parameters('databaseName')]\",\r\n              \"properties\": {\r\n                \"collation\": \"[parameters('collation')]\",\r\n                \"edition\": \"[parameters('edition')]\",\r\n                \"maxSizeBytes\": \"1073741824\"\r\n              },\r\n              \"type\": \"databases\"\r\n            }\r\n          ],\r\n          \"type\": \"Microsoft.Sql/servers\"\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"databaseName\": {\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"serverName\": {\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      },\r\n      \"EnvLocation\": {\r\n        \"value\": \"West US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -291,7 +291,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2015-04-27T16:38:10.0429123Z\",\r\n    \"duration\": \"PT0S\",\r\n    \"correlationId\": \"b5341073-4180-4e25-84db-eb2aadba0d40\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2015-04-27T18:01:58.8025997Z\",\r\n    \"duration\": \"PT0S\",\r\n    \"correlationId\": \"d01fddcd-5037-430f-bc6a-495c9eda841b\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1693"
@@ -309,13 +309,13 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "b5341073-4180-4e25-84db-eb2aadba0d40"
+          "d01fddcd-5037-430f-bc6a-495c9eda841b"
         ],
         "x-ms-correlation-request-id": [
-          "b5341073-4180-4e25-84db-eb2aadba0d40"
+          "d01fddcd-5037-430f-bc6a-495c9eda841b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163810Z:b5341073-4180-4e25-84db-eb2aadba0d40"
+          "WESTEUROPE:20150427T180158Z:d01fddcd-5037-430f-bc6a-495c9eda841b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -324,7 +324,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:09 GMT"
+          "Mon, 27 Apr 2015 18:01:58 GMT"
         ]
       },
       "StatusCode": 200
@@ -333,7 +333,7 @@
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup?api-version=2014-04-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"administratorLogin\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"testlogin\"\r\n        },\r\n        \"administratorLoginPassword\": {\r\n          \"type\": \"securestring\",\r\n          \"defaultValue\": \"testp@ssMakingIt1007Longer\"\r\n        },\r\n        \"collation\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n        },\r\n        \"databaseName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"edition\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"Basic\"\r\n        },\r\n        \"configuredServiceLevelObjectiveId\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n        },\r\n        \"EnvLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"serverName\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2.0\",\r\n          \"location\": \"[parameters('EnvLocation')]\",\r\n          \"name\": \"[parameters('serverName')]\",\r\n          \"properties\": {\r\n            \"administratorLogin\": \"[parameters('administratorLogin')]\",\r\n            \"administratorLoginPassword\": \"[parameters('administratorLoginPassword')]\"\r\n          },\r\n          \"resources\": [\r\n            {\r\n              \"apiVersion\": \"2.0\",\r\n              \"dependsOn\": [\r\n                \"[concat('Microsoft.Sql/servers/', parameters('serverName'))]\"\r\n              ],\r\n              \"location\": \"[parameters('EnvLocation')]\",\r\n              \"name\": \"[parameters('databaseName')]\",\r\n              \"properties\": {\r\n                \"collation\": \"[parameters('collation')]\",\r\n                \"edition\": \"[parameters('edition')]\",\r\n                \"maxSizeBytes\": \"1073741824\"\r\n              },\r\n              \"type\": \"databases\"\r\n            }\r\n          ],\r\n          \"type\": \"Microsoft.Sql/servers\"\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"databaseName\": {\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"serverName\": {\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      },\r\n      \"EnvLocation\": {\r\n        \"value\": \"West US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"administratorLogin\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"testlogin\"\r\n        },\r\n        \"administratorLoginPassword\": {\r\n          \"type\": \"securestring\",\r\n          \"defaultValue\": \"testp@ssMakingIt1007Longer\"\r\n        },\r\n        \"collation\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n        },\r\n        \"databaseName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"edition\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"Basic\"\r\n        },\r\n        \"configuredServiceLevelObjectiveId\": {\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n        },\r\n        \"EnvLocation\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"serverName\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"apiVersion\": \"2.0\",\r\n          \"location\": \"[parameters('EnvLocation')]\",\r\n          \"name\": \"[parameters('serverName')]\",\r\n          \"properties\": {\r\n            \"administratorLogin\": \"[parameters('administratorLogin')]\",\r\n            \"administratorLoginPassword\": \"[parameters('administratorLoginPassword')]\"\r\n          },\r\n          \"resources\": [\r\n            {\r\n              \"apiVersion\": \"2.0\",\r\n              \"dependsOn\": [\r\n                \"[concat('Microsoft.Sql/servers/', parameters('serverName'))]\"\r\n              ],\r\n              \"location\": \"[parameters('EnvLocation')]\",\r\n              \"name\": \"[parameters('databaseName')]\",\r\n              \"properties\": {\r\n                \"collation\": \"[parameters('collation')]\",\r\n                \"edition\": \"[parameters('edition')]\",\r\n                \"maxSizeBytes\": \"1073741824\"\r\n              },\r\n              \"type\": \"databases\"\r\n            }\r\n          ],\r\n          \"type\": \"Microsoft.Sql/servers\"\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"databaseName\": {\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"serverName\": {\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      },\r\n      \"EnvLocation\": {\r\n        \"value\": \"West US\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -345,7 +345,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2015-04-27T16:38:11.9229328Z\",\r\n    \"duration\": \"PT1.2038349S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Accepted\",\r\n    \"timestamp\": \"2015-04-27T18:02:02.0523355Z\",\r\n    \"duration\": \"PT0.9804545S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -363,13 +363,13 @@
           "1197"
         ],
         "x-ms-request-id": [
-          "d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e"
+          "3d76a46c-621f-4067-8ce6-8140450c245d"
         ],
         "x-ms-correlation-request-id": [
-          "d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e"
+          "3d76a46c-621f-4067-8ce6-8140450c245d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163812Z:d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e"
+          "WESTEUROPE:20150427T180202Z:3d76a46c-621f-4067-8ce6-8140450c245d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -378,7 +378,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:12 GMT"
+          "Mon, 27 Apr 2015 18:02:01 GMT"
         ]
       },
       "StatusCode": 201
@@ -408,16 +408,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31998"
+          "31866"
         ],
         "x-ms-request-id": [
-          "4781eedc-3c7e-487d-b9a6-4701b77926b0"
+          "0c251be6-1c6b-40f6-8701-803511c2c87e"
         ],
         "x-ms-correlation-request-id": [
-          "4781eedc-3c7e-487d-b9a6-4701b77926b0"
+          "0c251be6-1c6b-40f6-8701-803511c2c87e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163813Z:4781eedc-3c7e-487d-b9a6-4701b77926b0"
+          "WESTEUROPE:20150427T180203Z:0c251be6-1c6b-40f6-8701-803511c2c87e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -426,7 +426,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:12 GMT"
+          "Mon, 27 Apr 2015 18:02:03 GMT"
         ]
       },
       "StatusCode": 200
@@ -456,16 +456,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31996"
+          "31864"
         ],
         "x-ms-request-id": [
-          "b839e590-e00c-4856-8522-b6259fe17e32"
+          "2cff65c6-db95-4003-bb39-0152f91f027e"
         ],
         "x-ms-correlation-request-id": [
-          "b839e590-e00c-4856-8522-b6259fe17e32"
+          "2cff65c6-db95-4003-bb39-0152f91f027e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163816Z:b839e590-e00c-4856-8522-b6259fe17e32"
+          "WESTEUROPE:20150427T180208Z:2cff65c6-db95-4003-bb39-0152f91f027e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -474,7 +474,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:16 GMT"
+          "Mon, 27 Apr 2015 18:02:07 GMT"
         ]
       },
       "StatusCode": 200
@@ -504,16 +504,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31994"
+          "31862"
         ],
         "x-ms-request-id": [
-          "61ba668d-7752-47e3-ba3b-e2fb60da9e62"
+          "07c7639a-8ca3-4252-8d0e-0b8a27f21ce9"
         ],
         "x-ms-correlation-request-id": [
-          "61ba668d-7752-47e3-ba3b-e2fb60da9e62"
+          "07c7639a-8ca3-4252-8d0e-0b8a27f21ce9"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163819Z:61ba668d-7752-47e3-ba3b-e2fb60da9e62"
+          "WESTEUROPE:20150427T180213Z:07c7639a-8ca3-4252-8d0e-0b8a27f21ce9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -522,7 +522,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:18 GMT"
+          "Mon, 27 Apr 2015 18:02:13 GMT"
         ]
       },
       "StatusCode": 200
@@ -552,16 +552,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31992"
+          "31860"
         ],
         "x-ms-request-id": [
-          "3f663242-0de5-478e-b511-b9618c800052"
+          "c409c494-adf8-474b-8b1f-e2cb937fb7b5"
         ],
         "x-ms-correlation-request-id": [
-          "3f663242-0de5-478e-b511-b9618c800052"
+          "c409c494-adf8-474b-8b1f-e2cb937fb7b5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163822Z:3f663242-0de5-478e-b511-b9618c800052"
+          "WESTEUROPE:20150427T180216Z:c409c494-adf8-474b-8b1f-e2cb937fb7b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -570,7 +570,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:21 GMT"
+          "Mon, 27 Apr 2015 18:02:16 GMT"
         ]
       },
       "StatusCode": 200
@@ -600,16 +600,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31990"
+          "31858"
         ],
         "x-ms-request-id": [
-          "25dc7c37-d4c8-4aad-870b-86114203629a"
+          "8e422dba-5a4b-4811-8ea2-c50057593f6d"
         ],
         "x-ms-correlation-request-id": [
-          "25dc7c37-d4c8-4aad-870b-86114203629a"
+          "8e422dba-5a4b-4811-8ea2-c50057593f6d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163825Z:25dc7c37-d4c8-4aad-870b-86114203629a"
+          "WESTEUROPE:20150427T180220Z:8e422dba-5a4b-4811-8ea2-c50057593f6d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -618,7 +618,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:25 GMT"
+          "Mon, 27 Apr 2015 18:02:20 GMT"
         ]
       },
       "StatusCode": 200
@@ -648,16 +648,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31988"
+          "31856"
         ],
         "x-ms-request-id": [
-          "d5eebe59-0ed8-49d3-b4e3-f16d03e79175"
+          "0b21a0e1-454b-4e94-8c6f-47db9866b42c"
         ],
         "x-ms-correlation-request-id": [
-          "d5eebe59-0ed8-49d3-b4e3-f16d03e79175"
+          "0b21a0e1-454b-4e94-8c6f-47db9866b42c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163828Z:d5eebe59-0ed8-49d3-b4e3-f16d03e79175"
+          "WESTEUROPE:20150427T180223Z:0b21a0e1-454b-4e94-8c6f-47db9866b42c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -666,7 +666,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:28 GMT"
+          "Mon, 27 Apr 2015 18:02:23 GMT"
         ]
       },
       "StatusCode": 200
@@ -681,10 +681,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A5C53E95720E64B6\",\r\n      \"operationId\": \"A5C53E95720E64B6\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:26.9992232Z\",\r\n        \"duration\": \"PT9.0022401S\",\r\n        \"trackingId\": \"b9cbd3d5-1011-4242-93e2-1b0e6e46c0ad\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "688"
+          "687"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -696,16 +696,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31986"
+          "31854"
         ],
         "x-ms-request-id": [
-          "0c3eff93-e5d2-4d82-93f1-caefdb1f532c"
+          "d03ae3d2-5858-4d6a-8331-1eb077c4f562"
         ],
         "x-ms-correlation-request-id": [
-          "0c3eff93-e5d2-4d82-93f1-caefdb1f532c"
+          "d03ae3d2-5858-4d6a-8331-1eb077c4f562"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163831Z:0c3eff93-e5d2-4d82-93f1-caefdb1f532c"
+          "WESTEUROPE:20150427T180228Z:d03ae3d2-5858-4d6a-8331-1eb077c4f562"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -714,7 +714,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:31 GMT"
+          "Mon, 27 Apr 2015 18:02:27 GMT"
         ]
       },
       "StatusCode": 200
@@ -729,10 +729,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A6CE6F0AE3D3A0DE\",\r\n      \"operationId\": \"A6CE6F0AE3D3A0DE\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:41.637336Z\",\r\n        \"duration\": \"PT14.0779992S\",\r\n        \"trackingId\": \"637692bb-56ed-4ad4-ae03-5a28afac8b5c\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A5C53E95720E64B6\",\r\n      \"operationId\": \"A5C53E95720E64B6\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:26.9992232Z\",\r\n        \"duration\": \"PT9.0022401S\",\r\n        \"trackingId\": \"b9cbd3d5-1011-4242-93e2-1b0e6e46c0ad\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1430"
+          "1429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -744,16 +744,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31984"
+          "31852"
         ],
         "x-ms-request-id": [
-          "7f874f52-9224-49ce-8a99-565b04869ebf"
+          "bd49a915-efd2-49b6-8662-846b8c498d69"
         ],
         "x-ms-correlation-request-id": [
-          "7f874f52-9224-49ce-8a99-565b04869ebf"
+          "bd49a915-efd2-49b6-8662-846b8c498d69"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163834Z:7f874f52-9224-49ce-8a99-565b04869ebf"
+          "WESTEUROPE:20150427T180231Z:bd49a915-efd2-49b6-8662-846b8c498d69"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -762,7 +762,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:34 GMT"
+          "Mon, 27 Apr 2015 18:02:31 GMT"
         ]
       },
       "StatusCode": 200
@@ -777,10 +777,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A6CE6F0AE3D3A0DE\",\r\n      \"operationId\": \"A6CE6F0AE3D3A0DE\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:41.637336Z\",\r\n        \"duration\": \"PT14.0779992S\",\r\n        \"trackingId\": \"637692bb-56ed-4ad4-ae03-5a28afac8b5c\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A5C53E95720E64B6\",\r\n      \"operationId\": \"A5C53E95720E64B6\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:26.9992232Z\",\r\n        \"duration\": \"PT9.0022401S\",\r\n        \"trackingId\": \"b9cbd3d5-1011-4242-93e2-1b0e6e46c0ad\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1430"
+          "1429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -792,16 +792,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31982"
+          "31850"
         ],
         "x-ms-request-id": [
-          "788df3a2-b82a-44f4-9c4f-4e2616c7e765"
+          "b0862113-7d1b-40ac-b11d-7835137f67f9"
         ],
         "x-ms-correlation-request-id": [
-          "788df3a2-b82a-44f4-9c4f-4e2616c7e765"
+          "b0862113-7d1b-40ac-b11d-7835137f67f9"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163837Z:788df3a2-b82a-44f4-9c4f-4e2616c7e765"
+          "WESTEUROPE:20150427T180234Z:b0862113-7d1b-40ac-b11d-7835137f67f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -810,7 +810,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:37 GMT"
+          "Mon, 27 Apr 2015 18:02:34 GMT"
         ]
       },
       "StatusCode": 200
@@ -825,10 +825,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A6CE6F0AE3D3A0DE\",\r\n      \"operationId\": \"A6CE6F0AE3D3A0DE\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:41.637336Z\",\r\n        \"duration\": \"PT14.0779992S\",\r\n        \"trackingId\": \"637692bb-56ed-4ad4-ae03-5a28afac8b5c\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A5C53E95720E64B6\",\r\n      \"operationId\": \"A5C53E95720E64B6\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:26.9992232Z\",\r\n        \"duration\": \"PT9.0022401S\",\r\n        \"trackingId\": \"b9cbd3d5-1011-4242-93e2-1b0e6e46c0ad\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1430"
+          "1429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -840,16 +840,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31980"
+          "31848"
         ],
         "x-ms-request-id": [
-          "e29d31f7-1c43-431c-a98a-b11ffe21234b"
+          "d304874d-c405-47c5-a0d4-19e0608f76f5"
         ],
         "x-ms-correlation-request-id": [
-          "e29d31f7-1c43-431c-a98a-b11ffe21234b"
+          "d304874d-c405-47c5-a0d4-19e0608f76f5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163841Z:e29d31f7-1c43-431c-a98a-b11ffe21234b"
+          "WESTEUROPE:20150427T180239Z:d304874d-c405-47c5-a0d4-19e0608f76f5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -858,7 +858,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:41 GMT"
+          "Mon, 27 Apr 2015 18:02:38 GMT"
         ]
       },
       "StatusCode": 200
@@ -873,10 +873,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A6CE6F0AE3D3A0DE\",\r\n      \"operationId\": \"A6CE6F0AE3D3A0DE\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:41.637336Z\",\r\n        \"duration\": \"PT14.0779992S\",\r\n        \"trackingId\": \"637692bb-56ed-4ad4-ae03-5a28afac8b5c\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/A5C53E95720E64B6\",\r\n      \"operationId\": \"A5C53E95720E64B6\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T18:02:26.9992232Z\",\r\n        \"duration\": \"PT9.0022401S\",\r\n        \"trackingId\": \"b9cbd3d5-1011-4242-93e2-1b0e6e46c0ad\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1430"
+          "1429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -888,16 +888,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31978"
+          "31846"
         ],
         "x-ms-request-id": [
-          "1addad96-11fb-42da-82a9-e6586fcdf622"
+          "758065b2-28ae-448f-b380-6ec8887e5c7d"
         ],
         "x-ms-correlation-request-id": [
-          "1addad96-11fb-42da-82a9-e6586fcdf622"
+          "758065b2-28ae-448f-b380-6ec8887e5c7d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163844Z:1addad96-11fb-42da-82a9-e6586fcdf622"
+          "WESTEUROPE:20150427T180244Z:758065b2-28ae-448f-b380-6ec8887e5c7d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -906,151 +906,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:44 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXAvb3BlcmF0aW9ucz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1430"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31976"
-        ],
-        "x-ms-request-id": [
-          "5c48eb05-a9ab-43cb-8fca-c23e04acc0b1"
-        ],
-        "x-ms-correlation-request-id": [
-          "5c48eb05-a9ab-43cb-8fca-c23e04acc0b1"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163847Z:5c48eb05-a9ab-43cb-8fca-c23e04acc0b1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:46 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXAvb3BlcmF0aW9ucz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1430"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31974"
-        ],
-        "x-ms-request-id": [
-          "3bbfb48c-f854-4f5f-bd9d-245ade0a1452"
-        ],
-        "x-ms-correlation-request-id": [
-          "3bbfb48c-f854-4f5f-bd9d-245ade0a1452"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163850Z:3bbfb48c-f854-4f5f-bd9d-245ade0a1452"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:50 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXAvb3BlcmF0aW9ucz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/22C9BA4F390B91FB\",\r\n      \"operationId\": \"22C9BA4F390B91FB\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:49.5407338Z\",\r\n        \"duration\": \"PT8.9456104S\",\r\n        \"trackingId\": \"68b0e851-f757-4236-b0bd-cfa4660cdee5\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n          \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup/operations/74DA3780CCD30F90\",\r\n      \"operationId\": \"74DA3780CCD30F90\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2015-04-27T16:38:40.4986866Z\",\r\n        \"duration\": \"PT17.9550972S\",\r\n        \"trackingId\": \"7c2f02b2-79ba-4fd0-8565-993d5cd7855f\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n          \"resourceType\": \"Microsoft.Sql/servers\",\r\n          \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1430"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31972"
-        ],
-        "x-ms-request-id": [
-          "ec3581af-e929-4891-8587-bc7569e1001e"
-        ],
-        "x-ms-correlation-request-id": [
-          "ec3581af-e929-4891-8587-bc7569e1001e"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163853Z:ec3581af-e929-4891-8587-bc7569e1001e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:53 GMT"
+          "Mon, 27 Apr 2015 18:02:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -1065,7 +921,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1080,16 +936,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31997"
+          "31865"
         ],
         "x-ms-request-id": [
-          "222b8012-2938-494b-b304-700d9ad074cd"
+          "01dba41d-78e5-4fe4-8e31-76bc11162b5b"
         ],
         "x-ms-correlation-request-id": [
-          "222b8012-2938-494b-b304-700d9ad074cd"
+          "01dba41d-78e5-4fe4-8e31-76bc11162b5b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163813Z:222b8012-2938-494b-b304-700d9ad074cd"
+          "WESTEUROPE:20150427T180205Z:01dba41d-78e5-4fe4-8e31-76bc11162b5b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1098,7 +954,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:13 GMT"
+          "Mon, 27 Apr 2015 18:02:04 GMT"
         ]
       },
       "StatusCode": 200
@@ -1113,7 +969,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1128,16 +984,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31995"
+          "31863"
         ],
         "x-ms-request-id": [
-          "a6b29042-087c-4632-b809-870319763133"
+          "3a41a32f-cae5-4734-adde-89e77cb84d9d"
         ],
         "x-ms-correlation-request-id": [
-          "a6b29042-087c-4632-b809-870319763133"
+          "3a41a32f-cae5-4734-adde-89e77cb84d9d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163816Z:a6b29042-087c-4632-b809-870319763133"
+          "WESTEUROPE:20150427T180210Z:3a41a32f-cae5-4734-adde-89e77cb84d9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1146,7 +1002,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:16 GMT"
+          "Mon, 27 Apr 2015 18:02:10 GMT"
         ]
       },
       "StatusCode": 200
@@ -1161,7 +1017,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1176,16 +1032,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31993"
+          "31861"
         ],
         "x-ms-request-id": [
-          "b3c42ad2-a9af-46fd-91b4-3a72c094f023"
+          "756cea2b-e873-490e-bcba-dd90748bde09"
         ],
         "x-ms-correlation-request-id": [
-          "b3c42ad2-a9af-46fd-91b4-3a72c094f023"
+          "756cea2b-e873-490e-bcba-dd90748bde09"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163819Z:b3c42ad2-a9af-46fd-91b4-3a72c094f023"
+          "WESTEUROPE:20150427T180214Z:756cea2b-e873-490e-bcba-dd90748bde09"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1194,7 +1050,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:18 GMT"
+          "Mon, 27 Apr 2015 18:02:14 GMT"
         ]
       },
       "StatusCode": 200
@@ -1209,7 +1065,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1224,16 +1080,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31991"
+          "31859"
         ],
         "x-ms-request-id": [
-          "ab22a4b0-e46c-4c96-8374-d28cc34c56c2"
+          "6f6bca2c-fd63-4f5b-8d8d-214e5ad2fad7"
         ],
         "x-ms-correlation-request-id": [
-          "ab22a4b0-e46c-4c96-8374-d28cc34c56c2"
+          "6f6bca2c-fd63-4f5b-8d8d-214e5ad2fad7"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163822Z:ab22a4b0-e46c-4c96-8374-d28cc34c56c2"
+          "WESTEUROPE:20150427T180217Z:6f6bca2c-fd63-4f5b-8d8d-214e5ad2fad7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1242,7 +1098,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:22 GMT"
+          "Mon, 27 Apr 2015 18:02:17 GMT"
         ]
       },
       "StatusCode": 200
@@ -1257,7 +1113,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1272,16 +1128,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31989"
+          "31857"
         ],
         "x-ms-request-id": [
-          "e0e1fdde-86f7-4624-9252-f8c5fd8baa2c"
+          "99582e56-e8eb-4107-a513-ded0cf74b438"
         ],
         "x-ms-correlation-request-id": [
-          "e0e1fdde-86f7-4624-9252-f8c5fd8baa2c"
+          "99582e56-e8eb-4107-a513-ded0cf74b438"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163825Z:e0e1fdde-86f7-4624-9252-f8c5fd8baa2c"
+          "WESTEUROPE:20150427T180220Z:99582e56-e8eb-4107-a513-ded0cf74b438"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1290,7 +1146,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:25 GMT"
+          "Mon, 27 Apr 2015 18:02:20 GMT"
         ]
       },
       "StatusCode": 200
@@ -1305,7 +1161,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1320,16 +1176,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31987"
+          "31855"
         ],
         "x-ms-request-id": [
-          "0484fb70-3b60-4801-9bde-e718301f5642"
+          "f4accaba-ef85-4be8-8845-ddbaba708975"
         ],
         "x-ms-correlation-request-id": [
-          "0484fb70-3b60-4801-9bde-e718301f5642"
+          "f4accaba-ef85-4be8-8845-ddbaba708975"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163828Z:0484fb70-3b60-4801-9bde-e718301f5642"
+          "WESTEUROPE:20150427T180225Z:f4accaba-ef85-4be8-8845-ddbaba708975"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1338,7 +1194,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:28 GMT"
+          "Mon, 27 Apr 2015 18:02:24 GMT"
         ]
       },
       "StatusCode": 200
@@ -1353,7 +1209,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1368,16 +1224,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31985"
+          "31853"
         ],
         "x-ms-request-id": [
-          "a2407c89-4f7c-4879-8f1a-e519166ec6c9"
+          "b62f3d34-1329-418f-81ea-e7a7bf1e733c"
         ],
         "x-ms-correlation-request-id": [
-          "a2407c89-4f7c-4879-8f1a-e519166ec6c9"
+          "b62f3d34-1329-418f-81ea-e7a7bf1e733c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163831Z:a2407c89-4f7c-4879-8f1a-e519166ec6c9"
+          "WESTEUROPE:20150427T180228Z:b62f3d34-1329-418f-81ea-e7a7bf1e733c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1386,7 +1242,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:31 GMT"
+          "Mon, 27 Apr 2015 18:02:28 GMT"
         ]
       },
       "StatusCode": 200
@@ -1401,7 +1257,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1416,16 +1272,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31983"
+          "31851"
         ],
         "x-ms-request-id": [
-          "0221ba72-ae1d-4fd5-b6d9-ebe36a7f81b9"
+          "ad6e5e5b-d634-44bf-918e-4c6cd887e74a"
         ],
         "x-ms-correlation-request-id": [
-          "0221ba72-ae1d-4fd5-b6d9-ebe36a7f81b9"
+          "ad6e5e5b-d634-44bf-918e-4c6cd887e74a"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163835Z:0221ba72-ae1d-4fd5-b6d9-ebe36a7f81b9"
+          "WESTEUROPE:20150427T180232Z:ad6e5e5b-d634-44bf-918e-4c6cd887e74a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1434,7 +1290,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:34 GMT"
+          "Mon, 27 Apr 2015 18:02:31 GMT"
         ]
       },
       "StatusCode": 200
@@ -1449,7 +1305,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1464,16 +1320,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31981"
+          "31849"
         ],
         "x-ms-request-id": [
-          "48daf765-3f8a-47bd-a62b-79fef921cf0a"
+          "332addb7-8f89-414c-adb7-ac70ac3775fb"
         ],
         "x-ms-correlation-request-id": [
-          "48daf765-3f8a-47bd-a62b-79fef921cf0a"
+          "332addb7-8f89-414c-adb7-ac70ac3775fb"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163838Z:48daf765-3f8a-47bd-a62b-79fef921cf0a"
+          "WESTEUROPE:20150427T180235Z:332addb7-8f89-414c-adb7-ac70ac3775fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1482,7 +1338,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:37 GMT"
+          "Mon, 27 Apr 2015 18:02:34 GMT"
         ]
       },
       "StatusCode": 200
@@ -1497,7 +1353,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T18:02:17.8063628Z\",\r\n    \"duration\": \"PT16.7344818S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1701"
@@ -1512,16 +1368,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31979"
+          "31847"
         ],
         "x-ms-request-id": [
-          "413e9ff8-6dd9-439d-8a3b-a3964f5bbaef"
+          "e93b2b74-5a05-4d52-b4e6-a5a32af98349"
         ],
         "x-ms-correlation-request-id": [
-          "413e9ff8-6dd9-439d-8a3b-a3964f5bbaef"
+          "e93b2b74-5a05-4d52-b4e6-a5a32af98349"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163841Z:413e9ff8-6dd9-439d-8a3b-a3964f5bbaef"
+          "WESTEUROPE:20150427T180239Z:e93b2b74-5a05-4d52-b4e6-a5a32af98349"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1530,7 +1386,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:41 GMT"
+          "Mon, 27 Apr 2015 18:02:38 GMT"
         ]
       },
       "StatusCode": 200
@@ -1545,151 +1401,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1701"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31977"
-        ],
-        "x-ms-request-id": [
-          "b4cdee5d-7b0a-4770-9c3f-db10e2869613"
-        ],
-        "x-ms-correlation-request-id": [
-          "b4cdee5d-7b0a-4770-9c3f-db10e2869613"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163844Z:b4cdee5d-7b0a-4770-9c3f-db10e2869613"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:44 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1701"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31975"
-        ],
-        "x-ms-request-id": [
-          "58d6c44f-f045-47bf-8cc9-3974ebea06d0"
-        ],
-        "x-ms-correlation-request-id": [
-          "58d6c44f-f045-47bf-8cc9-3974ebea06d0"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163847Z:58d6c44f-f045-47bf-8cc9-3974ebea06d0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:46 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2015-04-27T16:38:22.4472822Z\",\r\n    \"duration\": \"PT11.7281843S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1701"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31973"
-        ],
-        "x-ms-request-id": [
-          "3b5ce7e4-6543-466a-a113-135650693371"
-        ],
-        "x-ms-correlation-request-id": [
-          "3b5ce7e4-6543-466a-a113-135650693371"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163851Z:3b5ce7e4-6543-466a-a113-135650693371"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 27 Apr 2015 16:38:50 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9kZXBsb3ltZW50cy9zcWwtYXVkaXQtdGVzdC1lbnYtc2V0dXA/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2015-04-27T16:38:52.7538603Z\",\r\n    \"duration\": \"PT42.0347624S\",\r\n    \"correlationId\": \"d37768c4-dbaf-4fd0-83e0-02b9d26c9f3e\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/deployments/sql-audit-test-env-setup\",\r\n  \"name\": \"sql-audit-test-env-setup\",\r\n  \"properties\": {\r\n    \"parameters\": {\r\n      \"administratorLogin\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"testlogin\"\r\n      },\r\n      \"administratorLoginPassword\": {\r\n        \"type\": \"SecureString\"\r\n      },\r\n      \"collation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n      },\r\n      \"databaseName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"sql-audit-cmdlet-db206\"\r\n      },\r\n      \"edition\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"Basic\"\r\n      },\r\n      \"configuredServiceLevelObjectiveId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"910b4fcb-8a29-4c3e-958f-f7ba794388b2\"\r\n      },\r\n      \"envLocation\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"West US\"\r\n      },\r\n      \"serverName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2015-04-27T18:02:53.8505682Z\",\r\n    \"duration\": \"PT52.7786872S\",\r\n    \"correlationId\": \"3d76a46c-621f-4067-8ce6-8140450c245d\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Sql\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"servers\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          },\r\n          {\r\n            \"resourceType\": \"servers/databases\",\r\n            \"locations\": [\r\n              \"westus\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [\r\n      {\r\n        \"dependsOn\": [\r\n          {\r\n            \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n            \"resourceType\": \"Microsoft.Sql/servers\",\r\n            \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\"\r\n          }\r\n        ],\r\n        \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/databases/sql-audit-cmdlet-db206\",\r\n        \"resourceType\": \"Microsoft.Sql/servers/databases\",\r\n        \"resourceName\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2/sql-audit-cmdlet-db206\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1703"
@@ -1704,16 +1416,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31971"
+          "31845"
         ],
         "x-ms-request-id": [
-          "6ba678cc-a95e-4a06-a4ad-5ed774563c17"
+          "0242cd80-fccd-4a6b-8df8-7294a98d2799"
         ],
         "x-ms-correlation-request-id": [
-          "6ba678cc-a95e-4a06-a4ad-5ed774563c17"
+          "0242cd80-fccd-4a6b-8df8-7294a98d2799"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163854Z:6ba678cc-a95e-4a06-a4ad-5ed774563c17"
+          "WESTEUROPE:20150427T180249Z:0242cd80-fccd-4a6b-8df8-7294a98d2799"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1722,7 +1434,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:53 GMT"
+          "Mon, 27 Apr 2015 18:02:48 GMT"
         ]
       },
       "StatusCode": 200
@@ -1737,10 +1449,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n      \"name\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9\",\r\n      \"type\": \"Microsoft.Sql/servers\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/databases/sql-audit-cmdlet-db206\",\r\n      \"name\": \"9e3a37e0-0b47-476c-87ca-2d88cdd14da9/sql-audit-cmdlet-db206\",\r\n      \"type\": \"Microsoft.Sql/servers/databases\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n      \"name\": \"dc708b06-cca1-4727-ad4c-1d7fd5041ba2\",\r\n      \"type\": \"Microsoft.Sql/servers\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "617"
+          "281"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1752,16 +1464,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31970"
+          "31844"
         ],
         "x-ms-request-id": [
-          "1537dff9-ba7b-4109-a456-60472bb828de"
+          "ab7a1b2a-760d-4bf2-8c38-c0b181fda2e4"
         ],
         "x-ms-correlation-request-id": [
-          "1537dff9-ba7b-4109-a456-60472bb828de"
+          "ab7a1b2a-760d-4bf2-8c38-c0b181fda2e4"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163856Z:1537dff9-ba7b-4109-a456-60472bb828de"
+          "WESTEUROPE:20150427T180251Z:ab7a1b2a-760d-4bf2-8c38-c0b181fda2e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1770,7 +1482,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:55 GMT"
+          "Mon, 27 Apr 2015 18:02:50 GMT"
         ]
       },
       "StatusCode": 200
@@ -1782,7 +1494,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ]\r\n}",
@@ -1803,16 +1515,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westeurope:7b519e13-fe85-44db-90af-b6d72715dad4"
+          "westeurope:3a3643ec-79b8-44d0-b70a-7ff57162634f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31869"
+          "31843"
         ],
         "x-ms-correlation-request-id": [
-          "4cb48dd6-8d60-473e-94a3-6623e3b7f327"
+          "7c984be6-3048-4e3b-bb41-cfed93ec3d96"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163857Z:4cb48dd6-8d60-473e-94a3-6623e3b7f327"
+          "WESTEUROPE:20150427T180252Z:7c984be6-3048-4e3b-bb41-cfed93ec3d96"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1821,14 +1533,14 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:56 GMT"
+          "Mon, 27 Apr 2015 18:02:51 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzLzllM2EzN2UwLTBiNDctNDc2Yy04N2NhLTJkODhjZGQxNGRhOS9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2RjNzA4YjA2LWNjYTEtNDcyNy1hZDRjLTFkN2ZkNTA0MWJhMi9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1836,10 +1548,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
         ],
         "x-ms-client-request-id": [
-          "ae114d7a-811e-454f-90fd-2b260dd3fc75"
+          "857999b2-7413-4dc8-b07c-e4702129616e"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"New\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": null,\r\n    \"auditLogsTableName\": null,\r\n    \"storageAccountKey\": null,\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": null,\r\n    \"storageAccountResourceGroupName\": null,\r\n    \"storageAccountSubscriptionId\": null,\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"New\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": null,\r\n    \"auditLogsTableName\": null,\r\n    \"storageAccountKey\": null,\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": null,\r\n    \"storageAccountResourceGroupName\": null,\r\n    \"storageAccountSubscriptionId\": null,\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "870"
@@ -1848,7 +1560,7 @@
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "4d554bcf-20ac-4019-bff9-2f77ee99dc77"
+          "c585ec73-b5e7-4501-a145-7a9dff920bad"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1857,13 +1569,13 @@
           "3.0;"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31858"
+          "31869"
         ],
         "x-ms-correlation-request-id": [
-          "f2039611-0835-43fa-a846-43da85a7a360"
+          "21b6b3c7-292b-4b8b-b979-b2d117a84bdb"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163859Z:f2039611-0835-43fa-a846-43da85a7a360"
+          "WESTEUROPE:20150427T180254Z:21b6b3c7-292b-4b8b-b979-b2d117a84bdb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1872,7 +1584,7 @@
           "no-store, no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:38:59 GMT"
+          "Mon, 27 Apr 2015 18:02:54 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1881,8 +1593,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzLzllM2EzN2UwLTBiNDctNDc2Yy04N2NhLTJkODhjZGQxNGRhOS9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2RjNzA4YjA2LWNjYTEtNDcyNy1hZDRjLTFkN2ZkNTA0MWJhMi9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1890,10 +1602,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
         ],
         "x-ms-client-request-id": [
-          "442be319-8f28-4c09-b6bd-b2672c9e8123"
+          "e43ff466-8a3c-45dd-a3ab-1645e546d021"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"New\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": null,\r\n    \"auditLogsTableName\": null,\r\n    \"storageAccountKey\": null,\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": null,\r\n    \"storageAccountResourceGroupName\": null,\r\n    \"storageAccountSubscriptionId\": null,\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"New\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": null,\r\n    \"auditLogsTableName\": null,\r\n    \"storageAccountKey\": null,\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": null,\r\n    \"storageAccountResourceGroupName\": null,\r\n    \"storageAccountSubscriptionId\": null,\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "870"
@@ -1902,7 +1614,7 @@
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "51f0b32a-63c8-4d28-8b17-c2fe8b897848"
+          "5a620fbb-be65-4366-a63e-c123f0de6a8d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1911,13 +1623,13 @@
           "3.0;"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31857"
+          "31868"
         ],
         "x-ms-correlation-request-id": [
-          "5e766365-786c-4cea-8d1a-5eb5f399411d"
+          "cd392d8c-0fdb-4b09-aeca-7e029db43328"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163900Z:5e766365-786c-4cea-8d1a-5eb5f399411d"
+          "WESTEUROPE:20150427T180258Z:cd392d8c-0fdb-4b09-aeca-7e029db43328"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1926,7 +1638,7 @@
           "no-store, no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:00 GMT"
+          "Mon, 27 Apr 2015 18:02:58 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1935,8 +1647,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzLzllM2EzN2UwLTBiNDctNDc2Yy04N2NhLTJkODhjZGQxNGRhOS9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2RjNzA4YjA2LWNjYTEtNDcyNy1hZDRjLTFkN2ZkNTA0MWJhMi9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1944,10 +1656,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
         ],
         "x-ms-client-request-id": [
-          "48c82d73-7e57-424d-b67c-496df0313dd8"
+          "4f4f50aa-87ee-4706-bc26-917441592761"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\",\r\n    \"storageAccountKey\": \"********\",\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\",\r\n    \"storageAccountKey\": \"********\",\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1017"
@@ -1956,7 +1668,7 @@
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "1c9d728f-0bfa-4b58-b083-d18a2baeb544"
+          "d80be2ea-9b28-4df5-911b-02a08349eb50"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1965,13 +1677,13 @@
           "3.0;"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31856"
+          "31865"
         ],
         "x-ms-correlation-request-id": [
-          "1b704e6d-1192-4be5-b0d4-8c3109e275f5"
+          "eb4a4359-9ec2-4448-b64d-071d0f627ccf"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163907Z:1b704e6d-1192-4be5-b0d4-8c3109e275f5"
+          "WESTEUROPE:20150427T180325Z:eb4a4359-9ec2-4448-b64d-071d0f627ccf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1980,7 +1692,7 @@
           "no-store, no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:07 GMT"
+          "Mon, 27 Apr 2015 18:03:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2013,16 +1725,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31969"
+          "31841"
         ],
         "x-ms-request-id": [
-          "dc240809-77f0-4adb-bd44-288ae7b5454a"
+          "698bbf29-ddbd-4bce-907e-906c84d0b994"
         ],
         "x-ms-correlation-request-id": [
-          "dc240809-77f0-4adb-bd44-288ae7b5454a"
+          "698bbf29-ddbd-4bce-907e-906c84d0b994"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20150427T163901Z:dc240809-77f0-4adb-bd44-288ae7b5454a"
+          "WESTEUROPE:20150427T180258Z:698bbf29-ddbd-4bce-907e-906c84d0b994"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2031,7 +1743,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:00 GMT"
+          "Mon, 27 Apr 2015 18:02:58 GMT"
         ]
       },
       "StatusCode": 200
@@ -2049,7 +1761,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/cca24ec8-99b5-4aa7-9ff6-486e886f304c/services/storageservices/auditcmdlets206</Url>\r\n  <ServiceName>auditcmdlets206</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>YXVkaXRjbWRsZXRzMjA2</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://auditcmdlets206.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://auditcmdlets206.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://auditcmdlets206.table.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>West US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>East US</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2015-04-27T16:37:04Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-WestUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>West US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/cca24ec8-99b5-4aa7-9ff6-486e886f304c/services/storageservices/auditcmdlets206</Url>\r\n  <ServiceName>auditcmdlets206</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>YXVkaXRjbWRsZXRzMjA2</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://auditcmdlets206.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://auditcmdlets206.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://auditcmdlets206.table.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>West US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>East US</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2015-04-27T18:00:33Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-WestUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>West US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
       "ResponseHeaders": {
         "Content-Length": [
           "1281"
@@ -2061,13 +1773,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "1ee33352e4b79ead8525d2501ea7c2de"
+          "2597ba1129ce9094bbaf683182961bbe"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:00 GMT"
+          "Mon, 27 Apr 2015 18:02:59 GMT"
         ],
         "Server": [
           "1.0.6199.65",
@@ -2090,7 +1802,7 @@
           "none"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"XQ9TuMcuWHQQg2kUPd6V+9LrWjwiMGRQN4xAk6KPaYrXZ3NC8sRrDT3ioT2ZpyX0cNP4xXMAMJvgqVkYmxUPhg==\",\r\n  \"secondaryKey\": \"Y5zH0EQGEb6trcbtxpuiQjVgN9Cows51mKE6gf/K1jIlZJC9jJiJpK1wAYUtDM1HIsrI21RMuvD8U0W8kKGTZA==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"34XYSnyvMWJ9Mqixqz+kV5FGgZCyMgBBYkhIaDM3sOKRuX25XiuIDhBESTPkHft2ciVsc8ffr8YhAwxh/pns3A==\",\r\n  \"secondaryKey\": \"mq046rtAAqNYWwG2eTZnnOPBLHxWTH6glSj1QnD8aQN+Tj0SyxAn1NB8H+WnyR/DxpyoChL+vtLHPvbWsT98Ow==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "211"
@@ -2108,16 +1820,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "southcentralus:83fda8ab-64a2-4fa1-9225-dbd3695adf0c"
+          "southcentralus:ebb1dfb9-e961-4ab8-9b15-cf5bd189607c"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "71087eb3-94de-4df4-9015-d53b84b487ca"
+          "ebf4f8d5-16ac-45f0-b051-49713bcbe707"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163903Z:71087eb3-94de-4df4-9015-d53b84b487ca"
+          "WESTEUROPE:20150427T180320Z:ebf4f8d5-16ac-45f0-b051-49713bcbe707"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2126,16 +1838,16 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:03 GMT"
+          "Mon, 27 Apr 2015 18:03:20 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzLzllM2EzN2UwLTBiNDctNDc2Yy04N2NhLTJkODhjZGQxNGRhOS9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdWRpdC1jbWRsZXQtdGVzdC1yZzIwNi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2RjNzA4YjA2LWNjYTEtNDcyNy1hZDRjLTFkN2ZkNTA0MWJhMi9hdWRpdGluZ1BvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"storageAccountKey\": \"XQ9TuMcuWHQQg2kUPd6V+9LrWjwiMGRQN4xAk6KPaYrXZ3NC8sRrDT3ioT2ZpyX0cNP4xXMAMJvgqVkYmxUPhg==\",\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"storageAccountKey\": \"34XYSnyvMWJ9Mqixqz+kV5FGgZCyMgBBYkhIaDM3sOKRuX25XiuIDhBESTPkHft2ciVsc8ffr8YhAwxh/pns3A==\",\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2147,10 +1859,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
         ],
         "x-ms-client-request-id": [
-          "442be319-8f28-4c09-b6bd-b2672c9e8123"
+          "e43ff466-8a3c-45dd-a3ab-1645e546d021"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/9e3a37e0-0b47-476c-87ca-2d88cdd14da9/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": null,\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\",\r\n    \"storageAccountKey\": \"XQ9TuMcuWHQQg2kUPd6V+9LrWjwiMGRQN4xAk6KPaYrXZ3NC8sRrDT3ioT2ZpyX0cNP4xXMAMJvgqVkYmxUPhg==\",\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-audit-cmdlet-test-rg206/providers/Microsoft.Sql/servers/dc708b06-cca1-4727-ad4c-1d7fd5041ba2/auditingPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/auditingPolicies\",\r\n  \"location\": null,\r\n  \"properties\": {\r\n    \"auditingState\": \"Enabled\",\r\n    \"eventTypesToAudit\": \"DataAccess,DataChanges,RevokePermissions,SchemaChanges,SecurityExceptions,PlainSQL_Success,PlainSQL_Failure,ParameterizedSQL_Success,ParameterizedSQL_Failure,StoredProcedure_Success,StoredProcedure_Failure,Login_Success,Login_Failure,TransactionManagement_Success,TransactionManagement_Failure\",\r\n    \"storageAccountName\": \"auditcmdlets206\",\r\n    \"auditLogsTableName\": \"retentionTableIdentifier206\",\r\n    \"storageAccountKey\": \"34XYSnyvMWJ9Mqixqz+kV5FGgZCyMgBBYkhIaDM3sOKRuX25XiuIDhBESTPkHft2ciVsc8ffr8YhAwxh/pns3A==\",\r\n    \"storageAccountSecondaryKey\": null,\r\n    \"storageTableEndpoint\": \"https://auditcmdlets206.table.core.windows.net/\",\r\n    \"storageAccountResourceGroupName\": \"Default-Storage-WestUS\",\r\n    \"storageAccountSubscriptionId\": \"cca24ec8-99b5-4aa7-9ff6-486e886f304c\",\r\n    \"retentionDays\": \"0\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "1092"
@@ -2159,7 +1871,7 @@
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
         ],
         "x-ms-request-id": [
-          "12d0f6f2-008c-474d-a549-f93d2c423af4"
+          "4396a0ec-2817-449b-b51f-d7e78b4dbd1a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -2174,10 +1886,10 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "001fa9cc-00d5-49dd-af45-151cb1d1a379"
+          "6babf023-2387-41d0-819a-0f066e2e4312"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20150427T163905Z:001fa9cc-00d5-49dd-af45-151cb1d1a379"
+          "WESTEUROPE:20150427T180323Z:6babf023-2387-41d0-819a-0f066e2e4312"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2186,7 +1898,7 @@
           "no-store, no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:05 GMT"
+          "Mon, 27 Apr 2015 18:03:22 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2216,13 +1928,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "f46b7f772cc9928cb3f38db5eeabca2a"
+          "7bb09de7ea77954490e5b942ae691fa2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:10 GMT"
+          "Mon, 27 Apr 2015 18:03:29 GMT"
         ],
         "Server": [
           "1.0.6199.65",
@@ -2233,8 +1945,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/f46b7f772cc9928cb3f38db5eeabca2a",
-      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zL2Y0NmI3Zjc3MmNjOTkyOGNiM2YzOGRiNWVlYWJjYTJh",
+      "RequestUri": "/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operations/7bb09de7ea77954490e5b942ae691fa2",
+      "EncodedRequestUri": "L2NjYTI0ZWM4LTk5YjUtNGFhNy05ZmY2LTQ4NmU4ODZmMzA0Yy9vcGVyYXRpb25zLzdiYjA5ZGU3ZWE3Nzk1NDQ5MGU1Yjk0MmFlNjkxZmEy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2245,7 +1957,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>f46b7f77-2cc9-928c-b3f3-8db5eeabca2a</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>7bb09de7-ea77-9544-90e5-b942ae691fa2</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -2257,13 +1969,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "e6c3204fbad99755b1512b5e60114317"
+          "8bb8ce4f5fce9ed39a77e8729a6f40d9"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 27 Apr 2015 16:39:10 GMT"
+          "Mon, 27 Apr 2015 18:03:37 GMT"
         ],
         "Server": [
           "1.0.6199.65",
