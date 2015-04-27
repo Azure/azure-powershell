@@ -28,7 +28,28 @@ function Get-ComputeTestResourceName
         }
     }
     
-    $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg")
+    $oldErrorActionPreferenceValue = $ErrorActionPreference;
+    $ErrorActionPreference = "SilentlyContinue";
+    
+    try
+    {
+        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
+    }
+    catch
+    {
+        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        {
+            $assetName = Get-RandomItemName;
+        }
+        else
+        {
+            throw;
+        }
+    }
+    finally
+    {
+        $ErrorActionPreference = $oldErrorActionPreferenceValue;
+    }
 
     return $assetName
 }
@@ -144,7 +165,7 @@ function Get-DefaultRDFEImage
 
 <#
 .SYNOPSIS
-Gets default RDFE Image
+Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
@@ -193,6 +214,19 @@ function Get-DefaultCRPImage
     $vmimg = Get-AzureVMImageDetail -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
+}
+
+<#
+.SYNOPSIS
+Gets VMM Images
+#>
+function Get-MarketplaceImage
+{
+    param([string] $location = "eastasia", [string] $pubFilter = '*', [string] $offerFilter = '*')
+
+    $imgs = Get-AzureVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail | where { $_.PurchasePlan -ne $null };
+
+    return $imgs;
 }
 
 <#
