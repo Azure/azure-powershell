@@ -214,7 +214,7 @@
     <value>Cannot use deprecated audit events with the current audit events in the same policy.</value>
   </data>
   <data name="ServerUpgradeExists" xml:space="preserve">
-    <value>Server upgrade for server: '{0}' already exists.</value>
+    <value>Request for upgrade of server '{0}' already exists.</value>
   </data>
   <data name="StopAzureSqlServerUpgradeWarning" xml:space="preserve">
     <value>Are you sure you want to stop the upgrade for Azure Sql Database Server '{0}'?</value>
