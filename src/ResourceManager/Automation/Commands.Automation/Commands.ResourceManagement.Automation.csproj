@@ -177,7 +177,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Automation.dll-help.xml">
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Automation.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
