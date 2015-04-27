@@ -235,8 +235,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.DataMaskingTests\TestDatabaseDataMaskingTextRuleLifecycle.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.DataMaskingTests\TestDatabaseRetentionMissing.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.DataMaskingTests\TestServerRetentionMissing.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseDirectAccess.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -244,6 +242,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseRetentionMissing.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestDatabaseStorageKeyRotation.json">
@@ -292,6 +293,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerRetentionMissing.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.SecurityTests\TestServerStorageKeyRotation.json">
