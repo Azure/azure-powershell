@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
@@ -86,6 +87,11 @@ namespace Microsoft.Azure.Commands.Dns
             if (!string.Equals(this.ParameterSetName, this.RecordSet.RecordType.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 throw new ArgumentException(string.Format(ProjectResources.Error_AddRecordTypeMismatch, this.ParameterSetName, this.RecordSet.RecordType));
+            }
+
+            if (result.Records == null)
+            {
+                result.Records = new List<DnsRecordBase>();
             }
 
             switch (result.RecordType)

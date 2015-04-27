@@ -69,12 +69,6 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (ParameterSetName == "Fields")
             {
-                if (this.ZoneName.EndsWith("."))
-                {
-                    this.ZoneName = this.ZoneName.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.ZoneName));
-                }
-
                 zoneName = this.ZoneName;
                 resourceGroupname = this.ResourceGroupName;
             }
@@ -84,10 +78,10 @@ namespace Microsoft.Azure.Commands.Dns
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
 
-            if (this.Name.EndsWith("."))
+            if (zoneName != null && zoneName.EndsWith("."))
             {
-                this.Name = this.Name.TrimEnd('.');
-                this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
+                zoneName = zoneName.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
             ConfirmAction(

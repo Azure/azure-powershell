@@ -64,6 +64,37 @@ function Test-ZoneCrud
 
 <#
 .SYNOPSIS
+Tests that the zone cmdlets trim the terminating dot from the zone name
+#>
+function Test-ZoneCrudTrimsDot
+{
+	$zoneName = getAssetname
+	$zoneNameWithDot = $zoneName + "."
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$createdZone = New-AzureDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $createdZone
+	Assert-AreEqual $zoneName $createdZone.Name 
+
+	$retrievedZone = Get-AzureDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedZone
+	Assert-AreEqual $zoneName $retrievedZone.Name 
+
+	$updatedZone = Set-AzureDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{Name="tag1";Value="value1"},@{Name="tag2";Value="value2"}
+
+	Assert-NotNull $updatedZone
+	Assert-AreEqual $zoneName $updatedZone.Name 
+
+	$removed = Remove-AzureDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
 Zone CRUD with piping
 #>
 function Test-ZoneCrudWithPiping
@@ -89,6 +120,34 @@ function Test-ZoneCrudWithPiping
 	Assert-AreEqual 0 $updatedZone.Tags.Count 
 
 	$removed = Get-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Remove-AzureDnsZone -PassThru -Force
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "ResourceNotFound: Resource not found."
+}
+
+<#
+.SYNOPSIS
+Tests that the zone CRUD cmdlets trim the terminating dot from the zone name when piping
+#>
+function Test-ZoneCrudWithPipingTrimsDot
+{
+	$zoneName = getAssetname
+	$zoneNameWithDot = $zoneName + "."
+    $createdZone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+	
+	$resourceGroupName = $createdZone.ResourceGroupName
+
+	$zoneObjectWithDot = New-Object Microsoft.Azure.Commands.Dns.DnsZone
+	$zoneObjectWithDot.Name = $zoneNameWithDot
+	$zoneObjectWithDot.ResourceGroupName = $resourceGroupName
+
+	$updatedZone = $zoneObjectWithDot | Set-AzureDnsZone -Overwrite 
+
+	Assert-NotNull $updatedZone
+	Assert-AreEqual $zoneName $updatedZone.Name 
+
+	$removed = $zoneObjectWithDot | Remove-AzureDnsZone -Overwrite -PassThru -Force
 
 	Assert-True { $removed }
 
