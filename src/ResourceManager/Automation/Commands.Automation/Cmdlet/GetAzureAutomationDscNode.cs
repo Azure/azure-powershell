@@ -42,21 +42,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, HelpMessage = "Filter dsc nodes based on their status.")]
-        [ValidateSet("Any", "Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive")]
+        [ValidateSet("Compliant", "NotCompliant", "Failed", "Pending", "Received", "Unresponsive", IgnoreCase = true)]
         public DscNodeStatus Status { get; set; } 
         
         /// <summary>
         /// Gets or sets the node name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The node name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The node name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("NodeName")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the nodeconfiguration name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByNodeConfiguration, Mandatory = true, HelpMessage = "Filter dsc nodes based on their node configuration name.")]
-        [ValidateNotNullOrEmpty]
         public string NodeConfigurationName { get; set; }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<DscNode> ret = null;
 
             var nodeStatus = this.Status.ToString();
-            if (nodeStatus.Equals(DscNodeStatus.Any))
+            if (nodeStatus.Equals("0"))
             {
-                nodeStatus = string.Empty;
+                nodeStatus = null;
             }
 
             if (this.ParameterSetName == AutomationCmdletParameterSets.ById)

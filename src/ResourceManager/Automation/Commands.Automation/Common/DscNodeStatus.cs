@@ -20,14 +20,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
     public enum DscNodeStatus
     {
         /// <summary>
-        /// Indicates Generic status. used for queries all the nodes irrespective of state of the node.
-        /// </summary>
-        Any,
-
-        /// <summary>
         /// Indicates Compliant status.
         /// </summary>
-        Compliant,
+        Compliant = 1,
 
         /// <summary>
         /// Indicates Not Compliant status.

@@ -322,7 +322,7 @@
     <comment>Automation</comment>
   </data>
   <data name="RemoveDscNodeWarning" xml:space="preserve">
-    <value>Are you sure you want to unregister Dsc node from Azure Automation?</value>
+    <value>Are you sure you want to unregister this node from Azure Automation DSC?</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveDscNodeDescription" xml:space="preserve">
@@ -378,6 +378,10 @@
   </data>
   <data name="SetnodeconfigurationWarning" xml:space="preserve">
     <value>Are you sure you want to update the node configuration assignment for this node?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationNotFound" xml:space="preserve">
+    <value>The Dsc Configuration was not found. Configuration name {0}.</value>
     <comment>Automation</comment>
   </data>
 </root>
