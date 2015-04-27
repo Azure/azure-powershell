@@ -27,22 +27,14 @@ function Test-UpdateTransparentDataEncryption
 	$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $db.DatabaseName $databaseName
 
-	# Set Transparent Data Encryption to enabled
-	$tde = Set-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Status Enabled 
-
 	#Default database will be Standard s0 with maxsize: 268435456000 (250GB)
 
 	try
 	{
 		# Alter all properties
 		$tde1 = Set-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Status Enabled 
-		Assert-AreEqual $tde1.Status Enabled
-
-		# Alter all properties using piping
-		$tde2 = $tde1 | Set-AzureSqlDatabaseTransparentDataEncryption -Status Enabled
-		Assert-AreEqual $tde2.Status $tde1.Status
+			-State Enabled 
+		Assert-AreEqual $tde1.State Enabled
 	}
 	finally
 	{
@@ -68,11 +60,22 @@ function Test-GetTransparentDataEncryption
 
 	try
 	{
-		$tde1 = Get-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
-		Assert-AreEqual $tde1.Status Disabled
+		$tde1 = Get-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual $tde1.State Disabled
 
 		$tde2 = $tde1 | Get-AzureSqlDatabaseTransparentDataEncryption
-		Assert-AreEqual $tde2.Status Disabled
+		Assert-AreEqual $tde2.State Disabled
+
+		# Alter all properties
+		$tde3 = Set-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-State Enabled 
+		Assert-AreEqual $tde3.State Enabled
+
+		$tdeActivity = Get-AzureSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual $tdeActivity.Status Encrypting
+
+		$tde4 = Get-AzureSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		Assert-AreEqual $tde4.State Enabled
 	}
 	finally
 	{
