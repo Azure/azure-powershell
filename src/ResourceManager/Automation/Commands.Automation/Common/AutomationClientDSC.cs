@@ -34,8 +34,6 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
  namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using DscNode = Microsoft.Azure.Management.Automation.Models.DscNode;
-
     public partial class AutomationClient : IAutomationClient
     {
         #region DscConfiguration Operations

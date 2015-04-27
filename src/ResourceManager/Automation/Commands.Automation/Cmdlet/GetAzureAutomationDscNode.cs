@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the configuration name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfiguration, Mandatory = true, HelpMessage = "Filter dsc nodes based on their configuration name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByConfiguration, Mandatory = true, HelpMessage = "Filter dsc nodes based on the name of the configuration the node configuration they are mapped to was generated from")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationName { get; set; }
 

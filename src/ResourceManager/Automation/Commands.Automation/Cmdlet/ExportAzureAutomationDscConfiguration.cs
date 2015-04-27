@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the output folder for the configuration script.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where configuration script to be placed.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where configuration script should be placed.")]
         public string OutputFolder { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configuration script.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation and overwrites an existing configuration with same name.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name.")]
         public SwitchParameter Force
         {
             get { return this.overwriteExistingFile; }
