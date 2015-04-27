@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
+using System.IO;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -51,11 +52,21 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            var filePath = ResolvePath(InputFile, KeyVaultProperties.Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(InputFile);
 
             var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
             this.WriteObject(restoredKeyBundle);
+        }
+
+        private string ResolvePath(string filePath)
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if (!keyFile.Exists)
+            {
+                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.BackupKeyFileNotFound, filePath));
+            }
+            return keyFile.FullName;
         }
     }
 }
