@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing node report.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name.")]
         public SwitchParameter Force
         {
             get { return this.overwriteExistingFile; }
