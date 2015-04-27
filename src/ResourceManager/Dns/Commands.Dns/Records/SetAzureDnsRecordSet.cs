@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.Dns
         public DnsRecordSet RecordSet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
-        public SwitchParameter IgnoreEtag { get; set; }
+        public SwitchParameter Overwrite { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.IgnoreEtag.IsPresent)
+            if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.Overwrite.IsPresent)
             {
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
             }
 
-            DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(this.RecordSet, this.IgnoreEtag.IsPresent);
+            DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(this.RecordSet, this.Overwrite.IsPresent);
 
             WriteVerbose(ProjectResources.Success);
 

@@ -19,6 +19,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ListPoolOptions : BatchClientParametersBase
     {
+        public ListPoolOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        { }
+
         /// <summary>
         /// If specified, the single Pool with this name will be returned
         /// </summary>

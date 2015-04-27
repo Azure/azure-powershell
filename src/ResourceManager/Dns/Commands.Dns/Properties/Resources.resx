@@ -133,7 +133,7 @@
     <value>Cannot add a record of type {0} to a record set of type {1}. The types must match.</value>
   </data>
   <data name="Error_EtagNotSpecified" xml:space="preserve">
-    <value>The ETag property of the {0} object is empty or "*". In order to perform this operation with optimistic concurrency checks, please set the Etag property (you may need to Get the {0} first). In order to perform the operation without optimistic concurrency checks, please specify the -IgnoreEtag switch. </value>
+    <value>The ETag property of the {0} object is empty or "*". In order to perform this operation with optimistic concurrency checks, please set the Etag property (you may need to Get the {0} first). In order to perform the operation without optimistic concurrency checks, please specify the -Overwrite switch. </value>
   </data>
   <data name="Error_NameAndEndsWith" xml:space="preserve">
     <value>Name parameter cannot be used with EndsWith.</value>

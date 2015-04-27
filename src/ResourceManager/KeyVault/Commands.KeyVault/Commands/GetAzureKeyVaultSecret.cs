@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+        DefaultParameterSetName = ByVaultNameParameterSet, 
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = true,
             ParameterSetName = BySecretVersionsParameterSet,
-            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies whether to include the versions of the secret in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
         #endregion
@@ -105,14 +106,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                     secret = DataServiceClient.GetSecret(VaultName, Name, null);
                     if (secret != null)
                         WriteObject(new SecretIdentityItem(secret));
-                    GetAndWriteSecretVersions(VaultName, Name);
+                    GetAndWriteSecretVersions(VaultName, Name, secret.Version);
                     break;
                 case ByVaultNameParameterSet:
                     GetAndWriteSecrets(VaultName);
                     break;
 
                 default:
-                    throw new ArgumentException(Resources.BadParameterSetName);
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
 
-        private void GetAndWriteSecretVersions(string vaultName, string name)
+        private void GetAndWriteSecretVersions(string vaultName, string name, string currentSecretVersion)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -140,7 +141,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             
             do
             {
-                WriteObject(DataServiceClient.GetSecretVersions(options), true);
+                var secrets = DataServiceClient.GetSecretVersions(options).Where(s => s.Version != currentSecretVersion);
+                WriteObject(secrets, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

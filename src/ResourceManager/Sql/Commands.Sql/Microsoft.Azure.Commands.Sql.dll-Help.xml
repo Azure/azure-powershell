@@ -536,20 +536,56 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EventType</maml:name>
 				<maml:description>
-					<maml:para>Specifies the event types to audit
+					<maml:para>Specifies the events to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- DataAccess (Deprecated)
+            -- DataChanges (Deprecated)
+            -- SchemaChanges (Deprecated)
+            -- SecurityExceptions (Deprecated)
+            -- RevokePermissions (Deprecated)
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
-          Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.
+            Note that is possible to specify several events. You can specify &#39;All&#39; to audit all of the event or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other events would result in failure to execute the cmdlet.
+            Do not mix deprecated events with other events in same policy.
+            Avoid using deprecated events in new projects.
           </maml:para>  
         </maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionInDays</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+				<dev:type>
+				  <maml:name>uint?</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue>0</dev:defaultValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TableIdentifier</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+				  <maml:name>String</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			  </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
@@ -617,24 +653,61 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EventType</maml:name>
 			<maml:description>
-				<maml:para>Specifies the event types to audit
+				<maml:para>Specifies the events to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- DataAccess (Deprecated)
+            -- DataChanges (Deprecated)
+            -- SchemaChanges (Deprecated)
+            -- SecurityExceptions (Deprecated)
+            -- RevokePermissions (Deprecated)
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
-          Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>
-			</maml:description>
+          Note that is possible to specify several events. You can specify &#39;All&#39; to audit all of the event or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other events would result in failure to execute the cmdlet.
+          Do not mix deprecated events with other events in same policy.
+          Avoid using deprecated events in new projects.
+          </maml:para>
+          </maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>RetentionInDays</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+				<dev:type>
+				  <maml:name>uint?</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue>0</dev:defaultValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TableIdentifier</maml:name>
+				<maml:description>
+				  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<dev:type>
+				  <maml:name>String</maml:name>
+				  <maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			  </command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ServerName</maml:name>
 			<maml:description>
@@ -687,7 +760,7 @@
 	<command:terminatingErrors></command:terminatingErrors>
 	<command:nonTerminatingErrors></command:nonTerminatingErrors>
 	<maml:alertSet>
-		<maml:title></maml:title>
+		<maml:tiltle></maml:tiltle>
 		<maml:alert>
 			<maml:para></maml:para>
 		</maml:alert>
@@ -736,19 +809,56 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EventType</maml:name>
 				<maml:description>
-					<maml:para>Specifies the event types to audit
+					<maml:para>Specifies the events to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- DataAccess (Deprecated)
+            -- DataChanges (Deprecated)
+            -- SchemaChanges (Deprecated)
+            -- SecurityExceptions (Deprecated)
+            -- RevokePermissions (Deprecated)
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
-          Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>
-				</maml:description>
+          Note that is possible to specify several events. You can specify &#39;All&#39; to audit all of the event or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other events would result in failure to execute the cmdlet.
+          Do not mix deprecated events with other events in same policy.
+          Avoid using deprecated events in new projects.
+          </maml:para>
+            </maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>RetentionInDays</maml:name>
+        <maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+        <dev:type>
+          <maml:name>uint?</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>0</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>TableIdentifier</maml:name>
+        <maml:description>
+          <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
@@ -793,17 +903,30 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EventType</maml:name>
 			<maml:description>
-				<maml:para>Specifies the event types to audit
+				<maml:para>Specifies the events to audit
             Valid values are:
-            -- DataAccess
-            -- DataChanges
-            -- SchemaChanges
-            -- SecurityExceptions
-            -- RevokePermissions
+            -- DataAccess (Deprecated)
+            -- DataChanges (Deprecated)
+            -- SchemaChanges (Deprecated)
+            -- SecurityExceptions (Deprecated)
+            -- RevokePermissions (Deprecated)
+            -- PlainSQL_Success
+            -- PlainSQL_Failure
+            -- ParameterizedSQL_Success
+            -- ParameterizedSQL_Failure
+            -- StoredProcedure_Success
+            -- StoredProcedure_Failure
+            -- Login_Success
+            -- Login_Failure
+            -- TransactionManagement_Success
+            -- TransactionManagement_Failure
             -- All
             -- None
-          Note that is possible to specify several event types. You can specify &#39;All&#39; to audit all of the event types or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other event types would result in failure to execute the cmdlet.</maml:para>
-			</maml:description>
+          Note that is possible to specify several events. You can specify &#39;All&#39; to audit all of the event or &#39;None&#39; to specify that none of the events will be audited. Specifying &#39;All&#39; or &#39;None&#39; alongside other events would result in failure to execute the cmdlet.
+          Do not mix deprecated events with other events in same policy.
+          Avoid using deprecated events in new projects.
+          </maml:para>
+      </maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>
@@ -811,6 +934,30 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>RetentionInDays</maml:name>
+			<maml:description>
+				  <maml:para>Specifies the number of retention days for the audit logs table. New tables are created every 10 or 30 days depending on the selected retention period.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">uint?</command:parameterValue>
+			<dev:type>
+			  <maml:name>uint?</maml:name>
+			  <maml:uri/>
+			</dev:type>
+			<dev:defaultValue>0</dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>TableIdentifier</maml:name>
+			<maml:description>
+			  <maml:para>Specifies the identifier of the audit logs tables for this policy.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+			  <maml:name>String</maml:name>
+			  <maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ServerName</maml:name>
 			<maml:description>

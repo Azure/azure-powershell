@@ -80,10 +80,8 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            NewPoolParameters parameters = new NewPoolParameters()
+            NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Name, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                PoolName = this.Name,
                 VMSize = this.VMSize,
                 OSFamily = this.OSFamily,
                 TargetOSVersion = this.TargetOSVersion,
@@ -95,8 +93,7 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 Communication = this.CommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                CertificateReferences = this.CertificateReferences
             };
 
             BatchClient.CreatePool(parameters);

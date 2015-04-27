@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Dns
         public DnsRecordSet RecordSet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
-        public SwitchParameter IgnoreEtag { get; set; }
+        public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -69,6 +69,18 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
+                }
+
+                if (this.ZoneName.EndsWith("."))
+                {
+                    this.ZoneName = this.ZoneName.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.ZoneName));
+                }
+
                 recordSetToDelete = new DnsRecordSet
                 {
                     Name = this.Name,
@@ -80,6 +92,12 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (this.ParameterSetName == "Mixed")
             {
+                if (this.Name.EndsWith("."))
+                {
+                    this.Name = this.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
+                }
+
                 recordSetToDelete = new DnsRecordSet
                 {
                     Name = this.Name,
@@ -91,7 +109,7 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (this.ParameterSetName == "Object")
             {
-                if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.IgnoreEtag.IsPresent)
+                if ((string.IsNullOrWhiteSpace(this.RecordSet.Etag) || this.RecordSet.Etag == "*") && !this.Overwrite.IsPresent)
                 {
                     throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
                 }
@@ -99,14 +117,14 @@ namespace Microsoft.Azure.Commands.Dns
                 recordSetToDelete = this.RecordSet;
             }
 
-            bool ignoreEtag = this.IgnoreEtag.IsPresent || this.ParameterSetName != "Object";
+            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.Confirm_RemoveRecordSet, recordSetToDelete.Name, recordSetToDelete.ZoneName),
                 ProjectResources.Progress_RemovingRecordSet,
                 this.Name,
-                () => { deleted = DnsClient.DeleteDnsRecordSet(recordSetToDelete, ignoreEtag); });
+                () => { deleted = DnsClient.DeleteDnsRecordSet(recordSetToDelete, overwrite); });
 
             if (deleted)
             {

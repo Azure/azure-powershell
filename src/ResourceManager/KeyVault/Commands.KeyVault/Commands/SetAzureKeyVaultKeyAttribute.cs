@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update attribute of a key vault key.
     /// </summary>
     [Alias("Set-AzureKeyVaultKey")]
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute")]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// If not present, no change on current key enabled/disabled state.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "If present, enable a key if value is true. Disable a key if value is false. If not present, no change on current key enabled/disabled state.")]
+            HelpMessage = "Value of true enables the key and a value of false disabless the key. If not specified, the existing enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a key in UTC time. If not present, no change on current key expiration time.")]
+            HelpMessage = "The expiration time of a key in UTC time. If not specified, the existing expiration time of the key remains unchanged.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which key can't be used. If not present, no change on current key NotBefore attribute")]
+            HelpMessage = "The UTC time before which key can't be used. If not specified, the existing NotBefore attribute of the key remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
@@ -90,16 +90,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operations that can be performed with the key. If not present, no change on current key permitted operations.")]
+            HelpMessage = "The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.")]
         public string[] KeyOps { get; set; }
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "A hashtable represents key tags. If not present, no change on current key's tags.")]
+           HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
         public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false,
-           HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return key bundle object.")]
+           HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion

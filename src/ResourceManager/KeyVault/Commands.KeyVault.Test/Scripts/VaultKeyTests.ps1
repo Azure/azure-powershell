@@ -612,7 +612,7 @@ function Test_GetKeyVersions
     } while ($i -le $run)
            
     $keys=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -IncludeVersions
-    Assert-True { $keys.Count -ge $total*$run+1 }
+    Assert-True { $keys.Count -ge $total*$run }
 }
 
 <#

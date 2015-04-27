@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The ETag property of the {0} object is empty or &quot;*&quot;. In order to perform this operation with optimistic concurrency checks, please set the Etag property (you may need to Get the {0} first). In order to perform the operation without optimistic concurrency checks, please specify the -IgnoreEtag switch. .
+        ///   Looks up a localized string similar to The ETag property of the {0} object is empty or &quot;*&quot;. In order to perform this operation with optimistic concurrency checks, please set the Etag property (you may need to Get the {0} first). In order to perform the operation without optimistic concurrency checks, please specify the -Overwrite switch. .
         /// </summary>
         internal static string Error_EtagNotSpecified {
             get {

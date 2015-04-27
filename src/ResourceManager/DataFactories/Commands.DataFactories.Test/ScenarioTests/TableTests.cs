@@ -32,18 +32,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
-        public void TestGetTableWithEmptyName()
-        {
-            RunPowerShellTest("Test-GetTableWithEmptyName");
-        }
-
-        [Fact]
-        public void TestGetTableWithWhiteSpaceName()
-        {
-            RunPowerShellTest("Test-GetTableWithWhiteSpaceName");
-        }
-
-        [Fact]
         public void TestTablePiping()
         {
             RunPowerShellTest("Test-TablePiping");

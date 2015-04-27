@@ -77,7 +77,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                     EnableDirectServerReturn = ep.EnableDirectServerReturn,
                     InternalLoadBalancerName = ep.LoadBalancerName,
                     IdleTimeoutInMinutes = ep.IdleTimeoutInMinutes,
-                    LoadBalancerDistribution = ep.LoadBalancerDistribution
+                    LoadBalancerDistribution = ep.LoadBalancerDistribution,
+                    VirtualIPName = ep.VirtualIPName
                 };
 
                 if (ep.LoadBalancerProbe != null && string.IsNullOrEmpty(endpointCtx.LBSetName) == false)

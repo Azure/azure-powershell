@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using System;
@@ -57,17 +57,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private Tuple<IAccessToken, string> GetToken(IAuthenticationFactory authFactory, AzureContext context)
         {
             if (context.Subscription == null)
-                throw new ArgumentException(Resources.InvalidCurrentSubscription);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidCurrentSubscription);
             if (context.Account == null)
-                throw new ArgumentException(Resources.InvalidSubscriptionState);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
             if (context.Account.Type != AzureAccount.AccountType.User)
-                throw new ArgumentException(string.Format(Resources.UnsupportedAccountType, context.Account.Type));
-          
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
             var tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
                   .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
                   .FirstOrDefault();
             if (tenant == null)
-                throw new ArgumentException(Resources.InvalidSubscriptionState);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
           
             try
             {
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             catch (Exception ex)
             {
-                throw new ArgumentException(Resources.InvalidSubscriptionState, ex);
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState, ex);
             }        
         }
      
