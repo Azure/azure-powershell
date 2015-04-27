@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = ApiManagementParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of resource group under which want to create to create API Management service.")]
+            HelpMessage = "Name of resource group under which want to create API Management service.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

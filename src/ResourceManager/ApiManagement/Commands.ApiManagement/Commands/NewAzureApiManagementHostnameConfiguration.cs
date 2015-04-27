@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Certificagte thumbprint. The certificate must be imported with Import-ApiManagementCertificate")]
+            HelpMessage = "Certificagte thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.")]
         [ValidateNotNullOrEmpty]
         public string CertificateThumbprint { get; set; }
         
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Hostname")]
+            HelpMessage = "Custom hostaname.")]
         [ValidateNotNullOrEmpty]
         public string Hostname { get; set; }
 

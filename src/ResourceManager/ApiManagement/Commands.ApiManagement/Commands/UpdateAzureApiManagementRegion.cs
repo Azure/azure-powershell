@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
           ValueFromPipeline = true,
           Mandatory = true,
-          HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
+          HelpMessage = "PsApiManagement instance to update deployment region in.")]
         [ValidateNotNull]
         public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true, 
-            HelpMessage = "Location of the region to update.")]
+            HelpMessage = "Location of the deployment region to update.")]
 
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -43,29 +43,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "New tier value for region. Valid values are Developer, Standard and Premium.")]
+            HelpMessage = "New tier value for the deployment region. Valid values are Developer, Standard and Premium.")]
         public PsApiManagementSku Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "New Sku capacity value for region.")]
+            HelpMessage = "New Sku capacity value for the deployment region.")]
         public int Capacity { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Virtual network configuration. Default value is $null.")]
+            HelpMessage = "Virtual network configuration for the deployemnt region. Default value is $null. " +
+                          "Passing $null will remove virtual network configuration for the region.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                ApiManagement.UpdateRegion(Location, Sku, Capacity, VirtualNetwork);
+            ExecuteCmdLetWrap(
+                () =>
+                {
+                    ApiManagement.UpdateRegion(Location, Sku, Capacity, VirtualNetwork);
 
-                WriteObject(ApiManagement);
-            });
+                    return ApiManagement;
+                },
+                passThru: true);
         }
     }
 }

@@ -35,12 +35,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                var token = Client.GetSsoToken(ResourceGroupName, Name);
-
-                WriteObject(token);
-            });
+            ExecuteCmdLetWrap(
+                () => Client.GetSsoToken(ResourceGroupName, Name),
+                passThru: true);
         }
     }
 }

@@ -23,20 +23,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of resource group under which want to create API Management service.")]
+            HelpMessage = "Name of resource group under which API Management exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of API Management service.")]
+            HelpMessage = "Name of API Management.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Virtual networks configuration. Default value is $null.")]
+            HelpMessage = "Virtual networks configuration. Default value is $null. Passing $null will remove virtual network configuration.")]
         public PsApiManagementVirtualNetwork[] VirtualNetworks { get; set; }
 
         [Parameter(

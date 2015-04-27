@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of Azure Storage container.")]
+            HelpMessage = "Name of Azure Storage backup source container.")]
         [ValidateNotNullOrEmpty]
         public string SourceContainerName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of Azure Storage blob.")]
+            HelpMessage = "Name of Azure Storage backup source blob.")]
         [ValidateNotNullOrEmpty]
         public string SourceBlobName { get; set; }
 
@@ -74,8 +74,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
                     SourceContainerName,
                     SourceBlobName),
-                PassThru.IsPresent
-                );
+                PassThru.IsPresent);
         }
     }
 }

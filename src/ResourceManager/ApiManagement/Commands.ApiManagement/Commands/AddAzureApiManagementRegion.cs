@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
           ValueFromPipeline = true,
           Mandatory = true,
-          HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
+          HelpMessage = "PsApiManagement instance to add additional deployment region to.")]
         [ValidateNotNull]
         public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false, 
             Mandatory = true, 
-            HelpMessage = "Location where want to create region.")]
+            HelpMessage = "Location of the new deployment region.")]
 
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -43,29 +43,31 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "The tier of the region. Valid values are Developer, Standard and Premium. Default value is Developer")]
+            HelpMessage = "Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Developer.")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "Sku capacity of the Azure API Management service. Default value is 1.")]
+            HelpMessage = "Sku capacity of the deployment region. Default value is 1.")]
         public int? Capacity { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
-            HelpMessage = "Vnet configuration. Default value is $null")]
+            HelpMessage = "Virtual network configuration. Default value is $null.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Developer, Capacity ?? 1, VirtualNetwork);
+            ExecuteCmdLetWrap(
+                () =>
+                {
+                    ApiManagement.AddRegion(Location, Sku ?? PsApiManagementSku.Developer, Capacity ?? 1, VirtualNetwork);
 
-                WriteObject(ApiManagement);
-            });
+                    return ApiManagement;
+                },
+                passThru: true);
         }
     }
 }

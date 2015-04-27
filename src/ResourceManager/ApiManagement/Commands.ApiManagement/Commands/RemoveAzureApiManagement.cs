@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
@@ -70,8 +68,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
             ExecuteCmdLetWrap(
                 () => Client.DeleteApiManagement(ResourceGroupName, Name),
-                PassThru.IsPresent,
-                true);
+                PassThru.IsPresent);
         }
     }
 }

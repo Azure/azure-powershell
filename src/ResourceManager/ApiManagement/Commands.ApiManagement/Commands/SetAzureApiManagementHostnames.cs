@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Cmdlet(VerbsCommon.Set, "AzureApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
-        internal const string FromApiManagementInstanceSetName = "Set from ApiManagement instance";
+        internal const string FromPsApiManagementInstanceSetName = "Set from provided PsApiManagement instance";
         internal const string DefaultParameterSetName = "Specific API Management service";
 
         [Parameter(
-            ParameterSetName = FromApiManagementInstanceSetName,
+            ParameterSetName = FromPsApiManagementInstanceSetName,
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use PortalHostnameConfiguration and ProxyHostnameConfiguration to set hostnames.")]
+            HelpMessage = "PsApiManagement instance to get PortalHostnameConfiguration and ProxyHostnameConfiguration from.")]
         [ValidateNotNull]
         public PsApiManagement ApiManagement { get; set; }
 
@@ -36,28 +36,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of resource group under which want to create API Management service.")]
+            HelpMessage = "Name of resource group under which API Management exists.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of API Management service.")]
+            HelpMessage = "Name of API Management.")]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Custom portal hostname configuration. Default value is $null.")]
+            HelpMessage = "Custom portal hostname configuration. Default value is $null. Passing $null will set the default hostname.")]
         public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Custom proxy hostname configuration. Default value is $null.")]
+            HelpMessage = "Custom proxy hostname configuration. Default value is $null. Passing $null will set the default hostname.")]
         public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
 
         [Parameter(
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 portalHostName = PortalHostnameConfiguration;
                 proxyHostName = ProxyHostnameConfiguration;
             }
-            else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(FromPsApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
             {
                 resourceGroupName = ApiManagement.ResourceGroupName;
                 name = ApiManagement.Name;

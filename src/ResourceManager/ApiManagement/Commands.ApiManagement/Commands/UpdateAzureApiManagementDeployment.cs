@@ -23,15 +23,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Cmdlet(VerbsData.Update, "AzureApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
     {
-        internal const string FromApiManagementInstanceSetName = "Set from ApiManagement instance";
+        internal const string FromPsApiManagementInstanceSetName = "Update from PsApiManagement instance";
         internal const string DefaultParameterSetName = "Specific API Management service";
 
         [Parameter(
-            ParameterSetName = FromApiManagementInstanceSetName,
+            ParameterSetName = FromPsApiManagementInstanceSetName,
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "ApiManagementAttributes returned by Get-AzureApiManagement. Use Sku, Capacity, VirtualNetwork and " +
-                          "AdditionalRegions properties to manage deployments.")]
+            HelpMessage = "PsApiManagement instance to get deployment configuration from.")]
         [ValidateNotNull]
         public PsApiManagement ApiManagement { get; set; }
 
@@ -39,21 +38,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of resource group of the API Management service.")]
+            HelpMessage = "Name of resource group under which API Management exists.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName, 
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Name of API Management service.")]
+            HelpMessage = "Name of API Management.")]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName, 
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Location of master API Management service deployment.")]
+            HelpMessage = "Location of master API Management deployment region.")]
         [ValidateSet(
             "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
@@ -64,28 +63,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium .")]
+            HelpMessage = "The tier of master Azure API Management deployment region. Valid values are Developer, Standard and Premium.")]
         public PsApiManagementSku Sku { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Sku capacity of the Azure API Management service.")]
+            HelpMessage = "Sku capacity of master Azure API Management deployment region.")]
         public int Capacity { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Virtual Network Configuration of master Azure API Management service deployment.")]
+            HelpMessage = "Virtual Network Configuration of master Azure API Management deployment region.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Additional deployment regions of Azure API Management service.")]
+            HelpMessage = "Additional deployment regions of Azure API Management.")]
         public IList<PsApiManagementRegion> AdditionalRegions { get; set; }
 
         [Parameter(
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 virtualNetwork = VirtualNetwork;
                 additionalRegions = AdditionalRegions;
             }
-            else if (ParameterSetName.Equals(FromApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(FromPsApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
             {
                 resourceGroupName = ApiManagement.ResourceGroupName;
                 name = ApiManagement.Name;
@@ -135,8 +134,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     capacity,
                     virtualNetwork,
                     additionalRegions),
-                PassThru.IsPresent
-                );
+                PassThru.IsPresent);
         }
     }
 }

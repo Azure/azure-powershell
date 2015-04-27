@@ -67,15 +67,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             return longRunningOperation;
         }
 
-        protected void ExecuteCmdLetWrap(Action action, bool passThru = false, object passThruValue = null)
+        protected void ExecuteCmdLetWrap(Func<object> func, bool passThru = false, object passThruValue = null)
         {
             try
             {
-                action();
+                object result = func();
 
-                if (passThru && passThruValue != null)
+                if (passThru)
                 {
-                    WriteObject(passThruValue);
+                    WriteObject(passThruValue ?? result);
                 }
             }
             catch (ArgumentException ex)

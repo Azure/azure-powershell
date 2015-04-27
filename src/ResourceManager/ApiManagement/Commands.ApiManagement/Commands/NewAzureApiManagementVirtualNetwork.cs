@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Name of the subnetwork.")]
+            HelpMessage = "Name of the sub network.")]
         [ValidateNotNullOrEmpty]
         public string SubnetName { get; set; }
 

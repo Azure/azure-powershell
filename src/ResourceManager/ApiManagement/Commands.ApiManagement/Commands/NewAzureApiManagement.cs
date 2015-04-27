@@ -24,18 +24,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of resource group under which you want to create API Management service.")]
+            HelpMessage = "Name of resource group under which you want to create API Management.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of API Management service.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of API Management.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
             Mandatory = true, 
-            HelpMessage = "Location where want to create API Management service.")]
+            HelpMessage = "Location where want to create API Management.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Sku capacity of the Azure API Management service. The default value is 1.")]
+            HelpMessage = "Sku capacity of the Azure API Management service. Default value is 1.")]
         public int? Capacity { get; set; }
 
         [Parameter(
@@ -86,8 +86,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     Tags),
-                passThru: true
-                );
+                passThru: true);
         }
     }
 }

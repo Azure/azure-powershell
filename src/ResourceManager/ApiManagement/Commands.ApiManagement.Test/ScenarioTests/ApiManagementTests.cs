@@ -138,16 +138,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             //Environment.SetEnvironmentVariable(
             //    "TEST_ORGID_AUTHENTICATION",
             //    "SubscriptionId=bb3f6f90-0996-4c18-8d61-028ab0f0f29b;Environment=Dogfood");
-
-            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
-            Environment.SetEnvironmentVariable(
-                "TEST_CSM_ORGID_AUTHENTICATION",
-                "SubscriptionId=b7dd2d54-17fa-4c19-b7a0-4096796bba41;Environment=Prod;AADTenant=075d1075-d2fd-4135-9a97-d846d2113be4");
-
-            Environment.SetEnvironmentVariable(
-                "TEST_ORGID_AUTHENTICATION",
-                "SubscriptionId=b7dd2d54-17fa-4c19-b7a0-4096796bba41;Environment=Prod");
 #endif
 
             using (var context = UndoContext.Current)

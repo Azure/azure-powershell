@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name of Azure Storage container.")]
+            HelpMessage = "Name of target Azure Storage container. If container does not exist it will be created.")]
         [ValidateNotNullOrEmpty]
         public string TargetContainerName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Name of Azure Storage blob.")]
+            HelpMessage = "Name of target Azure Storage blob. If the blob does not exist it will be created.")]
         public string TargetBlobName { get; set; }
 
         [Parameter(

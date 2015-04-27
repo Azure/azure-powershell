@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipeline = true,
             Mandatory = true,
-            HelpMessage = "ApiManagement object returned by Get-AzureApiManagement.")]
+            HelpMessage = "PsApiManagement instance to remove the deployment region from.")]
         [ValidateNotNull]
         public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Location of the region to remove.")]
+            HelpMessage = "Location of the deployment region to remove.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
@@ -40,12 +40,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            ExecuteCmdLetWrap(() =>
-            {
-                ApiManagement.RemoveRegion(Location);
+            ExecuteCmdLetWrap(
+                () =>
+                {
+                    ApiManagement.RemoveRegion(Location);
 
-                WriteObject(ApiManagement);
-            });
+                    return ApiManagement;
+                },
+                passThru: true);
         }
     }
 }

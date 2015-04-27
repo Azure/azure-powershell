@@ -62,19 +62,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(() =>
-            {
-                var result = Client.UploadCertificate(
+                Client.UploadCertificate(
                     ResourceGroupName,
                     Name,
                     HostnameType,
                     PfxPath,
-                    PfxPassword);
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(result);
-                }
-            });
+                    PfxPassword),
+                PassThru.IsPresent);
         }
     }
 }
