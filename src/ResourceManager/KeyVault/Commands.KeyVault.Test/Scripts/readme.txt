@@ -6,5 +6,3 @@ Test environments and accounts:
 Run testing scripts:
 1. Run scripting tests using RunKeyVaultTests.ps1. 
 2. Run tests required user inputs using RunUITests.ps1.
-3. Run RunListKeys that creates 50 keys and list them.
-4. RunListKeyVersions that creates 50 versions of a key and list them. 
