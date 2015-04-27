@@ -215,5 +215,21 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerRetentionMissing()
+        {
+            RunPowerShellTest("Test-ServerRetentionMissing");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseRetentionMissing()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionMissing");
+        }
     }
 }
