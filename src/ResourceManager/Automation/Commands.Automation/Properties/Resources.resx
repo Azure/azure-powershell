@@ -380,4 +380,8 @@
     <value>Are you sure you want to update the node configuration assignment for this node?</value>
     <comment>Automation</comment>
   </data>
+  <data name="ConfigurationNotFound" xml:space="preserve">
+    <value>The Dsc Configuration was not found. Configuration name {0}.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

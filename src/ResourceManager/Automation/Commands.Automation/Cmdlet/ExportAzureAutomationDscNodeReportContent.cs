@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the report id. 
         /// </summary> 
         [Parameter(Mandatory = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node report id.")]
+        [Alias("Id")]
         public Guid ReportId { get; set; }
 
         /// <summary>

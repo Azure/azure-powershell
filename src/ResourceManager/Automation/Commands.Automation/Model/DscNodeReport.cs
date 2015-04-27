@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </summary>
         /// <param name="resourceGroupName">The resource group name.</param>
         /// <param name="automationAccountName">The automation account.</param>
+        /// <param name="nodeId">The Node Id.</param>
         /// <param name="dscNodeReport">The dsc node report.</param>
-        public DscNodeReport(string resourceGroupName, string automationAccountName, AutomationManagement.Models.DscNodeReport dscNodeReport)
+        public DscNodeReport(string resourceGroupName, string automationAccountName, string nodeId, AutomationManagement.Models.DscNodeReport dscNodeReport)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = dscNodeReport.LastModifiedTime;
             this.ReportType = dscNodeReport.Type;
             this.Id = dscNodeReport.Id;
+            this.NodeId = nodeId;
         }
 
         /// <summary>
@@ -83,8 +85,13 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string ReportType { get; set; }
 
         /// <summary>
-        /// Gets or sets the id of the node report.
+        /// Gets or sets the report id.
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Node id.
+        /// </summary>
+        public string NodeId { get; set; }
     }
 }
