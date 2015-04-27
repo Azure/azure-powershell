@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineSize, DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
-    [OutputType(typeof(VirtualMachineSize))]
+    [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet
     {
         protected const string ListVirtualMachineSizeParamSet = "ListVirtualMachineSizeParamSet";
@@ -93,7 +95,14 @@ namespace Microsoft.Azure.Commands.Compute
                 result = this.VirtualMachineSizeClient.List(this.Location);
             }
 
-            WriteObject(result.VirtualMachineSizes, true);
+            List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
+            foreach (var item in result.VirtualMachineSizes)
+            {
+                var psItem = Mapper.Map<PSVirtualMachineSize>(item);
+                psResultList.Add(psItem);
+            }
+
+            WriteObject(psResultList, true);
         }
     }
 }

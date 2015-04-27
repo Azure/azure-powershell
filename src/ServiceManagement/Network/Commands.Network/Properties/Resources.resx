@@ -300,4 +300,19 @@
   <data name="NetworkSecurityGroupNotActiveInRole" xml:space="preserve">
     <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}".</value>
   </data>
+  <data name="RemoveRouteTableFromSubnetSucceeded" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RemoveRouteTableFromSubnetWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the currently associated Route Table from Subnet "{0}" in Virtual Network "{1}"?</value>
+  </data>
+  <data name="RemoveRouteTableSucceeded" xml:space="preserve">
+    <value>Successfully removed Route Table with name "{0}".</value>
+  </data>
+  <data name="RemoveRouteTableWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route Table "{0}"?</value>
+  </data>
+  <data name="RemoveRouteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route "{0}" from Route Table "{1}"?</value>
+  </data>
 </root>

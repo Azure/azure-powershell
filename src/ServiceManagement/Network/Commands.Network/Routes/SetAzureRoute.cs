@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Utilities;
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
-
-    [Cmdlet(VerbsCommon.Set, "AzureRoute"), OutputType(typeof(ManagementOperationContext))]
-    public class SetAzureRoute : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRoute"), OutputType(typeof(IRouteTable))]
+    public class SetAzureRoute : RouteTableConfigurationBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The existing route table's name.")]
-        public string RouteTableName { get; set; }
-
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The new route's name.")]
         public string RouteName { get; set; }
 
@@ -38,7 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.SetRoute(RouteTableName, RouteName, AddressPrefix, NextHopType, NextHopIpAddress));
+            string routeTableName = this.RouteTable.GetInstance().Name;
+
+            Client.SetRoute(routeTableName, RouteName, AddressPrefix, NextHopType, NextHopIpAddress);
+            WriteObject(Client.GetRouteTable(routeTableName, true));
         }
     }
 }

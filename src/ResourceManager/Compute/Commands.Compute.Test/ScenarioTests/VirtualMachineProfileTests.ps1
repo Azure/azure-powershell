@@ -80,26 +80,26 @@ function Test-VirtualMachineProfile
     $custom = "echo 'Hello World'";
     $encodedCustom = "ZWNobyAnSGVsbG8gV29ybGQn";
 
-    $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
+    $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
     $p = Set-AzureVMSourceImage -VM $p -Name $img;
 	$subid = (Get-AzureSubscription -Current).SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";
     $certUrl =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bdd703272";
-    $p = Add-AzureVMSecretConfig -VM $p -ReferenceUri $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
 	$referenceUri2 = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault456";
-    $p = Add-AzureVMSecretConfig -VM $p -ReferenceUri $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
 
 	$certStore2 = "My2";
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
-	$p = Add-AzureVMSecretConfig -VM $p -ReferenceUri $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
+	$p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
 	$aucSetting = "AutoLogon";
     $aucContent = "<UserAccounts><AdministratorPassword><Value>" + $password + "</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
-    $p = Add-AzureVMAdditionalUnattendContentConfig -VM $p -Content $aucContent -SettingName $aucSetting;
-    $p = Add-AzureVMAdditionalUnattendContentConfig -VM $p -Content $aucContent -SettingName $aucSetting;
+    $p = Add-AzureVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
+    $p = Add-AzureVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -145,9 +145,9 @@ function Test-VirtualMachineProfile
 
 	$sshPath = "/home/pstestuser/.ssh/authorized_keys";
     $sshPublicKey = "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV";
-    $p = Add-AzureVMSshPublicKeyConfig -VM $p -KeyData $sshPublicKey -Path $sshPath;
-	$p = Add-AzureVMSshPublicKeyConfig -VM $p -KeyData $sshPublicKey -Path $sshPath;
-    $p = Add-AzureVMSecretConfig -VM $p -ReferenceUri $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
+	$p = Add-AzureVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
+    $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;

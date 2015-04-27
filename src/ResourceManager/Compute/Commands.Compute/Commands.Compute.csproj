@@ -48,6 +48,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
@@ -73,8 +78,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.5.0.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.5.0.1-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.0-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
@@ -140,6 +145,8 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
+    <Compile Include="Common\ComputeAutoMapperProfile.cs" />
+    <Compile Include="Common\ComputeClientBaseCmdlet.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
@@ -168,11 +175,13 @@
     <Compile Include="Images\GetAzureVMImageDetailCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
     <Compile Include="Models\PSOperationContext.cs" />
+    <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
     <Compile Include="Models\PSVirtualMachineImage.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
+    <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />
@@ -190,9 +199,9 @@
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
-    <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentConfigCommand.cs" />
-    <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyConfigCommand.cs" />
-    <Compile Include="VirtualMachine\Config\AddAzureVMSecretConfigCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyCommand.cs" />
+    <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />

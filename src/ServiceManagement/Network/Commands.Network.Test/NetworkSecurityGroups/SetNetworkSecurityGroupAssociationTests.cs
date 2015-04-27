@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Management.Network.Models;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.NetworkSecurityGroups
@@ -158,6 +159,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         #region No previous NSG association is set
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnSubnetNoPreviousNSG()
         {
             // Setup
@@ -217,6 +220,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnVMRoleNoPreviousNSG()
         {
             // Setup
@@ -276,6 +281,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnVMNicNoPreviousNSG()
         {
             // Setup
@@ -337,6 +344,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
 
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnRoleByNameNoPreviousNSG()
         {
             // Setup
@@ -395,6 +404,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnNicByNameNoPreviousNSG()
         {
             // Setup
@@ -460,6 +471,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         #region A previous NSG association is set
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnSubnetWithPreviousNSG()
         {
             // Setup
@@ -565,6 +578,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnVMRoleWithPreviousNSG()
         {
             // Setup
@@ -675,6 +690,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnVMNicWithPreviousNSG()
         {
             // Setup
@@ -791,6 +808,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnRoleByNameWithPreviousNSG()
         {
             // Setup
@@ -901,6 +920,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Network
         }
 
         [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetNSGOnNicByNameWithPreviousNSG()
         {
             // Setup
