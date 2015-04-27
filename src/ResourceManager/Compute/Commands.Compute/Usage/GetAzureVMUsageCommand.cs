@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            ListUsagesResponse result = this.UsageClient.List(this.Location);
+            ListUsagesResponse result = this.UsageClient.List(this.Location.Standardize());
 
             List<PSUsage> psResultList = new List<PSUsage>();
             foreach (var item in result.Usages)

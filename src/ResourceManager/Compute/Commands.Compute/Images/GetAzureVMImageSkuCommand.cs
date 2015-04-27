@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineImageListSkusParameters
             {
-                Location = Location,
+                Location = Location.Standardize(),
                 PublisherName = PublisherName,
                 Offer = Offer
             };

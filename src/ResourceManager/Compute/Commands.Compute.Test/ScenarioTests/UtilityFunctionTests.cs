@@ -13,17 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Compute.Models;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public partial class VirtualMachineTests
+    public class UtilityFunctionTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSizeAndUsage()
+        public void TestLocationStringExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
+            string[] locations = new string[]
+            {
+                "West US",
+                "eastus",
+                "East Asia 2"
+            };
+
+            Func<string, string> removeSpaces = delegate(string s)
+            {
+                return string.IsNullOrEmpty(s) ? s : s.Replace(" ", string.Empty).ToLower();
+            };
+
+            foreach (var loc in locations)
+            {
+                var s1 = loc.Standardize();
+                var s2 = removeSpaces(loc);
+                Assert.True(string.Equals(s1, s2));
+            }
         }
     }
 }
