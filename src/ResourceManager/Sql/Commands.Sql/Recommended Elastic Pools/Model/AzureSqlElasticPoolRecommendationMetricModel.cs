@@ -12,18 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Model
 {
-    public partial class VirtualMachineTests
+    /// <summary>
+    /// Represents a recommended elastic pool metric
+    /// </summary>
+    public class AzureSqlElasticPoolRecommendationMetricModel
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineDataDisk()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
-        }
+        /// <summary>
+        /// Gets or sets the time of metric.
+        /// </summary>
+        public DateTime DateTime { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the DTU.
+        /// </summary>
+        public double Dtu { get; set; }
+
+        /// <summary>
+        /// Gets or sets size in gigabytes.
+        /// </summary>
+        public double SizeGB { get; set; }
     }
 }

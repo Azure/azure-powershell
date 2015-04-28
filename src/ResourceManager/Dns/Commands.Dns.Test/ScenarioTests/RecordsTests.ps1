@@ -80,6 +80,51 @@ function Test-RecordSetCrud
 	Assert-True { $removed }
 
 	Assert-Throws { Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "ResourceNotFound: Resource not found."
+
+	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle trims terminating dot from zone name
+#>
+function Test-RecordSetCrudTrimsDotFromZoneName
+{
+	$zoneName = getAssetname
+	$zoneNameWithDot = $zoneName + "."
+
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = New-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	$createdRecord = New-AzureDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"}
+
+	Assert-NotNull $createdRecord
+	Assert-AreEqual $zoneName $createdRecord.ZoneName 
+	Assert-AreEqual $recordName $createdRecord.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName 
+
+	$retrievedRecord = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
+
+	Assert-NotNull $retrievedRecord
+	Assert-AreEqual $recordName $retrievedRecord.Name 
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
+
+	$retrievedRecord = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
+
+	Assert-NotNull $retrievedRecord
+	Assert-AreEqual $recordName $retrievedRecord.Name 
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
+
+	$removed = Remove-AzureDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A -PassThru -Force
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A } "ResourceNotFound: Resource not found."
+
+	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -108,6 +153,63 @@ function Test-RecordSetCrudWithPiping
 	Assert-Throws { Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -RecordType A } "ResourceNotFound: Resource not found."
 
 	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
+{
+	$zoneName = getAssetname
+	$zoneNameWithDot = $zoneName + "."
+
+	$recordName = getAssetname
+    $zone = TestSetup-CreateResourceGroup | New-AzureDnsZone -Name $zoneName
+	
+	$zoneObjectWithDot = New-Object Microsoft.Azure.Commands.Dns.DnsZone
+	$zoneObjectWithDot.Name = $zoneNameWithDot
+	$zoneObjectWithDot.ResourceGroupName = $zone.ResourceGroupName
+	
+	$createdRecord = $zoneObjectWithDot | New-AzureDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Tags @{Name="tag1";Value="val1"}
+
+	Assert-NotNull $createdRecord
+	Assert-AreEqual $recordName $createdRecord.Name 
+	Assert-AreEqual $zoneName $createdRecord.ZoneName 
+	Assert-AreEqual $zone.ResourceGroupName $createdRecord.ResourceGroupName
+
+	$recordObjectWithDot = New-Object Microsoft.Azure.Commands.Dns.DnsRecordSet
+	$recordObjectWithDot.Name = $recordName
+	$recordObjectWithDot.ZoneName = $zoneNameWithDot
+	$recordObjectWithDot.ResourceGroupName = $zone.ResourceGroupName
+	$recordObjectWithDot.Ttl = 60
+
+	$recordAfterAdd = $recordObjectWithDot | Add-AzureDnsRecordConfig -Ipv4Address 13.13.0.13
+
+	# this is an offline operation, we don't check the dot and don't change the object in place
+	Assert-AreEqual $zoneNameWithDot $recordAfterAdd.ZoneName 
+
+	$updatedRecord = $recordAfterAdd | Set-AzureDnsRecordSet -Overwrite
+
+	Assert-NotNull $updatedRecord
+	Assert-AreEqual $recordName $updatedRecord.Name 
+	Assert-AreEqual $zoneName $updatedRecord.ZoneName 
+	Assert-AreEqual $zone.ResourceGroupName $updatedRecord.ResourceGroupName
+
+	$retrievedRecord = Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $zone.ResourceGroupName -RecordType A 
+	
+	Assert-NotNull $retrievedRecord
+	Assert-AreEqual $recordName $retrievedRecord.Name 
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $zone.ResourceGroupName $updatedRecord.ResourceGroupName
+	
+	$removed = $recordObjectWithDot | Remove-AzureDnsRecordSet -Overwrite -PassThru -Force
+
+	Assert-True { $removed }
+
+	Assert-Throws { Get-AzureDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $updatedRecord.ResourceGroupName -RecordType A } "ResourceNotFound: Resource not found."
+
+	Remove-AzureDnsZone -Name $zoneName -ResourceGroupName $zone.ResourceGroupName -Force
 }
 
 <#

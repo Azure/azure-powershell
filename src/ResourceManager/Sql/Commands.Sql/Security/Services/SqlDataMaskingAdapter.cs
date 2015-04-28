@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Transforms a nullable uint element to its string representation
+        /// Transforms a value from its string representation to its nullable uint representation
         /// </summary>
         private uint? ModelizeNullableUint(string value)
         {
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Transforms a nullable double element to its string representation
+        /// Transforms a value from its string representation to its nullable double representation
         /// </summary>
         private double? ModelizeNullableDouble(string value)
         {
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             updateParameters.Properties = properties;
             properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Enabled) ? SecurityConstants.DataMaskingEndpoint.Enabled : SecurityConstants.DataMaskingEndpoint.Disabled;
             properties.MaskingLevel = (model.MaskingLevel == MaskingLevelType.Standard) ? SecurityConstants.DataMaskingEndpoint.Standard : SecurityConstants.DataMaskingEndpoint.Extended;
-            properties.ExemptPrincipals = (model.PrivilegedLogins == null) ? "" : model.PrivilegedLogins;
+            properties.ExemptPrincipals = model.PrivilegedLogins ?? "";
             return updateParameters;
         }
     }

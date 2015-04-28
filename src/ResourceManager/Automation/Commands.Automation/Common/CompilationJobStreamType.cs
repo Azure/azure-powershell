@@ -12,18 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Automation.Common
 {
-    public partial class VirtualMachineTests
+    /// <summary>
+    /// StreamType enum represents the 6 types of Powershell Streams supported.
+    /// </summary>
+    public enum CompilationJobStreamType
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSizeAndUsage()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
-        }
+        /// <summary>
+        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
+        /// </summary>
+        Any,
+
+        /// <summary>
+        /// Indicates Warning Record streams
+        /// </summary>
+        Warning,
+
+        /// <summary>
+        /// Indicates Error Record streams
+        /// </summary>
+        Error,
+
+        /// <summary>
+        /// Indicates Verbose Record streams
+        /// </summary>
+        Verbose
     }
 }

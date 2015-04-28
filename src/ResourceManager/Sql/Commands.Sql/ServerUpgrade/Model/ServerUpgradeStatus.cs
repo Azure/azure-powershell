@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
-    public partial class VirtualMachineTests
+    /// <summary>
+    /// Available statuses for server upgrade
+    /// </summary>
+    public enum ServerUpgradeStatus
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCapture()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
-        }
+        NotStarted,
+        Queued,
+        InProgress,
+        Cancelling,
+        Completed,
+        Stopped,
+        Unknown
     }
 }

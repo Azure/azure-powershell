@@ -12,47 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     /// <summary>
-    /// StreamType enum represents the 6 types of Powershell Streams supported.
+    /// DscNodeStatus enum represents the all the available states of the node while applying nodeconfiguration
     /// </summary>
-    public enum StreamType
+    public enum DscNodeStatus
     {
         /// <summary>
-        /// Indicates Progress Record streams
+        /// Indicates Compliant status.
         /// </summary>
-        Progress,
+        Compliant = 1,
 
         /// <summary>
-        /// Indicates Output Record streams
+        /// Indicates Not Compliant status.
         /// </summary>
-        Output,
+        NotCompliant,
 
         /// <summary>
-        /// Indicates Warning Record streams
+        /// Indicates Failed status.
         /// </summary>
-        Warning,
+        Failed,
 
         /// <summary>
-        /// Indicates Error Record streams
+        /// Indicates Pending status.
         /// </summary>
-        Error,
+        Pending,
 
         /// <summary>
-        /// Indicates Debug Record streams
+        /// Indicates received status.
         /// </summary>
-        Debug,
+        Received,
 
         /// <summary>
-        /// Indicates Verbose Record streams
+        /// Indicates Unresponsive status
         /// </summary>
-        Verbose,
-
-        /// <summary>
-        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
-        /// </summary>
-        Any
+        Unresponsive
     }
 }

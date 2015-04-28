@@ -12,18 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
-    public partial class VirtualMachineTests
+    public class AzureSqlServerUpgradeModel
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineList()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineList");
-        }
+        /// <summary>
+        /// Gets or sets the name of the resource group the server being upgraded is in
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the server being upgraded
+        /// </summary>
+        public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the upgrade status of the server
+        /// </summary>
+        public ServerUpgradeStatus Status { get; set; }
     }
 }

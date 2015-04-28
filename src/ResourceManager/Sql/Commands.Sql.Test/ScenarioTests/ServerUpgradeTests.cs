@@ -12,18 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public partial class VirtualMachineTests
+    public class ServerUpgradeTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineImageList()
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestServerUpgradeWithRecommendedDatabase()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
+            RunPowerShellTest("Test-ServerUpgradeWithRecommendedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestServerUpgradeAndCancel()
+        {
+            RunPowerShellTest("Test-ServerUpgradeAndCancel");
+        }
+
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestServerUpgradeNegative()
+        {
+            RunPowerShellTest("Test-ServerUpgradeNegative");
         }
     }
 }

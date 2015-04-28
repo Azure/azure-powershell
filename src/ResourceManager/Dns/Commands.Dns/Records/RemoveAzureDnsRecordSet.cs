@@ -75,12 +75,6 @@ namespace Microsoft.Azure.Commands.Dns
                     this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
                 }
 
-                if (this.ZoneName.EndsWith("."))
-                {
-                    this.ZoneName = this.ZoneName.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.ZoneName));
-                }
-
                 recordSetToDelete = new DnsRecordSet
                 {
                     Name = this.Name,
@@ -115,6 +109,12 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 recordSetToDelete = this.RecordSet;
+            }
+
+            if (recordSetToDelete.ZoneName != null && recordSetToDelete.ZoneName.EndsWith("."))
+            {
+                recordSetToDelete.ZoneName = recordSetToDelete.ZoneName.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToDelete.ZoneName));
             }
 
             bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";

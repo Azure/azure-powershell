@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13E031E4-8A43-4B87-9D72-D70180C31C11}</ProjectGuid>
+    <ProjectGuid>{F4ABAD68-64A5-4B23-B09C-42559A7524DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Websites.Test</RootNamespace>

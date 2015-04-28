@@ -12,19 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.Sql.Security.Model;
+
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
     /// All the constants used by sql cmdlets
     /// </summary>
     public class SecurityConstants
-    {        
-        // Event types
-        public const string DataAccess = "DataAccess";
-        public const string SchemaChanges = "SchemaChanges";
-        public const string DataChanges = "DataChanges";
-        public const string SecurityExceptions = "SecurityExceptions";
-        public const string RevokePermissions = "RevokePermissions";
+    {
+        // Audit Events:
+        public class DeprecatedAuditEvents
+        {
+            // DeprecatedAuditEvents from 04/2015
+            public const string DataAccess = "DataAccess";
+            public const string SchemaChanges = "SchemaChanges";
+            public const string DataChanges = "DataChanges";
+            public const string SecurityExceptions = "SecurityExceptions";
+            public const string RevokePermissions = "RevokePermissions";
+        }
+
         public const string PlainSQL_Success = "PlainSQL_Success";
         public const string PlainSQL_Failure = "PlainSQL_Failure";
         public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
@@ -39,6 +47,26 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public const string All = "All";
         public const string None = "None";
 
+        public static readonly Dictionary<string, AuditEventType> AuditEventsToAuditEventType = new Dictionary
+            <string, AuditEventType>
+        {
+            {DeprecatedAuditEvents.DataAccess, AuditEventType.DataAccess},
+            {DeprecatedAuditEvents.DataChanges, AuditEventType.DataChanges},
+            {DeprecatedAuditEvents.SecurityExceptions, AuditEventType.SecurityExceptions},
+            {DeprecatedAuditEvents.RevokePermissions, AuditEventType.RevokePermissions},
+            {DeprecatedAuditEvents.SchemaChanges, AuditEventType.SchemaChanges},
+            {PlainSQL_Success, AuditEventType.PlainSQL_Success},
+            {PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
+            {ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
+            {ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
+            {StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
+            {StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
+            {Login_Success, AuditEventType.Login_Success},
+            {Login_Failure, AuditEventType.Login_Failure},
+            {TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
+            {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
+        };
+        
         //id to locate a server's security policy
         public const string ServerPolicyId = "c3d905bb-e460-48bb-884d-75fac8f63e11";
 
