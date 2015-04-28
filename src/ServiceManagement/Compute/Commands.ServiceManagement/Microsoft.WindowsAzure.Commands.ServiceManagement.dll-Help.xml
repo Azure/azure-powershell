@@ -25686,7 +25686,7 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 	<command:details>
 		<command:name>Set-AzurePublicIP</command:name>
 		<maml:description>
-			<maml:para>Set-AzurePublicIP [-PublicIPName] &lt;string&gt; [[-IdleTimeoutInMinutes] &lt;int&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
+			<maml:para>Set-AzurePublicIP [-PublicIPName] &lt;string&gt; [[-IdleTimeoutInMinutes] &lt;int&gt;] [[-DomainNameLabel] &lt;string&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -25697,7 +25697,7 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para>Adds a new Public IP to the virtual machine. The public ip is really assigned when the virtual machine is updated.</maml:para>
+		<maml:para>Adds a new Public IP to the virtual machine. The public ip is really assigned when the virtual machine is updated.  An optional DomainNameLabel will automatically create a corresponding DNS entry for the public IP.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -25715,6 +25715,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 					<maml:para>TCP Idle timeout in minutes</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>DomainNameLabel</maml:name>
+				<maml:description>
+					<maml:para>The name to use when creating a corresponding DNS entry for a public IP address</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
@@ -25746,6 +25753,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
 				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>DomainNameLabel</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -25823,6 +25842,36 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:commandLines>
 				<command:commandLine>
 					<command:commandText>-----------Requests for a public IP to be assigned during VM creation.</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  EXAMPLE 3  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureVM -ServiceName FTPInAzure -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip -DomainNameLabel ipname | Update-AzureVM</dev:code>
+			<dev:remarks>
+				<maml:para>Description</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>-----------Requests for a public IP to be assigned to the virtual machine. The public ip allocation happens during update VM.</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  EXAMPLE 4  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureVMConfig -Name &quot;FTPInstance&quot; -InstanceSize Small -ImageName $images[50].ImageName | Add-AzureProvisioningConfig -Windows -AdminUsername xyz -Password abcd123! | Set-AzurePublicIP -PublicIPName &quot;ftpip&quot; -DomainNameLabel ipname | New-AzureVM -ServiceName &quot;FTPinAzure&quot; -Location &quot;North Central US&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>Description</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>-----------Requests for a public IP to be assigned during VM creation and for the public IP address to be created with a corresponding DNS entry.</command:commandText>
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
