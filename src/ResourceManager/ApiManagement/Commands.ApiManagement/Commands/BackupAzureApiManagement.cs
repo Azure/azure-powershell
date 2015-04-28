@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "The storage connection context")]
+            HelpMessage = "The storage connection context.")]
         [ValidateNotNull]
         public AzureStorageContext StorageContext { get; set; }
 

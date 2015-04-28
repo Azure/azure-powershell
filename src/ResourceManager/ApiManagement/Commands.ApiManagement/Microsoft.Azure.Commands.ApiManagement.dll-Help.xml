@@ -1,1224 +1,3008 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<helpItems xmlns="http://msh" schema="maml">
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Get-AzureRedisCache</command:name>
-      <maml:description>
-        <maml:para>Gets details about a single cache or all caches in the specified resource group or all caches in the current subscription.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Get</command:verb>
-      <command:noun>AzureRedisCache</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The Get-AzureRedisCache cmdlet gets the details about a cache or caches depending on input parameters. If both ResourceGroupName and Name parameters are provided then Get-AzureRedisCache will return details about the specific cache name provided.</maml:para>
-      <maml:para>If only ResourceGroupName is provided than it will return details about all caches in the specified resource group.</maml:para>
-      <maml:para>If no parameters are given than it will return details about all caches the current subscription.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRedisCache</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>The name of the cache. If Name is provided along with ResourceGroupName then Get-AzureRedisCache returns the details of the specified cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>The name of the cache. When this parameter is provided along with ResourceGroupName, Get-AzureRedisCache returns the details for the cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns an array of redis caches.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Get specific redis cache by name</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup -Name myexists
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
-          
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command gets details about the specified redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 2: Get all redis caches in a specific resource group</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
-
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location          : North Central US
-          Name              : myearlier
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : True
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
-          
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command gets details about all redis caches in the specified resource group.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 3: Get all redis caches in the current subscription</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Get-AzureRedisCache
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
-
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location          : North Central US
-          Name              : myearlier
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : True
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
-
-          ResourceGroupName : myGroup2
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup2/providers/Microsoft.Cache/Redis/myearlier2
-          Location          : North Central US
-          Name              : myearlier2
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier2.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Basic
-          
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command gets details about all redis caches in the current subscription.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512522</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>New-AzureRedisCache</command:name>
-      <maml:description>
-        <maml:para>Creates a new redis cache.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>New</command:verb>
-      <command:noun>AzureRedisCache</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The New-AzureRedisCache cmdlet creates a new redis cache.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>New-AzureRedisCache</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the redis cache to create.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Name of the resource group in which to create the redis cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Location in which to create redis cache. Possible values are "North Central US", "South Central US", "Central US", "West Europe",
-            "North Europe", "West US", "East US", "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast"</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>RedisVersion</maml:name>
-          <maml:description>
-            <maml:para>RedisVersion of the redis cache. If not provided, the default value is 2.8.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Size</maml:name>
-          <maml:description>
-            <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Sku</maml:name>
-          <maml:description>
-            <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic and Standard.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>MaxMemoryPolicy</maml:name>
-          <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>EnableNonSslPort</maml:name>
-          <maml:description>
-            <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the redis cache to create.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>Name of resource group in which to create the redis cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Location</maml:name>
-        <maml:description>
-          <maml:para>Location in which to create the redis cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>RedisVersion</maml:name>
-        <maml:description>
-          <maml:para>RedisVersion of the redis cache. The default value is 2.8.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>2.8</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Size</maml:name>
-        <maml:description>
-          <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>1GB</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Sku</maml:name>
-        <maml:description>
-          <maml:para>Sku of the redis cache. The default value is Standard. Possible values are Basic and Standard.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>Standard</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>MaxMemoryPolicy</maml:name>
-        <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. By default the value is VolatileLRU. All possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>EnableNonSslPort</maml:name>
-        <maml:description>
-          <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-        <dev:type>
-          <maml:name>Boolean</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns all attributes of a redis cache including primary and secondary access keys.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Create new redis cache</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
-         
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   :
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Standard
-          
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command creates a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 2: Create new redis cache with all parameters</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -RedisVersion "2.8" -Size 250MB -Sku Standard -MaxMemoryPolicy AllKeysLRU -Force
-
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   : AllKeysLRU
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
-
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command creates a redis cache or updates the redis cache if it already exists.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512523</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Remove-AzureRedisCache</command:name>
-      <maml:description>
-        <maml:para>Remove redis cache if exists.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Remove</command:verb>
-      <command:noun>AzureRedisCache</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The Remove-AzureRedisCache cmdlet removes a redis cache if it exists.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Remove-AzureRedisCache</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the redis cache to remove.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Name of the resource group of the cache to remove.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>When the Force parameter is provided, the cache is removed without any confirmation prompts.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>PassThru</maml:name>
-          <maml:description>
-            <maml:para>By default Remove-AzureRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRedisCache returns a boolean value indicating the success of the operation.</maml:para>
-          </maml:description>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the redis cache to remove.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>Name of the resource group of the cache to remove.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>When the Force parameter is provided, the cache is removed without any confirmation prompts.</maml:para>
-        </maml:description>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>PassThru</maml:name>
-        <maml:description>
-          <maml:para>By default Remove-AzureRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRedisCache returns a boolean value indicating the success of the operation.</maml:para>
-        </maml:description>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Boolean</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns true if no exception occured.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Remove a redis cache with PassThru</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Remove-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Force -PassThru
-          True
-
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command removes a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 2: Remove a redis cache without PassThru</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Remove-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Force
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command removes a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512524</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Get-AzureRedisCacheKey</command:name>
-      <maml:description>
-        <maml:para>Gets the accesskeys for the specified redis cache.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Get</command:verb>
-      <command:noun>AzureRedisCacheKey</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The Get-AzureRedisCacheKey cmdlet gets the access keys for the specified cache.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Get-AzureRedisCacheKey</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the redis cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Name of the resource group for the cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the redis cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>Name of the resource group for the cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Management.Redis.Models.RedisAccessKeys</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns primary and secondary access key of redis caches.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Get the access keys of a specific redis cache</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;Get-AzureRedisCacheKey -ResourceGroupName myGroup -Name myexists
-
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command gets the access keys of a specific redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512525</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>New-AzureRedisCacheKey</command:name>
-      <maml:description>
-        <maml:para>Regenerates the access key of a redis cache.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>New</command:verb>
-      <command:noun>AzureRedisCacheKey</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The New-AzureRedisCacheKey cmdlet regenerate the access key of a redis cache.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>New-AzureRedisCacheKey</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the redis cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Name of the resource group for the cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>KeyType</maml:name>
-          <maml:description>
-            <maml:para>Specifies whether to regenerate the primary or secondary access key. Possible values are Primary or Secondary.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>When the Force parameter is provided, the specified access key is regenerated without any confirmation prompts.</maml:para>
-          </maml:description>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the redis cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>Name of the resource group for the cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>KeyType</maml:name>
-        <maml:description>
-          <maml:para>Specifies whether to regenerate the primary or secondary access key. Possible values are Primary or Secondary.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>When the Force parameter is provided, the specified access key is regenerated without any confirmation prompts.</maml:para>
-        </maml:description>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Management.Redis.Models.RedisAccessKeys</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns the primary and secondary access key of redis caches.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Regenerate primary key</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Primary -Force
-
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command regenerates the primary key of a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>Example 2: Regenerate secondary key</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Secondary -Force
-
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command regenerates the secondary key of a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512526</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>Set-AzureRedisCache</command:name>
-      <maml:description>
-        <maml:para>Set redis cache updatable parameters.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
-      <command:verb>Set</command:verb>
-      <command:noun>AzureRedisCache</command:noun>
-      <dev:version />
-    </command:details>
-    <maml:description>
-      <maml:para>The Set-AzureRedisCache cmdlet sets redis cache parameters.</maml:para>
-    </maml:description>
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Set-AzureRedisCache</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>Name of the redis cache to update.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>Name of the resource group for the cache.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>MaxMemoryPolicy</maml:name>
-          <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>EnableNonSslPort</maml:name>
-          <maml:description>
-            <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Name of the redis cache to update.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>Name of the resource group for the cache.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>MaxMemoryPolicy</maml:name>
-        <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>EnableNonSslPort</maml:name>
-        <maml:description>
-          <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
-        <dev:type>
-          <maml:name>Boolean</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-          <maml:para>Returns all attributes of a redis cache including primary and secondary access keys.</maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <maml:alertSet>
-    </maml:alertSet>
-    <command:examples>
-      <command:example>
-        <maml:title>Example 1: Update Max Memory Policy</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -MaxMemoryPolicy AllKeysLRU
-
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   : AllKeysLRU
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
-
-        </dev:code>
-        <dev:remarks>
-          <maml:para>This command updates the updatable attributes of a redis cache.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=512527</maml:uri>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+﻿<?xml version="1.0" encoding="utf-8"?><helpItems schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Add-AzureApiManagementRegion</command:name>
+		<maml:description>
+			<maml:para>Adds new deployment region to PsApiManagement instance.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Add</command:verb>
+		<command:noun>AzureApiManagementRegion</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Add-AzureApiManagementRegion cmdlet adds new instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion to collection of AdditionalRegions of provided instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement. This cmdlet does not deploy anything by itself but updates instance of PsApiManagement in-memory. Related cmdltes are: Update-AzureApiManagementRegion and Remove-AzureApiManagementRegion. To actually update a deployment of an API Management pass the modified PsApiManagementInstance to Update-AzureApiManagement cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Add-AzureApiManagementRegion</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>ApiManagement</maml:name>
+				<maml:description>
+					<maml:para>PsApiManagement instance to add additional deployment region to.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of the new deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Sku</maml:name>
+				<maml:description>
+					<maml:para>Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Developer.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementSku]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Capacity</maml:name>
+				<maml:description>
+					<maml:para>Sku capacity of the deployment region. Default value is 1.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Virtual network configuration. Default value is $null.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>ApiManagement</maml:name>
+			<maml:description>
+				<maml:para>PsApiManagement instance to add additional deployment region to.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagement</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of the new deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Sku</maml:name>
+			<maml:description>
+				<maml:para>Tier of the deployment region. Valid values are Developer, Standard and Premium. Default value is Developer.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementSku]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[PsApiManagementSku]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Developer</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Capacity</maml:name>
+			<maml:description>
+				<maml:para>Sku capacity of the deployment region. Default value is 1.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>1</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Virtual network configuration. Default value is $null.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>$null</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>The cmdlet writes updated PsApiManagement instance to pipeline.</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Add-AzureApiManagementRegion –ApiManagement $apiManagement -Location “East US” -Sku “Premium” –Capacity 2</dev:code>
+			<dev:remarks>
+				<maml:para>Add new 2 units ‘Premium’ region to the PsApiManagement instance.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureApiManagement –ResourceGroupName Contoso –Name ContosoApi |
+Add-AzureApiManagementRegion -Location “East US” -Sku “Premium” –Capacity 2 |
+Update-AzureApiManagementDeployments</dev:code>
+			<dev:remarks>
+				<maml:para>Script to get a PsApiManagement, add 2 ‘Premium’ units region and update deployment.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Backup-AzureApiManagement</command:name>
+		<maml:description>
+			<maml:para>Backs up API Management Service and places the backup to the specified Azure storage blob.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Backup</command:verb>
+		<command:noun>AzureApiManagement</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Backup-AzureApiManagement cmdlet makes a backup copy of an API Management Service and places the backup to the specified Azure storage blob.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Backup-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageContext</maml:name>
+				<maml:description>
+					<maml:para>The storage connection context.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TargetContainerName</maml:name>
+				<maml:description>
+					<maml:para>Name of target Azure Storage blob. If the blob does not exist it will be created.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TargetBlobName</maml:name>
+				<maml:description>
+					<maml:para>Name of target Azure Storage blob. If the blob does not exist it will be created. The default value will be generated based on the following pattern: {Name}-{yyyy-MM-dd-HH-mm}.apimbackup</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends backed up PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>StorageContext</maml:name>
+			<maml:description>
+				<maml:para>The storage connection context.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureStorageContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>TargetContainerName</maml:name>
+			<maml:description>
+				<maml:para>Name of target Azure Storage blob. If the blob does not exist it will be created.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>TargetBlobName</maml:name>
+			<maml:description>
+				<maml:para>Name of target Azure Storage blob. If the blob does not exist it will be created. The default value will be generated based on the following pattern: {Name}-{yyyy-MM-dd-HH-mm}.apimbackup</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends backed up PsApiManagement to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Backup-AzureApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi -StorageContext $storageContext -TargetContainerName ContosoBackups –TargetBlobName ContosoBackup.apimbackup</dev:code>
+			<dev:remarks>
+				<maml:para>Backup API Management service to Azure storage blob.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-AzureApiManagement</command:name>
+		<maml:description>
+			<maml:para>Gets a list or a particular API Management Service description.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureApiManagement</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Get-AzureApiManagement cmdlet gets a list of all API Management services under subscription or specified resource group or a particular API Management.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureApiManagement</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which want to create API Management service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which want to create API Management service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which want to create API Management service.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management service.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureApiManagement</dev:code>
+			<dev:remarks>
+				<maml:para>Get all API Management services within subscription.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi</dev:code>
+			<dev:remarks>
+				<maml:para>Get API Management service by name.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-AzureApiManagementSsoToken</command:name>
+		<maml:description>
+			<maml:para>Gets a link with an SSO token to a deployed management portal of an API Management service.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureApiManagementSsoToken</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Get-AzureApiManagementSsoToken cmdlet returns a link (URL) containing an SSO token to a deployed management portal of an API Management service.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureApiManagementSsoToken</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureApiManagementSsoToken –ResourceGroupName Contoso –Name ContosoApi</dev:code>
+			<dev:remarks>
+				<maml:para>Get SSO token of an API Management service.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Import-AzureApiManagementHostnameCertificate</command:name>
+		<maml:description>
+			<maml:para>Imports a certificate in a PFX format for an API Management Service.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Import</command:verb>
+		<command:noun>AzureApiManagementHostnameCertificate</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Import-AzureApiManagementHostnameCertificate cmdlet imports a certificate in a PFX format for an API Management Service. The certificate is to be used for custom hostnames configuration.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Import-AzureApiManagementHostnameCertificate</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>HostnameType</maml:name>
+				<maml:description>
+					<maml:para>Host name type to upload certificate for. Valid values are: Proxy, Portal</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PfxPath</maml:name>
+				<maml:description>
+					<maml:para>Path to a .pfx certificate file.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PfxPassword</maml:name>
+				<maml:description>
+					<maml:para>Password for the .pfx certificate file.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>HostnameType</maml:name>
+			<maml:description>
+				<maml:para>Host name type to upload certificate for. Valid values are: Proxy, Portal</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameType</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementHostnameType</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PfxPath</maml:name>
+			<maml:description>
+				<maml:para>Path to a .pfx certificate file.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PfxPassword</maml:name>
+			<maml:description>
+				<maml:para>Password for the .pfx certificate file.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Import-AzureApiManagementHostnameCertificate -Name ContosoApi -ResourceGroupName Contoso –HostnameType “Proxy” -PfxPath “C:\proxycert.pfx” -PfxPassword “certsecret”</dev:code>
+			<dev:remarks>
+				<maml:para>Import a certificate for Proxy custom hostname.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureApiManagement</command:name>
+		<maml:description>
+			<maml:para>Creates new API Management Service.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureApiManagement</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>New-AzureApiManagement cmdlet creates new API Management deployment.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which you want to create API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location where want to create API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Organization</maml:name>
+				<maml:description>
+					<maml:para>The name of the organization for use in the developer portal in e-mail notifications.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AdminEmail</maml:name>
+				<maml:description>
+					<maml:para>The originating e-mail address for all e-mail notifications sent from the API Management system.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Sku</maml:name>
+				<maml:description>
+					<maml:para>The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementSku]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Capacity</maml:name>
+				<maml:description>
+					<maml:para>Sku capacity of the Azure API Management service. Default value is 1.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Tags</maml:name>
+				<maml:description>
+					<maml:para>Tags dictionary.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which you want to create API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location where want to create API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Organization</maml:name>
+			<maml:description>
+				<maml:para>The name of the organization for use in the developer portal in e-mail notifications.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AdminEmail</maml:name>
+			<maml:description>
+				<maml:para>The originating e-mail address for all e-mail notifications sent from the API Management system.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Sku</maml:name>
+			<maml:description>
+				<maml:para>The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[PsApiManagementSku]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[PsApiManagementSku]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>Developer</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Capacity</maml:name>
+			<maml:description>
+				<maml:para>Sku capacity of the Azure API Management service. Default value is 1.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>1</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Tags</maml:name>
+			<maml:description>
+				<maml:para>Tags dictionary.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<dev:type>
+				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com</dev:code>
+			<dev:remarks>
+				<maml:para>Create new ‘Developer’ tier API Management service</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi –Location “Central US” –Organization Contoso –AdminEmail admin@contoso.com –Sku Standard –Capacity 3</dev:code>
+			<dev:remarks>
+				<maml:para>Create new ‘Standard’ tier API Management service with 3 units</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureApiManagementHostnameConfiguration</command:name>
+		<maml:description>
+			<maml:para>Creates an instance of PsApiManagementHostnameConfiguration.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureApiManagementHostnameConfiguration</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Helper command to create an instance of PsApiManagementHostnameConfiguration. This command is to be used with Set-AzureApiManagementHostnames command.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureApiManagementHostnameConfiguration</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateThumbprint</maml:name>
+				<maml:description>
+					<maml:para>Certificate thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Hostname</maml:name>
+				<maml:description>
+					<maml:para>Custom hostaname.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateThumbprint</maml:name>
+			<maml:description>
+				<maml:para>Certificate thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Hostname</maml:name>
+			<maml:description>
+				<maml:para>Custom hostaname.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureApiManagementHostnameConfiguration -Hostname “portal.contoso.com” -CertificateThumbprint 33CC47C6FCA848DC9B14A6F071C1EF7C</dev:code>
+			<dev:remarks>
+				<maml:para>Create and initialize instance of Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration type.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>New-AzureApiManagementVirtualNetwork</command:name>
+		<maml:description>
+			<maml:para>Creates an instance of PsApiManagementVirtualNetwork.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>New</command:verb>
+		<command:noun>AzureApiManagementVirtualNetwork</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Helper command to create an instance of PsApiManagementVirtualNetwork. This command is to be used with Set-AzureApiManagementVirtualNetworks command.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>New-AzureApiManagementVirtualNetwork</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of the virtual network.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SubnetName</maml:name>
+				<maml:description>
+					<maml:para>Name of the sub network.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VnetId</maml:name>
+				<maml:description>
+					<maml:para>Identifier of the virtual network.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of the virtual network.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubnetName</maml:name>
+			<maml:description>
+				<maml:para>Name of the sub network.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VnetId</maml:name>
+			<maml:description>
+				<maml:para>Identifier of the virtual network.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			<dev:type>
+				<maml:name>Guid</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$virtualNetworks = @()
+$virtualNetworks += New-AzureApiManagementVirtualNetwork –Location “East US” –SubtenName ContosoNet -VnetId “089D3F4D-B986-4DFD-9259-9112BA7A1F03”
+Set-AzureApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetworks $virtualNetworks</dev:code>
+			<dev:remarks>
+				<maml:para>Script to create a virtual network and call run Set-AzureApiManagementVirtualNetworks command.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Remove-AzureApiManagement</command:name>
+		<maml:description>
+			<maml:para>Removes existing API Management.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureApiManagement</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Remove-AzureApiManagement cmdlet removes existing API Management service.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management service exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Writes true to the pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Do not confirm on the removal of the API Management service.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management service exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management service.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Writes true to the pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Do not confirm on the removal of the API Management service.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Remove-AzureApiManagement –ResourceGroupName ContosoGroup –Name ContosoApi</dev:code>
+			<dev:remarks>
+				<maml:para>Remove API Management service.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Remove-AzureApiManagementRegion</command:name>
+		<maml:description>
+			<maml:para>Removes existing deployment region from PsApiManagement instance.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureApiManagementRegion</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Remove-AzureApiManagementRegion cmdlet removes instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion from collection of AdditionalRegions of provided instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement. This cmdlet does not modifies deployment by itself but updates instance of PsApiManagement in-memory. Related cmdltes are: Update-AzureApiManagementRegion and Add-AzureApiManagementRegion. To actually update a deployment of an API Management pass the modified PsApiManagementInstance to Update-AzureApiManagement cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureApiManagementRegion</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>ApiManagement</maml:name>
+				<maml:description>
+					<maml:para>PsApiManagement instance to remove additional deployment region from.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of the removing region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>ApiManagement</maml:name>
+			<maml:description>
+				<maml:para>PsApiManagement instance to remove additional deployment region from.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagement</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of the removing region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Remove-AzureApiManagementRegion –ApiManagement $apiManagement -Location “East US”</dev:code>
+			<dev:remarks>
+				<maml:para>Remove a region from the PsApiManagement instance.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureApiManagement –ResourceGroupName Contoso –Name ContosoApi | Remove-AzureApiManagementRegion -Location “East US” | Update-AzureApiManagementDeployment
+</dev:code>
+			<dev:remarks>
+				<maml:para>Script to get a PsApiManagement, remove a region and update deployment with piping.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Restore-AzureApiManagement</command:name>
+		<maml:description>
+			<maml:para>Restores an API Management Service from the specified Azure storage blob.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Restore</command:verb>
+		<command:noun>AzureApiManagement</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Restore-AzureApiManagement cmdlet restores an API Management Service from the specified backup residing in an Azure storage blob.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Restore-AzureApiManagement</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>StorageContext</maml:name>
+				<maml:description>
+					<maml:para>The storage connection context.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>SourceContainerName</maml:name>
+				<maml:description>
+					<maml:para>Name of Azure Storage backup source container.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>SourceBlobName</maml:name>
+				<maml:description>
+					<maml:para>Name of Azure Storage backup source blob.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends restored PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>StorageContext</maml:name>
+			<maml:description>
+				<maml:para>The storage connection context.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureStorageContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>SourceContainerName</maml:name>
+			<maml:description>
+				<maml:para>Name of Azure Storage backup source container.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>SourceBlobName</maml:name>
+			<maml:description>
+				<maml:para>Name of Azure Storage backup source blob.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends restored PsApiManagement to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Restore-AzureApiManagement –ResourceGroupName ContosoGroup –Name RestoredContosoApi -StorageContext $storageContext -SourceContainerName ContosoBackups –SourceBlobName ContosoBackup.apimbackup</dev:code>
+			<dev:remarks>
+				<maml:para>Restore API Management service from Azure storage blob.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Set-AzureApiManagementHostnames</command:name>
+		<maml:description>
+			<maml:para>Sets custom hostname configuration for an API Management service proxy and/or portal.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureApiManagementHostnames</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Set-AzureApiManagementHostnames cmdlet sets (applies) custom hostname configuration for an API Management service proxy and/or portal.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureApiManagementHostnames</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>PortalHostnameConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Custom portal hostname configuration. Default value is $null. Passing $null will set the default hostname.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameConfiguration</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ProxyHostnameConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Custom proxy hostname configuration. Default value is $null. Passing $null will set the default hostname.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameConfiguration</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureApiManagementHostnames</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>ApiManagement</maml:name>
+				<maml:description>
+					<maml:para>PsApiManagement instance to get PortalHostnameConfiguration and ProxyHostnameConfiguration from.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>PortalHostnameConfiguration</maml:name>
+			<maml:description>
+				<maml:para>Custom portal hostname configuration. Default value is $null. Passing $null will set the default hostname.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameConfiguration</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementHostnameConfiguration</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>$null</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ProxyHostnameConfiguration</maml:name>
+			<maml:description>
+				<maml:para>Custom proxy hostname configuration. Default value is $null. Passing $null will set the default hostname.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementHostnameConfiguration</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementHostnameConfiguration</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>$null</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>ApiManagement</maml:name>
+			<maml:description>
+				<maml:para>PsApiManagement instance to get PortalHostnameConfiguration and ProxyHostnameConfiguration from.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagement</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf</dev:code>
+			<dev:remarks>
+				<maml:para>Set custom hostname configuration for proxy and portal.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Import-AzureApiManagementHostnameCertificate -Name ContosoApi -ResourceGroupName Contoso –HostnameType “Proxy” -PfxPath “C:\proxycert.pfx” -PfxPassword “certsecret”
+Import-AzureApiManagementHostnameCertificate -Name ContosoApi -ResourceGroupName Contoso –HostnameType “Portal” -PfxPath “C:\portalcert.pfx” -PfxPassword “certsecret”
+$portalHostnameConf = New-AzureApiManagementHostnameConfiguration -Hostname “portal.contoso.com” -CertificateThumbprint 33CC47C6FCA848DC9B14A6F071C1EF7C
+$proxyHostnameConf = New-AzureApiManagementHostnameConfiguration -Hostname “proxy.contoso.com” -CertificateThumbprint 5DD7CCF6A1E74E0987DD2873406B7264
+Set-AzureApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf
+</dev:code>
+			<dev:remarks>
+				<maml:para>Script to configure custom hostname for proxy and portal. First import corresponding certificates and then apply custom hostnames.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Set-AzureApiManagementVirtualNetworks</command:name>
+		<maml:description>
+			<maml:para>Sets VPN configuration for an API Management Service.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureApiManagementVirtualNetworks</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Set-AzureApiManagementVirtualNetworks cmdlet sets Virtual Network configuration for an API Management.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureApiManagementVirtualNetworks</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualNetworks</maml:name>
+				<maml:description>
+					<maml:para>Virtual networks configuration. Default value is $null. Passing $null will remove virtual network configuration.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PsApiManagementVirtualNetwork[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VirtualNetworks</maml:name>
+			<maml:description>
+				<maml:para>Virtual networks configuration. Default value is $null. Passing $null will remove virtual network configuration.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">PsApiManagementVirtualNetwork[]</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>$null</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Name ContosoApi -VirtualNetworks $virtualNetworks</dev:code>
+			<dev:remarks>
+				<maml:para>Set virtual networks for an API Management service</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Update-AzureApiManagementDeployment</command:name>
+		<maml:description>
+			<maml:para>Updates deployment of an API Management Service.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Update</command:verb>
+		<command:noun>AzureApiManagementDeployment</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Update-AzureApiManagementDeployment cmdlet updates current deployment (scales, adds/removes additional deployment regions).</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Update-AzureApiManagementDeployment</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of resource group under which API Management exists.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of master API Management deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Sku</maml:name>
+				<maml:description>
+					<maml:para>The tier of master Azure API Management deployment region. Valid values are Developer, Standard and Premium.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementSku</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Capacity</maml:name>
+				<maml:description>
+					<maml:para>Sku capacity of master Azure API Management deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Virtual Network Configuration of master Azure API Management deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>AdditionalRegions</maml:name>
+				<maml:description>
+					<maml:para>Additional deployment regions of Azure API Management.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">IList`1[PsApiManagementRegion]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Update-AzureApiManagementDeployment</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>ApiManagement</maml:name>
+				<maml:description>
+					<maml:para>PsApiManagement instance to get deployment configuration from. Use the parameter the instance already has all the required changes (scale up/down, add/remove/update regions).</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Name of resource group under which API Management exists.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of master API Management deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Sku</maml:name>
+			<maml:description>
+				<maml:para>The tier of master Azure API Management deployment region. Valid values are Developer, Standard and Premium.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementSku</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementSku</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Capacity</maml:name>
+			<maml:description>
+				<maml:para>Sku capacity of master Azure API Management deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Virtual Network Configuration of master Azure API Management deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>AdditionalRegions</maml:name>
+			<maml:description>
+				<maml:para>Additional deployment regions of Azure API Management.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">IList`1[PsApiManagementRegion]</command:parameterValue>
+			<dev:type>
+				<maml:name>IList`1[PsApiManagementRegion]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Sends updated PsApiManagement to pipeline if operation succeeds.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>ApiManagement</maml:name>
+			<maml:description>
+				<maml:para>PsApiManagement instance to get deployment configuration from. Use the parameter the instance already has all the required changes (scale up/down, add/remove/update regions).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagement</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Update-AzureApiManagementDeployment -ResourceGroupName Contoso -Name ContosoApi –Sku “Standard” –Capacity 3</dev:code>
+			<dev:remarks>
+				<maml:para>Command to update deployment of an ApiManagement to 3 unit ‘Standard’.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apiManagement = Get-AzureApiManagement –ResourceGroupName Contoso –Name ContosoApi
+$apiManagement.Sku = “Premium”
+$apiManagement.Capacity = 5
+$apiManagement.AddRegion(“Central US”, “Premium”, 3)
+Update-AzureApiManagementDeployment –ApiManagement $apiManagement
+</dev:code>
+			<dev:remarks>
+				<maml:para>Script to get an ApiManagement, scale to 5 ‘Premium’ units and add additional 3 unit ‘Premium’ region.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Update-AzureApiManagementRegion</command:name>
+		<maml:description>
+			<maml:para>Updates existing deployment region in PsApiManagement instance.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Update</command:verb>
+		<command:noun>AzureApiManagementRegion</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Update-AzureApiManagementRegion cmdlet updates (scales up/down or changes VPN configuration) existing instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion in collection of AdditionalRegions of provided instance of type Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement. This cmdlet does not deploy anything by itself but updates instance of PsApiManagement in-memory. Related cmdltes are: Add-AzureApiManagementRegion and Remove-AzureApiManagementRegion. To actually update a deployment of an API Management pass the modified PsApiManagementInstance to Update-AzureApiManagement cmdlet.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Update-AzureApiManagementRegion</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>ApiManagement</maml:name>
+				<maml:description>
+					<maml:para>PsApiManagement instance to update existing deployment region in.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Location of the deployment region to update.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Sku</maml:name>
+				<maml:description>
+					<maml:para>New tier value for the deployment region. Valid values are Developer, Standard and Premium.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementSku</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Capacity</maml:name>
+				<maml:description>
+					<maml:para>New Sku capacity value for the deployment region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Virtual network configuration for the deployemnt region. Default value is $null. Passing $null will remove virtual network configuration for the region.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>ApiManagement</maml:name>
+			<maml:description>
+				<maml:para>PsApiManagement instance to update existing deployment region in.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagement</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagement</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Location</maml:name>
+			<maml:description>
+				<maml:para>Location of the deployment region to update.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Sku</maml:name>
+			<maml:description>
+				<maml:para>New tier value for the deployment region. Valid values are Developer, Standard and Premium.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementSku</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementSku</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Capacity</maml:name>
+			<maml:description>
+				<maml:para>New Sku capacity value for the deployment region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Virtual network configuration for the deployemnt region. Default value is $null. Passing $null will remove virtual network configuration for the region.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PsApiManagementVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PsApiManagementVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>$null</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
 </helpItems>
