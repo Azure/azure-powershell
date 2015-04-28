@@ -71,25 +71,13 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
                 Requires.Argument("ConfigurationName", configurationName).NotNull();
 
-                try
-                {
-                    var configuration =
-                                this.automationManagementClient.Configurations.Get(
-                                    resourceGroupName,
-                                    automationAccountName,
-                                    configurationName).Configuration;
+                var configuration =
+                            this.automationManagementClient.Configurations.Get(
+                                resourceGroupName,
+                                automationAccountName,
+                                configurationName).Configuration;
 
-                    return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
-                }
-                catch (CloudException cloudException)
-                {
-                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        throw new ResourceNotFoundException(typeof(Model.DscConfiguration), string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationNotFound, configurationName));
-                    }
-
-                    throw;
-                }
+                return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
             }
         }
 
