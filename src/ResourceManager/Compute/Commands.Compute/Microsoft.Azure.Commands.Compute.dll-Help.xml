@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Add-AzureVMAdditionalUnattendContent</command:name>
 		<maml:description>
-			<maml:para>Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. </maml:para>
+			<maml:para>Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. </maml:para>
+		<maml:para>Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -39,7 +39,7 @@
 					<maml:para>Specifies the name of the setting to which the content applies.</maml:para>
 					<maml:para>Possible values are:</maml:para>
 					<maml:para>    FirstLogonCommands</maml:para>
-					<maml:para>    AutoLogon </maml:para>
+					<maml:para>    AutoLogon</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -83,7 +83,7 @@
 				<maml:para>Specifies the name of the setting to which the content applies.</maml:para>
 				<maml:para>Possible values are:</maml:para>
 				<maml:para>    FirstLogonCommands</maml:para>
-				<maml:para>    AutoLogon </maml:para>
+				<maml:para>    AutoLogon</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -113,7 +113,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -125,7 +126,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -717,8 +719,7 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
  “data”:”&lt;Base64-encoded-file&gt;”,
  “dataType” :”&lt;file-format&gt;”,
  “password”:”&lt;pfx-file-password&gt;”
-}
-</maml:para>
+}</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -777,8 +778,7 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
  “data”:”&lt;Base64-encoded-file&gt;”,
  “dataType” :”&lt;file-format&gt;”,
  “password”:”&lt;pfx-file-password&gt;”
-}
-</maml:para>
+}</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -808,7 +808,8 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -820,7 +821,8 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -910,8 +912,7 @@ $vm = Add-AzureVMSecret -VM $vm -SourceVaultId $SourceVaultId -CertificateStore 
 				<maml:description>
 					<maml:para>Specifies the full path of a file, on the Virtual Machine, where the SSH public key is stored. If the file already exists, the specified key is appended to the file.
 Example:
-/home/user/.ssh/authorized_keys
-</maml:para>
+/home/user/.ssh/authorized_keys</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -954,8 +955,7 @@ Example:
 			<maml:description>
 				<maml:para>Specifies the full path of a file, on the Virtual Machine, where the SSH public key is stored. If the file already exists, the specified key is appended to the file.
 Example:
-/home/user/.ssh/authorized_keys
-</maml:para>
+/home/user/.ssh/authorized_keys</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -985,7 +985,8 @@ Example:
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -997,7 +998,8 @@ Example:
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2119,8 +2121,7 @@ Get-AzureVM</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># Get VM Extension
-$ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
-</dev:code>
+$ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -3275,7 +3276,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureVMImageDetail -Location eastus -PublisherName Canonical -Offer UbuntuServer -Skus 15.04-DAILY -Version 15.04.20150422</dev:code>
+			<dev:code>Get-AzureVMImage -Location eastus -PublisherName Canonical -Offer UbuntuServer -Skus 15.04-DAILY</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -5200,11 +5201,11 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; # Get the Availability Set
-          $as = Get-AzureAvailabilitySet –ResourceGroupName “RG1” –Name “MyASet”
+			<dev:code># Get the Availability Set
+$as = Get-AzureAvailabilitySet –ResourceGroupName “RG1” –Name “MyASet”
 
-          # Create the VM object
-          $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -AvailabilitySetID $as.Id</dev:code>
+# Create the VM object
+$vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -AvailabilitySetID $as.Id</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -6615,7 +6616,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>Overwrite</maml:name>
 				<maml:description>
-					<maml:para>Indicates if any vhds with same Prefix inside the destination Container are encountered, should they be overwritten or not. </maml:para>
+					<maml:para>Indicates if any vhds with same Prefix inside the destination Container are encountered, should they be overwritten or not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -6680,7 +6681,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 			<maml:name>Overwrite</maml:name>
 			<maml:description>
-				<maml:para>Indicates if any vhds with same Prefix inside the destination Container are encountered, should they be overwritten or not. </maml:para>
+				<maml:para>Indicates if any vhds with same Prefix inside the destination Container are encountered, should they be overwritten or not.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -8368,8 +8369,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 				<maml:description>
 					<maml:para>Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.</maml:para>
 					<maml:para>Linux - The file is copied to /var/lib/waagent/ovf-env.xml by the Azure Linux Agent. The agent will also place the base-64 encoded data in /var/lib/waagent/CustomData during provisioning.</maml:para>
-					<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.
-</maml:para>
+					<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8458,8 +8458,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 				<maml:description>
 					<maml:para>Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.</maml:para>
 					<maml:para>Linux - The file is copied to /var/lib/waagent/ovf-env.xml by the Azure Linux Agent. The agent will also place the base-64 encoded data in /var/lib/waagent/CustomData during provisioning.</maml:para>
-					<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.
-</maml:para>
+					<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8533,8 +8532,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 			<maml:description>
 				<maml:para>Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.</maml:para>
 				<maml:para>Linux - The file is copied to /var/lib/waagent/ovf-env.xml by the Azure Linux Agent. The agent will also place the base-64 encoded data in /var/lib/waagent/CustomData during provisioning.</maml:para>
-				<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.
-</maml:para>
+				<maml:para>Windows – The file is saved to %SYSTEMDRIVE%\AzureData\CustomData.bin. If the file exists, it is overwritten. The security on directory is set to System:Full Control and Administrators:Full Control.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9076,7 +9074,6 @@ $vm = Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -C
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>$stoname = &apos;teststo&apos;;
-$stotype = &apos;Standard_GRS&apos;;
 
 $osDiskName = &apos;osDisk&apos;;
 $osDiskCaching = &apos;ReadWrite&apos;;
@@ -9106,7 +9103,7 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 	<command:details>
 		<command:name>Set-AzureVMSourceImage</command:name>
 		<maml:description>
-			<maml:para>Specify the Platform Image to be used for the VM</maml:para>
+			<maml:para>Specify the VM Image to be used for the VM</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -9116,7 +9113,7 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Specify the Platform Image to be used for the VM</maml:para>
+		<maml:para>Specify the VM Image to be used for the VM</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9129,11 +9126,32 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 				<command:parameterValue required="true" variableLength="false">PSVirtualMachine</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>ImageReference</maml:name>
+				<maml:name>PublisherName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Name of the Publisher to be used for the VMImage. Can be discovered using the Get-AzureVMImagePublisher cmdlet</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PSVirtualMachineImage</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Offer</maml:name>
+				<maml:description>
+					<maml:para>Name of the Offer to be used for the VMImage. Can be discovered using the Get-AzureVMImageOffer cmdlet</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Skus</maml:name>
+				<maml:description>
+					<maml:para>Name of the SKU to be used for the VMImage. Can be discovered using the Get-AzureVMImageSku cmdlet</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Version</maml:name>
+				<maml:description>
+					<maml:para>Name of the Version to be used for the VMImage. Can be discovered using the Get-AzureVMImage cmdlet</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -9182,13 +9200,49 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>ImageReference</maml:name>
+			<maml:name>PublisherName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the Publisher to be used for the VMImage. Can be discovered using the Get-AzureVMImagePublisher cmdlet</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">PSVirtualMachineImage</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
-				<maml:name>PSVirtualMachineImage</maml:name>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Offer</maml:name>
+			<maml:description>
+				<maml:para>Name of the Offer to be used for the VMImage. Can be discovered using the Get-AzureVMImageOffer cmdlet</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Skus</maml:name>
+			<maml:description>
+				<maml:para>Name of the SKU to be used for the VMImage. Can be discovered using the Get-AzureVMImageSku cmdlet</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Version</maml:name>
+			<maml:description>
+				<maml:para>Name of the Version to be used for the VMImage. Can be discovered using the Get-AzureVMImage cmdlet</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9213,6 +9267,18 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>ImageReference</maml:name>
+			<maml:description>
+				<maml:para>Image reference to use for the VM. This is an object that can be passed in from the return of the Get-AzureVMImage or the Get-AzureVMImageDetail cmdlet</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">psvirtualmachineimage</command:parameterValue>
+			<dev:type>
+				<maml:name>psvirtualmachineimage</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9270,11 +9336,11 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$vhdContainer = &quot;https://$stoname.blob.core.windows.net/test&quot;;
+			<dev:code># Create the VM object
+$vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot;
 
-$img = &apos;a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd&apos;;
-
-Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContainer;</dev:code>
+# Set the PublisherName, Offer, SKU, Version which can be discovered by the Get-AzureVMImagePublisher, Get-AzureVMImageOffer, Get-AzureVMSku, Get-AzureVMImage cmdlets
+Set-AzureVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version &quot;latest&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -9306,6 +9372,33 @@ $vmimg = Get-AzureVMImageDetail -Location $loc -Offer -Offer $offer[0] -Publishe
 $vm = Set-AzureVMSourceImage -VM $vm -ImageReference $vmimg;</dev:code>
 			<dev:remarks>
 				<maml:para>Set source image using the image reference method</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 3  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$vhdContainer = &quot;https://$stoname.blob.core.windows.net/test&quot;;
+
+Switch-AzureMode AzureServiceManagement
+Get-AzureVMImage
+$img = &apos;a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201410.01-en.us-127GB.vhd&apos;;
+Switch-AzureMode AzureResourceManager
+
+Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContainer;</dev:code>
+			<dev:remarks>
+				<maml:para />
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
