@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
+            AuditStateType orgAuditStateType = model.AuditState;
             model.AuditState = AuditStateType.Enabled;
             if (StorageAccountName != null)
             {
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 
             if (TableIdentifier == null)
             {
-                if ((model.AuditState == AuditStateType.New) && (model.RetentionInDays > 0))
+                if ((orgAuditStateType == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
                     // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
                     throw new Exception(string.Format(Resources.InvalidRetentionTypeSet, model.TableIdentifier));
