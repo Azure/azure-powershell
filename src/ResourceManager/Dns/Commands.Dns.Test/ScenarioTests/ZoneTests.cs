@@ -29,9 +29,23 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneCrudTrimsDot()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudTrimsDot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrudWithPiping()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudWithPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneCrudWithPipingTrimsDot()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudWithPipingTrimsDot");
         }
         
         [Fact]

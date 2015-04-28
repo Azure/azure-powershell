@@ -113,7 +113,8 @@ Run-TestProtected { Run-KeyTest {Test_GetKeyAliasParameter} "Test_GetKeyAliasPar
 Run-TestProtected { Run-KeyTest {Test_GetKeysInNonExistVault} "Test_GetKeysInNonExistVault" } "Test_GetKeysInNonExistVault"
 Run-TestProtected { Run-KeyTest {Test_GetNonExistKey} "Test_GetNonExistKey" } "Test_GetNonExistKey"
 Run-TestProtected { Run-KeyTest {Test_GetKeyInNoPermissionVault} "Test_GetKeyInNoPermissionVault" } "Test_GetKeyInNoPermissionVault"
-
+Run-TestProtected { Run-KeyTest {Test_GetAllKeys} "Test_GetAllKeys" } "Test_GetAllKeys"
+Run-TestProtected { Run-KeyTest {Test_GetKeyVersions} "Test_GetKeyVersions" } "Test_GetKeyVersions"
 
 # Remove-AzureKeyVaultKey tests
 Run-TestProtected { Run-KeyTest {Test_RemoveKeyWithoutPrompt} "Test_RemoveKeyWithoutPrompt" } "Test_RemoveKeyWithoutPrompt"
@@ -127,7 +128,8 @@ Run-TestProtected { Run-KeyTest {Test_RemoveKeyInNoPermissionVault} "Test_Remove
 # Backup-AzureKeyVaultKey and Restore-AzureKeyVaultKey tests
 Run-TestProtected { Run-KeyTest {Test_BackupRestoreKey} "Test_BackupRestoreKey" } "Test_BackupRestoreKey"
 Run-TestProtected { Run-KeyTest {Test_BackupNonExisitingKey} "Test_BackupNonExisitingKey" } "Test_BackupNonExisitingKey"
-Run-TestProtected { Run-KeyTest {Test_BackupToNonExisitingFile} "Test_BackupToNonExisitingFile" } "Test_BackupToNonExisitingFile"
+Run-TestProtected { Run-KeyTest {Test_BackupToANamedFile} "Test_BackupToANamedFile" } "Test_BackupToANamedFile"
+Run-TestProtected { Run-KeyTest {Test_BackupToExistingFile} "Test_BackupToExistingFile" } "Test_BackupToExistingFile"
 Run-TestProtected { Run-KeyTest {Test_RestoreFromNonExistingFile} "Test_RestoreFromNonExistingFile" } "Test_RestoreFromNonExistingFile"
 
 # *-AzureKeyVaultKey pipeline tests
