@@ -17,8 +17,9 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -69,6 +70,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the plan.
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The plan of the automation account")]
+        [ValidateSet(SkuNameEnum.Free, SkuNameEnum.Basic, IgnoreCase = true)]
         public string Plan { get; set; }
 
         /// <summary>
