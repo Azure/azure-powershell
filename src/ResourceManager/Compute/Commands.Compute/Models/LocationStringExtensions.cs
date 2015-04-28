@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public static class LocationStringExtension
     {
-        public static string Standardize(this string location)
+        public static string Canonicalize(this string location)
         {
             if (!string.IsNullOrEmpty(location))
             {

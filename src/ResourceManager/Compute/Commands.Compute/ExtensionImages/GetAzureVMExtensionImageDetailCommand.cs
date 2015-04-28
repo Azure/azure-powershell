@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineExtensionImageGetParameters
             {
-                Location = Location.Standardize(),
+                Location = Location.Canonicalize(),
                 PublisherName = PublisherName,
                 Type = Type,
                 FilterExpression = FilterExpression,

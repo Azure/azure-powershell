@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                result = this.VirtualMachineSizeClient.List(this.Location.Standardize());
+                result = this.VirtualMachineSizeClient.List(this.Location.Canonicalize());
             }
 
             List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();

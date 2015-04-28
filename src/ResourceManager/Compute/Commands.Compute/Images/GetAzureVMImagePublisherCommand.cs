@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineImageListPublishersParameters
             {
-                Location = Location.Standardize()
+                Location = Location.Canonicalize()
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
