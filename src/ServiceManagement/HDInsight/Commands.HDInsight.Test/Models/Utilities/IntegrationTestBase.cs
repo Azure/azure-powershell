@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             )]
         public static readonly IntegrationTestManager TestManager = new IntegrationTestManager();
 
-        private static bool IsInitialized = true;
+        private static bool IsInitialized = false;
         internal static Dictionary<string, string> testToClusterMap = new Dictionary<string, string>();
 
         protected static string ClusterPrefix;
@@ -193,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             var cmdletManager = ServiceLocator.Instance.Locate<IServiceLocationSimulationManager>();
             cmdletManager.MockingLevel = ServiceLocationMockingLevel.ApplyFullMocking;
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            AzureSession.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
         }
 
         public void ApplyIndividualTestMockingOnly()

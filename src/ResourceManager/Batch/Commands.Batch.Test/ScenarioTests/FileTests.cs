@@ -30,9 +30,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         // NOTE: To save time on VM allocation when recording, these tests assume the following:
         //     - A Batch account named 'filetests' exists under the subscription being used for recording.
-        //     - A pool called 'testPool' exists under this account and has at least 1 VM allocated to it.
+        //     - The following commands were run to create a pool, and all 3 VMs are allocated:
+        //          $context = Get-AzureBatchAccountKeys "filetests"
+        //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
+        //          $startTask.CommandLine = "cmd /c echo hello"
+        //          New-AzureBatchPool -Name "testPool" -VMSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
 
         private const string accountName = "filetests";
+        private const string poolName = "testPool";
+        private const string vmName = "tvm-1900272697_1-20150331t200107z"; // Use the following command to get a VM name: (Get-AzureBatchVM -PoolName "testPool" -BatchContext $context)[0].Name
+        private const string startTaskStdOutName = "startup\\stdout.txt";
+        private const string startTaskStdOutContent = "hello";
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -262,6 +270,94 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMFileByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string vmFileName = "startup\\stdout.txt";
+            controller.RunPsTest(string.Format("Test-GetVMFileByName '{0}' '{1}' '{2}' '{3}'", accountName, poolName, vmName, vmFileName));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListVMFilesByFilter()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string vmFilePrefix = "s";
+            int matches = 2;
+            controller.RunPsTest(string.Format("Test-ListVMFilesByFilter '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, vmFilePrefix, matches));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListVMFilesWithMaxCount()
+        {
+            BatchController controller = BatchController.NewInstance;
+            int maxCount = 1;
+            controller.RunPsTest(string.Format("Test-ListVMFilesWithMaxCount '{0}' '{1}' '{2}' '{3}'", accountName, poolName, vmName, maxCount));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListAllVMFiles()
+        {
+            BatchController controller = BatchController.NewInstance;
+            int count = 3; // shared, startup, workitems
+            controller.RunPsTest(string.Format("Test-ListAllVMFiles '{0}' '{1}' '{2}' '{3}'", accountName, poolName, vmName, count));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListVMFilesRecursive()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string startupFolder = "startup";
+            int recursiveCount = 5; // dir itself, ProcessEnv, stdout, stderr, wd
+            controller.RunPsTest(string.Format("Test-ListVMFilesRecursive '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, startupFolder, recursiveCount));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListVMFilePipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            int count = 3; // shared, startup, workitems
+            controller.RunPsTest(string.Format("Test-ListVMFilePipeline '{0}' '{1}' '{2}' '{3}'", accountName, poolName, vmName, count));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMFileContentByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetVMFileContentByName '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, startTaskStdOutName, startTaskStdOutContent));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMFileContentPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetVMFileContentPipeline '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolName, vmName, startTaskStdOutName, startTaskStdOutContent));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRDPFileByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetRDPFileByName '{0}' '{1}' '{2}'", accountName, poolName, vmName));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetRDPFilePipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetRDPFilePipeline '{0}' '{1}' '{2}'", accountName, poolName, vmName));
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -278,12 +374,38 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchTaskFileContent_ST")]
     public class GetBatchTaskFileContentScenarioTestCommand : GetBatchTaskFileContentCommand
     {
-        [Parameter]
-        public MemoryStream MemStream { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            this.Stream = MemStream;
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchVMFile_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    public class GetBatchVMFileScenarioTestCommand : GetBatchVMFileCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchVMFileContent_ST")]
+    public class GetBatchVMFileContentScenarioTestCommand : GetBatchVMFileContentCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Get, "AzureBatchRDPFile_ST")]
+    public class GetBatchRDPFileScenarioTestCommand : GetBatchRDPFileCommand
+    {
+        public override void ExecuteCmdlet()
+        {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ExecuteCmdlet();
         }

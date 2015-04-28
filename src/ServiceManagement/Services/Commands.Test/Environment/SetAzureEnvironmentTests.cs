@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -32,11 +33,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
     
     public class SetAzureEnvironmentTests : TestBase, IDisposable
     {
-        private MockDataStore dataStore;
+        private MemoryDataStore dataStore;
 
         public SetAzureEnvironmentTests()
         {
-            dataStore = new MockDataStore();
+            dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
         }
 
@@ -46,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetsAzureEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -79,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsWhenSettingPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();

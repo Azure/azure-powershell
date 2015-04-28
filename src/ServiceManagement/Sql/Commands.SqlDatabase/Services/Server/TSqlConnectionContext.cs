@@ -658,6 +658,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     IsSystem = false,
                     Name = "P3"
                 },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("D1737D22-A8EA-4DE7-9BD0-33395D2A7419"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "ElasticPool"
+                },
             };
 
             return list;

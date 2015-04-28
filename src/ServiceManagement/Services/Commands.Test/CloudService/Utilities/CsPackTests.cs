@@ -15,6 +15,7 @@
 using System.IO;
 using System.IO.Packaging;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         private const string serviceName = "AzureService";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateLocalPackageWithOneNodeWebRoleTest()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -49,6 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateLocalPackageWithOnePHPWebRoleTest()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -68,6 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateLocalPackageWithNodeWorkerRoleTest()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -81,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateLocalPackageWithPHPWorkerRoleTest()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -94,6 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateLocalPackageWithMultipleRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -113,6 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateCloudPackageWithMultipleRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

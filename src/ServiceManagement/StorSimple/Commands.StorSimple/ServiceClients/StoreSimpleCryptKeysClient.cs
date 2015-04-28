@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
+using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
@@ -22,6 +25,36 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public GetResourceEncryptionKeyResponse GetResourceEncryptionKey()
         {
             return this.GetStorSimpleClient().ResourceEncryptionKeys.Get(GetCustomRequestHeaders());
+        }
+
+        public string GetDevicePublicKey(string deviceId)
+        {
+            var response = this.GetStorSimpleClient().DevicePublicKey.Get(deviceId, GetCustomRequestHeaders());
+
+            if (response == null || response.DevicePublicKey == null)
+            {
+                return null;
+            }
+            else
+            {
+                return response.DevicePublicKey;
+            }
+        }
+
+        /// <summary>
+        /// Encrypts specified data with the Device Public Key
+        /// </summary>
+        /// <param name="data">string to be encrypted</param>
+        /// <returns>Encrypted string</returns>
+        public string EncryptWithDevicePublicKey(string deviceId, string data)
+        {
+            // Get the public key certificate
+            var cert = this.GetDevicePublicKey(deviceId);
+            if (cert == null)
+            {
+                throw new Exception(Resources.ErrorRetrievingDevicePublicKey);
+            }
+            return CryptoHelper.EncryptSecretRSAPKCS(data, cert);
         }
     }
 }

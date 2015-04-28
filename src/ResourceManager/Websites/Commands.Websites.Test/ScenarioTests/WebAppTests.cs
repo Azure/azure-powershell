@@ -33,5 +33,12 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreatesNewAppServicePlan");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewAppServicePlan()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-SetNewAppServicePlan");
+        }
     }
 }
