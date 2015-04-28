@@ -59,28 +59,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
         public PsApiManagement GetApiManagement(string resourceGroupName, string serviceName)
         {
-#if DEBUG
-            //var resource = new ApiServiceResource
-            //{
-            //    Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
-            //    Name = serviceName,
-            //    Location = "Central US",
-            //    Properties = new ApiServiceProperties
-            //    {
-            //        SkuProperties = new ApiServiceSkuProperties
-            //        {
-            //            SkuType = SkuType.Developer,
-            //            Capacity = 1
-            //        },
-            //        ProvisioningState = "Succeeded",
-            //        ProxyEndpoint = "sdsdsdsd",
-            //        ManagementPortalEndpoint = "wewewewe",
-            //        StaticIPs = new string[0]
-            //    }
-            //};
-
-            //return new PsApiManagement(resource);
-#endif
             ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
             return new PsApiManagement(response.Value);
         }
@@ -116,31 +94,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 },
                 Tags = tags
             };
-
-#if DEBUG
-            //var longrunningResponse = new ApiServiceLongRunningOperationResponse
-            //{
-            //    Status = OperationStatus.Succeeded,
-            //    Value = new ApiServiceResource
-            //    {
-            //        Id = string.Format("/resourceGroups/{0}/providers/Azure.ApiManagement/{1}", resourceGroupName, serviceName),
-            //        Name = serviceName,
-            //        Location = location,
-            //        Properties = new ApiServiceProperties
-            //        {
-            //            SkuProperties = new ApiServiceSkuProperties
-            //            {
-            //                SkuType = Mapper.Map<PsApiManagementSku, SkuType>(sku),
-            //                Capacity = capacity
-            //            },
-            //            ProvisioningState = "Succeeded",
-            //            ProxyEndpoint = "sdsdsdsd",
-            //            ManagementPortalEndpoint = "wewewewe",
-            //            StaticIPs = new string[0]
-            //        }
-            //    }
-            //};
-#endif
 
             var longrunningResponse = Client.ApiManagement.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
