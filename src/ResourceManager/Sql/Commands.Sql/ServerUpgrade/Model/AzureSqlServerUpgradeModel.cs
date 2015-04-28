@@ -12,47 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-namespace Microsoft.Azure.Commands.Automation.Common
+namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
-    /// <summary>
-    /// StreamType enum represents the 6 types of Powershell Streams supported.
-    /// </summary>
-    public enum StreamType
+    public class AzureSqlServerUpgradeModel
     {
         /// <summary>
-        /// Indicates Progress Record streams
+        /// Gets or sets the name of the resource group the server being upgraded is in
         /// </summary>
-        Progress,
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Indicates Output Record streams
+        /// Gets or sets the name of the server being upgraded
         /// </summary>
-        Output,
+        public string ServerName { get; set; }
 
         /// <summary>
-        /// Indicates Warning Record streams
+        /// Gets or sets the upgrade status of the server
         /// </summary>
-        Warning,
-
-        /// <summary>
-        /// Indicates Error Record streams
-        /// </summary>
-        Error,
-
-        /// <summary>
-        /// Indicates Debug Record streams
-        /// </summary>
-        Debug,
-
-        /// <summary>
-        /// Indicates Verbose Record streams
-        /// </summary>
-        Verbose,
-
-        /// <summary>
-        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
-        /// </summary>
-        Any
+        public ServerUpgradeStatus Status { get; set; }
     }
 }

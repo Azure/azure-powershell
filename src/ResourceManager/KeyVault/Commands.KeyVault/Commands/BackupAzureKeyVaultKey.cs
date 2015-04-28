@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 OutputFile = GetDefaultFile();
             }
 
-            var filePath = ResolvePath(OutputFile, KeyVaultProperties.Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(OutputFile);
 
             var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
 
@@ -79,10 +79,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         private string GetDefaultFile()
         {
             var currentPath = CurrentPath();
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());
-            File.Create(filename).Dispose();
+            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());           
             return filename;
         }
 
+        private string ResolvePath(string filePath)
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if (keyFile.Exists)
+            {
+                throw new IOException(string.Format(KeyVaultProperties.Resources.BackupKeyFileAlreadyExists, filePath));
+            }
+            return keyFile.FullName;
+        }
     }
 }

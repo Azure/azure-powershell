@@ -15,10 +15,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -46,14 +48,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the nodeconfiguration name.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The nodeconfiguration name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The node configuration name that the node should now be mapped to.")]
         [ValidateNotNullOrEmpty]
         public string NodeConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing nodeconfigurations.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Overwrites an existing nodeconfiguration with same name.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force
         {
             get { return this.overwriteExistingNodeConfiguration; }
@@ -66,8 +68,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var node = this.AutomationClient.SetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.NodeConfigurationName, this.Force);
-            this.WriteObject(node);
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(CultureInfo.CurrentCulture, Resources.SetnodeconfigurationWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.SetnodeconfigurationDescription),
+                this.NodeConfigurationName,
+                () =>
+                {
+                    var node = this.AutomationClient.SetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.NodeConfigurationName);
+                    this.WriteObject(node);
+                });
+
         }
     }
 }

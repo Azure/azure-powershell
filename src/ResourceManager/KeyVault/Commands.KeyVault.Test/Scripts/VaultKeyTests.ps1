@@ -814,18 +814,42 @@ function Test_BackupNonExisitingKey
 
 <#
 .SYNOPSIS
-Tests backup a key to a none existing file
+Tests backup a key to a specific file and be able to restore
 #>
-function Test_BackupToNonExisitingFile
+function Test_BackupToANamedFile
 {
     $keyVault = Get-KeyVault
-    $keyname=Get-KeyName 'backupnonexisting'
+    $keyname=Get-KeyName 'backupnamedfile'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname
-
-    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile c:\nonexisting.blob }
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+ 
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile    
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupfile
+    Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
+
+<#
+.SYNOPSIS
+Tests backup a key to a specific file which exists 
+#>
+function Test_BackupToExistingFile
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'backupexistingfile'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    Assert-NotNull $key                 
+    $global:createdKeys += $keyname
+  
+    $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
+ 
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile        
+    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile }
+}
+
 
 <#
 .SYNOPSIS

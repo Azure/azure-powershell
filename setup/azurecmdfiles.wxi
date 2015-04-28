@@ -12,7 +12,7 @@
                             <File Id="fil0DD0F16890E95B85B2B03CBB03E6CF07" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Hyak.Common.dll" />
                         </Component>
                         <Component Id="cmpAED5C5457E91FCFC34AB7C4734D3E8E0" Guid="*">
-                            <File Id="fil1AD0E938948206F4BFB4C07C8A7BC5ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.Automation.dll-help.xml" />
+                            <File Id="fil1AD0E938948206F4BFB4C07C8A7BC5ED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll-help.xml" />
                         </Component>
                         <Component Id="cmp9C538B9F96F953FD1A81796FC970EE9B" Guid="*">
                             <File Id="filF256BE77EB57EFCA89959865C5AB0EED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll" />

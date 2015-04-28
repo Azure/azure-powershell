@@ -67,12 +67,6 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
-                if (this.ZoneName.EndsWith("."))
-                {
-                    this.ZoneName = this.ZoneName.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.ZoneName));
-                }
-
                 zoneName = this.ZoneName;
                 resourceGroupName = this.ResourceGroupName;
             }
@@ -80,6 +74,12 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 zoneName = this.Zone.Name;
                 resourceGroupName = this.Zone.ResourceGroupName;
+            }
+
+            if (zoneName != null && zoneName.EndsWith("."))
+            {
+                zoneName = zoneName.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
             if (this.Name != null && this.EndsWith != null)
@@ -91,12 +91,6 @@ namespace Microsoft.Azure.Commands.Dns
                 if (this.RecordType == null)
                 {
                     throw new PSArgumentException("If you specify the Name parameter you must also specify the RecordType parameter.");
-                }
-
-                if (this.Name.EndsWith("."))
-                {
-                    this.Name = this.Name.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying recordset name to remove terminating '.'.  Recordset name used is \"{0}\".", this.Name));
                 }
 
                 DnsRecordSet result = this.DnsClient.GetDnsRecordSet(this.Name, zoneName, resourceGroupName, recordType);

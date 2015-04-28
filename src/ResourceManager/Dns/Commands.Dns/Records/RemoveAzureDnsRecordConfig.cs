@@ -89,64 +89,68 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             int removedCount = 0;
-            switch (result.RecordType)
+
+            if (result.Records != null && result.Records.Count > 0)
             {
-                case RecordType.A:
-                    {
-                        removedCount = result.Records.RemoveAll(record => 
-                            record is ARecord 
-                            && ((ARecord)record).Ipv4Address == this.Ipv4Address);
-                        break;
-                    }
+                switch (result.RecordType)
+                {
+                    case RecordType.A:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is ARecord
+                                && ((ARecord)record).Ipv4Address == this.Ipv4Address);
+                            break;
+                        }
 
-                case RecordType.AAAA:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is AaaaRecord
-                            && ((AaaaRecord)record).Ipv6Address == this.Ipv6Address);
-                        break;
-                    }
+                    case RecordType.AAAA:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is AaaaRecord
+                                && ((AaaaRecord)record).Ipv6Address == this.Ipv6Address);
+                            break;
+                        }
 
-                case RecordType.MX:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is MxRecord
-                            && string.Equals(((MxRecord)record).Exchange, this.Exchange, System.StringComparison.OrdinalIgnoreCase)
-                            && ((MxRecord)record).Preference == this.Preference);
-                        break;
-                    }
+                    case RecordType.MX:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is MxRecord
+                                && string.Equals(((MxRecord)record).Exchange, this.Exchange, System.StringComparison.OrdinalIgnoreCase)
+                                && ((MxRecord)record).Preference == this.Preference);
+                            break;
+                        }
 
-                case RecordType.NS:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is NsRecord
-                            && string.Equals(((NsRecord)record).Nsdname, this.Nsdname, System.StringComparison.OrdinalIgnoreCase));
-                        break;
-                    }
-                case RecordType.SRV:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is SrvRecord
-                            && ((SrvRecord)record).Priority == this.Priority
-                            && ((SrvRecord)record).Port == this.Port
-                            && string.Equals(((SrvRecord)record).Target, this.Target, System.StringComparison.OrdinalIgnoreCase)
-                            && ((SrvRecord)record).Weight == this.Weight);
-                        break;
-                    }
-                case RecordType.TXT:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is TxtRecord
-                            && ((TxtRecord)record).Value == this.Value);
-                        break;
-                    }
-                case RecordType.CNAME:
-                    {
-                        removedCount = result.Records.RemoveAll(record =>
-                            record is CnameRecord
-                            && string.Equals(((CnameRecord)record).Cname, this.Cname, System.StringComparison.OrdinalIgnoreCase));
-                        break;
-                    }
+                    case RecordType.NS:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is NsRecord
+                                && string.Equals(((NsRecord)record).Nsdname, this.Nsdname, System.StringComparison.OrdinalIgnoreCase));
+                            break;
+                        }
+                    case RecordType.SRV:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is SrvRecord
+                                && ((SrvRecord)record).Priority == this.Priority
+                                && ((SrvRecord)record).Port == this.Port
+                                && string.Equals(((SrvRecord)record).Target, this.Target, System.StringComparison.OrdinalIgnoreCase)
+                                && ((SrvRecord)record).Weight == this.Weight);
+                            break;
+                        }
+                    case RecordType.TXT:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is TxtRecord
+                                && ((TxtRecord)record).Value == this.Value);
+                            break;
+                        }
+                    case RecordType.CNAME:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is CnameRecord
+                                && string.Equals(((CnameRecord)record).Cname, this.Cname, System.StringComparison.OrdinalIgnoreCase));
+                            break;
+                        }
+                }
             }
 
             WriteVerbose(ProjectResources.Success_RecordRemoved);

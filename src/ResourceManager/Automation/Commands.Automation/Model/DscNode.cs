@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = node.Name;
             this.Id = node.Id;
-            this.Ip = node.Ip;
+            this.IpAddress = node.Ip;
             this.LastSeen = node.LastSeen.ToLocalTime();
             this.RegistrationTime = node.RegistrationTime.ToLocalTime();
             this.Status = node.Status;
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the IP address.
         /// </summary>
-        public string Ip { get; set; }
+        public string IpAddress { get; set; }
 
         /// <summary>
         /// Gets or sets the Id.

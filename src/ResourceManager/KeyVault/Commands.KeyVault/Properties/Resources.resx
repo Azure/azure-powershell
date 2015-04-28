@@ -120,6 +120,9 @@
   <data name="ADObjectNotFound" xml:space="preserve">
     <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'get-AzureSubscription -current' is the current subscription's Azure Active directory.</value>
   </data>
+  <data name="BackupKeyFileAlreadyExists" xml:space="preserve">
+    <value>The backup key file '{0}' already exists.</value>
+  </data>
   <data name="BackupKeyFileNotFound" xml:space="preserve">
     <value>Cannot find backup key file '{0}'</value>
   </data>

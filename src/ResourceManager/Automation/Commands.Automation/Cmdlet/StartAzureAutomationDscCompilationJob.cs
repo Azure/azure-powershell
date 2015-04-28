@@ -33,12 +33,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the configuration name.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration name.")]
+        [Alias("Name")]
         public string ConfigurationName { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration parameters.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The compilation job parameters.")]
+        [Parameter(Mandatory = false, HelpMessage = "The compilation job parameters.")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>

@@ -49,17 +49,19 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string resourceGroupName = "resourceGroup";
             string accountName = "account";
             string location = "East US";
+            string plan = "Free";
 
-            this.mockAutomationClient.Setup(f => f.CreateAutomationAccount(resourceGroupName, accountName, location));
+            this.mockAutomationClient.Setup(f => f.CreateAutomationAccount(resourceGroupName, accountName, location, plan,null));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.Location = location;
             this.cmdlet.Name = accountName;
+            this.cmdlet.Plan = plan;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateAutomationAccount(resourceGroupName, accountName, location), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateAutomationAccount(resourceGroupName, accountName, location,plan,null), Times.Once());
         }
     }
 }
