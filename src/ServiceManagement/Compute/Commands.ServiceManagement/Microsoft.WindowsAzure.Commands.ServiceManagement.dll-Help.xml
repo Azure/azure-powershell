@@ -25757,6 +25757,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>DomainNameLabel</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>VM</maml:name>
 			<maml:description>
