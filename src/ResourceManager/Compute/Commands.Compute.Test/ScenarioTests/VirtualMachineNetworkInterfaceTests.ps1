@@ -102,7 +102,7 @@ function Test-SingleNetworkInterface
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -208,7 +208,7 @@ function Test-SingleNetworkInterfaceDnsSettings
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -318,7 +318,7 @@ function Test-MultipleNetworkInterface
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
