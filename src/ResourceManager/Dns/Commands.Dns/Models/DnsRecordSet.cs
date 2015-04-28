@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Represents a set of records with the same name, with the same type and in the same zone.
     /// </summary>
-    public class DnsRecordSet
+    public class DnsRecordSet : ICloneable
     {
         /// <summary>
         /// Gets or sets the name of this record set, relative to the name of the zone to which it belongs and WITHOUT a terminating '.' (dot) character.
@@ -65,13 +65,43 @@ namespace Microsoft.Azure.Commands.Dns
         /// Gets or sets the tags of this record set.
         /// </summary>
         public Hashtable[] Tags { get; set; }
+
+        /// <summary>
+        /// Returns a deep copy of this record set
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            var clone = new DnsRecordSet();
+
+            clone.Name = this.Name;
+            clone.ZoneName = this.ZoneName;
+            clone.ResourceGroupName = this.ResourceGroupName;
+            clone.Ttl = this.Ttl;
+            clone.Etag = this.Etag;
+            clone.RecordType = this.RecordType;
+
+            if (this.Records != null)
+            {
+                clone.Records = this.Records.Select(record => record.Clone()).Cast<DnsRecordBase>().ToList();
+            }
+
+            if (this.Tags != null)
+            {
+                clone.Tags = this.Tags.Select(tag => tag.Clone()).Cast<Hashtable>().ToArray();
+            }
+
+            return clone;
+        }
     }
 
     /// <summary>
     /// Represents a DNS record that is part of a <see cref="DnsRecordSet"/>.
     /// </summary>
-    public abstract class DnsRecordBase
+    public abstract class DnsRecordBase : ICloneable
     {
+        public abstract object Clone();
+
         internal abstract object ToMamlRecord();
 
         internal static DnsRecordBase FromMamlRecord(object record)
@@ -177,6 +207,15 @@ namespace Microsoft.Azure.Commands.Dns
                 Ipv4Address = this.Ipv4Address,
             };
         }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new ARecord { Ipv4Address = this.Ipv4Address };
+        }
     }
 
     /// <summary>
@@ -200,6 +239,15 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 Ipv6Address = this.Ipv6Address,
             };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new AaaaRecord { Ipv6Address = this.Ipv6Address };
         }
     }
 
@@ -225,6 +273,15 @@ namespace Microsoft.Azure.Commands.Dns
                 Cname = this.Cname,
             };
         }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new CnameRecord { Cname = this.Cname };
+        }
     }
 
     /// <summary>
@@ -249,6 +306,15 @@ namespace Microsoft.Azure.Commands.Dns
                 Nsdname = this.Nsdname,
             };
         }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new NsRecord { Nsdname = this.Nsdname };
+        }
     }
 
     /// <summary>
@@ -272,6 +338,15 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 Value = this.Value,
             };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new TxtRecord { Value = this.Value };
         }
     }
 
@@ -302,6 +377,15 @@ namespace Microsoft.Azure.Commands.Dns
                 Exchange = this.Exchange,
                 Preference = this.Preference,
             };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new MxRecord { Exchange = this.Exchange, Preference = this.Preference };
         }
     }
 
@@ -343,6 +427,21 @@ namespace Microsoft.Azure.Commands.Dns
                 Target = this.Target,
                 Weight = this.Weight,
                 Port = this.Port,
+            };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new SrvRecord 
+            { 
+                Priority = this.Priority,
+                Target = this.Target,
+                Weight = this.Weight,
+                Port = this.Port
             };
         }
     }
@@ -396,6 +495,24 @@ namespace Microsoft.Azure.Commands.Dns
         {
             return new Management.Dns.Models.SoaRecord
             {
+                Host = this.Host,
+                Email = this.Email,
+                SerialNumber = this.SerialNumber,
+                RefreshTime = this.RefreshTime,
+                RetryTime = this.RetryTime,
+                ExpireTime = this.ExpireTime,
+                MinimumTtl = this.MinimumTtl,
+            };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new SoaRecord 
+            { 
                 Host = this.Host,
                 Email = this.Email,
                 SerialNumber = this.SerialNumber,

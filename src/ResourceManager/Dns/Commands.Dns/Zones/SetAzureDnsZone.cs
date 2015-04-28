@@ -52,12 +52,6 @@ namespace Microsoft.Azure.Commands.Dns
 
             if (this.ParameterSetName == "Fields")
             {
-                if (this.Name.EndsWith("."))
-                {
-                    this.Name = this.Name.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
-                }
-
                 zoneToUpdate = new DnsZone
                 {
                     Name = this.Name,
@@ -74,6 +68,12 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 zoneToUpdate = this.Zone;
+            }
+
+            if (zoneToUpdate.Name != null && zoneToUpdate.Name.EndsWith("."))
+            {
+                zoneToUpdate.Name = zoneToUpdate.Name.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneToUpdate.Name));
             }
 
             bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
