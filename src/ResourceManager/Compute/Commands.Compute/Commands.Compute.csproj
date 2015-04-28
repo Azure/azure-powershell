@@ -182,6 +182,7 @@
     <Compile Include="Models\PSAvailabilitySet.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
+    <Compile Include="Models\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
     <Compile Include="StorageAccount\StorageManagementClient.cs" />

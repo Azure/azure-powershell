@@ -146,16 +146,11 @@
   <ItemGroup>
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\StorageAccountTests.cs" />
-    <Compile Include="ScenarioTests\TestVirtualMachineImageList.cs" />
-    <Compile Include="ScenarioTests\TestVirtualMachineList.cs" />
-    <Compile Include="ScenarioTests\VirtualMachineDataDiskTests.cs" />
-    <Compile Include="ScenarioTests\VirtualMachineCaptureTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
     <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineNetworkInterfaceTests.cs" />
-    <Compile Include="ScenarioTests\TestVirtualMachineSizeAndUsage.cs" />
-    <Compile Include="ScenarioTests\VirtualMachinePIRv2Tests.cs" />
+    <Compile Include="ScenarioTests\UtilityFunctionTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -286,6 +281,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachinePIRv2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachinePlan.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachinePlan2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineSizeAndUsage.json">
