@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,24 +13,32 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineExtensionImageDetails : PSVirtualMachineExtensionImage
+    public class PSUsage
     {
-        public string Name { get; set; }
-        
-        public string HandlerSchema { get; set; }
+        public int CurrentValue { get; set; }
 
-        public string OperatingSystem { get; set; }
+        public uint Limit { get; set; }
 
-        public string ComputeRole { get; set; }
+        public UsageName Name { get; set; }
 
-        public bool SupportsMultipleExtensions { get; set; }
+        [JsonIgnore]
+        public string NameText
+        {
+            get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
+        }
 
-        public bool VMScaleSetEnabled { get; set; }
+        public UsageUnit Unit { get; set; }
+
+        [JsonIgnore]
+        public string UnitText
+        {
+            get { return JsonConvert.SerializeObject(Unit, Formatting.Indented); }
+        }
     }
 }
+

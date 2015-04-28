@@ -12,18 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Commands.Network;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute
 {
-    public partial class VirtualMachineTests
+    public class VirtualMachineRemoteDesktopBaseCmdlet : VirtualMachineBaseCmdlet
     {
-        //[Fact(Skip = "TODO: Record")]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachinePIRv2()
+
+        private NetworkClient networkClient;
+
+        public NetworkClient NetworkClient
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
+            get
+            {
+                if (networkClient == null)
+                {
+                    networkClient = new NetworkClient(Profile)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return networkClient;
+            }
+
+            set { networkClient = value; }
         }
     }
 }

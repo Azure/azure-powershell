@@ -70,11 +70,8 @@ namespace Microsoft.Azure.Commands.Compute
                 StorageProfile = this.VM.StorageProfile,
                 NetworkProfile = this.VM.NetworkProfile,
                 OSProfile = this.VM.OSProfile,
-                AvailabilitySetReference = string.IsNullOrEmpty(this.VM.AvailabilitySetId) ? null
-                                         : new AvailabilitySetReference
-                                           {
-                                               ReferenceUri = this.VM.AvailabilitySetId
-                                           },
+                Plan = this.VM.Plan,
+                AvailabilitySetReference = this.VM.AvailabilitySetReference,
                 Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
                 Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
             };

@@ -73,9 +73,11 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";
+        public const string VirtualMachineExtensionImageDetail = "AzureVMExtensionImageDetail";
 
         public const string AvailabilitySet = "AzureAvailabilitySet";
         public const string VirtualMachineConfig = "AzureVMConfig";
+        public const string VirtualMachinePlan = "AzureVMPlan";
 
         public const string VirtualMachineSize = "AzureVMSize";
 
@@ -83,13 +85,14 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
         public const string VirtualMachineImageOffer = "AzureVMImageOffer";
         public const string VirtualMachineImageSku = "AzureVMImageSku";
+        public const string VirtualMachineImageDetail = "AzureVMImageDetail";
         public const string VirtualMachineImageVersion = "AzureVMImageVersion";
 
         public const string VirtualMachineUsage = "AzureVMUsage";
 
-        public const string SshPublicKey = "AzureSshPublicKey";
-        public const string AdditionalUnattendContent = "AzureAdditionalUnattendContent";
-        public const string VaultCertificate = "AzureVaultCertificate";
-        public const string VaultSecretGroup = "AzureVaultSecretGroup";
+        public const string SshPublicKey = "AzureVMSshPublicKey";
+        public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContent";
+        public const string VaultSecretGroup = "AzureVMSecret";
+        public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
     }
 }

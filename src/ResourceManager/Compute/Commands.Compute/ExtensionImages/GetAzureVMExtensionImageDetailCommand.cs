@@ -16,14 +16,13 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageVersion)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage))]
-    public class GetAzureVMExtensionImageVersionCommand : VirtualMachineExtensionImageBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageDetail)]
+    [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
+    public class GetAzureVMExtensionImageDetailCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -34,6 +33,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        public string Version { get; set; }
+
         [Parameter, ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
 
@@ -41,30 +43,35 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineExtensionImageListVersionsParameters
+            var parameters = new VirtualMachineExtensionImageGetParameters
             {
-                Location = Location,
+                Location = Location.Canonicalize(),
                 PublisherName = PublisherName,
                 Type = Type,
-                FilterExpression = FilterExpression
+                FilterExpression = FilterExpression,
+                Version = Version
             };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+            VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Version = r.Name,
-                             PublisherName = this.PublisherName,
-                             Type = this.Type,
-                             FilterExpression = this.FilterExpression
-                         };
+            var image = new PSVirtualMachineExtensionImageDetails
+            {
+                RequestId = result.RequestId,
+                StatusCode = result.StatusCode,
+                Id = result.VirtualMachineExtensionImage.Id,
+                Location = result.VirtualMachineExtensionImage.Location,
+                Name = result.VirtualMachineExtensionImage.Name,
+                HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                PublisherName = this.PublisherName,
+                Type = this.Type,
+                Version = this.Version
+            };
 
-            WriteObject(images, true);
+            WriteObject(image);
         }
     }
 }

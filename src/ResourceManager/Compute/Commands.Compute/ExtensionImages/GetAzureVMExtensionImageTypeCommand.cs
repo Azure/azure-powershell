@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineExtensionImageListTypesParameters
             {
-                Location = Location,
+                Location = Location.Canonicalize(),
                 PublisherName = PublisherName
             };
 

@@ -15,15 +15,15 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public partial class VirtualMachineTests
+    public class UsageMetricsTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSizeAndUsage()
+        public void TestGetUsageMetrics()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
+            TestsController.NewInstance.RunPsTest("Test-GetUsageMetrics");
         }
     }
 }

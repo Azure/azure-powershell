@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineImageDetails : PSVirtualMachineImage
+    public class PSVirtualMachineSize
     {
+        public int? MaxDataDiskCount { get; set; }
+
+        public int MemoryInMB { get; set; }
+
         public string Name { get; set; }
 
-        public OSDiskImage OSDiskImage { get; set; }
+        public int NumberOfCores { get; set; }
 
-        public PurchasePlan PurchasePlan { get; set; }
+        public int OSDiskSizeInMB { get; set; }
 
-        public IList<DataDiskImage> DataDiskImages { get; set; }
+        public int ResourceDiskSizeInMB { get; set; }
     }
 }
+

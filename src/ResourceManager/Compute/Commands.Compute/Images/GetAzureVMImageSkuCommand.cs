@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
-    [OutputType(typeof(PSVirtualMachineImage))]
+    [OutputType(typeof(PSVirtualMachineImageSku))]
     public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineImageListSkusParameters
             {
-                Location = Location,
+                Location = Location.Canonicalize(),
                 PublisherName = PublisherName,
                 Offer = Offer
             };
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
 
             var images = from r in result.Resources
-                         select new PSVirtualMachineImage
+                         select new PSVirtualMachineImageSku
                          {
                              RequestId = result.RequestId,
                              StatusCode = result.StatusCode,

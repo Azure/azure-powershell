@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage)]
-    [OutputType(typeof(PSVirtualMachineImageDetails))]
+    [OutputType(typeof(PSVirtualMachineImage))]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -37,41 +37,39 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
-        public string Version { get; set; }
+        [Parameter, ValidateNotNullOrEmpty]
+        public string FilterExpression { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageGetParameters
+            var parameters = new VirtualMachineImageListParameters
             {
-                Location = Location,
-                PublisherName = PublisherName,
+                Location = Location.Canonicalize(),
                 Offer = Offer,
+                PublisherName = PublisherName,
                 Skus = Skus,
-                Version = Version
+                FilterExpression = FilterExpression
             };
 
-            VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
 
-            var image = new PSVirtualMachineImageDetails
-            {
-                RequestId = response.RequestId,
-                StatusCode = response.StatusCode,
-                Id = response.VirtualMachineImage.Id,
-                Location = response.VirtualMachineImage.Location,
-                Name = response.VirtualMachineImage.Name,
-                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
-                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
-                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
-                PublisherName = this.PublisherName,
-                Offer = this.Offer,
-                Skus = this.Skus,
-                Version = this.Version
-            };
+            var images = from r in result.Resources
+                         select new PSVirtualMachineImage
+                         {
+                             RequestId = result.RequestId,
+                             StatusCode = result.StatusCode,
+                             Id = r.Id,
+                             Location = r.Location,
+                             Version = r.Name,
+                             PublisherName = this.PublisherName,
+                             Offer = this.Offer,
+                             Skus = this.Skus,
+                             FilterExpression = this.FilterExpression
+                         };
 
-            WriteObject(image);
+            WriteObject(images, true);
         }
     }
 }

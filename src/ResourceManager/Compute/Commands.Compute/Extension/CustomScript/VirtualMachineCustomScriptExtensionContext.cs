@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public const string ExtensionDefaultPublisher = "Microsoft.Compute";
         public const string ExtensionDefaultName = "CustomScriptExtension";
-        public const string ExtensionDefaultVersion = "1.*";
+        public const string ExtensionDefaultVersion = "1.4";
 
 
         public string CommandToExecute { get; set; }

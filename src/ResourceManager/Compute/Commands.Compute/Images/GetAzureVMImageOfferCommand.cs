@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
-    [OutputType(typeof(PSVirtualMachineImage))]
+    [OutputType(typeof(PSVirtualMachineImageOffer))]
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachineImageListOffersParameters
             {
-                Location = Location,
+                Location = Location.Canonicalize(),
                 PublisherName = PublisherName
             };
 
             VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
 
             var images = from r in result.Resources
-                         select new PSVirtualMachineImage
+                         select new PSVirtualMachineImageOffer
                          {
                              RequestId = result.RequestId,
                              StatusCode = result.StatusCode,

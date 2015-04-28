@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -45,13 +47,22 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (string.IsNullOrEmpty(this.Name))
             {
-                var op = this.AvailabilitySetClient.List(this.ResourceGroupName);
-                WriteObject(op.ToPSAvailabilitySetList(this.ResourceGroupName), true);
+                var result = this.AvailabilitySetClient.List(this.ResourceGroupName);
+
+                List<PSAvailabilitySet> psResultList = new List<PSAvailabilitySet>();
+                foreach (var item in result.AvailabilitySets)
+                {
+                    var psItem = Mapper.Map<PSAvailabilitySet>(item);
+                    psResultList.Add(psItem);
+                }
+
+                WriteObject(psResultList, true);
             }
             else
             {
-                var op = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
-                WriteObject(op.ToPSAvailabilitySet(this.ResourceGroupName));
+                var result = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
+                var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+                WriteObject(psResult);
             }
         }
     }

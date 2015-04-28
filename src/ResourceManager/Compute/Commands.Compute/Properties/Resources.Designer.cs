@@ -59,7 +59,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
+        /// </summary>
+        public static string BothWindowsAndLinuxConfigurationsSpecified {
+            get {
+                return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
@@ -84,6 +93,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string VirtualMachineExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of a public load balancer. .
+        /// </summary>
+        public static string VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer {
+            get {
+                return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer..
+        /// </summary>
+        public static string VirtualMachineNotAssociatedWithPublicLoadBalancer {
+            get {
+                return ResourceManager.GetString("VirtualMachineNotAssociatedWithPublicLoadBalancer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer..
+        /// </summary>
+        public static string VirtualMachineReferencesInternalNetworkInterface {
+            get {
+                return ResourceManager.GetString("VirtualMachineReferencesInternalNetworkInterface", resourceCulture);
             }
         }
         

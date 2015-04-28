@@ -12,18 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public partial class VirtualMachineTests
+    public static class LocationStringExtension
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineImageList()
+        public static string Canonicalize(this string location)
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
+            if (!string.IsNullOrEmpty(location))
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (char ch in location)
+                {
+                    if (!char.IsWhiteSpace(ch))
+                    {
+                        sb.Append(ch);
+                    }
+                }
+
+                location = sb.ToString().ToLower();
+            }
+
+            return location;
         }
     }
 }
