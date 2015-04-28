@@ -454,7 +454,7 @@ function Test-VirtualMachineSizeAndUsage
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -620,7 +620,7 @@ function Test-VirtualMachinePIRv2
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -730,7 +730,7 @@ function Test-VirtualMachineCapture
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
@@ -825,7 +825,7 @@ function Test-VirtualMachineDataDisk
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # Negative Tests on A0 Size + 2 Data Disks
         Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "The maximum number of data disks allowed to be attached to a VM is 1.";
@@ -901,10 +901,14 @@ function Test-VirtualMachinePlan
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
         $imgRef = Get-DefaultCRPImage;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         $plan = Get-ComputeTestResourceName;
-        $p = Set-AzureVMPlan -VM $p -PlanName $plan -Publisher $plan -Product $plan -PromotionCode $plan;
+        $p.Plan = New-Object Microsoft.Azure.Management.Compute.Models.Plan;
+        $p.Plan.Name = $plan;
+        $p.Plan.Publisher = $plan;
+        $p.Plan.Product = $plan;
+        $p.Plan.PromotionCode = $plan;
 
         # Negative Tests on non-existing Plan
         Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "User failed validation to purchase resources";
@@ -985,8 +989,12 @@ function Test-VirtualMachinePlan2
         $vmmImgVerName = '1.0.0';
         $imgRef = Get-AzureVMImageDetail -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
         $plan = $imgRef.PurchasePlan;
-        $p = Set-AzureVMSourceImage -VM $p -ImageReference $imgRef;
-        $p = Set-AzureVMPlan -VM $p -PlanName $plan.Name -Publisher $plan.Publisher -Product $plan.Product;
+        $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
+        $p.Plan = New-Object Microsoft.Azure.Management.Compute.Models.Plan;
+        $p.Plan.Name = $plan.Name;
+        $p.Plan.Publisher = $plan.Publisher;
+        $p.Plan.Product = $plan.Product;
+        $p.Plan.PromotionCode = $null;
         $p.OSProfile.WindowsConfiguration = $null;
 
         New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;

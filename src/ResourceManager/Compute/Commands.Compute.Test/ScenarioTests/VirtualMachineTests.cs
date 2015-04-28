@@ -25,5 +25,61 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineImageList()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineList()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineList");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSizeAndUsage()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCapture()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDataDisk()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePIRv2()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlan()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlan2()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
+        }
     }
 }
