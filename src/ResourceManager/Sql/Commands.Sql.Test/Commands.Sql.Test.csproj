@@ -65,7 +65,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.22.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.23.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -161,12 +161,14 @@
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
     <Compile Include="ScenarioTests\SecurityTests.cs" />
     <Compile Include="ScenarioTests\ServerCrudTests.cs" />
+    <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerServiceObjectiveAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerFirewallRuleAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
+    <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
     <Compile Include="Utilities\UnitTestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +218,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ServerUpgradeTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.SqlTests.DataMaskingTests\TestDatabaseDataMaskingBasicRuleLifecycle.json">
@@ -369,6 +374,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerCrudTests\TestServerUpdate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeWithRecommendedDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeAndCancel.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeNegative.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\sql-audit-test-env-setup.json">
