@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_A4\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.0.201502\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"osDisk\",\r\n            \"createOption\": \"FromImage\",\r\n            \"vhd\": {\r\n              \"uri\": \"https://stohpftestrgname9999.blob.core.windows.net/test/os.vhd\"\r\n            },\r\n            \"caching\": \"ReadWrite\"\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"properties\": {},\r\n              \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/hpftestrgname9999/providers/Microsoft.Network/networkInterfaces/nichpftestrgname9999\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Failed\"\r\n      },\r\n      \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/HPFTESTRGNAME9999/providers/Microsoft.Compute/virtualMachines/vmhpftestrgname9999\",\r\n      \"name\": \"vmhpftestrgname9999\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastasia\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_A4\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.0.201502\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"osDisk\",\r\n            \"createOption\": \"FromImage\",\r\n            \"vhd\": {\r\n              \"uri\": \"https://stopstestrg5998.blob.core.windows.net/test/os.vhd\"\r\n            },\r\n            \"caching\": \"ReadWrite\"\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"properties\": {},\r\n              \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/pstestrg5998/providers/Microsoft.Network/networkInterfaces/nicpstestrg5998\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/PSTESTRG5998/providers/Microsoft.Compute/virtualMachines/vmpstestrg5998\",\r\n      \"name\": \"vmpstestrg5998\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastasia\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3085"
+          "12"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -24,37 +24,33 @@
         "Pragma": [
           "no-cache"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31999"
         ],
         "x-ms-request-id": [
-          "541db794-174c-4034-8c9a-6a9ea5a051f8"
+          "7baa679b-3868-44c6-8583-06708b769935"
+        ],
+        "x-ms-correlation-request-id": [
+          "7baa679b-3868-44c6-8583-06708b769935"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150428T191224Z:7baa679b-3868-44c6-8583-06708b769935"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31987"
-        ],
-        "x-ms-correlation-request-id": [
-          "f3e1afd3-cd9b-471a-98e5-ff892a549dc7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150426T232355Z:f3e1afd3-cd9b-471a-98e5-ff892a549dc7"
-        ],
         "Date": [
-          "Sun, 26 Apr 2015 23:23:55 GMT"
+          "Tue, 28 Apr 2015 19:12:23 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDE1YjVjMzMtNzcyNS00ZmMyLTljODEtYzliMDdkZTQ0NjY4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -62,10 +58,10 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_A4\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.0.201502\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"osDisk\",\r\n            \"createOption\": \"FromImage\",\r\n            \"vhd\": {\r\n              \"uri\": \"https://stohpftestrgname9999.blob.core.windows.net/test/os.vhd\"\r\n            },\r\n            \"caching\": \"ReadWrite\"\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"properties\": {},\r\n              \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/hpftestrgname9999/providers/Microsoft.Network/networkInterfaces/nichpftestrgname9999\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Failed\"\r\n      },\r\n      \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/HPFTESTRGNAME9999/providers/Microsoft.Compute/virtualMachines/vmhpftestrgname9999\",\r\n      \"name\": \"vmhpftestrgname9999\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastasia\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_A4\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.0.201502\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"osDisk\",\r\n            \"createOption\": \"FromImage\",\r\n            \"vhd\": {\r\n              \"uri\": \"https://stopstestrg5998.blob.core.windows.net/test/os.vhd\"\r\n            },\r\n            \"caching\": \"ReadWrite\"\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": true\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"properties\": {},\r\n              \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/pstestrg5998/providers/Microsoft.Network/networkInterfaces/nicpstestrg5998\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/015b5c33-7725-4fc2-9c81-c9b07de44668/resourceGroups/PSTESTRG5998/providers/Microsoft.Compute/virtualMachines/vmpstestrg5998\",\r\n      \"name\": \"vmpstestrg5998\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastasia\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3085"
+          "12"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -76,30 +72,26 @@
         "Pragma": [
           "no-cache"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31998"
         ],
         "x-ms-request-id": [
-          "f88b6473-8c69-477f-bf0b-10b9a3ae84b8"
+          "d0a75a45-78b7-4df5-9e09-2adc46e3302a"
+        ],
+        "x-ms-correlation-request-id": [
+          "d0a75a45-78b7-4df5-9e09-2adc46e3302a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150428T191224Z:d0a75a45-78b7-4df5-9e09-2adc46e3302a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31986"
-        ],
-        "x-ms-correlation-request-id": [
-          "717508ff-fd71-492a-bb1a-38c22e3b9e65"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150426T232355Z:717508ff-fd71-492a-bb1a-38c22e3b9e65"
-        ],
         "Date": [
-          "Sun, 26 Apr 2015 23:23:55 GMT"
+          "Tue, 28 Apr 2015 19:12:24 GMT"
         ]
       },
       "StatusCode": 200
@@ -114,7 +106,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
         ]
       },
-      "ResponseBody": "<html>\r\n  <body onload=\"challenge();\">\r\n    <script>eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);return p}('f j(){k.1=\\'c=b; m-p=a; n=/\\';9.7.i()};0 8(){6.2=\\'4=5; h-e=d; 3=/\\';g.l.o()}',26,26,'function|cookie|cookie|path|SENGINX-ROBOT-MITIGATION        |54374c150f67dd56f6e4ef82ad6351702d0c83f9|document|location|challenge|window|600 |dab3f116dc17f9325fde8592bf72432301807c41|SENGINX-ROBOT-MITIGATION        |600 |age|function|window|max|reload|challenge_f|document|location|max|path|reload|age'.split('|'),0,{}))</script>\r\n  </body>\r\n</html>",
+      "ResponseBody": "<html>\r\n  <body onload=\"challenge();\">\r\n    <script>eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);return p}('h e(){m.9=\\'l=3; a-o=7; 6=/\\';c.8.2()};p 5(){b.1=\\'d=j; 0-4=g; n=/\\';k.i.f()}',26,26,'max|cookie|reload|82c4071ee0c4a58b2c8135316e73bf36c53f2848|age|challenge|path|600 |location|cookie|max|document|window|SENGINX-ROBOT-MITIGATION        |challenge_f|reload|600 |function|location|1c68433700c6a882ca22d39d4bfdb75d08edf38f|window|SENGINX-ROBOT-MITIGATION        |document|path|age|function'.split('|'),0,{}))</script>\r\n  </body>\r\n</html>",
       "ResponseHeaders": {
         "Content-Length": [
           "732"
@@ -129,7 +121,7 @@
           "no-store, no-cache"
         ],
         "Date": [
-          "Sun, 26 Apr 2015 23:29:06 GMT"
+          "Tue, 28 Apr 2015 19:17:37 GMT"
         ],
         "Server": [
           "BlockDos.net"
@@ -140,7 +132,7 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "015b5c33-7725-4fc2-9c81-c9b07de44668",
+    "SubscriptionId": "4d368445-cbb1-42a7-97a6-6850ab99f48e",
     "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "Domain": "microsoft.com"
   }
