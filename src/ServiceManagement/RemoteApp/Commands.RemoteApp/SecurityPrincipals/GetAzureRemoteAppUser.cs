@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             }
         }
 
-        private bool ProccessUsers(SecurityPrincipalInfoListResult response)
+        private bool ProccessUsers(SecurityPrincipalInfoResult response)
         {
             ConsentStatusModel model = null;
             bool found = false;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         }
         public override void ExecuteCmdlet()
         {
-            SecurityPrincipalInfoListResult response = null;
+            SecurityPrincipalInfoResult response = null;
             bool found = false;
 
             showAllUsers =  String.IsNullOrWhiteSpace(UserUpn);

@@ -280,6 +280,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RemoteAppTests\CreateCloudCollection.cs" />
+    <Compile Include="RemoteAppTests\environmentsetuphelper.cs" />
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
@@ -455,6 +456,10 @@
     <ProjectReference Include="..\..\ServiceManagement\Compute\Commands.ServiceManagement.Test\Commands.ServiceManagement.Test.csproj">
       <Project>{58a78f29-8c0c-4a5e-893e-3953c0f29c8a}</Project>
       <Name>Commands.ServiceManagement.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceManagement\RemoteApp\Commands.RemoteApp\Commands.RemoteApp.csproj">
+      <Project>{492d2af2-950b-4f2e-8079-8794305313fd}</Project>
+      <Name>Commands.RemoteApp</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ServiceManagement\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
