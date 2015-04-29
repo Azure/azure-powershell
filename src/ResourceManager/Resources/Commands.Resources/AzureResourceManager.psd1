@@ -70,7 +70,8 @@ FormatsToProcess = @(
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -91,7 +92,8 @@ NestedModules = @(
     '.\Websites\Microsoft.Azure.Commands.Websites.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\Network\Microsoft.Azure.Commands.Network.dll',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll'
 )
 
 # Functions to export from this module
