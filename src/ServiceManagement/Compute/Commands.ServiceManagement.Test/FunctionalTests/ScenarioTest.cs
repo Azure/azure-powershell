@@ -1012,7 +1012,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         [Ignore]
         public void AzureServiceDiagnosticsExtensionTest()
         {
-
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
 
             // Choose the package and config files from local machine
@@ -1062,6 +1061,77 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
 
             pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
+        }
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "PAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Get,Set,Remove)-AzureServiceRemoteDesktopExtension)")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\nodiagpackage.csv", "nodiagpackage#csv", DataAccessMethod.Sequential)]
+        [Ignore]
+        public void VipSwapWithDiagnosticsExtensionTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            // Choose the package and config files from local machine
+            string packageName = Convert.ToString(TestContext.DataRow["packageName"]);
+            string configName = Convert.ToString(TestContext.DataRow["configName"]);
+            var packagePath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + packageName);
+            var configPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + configName);
+
+            Assert.IsTrue(File.Exists(packagePath.FullName), "Package file not exist={0}", packagePath);
+            Assert.IsTrue(File.Exists(configPath.FullName), "Config file not exist={0}", configPath);
+
+            string deploymentName = "deployment1";
+            string deploymentLabel = "label1";
+            DeploymentInfoContext result;
+
+            string storage = defaultAzureSubscription.CurrentStorageAccountName;
+            string daConfig = @"da.xml";
+
+            string storageKey = vmPowershellCmdlets.GetAzureStorageAccountKey(storage).Primary;
+            StorageCredentials creds = new StorageCredentials(storage, storageKey);
+            CloudStorageAccount csa = new WindowsAzure.Storage.CloudStorageAccount(creds, true);
+            var storageContext = new AzureStorageContext(csa);
+
+            serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+            vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+            Console.WriteLine("service, {0}, is created.", serviceName);
+
+            // deploy staging
+            vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath.FullName, configPath.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false);
+            result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+            pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+            Console.WriteLine("successfully deployed the package");
+
+            vmPowershellCmdlets.SetAzureServiceDiagnosticsExtension(serviceName, storageContext, daConfig, null, slot: DeploymentSlotType.Staging);
+            DiagnosticExtensionContext resultContext = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName, slot: DeploymentSlotType.Staging)[0];
+            VerifyDiagExtContext(resultContext, "AllRoles", "Default-PaaSDiagnostics-Staging-Ext-0", storage, daConfig);
+
+            // swap staging -> production
+            // production will be retain diagnosting config from staging, named Default-PaaSDiagnostics-Staging-Ext-0
+            vmPowershellCmdlets.MoveAzureDeployment(serviceName);
+
+            // deploy a new staging
+            deploymentName = "deployment2";
+            deploymentLabel = "label2";
+
+            vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath.FullName, configPath.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false);
+            result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+            pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+            Console.WriteLine("successfully deployed the package");
+
+            // should detect that Default-PaaSDiagnostics-Staging-Ext-0 is in use 
+            vmPowershellCmdlets.SetAzureServiceDiagnosticsExtension(serviceName, storageContext, daConfig, null, slot: DeploymentSlotType.Staging);
+            DiagnosticExtensionContext resultContext2 = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName, slot: DeploymentSlotType.Staging)[0];
+            VerifyDiagExtContext(resultContext2, "AllRoles", "Default-PaaSDiagnostics-Staging-Ext-1", storage, daConfig);
+
+            // execute again to make sure max number of extensions will handled correctly (1 for production and 1 for staging, 1 unused)
+            // should not fail due to ExtensionIdLiveCycleCount limit
+            vmPowershellCmdlets.SetAzureServiceDiagnosticsExtension(serviceName, storageContext, daConfig, null, slot: DeploymentSlotType.Staging);
+            DiagnosticExtensionContext resultContext3 = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName, slot: DeploymentSlotType.Staging)[0];
+
+            // azure splits config from All Roles to specific role in that case, so role name should not be validated
+            VerifyDiagExtContext(resultContext3, null, "Default-PaaSDiagnostics-Staging-Ext-2", storage, daConfig);
+            
+            vmPowershellCmdlets.RemoveAzureService(serviceName, true);
         }
 
         #endregion
@@ -1696,10 +1766,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             Utilities.PrintContext(resultContext);
 
-            Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            if (role != null)
+            {
+                Assert.AreEqual(role, resultContext.Role.RoleType.ToString(), "role is not same");
+            }
+
             Assert.AreEqual(Utilities.PaaSDiagnosticsExtensionName, resultContext.Extension, "extension is not Diagnostics");
+
             Assert.AreEqual(extID, resultContext.Id, "extension id is not same");
-            //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
 
             XmlDocument doc = new XmlDocument();
             doc.Load("da.xml");

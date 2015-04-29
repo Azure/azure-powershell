@@ -26,6 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             this.cmdletName = Utilities.SetAzureServiceDiagnosticsExtensionCmdletName;
             this.cmdletParams.Add(new CmdletParam("ServiceName", service));
             this.cmdletParams.Add(new CmdletParam("StorageContext", storageContext));
+            this.cmdletParams.Add(new CmdletParam("Slot", slot));
             if (roles != null)
             {
                 this.cmdletParams.Add(new CmdletParam("Role", roles));

@@ -21,12 +21,14 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using DeploymentSlotType = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType;
+using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionManager
     {
-        public const int ExtensionIdLiveCycleCount = 2;
+        public const int ExtensionIdLiveCycleCount = 3;
         private const string ExtensionIdTemplate = "{0}-{1}-{2}-Ext-{3}";
         private const string DefaultAllRolesNameStr = "Default";
         private const string ExtensionCertificateSubject = "DC=Microsoft Azure Service Management for Extensions";
@@ -143,16 +145,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
         }
 
-        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot, Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration extConfig)
+        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
+            Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration extConfig, 
+            Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration secondSlotExtConfig = null)
         {
             ExtensionConfigurationBuilder builder = GetBuilder(extConfig);
+            ExtensionConfigurationBuilder secondSlotConfigBuilder = null;
+            if (secondSlotExtConfig != null)
+            {
+                secondSlotConfigBuilder = GetBuilder(secondSlotExtConfig);
+            }
+
             foreach (ExtensionRole r in context.Roles)
             {
                 var extensionIds = (from index in Enumerable.Range(0, ExtensionIdLiveCycleCount)
                                     select r.GetExtensionId(context.Type, slot, index)).ToList();
 
                 string availableId = (from extensionId in extensionIds
-                                      where !builder.ExistAny(extensionId)
+                                      where !builder.ExistAny(extensionId) && (secondSlotConfigBuilder == null || !secondSlotConfigBuilder.ExistAny(extensionId))
                                       select extensionId).FirstOrDefault();
 
                 var extensionList = (from id in extensionIds
