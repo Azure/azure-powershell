@@ -249,6 +249,10 @@
       <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
       <Name>Commands.StorSimple</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ApiManagement\Commands.ApiManagement\Commands.ApiManagement.csproj">
+      <Project>{dc0a9742-df36-48c9-bd2f-68d01aed6257}</Project>
+      <Name>Commands.ApiManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
