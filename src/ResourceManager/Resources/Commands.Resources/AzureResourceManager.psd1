@@ -91,8 +91,8 @@ NestedModules = @(
     '.\Websites\Microsoft.Azure.Commands.Websites.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\Network\Microsoft.Azure.Commands.Network.dll',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
-    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll'
 )
 
 # Functions to export from this module
