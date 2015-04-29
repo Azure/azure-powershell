@@ -20,6 +20,28 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachine
     {
+        // Gets or sets the property of 'Id'
+        public string Id { get; set; }
+
+        // Gets or sets the property of 'Name'
+        public string Name { get; set; }
+
+        // Gets or sets the property of 'Type'
+        public string Type { get; set; }
+
+        // Gets or sets the property of 'Location'
+        public string Location { get; set; }
+
+        // Gets or sets the property of 'Tags'
+        public IDictionary<string,string> Tags { get; set; }
+
+        [JsonIgnore]
+        public string TagsText
+        {
+            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
+        }
+
+        // Gets or sets the property of 'AvailabilitySetReference'
         public AvailabilitySetReference AvailabilitySetReference { get; set; }
 
         [JsonIgnore]
@@ -28,6 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(AvailabilitySetReference, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'Extensions'
         public IList<VirtualMachineExtension> Extensions { get; set; }
 
         [JsonIgnore]
@@ -36,6 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(Extensions, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'HardwareProfile'
         public HardwareProfile HardwareProfile { get; set; }
 
         [JsonIgnore]
@@ -44,8 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(HardwareProfile, Formatting.Indented); }
         }
 
-        public string Id { get; set; }
-
+        // Gets or sets the property of 'InstanceView'
         public VirtualMachineInstanceView InstanceView { get; set; }
 
         [JsonIgnore]
@@ -54,10 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(InstanceView, Formatting.Indented); }
         }
 
-        public string Location { get; set; }
-
-        public string Name { get; set; }
-
+        // Gets or sets the property of 'NetworkProfile'
         public NetworkProfile NetworkProfile { get; set; }
 
         [JsonIgnore]
@@ -66,6 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(NetworkProfile, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'OSProfile'
         public OSProfile OSProfile { get; set; }
 
         [JsonIgnore]
@@ -74,6 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(OSProfile, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'Plan'
         public Plan Plan { get; set; }
 
         [JsonIgnore]
@@ -82,8 +104,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(Plan, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'ProvisioningState'
         public string ProvisioningState { get; set; }
 
+        // Gets or sets the property of 'StorageProfile'
         public StorageProfile StorageProfile { get; set; }
 
         [JsonIgnore]
@@ -91,16 +115,5 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(StorageProfile, Formatting.Indented); }
         }
-
-        public IDictionary<string, string> Tags { get; set; }
-
-        [JsonIgnore]
-        public string TagsText
-        {
-            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
-        }
-
-        public string Type { get; set; }
     }
 }
-

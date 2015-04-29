@@ -20,16 +20,34 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSAvailabilitySet
     {
+        // Gets or sets the property of 'Id'
         public string Id { get; set; }
 
-        public string Location { get; set; }
-
+        // Gets or sets the property of 'Name'
         public string Name { get; set; }
 
+        // Gets or sets the property of 'Type'
+        public string Type { get; set; }
+
+        // Gets or sets the property of 'Location'
+        public string Location { get; set; }
+
+        // Gets or sets the property of 'Tags'
+        public IDictionary<string,string> Tags { get; set; }
+
+        [JsonIgnore]
+        public string TagsText
+        {
+            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
+        }
+
+        // Gets or sets the property of 'PlatformFaultDomainCount'
         public int? PlatformFaultDomainCount { get; set; }
 
+        // Gets or sets the property of 'PlatformUpdateDomainCount'
         public int? PlatformUpdateDomainCount { get; set; }
 
+        // Gets or sets the property of 'Statuses'
         public IList<InstanceViewStatus> Statuses { get; set; }
 
         [JsonIgnore]
@@ -38,16 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
         }
 
-        public IDictionary<string, string> Tags { get; set; }
-
-        [JsonIgnore]
-        public string TagsText
-        {
-            get { return JsonConvert.SerializeObject(Tags, Formatting.Indented); }
-        }
-
-        public string Type { get; set; }
-
+        // Gets or sets the property of 'VirtualMachinesReferences'
         public IList<VirtualMachineReference> VirtualMachinesReferences { get; set; }
 
         [JsonIgnore]
@@ -57,4 +66,3 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
     }
 }
-

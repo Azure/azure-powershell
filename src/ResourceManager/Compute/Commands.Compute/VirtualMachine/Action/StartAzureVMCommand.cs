@@ -21,6 +21,22 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsLifecycle.Start, ProfileNouns.VirtualMachine)]
     public class StartAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var op = this.VirtualMachineClient.Start(this.ResourceGroupName, this.Name);
