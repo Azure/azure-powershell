@@ -116,6 +116,11 @@
     * New-AzureStorageAccountKey
     * Get-AzureStorageAccountKey
   * Made Azure Storage data cmdlets work in AzureResourceManager Mode
+* Azure HDInsight:
+  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
+  * Added cmdlets
+	* Grant-AzureHdinsightRdpAccess
+	* Revoke-AzureHdinsightRdpAccess
 * Azure Batch
   * Added cmdlets
     * New-AzureBatchVMUser
