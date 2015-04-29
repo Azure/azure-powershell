@@ -12,25 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Providers
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The resource type.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public class ResourceTypeDefinition
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Gets or sets the locations
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        [JsonProperty(Required = Required.Default)]
+        public string[] Locations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the API versions.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] ApiVersions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource type.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string ResourceType { get; set; }
     }
 }

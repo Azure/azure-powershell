@@ -12,25 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
-
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The lock level allowed.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public enum LockLevel
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// The cannot delete lock.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        CanNotDelete,
+
+        /// <summary>
+        /// The read-only lock.
+        /// </summary>
+        ReadOnly,
     }
 }

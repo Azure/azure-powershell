@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.Providers;
+    using Cmdlets.Extensions;
+    using Cmdlets.Entities.Providers;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Resources;

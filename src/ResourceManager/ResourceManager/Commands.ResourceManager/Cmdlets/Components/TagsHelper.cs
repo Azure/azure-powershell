@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Collections;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
+    using Cmdlets.Collections;
+    using Cmdlets.Extensions;
 
     /// <summary>
     /// Helper class for tags.

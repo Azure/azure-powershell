@@ -14,23 +14,29 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
-
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The object extension methods.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public static class ObjectExtensions
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Casts the specified object to type T.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
+        /// <typeparam name="T">The type to cast to</typeparam>
+        /// <param name="obj">The input object</param>
+        public static T Cast<T>(this object obj)
         {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
+            return (T)obj;
+        }
+
+        /// <summary>
+        /// Wraps the object in an array of length 1.
+        /// </summary>
+        /// <typeparam name="T">Type of object to wrap.</typeparam>
+        /// <param name="obj">Object to wrap in array.</param>
+        public static T[] AsArray<T>(this T obj)
+        {
+            return new T[] { obj };
         }
     }
 }

@@ -12,25 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The resource batch move definition object.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public class ResourceBatchMoveParameters
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Gets or sets the target resource group.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        [JsonProperty(Required = Required.Always)]
+        public string TargetResourceGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of resources to move.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public string[] Resources { get; set; }
     }
 }

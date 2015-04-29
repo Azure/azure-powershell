@@ -18,8 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Components;
+    using Cmdlets.Components;
     using Newtonsoft.Json.Linq;
 
     /// <summary>

@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Clients.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.ErrorResponses;
+    using Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;

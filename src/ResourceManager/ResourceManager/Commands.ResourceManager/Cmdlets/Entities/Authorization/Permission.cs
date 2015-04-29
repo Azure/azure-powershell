@@ -12,25 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Authorization
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The permission.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix", Justification = "By design.")]
+    public class Permission
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Gets or sets the actions.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        [JsonProperty(Required = Required.Default)]
+        public string[] Actions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the not actions.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] NotActions { get; set; }
     }
 }

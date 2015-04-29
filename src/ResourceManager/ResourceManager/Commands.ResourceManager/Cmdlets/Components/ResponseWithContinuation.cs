@@ -12,25 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+    using System.Collections;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// Response with next link signifying continuation.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    /// <typeparam name="T">Type of response.</typeparam>
+    public class ResponseWithContinuation<T> where T : IEnumerable
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Gets or sets the value of response.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
+        [JsonProperty]
+        public T Value
         {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the next link to query to get the remaining results.
+        /// </summary>
+        [JsonProperty]
+        public string NextLink
+        {
+            get;
+            set;
         }
     }
 }

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Threading.Tasks;
     using Clients.Components;
     using Microsoft.Azure.Commands.ResourceManager.Client.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Collections;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Utilities;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.Resources;
+    using Cmdlets.Collections;
+    using Cmdlets.Extensions;
+    using Cmdlets.Utilities;
+    using Cmdlets.Entities.Resources;
     using Newtonsoft.Json.Linq;
     using ResourceManager.Clients.RestClients;
 

@@ -15,8 +15,8 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.Locks;
+    using Cmdlets.Extensions;
+    using Cmdlets.Entities.Locks;
     using Newtonsoft.Json.Linq;
 
     /// <summary>

@@ -12,25 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
-{
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+using Newtonsoft.Json;
 
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
+{
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The lock properties.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public class LockProperties
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// The lock level.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        [JsonProperty(Required = Required.Default)]
+        public LockLevel Level { get; set; }
+
+        /// <summary>
+        /// The lock notes.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Notes { get; set; }
     }
 }

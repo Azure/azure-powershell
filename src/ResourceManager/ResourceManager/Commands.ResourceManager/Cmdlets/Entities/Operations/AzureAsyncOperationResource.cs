@@ -12,25 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations
 {
-    using System.Management.Automation;
     using Cmdlets.Entities.ErrorResponses;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// The async operation result.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public class AzureAsyncOperationResource
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// Gets or sets the status of the async operation.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        [JsonProperty(Required = Required.Always)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended error info.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public ExtendedErrorInfo Error { get; set; }
     }
 }

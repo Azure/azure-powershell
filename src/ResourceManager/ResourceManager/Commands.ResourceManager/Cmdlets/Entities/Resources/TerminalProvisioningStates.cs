@@ -12,25 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
-
     /// <summary>
-    /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+    /// Terminal values for the <c>ProvisioningState</c> property.
     /// </summary>
-    internal static class ErrorResponseMessageExceptionExtensions
+    public enum TerminalProvisioningStates
     {
         /// <summary>
-        /// Converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
+        /// The ready state.
         /// </summary>
-        /// <param name="exception">The exception</param>
-        internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
-        {
-            // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
-        }
+        Ready,
+
+        /// <summary>
+        /// The succeeded state.
+        /// </summary>
+        Succeeded,
+
+        /// <summary>
+        /// The failed state.
+        /// </summary>
+        Failed,
+
+        /// <summary>
+        /// The cancelled state.
+        /// </summary>
+        Canceled,
     }
 }

@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Clients.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.Authorization;
-    using Microsoft.Azure.Commands.ResourceManager.Data.Entities.Resources;
+    using Cmdlets.Entities.Authorization;
+    using Cmdlets.Entities.Resources;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
