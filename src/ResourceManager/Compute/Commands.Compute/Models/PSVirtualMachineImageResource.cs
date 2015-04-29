@@ -18,30 +18,15 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSUsage
+    public class PSVirtualMachineImageResource
     {
-        // Gets or sets the property of 'CurrentValue'
-        public int CurrentValue { get; set; }
+        // Gets or sets the property of 'Id'
+        public string Id { get; set; }
 
-        // Gets or sets the property of 'Limit'
-        public uint Limit { get; set; }
+        // Gets or sets the property of 'Location'
+        public string Location { get; set; }
 
         // Gets or sets the property of 'Name'
-        public UsageName Name { get; set; }
-
-        [JsonIgnore]
-        public string NameText
-        {
-            get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
-        }
-
-        // Gets or sets the property of 'Unit'
-        public UsageUnit Unit { get; set; }
-
-        [JsonIgnore]
-        public string UnitText
-        {
-            get { return JsonConvert.SerializeObject(Unit, Formatting.Indented); }
-        }
+        public string Name { get; set; }
     }
 }

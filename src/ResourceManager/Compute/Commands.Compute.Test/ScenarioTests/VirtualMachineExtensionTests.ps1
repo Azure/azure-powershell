@@ -25,7 +25,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = 'East Asia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -202,7 +202,7 @@ function Test-VirtualMachineCustomScriptExtension
     try
     {
         # Common
-        $loc = 'East Asia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
@@ -358,7 +358,7 @@ function Test-VirtualMachineAccessExtension
     try
     {
         # Common
-        $loc = 'East Asia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # VM Profile & Hardware
