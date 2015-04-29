@@ -23,6 +23,31 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineCustomScriptExtension)]
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string VMName { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
         [Parameter(
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public override string VMName { get; set; }
+        public string VMName { get; set; }
 
         [Alias("ExtensionName")]
         [Parameter(
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,

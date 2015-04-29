@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "AvailabilitySetName")]
         [Parameter(
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The availability set name.")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
