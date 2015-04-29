@@ -61,7 +61,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
                 new Microsoft.Azure.Commands.ResourceManager.Clients.Handlers.RetryHandler(),
             };
 
-            return HttpClientFactory.Create(handlers: primaryHandlers.CoalesceEnumerable().Concat(delegateHandlers).ToArray());
+            var pipeline = (HttpMessageHandler)(new HttpClientHandler());
+            var reversedHandlers = primaryHandlers.CoalesceEnumerable().Concat(delegateHandlers).ToArray().Reverse();
+            foreach (var handler in reversedHandlers)
+            {
+                handler.InnerHandler = pipeline;
+                pipeline = handler;
+            }
+
+            return new HttpClient(pipeline);
         }
     }
 }
