@@ -179,7 +179,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestUpdateApiManagementDeployment.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestUpdateApiManagementDeploymentWithHelpersAndPipline.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestUpdateApiManagementDeploymentWithHelpersAndPipline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="testcertificate.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
