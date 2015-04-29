@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject() },
                 { "Properties", resource.Properties.ToPsObject() },
-                { "PropertiesText", resource.Properties.ToString() },
+                { "PropertiesText", resource.Properties == null ? null : resource.Properties.ToString() },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
