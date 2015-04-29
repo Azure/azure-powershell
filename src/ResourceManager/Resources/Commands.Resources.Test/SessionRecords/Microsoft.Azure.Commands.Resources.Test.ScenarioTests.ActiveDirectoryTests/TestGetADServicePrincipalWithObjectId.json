@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/applications?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication8579\",\r\n  \"homepage\": \"http://adApplication8579/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication8579/home\"\r\n  ],\r\n  \"replyUrls\": [\r\n    \"http://adApplication8579/home\"\r\n  ]\r\n}",
       "RequestHeaders": {
@@ -81,7 +80,6 @@
     },
     {
       "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9zZXJ2aWNlUHJpbmNpcGFscz9hcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"appId\": \"0a89e309-b6bf-4051-9c89-4b585c3c86b8\",\r\n  \"accountEnabled\": true\r\n}",
       "RequestHeaders": {
@@ -160,7 +158,6 @@
     },
     {
       "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals/241d7dfc-9251-4eba-9765-eadc6b25da68?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9zZXJ2aWNlUHJpbmNpcGFscy8yNDFkN2RmYy05MjUxLTRlYmEtOTc2NS1lYWRjNmIyNWRhNjg/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -230,7 +227,6 @@
     },
     {
       "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals/241d7dfc-9251-4eba-9765-eadc6b25da68?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9zZXJ2aWNlUHJpbmNpcGFscy8yNDFkN2RmYy05MjUxLTRlYmEtOTc2NS1lYWRjNmIyNWRhNjg/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -294,7 +290,6 @@
     },
     {
       "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/applications/b258ecb0-a5c8-4cba-91b5-f72aa3c3b47e?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny9hcHBsaWNhdGlvbnMvYjI1OGVjYjAtYTVjOC00Y2JhLTkxYjUtZjcyYWEzYzNiNDdlP2FwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

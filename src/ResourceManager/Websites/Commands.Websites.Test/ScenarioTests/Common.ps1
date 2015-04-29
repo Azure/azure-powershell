@@ -18,7 +18,6 @@ Gets a website name for testing.
 #>
 function Get-WebsiteName
 {
-# need to remove hardcoding
     return getAssetName
 }
 
@@ -28,7 +27,6 @@ Gets a website name for testing.
 #>
 function Get-WebHostPlanName
 {
-# need to remove hardcoding
     return getAssetName 
 }
 

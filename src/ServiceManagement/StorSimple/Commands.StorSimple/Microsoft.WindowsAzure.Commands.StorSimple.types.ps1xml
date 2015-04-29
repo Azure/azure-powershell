@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>Microsoft.WindowsAzure.Management.StorSimple.Models.TaskStatusInfo</Name>
+    <Members>
+      <ScriptProperty>
+        <Name>GetSteps</Name>
+        <GetScriptBlock>if( ($_.TaskSteps | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(" `n", ($_.TaskSteps | Select -ExpandProperty Message)) } else { "No Steps" }</GetScriptBlock>
+      </ScriptProperty>
+      <ScriptProperty>
+        <Name>GetErrors</Name>
+        <GetScriptBlock>if( ($_.Error | Select Message -ExpandProperty Message) -ne $null ) { [string]::Join(" `n", ($_.Error | Select -ExpandProperty Message)) } else { "No Errors" }</GetScriptBlock>
+      </ScriptProperty>
+    </Members>
+  </Type>
+</Types>
