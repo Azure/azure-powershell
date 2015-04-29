@@ -51,6 +51,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryptionActivity.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlDatabaseTransparentDataEncryption.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionActivityModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionModel.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionAdapter.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionCommunicator.cs" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
@@ -191,7 +200,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.23.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.24.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
