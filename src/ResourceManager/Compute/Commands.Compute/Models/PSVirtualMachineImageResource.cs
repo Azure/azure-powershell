@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public abstract class AvailabilitySetBaseCmdlet : ComputeClientBaseCmdlet
+    public class PSVirtualMachineImageResource
     {
-        public IAvailabilitySetOperations AvailabilitySetClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.AvailabilitySets;
-            }
-        }
+        // Gets or sets the property of 'Id'
+        public string Id { get; set; }
+
+        // Gets or sets the property of 'Location'
+        public string Location { get; set; }
+
+        // Gets or sets the property of 'Name'
+        public string Name { get; set; }
     }
 }

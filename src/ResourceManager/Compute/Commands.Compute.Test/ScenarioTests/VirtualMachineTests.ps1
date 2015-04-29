@@ -24,7 +24,7 @@ function Test-VirtualMachine
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -218,7 +218,7 @@ function Test-VirtualMachineImageList
 
     try
     {
-        $locStr = 'EastAsia';
+        $locStr = 'westus';
 
         # List Tests
         $foundAnyImage = $false;
@@ -372,7 +372,7 @@ function Test-VirtualMachineSizeAndUsage
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
 
         # Availability Set
@@ -543,7 +543,7 @@ function Test-VirtualMachinePIRv2
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -653,7 +653,7 @@ function Test-VirtualMachineCapture
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -769,7 +769,7 @@ function Test-VirtualMachineDataDisk
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -850,7 +850,7 @@ function Test-VirtualMachinePlan
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -934,7 +934,7 @@ function Test-VirtualMachinePlan2
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware

@@ -1,11 +1,57 @@
-﻿2015.05.17 version 0.8.18
-* Azure HDInsight:
-  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
-  * Added cmdlets
-	* Grant-AzureHdinsightRdpAccess
-	* Revoke-AzureHdinsightRdpAccess
+﻿2015.04.29 version 0.9.0
+* Azure Compute
+    * Added Compute cmdlets support in AzureResourceManager mode
+      * Add-AzureVMSshPublicKey
+      * Add-AzureVMSecret
+      * Add-AzureVMNetworkInterface
+      * Add-AzureVMDataDisk
+      * Add-AzureVMAdditionalUnattendContent
+      * Get-AzureVM
+      * Get-AzureVMUsage
+      * Get-AzureVMSize
+      * Get-AzureVMImageSku
+      * Get-AzureVMImagePublisher
+      * Get-AzureVMImageOffer
+      * Get-AzureVMImageDetail
+      * Get-AzureVMImage
+      * Get-AzureVMExtensionImageType
+      * Get-AzureVMExtensionImageDetail
+      * Get-AzureVMExtensionImage
+      * Get-AzureVMExtension
+      * Get-AzureVMCustomScriptExtension
+      * Get-AzureVMAccessExtension
+      * Get-AzureVMImagePublisher
+      * Get-AzureVMImageOffer
+      * Get-AzureVMImageDetail
+      * Get-AzureVMImage
+      * Get-AzureVMExtensionImageType
+      * Get-AzureVMExtensionImageDetail
+      * Get-AzureVMExtensionImage
+      * Get-AzureVMExtension
+      * Get-AzureVMCustomScriptExtension
+      * Get-AzureVMAccessExtension
+      * New-AzureVM
+      * New-AzureVMConfig
+      * Update-AzureVM
+      * Stop-AzureVM
+      * Start-AzureVM
+      * Set-AzureVMSourceImage
+      * Set-AzureVMOSDisk
+      * Set-AzureVMOperatingSystem
+      * Set-AzureVMExtension
+      * Set-AzureVMCustomScriptExtension
+      * Set-AzureVMAccessExtension
+      * Set-AzureVM
+      * Save-AzureVMImage
+      * Restart-AzureVM
+      * Remove-AzureVMNetworkInterface
+      * Remove-AzureVMExtension
+      * Remove-AzureVMDataDisk
+      * Remove-AzureVMCustomScriptExtension
+      * Remove-AzureVMAccessExtension
+      * Remove-AzureVM
 * Azure Network
-  * Added Cmdlets
+  * Added Network Cmdlets support in AzureResourceManager mode
     * Get-AzureVirtualNetwork
     * New-AzureVirtualNetwork
     * Remove-AzureVirtualNetwork
@@ -70,8 +116,11 @@
     * New-AzureStorageAccountKey
     * Get-AzureStorageAccountKey
   * Made Azure Storage data cmdlets work in AzureResourceManager Mode
-
-2015.04.28 version 0.8.17
+* Azure HDInsight:
+  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
+  * Added cmdlets
+	* Grant-AzureHdinsightRdpAccess
+	* Revoke-AzureHdinsightRdpAccess
 * Azure Batch
   * Added cmdlets
     * New-AzureBatchVMUser
@@ -96,7 +145,6 @@
     * New-AzureStorSimpleNetworkConfig
     * Set-AzureStorSimpleDevice
     * Set-AzureStorSimpleVirtualDevice
-
 
 2015.03.31 version 0.8.16
 * Azure Data Factory:
