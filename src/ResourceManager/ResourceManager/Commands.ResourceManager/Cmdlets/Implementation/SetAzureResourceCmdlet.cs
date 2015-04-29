@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the property object.
         /// </summary>
         [Alias("Object")]
-        [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
         public Hashtable PropertyObject { get; set; }
 

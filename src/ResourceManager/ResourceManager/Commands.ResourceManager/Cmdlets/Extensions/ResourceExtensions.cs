@@ -14,16 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Clients.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Cmdlets.Extensions;
     using Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -55,6 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject() },
                 { "Properties", resource.Properties.ToPsObject() },
+                { "PropertiesText", resource.Properties.ToString() },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
