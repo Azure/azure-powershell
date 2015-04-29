@@ -32,6 +32,9 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -1026,41 +1029,39 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             DeploymentInfoContext result;
 
             string storage = defaultAzureSubscription.CurrentStorageAccountName;
-            string daConfig = @".\da.xml";
+            string daConfig = @"da.xml";
 
             string defaultExtensionId = string.Format("Default-{0}-Production-Ext-0", Utilities.PaaSDiagnosticsExtensionName);
 
-            try
-            {
-                serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
-                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
-                Console.WriteLine("service, {0}, is created.", serviceName);
+            serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+            vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+            Console.WriteLine("service, {0}, is created.", serviceName);
 
-                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false);
+            vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false);
 
-                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
-                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
-                Console.WriteLine("successfully deployed the package");
+            result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
+            pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+            Console.WriteLine("successfully deployed the package");
 
-                vmPowershellCmdlets.SetAzureServiceDiagnosticsExtension(serviceName, storage, daConfig, null, null);
+            string storageKey = vmPowershellCmdlets.GetAzureStorageAccountKey(storage).Primary;
 
-                DiagnosticExtensionContext resultContext = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName)[0];
+            StorageCredentials creds = new StorageCredentials(storage, storageKey);
+            CloudStorageAccount csa = new WindowsAzure.Storage.CloudStorageAccount(creds, true);
+            var storageContext = new AzureStorageContext(csa);
 
-                VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig);
+            vmPowershellCmdlets.SetAzureServiceDiagnosticsExtension(serviceName, storageContext, daConfig, null, null);
 
-                vmPowershellCmdlets.RemoveAzureServiceDiagnosticsExtension(serviceName, true);
+            DiagnosticExtensionContext resultContext = vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName)[0];
 
-                Assert.AreEqual(vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName).Count, 0);
+            VerifyDiagExtContext(resultContext, "AllRoles", defaultExtensionId, storage, daConfig);
 
-                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+            vmPowershellCmdlets.RemoveAzureServiceDiagnosticsExtension(serviceName, true);
 
-                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
-            }
-            catch (Exception e)
-            {
-                pass = false;
-                Assert.Fail("Exception occurred: {0}", e.ToString());
-            }
+            Assert.AreEqual(vmPowershellCmdlets.GetAzureServiceDiagnosticsExtension(serviceName).Count, 0);
+
+            vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+            pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
         }
 
         #endregion
@@ -1701,9 +1702,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             //Assert.AreEqual(storage, resultContext.StorageAccountName, "storage account name is not same");
 
             XmlDocument doc = new XmlDocument();
-            doc.Load("@./da.xml");
+            doc.Load("da.xml");
             string inner = Utilities.GetInnerXml(resultContext.WadCfg, "WadCfg");
-            Assert.IsTrue(Utilities.CompareWadCfg(inner, doc), "xml is not same");
+            Utilities.CompareWadCfg(inner, doc);
         }
 
         private void VerifyRDPExtContext(RemoteDesktopExtensionContext resultContext, string role, string extID, string userName, DateTime exp, string version = null)
