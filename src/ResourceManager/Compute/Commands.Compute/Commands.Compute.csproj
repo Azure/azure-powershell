@@ -180,6 +180,7 @@
     <Compile Include="Models\PSVirtualMachineImage.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
+    <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Models\LocationStringExtensions.cs" />
