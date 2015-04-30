@@ -12,18 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Authorization
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using Newtonsoft.Json;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// The permission.
+    /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix", Justification = "By design.")]
+    public class Permission
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Gets or sets the actions.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] Actions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the not actions.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] NotActions { get; set; }
     }
 }

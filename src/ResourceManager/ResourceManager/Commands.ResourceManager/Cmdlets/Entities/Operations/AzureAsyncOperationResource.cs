@@ -12,18 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
-{
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 
-    public class MoveResourceTest
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations
+{
+    using Cmdlets.Entities.ErrorResponses;
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// The async operation result.
+    /// </summary>
+    public class AzureAsyncOperationResource
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Gets or sets the status of the async operation.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended error info.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public ExtendedErrorInfo Error { get; set; }
     }
 }

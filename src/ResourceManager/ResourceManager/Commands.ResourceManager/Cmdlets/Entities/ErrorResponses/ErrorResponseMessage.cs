@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using Newtonsoft.Json;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// The error response message.
+    /// </summary>
+    public class ErrorResponseMessage
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Gets or sets the extended error info.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public ExtendedErrorInfo Error { get; set; }
     }
 }

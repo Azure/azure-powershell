@@ -12,18 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using System.Collections;
+    using Newtonsoft.Json;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// Response with next link signifying continuation.
+    /// </summary>
+    /// <typeparam name="T">Type of response.</typeparam>
+    public class ResponseWithContinuation<T> where T : IEnumerable
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
+        /// <summary>
+        /// Gets or sets the value of response.
+        /// </summary>
+        [JsonProperty]
+        public T Value
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the next link to query to get the remaining results.
+        /// </summary>
+        [JsonProperty]
+        public string NextLink
+        {
+            get;
+            set;
         }
     }
 }

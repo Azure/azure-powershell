@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using System.Net.Http;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// Extra http methods.
+    /// </summary>
+    public class HttpMethodExt
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// The PATCH method.
+        /// </summary>
+        public static readonly HttpMethod Patch = new HttpMethod("PATCH");
     }
 }

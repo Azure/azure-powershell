@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
-{
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+using Newtonsoft.Json;
 
-    public class MoveResourceTest
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
+{
+    /// <summary>
+    /// The lock properties.
+    /// </summary>
+    public class LockProperties
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// The lock level.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public LockLevel Level { get; set; }
+
+        /// <summary>
+        /// The lock notes.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Notes { get; set; }
     }
 }

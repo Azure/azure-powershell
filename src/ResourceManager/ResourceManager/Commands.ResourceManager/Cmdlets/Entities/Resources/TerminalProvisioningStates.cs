@@ -12,18 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-
-    public class MoveResourceTest
+    /// <summary>
+    /// Terminal values for the <c>ProvisioningState</c> property.
+    /// </summary>
+    public enum TerminalProvisioningStates
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// The ready state.
+        /// </summary>
+        Ready,
+
+        /// <summary>
+        /// The succeeded state.
+        /// </summary>
+        Succeeded,
+
+        /// <summary>
+        /// The failed state.
+        /// </summary>
+        Failed,
+
+        /// <summary>
+        /// The cancelled state.
+        /// </summary>
+        Canceled,
     }
 }

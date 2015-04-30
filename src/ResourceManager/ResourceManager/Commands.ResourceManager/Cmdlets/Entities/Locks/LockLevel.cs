@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-
-    public class MoveResourceTest
+    /// <summary>
+    /// The lock level allowed.
+    /// </summary>
+    public enum LockLevel
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// The cannot delete lock.
+        /// </summary>
+        CanNotDelete,
+
+        /// <summary>
+        /// The read-only lock.
+        /// </summary>
+        ReadOnly,
     }
 }

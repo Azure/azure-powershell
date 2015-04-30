@@ -12,18 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Providers
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using Newtonsoft.Json;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// The resource type.
+    /// </summary>
+    public class ResourceTypeDefinition
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Gets or sets the locations
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] Locations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the API versions.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] ApiVersions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource type.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string ResourceType { get; set; }
     }
 }

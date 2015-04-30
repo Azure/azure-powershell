@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using System.Net;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// Extended status codes.
+    /// </summary>
+    public static class  HttpStatusCodeExt
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Http Status code for too many requests
+        /// </summary>
+        public static readonly HttpStatusCode TooManyRequests = (HttpStatusCode)429;
     }
 }

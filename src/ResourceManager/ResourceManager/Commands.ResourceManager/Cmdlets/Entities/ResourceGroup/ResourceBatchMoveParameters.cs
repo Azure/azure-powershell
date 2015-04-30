@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+    using Newtonsoft.Json;
 
-    public class MoveResourceTest
+    /// <summary>
+    /// The resource batch move definition object.
+    /// </summary>
+    public class ResourceBatchMoveParameters
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
-        }
+        /// <summary>
+        /// Gets or sets the target resource group.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public string TargetResourceGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of resources to move.
+        /// </summary>
+        [JsonProperty(Required = Required.Always)]
+        public string[] Resources { get; set; }
     }
 }
