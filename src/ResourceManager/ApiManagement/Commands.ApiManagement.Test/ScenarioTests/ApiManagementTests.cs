@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateApiManagementDeploymentWithHelpersAndPipline()
+        public void TestUpdateDeploymentComplex()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
         }
