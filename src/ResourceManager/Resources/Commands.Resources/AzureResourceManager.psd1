@@ -92,6 +92,7 @@ NestedModules = @(
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\Network\Microsoft.Azure.Commands.Network.dll',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll'
 )
 
