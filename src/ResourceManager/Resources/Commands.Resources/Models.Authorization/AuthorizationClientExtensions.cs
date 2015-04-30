@@ -32,7 +32,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.Properties.RoleName,
                     Actions = new List<string>(role.Properties.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Properties.Permissions.SelectMany(r => r.NotActions)),
-                    Id = role.Id
+                    Id = role.Id,
+                    AssignableScopes = role.Properties.AssignableScopes.ToList(),
+                    Description = role.Properties.Description,
+                    IsCustom = role.Properties.Type == "CustomRole" ? true : false
                 };
             }
 

@@ -92,8 +92,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
-                PrincipalId = principalId,
-                RoleDefinitionId = roleDefinitionId
+                Properties = new RoleAssignmentProperties {
+                    PrincipalId = principalId,
+                    RoleDefinitionId = roleDefinitionId
+                }
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
@@ -175,6 +177,24 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return role;
+        }
+
+        private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
+        {
+            if (string.IsNullOrWhiteSpace(roleDefinition.Name))
+            {
+                throw new ArgumentException(ProjectResources.InvalidRoleDefinitionName);
+            }
+
+            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
+            }
+
+            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidActions);
+            }
         }
     }
 }

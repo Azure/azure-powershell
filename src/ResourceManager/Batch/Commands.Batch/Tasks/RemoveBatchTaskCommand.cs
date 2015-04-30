@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, "AzureBatchTask")]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Task to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem containing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string WorkItemName { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Job containing the Task to delete.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the job containing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Task to delete.")]
+        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Task to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask InputObject { get; set; }
 
@@ -46,15 +46,8 @@ namespace Microsoft.Azure.Commands.Batch
         public override void ExecuteCmdlet()
         {
             string taskName = InputObject == null ? this.Name : InputObject.Name;
-            RemoveTaskParameters parameters = new RemoveTaskParameters()
-            {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.Name,
-                Task = this.InputObject,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+            TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.WorkItemName, this.JobName,
+                this.Name, this.InputObject, this.AdditionalBehaviors);
 
             ConfirmAction(
                 Force.IsPresent,

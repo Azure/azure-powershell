@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
@@ -29,8 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(DatabaseSecureConnectionPolicyModel model) 
-        { 
+        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model) 
+        {
+            return null;
         }
     }
 }

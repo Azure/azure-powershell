@@ -36,11 +36,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
     public static class UnitTestHelper
     {
         /// <summary>
-        /// Manifest file for SqlDatabase Tests.
-        /// </summary>
-        private static readonly string SqlDatabaseTestManifest = @".\ServiceManagement\Azure\Azure.psd1";
-
-        /// <summary>
         /// The subscription name used in the unit tests.
         /// </summary>
         private static readonly string UnitTestEnvironmentName = "SqlUnitTestEnvironment";
@@ -250,8 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
         public static void ImportAzureModule(System.Management.Automation.PowerShell powershell)
         {
             // Import the test manifest file
-            powershell.InvokeBatchScript(
-                string.Format(@"Import-Module .\{0}", SqlDatabaseTestManifest));
+            powershell.InvokeBatchScript(@"Import-Module ..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
             Assert.IsTrue(powershell.Streams.Error.Count == 0);
         }
 

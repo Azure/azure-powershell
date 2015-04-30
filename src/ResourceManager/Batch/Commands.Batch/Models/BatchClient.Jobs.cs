@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Jobs matching the specified filter options
+        /// Lists the jobs matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Jobs</param>
-        /// <returns>The Jobs matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for jobs</param>
+        /// <returns>The jobs matching the specified filter options</returns>
         public IEnumerable<PSCloudJob> ListJobs(ListJobOptions options)
         {
             if (options == null)
@@ -35,13 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if (string.IsNullOrWhiteSpace(options.WorkItemName) && options.WorkItem == null)
-            {
-                throw new ArgumentNullException(Resources.GBJ_NoWorkItem);    
-            }
             string wiName = options.WorkItem == null ? options.WorkItemName : options.WorkItem.Name;
 
-            // Get the single Job matching the specified name
+            // Get the single job matching the specified name
             if (!string.IsNullOrEmpty(options.JobName))
             {
                 WriteVerbose(string.Format(Resources.GBJ_GetByName, options.JobName, wiName));
@@ -52,19 +48,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSCloudJob[] { psJob };
                 }
             }
-            // List Jobs using the specified filter
+            // List jobs using the specified filter
             else
             {
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetByOData, wiName));
+                    verboseLogString = string.Format(Resources.GBJ_GetByOData, wiName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBJ_GetNoFilter, wiName));
+                    verboseLogString = string.Format(Resources.GBJ_GetNoFilter, wiName);
                 }
+                WriteVerbose(verboseLogString);
 
                 using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
                 {
@@ -77,18 +75,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Deletes the specified Job
+        /// Deletes the specified job
         /// </summary>
-        /// <param name="parameters">The parameters indicating which Job to delete</param>
-        public void DeleteJob(RemoveJobParameters parameters)
+        /// <param name="parameters">The parameters indicating which job to delete</param>
+        public void DeleteJob(JobOperationParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
-            }
-            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
-            {
-                throw new ArgumentException(Resources.RBJ_NoJobSpecified);
             }
 
             if (parameters.Job != null)

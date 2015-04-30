@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/2ee94052-bf34-4e83-aa6f-f82125c65d74/applications?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzJlZTk0MDUyLWJmMzQtNGU4My1hYTZmLWY4MjEyNWM2NWQ3NC9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"onesdk6351\",\r\n  \"homepage\": \"http://onesdk6351.com\",\r\n  \"identifierUris\": [\r\n    \"http://onesdk6351\"\r\n  ]\r\n}",
       "RequestHeaders": {

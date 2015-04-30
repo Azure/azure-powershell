@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(Constants.DataAccess, Constants.SchemaChanges, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.All, Constants.None, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.DataAccess, SecurityConstants.SchemaChanges, SecurityConstants.DataChanges, SecurityConstants.SecurityExceptions, SecurityConstants.RevokePermissions, SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the storage key")]
-        [ValidateSet(Constants.Primary, Constants.Secondary, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
 
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingPolicyModel UpdateModel(ServerAuditingPolicyModel model)
+        protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Enabled;
             if (StorageAccountName != null)
             {
@@ -74,18 +74,29 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
             if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
-                model.StorageKeyType = (StorageKeyType == Constants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
             ProcessShortcuts();
             if (EventType != null) // the user provided event types to audit
             {
-                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>(){
-                    {Constants.DataAccess, AuditEventType.DataAccess},
-                    {Constants.DataChanges, AuditEventType.DataChanges},
-                    {Constants.SecurityExceptions, AuditEventType.SecurityExceptions},
-                    {Constants.RevokePermissions, AuditEventType.RevokePermissions},
-                    {Constants.SchemaChanges, AuditEventType.SchemaChanges}
+                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>
+                {
+                    {SecurityConstants.DataAccess, AuditEventType.DataAccess},
+                    {SecurityConstants.DataChanges, AuditEventType.DataChanges},
+                    {SecurityConstants.SecurityExceptions, AuditEventType.SecurityExceptions},
+                    {SecurityConstants.RevokePermissions, AuditEventType.RevokePermissions},
+                    {SecurityConstants.SchemaChanges, AuditEventType.SchemaChanges},
+                    {SecurityConstants.PlainSQL_Success, AuditEventType.PlainSQL_Success},
+                    {SecurityConstants.PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
+                    {SecurityConstants.ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
+                    {SecurityConstants.ParameterizedSQL_Failure, AuditEventType.ParameterizedSQL_Failure},
+                    {SecurityConstants.StoredProcedure_Success, AuditEventType.StoredProcedure_Success},
+                    {SecurityConstants.StoredProcedure_Failure, AuditEventType.StoredProcedure_Failure},
+                    {SecurityConstants.Login_Success, AuditEventType.Login_Success},
+                    {SecurityConstants.Login_Failure, AuditEventType.Login_Failure},
+                    {SecurityConstants.TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
+                    {SecurityConstants.TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
                 };
                 model.EventType = EventType.Select(s => events[s]).ToArray();
             }
@@ -103,24 +114,41 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
             if (EventType.Length == 1)
             {
-                if (EventType[0] == Constants.None)
+                if (EventType[0] == SecurityConstants.None)
                 {
                     EventType = new string[] { };
                 }
-                else if (EventType[0] == Constants.All)
+                else if (EventType[0] == SecurityConstants.All)
                 {
-                    EventType = new string[] { Constants.DataAccess, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.SchemaChanges };
+                    EventType = new[]
+                    {
+                        SecurityConstants.DataAccess, 
+                        SecurityConstants.DataChanges,
+                        SecurityConstants.SecurityExceptions, 
+                        SecurityConstants.RevokePermissions,
+                        SecurityConstants.SchemaChanges,
+                        SecurityConstants.PlainSQL_Success,
+                        SecurityConstants.PlainSQL_Failure,
+                        SecurityConstants.ParameterizedSQL_Success,
+                        SecurityConstants.ParameterizedSQL_Failure,
+                        SecurityConstants.StoredProcedure_Success,
+                        SecurityConstants.StoredProcedure_Failure,
+                        SecurityConstants.Login_Success,
+                        SecurityConstants.Login_Failure,
+                        SecurityConstants.TransactionManagement_Success,
+                        SecurityConstants.TransactionManagement_Failure
+                    };
                 }
             }
             else
             {
-                if (EventType.Contains(Constants.All))
+                if (EventType.Contains(SecurityConstants.All))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.All));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
                 }
-                if (EventType.Contains(Constants.None))
+                if (EventType.Contains(SecurityConstants.None))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.None));
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
             }
         }
