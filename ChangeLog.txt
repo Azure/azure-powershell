@@ -1,4 +1,5 @@
 ﻿2015.05.01 version 0.9.1
+* Azure SQL Database: new support for configuring audit retention.
 * Azure Automation
     * Added Automation cmdlets support in AzureResourceManager mode
       * Export-AzureAutomationDscConfiguration
