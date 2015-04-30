@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
     {
+        protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
+
         private ComputeClient computeClient;
 
         public ComputeClient ComputeClient

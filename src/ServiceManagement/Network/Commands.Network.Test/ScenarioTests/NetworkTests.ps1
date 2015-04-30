@@ -12,12 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-########################## Network End to End Scenario Tests #############################
+$VirtualNetworkName = "VirtualNetworkSiteName"
+$SubnetName = "FrontEndSubnet"
+$locations = Get-AzureLocation
+#$Location = $locations[0].Name
+$Location = "usnorth"
+$ResourcePrefix = "onesdk";
 
-[string]$vnetName = "MockVnetName"
-
-function GetGateway-WhenGatewayDoesntExist
+<#
+.SYNOPSIS
+Initialize the networking tests by setting an empty NETCFG.
+#>
+function Initialize-NetworkTest
 {
-	$getResponse = Get-AzureVnetGateway $vnetName
-	Assert-NotNull $getResponse
+    Get-AzureService | Where-Object { $_.Name.StartsWith($ResourcePrefix) } | Remove-AzureService -DeleteAll -Force
+    Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\EmptyNetworkConfiguration.xml")
 }

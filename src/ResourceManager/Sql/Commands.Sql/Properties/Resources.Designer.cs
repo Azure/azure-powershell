@@ -133,11 +133,29 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot use deprecated audit events with the current audit events in the same policy..
+        /// </summary>
+        internal static string InvalidDeprecatedEventTypeSet {
+            get {
+                return ResourceManager.GetString("InvalidDeprecatedEventTypeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
             get {
                 return ResourceManager.GetString("InvalidEventTypeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
+        /// </summary>
+        internal static string InvalidRetentionTypeSet {
+            get {
+                return ResourceManager.GetString("InvalidRetentionTypeSet", resourceCulture);
             }
         }
         
@@ -286,6 +304,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ServerUpgradeExists {
+            get {
+                return ResourceManager.GetString("ServerUpgradeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; does not exist.
         /// </summary>
         internal static string SetDataMaskingRuleIdDoesNotExistError {
@@ -309,6 +336,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string sqlSampleTitle {
             get {
                 return ResourceManager.GetString("sqlSampleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping upgrade for Azure Sql Database Server &apos;{0}&apos;..
+        /// </summary>
+        internal static string StopAzureSqlServerUpgradeDescription {
+            get {
+                return ResourceManager.GetString("StopAzureSqlServerUpgradeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop the upgrade for Azure Sql Database Server &apos;{0}&apos;?.
+        /// </summary>
+        internal static string StopAzureSqlServerUpgradeWarning {
+            get {
+                return ResourceManager.GetString("StopAzureSqlServerUpgradeWarning", resourceCulture);
             }
         }
         

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "VMName")]
         [Parameter(
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,

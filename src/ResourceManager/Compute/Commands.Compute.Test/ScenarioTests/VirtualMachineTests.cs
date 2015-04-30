@@ -81,5 +81,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineTags()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineTags");
+        }
     }
 }
