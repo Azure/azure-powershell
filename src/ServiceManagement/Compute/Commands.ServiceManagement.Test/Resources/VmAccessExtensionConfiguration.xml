@@ -1,0 +1,12 @@
+﻿<Configuration>
+  <Enabled>true</Enabled>
+  <Public>
+    <PublicConfig>
+      <Account>
+        <UserName>dileep</UserName>
+        <Password>p@ss0wrd</Password>
+      </Account>
+    </PublicConfig>
+  </Public>
+</Configuration>
+
