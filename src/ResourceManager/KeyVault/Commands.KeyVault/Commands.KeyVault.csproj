@@ -62,7 +62,6 @@
     <Compile Include="Commands\RemoveAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Commands\SetAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Models\KeyVaultManagementCmdletBase.cs" />
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
