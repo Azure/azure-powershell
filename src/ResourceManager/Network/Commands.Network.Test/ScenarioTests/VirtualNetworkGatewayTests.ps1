@@ -78,10 +78,10 @@ function Test-VirtualNetworkGatewayCRUD
       
       $list = Get-AzureVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
-    }
-    finally
-    {
+     }
+     finally
+     {
         # Cleanup
         Clean-ResourceGroup $rgname
-    }
+     }
 }

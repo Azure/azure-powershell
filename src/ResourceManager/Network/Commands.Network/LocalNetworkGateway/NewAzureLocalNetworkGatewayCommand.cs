@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
             localnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LocalNetworkGatewayType;
             localnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            // Execute the Create VirtualNetwork call
+            // Execute the Create Local Network Gateway call
             this.LocalNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, localnetGatewayModel);
 
             var getLocalNetworkGateway = this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name);
