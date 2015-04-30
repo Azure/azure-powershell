@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.DataContract;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
@@ -23,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.WebClient
     public class JsonHelperTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void SerializeDeserializeVirtualMachine()

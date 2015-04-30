@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
         public override async Task EndProcessing()
         {
             this.Name.ArgumentNotNullOrEmpty("Name");
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             var cluster = await client.GetClusterAsync(this.Name);
             var connection = new AzureHDInsightClusterConnection();
             ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));

@@ -115,7 +115,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PrintOSImageDetailsContext(vmPowershellCmdlets.GetAzurePlatformVMImage(image));
 
                 // Replicate the user image to "West US" and wait until the replication process is completed.
-                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1 });
+                ComputeImageConfig compCfg = new ComputeImageConfig
+                {
+                    Offer = "test",
+                    Sku = "test",
+                    Version = "test"
+                };
+                MarketplaceImageConfig marketCfg = null;
+                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1 }, compCfg, marketCfg);
                 PrintOSImageDetailsContext(vmPowershellCmdlets.GetAzurePlatformVMImage(image));
                 WaitForReplicationComplete(image);
 
@@ -172,7 +179,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 PrintOSImageDetailsContext(vmPowershellCmdlets.GetAzurePlatformVMImage(image));
 
                 // Replicate the user image to "West US" and wait until the replication process is completed.
-                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1, location2 });
+                ComputeImageConfig compCfg = new ComputeImageConfig
+                {
+                    Offer = "test",
+                    Sku = "test",
+                    Version = "test"
+                };
+                MarketplaceImageConfig marketCfg = null;
+                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1, location2 }, compCfg, marketCfg);
                 PrintOSImageDetailsContext(vmPowershellCmdlets.GetAzurePlatformVMImage(image));
                 WaitForReplicationComplete(image);
 
@@ -250,7 +264,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Replicate the user image to "West US" and wait until the replication process is completed.
                 SwitchToPublisher();
-                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1 });
+                ComputeImageConfig compCfg = new ComputeImageConfig
+                {
+                    Offer = "test",
+                    Sku = "test",
+                    Version = "test"
+                };
+                MarketplaceImageConfig marketCfg = null;
+                vmPowershellCmdlets.SetAzurePlatformVMImageReplicate(image, new string[] { location1 }, compCfg, marketCfg);
 
                 // Make the replicated image public and wait until the PIR image shows up.
                 vmPowershellCmdlets.SetAzurePlatformVMImagePublic(image);

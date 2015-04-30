@@ -24,49 +24,49 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceVolume"), OutputType(typeof(TaskStatusInfo))]
     public class NewAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
         [Alias("Container")]
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDataContainerObject)]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.DataContainerObject)]
         [ValidateNotNullOrEmpty]
         public DataContainer VolumeContainer { get; set; }
         
         [Alias("Name")]
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeName)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeName)]
         [ValidateNotNullOrEmpty]
         public string VolumeName { get; set; }
 
         [Alias("SizeInBytes")]
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeSize)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeSize)]
         [ValidateNotNullOrEmpty]
         public Int64 VolumeSizeInBytes { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAcrList)]
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAcrList)]
         [ValidateNotNull]
         [AllowEmptyCollection]
         public List<AccessControlRecord> AccessControlRecords { get; set; }
 
         [Alias("AppType")]
         [ValidateSet("PrimaryVolume","ArchiveVolume")]
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeAppType)]
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeAppType)]
         [ValidateNotNullOrEmpty]
         public AppType VolumeAppType { get; set; }
 
-        [Parameter(Position = 6, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeOnline)]
+        [Parameter(Position = 6, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeOnline)]
         [ValidateNotNullOrEmpty]
         public bool Online { get; set; }
 
-        [Parameter(Position = 7, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeDefaultBackup)]
+        [Parameter(Position = 7, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeDefaultBackup)]
         [ValidateNotNullOrEmpty]
         public bool EnableDefaultBackup { get; set; }
 
-        [Parameter(Position = 8, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeMonitoring)]
+        [Parameter(Position = 8, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.VolumeMonitoring)]
         [ValidateNotNullOrEmpty]
         public bool EnableMonitoring { get; set; }
 
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
         
         public override void ExecuteCmdlet()
@@ -78,9 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Volume
 
                 if (deviceid == null)
                 {
-                    WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                    WriteObject(null);
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
                 }
 
                 //Virtual disk create request object

@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
@@ -61,6 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcess()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -87,6 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache on worker role will pass.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessOnWorkerRoleSuccess()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -143,6 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache with non-existing cache worker role will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessCacheRoleDoesNotExistFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -164,6 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache with non-existing role to enable on will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessRoleDoesNotExistFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -184,6 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache using same cache worker role on role with cache will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessAlreadyEnabledFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -207,6 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache using different cache worker role on role with cache will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessAlreadyEnabledNewCacheRoleFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -232,6 +239,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache using non-cache worker role will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessUsingNonCacheWorkerRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -252,6 +260,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessWithDefaultRoleName()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -340,6 +349,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         /// Verify that enabling cache with non-existing cache worker role will fail.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheRoleProcessOnCacheWorkerRoleFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -356,6 +366,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheWithoutCacheWorkerRoleName()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -379,6 +390,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheWithoutCacheWorkerRoleNameAndServiceHasMultipleWorkerRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -404,6 +416,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureMemcacheWithNoCacheWorkerRolesFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

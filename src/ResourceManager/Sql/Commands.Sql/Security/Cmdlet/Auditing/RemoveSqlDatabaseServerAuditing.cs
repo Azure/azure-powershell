@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingPolicyModel UpdateModel(ServerAuditingPolicyModel model)
+        protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
             return model;
         }
@@ -51,10 +51,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(ServerAuditingPolicyModel model)
+        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
         {
             ModelAdapter.IgnoreStorage = true;
-            base.SendModel(model);
+            base.PersistChanges(model);
+            return null;
         }
     }
 }

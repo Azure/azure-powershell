@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -32,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class NewAzureWebsiteTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessNewWebsiteTest()
         {
             const string websiteName = "website1";
@@ -83,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsWebsiteDefaultLocation()
         {
             const string websiteName = "website1";
@@ -130,6 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateStageSlot()
         {
             string slot = "staging";

@@ -19,6 +19,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ExpressRoute;
@@ -45,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureDedicatedCircuitSuccessful()
         {
             // Setup
@@ -115,6 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureDedicatedCircuitSuccessful()
         {
             // Setup
@@ -172,6 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureDedicatedCircuitSuccessful()
         {
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
@@ -205,6 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAzureDedicatedCircuitSuccessful()
         {
             // Setup
