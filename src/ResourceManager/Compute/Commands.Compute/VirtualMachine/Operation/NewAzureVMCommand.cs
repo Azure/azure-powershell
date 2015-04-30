@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
                 AvailabilitySetReference = this.VM.AvailabilitySetReference,
                 Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
                 Name                     = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name,
-                Tags                     = this.Tags != null ? TagsConversionHelper.CreateTagDictionary(this.Tags, true) : this.VM.Tags
+                Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
             };
 
             var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);

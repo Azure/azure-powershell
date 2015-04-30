@@ -163,6 +163,7 @@
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
+    <Compile Include="Models\HashTableExtensions.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
