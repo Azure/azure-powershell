@@ -143,9 +143,9 @@
     <Compile Include="ScenarioTests\CheckDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
-	<Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
-	<Compile Include="ScenarioTests\LocalNetworkGatewayTests.cs" />
-	<Compile Include="ScenarioTests\VirtualNetworkGatewayConnectionTests.cs" />
+    <Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
+    <Compile Include="ScenarioTests\LocalNetworkGatewayTests.cs" />
+    <Compile Include="ScenarioTests\VirtualNetworkGatewayConnectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
@@ -181,7 +181,7 @@
     </None>
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>	
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CheckDnsAvailabilityTest\TestCheckDnsAvailability.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -271,10 +271,10 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>	
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionSharedKeyCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>	
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">

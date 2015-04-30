@@ -236,6 +236,10 @@
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ApiManagement\Commands.ApiManagement\Commands.ApiManagement.csproj">
+      <Project>{dc0a9742-df36-48c9-bd2f-68d01aed6257}</Project>
+      <Name>Commands.ApiManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
