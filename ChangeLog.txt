@@ -2,7 +2,7 @@
 * Azure Automation
     * Added Automation cmdlets support in AzureResourceManager mode
       * Export-AzureAutomationDscConfiguration
-      *	Export-AzureAutomationDscNodeReportContent
+      * Export-AzureAutomationDscNodeReportContent
       * Get-AzureAutomationAccount
       * Get-AzureAutomationDscCompilationJob
       * Get-AzureAutomationDscCompilationJobOutput
