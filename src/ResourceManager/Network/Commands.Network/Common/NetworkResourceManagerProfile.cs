@@ -164,6 +164,23 @@ namespace Microsoft.Azure.Commands.Network
 
             // MNM to CNM
             Mapper.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>();
+
+            // Gateways
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSVirtualNetworkGateway, MNM.VirtualNetworkGateway>();
+            Mapper.CreateMap<CNM.PSConnectionResetSharedKey, MNM.ConnectionResetSharedKey>();
+            Mapper.CreateMap<CNM.PSConnectionSharedKey, MNM.ConnectionSharedKey>();
+            Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
+            Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIpConfiguration>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
+            Mapper.CreateMap<MNM.ConnectionResetSharedKey, CNM.PSConnectionResetSharedKey>();
+            Mapper.CreateMap<MNM.ConnectionSharedKey, CNM.PSConnectionSharedKey>();
+            Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
+            Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
+            Mapper.CreateMap<MNM.VirtualNetworkGatewayIpConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
         }
     }
 }

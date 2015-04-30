@@ -196,8 +196,6 @@
     <Compile Include="ResourceGroups\GetAzureResourceGroupLogCommand.cs" />
     <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
-    <Compile Include="Resources\MoveAzureResourceCommand.cs" />
-    <Compile Include="Resources\RemoveAzureResourceCommand.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
@@ -228,9 +226,6 @@
     <Compile Include="ResourceGroups\NewAzureResourceGroupCommand.cs" />
     <Compile Include="Models.ResourceGroups\ResourceWithParameterBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
-    <Compile Include="Resources\SetAzureResourceCommand.cs" />
-    <Compile Include="Resources\GetAzureResourceCommand.cs" />
-    <Compile Include="Resources\NewAzureResourceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
