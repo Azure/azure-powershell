@@ -129,8 +129,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -142,8 +141,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -318,8 +316,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -331,8 +328,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -488,8 +484,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -501,8 +496,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -863,8 +857,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -876,8 +869,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1037,8 +1029,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1050,8 +1041,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1242,8 +1232,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1255,8 +1244,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1428,8 +1416,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1441,8 +1428,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseSecureConnectionPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1575,8 +1561,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1588,8 +1573,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1669,7 +1653,7 @@ Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Use this cmdlet to retrieve the Transparent Data Encryption state from an Azure SQL Database. To use the Cmdlet, use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the database. This indicates encryption state of the Azure SQL database, and reflects the state last set by the user. When the state is &quot;Enabled&quot; the Azure SQL Database can still be encrypting as encryption can be a long running asynchronous job. When the state is &quot;Disabled&quot; the Azure SQL Database can still be decrypting because this is a long running asynchronous job. To view the encryption scan progress please use Get-AzureSqlDatabaseTransparentDataEncryptionActivity.</maml:para>
+		<maml:para>Use this cmdlet to retrieve the Transparent Data Encryption state from an Azure SQL Database. Use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the database. The return object indicates encryption state of the Azure SQL database, and reflects the state last set by the user. When the state is &quot;Enabled&quot; the Azure SQL Database can still be encrypting as encryption can be a long running asynchronous job. When the state is &quot;Disabled&quot; the Azure SQL Database can still be decrypting because this is a long running asynchronous job. To view the encryption scan progress please use Get-AzureSqlDatabaseTransparentDataEncryptionActivity.</maml:para>
 		<maml:para>Note: This cmdlet can only be executed in Azure Resource Manager mode. To enable Azure Resource Manager mode run the following command:
 Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<maml:para>For more information, see Using Windows PowerShell with Resource Manager.</maml:para>
@@ -1778,7 +1762,8 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionModel</maml:para>
+				<maml:para>
+Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1838,7 +1823,7 @@ resourcegroup1                server1                       database1           
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureSqlDatabaseTransparentDataEncryptionActivity Cmdlet gets the Transparent Data Encryption scan progress of an Azure SQL Database. To use the Cmdlet, use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the Azure SQL Database. This indicates if the Azure SQL Database is encrypting/decrypting, and what percentage is complete. If no encryption scan is occurring on the Azure SQL Database an empty list will be returned.</maml:para>
+		<maml:para>The Get-AzureSqlDatabaseTransparentDataEncryptionActivity Cmdlet gets the Transparent Data Encryption scan progress of an Azure SQL Database. Use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the Azure SQL Database. The return object indicates if the Azure SQL Database is encrypting/decrypting, and what percentage is complete. If no encryption scan is occurring on the Azure SQL Database an empty list will be returned.</maml:para>
 		<maml:para>
 Note: This cmdlet can only be executed in Azure Resource Manager mode. To enable Azure Resource Manager mode run the following command:
 Switch-AzureMode –Name AzureResourceManager</maml:para>
@@ -1948,7 +1933,8 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionActivityModel</maml:para>
+				<maml:para>
+Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionActivityModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2108,8 +2094,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -2121,8 +2106,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2307,8 +2291,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -2320,8 +2303,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2517,8 +2499,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -2530,8 +2511,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3124,8 +3104,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3137,8 +3116,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3290,8 +3268,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3303,8 +3280,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3475,8 +3451,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3488,8 +3463,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3895,8 +3869,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3908,8 +3881,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4385,8 +4357,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4398,8 +4369,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4668,8 +4638,7 @@ For the current preview, the edition must be &quot;Standard&quot;.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4681,8 +4650,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4918,8 +4886,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4931,8 +4898,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -5377,8 +5343,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5390,8 +5355,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -5562,8 +5526,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5575,8 +5538,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -5823,8 +5785,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5836,8 +5797,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -5989,8 +5949,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6002,8 +5961,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6213,8 +6171,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6226,8 +6183,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6441,8 +6397,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6454,8 +6409,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6664,8 +6618,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-New InputType</maml:para>
+				<maml:para>New InputType</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6677,8 +6630,7 @@ New InputType</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-New OutputType</maml:para>
+				<maml:para>New OutputType</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6938,8 +6890,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6951,8 +6902,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -7240,8 +7190,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -7253,8 +7202,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -7482,8 +7430,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -7495,8 +7442,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -7944,8 +7890,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -7957,8 +7902,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8207,8 +8151,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8220,8 +8163,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8277,7 +8219,7 @@ Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-SetAzureSqlDatabaseTransparentDataEncryption Cmdlet is used to set the Transparent Data Encryption (TDE) property of an already existing Azure SQL database. To use the Cmdlet, use the ResourceGroupName, ServerName, and DatabaseName. Use &quot;Enabled&quot; or &quot;Disabled&quot; to specify the target state of TDE for an Azure Sql Database. If the command succeeds and the PassThru switch is on, it returns an object describing the TDE state as well as the database identifiers (ResourceGroupName, ServerName and DatabaseName).</maml:para>
+		<maml:para>The Set-SetAzureSqlDatabaseTransparentDataEncryption cmdlet is used to set the Transparent Data Encryption (TDE) property of an already existing Azure SQL database. Use the ResourceGroupName, ServerName, and DatabaseName. Use &quot;Enabled&quot; or &quot;Disabled&quot; to specify the target state of TDE for an Azure SQL Database. If the command succeeds and the PassThru switch is on, it returns an object describing the TDE state as well as the database identifiers (ResourceGroupName, ServerName and DatabaseName).</maml:para>
 		<maml:para>
 Note: This cmdlet can only be executed in Azure Resource Manager mode. To enable Azure Resource Manager mode run the following command:
 Switch-AzureMode –Name AzureResourceManager</maml:para>
@@ -8393,7 +8335,8 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8405,7 +8348,8 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionModel</maml:para>
+				<maml:para>
+Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8428,7 +8372,11 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:para>The following command updates the transparent data encryption state for the Azure SQL database named &quot;database1&quot;.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>The following command updates a database named &quot;database1&quot; to a Standard S2 database.</maml:para>
+				<maml:para>PS C:\&gt;Set-AzureSqlDatabaseTransparentDataEncryption –ResourceGroupName &quot;resourcegroup1&quot; –ServerName &quot;server1&quot; –DatabaseName &quot;database1&quot; -State Enabled
+
+ResourceGroupName             ServerName                    DatabaseName                                          State
+-----------------             ----------                    ------------                                          -----
+resourcegroup1                server1                       database1                                             Disabled</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -8672,8 +8620,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8685,8 +8632,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8957,8 +8903,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8970,8 +8915,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9161,8 +9105,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -9174,8 +9117,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9712,8 +9654,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-None</maml:para>
+				<maml:para>None</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -9725,8 +9666,7 @@ None</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
+				<maml:para>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9848,8 +9788,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -9861,8 +9800,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10020,8 +9958,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -10033,8 +9970,7 @@ System.String</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.Object</maml:para>
+				<maml:para>System.Object</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
