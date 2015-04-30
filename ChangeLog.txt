@@ -1,4 +1,32 @@
-﻿2015.04.29 version 0.9.0
+﻿2015.05.01 version 0.9.1
+* Azure Automation
+    * Added Automation cmdlets support in AzureResourceManager mode
+      * Export-AzureAutomationDscConfiguration
+      *	Export-AzureAutomationDscNodeReportContent
+      * Get-AzureAutomationAccount
+      * Get-AzureAutomationDscCompilationJob
+      * Get-AzureAutomationDscCompilationJobOutput
+      * Get-AzureAutomationDscConfiguration
+      * Get-AzureAutomationDscNode
+      * Get-AzureAutomationDscNodeConfiguration
+      * Get-AzureAutomationDscNodeReport
+      * Get-AzureAutomationDscOnboardingMetaconfig
+      * Get-AzureAutomationModule
+      * Get-AzureAutomationRegistrationInfo
+      * Import-AzureAutomationDscConfiguration
+      * New-AzureAutomationAccount
+      * New-AzureAutomationKey
+      * New-AzureAutomationModule
+      * Register-AzureAutomationDscNode
+      * Remove-AzureAutomationAccount
+      * Remove-AzureAutomationModule
+      * Set-AzureAutomationAccount
+      * Set-AzureAutomationDscNode
+      * Set-AzureAutomationModule
+      * Start-AzureAutomationDscCompilationJob
+      * Unregister-AzureAutomationDscNode
+
+2015.04.29 version 0.9.0
 * Azure Compute
     * Added Compute cmdlets support in AzureResourceManager mode
       * Add-AzureVMSshPublicKey
