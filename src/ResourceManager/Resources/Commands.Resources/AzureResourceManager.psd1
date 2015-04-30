@@ -70,8 +70,7 @@ FormatsToProcess = @(
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.format.ps1xml'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess

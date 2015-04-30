@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
             var storageManagementClient = GetStorageManagementClient();
+            var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
                 apiManagementManagementClient, 
@@ -50,12 +51,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 galaryClient,
                 authorizationManagementClient,
                 managementClient,
-                storageManagementClient);
+                //storageManagementClient,
+                armStorageManagementClient);
         }
 
         protected StorageManagementClient GetStorageManagementClient()
         {
             return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        protected Management.Storage.StorageManagementClient GetArmStorageManagementClient()
+        {
+            return TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private ManagementClient GetManagementClient()
@@ -133,11 +140,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=bb3f6f90-0996-4c18-8d61-028ab0f0f29b;Environment=Dogfood;AADTenant=83abe5cd-bcc3-441a-bd86-e6a75360cecc");
+            //    "SubscriptionId=;Environment=;AADTenant=");
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=bb3f6f90-0996-4c18-8d61-028ab0f0f29b;Environment=Dogfood");
+            //    "SubscriptionId=;Environment=");
 #endif
 
             using (var context = UndoContext.Current)
