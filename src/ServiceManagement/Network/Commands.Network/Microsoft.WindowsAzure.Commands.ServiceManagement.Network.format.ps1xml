@@ -283,9 +283,9 @@
     </View>
 
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Routes.Model.RouteTableWithRoutes</Name>
+      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model.RouteTableWithRoutes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Routes.Model.RouteTableWithRoutes</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model.RouteTableWithRoutes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -314,15 +314,15 @@
     </View>
 
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Routes.Model.Route</Name>
+      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model.Route</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Routes.Model.Route</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model.Route</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-            <Width>15</Width>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Address Prefix</Label>
