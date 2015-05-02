@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.IO;
     using System.Net.Http;
     using System.Threading.Tasks;
-    
+
     /// <summary>
     /// Class containing HTTP message extension methods.
     /// </summary>
@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                     {
                         stream.Seek(streamPosition, SeekOrigin.Begin);
                     }
-                    
                 }
             }
         }

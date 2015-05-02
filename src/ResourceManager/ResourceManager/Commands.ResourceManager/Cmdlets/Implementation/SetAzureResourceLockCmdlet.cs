@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The set resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
     public class SetAzureResourceLockCmdlet : NewAzureResourceLockCmdlet
     {
         /// <summary>

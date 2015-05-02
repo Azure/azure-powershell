@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Concurrent;
     using System.Linq;
     using System.Management.Automation;
-    using Clients.Components;
-    using Cmdlets.Extensions;
-    using Cmdlets.Entities.ResourceGroups;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the ids of the resources to move.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The Ids of the resources to move.")]
         [ValidateNotNullOrEmpty]
         public string[] ResourceId { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            this.DestinationSubscriptionId = this.Profile.DefaultSubscription.Id;
+            this.DestinationSubscriptionId = this.Profile.Context.Subscription.Id;
 
             var resourceGroup = ResourceIdUtility.GetResourceId(
                 subscriptionId: this.DestinationSubscriptionId,

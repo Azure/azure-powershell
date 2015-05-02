@@ -12,18 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using System;
     using System.Linq;
     using System.Text;
-    using Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Class for building and parsing resource Ids.
     /// </summary>
     public static class ResourceIdUtility
     {
+        /// <summary>
+        /// Processes the parameters to return a valid resource Id.
+        /// </summary>
+        /// <param name="resourceId">The resource Id.</param>
+        /// <param name="resourceGroupName">The resource group</param>
+        /// <param name="extensionResourceType">The extension resource type string in the format: '{providerName}/{typeName}/{nestedTypeName}'</param>
+        /// <param name="extensionResourceName">The extension resource name in the format: '{resourceName}[/{nestedResourceName}]'</param>
+        public static string GetResourceId(string resourceId, string extensionResourceType, string extensionResourceName = null)
+        {
+            var resourceIdBuilder = new StringBuilder(resourceId.TrimEnd('/'));
+
+            if (!string.IsNullOrWhiteSpace(extensionResourceType))
+            {
+                resourceIdBuilder.Append(ResourceIdUtility.ProcessResourceTypeAndName(resourceType: extensionResourceType, resourceName: extensionResourceName));
+            }
+
+            return resourceId.ToString();
+        }
+
         /// <summary>
         /// Processes the parameters to return a valid resource Id.
         /// </summary>

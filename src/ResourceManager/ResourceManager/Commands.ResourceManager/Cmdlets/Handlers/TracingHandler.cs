@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.Handlers
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
     using System;
     using System.Net.Http;

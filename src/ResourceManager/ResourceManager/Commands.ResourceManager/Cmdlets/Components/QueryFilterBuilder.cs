@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using System;
     using System.Linq;
     using System.Text;
-    using Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// A class that builds query filters.

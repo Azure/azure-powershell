@@ -16,14 +16,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Clients.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Authorization;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Cmdlets.Entities.Authorization;
-    using Cmdlets.Entities.Resources;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
+        /// Contains the errors that encountered while satifying the request.
+        /// </summary>
+        private readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
+
+        /// <summary>
         /// The list resources parameter set.
         /// </summary>
         internal const string ListResourcesParameterSet = "Lists the resources based on the specified scope.";
@@ -40,19 +45,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The get resource parameter set.
         /// </summary>
-        internal const string GetResourceParameterSet = "Get a single resource";
+        internal const string GetResourceParameterSet = "Get a single resource.";
+
+        /// <summary>
+        /// The list tenant resources parameter set.
+        /// </summary>
+        internal const string ListTenantResourcesParameterSet = "Lists the resources based on the specified scope at the tenant level.";
+
+        /// <summary>
+        /// The get tenant resource parameter set.
+        /// </summary>
+        internal const string GetTenantResourceParameterSet = "Get a single resource at the tenant level.";
+
+        /// <summary>
+        /// The get tenant resource parameter set.
+        /// </summary>
+        internal const string GetResourceByIdParameterSet = "Get a single resource by its Id.";
+
+        /// <summary>
+        /// The get tenant resource parameter set.
+        /// </summary>
+        internal const string MultiSubscriptionListResourcesParameterSet = "Get a resources using a multi-subscription query.";
 
         /// <summary>
         /// Caches the current subscription ids to get all subscription ids in the pipeline.
         /// </summary>
-        private readonly ConcurrentBag<Guid> subscriptionIds = new ConcurrentBag<Guid>();
+        private readonly List<Guid> subscriptionIds = new List<Guid>();
+
+        /// <summary>
+        /// Gets or sets the resource name parameter.
+        /// </summary>
+        [Alias("Id")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource's Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource name parameter.
         /// </summary>
         [Alias("Name")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [ValidateNotNullOrEmpty]
         public string ResourceName { get; set; }
 
@@ -61,6 +97,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
 
@@ -75,14 +114,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionResourceName { get; set; }
 
         /// <summary>
         /// Gets or sets the extension resource type.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionResourceType { get; set; }
 
@@ -90,6 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the tag name.
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
         [ValidateNotNullOrEmpty]
         public string TagName { get; set; }
 
@@ -97,6 +145,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the tag value.
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
         [ValidateNotNullOrEmpty]
         public string TagValue { get; set; }
 
@@ -115,13 +164,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the is collection.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
         public SwitchParameter IsCollection { get; set; }
 
         /// <summary>
         /// Gets or sets the top parameter.
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
 
@@ -135,16 +190,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the subscription ids.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
+        [Parameter(Mandatory = true, ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
         [ValidateNotNullOrEmpty]
         public Guid[] SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tenant level parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = true, HelpMessage = "Indicates that this is a tenant level operation.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = true, HelpMessage = "Indicates that this is a tenant level operation.")]
+        public SwitchParameter TenantLevel { get; set; }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -152,10 +218,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            foreach (var subscriptionId in this.SubscriptionId.CoalesceEnumerable())
-            {
-                this.subscriptionIds.Add(subscriptionId);
-            }
+            this.subscriptionIds.AddRange(this.SubscriptionId.CoalesceEnumerable());
         }
 
         /// <summary>
@@ -164,11 +227,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnEndProcessing()
         {
             base.OnEndProcessing();
-            this.SubscriptionId = this.subscriptionIds.DistinctArray();
 
-            if (!this.SubscriptionId.CoalesceEnumerable().Any())
+            this.SubscriptionId = this.subscriptionIds.DistinctArray();
+            if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.SubscriptionId.CoalesceEnumerable().Any() && !this.TenantLevel)
             {
-                this.SubscriptionId = this.Profile.DefaultSubscription.Id.AsArray();
+                this.SubscriptionId = this.Profile.Context.Subscription.Id.AsArray();
             }
 
             this.RunCmdlet();
@@ -189,24 +252,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     if (resources.CoalesceEnumerable().FirstOrDefault().TryConvertTo(out resource))
                     {
                         var genericResources = resources.CoalesceEnumerable().Where(res => res != null).SelectArray(res => res.ToResource());
-                        if (this.ExpandProperties)
-                        {
-                            genericResources = this.GetPopulatedResource(genericResources).Result;
-                        }
 
-                        var powerShellObjects = genericResources.SelectArray(genericResource => genericResource.ToPsObject());
-                        if (this.ExpandPermissions)
+                        foreach (var batch in genericResources.Batch())
                         {
-                            this.PopulatePermissions(powerShellObjects).Wait();
-                        }
+                            var items = batch;
+                            if (this.ExpandProperties)
+                            {
+                                items = this.GetPopulatedResource(batch).Result;
+                            }
 
-                        this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
+                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+                            if (this.ExpandPermissions)
+                            {
+                                this.PopulatePermissions(powerShellObjects).Wait();
+                            }
+
+                            this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
+                        }
                     }
                     else
                     {
                         this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject()), enumerateCollection: true);
                     }
                 });
+
+            if (this.errors.Count != 0)
+            {
+                foreach(var error in this.errors)
+                {
+                    this.WriteError(error);
+                }
+            }
         }
 
         /// <summary>
@@ -402,11 +478,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Populates the permissions on an array of resources.
         /// </summary>
         /// <param name="resources">The resources.</param>
-        private Task PopulatePermissions(PSObject[] resources)
+        private async Task PopulatePermissions(PSObject[] resources)
         {
-            return resources
-                .Select(resource => this.PopulatePermissions(resource))
-                .WhenAllForAwait();
+            foreach (var batch in resources.Batch())
+            {
+                await batch
+                    .Select(resource => this.PopulatePermissions(resource: resource))
+                    .WhenAllForAwait()
+                    .ConfigureAwait(continueOnCapturedContext: false);
+            }
         }
 
         /// <summary>
@@ -415,30 +495,46 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <param name="resource">The resource.</param>
         private async Task PopulatePermissions(PSObject resource)
         {
-            var resourceId = resource.Properties["ResourceId"].Value.ToString();
+            try
+            {
+                var resourceId = resource.Properties["ResourceId"].Value.ToString();
 
-            var resourceCollectionId = resourceId + ResourceIdUtility
-                .GetResourceCollectionId(
-                    subscriptionId: null,
-                    resourceGroupName: null,
-                    resourceType: null,
-                    extensionResourceType: "Microsoft.Authorization/permissions");
+                var resourceCollectionId = resourceId + ResourceIdUtility
+                    .GetResourceCollectionId(
+                        subscriptionId: null,
+                        resourceGroupName: null,
+                        resourceType: null,
+                        extensionResourceType: "Microsoft.Authorization/permissions");
 
-            var apiVersion = await ApiVersionHelper
-                .DetermineApiVersion(
-                    profile: this.Profile,
-                    providerNamespace: "Microsoft.Authorization",
-                    resourceType: "permissions",
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: this.Pre)
-                .ConfigureAwait(continueOnCapturedContext: false);
+                var apiVersion = await ApiVersionHelper
+                    .DetermineApiVersion(
+                        profile: this.Profile,
+                        providerNamespace: "Microsoft.Authorization",
+                        resourceType: "permissions",
+                        cancellationToken: this.CancellationToken.Value,
+                        pre: this.Pre)
+                    .ConfigureAwait(continueOnCapturedContext: false);
 
-            var permissions = PaginatedResponseHelper.Enumerate(
-                getFirstPage: () => this.GetPermissions(permissionCheckId: resourceCollectionId, apiVersion: apiVersion),
-                getNextPage: nextLink => this.GetNextLink<Permission>(nextLink),
-                cancellationToken: this.CancellationToken);
+                var permissions = PaginatedResponseHelper.Enumerate(
+                    getFirstPage: () => this.GetPermissions(permissionCheckId: resourceCollectionId, apiVersion: apiVersion),
+                    getNextPage: nextLink => this.GetNextLink<Permission>(nextLink),
+                    cancellationToken: this.CancellationToken);
 
-            resource.Properties.Add(new PSNoteProperty("Permissions", permissions));
+                resource.Properties.Add(new PSNoteProperty("Permissions", permissions));
+            }
+            catch (Exception ex)
+            {
+                if (ex.IsFatal())
+                {
+                    throw;
+                }
+
+                ex = (ex is AggregateException)
+                    ? (ex as AggregateException).Flatten()
+                    : ex;
+
+                this.errors.Add(new ErrorRecord(ex, "ErrorExpandingPermissions", ErrorCategory.CloseError, resource));
+            }
         }
 
         /// <summary>
@@ -461,14 +557,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Populates the properties on an array of resources.
         /// </summary>
         /// <param name="resources">The resource.</param>
-        private async Task<Resource<JToken>[]> GetPopulatedResource(Resource<JToken>[] resources)
+        private async Task<Resource<JToken>[]> GetPopulatedResource(IEnumerable<Resource<JToken>> resources)
         {
             if (this.IsResourceGroupLevelResourceGet())
             {
                 return new Resource<JToken>[0];
             }
 
-           return await resources
+            return await resources
                 .Select(resource => this.GetPopulatedResource(resource))
                 .WhenAllForAwait()
                 .ConfigureAwait(continueOnCapturedContext: false);
@@ -480,21 +576,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <param name="resource">The resource.</param>
         private async Task<Resource<JToken>> GetPopulatedResource(Resource<JToken> resource)
         {
-            var apiVersion = await ApiVersionHelper
-                .DetermineApiVersion(
-                    profile: this.Profile,
-                    resourceId: resource.Id,
-                    cancellationToken: this.CancellationToken.Value,
-                    pre: this.Pre)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            try
+            {
+                var apiVersion = await ApiVersionHelper
+                    .DetermineApiVersion(
+                        profile: this.Profile,
+                        resourceId: resource.Id,
+                        cancellationToken: this.CancellationToken.Value,
+                        pre: this.Pre)
+                    .ConfigureAwait(continueOnCapturedContext: false);
 
-            return await this
-                .GetResourcesClient()
-                .GetResource<Resource<JToken>>(
-                    resourceId: resource.Id,
-                    apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
-                .ConfigureAwait(continueOnCapturedContext: false);
+                return await this
+                    .GetResourcesClient()
+                    .GetResource<Resource<JToken>>(
+                        resourceId: resource.Id,
+                        apiVersion: apiVersion,
+                        cancellationToken: this.CancellationToken.Value)
+                    .ConfigureAwait(continueOnCapturedContext: false);
+            }
+            catch (Exception ex)
+            {
+                if (ex.IsFatal())
+                {
+                    throw;
+                }
+
+                ex = (ex is AggregateException)
+                    ? (ex as AggregateException).Flatten()
+                    : ex;
+
+                this.errors.Add(new ErrorRecord(ex, "ErrorExpandingProperties", ErrorCategory.CloseError, resource));
+            }
+
+            return resource;
         }
 
         /// <summary>
@@ -502,7 +616,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return ResourceIdUtility.GetResourceId(
+            return !string.IsNullOrWhiteSpace(this.ResourceId)
+            ? this.ResourceId
+            : ResourceIdUtility.GetResourceId(
                 subscriptionId: this.SubscriptionId.CoalesceEnumerable().FirstOrDefault(),
                 resourceGroupName: this.ResourceGroupName,
                 resourceType: this.ResourceType,
@@ -538,7 +654,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsResourceGet()
         {
-            return this.IsResourceGroupLevelResourceGet() ||
+            return !string.IsNullOrWhiteSpace(this.ResourceId) ||
+                this.IsResourceGroupLevelResourceGet() ||
                 this.IsSubscriptionLevelResourceGet() ||
                 this.IsTenantLevelResourceGet();
         }

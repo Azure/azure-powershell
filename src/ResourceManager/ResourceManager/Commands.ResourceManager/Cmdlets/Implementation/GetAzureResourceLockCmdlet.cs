@@ -16,41 +16,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Cmdlets.Components;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Gets the resource lock.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceLock", DefaultParameterSetName = GetAzureResourceLockCmdlet.ScopeParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureResourceLock"), OutputType(typeof(PSObject))]
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
-        /// The at scope parameter set name.
+        /// Gets or sets the at-scope filter.
         /// </summary>
-        internal const string ScopeParameterSet = "Specifies the scope.";
+        [Parameter(Mandatory = false, HelpMessage = "When specified returns all locks at or above the specified scope, otherwise returns all locks at, above or below the scope.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AtScope { get; set; }
 
-        /// <summary>
-        /// The get lock parameter set name.
-        /// </summary>
-        internal const string GetLockParameterSet = "Gets the specified lock.";
 
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
         [Alias("ExtensionResourceName")]
-        [Parameter(Mandatory = true, ParameterSetName = GetAzureResourceLockCmdlet.GetLockParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [ValidateNotNullOrEmpty]
         public string LockName { get; set; }
 
         /// <summary>
-        /// Gets or sets the at-scope filter.
+        /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceLockCmdlet.ScopeParameterSet, HelpMessage = "When specified returns all locks at or above the specified scope, otherwise returns all locks at, above or below the scope.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AtScope { get; set; }
+        protected string GetResourceId()
+        {
+            return !string.IsNullOrWhiteSpace(this.Scope)
+                ? ResourceIdUtility.GetResourceId(
+                    resourceId: this.Scope,
+                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
+                    extensionResourceName: this.LockName)
+                : ResourceIdUtility.GetResourceId(
+                    subscriptionId: this.SubscriptionId,
+                    resourceGroupName: this.ResourceGroupName,
+                    resourceType: this.ResourceType,
+                    resourceName: this.ResourceName,
+                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
+                    extensionResourceName: this.LockName);
+        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -141,20 +150,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return this
                 .GetResourcesClient()
                 .ListNextBatch<TType>(nextLink: nextLink, cancellationToken: this.CancellationToken.Value);
-        }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceId()
-        {
-            return ResourceIdUtility.GetResourceId(
-                subscriptionId: this.SubscriptionId,
-                resourceGroupName: this.ResourceGroupName,
-                resourceType: this.ResourceType,
-                resourceName: this.ResourceName,
-                extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
-                extensionResourceName: this.LockName);
         }
     }
 }

@@ -18,15 +18,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Cmdlets.Extensions;
-    using Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruce), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
