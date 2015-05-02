@@ -72,7 +72,7 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
-    '.\Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml',
+    '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml',
     '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
 )
 
@@ -86,7 +86,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
                 '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
-                '.\Network\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
+                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
                 '.\RemoteApp\Microsoft.Azure.Commands.RemoteApp.dll',
                 '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
