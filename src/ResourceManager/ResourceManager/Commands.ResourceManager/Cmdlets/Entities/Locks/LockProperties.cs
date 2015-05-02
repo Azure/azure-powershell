@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
 {
+    using Newtonsoft.Json;
+
     /// <summary>
     /// The lock properties.
     /// </summary>

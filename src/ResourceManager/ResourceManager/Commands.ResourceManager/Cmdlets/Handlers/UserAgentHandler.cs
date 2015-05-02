@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.Handlers
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Clients.Handlers
     using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
-    using Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// The user agent handler.

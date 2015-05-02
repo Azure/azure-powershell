@@ -58,10 +58,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.21-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.16.204221202\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -135,7 +131,6 @@
     <Compile Include="Implementation\RemoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\RemoveAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\ResourceLockManagementCmdletBase.cs" />
-    <Compile Include="Implementation\ResourceLockManipulationCmdletBase.cs" />
     <Compile Include="Implementation\SetAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\NewAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\ResourceManipulationCmdletBase.cs" />
