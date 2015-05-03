@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations
 {
-    using Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Newtonsoft.Json;
 
     /// <summary>

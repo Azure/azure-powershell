@@ -23,10 +23,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
         /// The cannot delete lock.
         /// </summary>
         CanNotDelete,
-
-        /// <summary>
-        /// The read-only lock.
-        /// </summary>
-        ReadOnly,
     }
 }

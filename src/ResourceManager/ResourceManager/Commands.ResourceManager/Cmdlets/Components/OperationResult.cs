@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Client.Components
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using System;
     using System.Net;

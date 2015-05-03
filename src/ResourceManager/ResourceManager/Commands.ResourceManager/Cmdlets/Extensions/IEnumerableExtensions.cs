@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Cmdlets.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 
     /// <summary>
     /// IEnumerable extension methods
@@ -127,6 +125,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 {
                     set[key] = value;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Batches an enumerable into batches of the specified size.
+        /// </summary>
+        /// <typeparam name="TSource">The source type/</typeparam>
+        /// <param name="source">The enumerable to batch.</param>
+        /// <param name="batchSize">The batch size.</param>
+        public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(this IEnumerable<TSource> source, int batchSize = 10)
+        {
+            var batch = new List<TSource>(batchSize);
+            foreach(var item in source)
+            {
+                batch.Add(item);
+                if (batch.Count >= batchSize)
+                {
+                    yield return batch;
+                    batch = new List<TSource>(batchSize);
+                }
+            }
+
+            if (batch.Count > 0)
+            {
+                yield return batch;
             }
         }
     }

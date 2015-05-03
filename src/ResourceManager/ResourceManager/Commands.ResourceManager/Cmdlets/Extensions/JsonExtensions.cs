@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
-    using Cmdlets.Json;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;

@@ -17,9 +17,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Clients.Components;
-    using Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
 

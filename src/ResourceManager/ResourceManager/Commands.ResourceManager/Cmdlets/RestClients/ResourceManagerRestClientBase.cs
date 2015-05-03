@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.RestClients
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
 {
     using System;
     using System.Net.Http;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Client.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
-    using Cmdlets.Extensions;
-    using Cmdlets.Utilities;
-    using Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

@@ -15,15 +15,16 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
-    using Cmdlets.Extensions;
-    using Cmdlets.Entities.Locks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// The new azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzureResourceLockCmdlet : ResourceLockManipulationCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
         /// Gets or sets the extension resource name parameter.
@@ -37,9 +38,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the extension resource name parameter.
         /// </summary>
         [Alias("Notes")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The notes of the lock.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The notes of the lock.")]
         [ValidateNotNullOrEmpty]
         public string LockNotes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the force parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extension resource name parameter.
+        /// </summary>
+        [Alias("ExtensionResourceName")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [ValidateNotNullOrEmpty]
+        public string LockName { get; set; }
+
+        /// <summary>
+        /// Gets the resource Id from the supplied PowerShell parameters.
+        /// </summary>
+        protected string GetResourceId()
+        {
+            return !string.IsNullOrWhiteSpace(this.Scope)
+                ? ResourceIdUtility.GetResourceId(
+                    resourceId: this.Scope,
+                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
+                    extensionResourceName: this.LockName)
+                : ResourceIdUtility.GetResourceId(
+                    subscriptionId: this.SubscriptionId,
+                    resourceGroupName: this.ResourceGroupName,
+                    resourceType: this.ResourceType,
+                    resourceName: this.ResourceName,
+                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
+                    extensionResourceName: this.LockName);
+        }
 
         /// <summary>
         /// Executes the cmdlet.

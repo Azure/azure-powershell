@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruce), OutputType(typeof(PSObject))]
-    public sealed class RemoveAzureResourceCmdlet : ResourceManipulationCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet), OutputType(typeof(PSObject))]
+    public class RemoveAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
         /// Executes the cmdlet.

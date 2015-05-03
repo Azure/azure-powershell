@@ -17,9 +17,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Cmdlets.Components;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.SubscriptionId == null)
             {
-                this.SubscriptionId = this.Profile.DefaultSubscription.Id;
+                this.SubscriptionId = this.Profile.Context.Subscription.Id;
             }
 
             this.RunCmdlet();
