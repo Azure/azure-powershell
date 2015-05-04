@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
-        public static PSResourceGroup ToPSResourceGroup(this ResourceGroup resourceGroup, ResourcesClient client, bool detailed)
+        public static PSResourceGroup ToPSResourceGroup(this ResourceGroupExtended resourceGroup, ResourcesClient client, bool detailed)
         {
             var result = new PSResourceGroup
             {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return deployment;
         }
 
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this Deployment result, string resourceGroup)
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
         {
             PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 };
         }
 
-        public static PSResource ToPSResource(this Resource resource, ResourcesClient client, bool minimal)
+        public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
         {
             ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
             return new PSResource
@@ -118,6 +118,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
                                 Locations = resourceType.Locations.ToArray(),
                                 ApiVersions = resourceType.ApiVersions.ToArray(),
                             }).ToArray(),
+            };
+        }
+
+        public static PSResourceProviderOperation ToPSResourceProviderOperation(this ResourceProviderOperationDefinition resourceProviderOperationDefinition)
+        {
+            return new PSResourceProviderOperation
+            {
+                OperationName = resourceProviderOperationDefinition.Name,
+                Description = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Description,
+                ProviderNamespace = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Provider,
+                ResourceName = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Resource
             };
         }
 
@@ -342,7 +353,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
             string name,
             string gesourceGroup,
-            DeploymentProperties properties)
+            DeploymentPropertiesExtended properties)
         {
             PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
 

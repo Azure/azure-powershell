@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model
 {
     using System.Collections.Generic;
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Pools matching the specified filter options
+        /// Lists the pools matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Pools</param>
-        /// <returns>The Pools matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for pools</param>
+        /// <returns>The pools matching the specified filter options</returns>
         public IEnumerable<PSCloudPool> ListPools(ListPoolOptions options)
         {
             if (options == null)
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            // Get the single Pool matching the specified name
+            // Get the single pool matching the specified name
             if (!string.IsNullOrWhiteSpace(options.PoolName))
             {
                 WriteVerbose(string.Format(Resources.GBP_GetByName, options.PoolName));
@@ -47,19 +47,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSCloudPool[] { psPool };
                 }
             }
-            // List Pools using the specified filter
+            // List pools using the specified filter
             else
             {
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(Resources.GBP_GetByOData);
+                    verboseLogString = Resources.GBP_GetByOData;
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(Resources.GBP_NoFilter);
+                    verboseLogString = Resources.GBP_NoFilter;
                 }
+                WriteVerbose(verboseLogString);
+
                 using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
                 {
                     IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);
@@ -71,18 +74,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Creates a new Pool
+        /// Creates a new pool
         /// </summary>
-        /// <param name="parameters">The parameters to use when creating the Pool</param>
+        /// <param name="parameters">The parameters to use when creating the pool</param>
         public void CreatePool(NewPoolParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
-            }
-            if (string.IsNullOrWhiteSpace(parameters.PoolName))
-            {
-                throw new ArgumentNullException("PoolName");
             }
 
             using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
@@ -146,10 +145,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Deletes the specified Pool
+        /// Deletes the specified pool
         /// </summary>
         /// <param name="context">The account to use</param>
-        /// <param name="poolName">The name of the Pool to delete</param>
+        /// <param name="poolName">The name of the pool to delete</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform</param>
         public void DeletePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {

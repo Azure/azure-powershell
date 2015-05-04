@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, "AzureBatchWorkItem")]
     public class RemoveBatchWorkItemCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
