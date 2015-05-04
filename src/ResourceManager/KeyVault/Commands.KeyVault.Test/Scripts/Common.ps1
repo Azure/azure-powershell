@@ -262,3 +262,56 @@ function Write-ConsoleReport
     Write-Host -ForegroundColor Green "End Time: $global:endTime"
     Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()	
 }
+
+function Equal-DateTime($left, $right)
+{   
+    if ($left -eq $null -and $right -eq $null)
+    {        
+        return $true
+    }
+    if ($left -eq $null -or $right -eq $null)
+    {
+        return $false
+    }
+    
+    return (($left - $right).Duration() -le $delta)
+}
+
+function Equal-Hashtable($left, $right)
+{
+    if ((EmptyOrNullHashtable $left) -and (-Not (EmptyOrNullHashtable $right)))
+    {
+        return $false
+    }  
+    if ((EmptyOrNullHashtable $right) -and (-Not (EmptyOrNullHashtable $left)))
+    {
+        return $false
+    } 
+    if ($right.Count -ne $left.Count)
+    {
+        return $false
+    }
+    
+    return $true
+}
+
+function EmptyOrNullHashtable($hashtable)
+{
+    return ($hashtable -eq $null -or $hashtable.Count -eq 0)
+}
+
+function Equal-OperationList($left, $right)
+{   
+    if ($left -eq $null -and $right -eq $null)
+    {        
+        return $true
+    }
+    if ($left -eq $null -or $right -eq $null)
+    {
+        return $false
+    }
+
+    $diff = Compare-Object -ReferenceObject $left -DifferenceObject $right -PassThru
+    
+    return (-not $diff)
+}
