@@ -18,7 +18,6 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
-using CM=Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -178,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
                 Utilities.ExecuteAndLog(() =>
                     {
-                         PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                         PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows, username, password, subnet);
                          vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName, reservedIPName: reservedIpName);
                     },"Create a new windows azure vm with reserved ip.");
                 VerifyReservedIpInUse(serviceName,input);
@@ -291,7 +290,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
                 Utilities.ExecuteAndLog(() =>
                 {
-                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows, username, password, subnet);
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName);
                 }, "Create a new windows azure vm without reserved ip.");
 
@@ -341,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
                 Utilities.ExecuteAndLog(() =>
                 {
-                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows, username, password, subnet);
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName);
                 }, "Create a new windows azure vm without reserved ip.");
 
@@ -385,7 +384,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
                 Utilities.ExecuteAndLog(() =>
                 {
-                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows, username, password, subnet);
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName, reservedIPName: reservedIpName);
                 }, "Create a new windows azure vm with reserved ip.");
 
@@ -432,7 +431,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => { dns = vmPowershellCmdlets.NewAzureDns(dnsName, DNS_IP); }, "Create a new Azure DNS");
                 Utilities.ExecuteAndLog(() =>
                 {
-                    PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows);
+                    PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Windows, username, password, subnet);
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, location: locationName);
                 }, "Create a new windows azure vm without reserved ip.");
 
@@ -490,7 +489,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.ExecuteAndLog(() =>
                     {
-                        PersistentVM vm = CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Linux);
+                        PersistentVM vm = Utilities.CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(vmName, OS.Linux, username, password, subnet);
                         vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, vnet, new[] { dns }, affinityGroup: affinityGroup, reservedIPName: reservedIpName);
                     }, "");
                 VerifyReservedIpInUse(serviceName, input);
@@ -648,34 +647,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private void VerifyReservedIpRemoved(string reservedIpName)
         {
             Utilities.VerifyFailure(() => vmPowershellCmdlets.GetAzureReservedIP(reservedIpName), ResourceNotFoundException);
-        }
-
-        private PersistentVM CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(string vmName, OS os)
-        {
-            string disk1 = "Disk1";
-            int diskSize = 30;
-            string availabilitySetName = Utilities.GetUniqueShortName("AvailSet");
-            string img = string.Empty;
-            
-            bool isWindowsOs = false;
-            if (os == OS.Windows)
-            {
-                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-                isWindowsOs = true;
-            }
-            else
-            {
-                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
-                isWindowsOs = false;
-            }
-
-            PersistentVM vm = Utilities.CreateIaaSVMObject(vmName, InstanceSize.Small, img, isWindowsOs,username, password);
-            AddAzureDataDiskConfig azureDataDiskConfigInfo1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize, disk1, 0, HostCaching.ReadWrite.ToString());
-            azureDataDiskConfigInfo1.Vm = vm;
-
-            vm = vmPowershellCmdlets.SetAzureSubnet(vm, new string[] {subnet});
-            vm = vmPowershellCmdlets.SetAzureAvailabilitySet(availabilitySetName, vm);
-            return vm;
         }
 
         #endregion Helper Methods

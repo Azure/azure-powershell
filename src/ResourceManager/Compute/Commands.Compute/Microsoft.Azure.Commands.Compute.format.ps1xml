@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>PSAvailabilitySet</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSAvailabilitySet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSAvailabilitySet</TypeName>
       </ViewSelectedBy>
@@ -15,12 +15,20 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>PlatformFaultDomainCount</Label>
@@ -35,14 +43,6 @@
                 <PropertyName>StatusesText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Tags</Label>
-                <PropertyName>Tags</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Type</Label>
-                <PropertyName>Type</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>VirtualMachinesReferences</Label>
                 <PropertyName>VirtualMachinesReferencesText</PropertyName>
               </ListItem>
@@ -52,7 +52,7 @@
       </ListControl>
     </View>
     <View>
-      <Name>PSVirtualMachineSize</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</TypeName>
       </ViewSelectedBy>
@@ -90,7 +90,7 @@
       </ListControl>
     </View>
     <View>
-      <Name>PSUsage</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSUsage</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSUsage</TypeName>
       </ViewSelectedBy>
@@ -120,7 +120,7 @@
       </ListControl>
     </View>
     <View>
-      <Name>PSVirtualMachine</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine</TypeName>
       </ViewSelectedBy>
@@ -128,6 +128,26 @@
         <ListEntries>
           <ListEntry>
             <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>AvailabilitySetReference</Label>
                 <PropertyName>AvailabilitySetReferenceText</PropertyName>
@@ -141,20 +161,8 @@
                 <PropertyName>HardwareProfileText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>InstanceView</Label>
                 <PropertyName>InstanceViewText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Location</Label>
-                <PropertyName>Location</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>NetworkProfile</Label>
@@ -175,14 +183,6 @@
               <ListItem>
                 <Label>StorageProfile</Label>
                 <PropertyName>StorageProfileText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Tags</Label>
-                <PropertyName>Tags</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Type</Label>
-                <PropertyName>Type</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

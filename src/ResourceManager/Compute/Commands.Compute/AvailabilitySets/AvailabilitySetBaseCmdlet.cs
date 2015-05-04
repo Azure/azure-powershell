@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -27,22 +25,5 @@ namespace Microsoft.Azure.Commands.Compute
                 return ComputeClient.ComputeManagementClient.AvailabilitySets;
             }
         }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
     }
 }
