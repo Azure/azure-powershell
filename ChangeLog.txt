@@ -26,6 +26,15 @@
       * Set-AzureAutomationModule
       * Start-AzureAutomationDscCompilationJob
       * Unregister-AzureAutomationDscNode
+* Azure Key Vault 
+    * Added new cmdlets for key vault management in AzureResourceManager mode
+      * New-AzureKeyVault
+      * Get-AzureKeyVault
+      * Remove-AzureKeyVault
+      * Set-AzureKeyVaultAccessPolicy
+      * Remove-AzureKeyVaultAccessPolicy
+    * Added new cmdlet for secret management in AzureResourceManager mode
+      * Set-AzureKeyVaultSecretAttribute
 
 2015.04.29 version 0.9.0
 * Azure Compute
