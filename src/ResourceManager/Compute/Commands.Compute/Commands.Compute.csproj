@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Compute</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Compute\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -164,7 +164,6 @@
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Models\HashTableExtensions.cs" />
-    <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\SetAzureVMAccessExtension.cs" />
@@ -188,15 +187,7 @@
     <Compile Include="Models\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
-    <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
-    <Compile Include="StorageAccount\NewAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\NewAzureStorageAccountKey.cs" />
-    <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

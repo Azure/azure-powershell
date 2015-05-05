@@ -15,12 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Management.Storage
 {
     public abstract class StorageAccountBaseCmdlet : AzurePSCmdlet
     {

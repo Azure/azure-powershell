@@ -17,7 +17,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using System;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Management.Storage
 {
     public partial class StorageManagementClientWrapper
     {
