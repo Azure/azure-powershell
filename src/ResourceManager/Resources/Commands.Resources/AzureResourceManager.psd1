@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.9.1'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -75,6 +75,7 @@ FormatsToProcess = @(
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
+    '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.dll',
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',
@@ -82,6 +83,7 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
+    '.\Dns\Microsoft.Azure.Commands.Dns.dll',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
     '.\TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
@@ -89,7 +91,9 @@ NestedModules = @(
     '.\Websites\Microsoft.Azure.Commands.Websites.dll',
     '.\Compute\Microsoft.Azure.Commands.Compute.dll',
     '.\Network\Microsoft.Azure.Commands.Network.dll',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll'
 )
 
 # Functions to export from this module

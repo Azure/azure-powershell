@@ -56,6 +56,15 @@ Creates the test environment needed to perform the Sql auditing tests
 function Create-TestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams ($params)
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests
+#>
+function Create-TestEnvironmentWithParams ($params)
+{
 	Azure\New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
 	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
 }

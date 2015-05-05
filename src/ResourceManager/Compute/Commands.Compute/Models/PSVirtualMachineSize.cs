@@ -20,17 +20,22 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachineSize
     {
+        // Gets or sets the property of 'MaxDataDiskCount'
         public int? MaxDataDiskCount { get; set; }
 
+        // Gets or sets the property of 'MemoryInMB'
         public int MemoryInMB { get; set; }
 
+        // Gets or sets the property of 'Name'
         public string Name { get; set; }
 
+        // Gets or sets the property of 'NumberOfCores'
         public int NumberOfCores { get; set; }
 
+        // Gets or sets the property of 'OSDiskSizeInMB'
         public int OSDiskSizeInMB { get; set; }
 
+        // Gets or sets the property of 'ResourceDiskSizeInMB'
         public int ResourceDiskSizeInMB { get; set; }
     }
 }
-

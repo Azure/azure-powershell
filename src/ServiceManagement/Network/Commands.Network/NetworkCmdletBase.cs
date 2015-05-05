@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             get { return Profile.Context.Subscription; }
         }
 
-        protected NetworkClient Client
+        public NetworkClient Client
         {
             get
             {
@@ -42,6 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 }
                 return client;
             }
+
+            set { this.client = value; }
         }
     }
 }

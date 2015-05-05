@@ -96,7 +96,9 @@
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.TrafficManager.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
