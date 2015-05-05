@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                     Tags = new Dictionary<string, string> { { tagName, tagValue } },
                     Properties = new VaultProperties
                     {
-                        EnabledForDeployment = true,
+                        EnabledForDeployment = false,
                         Sku = new Sku { Family = "A", Name = "Premium" },
                         TenantId = Guid.Parse(tenantId),
                         VaultUri = "",
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                     Tags = new Dictionary<string, string> { { tagName, tagValue } },
                     Properties = new VaultProperties
                     {
-                        EnabledForDeployment = true,
+                        EnabledForDeployment = false,
                         Sku = new Sku { Family = "A", Name = "Premium" },
                         TenantId = tenantId,
                         VaultUri = "",
