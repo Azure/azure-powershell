@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseServerDescription, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseServerWarning, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerDescription, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerWarning, this.ServerName),
                Resources.ShouldProcessCaption))
             {
                 return;

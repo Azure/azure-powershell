@@ -152,7 +152,7 @@ function Create-ServerForTest ($resourceGroup, $location = "Japan East")
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
+	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials
 	return $server
 }
 

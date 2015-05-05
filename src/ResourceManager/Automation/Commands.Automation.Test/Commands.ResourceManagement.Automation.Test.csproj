@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{59D1B5DC-9175-43EC-90C6-CBA601B3565F}</ProjectGuid>
+    <ProjectGuid>{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Automation.Test</RootNamespace>
