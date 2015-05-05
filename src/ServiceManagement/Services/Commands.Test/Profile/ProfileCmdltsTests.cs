@@ -23,6 +23,7 @@ using Microsoft.ServiceBus.Management;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -731,7 +732,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             // Verify
             Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
-            Assert.True(commandRuntimeMock.OutputPipeline[0] is AzureSubscription);
+            Assert.True(commandRuntimeMock.OutputPipeline[0] is PSAzureSubscription);
         }
 
         [Fact]
