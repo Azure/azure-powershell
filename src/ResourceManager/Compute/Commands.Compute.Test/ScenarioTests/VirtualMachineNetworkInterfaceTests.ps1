@@ -24,7 +24,7 @@ function Test-SingleNetworkInterface
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -147,7 +147,7 @@ function Test-SingleNetworkInterfaceDnsSettings
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware
@@ -254,7 +254,7 @@ function Test-MultipleNetworkInterface
     try
     {
         # Common
-        $loc = 'eastasia';
+        $loc = 'westus';
         New-AzureResourceGroup -Name $rgname -Location $loc;
         
         # VM Profile & Hardware

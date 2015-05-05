@@ -48,6 +48,32 @@ namespace Microsoft.Azure.Commands.Compute
         private const string defaultPolicyStr = "Unrestricted";
         private const string policyFormatStr = "-ExecutionPolicy {0}";
 
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string VMName { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,

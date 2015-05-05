@@ -141,6 +141,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string RemoveAzureReservedIPCmdletName = "Remove-AzureReservedIP";
         public const string SetAzureReservedIPAssociationCmdletName = "Set-AzureReservedIPAssociation";
         public const string RemoveAzureReservedIPAssociationCmdletName = "Remove-AzureReservedIPAssociation";
+        public const string AddAzureVirtualIPCmdletName = "Add-AzureVirtualIP";
+        public const string RemoveAzureVirtualIPCmdletName = "Remove-AzureVirtualIP";
+
 
         // AzureRole & AzureRoleInstnace
         public const string GetAzureRoleCmdletName = "Get-AzureRole";
@@ -470,6 +473,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     return false;
                 }
             }
+        }
+
+        public static PersistentVM CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(string vmName, OS os, string username, string password, string subnet)
+        {
+            string disk1 = "Disk1";
+            int diskSize = 30;
+            string availabilitySetName = Utilities.GetUniqueShortName("AvailSet");
+            string img = string.Empty;
+
+            bool isWindowsOs = false;
+            if (os == OS.Windows)
+            {
+                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
+                isWindowsOs = true;
+            }
+            else
+            {
+                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
+                isWindowsOs = false;
+            }
+
+            PersistentVM vm = Utilities.CreateIaaSVMObject(vmName, InstanceSize.Small, img, isWindowsOs, username, password);
+            AddAzureDataDiskConfig azureDataDiskConfigInfo1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize, disk1, 0, HostCaching.ReadWrite.ToString());
+            azureDataDiskConfigInfo1.Vm = vm;
+
+            vm = vmPowershellCmdlets.SetAzureSubnet(vm, new string[] { subnet });
+            vm = vmPowershellCmdlets.SetAzureAvailabilitySet(availabilitySetName, vm);
+            return vm;
         }
 
         // CheckRemove checks if 'fn(name)' exists.    'fn(name)' is usually 'Get-AzureXXXXX name'

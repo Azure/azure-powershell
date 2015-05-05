@@ -63,5 +63,15 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         /// Gets or sets the audit state
         /// </summary>
         public AuditStateType AuditState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retention days
+        /// </summary>
+        public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the audit logs table name 
+        /// </summary>
+        public string TableIdentifier { get; internal set; }
     }
 }

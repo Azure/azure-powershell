@@ -28,6 +28,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinuxVirtualMachine()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithVMAgentAutoUpdate()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithVMAgentAutoUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineImageList()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
@@ -80,6 +94,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachinePlan2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineTags()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineTags");
         }
     }
 }

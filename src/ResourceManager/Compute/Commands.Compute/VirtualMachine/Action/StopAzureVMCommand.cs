@@ -25,6 +25,22 @@ namespace Microsoft.Azure.Commands.Compute
     public class StopAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           Position = 1,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "To force the stopping.")]
         [ValidateNotNullOrEmpty]

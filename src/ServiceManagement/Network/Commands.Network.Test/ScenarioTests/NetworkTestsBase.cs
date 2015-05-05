@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 
-namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
     using Microsoft.Azure.Common.Authentication;
     using WindowsAzure.Management.Network;

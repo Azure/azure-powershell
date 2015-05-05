@@ -88,7 +88,7 @@
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
 
-    <!-- Delete NuGet cache-->
+	 <!-- Delete NuGet cache-->
     <Delete Files="@(NuGetCache)" />
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
