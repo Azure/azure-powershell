@@ -96,6 +96,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.")]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Mandatory = false, HelpMessage = "The JobID of the jobDetails to get details for.", ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias(AzureHdInsightPowerShellConstants.JobId)]

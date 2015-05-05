@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/servicePrincipals/deadbeef-dead-beef-dead-beefdeadbeef?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC9zZXJ2aWNlUHJpbmNpcGFscy9kZWFkYmVlZi1kZWFkLWJlZWYtZGVhZC1iZWVmZGVhZGJlZWY/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

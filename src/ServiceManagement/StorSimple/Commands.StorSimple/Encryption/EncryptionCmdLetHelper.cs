@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 using Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets.Library;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
@@ -89,7 +90,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Encryption
             string cik = RetrieveCIK(cmdlet, resourceId);
             
             StorSimpleCryptoManager cryptMgr = new StorSimpleCryptoManager(cmdlet.StorSimpleClient);
-            string rakPub = cryptMgr.GetPlainTextRAKPub(cik);
+
+            string rakPub = null;
+
+            try
+            {
+                rakPub = cryptMgr.GetPlainTextRAKPub(cik);
+            }
+            catch (CryptographicException exception)
+            {
+                // This case is to handle the failures during decrypting the Rak Pub
+                cmdlet.WriteVerbose(string.Format(Resources.CIKInvalidWithException, exception.Message));
+                throw new Exception(Resources.CIKInvalidWhileDecrypting);
+            }
 
             if (string.IsNullOrEmpty(rakPub))
             {

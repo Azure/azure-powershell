@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -41,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetMediaServicesTest()
         {
             // Setup
@@ -89,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetMediaServiceByNameShouldReturnOneMatchingEntry()
         {
             Mock<IMediaServicesClient> clientMock = new Mock<IMediaServicesClient>();
@@ -121,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetMediaServiceByNameShouldNotReturnEntriesForNoneMatchingName()
         {
             Mock<IMediaServicesClient> clientMock = new Mock<IMediaServicesClient>();

@@ -38,6 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Store = "Store";
 
+        public const string Sql = "Sql";
+
         public const string ServiceManagement = "ServiceManagement";
 
         public const string Resources = "Resources";

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact]
+        [Fact (Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaUserPermissions()
         {
             User newUser = null;
-            ResourceGroup resourceGroup = null;
+            ResourceGroupExtended resourceGroup = null;
             string roleAssignmentId = "9B8D3FBE-4A95-406C-AAE6-50528FA2AEFB";
             string userName = null;
             string userPass = null;
