@@ -1,4 +1,42 @@
-﻿2015.04.29 version 0.9.0
+﻿2015.05.04 version 0.9.1
+* Azure SQL Database: new support for configuring audit retention.
+* Azure Automation
+    * Added Automation cmdlets support in AzureResourceManager mode
+      * Export-AzureAutomationDscConfiguration
+      * Export-AzureAutomationDscNodeReportContent
+      * Get-AzureAutomationAccount
+      * Get-AzureAutomationDscCompilationJob
+      * Get-AzureAutomationDscCompilationJobOutput
+      * Get-AzureAutomationDscConfiguration
+      * Get-AzureAutomationDscNode
+      * Get-AzureAutomationDscNodeConfiguration
+      * Get-AzureAutomationDscNodeReport
+      * Get-AzureAutomationDscOnboardingMetaconfig
+      * Get-AzureAutomationModule
+      * Get-AzureAutomationRegistrationInfo
+      * Import-AzureAutomationDscConfiguration
+      * New-AzureAutomationAccount
+      * New-AzureAutomationKey
+      * New-AzureAutomationModule
+      * Register-AzureAutomationDscNode
+      * Remove-AzureAutomationAccount
+      * Remove-AzureAutomationModule
+      * Set-AzureAutomationAccount
+      * Set-AzureAutomationDscNode
+      * Set-AzureAutomationModule
+      * Start-AzureAutomationDscCompilationJob
+      * Unregister-AzureAutomationDscNode
+* Azure Key Vault 
+    * Added new cmdlets for key vault management in AzureResourceManager mode
+      * New-AzureKeyVault
+      * Get-AzureKeyVault
+      * Remove-AzureKeyVault
+      * Set-AzureKeyVaultAccessPolicy
+      * Remove-AzureKeyVaultAccessPolicy
+    * Added new cmdlet for secret management in AzureResourceManager mode
+      * Set-AzureKeyVaultSecretAttribute
+
+2015.04.29 version 0.9.0
 * Azure Compute
     * Added Compute cmdlets support in AzureResourceManager mode
       * Add-AzureVMSshPublicKey
@@ -493,6 +531,12 @@
         * Get-AzureNetworkSecurityGroupForSubnet
         * Get-AzureNetworkSecurityGroupConfig
         * Get-AzureNetworkSecurityGroup
+	* VipMobility Support
+		*Set-AzureReservedIPAssociation
+		*Remove-AzureReservedIPAssociation
+	* MultiVip Support
+		* Add-AzureVirtualIP
+		* Remove-AzureVirtualIP
 * Azure Virtual Machine
     * Added Add PublicConfigKey and PrivateConfigKey parameters to SetAzureVMExtension
 * Azure Website
@@ -653,13 +697,14 @@
     * Tag parameter in Get-AzureResourceGroup and Get-AzureResource
 * Compute
     * ReverseDnsFqdn parameter in New-AzureService, Set-AzureService, New-AzureVM and New-AzureQuickVM
+	* Added VirtualIPName parameter to Set-AzureEndpoint, Add-AzureEndpoint, Set-AzureLoadBalancedEndpoint for Multivip support
 * Network
     * Set-AzureInternalLoadBalancer
     * Add-AzureDns
     * Set-AzureDns
     * Remove-AzureDns
     * Added IdealTimeoutInMinutes parameter to Set-AzurePublicIP, Add-AzureEndpoint and Set-AzureLoadBalancedEndpoint
-
+	
 2014.06.30 Version 0.8.4
 * Compute
     * New-AzurePlatformExtensionCertificateConfig

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineExtensionBaseCmdlet : ComputeClientBaseCmdlet
     {
-        protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
-
         public IVirtualMachineExtensionOperations VirtualMachineExtensionClient
         {
             get
@@ -28,31 +25,5 @@ namespace Microsoft.Azure.Commands.Compute
                 return ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
             }
         }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
     }
 }

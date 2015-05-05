@@ -148,7 +148,7 @@
       <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.TrafficManager2\Commands.TrafficManager2.csproj">
-      <Project>{94e96a5c-b5ad-4e10-b13a-3bc16d102aed}</Project>
+      <Project>{270cbb5f-bb8a-4e33-b35b-95698e607d97}</Project>
       <Name>Commands.TrafficManager2</Name>
     </ProjectReference>
   </ItemGroup>

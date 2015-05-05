@@ -81,8 +81,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.5.0.1-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.0-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.3-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -162,6 +163,7 @@
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
+    <Compile Include="Models\HashTableExtensions.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="Models\PSVirtualMachineImage.cs" />
     <Compile Include="Models\PSVirtualMachineExtension.cs" />
     <Compile Include="Models\PSAvailabilitySet.cs" />
+    <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Models\LocationStringExtensions.cs" />
@@ -249,6 +252,10 @@
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

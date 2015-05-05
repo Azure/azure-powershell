@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup
 {
