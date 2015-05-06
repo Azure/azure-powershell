@@ -124,11 +124,16 @@
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationDscNodeReport.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationWebhook.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Cmdlet\NewAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\RegisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
+    <Compile Include="Cmdlet\SetAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\StartAzureAutomationDscCompilationJob.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationAgentRegistrationInformation.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationConfiguration.cs" />
