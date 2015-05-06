@@ -29,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             base.Accounts = subscription.Accounts;
             base.IsDefault = subscription.IsDefault;
             base.IsCurrent = subscription.IsCurrent;
+            base.TenantId = subscription.TenantId;
         }
         public string ActiveDirectoryUserId { get; set; }
         public AzureAccount Account { get; set; }
