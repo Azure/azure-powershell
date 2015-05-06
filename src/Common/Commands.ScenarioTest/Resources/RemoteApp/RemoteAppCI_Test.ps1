@@ -111,7 +111,7 @@ function PublishRemoteApplications([string] $Collection)
    $programsToPublish = $availablePrograms[0..2]
    $programsToPublish += $availablePrograms[$($availablePrograms.Count-2)..$($availablePrograms.Count-1)] 
    Assert({$programsToPublish.Count -eq $numOfApps})
-   $applications = $programsToPublish | % { 
+   $Script:applications = $programsToPublish | % { 
        Publish-AzureRemoteAppProgram -CollectionName $Collection -StartMenuAppId $_.StartMenuAppId -ErrorAction SilentlyContinue -ErrorVariable er
        if ($? -eq $false)
        {
