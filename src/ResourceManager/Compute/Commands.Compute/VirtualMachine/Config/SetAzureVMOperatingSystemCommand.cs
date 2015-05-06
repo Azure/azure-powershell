@@ -183,6 +183,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.VM.OSProfile.WindowsConfiguration == null)
                 {
                     this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
+                    this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents = null;
                 }
 
                 var listenerList  = new List<WinRMListener>();

@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Cmdlets.Extensions;
-    using Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

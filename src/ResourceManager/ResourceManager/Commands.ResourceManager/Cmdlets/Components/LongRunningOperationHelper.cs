@@ -19,14 +19,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
-    using Clients.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Client.Components;
-    using Cmdlets.Collections;
-    using Cmdlets.Extensions;
-    using Cmdlets.Utilities;
-    using Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json.Linq;
-    using ResourceManager.Clients.RestClients;
 
     /// <summary>
     /// A helper class for tracking long running operations.

@@ -20,12 +20,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Runtime.Caching;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
-    using Cmdlets.Extensions;
-    using Cmdlets.Entities.Providers;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Providers;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.Resources;
 
     /// <summary>
     /// Helper class for determining the API version
@@ -128,14 +126,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
-        }
-
-        /// <summary>
-        /// Gets an instance of the <see cref="IResourceManagementClient"/> client.
-        /// </summary>
-        private static IResourceManagementClient GetResourceManagementClient(AzureProfile profile)
-        {
-            return AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

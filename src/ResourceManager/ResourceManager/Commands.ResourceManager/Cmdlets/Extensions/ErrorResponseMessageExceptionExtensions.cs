@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using System.Management.Automation;
-    using Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 
     /// <summary>
     /// Helper class that converts <see cref="ErrorResponseMessageException"/> objects into <see cref="ErrorRecord"/>
@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         internal static ErrorRecord ToErrorRecord(this ErrorResponseMessageException exception)
         {
             // TODO: Improve this.
-            return new ErrorRecord(exception, exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
-            
+            return new ErrorRecord(exception, exception.ErrorResponseMessage == null ? exception.HttpStatus.ToString() : exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
         }
     }
 }

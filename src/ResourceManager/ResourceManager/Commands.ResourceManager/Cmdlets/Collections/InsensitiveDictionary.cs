@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections
 {
     using System;
     using System.Collections.Generic;
-    using Cmdlets.Json;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     
     /// <summary>
     /// The insensitive version of dictionary.

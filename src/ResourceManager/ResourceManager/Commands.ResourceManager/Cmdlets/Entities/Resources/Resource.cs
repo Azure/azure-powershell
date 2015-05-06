@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
     using System;
-    using Cmdlets.Collections;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Newtonsoft.Json;
 
     /// <summary>

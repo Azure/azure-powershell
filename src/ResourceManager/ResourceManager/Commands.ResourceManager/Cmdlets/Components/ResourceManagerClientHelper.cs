@@ -15,8 +15,8 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using System;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Clients.RestClients;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
 

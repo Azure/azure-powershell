@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Clients.Components
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     /// <summary>
     /// Class for holding constants
