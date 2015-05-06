@@ -14,51 +14,37 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    /// <summary>
-    /// Creates a new resource.
-    /// </summary>
     [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Location.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The VM Profile.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
         [Alias("ResourceName", "VMName")]
-        [Parameter(
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The VM name.")]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        public Hashtable[] Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,14 +52,15 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new VirtualMachine
             {
-                HardwareProfile = this.VM.HardwareProfile,
-                StorageProfile = this.VM.StorageProfile,
-                NetworkProfile = this.VM.NetworkProfile,
-                OSProfile = this.VM.OSProfile,
-                Plan = this.VM.Plan,
+                HardwareProfile          = this.VM.HardwareProfile,
+                StorageProfile           = this.VM.StorageProfile,
+                NetworkProfile           = this.VM.NetworkProfile,
+                OSProfile                = this.VM.OSProfile,
+                Plan                     = this.VM.Plan,
                 AvailabilitySetReference = this.VM.AvailabilitySetReference,
-                Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                Name = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name
+                Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
+                Name                     = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name,
+                Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
             };
 
             var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);

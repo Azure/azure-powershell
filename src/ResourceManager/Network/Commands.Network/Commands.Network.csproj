@@ -72,8 +72,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.0-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.3-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -134,6 +133,27 @@
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
+    <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayBaseCmdlet.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\ResetAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\ResizeAzureVirtualNetworkGatewayCommand.cs" />
+    <Compile Include="LocalNetworkGateway\LocalNetworkGatewayBaseCmdlet.cs" />
+    <Compile Include="LocalNetworkGateway\RemoveAzureLocalNetworkGatewayCommand.cs" />
+    <Compile Include="LocalNetworkGateway\GetAzureLocalNetworkGatewayCommand.cs" />
+    <Compile Include="LocalNetworkGateway\NewAzureLocalNetworkGatewayCommand.cs" />
+    <Compile Include="LocalNetworkGateway\UpdateAzureLocalNetworkGatewayCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\VirtualNetworkGatewayConnectionBaseCmdlet.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\GetAzureVirtualNetworkGatewayConnectionCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\GetAzureVirtualNetworkGatewayConnectionSharedKeyCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\NewAzureVirtualNetworkGatewayConnectionCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\RemoveAzureVirtualNetworkGatewayConnectionCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\ResetAzureVirtualNetworkGatewayConnectionSharedKeyCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\SetAzureVirtualNetworkGatewayConnectionSharedKeyCommand.cs" />
+    <Compile Include="VirtualNetworkGatewayConnection\UpdateAzureVirtualNetworkGatewayConnectionCommand.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\AzureLoadBalancerBackendAddressPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\GetAzureLoadBalancerBackendAddressPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\BackendAddressPool\AddAzureLoadBalancerBackendAddressPoolConfigCommand.cs" />
@@ -169,6 +189,9 @@
     <Compile Include="LoadBalancer\Probe\RemoveAzureLoadBalancerProbeCommand.cs" />
     <Compile Include="LoadBalancer\RemoveAzureLoadBalancerCommand.cs" />
     <Compile Include="LoadBalancer\SetAzureLoadBalancerCommand.cs" />
+    <Compile Include="Models\PSConnectionResetSharedKey.cs" />
+    <Compile Include="Models\PSConnectionSharedKey.cs" />
+    <Compile Include="Models\PSLocalNetworkGateway.cs" />
     <Compile Include="Models\PSNetworkSecurityGroup.cs" />
     <Compile Include="Models\PSSecurityRule.cs" />
     <Compile Include="Models\PSBackendAddressPool.cs" />
@@ -193,6 +216,9 @@
     <Compile Include="Models\PSSubnet.cs" />
     <Compile Include="Models\PSVirtualNetwork.cs" />
     <Compile Include="Models\PSTransportProtocol.cs" />
+    <Compile Include="Models\PSVirtualNetworkGateway.cs" />
+    <Compile Include="Models\PSVirtualNetworkGatewayConnection.cs" />
+    <Compile Include="Models\PSVirtualNetworkGatewayIpConfiguration.cs" />
     <Compile Include="NetworkInterface\RemoveAzureNetworkInterfaceCommand.cs" />
     <Compile Include="NetworkInterface\GetAzureNetworkInterfaceCommand.cs" />
     <Compile Include="NetworkInterface\NetworkInterfaceBaseCmdlet.cs" />
@@ -241,6 +267,10 @@
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

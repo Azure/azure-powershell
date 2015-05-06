@@ -898,6 +898,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPCmdletInfo(name, force));
         }
+        internal ManagementOperationContext AddAzureVirtualIP(string virtualIPName, string serviceName)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new AddAzureVirtualIPCmdletInfo(virtualIPName, serviceName));
+        }
+        internal ManagementOperationContext RemoveAzureVirtualIP(string virtualIPName, string serviceName, bool force = true)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVirtualIPCmdletInfo(virtualIPName, serviceName, force));
+        }
 
         #endregion
 
