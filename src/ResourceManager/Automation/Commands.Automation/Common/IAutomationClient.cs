@@ -22,6 +22,8 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+
     public interface IAutomationClient
     {
         AzureSubscription Subscription { get; }
@@ -128,6 +130,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
         DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId);
 
         DirectoryInfo GetDscNodeReportContent(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId, string outputFolder, bool overwriteExistingFile);
+        #endregion
+
+        #region Webhooks
+
+        Model.Webhook CreateWebhook(
+            string resourceGroupName,
+            string automationAccountName,
+            string name,
+            string runbookName,
+            bool isEnabled,
+            DateTimeOffset expiryTime,
+            Dictionary<string, string> parameters);
+
+        Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
+
+        Model.Webhook UpdateWebhook(
+          string resourceGroupName,
+          string automationAccountName,
+          string name,
+          string runbookName,
+          Dictionary<string, string> parameters,
+          bool isEnabled);
+
+        void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
+
         #endregion
     }
 }
