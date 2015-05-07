@@ -31,6 +31,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [ValidateNotNullOrEmpty]
         public int? IdleTimeoutInMinutes { get; set; }
 
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "DNS name.")]
+        [ValidateNotNullOrEmpty]
+        public string DomainNameLabel { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -53,6 +57,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 {
                     networkConfiguration.PublicIPs.First().IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
                 }
+
+                if (this.ParameterSpecified("DomainNameLabel"))
+                {
+                    networkConfiguration.PublicIPs.First().DomainNameLabel = this.DomainNameLabel;
+                }
+                else
+                {
+                    networkConfiguration.PublicIPs.First().DomainNameLabel = null;
+                }
             }
             else
             {
@@ -61,6 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     {
                         Name = this.PublicIPName,
                         IdleTimeoutInMinutes = this.ParameterSpecified("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : null,
+                        DomainNameLabel = this.ParameterSpecified("DomainNameLabel") ? this.DomainNameLabel : null,
                     });
             }
 

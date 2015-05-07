@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -36,6 +34,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private JobResponse jobResponse = null;
 
         /// <summary>
+        /// Protection Status of the entity.
+        /// </summary>
+        private bool alreadyEnabled = false;
+
+        /// <summary>
         /// Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
         /// </summary>
         private string targetNameOrId = string.Empty;
@@ -45,21 +48,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByIDs, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id {get; set;}
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets ID of the ProtectionContainer containing the Virtual Machine.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByIDs, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ProtectionContianerId {get; set;}
+        public string ProtectionContainerId { get; set; }
 
         /// <summary>
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionEntity ProtectionEntity {get; set;}
+        public ASRProtectionEntity ProtectionEntity { get; set; }
+
+        /// <summary>
+        /// Gets or sets Protection profile.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public ASRProtectionProfile ProtectionProfile { get; set; }
 
         /// <summary>
         /// Gets or sets Protection to set, either enable or disable.
@@ -67,15 +77,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            PSRecoveryServicesClient.EnableProtection,
-            PSRecoveryServicesClient.DisableProtection)]
-        public string Protection {get; set;}
+            Constants.EnableProtection,
+            Constants.DisableProtection)]
+        public string Protection { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS disk name.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string OSDiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.OSWindows,
+            Constants.OSLinux)]
+        public string OS { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command waits till completion.
         /// </summary>
         [Parameter]
-        public SwitchParameter WaitForCompletion {get; set;}
+        public SwitchParameter WaitForCompletion { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -93,16 +120,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 case ASRParameterSets.ByPEObject:
                     this.Id = this.ProtectionEntity.ID;
-                    this.ProtectionContianerId = this.ProtectionEntity.ProtectionContainerId;
+                    this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
                     this.targetNameOrId = this.ProtectionEntity.Name;
+                    this.alreadyEnabled = this.ProtectionEntity.Protected;
+
                     break;
                 case ASRParameterSets.ByIDs:
                     this.targetNameOrId = this.Id;
+                    ProtectionEntityResponse protectionEntityResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                        this.ProtectionContainerId,
+                        this.Id);
+                    this.alreadyEnabled = protectionEntityResponse.ProtectionEntity.Protected;
+                    this.targetNameOrId = protectionEntityResponse.ProtectionEntity.Name;
+
                     break;
             }
 
-            ConfirmAction(
-                Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, PSRecoveryServicesClient.DisableProtection),
+            if (this.alreadyEnabled &&
+                this.Protection.Equals(Constants.EnableProtection, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(
+                    string.Format(                   
+                        Properties.Resources.ProtectionEntityAlreadyEnabled,
+                        this.targetNameOrId));
+            }
+            else if (!this.alreadyEnabled &&
+                this.Protection.Equals(Constants.DisableProtection, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException(
+                    Properties.Resources.ProtectionEntityAlreadyDisabled,
+                    this.targetNameOrId);
+            }
+
+            this.ConfirmAction(
+                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection),
                 string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
                 string.Format(Properties.Resources.DisableProtectionWhatIfMessage, this.Protection),
                 this.targetNameOrId,
@@ -110,11 +162,105 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         try
                         {
-                            this.jobResponse =
-                                RecoveryServicesClient.SetProtectionOnProtectionEntity(
-                                this.ProtectionContianerId,
-                                this.Id,
-                                this.Protection);
+                            if (this.Protection == Constants.EnableProtection)
+                            {
+                                string profileId = string.Empty;
+                                var input = new EnableProtectionInput();
+
+                                if (this.ProtectionEntity == null)
+                                {
+                                    var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                                        this.ProtectionContainerId,
+                                        this.Id);
+                                    this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+                                }
+
+                                // Get the replciation provider from profile object otherwise assume its E2E.
+                                // Let the call go without profileId set.
+                                string replicationProvider = null;
+
+                                if (this.ProtectionProfile != null)
+                                {
+                                    profileId = this.ProtectionProfile.ID;
+                                    replicationProvider = this.ProtectionProfile.ReplicationProvider;
+                                }
+                                else
+                                {
+                                    string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
+                                    var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
+                                        pcId);
+
+                                    // PC will have all profiles associated with same replciation providers only.
+                                    replicationProvider =
+                                        pc.ProtectionContainer.AvailableProtectionProfiles.Count < 1 ?
+                                        null :
+                                        pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
+
+                                    if (replicationProvider != Constants.HyperVReplica)
+                                    {
+                                        throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
+                                    }
+                                }
+
+                                if (this.ParameterSetName == ASRParameterSets.ByIDs)
+                                {
+                                    this.ValidateUsageById(replicationProvider, "Id");
+                                }
+
+                                if (replicationProvider == Constants.HyperVReplicaAzure)
+                                {
+                                    input.ProtectionProfileId = this.ProtectionProfile.ID;
+                                    AzureEnableProtectionInput azureInput = new AzureEnableProtectionInput();
+                                    azureInput.HvHostVmId = this.ProtectionEntity.FabricObjectId;
+                                    azureInput.VmName = this.ProtectionEntity.Name;
+
+                                    azureInput.OSType = this.OS;
+                                    if (string.IsNullOrWhiteSpace(this.OS))
+                                    {
+                                        azureInput.OSType = this.ProtectionEntity.OS;
+                                    }
+
+                                    if (string.IsNullOrWhiteSpace(this.OSDiskName))
+                                    {
+                                        azureInput.VHDId = this.ProtectionEntity.OSDiskId;
+                                    }
+                                    else
+                                    {
+                                        foreach (var disk in this.ProtectionEntity.Disks)
+                                        {
+                                            if (disk.Name == this.OSDiskName)
+                                            {
+                                                azureInput.VHDId = disk.Id;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    input.ReplicationProviderInput = DataContractUtils.Serialize<AzureEnableProtectionInput>(azureInput);
+                                }
+                                else if (string.IsNullOrWhiteSpace(profileId))
+                                {
+                                    input = null;
+                                }
+                                else
+                                {
+                                    input.ReplicationProviderInput = string.Empty;
+                                    input.ProtectionProfileId = profileId;
+                                }
+
+                                this.jobResponse =
+                                    RecoveryServicesClient.EnableProtection(
+                                    this.ProtectionContainerId,
+                                    this.Id,
+                                    input);
+                            }
+                            else
+                            {
+                                this.jobResponse =
+                                    RecoveryServicesClient.DisbleProtection(
+                                    this.ProtectionContainerId,
+                                    this.Id);
+                            }
 
                             this.WriteJob(this.jobResponse.Job);
 

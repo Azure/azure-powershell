@@ -29,17 +29,21 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class SetAzureStorSimpleAccessControlRecord : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageACRName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.ACRName)]
         [ValidateNotNullOrEmpty]
         public string ACRName { get; set; }
 
         [Alias("IQN")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIQNforACR)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.IQNforACR)]
         [ValidateNotNullOrEmpty]
         public string IQNInitiatorName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.ACRNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -50,8 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingAcr = allACRs.Where(x => x.Name.Equals(ACRName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingAcr == null)
                 {
-                    WriteVerbose(string.Format(Resources.NotFoundMessageACR,ACRName));
-                    return;
+                    throw new ArgumentException(string.Format(Resources.NotFoundMessageACR, ACRName));
                 }
                 
                 var serviceConfig = new ServiceConfiguration()
@@ -67,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                 GlobalId = existingAcr.GlobalId,
                                 InitiatorName = IQNInitiatorName,
                                 InstanceId = existingAcr.InstanceId,
-                                Name = existingAcr.Name,
+                                Name = (!string.IsNullOrWhiteSpace(NewName) ? NewName : existingAcr.Name),
                                 VolumeCount = existingAcr.VolumeCount
                             },
                         }

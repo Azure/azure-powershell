@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.13'
+ModuleVersion = '0.9.1'
 
 # ID used to uniquely identify this module
 GUID = 'D48CF693-4125-4D2D-8790-1514F44CE325'
@@ -57,8 +57,10 @@ ScriptsToProcess = @()
 TypesToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml',
     '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml'
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+    '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
+
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
@@ -70,7 +72,8 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
-    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml'
+    '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml',
+    '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -83,8 +86,9 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
                 '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
-                '.\Network\Microsoft.Azure.Commands.Network.dll',
+                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
+                '.\RemoteApp\Microsoft.Azure.Commands.RemoteApp.dll',
                 '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
 
 # Functions to export from this module
@@ -153,7 +157,55 @@ AliasesToExport = @(
 'Wait-AzureHDInsightJob',
 'Get-AzureStorageContainerAcl',
 'Start-CopyAzureStorageBlob',
-'Stop-CopyAzureStorageBlob'
+'Stop-CopyAzureStorageBlob',
+'Get-SSAccessControlRecord',
+'Get-SSDevice',
+'Get-SSDeviceBackup',
+'Get-SSDeviceBackupPolicy',
+'Get-SSDeviceConnectedInitiator',
+'Get-SSDeviceVolume',
+'Get-SSDeviceVolumeContainer',
+'Get-SSFailoverVolumeContainers',
+'Get-SSJob',
+'Get-SSResource',
+'Get-SSResourceContext',
+'Get-SSStorageAccountCredential',
+'Get-SSTask',
+'New-SSAccessControlRecord',
+'New-SSDeviceBackupPolicy',
+'New-SSDeviceBackupScheduleAddConfig',
+'New-SSDeviceBackupScheduleUpdateConfig',
+'New-SSDeviceVolume',
+'New-SSDeviceVolumeContainer',
+'New-SSInlineStorageAccountCredential',
+'New-SSNetworkConfig',
+'New-SSStorageAccountCredential',
+'New-SSVirtualDevice',
+'Remove-SSAccessControlRecord',
+'Remove-SSDeviceBackup',
+'Remove-SSDeviceBackupPolicy',
+'Remove-SSDeviceVolume',
+'Remove-SSDeviceVolumeContainer',
+'Remove-SSStorageAccountCredential',
+'Select-SSResource',
+'Set-SSAccessControlRecord',
+'Set-SSDevice',
+'Set-SSDeviceBackupPolicy',
+'Set-SSDeviceVolume',
+'Set-SSStorageAccountCredential',
+'Set-SSVirtualDevice',
+'Start-SSBackupCloneJob',
+'Start-SSDeviceBackupJob',
+'Start-SSDeviceBackupRestoreJob',
+'Start-SSDeviceFailoverJob',
+'Stop-SSJob',
+'Confirm-SSLegacyVolumeContainerStatus',
+'Get-SSLegacyVolumeContainerConfirmStatus',
+'Get-SSLegacyVolumeContainerMigrationPlan',
+'Get-SSLegacyVolumeContainerStatus',
+'Import-SSLegacyApplianceConfig',
+'Import-SSLegacyVolumeContainer',
+'Start-SSLegacyVolumeContainerMigrationPlan'
 )
 
 # List of all modules packaged with this module

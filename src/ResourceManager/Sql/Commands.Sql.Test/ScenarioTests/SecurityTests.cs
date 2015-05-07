@@ -14,7 +14,6 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithStorage()
@@ -172,14 +171,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServerDirectAccess()
-        {
-            RunPowerShellTest("Test-ServerDirectAccess");
-        }
-
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-DatabaseStorageKeyRotation");
@@ -191,6 +182,38 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         public void TestServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-ServerStorageKeyRotation");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-ServerRetentionKeepProperties");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
         }
     }
 }

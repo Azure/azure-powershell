@@ -1,6 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
+﻿// Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,57 +10,60 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Globalization;
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    using AutomationManagement = Management.Automation;
-
     /// <summary>
-    /// The job.
+    /// The Job object.
     /// </summary>
     public class Job
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Job"/> class.
         /// </summary>
-        /// <param name="job">The job</param>
-        /// The resource.
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Job"/> class.
-        /// </summary>
-        public Job(AutomationManagement.Models.Job job)
+        /// <param name="accountName">
+        /// The account name.
+        /// </param>
+        /// <param name="Job">
+        /// The Job.
+        /// </param>
+        /// <exception cref="System.ArgumentException">
+        /// </exception>
+        public Job(string accountName, WindowsAzure.Management.Automation.Models.Job job)
         {
             Requires.Argument("job", job).NotNull();
+            Requires.Argument("accountName", accountName).NotNull();
 
-            if (job.Context == null || job.Context.RunbookVersion == null || job.Context.RunbookVersion.Runbook == null || job.Context.JobParameters == null)
+            this.AutomationAccountName = accountName;
+
+            if (job.Properties == null) return;
+
+            this.Id = job.Properties.JobId;
+            this.CreationTime = job.Properties.CreationTime.ToLocalTime();
+            this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
+            this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
+            this.Status = job.Properties.Status;
+            this.StatusDetails = job.Properties.StatusDetails;
+            this.RunbookName = job.Properties.Runbook.Name;
+            this.Exception = job.Properties.Exception;
+            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
+            this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
+            this.HybridWorker = job.Properties.RunOn;
+            this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in job.Properties.Parameters) 
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidJobModel));
+                if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
+                    0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
+                {
+                    this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                }
             }
-
-            this.Id = new Guid(job.Id);
-            this.AccountId = new Guid(job.AccountId);
-            this.Exception = job.Exception;
-            this.CreationTime = DateTime.SpecifyKind(job.CreationTime, DateTimeKind.Utc).ToLocalTime();
-            this.LastModifiedTime = DateTime.SpecifyKind(job.LastModifiedTime, DateTimeKind.Utc).ToLocalTime();
-            this.StartTime = job.StartTime.HasValue
-                                 ? DateTime.SpecifyKind(job.StartTime.Value, DateTimeKind.Utc).ToLocalTime()
-                                 : this.StartTime;
-            this.EndTime = job.EndTime.HasValue
-                                 ? DateTime.SpecifyKind(job.EndTime.Value, DateTimeKind.Utc).ToLocalTime()
-                                 : this.EndTime;
-            this.LastStatusModifiedTime = DateTime.SpecifyKind(job.LastStatusModifiedTime, DateTimeKind.Utc).ToLocalTime();
-            this.Status = job.Status;
-            this.StatusDetails = job.StatusDetails;
-            this.RunbookId = new Guid(job.Context.RunbookVersion.Runbook.Id);
-            this.RunbookName = job.Context.RunbookVersion.Runbook.Name;
-            this.ScheduleName = job.Context.Schedule != null ? job.Context.Schedule.Name : string.Empty;
-            this.JobParameters = from jobParameter in job.Context.JobParameters where jobParameter.Name != Constants.JobStartedByParameterName select new JobParameter(jobParameter);
         }
 
         /// <summary>
@@ -73,73 +74,68 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
 
         /// <summary>
+        /// Gets or sets the automaiton account name.
+        /// </summary>
+        public string AutomationAccountName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job id.
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the account id.
+        /// Gets or sets the tags.
         /// </summary>
-        public Guid AccountId { get; set; }
+        public DateTimeOffset CreationTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the job status.
+        /// Gets or sets the status of the job.
         /// </summary>
-        public string Status { get; set; }       
-        
+        public string Status { get; set; }
+
         /// <summary>
-        /// Gets or sets the job status details.
+        /// Gets or sets the status details of the job.
         /// </summary>
         public string StatusDetails { get; set; }
 
         /// <summary>
-        /// Gets or sets the start time.
+        /// Gets or sets the start time of the job.
         /// </summary>
-        public DateTime? StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the end time.
+        /// Gets or sets the end time of the job.
         /// </summary>
-        public DateTime? EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the creation time.
-        /// </summary>
-        public DateTime CreationTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last modified time.
-        /// </summary>
-        public DateTime LastModifiedTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last time when the job status was modified.
-        /// </summary>
-        public DateTime LastStatusModifiedTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job exception.
+        /// Gets or sets the exception of the job.
         /// </summary>
         public string Exception { get; set; }
 
         /// <summary>
-        /// Gets or sets the runnook id.
+        /// Gets or sets the last modified time of the job.
         /// </summary>
-        public Guid RunbookId { get; set; }
+        public DateTimeOffset LastModifiedTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the runbook name.
+        /// Gets or sets the last status modified time of the job."
+        /// </summary>
+        public DateTimeOffset LastStatusModifiedTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the parameters of the job.
+        /// </summary>
+        public Hashtable JobParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runbook.
         /// </summary>
         public string RunbookName { get; set; }
 
         /// <summary>
-        /// Gets or sets the schedule name.
+        /// Gets or sets the HybridWorker.
         /// </summary>
-        public string ScheduleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job parameters.
-        /// </summary>
-        public IEnumerable<JobParameter> JobParameters { get; set; }
+        public string HybridWorker { get; set; }
     }
 }

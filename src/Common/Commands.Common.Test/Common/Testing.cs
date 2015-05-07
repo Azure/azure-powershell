@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             catch (Exception ex)
             {
                 Assert.IsInstanceOfType(ex, typeof(T));
-                Assert.AreEqual(expectedMessage, ex.Message);
+                Assert.AreEqual(expectedMessage, ex.Message, ex.ToString());
             }
         }
         

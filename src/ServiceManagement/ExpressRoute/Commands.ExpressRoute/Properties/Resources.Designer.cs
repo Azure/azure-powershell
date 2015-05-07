@@ -268,6 +268,24 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating Dedicated Circuit Bandwidth.
+        /// </summary>
+        internal static string SetAzureDedicatedCircuitBandwidthMessage {
+            get {
+                return ResourceManager.GetString("SetAzureDedicatedCircuitBandwidthMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the bandwidth of the Dedicated Circuit with service key &apos;{0}&apos; to &apos;{1}&apos;?.
+        /// </summary>
+        internal static string SetAzureDedicatedCircuitBandwidthWarning {
+            get {
+                return ResourceManager.GetString("SetAzureDedicatedCircuitBandwidthWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A value for the VLan Id has to be provided..
         /// </summary>
         internal static string VlanIdRequired {

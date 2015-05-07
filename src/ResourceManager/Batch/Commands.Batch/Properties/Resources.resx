@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountAndKeyInUse" xml:space="preserve">
+    <value>Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext.</value>
+  </data>
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
+  </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>Downloading {0} file {1} to: {2}</value>
   </data>
   <data name="EndMAMLCall" xml:space="preserve">
     <value>End {0} call to RP</value>
@@ -132,6 +138,72 @@
   <data name="GBA_ResGroupAccounts" xml:space="preserve">
     <value>Getting accounts in resource group {0}</value>
   </data>
+  <data name="GBJ_GetByName" xml:space="preserve">
+    <value>Getting job "{0}" from workitem "{1}"</value>
+  </data>
+  <data name="GBJ_GetByOData" xml:space="preserve">
+    <value>Getting jobs matching the specified OData filter from workitem "{0}". </value>
+  </data>
+  <data name="GBJ_GetNoFilter" xml:space="preserve">
+    <value>Getting all jobs from workitem "{0}". </value>
+  </data>
+  <data name="GBP_GetByName" xml:space="preserve">
+    <value>Getting pool "{0}"</value>
+  </data>
+  <data name="GBP_GetByOData" xml:space="preserve">
+    <value>Getting pools matching the specified OData filter. </value>
+  </data>
+  <data name="GBP_NoFilter" xml:space="preserve">
+    <value>Getting all pools associated with the Batch account. </value>
+  </data>
+  <data name="GBTF_GetByName" xml:space="preserve">
+    <value>Getting task file "{0}" from task "{1}"</value>
+  </data>
+  <data name="GBTF_GetByOData" xml:space="preserve">
+    <value>Getting task files matching the specified OData filter from task "{0}".</value>
+  </data>
+  <data name="GBTF_NoFilter" xml:space="preserve">
+    <value>Getting all task files under task "{0}".</value>
+  </data>
+  <data name="GBT_GetByName" xml:space="preserve">
+    <value>Getting task "{0}" from job "{1}" under workitem "{2}"</value>
+  </data>
+  <data name="GBT_GetByOData" xml:space="preserve">
+    <value>Getting tasks matching the specified OData filter from job "{0}".</value>
+  </data>
+  <data name="GBT_GetNoFilter" xml:space="preserve">
+    <value>Getting all tasks from job "{0}".</value>
+  </data>
+  <data name="GBVMF_GetByName" xml:space="preserve">
+    <value>Getting vm file "{0}" from vm "{1}"</value>
+  </data>
+  <data name="GBVMF_GetByOData" xml:space="preserve">
+    <value>Getting vm files matching the specified OData filter from vm "{0}".</value>
+  </data>
+  <data name="GBVMF_NoFilter" xml:space="preserve">
+    <value>Getting all vm files from vm "{0}".</value>
+  </data>
+  <data name="GBVM_GetByName" xml:space="preserve">
+    <value>Getting vm "{0}" from pool "{1}".</value>
+  </data>
+  <data name="GBVM_GetByOData" xml:space="preserve">
+    <value>Getting vms matching the specified OData filter from pool "{0}".</value>
+  </data>
+  <data name="GBVM_NoFilter" xml:space="preserve">
+    <value>Getting all vms under pool "{0}".</value>
+  </data>
+  <data name="GBWI_GetByName" xml:space="preserve">
+    <value>Getting workitem "{0}"</value>
+  </data>
+  <data name="GBWI_GetByOData" xml:space="preserve">
+    <value>Getting workitems matching the specified OData filter. </value>
+  </data>
+  <data name="GBWI_NoFilter" xml:space="preserve">
+    <value>Getting all workitems associated with the Batch account. </value>
+  </data>
+  <data name="GRDP_NoVM" xml:space="preserve">
+    <value>No vm was specified. Supply a PSVM object or a pool name and vm name for the RDP file to point to.</value>
+  </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
   </data>
@@ -143,6 +215,12 @@
   </data>
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
+  </data>
+  <data name="KeyNotPresent" xml:space="preserve">
+    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
+  </data>
+  <data name="MaxCount" xml:space="preserve">
+    <value>A max count of {0} will be returned.</value>
   </data>
   <data name="MissingResGroupName" xml:space="preserve">
     <value>Cannot find resource group name in ID property: {0}</value>
@@ -156,11 +234,80 @@
   <data name="NBA_NameAvailability" xml:space="preserve">
     <value>Performing name availability check for account {0}</value>
   </data>
+  <data name="NBP_CreatingPool" xml:space="preserve">
+    <value>Creating pool {0}</value>
+  </data>
+  <data name="NBT_CreatingTask" xml:space="preserve">
+    <value>Creating task {0}</value>
+  </data>
+  <data name="NBU_CreatingUser" xml:space="preserve">
+    <value>Creating user {0} on vm {1}</value>
+  </data>
+  <data name="NBWI_CreatingWorkItem" xml:space="preserve">
+    <value>Creating workitem {0}</value>
+  </data>
+  <data name="NoDownloadDestination" xml:space="preserve">
+    <value>No destination was provided for the downloaded file. Either provide a file path or a Stream object.</value>
+  </data>
+  <data name="NoJob" xml:space="preserve">
+    <value>No job was specified. Supply a PSCloudJob object or a workitem name and job name.</value>
+  </data>
+  <data name="NoPool" xml:space="preserve">
+    <value>No pool was specified. Supply a PSCloudPool object or a pool name.</value>
+  </data>
+  <data name="NoTask" xml:space="preserve">
+    <value>No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name.</value>
+  </data>
+  <data name="NoTaskFile" xml:space="preserve">
+    <value>No task file was specified. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name.</value>
+  </data>
+  <data name="NoVM" xml:space="preserve">
+    <value>No vm was specified. Supply a PSVM object or a pool name and vm name.</value>
+  </data>
+  <data name="NoVMFile" xml:space="preserve">
+    <value>No vm file was specified. Supply a PSVMFile object or a pool name, vm name, and vm file name.</value>
+  </data>
+  <data name="NoVMUser" xml:space="preserve">
+    <value>No vm user specified. Supply a pool name, vm name, and user name.</value>
+  </data>
+  <data name="NoWorkItem" xml:space="preserve">
+    <value>No workitem was specified.  Supply a workitem name or PSCloudWorkItem object.</value>
+  </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove batch account {0}</value>
+    <value>Are you sure you want to remove batch account {0}?</value>
   </data>
   <data name="RBA_RemoveResource" xml:space="preserve">
     <value>Removing batch account ...</value>
+  </data>
+  <data name="RBJ_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove job {0}?</value>
+  </data>
+  <data name="RBJ_RemoveJob" xml:space="preserve">
+    <value>Removing job ...</value>
+  </data>
+  <data name="RBP_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove pool {0}?</value>
+  </data>
+  <data name="RBP_RemovePool" xml:space="preserve">
+    <value>Removing pool ...</value>
+  </data>
+  <data name="RBT_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove task {0}?</value>
+  </data>
+  <data name="RBT_RemoveTask" xml:space="preserve">
+    <value>Removing task ...</value>
+  </data>
+  <data name="RBU_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove user {0}?</value>
+  </data>
+  <data name="RBU_RemoveUser" xml:space="preserve">
+    <value>Removing user ...</value>
+  </data>
+  <data name="RBWI_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove workitem {0}?</value>
+  </data>
+  <data name="RBWI_RemoveWorkItem" xml:space="preserve">
+    <value>Removing workitem ...</value>
   </data>
   <data name="ResGroupLookup" xml:space="preserve">
     <value>Looking up resource group for account {0}</value>

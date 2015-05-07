@@ -16,7 +16,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Framework.Core;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
 
@@ -34,6 +34,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         public string HostedService { get; set; }
 
         public Uri Endpoint { get; set; }
+
+        public bool IgnoreSslErrors { get; set; }
 
         public ILogWriter Logger { get; set; }
 

@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Properties;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -52,7 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetNodeModulesPath()
         {
-            return Path.Combine(FileUtilities.GetAssemblyDirectory(), Resources.NodeModulesPath);
+            return Path.Combine(
+                FileUtilities.GetAssemblyDirectory(), 
+                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.NodeModulesPath);
         }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
@@ -72,7 +73,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
+                throw new ArgumentException(string.Format(
+                    Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
+                    thumbprint));
             }
         }
 
@@ -415,6 +418,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             StringBuilder result = new StringBuilder();
             while (amount-- != 0) result.Append(separator);
             return result.ToString();
+        }
+
+        /// <summary>
+        /// Ensure the default profile directory exists
+        /// </summary>
+        public static void EnsureDefaultProfileDirectoryExists()
+        {
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
         }
     }
 }

@@ -35,14 +35,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByPEObject = "ByPEObject";
 
         /// <summary>
+        /// When only RP Object with E2A provider is passed to the command.
+        /// </summary>
+        internal const string ByRPObjectE2A = "ByRPObjectE2A";
+
+        /// <summary>
+        /// When only PE Object with E2A provider is passed to the failback command.
+        /// </summary>
+        internal const string ByPEObjectE2AFailback = "ByPEObjectE2AFailback";
+
+        /// <summary>
+        /// When only RP Object with E2A provider is passed to the failback command.
+        /// </summary>
+        internal const string ByRPObjectE2AFailback = "ByRPObjectE2AFailback";
+
+        /// <summary>
+        /// When only PE Object with E2A provider is passed to the command.
+        /// </summary>
+        internal const string ByPEObjectE2A = "ByPEObjectE2A";
+
+        /// <summary>
         /// When only PE Object is passed along with logical network ID to the command.
         /// </summary>
         internal const string ByPEObjectWithLogicalNetworkID = "ByPEObjectWithLogicalNetworkID";
 
         /// <summary>
+        /// When only RP Object is passed along with VM network ID to the command.
+        /// </summary>
+        internal const string ByRPObjectWithVMNetworkID = "ByRPObjectWithVMNetworkID";
+
+        /// <summary>
+        /// When only RP Id is passed along with VM network ID to the command.
+        /// </summary>
+        internal const string ByRPIdWithVMNetworkID = "ByRPIdWithVMNetworkID";
+
+        /// <summary>
+        /// When only RP Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPObjectWithVMNetwork = "ByRPObjectWithVMNetwork";
+
+        /// <summary>
+        /// When only RP Id is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPIdWithVMNetwork = "ByRPIdWithVMNetwork";
+
+        /// <summary>
         /// When only PE Object is passed along with VM network ID to the command.
         /// </summary>
         internal const string ByPEObjectWithVMNetworkID = "ByPEObjectWithVMNetworkID";
+
+        /// <summary>
+        /// When only PE Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByPEObjectWithVMNetwork = "ByPEObjectWithVMNetwork";
 
         /// <summary>
         /// When only PC and PE ids are passed to the command.
@@ -55,9 +100,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByPEIdWithLogicalNetworkID = "ByPEIdWithLogicalNetworkID";
 
         /// <summary>
+        /// When only RP object is passed along with logical network ID to the command.
+        /// </summary>
+        internal const string ByRPObjectWithLogicalNetworkID = "ByRPObjectWithLogicalNetworkID";
+
+        /// <summary>
+        /// When only RP Id is passed along with logical network ID to the command.
+        /// </summary>
+        internal const string ByRPIdWithLogicalNetworkID = "ByRPIdWithLogicalNetworkID";
+
+        /// <summary>
         /// When only PC and PE ids are passed along with VM network ID to the command.
         /// </summary>
         internal const string ByPEIdWithVMNetworkID = "ByPEIdWithVMNetworkID";
+
+        /// <summary>
+        /// When only PC and PE ids are passed along with VM network to the command.
+        /// </summary>
+        internal const string ByPEIdWithVMNetwork = "ByPEIdWithVMNetwork";
 
         /// <summary>
         /// When only ID is passed to the command.
@@ -108,5 +168,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// When parameters are passed to the command.
         /// </summary>
         internal const string ByParam = "ByParam";
+
+        /// <summary>
+        /// Mapping between Enterprise to Enterprise.
+        /// </summary>
+        internal const string EnterpriseToEnterprise = "EnterpriseToEnterprise";
+
+        /// <summary>
+        /// Mapping between Enterprise to Azure.
+        /// </summary>
+        internal const string EnterpriseToAzure = "EnterpriseToAzure";
     }
 }

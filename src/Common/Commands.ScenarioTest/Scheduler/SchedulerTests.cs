@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -52,9 +52,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 List<string> modules = Directory.GetFiles("Resources\\Scheduler", "*.ps1").ToList();
                 modules.Add("Common.ps1");
+                modules.Add(@"..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

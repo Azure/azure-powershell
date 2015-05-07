@@ -14,12 +14,13 @@
 
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {
@@ -77,6 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         private void EnsureCloudServiceClientInitialized(AzureSubscription subscription)
         {
             this.CloudServiceClient = this.CloudServiceClient ?? new CloudServiceClient(
+                Profile,
                 subscription,
                 SessionState.Path.CurrentLocation.Path,
                 WriteDebug,
@@ -97,30 +99,39 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
 
             if (Service.IsPresent)
             {
-                IsDNSAvailable(CurrentContext.Subscription, Name);
+                IsDNSAvailable(Profile.Context.Subscription, Name);
             }
             else if (Storage.IsPresent)
             {
-                IsStorageServiceAvailable(CurrentContext.Subscription, Name);
+                IsStorageServiceAvailable(Profile.Context.Subscription, Name);
             }
             else if (Website.IsPresent)
             {
-                WebsitesClient = WebsitesClient ?? new WebsitesClient(CurrentContext.Subscription, WriteDebug);
+                WebsitesClient = WebsitesClient ?? new WebsitesClient(Profile, Profile.Context.Subscription, WriteDebug);
                 IsWebsiteAvailable(Name);
             }
             else
             {
-                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(CurrentContext.Subscription);
-                IsServiceBusNamespaceAvailable(CurrentContext.Subscription.Id.ToString(), Name);
+                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+                IsServiceBusNamespaceAvailable(Profile.Context.Subscription.Id.ToString(), Name);
             }
         }
 
         public void OnImport()
         {
-            System.Management.Automation.PowerShell invoker = null;
-            invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-            invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath("ServiceManagementStartup.ps1")));
-            invoker.Invoke();
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "ServiceManagementStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
         }
     }
 }

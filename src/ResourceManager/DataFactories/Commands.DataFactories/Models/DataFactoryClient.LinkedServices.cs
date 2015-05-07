@@ -135,6 +135,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         ResourceGroupName = parameters.ResourceGroupName,
                         DataFactoryName = parameters.DataFactoryName
                     };
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(linkedService.ProvisioningState))
+                {
+                    string errorMessage = linkedService.Properties == null
+                        ? string.Empty
+                        : linkedService.Properties.ErrorMessage;
+                    throw new ProvisioningFailedException(errorMessage);
+                }
             };
             
             if (parameters.Force)
@@ -161,14 +169,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.DataFactoryName),
                         parameters.Name,
                         createLinkedService);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(linkedService.ProvisioningState))
-            {
-                string errorMessage = linkedService.Properties == null
-                    ? string.Empty
-                    : linkedService.Properties.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
             }
 
             return linkedService;

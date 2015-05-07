@@ -21,7 +21,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
@@ -171,11 +171,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = CurrentContext.Subscription;
+            AzureSubscription currentSubscription = Profile.Context.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount();
+                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
             }
             catch (Exception ex) // couldn't access
             {

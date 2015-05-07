@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
@@ -46,24 +47,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationScheduleByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var scheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.GetSchedule(accountName, scheduleId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = scheduleId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.GetSchedule(accountName, scheduleId), Times.Once());
-        }
-
-        [TestMethod]
         public void GetAzureAutomationScheduleByNameSuccessfull()
         {
             // Setup
@@ -75,6 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Test
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.Name = scheduleName;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByName);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -91,6 +75,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByAll);
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

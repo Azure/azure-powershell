@@ -47,6 +47,53 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             this.command = ServiceLocator.Instance.Locate<IAzureHDInsightCommandFactory>().CreateCreate();
         }
 
+        /*
+         * Parameter Sets:
+         * 
+         * ParameterSetClusterByConfigWithSpecificSubscriptionCredentials
+         *      Position 00: Name
+         *      Position 01: Config
+         *      Position 02: Subscription
+         *      Position 03: Certificate
+         *      Position 04: Location
+         *      Position 05: Credential
+         *      Position 06: ??? (Missed. To be fixed.)
+         *      Position 07: Endpoint
+         *      Position 08: HostedService
+         *      Position 09: Version
+         *      Position 10: OSType
+         *      Position 11: SshCredential
+         *      Position 12: SshPublicKey
+         *      Position 13: RdpCredential
+         *      Position 14: RdpAccessExpiry
+         *      
+         * ParameterSetClusterByNameWithSpecificSubscriptionCredentials
+         *      Position 00: Name
+         *      Position 01: Subscription
+         *      Position 02: Certificate
+         *      Position 03: Location
+         *      Position 04: DefaultStorageAccountName
+         *      Position 05: DefaultStorageAccountKey
+         *      Position 06: DefaultStorageContainerName
+         *      Position 07: Credential
+         *      Position 08: ??? (Missed. To be fixed.)
+         *      Position 09: ClusterSizeInNodes
+         *      Position 10: Endpoint
+         *      Position 11: HostedService
+         *      Position 12: Version
+         *      Position 13: HeadNodeVMSize
+         *      Position 14: ClusterType
+         *      Position 15: VirtualNetworkId
+         *      Position 16: SubnetName
+         *      Position 17: DataNodeVMSize
+         *      Position 18: ZookeeperNodeVMSize
+         *      Position 19: OSType
+         *      Position 20: SshCredential
+         *      Position 21: SshPublicKey
+         *      Position 22: RdpCredential
+         *      Position 23: RdpAccessExpiry
+         */
+
         /// <inheritdoc />
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The management certificate used to manage the Azure subscription.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
@@ -94,6 +141,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 var result = new AzureHDInsightConfig();
                 result.ClusterSizeInNodes = this.command.ClusterSizeInNodes;
                 result.HeadNodeVMSize = this.command.HeadNodeSize;
+                result.DataNodeVMSize = this.command.DataNodeSize;
+                result.ZookeeperNodeVMSize = this.command.ZookeeperNodeSize;
                 result.ClusterType = this.command.ClusterType;
                 result.VirtualNetworkId = this.command.VirtualNetworkId;
                 result.SubnetName = this.command.SubnetName;
@@ -112,8 +161,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 result.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
                     this.command.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
                 result.StormConfiguration.AddRange(this.command.StormConfiguration);
+                result.SparkConfiguration.AddRange(this.command.SparkConfiguration);
                 result.HBaseConfiguration.AdditionalLibraries = this.command.HBaseConfiguration.AdditionalLibraries;
                 result.HBaseConfiguration.ConfigurationCollection.AddRange(this.command.HBaseConfiguration.ConfigurationCollection);
+
                 return result;
             }
 
@@ -128,6 +179,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.VirtualNetworkId = value.VirtualNetworkId;
                 this.command.SubnetName = value.SubnetName;
                 this.command.HeadNodeSize = value.HeadNodeVMSize;
+                this.command.DataNodeSize = value.DataNodeVMSize;
+                this.command.ZookeeperNodeSize = value.ZookeeperNodeVMSize;
                 this.command.DefaultStorageAccountName = value.DefaultStorageAccount.StorageAccountName;
                 this.command.DefaultStorageAccountKey = value.DefaultStorageAccount.StorageAccountKey;
                 this.command.DefaultStorageContainerName = value.DefaultStorageAccount.StorageContainerName;
@@ -147,6 +200,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 this.command.HiveMetastore = value.HiveMetastore;
                 this.command.OozieMetastore = value.OozieMetastore;
                 this.command.StormConfiguration.AddRange(value.StormConfiguration);
+                this.command.SparkConfiguration.AddRange(value.SparkConfiguration);
                 this.command.HBaseConfiguration.AdditionalLibraries = value.HBaseConfiguration.AdditionalLibraries;
                 this.command.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
             }
@@ -205,6 +259,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.command.Endpoint = value; }
         }
 
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
         /// <inheritdoc />
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The azure location where the new cluster should be created.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
@@ -257,7 +319,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         [Parameter(Position = 13, Mandatory = false, HelpMessage = "The size of the headnode VM.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
-        public NodeVMSize HeadNodeVMSize
+        public string HeadNodeVMSize
         {
             get { return this.command.HeadNodeSize; }
             set { this.command.HeadNodeSize = value; }
@@ -288,6 +350,79 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             get { return this.command.SubnetName; }
             set { this.command.SubnetName = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 17, Mandatory = false, HelpMessage = "The size of the datanode VM.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string DataNodeVMSize
+        {
+            get { return this.command.DataNodeSize; }
+            set { this.command.DataNodeSize = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 18, Mandatory = false, HelpMessage = "The size of the zookeeper VM.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string ZookeeperNodeVMSize
+        {
+            get { return this.command.ZookeeperNodeSize; }
+            set { this.command.ZookeeperNodeSize = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "The type of operating system to install on cluster nodes.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "The type of operating system to install on cluster nodes.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public OSType OSType
+        {
+            get { return this.command.OSType; }
+            set { this.command.OSType = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 11, Mandatory = false, HelpMessage = "The credentials for SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 20, Mandatory = false, HelpMessage = "The credentials for SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public PSCredential SshCredential
+        {
+            get { return this.command.SshCredential; }
+            set { this.command.SshCredential = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 12, Mandatory = false, HelpMessage = "The public key to use to configure SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 21, Mandatory = false, HelpMessage = "The public key to use to configure SSH access to the cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public string SshPublicKey
+        {
+            get { return this.command.SshPublicKey; }
+            set { this.command.SshPublicKey = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 22, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 13, Mandatory = false, HelpMessage = "The credentials for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public PSCredential RdpCredential
+        {
+            get { return this.command.RdpCredential; }
+            set { this.command.RdpCredential = value; }
+        }
+
+        /// <inheritdoc />
+        [Parameter(Position = 23, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 14, Mandatory = false, HelpMessage = "The expiry for RDP access to the HDInsight cluster.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        public DateTime? RdpAccessExpiry
+        {
+            get { return this.command.RdpAccessExpiry; }
+            set { this.command.RdpAccessExpiry = value; }
         }
 
         /// <inheritdoc />

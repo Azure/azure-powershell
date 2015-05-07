@@ -12,12 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions.Models;
+using System.Linq;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
     public class PSAzureSubscription
     {
+        public PSAzureSubscription() {}
+        public PSAzureSubscription(AzureSubscription subscription, AzureProfile profile)
+        {
+            SubscriptionId = subscription.Id.ToString();
+            SubscriptionName = subscription.Name;
+            Environment = subscription.Environment;
+            SupportedModes = subscription.GetProperty(AzureSubscription.Property.SupportedModes);
+            DefaultAccount = subscription.Account;
+            Accounts = profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
+            IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
+            IsCurrent = profile.Context.Subscription != null && profile.Context.Subscription.Id == subscription.Id;
+            CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+        }
+
         public string SubscriptionId { get; set; }
         public string SubscriptionName { get; set; }
         public string Environment { get; set; }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -22,7 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// </summary>
     public class PSDictionaryElement
     {
-        private IDictionary<string, string> Content { get; set; }
+        /// <summary>
+        /// Gets the Content of the object
+        /// </summary>
+        public IDictionary<string, string> Content { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the PSDictionaryElement class.
@@ -46,6 +50,25 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 {
                     output.AppendLine();
                     output.Append(string.Format("{0, -15}: {1}", keyValuePair.Key, keyValuePair.Value));
+                }
+            }
+            return output.ToString();
+        }
+
+        /// <summary>
+        /// A string representation of the contained dictionary
+        /// </summary>
+        /// <param name="indentationTabs">The number of tabs to insert in front of each member</param>
+        /// <returns>A string representation of the contained dictionary</returns>
+        public string ToString(int indentationTabs)
+        {
+            var output = new StringBuilder();
+            if (this.Content != null && this.Content.Count > 0)
+            {
+                foreach (var keyValuePair in this.Content)
+                {
+                    output.AppendLine();
+                    output.AddSpacesInFront(indentationTabs).Append(string.Format(CultureInfo.InvariantCulture, "{0, -15}: {1}", keyValuePair.Key, keyValuePair.Value));
                 }
             }
             return output.ToString();

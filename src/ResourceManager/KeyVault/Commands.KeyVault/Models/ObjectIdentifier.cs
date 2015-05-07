@@ -13,23 +13,37 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Client = Microsoft.Azure.Commands.KeyVault.Client;
+using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class ObjectIdentifier
     {
-        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Client.ObjectIdentifier identifier)
+        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Microsoft.Azure.KeyVault.ObjectIdentifier identifier)
         {
             if (vaultUriHelper == null)
-            {
                 throw new ArgumentNullException("vaultUriHelper");
-            }
 
+            if (identifier == null)
+                throw new ArgumentNullException("identifier");
+          
             VaultName = vaultUriHelper.GetVaultName(identifier.Identifier);
             Name = identifier.Name;
             Version = identifier.Version;
+            Id = identifier.Identifier;
         }
+
+        internal void SetObjectIdentifier(ObjectIdentifier identifier)
+        {
+            if (identifier == null)
+                throw new ArgumentNullException("identifier");
+
+            VaultName = identifier.VaultName;
+            Name = identifier.Name;
+            Version = identifier.Version;
+            Id = identifier.Id;
+        }
+       
 
         public string VaultName { get; set; }
 

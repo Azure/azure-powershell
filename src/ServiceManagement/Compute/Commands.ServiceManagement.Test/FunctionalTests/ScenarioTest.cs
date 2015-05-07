@@ -22,12 +22,13 @@ using System.Management.Automation;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -65,6 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 if (string.IsNullOrEmpty(imageName))
                     imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
                 
+                var retriableErrorMessages = new string[]
+                {
+                    "The server encountered an internal error. Please retry the request.",
+                    "Windows Azure is currently performing an operation on this hosted service that requires exclusive access."
+                };
+
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
@@ -75,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     }
 
                     vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
-                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                }, retriableErrorMessages, 10, 30);
 
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
@@ -83,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
-                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                }, retriableErrorMessages, 10, 30);
 
                 // Verify
                 Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
@@ -851,24 +858,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.AreEqual(localNetworkSites[0].VpnGatewayAddress, vnetsite.GatewaySites[0].VpnGatewayAddress);
                     Assert.IsTrue(localNetworkSites[0].AddressSpace.AddressPrefixes.All(c => vnetsite.GatewaySites[0].AddressSpace.AddressPrefixes.Contains(c)));
 
-                    Assert.AreEqual(Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned, vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0].State);
+                    Assert.AreEqual(Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState.NotProvisioned, vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0].State);
                 }
 
                 vmPowershellCmdlets.NewAzureVNetGateway(vnet1);
 
-                Assert.IsTrue(GetVNetState(vnet1, Microsoft.Azure.Commands.Network.ProvisioningState.Provisioned, 12, 60));
+                Assert.IsTrue(GetVNetState(vnet1, Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState.Provisioned, 12, 60));
 
                 // Set-AzureVNetGateway -Connect Test
                 vmPowershellCmdlets.SetAzureVNetGateway("connect", vnet1, lnet1);
 
-                foreach (Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
+                foreach (Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
                 {
                     Console.WriteLine("Connectivity: {0}, LocalNetwork: {1}", connection.ConnectivityState, connection.LocalNetworkSiteName);
                     Assert.IsFalse(connection.ConnectivityState.ToLowerInvariant().Contains("notconnected"));
                 }
 
                 // Get-AzureVNetGatewayKey
-                Microsoft.Azure.Commands.Network.Gateway.Model.SharedKeyContext result = vmPowershellCmdlets.GetAzureVNetGatewayKey(vnet1,
+                Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model.SharedKeyContext result = vmPowershellCmdlets.GetAzureVNetGatewayKey(vnet1,
                     vmPowershellCmdlets.GetAzureVNetConnection(vnet1).First().LocalNetworkSiteName);
                 Console.WriteLine("Gateway Key: {0}", result.Value);
 
@@ -876,7 +883,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Set-AzureVNetGateway -Disconnect
                 vmPowershellCmdlets.SetAzureVNetGateway("disconnect", vnet1, lnet1);
 
-                foreach (Microsoft.Azure.Commands.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
+                foreach (Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model.GatewayConnectionContext connection in vmPowershellCmdlets.GetAzureVNetConnection(vnet1))
                 {
                     Console.WriteLine("Connectivity: {0}, LocalNetwork: {1}", connection.ConnectivityState, connection.LocalNetworkSiteName);
                 }
@@ -886,20 +893,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 foreach (string vnet in virtualNets)
                 {
-                    Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext gateway = vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0];
+                    Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext gateway = vmPowershellCmdlets.GetAzureVNetGateway(vnet)[0];
 
                     Console.WriteLine("State: {0}, VIP: {1}", gateway.State.ToString(), gateway.VIPAddress);
                     if (vnet.Equals(vnet1))
                     {
-                        if (gateway.State != Microsoft.Azure.Commands.Network.ProvisioningState.Deprovisioning &&
-                            gateway.State != Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned)
+                        if (gateway.State != Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState.Deprovisioning &&
+                            gateway.State != Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState.NotProvisioned)
                         {
                             Assert.Fail("The state of the gateway is neither Deprovisioning nor NotProvisioned!");
                         }
                     }
                     else
                     {
-                        Assert.AreEqual(Microsoft.Azure.Commands.Network.ProvisioningState.NotProvisioned, gateway.State);
+                        Assert.AreEqual(Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState.NotProvisioned, gateway.State);
                     }
 
                 }
@@ -1058,6 +1065,98 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion
 
+
+
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "PAAS"), Priority(1), Owner("huangpf"), Description("Test the ADDomain cmdlets.")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
+        public void AzureServiceADDomainExtensionTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            // Choose the package and config files from local machine
+            string packageName = Convert.ToString(TestContext.DataRow["upgradePackage"]);
+            string configName = Convert.ToString(TestContext.DataRow["upgradeConfig"]);
+            var packagePath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + packageName);
+            var configPath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + configName);
+
+            Assert.IsTrue(File.Exists(packagePath1.FullName), "VHD file not exist={0}", packagePath1);
+            Assert.IsTrue(File.Exists(configPath1.FullName), "VHD file not exist={0}", configPath1);
+
+            string deploymentName = "deployment1";
+            string deploymentLabel = "label1";
+            DeploymentInfoContext result;
+
+            PSCredential cred = new PSCredential(username, Utilities.convertToSecureString(password));
+
+            try
+            {
+                serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
+                vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
+                Console.WriteLine("service, {0}, is created.", serviceName);
+
+                // Workgroup Config
+                var workGroupName = "test";
+                ExtensionConfigurationInput config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    workGroupName, null, null, false, null, null, null);
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+                Console.WriteLine("successfully deployed the package");
+
+                var resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Workgroup
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    workGroupName, serviceName, DeploymentSlotType.Production, null, null, false, null, null, "1.*");
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(string.IsNullOrEmpty(resultContext.User));
+                Assert.IsTrue(resultContext.Name == workGroupName);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                // Domain Config
+                var domainName = "test.bing.com";
+                config = vmPowershellCmdlets.NewAzureServiceDomainJoinExtensionConfig(
+                    domainName, null, null, null, null, null, 35, true, cred, "1.*");
+                Assert.IsTrue(config.Roles.Any(r => r.Default));
+                Assert.IsTrue(config.PublicConfiguration.Contains(cred.UserName));
+                Assert.IsTrue(config.PublicConfiguration.Contains(domainName));
+                Assert.IsTrue(config.PublicConfiguration.Contains("35"));
+
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Production, deploymentLabel, deploymentName, false, false, config);
+
+                vmPowershellCmdlets.RemoveAzureServiceDomainJoinExtension(serviceName, DeploymentSlotType.Production);
+
+                // Join a Domain
+                vmPowershellCmdlets.SetAzureServiceDomainJoinExtension(
+                    domainName, cred, 35, false, serviceName, DeploymentSlotType.Production, null, (X509Certificate2)null, null, (PSCredential)null, null, "1.*");
+
+                resultContext = vmPowershellCmdlets.GetAzureServiceDomainJoinExtension(serviceName);
+                Assert.IsTrue(resultContext.User == cred.UserName);
+                Assert.IsTrue(resultContext.Name == domainName);
+                Assert.IsTrue(resultContext.JoinOption == 35);
+                Assert.IsTrue(resultContext.Restart == false);
+                Assert.IsTrue(resultContext.Version == "1.*");
+
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
+
+                pass &= Utilities.CheckRemove(vmPowershellCmdlets.GetAzureDeployment, serviceName, DeploymentSlotType.Production);
+            }
+            catch (Exception e)
+            {
+                pass = false;
+                Assert.Fail("Exception occurred: {0}", e.ToString());
+            }
+        }
 
         #region AzureServiceRemoteDesktopExtension Tests
 
@@ -1577,9 +1676,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return responseString;
         }
 
-        private bool GetVNetState(string vnet, Microsoft.Azure.Commands.Network.ProvisioningState expectedState, int maxTime, int intervalTime)
+        private bool GetVNetState(string vnet, Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState expectedState, int maxTime, int intervalTime)
         {
-            Microsoft.Azure.Commands.Network.ProvisioningState vnetState;
+            Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ProvisioningState vnetState;
             int i = 0;
             do
             {

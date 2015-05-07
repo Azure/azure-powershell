@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Commands.Utilities.Profile;
@@ -29,19 +29,21 @@ namespace Microsoft.Azure.Commands.Network
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return AzureSession.CurrentContext.Subscription; }
+            get { return Profile.Context.Subscription; }
         }
 
-        protected NetworkClient Client
+        public NetworkClient Client
         {
             get
             {
                 if (client == null)
                 {
-                    client = new NetworkClient(CurrentSubscription, CommandRuntime);
+                    client = new NetworkClient(Profile, CurrentSubscription, CommandRuntime);
                 }
                 return client;
             }
+
+            set { this.client = value; }
         }
     }
 }

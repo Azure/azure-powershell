@@ -15,14 +15,12 @@
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -44,9 +42,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Creates PoliciesClient using WindowsAzureSubscription instance.
+        /// Creates PoliciesClient using AzureContext instance.
         /// </summary>
-        /// <param name="subscription">The WindowsAzureSubscription instance</param>
+        /// <param name="context">The AzureContext instance</param>
         public AuthorizationClient(AzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(context);
@@ -94,8 +92,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
-                PrincipalId = principalId,
-                RoleDefinitionId = roleDefinitionId
+                Properties = new RoleAssignmentProperties {
+                    PrincipalId = principalId,
+                    RoleDefinitionId = roleDefinitionId
+                }
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
@@ -177,6 +177,24 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return role;
+        }
+
+        private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
+        {
+            if (string.IsNullOrWhiteSpace(roleDefinition.Name))
+            {
+                throw new ArgumentException(ProjectResources.InvalidRoleDefinitionName);
+            }
+
+            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
+            }
+
+            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            {
+                throw new ArgumentException(ProjectResources.InvalidActions);
+            }
         }
     }
 }

@@ -201,4 +201,118 @@
   <data name="RemoveNetworkSecurityRuleWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Network Security Rule "{0}" from Network Security Group "{1}"?</value>
   </data>
+  <data name="AddAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Add-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="AddAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Add-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGateway</value>
+  </data>
+  <data name="GetAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGateway</value>
+  </data>
+  <data name="GetAzureApplicationGatewayConfigBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="GetAzureApplicationGatewayConfigCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="NewAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: New-AzureApplicationGateway</value>
+  </data>
+  <data name="NewAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: New-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Remove-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Remove-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Remove-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Remove-AzureApplicationGateway</value>
+  </data>
+  <data name="SetAzureApplicationGatewayConfigBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Set-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="SetAzureApplicationGatewayConfigCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Set-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="StartAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Start-AzureApplicationGateway</value>
+  </data>
+  <data name="StartAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Start-AzureApplicationGateway</value>
+  </data>
+  <data name="StopAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Stop-AzureApplicationGateway</value>
+  </data>
+  <data name="StopAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Stop-AzureApplicationGateway</value>
+  </data>
+  <data name="UpdateAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Update-AzureApplicationGateway</value>
+  </data>
+  <data name="UpdateAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Update-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromNicSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromNicWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}"?</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromRoleSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}" from VM "{1}" in Cloud Service "{2}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromRoleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}" from VM "{1}" in Cloud Service "{2}"?</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInNicWarningSucceeded" xml:space="preserve">
+    <value>Successfully set NetworkSecurityGroup "{0}" in Network Interface "{1}", Role "{2}", Deployment "{3}", Cloud Service: "{4}"</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInRoleWarningSucceeded" xml:space="preserve">
+    <value>Successfully set NetworkSecurityGroup "{0}" in Role "{1}", Deployment "{2}", Cloud Service: "{3}"</value>
+  </data>
+  <data name="SetNSGNicAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Network Interface "{1}", Role "{2}", Deployment "{3}", Cloud Service: "{4}"</value>
+  </data>
+  <data name="SetNSGRoleAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Role "{1}", Deployment "{2}", Cloud Service: "{3}"</value>
+  </data>
+  <data name="SetNSGSubnetAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Virtual Network: "{1}", Subnet "{2}"</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInNIC" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}", network interface "{4}".</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInRole" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}".</value>
+  </data>
+  <data name="RemoveRouteTableFromSubnetSucceeded" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RemoveRouteTableFromSubnetWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the currently associated Route Table from Subnet "{0}" in Virtual Network "{1}"?</value>
+  </data>
+  <data name="RemoveRouteTableSucceeded" xml:space="preserve">
+    <value>Successfully removed Route Table with name "{0}".</value>
+  </data>
+  <data name="RemoveRouteTableWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route Table "{0}"?</value>
+  </data>
+  <data name="RemoveRouteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route "{0}" from Route Table "{1}"?</value>
+  </data>
 </root>

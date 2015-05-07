@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.Authorization;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -33,14 +35,16 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void SetupManagementClients()
         {
-            var sqlCSMClient = GetSqlCSMClient(); // to interact with the security endpoints
+            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient);
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {
@@ -58,7 +62,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
         }
 
-        protected SqlManagementClient GetSqlCSMClient()
+        protected SqlManagementClient GetSqlClient()
         {
             return TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
         }
@@ -71,6 +75,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected ResourceManagementClient GetResourcesClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        {
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
         }
     }
 }
