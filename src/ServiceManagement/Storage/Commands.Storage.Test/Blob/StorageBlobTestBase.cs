@@ -132,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         /// <param name="count">How many blobs need to be added to the container</param>
         private void AddContainerBlobs(string containerName, int count)
         {
-            List<ICloudBlob> blobList = null;
+            List<CloudBlob> blobList = null;
 
             if (BlobMock.ContainerBlobs.ContainsKey(containerName))
             {
@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             }
             else
             {
-                blobList = new List<ICloudBlob>();
+                blobList = new List<CloudBlob>();
                 BlobMock.ContainerBlobs.Add(containerName, blobList);
             }
 

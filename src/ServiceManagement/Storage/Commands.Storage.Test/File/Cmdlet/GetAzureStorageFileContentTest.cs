@@ -7,7 +7,6 @@ using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -113,11 +112,9 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             var mockupRunner = new MockTransferJobRunner(
                 job =>
                 {
-                    Assert.IsTrue(job is FileDownloadJob, "The transfer job must be an instance of FileDownloadJob.");
-                    var downloadJob = job as FileDownloadJob;
-                    Assert.AreEqual(destination, downloadJob.DestPath, "Destination validation failed.");
-                    Assert.AreEqual(shareName, downloadJob.SourceFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(fileName, downloadJob.SourceFile.Name, "SourceFile validation failed.");
+                    Assert.AreEqual(destination, job.Destination.FilePath, "Destination validation failed.");
+                    Assert.AreEqual(shareName, job.Source.AzureFile.Share.Name, "Share validation failed.");
+                    Assert.AreEqual(fileName, job.Source.AzureFile.Name, "SourceFile validation failed.");
                     return TaskEx.FromResult(true);
                 });
 

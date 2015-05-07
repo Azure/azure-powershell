@@ -61,32 +61,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
-        public void ValidatePipelineICloudBlobTest()
+        public void ValidatePipelineCloudBlobTest()
         {
             CloudBlockBlob blockBlob = null;
-            AssertThrows<ArgumentException>(() => command.ValidatePipelineICloudBlob(blockBlob),
-                String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+            AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(blockBlob),
+                String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
             string blobUri = "http://127.0.0.1/account/test/";
             blockBlob = new CloudBlockBlob(new Uri(blobUri));
-            AssertThrows<ArgumentException>(() => command.ValidatePipelineICloudBlob(blockBlob),
+            AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(blockBlob),
                 String.Format(Resources.InvalidBlobName, blockBlob.Name));
 
             AddTestBlobs();
             string container1Uri = "http://127.0.0.1/account/container1/blob0";
             blockBlob = new CloudBlockBlob(new Uri(container1Uri));
-            command.ValidatePipelineICloudBlob(blockBlob);
+            command.ValidatePipelineCloudBlob(blockBlob);
         }
 
         [TestMethod]
-        public void RemoveAzureBlobByICloudBlobWithInvliadICloudBlob()
+        public void RemoveAzureBlobByCloudBlobWithInvliadCloudBlob()
         {
             CloudBlockBlob blockBlob = null;
             AssertThrowsAsync<ArgumentException>(() => command.RemoveAzureBlob(InitTaskId, BlobMock, blockBlob, false),
-                String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+                String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
         }
 
         [TestMethod]
-        public void RemoveAzureBlobByICloudBlobWithNoExistsContainer()
+        public void RemoveAzureBlobByCloudBlobWithNoExistsContainer()
         {
             CloudBlobContainer container = BlobMock.GetContainerReference("test");
             CloudBlockBlob blockBlob = container.GetBlockBlobReference("blob");
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
-        public void RemoveAzureBlobByICloudBlobWithNoExistsBlobTest()
+        public void RemoveAzureBlobByCloudBlobWithNoExistsBlobTest()
         {
             AddTestContainers();
             string blobUri = "http://127.0.0.1/account/test/blob";
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         }
 
         [TestMethod]
-        public void RemoveAzureBlobByICloudBlobSuccessfulyTest()
+        public void RemoveAzureBlobByCloudBlobSuccessfulyTest()
         {
             AddTestBlobs();
             string blobUri = "http://127.0.0.1/account/container0/blob0";
