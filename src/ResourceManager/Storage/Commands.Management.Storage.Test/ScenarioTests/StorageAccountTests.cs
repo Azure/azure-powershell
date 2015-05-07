@@ -16,7 +16,7 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class StorageAccountTests
     {
@@ -24,56 +24,56 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-StorageAccount");
+            TestController.NewInstance.RunPsTest("Test-StorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureStorageAccount");
+            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-GetAzureStorageAccount");
+            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SetAzureStorageAccount");
+            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureStorageAccount()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-RemoveAzureStorageAccount");
+            TestController.NewInstance.RunPsTest("Test-RemoveAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountKey()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-GetAzureStorageAccountKey");
+            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountKey()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountKey");
+            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingGetAccountToGetKey()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
+            TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
         }
     }
 }
