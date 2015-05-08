@@ -25,10 +25,10 @@ function Test-GetUsageMetrics
     {
         # Test
 		# -timeGrain 00:01:00 -starttime 2015-03-23T15:00:00 -endtime 2015-03-23T15:30:00
-        $actual = Get-UsageMetrics -ResourceId $rscname 
+        $actual = Get-UsageMetrics -ResourceId $rscname -star 2015-04-07T15:31:28.4590754-07:00 -end 2015-04-07T16:31:28.4590754-07:00
 
         # Assert TODO add more asserts
-		Assert-AreEqual 11 $actual.Count
+		Assert-AreEqual 0 $actual.Count
     }
     finally
     {

@@ -898,339 +898,115 @@
 </command:command>
 
   <!-- v 1.3.0.36 -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        Add-AzureEndpoint
-      </command:name>
-      <maml:description>
-        <maml:para>Add endpoint to the persistent VM object.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>Add</command:verb>
-      <command:noun>AzureEndpoint</command:noun>
-      <dev:version></dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para></maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Add-AzureEndpoint</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>Protocol</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>LocalPort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DefaultProbe</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>LBSetName</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProbePort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProbeProtocol</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-          <maml:name>VM</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ACL</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DirectServerReturn</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>IdleTimeoutInMinutes</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InternalLoadBalancerName</maml:name>
-          <maml:description>
-            <maml:para>The Internal LoadBalancer Name.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>LoadBalancerDistribution</maml:name>
-          <maml:description>
-            <maml:para>
-              Load Balancer distribution algorithm
-
-              The value can be
-              sourceIP: 2 tuple affinity (Source IP, Destination IP)
-              sourceIPProtocol: 3 tuple affinity (Source IP, Destination IP, Protocol)
-              none: 5 tuple affinity (Source IP, Source Port, Destination IP, Destination Port, Protocol). This is the default value
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PipelineVariable</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProbeIntervalInSeconds</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProbePath</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ProbeTimeoutInSeconds</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PublicPort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Add-AzureEndpoint</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>Protocol</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>LocalPort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>NoProbe</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-          <maml:name>VM</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ACL</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DirectServerReturn</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>IdleTimeoutInMinutes</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>InternalLoadBalancerName</maml:name>
-          <maml:description>
-            <maml:para>The Internal LoadBalancer Name.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>LoadBalancerDistribution</maml:name>
-          <maml:description>
-            <maml:para>
-              Load Balancer distribution algorithm
-
-              The value can be
-              sourceIP: 2 tuple affinity (Source IP, Destination IP)
-              sourceIPProtocol: 3 tuple affinity (Source IP, Destination IP, Protocol)
-              none: 5 tuple affinity (Source IP, Source Port, Destination IP, Destination Port, Protocol). This is the default value
-            </maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PipelineVariable</maml:name>
-          <maml:description>
-            <maml:para>Not Specified</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PublicPort</maml:name>
-          <maml:description>
-            <maml:para></maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ACL</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
-        <dev:type>
-          <maml:name>NetworkAclObject</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DefaultProbe</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DirectServerReturn</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>IdleTimeoutInMinutes</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>InternalLoadBalancerName</maml:name>
-        <maml:description>
-          <maml:para>The Internal LoadBalancer Name.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>LBSetName</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>LoadBalancerDistribution</maml:name>
-        <maml:description>
-          <maml:para>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Add-AzureEndpoint
+		</command:name>
+		<maml:description>
+			<maml:para>Add endpoint to the persistent VM object.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Add</command:verb>
+		<command:noun>AzureEndpoint</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para></maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Add-AzureEndpoint</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Protocol</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>LocalPort</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultProbe</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>LBSetName</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProbePort</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProbeProtocol</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+				<maml:name>VM</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ACL</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DirectServerReturn</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>IdleTimeoutInMinutes</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InternalLoadBalancerName</maml:name>
+				<maml:description>
+					<maml:para>The Internal LoadBalancer Name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>LoadBalancerDistribution</maml:name>
+				<maml:description>
+					<maml:para>
             Load Balancer distribution algorithm
 
             The value can be
@@ -1238,229 +1014,555 @@
             sourceIPProtocol: 3 tuple affinity (Source IP, Destination IP, Protocol)
             none: 5 tuple affinity (Source IP, Source Port, Destination IP, Destination Port, Protocol). This is the default value
           </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PipelineVariable</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProbeIntervalInSeconds</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProbePath</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ProbeTimeoutInSeconds</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PublicPort</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualIPName</maml:name>
+				<maml:description>
+					<maml:para>The VirtualIPName parameter allows you to associate a virtual IP to your endpoint.  Your Cloud Service can have multiple virtual IPs. virtual IPs can be created with the add-azureVirtualIP cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Add-AzureEndpoint</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Protocol</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>LocalPort</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NoProbe</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+				<maml:name>VM</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ACL</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DirectServerReturn</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>IdleTimeoutInMinutes</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InternalLoadBalancerName</maml:name>
+				<maml:description>
+					<maml:para>The Internal LoadBalancer Name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>LoadBalancerDistribution</maml:name>
+				<maml:description>
+					<maml:para>
+            Load Balancer distribution algorithm
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-        <maml:name>LocalPort</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>NoProbe</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PipelineVariable</maml:name>
-        <maml:description>
-          <maml:para>Not Specified</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ProbeIntervalInSeconds</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ProbePath</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ProbePort</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ProbeProtocol</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ProbeTimeoutInSeconds</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-        <maml:name>Protocol</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PublicPort</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
-        <dev:type>
-          <maml:name>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-        <maml:name>VM</maml:name>
-        <maml:description>
-          <maml:para></maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
-        <dev:type>
-          <maml:name>IPersistentVM</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
+            The value can be
+            sourceIP: 2 tuple affinity (Source IP, Destination IP)
+            sourceIPProtocol: 3 tuple affinity (Source IP, Destination IP, Protocol)
+            none: 5 tuple affinity (Source IP, Source Port, Destination IP, Destination Port, Protocol). This is the default value
           </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>System.Object</maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PipelineVariable</maml:name>
+				<maml:description>
+					<maml:para>Not Specified</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PublicPort</maml:name>
+				<maml:description>
+					<maml:para></maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualIPName</maml:name>
+				<maml:description>
+					<maml:para>The VirtualIPName parameter allows you to associate a virtual IP to your endpoint.  Your Cloud Service can have multiple virtual IPs. virtual IPs can be created with the add-azureVirtualIP cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ACL</maml:name>
+			<maml:description>
+				<maml:para>Not Specified</maml:para>
 
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">NetworkAclObject</command:parameterValue>
+			<dev:type>
+				<maml:name>NetworkAclObject</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DefaultProbe</maml:name>
+			<maml:description>
+				<maml:para>Not Specified</maml:para>
+
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DirectServerReturn</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			<dev:type>
+				<maml:name>System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>IdleTimeoutInMinutes</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
+			<dev:type>
+				<maml:name>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InternalLoadBalancerName</maml:name>
+			<maml:description>
+				<maml:para>The Internal LoadBalancer Name.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>LBSetName</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>LoadBalancerDistribution</maml:name>
+			<maml:description>
+				<maml:para>
+          Load Balancer distribution algorithm
+
+            The value can be
+            sourceIP: 2 tuple affinity (Source IP, Destination IP)
+            sourceIPProtocol: 3 tuple affinity (Source IP, Destination IP, Protocol)
+            none: 5 tuple affinity (Source IP, Source Port, Destination IP, Destination Port, Protocol). This is the default value
           </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>
 
-        </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>LocalPort</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NoProbe</maml:name>
+			<maml:description>
+				<maml:para>Not Specified</maml:para>
+
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PipelineVariable</maml:name>
+			<maml:description>
+				<maml:para>Not Specified</maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProbeIntervalInSeconds</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProbePath</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProbePort</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProbeProtocol</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ProbeTimeoutInSeconds</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+			<maml:name>Protocol</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PublicPort</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			<dev:type>
+				<maml:name>int</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VirtualIPName</maml:name>
+			<maml:description>
+				<maml:para>The VirtualIPName parameter allows you to associate a virtual IP to your endpoint.  Your Cloud Service can have multiple virtual IPs. virtual IPs can be created with the add-azureVirtualIP cmdlet.</maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
+			<maml:name>VM</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+			<dev:type>
+				<maml:name>IPersistentVM</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>System.Object</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-AzureVM -ServiceName &quot;mySvc&quot; -Name &quot;MyVM1&quot; | Add-AzureEndpoint -Name &quot;HttpIn&quot; -Protocol &quot;tcp&quot; -PublicPort 80 -LocalPort 8080 | Update-AzureVM                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command retrieves the configuration of a virtual machine and adds a new endpoint named 'HttpIn' configured with public port 80 and local port 8080. The changed configuration is passed through the pipeline to Update-AzureVM to update the virtual machine.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-AzureVM -ServiceName &quot;myLBSvc&quot; -Name &quot;MyVM2&quot; | Add-AzureEndpoint -Name &quot;HttpIn&quot; -Protocol &quot;tcp&quot; -PublicPort 80 -LocalPort 8080 -LBSetName &quot;WebFarm&quot; -ProbePort 80 -ProbeProtocol &quot;http&quot; -ProbePath '/' | Update-AzureVM                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command retrieves the configuration of a virtual machine and adds a new endpoint named 'HttpIn' configured with public port 80 and local port 8080. The endpoint belongs to the shared load-balanced group named &quot;WebFarm&quot; and its availability is monitored by an HTTP probe on port 80, path '/'. The changed configuration is pass through the pipeline to Update-AzureVM to update the virtual machine.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+
+		<command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+get-azurevm -ServiceName &quot;mySvc&quot; -Name &quot;MyVM1&quot; | Add-AzureEndpoint -Name &quot;HttpIn&quot; -Protocol &quot;tcp&quot; -LocalPort 8080 -PublicPort 80 -VirtualIPName &quot;MyVip&quot; | Update-AzureVM                        </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>This command associates a virtual IP to a cloud service to an endpoint</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
 
 
 
@@ -5006,7 +5108,7 @@ New-AzureVMConfig -Name &quot;MyNonDomainVM&quot; -InstanceSize Small -ImageName
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para>Returns the Instance Level Public IP information on the virtual machine.  To obtain the IP Address of the Public IP use Get-AzureVM cmd let.</maml:para>
+		<maml:para>Returns the Instance Level Public IP information on the virtual machine.  To obtain the IP Address of the Public IP use Get-AzureVM cmdlet.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11993,621 +12095,1283 @@ The default value is Production.</maml:para>
 
 
 
+ <!-- v 1.3.0.36 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+        <command:details>
+               <command:name>
+                   New-AzureReservedIP
+               </command:name>
+               <maml:description>
+                       <maml:para>Create a Reserved IP.</maml:para>
+               </maml:description>
+               <maml:copyright>
+                       <maml:para></maml:para>
+               </maml:copyright>
+               <command:verb>New</command:verb>
+               <command:noun>AzureReservedIP</command:noun>
+               <dev:version></dev:version>
+        </command:details>
+        <maml:description>
+               <maml:para>Create a reserved IP.</maml:para>
+        </maml:description>
+        <!-- Cmdlet syntax section-->
+        <command:syntax>
+               <command:syntaxItem>
+                       <maml:name>New-AzureReservedIP</maml:name>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+                               <maml:name>ReservedIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>Reserved IP Name</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                               <maml:name>Label</maml:name>
+                               <maml:description>
+                                      <maml:para>Reserved IP Label</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                               <maml:name>Location</maml:name>
+                               <maml:description>
+                                      <maml:para>Location where the Reserved IP should be created</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+                               <maml:name>ServiceName</maml:name>
+                               <maml:description>
+                                      <maml:para>Service name.</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+                               <maml:name>VirtualIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>Use the VirtualIPName parameter to reserve an existing VIP in your deployment. If not specified, you will reserve a new VIP.</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+                               <maml:name>Slot</maml:name>
+                               <maml:description>
+                                      <maml:para>Deployment slot [Staging | Production].</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+               </command:syntaxItem>
+               <command:syntaxItem>
+                       <maml:name>New-AzureReservedIP</maml:name>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+                               <maml:name>ReservedIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>Reserved IP Name</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>Label</maml:name>
+                               <maml:description>
+                                      <maml:para>Reserved IP Label</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>Location</maml:name>
+                               <maml:description>
+                                      <maml:para>Location where the Reserved IP should be created</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+               </command:syntaxItem>
+        </command:syntax>
+        <!-- Cmdlet parameter section  -->
+        <command:parameters>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                       <maml:name>Label</maml:name>
+                       <maml:description>
+                               <maml:para>Reserved IP Label</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                       <maml:name>Location</maml:name>
+                       <maml:description>
+                               <maml:para>Location where the Reserved IP should be created</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+                       <maml:name>ReservedIPName</maml:name>
+                       <maml:description>
+                               <maml:para>Reserved IP Name</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+                       <maml:name>ServiceName</maml:name>
+                       <maml:description>
+                               <maml:para>Service name.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+                       <maml:name>Slot</maml:name>
+                       <maml:description>
+                               <maml:para>Deployment slot [Staging | Production].</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+                       <maml:name>VirtualIPName</maml:name>
+                       <maml:description>
+                               <maml:para>Use the VirtualIPName parameter to reserve an existing VIP in your deployment. If not specified, you will reserve a new VIP.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+        </command:parameters>
+        <!-- Input - Output section-->
+        <command:inputTypes>
+               <command:inputType>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri/>
+                               <maml:description />
+                       </dev:type>
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description>
+               </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+               <command:returnValue>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri />
+                               <maml:description />
+                       </dev:type>   
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description> 
+               </command:returnValue>
+        </command:returnValues>
+        <!-- Error section-->
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+               <!-- Notes section  -->
+        <maml:alertSet>
+               <maml:title></maml:title>
+               <maml:alert>
+                       <maml:para>
+                          
+                        </maml:para>
+               </maml:alert>
+               <maml:alert>
+                       <maml:para></maml:para>
+               </maml:alert>
+        </maml:alertSet>
+        <!-- Example section  --> 
+        <command:examples>
+
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 1 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+New-AzureReservedIP -ReservedIPName $name -Label $label -Location $location                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>Create a new Reserved IP in the Subscription which can be used for Creating Cloud Services (Web/Worker/Virtual Machines) 
+</maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 2 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+New-AzureReservedIP -ReservedIPName resip14 -Location &quot;West Europe&quot; -ServiceName piptestwesteurope                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>Existing VIP (Virtual IP) on the given service can be reserved. </maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+        </command:examples>
+        <!-- Link section  -->
+        <maml:relatedLinks>
+               <maml:navigationLink>
+                       <maml:linkText></maml:linkText>
+                       <maml:uri/>
+               </maml:navigationLink>
+        </maml:relatedLinks>
+</command:command>
+
+
+<!-- v 1.3.0.36 -->
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+        <command:details>
+               <command:name>
+                   Set-AzureReservedIPAssociation
+               </command:name>
+               <maml:description>
+                       <maml:para>This cmdlet associates a Reserved IP Address to an existing VM's or a cloud service's VIP (Virtual IP).  ReservedIPName is the name of the reserved IP in the subscription. It has to be a free IP, (i.e. not in use). 
+</maml:para>
+               </maml:description>
+               <maml:copyright>
+                       <maml:para></maml:para>
+               </maml:copyright>
+               <command:verb>Set</command:verb>
+               <command:noun>AzureReservedIPAssociation</command:noun>
+               <dev:version></dev:version>
+        </command:details>
+        <maml:description>
+               <maml:para>The cmdlet provides means to associate a Reserved IP Address to a running VM or cloud service.  The ReservedIP Address should not be in use at the time of invocation of this cmdlet.  The Reserved IP and the VM/CloudService has to be in the same region. 
+The operation will take about 30 seconds to complete, after which the VM/Service will be accessible via the Reserved IP.</maml:para>
+        </maml:description>
+        <!-- Cmdlet syntax section-->
+        <command:syntax>
+               <command:syntaxItem>
+                       <maml:name>Set-AzureReservedIPAssociation</maml:name>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+                               <maml:name>ReservedIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>The Name of the Reserved IP that is being associated with the VM/Service.</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+                               <maml:name>ServiceName</maml:name>
+                               <maml:description>
+                              <maml:para>
+                                Name of the service which has the deployment with which we want to associate the Reserved IP
+                              </maml:para>                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                               <maml:name>VirtualIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>Use the VirtualIPName paramter to associate a reserved IP with an existing VIP. See Add-AzureVirtualIP to add VIPs to your Cloud Service.</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+                               <maml:name>Slot</maml:name>
+                               <maml:description>
+                                      <maml:para>Deployment slot [Staging | Production].</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>PipelineVariable</maml:name>
+                               <maml:description>
+                                      <maml:para>Not Specified</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>Profile</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       </command:parameter>
+               </command:syntaxItem>
+        </command:syntax>
+        <!-- Cmdlet parameter section  -->
+        <command:parameters>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>PipelineVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>Profile</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       <dev:type>
+                               <maml:name>AzureProfile</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+                       <maml:name>ReservedIPName</maml:name>
+                       <maml:description>
+                               <maml:para>The Name of the Reserved IP that is being associated with the VM/Service.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+                       <maml:name>ServiceName</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+                       <maml:name>Slot</maml:name>
+                       <maml:description>
+                               <maml:para>Deployment slot [Staging | Production].</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue>Production</dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                       <maml:name>VirtualIPName</maml:name>
+                       <maml:description>
+                               <maml:para>Use the VirtualIPName paramter to associate a reserved IP with an existing VIP. See Add-AzureVirtualIP to add VIPs to your Cloud Service.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+        </command:parameters>
+        <!-- Input - Output section-->
+        <command:inputTypes>
+               <command:inputType>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri/>
+                               <maml:description />
+                       </dev:type>
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description>
+               </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+               <command:returnValue>
+                       <dev:type>
+                          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
+</maml:name>
+                               <maml:uri />
+                               <maml:description />
+                       </dev:type>   
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description> 
+               </command:returnValue>
+        </command:returnValues>
+        <!-- Error section-->
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+               <!-- Notes section  -->
+        <maml:alertSet>
+               <maml:title></maml:title>
+               <maml:alert>
+                       <maml:para>
+                          
+                        </maml:para>
+               </maml:alert>
+               <maml:alert>
+                       <maml:para></maml:para>
+               </maml:alert>
+        </maml:alertSet>
+        <!-- Example section  --> 
+        <command:examples>
+
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 1 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+Set-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestwesteurope                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>'resip14' will be assigned to the service 'piptestwesteurope'. 'resip14' is a reserved IP in the West Europe region. </maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+        </command:examples>
+        <!-- Link section  -->
+        <maml:relatedLinks>
+               <maml:navigationLink>
+                       <maml:linkText>https://msdn.microsoft.com/en-us/library/azure/dn690120.aspx</maml:linkText>
+                       <maml:uri/>
+               </maml:navigationLink>
+        </maml:relatedLinks>
+</command:command>
+
   <!-- v 1.3.0.36 -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        New-AzureReservedIP
-      </command:name>
-      <maml:description>
-        <maml:para>Create a Reserved IP.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>New</command:verb>
-      <command:noun>AzureReservedIP</command:noun>
-      <dev:version></dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para>Create a reserved IP.</maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>New-AzureReservedIP</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-          <maml:name>ReservedIPName</maml:name>
-          <maml:description>
-            <maml:para>Reserved IP Name</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>Label</maml:name>
-          <maml:description>
-            <maml:para>Reserved IP Label</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-          <maml:name>Location</maml:name>
-          <maml:description>
-            <maml:para>Location where the Reserved IP should be created</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
-          <maml:name>ServiceName</maml:name>
-          <maml:description>
-            <maml:para>Service whose Virtual IP needs to be reserved. Use only to reserve a Virtual IP already associated with a deployment.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-          <maml:name>Slot</maml:name>
-          <maml:description>
-            <maml:para>The Slot of the PaaS deployment whose VirtualIP we need to reserve. Use only to reserve a Virtual IP already associated with a PaaS deployment.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-        <maml:name>Label</maml:name>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+        <command:details>
+               <command:name>
+                   Remove-AzureReservedIPAssociation
+               </command:name>
+               <maml:description>
+                       <maml:para>This cmdlet removes the association of the Reserved IP Address from the VM/Cloud Service. </maml:para>
+               </maml:description>
+               <maml:copyright>
+                       <maml:para></maml:para>
+               </maml:copyright>
+               <command:verb>Remove</command:verb>
+               <command:noun>AzureReservedIPAssociation</command:noun>
+               <dev:version></dev:version>
+        </command:details>
         <maml:description>
-          <maml:para>Reserved IP Label</maml:para>
-
+               <maml:para>This cmdlet dis-associates a reserved IP Address from a VM or Cloud Service. When the operation completes, the Reserved Ip Address will become free and the VM/VIP will get a dynamic public Ip Address from the Azure Inventory.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
-        <maml:name>Location</maml:name>
-        <maml:description>
-          <maml:para>Location where the Reserved IP should be created</maml:para>
+        <!-- Cmdlet syntax section-->
+        <command:syntax>
+               <command:syntaxItem>
+                       <maml:name>Remove-AzureReservedIPAssociation</maml:name>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+                               <maml:name>ReservedIPName</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+                               <maml:name>ServiceName</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                               <maml:name>VirtualIPName</maml:name>
+                               <maml:description>
+                                      <maml:para>Use VirtualIPName parameter to remove the association from a given virtual IP.</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+                               <maml:name>Slot</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+                               <maml:name>Force</maml:name>
+                               <maml:description>
+                                      <maml:para>Use this flag to bypass warning messages when removing the Reserved IP association.</maml:para>
+                               </maml:description>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>PipelineVariable</maml:name>
+                               <maml:description>
+                                      <maml:para>Not Specified</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>Profile</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       </command:parameter>
+               </command:syntaxItem>
+        </command:syntax>
+        <!-- Cmdlet parameter section  -->
+        <command:parameters>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+                       <maml:name>Force</maml:name>
+                       <maml:description>
+                               <maml:para>Use this flag to bypass warning messages when removing the Reserved IP association.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+                       <dev:type>
+                               <maml:name>SwitchParameter</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>PipelineVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>Profile</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       <dev:type>
+                               <maml:name>AzureProfile</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+                       <maml:name>ReservedIPName</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+                       <maml:name>ServiceName</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+                       <maml:name>Slot</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue>Production</dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+                       <maml:name>VirtualIPName</maml:name>
+                       <maml:description>
+                               <maml:para>Use VirtualIPName parameter to remove the association from a given virtual IP.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+        </command:parameters>
+        <!-- Input - Output section-->
+        <command:inputTypes>
+               <command:inputType>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri/>
+                               <maml:description />
+                       </dev:type>
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description>
+               </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+               <command:returnValue>
+                       <dev:type>
+                          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
+</maml:name>
+                               <maml:uri />
+                               <maml:description />
+                       </dev:type>   
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description> 
+               </command:returnValue>
+        </command:returnValues>
+        <!-- Error section-->
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+               <!-- Notes section  -->
+        <maml:alertSet>
+               <maml:title></maml:title>
+               <maml:alert>
+                       <maml:para>
+                          
+                        </maml:para>
+               </maml:alert>
+               <maml:alert>
+                       <maml:para></maml:para>
+               </maml:alert>
+        </maml:alertSet>
+        <!-- Example section  --> 
+        <command:examples>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-        <maml:name>ReservedIPName</maml:name>
-        <maml:description>
-          <maml:para>Reserved IP Name</maml:para>
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 1 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+Remove-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestwesteurope                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>resip14 will be disassociated from service piptestwesteurope. piptestwesteurope will be assigned a new dynamic VIP.</maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+        </command:examples>
+        <!-- Link section  -->
+        <maml:relatedLinks>
+               <maml:navigationLink>
+                       <maml:linkText>https://msdn.microsoft.com/en-us/library/azure/dn690120.aspx</maml:linkText>
+                       <maml:uri/>
+               </maml:navigationLink>
+        </maml:relatedLinks>
+</command:command>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      
-      </command:parameter>
-          <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
-        <maml:name>ServiceName</maml:name>
-        <maml:description>
-          <maml:para>Name of the service which has the deployment whose Virtual IP needs to be reserved</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-        <maml:name>Slot</maml:name>
-        <maml:description>
-          <maml:para>Slot of the PaaS deployment whose Virtual IP needs to be reserved</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>
-
-        </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          New-AzureReservedIP -ReservedIPName $name -Label $label -Location $location
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>
-            Create a new Reserved IP in the Subscription which can be used for Creating Cloud Services (Web/Worker/Virtual Machines)
-          </maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 2 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          New-AzureReservedIP -ReservedIPName resip14 -Location &quot;West Europe&quot; -ServiceName piptestwesteurope
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>Existing VIP (Virtual IP) on the given service can be reserved. </maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
 
   <!-- v 1.3.0.36 -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        Set-AzureReservedIPAssociation
-      </command:name>
-      <maml:description>
-        <maml:para>
-          This cmdlet associates a Reserved IP Address to an existing VM's or a cloud service's VIP (Virtual IP).  ReservedIPName is the name of the reserved IP in the subscription. It has to be a free IP, (i.e. not in use).
-        </maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>Set</command:verb>
-      <command:noun>AzureReservedIPAssociation</command:noun>
-      <dev:version></dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para>
-        The cmdlet provides means to associate a Reserved IP Address to a running VM or cloud service.  The ReservedIP Address should not be in use at the time of invocation of this cmdlet.  The Reserved IP and the VM/CloudService has to be in the same region.
-        The operation will take about 30 seconds to complete, after which the VM/Service will be accessible via the Reserved IP.
-      </maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Set-AzureReservedIPAssociation</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-          <maml:name>ReservedIPName</maml:name>
-          <maml:description>
-            <maml:para>Reserved IP Name</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-          <maml:name>ServiceName</maml:name>
-          <maml:description>
-            <maml:para>Name of the service which has the deployment with which we want to associate the Reserved IP</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-          <maml:name>Slot</maml:name>
-          <maml:description>
-            <maml:para>Slot of the PaaS deployment with which we need to associate the given Reserved IP</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>ReservedIPName</maml:name>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+        <command:details>
+               <command:name>
+                   Add-AzureVirtualIP
+               </command:name>
+               <maml:description>
+                       <maml:para>Add a virtual IP to your Cloud Service.
+Add-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&gt; [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
+</maml:para>
+               </maml:description>
+               <maml:copyright>
+                       <maml:para></maml:para>
+               </maml:copyright>
+               <command:verb>Add</command:verb>
+               <command:noun>AzureVirtualIP</command:noun>
+               <dev:version></dev:version>
+        </command:details>
         <maml:description>
-          <maml:para>Reserved IP Name</maml:para>
-
+               <maml:para>The Add-AzureVirtualIP cmdlet adds a new virtual IP (VIP) to your service. the new vitual IP has a name but is not allocated an IP address. 
+The IP address is only allocated when you associate an endpoint to the VIP. See Add-AzureEndpoint for more details
+Your subscription will only be charged for extra VIPs once they are associated with an endpoint.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-        <maml:name>ServiceName</maml:name>
-        <maml:description>
-          <maml:para>Name of the service which has the deployment with which we want to associate the Reserved IP</maml:para>
+        <!-- Cmdlet syntax section-->
+        <command:syntax>
+               <command:syntaxItem>
+                       <maml:name>Add-AzureVirtualIP</maml:name>
+               </command:syntaxItem>
+        </command:syntax>
+        <!-- Cmdlet parameter section  -->
+        <command:parameters>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>InformationAction</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                               <maml:para>The following values are permitted for this object type.</maml:para>                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+                       <dev:type>
+                               <maml:name>ActionPreference</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+                       <dev:possibleValues>
+                               <dev:possibleValue>
+                                      <dev:value>SilentlyContinue</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Stop</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Continue</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Inquire</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                       </dev:possibleValues>
+               </command:parameter>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>InformationVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>PipelineVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>Profile</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       <dev:type>
+                               <maml:name>AzureProfile</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>ServiceName</maml:name>
+                       <maml:description>
+                               <maml:para>Enter the name of a cloud service. This parameter is required.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>VirtualIPName</maml:name>
+                       <maml:description>
+                               <maml:para>Enter the name of your virtual IP. This parameter is required.</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+        </command:parameters>
+        <!-- Input - Output section-->
+        <command:inputTypes>
+               <command:inputType>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri/>
+                               <maml:description />
+                       </dev:type>
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description>
+               </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+               <command:returnValue>
+                       <dev:type>
+                          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
+</maml:name>
+                               <maml:uri />
+                               <maml:description />
+                       </dev:type>   
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description> 
+               </command:returnValue>
+        </command:returnValues>
+        <!-- Error section-->
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+               <!-- Notes section  -->
+        <maml:alertSet>
+               <maml:title></maml:title>
+               <maml:alert>
+                       <maml:para>
+                          
+                        </maml:para>
+               </maml:alert>
+               <maml:alert>
+                       <maml:para></maml:para>
+               </maml:alert>
+        </maml:alertSet>
+        <!-- Example section  --> 
+        <command:examples>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-        <maml:name>Slot</maml:name>
-        <maml:description>
-          <maml:para>Slot of the PaaS deployment with which we need to associate the given Reserved IP</maml:para>
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 1 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+Add-AzureVirtualIP -VirtualIPName &quot;MyVip&quot; -ServiceName  &quot;mySvc&quot;
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue>Production</dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>
-            Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
-          </maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>
-
-        </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Set-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestwesteurope
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>'resip14' will be assigned to the service 'piptestwesteurope'. 'resip14' is a reserved IP in the West Europe region. </maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>https://msdn.microsoft.com/en-us/library/azure/dn690120.aspx</maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
+&lt;Output&gt;OperationDescription OperationId                          OperationStatus
+-------------------- -----------                          ---------------
+Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>Add a virtual IP to your service</maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+        </command:examples>
+        <!-- Link section  -->
+        <maml:relatedLinks>
+               <maml:navigationLink>
+                       <maml:linkText></maml:linkText>
+                       <maml:uri/>
+               </maml:navigationLink>
+        </maml:relatedLinks>
+</command:command>
 
   <!-- v 1.3.0.36 -->
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        Remove-AzureReservedIPAssociation
-      </command:name>
-      <maml:description>
-        <maml:para>This cmdlet removes the association of the Reserved IP Address from the VM/Cloud Service. </maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>Remove</command:verb>
-      <command:noun>AzureReservedIPAssociation</command:noun>
-      <dev:version></dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para>This cmdlet dis-associates a reserved IP Address from a VM or Cloud Service. When the operation completes, the Reserved Ip Address will become free and the VM/VIP will get a dynamic public Ip Address from the Azure Inventory.</maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Remove-AzureReservedIPAssociation</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-          <maml:name>ReservedIPName</maml:name>
-          <maml:description>
-            <maml:para>Reserved IP Name</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-          <maml:name>ServiceName</maml:name>
-          <maml:description>
-            <maml:para>Name of the service which has the deployment with Reserved IP which we want to dis-associate</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-          <maml:name>Slot</maml:name>
-          <maml:description>
-            <maml:para>Slot of the PaaS deployment whose Reserved IP we need to dis-associate</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Disables the confirmation prompt when a Reserved IP assocation is removed</maml:para>
-          </maml:description>
-        </command:parameter>
-       </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-        <maml:name>Force</maml:name>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+        <command:details>
+               <command:name>
+                   Remove-AzureVirtualIP
+               </command:name>
+               <maml:description>
+                       <maml:para>Deletes a virtual IP from your Cloud Service.
+Remove-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&gt; [-Force] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
+</maml:para>
+               </maml:description>
+               <maml:copyright>
+                       <maml:para></maml:para>
+               </maml:copyright>
+               <command:verb>Remove</command:verb>
+               <command:noun>AzureVirtualIP</command:noun>
+               <dev:version></dev:version>
+        </command:details>
         <maml:description>
-          <maml:para>Disables the confirmation prompt to remove Reserved IP assocation</maml:para>
-
+               <maml:para>The Remove-AzureVirtualIP cmdlet deletes a new virtual IP (VIP) to your Cloud Service. The operation succeeds only if the virtual IP has no endpoints associated to it.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>ReservedIPName</maml:name>
-        <maml:description>
-          <maml:para>Reserved IP Name</maml:para>
+        <!-- Cmdlet syntax section-->
+        <command:syntax>
+               <command:syntaxItem>
+                       <maml:name>Remove-AzureVirtualIP</maml:name>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+                               <maml:name>ServiceName</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                               <maml:name>VirtualIPName</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+                               <maml:name>Force</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>InformationAction</maml:name>
+                               <maml:description>
+                                      <maml:para>Not Specified</maml:para>
+                               </maml:description>
+                               <command:parameterValueGroup>
+                               <command:parameterValue required="false"  variableLength="false" >SilentlyContinue</command:parameterValue>
+                               <command:parameterValue required="false"  variableLength="false" >Stop</command:parameterValue>
+                               <command:parameterValue required="false"  variableLength="false" >Continue</command:parameterValue>
+                               <command:parameterValue required="false"  variableLength="false" >Inquire</command:parameterValue>
+                               </command:parameterValueGroup>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>InformationVariable</maml:name>
+                               <maml:description>
+                                      <maml:para>Not Specified</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>PipelineVariable</maml:name>
+                               <maml:description>
+                                      <maml:para>Not Specified</maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       </command:parameter>
+                       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                               <maml:name>Profile</maml:name>
+                               <maml:description>
+                                      <maml:para></maml:para>
+                               </maml:description>
+                               <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       </command:parameter>
+               </command:syntaxItem>
+        </command:syntax>
+        <!-- Cmdlet parameter section  -->
+        <command:parameters>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+                       <maml:name>Force</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+                       <dev:type>
+                               <maml:name>SwitchParameter</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>InformationAction</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                               <maml:para>The following values are permitted for this object type.</maml:para>                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+                       <dev:type>
+                               <maml:name>ActionPreference</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+                       <dev:possibleValues>
+                               <dev:possibleValue>
+                                      <dev:value>SilentlyContinue</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Stop</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Continue</dev:value>
+                                      <maml:description>
+                                           <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                               <dev:possibleValue>
+                                      <dev:value>Inquire</dev:value>
+                                      <maml:description>
+                                          <maml:para></maml:para>
+                                      </maml:description>
+                               </dev:possibleValue>
+                       </dev:possibleValues>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>InformationVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>PipelineVariable</maml:name>
+                       <maml:description>
+                               <maml:para>Not Specified</maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+                       <maml:name>Profile</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+                       <dev:type>
+                               <maml:name>AzureProfile</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+                       <maml:name>ServiceName</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+               <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+                       <maml:name>VirtualIPName</maml:name>
+                       <maml:description>
+                               <maml:para></maml:para>
+                                                             
+                       </maml:description>
+                       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+                       <dev:type>
+                               <maml:name>string</maml:name>
+                               <maml:uri/>
+                       </dev:type>
+                       <dev:defaultValue></dev:defaultValue>
+               </command:parameter>
+        </command:parameters>
+        <!-- Input - Output section-->
+        <command:inputTypes>
+               <command:inputType>
+                       <dev:type>
+                               <maml:name></maml:name>
+                               <maml:uri/>
+                               <maml:description />
+                       </dev:type>
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description>
+               </command:inputType>
+        </command:inputTypes>
+        <command:returnValues>
+               <command:returnValue>
+                       <dev:type>
+                          <maml:name>Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
+</maml:name>
+                               <maml:uri />
+                               <maml:description />
+                       </dev:type>   
+                       <maml:description>
+                               <maml:para>
+                                      <!-- description  -->
+                                      
+                               </maml:para>
+                       </maml:description> 
+               </command:returnValue>
+        </command:returnValues>
+        <!-- Error section-->
+        <command:terminatingErrors />
+        <command:nonTerminatingErrors />
+               <!-- Notes section  -->
+        <maml:alertSet>
+               <maml:title></maml:title>
+               <maml:alert>
+                       <maml:para>
+                          
+                        </maml:para>
+               </maml:alert>
+               <maml:alert>
+                       <maml:para></maml:para>
+               </maml:alert>
+        </maml:alertSet>
+        <!-- Example section  --> 
+        <command:examples>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-        <maml:name>ServiceName</maml:name>
-        <maml:description>
-          <maml:para>Name of the service which has the deployment with Reserved IP which we want to dis-associate</maml:para>
+               <command:example>
+                       <maml:title>
+                               -------------------------- EXAMPLE 1 --------------------------
+                       </maml:title> 
+                       <maml:introduction>
+                               <maml:para>C:\PS&gt;</maml:para>
+                       </maml:introduction> 
+                       <dev:code>
+Remove-AzureVirtualIP -VirtualIPName &quot;MyVip&quot; -ServiceName  &quot;mySvc&quot;                        </dev:code>
+                       <dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+                               <maml:para>Remove a virtual IP from your Cloud Service</maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                                <maml:para></maml:para>
+                       </dev:remarks>
+                       <command:commandLines>
+                               <command:commandLine>
+                                      <command:commandText></command:commandText>
+                               </command:commandLine>
+                       </command:commandLines>
+               </command:example>
+        </command:examples>
+        <!-- Link section  -->
+        <maml:relatedLinks>
+               <maml:navigationLink>
+                       <maml:linkText></maml:linkText>
+                       <maml:uri/>
+               </maml:navigationLink>
+        </maml:relatedLinks>
+</command:command>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-        <maml:name>Slot</maml:name>
-        <maml:description>
-          <maml:para>Slot of the PaaS deployment whose Reserved IP we need to dis-associate</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue>Production</dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>
-            Microsoft.WindowsAzure.Commands.Utilities.Common.ManagementOperationContext
-          </maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>
-
-        </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Remove-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestwesteurope
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>resip14 will be disassociated from service piptestwesteurope. piptestwesteurope will be assigned a new dynamic VIP.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>https://msdn.microsoft.com/en-us/library/azure/dn690120.aspx</maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
-  </command:command>
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 <!--Generated by PS Cmdlet Help Editor-->
@@ -15204,11 +15968,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -15251,11 +16016,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -15318,11 +16084,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -20273,21 +21040,23 @@ The default value is Production.</maml:para>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
-		<command:name>Remove-AzureVMDscExtension</command:name>
+		<command:name>
+                   Remove-AzureVMDscExtension
+		</command:name>
 		<maml:description>
-			<maml:para>Remove Azure VM DSC Extension from a VM.</maml:para>
+			<maml:para>Removes DSC extension handler from a given virtual machine(s) in a cloud service. Output of this cmdlet needs to be piped to Update-AzureVM cmdlet. To get detailed output -Verbose flag need to be specified. </maml:para>
 		</maml:description>
 		<maml:copyright>
-			<maml:para />
+			<maml:para></maml:para>
 		</maml:copyright>
 		<command:verb>Remove</command:verb>
 		<command:noun>AzureVMDscExtension</command:noun>
-		<dev:version />
+		<dev:version></dev:version>
 	</command:details>
 	<maml:description>
-	<!--This is the Description section-->
-		<maml:para>Remove Azure VM DSC Extension from a VM.</maml:para>
+		<maml:para>Removes DSC extension handler from a given virtual machine(s) in a cloud service. Output of this cmdlet needs to be piped to Update-AzureVM cmdlet. To get detailed output -Verbose flag need to be specified.</maml:para>
 	</maml:description>
+	<!-- Cmdlet syntax section-->
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureVMDscExtension</maml:name>
@@ -20300,13 +21069,14 @@ The default value is Production.</maml:para>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
+	<!-- Cmdlet parameter section  -->
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>VM</maml:name>
 			<maml:description>
 				<maml:para>The persistent VM object.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
+		  <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
 			<dev:type>
 				<maml:name>IPersistentVM</maml:name>
 				<maml:uri/>
@@ -20338,16 +21108,19 @@ The default value is Production.</maml:para>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
+	<!-- Input - Output section-->
 	<command:inputTypes>
 		<command:inputType>
 			<dev:type>
 				<maml:name></maml:name>
 				<maml:uri/>
-				<maml:description>
-					<maml:para></maml:para>
-				</maml:description>
+				<maml:description />
 			</dev:type>
-			<maml:description></maml:description>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+				</maml:para>
+			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
 	<command:returnValues>
@@ -20355,17 +21128,22 @@ The default value is Production.</maml:para>
 			<dev:type>
 				<maml:name></maml:name>
 				<maml:uri/>
-				<maml:description>
-					<maml:para></maml:para>
-				</maml:description>
-			</dev:type>
+-				<maml:description>
+-					<maml:para></maml:para>
+-				</maml:description>
+-			</dev:type>  
 			<maml:description></maml:description>
-	</command:returnValue>
-		</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+-	</command:returnValue>
+-		</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
 	<maml:alertSet>
 		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
 		<maml:alert>
 			<maml:para></maml:para>
 		</maml:alert>
@@ -20376,7 +21154,7 @@ The default value is Production.</maml:para>
 			<maml:introduction>
 				<maml:para></maml:para>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureVMDscExtension -VM $vm</dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureVMDscExtension -VM $vm | Update-AzureVM</dev:code>
 			<dev:remarks>
 				<maml:para>Description</maml:para>
 			</dev:remarks>
@@ -23781,6 +24559,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
           </maml:description>
           <command:parameterValue required="true" variableLength="false">System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VirtualIPName</maml:name>
+          <maml:description>
+            <maml:para>The VirtualIPName parameter allows you to associate a virtual IP to your endpoint.  Your Cloud Service can have multiple virtual IPs. virtual IPs can be created with the add-azureVirtualIP cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -23922,6 +24707,19 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VirtualIPName</maml:name>
+        <maml:description>
+          <maml:para>The VirtualIPName parameter allows you to associate a virtual IP to your endpoint.  Your Cloud Service can have multiple virtual IPs. virtual IPs can be created with the add-azureVirtualIP cmdlet.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
         <maml:name>VM</maml:name>
         <maml:description>
@@ -23993,13 +24791,12 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
+          Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; | Set-AzureEndpoint -Name &quot;Web&quot; -PublicPort 443 -LocalPort 443 -Protocol &quot;tcp&quot; | Update-AzureVM
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>
-            Description
-          </maml:para>
+          <maml:para>This command updates the input endpoint named &quot;Web&quot; assigned to the virtual machine &quot;MyVM&quot; to listen on Port 443</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -24020,7 +24817,6 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-
 
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
@@ -24350,6 +25146,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
           </maml:description>
           <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>VirtualIPName</maml:name>
+          <maml:description>
+            <maml:para>Use this parameter to update your load balancer to use a specific VIP. See Add-AzureVirtualIP to add VIPs to your Cloud Service.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -24582,6 +25385,19 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>VirtualIPName</maml:name>
+        <maml:description>
+          <maml:para>Use this parameter to update your load balancer to use a specific VIP. See Add-AzureVirtualIP to add VIPs to your Cloud Service.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <!-- Input - Output section-->
     <command:inputTypes>
@@ -24640,11 +25456,38 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
+          Set-AzureLoadBalancedEndpoint -ServiceName &quot;MyService&quot; -LBSetName &quot;LBSet1&quot; -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
           <maml:para>This command will update all endpoints in the load balancer set &quot;LBSet1&quot; to use the TCP protocol and private port 80, and will set the load balancer probe to use the TCP protocol on port 8080.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>You can update your load balancer to use a different VIP. For instance, if you run this command, you will change the load balancing set to use a VIP named Vip1</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -24843,7 +25686,7 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 	<command:details>
 		<command:name>Set-AzurePublicIP</command:name>
 		<maml:description>
-			<maml:para>Set-AzurePublicIP [-PublicIPName] &lt;string&gt; [[-IdleTimeoutInMinutes] &lt;int&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
+			<maml:para>Set-AzurePublicIP [-PublicIPName] &lt;string&gt; [[-IdleTimeoutInMinutes] &lt;int&gt;] [[-DomainNameLabel] &lt;string&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -24854,7 +25697,7 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para>Adds a new Public IP to the virtual machine. The public ip is really assigned when the virtual machine is updated.</maml:para>
+		<maml:para>Adds a new Public IP to the virtual machine. The public ip is really assigned when the virtual machine is updated.  An optional DomainNameLabel will automatically create a corresponding DNS entry for the public IP.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -24872,6 +25715,13 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 					<maml:para>TCP Idle timeout in minutes</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>DomainNameLabel</maml:name>
+				<maml:description>
+					<maml:para>The name to use when creating a corresponding DNS entry for a public IP address</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
@@ -24903,6 +25753,18 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
 				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3">
+			<maml:name>DomainNameLabel</maml:name>
+			<maml:description>
+				<maml:para></maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -24980,6 +25842,36 @@ C:\PS&gt; Get-AzureVM -ServiceName &quot;MyService&quot; -Name &quot;MyVM&quot; 
 			<command:commandLines>
 				<command:commandLine>
 					<command:commandText>-----------Requests for a public IP to be assigned during VM creation.</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  EXAMPLE 3  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureVM -ServiceName FTPInAzure -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip -DomainNameLabel ipname | Update-AzureVM</dev:code>
+			<dev:remarks>
+				<maml:para>Description</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>-----------Requests for a public IP to be assigned to the virtual machine. The public ip allocation happens during update VM.</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  EXAMPLE 4  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; New-AzureVMConfig -Name &quot;FTPInstance&quot; -InstanceSize Small -ImageName $images[50].ImageName | Add-AzureProvisioningConfig -Windows -AdminUsername xyz -Password abcd123! | Set-AzurePublicIP -PublicIPName &quot;ftpip&quot; -DomainNameLabel ipname | New-AzureVM -ServiceName &quot;FTPinAzure&quot; -Location &quot;North Central US&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>Description</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>-----------Requests for a public IP to be assigned during VM creation and for the public IP address to be created with a corresponding DNS entry.</command:commandText>
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
@@ -27538,12 +28430,13 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
             The GeoReplicationEnabled parameter functionality is the same as specifying Standard_GRS in Type parameter
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -27607,12 +28500,13 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName &quot;ContosoServic
             Standard_ZRS
             Standard_GRS
             Standard_RAGRS
+            Premium_LRS
 
             If this parameter is not specified, a default value of Standard_GRS is used
 
             Note:
             The GeoReplicationEnabled parameter functionality is the same as specifying Standard_GRS in Type parameter
-            Standard_ZRS accounts cannot be changed to other account types, and vice versa.</maml:para>
+            Standard_ZRS or Premium_LRS accounts cannot be changed to other account types, and vice versa.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>

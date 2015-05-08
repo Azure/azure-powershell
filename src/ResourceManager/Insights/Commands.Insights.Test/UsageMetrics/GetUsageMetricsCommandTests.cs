@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
 
             response = Utilities.InitializeUsageMetricResponse();
 
-            insightsUsageMetricOperationsMock.Setup(f => f.ListAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            insightsUsageMetricOperationsMock
+                .Setup(f => f.ListAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<UsageMetricListResponse>(response))
                 .Callback((string f, string s, string a, CancellationToken t) =>
                 {
@@ -58,7 +59,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
                     apiVersion = a;
                 });
 
-            insightsClientMock.SetupGet(f => f.UsageMetricOperations).Returns(this.insightsUsageMetricOperationsMock.Object);
+            insightsClientMock
+                .SetupGet(f => f.UsageMetricOperations)
+                .Returns(this.insightsUsageMetricOperationsMock.Object);
         }
 
         private void CleanParamVariables()
@@ -84,7 +87,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             var endDate = DateTime.Now.AddMinutes(-1);
             cmdlet.EndTime = endDate;
 
-            var startTime = endDate.Subtract(GetUsageMetricsCommand.DefaultTimeRange).ToString("O");
+            var startTime = endDate
+                .Subtract(GetUsageMetricsCommand.DefaultTimeRange)
+                .ToString("O");
             var endTime = endDate.ToString("O");
             var expected = "startTime eq " + startTime + " and endTime eq " + endTime;
 
@@ -97,7 +102,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             Assert.Equal(GetUsageMetricsCommand.DefaultApiVersion, apiVersion);
 
             this.CleanParamVariables();
-            cmdlet.StartTime = endDate.Subtract(GetUsageMetricsCommand.DefaultTimeRange).Subtract(GetUsageMetricsCommand.DefaultTimeRange);
+            cmdlet.StartTime = endDate
+                .Subtract(GetUsageMetricsCommand.DefaultTimeRange)
+                .Subtract(GetUsageMetricsCommand.DefaultTimeRange);
             startTime = cmdlet.StartTime.ToString("O");
             expected = "startTime eq " + startTime + " and endTime eq " + endTime;
 

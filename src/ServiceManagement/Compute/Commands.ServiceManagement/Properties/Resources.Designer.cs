@@ -1295,6 +1295,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specified PublicIP not found in NetworkConfiguration.
+        /// </summary>
+        public static string PublicIPNotFoundInNetworkConfiguration {
+            get {
+                return ResourceManager.GetString("PublicIPNotFoundInNetworkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
@@ -1577,6 +1586,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string RemoveReservedIPWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveReservedIPWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Virtual IP from service.
+        /// </summary>
+        public static string RemoveVirtualIP {
+            get {
+                return ResourceManager.GetString("RemoveVirtualIP", resourceCulture);
             }
         }
         
@@ -1928,6 +1946,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string VIPSwapBetweenStagingAndProduction {
             get {
                 return ResourceManager.GetString("VIPSwapBetweenStagingAndProduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the virtual IP from the specified service. Do you want to continue?.
+        /// </summary>
+        public static string VirtualIPWillBeRemoved {
+            get {
+                return ResourceManager.GetString("VirtualIPWillBeRemoved", resourceCulture);
             }
         }
         

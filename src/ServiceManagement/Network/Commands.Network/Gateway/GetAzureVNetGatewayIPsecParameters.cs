@@ -15,7 +15,7 @@
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.Gateway
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
     [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
     public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase

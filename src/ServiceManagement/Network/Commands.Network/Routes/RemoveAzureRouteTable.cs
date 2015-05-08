@@ -12,20 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway
-{
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
+using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(ManagementOperationContext))]
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
+{
+    [Cmdlet(VerbsCommon.Remove, "AzureRouteTable"), OutputType(typeof(bool))]
     public class RemoveAzureRouteTable : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the route table to remove.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the route table to remove.")]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Return whether the specified route table is successfully removed")]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm Route Table deletion")]
+        public SwitchParameter Force { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.DeleteRouteTable(Name));
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveRouteTableWarning, Name),
+                Resources.RemoveRouteTableWarning,
+                Name,
+                () =>
+                {
+                    Client.DeleteRouteTable(Name);
+
+                    WriteVerboseWithTimestamp(Resources.RemoveRouteTableSucceeded, Name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

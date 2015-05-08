@@ -1130,8 +1130,7 @@ The output of this Cmdlet is suitable to be processed by the Export-csv Cmdlet.<
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+				<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -1143,8 +1142,7 @@ The output of this Cmdlet is suitable to be processed by the Export-csv Cmdlet.<
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+				<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1193,7 +1191,7 @@ foreach($e in $s2) { Export-csv -Path ./metrics.csv -input $e -Append -NoTypeInf
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
-			<maml:linkText>Unknown</maml:linkText>
+			<maml:linkText></maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -3286,6 +3284,10 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:linkText>Get-AzureResourceProviderLog</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Online Version:</maml:linkText>
+			<maml:uri>http://go.microsoft.com/fwlink/?LinkID=397618</maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -4217,8 +4219,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4230,8 +4231,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4249,7 +4249,8 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>get-metricdefinitions -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2</dev:code>
+			<dev:code>get-metricdefinitions -res /subscriptions/d33fb0c7-69d3-40be-e35b-4f0deba70fff/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website2
+</dev:code>
 			<dev:remarks>
 				<maml:para>Gets all the metrics definitions for the given resource (identified by the ResourceId)</maml:para>
 				<maml:para />
@@ -4442,7 +4443,8 @@ Unit                   : Bytes</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EndTime</maml:name>
 				<maml:description>
-					<maml:para>Latest Time/Date to search for metric values.</maml:para>
+					<maml:para>Latest Time/Date to search for metric values.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			</command:parameter>
@@ -4509,7 +4511,8 @@ Unit                   : Bytes</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EndTime</maml:name>
 			<maml:description>
-				<maml:para>Latest Time/Date to search for metric values.</maml:para>
+				<maml:para>Latest Time/Date to search for metric values.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
 			<dev:type>
@@ -4563,8 +4566,7 @@ Unit                   : Bytes</maml:para>
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-</maml:para>
+<maml:para />
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -4577,7 +4579,7 @@ Unit                   : Bytes</maml:para>
 			</dev:type>
 			<maml:description>
 				<maml:para>
-</maml:para>
+				</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4942,7 +4944,7 @@ Unit           : Count</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1: Querying with resaourceId only  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Querying with resourceId only  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4951,7 +4953,6 @@ Unit           : Count</maml:para>
 				<maml:para>Query the usage metrics for a website</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>

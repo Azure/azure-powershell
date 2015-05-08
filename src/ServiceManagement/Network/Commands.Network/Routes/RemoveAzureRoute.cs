@@ -12,23 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Routes
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Utilities;
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
-
-    [Cmdlet(VerbsCommon.Remove, "AzureRoute"), OutputType(typeof(ManagementOperationContext))]
-    public class RemoveAzureRoute : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRoute"), OutputType(typeof(IRouteTable))]
+    public class RemoveAzureRoute : RouteTableConfigurationBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The existing route table's name.")]
-        public string RouteTableName { get; set; }
-
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the route to remove.")]
         public string RouteName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm Route deletion")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.DeleteRoute(RouteTableName, RouteName));
+            string routeTableName = this.RouteTable.GetInstance().Name;
+
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemoveRouteWarning, this.RouteName, routeTableName),
+                Resources.RemoveRouteWarning,
+                RouteName,
+                () =>
+                {
+                    Client.DeleteRoute(routeTableName, this.RouteName);
+                    WriteObject(Client.GetRouteTable(routeTableName, true));
+                });
         }
     }
 }
