@@ -284,7 +284,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-               (typeof(T) == typeof(SharedAccessQueuePolicy))))
+               (typeof(T) == typeof(SharedAccessQueuePolicy)) ||
+               (typeof(T) == typeof(SharedAccessFilePolicy))))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }

@@ -139,5 +139,11 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             get { throw new NotImplementedException(); }
         }
+
+        public Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
+            FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

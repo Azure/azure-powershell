@@ -274,5 +274,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  A System.Threading.Tasks.Task object that represents the current operation.
         /// </returns>
         Task DeleteFileAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+
+        /// <summary>
+        /// Async get share permissions.
+        /// </summary>
+        /// <param name="container">A CloudFileShare instance.</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">File request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cancellationToken">User cancellation token</param>
+        /// <returns>A task object which retrieve the permission of the specified container</returns>
+        Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
+            FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
     }
 }
