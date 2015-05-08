@@ -12,23 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewWorkItemParameters
+    public class NewWorkItemParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public NewWorkItemParameters(BatchAccountContext context, string workItemName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(workItemName))
+            {
+                throw new ArgumentNullException("poolName");
+            }
 
+            this.WorkItemName = workItemName;
+        }
         /// <summary>
         /// The name of the WorkItem to create
         /// </summary>
-        public string WorkItemName { get; set; }
+        public string WorkItemName { get; private set; }
 
         /// <summary>
         /// The Schedule to use when creating a new WorkItem
@@ -49,10 +55,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Metadata to add to the new WorkItem
         /// </summary>
         public IDictionary Metadata { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

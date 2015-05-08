@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -48,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSBNamespaceSuccessfull()
         {
             // Setup
@@ -65,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListNamespacesSuccessfull()
         {
             // Setup
@@ -90,6 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSBNamespaceWithInvalidNamesFail()
         {
             // Setup

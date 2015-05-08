@@ -79,6 +79,15 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return command.IgnoreSslErrors; }
+            set { command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Mandatory = false, HelpMessage = "The name of the HDInsight cluster to set the size of.", ValueFromPipeline = false,
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
         [Parameter(Mandatory = true, HelpMessage = "The name of the HDInsight cluster to set the size of", ValueFromPipeline = false,

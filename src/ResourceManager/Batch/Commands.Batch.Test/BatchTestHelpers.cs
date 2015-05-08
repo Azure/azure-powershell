@@ -126,6 +126,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a PSCloudPool for testing
+        /// </summary>
+        public static PSCloudPool CreatePSCloudPool()
+        {
+            BatchAccountContext context = CreateBatchContextWithKeys();
+            using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+            {
+                ICloudPool pool = poolManager.CreatePool("testPool");
+                return new PSCloudPool(pool);
+            }
+        }
+
+        /// <summary>
         /// Builds a GetPoolResponse object
         /// </summary>
         public static GetPoolResponse CreateGetPoolResponse(string poolName)
@@ -159,6 +172,43 @@ namespace Microsoft.Azure.Commands.Batch.Test
             }
 
             SetProperty(response, "Pools", pools);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a GetTVMResponse object
+        /// </summary>
+        public static GetTVMResponse CreateGetTVMResponse(string vmName)
+        {
+            GetTVMResponse response = new GetTVMResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            TVM vm = new TVM();
+            SetProperty(vm, "Name", vmName);
+            SetProperty(response, "TVM", vm);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListTVMsResponse object
+        /// </summary>
+        public static ListTVMsResponse CreateListTVMsResponse(IEnumerable<string> vmNames)
+        {
+            ListTVMsResponse response = new ListTVMsResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<TVM> vms = new List<TVM>();
+
+            foreach (string name in vmNames)
+            {
+                TVM vm = new TVM();
+                SetProperty(vm, "Name", name);
+                vms.Add(vm);
+            }
+
+            SetProperty(response, "TVMs", vms);
 
             return response;
         }
@@ -298,6 +348,44 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static ListTaskFilesResponse CreateListTaskFilesResponse(IEnumerable<string> fileNames)
         {
             ListTaskFilesResponse response = new ListTaskFilesResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            List<Azure.Batch.Protocol.Entities.File> files = new List<Azure.Batch.Protocol.Entities.File>();
+
+            foreach (string name in fileNames)
+            {
+                Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
+                SetProperty(file, "Name", name);
+                files.Add(file);
+            }
+
+            SetProperty(response, "Files", files);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a GetTVMFilePropertiesResponse object
+        /// </summary>
+        public static GetTVMFilePropertiesResponse CreateGetTVMFilePropertiesResponse(string fileName)
+        {
+            GetTVMFilePropertiesResponse response = new GetTVMFilePropertiesResponse();
+            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+
+            Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
+            SetProperty(file, "Name", fileName);
+
+            SetProperty(response, "File", file);
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a ListTVMFilesResponse object
+        /// </summary>
+        public static ListTVMFilesResponse CreateListTVMFilesResponse(IEnumerable<string> fileNames)
+        {
+            ListTVMFilesResponse response = new ListTVMFilesResponse();
             SetProperty(response, "StatusCode", HttpStatusCode.OK);
 
             List<Azure.Batch.Protocol.Entities.File> files = new List<Azure.Batch.Protocol.Entities.File>();

@@ -42,6 +42,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         IManageAzureHDInsightHttpAccessCommand CreateManageHttpAccess();
 
+        IManageAzureHDInsightRdpAccessCommand CreateManageRdpAccess();
+
         INewAzureHDInsightClusterConfigCommand CreateNewConfig();
 
         INewAzureHDInsightHiveJobDefinitionCommand CreateNewHiveDefinition();

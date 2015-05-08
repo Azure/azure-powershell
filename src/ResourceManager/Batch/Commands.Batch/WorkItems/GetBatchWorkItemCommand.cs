@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for WorkItems.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The OData filter clause to use when querying for workitems.")]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of WorkItems to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of workitems to return.")]
         public int MaxCount
         {
             get { return this.maxCount; }
@@ -42,13 +42,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListWorkItemOptions options = new ListWorkItemOptions()
+            ListWorkItemOptions options = new ListWorkItemOptions(this.BatchContext, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
                 WorkItemName = this.Name,
                 Filter = this.Filter,
-                MaxCount = this.MaxCount,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                MaxCount = this.MaxCount
             };
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate

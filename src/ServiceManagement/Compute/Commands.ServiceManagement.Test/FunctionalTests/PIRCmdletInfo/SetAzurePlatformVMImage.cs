@@ -12,10 +12,62 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo
 {
+    public class NewAzurePlatformComputeImageConfigCmdletInfo : CmdletsInfo
+    {
+        public NewAzurePlatformComputeImageConfigCmdletInfo(string offer, string sku, string version)
+        {
+            this.cmdletName = Utilities.NewAzurePlatformComputeImageConfigCmdletName;
+
+            if (!string.IsNullOrEmpty(offer))
+            {
+                this.cmdletParams.Add(new CmdletParam("Offer", offer));
+            }
+
+            if (!string.IsNullOrEmpty(sku))
+            {
+                this.cmdletParams.Add(new CmdletParam("Sku", sku));
+            }
+
+            if (!string.IsNullOrEmpty(version))
+            {
+                this.cmdletParams.Add(new CmdletParam("Version", version));
+            }
+        }
+    }
+
+    public class NewAzurePlatformMarketplaceImageConfigCmdletInfo : CmdletsInfo
+    {
+        public NewAzurePlatformMarketplaceImageConfigCmdletInfo(string planName, string product, string publisher, string publisherId)
+        {
+            this.cmdletName = Utilities.NewAzurePlatformMarketplaceImageConfigCmdletName;
+
+            if (!string.IsNullOrEmpty(planName))
+            {
+                this.cmdletParams.Add(new CmdletParam("PlanName", planName));
+            }
+
+            if (!string.IsNullOrEmpty(product))
+            {
+                this.cmdletParams.Add(new CmdletParam("Product", product));
+            }
+
+            if (!string.IsNullOrEmpty(publisher))
+            {
+                this.cmdletParams.Add(new CmdletParam("Publisher", publisher));
+            }
+
+            if (!string.IsNullOrEmpty(publisherId))
+            {
+                this.cmdletParams.Add(new CmdletParam("PublisherId", publisherId));
+            }
+        }
+    }
+
     public class SetAzurePlatformVMImageCmdletInfo : CmdletsInfo
     {
         public SetAzurePlatformVMImageCmdletInfo(string imageName, string permission, string [] locations)
@@ -29,6 +81,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (locations != null)
             {
                 this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
+            }
+        }
+
+        public SetAzurePlatformVMImageCmdletInfo(string imageName, string permission, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
+        {
+            this.cmdletName = Utilities.SetAzurePlatformVMImageCmdletName;
+            this.cmdletParams.Add(new CmdletParam("ImageName", imageName));
+
+            if (permission != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("Permission", permission));
+            }
+
+            if (locations != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
+            }
+
+            if (compCfg != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("PlatformComputeImageConfig", compCfg));
+            }
+
+            if (marketCfg != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("PlatformMarketplaceImageConfig", marketCfg));
             }
         }
     }
