@@ -490,7 +490,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -Location &quot;US West&quot; -AccountType &quot;Standard_GRS&quot;</dev:code>
+			<dev:code>New-AzureStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -Location &quot;US West&quot; -Type &quot;Standard_GRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -1083,7 +1083,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; # Set account type
-          Set-AzureStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -AccountType &quot;Standard_RAGRS&quot;</dev:code>
+          Set-AzureStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -Type &quot;Standard_RAGRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
