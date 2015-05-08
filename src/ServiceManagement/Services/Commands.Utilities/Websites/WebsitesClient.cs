@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,8 +47,8 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
 
     public class WebsitesClient : IWebsitesClient
@@ -70,11 +70,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="logger">The logger action</param>
-        public WebsitesClient(AzureSubscription subscription, Action<string> logger)
+        public WebsitesClient(AzureProfile profile, AzureSubscription subscription, Action<string> logger)
         {
             Logger = logger;
-            cloudServiceClient = new CloudServiceClient(subscription, debugStream: logger);
-            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            cloudServiceClient = new CloudServiceClient(profile, subscription, debugStream: logger);
+            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.subscription = subscription;
         }
 

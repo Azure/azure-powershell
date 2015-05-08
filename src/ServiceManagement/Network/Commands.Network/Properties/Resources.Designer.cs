@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Properties {
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Network.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Add-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string AddAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("AddAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Add-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string AddAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("AddAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
             }
         }
         
@@ -133,6 +151,60 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGateway.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGateway.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayConfigBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayConfigBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string GetAzureApplicationGatewayConfigCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Get-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string GetAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Get-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string GetAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("GetAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Intializing parameters....
         /// </summary>
         internal static string InitializingCacheParameters {
@@ -169,11 +241,47 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;, network interface &quot;{4}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInNIC {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInNIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in cloud service &quot;{1}&quot;, deployment &quot;{2}&quot;, role &quot;{3}&quot;..
+        /// </summary>
+        internal static string NetworkSecurityGroupNotActiveInRole {
+            get {
+                return ResourceManager.GetString("NetworkSecurityGroupNotActiveInRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Network SecurityGroup &quot;{0}&quot; is not active in Subnet &quot;{1}&quot; in Virtual Network &quot;{2}&quot;..
         /// </summary>
         internal static string NetworkSecurityGroupNotActiveInSubnet {
             get {
                 return ResourceManager.GetString("NetworkSecurityGroupNotActiveInSubnet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: New-AzureApplicationGateway.
+        /// </summary>
+        internal static string NewAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("NewAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: New-AzureApplicationGateway.
+        /// </summary>
+        internal static string NewAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("NewAzureApplicationGatewayCompletedOperation", resourceCulture);
             }
         }
         
@@ -192,6 +300,78 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string PromptOnCachePlanChange {
             get {
                 return ResourceManager.GetString("PromptOnCachePlanChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Remove-AzureApplicationGateway.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Remove-AzureApplicationGateway.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Remove-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewaySslCertificateBeginOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewaySslCertificateBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Remove-AzureApplicationGatewaySslCertificate.
+        /// </summary>
+        internal static string RemoveAzureApplicationGatewaySslCertificateCompletedOperation {
+            get {
+                return ResourceManager.GetString("RemoveAzureApplicationGatewaySslCertificateCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from Network Interface &quot;{1}&quot; in VM &quot;{2}&quot; in Cloud Service &quot;{3}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromNicWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromNicWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Network Security Group with name &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;..
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Network Security Group &quot;{0}&quot; from VM &quot;{1}&quot; in Cloud Service &quot;{2}&quot;?.
+        /// </summary>
+        internal static string RemoveNetworkSecurityGroupFromRoleWarning {
+            get {
+                return ResourceManager.GetString("RemoveNetworkSecurityGroupFromRoleWarning", resourceCulture);
             }
         }
         
@@ -241,6 +421,51 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string RemoveRouteTableFromSubnetSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableFromSubnetSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the currently associated Route Table from Subnet &quot;{0}&quot; in Virtual Network &quot;{1}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteTableFromSubnetWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableFromSubnetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully removed Route Table with name &quot;{0}&quot;..
+        /// </summary>
+        internal static string RemoveRouteTableSucceeded {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Route Table &quot;{0}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteTableWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteTableWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Route &quot;{0}&quot; from Route Table &quot;{1}&quot;?.
+        /// </summary>
+        internal static string RemoveRouteWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing cache service.
         /// </summary>
         internal static string RemoveServiceMessage {
@@ -255,6 +480,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string RemoveServiceWarning {
             get {
                 return ResourceManager.GetString("RemoveServiceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInNicWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInNicWarningSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully set NetworkSecurityGroup &quot;{0}&quot; in Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string ReplaceNetworkSecurityGroupInRoleWarningSucceeded {
+            get {
+                return ResourceManager.GetString("ReplaceNetworkSecurityGroupInRoleWarningSucceeded", resourceCulture);
             }
         }
         
@@ -277,11 +520,110 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Set-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string SetAzureApplicationGatewayConfigBeginOperation {
+            get {
+                return ResourceManager.GetString("SetAzureApplicationGatewayConfigBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Set-AzureApplicationGatewayConfig.
+        /// </summary>
+        internal static string SetAzureApplicationGatewayConfigCompletedOperation {
+            get {
+                return ResourceManager.GetString("SetAzureApplicationGatewayConfigCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Network Interface &quot;{1}&quot;, Role &quot;{2}&quot;, Deployment &quot;{3}&quot;, Cloud Service: &quot;{4}&quot;.
+        /// </summary>
+        internal static string SetNSGNicAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGNicAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Role &quot;{1}&quot;, Deployment &quot;{2}&quot;, Cloud Service: &quot;{3}&quot;.
+        /// </summary>
+        internal static string SetNSGRoleAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGRoleAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network Security Group &quot;{0}&quot;, Virtual Network: &quot;{1}&quot;, Subnet &quot;{2}&quot;.
+        /// </summary>
+        internal static string SetNSGSubnetAssociationTarget {
+            get {
+                return ResourceManager.GetString("SetNSGSubnetAssociationTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Start-AzureApplicationGateway.
+        /// </summary>
+        internal static string StartAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("StartAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Start-AzureApplicationGateway.
+        /// </summary>
+        internal static string StartAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("StartAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Stop-AzureApplicationGateway.
+        /// </summary>
+        internal static string StopAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("StopAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Stop-AzureApplicationGateway.
+        /// </summary>
+        internal static string StopAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("StopAzureApplicationGatewayCompletedOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time out to wait for cache service ready.
         /// </summary>
         internal static string TimeoutWaitForCacheServiceReady {
             get {
                 return ResourceManager.GetString("TimeoutWaitForCacheServiceReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin Operation: Update-AzureApplicationGateway.
+        /// </summary>
+        internal static string UpdateAzureApplicationGatewayBeginOperation {
+            get {
+                return ResourceManager.GetString("UpdateAzureApplicationGatewayBeginOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed Operation: Update-AzureApplicationGateway.
+        /// </summary>
+        internal static string UpdateAzureApplicationGatewayCompletedOperation {
+            get {
+                return ResourceManager.GetString("UpdateAzureApplicationGatewayCompletedOperation", resourceCulture);
             }
         }
         

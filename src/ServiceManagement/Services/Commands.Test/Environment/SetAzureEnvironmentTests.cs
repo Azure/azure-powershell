@@ -16,40 +16,43 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Moq;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     
     public class SetAzureEnvironmentTests : TestBase, IDisposable
     {
-        private MockDataStore dataStore;
+        private MemoryDataStore dataStore;
 
         public SetAzureEnvironmentTests()
         {
-            dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            dataStore = new MemoryDataStore();
+            AzureSession.DataStore = dataStore;
         }
 
         public void Cleanup()
         {
-            AzureSession.SetCurrentContext(null, null, null);
+            currentProfile = null;
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetsAzureEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             string name = "Katal";
-            ProfileClient client = new ProfileClient();
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(new AzureEnvironment { Name = name });
 
             SetAzureEnvironmentCommand cmdlet = new SetAzureEnvironmentCommand()
@@ -68,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<AzureEnvironment>()), Times.Once());
-            client = new ProfileClient();
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name.ToLower(), cmdlet.Name.ToLower());
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
@@ -78,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsWhenSettingPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();

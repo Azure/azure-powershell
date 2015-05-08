@@ -16,16 +16,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites.WebHostingPlan;
 using Moq;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
 {
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
     public class GetAzureWebHostingPlanTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListWebHostingPlansTest()
         {
             // Setup
@@ -53,17 +55,23 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            currentProfile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);
-            var plans = (IEnumerable<WebHostingPlan>)((MockCommandRuntime)command.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var plans = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)command.CommandRuntime).OutputPipeline).Cast<WebHostingPlan>();
+
             Assert.NotNull(plans);
+            Assert.Equal(2, plans.Count());
             Assert.True(plans.Any(p => (p).Name.Equals("Plan1") && (p).WebSpace.Equals("webspace1")));
             Assert.True(plans.Any(p => (p).Name.Equals("Plan2") && (p).WebSpace.Equals("webspace2")));
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebHostingPlanBasicTest()
         {
             // Setup
@@ -81,12 +89,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(subscriptionId) }, null, null);
+            currentProfile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);
-            var plans = (IEnumerable<WebHostingPlan>)((MockCommandRuntime)command.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var plans = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)command.CommandRuntime).OutputPipeline).Cast<WebHostingPlan>();
+
             Assert.NotNull(plans);
+            Assert.NotEmpty(plans);
             Assert.True(plans.Any(p => (p).Name.Equals("Plan1") && (p).WebSpace.Equals("webspace1")));
         }
     }

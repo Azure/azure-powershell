@@ -20,8 +20,8 @@ using System.Xml;
 using System.Net.Security;
 using System.Runtime.Caching;
 using Hyak.Common;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.WindowsAzure.Management.StorSimple;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
@@ -40,12 +40,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
 
         private CacheItemPolicy ResourceCachetimeoutPolicy = new CacheItemPolicy();
 
-        public StorSimpleClient(AzureSubscription currentSubscription)
+        /// <summary>
+        /// Azure profile
+        /// </summary>
+        public AzureProfile Profile { get; set; }
+
+        public StorSimpleClient(AzureProfile azureProfile, AzureSubscription currentSubscription)  
         {
             // Temp code to be able to test internal env.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };//IgnoreCertificateErrorHandler;//delegate { return true; };
             
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+            this.Profile = azureProfile;
+
+            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
             
             ResourceCachetimeoutPolicy.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1.0d);
         }
@@ -61,9 +68,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 AzureSession.ClientFactory.CreateCustomClient<StorSimpleManagementClient>(
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
-                    StorSimpleContext.ResourceProviderNameSpace, StorSimpleContext.StampId,
-                    this.cloudServicesClient.Credentials,
-                    AzureSession.CurrentContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                    StorSimpleContext.ResourceProviderNameSpace, this.cloudServicesClient.Credentials,
+                    Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             
             if (storSimpleClient == null)
             {

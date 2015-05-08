@@ -22,25 +22,16 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual string CloudEncryptString(SecureString value, string resourceGroupName, string dataFactoryName)
+        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential, string type, string nonCredentialValue, string authenticationType)
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException("value");
-            }
-            
-            return Extensions.Encrypt((DataPipelineManagementClient) DataPipelineManagementClient, value,
-                resourceGroupName, dataFactoryName);
-        }
+            LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : (LinkedServiceType)Enum.Parse(typeof(LinkedServiceType), type, true);
 
-        public virtual string OnPremisesEncryptString(SecureString value, string resourceGroupName, string dataFactoryName, string gatewayName, PSCredential credential, string type)
-        {
-            if (value == null)
+            if (linkedServiceType != LinkedServiceType.OnPremisesOdbcLinkedService && (value == null || value.Length == 0))
             {
                 throw new ArgumentNullException("value");
             }
 
-            LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : (LinkedServiceType) Enum.Parse(typeof(LinkedServiceType), type, true);
+            AuthenticationType authType = authenticationType == null ? AuthenticationType.None : (AuthenticationType)Enum.Parse(typeof(AuthenticationType), authenticationType, true);
 
             var response = DataPipelineManagementClient.Gateways.RetrieveConnectionInfo(resourceGroupName, dataFactoryName, gatewayName);
             var gatewayEncryptionInfos = new[]
@@ -56,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             string userName = credential != null ? credential.UserName : null;
             SecureString password = credential != null ? credential.Password : null;
-            UserInputConnectionString connectionString = new UserInputConnectionString(value, userName, password, linkedServiceType);
+            UserInputConnectionString connectionString = new UserInputConnectionString(value, nonCredentialValue, userName, password, linkedServiceType, authType);
             return GatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
         }
     }

@@ -121,40 +121,42 @@
     <value>The Automation account was not found.</value>
     <comment>Automation</comment>
   </data>
-  <data name="FileNotFound" xml:space="preserve">
-    <value>The file "{0}" was not found. Make sure the file exists and is accessible.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="InvalidDailyScheduleModel" xml:space="preserve">
-    <value>The daily schedule model is not valid. Schedule name: {0}.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="InvalidHourlyScheduleModel" xml:space="preserve">
-    <value>The hourly schedule model is not valid. Schedule name: {0}.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="InvalidJobModel" xml:space="preserve">
-    <value>The job model is not valid.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="InvalidRunbookModel" xml:space="preserve">
-    <value>The runbook model is not valid.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="InvalidRunbookParameters" xml:space="preserve">
-    <value>At least one parameter provided is not expected by the runbook.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="JobNotFoundById" xml:space="preserve">
-    <value>The job was not found. Job ID: {0}.</value>
-    <comment>Automation</comment>
-  </data>
   <data name="RemoveAzureAutomationRunbookDescription" xml:space="preserve">
     <value>Removing the Azure Automation runbook.</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveAzureAutomationRunbookWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Automation runbook?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyExists" xml:space="preserve">
+    <value>The Runbook already exists. Runbook name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyHasDraft" xml:space="preserve">
+    <value>Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook name: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AutomationOperationFailed" xml:space="preserve">
+    <value>{0} {1} operation failed for object name: {2) under AutomationAccount: {3}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CredentialNotFound" xml:space="preserve">
+    <value>The credential was not found. Credential name: {0}.</value>
+  </data>
+  <data name="JobNotFound" xml:space="preserve">
+    <value>The Job having Id: {0} was not found.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ModuleNotFound" xml:space="preserve">
+    <value>The module was not found. Module name: {0}.</value>
+  </data>
+  <data name="ParameterEmpty" xml:space="preserve">
+    <value>{0} is empty.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationResourceDescription" xml:space="preserve">
+    <value>Removing the Azure Automation {0}.</value>
     <comment>Automation</comment>
   </data>
   <data name="RemoveAzureAutomationScheduleDescription" xml:space="preserve">
@@ -165,44 +167,115 @@
     <value>Are you sure you want to remove the Azure Automation schedule?</value>
     <comment>Automation</comment>
   </data>
-  <data name="RunbookAlreadyHasDraft" xml:space="preserve">
-    <value>Runbook already has a draft. Specify the parameter to force an overwrite of this draft.</value>
+  <data name="RemovingAzureAutomationResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
-  <data name="RunbookHasNoPublishedVersionById" xml:space="preserve">
-    <value>The runbook has no published version. Runbook ID: {0}.</value>
+  <data name="ResourceExists" xml:space="preserve">
+    <value>Resource exist.</value>
     <comment>Automation</comment>
   </data>
-  <data name="RunbookNotFoundById" xml:space="preserve">
-    <value>The runbook was not found. Runbook ID: {0}.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="RunbookNotFoundByName" xml:space="preserve">
-    <value>The runbook was not found. Runbook name: {0}.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
-    <value>The runbook parameter "{0}" cannot be serialized to JSON.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="RunbookParameterValueRequired" xml:space="preserve">
-    <value>The runbook parameter "{0}" is mandatory.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="RunbookVersionNotFoundById" xml:space="preserve">
-    <value>The runbook version was not found. Runbook version ID: {0}.</value>
-    <comment>Automation</comment>
+  <data name="RunbookNotFound" xml:space="preserve">
+    <value>The Runbook was not found. Runbook name: {0}.</value>
+    <comment>Autmation</comment>
   </data>
   <data name="ScheduleNameExists" xml:space="preserve">
     <value>The Automation schedule name is in use. Schedule name: {0}.</value>
     <comment>Automation</comment>
   </data>
-  <data name="ScheduleNotFoundById" xml:space="preserve">
-    <value>The schedule was not found. Schedule ID: {0}.</value>
-    <comment>Automation</comment>
-  </data>
-  <data name="ScheduleNotFoundByName" xml:space="preserve">
+  <data name="ScheduleNotFound" xml:space="preserve">
     <value>The schedule was not found. Schedule name: {0}.</value>
     <comment>Automation</comment>
+  </data>
+  <data name="VariableAlreadyExists" xml:space="preserve">
+    <value>The variable already exists. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="VariableNotFound" xml:space="preserve">
+    <value>The variable was not found. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoPublishedVersion" xml:space="preserve">
+    <value>The runbook has no published version. Runbook name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidRunbookParameters" xml:space="preserve">
+    <value>Invalid runbook parameters.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Runbook name {0}. Schedule name {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleWithIdNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Job schedule id: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
+    <value>Runbook parameter cannot be serialized to json. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterValueRequired" xml:space="preserve">
+    <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleDescription" xml:space="preserve">
+    <value>Disassociating the Azure Automation runbook and schedule.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleWarning" xml:space="preserve">
+    <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="VariableEncryptionCannotBeChanged" xml:space="preserve">
+    <value>Cannot change encryption property of the variable. Variable name {0}. Encryption - {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AutomationAccountAlreadyExists" xml:space="preserve">
+    <value>The Automation account already exists</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateNotFound" xml:space="preserve">
+    <value>The certificate was not found. Certificate name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateAlreadyExists" xml:space="preserve">
+    <value>The certificate already exists. Certificate name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="PowershellJsonDecrypterFailed" xml:space="preserve">
+    <value>Failed to decrypt. Error Details {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource does not exist.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionAlreadyExists" xml:space="preserve">
+    <value>The Connection already exists. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionFieldNameNotFound" xml:space="preserve">
+    <value>The connection field name was not found for connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionNotFound" xml:space="preserve">
+    <value>The connection was not found. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SetCertificateInvalidArgs" xml:space="preserve">
+    <value>Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoDraftVersion" xml:space="preserve">
+    <value>The runbook has no draft version. Runbook name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AccountCreateInvalidArgs" xml:space="preserve">
+    <value>Create account arguments are invalid. Provide valid account name and location. Account Name: {0}, Location: {1} </value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CompilationJobNotFound" xml:space="preserve">
+    <value>The Compilation Job having Id: {0} was not found.</value>
   </data>
 </root>

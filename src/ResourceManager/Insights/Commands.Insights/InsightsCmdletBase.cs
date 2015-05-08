@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
-using Microsoft.Azure.Insights;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -23,56 +20,25 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets
     /// </summary>
-    abstract public class InsightsCmdletBase : AzurePSCmdlet, IDisposable
+    public abstract class InsightsCmdletBase : AzurePSCmdlet
     {
-        private IInsightsClient insightsClient;
-
-        private bool disposed;
+        /// <summary>
+        /// Executes the Cmdlet. This is a callback function to simplify the execption handling
+        /// </summary>
+        protected abstract void ExecuteCmdletInternal();
 
         /// <summary>
-        /// Gets the InsightsClient to use in the Cmdlet
+        /// Execute the cmdlet
         /// </summary>
-        protected IInsightsClient InsightsClient
+        public override void ExecuteCmdlet()
         {
-            get
+            try
             {
-                if (this.insightsClient == null)
-                {
-                    // The premise is that a command to establish a context (like Add-AzureAccount) has been called before this command in order to have a correct CurrentContext
-                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(CurrentContext, AzureEnvironment.Endpoint.ResourceManager);
-                }
-
-                return this.insightsClient;
+                this.ExecuteCmdletInternal();
             }
-        }
-
-        /// <summary>
-        /// Dispose method
-        /// The implementation of IDispose follows the recommeded pattern
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-
-            // The class is not sealed, so this is here in case a derived class is created
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// Dispose the resources
-        /// </summary>
-        /// <param name="disposing">Indicates whether the managed resources should be disposed or not</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
+            catch (AggregateException ex)
             {
-                if (this.insightsClient != null)
-                {
-                    this.insightsClient.Dispose();
-                    this.insightsClient = null;
-                }
-
-                this.disposed = true;
+                throw ex.Flatten().InnerException;
             }
         }
     }

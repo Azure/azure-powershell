@@ -120,7 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
             StorageCredentialsFactory storageCredentialsFactory;
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {
-                storageCredentialsFactory = new StorageCredentialsFactory(this.StorageClient, this.CurrentContext.Subscription);
+                storageCredentialsFactory = new StorageCredentialsFactory(this.StorageClient, this.Profile.Context.Subscription);
             }
             else
             {
