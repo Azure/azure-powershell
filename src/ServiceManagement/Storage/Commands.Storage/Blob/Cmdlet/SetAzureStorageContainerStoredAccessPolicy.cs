@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy {get; set; }
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".")]
+        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any non-empty subset of \"rdwl\".")]
         public string Permission { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]

@@ -141,5 +141,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return share.GetPermissionsAsync(accessCondition, options, operationContext, cancellationToken);
         }
+
+        public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            return share.GetPermissions(accessCondition, options, operationContext);
+        }
+
+        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, 
+            AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            share.SetPermissions(permissions, accessCondition, options, operationContext);
+        }
     }
 }

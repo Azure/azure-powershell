@@ -34,6 +34,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         CloudFileShare GetShareReference(string shareName);
 
         /// <summary>
+        /// Get share permissions.
+        /// </summary>
+        /// <param name="container">A CloudFileShare instance.</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">File request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The share's permission</returns>
+        FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
+
+        /// <summary>
+        /// Set container permissions.
+        /// </summary>
+        /// <param name="container">A CloudFileShare object.</param>
+        /// <param name="permissions">The share's permission.</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">File request option</param>
+        /// <param name="operationContext">Operation context</param>
+        void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
+
+        /// <summary>
         ///  Enumerates the files and directories under a certain folder.
         /// </summary>
         /// <param name="directory">Indicating the directory to be listed.</param>

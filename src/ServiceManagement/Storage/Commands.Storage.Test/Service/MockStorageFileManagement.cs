@@ -145,5 +145,18 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             throw new NotImplementedException();
         }
+
+        public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
+            AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

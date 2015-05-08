@@ -187,7 +187,7 @@
     <Compile Include="File\Cmdlet\GetAzureStorageFile.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageFileContent.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageShare.cs" />
-    <Compile Include="File\Cmdlet\GetAzureStorageShareAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageShareStoredAccessPolicy.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageDirectory.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageShare.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageShareSasToken.cs" />
@@ -196,6 +196,7 @@
     <Compile Include="File\Cmdlet\RemoveAzureStorageFile.cs" />
     <Compile Include="File\Cmdlet\RemoveAzureStorageShare.cs" />
     <Compile Include="File\Cmdlet\SetAzureStorageFileContent.cs" />
+    <Compile Include="File\Cmdlet\SetAzureStorageShareStoredAccessPolicy.cs" />
     <Compile Include="File\Constants.cs" />
     <Compile Include="File\ErrorIdConstants.cs" />
     <Compile Include="File\NamingUtil.cs" />
