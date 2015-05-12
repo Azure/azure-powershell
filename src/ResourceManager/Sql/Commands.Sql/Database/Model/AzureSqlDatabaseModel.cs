@@ -111,5 +111,48 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the tags associated with the server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel
+        /// </summary>
+        public AzureSqlDatabaseModel()
+        {
+        }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel from Management.Sql.Models.Database object
+        /// </summary>
+        /// <param name="resourceGroup">Resource group</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="database">Database object</param>
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        {
+            Guid id = Guid.Empty;
+            DatabaseEdition edition = DatabaseEdition.None;
+
+            ResourceGroupName = resourceGroup;
+            ServerName = serverName;
+            CollationName = database.Properties.Collation;
+            CreationDate = database.Properties.CreationDate;
+            CurrentServiceObjectiveName = database.Properties.ServiceObjective;
+            MaxSizeBytes = database.Properties.MaxSizeBytes;
+            DatabaseName = database.Name;
+            Status = database.Properties.Status;
+            Tags = database.Tags as Dictionary<string, string>;
+            ElasticPoolName = database.Properties.ElasticPoolName;
+            Location = database.Location;
+
+            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
+            CurrentServiceObjectiveId = id;
+
+            Guid.TryParse(database.Properties.DatabaseId, out id);
+            DatabaseId = id;
+
+            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
+            Edition = edition;
+
+            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
+            RequestedServiceObjectiveId = id;
+        }
     }
 }

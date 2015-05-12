@@ -12,19 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
 
-namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Model
 {
-    public class RecommendedElasticPoolTests : SqlTestsBase
+    /// <summary>
+    /// Represents recommendations for upgrading server
+    /// </summary>
+    public class UpgradeServerHint
     {
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void ListRecommendedElasticPools()
-        {
-            RunPowerShellTest("Test-ElasticPoolRecommendation");
-        }
+        /// <summary>
+        /// List of elastic pools
+        /// </summary>
+        public IEnumerable<UpgradeRecommendedElasticPoolProperties> ElasticPools { get; set; }
+
+        /// <summary>
+        /// List of recommended database properties
+        /// </summary>
+        public IEnumerable<RecommendedDatabaseProperties> Databases { get; set; }
     }
 }

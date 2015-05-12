@@ -14,71 +14,65 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolRecommendationDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseExpanded", 
         ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlElasticPoolRecommendationDatabase : AzureSqlElasticPoolRecommendationCmdletBase
+    public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the elastic pool recommendation to use.
+        /// Gets or sets the name of the database server to use.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "The name of the Azure SQL elastic pool recommendation to retrieve.")]
+            Position = 1,
+            HelpMessage = "The name of the Azure SQL Database Server the database is in.")]
         [ValidateNotNullOrEmpty]
-        public string ElasticPoolRecommendation { get; set; }
+        public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Database to get.
+        /// Gets or sets the name of the database to use.
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+        
+        /// <summary>
+        /// Initializes the adapter
+        /// </summary>
+        /// <param name="subscription"></param>
+        /// <returns></returns>
+        protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        {
+            return new AzureSqlDatabaseAdapter(Profile, subscription);
+        }
 
         /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected IEnumerable<AzureSqlDatabaseModel> GetDatabase()
+        protected override IEnumerable<AzureSqlDatabaseModelExpanded> GetEntity()
         {
-            ICollection<AzureSqlDatabaseModel> results;
+            ICollection<AzureSqlDatabaseModelExpanded> results;
 
             if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
-                results = new List<AzureSqlDatabaseModel>();
-                results.Add(ModelAdapter.GetElasticPoolRecommendationDatabase(ResourceGroupName, ServerName, ElasticPoolRecommendation, DatabaseName));
+                results = new List<AzureSqlDatabaseModelExpanded>();
+                results.Add(ModelAdapter.GetDatabaseExpanded(this.ResourceGroupName, this.ServerName, this.DatabaseName));
             }
             else
             {
-                results = ModelAdapter.ListElasticPoolRecommendationDatabases(this.ResourceGroupName, this.ServerName, this.ElasticPoolRecommendation);
+                results = ModelAdapter.ListDatabasesExpanded(this.ResourceGroupName, this.ServerName);
             }
 
             return results;
-        }
-
-        /// <summary>
-        /// Executes the cmdlet.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
-            WriteObject(GetDatabase());
-        }
-
-        /// <summary>
-        /// Not Used.
-        /// </summary>
-        /// <returns>Not Used</returns>
-        protected override IEnumerable<AzureSqlElasticPoolRecommendationModel> GetEntity()
-        {
-            return null;
         }
     }
 }

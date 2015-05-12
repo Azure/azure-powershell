@@ -16,14 +16,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
@@ -80,6 +78,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+        /// Gets an Azure Sql Database by name with additional information.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <returns>The Azure Sql Database object</returns>
+        internal AzureSqlDatabaseModelExpanded GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName)
+        {
+            var resp = Communicator.GetExpanded(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
         /// Gets a list of Azure Sql Databases.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -92,6 +103,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return resp.Select((db) =>
             {
                 return CreateDatabaseModelFromResponse(resourceGroupName, serverName, db);
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Gets a list of Azure Sql Databases with additional information.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <returns>A list of database objects</returns>
+        internal ICollection<AzureSqlDatabaseModelExpanded> ListDatabasesExpanded(string resourceGroupName, string serverName)
+        {
+            var resp = Communicator.ListExpanded(resourceGroupName, serverName, Util.GenerateTracingId());
+
+            return resp.Select((db) =>
+            {
+                return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, db);
             }).ToList();
         }
 
@@ -148,41 +175,25 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="database">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            AzureSqlDatabaseModel model = new AzureSqlDatabaseModel();
-            Guid id = Guid.Empty;
-            DatabaseEdition edition = DatabaseEdition.None;
+            return new AzureSqlDatabaseModel(resourceGroup, serverName, database);
+        }
 
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
-            model.CollationName = database.Properties.Collation;
-            model.CreationDate = database.Properties.CreationDate;
-            model.CurrentServiceObjectiveName = database.Properties.ServiceObjective;
-            model.MaxSizeBytes = database.Properties.MaxSizeBytes;
-            model.DatabaseName = database.Name;
-            model.Status = database.Properties.Status;
-            model.Tags = database.Tags as Dictionary<string, string>;
-            model.ElasticPoolName = database.Properties.ElasticPoolName;
-            model.Location = database.Location;
-
-            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
-            model.CurrentServiceObjectiveId = id;
-
-            Guid.TryParse(database.Properties.DatabaseId, out id);
-            model.DatabaseId = id;
-
-            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            model.Edition = edition;
-
-            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
-            model.RequestedServiceObjectiveId = id;
-
-            return model;
+        /// <summary>
+        /// Converts the response from the service to a powershell database object
+        /// </summary>
+        /// <param name="resourceGroup">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="database">The service response</param>
+        /// <returns>The converted model</returns>
+        public static AzureSqlDatabaseModelExpanded CreateExpandedDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        {
+            return new AzureSqlDatabaseModelExpanded(resourceGroup, serverName, database);
         }
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
