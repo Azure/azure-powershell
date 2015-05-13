@@ -26,11 +26,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     [Cmdlet(VerbsCommon.New, StorageNouns.ShareSas), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
     {
-        [Parameter(
-            ValueFromPipeline = true,
-            HelpMessage = "Azure Storage Context Object")]
-        public override AzureStorageContext Context { get; set; }
-
         /// <summary>
         /// Sas permission parameter set name
         /// </summary>
@@ -69,6 +64,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
+
+        [Parameter(
+            ValueFromPipeline = true,
+            HelpMessage = "Azure Storage Context Object")]
+        public override AzureStorageContext Context { get; set; }
 
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
