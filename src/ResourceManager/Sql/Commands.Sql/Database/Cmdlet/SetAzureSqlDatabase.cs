@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -116,8 +117,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
+            AzureSqlDatabaseModel response = null;
+            try
+            {
+                response = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First());
+            }
+            catch(ArgumentNullException ex)
+            {
+                if(ex.ParamName == "operationStatusLink")
+                {
+                    response = ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, entity.First().DatabaseName);
+                }
+            }
+
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+                response
             };
         }
     }
