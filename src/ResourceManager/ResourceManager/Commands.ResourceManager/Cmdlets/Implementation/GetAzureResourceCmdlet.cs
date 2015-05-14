@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private async Task<ResponseWithContinuation<JObject[]>> ListResourcesTypeCollection()
         {
             var resourceCollectionId = ResourceIdUtility.GetResourceId(
-                subscriptionId: this.SubscriptionId.CoalesceEnumerable().FirstOrDefault(),
+                subscriptionId: this.SubscriptionId.CoalesceEnumerable().Cast<Guid?>().FirstOrDefault(),
                 resourceGroupName: this.ResourceGroupName,
                 resourceType: this.ResourceType,
                 resourceName: this.ResourceName,
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return !string.IsNullOrWhiteSpace(this.ResourceId)
             ? this.ResourceId
             : ResourceIdUtility.GetResourceId(
-                subscriptionId: this.SubscriptionId.CoalesceEnumerable().FirstOrDefault(),
+                subscriptionId: this.SubscriptionId.CoalesceEnumerable().Cast<Guid?>().FirstOrDefault(),
                 resourceGroupName: this.ResourceGroupName,
                 resourceType: this.ResourceType,
                 resourceName: this.ResourceName,
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsResourceTypeCollectionGet()
         {
-            return this.IsCollection && 
+            return (this.IsCollection || this.TenantLevel) && 
                 (this.IsResourceGroupLevelResourceTypeCollectionGet() ||
                 this.IsSubscriptionLevelResourceTypeCollectionGet() ||
                 this.IsTenantLevelResourceTypeCollectionGet());

@@ -45,21 +45,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "ExtensionResourceName", ResourceIdUtility.GetExtensionResourceName(resource.Id) },
                 { "ExtensionResourceType", extensionResourceType },
                 { "Kind", resource.Kind },
-                { "ResourceGroupName", ResourceIdUtility.GetResourceGroup(resource.Id) },
+                { "ResourceGroupName", ResourceIdUtility.GetResourceGroupName(resource.Id) },
                 { "Location", resource.Location },
                 { "SubscriptionId", ResourceIdUtility.GetSubscriptionId(resource.Id) },
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject() },
                 { "Properties", resource.Properties.ToPsObject() },
-                { "PropertiesText", resource.Properties == null ? null : resource.Properties.ToString() },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
             };
 
-            return PowerShellUtilities.ConstructPSObject(
+            var psObject = PowerShellUtilities.ConstructPSObject(
                 (resourceType + extensionResourceType).Replace('/', '.'),
                 objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value }));
+
+            psObject.TypeNames.Add(Constants.MicrosoftAzureResource);
+            return psObject;
         }
 
         /// <summary>
@@ -69,6 +71,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         internal static Resource<JToken> ToResource(this JToken jtoken)
         {
             return jtoken.ToObject<Resource<JToken>>(JsonExtensions.JsonMediaTypeSerializer);
+        }
+
+        /// <summary>00
+        /// Converts a <see cref="JToken"/> to a <see cref="Resource{JToken}"/>.
+        /// </summary>
+        /// <typeparam name="TType">The type of the properties.</typeparam>
+        /// <param name="jtoken">The <see cref="JToken"/>.</param>
+        internal static Resource<TType> ToResource<TType>(this JToken jtoken)
+        {
+            return jtoken.ToObject<Resource<TType>>(JsonExtensions.JsonMediaTypeSerializer);
         }
     }
 }
