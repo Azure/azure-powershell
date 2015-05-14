@@ -23,50 +23,67 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.AzureHDInsightCluster),
+        Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
         typeof(ClusterGetResponse))]
     public class NewAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
             HelpMessage = "Gets or sets the datacenter location for the cluster.")]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true,
-            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
-        public string DefaultStorageAccountName { get; set; }
-
-        [Parameter(Mandatory = true,
-            HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
-        public string DefaultStorageAccountKey { get; set; }
-
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
             HelpMessage = "Gets or sets the number of workernodes for the cluster.")]
         public int ClusterSizeInNodes { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
+        [Parameter(
+            Position = 4,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
+        public string DefaultStorageAccountName { get; set; }
+
+        [Parameter(
+            Position = 5,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
+        public string DefaultStorageAccountKey { get; set; }
+
+        [Parameter(
+            HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
+        [Parameter(
+            HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
         public AzureHDInsightMetastore HiveMetastore { get; set; }
 
-        [Parameter(HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
+        [Parameter(
+            HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
-        [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
+        [Parameter(
+            HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
-        [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
+        [Parameter(
+            HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
         public string DefaultStorageContainer { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the login for the cluster's user.")]
@@ -74,15 +91,6 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the password for the cluster's user.")]
         public string Password { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public string RdpUsername { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the password for RDP access to the cluster.")]
-        public string RdpPassword { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the version of the HDInsight cluster.")]
         public string Version { get; set; }
@@ -108,16 +116,32 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
         public string OSType { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets SSH user name.")]
+        [Parameter(HelpMessage = "Gets or sets SSH user name.",
+            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
         public string SshUserName { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets SSH password.")]
+        [Parameter(HelpMessage = "Gets or sets SSH password.",
+            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
         public string SshPassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
+        [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.",
+            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
         public string SshPublicKey { get; set; }
 
-        [Parameter(HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster")]
+        [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.",
+            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        public string RdpUsername { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the password for RDP access to the cluster.",
+            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        public string RdpPassword { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.",
+            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        public DateTime RdpAccessExpiry { get; set; }
+
+        [Parameter(ValueFromPipeline = true,
+            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster")]
         public AzureHDInsightConfig Config {
             get
             {

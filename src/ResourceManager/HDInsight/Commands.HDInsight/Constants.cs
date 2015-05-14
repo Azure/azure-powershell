@@ -15,6 +15,15 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     internal static class Constants
     {
-        public const string AzureHDInsightCluster = "AzureHDInsightCluster";
+        public static class CommandNames
+        {
+            public const string AzureHDInsightCluster = "AzureHDInsightCluster";
+        }
+
+        public static class ParameterSetNames
+        {
+            public const string WindowsOS = "WindowsOperatingSystem";
+            public const string LinuxOS = "LinuxOperatingSystem";
+        }
     }
 }
