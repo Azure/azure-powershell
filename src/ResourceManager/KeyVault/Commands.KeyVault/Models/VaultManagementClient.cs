@@ -44,15 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             get;
             set;
         }
-
-        public string ApiVersion
-        {
-            get
-            {
-                return KeyVaultManagementClient.ApiVersion;
-            }
-        }        
-        
+       
         /// <summary>
         /// Create a new vault
         /// </summary>
