@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         internal const string ResourceGroupParameterSetName = "All In Resource Group";
         internal const string RedisCacheParameterSetName = "Specific Redis Cache";
 
-        [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under whcih want to create cache.")]
-        [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under whcih want to create cache.")]
+        [Parameter(ParameterSetName = ResourceGroupParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
+        [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to create cache.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = RedisCacheParameterSetName, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of redis cache.")]

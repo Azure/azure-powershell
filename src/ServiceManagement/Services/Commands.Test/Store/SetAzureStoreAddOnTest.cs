@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Store;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -50,6 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureStoreAddOnWithSuccessful()
         {
             // Setup
@@ -76,6 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureStoreAddOnWithPassThru()
         {
             // Setup
@@ -103,6 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureStoreAddOnWithNo()
         {
             // Setup

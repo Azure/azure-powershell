@@ -12,11 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
+    /// <summary>
+    /// This cmdlet is used to remove DSC extension handler from a given virtual machine(s)
+    /// in a cloud service. 
+    /// 
+    /// Note: To get detailed output -Verbose flag need to be specified. Output of this cmdlet needs to be piped to Update-AzureVM cmdlet 
+    /// 
+    /// Example Usage:
+    /// 
+    /// $vm = Get-AzureVM -ServiceName service -Name VM-name
+    /// Remove-AzureVMDscExtension -VM $vm | Update-AzureVM -Verbose
+    /// </summary>
     [Cmdlet(VerbsCommon.Remove, VirtualMachineDscExtensionCmdletNoun),
     OutputType(typeof(IPersistentVM))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
@@ -24,7 +37,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         internal void ExecuteCommand()
         {
+            //this parameter needs to be true for remove to work
+            this.Uninstall = true;
+            this.Version = DefaultExtensionVersion;
+
             RemovePredicateExtensions();
+            AddResourceExtension();
+
             WriteObject(VM);
         }
 

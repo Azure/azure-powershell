@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
@@ -35,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class GetAzureWebsiteTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteTest()
         {
             // Setup
@@ -70,6 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetWebsiteProcessShowTest()
         {
             // Setup
@@ -132,6 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteWithNullSubscription()
         {
             currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
@@ -149,6 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureWebsiteWithDiagnosticsSettings()
         {
             // Setup
@@ -184,6 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsWebsiteSlot()
         {
             // Setup
@@ -228,6 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsSlots()
         {
             // Setup

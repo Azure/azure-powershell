@@ -115,14 +115,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         }
 
         public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
-            UInt32 bandwidth, string location, string serviceProviderName)
+            UInt32 bandwidth, string location, string serviceProviderName, CircuitSku sku)
         {
             var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
                 Bandwidth = bandwidth,
                 CircuitName = circuitName,
                 Location = location,
-                ServiceProviderName = serviceProviderName
+                ServiceProviderName = serviceProviderName,
+                Sku = sku
             });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
@@ -140,12 +141,21 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return (Client.DedicatedCircuits.List().DedicatedCircuits);
         }
 
-        public AzureDedicatedCircuit SetAzureDedicatedCircuitBandwidth(string serviceKey, UInt32 bandwidth)
+        public AzureDedicatedCircuit SetAzureDedicatedCircuitProperties(string serviceKey, UInt32? bandwidth, CircuitSku? sku)
         {
-            var result = Client.DedicatedCircuits.Update(serviceKey, (new DedicatedCircuitUpdateParameters()
+            var updateParams = new DedicatedCircuitUpdateParameters() {};
+
+            if (bandwidth.HasValue)
             {
-                Bandwidth = bandwidth
-            }));
+                updateParams.Bandwidth = bandwidth.Value.ToString();
+            }
+
+            if (sku.HasValue)
+            {
+                updateParams.Sku = sku.Value.ToString();
+            }
+
+            var result = Client.DedicatedCircuits.Update(serviceKey, updateParams);
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
             {

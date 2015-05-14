@@ -44,8 +44,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Pow
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.Azure.Commands.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -831,10 +830,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzurePlatformVMImage
 
-
-        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations)
+        internal ComputeImageConfig NewAzurePlatformComputeImageConfig(string offer, string sku, string version)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new  SetAzurePlatformVMImageCmdletInfo(imageName, null, locations));
+            return RunPSCmdletAndReturnFirst<ComputeImageConfig>(new NewAzurePlatformComputeImageConfigCmdletInfo(offer, sku, version));
+        }
+
+        internal MarketplaceImageConfig NewAzurePlatformMarketplaceImageConfig(string planName, string product, string publisher, string publisherId)
+        {
+            return RunPSCmdletAndReturnFirst<MarketplaceImageConfig>(new NewAzurePlatformMarketplaceImageConfigCmdletInfo(planName, product, publisher, publisherId));
+        }
+
+        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new  SetAzurePlatformVMImageCmdletInfo(imageName, null, locations, compCfg, marketCfg));
         }
 
         internal ManagementOperationContext SetAzurePlatformVMImagePublic(string imageName)
@@ -889,6 +897,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         internal ManagementOperationContext RemoveAzureReservedIP(string name, bool force = false)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPCmdletInfo(name, force));
+        }
+        internal ManagementOperationContext AddAzureVirtualIP(string virtualIPName, string serviceName)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new AddAzureVirtualIPCmdletInfo(virtualIPName, serviceName));
+        }
+        internal ManagementOperationContext RemoveAzureVirtualIP(string virtualIPName, string serviceName, bool force = true)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVirtualIPCmdletInfo(virtualIPName, serviceName, force));
         }
 
         #endregion
@@ -1330,9 +1346,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string vmName = null)
+        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string serviceName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(vmName, null));
+            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(null, serviceName));
         }
 
         public SM.PersistentVMRoleContext GetAzureVM(string vmName, string serviceName)
@@ -1579,9 +1595,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<GatewayGetOperationStatusResponse>(new NewAzureVNetGatewayCmdletInfo(vnetName));
         }
 
-        public Collection<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
+        public Collection<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
         {
-            return RunPSCmdletAndReturnAll<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
+            return RunPSCmdletAndReturnAll<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
         }
 
         public GatewayGetOperationStatusResponse SetAzureVNetGateway(string option, string vnetName, string localNetwork)
@@ -2224,9 +2240,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.InternalLoadBalancerContext>(new GetAzureInternalLoadBalancerCmdletInfo(serviceName));
         }
 
-        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm)
+        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm, string domainNameLabel = null)
         {
-            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm));
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm, domainNameLabel));
         }
 
         internal SM.AssignPublicIP GetAzurePublicIpName(string publicIpName, SM.IPersistentVM vm)

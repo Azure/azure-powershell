@@ -14,11 +14,11 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure.Management.Network.Models;
-using PowerShellAppGwModel = Microsoft.Azure.Commands.Network.ApplicationGateway.Model;
+using PowerShellAppGwModel = Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model;
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway
 {
     [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewayConfig"), OutputType(typeof(PowerShellAppGwModel.ApplicationGatewayConfigContext))]
     public class GetApplicationGatewayConfigCommand : NetworkCmdletBase
