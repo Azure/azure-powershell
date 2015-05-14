@@ -12,21 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.HDInsight.Models
-{
-    public class WindowsOperatingSystemProfile
-    {
-        /// <summary>
-        /// The RDP settings.
-        /// </summary>
-        public RdpSettings RdpSettings { get; set; }
+using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-        /// <summary>
-        /// Initializes a new instance of the WindowsOperatingSystemProfile
-        /// class.
-        /// </summary>
-        public WindowsOperatingSystemProfile()
+namespace Microsoft.Azure.Commands.HDInsight.Commands
+{
+    public class HDInsightCmdletBase : AzurePSCmdlet
+    {
+        private AzureHdInsightManagementClient _hdInsightManagementClient;
+
+        public AzureHdInsightManagementClient HDInsightManagementClient
         {
+            get
+            {
+                if (this._hdInsightManagementClient == null)
+                {
+                    this._hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context);
+                }
+                return this._hdInsightManagementClient;
+            }
+            set { this._hdInsightManagementClient = value; }
         }
     }
 }

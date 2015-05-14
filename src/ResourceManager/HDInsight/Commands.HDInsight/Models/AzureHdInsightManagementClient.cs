@@ -12,29 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.HDInsight;
+using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class SshProfile
+    public class AzureHdInsightManagementClient
     {
-        private IList<SshPublicKey> _sshPublicKeys;
-
-        /// <summary>
-        /// The list of SSH public keys.
-        /// </summary>
-        public IList<SshPublicKey> SshPublicKeys
+        public AzureHdInsightManagementClient(AzureContext context)
         {
-            get { return this._sshPublicKeys; }
-            set { this._sshPublicKeys = value; }
+            HdInsightManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
-        /// Initializes a new instance of the SshProfile class.
+        /// Parameterless constructor for mocking
         /// </summary>
-        public SshProfile()
+        public AzureHdInsightManagementClient() { }
+
+        private IHDInsightManagementClient HdInsightManagementClient { get; set; }
+
+        public ClusterGetResponse CreateNewCluster(string resourceGroupName, string clusterName, ClusterCreateParameters parameters)
         {
-            this.SshPublicKeys = new List<SshPublicKey>();
+            return this.HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
         }
     }
 }

@@ -12,20 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class QuotaInfo
+    /// <summary>
+    ///     Represents an AzureHDInsightMetastore.
+    /// </summary>
+    public class AzureHDInsightMetastore
     {
         /// <summary>
-        /// The cores used by the cluster.
+        /// Gets or sets the Azure SQL Server user credentials.
         /// </summary>
-        public int CoresUsed { get; set; }
+        public PSCredential Credential { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the QuotaInfo class.
+        ///     Gets or sets the Azure SQL Server database name.
         /// </summary>
-        public QuotaInfo()
-        {
-        }
+        public string DatabaseName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Azure SQL Server for the metastore.
+        /// </summary>
+        public string SqlAzureServerName { get; set; }
     }
 }
