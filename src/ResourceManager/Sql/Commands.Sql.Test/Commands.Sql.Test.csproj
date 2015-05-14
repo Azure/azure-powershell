@@ -151,7 +151,6 @@
     </Compile>
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
-    <None Include="app.config" />
     <None Include="ScenarioTests\RecommendedElasticPoolTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
