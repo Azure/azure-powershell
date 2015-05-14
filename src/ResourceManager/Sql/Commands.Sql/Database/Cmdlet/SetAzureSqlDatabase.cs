@@ -122,9 +122,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 response = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First());
             }
-            catch(ArgumentNullException ex)
+            catch (ArgumentNullException ex)
             {
-                if(ex.ParamName == "operationStatusLink")
+                // This is needed because on v11 servers the call to update database will return synchronously if the operation finishes quickly
+                // whereas for v12 servers it is always async.  If the call retuns synchronously the operationStatusLink will be null.
+                if (ex.ParamName == "operationStatusLink")
                 {
                     response = ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, entity.First().DatabaseName);
                 }
