@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -116,8 +117,23 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> PersistChanges(IEnumerable<AzureSqlDatabaseModel> entity)
         {
+            AzureSqlDatabaseModel response = null;
+            try
+            {
+                response = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First());
+            }
+            catch (ArgumentNullException ex)
+            {
+                // This is needed because on v11 servers the call to update database will return synchronously if the operation finishes quickly
+                // whereas for v12 servers it is always async.  If the call retuns synchronously the operationStatusLink will be null.
+                if (ex.ParamName == "operationStatusLink")
+                {
+                    response = ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, entity.First().DatabaseName);
+                }
+            }
+
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity.First())
+                response
             };
         }
     }
