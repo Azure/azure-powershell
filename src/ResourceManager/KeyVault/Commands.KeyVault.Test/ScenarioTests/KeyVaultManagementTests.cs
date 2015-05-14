@@ -282,6 +282,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Set-AzureKeyVaultAccessPolicy & Remove-AzureKeyVaultAccessPolicy
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetRemoveAccessPolicyByObjectId()
+        {
+            string upn = "";
+            data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", data.preCreatedVault, data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -367,7 +389,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAccessPolicyNegativeCases()
+        public void TestModifyAccessPolicyEnabledForDeployment()
         {
             string upn = "";
 
@@ -375,7 +397,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetAccessPolicyNegativeCases", data.preCreatedVault, data.resourceGroupName, upn) };
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDeployment", data.preCreatedVault, data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModifyAccessPolicyNegativeCases()
+        {
+            string upn = "";
+
+            data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyNegativeCases", data.preCreatedVault, data.resourceGroupName, upn) };
                 },
                 (env) =>
                 {                    

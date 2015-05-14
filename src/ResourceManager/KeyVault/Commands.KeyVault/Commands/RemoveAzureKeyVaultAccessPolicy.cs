@@ -21,7 +21,8 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultAccessPolicy", DefaultParameterSetName = "None", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -90,8 +91,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// 
         /// </summary>
         [Parameter(Mandatory = false,
+            ParameterSetName = ByObjectId,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByServicePrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByUserPrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = "None",
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+
         public SwitchParameter EnabledForDeployment { get; set; }
 
         /// <summary>
@@ -103,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
 
         #endregion
-        
+
         public override void ExecuteCmdlet()
         {
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
