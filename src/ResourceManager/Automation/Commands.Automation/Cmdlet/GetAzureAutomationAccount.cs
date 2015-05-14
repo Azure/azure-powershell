@@ -77,13 +77,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 { 
                    this.AutomationClient.GetAutomationAccount(this.ResourceGroupName, this.Name)
                 };
+                this.WriteObject(ret, true);
             }
             else
             {
-                ret = this.AutomationClient.ListAutomationAccounts(this.ResourceGroupName);
-            }
+                string nextLink = string.Empty;
 
-            this.WriteObject(ret, true);
+                do
+                {
+                    ret = this.AutomationClient.ListAutomationAccounts(this.ResourceGroupName, ref nextLink);
+                    this.WriteObject(ret, true);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

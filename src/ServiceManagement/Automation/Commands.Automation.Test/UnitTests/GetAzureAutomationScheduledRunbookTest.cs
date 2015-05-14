@@ -129,8 +129,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName)).Returns((string a) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName, ref nextLink)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName, ref nextLink), Times.Once());
         }
     }
 }

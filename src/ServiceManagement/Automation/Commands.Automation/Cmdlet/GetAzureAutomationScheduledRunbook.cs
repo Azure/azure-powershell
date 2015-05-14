@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                     this.AutomationClient.GetJobSchedule(
                                         this.AutomationAccountName, this.JobScheduleId .Value)
                                 };
+                this.GenerateCmdletOutput(jobSchedules);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)
             {
@@ -72,21 +73,29 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                     this.AutomationClient.GetJobSchedule(
                                         this.AutomationAccountName, this.RunbookName, this.ScheduleName)
                                 };
+                this.GenerateCmdletOutput(jobSchedules);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
                 jobSchedules = this.AutomationClient.ListJobSchedulesByRunbookName(this.AutomationAccountName, this.RunbookName);
+                this.GenerateCmdletOutput(jobSchedules);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByScheduleName)
             {
                 jobSchedules = this.AutomationClient.ListJobSchedulesByScheduleName(this.AutomationAccountName, this.ScheduleName);
+                this.GenerateCmdletOutput(jobSchedules);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                jobSchedules = this.AutomationClient.ListJobSchedules(this.AutomationAccountName);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(jobSchedules);
+                do
+                {
+                    jobSchedules = this.AutomationClient.ListJobSchedules(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(jobSchedules);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }
