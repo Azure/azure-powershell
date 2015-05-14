@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class TestController
     {
-        bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
-
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         
@@ -163,9 +161,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         private StorageManagementClient GetStorageManagementClient()
         {
-            return testViaCsm
-                ? TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory)
-                : TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            return TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
         }
     }
 }
