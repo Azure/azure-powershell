@@ -167,70 +167,76 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateDeleteVaultWithPiping.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateNewPremiumVaultEnabledForDeployment.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateNewVault.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateVaultInUnknownResGrpFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateVaultPositionalParams.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestDeleteUnknownVaultFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestDeleteVaultByName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestGetUnknownVaultFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestGetVaultByName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestGetVaultByNameAndResourceGroup.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestGetVaultByNameAndResourceGroupPositionalParams.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestGetVaultFromUnknownResourceGroupFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestListAllVaultsInSubscription.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestListVaultsByResourceGroup.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestListVaultsByTag.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestListVaultsByUnknownResourceGroupFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestModifyAccessPolicy.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestModifyAccessPolicyEnabledForDeployment.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestRecreateVaultFails.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestRemoveNonExistentAccessPolicyDoesNotThrow.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestSetAccessPolicyNegativeCases.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestModifyAccessPolicyNegativeCases.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestSetRemoveAccessPolicyByObjectId.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestSetRemoveAccessPolicyBySPN.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestSetRemoveAccessPolicyByUPN.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
