@@ -329,6 +329,81 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetRemoveAccessPolicyByCompoundId()
+        {
+            string upn = "";
+            Guid? appId = null;
+            data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", data.preCreatedVault, data.resourceGroupName, upn, appId) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                    appId = GetApplicationId(env.GetTestEnvironment(), 1);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAccessPolicyWithCompoundIdPolicies()
+        {
+            string upn = "";
+            Guid? appId1 = null;
+            Guid? appId2 = null;
+            data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", data.preCreatedVault, data.resourceGroupName, upn, appId1, appId2) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                    appId1 = GetApplicationId(env.GetTestEnvironment(), 1);
+                    appId2 = GetApplicationId(env.GetTestEnvironment(), 2);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetCompoundIdAccessPolicy()
+        {
+            string upn = "";
+            Guid? appId = null;
+            data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", data.preCreatedVault, data.resourceGroupName, upn, appId) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                    appId = GetApplicationId(env.GetTestEnvironment(), 1);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyBySPN()
         {
             Application app = null;
@@ -488,6 +563,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 return HttpMockServer.Variables["User"];
             }
         }
+
+        private Guid GetApplicationId(TestEnvironment environment, int appNum)
+        {
+            if (appNum < 0)
+                throw new ArgumentException("Invalid appNum");
+            string variableName = "AppId" + appNum;
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                Guid appId = Guid.NewGuid();
+                HttpMockServer.Variables[variableName] = appId.ToString();
+                return appId;
+            }
+            else
+            {
+                return new Guid(HttpMockServer.Variables[variableName]);
+            }
+        }
+       
         private Application CreateNewAdApp(KeyVaultManagementController controllerAdmin)
         {
             var appName = TestUtilities.GenerateName("adApplication");
