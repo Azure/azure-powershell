@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Jobs
         public IEnumerable<JobStream> GetJobStream(string automationAccountName, Guid jobId, DateTimeOffset? time,
-           string streamType)
+           string streamType, ref string nextLink)
         {
             var listParams = new AutomationManagement.Models.JobStreamListParameters();
 
@@ -833,18 +833,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 listParams.StreamType = streamType;
             }
 
-            var jobStreams = new List<JobStream>();
+            JobStreamListResponse response;
 
-            var response = this.automationManagementClient.JobStreams.List(automationAccountName, jobId, listParams);
-            jobStreams.AddRange(response.JobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList());
-
-            while (!string.IsNullOrEmpty(response.NextLink))
+            if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.JobStreams.ListNext(response.NextLink);
-                jobStreams.AddRange(response.JobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId)).ToList());
+                response = this.automationManagementClient.JobStreams.List(automationAccountName, jobId, listParams);
+            }
+            else
+            {
+                response = this.automationManagementClient.JobStreams.ListNext(nextLink);
             }
 
-            return jobStreams;
+            nextLink = response.NextLink;
+            return response.JobStreams.Select(stream => this.CreateJobStreamFromJobStreamModel(stream, automationAccountName, jobId));
         }
 
         public Job GetJob(string automationAccountName, Guid Id)

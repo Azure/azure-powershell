@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
              { 
                  // ByJobId 
                  jobs = new List<Microsoft.Azure.Commands.Automation.Model.Job> { this.AutomationClient.GetJob(this.AutomationAccountName, this.Id) };
-                 this.GenerateCmdletOutput(jobs);
+                 this.WriteObject(jobs, true);
              } 
              else if (this.RunbookName != null) 
              { 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                  do
                  {
                      jobs = this.AutomationClient.ListJobsByRunbookName(this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime, this.Status, ref nextLink);
-                     this.GenerateCmdletOutput(jobs);
+                     this.WriteObject(jobs, true);
 
                  } while (!string.IsNullOrEmpty(nextLink));
              } 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                  do
                  {
                      jobs = this.AutomationClient.ListJobs(this.AutomationAccountName, this.StartTime, this.EndTime, this.Status, ref nextLink);
-                     this.GenerateCmdletOutput(jobs);
+                     this.WriteObject(jobs, true);
 
                  } while (!string.IsNullOrEmpty(nextLink));
              } 

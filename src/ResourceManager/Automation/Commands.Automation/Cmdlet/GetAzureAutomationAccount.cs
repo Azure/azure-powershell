@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAutomationAccountName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the automation account name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAutomationAccountName, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAutomationAccountName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The automation account name.")]
         [Alias("AutomationAccountName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

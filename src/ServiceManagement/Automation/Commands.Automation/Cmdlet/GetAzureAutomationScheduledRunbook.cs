@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -77,13 +78,32 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
-                jobSchedules = this.AutomationClient.ListJobSchedulesByRunbookName(this.AutomationAccountName, this.RunbookName);
-                this.GenerateCmdletOutput(jobSchedules);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    var schedules = this.AutomationClient.ListJobSchedules(this.AutomationAccountName, ref nextLink);
+                    if (schedules != null)
+                    { 
+                        this.GenerateCmdletOutput(schedules.ToList().Where(js => String.Equals(js.RunbookName, this.RunbookName, StringComparison.OrdinalIgnoreCase)));
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByScheduleName)
             {
-                jobSchedules = this.AutomationClient.ListJobSchedulesByScheduleName(this.AutomationAccountName, this.ScheduleName);
-                this.GenerateCmdletOutput(jobSchedules);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    var schedules = this.AutomationClient.ListJobSchedules(this.AutomationAccountName, ref nextLink);
+                    if (schedules != null)
+                    {
+                        this.GenerateCmdletOutput(schedules.ToList().Where(js => String.Equals(js.ScheduleName, this.ScheduleName, StringComparison.OrdinalIgnoreCase)));
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
+
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {

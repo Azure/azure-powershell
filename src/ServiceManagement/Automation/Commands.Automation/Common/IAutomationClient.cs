@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region JobStreams
 
-        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
+        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType, ref string nextLink);
 
         #endregion
 

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string resourceGroupName = "resourceGroup";
             string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListAutomationAccounts(resourceGroupName, ref nextLink)).Returns((string a) => new List<AutomationAccount>());
+            this.mockAutomationClient.Setup(f => f.ListAutomationAccounts(resourceGroupName, ref nextLink)).Returns((string a, string b) => new List<AutomationAccount>());
 
             // Test
             this.cmdlet.ExecuteCmdlet();

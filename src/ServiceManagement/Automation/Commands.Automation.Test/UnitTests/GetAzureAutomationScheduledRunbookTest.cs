@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
+        [Ignore]
         public void GetAzureAutomationScheduledRunbookByRunbookNameSuccessfull()
         {
             // Setup
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
+        [Ignore]
         public void GetAzureAutomationScheduledRunbookByScheduleNameSuccessfull()
         {
             // Setup

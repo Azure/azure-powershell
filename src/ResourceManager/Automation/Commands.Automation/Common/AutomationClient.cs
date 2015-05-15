@@ -77,8 +77,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink)
         {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
-
             AutomationAccountListResponse response;
 
             if (string.IsNullOrEmpty(nextLink))
