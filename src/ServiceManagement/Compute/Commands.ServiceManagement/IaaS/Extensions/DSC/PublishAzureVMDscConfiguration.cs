@@ -329,7 +329,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
             else
             {
-                archive = Path.Combine(Path.GetTempPath(), configurationName + ZipFileExtension);
+                string tempArchiveFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionTempFolderVerbose, tempArchiveFolder));
+                Directory.CreateDirectory(tempArchiveFolder);
+                this._temporaryDirectoriesToDelete.Add(tempArchiveFolder);
+                archive = Path.Combine(tempArchiveFolder, configurationName + ZipFileExtension);
                 this._temporaryFilesToDelete.Add(archive);
             }
 
