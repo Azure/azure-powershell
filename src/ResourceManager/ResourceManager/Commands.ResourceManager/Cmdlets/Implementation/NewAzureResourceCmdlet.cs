@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("Object")]
+        [Alias("Object", "PropertyObject")]
         [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable PropertyObject { get; set; }
+        public PSObject Properties { get; set; }
 
         /// <summary>
         /// Gets or sets the plan object.
@@ -70,6 +70,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
         public SwitchParameter IsFullObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource property object format.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
+        public ResourceObjectFormat OutputObjectFormat { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewAzureResourceCmdlet" /> class.
+        /// </summary>
+        public NewAzureResourceCmdlet()
+        {
+            this.OutputObjectFormat = ResourceObjectFormat.Legacy;
+        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -109,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(result, this.OutputObjectFormat);
                 });
         }
 
@@ -119,22 +133,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResourceBody()
         {
             return this.IsFullObject
-                ? this.PropertyObject.ToDictionary(addValueLayer: false).ToJToken()
+                ? this.Properties.ToResourcePropertiesBody().ToJToken()
                 : this.GetResource().ToJToken();
         }
 
         /// <summary>
         /// Constructs the resource assuming that only the properties were passed in.
         /// </summary>
-        private Resource<Dictionary<string, object>> GetResource()
+        private Resource<JToken> GetResource()
         {
-            return new Resource<Dictionary<string, object>>()
+            return new Resource<JToken>()
             {
                 Location = this.Location,
                 Kind = this.Kind,
                 Plan = this.PlanObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
-                Properties = this.PropertyObject.ToDictionary(addValueLayer: false),
+                Properties = this.Properties.ToResourcePropertiesBody(),
             };
         }
 

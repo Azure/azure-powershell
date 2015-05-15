@@ -66,11 +66,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter UsePatchSemantics { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource property object format.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
+        public ResourceObjectFormat OutputObjectFormat { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetAzureResourceCmdlet" /> class.
+        /// </summary>
+        public SetAzureResourceCmdlet()
+        {
+            this.OutputObjectFormat = ResourceObjectFormat.Legacy;
+        }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
+            {
+                this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
+            }
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
                 this.Force,
@@ -110,7 +128,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(result, this.OutputObjectFormat);
                 });
         }
 

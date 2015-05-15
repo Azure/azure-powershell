@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             if (valueAsPsObject != null)
             {
                 JObject obj = new JObject();
-                if (valueAsPsObject.TypeNames.Any(typeName => typeName.EqualsInsensitively("System.Collections.Hashtable")) && valueAsPsObject.BaseObject is Hashtable)
+                if (valueAsPsObject.BaseObject != null && valueAsPsObject.BaseObject is IDictionary)
                 {
-                    foreach (var dictionaryEntry in ((Hashtable)valueAsPsObject.BaseObject).OfType<DictionaryEntry>())
+                    foreach (var dictionaryEntry in ((IDictionary)valueAsPsObject.BaseObject).OfType<DictionaryEntry>())
                     {
                         obj.Add(dictionaryEntry.Key.ToString(), PsObjectExtensions.ToJToken(dictionaryEntry.Value));
                     }
