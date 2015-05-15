@@ -289,7 +289,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RemoteAppTests\CreateCloudCollection.cs" />
-    <Compile Include="RemoteAppTests\Environmentsetuphelper.cs" />
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />

@@ -43,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.RemoteAppTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoteAppEndToEnd()
         {
+            System.Environment.SetEnvironmentVariable("rdfeNameSpace", "rdst15");
             RunPowerShellTest<string>("TestRemoteAppEndToEnd");
         }
     }
