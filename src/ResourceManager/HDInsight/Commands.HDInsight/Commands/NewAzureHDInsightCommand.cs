@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        public string OSType { get; set; }
+        public OSType OSType { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH user name.",
             ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
