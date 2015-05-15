@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -67,12 +68,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the flavor for a cluster.
         /// </summary>
-        public string ClusterType { get; set; }
+        public HDInsightClusterType ClusterType { get; set; }
 
         public AzureHDInsightConfig()
         {
             this.AdditionalStorageAccounts = new Dictionary<string, string>();
-            this.ClusterType = "Hadoop";
+            this.ClusterType = HDInsightClusterType.Hadoop;
             this.Configurations = new Dictionary<string, Dictionary<string, string>>();
         }
     }
