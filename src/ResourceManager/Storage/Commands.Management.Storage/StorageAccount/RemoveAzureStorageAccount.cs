@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
