@@ -33690,6 +33690,17 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" position="named">
+      <maml:name>DeleteChefConfig</maml:name>
+      <maml:description>
+        <maml:para>DeleteChefConfig Options determines whether Chef configuration files removed when Azure removes the Chef resource extension from the VM. This options is useful during extension update and uninstall process. Default is false</maml:para>
+      </maml:description>
+      <dev:type>
+        <maml:name>Boolean</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>false</dev:defaultValue>
+    </command:parameter>
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
       <maml:name>BootstrapOptions</maml:name>
       <maml:description>
