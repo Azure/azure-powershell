@@ -21,6 +21,22 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
+        [Parameter(
+           Mandatory = true,
+           Position = 0,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName", "AvailabilitySetName")]
+        [Parameter(
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The availability set name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

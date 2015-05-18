@@ -128,7 +128,7 @@ Gets default VM size string
 #>
 function Get-DefaultVMSize
 {
-    param([string] $location = "eastasia")
+    param([string] $location = "westus")
 
     $vmSizes = Get-AzureVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
 
@@ -169,7 +169,7 @@ Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loc = "eastasia", [string] $query = '*Microsoft*Windows*Server')
+    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
 
     $result = (Get-AzureVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
@@ -222,7 +222,7 @@ Gets VMM Images
 #>
 function Get-MarketplaceImage
 {
-    param([string] $location = "eastasia", [string] $pubFilter = '*', [string] $offerFilter = '*')
+    param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
 
     $imgs = Get-AzureVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail | where { $_.PurchasePlan -ne $null };
 
@@ -235,7 +235,7 @@ Gets default VM config object
 #>
 function Get-DefaultVMConfig
 {
-    param([string] $location = "eastasia")
+    param([string] $location = "westus")
 
     # VM Profile & Hardware
     $vmsize = Get-DefaultVMSize $location;

@@ -20,10 +20,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSUsage
     {
+        // Gets or sets the property of 'CurrentValue'
         public int CurrentValue { get; set; }
 
+        // Gets or sets the property of 'Limit'
         public uint Limit { get; set; }
 
+        // Gets or sets the property of 'Name'
         public UsageName Name { get; set; }
 
         [JsonIgnore]
@@ -32,6 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
         }
 
+        // Gets or sets the property of 'Unit'
         public UsageUnit Unit { get; set; }
 
         [JsonIgnore]
@@ -41,4 +45,3 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
     }
 }
-

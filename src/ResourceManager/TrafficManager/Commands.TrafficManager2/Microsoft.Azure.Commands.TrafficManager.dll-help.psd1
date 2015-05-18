@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll'
+NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'
