@@ -333,11 +333,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string RemoveAzureNetworkInterfaceConfig = "Remove-AzureNetworkInterfaceConfig";
         public const string GetAzureNetworkInterfaceConfig = "Get-AzureNetworkInterfaceConfig";
 
-        // Custom script extension
-        public const string SetAzureVMDscExtensionCmdletName = "Set-AzureVMDscExtension";
-        public const string GetAzureVMDscExtensionCmdletName = "Get-AzureVMDscExtension";
-        public const string RemoveAzureVMDscExtensionCmdletName = "Remove-AzureVMDscExtension";
-
         // SqlServer extension
         public const string SetAzureVMSqlServerExtensionCmdletName = "Set-AzureVMSqlServerExtension";
         public const string GetAzureVMSqlServerExtensionCmdletName = "Get-AzureVMSqlServerExtension";
