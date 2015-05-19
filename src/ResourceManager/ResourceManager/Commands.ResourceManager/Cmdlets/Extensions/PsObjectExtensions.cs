@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -69,9 +70,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 JObject obj = new JObject();
                 if (valueAsPsObject.BaseObject != null && valueAsPsObject.BaseObject is IDictionary)
                 {
-                    foreach (var dictionaryEntry in ((IDictionary)valueAsPsObject.BaseObject).OfType<DictionaryEntry>())
+                    var valueAsIDictionary = valueAsPsObject.BaseObject as IDictionary;
+                    var dictionaryEntries = valueAsIDictionary is IDictionary<string, object>
+                        ? valueAsIDictionary.OfType<KeyValuePair<string, object>>().Select(kvp => Tuple.Create(kvp.Key, kvp.Value))
+                        : valueAsIDictionary.OfType<DictionaryEntry>().Select(dictionaryEntry => Tuple.Create(dictionaryEntry.Key.ToString(), dictionaryEntry.Value));
+
+                    dictionaryEntries = dictionaryEntries.Any(dictionaryEntry => dictionaryEntry.Item1.EqualsInsensitively(Constants.MicrosoftAzureResource))
+                        ? dictionaryEntries.Where(dictionaryEntry => !PsObjectExtensions.PropertiesToRemove.ContainsKey(dictionaryEntry.Item1))
+                        : dictionaryEntries;
+
+                    foreach (var dictionaryEntry in dictionaryEntries)
                     {
-                        obj.Add(dictionaryEntry.Key.ToString(), PsObjectExtensions.ToJToken(dictionaryEntry.Value));
+                        obj.Add(dictionaryEntry.Item1, PsObjectExtensions.ToJToken(dictionaryEntry.Item2));
                     }
                 }
                 else

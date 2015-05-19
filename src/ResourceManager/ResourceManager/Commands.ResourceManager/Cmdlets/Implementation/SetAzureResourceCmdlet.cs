@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -69,15 +70,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the resource property object format.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
-        public ResourceObjectFormat OutputObjectFormat { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SetAzureResourceCmdlet" /> class.
-        /// </summary>
-        public SetAzureResourceCmdlet()
-        {
-            this.OutputObjectFormat = ResourceObjectFormat.Legacy;
-        }
+        [ValidateNotNull]
+        public ResourceObjectFormat? OutputObjectFormat { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -85,10 +79,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            this.DetermineOutputObjectFormat();
             if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
             {
                 this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
             }
+
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
                 this.Force,
@@ -128,8 +124,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result, this.OutputObjectFormat);
+                    this.WriteObject(result, this.OutputObjectFormat.Value);
                 });
+        }
+
+        /// <summary>
+        /// Determines the output object format.
+        /// </summary>
+        private void DetermineOutputObjectFormat()
+        {
+            if (this.Properties != null && this.OutputObjectFormat == null && this.Properties.TypeNames.Any(typeName => typeName.EqualsInsensitively(Constants.MicrosoftAzureResource)))
+            {
+                this.OutputObjectFormat = ResourceObjectFormat.New;
+            }
+
+            if (this.OutputObjectFormat == null)
+            {
+                this.OutputObjectFormat = ResourceObjectFormat.Legacy;
+            }
         }
 
         /// <summary>
