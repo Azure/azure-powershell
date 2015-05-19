@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\HDInsight\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\HDInsight\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,12 +35,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\SetAzureHDInsightClusterSizeCommand.cs" />
     <Compile Include="Commands\HDInsightCmdletBase.cs" />
+    <Compile Include="Commands\GetAzureHDInsightCommand.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Commands\NewAzureHDInsightCommand.cs" />
     <Compile Include="Models\AzureHDInsightConfig.cs" />
     <Compile Include="Models\AzureHdInsightManagementClient.cs" />
     <Compile Include="Models\AzureHDInsightMetastore.cs" />
+    <Compile Include="Commands\NewAzureHDInsightCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

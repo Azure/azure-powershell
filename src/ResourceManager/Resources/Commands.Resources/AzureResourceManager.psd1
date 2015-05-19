@@ -94,6 +94,7 @@ NestedModules = @(
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
     '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll'
+	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll'
 )
 
 # Functions to export from this module

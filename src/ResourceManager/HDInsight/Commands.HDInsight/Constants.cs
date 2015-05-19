@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public static class CommandNames
         {
             public const string AzureHDInsightCluster = "AzureHDInsightCluster";
+            public const string AzureHDInsightClusterSize = "AzureHDInsightClusterSize";
         }
 
         public static class ParameterSetNames

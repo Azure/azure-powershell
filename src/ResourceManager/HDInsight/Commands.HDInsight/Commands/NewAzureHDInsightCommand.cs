@@ -30,23 +30,24 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
+
         [Parameter(
             Position = 0,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the datacenter location for the cluster.")]
+        public string Location { get; set; }
+
+        [Parameter(
+            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
-
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the datacenter location for the cluster.")]
-        public string Location { get; set; }
 
         [Parameter(
             Position = 3,
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string ZookeeperNodeSize { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public string ClusterType { get; set; }
+        public HDInsightClusterType ClusterType { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
         public string VirtualNetworkId { get; set; }
@@ -116,28 +117,22 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
         public OSType OSType { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets SSH user name.",
-            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
+        [Parameter(HelpMessage = "Gets or sets SSH user name.")]
         public string SshUserName { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets SSH password.",
-            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
+        [Parameter(HelpMessage = "Gets or sets SSH password.")]
         public string SshPassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.",
-            ParameterSetName = Constants.ParameterSetNames.LinuxOS)]
+        [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
         public string SshPublicKey { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.",
-            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
         public string RdpUsername { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the password for RDP access to the cluster.",
-            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        [Parameter(HelpMessage = "Gets or sets the password for RDP access to the cluster.")]
         public string RdpPassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.",
-            ParameterSetName = Constants.ParameterSetNames.WindowsOS)]
+        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
         public DateTime RdpAccessExpiry { get; set; }
 
         [Parameter(ValueFromPipeline = true,

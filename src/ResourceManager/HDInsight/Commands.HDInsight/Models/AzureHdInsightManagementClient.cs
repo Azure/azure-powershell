@@ -37,5 +37,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             return this.HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
         }
+
+        public ClusterGetResponse GetCluster(string resourceGroupName, string clusterName)
+        {
+            return this.HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
+        }
+
+        public HDInsightLongRunningOperationResponse ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
+        {
+            return this.HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
+        }
     }
 }

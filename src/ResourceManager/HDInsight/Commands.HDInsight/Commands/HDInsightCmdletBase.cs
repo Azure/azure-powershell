@@ -23,13 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
 
         public AzureHdInsightManagementClient HDInsightManagementClient
         {
-            get
-            {
-                if (this._hdInsightManagementClient == null)
-                {
-                    this._hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context);
-                }
-                return this._hdInsightManagementClient;
+            get {
+                return this._hdInsightManagementClient ??
+                       (this._hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
             }
             set { this._hdInsightManagementClient = value; }
         }
