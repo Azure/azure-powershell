@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    using ServiceManagement.Model;
 
     [Cmdlet(VerbsCommon.Set, "AzureCrossConnection"), OutputType(typeof(AzureCrossConnection))]
     public class SetAzureCrossConnectionCommand : ExpressRouteBaseCmdlet

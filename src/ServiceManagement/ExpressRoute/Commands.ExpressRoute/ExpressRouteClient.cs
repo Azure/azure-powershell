@@ -59,13 +59,16 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey, accessType).BgpPeering;
         }
 
-        public AzureBgpPeering NewAzureBGPPeering(string serviceKey, UInt32 peerAsn, string primaryPeerSubnet,
-            string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
+        public AzureBgpPeering NewAzureBGPPeering(string serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
+            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
         {
              var result = Client.BorderGatewayProtocolPeerings.New(serviceKey, accessType, new BorderGatewayProtocolPeeringNewParameters()
             {
+                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
+                CustomerAutonomousSystemNumber = customerAsn,
                 PeerAutonomousSystemNumber = peerAsn,
                 PrimaryPeerSubnet = primaryPeerSubnet,
+                RoutingRegistryName = routingRegistryName,
                 SecondaryPeerSubnet = secondaryPeerSubnet,
                 SharedKey = sharedKey,
                 VirtualLanId = vlanId
@@ -88,13 +91,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         }
 
         public AzureBgpPeering UpdateAzureBGPPeering(string serviceKey, 
-            BgpPeeringAccessType accessType, UInt32 peerAsn, string primaryPeerSubnet,
-            string secondaryPeerSubnet, UInt32 vlanId, string sharedKey)
+            BgpPeeringAccessType accessType, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
+            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, string sharedKey)
         {
             var result = Client.BorderGatewayProtocolPeerings.Update(serviceKey, accessType, new BorderGatewayProtocolPeeringUpdateParameters()
                 {
+                    CustomerAutonomousSystemNumber = customerAsn,
                     PeerAutonomousSystemNumber = peerAsn,
                     PrimaryPeerSubnet = primaryPeerSubnet,
+                    RoutingRegistryName = routingRegistryName,
                     SecondaryPeerSubnet = secondaryPeerSubnet,
                     SharedKey = sharedKey,
                     VirtualLanId = vlanId,
