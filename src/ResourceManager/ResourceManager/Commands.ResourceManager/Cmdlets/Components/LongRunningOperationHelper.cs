@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
@@ -166,6 +165,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 ? null
                 : operationResult.Value
                     .ToObject<Resource<InsensitiveDictionary<JToken>>>(JsonExtensions.JsonObjectTypeSerializer);
+
+            if(resource == null && operationResult.HttpStatusCode == HttpStatusCode.Created)
+            {
+                return this.SuccessfulResult(operationResult);
+            }
 
             if (resource == null)
             {
