@@ -35,14 +35,17 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\GrantAzureHDInsightRdpServicesAccessCommand.cs" />
+    <Compile Include="Commands\GrantAzureHDInsightHttpServicesAccessCommand.cs" />
+    <Compile Include="Commands\RemoveAzureHDInsightClusterCommand.cs" />
     <Compile Include="Commands\SetAzureHDInsightClusterSizeCommand.cs" />
     <Compile Include="Commands\HDInsightCmdletBase.cs" />
-    <Compile Include="Commands\GetAzureHDInsightCommand.cs" />
+    <Compile Include="Commands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Models\AzureHDInsightConfig.cs" />
     <Compile Include="Models\AzureHdInsightManagementClient.cs" />
     <Compile Include="Models\AzureHDInsightMetastore.cs" />
-    <Compile Include="Commands\NewAzureHDInsightCommand.cs" />
+    <Compile Include="Commands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

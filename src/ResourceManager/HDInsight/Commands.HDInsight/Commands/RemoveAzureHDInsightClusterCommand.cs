@@ -13,17 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsCommon.Get,
+        VerbsCommon.Remove,
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
         typeof(ClusterGetResponse))]
-    public class GetAzureHDInsightCommand : HDInsightCmdletBase
+    public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -43,9 +44,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var cluster = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
+            var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
-            this.WriteObject(cluster);
+            this.WriteObject(result, true);
         }
     }
 }

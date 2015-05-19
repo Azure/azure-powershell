@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             public const string AzureHDInsightCluster = "AzureHDInsightCluster";
             public const string AzureHDInsightClusterSize = "AzureHDInsightClusterSize";
+            public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
+            public const string AzureHDInsightRdpServicesAccess = "AzureHDInsightRdpServicesAccess";
         }
 
         public static class ParameterSetNames

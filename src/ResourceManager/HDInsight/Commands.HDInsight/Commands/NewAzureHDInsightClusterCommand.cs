@@ -88,10 +88,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string DefaultStorageContainer { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the login for the cluster's user.")]
-        public string UserName { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the password for the cluster's user.")]
-        public string Password { get; set; }
+        public PSCredential HttpUser { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the version of the HDInsight cluster.")]
         public string Version { get; set; }
@@ -127,10 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SshPublicKey { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public string RdpUsername { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the password for RDP access to the cluster.")]
-        public string RdpPassword { get; set; }
+        public PSCredential RdpUser { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
         public DateTime RdpAccessExpiry { get; set; }
@@ -199,10 +193,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 DefaultStorageAccountKey = this.DefaultStorageAccountKey,
                 ClusterSizeInNodes = this.ClusterSizeInNodes,
                 DefaultStorageContainer = this.DefaultStorageContainer,
-                UserName = this.UserName,
-                Password = this.Password,
-                RdpUsername = this.RdpUsername,
-                RdpPassword = this.RdpPassword,
+                UserName = this.HttpUser.UserName,
+                Password = this.HttpUser.Password.ToString(),
+                RdpUsername = this.RdpUser.UserName,
+                RdpPassword = this.RdpUser.Password.ToString(),
                 RdpAccessExpiry = this.RdpAccessExpiry,
                 Version = this.Version,
                 HeadNodeSize = this.HeadNodeSize,
