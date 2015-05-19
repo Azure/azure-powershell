@@ -34,7 +34,6 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.BGInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.CustomScript;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.Dsc;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.VMAccess;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.SqlServer;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.ILB;
@@ -2133,47 +2132,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMCustomScriptExtensionCmdletInfo(vm));
         }
         #endregion AzureVMCustomScriptExtensionCmdlets
-
-        #region AzureVMDscExtensionCmdlets
-
-        internal struct SetAzureVMDscExtensionArguments
-        {
-            public string Version;
-            public SM.IPersistentVM VM;
-            public string ConfigurationArchive;
-            public AzureStorageContext StorageContext;
-            public string ContainerName;
-            public string ConfigurationName;
-            public Hashtable ConfigurationArgument;
-            public string ConfigurationDataPath;
-        }
-
-
-        internal SM.PersistentVM SetAzureVMDscExtension(SetAzureVMDscExtensionArguments args)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(
-                new SetAzureVMDscExtensionCmdletInfo(
-                    args.Version,
-                    args.VM,
-                    args.ConfigurationArchive,
-                    args.StorageContext,
-                    args.ContainerName,
-                    args.ConfigurationName,
-                    args.ConfigurationArgument,
-                    args.ConfigurationDataPath));
-        }
-
-        internal VirtualMachineDscExtensionContext GetAzureVMDscExtension(SM.IPersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<VirtualMachineDscExtensionContext>(new GetAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        internal SM.PersistentVM RemoveAzureVMDscExtension(SM.PersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        #endregion AzureVMDscExtensionCmdlets
 
         #region AzureVMSqlServerExtensionCmdlets
 

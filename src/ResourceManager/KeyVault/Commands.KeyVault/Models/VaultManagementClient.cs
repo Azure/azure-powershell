@@ -154,6 +154,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         {
                             TenantId = a.TenantId,
                             ObjectId = a.ObjectId,
+                            ApplicationId = a.ApplicationId,
                             PermissionsToKeys = a.PermissionsToKeys.ToArray(),
                             PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
                         }).ToList();
