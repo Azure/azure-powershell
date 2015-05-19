@@ -145,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ComputeTestController.cs" />
-    <Compile Include="ScenarioTests\StorageAccountTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
     <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
@@ -196,9 +195,6 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="ScenarioTests\StorageAccountTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -218,30 +214,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AvailabilitySetTests\TestAvailabilitySet.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestGetAzureStorageAccount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestGetAzureStorageAccountKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestNewAzureStorageAccount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestNewAzureStorageAccountKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestPipingGetAccountToGetKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestRemoveAzureStorageAccount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestSetAzureStorageAccount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.StorageAccountTests\TestStorageAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\TestVirtualMachineAccessExtension.json">
