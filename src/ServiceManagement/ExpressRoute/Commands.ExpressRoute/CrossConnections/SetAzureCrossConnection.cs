@@ -36,11 +36,17 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Provisioning Error Message")]
         public string ProvisioningError { get; set; }
 
+		[Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var crossConnection = ExpressRouteClient.SetAzureCrossConnection(ServiceKey,
                 new CrossConnectionUpdateParameters() {Operation = Operation, ProvisioningError = ProvisioningError});
-            WriteObject(crossConnection);
+            if(PassThru.IsPresent)
+			{
+				WriteObject(crossConnection);
+			}
         }
     }
 }
