@@ -159,7 +159,6 @@
     <Compile Include="Collection\GetAzureRemoteAppCollectionUsageSummary.cs" />
     <Compile Include="Collection\GetAzureRemoteAppCollection.cs" />
     <Compile Include="Collection\GetAzureRemoteAppLocation.cs" />
-    <Compile Include="Collection\Model\Collection.cs" />
     <Compile Include="Collection\Model\Collections.cs" />
     <Compile Include="Collection\NewAzureRemoteAppCollection.cs" />
     <Compile Include="Collection\RemoveAzureRemoteAppCollection.cs" />
