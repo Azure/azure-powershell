@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Compute</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Compute\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -61,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -165,7 +165,6 @@
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Models\HashTableExtensions.cs" />
     <Compile Include="Models\PSOperation.cs" />
-    <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\RemoveAzureVMAccessExtension.cs" />
     <Compile Include="Extension\VMAccess\SetAzureVMAccessExtension.cs" />
@@ -188,15 +187,7 @@
     <Compile Include="Models\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="StorageAccount\StorageManagementClient.cs" />
     <Compile Include="Models\SourceImageReferenceExtension.cs" />
-    <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
-    <Compile Include="StorageAccount\NewAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\NewAzureStorageAccountKey.cs" />
-    <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\SetAzureStorageAccount.cs" />
-    <Compile Include="StorageAccount\StorageAccountBaseCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

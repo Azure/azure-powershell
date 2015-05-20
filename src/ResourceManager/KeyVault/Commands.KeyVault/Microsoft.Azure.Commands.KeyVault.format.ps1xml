@@ -219,6 +219,10 @@
                 <PropertyName>ObjectId</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Application ID</Label>
+                <PropertyName>ApplicationIdDisplayName</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Display Name</Label>
                 <PropertyName>DisplayName</PropertyName>
               </ListItem>

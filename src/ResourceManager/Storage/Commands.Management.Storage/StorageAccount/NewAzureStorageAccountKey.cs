@@ -12,56 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
-    public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
+    public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
+        private const string Key1 = "Key1";
+
+        private const string Key2 = "Key2";
+
+
         [Parameter(
             Position = 0,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account Key Name.")]
+        [ValidateSet(Key1, Key2, IgnoreCase = true)]
+        public string KeyName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var listResponse = this.StorageClient.StorageAccounts.List();
+            KeyName keyName = ParseKeyName(this.KeyName);
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
-            }
-            else if (string.IsNullOrEmpty(this.Name))
-            {
-                var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            var keys = this.StorageClient.StorageAccounts.RegenerateKey(
+                this.ResourceGroupName,
+                this.Name,
+                keyName);
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
-            }
-            else
-            {
-                var getResponse = this.StorageClient.StorageAccounts.GetProperties(
-                    this.ResourceGroupName,
-                    this.Name);
+            WriteObject(keys.StorageAccountKeys);
+        }
 
-                WriteStorageAccount(getResponse.StorageAccount);
+        private static KeyName ParseKeyName(string keyName)
+        {
+            if (Key1.Equals(keyName, StringComparison.OrdinalIgnoreCase))
+            {
+                return Microsoft.Azure.Management.Storage.Models.KeyName.Key1;
             }
+            if (Key2.Equals(keyName, StringComparison.OrdinalIgnoreCase))
+            {
+                return Microsoft.Azure.Management.Storage.Models.KeyName.Key2;
+            }
+            throw new ArgumentOutOfRangeException("keyName");
         }
     }
 }
