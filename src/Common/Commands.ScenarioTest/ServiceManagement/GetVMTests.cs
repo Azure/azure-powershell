@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestGetAzureVM()
         {
