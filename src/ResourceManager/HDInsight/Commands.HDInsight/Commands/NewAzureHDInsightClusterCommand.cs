@@ -67,24 +67,19 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
         public string DefaultStorageAccountKey { get; set; }
 
-        [Parameter(
-            HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
+        [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore { get; set; }
 
-        [Parameter(
-            HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
+        [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
         public AzureHDInsightMetastore HiveMetastore { get; set; }
 
-        [Parameter(
-            HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
+        [Parameter(HelpMessage = "Gets additional Azure Storage Account that you want to enable access to.")]
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
 
-        [Parameter(
-            HelpMessage = "Gets the configurations of this HDInsight cluster.")]
+        [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
-        [Parameter(
-            HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
         public string DefaultStorageContainer { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the login for the cluster's user.")]
