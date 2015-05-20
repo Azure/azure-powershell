@@ -1,0 +1,66 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/onesdk6800/providers/Microsoft.KeyVault/vaults/pshtestvault2489?api-version=2014-12-19-PREVIEW",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL29uZXNkazY4MDAvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0MjQ4OT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'onesdk6800' could not be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "102"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "41d46e40-36f3-494e-bef7-8ea028095392"
+        ],
+        "x-ms-correlation-request-id": [
+          "41d46e40-36f3-494e-bef7-8ea028095392"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150515T233912Z:41d46e40-36f3-494e-bef7-8ea028095392"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 May 2015 23:39:12 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-GetVaultFromUnknownResourceGroupFails": [
+      "onesdk6800"
+    ]
+  },
+  "Variables": {
+    "ResourceGroupName": "pshtestrg2690",
+    "Location": "northcentralus",
+    "PreCreatedVault": "pshtestvault2489",
+    "SubscriptionId": "86193581-bb76-44a9-9110-8cf6dbcbfea5",
+    "TenantId": "71ecaf6c-7521-4953-ba5f-e55c260af004",
+    "Domain": "yuhuizhotmail.onmicrosoft.com",
+    "User": "kvtest@yuhuizhotmail.onmicrosoft.com"
+  }
+}

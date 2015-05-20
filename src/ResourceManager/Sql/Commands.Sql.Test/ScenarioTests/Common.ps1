@@ -39,12 +39,33 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets the values of the parameters used in the s
+#>
+function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+			  }
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-TestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
+	Create-TestEnvironmentWithParams ($params)
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests
+#>
+function Create-TestEnvironmentWithParams ($params)
+{
+	Azure\New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
 	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
 }
 
@@ -61,6 +82,90 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 
 <#
 .SYNOPSIS
+Gets valid resource group name
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid server name
+#>
+function Get-ServerName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid database name
+#>
+function Get-DatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid elastic pool name
+#>
+function Get-ElasticPoolName
+{
+    return getAssetName
+}
+
+<#
+	.SYNOPSIS
+	Creates a resource group for tests
+#>
+function Create-ResourceGroupForTest ()
+{
+	$location = "Japan East"
+	$rgName = Get-ResourceGroupName
+	
+	$rg = New-AzureResourceGroup -Name $rgName -Location $location
+
+	return $rg
+}
+
+
+<#
+	.SYNOPSIS 
+	removes a resource group that was used for testing
+	#>
+function Remove-ResourceGroupForTest ($rg)
+{
+	Remove-AzureResourceGroup -Name $rg.ResourceGroupName -Force
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql server CRUD tests
+#>
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
+{
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	
+	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdminCredentials $credentials
+	return $server
+}
+
+<#
+	.SYNOPSIS
+	Remove a server that is no longer needed for tests
+#>
+function Remove-ServerForTest ($server)
+{
+	$server | Remove-AzureSqlServer -Force
+}
+
+<#
+.SYNOPSIS
 Removes the test environment that was needed to perform the Sql auditing tests
 #>
 function Remove-TestEnvironment ($testSuffix)
@@ -68,7 +173,7 @@ function Remove-TestEnvironment ($testSuffix)
 	try
 	{
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
+	Azure\Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
 	}
 	catch
 	{

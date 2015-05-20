@@ -13,81 +13,83 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.ObjectModel;
-using Client = Microsoft.Azure.Commands.KeyVault.Client;
+using System.Collections;
+using System.Collections.Generic;
+using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
+    /// <summary>
+    /// Key attributes from PSH perspective
+    /// </summary>
     public class KeyAttributes
     {
         public KeyAttributes()
-        { }
+        { }        
 
-        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, string[] keyOps)
+        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
+            string[] keyOps, Hashtable tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
             this.NotBefore = notBefore;
             this.KeyType = keyType;
             this.KeyOps = keyOps;
+            this.Tags = tags;
         }
 
-        internal KeyAttributes(bool? enabled, int? expires, int? notBefore, string keyType = null, string[] keyOps = null) :
-            this(enabled, FromUnixTime(expires), FromUnixTime(notBefore), keyType, keyOps)
-        { }
-
+        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
+            string[] keyOps, DateTime? created, DateTime? updated, Dictionary<string, string> tags)
+        {
+            this.Enabled = enabled;
+            this.Expires = expires;
+            this.NotBefore = notBefore;
+            this.KeyType = keyType;
+            this.KeyOps = keyOps;
+            this.Created = created;
+            this.Updated = updated;
+            this.Tags = (tags == null) ? null : tags.ConvertToHashtable();     
+        }
+     
         public bool? Enabled { get; set; }
 
         public DateTime? Expires { get; set; }
 
         public DateTime? NotBefore { get; set; }
+        
+        public string[] KeyOps { get; set; }
 
         public string KeyType { get; private set; }
 
-        public string[] KeyOps { get; set; }
+        public DateTime? Created { get; private set; }
 
-        public static explicit operator Client.KeyAttributes(KeyAttributes attr)
+        public DateTime? Updated { get; private set; }
+
+        public Hashtable Tags { get; set; }
+        public string TagsTable
         {
-            return new Client.KeyAttributes()
+            get
+            {
+                return (Tags == null) ? null : Tags.ConvertToTagsTable();
+            }
+        }
+
+        public Dictionary<string, string> TagsDirectionary
+        {
+            get
+            {
+                return (Tags == null) ? null : Tags.ConvertToDictionary();
+            }
+        }
+
+        public static explicit operator Microsoft.Azure.KeyVault.KeyAttributes(KeyAttributes attr)
+        {
+            return new Microsoft.Azure.KeyVault.KeyAttributes()
             {
                 Enabled = attr.Enabled,
-                NotBefore = attr.NotBeforeUnixTime,
-                Expires = attr.ExpiresUnixTime
+                NotBefore = attr.NotBefore,
+                Expires = attr.Expires
             };
-        }
-
-        internal int? ExpiresUnixTime
-        {
-            get
-            {
-                return ToUnixTime(this.Expires);
-            }
-        }
-
-        internal int? NotBeforeUnixTime
-        {
-            get
-            {
-                return ToUnixTime(this.NotBefore);
-            }
-        }
-
-        private static int? ToUnixTime(DateTime? utcTime)
-        {
-            if (!utcTime.HasValue)
-            {
-                return null;
-            }
-            return Client.UnixEpoch.ToUnixTime(utcTime.Value);
-        }
-
-        private static DateTime? FromUnixTime(int? utcTime)
-        {
-            if (!utcTime.HasValue)
-            {
-                return null;
-            }
-            return Client.UnixEpoch.FromUnixTime(utcTime.Value);
-        }
+        }       
     }
 }

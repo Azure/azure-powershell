@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
     public class MoveResourceTest
     {
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {

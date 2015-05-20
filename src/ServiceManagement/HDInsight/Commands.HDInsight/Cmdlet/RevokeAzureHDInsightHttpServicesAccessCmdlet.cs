@@ -80,6 +80,15 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The Endpoint to use when connecting to Azure.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
         public Uri Endpoint

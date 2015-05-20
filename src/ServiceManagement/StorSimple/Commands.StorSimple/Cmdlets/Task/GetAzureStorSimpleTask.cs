@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleTask : StorSimpleCmdletBase
     {
         [Alias("TaskId")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageTaskId)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.TaskId)]
         [ValidateNotNullOrEmpty]
         public string InstanceId { get; set; }
 

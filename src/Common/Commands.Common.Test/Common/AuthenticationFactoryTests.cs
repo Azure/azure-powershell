@@ -19,12 +19,14 @@ using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class AuthenticationFactoryTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifySubscriptionTokenCacheRemove()
         {
             var authFactory = new AuthenticationFactory

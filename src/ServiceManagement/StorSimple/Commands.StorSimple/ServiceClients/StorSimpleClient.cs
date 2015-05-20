@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         {
             // Temp code to be able to test internal env.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };//IgnoreCertificateErrorHandler;//delegate { return true; };
-
+            
             this.Profile = azureProfile;
 
             this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
@@ -68,8 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                 AzureSession.ClientFactory.CreateCustomClient<StorSimpleManagementClient>(
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
-                    StorSimpleContext.ResourceProviderNameSpace, StorSimpleContext.StampId,
-                    this.cloudServicesClient.Credentials,
+                    StorSimpleContext.ResourceProviderNameSpace, this.cloudServicesClient.Credentials,
                     Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             
             if (storSimpleClient == null)

@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RemoteApp.Test
+namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
-    using Microsoft.Azure.Management.RemoteApp.Cmdlets;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Collections.Generic;
     using Xunit;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         string ClientUrl = "https://remoteapp.contoso.com/feed";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetWorkspace()
         {
             List<Workspace> workspace = null;
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetWorkspace()
         {
             List<TrackingResult> trackingIds = null;

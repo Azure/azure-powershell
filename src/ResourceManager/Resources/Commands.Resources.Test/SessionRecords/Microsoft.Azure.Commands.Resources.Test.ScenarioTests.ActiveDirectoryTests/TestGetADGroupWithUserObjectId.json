@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycz9hcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"userPrincipalName\": \"aduser8015@rbactest.onmicrosoft.com\",\r\n  \"accountEnabled\": true,\r\n  \"displayName\": \"aduser8015\",\r\n  \"mailNickname\": \"aduser8015test\",\r\n  \"passwordProfile\": {\r\n    \"password\": \"adpass87500#$\",\r\n    \"forceChangePasswordNextLogin\": false\r\n  }\r\n}",
       "RequestHeaders": {
@@ -66,7 +65,6 @@
     },
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups/55efbd63-5997-409e-9945-1cb0a438c1eb?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC9ncm91cHMvNTVlZmJkNjMtNTk5Ny00MDllLTk5NDUtMWNiMGE0MzhjMWViP2FwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -118,7 +116,6 @@
     },
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/55efbd63-5997-409e-9945-1cb0a438c1eb?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycy81NWVmYmQ2My01OTk3LTQwOWUtOTk0NS0xY2IwYTQzOGMxZWI/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

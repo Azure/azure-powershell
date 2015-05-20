@@ -44,16 +44,19 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Calls the data masking removal API with the rule that this cmdlet operated on
         /// </summary>
         /// <param name="rules">A list consisting of a single rule - the rule that this cmdlet operated on</param>
-        protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (!Force.IsPresent && !ShouldProcess(
                 string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleDescription, RuleId, DatabaseName),
                 string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleWarning, RuleId, DatabaseName),
                 Resources.ShouldProcessCaption))
             {
-                return ;
+                return null;
             }
+
             ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
+
+            return null;
         }
 
         /// <summary>
