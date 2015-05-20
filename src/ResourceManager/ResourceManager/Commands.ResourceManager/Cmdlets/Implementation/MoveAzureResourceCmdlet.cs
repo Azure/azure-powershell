@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
 
@@ -46,17 +47,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the id of the destination subscription.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The Id of the subscription to move the resources into.")]
         [ValidateNotNullOrEmpty]
         [Alias("Id", "SubscriptionId")]
-        public Guid DestinationSubscriptionId { get; set; }
+        public Guid? DestinationSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value that indicates if the operation should wait for completion before returning the result. If set, the cmdlet will return as soon as the request is accepted.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not wait for operation to complete.")]
+        public SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// Gets or sets the ids of the resources to move.
@@ -98,9 +105,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            this.DestinationSubscriptionId = this.Profile.Context.Subscription.Id;
+            this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? this.Profile.Context.Subscription.Id;
 
-            var resourceGroup = ResourceIdUtility.GetResourceId(
+            var sourceResourceGroups = resourceIdsToUse
+                .Select(resourceId => ResourceIdUtility.GetResourceGroupId(resourceId))
+                .Where(resourceGroupId => !string.IsNullOrWhiteSpace(resourceGroupId))
+                .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
+
+            var sourceResourceGroup = sourceResourceGroups.SingleOrDefault();
+
+            if (sourceResourceGroup == null)
+            {
+                throw new InvalidOperationException(
+                    string.Format("The resources being moved must all reside in the same resource group. The resources: {0}", resourceIdsToUse.ConcatStrings(", ")));
+            }
+
+            var destinationResourceGroup = ResourceIdUtility.GetResourceId(
                 subscriptionId: this.DestinationSubscriptionId,
                 resourceGroupName: this.DestinationResourceGroupName,
                 resourceName: null,
@@ -110,10 +130,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.Force,
                 string.Format(
                     "Are you sure you want to move these resources to the resource group '{0}' the resources: {1}",
-                    resourceGroup,
+                    destinationResourceGroup,
                     Environment.NewLine.AsArray().Concat(resourceIdsToUse).ConcatStrings(Environment.NewLine)),
                 "Moving the resources.",
-                resourceGroup,
+                destinationResourceGroup,
                 () =>
                 {
                     var apiVersion = this
@@ -125,53 +145,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var parameters = new ResourceBatchMoveParameters
                     {
                         Resources = resourceIdsToUse,
-                        TargetResourceGroup = resourceGroup,
+                        TargetResourceGroup = destinationResourceGroup,
                     };
 
                     var operationResult = this.GetResourcesClient()
                         .InvokeActionOnResource<JObject>(
-                            resourceId: resourceGroup,
-                            action: Constants.Move,
+                            resourceId: sourceResourceGroup,
+                            action: Constants.MoveResources,
                             apiVersion: apiVersion,
                             parameters: parameters.ToJToken(),
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
 
-                    var managementUri = this.GetResourcesClient()
+                    if(!this.NoWait)
+                    {
+                        var managementUri = this.GetResourcesClient()
                         .GetResourceManagementRequestUri(
-                            resourceId: resourceGroup,
+                            resourceId: destinationResourceGroup,
                             apiVersion: apiVersion,
-                            action: Constants.Move);
+                            action: Constants.MoveResources);
 
-                    var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                        var activity = string.Format("POST {0}", managementUri.PathAndQuery);
 
-                    var result = this
-                        .GetLongRunningOperationTracker(
-                            activityName: activity,
-                            isResourceCreateOrUpdate: false)
-                        .WaitOnOperation(operationResult: operationResult);
+                        var result = this
+                            .GetLongRunningOperationTracker(
+                                activityName: activity,
+                                isResourceCreateOrUpdate: false)
+                            .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                        this.WriteObject(result, ResourceObjectFormat.New);
+                    }
+                    else
+                    {
+                        this.WriteObject(operationResult);
+                    }
                 });
-        }
-
-        /// <summary>
-        /// Process all resource ids in the pipeline.
-        /// </summary>
-        protected override void EndProcessing()
-        {
-            base.ProcessRecord();
-        }
-
-        /// <summary>
-        /// Caches the current resource id to process them in batch
-        /// </summary>
-        protected override void ProcessRecord()
-        {
-            foreach (var resourceId in this.ResourceId)
-            {
-                this.resourceIds.Add(resourceId);
-            }
         }
     }
 }

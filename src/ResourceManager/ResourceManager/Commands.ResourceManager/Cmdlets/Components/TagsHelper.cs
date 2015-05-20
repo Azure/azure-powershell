@@ -51,15 +51,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a tags hash table from a tags dictionary.
         /// </summary>
         /// <param name="tags">The tags dictionary.</param>
-        internal static Hashtable[] GetTagsHashtables(InsensitiveDictionary<string> tags)
+        internal static List<Hashtable> GetTagsHashtables(InsensitiveDictionary<string> tags)
         {
             return tags == null
                 ? null
-                : tags.SelectArray(kvp => new Hashtable
-                {
-                    {"Name", kvp.Key},
-                    {"Value", kvp.Value},
-                });
+                : tags.Select(kvp => new Hashtable { { "Name", kvp.Key }, { "Value", kvp.Value } }).ToList();
         }
     }
 }

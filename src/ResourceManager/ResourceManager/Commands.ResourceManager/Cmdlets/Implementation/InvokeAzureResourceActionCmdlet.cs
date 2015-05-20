@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(result, ResourceObjectFormat.New);
                 });
         }
 

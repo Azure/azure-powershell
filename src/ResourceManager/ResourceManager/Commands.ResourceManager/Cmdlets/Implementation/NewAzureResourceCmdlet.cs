@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -46,10 +47,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("Object")]
+        [Alias("Object", "PropertyObject")]
         [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable PropertyObject { get; set; }
+        public PSObject Properties { get; set; }
 
         /// <summary>
         /// Gets or sets the plan object.
@@ -72,14 +73,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter IsFullObject { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource property object format.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
+        [ValidateNotNull]
+        public ResourceObjectFormat? OutputObjectFormat { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewAzureResourceCmdlet" /> class.
+        /// </summary>
+        public NewAzureResourceCmdlet()
+        {
+            this.OutputObjectFormat = ResourceObjectFormat.Legacy;
+        }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            this.DetermineOutputObjectFormat();
+            if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
+            {
+                this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
+            }
 
             var resourceId = this.GetResourceId();
-
             this.ConfirmAction(
                 this.Force,
                 "Are you sure you want to create the following resource: "+ resourceId,
@@ -109,8 +129,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(result, this.OutputObjectFormat.Value);
                 });
+        }
+
+        /// <summary>
+        /// Determines the output object format.
+        /// </summary>
+        private void DetermineOutputObjectFormat()
+        {
+            if (this.Properties != null && this.OutputObjectFormat == null && this.Properties.TypeNames.Any(typeName => typeName.EqualsInsensitively(Constants.MicrosoftAzureResource)))
+            {
+                this.OutputObjectFormat = ResourceObjectFormat.New;
+            }
+
+            if (this.OutputObjectFormat == null)
+            {
+                this.OutputObjectFormat = ResourceObjectFormat.Legacy;
+            }
         }
 
         /// <summary>
@@ -119,22 +155,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResourceBody()
         {
             return this.IsFullObject
-                ? this.PropertyObject.ToDictionary(addValueLayer: false).ToJToken()
+                ? this.Properties.ToResourcePropertiesBody().ToJToken()
                 : this.GetResource().ToJToken();
         }
 
         /// <summary>
         /// Constructs the resource assuming that only the properties were passed in.
         /// </summary>
-        private Resource<Dictionary<string, object>> GetResource()
+        private Resource<JToken> GetResource()
         {
-            return new Resource<Dictionary<string, object>>()
+            return new Resource<JToken>()
             {
                 Location = this.Location,
                 Kind = this.Kind,
                 Plan = this.PlanObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
-                Properties = this.PropertyObject.ToDictionary(addValueLayer: false),
+                Properties = this.Properties.ToResourcePropertiesBody(),
             };
         }
 
