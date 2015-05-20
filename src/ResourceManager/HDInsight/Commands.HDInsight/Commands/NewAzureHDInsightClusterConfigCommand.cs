@@ -26,81 +26,75 @@ namespace Microsoft.Azure.Commands.HDInsight
         typeof(AzureHDInsightConfig))]
     public class NewAzureHDInsightClusterConfigCommand : HDInsightCmdletBase
     {
-        private readonly AzureHDInsightConfig config = new AzureHDInsightConfig();
+        private readonly AzureHDInsightConfig _config;
 
         #region Input Parameter Definitions
 
         [Parameter(HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
         public string DefaultStorageAccountName {
-            get { return this.config.DefaultStorageAccountName; }
-            set { this.config.DefaultStorageAccountName = value; }
+            get { return this._config.DefaultStorageAccountName; }
+            set { this._config.DefaultStorageAccountName = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
         public string DefaultStorageAccountKey
         {
-            get { return this.config.DefaultStorageAccountKey; }
-            set { this.config.DefaultStorageAccountKey = value; }
+            get { return this._config.DefaultStorageAccountKey; }
+            set { this._config.DefaultStorageAccountKey = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore
         {
-            get { return this.config.OozieMetastore; }
-            set { this.config.OozieMetastore = value; }
+            get { return this._config.OozieMetastore; }
+            set { this._config.OozieMetastore = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Hive.")]
         public AzureHDInsightMetastore HiveMetastore
         {
-            get { return this.config.HiveMetastore; }
-            set { this.config.HiveMetastore = value; }
+            get { return this._config.HiveMetastore; }
+            set { this._config.HiveMetastore = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Head Node.")]
         public string HeadNodeSize
         {
-            get { return this.config.HeadNodeSize; }
-            set { this.config.HeadNodeSize = value; }
+            get { return this._config.HeadNodeSize; }
+            set { this._config.HeadNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Data Node.")]
         public string DataNodeSize
         {
-            get { return this.config.DataNodeSize; }
-            set { this.config.DataNodeSize = value; }
+            get { return this._config.DataNodeSize; }
+            set { this._config.DataNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
         public string ZookeeperNodeSize
         {
-            get { return this.config.ZookeeperNodeSize; }
-            set { this.config.ZookeeperNodeSize = value; }
+            get { return this._config.ZookeeperNodeSize; }
+            set { this._config.ZookeeperNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
         public HDInsightClusterType ClusterType
         {
-            get { return this.config.ClusterType; }
-            set { this.config.ClusterType = value; }
+            get { return this._config.ClusterType; }
+            set { this._config.ClusterType = value; }
         }
 
         #endregion
 
+        public NewAzureHDInsightClusterConfigCommand()
+        {
+            _config = new AzureHDInsightConfig();
+        }
+
         public override void ExecuteCmdlet()
         {
-            var result = new AzureHDInsightConfig
-            {
-                ClusterType = this.ClusterType,
-                DefaultStorageAccountName = this.DefaultStorageAccountName,
-                DefaultStorageAccountKey = this.DefaultStorageAccountKey,
-                DataNodeSize = this.DataNodeSize,
-                HeadNodeSize = this.HeadNodeSize,
-                ZookeeperNodeSize = this.ZookeeperNodeSize,
-                HiveMetastore = this.HiveMetastore,
-                OozieMetastore = this.OozieMetastore
-            };
-            this.WriteObject(result);
+            this.WriteObject(_config);
         }
     }
 }

@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class NewAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-
-
+        
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -78,6 +77,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
+
+        [Parameter(HelpMessage = "Gets config actions for the cluster.")]
+        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
 
         [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
         public string DefaultStorageContainer { get; set; }

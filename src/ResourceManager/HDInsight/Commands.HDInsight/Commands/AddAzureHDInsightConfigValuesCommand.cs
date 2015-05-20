@@ -142,6 +142,6 @@ namespace Microsoft.Azure.Commands.HDInsight
                 config.Add(conf.Key, conf.Value);
             }
             _configurations[configKey] = config;
-        } 
+        }
     }
 }

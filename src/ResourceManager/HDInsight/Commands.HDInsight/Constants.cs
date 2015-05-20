@@ -23,6 +23,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
             public const string AzureHDInsightRdpServicesAccess = "AzureHDInsightRdpServicesAccess";
             public const string AzureHDInsightConfigValues = "AzureHDInsightConfigValues";
+            public const string AzureHDInsightMetastore = "AzureHDInsightMetastore";
+            public const string AzureHDInsightScriptAction = "AzureHDInsightScriptAction";
+            public const string AzureHDInsightStorage = "AzureHDInsightStorage";
+            public const string AzureHDInsightProperties = "AzureHDInsightProperties";
         }
 
         public static class ParameterSetNames

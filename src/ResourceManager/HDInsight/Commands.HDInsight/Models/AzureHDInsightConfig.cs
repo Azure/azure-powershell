@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
         /// <summary>
+        /// Gets config actions for the cluster.
+        /// </summary>
+        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
+
+        /// <summary>
         /// Gets or sets the StorageName for the default Azure Storage Account.
         /// </summary>
         public string DefaultStorageAccountName { get; set; }
@@ -75,6 +80,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             this.AdditionalStorageAccounts = new Dictionary<string, string>();
             this.ClusterType = HDInsightClusterType.Hadoop;
             this.Configurations = new Dictionary<string, Dictionary<string, string>>();
+            this.ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
         }
     }
 }
