@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -22,18 +23,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.Get,
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(ClusterGetResponse))]
+        typeof(List<ClusterGetResponse>))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 

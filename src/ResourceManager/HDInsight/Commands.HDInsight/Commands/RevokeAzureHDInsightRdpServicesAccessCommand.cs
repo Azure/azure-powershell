@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -20,11 +19,11 @@ using Microsoft.Azure.Management.HDInsight.Models;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsSecurity.Grant,
+        VerbsSecurity.Revoke,
         Constants.CommandNames.AzureHDInsightRdpServicesAccess),
     OutputType(
         typeof(void))]
-    public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
+    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -40,16 +39,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
-        [Parameter(Position = 2,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public PSCredential RdpUser { get; set; }
-
-        [Parameter(Position = 3,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -60,12 +49,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     WindowsOperatingSystemProfile = new WindowsOperatingSystemProfile
                     {
-                        RdpSettings = new RdpSettings
-                        {
-                            UserName = this.RdpUser.UserName,
-                            Password = this.RdpUser.Password.ToString(),
-                            ExpiryDate = this.RdpAccessExpiry
-                        }
+                        RdpSettings = null
                     }
                 }
             };

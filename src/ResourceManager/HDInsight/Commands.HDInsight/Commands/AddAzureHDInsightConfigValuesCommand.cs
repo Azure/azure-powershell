@@ -115,6 +115,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             AddConfigToConfigurations(this.MapRed, ConfigurationKey.MapRedSite);
             AddConfigToConfigurations(this.Tez, ConfigurationKey.TezSite);
             AddConfigToConfigurations(this.Hdfs, ConfigurationKey.HdfsSite);
+
+            WriteObject(_configurations);
         }
 
         private void AddConfigToConfigurations(Dictionary<string, string> userConfigs, string configKey)

@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\AddAzureHDInsightConfigValuesCommand.cs" />
+    <Compile Include="Commands\RevokeAzureHDInsightRdpServicesAccessCommand.cs" />
+    <Compile Include="Commands\RevokeAzureHDInsightHttpServicesAccessCommand.cs" />
     <Compile Include="Commands\GrantAzureHDInsightRdpServicesAccessCommand.cs" />
     <Compile Include="Commands\GrantAzureHDInsightHttpServicesAccessCommand.cs" />
     <Compile Include="Commands\NewAzureHDInsightClusterConfigCommand.cs" />

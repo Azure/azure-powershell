@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return this.HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
         }
 
-        public HDInsightLongRunningOperationResponse EnableHTTP(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
+        public HDInsightLongRunningOperationResponse ConfigureHttp(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
         {
             return this.HdInsightManagementClient.Clusters.ConfigureHttpSettings(resourceGroupName, clusterName, httpSettings);
         }
 
-        public HDInsightLongRunningOperationResponse EnableRDP(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
+        public HDInsightLongRunningOperationResponse ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
         {
             return this.HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
         }

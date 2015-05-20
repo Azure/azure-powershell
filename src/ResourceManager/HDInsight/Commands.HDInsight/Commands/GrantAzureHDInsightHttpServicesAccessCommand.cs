@@ -22,26 +22,25 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsSecurity.Grant,
         Constants.CommandNames.AzureHDInsightHttpServicesAccess),
     OutputType(
-        typeof(ClusterGetResponse))]
+        typeof(void))]
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
+            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
         [Parameter(Position = 2,
-            HelpMessage = "Whether or not HTTP is enabled.")]
-        public bool Enable { get; set; }
-
-        [Parameter(Position = 3,
+            Mandatory = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpUser { get; set; }
 
@@ -51,12 +50,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             var httpParams = new HttpSettingsParameters
             {
-                HttpUserEnabled = this.Enable,
+                HttpUserEnabled = true,
                 HttpUsername = this.HttpUser.UserName,
                 HttpPassword = this.HttpUser.Password.ToString()
             };
             
-            var result = HDInsightManagementClient.EnableHTTP(ResourceGroupName, ClusterName, httpParams);
+            HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
         }
     }
 }
