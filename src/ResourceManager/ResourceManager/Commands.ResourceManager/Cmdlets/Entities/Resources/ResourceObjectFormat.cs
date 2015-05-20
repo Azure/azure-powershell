@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.CustomScript
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    public class RemoveAzureVMDscExtensionCmdletInfo : CmdletsInfo
+    /// <summary>
+    /// The resource object format
+    /// </summary>
+    public enum ResourceObjectFormat
     {
-        public RemoveAzureVMDscExtensionCmdletInfo(IPersistentVM vm)
-        {
-            this.cmdletName = Utilities.RemoveAzureVMDscExtensionCmdletName;
-            this.cmdletParams.Add(new CmdletParam("VM", vm));
-        }
+        /// <summary>
+        /// The legacy format.
+        /// </summary>
+        Legacy = 0,
+
+        /// <summary>
+        /// The new format.
+        /// </summary>
+        New = 1
     }
 }
