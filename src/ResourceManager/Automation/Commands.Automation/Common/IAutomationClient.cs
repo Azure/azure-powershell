@@ -143,9 +143,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
 
-        IEnumerable<Model.Webhook> GetWebhooksByRunbookName(string resourceGroupName, string automationAccountName, string runbookName);
-
-        IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName);
+        IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbooName, ref string nextLink);
 
         Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, Hashtable parameters, bool? isEnabled);
 

@@ -52,7 +52,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<Model.Webhook> webhooks = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName);
+                var nextLink = string.Empty;
+                do
+                {
+                    webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName, null, ref nextLink);
+                    this.GenerateCmdletOutput(webhooks);
+                } 
+                while (!string.IsNullOrEmpty(nextLink));
+                
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {
@@ -63,15 +70,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                        this.AutomationAccountName,
                                        this.Name)
                                };
+                this.GenerateCmdletOutput(webhooks);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
-                webhooks = this.AutomationClient.GetWebhooksByRunbookName(
-                    this.ResourceGroupName,
-                    this.AutomationAccountName,
-                    this.RunbookName);
+                var nextLink = string.Empty;
+                do
+                {
+                    webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName, this.RunbookName, ref nextLink);
+                    this.GenerateCmdletOutput(webhooks);
+                }
+                while (!string.IsNullOrEmpty(nextLink));
             }
-            this.GenerateCmdletOutput(webhooks);
         }
     }
 }

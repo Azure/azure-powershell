@@ -100,29 +100,35 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public IEnumerable<Model.Webhook> GetWebhooksByRunbookName(string resourceGroupName, string automationAccountName, string runbookName)
+        public IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbookName, ref string nextLink)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            WebhookListResponse response;
 
-            var webhooks =
-                this.automationManagementClient.Webhooks.List(resourceGroupName, automationAccountName, runbookName).Webhooks;
-            return webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w)).ToList();
-        }
-
-        public IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName)
-        {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
-            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            var runbooks =
-                this.automationManagementClient.Runbooks.List(resourceGroupName, automationAccountName).Runbooks;
-            
-            List<Model.Webhook> webhooks = new List<Model.Webhook>();
-            foreach (Runbook runbook in runbooks)
+            if (string.IsNullOrEmpty(nextLink))
             {
-                webhooks.AddRange(this.GetWebhooksByRunbookName(resourceGroupName, automationAccountName, runbook.Name).ToList());
+                if (runbookName == null)
+                {
+                    response = this.automationManagementClient.Webhooks.List(
+                        resourceGroupName,
+                        automationAccountName,
+                        null);
+                }
+                else
+                {
+                    response = this.automationManagementClient.Webhooks.List(
+                        resourceGroupName,
+                        automationAccountName,
+                        runbookName);
+                }
             }
-            return webhooks;
+            else
+            {
+                response = this.automationManagementClient.Webhooks.ListNext(nextLink);
+            }
+            nextLink = response.NextLink;
+            return response.Webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w)).ToList();
         }
 
         public Model.Webhook UpdateWebhook(
