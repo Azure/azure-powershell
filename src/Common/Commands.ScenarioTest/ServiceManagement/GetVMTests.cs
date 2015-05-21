@@ -28,9 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         #region Get-AzureVM Scenario Tests
 
         [Fact]
-        [Trait(Category.Service, Category.ServiceManagement)]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureVM()
         {
             this.RunPowerShellTest("Test-GetAzureVM");
