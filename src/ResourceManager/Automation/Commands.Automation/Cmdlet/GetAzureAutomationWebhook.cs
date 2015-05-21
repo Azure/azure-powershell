@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the Webhook name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Webhook name.")]
         [Alias("WebhookName")]
         public string Name { get; set; }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the Webhook name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook name.")]
         [Alias("RbName")]
         public string RunbookName { get; set; }
