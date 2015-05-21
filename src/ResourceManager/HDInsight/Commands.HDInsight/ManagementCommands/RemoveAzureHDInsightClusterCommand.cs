@@ -13,33 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightProperties),
+        VerbsCommon.Remove,
+        Constants.ManagementCommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(CapabilitiesResponse))]
-    public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
+        typeof(ClusterGetResponse))]
+    public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the datacenter location for the cluster.")]
-        public string Location { get; set; }
+            HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the cluster.")]
+        public string ClusterName { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var result = HDInsightManagementClient.GetCapabilities(Location);
+            var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
-            WriteObject(result);
+            this.WriteObject(result, true);
         }
     }
 }

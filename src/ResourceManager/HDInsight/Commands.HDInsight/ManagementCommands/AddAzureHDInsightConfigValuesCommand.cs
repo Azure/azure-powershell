@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightConfigValues),
+        Constants.ManagementCommandNames.AzureHDInsightConfigValues),
     OutputType(
         typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase

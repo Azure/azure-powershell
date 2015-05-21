@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -19,11 +20,11 @@ using Microsoft.Azure.Management.HDInsight.Models;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsSecurity.Revoke,
-        Constants.CommandNames.AzureHDInsightRdpServicesAccess),
+        VerbsCommon.Get,
+        Constants.ManagementCommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(void))]
-    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
+        typeof(List<ClusterGetResponse>))]
+    public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -43,18 +44,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var rdpParams = new RDPSettingsParameters
-            {
-                OsProfile = new OsProfile
-                {
-                    WindowsOperatingSystemProfile = new WindowsOperatingSystemProfile
-                    {
-                        RdpSettings = null
-                    }
-                }
-            };
+            var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
 
-            HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
+            this.WriteObject(result, true);
         }
     }
 }

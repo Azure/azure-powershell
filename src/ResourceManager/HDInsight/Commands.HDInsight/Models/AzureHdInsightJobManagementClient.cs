@@ -12,22 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.HDInsight.Job;
 
-namespace Microsoft.Azure.Commands.HDInsight.Commands
+namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class HDInsightCmdletBase : AzurePSCmdlet
+    public class AzureHdInsightJobManagementClient
     {
-        private AzureHdInsightManagementClient _hdInsightManagementClient;
-
-        public AzureHdInsightManagementClient HDInsightManagementClient
+        public AzureHdInsightJobManagementClient(AzureContext context)
         {
-            get {
-                return this._hdInsightManagementClient ??
-                       (this._hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
-            }
-            set { this._hdInsightManagementClient = value; }
+            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightJobManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
+
+        /// <summary>
+        /// Parameterless constructor for mocking
+        /// </summary>
+        public AzureHdInsightJobManagementClient() { }
+
+        private IHDInsightJobManagementClient HdInsightJobManagementClient { get; set; }
+
     }
 }

@@ -19,43 +19,27 @@ using Microsoft.Azure.Management.HDInsight.Models;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsSecurity.Grant,
-        Constants.CommandNames.AzureHDInsightHttpServicesAccess),
+        VerbsCommon.Get,
+        Constants.ManagementCommandNames.AzureHDInsightProperties),
     OutputType(
-        typeof(void))]
-    public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
+        typeof(CapabilitiesResponse))]
+    public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster.")]
-        public string ClusterName { get; set; }
-
-        [Parameter(Position = 2,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the login for the cluster's user.")]
-        public PSCredential HttpUser { get; set; }
+            HelpMessage = "Gets or sets the datacenter location for the cluster.")]
+        public string Location { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var httpParams = new HttpSettingsParameters
-            {
-                HttpUserEnabled = true,
-                HttpUsername = this.HttpUser.UserName,
-                HttpPassword = this.HttpUser.Password.ToString()
-            };
-            
-            HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
+            var result = HDInsightManagementClient.GetCapabilities(Location);
+
+            WriteObject(result);
         }
     }
 }

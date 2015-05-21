@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightScriptAction),
+        Constants.ManagementCommandNames.AzureHDInsightScriptAction),
     OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightScriptActionCommand : HDInsightCmdletBase
     {
@@ -86,33 +86,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             else
             {
-                this.Config.ScriptActions.Add(this.NodeType, new List<ScriptAction> {_action});
+                this.Config.ScriptActions.Add(this.NodeType, new List<ScriptAction> {this._action});
             }
-        }
-
-        private void AddConfigToConfigurations(Dictionary<string, string> userConfigs, string configKey)
-        {
-            //if no configs of this type provided, do nothing
-            if (userConfigs == null || userConfigs.Count == 0)
-            {
-                return;
-            }
-
-            Dictionary<string, string> config;
-
-            //if configs provided and key does not already exist, add the key with provided dictionary
-            if (!_configurations.TryGetValue(configKey, out config))
-            {
-                _configurations.Add(configKey, userConfigs);
-                return;
-            }
-
-            //if configs provided and key already exists, add the provided values to the dictionary for the key
-            foreach (var conf in userConfigs)
-            {
-                config.Add(conf.Key, conf.Value);
-            }
-            _configurations[configKey] = config;
         }
     }
 }

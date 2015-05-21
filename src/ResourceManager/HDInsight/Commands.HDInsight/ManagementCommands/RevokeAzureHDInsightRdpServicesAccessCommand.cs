@@ -13,18 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsCommon.Remove,
-        Constants.CommandNames.AzureHDInsightCluster),
+        VerbsSecurity.Revoke,
+        Constants.ManagementCommandNames.AzureHDInsightRdpServicesAccess),
     OutputType(
-        typeof(ClusterGetResponse))]
-    public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
+        typeof(void))]
+    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -44,9 +43,18 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
+            var rdpParams = new RDPSettingsParameters
+            {
+                OsProfile = new OsProfile
+                {
+                    WindowsOperatingSystemProfile = new WindowsOperatingSystemProfile
+                    {
+                        RdpSettings = null
+                    }
+                }
+            };
 
-            this.WriteObject(result, true);
+            HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
         }
     }
 }

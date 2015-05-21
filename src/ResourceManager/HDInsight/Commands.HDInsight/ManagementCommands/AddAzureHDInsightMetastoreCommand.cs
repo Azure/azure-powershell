@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightMetastore),
+        Constants.ManagementCommandNames.AzureHDInsightMetastore),
     OutputType(
         typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightMetastoreCommand : HDInsightCmdletBase

@@ -78,5 +78,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             return this.HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
         }
+
+        public CapabilitiesResponse GetCapabilities(string location)
+        {
+            return this.HdInsightManagementClient.Clusters.GetCapabilities(location);
+        }
     }
 }

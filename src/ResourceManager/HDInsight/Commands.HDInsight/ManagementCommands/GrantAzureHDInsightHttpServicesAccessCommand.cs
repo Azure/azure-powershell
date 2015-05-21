@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -21,10 +20,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsSecurity.Grant,
-        Constants.CommandNames.AzureHDInsightRdpServicesAccess),
+        Constants.ManagementCommandNames.AzureHDInsightHttpServicesAccess),
     OutputType(
         typeof(void))]
-    public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
+    public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -42,35 +41,21 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public PSCredential RdpUser { get; set; }
-
-        [Parameter(Position = 3,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
+            HelpMessage = "Gets or sets the login for the cluster's user.")]
+        public PSCredential HttpUser { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var rdpParams = new RDPSettingsParameters
+            var httpParams = new HttpSettingsParameters
             {
-                OsProfile = new OsProfile
-                {
-                    WindowsOperatingSystemProfile = new WindowsOperatingSystemProfile
-                    {
-                        RdpSettings = new RdpSettings
-                        {
-                            UserName = this.RdpUser.UserName,
-                            Password = this.RdpUser.Password.ToString(),
-                            ExpiryDate = this.RdpAccessExpiry
-                        }
-                    }
-                }
+                HttpUserEnabled = true,
+                HttpUsername = this.HttpUser.UserName,
+                HttpPassword = this.HttpUser.Password.ToString()
             };
-
-            HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
+            
+            HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
         }
     }
 }

@@ -19,11 +19,11 @@ using Microsoft.Azure.Management.HDInsight.Models;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
-        VerbsSecurity.Revoke,
-        Constants.CommandNames.AzureHDInsightHttpServicesAccess),
+        VerbsCommon.Set,
+        Constants.ManagementCommandNames.AzureHDInsightClusterSize),
     OutputType(
-        typeof(void))]
-    public class RevokeAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
+        typeof(ClusterGetResponse))]
+    public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -39,16 +39,27 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the cluster.")]
+        public int TargetInstanceCount { get; set; }
+
+        [Parameter(
+            Position = 4,
+            HelpMessage = "Gets or sets the name of the cluster.")]
+        public int MinInstanceCount { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var httpParams = new HttpSettingsParameters
+            var resizeParams = new ClusterResizeParameters
             {
-                HttpUserEnabled = false
+                TargetInstanceCount = this.TargetInstanceCount,
+                MinInstanceCount = this.MinInstanceCount
             };
-
-            HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
+            var cluster = HDInsightManagementClient.ResizeCluster(ResourceGroupName, ClusterName, resizeParams);
         }
     }
 }

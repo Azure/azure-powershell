@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.CommandNames.AzureHDInsightCluster),
+        Constants.ManagementCommandNames.AzureHDInsightCluster),
     OutputType(
         typeof(ClusterGetResponse))]
     public class NewAzureHDInsightCommand : HDInsightCmdletBase

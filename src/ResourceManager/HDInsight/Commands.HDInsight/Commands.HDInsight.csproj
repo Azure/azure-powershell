@@ -35,26 +35,30 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\AddAzureHDInsightStorageCommand.cs" />
-    <Compile Include="Commands\AddAzureHDInsightScriptActionCommand.cs" />
-    <Compile Include="Commands\AddAzureHDInsightMetastoreCommand.cs" />
-    <Compile Include="Commands\AddAzureHDInsightConfigValuesCommand.cs" />
-    <Compile Include="Commands\GetAzureHDInsightPropertiesCommand.cs" />
-    <Compile Include="Commands\RevokeAzureHDInsightRdpServicesAccessCommand.cs" />
-    <Compile Include="Commands\RevokeAzureHDInsightHttpServicesAccessCommand.cs" />
-    <Compile Include="Commands\GrantAzureHDInsightRdpServicesAccessCommand.cs" />
-    <Compile Include="Commands\GrantAzureHDInsightHttpServicesAccessCommand.cs" />
-    <Compile Include="Commands\NewAzureHDInsightClusterConfigCommand.cs" />
-    <Compile Include="Commands\RemoveAzureHDInsightClusterCommand.cs" />
-    <Compile Include="Commands\SetAzureHDInsightClusterSizeCommand.cs" />
-    <Compile Include="Commands\HDInsightCmdletBase.cs" />
-    <Compile Include="Commands\GetAzureHDInsightClusterCommand.cs" />
+    <Compile Include="JobCommands\NewAzureHDInsightHiveJobDefinitionCommand.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightStorageCommand.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightMetastoreCommand.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightConfigValuesCommand.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightPropertiesCommand.cs" />
+    <Compile Include="ManagementCommands\RevokeAzureHDInsightRdpServicesAccessCommand.cs" />
+    <Compile Include="ManagementCommands\RevokeAzureHDInsightHttpServicesAccessCommand.cs" />
+    <Compile Include="ManagementCommands\GrantAzureHDInsightRdpServicesAccessCommand.cs" />
+    <Compile Include="ManagementCommands\GrantAzureHDInsightHttpServicesAccessCommand.cs" />
+    <Compile Include="ManagementCommands\NewAzureHDInsightClusterConfigCommand.cs" />
+    <Compile Include="ManagementCommands\RemoveAzureHDInsightClusterCommand.cs" />
+    <Compile Include="ManagementCommands\SetAzureHDInsightClusterSizeCommand.cs" />
+    <Compile Include="ManagementCommands\HDInsightCmdletBase.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\AzureHDInsightHiveJobDefinition.cs" />
+    <Compile Include="Models\AzureHDInsightJobDefinition.cs" />
     <Compile Include="Models\AzureHDInsightConfig.cs" />
+    <Compile Include="Models\AzureHdInsightJobManagementClient.cs" />
     <Compile Include="Models\AzureHdInsightManagementClient.cs" />
     <Compile Include="Models\AzureHDInsightMetastoreType.cs" />
     <Compile Include="Models\AzureHDInsightMetastore.cs" />
-    <Compile Include="Commands\NewAzureHDInsightClusterCommand.cs" />
+    <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +79,9 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight">
       <HintPath>..\..\..\..\..\azure-sdk-for-net-pr\binaries\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
+      <HintPath>..\..\..\..\..\azure-sdk-for-net-pr\binaries\portable\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
