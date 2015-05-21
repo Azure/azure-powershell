@@ -333,11 +333,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string RemoveAzureNetworkInterfaceConfig = "Remove-AzureNetworkInterfaceConfig";
         public const string GetAzureNetworkInterfaceConfig = "Get-AzureNetworkInterfaceConfig";
 
-        // Custom script extension
-        public const string SetAzureVMDscExtensionCmdletName = "Set-AzureVMDscExtension";
-        public const string GetAzureVMDscExtensionCmdletName = "Get-AzureVMDscExtension";
-        public const string RemoveAzureVMDscExtensionCmdletName = "Remove-AzureVMDscExtension";
-
         // SqlServer extension
         public const string SetAzureVMSqlServerExtensionCmdletName = "Set-AzureVMSqlServerExtension";
         public const string GetAzureVMSqlServerExtensionCmdletName = "Get-AzureVMSqlServerExtension";
@@ -817,24 +812,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return xml.GetElementsByTagName(tag)[0].InnerXml;
         }
 
-        public static bool CompareWadCfg(string wadcfg, XmlDocument daconfig)
+        public static void CompareWadCfg(string wadcfg, XmlDocument daconfig)
         {
-            try
+            if (string.IsNullOrWhiteSpace(wadcfg))
             {
-                if (string.IsNullOrWhiteSpace(wadcfg))
-                {
-                    Assert.IsNull(wadcfg);
-                }
-                else
-                {
-                    string innerXml = daconfig.InnerXml;
-                    Assert.AreEqual(Utilities.FindSubstring(wadcfg, '<', 2), Utilities.FindSubstring(innerXml, '<', 2));
-                }
-                return true;
+                Assert.IsNull(wadcfg);
             }
-            catch
+            else
             {
-                return false;
+                string innerXml = daconfig.InnerXml;
+                StringAssert.Contains(Utilities.FindSubstring(innerXml, '<', 2), Utilities.FindSubstring(wadcfg, '<', 2));
             }
         }
 

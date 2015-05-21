@@ -34584,6 +34584,29 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" position="named">
+      <maml:name>DeleteChefConfig</maml:name>
+      <maml:description>
+        <maml:para>DeleteChefConfig Options determines whether Chef configuration files removed when Azure removes the Chef resource extension from the VM. This options is useful during extension update and uninstall process. Default is false</maml:para>
+      </maml:description>
+      <dev:type>
+        <maml:name>Boolean</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>false</dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>BootstrapOptions</maml:name>
+      <maml:description>
+        <maml:para>Bootstrap Options in JSON Format</maml:para>
+      </maml:description>
+      <command:parameterValue required="false" variableLength="false">BootstrapOptions</command:parameterValue>
+      <dev:type>
+        <maml:name>String</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>    
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
       <maml:name>ValidationClientName</maml:name>
       <maml:description>
@@ -34716,10 +34739,34 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
         </command:commandLine>
       </command:commandLines>
     </command:example>
-
     <command:example>
       <maml:title>
         -------------------------- EXAMPLE 2 --------------------------
+      </maml:title>
+      <maml:introduction>
+        <maml:para>C:\PS&gt;</maml:para>
+      </maml:introduction>
+      <dev:code>
+        Set-AzureVMChefExtension -VM $vm -ValidationPem "C:\\myorg-validator.pem" -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -RunList "apache" -Windows;
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Description</maml:para>
+        <maml:para>-----------</maml:para>
+        <maml:para>This cmdlet adds the Chef extension to a windows VM.</maml:para>
+        <maml:para>When the VM comes up, it will be bootstrapped with Chef and have apache running on it, while bootstraping it will refer 'BootstrapOptions' specified in JSON format.</maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText></command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>
+        -------------------------- EXAMPLE 3 --------------------------
       </maml:title>
       <maml:introduction>
         <maml:para>C:\PS&gt;</maml:para>
@@ -34745,7 +34792,7 @@ PS C:\&gt; Get-AzureVM -ServiceName &quot;ContosoService03&quot; -Name &quot;Con
 
     <command:example>
       <maml:title>
-        -------------------------- EXAMPLE 3 --------------------------
+        -------------------------- EXAMPLE 4 --------------------------
       </maml:title>
       <maml:introduction>
         <maml:para>C:\PS&gt;</maml:para>
