@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// the AzureProfile layer.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSubscription", DefaultParameterSetName = "ByName")]
-    [OutputType(typeof(AzureSubscription))]
+    [OutputType(typeof(PSAzureSubscription))]
     public class GetAzureSubscriptionCommand : SubscriptionCmdletBase
     {
         public GetAzureSubscriptionCommand()
@@ -141,27 +141,10 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             else
             {
-                subscriptionOutput = subscriptions.Select(ConstructPsAzureSubscription);
+                subscriptionOutput = subscriptions.Select(s => new PSAzureSubscription(s, ProfileClient.Profile));
             }
 
             WriteObject(subscriptionOutput, true);
-        }
-
-        private PSAzureSubscription ConstructPsAzureSubscription(AzureSubscription subscription)
-        {
-            PSAzureSubscription psObject = new PSAzureSubscription();
-
-            psObject.SubscriptionId = subscription.Id.ToString();
-            psObject.SubscriptionName = subscription.Name;
-            psObject.Environment = subscription.Environment;
-            psObject.SupportedModes = subscription.GetProperty(AzureSubscription.Property.SupportedModes);
-            psObject.DefaultAccount = subscription.Account;
-            psObject.Accounts = ProfileClient.Profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
-            psObject.IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
-            psObject.IsCurrent = Profile.Context.Subscription != null && Profile.Context.Subscription.Id == subscription.Id;
-            psObject.CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-            psObject.TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
-            return psObject;
         }
 
         private PSAzureSubscriptionExtended ConstructPsAzureSubscriptionExtended(AzureSubscription subscription, IClientFactory clientFactory)
@@ -172,8 +155,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 var environment = ProfileClient.GetEnvironmentOrDefault(subscription.Environment);
                 var account = ProfileClient.Profile.Accounts[subscription.Account];
                 bool isCert = account.Type == AzureAccount.AccountType.Certificate;
-
-                PSAzureSubscriptionExtended result = new PSAzureSubscriptionExtended(ConstructPsAzureSubscription(subscription))
+                var psAzureSubscription = new PSAzureSubscription(subscription, ProfileClient.Profile);
+                PSAzureSubscriptionExtended result = new PSAzureSubscriptionExtended(psAzureSubscription)
                 {
                     AccountAdminLiveEmailId = response.AccountAdminLiveEmailId,
                     ActiveDirectoryUserId = subscription.Account,

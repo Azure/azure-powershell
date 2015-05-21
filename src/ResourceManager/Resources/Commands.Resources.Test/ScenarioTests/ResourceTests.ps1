@@ -215,3 +215,55 @@ function Test-GetResourcesViaPipingFromAnotherResource
 	# Assert
 	Assert-AreEqual 2 @($list).Count
 }
+
+<#
+.SYNOPSIS
+Tests moving a resource.
+#>
+function Test-MoveAResource
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rgname2 = Get-ResourceGroupName + "test3"
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureResourceGroup -Name $rgname -Location $rglocation
+	New-AzureResourceGroup -Name $rgname2 -Location $rglocation
+	$resource = New-AzureResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
+	Move-AzureResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
+
+	$movedResource = Get-AzureResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
+
+	# Assert
+	Assert-AreEqual $movedResource.Name $resource.Name
+	Assert-AreEqual $movedResource.ResourceGroupName $rgname2
+	Assert-AreEqual $movedResource.ResourceType $resource.ResourceType
+}
+
+<#
+.SYNOPSIS
+Tests setting a resource.
+#>
+function Test-SetAResource
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
+	Set-AzureResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+
+	$modifiedResource = Get-AzureResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+
+	# Assert
+	Assert-AreEqual $modifiedResource.Properties.key2 "value2"
+}

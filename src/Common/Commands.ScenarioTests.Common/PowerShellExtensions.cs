@@ -206,7 +206,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 Console.WriteLine("---------------------------------------------------------------\n");
                 foreach (T item in stream)
                 {
-                    Console.WriteLine("{0}\n", item.ToString());
+                    if(item != null)
+                    {
+                        Console.WriteLine("{0}\n", item.ToString());
+                    }
                 }
                 Console.WriteLine("---------------------------------------------------------------\n");
                 Console.WriteLine("");

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Accounts
 
-        IEnumerable<AutomationAccount> ListAutomationAccounts(string resourceGroupName);
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink);
 
         AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName);
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
 
-        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName);
+        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink);
 
         void DeleteModule(string resourceGroupName, string automationAccountName, string name);
 

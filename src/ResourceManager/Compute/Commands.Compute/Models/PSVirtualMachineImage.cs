@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineImageBase : PSOperationContext
+    public class PSVirtualMachineImageBase : PSOperation
     {
         public string Id { get; set; }
 
