@@ -68,6 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         private VirtualMachineSqlServerExtensionContext GetExtensionContext(ResourceExtensionReference r)
         {
+            string extensionName= VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
+                               + VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedName;
+
             VirtualMachineSqlServerExtensionContext context = new VirtualMachineSqlServerExtensionContext
             {
                 ExtensionName = r.Name,
@@ -90,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             foreach (NSM.ResourceExtensionStatus res in extensionStatusList)
             {
                 // Expected ReferenceName = "Microsoft.SqlServer.Management.SqlIaaSAgent"
-                if (!res.HandlerName.Equals(r.ReferenceName, System.StringComparison.InvariantCulture))
+                if (!res.HandlerName.Equals(extensionName, System.StringComparison.InvariantCulture))
                 {
                     // skip all non-sql extensions
                     continue;

@@ -43,6 +43,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         }
 
         /// <summary>
+        /// Compares two string values insensitively.
+        /// </summary>
+        /// <param name="original">The original string.</param>
+        /// <param name="otherString">The other string.</param>
+        public static bool StartsWithInsensitively(this string original, string otherString)
+        {
+            return original.CoalesceString().StartsWith(otherString.CoalesceString(), StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        /// <summary>
         /// Splits the string with given separators and removes empty entries.
         /// </summary>
         /// <param name="source">The source string.</param>

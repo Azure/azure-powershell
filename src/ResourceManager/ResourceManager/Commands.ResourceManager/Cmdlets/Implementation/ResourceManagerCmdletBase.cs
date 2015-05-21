@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Common.Authentication;
@@ -261,9 +262,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Writes a <see cref="JToken"/> object as a <see cref="PSObject"/>.
         /// </summary>
-        protected void WriteObject(JToken result)
+        /// <param name="result">The result of the action.</param>
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        protected void WriteObject(JToken result, ResourceObjectFormat objectFormat)
         {
-            this.WriteObject(sendToPipeline: result.ToPsObject(), enumerateCollection: true);
+            this.WriteObject(sendToPipeline: result.ToPsObject(objectFormat), enumerateCollection: true);
         }
 
         /// <summary>

@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809?api-version=2014-12-19-PREVIEW",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzExOTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NjgwOT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489?api-version=2014-12-19-PREVIEW",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzI2OTAvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0MjQ4OT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809\",\r\n  \"name\": \"pshtestvault6809\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489\",\r\n  \"name\": \"pshtestvault2489\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "468"
+          "469"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -28,22 +28,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "14967"
         ],
         "x-ms-request-id": [
-          "5b51f164-aaea-4b5e-9329-dadb87cf5f68"
+          "2b01e46a-bc23-4657-83f9-8690794e1717"
         ],
         "x-ms-correlation-request-id": [
-          "5b51f164-aaea-4b5e-9329-dadb87cf5f68"
+          "2b01e46a-bc23-4657-83f9-8690794e1717"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T035301Z:5b51f164-aaea-4b5e-9329-dadb87cf5f68"
+          "WESTUS:20150515T233858Z:2b01e46a-bc23-4657-83f9-8690794e1717"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:00 GMT"
+          "Fri, 15 May 2015 23:38:57 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -58,19 +58,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809?api-version=2014-12-19-PREVIEW",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzExOTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NjgwOT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489?api-version=2014-12-19-PREVIEW",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzI2OTAvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0MjQ4OT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809\",\r\n  \"name\": \"pshtestvault6809\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489\",\r\n  \"name\": \"pshtestvault2489\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n        \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "739"
+          "740"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -85,22 +85,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31998"
+          "14966"
         ],
         "x-ms-request-id": [
-          "20ac60cb-e078-475c-b6fd-db352cf6e0b2"
+          "32e50948-ef1a-4310-9969-d79261cb4136"
         ],
         "x-ms-correlation-request-id": [
-          "20ac60cb-e078-475c-b6fd-db352cf6e0b2"
+          "32e50948-ef1a-4310-9969-d79261cb4136"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T035304Z:20ac60cb-e078-475c-b6fd-db352cf6e0b2"
+          "WESTUS:20150515T233901Z:32e50948-ef1a-4310-9969-d79261cb4136"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:03 GMT"
+          "Fri, 15 May 2015 23:39:00 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -115,8 +115,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users/kmsngtu@microsoft.com?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycy9rbXNuZ3R1QG1pY3Jvc29mdC5jb20/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestUri": "/71ecaf6c-7521-4953-ba5f-e55c260af004/users/kvtest@yuhuizhotmail.onmicrosoft.com?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzcxZWNhZjZjLTc1MjEtNDk1My1iYTVmLWU1NWMyNjBhZjAwNC91c2Vycy9rdnRlc3RAeXVodWl6aG90bWFpbC5vbm1pY3Jvc29mdC5jb20/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -124,10 +124,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [\r\n    {\r\n      \"disabledPlans\": [\r\n        \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\",\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"f82a60b8-1ee3-4cfb-a4fe-1c6a53c2656c\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"0feaeb32-d00e-4d66-bd5a-43b5b83db82c\"\r\n      ],\r\n      \"skuId\": \"1fa9556c-c37f-44c5-9d9d-d326642b2885\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"ed659f76-ab99-414a-ab3b-70e96ab4dd8a\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [],\r\n      \"skuId\": \"c5928f49-12ba-48f7-ada3-0d743a3601d5\"\r\n    }\r\n  ],\r\n  \"assignedPlans\": [\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"Exchange\",\r\n      \"servicePlanId\": \"efb87545-963c-4e0d-99df-69c6916d9eb0\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"fafd7243-e5c1-4a3a-9e40-495efcb1d3c3\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"c4048e79-4474-4c74-ba9b-c31ff225e511\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"fe71d6c3-a2ea-4499-9778-da042bf08063\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"43de0ff5-c92c-492b-9116-175376d08c38\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"RMSOnline\",\r\n      \"servicePlanId\": \"bea4c11e-220a-4e6d-8eb8-8ea15d019f90\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"2125cfd7-2110-4567-83c4-c1cd5275163d\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"PowerBI\",\r\n      \"servicePlanId\": \"fc0a60aa-feee-4746-a0e3-aecfe81a38dd\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"663a804f-1c30-4ff0-9915-9db84f0d1cea\"\r\n    }\r\n  ],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": true,\r\n  \"displayName\": \"KmsNg service test user\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": \"-9\",\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": \"/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KmsNg service test user\",\r\n  \"immutableId\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": \"2015-03-14T23:16:22Z\",\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": \"kmsngtu@microsoft.com\",\r\n  \"mailNickname\": \"kmsngtu\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE888E69E9\",\r\n  \"onPremiseSecurityIdentifier\": \"AQUAAAAAAAUVAAAAoGXPfnhLm1/nfIdw2rzSAA==\",\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": null,\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": \"kmsngtu@microsoft.com\",\r\n  \"provisionedPlans\": [\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"Exchange\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    }\r\n  ],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [\r\n    \"X500:/O=Nokia/OU=HUB/cn=Recipients/cn=kmsngtu\",\r\n    \"X500:/o=microsoft/ou=External (FYDIBOHF25SPDLT)/cn=Recipients/cn=7f298b16a14d45e88343688e1d329f0c\",\r\n    \"x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n    \"x500:/o=SDF/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=cad0c33795264a20a831471f972b9989-KmsNg service test u\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user901\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user2f3\",\r\n    \"smtp:kmsngtu@service.microsoft.com\",\r\n    \"X500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user150\",\r\n    \"SMTP:kmsngtu@microsoft.com\"\r\n  ],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kmsngtu@microsoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [\r\n    \"kmsngtu@microsoft.com\",\r\n    \"kmsngtu@service.microsoft.com\"\r\n  ],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": \"US\",\r\n  \"userPrincipalName\": \"kmsngtu@microsoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/71ecaf6c-7521-4953-ba5f-e55c260af004/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"kvtest\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"kvtest\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"kvtest\",\r\n  \"mobile\": null,\r\n  \"netId\": \"1003BFFD90AD2ADE\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "5984"
+          "1951"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -139,13 +139,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "Oqko02haJxDTRhctK/G36gK387+J0M2ZgOrTBM5zf4M="
         ],
         "request-id": [
-          "e551d09e-4e2b-42ed-9704-907509d95dfd"
+          "3cd224fa-9298-431a-b12d-4c5d1087fcfd"
         ],
         "client-request-id": [
-          "83636a70-b3a8-4928-be03-bd77c5529b5f"
+          "4ea5e33a-2db8-432f-ad07-f201f5e58c5f"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -154,7 +154,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "RMSbc0K8ocCrI9_yzYONiGO5mgJoUwqyMCCIY0wsOEmLh-5wnYCNr0aPnuP4M654JRtXUu9vVjqctaL2lzI1ws3RBFaUtBbTwhboxFPnYEHtTgSTMv-d8tKijUukFDWp.rsW6Yer4B8pYZsRvRWPbDS8JVd0F9YdBYSE_ipgnHuo"
+          "sYheaGY_1xRNET7LhN74jS55LCX5FzppE612ETEm47jcLzJjwp5KP0TryLVpyVBwlH5MWF4ikHbbkvoaAenpSyoaSQEOyvHD7sm-m6sGizRTgfua6sh_X2yZHXzMOyQjDvDSXXzRhAqqHmwwFGjZ1g._WjrqpsoR4pWRlT5FPIzupGNqMt7-D_XGrbLtZ4iNRU"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -182,14 +182,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:02 GMT"
+          "Fri, 15 May 2015 23:38:58 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users/kmsngtu@microsoft.com?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycy9rbXNuZ3R1QG1pY3Jvc29mdC5jb20/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestUri": "/71ecaf6c-7521-4953-ba5f-e55c260af004/users/kvtest@yuhuizhotmail.onmicrosoft.com?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzcxZWNhZjZjLTc1MjEtNDk1My1iYTVmLWU1NWMyNjBhZjAwNC91c2Vycy9rdnRlc3RAeXVodWl6aG90bWFpbC5vbm1pY3Jvc29mdC5jb20/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -197,10 +197,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [\r\n    {\r\n      \"disabledPlans\": [\r\n        \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\",\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"f82a60b8-1ee3-4cfb-a4fe-1c6a53c2656c\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"0feaeb32-d00e-4d66-bd5a-43b5b83db82c\"\r\n      ],\r\n      \"skuId\": \"1fa9556c-c37f-44c5-9d9d-d326642b2885\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"ed659f76-ab99-414a-ab3b-70e96ab4dd8a\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [],\r\n      \"skuId\": \"c5928f49-12ba-48f7-ada3-0d743a3601d5\"\r\n    }\r\n  ],\r\n  \"assignedPlans\": [\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"Exchange\",\r\n      \"servicePlanId\": \"efb87545-963c-4e0d-99df-69c6916d9eb0\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"fafd7243-e5c1-4a3a-9e40-495efcb1d3c3\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"c4048e79-4474-4c74-ba9b-c31ff225e511\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"fe71d6c3-a2ea-4499-9778-da042bf08063\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"43de0ff5-c92c-492b-9116-175376d08c38\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"RMSOnline\",\r\n      \"servicePlanId\": \"bea4c11e-220a-4e6d-8eb8-8ea15d019f90\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"2125cfd7-2110-4567-83c4-c1cd5275163d\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"PowerBI\",\r\n      \"servicePlanId\": \"fc0a60aa-feee-4746-a0e3-aecfe81a38dd\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"663a804f-1c30-4ff0-9915-9db84f0d1cea\"\r\n    }\r\n  ],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": true,\r\n  \"displayName\": \"KmsNg service test user\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": \"-9\",\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": \"/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KmsNg service test user\",\r\n  \"immutableId\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": \"2015-03-14T23:16:22Z\",\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": \"kmsngtu@microsoft.com\",\r\n  \"mailNickname\": \"kmsngtu\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE888E69E9\",\r\n  \"onPremiseSecurityIdentifier\": \"AQUAAAAAAAUVAAAAoGXPfnhLm1/nfIdw2rzSAA==\",\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": null,\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": \"kmsngtu@microsoft.com\",\r\n  \"provisionedPlans\": [\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"Exchange\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    }\r\n  ],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [\r\n    \"X500:/O=Nokia/OU=HUB/cn=Recipients/cn=kmsngtu\",\r\n    \"X500:/o=microsoft/ou=External (FYDIBOHF25SPDLT)/cn=Recipients/cn=7f298b16a14d45e88343688e1d329f0c\",\r\n    \"x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n    \"x500:/o=SDF/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=cad0c33795264a20a831471f972b9989-KmsNg service test u\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user901\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user2f3\",\r\n    \"smtp:kmsngtu@service.microsoft.com\",\r\n    \"X500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user150\",\r\n    \"SMTP:kmsngtu@microsoft.com\"\r\n  ],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kmsngtu@microsoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [\r\n    \"kmsngtu@microsoft.com\",\r\n    \"kmsngtu@service.microsoft.com\"\r\n  ],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": \"US\",\r\n  \"userPrincipalName\": \"kmsngtu@microsoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/71ecaf6c-7521-4953-ba5f-e55c260af004/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"kvtest\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"kvtest\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"kvtest\",\r\n  \"mobile\": null,\r\n  \"netId\": \"1003BFFD90AD2ADE\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "5984"
+          "1951"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -212,13 +212,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "lcgTVjrkmz34f6GD6dMZc9V6sDyWYM8/6SEcoDLpSbc="
+          "DY7TQaBcGBdxiyBwhXtHOCQG2f/I+ISxBVfzVwhFykU="
         ],
         "request-id": [
-          "40a90183-b291-485b-b3ba-d3096cf4fc5f"
+          "c0af0678-b787-47d1-8864-9746aada0cc5"
         ],
         "client-request-id": [
-          "8e4cf40a-6eb7-48a9-8a62-5df56cd336fa"
+          "b9cc5b29-f2f4-4425-b703-f03399ba7fa6"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -227,7 +227,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "Vdl-xpbfnCnCmtOtUemMMBRqDgkdWQRCfj_EAx46PUuSUXQZS8tFFTQUWON7Hiy3weqz2-LLDkhB-wexO5Q36teJT7koajuqx_vQaZUIQi_GfGN3gD364fkz63mAnHe9.9aao0gmg9PcRyi_opgaGjn60UwmfJr4NT59GH2wkjX0"
+          "kyzI3srbpH9wQhOSYo48_peTuaKtmK6qxkxhNmiX3gLX74YTTip4Ovvd8ndofZ0UBl9Dt4zFGJTCY3GXsxIVq0ekYnTg9YXz62MZJxyrPxMm3CJeZm7GhUROZ77szw45xXn8_LF8y3OX6wM_0Jr6Bw.XQpgJ9sM87yKdj438LAstZQWgPgwYJV1rMBHKTAmcRM"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -255,31 +255,31 @@
           "ASP.NET"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:04 GMT"
+          "Fri, 15 May 2015 23:39:01 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809?api-version=2014-12-19-PREVIEW",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzExOTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NjgwOT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489?api-version=2014-12-19-PREVIEW",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzI2OTAvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0MjQ4OT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true\r\n  },\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\",\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n        \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false\r\n  },\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "984"
+          "985"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809\",\r\n  \"name\": \"pshtestvault6809\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489\",\r\n  \"name\": \"pshtestvault2489\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n        \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"encrypt\",\r\n            \"decrypt\",\r\n            \"unwrapKey\",\r\n            \"wrapKey\",\r\n            \"verify\",\r\n            \"sign\",\r\n            \"get\",\r\n            \"list\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\",\r\n            \"backup\",\r\n            \"restore\"\r\n          ],\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"list\",\r\n            \"set\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "739"
+          "740"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -294,22 +294,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1177"
         ],
         "x-ms-request-id": [
-          "446d2e7b-9f50-4596-b480-7e24403aebf7"
+          "e40547aa-babc-4fa1-95f8-b81684a06412"
         ],
         "x-ms-correlation-request-id": [
-          "446d2e7b-9f50-4596-b480-7e24403aebf7"
+          "e40547aa-babc-4fa1-95f8-b81684a06412"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T035303Z:446d2e7b-9f50-4596-b480-7e24403aebf7"
+          "WESTUS:20150515T233900Z:e40547aa-babc-4fa1-95f8-b81684a06412"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:02 GMT"
+          "Fri, 15 May 2015 23:38:59 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -324,10 +324,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809?api-version=2014-12-19-PREVIEW",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzExOTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NjgwOT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489?api-version=2014-12-19-PREVIEW",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzI2OTAvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0MjQ4OT9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": true\r\n  },\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\",\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": true\r\n  },\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -336,10 +336,10 @@
           "325"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/pshtestvault6809\",\r\n  \"name\": \"pshtestvault6809\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://pshtestvault6809.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489\",\r\n  \"name\": \"pshtestvault2489\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"71ecaf6c-7521-4953-ba5f-e55c260af004\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": true,\r\n    \"vaultUri\": \"https://pshtestvault2489.vault.azure.net/\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "447"
@@ -357,22 +357,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1176"
         ],
         "x-ms-request-id": [
-          "dd5c3906-39ab-4a46-8615-407130f378c0"
+          "b8e92383-9ad6-4edf-9349-8988a0840f21"
         ],
         "x-ms-correlation-request-id": [
-          "dd5c3906-39ab-4a46-8615-407130f378c0"
+          "b8e92383-9ad6-4edf-9349-8988a0840f21"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T035304Z:dd5c3906-39ab-4a46-8615-407130f378c0"
+          "WESTUS:20150515T233901Z:b8e92383-9ad6-4edf-9349-8988a0840f21"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:03 GMT"
+          "Fri, 15 May 2015 23:39:00 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -387,8 +387,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users/1282be6e-d632-4620-b3b0-0273b1bfb704?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycy8xMjgyYmU2ZS1kNjMyLTQ2MjAtYjNiMC0wMjczYjFiZmI3MDQ/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestUri": "/71ecaf6c-7521-4953-ba5f-e55c260af004/users/9a3042c3-fc03-4ee2-9930-7d48eb74563c?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzcxZWNhZjZjLTc1MjEtNDk1My1iYTVmLWU1NWMyNjBhZjAwNC91c2Vycy85YTMwNDJjMy1mYzAzLTRlZTItOTkzMC03ZDQ4ZWI3NDU2M2M/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -396,10 +396,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [\r\n    {\r\n      \"disabledPlans\": [\r\n        \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\",\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"f82a60b8-1ee3-4cfb-a4fe-1c6a53c2656c\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"0feaeb32-d00e-4d66-bd5a-43b5b83db82c\"\r\n      ],\r\n      \"skuId\": \"1fa9556c-c37f-44c5-9d9d-d326642b2885\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"ed659f76-ab99-414a-ab3b-70e96ab4dd8a\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [],\r\n      \"skuId\": \"c5928f49-12ba-48f7-ada3-0d743a3601d5\"\r\n    }\r\n  ],\r\n  \"assignedPlans\": [\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"Exchange\",\r\n      \"servicePlanId\": \"efb87545-963c-4e0d-99df-69c6916d9eb0\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"fafd7243-e5c1-4a3a-9e40-495efcb1d3c3\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"c4048e79-4474-4c74-ba9b-c31ff225e511\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"fe71d6c3-a2ea-4499-9778-da042bf08063\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"43de0ff5-c92c-492b-9116-175376d08c38\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"RMSOnline\",\r\n      \"servicePlanId\": \"bea4c11e-220a-4e6d-8eb8-8ea15d019f90\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"2125cfd7-2110-4567-83c4-c1cd5275163d\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"PowerBI\",\r\n      \"servicePlanId\": \"fc0a60aa-feee-4746-a0e3-aecfe81a38dd\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"663a804f-1c30-4ff0-9915-9db84f0d1cea\"\r\n    }\r\n  ],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": true,\r\n  \"displayName\": \"KmsNg service test user\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": \"-9\",\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": \"/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KmsNg service test user\",\r\n  \"immutableId\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": \"2015-03-14T23:16:22Z\",\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": \"kmsngtu@microsoft.com\",\r\n  \"mailNickname\": \"kmsngtu\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE888E69E9\",\r\n  \"onPremiseSecurityIdentifier\": \"AQUAAAAAAAUVAAAAoGXPfnhLm1/nfIdw2rzSAA==\",\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": null,\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": \"kmsngtu@microsoft.com\",\r\n  \"provisionedPlans\": [\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"Exchange\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    }\r\n  ],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [\r\n    \"X500:/O=Nokia/OU=HUB/cn=Recipients/cn=kmsngtu\",\r\n    \"X500:/o=microsoft/ou=External (FYDIBOHF25SPDLT)/cn=Recipients/cn=7f298b16a14d45e88343688e1d329f0c\",\r\n    \"x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n    \"x500:/o=SDF/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=cad0c33795264a20a831471f972b9989-KmsNg service test u\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user901\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user2f3\",\r\n    \"smtp:kmsngtu@service.microsoft.com\",\r\n    \"X500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user150\",\r\n    \"SMTP:kmsngtu@microsoft.com\"\r\n  ],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kmsngtu@microsoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [\r\n    \"kmsngtu@microsoft.com\",\r\n    \"kmsngtu@service.microsoft.com\"\r\n  ],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": \"US\",\r\n  \"userPrincipalName\": \"kmsngtu@microsoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/71ecaf6c-7521-4953-ba5f-e55c260af004/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"kvtest\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"kvtest\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"kvtest\",\r\n  \"mobile\": null,\r\n  \"netId\": \"1003BFFD90AD2ADE\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "5984"
+          "1951"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -411,13 +411,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "WidflJ9mqequu8oD2vdZNqrS85ZDnXLVWdKHcPhx/k4="
         ],
         "request-id": [
-          "4a71641b-61e2-42bd-a27d-1ed26e5439ac"
+          "a62b71b6-20e0-4117-8903-28e02aad09a1"
         ],
         "client-request-id": [
-          "2e54a187-b7f4-4cc0-8fc3-7bdb7fc9f973"
+          "645aedca-a509-4682-bea6-a1a24557946d"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -426,7 +426,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "bMvhPAYXs6D0gi20jy9qn_t3zfWhhNUy4CI1WsTjYmmBruNaaqin0fCnXw_vi2E9l05qiJDzlLWposUAeajrjJS-WGadoSxcEPmtbPn07BigZu67eVutpLDCC2g9Vqm9.TrSbKH_cDCE90bLs1V1eza8SaKPq2EJxLi72m1LN9y4"
+          "5snCNpItrG3N21-1seQbxvMkpnZQaTGp48ow4H6Vg1Ndzw0GkF67I5QPhXIhh-kiofC9fNU5fLKb2E1KWHI0E745OXI_Nt99ZZQfb8EVQZ0O8Z7Mmpf9MDvZZD31I26zu4REnx0rmQwC2xtz-oxufA.KbZh0S9qYJ1MZ1bBezNClNYhzKF-bR09WpNni-EhZ2Q"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -454,14 +454,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:04 GMT"
+          "Fri, 15 May 2015 23:39:00 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/users/1282be6e-d632-4620-b3b0-0273b1bfb704?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny91c2Vycy8xMjgyYmU2ZS1kNjMyLTQ2MjAtYjNiMC0wMjczYjFiZmI3MDQ/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestUri": "/71ecaf6c-7521-4953-ba5f-e55c260af004/users/9a3042c3-fc03-4ee2-9930-7d48eb74563c?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "LzcxZWNhZjZjLTc1MjEtNDk1My1iYTVmLWU1NWMyNjBhZjAwNC91c2Vycy85YTMwNDJjMy1mYzAzLTRlZTItOTkzMC03ZDQ4ZWI3NDU2M2M/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -469,10 +469,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"1282be6e-d632-4620-b3b0-0273b1bfb704\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [\r\n    {\r\n      \"disabledPlans\": [\r\n        \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\",\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"f82a60b8-1ee3-4cfb-a4fe-1c6a53c2656c\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"0feaeb32-d00e-4d66-bd5a-43b5b83db82c\"\r\n      ],\r\n      \"skuId\": \"1fa9556c-c37f-44c5-9d9d-d326642b2885\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [\r\n        \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n      ],\r\n      \"skuId\": \"ed659f76-ab99-414a-ab3b-70e96ab4dd8a\"\r\n    },\r\n    {\r\n      \"disabledPlans\": [],\r\n      \"skuId\": \"c5928f49-12ba-48f7-ada3-0d743a3601d5\"\r\n    }\r\n  ],\r\n  \"assignedPlans\": [\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"5dbe027f-2339-4123-9542-606e4d348a72\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"Exchange\",\r\n      \"servicePlanId\": \"efb87545-963c-4e0d-99df-69c6916d9eb0\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"fafd7243-e5c1-4a3a-9e40-495efcb1d3c3\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"c4048e79-4474-4c74-ba9b-c31ff225e511\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"fe71d6c3-a2ea-4499-9778-da042bf08063\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"43de0ff5-c92c-492b-9116-175376d08c38\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"e95bec33-7c88-4a70-8e19-b10bd9d0c014\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-05-23T14:04:10Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"RMSOnline\",\r\n      \"servicePlanId\": \"bea4c11e-220a-4e6d-8eb8-8ea15d019f90\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"SharePoint\",\r\n      \"servicePlanId\": \"2125cfd7-2110-4567-83c4-c1cd5275163d\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"PowerBI\",\r\n      \"servicePlanId\": \"fc0a60aa-feee-4746-a0e3-aecfe81a38dd\"\r\n    },\r\n    {\r\n      \"assignedTimestamp\": \"2014-02-16T02:20:53Z\",\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"service\": \"MicrosoftOffice\",\r\n      \"servicePlanId\": \"663a804f-1c30-4ff0-9915-9db84f0d1cea\"\r\n    }\r\n  ],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": true,\r\n  \"displayName\": \"KmsNg service test user\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": \"-9\",\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": \"/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KmsNg service test user\",\r\n  \"immutableId\": \"LKhwYuvqR0SLmi1i5bFQ8g==\",\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": \"2015-03-14T23:16:22Z\",\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": \"kmsngtu@microsoft.com\",\r\n  \"mailNickname\": \"kmsngtu\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE888E69E9\",\r\n  \"onPremiseSecurityIdentifier\": \"AQUAAAAAAAUVAAAAoGXPfnhLm1/nfIdw2rzSAA==\",\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": null,\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": \"kmsngtu@microsoft.com\",\r\n  \"provisionedPlans\": [\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"Exchange\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"MicrosoftOffice\"\r\n    },\r\n    {\r\n      \"capabilityStatus\": \"Enabled\",\r\n      \"provisioningStatus\": \"Success\",\r\n      \"service\": \"SharePoint\"\r\n    }\r\n  ],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [\r\n    \"X500:/O=Nokia/OU=HUB/cn=Recipients/cn=kmsngtu\",\r\n    \"X500:/o=microsoft/ou=External (FYDIBOHF25SPDLT)/cn=Recipients/cn=7f298b16a14d45e88343688e1d329f0c\",\r\n    \"x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=581bdd0b2f054248b5361f4e374811c5-KmsNg servi\",\r\n    \"x500:/o=SDF/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=cad0c33795264a20a831471f972b9989-KmsNg service test u\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user901\",\r\n    \"x500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user2f3\",\r\n    \"smtp:kmsngtu@service.microsoft.com\",\r\n    \"X500:/o=microsoft/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=KmsNg service test user150\",\r\n    \"SMTP:kmsngtu@microsoft.com\"\r\n  ],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kmsngtu@microsoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [\r\n    \"kmsngtu@microsoft.com\",\r\n    \"kmsngtu@service.microsoft.com\"\r\n  ],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": \"US\",\r\n  \"userPrincipalName\": \"kmsngtu@microsoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/71ecaf6c-7521-4953-ba5f-e55c260af004/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"9a3042c3-fc03-4ee2-9930-7d48eb74563c\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"kvtest\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"kvtest\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"kvtest\",\r\n  \"mobile\": null,\r\n  \"netId\": \"1003BFFD90AD2ADE\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"kvtest@yuhuizhotmail.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "5984"
+          "1951"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -484,13 +484,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "Oqko02haJxDTRhctK/G36gK387+J0M2ZgOrTBM5zf4M="
         ],
         "request-id": [
-          "75d40c3d-5772-422b-bc1d-4e43ee9e60ec"
+          "8c0c8554-79c3-4dd0-a72a-ba9853afb267"
         ],
         "client-request-id": [
-          "15fd6963-c713-4eaa-9827-5fea50d9f6fe"
+          "9ad3e2d6-a354-489b-baa9-95e77ec2e5ab"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -499,7 +499,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "eVRRJe22NAOOk-czXoto08T-IAPzCxQfp4AS3wJQgs2xkuxpMnFSKeD6Z5KVvpz4AcsZIp6S1YJsldcqli6alAdb0wXwDoeGEvLWpLdoOATamVWs9oFrNQsYNJoWd2B7.YkcNhHzPqz5C5wrYn8I_a02mGlPzTYgyjF8i8cJ-P3s"
+          "-XwA9XpbhUqspbMetz-vazl3Jf0SoIcEm-qndTEGQDihGTagy43GnZ1yC90SzCdXbtJHsHZ--ZFJ4JVKemv-kmJEc7GO_WGs6DHqcI_e7A3r8pW4mI3JuUJ6CM3xLBfYOVYGP1E33EvVv5qKWVJBjQ.B14pMeqUvYaXSwf0WDOkgrLkQJuiTseg5p1GUexxI-8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -527,7 +527,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 03:53:04 GMT"
+          "Fri, 15 May 2015 23:39:00 GMT"
         ]
       },
       "StatusCode": 200
@@ -535,12 +535,12 @@
   ],
   "Names": {},
   "Variables": {
-    "ResourceGroupName": "pshtestrg1197",
+    "ResourceGroupName": "pshtestrg2690",
     "Location": "northcentralus",
-    "PreCreatedVault": "pshtestvault6809",
-    "SubscriptionId": "c2619f08-57f7-492b-a9c3-45dee233805b",
-    "User": "kmsngtu@microsoft.com",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "PreCreatedVault": "pshtestvault2489",
+    "SubscriptionId": "86193581-bb76-44a9-9110-8cf6dbcbfea5",
+    "User": "kvtest@yuhuizhotmail.onmicrosoft.com",
+    "TenantId": "71ecaf6c-7521-4953-ba5f-e55c260af004",
+    "Domain": "yuhuizhotmail.onmicrosoft.com"
   }
 }
