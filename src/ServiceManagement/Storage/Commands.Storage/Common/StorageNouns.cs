@@ -146,6 +146,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string QueueStoredAccessPolicy = "AzureStorageQueueStoredAccessPolicy";
 
         /// <summary>
+        /// Azure storage share quota
+        /// </summary>
+        public const string ShareQuota = "AzureStorageShareQuota";
+
+        /// <summary>
         /// Default service metrics version
         /// </summary>
         public const string DefaultMetricsVersion = "1.0";

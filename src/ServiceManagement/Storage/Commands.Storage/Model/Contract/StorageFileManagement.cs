@@ -64,6 +64,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             return this.Client.GetShareReference(shareName);
         }
 
+        public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            share.FetchAttributes(accessCondition, options, operationContext);
+        }
+
+        public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            share.SetProperties(accessCondition, options, operationContext);
+        }
+
         public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
         {
             FileContinuationToken continuationToken = null;

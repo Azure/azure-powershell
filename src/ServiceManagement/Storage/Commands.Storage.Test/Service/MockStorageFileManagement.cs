@@ -57,6 +57,16 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
             return client.GetShareReference(shareName);
         }
 
+        public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
         {
             IListFileItem[] enumerationItems;

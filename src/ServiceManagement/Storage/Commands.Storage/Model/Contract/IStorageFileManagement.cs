@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
 
         /// <summary>
-        /// Set container permissions.
+        /// Set share permissions.
         /// </summary>
         /// <param name="container">A CloudFileShare object.</param>
         /// <param name="permissions">The share's permission.</param>
@@ -54,16 +54,52 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, AccessCondition accessCondition = null, FileRequestOptions options = null, OperationContext operationContext = null);
 
         /// <summary>
+        ///  Retrieve the share's attributes.
+        /// </summary>
+        /// <param name="share">Indicating the share.</param>
+        /// <param name="accessCondition">
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  the access conditions for the share. If null, no condition is used.
+        /// </param>
+        /// <param name="options">
+        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  additional options for the request.
+        /// </param>
+        /// <param name="operationContext">
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  the context for the current operation.
+        ///  </param>
+        void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext);
+
+        /// <summary>
+        ///  Set share attributes.
+        /// </summary>
+        /// <param name="share">Indicating the share.</param>
+        /// <param name="accessCondition">
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  the access conditions for the share. If null, no condition is used.
+        /// </param>
+        /// <param name="options">
+        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  additional options for the request.
+        /// </param>
+        /// <param name="operationContext">
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  the context for the current operation.
+        ///  </param>
+        void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext);
+
+        /// <summary>
         ///  Enumerates the files and directories under a certain folder.
         /// </summary>
         /// <param name="directory">Indicating the directory to be listed.</param>
         /// <param name="enumerationAction">Indicating the action for enumerated items.</param>
         /// <param name="options">
-        ///  An Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         /// </param>
         /// <param name="token">Indicating the cancellation token.</param>
@@ -78,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         /// <param name="share">Indicating the share.</param>
         /// <param name="accessCondition">
-        ///  An Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
@@ -86,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="token">
@@ -107,11 +143,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </param>
         /// <param name="enumerationAction">Indicating the action for enumerated items.</param>
         /// <param name="options">
-        ///  An Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         /// </param>
         /// <param name="token">Indicating the cancellation token.</param>
@@ -131,7 +167,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -155,7 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -179,7 +215,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -202,7 +238,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -221,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the directory to be deleted.
         /// </param>
         /// <param name="accessCondition">
-        ///  An Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
@@ -229,7 +265,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -248,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the share to be deleted.
         /// </param>
         /// <param name="accessCondition">
-        ///  An Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
@@ -256,7 +292,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
@@ -275,7 +311,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the file to be deleted.
         /// </param>
         /// <param name="accessCondition">
-        ///  An Microsoft.WindowsAzure.Storage.AccessCondition object that represents
+        ///  A Microsoft.WindowsAzure.Storage.AccessCondition object that represents
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
@@ -283,7 +319,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
-        ///  An Microsoft.WindowsAzure.Storage.OperationContext object that represents
+        ///  A Microsoft.WindowsAzure.Storage.OperationContext object that represents
         ///  the context for the current operation.
         ///  </param>
         /// <param name="cancellationToken">
