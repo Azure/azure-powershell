@@ -75,5 +75,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+        }
     }
 }

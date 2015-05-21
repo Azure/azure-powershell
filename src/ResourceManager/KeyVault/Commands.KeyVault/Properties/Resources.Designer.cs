@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid application Id..
+        /// </summary>
+        internal static string InvalidApplicationId {
+            get {
+                return ResourceManager.GetString("InvalidApplicationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid AzureEnvironment..
         /// </summary>
         internal static string InvalidAzureEnvironment {

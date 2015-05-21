@@ -144,15 +144,14 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
 {
 	$serverName = Get-ServerName
-	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
+	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdminCredentials $credentials
 	return $server
 }
 

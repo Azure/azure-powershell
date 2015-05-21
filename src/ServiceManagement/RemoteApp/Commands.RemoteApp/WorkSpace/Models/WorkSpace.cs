@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 
-namespace Microsoft.Azure.Management.RemoteApp.Models
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
 {
     public class Workspace
     {
