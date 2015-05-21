@@ -22,8 +22,6 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-
     public interface IAutomationClient
     {
         AzureSubscription Subscription { get; }
@@ -141,17 +139,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string runbookName,
             bool isEnabled,
             DateTimeOffset expiryTime,
-            Dictionary<string, string> parameters);
+            Hashtable parameters);
 
         Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
 
-        Model.Webhook UpdateWebhook(
-          string resourceGroupName,
-          string automationAccountName,
-          string name,
-          string runbookName,
-          Dictionary<string, string> parameters,
-          bool isEnabled);
+        IEnumerable<Model.Webhook> GetWebhooksByRunbookName(string resourceGroupName, string automationAccountName, string runbookName);
+
+        IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName);
+
+        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, Hashtable parameters, bool? isEnabled);
 
         void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
 

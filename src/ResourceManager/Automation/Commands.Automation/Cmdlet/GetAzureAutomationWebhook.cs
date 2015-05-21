@@ -16,23 +16,34 @@ using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Create a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationWebhook")]
-    [OutputType(typeof(Module))]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [OutputType(typeof(Webhook))]
     public class GetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the module name.
+        /// Gets or sets the Webhook name.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Webhook name.")]
-        [ValidateNotNullOrEmpty]
+        [Alias("WebhookName")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Webhook name.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Runbook name.")]
+        [Alias("RbName")]
+        public string RunbookName { get; set; }
      
         /// <summary>
         /// Execute this cmdlet.
@@ -40,12 +51,29 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var webhook = this.AutomationClient.GetWebhook(
-                this.ResourceGroupName,
-                this.AutomationAccountName,
-                this.Name);
-               
-            this.WriteObject(webhook);
+            IEnumerable<Model.Webhook> webhooks = null;
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
+            {
+                webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName);
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
+            {
+                webhooks = new List<Webhook>
+                               {
+                                   this.AutomationClient.GetWebhook(
+                                       this.ResourceGroupName,
+                                       this.AutomationAccountName,
+                                       this.Name)
+                               };
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
+            {
+                webhooks = this.AutomationClient.GetWebhooksByRunbookName(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.RunbookName);
+            }
+            this.GenerateCmdletOutput(webhooks);
         }
     }
 }

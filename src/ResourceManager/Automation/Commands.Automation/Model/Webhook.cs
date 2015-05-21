@@ -20,6 +20,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
+    using System.Linq;
+
     public class Webhook
     {
         /// <summary>
@@ -34,10 +36,14 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <param name="webhook">
         /// The Webhook.
         /// </param>
+        /// <param name="webhookUri">
+        /// The Webhook URI
+        /// </param>
         public Webhook(
             string resourceGroupName,
             string automationAccountName,
-            Azure.Management.Automation.Models.Webhook webhook)
+            Azure.Management.Automation.Models.Webhook webhook,
+            string webhookUri = "")
         {
             Requires.Argument("resourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("automationAccountName", automationAccountName).NotNull();
@@ -56,11 +62,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             if (webhook.Properties.LastInvokedTime.HasValue)
             {
                 this.LastInvokedTime = webhook.Properties.LastInvokedTime.Value.ToLocalTime();
-                
             }
+
             this.LastModifiedTime = webhook.Properties.LastModifiedTime.ToLocalTime();
-            this.Parameters = webhook.Properties.Parameters;
+            this.Parameters = new Hashtable(webhook.Properties.Parameters.ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
             this.RunbookName = webhook.Properties.Runbook.Name;
+            this.WebhookURI = webhookUri;
         }
 
         public string ResourceGroupName { get; set; }
@@ -75,14 +82,16 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
         public DateTimeOffset ExpiryTime { get; set; }
 
-        public bool IsEnabled { get; set; }
+        public bool? IsEnabled { get; set; }
 
         public DateTimeOffset LastInvokedTime { get; set; }
 
         public DateTimeOffset LastModifiedTime { get; set; }
 
-        public IDictionary<string, string> Parameters { get; set; }
+        public Hashtable Parameters { get; set; }
 
         public string RunbookName { get; set; }
+
+        public string WebhookURI { get; set; }
     }
 }

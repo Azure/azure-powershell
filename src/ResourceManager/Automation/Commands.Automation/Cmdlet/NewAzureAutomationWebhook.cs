@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Create a new Webhook for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureAutomationWebhook")]
-    [OutputType(typeof(Module))]
+    [OutputType(typeof(Webhook))]
     public class NewAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -45,28 +46,30 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string RunbookName { get; set; }
 
         /// <summary>
-        /// Gets or sets the contentLink
+        /// Gets or sets the Enabled property of the Webhook
         /// </summary>
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Enable/Disable property of the Webhook")]
         [ValidateNotNullOrEmpty]
         public bool IsEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets the contentLink
+        /// Gets or sets the Expiry Time
         /// </summary>
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Expiry Time for webhook.")]
         [ValidateNotNullOrEmpty]
         public DateTimeOffset ExpiryTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the contentLink
+        /// Gets or sets the Runbook parameters
         /// </summary>
-        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook parameters name/value.")]
-        [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> Parameters { get; set; }
+        public IDictionary<string, string> Parameters { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Skip warning message about one-time viewable webhook URL")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -74,15 +77,22 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var createdWebhook = this.AutomationClient.CreateWebhook(
-                this.ResourceGroupName,
-                this.AutomationAccountName,
-                this.Name,
-                this.RunbookName,
-                this.IsEnabled,
-                this.ExpiryTime,
-                this.Parameters);
-            this.WriteObject(createdWebhook);
+            this.ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.WebhookOneTimeURL, "Webhook"),
+                string.Format(Resources.WebhookOneTimeURL, "Webhook"),
+                Name,
+                () =>
+                this.WriteObject(
+                    this.AutomationClient.CreateWebhook(
+                        this.ResourceGroupName,
+                        this.AutomationAccountName,
+                        this.Name,
+                        this.RunbookName,
+                        this.IsEnabled,
+                        this.ExpiryTime,
+                        this.Parameters.ToHashtable())));
+
         }
     }
 }

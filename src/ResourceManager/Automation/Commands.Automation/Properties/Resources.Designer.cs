@@ -671,5 +671,14 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("WebhookNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For security purposes, the URL of the created webhook will only be viewable in the output of this command. No other commands will return the webhook URL. Make sure to copy down the webhook URL from this command&apos;s output before closing your PowerShell session, and to store it securely..
+        /// </summary>
+        internal static string WebhookOneTimeURL {
+            get {
+                return ResourceManager.GetString("WebhookOneTimeURL", resourceCulture);
+            }
+        }
     }
 }

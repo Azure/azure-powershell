@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Net;
-using Hyak.Common;
+    using System.Collections;
+    using System.Linq;
 
-    using Microsoft.Azure.Commands.Automation.Properties;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     public partial class AutomationClient : IAutomationClient
     {
@@ -34,23 +37,29 @@ using Hyak.Common;
             string runbookName,
             bool isEnabled,
             DateTimeOffset expiryTime,
-            Dictionary<string, string> runbookParameters)
+            Hashtable runbookParameters)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            var rbAssociationProperty = new RunbookAssociationProperty { Name = runbookName };
 
             var createOrUpdateProperties = new WebhookCreateOrUpdateProperties
                                                {
                                                    IsEnabled = isEnabled,
                                                    ExpiryTime = expiryTime,
-                                                   Runbook = { Name = runbookName },
-                                                   Parameters = runbookParameters,
+                                                   Runbook = rbAssociationProperty,
                                                    Uri =
                                                        this.automationManagementClient
                                                        .Webhooks.GenerateUri(
                                                            resourceGroupName,
                                                            automationAccountName).Uri
                                                };
+            if (runbookParameters != null)
+            {
+                createOrUpdateProperties.Parameters =
+                    runbookParameters.Cast<DictionaryEntry>()
+                        .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+            }
 
             var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters(name, createOrUpdateProperties);
             
@@ -59,7 +68,7 @@ using Hyak.Common;
                              automationAccountName,
                              webhookCreateOrUpdateParameters).Webhook;
 
-            return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
+            return new Model.Webhook(resourceGroupName, automationAccountName, webhook, webhookCreateOrUpdateParameters.Properties.Uri);
         }
 
         public Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name)
@@ -91,47 +100,81 @@ using Hyak.Common;
             }
         }
 
+        public IEnumerable<Model.Webhook> GetWebhooksByRunbookName(string resourceGroupName, string automationAccountName, string runbookName)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+
+            var webhooks =
+                this.automationManagementClient.Webhooks.List(resourceGroupName, automationAccountName, runbookName).Webhooks;
+            return webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w)).ToList();
+        }
+
+        public IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            var runbooks =
+                this.automationManagementClient.Runbooks.List(resourceGroupName, automationAccountName).Runbooks;
+            
+            List<Model.Webhook> webhooks = new List<Model.Webhook>();
+            foreach (Runbook runbook in runbooks)
+            {
+                webhooks.AddRange(this.GetWebhooksByRunbookName(resourceGroupName, automationAccountName, runbook.Name).ToList());
+            }
+            return webhooks;
+        }
+
         public Model.Webhook UpdateWebhook(
             string resourceGroupName,
             string automationAccountName,
             string name,
-            string runbookName,
-            Dictionary<string, string> parameters,
-            bool isEnabled)
+            Hashtable parameters,
+            bool? isEnabled)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-
-            var webhookCreateOrUpdateProperties = new WebhookCreateOrUpdateProperties
-                                                      {
-                                                          IsEnabled = isEnabled,
-                                                          Parameters = parameters,
-                                                          Runbook = new RunbookAssociationProperty{Name = runbookName}
-                                                      };
-            var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters(
-                name,
-                webhookCreateOrUpdateProperties);
-
+            var webhookModel = this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name).Webhook;
+            var webhookPatchProperties = new WebhookPatchProperties();
+            if (webhookModel != null)
+            {
+                if (isEnabled != null)
+                {
+                    webhookPatchProperties.IsEnabled = isEnabled.Value;
+                }
+                if (parameters != null)
+                {
+                    webhookPatchProperties.Parameters =
+                        parameters.Cast<DictionaryEntry>()
+                            .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                }
+            }
+         
+            var webhookPatchParameters = new WebhookPatchParameters(name) { Properties = webhookPatchProperties };
             var webhook =
-                this.automationManagementClient.Webhooks.CreateOrUpdate(
+                this.automationManagementClient.Webhooks.Patch(
                     resourceGroupName,
                     automationAccountName,
-                    webhookCreateOrUpdateParameters).Webhook;
+                    webhookPatchParameters).Webhook;
             return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
         }
 
-        public void DeleteWebhook(
-         string resourceGroupName,
-         string automationAccountName,
-         string name)
+        public void DeleteWebhook(string resourceGroupName, string automationAccountName, string name)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-
-            this.automationManagementClient.Webhooks.Delete(
-                resourceGroupName,
-                automationAccountName,
-                name);
+            try
+            {
+                this.automationManagementClient.Webhooks.Delete(resourceGroupName, automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Webhook), string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
+                }
+                throw;
+            }
         }
     }
 }

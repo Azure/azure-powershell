@@ -111,9 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationWebhookTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationAccountTest.cs" />
+    <Compile Include="UnitTests\NewAzureAutomationWebhookTest.cs" />
     <Compile Include="UnitTests\RemoveAzureAutomationAccountTest.cs" />
+    <Compile Include="UnitTests\RemoveAzureAutomationWebhookTest.cs" />
+    <Compile Include="UnitTests\SetAzureAutomationWebhookTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">

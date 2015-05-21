@@ -24,12 +24,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationWebhook")]
-    [OutputType(typeof(Module))]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationWebhook")]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the module name.
+        /// Gets or sets the Webhook name.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The webhook name.")]
