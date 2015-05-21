@@ -30,7 +30,7 @@ if (Test-Path -Path $sourcePath) {
     Remove-Item -Path $sourcePath -Force;
 }
 
-$sourcePath = $sourceDir + "AzureResourceManager.psm1"
+$sourcePath = $sourceDir + "ResourceManagerStartup.ps1"
 $destDir = Split-Path -Path $sourceDir
 
 if (Test-Path -Path $sourcePath) {
