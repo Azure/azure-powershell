@@ -39,7 +39,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
-        private const string PackageDirectory = @"..\..\..\..\Package\Debug";
+        private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
+        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
 
@@ -218,6 +219,31 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             else if (mode == AzureModule.AzureResourceManager)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+            }
+            else
+            {
+                throw new ArgumentException("Unknown command type for testing");
+            }
+            this.modules.Add("Assert.ps1");
+            this.modules.Add("Common.ps1");
+            this.modules.AddRange(modules);
+        }
+
+        public void SetupModulesFromCommon(AzureModule mode, params string[] modules)
+        {
+            this.modules = new List<string>();
+            if (mode == AzureModule.AzureProfile)
+            {
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+            }
+            else if (mode == AzureModule.AzureServiceManagement)
+            {
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
+            }
+            else if (mode == AzureModule.AzureResourceManager)
+            {
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
             }
             else
             {
