@@ -47,6 +47,9 @@ ProcessorArchitecture = 'None'
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @()
 
+# Module definitions that will be imported prior. This line was added to make Aliases in NestedModules work.
+ModuleToProcess = 'AzureResourceManager.psm1'
+
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
 
@@ -108,7 +111,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = @()
+AliasesToExport = '*'
 
 # List of all modules packaged with this module
 ModuleList = @()

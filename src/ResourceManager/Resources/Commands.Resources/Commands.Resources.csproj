@@ -257,6 +257,9 @@
     <Content Include="AzureResourceManager.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="AzureResourceManager.psm1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="PostBuild.ps1" />
