@@ -12,46 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     /// <summary>
-    /// Provides creation details for a new Hive jobDetails.
+    /// Provides creation details for a new Pig jobDetails.
     /// </summary>
-    public class AzureHDInsightHiveJobDefinition : AzureHDInsightJobDefinition
+    public class AzureHDInsightPigJobDefinition : AzureHDInsightJobDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the AzureHDInsightHiveJobDefinition class.
-        /// </summary>
-        public AzureHDInsightHiveJobDefinition()
-        {
-            this.Defines = new Dictionary<string, string>();
-        }
-
-        /// <summary>
-        /// Gets the parameters for the jobDetails.
-        /// </summary>
-        public IDictionary<string, string> Defines { get; set; }
-
-        /// <summary>
-        /// Gets or sets the query file to use for a hive jobDetails.
+        /// Gets or sets the query file to use for a pig jobDetails.
         /// </summary>
         public string File { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the jobDetails.
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the query to use for a hive jobDetails.
+        /// Gets or sets the query to use for a pig jobDetails.
         /// </summary>
         public string Query { get; set; }
-
-        /// <summary>
-        /// Gets or sets the switch to run queries as files.
-        /// </summary>
-        public bool RunAsFileJob { get; set; }
     }
 }

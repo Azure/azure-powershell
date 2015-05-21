@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Get,
-        Constants.ManagementCommandNames.AzureHDInsightProperties),
+        Constants.CommandNames.AzureHDInsightProperties),
     OutputType(
         typeof(CapabilitiesResponse))]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase

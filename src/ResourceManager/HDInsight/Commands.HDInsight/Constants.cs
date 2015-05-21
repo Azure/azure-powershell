@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     internal static class Constants
     {
-        public static class ManagementCommandNames
+        public static class CommandNames
         {
             public const string AzureHDInsightCluster = "AzureHDInsightCluster";
             public const string AzureHDInsightClusterConfig = "AzureHDInsightClusterConfig";
@@ -27,11 +27,16 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightScriptAction = "AzureHDInsightScriptAction";
             public const string AzureHDInsightStorage = "AzureHDInsightStorage";
             public const string AzureHDInsightProperties = "AzureHDInsightProperties";
+            public const string AzureHDInsightJob = "AzureHDInsightJob";
         }
 
-        public static class JobCommandNames
+        public static class JobDefinitions
         {
             public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
+            public const string AzureHDInsightPigJobDefinition = "AzureHDInsightPigJobDefinition";
+            public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
+            public const string AzureHDInsightSqoopJobDefinition = "AzureHDInsightSqoopJobDefinition";
+            public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureHDInsightStreamingMapReduceJobDefinition";
         }
 
         public static class ParameterSetNames

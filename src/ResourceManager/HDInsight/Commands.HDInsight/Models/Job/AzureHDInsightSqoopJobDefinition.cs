@@ -12,25 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.HDInsight.Job;
-
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class AzureHdInsightJobManagementClient
+    /// <summary>
+    /// Provides creation details for a new Sqoop jobDetails.
+    /// </summary>
+    public class AzureHDInsightSqoopJobDefinition : AzureHDInsightJobDefinition
     {
-        public AzureHdInsightJobManagementClient(AzureContext context)
-        {
-            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightJobManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-        }
+        /// <summary>
+        /// Gets or sets the Command to use for a sqoop job.
+        /// </summary>
+        public string Command { get; set; }
 
         /// <summary>
-        /// Parameterless constructor for mocking
+        /// Gets or sets the query file to use for a sqoop job.
         /// </summary>
-        public AzureHdInsightJobManagementClient() { }
-
-        private IHDInsightJobManagementClient HdInsightJobManagementClient { get; set; }
-
+        public string File { get; set; }
     }
 }

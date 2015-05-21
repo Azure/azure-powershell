@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Set,
-        Constants.ManagementCommandNames.AzureHDInsightClusterSize),
+        Constants.CommandNames.AzureHDInsightClusterSize),
     OutputType(
         typeof(ClusterGetResponse))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase

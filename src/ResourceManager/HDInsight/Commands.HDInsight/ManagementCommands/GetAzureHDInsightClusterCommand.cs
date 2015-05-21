@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Get,
-        Constants.ManagementCommandNames.AzureHDInsightCluster),
+        Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
         typeof(List<ClusterGetResponse>))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase

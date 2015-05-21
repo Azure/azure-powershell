@@ -35,7 +35,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="JobCommands\NewAzureHDInsightSqoopJobDefinitionCommand.cs" />
+    <Compile Include="JobCommands\NewAzureHDInsightStreamingMapReduceJobDefinitionCommand.cs" />
+    <Compile Include="JobCommands\NewAzureHDInsightMapReduceJobDefinitionCommand.cs" />
+    <Compile Include="JobCommands\NewAzureHDInsightPigJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightHiveJobDefinitionCommand.cs" />
+    <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
+    <Compile Include="JobCommands\StopAzureHDInsightJobCommand.cs" />
+    <Compile Include="JobCommands\StartAzureHDInsightJobCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightStorageCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightMetastoreCommand.cs" />
@@ -51,13 +58,18 @@
     <Compile Include="ManagementCommands\HDInsightCmdletBase.cs" />
     <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Models\AzureHDInsightHiveJobDefinition.cs" />
-    <Compile Include="Models\AzureHDInsightJobDefinition.cs" />
-    <Compile Include="Models\AzureHDInsightConfig.cs" />
-    <Compile Include="Models\AzureHdInsightJobManagementClient.cs" />
-    <Compile Include="Models\AzureHdInsightManagementClient.cs" />
-    <Compile Include="Models\AzureHDInsightMetastoreType.cs" />
-    <Compile Include="Models\AzureHDInsightMetastore.cs" />
+    <Compile Include="Models\Job\AzureHDInsightJob.cs" />
+    <Compile Include="Models\Job\AzureHDInsightMapReduceJobDefinition.cs" />
+    <Compile Include="Models\Job\AzureHDInsightStreamingMapReduceJobDefinition.cs" />
+    <Compile Include="Models\Job\AzureHDInsightSqoopJobDefinition.cs" />
+    <Compile Include="Models\Job\AzureHDInsightPigJobDefinition.cs" />
+    <Compile Include="Models\Job\AzureHDInsightHiveJobDefinition.cs" />
+    <Compile Include="Models\Job\AzureHDInsightJobDefinition.cs" />
+    <Compile Include="Models\Management\AzureHDInsightConfig.cs" />
+    <Compile Include="Models\Job\AzureHdInsightJobManagementClient.cs" />
+    <Compile Include="Models\Management\AzureHdInsightManagementClient.cs" />
+    <Compile Include="Models\Management\AzureHDInsightMetastoreType.cs" />
+    <Compile Include="Models\Management\AzureHDInsightMetastore.cs" />
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

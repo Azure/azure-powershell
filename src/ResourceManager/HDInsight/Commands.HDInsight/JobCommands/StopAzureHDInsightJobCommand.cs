@@ -13,40 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        Constants.CommandNames.AzureHDInsightCluster),
-    OutputType(
-        typeof(ClusterGetResponse))]
-    public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop,
+        Constants.CommandNames.AzureHDInsightJob),
+    OutputType(typeof(AzureHDInsightJob))]
+    public class StopAzureHDInsightJobCommand : HDInsightCmdletBase
     {
-        #region Input Parameter Definitions
-
-        [Parameter(
+        [Parameter(Mandatory = true, 
             Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
+            HelpMessage = "The JobID of the jobDetails to stop.",
+            ValueFromPipeline = true)]
+        public string JobId { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster.")]
-        public string ClusterName { get; set; }
-
-        #endregion
-
-        public override void ExecuteCmdlet()
+        public override async void ExecuteCmdlet()
         {
-            var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
-
-            this.WriteObject(result, true);
+            var job = await this.HDInsightJobClient.StopJob(this.JobId);
+            var jobDetail = new AzureHDInsightJob(job.JobDetail, this.HDInsightJobClient.ClusterName);
+            WriteObject(jobDetail);
         }
     }
 }

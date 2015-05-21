@@ -13,37 +13,46 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     /// <summary>
-    /// Provides the details of an HDInsight jobDetails when creating the jobDetails.
+    /// Provides creation details for a new MapReduce jobDetails.
     /// </summary>
-    public abstract class AzureHDInsightJobDefinition
+    public class AzureHDInsightMapReduceJobDefinition : AzureHDInsightJobDefinition
     {
         /// <summary>
-        /// Initializes a new instance of the AzureHDInsightJobDefinition class.
+        /// Gets or sets the class name to use for the jobDetails.
         /// </summary>
-        protected AzureHDInsightJobDefinition()
+        public string ClassName { get; set; }
+
+        /// <summary>
+        /// Gets the parameters for the jobDetails.
+        /// </summary>
+        public IDictionary<string, string> Defines { get; set; }
+
+        /// <summary>
+        /// Gets or sets the jar file to use for the jobDetails.
+        /// </summary>
+        public string JarFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the jobDetails.
+        /// </summary>
+        public string JobName { get; set; }
+
+        /// <summary>
+        /// Gets the libjars to use for the jobDetails.
+        /// </summary>
+        public ICollection<string> LibJars { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the AzureHDInsightMapReduceJobDefinition class.
+        /// </summary>
+        public AzureHDInsightMapReduceJobDefinition()
         {
-            this.Files = new List<string>();
-            this.Arguments = new Collection<string>();
+            this.LibJars = new List<string>();
+            this.Defines = new Dictionary<string, string>();
         }
-
-        /// <summary>
-        /// Gets the arguments for the jobDetails.
-        /// </summary>
-        public ICollection<string> Arguments { get; set; }
-
-        /// <summary>
-        /// Gets the resources for the jobDetails.
-        /// </summary>
-        public ICollection<string> Files { get; set; }
-
-        /// <summary>
-        /// Gets or sets the status folder to use for the jobDetails.
-        /// </summary>
-        public string StatusFolder { get; set; }
     }
 }

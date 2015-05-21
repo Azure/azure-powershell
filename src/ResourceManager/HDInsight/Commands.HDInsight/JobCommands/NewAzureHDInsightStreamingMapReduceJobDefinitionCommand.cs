@@ -22,20 +22,24 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightHiveJobDefinition),
+        Constants.JobDefinitions.AzureHDInsightStreamingMapReduceJobDefinition),
     OutputType(
-        typeof(AzureHDInsightHiveJobDefinition))]
-    public class NewAzureHDInsightHiveJobDefinitionCommand : HDInsightCmdletBase
+        typeof(AzureHDInsightStreamingMapReduceJobDefinition))]
+    public class NewAzureHDInsightStreamingMapReduceJobDefinitionCommand : HDInsightCmdletBase
     {
-        private AzureHDInsightHiveJobDefinition job;
+        private AzureHDInsightStreamingMapReduceJobDefinition job;
 
         #region Input Parameter Definitions
         
         [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "The files for the jobDetails.")]
-        public string[] Files { get; set; }
+        [Parameter(HelpMessage = "The file for the jobDetails.")]
+        public string File
+        {
+            get { return this.job.File; }
+            set { this.job.File = value; } 
+        }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
@@ -44,45 +48,49 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { this.job.StatusFolder = value; }
         }
 
+        [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
+        public string[] CommandEnvironment { get; set; }
+        
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
 
-        [Parameter(HelpMessage = "The query file to run in the jobDetails.")]
-        public string File
+        [Parameter(Mandatory = true,
+            HelpMessage = "The input path to use for the jobDetails.")]
+        public string InputPath
         {
-            get { return this.job.File; }
-            set { this.job.File = value; }
+            get { return this.job.Input; }
+            set { this.job.Input = value; }
         }
 
-        [Parameter(HelpMessage = "The name of the jobDetails.")]
-        public string JobName
+        [Parameter(HelpMessage = "The Mapper to use for the jobDetails.")]
+        public string Mapper
         {
-            get { return this.job.JobName; }
-            set { this.job.JobName = value; }
+            get { return this.job.Mapper; }
+            set { this.job.Mapper = value; }
         }
 
-        [Parameter(HelpMessage = "The query to run in the jobDetails.")]
-        public string Query
+        [Parameter(HelpMessage = "The output path to use for the jobDetails.")]
+        public string OutputPath
         {
-            get { return this.job.Query; }
-            set { this.job.Query = value; }
+            get { return this.job.Output; }
+            set { this.job.Output = value; }
         }
-        
-        [Parameter(HelpMessage = "Run the query as a file.")]
-        public SwitchParameter RunAsFileJob
+
+        [Parameter(HelpMessage = "The Reducer to use for the jobDetails.")]
+        public string Reducer
         {
-            get { return this.job.RunAsFileJob; }
-            set { this.job.RunAsFileJob = value; }
+            get { return this.job.Reducer; }
+            set { this.job.Reducer = value; }
         }
 
         #endregion
 
-        public NewAzureHDInsightHiveJobDefinitionCommand()
+        public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
             this.Arguments = new string[] {};
-            this.Files = new string[] { };
+            this.CommandEnvironment = new string[] {};
             this.Defines = new Hashtable();
-            job = new AzureHDInsightHiveJobDefinition();
+            job = new AzureHDInsightStreamingMapReduceJobDefinition();
         }
 
         public override void ExecuteCmdlet()
@@ -92,9 +100,9 @@ namespace Microsoft.Azure.Commands.HDInsight
                 this.job.Arguments.Add(arg);
             }
 
-            foreach (var file in this.Files)
+            foreach (var cmdenv in this.CommandEnvironment)
             {
-                this.job.Files.Add(file);
+                this.job.CommandEnvironment.Add(cmdenv);
             }
 
             foreach (KeyValuePair<string, string> define in this.Defines)

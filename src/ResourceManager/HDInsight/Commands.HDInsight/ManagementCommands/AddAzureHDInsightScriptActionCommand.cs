@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.ManagementCommandNames.AzureHDInsightScriptAction),
+        Constants.CommandNames.AzureHDInsightScriptAction),
     OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightScriptActionCommand : HDInsightCmdletBase
     {

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsSecurity.Revoke,
-        Constants.ManagementCommandNames.AzureHDInsightRdpServicesAccess),
+        Constants.CommandNames.AzureHDInsightRdpServicesAccess),
     OutputType(
         typeof(void))]
     public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase

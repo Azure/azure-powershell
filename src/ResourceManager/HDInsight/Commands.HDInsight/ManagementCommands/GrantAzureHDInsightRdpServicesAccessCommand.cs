@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsSecurity.Grant,
-        Constants.ManagementCommandNames.AzureHDInsightRdpServicesAccess),
+        Constants.CommandNames.AzureHDInsightRdpServicesAccess),
     OutputType(
         typeof(void))]
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase

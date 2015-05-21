@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightHiveJobDefinition),
+        Constants.JobDefinitions.AzureHDInsightMapReduceJobDefinition),
     OutputType(
-        typeof(AzureHDInsightHiveJobDefinition))]
-    public class NewAzureHDInsightHiveJobDefinitionCommand : HDInsightCmdletBase
+        typeof(AzureHDInsightMapReduceJobDefinition))]
+    public class NewAzureHDInsightMapReduceJobDefinitionCommand : HDInsightCmdletBase
     {
-        private AzureHDInsightHiveJobDefinition job;
+        private AzureHDInsightMapReduceJobDefinition job;
 
         #region Input Parameter Definitions
-        
+
         [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
@@ -44,14 +44,21 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { this.job.StatusFolder = value; }
         }
 
+        [Parameter(Mandatory = true, HelpMessage = "The class name to use for the jobDetails.")]
+        public string ClassName
+        {
+            get { return this.job.ClassName; }
+            set { this.job.ClassName = value; }
+        }
+
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
 
-        [Parameter(HelpMessage = "The query file to run in the jobDetails.")]
-        public string File
+        [Parameter(Mandatory = true, HelpMessage = "The jar file to use for the jobDetails.")]
+        public string JarFile
         {
-            get { return this.job.File; }
-            set { this.job.File = value; }
+            get { return this.job.JarFile; }
+            set { this.job.JarFile = value; }
         }
 
         [Parameter(HelpMessage = "The name of the jobDetails.")]
@@ -61,28 +68,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { this.job.JobName = value; }
         }
 
-        [Parameter(HelpMessage = "The query to run in the jobDetails.")]
-        public string Query
-        {
-            get { return this.job.Query; }
-            set { this.job.Query = value; }
-        }
-        
-        [Parameter(HelpMessage = "Run the query as a file.")]
-        public SwitchParameter RunAsFileJob
-        {
-            get { return this.job.RunAsFileJob; }
-            set { this.job.RunAsFileJob = value; }
-        }
+        [Parameter(HelpMessage = "The lib jars for the jobDetails.")]
+        public string[] LibJars { get; set; }
 
         #endregion
 
-        public NewAzureHDInsightHiveJobDefinitionCommand()
+        public NewAzureHDInsightMapReduceJobDefinitionCommand()
         {
-            this.Arguments = new string[] {};
+            this.Arguments = new string[] { };
             this.Files = new string[] { };
             this.Defines = new Hashtable();
-            job = new AzureHDInsightHiveJobDefinition();
+            this.LibJars = new string[] { };
+            job = new AzureHDInsightMapReduceJobDefinition();
         }
 
         public override void ExecuteCmdlet()
@@ -100,6 +97,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             foreach (KeyValuePair<string, string> define in this.Defines)
             {
                 this.job.Defines.Add(define.Key, define.Value);
+            }
+
+            foreach (var libjar in this.LibJars)
+            {
+                this.job.LibJars.Add(libjar);
             }
 
             WriteObject(job);
