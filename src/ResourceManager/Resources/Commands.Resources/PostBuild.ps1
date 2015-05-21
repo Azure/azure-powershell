@@ -30,17 +30,4 @@ if (Test-Path -Path $sourcePath) {
     Remove-Item -Path $sourcePath -Force;
 }
 
-$sourcePath = $sourceDir + "ResourceManagerStartup.ps1"
-$destDir = Split-Path -Path $sourceDir
-
-if (Test-Path -Path $sourcePath) {
-    Write-Output -InputObject "Copying '$sourcePath' to directory '$destDir'";
-    Copy-Item -Path $sourcePath -Destination $destDir;
-}
-
-if (Test-Path -Path $sourcePath) {
-    Write-Output "Removing $sourcePath";
-    Remove-Item -Path $sourcePath -Force;
-}
-
 Write-Output -InputObject 'Finished post-build script';

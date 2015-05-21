@@ -12,13 +12,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-
-$aliases = @{
+@{
     # Sql aliases
-    "Get-AzureSqlDatabaseServerAuditingPolicy"="Get-AzureSqlServerAuditingPolicy";
-    "Remove-AzureSqlDatabaseServerAuditing"="Remove-AzureSqlServerAuditing";
-    "Set-AzureSqlDatabaseServerAuditingPolicy"="Set-AzureSqlServerAuditingPolicy";
-    "Use-AzureSqlDatabaseServerAuditingPolicy"="Use-AzureSqlServerAuditingPolicy";
-}
-
-$aliases.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+    "Get-AzureSqlDatabaseServerAuditingPolicy" = "Get-AzureSqlServerAuditingPolicy";
+    "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";
+    "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";
+    "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

@@ -108,7 +108,12 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = '*'
+AliasesToExport = @(
+    'Get-AzureSqlDatabaseServerAuditingPolicy',
+    'Remove-AzureSqlDatabaseServerAuditing',
+    'Set-AzureSqlDatabaseServerAuditingPolicy',
+    'Use-AzureSqlDatabaseServerAuditingPolicy'
+)
 
 # List of all modules packaged with this module
 ModuleList = @()
