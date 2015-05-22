@@ -20,8 +20,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
     /// <summary>
     /// Returns the auditing policy of a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
-    public class GetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureSqlServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
+    [Alias("Get-AzureSqlDatabaseServerAuditingPolicy")]
+    public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
