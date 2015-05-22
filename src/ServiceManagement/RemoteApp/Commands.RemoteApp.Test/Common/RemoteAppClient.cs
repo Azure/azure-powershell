@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RemoteApp.Test
+namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
-    using Microsoft.Azure.Management.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp.Cmdlets;
+    using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure;
 
 
     public class RemoteAppClientCredentials : SubscriptionCloudCredentials
