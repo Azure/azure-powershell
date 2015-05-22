@@ -61,16 +61,16 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>TrackingOperationId</Label>
-                <PropertyName>TrackingOperationId</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Status</Label>
                 <PropertyName>Status</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Output</Label>
                 <PropertyName>Output</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Error</Label>
+                <PropertyName>ErrorText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>StartTime</Label>
@@ -81,8 +81,81 @@
                 <PropertyName>EndTime</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Error</Label>
-                <PropertyName>ErrorText</PropertyName>
+                <Label>TrackingOperationId</Label>
+                <PropertyName>TrackingOperationId</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>StatusCode</Label>
+                <PropertyName>StatusCode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RequestId</Label>
+                <PropertyName>RequestId</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Compute.Models.DataDisk</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Compute.Models.DataDisk</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DiskSizeGB</Label>
+                <PropertyName>DiskSizeGB</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Lun</Label>
+                <PropertyName>Lun</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Caching</Label>
+                <PropertyName>Caching</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CreateOption</Label>
+                <PropertyName>CreateOption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceImage</Label>
+                <PropertyName>SourceImage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHardDisk</Label>
+                <ScriptBlock>
+                  if ($_.VirtualHardDisk -ne $null)
+                  {
+                     $_.VirtualHardDisk.Uri;
+                  }
+                  else
+                  {
+                     $_.VirtualHardDisk;
+                  }
+                </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
