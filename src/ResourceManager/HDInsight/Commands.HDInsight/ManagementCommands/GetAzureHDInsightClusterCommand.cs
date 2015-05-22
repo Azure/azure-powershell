@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -23,20 +24,18 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.Get,
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(List<ClusterGetResponse>))]
+        typeof(List<AzureHDInsightCluster>))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
-            Mandatory = true,
             HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
-            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
@@ -45,8 +44,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
-
-            this.WriteObject(result, true);
+            var output = result.Select(cluster => new AzureHDInsightCluster(cluster)).ToList();
+            WriteObject(output, true);
         }
     }
 }

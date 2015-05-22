@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -62,9 +63,9 @@ namespace Microsoft.Azure.Commands.HDInsight
                     {
                         RdpSettings = new RdpSettings
                         {
-                            UserName = this.RdpUser.UserName,
-                            Password = this.RdpUser.Password.ToString(),
-                            ExpiryDate = this.RdpAccessExpiry
+                            UserName = RdpUser.UserName,
+                            Password = RdpUser.Password.ConvertToString(),
+                            ExpiryDate = RdpAccessExpiry
                         }
                     }
                 }

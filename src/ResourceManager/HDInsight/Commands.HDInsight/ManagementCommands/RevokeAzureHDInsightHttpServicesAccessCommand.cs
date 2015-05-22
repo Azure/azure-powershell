@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsSecurity.Revoke,
         Constants.CommandNames.AzureHDInsightHttpServicesAccess),
     OutputType(
-        typeof(void))]
+        typeof(HttpConnectivitySettings))]
     public class RevokeAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             };
 
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
+            WriteObject(HDInsightManagementClient.GetConnectivitySettings(ResourceGroupName, ClusterName));
         }
     }
 }

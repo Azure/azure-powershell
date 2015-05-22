@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         protected AzureHDInsightJobDefinition()
         {
-            this.Files = new List<string>();
-            this.Arguments = new Collection<string>();
+            Files = new List<string>();
+            Arguments = new Collection<string>();
         }
 
         /// <summary>

@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         
         public override void ExecuteCmdlet()
         {
-            this.Config.AdditionalStorageAccounts.Add(this.StorageAccountName, this.StorageAccountKey);
-            WriteObject(this.Config);
+            Config.AdditionalStorageAccounts.Add(StorageAccountName, StorageAccountKey);
+            WriteObject(Config);
         }
     }
 }

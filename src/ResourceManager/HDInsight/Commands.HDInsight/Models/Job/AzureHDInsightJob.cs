@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -31,16 +28,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <param name="cluster">The cluster that the jobDetails was created against.</param>
         public AzureHDInsightJob(JobDetailRootJsonObject jobDetails, string cluster)
         {
-            this.Cluster = cluster;
-            this.Status = jobDetails.Status;
-            this.Profile = jobDetails.Profile;
-            this.JobId = jobDetails.Id;
-            this.ParentId = jobDetails.ParentId;
-            this.PercentComplete = jobDetails.PercentComplete;
-            this.ExitValue = jobDetails.ExitValue;
-            this.User = jobDetails.User;
-            this.Callback = jobDetails.Callback;
-            this.Completed = jobDetails.Completed;
+            Cluster = cluster;
+            Status = jobDetails.Status;
+            Profile = jobDetails.Profile;
+            JobId = jobDetails.Id;
+            ParentId = jobDetails.ParentId;
+            PercentComplete = jobDetails.PercentComplete;
+            ExitValue = jobDetails.ExitValue;
+            User = jobDetails.User;
+            Callback = jobDetails.Callback;
+            Completed = jobDetails.Completed;
         }
 
         /// <summary>

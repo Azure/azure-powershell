@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -21,29 +22,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     public class AzureHDInsightConfig
     {
         /// <summary>
-        /// Gets or sets the database to store the metadata for Oozie.
-        /// </summary>
-        public AzureHDInsightMetastore OozieMetastore { get; set; }
-
-        /// <summary>
-        /// Gets or sets the database to store the metadata for Hive.
-        /// </summary>
-        public AzureHDInsightMetastore HiveMetastore { get; set; }
-
-        /// <summary>
         /// Gets additional Azure Storage Account that you want to enable access to.
         /// </summary>
         public Dictionary<string, string> AdditionalStorageAccounts { get; private set; }
-
-        /// <summary>
-        /// Gets the configurations of this HDInsight cluster.
-        /// </summary>
-        public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
-
-        /// <summary>
-        /// Gets config actions for the cluster.
-        /// </summary>
-        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
 
         /// <summary>
         /// Gets or sets the StorageName for the default Azure Storage Account.
@@ -74,13 +55,33 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the flavor for a cluster.
         /// </summary>
         public HDInsightClusterType ClusterType { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the database to store the metadata for Oozie.
+        /// </summary>
+        public AzureHDInsightMetastore OozieMetastore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database to store the metadata for Hive.
+        /// </summary>
+        public AzureHDInsightMetastore HiveMetastore { get; set; }
+        
+        /// <summary>
+        /// Gets the configurations of this HDInsight cluster.
+        /// </summary>
+        public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
+
+        /// <summary>
+        /// Gets config actions for the cluster.
+        /// </summary>
+        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
 
         public AzureHDInsightConfig()
         {
-            this.AdditionalStorageAccounts = new Dictionary<string, string>();
-            this.ClusterType = HDInsightClusterType.Hadoop;
-            this.Configurations = new Dictionary<string, Dictionary<string, string>>();
-            this.ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
+            ClusterType = HDInsightClusterType.Hadoop;
+            AdditionalStorageAccounts = new Dictionary<string, string>();
+            Configurations = new Dictionary<string, Dictionary<string, string>>();
+            ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
         }
     }
 }

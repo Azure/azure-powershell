@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public AzureHDInsightHiveJobDefinition()
         {
-            this.Defines = new Dictionary<string, string>();
+            Defines = new Dictionary<string, string>();
         }
 
         /// <summary>

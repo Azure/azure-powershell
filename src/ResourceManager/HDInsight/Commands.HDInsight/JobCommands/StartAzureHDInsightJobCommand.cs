@@ -34,48 +34,48 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override async void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(this.JobDefinition.StatusFolder))
+            if (string.IsNullOrEmpty(JobDefinition.StatusFolder))
             {
-                this.JobDefinition.StatusFolder = Guid.NewGuid().ToString();
+                JobDefinition.StatusFolder = Guid.NewGuid().ToString();
             }
 
             JobSubmissionResponse jobCreationResults = null;
 
-            var azureMapReduceJobDefinition = this.JobDefinition as AzureHDInsightMapReduceJobDefinition;
-            var azureHiveJobDefinition = this.JobDefinition as AzureHDInsightHiveJobDefinition;
-            var azurePigJobDefinition = this.JobDefinition as AzureHDInsightPigJobDefinition;
-            var azureStreamingJobDefinition = this.JobDefinition as AzureHDInsightStreamingMapReduceJobDefinition;
-            var azureSqoopJobDefinition = this.JobDefinition as AzureHDInsightSqoopJobDefinition;
+            var azureMapReduceJobDefinition = JobDefinition as AzureHDInsightMapReduceJobDefinition;
+            var azureHiveJobDefinition = JobDefinition as AzureHDInsightHiveJobDefinition;
+            var azurePigJobDefinition = JobDefinition as AzureHDInsightPigJobDefinition;
+            var azureStreamingJobDefinition = JobDefinition as AzureHDInsightStreamingMapReduceJobDefinition;
+            var azureSqoopJobDefinition = JobDefinition as AzureHDInsightSqoopJobDefinition;
 
             if (azureMapReduceJobDefinition != null)
             {
-                jobCreationResults = await this.HDInsightJobClient.SubmitMRJob(azureMapReduceJobDefinition);
+                jobCreationResults = await HDInsightJobClient.SubmitMRJob(azureMapReduceJobDefinition);
             }
             else if (azureHiveJobDefinition != null)
             {
-                jobCreationResults = await this.HDInsightJobClient.SubmitHiveJob(azureHiveJobDefinition);
+                jobCreationResults = await HDInsightJobClient.SubmitHiveJob(azureHiveJobDefinition);
             }
             else if (azurePigJobDefinition != null)
             {
-                jobCreationResults = await this.HDInsightJobClient.SubmitPigJob(azurePigJobDefinition);
+                jobCreationResults = await HDInsightJobClient.SubmitPigJob(azurePigJobDefinition);
             }
             else if (azureSqoopJobDefinition != null)
             {
-                jobCreationResults = await this.HDInsightJobClient.SubmitSqoopJob(azureSqoopJobDefinition);
+                jobCreationResults = await HDInsightJobClient.SubmitSqoopJob(azureSqoopJobDefinition);
             }
             else if (azureStreamingJobDefinition != null)
             {
-                jobCreationResults = await this.HDInsightJobClient.SubmitStreamingJob(azureStreamingJobDefinition);
+                jobCreationResults = await HDInsightJobClient.SubmitStreamingJob(azureStreamingJobDefinition);
             }
             else
             {
                 throw new NotSupportedException(
-                    string.Format(CultureInfo.InvariantCulture, "Cannot start jobDetails of type : {0}.", this.JobDefinition.GetType()));
+                    string.Format(CultureInfo.InvariantCulture, "Cannot start jobDetails of type : {0}.", JobDefinition.GetType()));
             }
 
-            var startedJob = await this.HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
+            var startedJob = await HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
 
-            var jobDetail = new AzureHDInsightJob(startedJob.JobDetail, this.HDInsightJobClient.ClusterName);
+            var jobDetail = new AzureHDInsightJob(startedJob.JobDetail, HDInsightJobClient.ClusterName);
 
             WriteObject(jobDetail);
         }

@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -22,9 +24,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.Set,
         Constants.CommandNames.AzureHDInsightClusterSize),
     OutputType(
-        typeof(ClusterGetResponse))]
+        typeof(Cluster))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
     {
+        private ClusterResizeParameters resizeParams;
         #region Input Parameter Definitions
 
         [Parameter(
@@ -43,23 +46,37 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 3,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
-        public int TargetInstanceCount { get; set; }
+        public int TargetInstanceCount
+        {
+            get { return resizeParams.TargetInstanceCount; }
+            set { resizeParams.TargetInstanceCount = value; }
+        }
 
         [Parameter(
             Position = 4,
             HelpMessage = "Gets or sets the name of the cluster.")]
-        public int MinInstanceCount { get; set; }
+        public int? MinInstanceCount
+        {
+            get { return resizeParams.MinInstanceCount; }
+            set { resizeParams.MinInstanceCount = value; }
+        }
 
         #endregion
 
+        public SetAzureHDInsightClusterSizeCommand()
+        {
+            resizeParams = new ClusterResizeParameters();
+        }
+
         public override void ExecuteCmdlet()
         {
-            var resizeParams = new ClusterResizeParameters
+            HDInsightManagementClient.ResizeCluster(ResourceGroupName, ClusterName, resizeParams);
+
+            var cluster = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
+            if (cluster != null)
             {
-                TargetInstanceCount = this.TargetInstanceCount,
-                MinInstanceCount = this.MinInstanceCount
-            };
-            var cluster = HDInsightManagementClient.ResizeCluster(ResourceGroupName, ClusterName, resizeParams);
+                WriteObject(new AzureHDInsightCluster(cluster.First()));
+            }
         }
     }
 }

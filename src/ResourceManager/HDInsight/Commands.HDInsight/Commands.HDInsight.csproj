@@ -65,6 +65,7 @@
     <Compile Include="Models\Job\AzureHDInsightPigJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightHiveJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightJobDefinition.cs" />
+    <Compile Include="Models\Management\AzureHDInsightCluster.cs" />
     <Compile Include="Models\Management\AzureHDInsightConfig.cs" />
     <Compile Include="Models\Job\AzureHdInsightJobManagementClient.cs" />
     <Compile Include="Models\Management\AzureHdInsightManagementClient.cs" />

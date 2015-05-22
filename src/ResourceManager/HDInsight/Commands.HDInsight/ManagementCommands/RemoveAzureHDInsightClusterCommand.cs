@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
-            this.WriteObject(result, true);
+            WriteObject(result, true);
         }
     }
 }

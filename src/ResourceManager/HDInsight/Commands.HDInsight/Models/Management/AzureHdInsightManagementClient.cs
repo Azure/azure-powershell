@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public ClusterGetResponse CreateNewCluster(string resourceGroupName, string clusterName, ClusterCreateParameters parameters)
         {
-            return this.HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
+            return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
         }
 
         public List<Cluster> GetCluster(string resourceGroupName, string clusterName)
@@ -44,44 +44,57 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var result = new List<Cluster>();
             if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(clusterName))
             {
-                var listresponse = this.HdInsightManagementClient.Clusters.List();
+                var listresponse = HdInsightManagementClient.Clusters.List();
                 result.AddRange(listresponse.Clusters);
             }
             else if (string.IsNullOrEmpty(clusterName))
             {
-                var listresponse = this.HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
+                var listresponse = HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
                 result.AddRange(listresponse.Clusters);
             }
             else if (string.IsNullOrEmpty(resourceGroupName))
             {
-                result.Add(this.HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName).Cluster);
+                return result;
+            }
+            else
+            {
+                var getresponse = HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
+                if (getresponse != null)
+                {
+                    result.Add(getresponse.Cluster);   
+                }
             }
             return result;
         }
 
         public HDInsightLongRunningOperationResponse ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
-            return this.HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
+            return HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
         }
 
         public ClusterGetResponse DeleteCluster(string resourceGroupName, string clusterName)
         {
-            return this.HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
+            return HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
         }
 
         public HDInsightLongRunningOperationResponse ConfigureHttp(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
         {
-            return this.HdInsightManagementClient.Clusters.ConfigureHttpSettings(resourceGroupName, clusterName, httpSettings);
+            return HdInsightManagementClient.Clusters.ConfigureHttpSettings(resourceGroupName, clusterName, httpSettings);
+        }
+
+        public HttpConnectivitySettings GetConnectivitySettings(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.GetConnectivitySettings(resourceGroupName, clusterName);
         }
 
         public HDInsightLongRunningOperationResponse ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
         {
-            return this.HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
+            return HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
         }
 
         public CapabilitiesResponse GetCapabilities(string location)
         {
-            return this.HdInsightManagementClient.Clusters.GetCapabilities(location);
+            return HdInsightManagementClient.Clusters.GetCapabilities(location);
         }
     }
 }

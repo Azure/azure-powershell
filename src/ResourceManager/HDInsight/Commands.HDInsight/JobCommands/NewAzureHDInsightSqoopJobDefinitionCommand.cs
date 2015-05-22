@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.New,
         Constants.JobDefinitions.AzureHDInsightSqoopJobDefinition),
     OutputType(
-        typeof(AzureHDInsightPigJobDefinition))]
+        typeof(AzureHDInsightSqoopJobDefinition))]
     public class NewAzureHDInsightSqoopJobDefinitionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightSqoopJobDefinition job;
@@ -39,43 +38,43 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
-            get { return this.job.StatusFolder; }
-            set { this.job.StatusFolder = value; }
+            get { return job.StatusFolder; }
+            set { job.StatusFolder = value; }
         }
 
         [Parameter(Mandatory = false, HelpMessage = "The command to run in the sqoop job.")]
         public string Command
         {
-            get { return this.job.Command; }
-            set { this.job.Command = value; }
+            get { return job.Command; }
+            set { job.Command = value; }
         }
 
         [Parameter(HelpMessage = "The query file to run in the jobDetails.")]
         public string File
         {
-            get { return this.job.File; }
-            set { this.job.File = value; }
+            get { return job.File; }
+            set { job.File = value; }
         }
 
         #endregion
 
         public NewAzureHDInsightSqoopJobDefinitionCommand()
         {
-            this.Arguments = new string[] { };
-            this.Files = new string[] { };
+            Arguments = new string[] { };
+            Files = new string[] { };
             job = new AzureHDInsightSqoopJobDefinition();
         }
 
         public override void ExecuteCmdlet()
         {
-            foreach (var arg in this.Arguments)
+            foreach (var arg in Arguments)
             {
-                this.job.Arguments.Add(arg);
+                job.Arguments.Add(arg);
             }
 
-            foreach (var file in this.Files)
+            foreach (var file in Files)
             {
-                this.job.Files.Add(file);
+                job.Files.Add(file);
             }
 
             WriteObject(job);

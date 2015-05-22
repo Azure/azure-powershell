@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public AzureHDInsightMapReduceJobDefinition()
         {
-            this.LibJars = new List<string>();
-            this.Defines = new Dictionary<string, string>();
+            LibJars = new List<string>();
+            Defines = new Dictionary<string, string>();
         }
     }
 }

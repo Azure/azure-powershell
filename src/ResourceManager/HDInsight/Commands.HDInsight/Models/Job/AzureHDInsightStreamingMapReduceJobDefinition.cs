@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// </summary>
         public AzureHDInsightStreamingMapReduceJobDefinition()
         {
-            this.CommandEnvironment = new Collection<string>();
-            this.Defines = new Dictionary<string, string>();
+            CommandEnvironment = new Collection<string>();
+            Defines = new Dictionary<string, string>();
         }
     }
 }

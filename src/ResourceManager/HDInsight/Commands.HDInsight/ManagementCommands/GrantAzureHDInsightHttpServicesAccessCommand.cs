@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsSecurity.Grant,
         Constants.CommandNames.AzureHDInsightHttpServicesAccess),
     OutputType(
-        typeof(void))]
+        typeof(HttpConnectivitySettings))]
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -51,11 +52,12 @@ namespace Microsoft.Azure.Commands.HDInsight
             var httpParams = new HttpSettingsParameters
             {
                 HttpUserEnabled = true,
-                HttpUsername = this.HttpUser.UserName,
-                HttpPassword = this.HttpUser.Password.ToString()
+                HttpUsername = HttpUser.UserName,
+                HttpPassword = HttpUser.Password.ConvertToString()
             };
             
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
+            WriteObject(HDInsightManagementClient.GetConnectivitySettings(ResourceGroupName, ClusterName));
         }
     }
 }

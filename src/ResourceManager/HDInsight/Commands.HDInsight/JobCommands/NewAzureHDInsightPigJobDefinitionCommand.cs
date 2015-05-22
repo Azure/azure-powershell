@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -39,43 +38,43 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
-            get { return this.job.StatusFolder; }
-            set { this.job.StatusFolder = value; }
+            get { return job.StatusFolder; }
+            set { job.StatusFolder = value; }
         }
 
         [Parameter(HelpMessage = "The query file to run in the jobDetails.")]
         public string File
         {
-            get { return this.job.File; }
-            set { this.job.File = value; }
+            get { return job.File; }
+            set { job.File = value; }
         }
 
         [Parameter(HelpMessage = "The query to run in the jobDetails.")]
         public string Query
         {
-            get { return this.job.Query; }
-            set { this.job.Query = value; }
+            get { return job.Query; }
+            set { job.Query = value; }
         }
 
         #endregion
 
         public NewAzureHDInsightPigJobDefinitionCommand()
         {
-            this.Arguments = new string[] { };
-            this.Files = new string[] { };
+            Arguments = new string[] { };
+            Files = new string[] { };
             job = new AzureHDInsightPigJobDefinition();
         }
 
         public override void ExecuteCmdlet()
         {
-            foreach (var arg in this.Arguments)
+            foreach (var arg in Arguments)
             {
-                this.job.Arguments.Add(arg);
+                job.Arguments.Add(arg);
             }
 
-            foreach (var file in this.Files)
+            foreach (var file in Files)
             {
-                this.job.Files.Add(file);
+                job.Files.Add(file);
             }
 
             WriteObject(job);

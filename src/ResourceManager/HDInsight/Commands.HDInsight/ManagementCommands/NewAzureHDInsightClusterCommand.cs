@@ -14,10 +14,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -25,16 +27,21 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.New,
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(ClusterGetResponse))]
+        typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightCommand : HDInsightCmdletBase
     {
+        private ClusterCreateParameters parameters;
         #region Input Parameter Definitions
-        
+
         [Parameter(
             Position = 0,
             Mandatory = true,
             HelpMessage = "Gets or sets the datacenter location for the cluster.")]
-        public string Location { get; set; }
+        public string Location
+        {
+            get { return parameters.Location; }
+            set { parameters.Location = value; }
+        }
 
         [Parameter(
             Position = 1,
@@ -52,19 +59,35 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 3,
             Mandatory = true,
             HelpMessage = "Gets or sets the number of workernodes for the cluster.")]
-        public int ClusterSizeInNodes { get; set; }
+        public int ClusterSizeInNodes
+        {
+            get { return parameters.ClusterSizeInNodes; }
+            set { parameters.ClusterSizeInNodes = value; }
+        }
 
         [Parameter(
             Position = 4,
             Mandatory = true,
-            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
-        public string DefaultStorageAccountName { get; set; }
+            HelpMessage = "Gets or sets the login for the cluster's user.")]
+        public PSCredential HttpUser { get; set; }
 
         [Parameter(
             Position = 5,
-            Mandatory = true,
+            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
+        public string DefaultStorageAccountName
+        {
+            get { return parameters.DefaultStorageAccountName; }
+            set { parameters.DefaultStorageAccountName = value; }
+        }
+
+        [Parameter(
+            Position = 6,
             HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
-        public string DefaultStorageAccountKey { get; set; }
+        public string DefaultStorageAccountKey
+        {
+            get { return parameters.DefaultStorageAccountKey; }
+            set { parameters.DefaultStorageAccountKey = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore { get; set; }
@@ -82,40 +105,70 @@ namespace Microsoft.Azure.Commands.HDInsight
         public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
 
         [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
-        public string DefaultStorageContainer { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets the login for the cluster's user.")]
-        public PSCredential HttpUser { get; set; }
-
+        public string DefaultStorageContainer
+        {
+            get { return parameters.DefaultStorageContainer; }
+            set { parameters.DefaultStorageContainer = value; }
+        }
+        
         [Parameter(HelpMessage = "Gets or sets the version of the HDInsight cluster.")]
-        public string Version { get; set; }
+        public string Version 
+        {
+            get { return parameters.Version; }
+            set { parameters.Version = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Head Node.")]
-        public string HeadNodeSize { get; set; }
+        public string HeadNodeSize
+        {
+            get { return parameters.HeadNodeSize; }
+            set { parameters.HeadNodeSize = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Data Node.")]
-        public string DataNodeSize { get; set; }
+        public string DataNodeSize 
+        {
+            get { return parameters.DataNodeSize; }
+            set { parameters.DataNodeSize = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
-        public string ZookeeperNodeSize { get; set; }
+        public string ZookeeperNodeSize
+        {
+            get { return parameters.ZookeeperNodeSize; }
+            set { parameters.ZookeeperNodeSize = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public HDInsightClusterType ClusterType { get; set; }
+        public HDInsightClusterType ClusterType
+        {
+            get { return parameters.ClusterType; }
+            set { parameters.ClusterType = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
-        public string VirtualNetworkId { get; set; }
+        public string VirtualNetworkId
+        {
+            get { return parameters.VirtualNetworkId; }
+            set { parameters.VirtualNetworkId = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the subnet name for this HDInsight cluster.")]
-        public string SubnetName { get; set; }
+        public string SubnetName
+        {
+            get { return parameters.SubnetName; }
+            set { parameters.SubnetName = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        public OSType OSType { get; set; }
+        public OSType OSType
+        {
+            get { return parameters.OSType; }
+            set { parameters.OSType = value; }
+        }
 
         [Parameter(HelpMessage = "Gets or sets SSH user name.")]
-        public string SshUserName { get; set; }
-
-        [Parameter(HelpMessage = "Gets or sets SSH password.")]
-        public string SshPassword { get; set; }
+        public PSCredential SshUser { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
         public string SshPublicKey { get; set; }
@@ -124,7 +177,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public PSCredential RdpUser { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
+        public DateTime RdpAccessExpiry
+        {
+            get { return parameters.RdpAccessExpiry; }
+            set { parameters.RdpAccessExpiry = value; }
+        }
 
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster")]
@@ -133,20 +190,23 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 var result = new AzureHDInsightConfig
                 {
-                    ClusterType = this.ClusterType,
-                    DefaultStorageAccountName = this.DefaultStorageAccountName,
-                    DefaultStorageAccountKey = this.DefaultStorageAccountKey,
-                    DataNodeSize = this.DataNodeSize,
-                    HeadNodeSize = this.HeadNodeSize,
-                    ZookeeperNodeSize = this.ZookeeperNodeSize,
-                    HiveMetastore = this.HiveMetastore,
-                    OozieMetastore = this.OozieMetastore
+                    ClusterType = parameters.ClusterType,
+                    DefaultStorageAccountName = parameters.DefaultStorageAccountName,
+                    DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
+                    DataNodeSize = parameters.DataNodeSize,
+                    HeadNodeSize = parameters.HeadNodeSize,
+                    ZookeeperNodeSize = parameters.ZookeeperNodeSize,
+                    HiveMetastore = HiveMetastore,
+                    OozieMetastore = OozieMetastore
                 };
-                foreach (var storageAccount in this.AdditionalStorageAccounts)
+                foreach (
+                    var storageAccount in
+                        parameters.AdditionalStorageAccounts.Where(
+                            storageAccount => !result.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
                 {
                     result.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
                 }
-                foreach (var val in this.Configurations)
+                foreach (var val in parameters.Configurations.Where(val => !result.Configurations.ContainsKey(val.Key)))
                 {
                     result.Configurations.Add(val.Key, val.Value);
                 }
@@ -154,21 +214,24 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             set
             {
-                this.ClusterType = value.ClusterType;
-                this.DefaultStorageAccountName = value.DefaultStorageAccountName;
-                this.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
-                this.DataNodeSize = value.DataNodeSize;
-                this.HeadNodeSize = value.HeadNodeSize;
-                this.ZookeeperNodeSize = value.ZookeeperNodeSize;
-                this.HiveMetastore = value.HiveMetastore;
-                this.OozieMetastore = value.HiveMetastore;
-                foreach (var storageAccount in value.AdditionalStorageAccounts)
+                parameters.ClusterType = value.ClusterType;
+                parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
+                parameters.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
+                parameters.DataNodeSize = value.DataNodeSize;
+                parameters.HeadNodeSize = value.HeadNodeSize;
+                parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
+                HiveMetastore = value.HiveMetastore;
+                OozieMetastore = value.HiveMetastore;
+                foreach (
+                    var storageAccount in
+                        value.AdditionalStorageAccounts.Where(
+                            storageAccount => !parameters.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
                 {
-                    this.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
+                    parameters.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
                 }
-                foreach (var val in value.Configurations)
+                foreach (var val in value.Configurations.Where(val => !parameters.Configurations.ContainsKey(val.Key)))
                 {
-                    this.Configurations.Add(val.Key, val.Value);
+                    parameters.Configurations.Add(val.Key, val.Value);
                 }
             } 
         }
@@ -177,59 +240,59 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public NewAzureHDInsightCommand()
         {
-            this.AdditionalStorageAccounts = new Dictionary<string, string>();
-            this.Configurations = new Dictionary<string, Dictionary<string, string>>();
+            parameters = new ClusterCreateParameters();
+            AdditionalStorageAccounts = new Dictionary<string, string>();
+            Configurations = new Dictionary<string, Dictionary<string, string>>();
+            ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
         }
 
         public override void ExecuteCmdlet()
         {
-            var parameters = new ClusterCreateParameters
-            {
-                Location = this.Location,
-                DefaultStorageAccountName = this.DefaultStorageAccountName,
-                DefaultStorageAccountKey = this.DefaultStorageAccountKey,
-                ClusterSizeInNodes = this.ClusterSizeInNodes,
-                DefaultStorageContainer = this.DefaultStorageContainer,
-                UserName = this.HttpUser.UserName,
-                Password = this.HttpUser.Password.ToString(),
-                RdpUsername = this.RdpUser.UserName,
-                RdpPassword = this.RdpUser.Password.ToString(),
-                RdpAccessExpiry = this.RdpAccessExpiry,
-                Version = this.Version,
-                HeadNodeSize = this.HeadNodeSize,
-                DataNodeSize = this.DataNodeSize,
-                ZookeeperNodeSize = this.ZookeeperNodeSize,
-                ClusterType = this.ClusterType,
-                VirtualNetworkId = this.VirtualNetworkId,
-                SubnetName = this.SubnetName,
-                OSType = this.OSType,
-                SshUserName = this.SshUserName,
-                SshPassword = this.SshPassword,
-                SshPublicKey = this.SshPublicKey
-            };
+            parameters.UserName = HttpUser.UserName;
+            parameters.Password = HttpUser.Password.ConvertToString();
 
-            foreach (var storageAccount in this.AdditionalStorageAccounts)
+            if (RdpUser != null)
+            {
+                parameters.RdpUsername = RdpUser.UserName;
+                parameters.RdpPassword = RdpUser.Password.ConvertToString();
+            }
+            if (SshUser != null)
+            {
+                parameters.SshUserName = SshUser.UserName;
+                parameters.SshPassword = SshUser.Password.ConvertToString();
+            }
+            foreach (
+                var storageAccount in
+                    AdditionalStorageAccounts.Where(
+                        storageAccount => !parameters.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
             {
                 parameters.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
             }
-            foreach (var config in this.Configurations)
+            foreach (var config in Configurations.Where(config => !parameters.Configurations.ContainsKey(config.Key)))
             {
                 parameters.Configurations.Add(config.Key, config.Value);
             }
-            if (this.OozieMetastore != null)
+            foreach (var action in ScriptActions.Where(action => parameters.ScriptActions.ContainsKey(action.Key)))
             {
-                var metastore = this.OozieMetastore;
-                parameters.OozieMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ToString());
+                parameters.ScriptActions.Add(action.Key, action.Value);
             }
-            if (this.HiveMetastore != null)
+            if (OozieMetastore != null)
             {
-                var metastore = this.HiveMetastore;
-                parameters.OozieMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ToString());
+                var metastore = OozieMetastore;
+                parameters.OozieMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
+            }
+            if (HiveMetastore != null)
+            {
+                var metastore = HiveMetastore;
+                parameters.OozieMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
 
             var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
 
-            this.WriteObject(cluster);
+            if (cluster != null)
+            {
+                WriteObject(new AzureHDInsightCluster(cluster.Cluster));
+            }
         }
     }
 }

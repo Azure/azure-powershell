@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
-            get { return this.job.StatusFolder; }
-            set { this.job.StatusFolder = value; }
+            get { return job.StatusFolder; }
+            set { job.StatusFolder = value; }
         }
 
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
@@ -50,56 +50,56 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The query file to run in the jobDetails.")]
         public string File
         {
-            get { return this.job.File; }
-            set { this.job.File = value; }
+            get { return job.File; }
+            set { job.File = value; }
         }
 
         [Parameter(HelpMessage = "The name of the jobDetails.")]
         public string JobName
         {
-            get { return this.job.JobName; }
-            set { this.job.JobName = value; }
+            get { return job.JobName; }
+            set { job.JobName = value; }
         }
 
         [Parameter(HelpMessage = "The query to run in the jobDetails.")]
         public string Query
         {
-            get { return this.job.Query; }
-            set { this.job.Query = value; }
+            get { return job.Query; }
+            set { job.Query = value; }
         }
         
         [Parameter(HelpMessage = "Run the query as a file.")]
         public SwitchParameter RunAsFileJob
         {
-            get { return this.job.RunAsFileJob; }
-            set { this.job.RunAsFileJob = value; }
+            get { return job.RunAsFileJob; }
+            set { job.RunAsFileJob = value; }
         }
 
         #endregion
 
         public NewAzureHDInsightHiveJobDefinitionCommand()
         {
-            this.Arguments = new string[] {};
-            this.Files = new string[] { };
-            this.Defines = new Hashtable();
+            Arguments = new string[] {};
+            Files = new string[] { };
+            Defines = new Hashtable();
             job = new AzureHDInsightHiveJobDefinition();
         }
 
         public override void ExecuteCmdlet()
         {
-            foreach (var arg in this.Arguments)
+            foreach (var arg in Arguments)
             {
-                this.job.Arguments.Add(arg);
+                job.Arguments.Add(arg);
             }
 
-            foreach (var file in this.Files)
+            foreach (var file in Files)
             {
-                this.job.Files.Add(file);
+                job.Files.Add(file);
             }
 
-            foreach (KeyValuePair<string, string> define in this.Defines)
+            foreach (KeyValuePair<string, string> define in Defines)
             {
-                this.job.Defines.Add(define.Key, define.Value);
+                job.Defines.Add(define.Key, define.Value);
             }
 
             WriteObject(job);

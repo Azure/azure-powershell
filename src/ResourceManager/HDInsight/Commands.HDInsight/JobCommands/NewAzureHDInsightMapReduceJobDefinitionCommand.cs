@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
-            get { return this.job.StatusFolder; }
-            set { this.job.StatusFolder = value; }
+            get { return job.StatusFolder; }
+            set { job.StatusFolder = value; }
         }
 
         [Parameter(Mandatory = true, HelpMessage = "The class name to use for the jobDetails.")]
         public string ClassName
         {
-            get { return this.job.ClassName; }
-            set { this.job.ClassName = value; }
+            get { return job.ClassName; }
+            set { job.ClassName = value; }
         }
 
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
@@ -57,15 +57,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Mandatory = true, HelpMessage = "The jar file to use for the jobDetails.")]
         public string JarFile
         {
-            get { return this.job.JarFile; }
-            set { this.job.JarFile = value; }
+            get { return job.JarFile; }
+            set { job.JarFile = value; }
         }
 
         [Parameter(HelpMessage = "The name of the jobDetails.")]
         public string JobName
         {
-            get { return this.job.JobName; }
-            set { this.job.JobName = value; }
+            get { return job.JobName; }
+            set { job.JobName = value; }
         }
 
         [Parameter(HelpMessage = "The lib jars for the jobDetails.")]
@@ -75,33 +75,33 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public NewAzureHDInsightMapReduceJobDefinitionCommand()
         {
-            this.Arguments = new string[] { };
-            this.Files = new string[] { };
-            this.Defines = new Hashtable();
-            this.LibJars = new string[] { };
+            Arguments = new string[] { };
+            Files = new string[] { };
+            Defines = new Hashtable();
+            LibJars = new string[] { };
             job = new AzureHDInsightMapReduceJobDefinition();
         }
 
         public override void ExecuteCmdlet()
         {
-            foreach (var arg in this.Arguments)
+            foreach (var arg in Arguments)
             {
-                this.job.Arguments.Add(arg);
+                job.Arguments.Add(arg);
             }
 
-            foreach (var file in this.Files)
+            foreach (var file in Files)
             {
-                this.job.Files.Add(file);
+                job.Files.Add(file);
             }
 
-            foreach (KeyValuePair<string, string> define in this.Defines)
+            foreach (KeyValuePair<string, string> define in Defines)
             {
-                this.job.Defines.Add(define.Key, define.Value);
+                job.Defines.Add(define.Key, define.Value);
             }
 
-            foreach (var libjar in this.LibJars)
+            foreach (var libjar in LibJars)
             {
-                this.job.LibJars.Add(libjar);
+                job.LibJars.Add(libjar);
             }
 
             WriteObject(job);

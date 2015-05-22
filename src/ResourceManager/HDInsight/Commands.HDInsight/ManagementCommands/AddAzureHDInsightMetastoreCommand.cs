@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The Azure SQL Server instance to use for this metastore.")]
         public string SqlAzureServerName
         {
-            get { return this._metastore.SqlAzureServerName; }
-            set { this._metastore.SqlAzureServerName = value; }
+            get { return _metastore.SqlAzureServerName; }
+            set { _metastore.SqlAzureServerName = value; }
         }
         
         [Parameter(Position = 3,
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The database on the Azure SQL Server instance to use for this metastore.")]
         public string DatabaseName
         {
-            get { return this._metastore.DatabaseName; }
-            set { this._metastore.DatabaseName = value; }
+            get { return _metastore.DatabaseName; }
+            set { _metastore.DatabaseName = value; }
         }
         
         [Parameter(Position = 4,
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The user credentials to use for the Azure SQL Server database.")]
         public PSCredential Credential
         {
-            get { return this._metastore.Credential; }
-            set { this._metastore.Credential = value; }
+            get { return _metastore.Credential; }
+            set { _metastore.Credential = value; }
         }
 
         #endregion
@@ -76,17 +76,17 @@ namespace Microsoft.Azure.Commands.HDInsight
         
         public override void ExecuteCmdlet()
         {
-            switch (this.MetastoreType)
+            switch (MetastoreType)
             {
                 case AzureHDInsightMetastoreType.HiveMetastore:
-                    this.Config.HiveMetastore = this._metastore;
+                    Config.HiveMetastore = _metastore;
                     break;
                 case AzureHDInsightMetastoreType.OozieMetastore:
-                    this.Config.OozieMetastore = this._metastore;
+                    Config.OozieMetastore = _metastore;
                     break;
             }
 
-            WriteObject(this.Config);
+            WriteObject(Config);
         }
     }
 }

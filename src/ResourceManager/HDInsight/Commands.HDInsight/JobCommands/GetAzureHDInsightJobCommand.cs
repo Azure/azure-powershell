@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override async void ExecuteCmdlet()
         {
-            if (this.JobId != null)
+            if (JobId != null)
             {
-                var job = await this.HDInsightJobClient.GetJob(this.JobId);
-                var jobDetails = new AzureHDInsightJob(job.JobDetail, this.HDInsightJobClient.ClusterName);
+                var job = await HDInsightJobClient.GetJob(JobId);
+                var jobDetails = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);
                 WriteObject(jobDetails);
             }
             else
             {
-                var jobs = await this.HDInsightJobClient.ListJobs();
+                var jobs = await HDInsightJobClient.ListJobs();
                 WriteObject(jobs, true);
             }
         }

@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -31,7 +28,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Dictionary<string, string>> _configurations;
-            #region Input Parameter Definitions
+            
+        #region Input Parameter Definitions
 
         [Parameter(Position = 0,
             Mandatory = true,
@@ -82,39 +80,39 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public AddAzureHDInsightConfigValuesCommand()
         {
-            this.Core = new Dictionary<string, string>();
-            this.HiveSite = new Dictionary<string, string>();
-            this.HiveEnv = new Dictionary<string, string>();
-            this.OozieSite = new Dictionary<string, string>();
-            this.OozieEnv = new Dictionary<string, string>();
-            this.WebHCat = new Dictionary<string, string>();
-            this.HBaseSite = new Dictionary<string, string>();
-            this.HBaseEnv = new Dictionary<string, string>();
-            this.Storm = new Dictionary<string, string>();
-            this.Yarn = new Dictionary<string, string>();
-            this.MapRed = new Dictionary<string, string>();
-            this.Tez = new Dictionary<string, string>();
-            this.Hdfs = new Dictionary<string, string>();
+            Core = new Dictionary<string, string>();
+            HiveSite = new Dictionary<string, string>();
+            HiveEnv = new Dictionary<string, string>();
+            OozieSite = new Dictionary<string, string>();
+            OozieEnv = new Dictionary<string, string>();
+            WebHCat = new Dictionary<string, string>();
+            HBaseSite = new Dictionary<string, string>();
+            HBaseEnv = new Dictionary<string, string>();
+            Storm = new Dictionary<string, string>();
+            Yarn = new Dictionary<string, string>();
+            MapRed = new Dictionary<string, string>();
+            Tez = new Dictionary<string, string>();
+            Hdfs = new Dictionary<string, string>();
         }
 
         public override void ExecuteCmdlet()
         {
-            var config = this.Config;
+            var config = Config;
             _configurations = config.Configurations ?? new Dictionary<string, Dictionary<string, string>>();
 
-            AddConfigToConfigurations(this.Core, ConfigurationKey.CoreSite);
-            AddConfigToConfigurations(this.HiveSite, ConfigurationKey.HiveSite);
-            AddConfigToConfigurations(this.HiveEnv, ConfigurationKey.HiveEnv);
-            AddConfigToConfigurations(this.OozieSite, ConfigurationKey.OozieSite);
-            AddConfigToConfigurations(this.OozieEnv, ConfigurationKey.OozieEnv);
-            AddConfigToConfigurations(this.WebHCat, ConfigurationKey.WebHCatSite);
-            AddConfigToConfigurations(this.HBaseSite, ConfigurationKey.HBaseSite);
-            AddConfigToConfigurations(this.HBaseEnv, ConfigurationKey.HBaseEnv);
-            AddConfigToConfigurations(this.Storm, ConfigurationKey.StormSite);
-            AddConfigToConfigurations(this.Yarn, ConfigurationKey.YarnSite);
-            AddConfigToConfigurations(this.MapRed, ConfigurationKey.MapRedSite);
-            AddConfigToConfigurations(this.Tez, ConfigurationKey.TezSite);
-            AddConfigToConfigurations(this.Hdfs, ConfigurationKey.HdfsSite);
+            AddConfigToConfigurations(Core, ConfigurationKey.CoreSite);
+            AddConfigToConfigurations(HiveSite, ConfigurationKey.HiveSite);
+            AddConfigToConfigurations(HiveEnv, ConfigurationKey.HiveEnv);
+            AddConfigToConfigurations(OozieSite, ConfigurationKey.OozieSite);
+            AddConfigToConfigurations(OozieEnv, ConfigurationKey.OozieEnv);
+            AddConfigToConfigurations(WebHCat, ConfigurationKey.WebHCatSite);
+            AddConfigToConfigurations(HBaseSite, ConfigurationKey.HBaseSite);
+            AddConfigToConfigurations(HBaseEnv, ConfigurationKey.HBaseEnv);
+            AddConfigToConfigurations(Storm, ConfigurationKey.StormSite);
+            AddConfigToConfigurations(Yarn, ConfigurationKey.YarnSite);
+            AddConfigToConfigurations(MapRed, ConfigurationKey.MapRedSite);
+            AddConfigToConfigurations(Tez, ConfigurationKey.TezSite);
+            AddConfigToConfigurations(Hdfs, ConfigurationKey.HdfsSite);
 
             WriteObject(_configurations);
         }

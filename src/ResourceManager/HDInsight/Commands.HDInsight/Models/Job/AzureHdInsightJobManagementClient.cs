@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightJobManagementClient HdInsightJobManagementClient { get; set; }
 
-        public string ClusterName { get { return this.HdInsightJobManagementClient.ClusterDnsName; } }
+        public string ClusterName { get { return HdInsightJobManagementClient.ClusterDnsName; } }
 
         public Task<JobSubmissionResponse> SubmitHiveJob(AzureHDInsightHiveJobDefinition hiveJobDef)
         {
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 File = hiveJobDef.File,
                 Files = hiveJobDef.Files.ToString(),
                 Query = hiveJobDef.Query,
-                StatusDir = hiveJobDef.StatusFolder
+                StatusDir = hiveJobDef.StatusFolder,
+                UserName = HdInsightJobManagementClient.Credentials.Username
             };
-            hiveJobParams.UserName = this.HdInsightJobManagementClient.Credentials.Username;
 
-            return this.HdInsightJobManagementClient.JobManagement.SubmitHiveJobAsync(hiveJobParams);
+            return HdInsightJobManagementClient.JobManagement.SubmitHiveJobAsync(hiveJobParams);
         }
 
         public Task<JobSubmissionResponse> SubmitMRJob(AzureHDInsightMapReduceJobDefinition mapredJobDef)
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 LibJars = mapredJobDef.LibJars.ToString(),
                 JarFile = mapredJobDef.JarFile,
                 StatusDir = mapredJobDef.StatusFolder,
-                UserName = this.HdInsightJobManagementClient.Credentials.Username
+                UserName = HdInsightJobManagementClient.Credentials.Username
             };
 
-            return this.HdInsightJobManagementClient.JobManagement.SubmitMapReduceJobAsync(mapredJobParams);
+            return HdInsightJobManagementClient.JobManagement.SubmitMapReduceJobAsync(mapredJobParams);
         }
 
         public Task<JobSubmissionResponse> SubmitPigJob(AzureHDInsightPigJobDefinition pigJobDef)
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 StatusDir = pigJobDef.StatusFolder,
                 File = pigJobDef.File,
                 Query = pigJobDef.Query,
-                UserName = this.HdInsightJobManagementClient.Credentials.Username
+                UserName = HdInsightJobManagementClient.Credentials.Username
             };
 
-            return this.HdInsightJobManagementClient.JobManagement.SubmitPigJobAsync(pigJobParams);
+            return HdInsightJobManagementClient.JobManagement.SubmitPigJobAsync(pigJobParams);
         }
 
         public Task<JobSubmissionResponse> SubmitSqoopJob(AzureHDInsightSqoopJobDefinition sqoopJobDef)
@@ -104,20 +104,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 CmdEnv = streamingJobDef.CommandEnvironment.ToString(),
                 Arguments = streamingJobDef.Arguments.ToString(),
                 StatusDir = streamingJobDef.StatusFolder,
-                UserName = this.HdInsightJobManagementClient.Credentials.Username
+                UserName = HdInsightJobManagementClient.Credentials.Username
             };
 
-            return this.HdInsightJobManagementClient.JobManagement.SubmitMapReduceStreamingJobAsync(streamingJobParams);
+            return HdInsightJobManagementClient.JobManagement.SubmitMapReduceStreamingJobAsync(streamingJobParams);
         }
 
         public Task<JobGetResponse> GetJob(string jobId)
         {
-            return this.HdInsightJobManagementClient.JobManagement.GetJobAsync(jobId);
+            return HdInsightJobManagementClient.JobManagement.GetJobAsync(jobId);
         }
 
         public Task<JobListResponse> ListJobs()
         {
-            return this.HdInsightJobManagementClient.JobManagement.ListJobsAsync();
+            return HdInsightJobManagementClient.JobManagement.ListJobsAsync();
         }
 
         public Task<JobGetResponse> StopJob(string jobId)

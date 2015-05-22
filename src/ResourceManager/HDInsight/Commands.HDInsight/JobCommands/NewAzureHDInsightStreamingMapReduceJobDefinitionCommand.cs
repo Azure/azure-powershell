@@ -37,15 +37,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "The file for the jobDetails.")]
         public string File
         {
-            get { return this.job.File; }
-            set { this.job.File = value; } 
+            get { return job.File; }
+            set { job.File = value; } 
         }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
-            get { return this.job.StatusFolder; }
-            set { this.job.StatusFolder = value; }
+            get { return job.StatusFolder; }
+            set { job.StatusFolder = value; }
         }
 
         [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
@@ -58,56 +58,56 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The input path to use for the jobDetails.")]
         public string InputPath
         {
-            get { return this.job.Input; }
-            set { this.job.Input = value; }
+            get { return job.Input; }
+            set { job.Input = value; }
         }
 
         [Parameter(HelpMessage = "The Mapper to use for the jobDetails.")]
         public string Mapper
         {
-            get { return this.job.Mapper; }
-            set { this.job.Mapper = value; }
+            get { return job.Mapper; }
+            set { job.Mapper = value; }
         }
 
         [Parameter(HelpMessage = "The output path to use for the jobDetails.")]
         public string OutputPath
         {
-            get { return this.job.Output; }
-            set { this.job.Output = value; }
+            get { return job.Output; }
+            set { job.Output = value; }
         }
 
         [Parameter(HelpMessage = "The Reducer to use for the jobDetails.")]
         public string Reducer
         {
-            get { return this.job.Reducer; }
-            set { this.job.Reducer = value; }
+            get { return job.Reducer; }
+            set { job.Reducer = value; }
         }
 
         #endregion
 
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
-            this.Arguments = new string[] {};
-            this.CommandEnvironment = new string[] {};
-            this.Defines = new Hashtable();
+            Arguments = new string[] {};
+            CommandEnvironment = new string[] {};
+            Defines = new Hashtable();
             job = new AzureHDInsightStreamingMapReduceJobDefinition();
         }
 
         public override void ExecuteCmdlet()
         {
-            foreach (var arg in this.Arguments)
+            foreach (var arg in Arguments)
             {
-                this.job.Arguments.Add(arg);
+                job.Arguments.Add(arg);
             }
 
-            foreach (var cmdenv in this.CommandEnvironment)
+            foreach (var cmdenv in CommandEnvironment)
             {
-                this.job.CommandEnvironment.Add(cmdenv);
+                job.CommandEnvironment.Add(cmdenv);
             }
 
-            foreach (KeyValuePair<string, string> define in this.Defines)
+            foreach (KeyValuePair<string, string> define in Defines)
             {
-                this.job.Defines.Add(define.Key, define.Value);
+                job.Defines.Add(define.Key, define.Value);
             }
 
             WriteObject(job);

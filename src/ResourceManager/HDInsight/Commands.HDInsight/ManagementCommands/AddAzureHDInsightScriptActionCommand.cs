@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The URI for the action.")]
         public Uri Uri
         {
-            get { return this._action.Uri; }
-            set { this._action.Uri = value; }
+            get { return _action.Uri; }
+            set { _action.Uri = value; }
         }
 
         [Parameter(Position = 3,
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The name of the action.")]
         public string Name
         {
-            get { return this._action.Name; }
-            set { this._action.Name = value; }
+            get { return _action.Name; }
+            set { _action.Name = value; }
         }
 
         [Parameter(Position = 4,
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The parameters for the action.")]
         public string Parameters
         {
-            get { return this._action.Parameters; }
-            set { this._action.Parameters = value; }
+            get { return _action.Parameters; }
+            set { _action.Parameters = value; }
         }
 
         #endregion
@@ -79,15 +79,17 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             List<ScriptAction> actions;
 
-            if (this.Config.ScriptActions.TryGetValue(this.NodeType, out actions))
+            if (Config.ScriptActions.TryGetValue(NodeType, out actions))
             {
-                actions.Add(this._action);
-                this.Config.ScriptActions[this.NodeType] = actions;
+                actions.Add(_action);
+                Config.ScriptActions[NodeType] = actions;
             }
             else
             {
-                this.Config.ScriptActions.Add(this.NodeType, new List<ScriptAction> {this._action});
+                Config.ScriptActions.Add(NodeType, new List<ScriptAction> {_action});
             }
+
+            WriteObject(Config);
         }
     }
 }

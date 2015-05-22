@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override async void ExecuteCmdlet()
         {
-            var job = await this.HDInsightJobClient.StopJob(this.JobId);
-            var jobDetail = new AzureHDInsightJob(job.JobDetail, this.HDInsightJobClient.ClusterName);
+            var job = await HDInsightJobClient.StopJob(JobId);
+            var jobDetail = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);
             WriteObject(jobDetail);
         }
     }

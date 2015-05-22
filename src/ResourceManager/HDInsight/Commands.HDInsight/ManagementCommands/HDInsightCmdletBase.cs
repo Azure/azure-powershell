@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Job;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
@@ -27,20 +25,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
         public AzureHdInsightManagementClient HDInsightManagementClient
         {
             get {
-                return this._hdInsightManagementClient ??
-                       (this._hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
+                return _hdInsightManagementClient ??
+                       (_hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
             }
-            set { this._hdInsightManagementClient = value; }
+            set { _hdInsightManagementClient = value; }
         }
 
         public AzureHdInsightJobManagementClient HDInsightJobClient
         {
             get
             {
-                return this._hdInsightJobClient ??
-                    (this._hdInsightJobClient = new AzureHdInsightJobManagementClient(Profile.Context));
+                return _hdInsightJobClient ??
+                    (_hdInsightJobClient = new AzureHdInsightJobManagementClient(Profile.Context));
             }
-            set { this._hdInsightJobClient = value; }
+            set { _hdInsightJobClient = value; }
         }
     }
 }
