@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
     public class PSVirtualMachineImageDetail : PSVirtualMachineImage
     {
-        public string Name { get; set; }
-
         public OSDiskImage OSDiskImage { get; set; }
 
         public PurchasePlan PurchasePlan { get; set; }

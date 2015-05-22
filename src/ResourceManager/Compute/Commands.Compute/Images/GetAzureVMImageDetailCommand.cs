@@ -61,14 +61,13 @@ namespace Microsoft.Azure.Commands.Compute
                 StatusCode = response.StatusCode,
                 Id = response.VirtualMachineImage.Id,
                 Location = response.VirtualMachineImage.Location,
-                Name = response.VirtualMachineImage.Name,
-                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
-                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
-                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                Version = response.VirtualMachineImage.Name,
                 PublisherName = this.PublisherName,
                 Offer = this.Offer,
                 Skus = this.Skus,
-                Version = this.Version
+                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
             };
 
             WriteObject(image);

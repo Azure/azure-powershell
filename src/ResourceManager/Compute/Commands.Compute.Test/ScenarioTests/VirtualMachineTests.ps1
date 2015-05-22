@@ -260,7 +260,8 @@ function Test-VirtualMachineImageList
                                 foreach ($ver in $versions)
                                 {
                                     if ($ver -eq $null -or $ver -eq '') { continue; }
-                                    $s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
+                                    #$s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
+									$s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
                                     Assert-NotNull $s6;
                                     $s6;
 
