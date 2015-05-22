@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         [JsonIgnore]
-        public string[] NicIds
+        public string[] NetworkInterfaceIds
         {
             get
             {

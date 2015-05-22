@@ -41,20 +41,20 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("Id", "NetworkInterfaceId")]
+        [Alias("Id", "NicIds")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
-        public string [] NicIds { get; set; }
+        public string[] NetworkInterfaceIds { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            foreach (var id in this.NicIds)
+            foreach (var id in this.NetworkInterfaceIds)
             {
                 if (networkProfile != null &&
                     networkProfile.NetworkInterfaces != null &&
