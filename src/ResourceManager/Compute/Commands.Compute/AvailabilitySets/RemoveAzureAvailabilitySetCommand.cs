@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
+    [OutputType(typeof(PSOperationResponse))]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
@@ -51,8 +54,9 @@ namespace Microsoft.Azure.Commands.Compute
             || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation,
                                    Properties.Resources.AvailabilitySetRemovalCaption))
             {
-                var op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(op);
+                AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
+                var result = Mapper.Map<PSOperationResponse>(op);
+                WriteObject(result);
             }
         }
     }
