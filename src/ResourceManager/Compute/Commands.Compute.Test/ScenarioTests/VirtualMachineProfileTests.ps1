@@ -26,26 +26,14 @@ function Test-VirtualMachineProfile
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);
-    $ipRefUri1 = "https://test.foo.bar/$ipname";
+    $ipRefUri = "https://test.foo.bar/$ipname";
     $nicName = $ipname + 'nic1';
     $publicIPName = $ipname + 'name1';
 
-    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri1;
-
-    $ipname = 'hpfip' + ((Get-Random) % 10000);
-    $ipRefUri2 = "https://test.foo.bar/$ipname";
-    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
-
-    # Remove all NICs
-    $p = $p | Remove-AzureVMNetworkInterface
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 0;
-
-    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri1;
-    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
-    $p = Remove-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
+    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri1;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri;
 
     # Storage
     $stoname = 'hpfteststo' + ((Get-Random) % 10000);
@@ -68,23 +56,6 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
-    Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
-
-    # Remove all data disks
-    $p = $p | Remove-AzureVMDataDisk;
-    Assert-AreEqual $p.StorageProfile.DataDisks.Count 0;
-
-    $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
