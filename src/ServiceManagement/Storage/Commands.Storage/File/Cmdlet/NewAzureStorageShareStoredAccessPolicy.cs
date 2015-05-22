@@ -28,7 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     public class NewAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
-        [Parameter(Position = 0, Mandatory = true, 
+        [Parameter(Position = 0, Mandatory = true,
+            ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Share name",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]

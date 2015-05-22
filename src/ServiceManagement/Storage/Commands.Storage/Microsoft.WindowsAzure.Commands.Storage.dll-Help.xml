@@ -3858,7 +3858,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get the specified Stored Access Policy for an azure storage container, or list all the Stored Access Policies for an azure storage container.</maml:para>
+		<maml:para>Get the specified Stored Access Policy for an azure storage share, or list all the Stored Access Policies for an azure storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -7491,7 +7491,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage container.</maml:para>
+		<maml:para>Generate Shared Access Signature token for azure storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>

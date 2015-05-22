@@ -30,6 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
+            ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Share name",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
