@@ -252,16 +252,15 @@ function Test-VirtualMachineImageList
                             {
                                 $versions = $s4 | select -ExpandProperty Version;
 
-                                $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
-                                Assert-NotNull $s6;
-                                Assert-NotNull $s6.Count -gt 0;
-                                $verNames = $s6 | select -ExpandProperty Version;
+                                $s5 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
+                                Assert-NotNull $s5;
+                                Assert-NotNull $s5.Count -gt 0;
+                                $verNames = $s5 | select -ExpandProperty Version;
 
                                 foreach ($ver in $versions)
                                 {
                                     if ($ver -eq $null -or $ver -eq '') { continue; }
-                                    #$s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
-									$s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
+                                    $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
                                     Assert-NotNull $s6;
                                     $s6;
 
@@ -300,7 +299,7 @@ function Test-VirtualMachineImageList
                     $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {
-                        $s3 = Get-AzureVMExtensionImageDetail -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
+                        $s3 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
                 
                         Assert-NotNull $s3;
                         Assert-True { $s3.Version -eq $ver; }
@@ -317,11 +316,11 @@ function Test-VirtualMachineImageList
 
         # Test Piping
         $pubNameFilter = '*Microsoft*Windows*Server*';
-        $imgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail;
+        $imgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImage;
         Assert-True { $imgs.Count -gt 0 };
 
         $pubNameFilter = '*Microsoft.Compute*';
-        $extimgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMExtensionImageType | Get-AzureVMExtensionImage | Get-AzureVMExtensionImageDetail;
+        $extimgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMExtensionImageType | Get-AzureVMExtensionImage | Get-AzureVMExtensionImage;
         Assert-True { $extimgs.Count -gt 0 };
 
         # Negative Tests
@@ -342,12 +341,12 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
 
         $version = '1.0.0';
-        Assert-ThrowsContains { $s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
+        Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
 
         # Extension Images
         $type = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s7 = Get-AzureVMExtensionImageDetail -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
-        
+        Assert-ThrowsContains { $s7 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
+
         Assert-ThrowsContains { $s8 = Get-AzureVMExtensionImageType -Location $locStr -PublisherName $publisherName; } "was not found";
 
         Assert-ThrowsContains { $s9 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter; } "was not found";
@@ -988,7 +987,7 @@ function Test-VirtualMachinePlan2
         $vmmImgOfferName = 'a10-vthunder-adc';
         $vmmImgSkusName = 'vthunder_byol';
         $vmmImgVerName = '1.0.0';
-        $imgRef = Get-AzureVMImageDetail -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
+        $imgRef = Get-AzureVMImage -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
         $plan = $imgRef.PurchasePlan;
         $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         $p.Plan = New-Object Microsoft.Azure.Management.Compute.Models.Plan;

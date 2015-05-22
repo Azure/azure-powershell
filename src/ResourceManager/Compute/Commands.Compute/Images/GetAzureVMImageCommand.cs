@@ -22,8 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineImage,
-        DefaultParameterSetName = ListVMImageParamSetName)]
+        ProfileNouns.VirtualMachineImage)]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new [] {ListVMImageParamSetName})]
     [OutputType(typeof(PSVirtualMachineImageDetail),
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Skus { get; set; }
 
         [Parameter(ParameterSetName = ListVMImageParamSetName,
-            ValueFromPipelineByPropertyName = true),
+            ValueFromPipelineByPropertyName = false),
         ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
 
@@ -132,6 +131,7 @@ namespace Microsoft.Azure.Commands.Compute
                     StatusCode = response.StatusCode,
                     Id = response.VirtualMachineImage.Id,
                     Location = response.VirtualMachineImage.Location,
+                    Name = response.VirtualMachineImage.Name,
                     Version = response.VirtualMachineImage.Name,
                     PublisherName = this.PublisherName,
                     Offer = this.Offer,

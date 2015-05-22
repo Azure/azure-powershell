@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+            WriteWarning(Properties.Resources.DeprecationOfGetAzureVMImageDetail);
+
             var parameters = new VirtualMachineImageGetParameters
             {
                 Location = Location.Canonicalize(),
@@ -61,13 +63,14 @@ namespace Microsoft.Azure.Commands.Compute
                 StatusCode = response.StatusCode,
                 Id = response.VirtualMachineImage.Id,
                 Location = response.VirtualMachineImage.Location,
-                Version = response.VirtualMachineImage.Name,
-                PublisherName = this.PublisherName,
-                Offer = this.Offer,
-                Skus = this.Skus,
+                Name = response.VirtualMachineImage.Name,
                 OSDiskImage = response.VirtualMachineImage.OSDiskImage,
                 DataDiskImages = response.VirtualMachineImage.DataDiskImages,
                 PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                PublisherName = this.PublisherName,
+                Offer = this.Offer,
+                Skus = this.Skus,
+                Version = this.Version
             };
 
             WriteObject(image);

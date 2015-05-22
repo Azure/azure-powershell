@@ -22,17 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineExtensionImage,
-        DefaultParameterSetName = ListVMImageExtensionParamSetName)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage),
-        ParameterSetName = new[] { ListVMImageExtensionParamSetName })]
-    [OutputType(typeof(PSVirtualMachineExtensionImageDetails),
-        ParameterSetName = new[] { GetVMImageExtensionDetailParamSetName })]
+        ProfileNouns.VirtualMachineExtensionImage)]
+    [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        protected const string ListVMImageExtensionParamSetName = "ListVMImageExtension";
-        protected const string GetVMImageExtensionDetailParamSetName = "GetVMImageExtensionDetail";
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -45,17 +38,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter, ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
 
-        [Parameter(ParameterSetName = GetVMImageExtensionDetailParamSetName,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true),
-        ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (this.PagingParameters.Equals(ListVMImageExtensionParamSetName))
+            if (string.IsNullOrEmpty(this.Version))
             {
                 var parameters = new VirtualMachineExtensionImageListVersionsParameters
                 {
