@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    using Microsoft.Azure.Commands.Automation.Properties;
-
     /// <summary>
-    /// Create a new Webhook for automation.
+    /// Remove a new Webhook for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureAutomationWebhook")]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet

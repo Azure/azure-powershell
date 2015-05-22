@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Microsoft.WindowsAzure.Commands.Common;
-
     /// <summary>
-    /// Create a new Webhook for automation.
+    /// Update a Webhook for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureAutomationWebhook")]
     [OutputType(typeof(Webhook))]

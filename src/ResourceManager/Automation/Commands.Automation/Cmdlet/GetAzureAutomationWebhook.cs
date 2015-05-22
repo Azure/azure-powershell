@@ -21,7 +21,7 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Create a new Webhook for automation.
+    /// Get Webhook for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Webhook))]
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook name.")]
-        [Alias("RbName")]
         public string RunbookName { get; set; }
      
         /// <summary>

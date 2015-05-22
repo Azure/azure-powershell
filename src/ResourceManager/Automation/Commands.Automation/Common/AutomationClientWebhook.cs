@@ -41,62 +41,76 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            var rbAssociationProperty = new RunbookAssociationProperty { Name = runbookName };
-
-            var createOrUpdateProperties = new WebhookCreateOrUpdateProperties
-                                               {
-                                                   IsEnabled = isEnabled,
-                                                   ExpiryTime = expiryTime,
-                                                   Runbook = rbAssociationProperty,
-                                                   Uri =
-                                                       this.automationManagementClient
-                                                       .Webhooks.GenerateUri(
-                                                           resourceGroupName,
-                                                           automationAccountName).Uri
-                                               };
-            if (runbookParameters != null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                createOrUpdateProperties.Parameters =
-                    runbookParameters.Cast<DictionaryEntry>()
-                        .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                var rbAssociationProperty = new RunbookAssociationProperty { Name = runbookName };
+                var createOrUpdateProperties = new WebhookCreateOrUpdateProperties
+                                                   {
+                                                       IsEnabled = isEnabled,
+                                                       ExpiryTime = expiryTime,
+                                                       Runbook = rbAssociationProperty,
+                                                       Uri =
+                                                           this.automationManagementClient
+                                                           .Webhooks.GenerateUri(
+                                                               resourceGroupName,
+                                                               automationAccountName).Uri
+                                                   };
+                if (runbookParameters != null)
+                {
+                    createOrUpdateProperties.Parameters =
+                        runbookParameters.Cast<DictionaryEntry>()
+                            .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                }
+
+                var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters(
+                    name,
+                    createOrUpdateProperties);
+
+                var webhook =
+                    this.automationManagementClient.Webhooks.CreateOrUpdate(
+                        resourceGroupName,
+                        automationAccountName,
+                        webhookCreateOrUpdateParameters).Webhook;
+
+                return new Model.Webhook(
+                    resourceGroupName,
+                    automationAccountName,
+                    webhook,
+                    webhookCreateOrUpdateParameters.Properties.Uri);
             }
-
-            var webhookCreateOrUpdateParameters = new WebhookCreateOrUpdateParameters(name, createOrUpdateProperties);
-            
-            var webhook = this.automationManagementClient.Webhooks.CreateOrUpdate(
-                             resourceGroupName,
-                             automationAccountName,
-                             webhookCreateOrUpdateParameters).Webhook;
-
-            return new Model.Webhook(resourceGroupName, automationAccountName, webhook, webhookCreateOrUpdateParameters.Properties.Uri);
         }
 
         public Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-
-            try
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                var webhook =
-                    this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name).Webhook;
-                if (webhook == null)
+                try
                 {
-                    throw new ResourceNotFoundException(typeof(Webhook),
-                        string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
-                }
+                    var webhook =
+                        this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name)
+                            .Webhook;
+                    if (webhook == null)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Webhook),
+                            string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
+                    }
 
-                return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
-            }
-            catch (CloudException cloudException)
-            {
-                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
+                }
+                catch (CloudException cloudException)
                 {
-                    throw new ResourceNotFoundException(typeof(Webhook),
-                        string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
-                }
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Webhook),
+                            string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
+                    }
 
-                throw;
+                    throw;
+                }
             }
         }
 
@@ -105,30 +119,35 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             WebhookListResponse response;
-
-            if (string.IsNullOrEmpty(nextLink))
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                if (runbookName == null)
+                if (string.IsNullOrEmpty(nextLink))
                 {
-                    response = this.automationManagementClient.Webhooks.List(
-                        resourceGroupName,
-                        automationAccountName,
-                        null);
+                    if (runbookName == null)
+                    {
+                        response = this.automationManagementClient.Webhooks.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            null);
+                    }
+                    else
+                    {
+                        response = this.automationManagementClient.Webhooks.List(
+                            resourceGroupName,
+                            automationAccountName,
+                            runbookName);
+                    }
                 }
                 else
                 {
-                    response = this.automationManagementClient.Webhooks.List(
-                        resourceGroupName,
-                        automationAccountName,
-                        runbookName);
+                    response = this.automationManagementClient.Webhooks.ListNext(nextLink);
                 }
+
+                nextLink = response.NextLink;
+                return
+                    response.Webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w))
+                        .ToList();
             }
-            else
-            {
-                response = this.automationManagementClient.Webhooks.ListNext(nextLink);
-            }
-            nextLink = response.NextLink;
-            return response.Webhooks.Select(w => new Model.Webhook(resourceGroupName, automationAccountName, w)).ToList();
         }
 
         public Model.Webhook UpdateWebhook(
@@ -140,46 +159,56 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            var webhookModel = this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name).Webhook;
-            var webhookPatchProperties = new WebhookPatchProperties();
-            if (webhookModel != null)
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                if (isEnabled != null)
+                var webhookModel =
+                    this.automationManagementClient.Webhooks.Get(resourceGroupName, automationAccountName, name).Webhook;
+                var webhookPatchProperties = new WebhookPatchProperties();
+                if (webhookModel != null)
                 {
-                    webhookPatchProperties.IsEnabled = isEnabled.Value;
+                    if (isEnabled != null)
+                    {
+                        webhookPatchProperties.IsEnabled = isEnabled.Value;
+                    }
+                    if (parameters != null)
+                    {
+                        webhookPatchProperties.Parameters =
+                            parameters.Cast<DictionaryEntry>()
+                                .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                    }
                 }
-                if (parameters != null)
-                {
-                    webhookPatchProperties.Parameters =
-                        parameters.Cast<DictionaryEntry>()
-                            .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
-                }
+
+                var webhookPatchParameters = new WebhookPatchParameters(name) { Properties = webhookPatchProperties };
+                var webhook =
+                    this.automationManagementClient.Webhooks.Patch(
+                        resourceGroupName,
+                        automationAccountName,
+                        webhookPatchParameters).Webhook;
+
+                return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
             }
-         
-            var webhookPatchParameters = new WebhookPatchParameters(name) { Properties = webhookPatchProperties };
-            var webhook =
-                this.automationManagementClient.Webhooks.Patch(
-                    resourceGroupName,
-                    automationAccountName,
-                    webhookPatchParameters).Webhook;
-            return new Model.Webhook(resourceGroupName, automationAccountName, webhook);
         }
 
         public void DeleteWebhook(string resourceGroupName, string automationAccountName, string name)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            try
+            using (var request = new RequestSettings(this.automationManagementClient))
             {
-                this.automationManagementClient.Webhooks.Delete(resourceGroupName, automationAccountName, name);
-            }
-            catch (CloudException cloudException)
-            {
-                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                try
                 {
-                    throw new ResourceNotFoundException(typeof(Webhook), string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
+                    this.automationManagementClient.Webhooks.Delete(resourceGroupName, automationAccountName, name);
                 }
-                throw;
+                catch (CloudException cloudException)
+                {
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Webhook),
+                            string.Format(CultureInfo.CurrentCulture, Resources.WebhookNotFound, name));
+                    }
+                    throw;
+                }
             }
         }
     }
