@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Availability set removal operation.
+        /// </summary>
+        public static string AvailabilitySetRemovalCaption {
+            get {
+                return ResourceManager.GetString("AvailabilitySetRemovalCaption", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified availability set. Do you want to continue?.
+        /// </summary>
+        public static string AvailabilitySetRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("AvailabilitySetRemovalConfirmation", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {

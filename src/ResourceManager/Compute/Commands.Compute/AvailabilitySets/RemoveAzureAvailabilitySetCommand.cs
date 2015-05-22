@@ -37,13 +37,23 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+           Position = 2,
+           HelpMessage = "To force the removal.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
-
-            WriteObject(op);
+            if (this.Force.IsPresent
+            || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation,
+                                   Properties.Resources.AvailabilitySetRemovalCaption))
+            {
+                var op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
+                WriteObject(op);
+            }
         }
     }
 }
