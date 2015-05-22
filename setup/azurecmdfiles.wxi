@@ -263,6 +263,9 @@
                         <Component Id="cmpD5624BF8D78E80B0526773DE6E4FD2D2" Guid="*">
                             <File Id="fil81AE4D49FE4C59DD6526396037D718F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.dll-Help.xml" />
                         </Component>
+                        <Component Id="cmp2D89D47A52D9C508B335922A76918EE3" Guid="*">
+                            <File Id="filFE04FA7CFF5D29881FA54A6ED872814A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml" />
+                        </Component>
                         <Component Id="cmp62942A24352ADC631A6C9DAE39D62F70" Guid="*">
                             <File Id="fil1FB621027ABD42027FCAE84212775303" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml" />
                         </Component>
@@ -879,6 +882,9 @@
                         </Component>
                         <Component Id="cmp4384DC163B139D10A7988F6DCE10A880" Guid="*">
                             <File Id="fil93B13FEC3D2F0E6C24EEA5A88743673E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Commands.KeyVault.dll" />
+                        </Component>
+                        <Component Id="cmp72DEDEB70C04F613F499759765B491C3" Guid="*">
+                            <File Id="fil945BE330AE595DDFB65805EF5604059F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Commands.KeyVault.dll-help.xml" />
                         </Component>
                         <Component Id="cmp92D53BB85B8D42A3C0F2FD08233102D5" Guid="*">
                             <File Id="fil74E9585A41297A7784BF077B4E9E0783" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml" />
@@ -3881,6 +3887,7 @@
             <ComponentRef Id="cmpEDFE5B7CD43B10FD4C5F82D443DA0C5D" />
             <ComponentRef Id="cmp7F2719BE7827D3FDDF69D7ACB6135115" />
             <ComponentRef Id="cmpD5624BF8D78E80B0526773DE6E4FD2D2" />
+            <ComponentRef Id="cmp2D89D47A52D9C508B335922A76918EE3" />
             <ComponentRef Id="cmp62942A24352ADC631A6C9DAE39D62F70" />
             <ComponentRef Id="cmp479E4B1EF0A49C9845DB071F542F5392" />
             <ComponentRef Id="cmpDCDC7F34E3D2A51F32765B8C00AE3808" />
@@ -4074,6 +4081,7 @@
             <ComponentRef Id="cmpF691ECE2E61383DFBF997C509D946386" />
             <ComponentRef Id="cmpDE148D8065A52DA77846D8339A7F2254" />
             <ComponentRef Id="cmp4384DC163B139D10A7988F6DCE10A880" />
+            <ComponentRef Id="cmp72DEDEB70C04F613F499759765B491C3" />
             <ComponentRef Id="cmp92D53BB85B8D42A3C0F2FD08233102D5" />
             <ComponentRef Id="cmp5F38D5C60E748EC6C858B453AD3588CF" />
             <ComponentRef Id="cmpF367A5E3647B7598492C73AE20E99B06" />
