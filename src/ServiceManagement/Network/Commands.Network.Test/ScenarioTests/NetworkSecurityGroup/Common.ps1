@@ -88,13 +88,12 @@ function Get-NetworkSecurityGroupForSubnet
 }
 
 
-
 <#
 .SYNOPSIS
-Removes all profiles from the $profileNames list from the current subscription.
+Removes all NSGs created by Powershell tests from the current subscription.
 #>
 function Initialize-NetworkSecurityGroupTest
 {
-    Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\EmptyNetworkConfiguration.xml")
+    Initialize-NetworkTest
     Get-AzureNetworkSecurityGroup | Where-Object { $_.Name.StartsWith($NetworkSecurityGroupPrefix) } | Remove-AzureNetworkSecurityGroup -Force
 }

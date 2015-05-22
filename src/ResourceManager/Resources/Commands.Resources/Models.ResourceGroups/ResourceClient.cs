@@ -19,8 +19,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization.Formatters;
 using System.Threading;
+using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Authorization;
@@ -36,6 +38,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
 {
     public partial class ResourcesClient
     {
+        /// <summary>
+        /// A string that indicates the value of the resource type name for the RP's operations api
+        /// </summary>
+        public const string Operations = "operations";
+
         /// <summary>
         /// A string that indicates the value of the registering state enum for a provider
         /// </summary>
@@ -168,12 +175,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return template;
         }
 
-        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
+        private ResourceGroupExtended CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             var result = ResourceManagementClient.ResourceGroups.CreateOrUpdate(name,
-                new BasicResourceGroup
+                new ResourceGroup
                 {
                     Location = location,
                     Tags = tagDictionary
@@ -206,7 +213,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private Deployment ProvisionDeploymentStatus(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 
@@ -220,7 +227,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ProvisioningState.Failed);
         }
 
-        private void WriteDeploymentProgress(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private void WriteDeploymentProgress(string resourceGroup, string deploymentName, Deployment deployment)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
@@ -278,14 +285,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private Deployment WaitDeploymentStatus(
+        private DeploymentExtended WaitDeploymentStatus(
             string resourceGroup,
             string deploymentName,
-            BasicDeployment basicDeployment,
-            Action<string, string, BasicDeployment> job,
+            Deployment basicDeployment,
+            Action<string, string, Deployment> job,
             params string[] status)
         {
-            Deployment deployment;
+            DeploymentExtended deployment;
 
             do
             {
@@ -317,19 +324,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        private BasicDeployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
+        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
         {
-            BasicDeployment deployment = new BasicDeployment
+            Deployment deployment = new Deployment
             {
-                Mode = DeploymentMode.Incremental,
-                Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
-                Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
+                Properties = new DeploymentProperties {
+                    Mode = DeploymentMode.Incremental,
+                    Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
+                    Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
+                }
             };
 
             return deployment;
         }
 
-        private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, BasicDeployment deployment)
+        private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
             DeploymentValidateResponse validationResult = ResourceManagementClient.Deployments.Validate(
                 resourceGroup,
@@ -453,6 +462,58 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 .Distinct(StringComparer.InvariantCultureIgnoreCase)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
+        }
+
+        /// <summary>
+        /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
+        /// (Current logic is to sort the 'api-versions' list and choose the max value to store)
+        /// </summary>
+        public Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
+        {
+            PSResourceProvider[] allProviders = this.ListPSResourceProviders(listAvailable: true);
+
+            Dictionary<string, string> providersSupportingOperations = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            PSResourceProviderResourceType[] providerResourceTypes = null;
+
+            foreach (PSResourceProvider provider in allProviders)
+            {
+                providerResourceTypes = provider.ResourceTypes;
+                if (providerResourceTypes != null && providerResourceTypes.Any())
+                {
+                    PSResourceProviderResourceType operationsResourceType = providerResourceTypes.Where(r => r != null && r.ResourceTypeName == ResourcesClient.Operations).FirstOrDefault();
+                    if (operationsResourceType != null &&
+                        operationsResourceType.ApiVersions != null &&
+                        operationsResourceType.ApiVersions.Any())
+                    {
+                        providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
+                    }
+                }
+            }
+
+            return providersSupportingOperations;
+        }
+
+        /// <summary>
+        /// Get the list of resource provider operations for every provider specified by the identities list
+        /// </summary>
+        public IList<PSResourceProviderOperation> ListPSProviderOperations(IList<ResourceIdentity> identities)
+        {
+            var allProviderOperations = new List<PSResourceProviderOperation>();
+            Task<ResourceProviderOperationDetailListResult> task;
+
+            if(identities != null)
+            {
+                foreach (var identity in identities)
+                {
+                    task = this.ResourceManagementClient.ResourceProviderOperationDetails.ListAsync(identity);
+                    task.Wait();
+
+                    // Add operations for this provider. 
+                    allProviderOperations.AddRange(task.Result.ResourceProviderOperationDetails.Select(op => op.ToPSResourceProviderOperation()));
+                }
+            }
+              
+            return allProviderOperations;
         }
     }
 }

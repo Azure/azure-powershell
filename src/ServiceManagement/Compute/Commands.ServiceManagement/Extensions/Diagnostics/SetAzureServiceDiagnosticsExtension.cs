@@ -130,7 +130,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 PrivateConfiguration = PrivateConfiguration,
                 Roles = new ExtensionRoleList(Role != null && Role.Any() ? Role.Select(r => new ExtensionRole(r)) : Enumerable.Repeat(new ExtensionRole(), 1))
             };
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration);
+
+            var secondSlotDeployment = GetDeployment(this.Slot == DeploymentSlotType.Production ? DeploymentSlotType.Staging : DeploymentSlotType.Production);
+            Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration secondSlotExtensionConfiguration = 
+                secondSlotDeployment != null ? secondSlotDeployment.ExtensionConfiguration : null;
+
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration, secondSlotExtensionConfiguration);
             ChangeDeployment(extConfig);
         }
 

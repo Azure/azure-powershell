@@ -129,6 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string SetAzurePlatformVMImageCmdletName = "Set-AzurePlatformVMImage";
         public const string GetAzurePlatformVMImageCmdletName = "Get-AzurePlatformVMImage";
         public const string RemoveAzurePlatformVMImageCmdletName = "Remove-AzurePlatformVMImage";
+        public const string NewAzurePlatformComputeImageConfigCmdletName = "New-AzurePlatformComputeImageConfig";
+        public const string NewAzurePlatformMarketplaceImageConfigCmdletName = "New-AzurePlatformMarketplaceImageConfig";
         
         // AzureRemoteDesktopFile
         public const string GetAzureRemoteDesktopFileCmdletName = "Get-AzureRemoteDesktopFile";
@@ -139,6 +141,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string RemoveAzureReservedIPCmdletName = "Remove-AzureReservedIP";
         public const string SetAzureReservedIPAssociationCmdletName = "Set-AzureReservedIPAssociation";
         public const string RemoveAzureReservedIPAssociationCmdletName = "Remove-AzureReservedIPAssociation";
+        public const string AddAzureVirtualIPCmdletName = "Add-AzureVirtualIP";
+        public const string RemoveAzureVirtualIPCmdletName = "Remove-AzureVirtualIP";
+
 
         // AzureRole & AzureRoleInstnace
         public const string GetAzureRoleCmdletName = "Get-AzureRole";
@@ -328,11 +333,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public const string RemoveAzureNetworkInterfaceConfig = "Remove-AzureNetworkInterfaceConfig";
         public const string GetAzureNetworkInterfaceConfig = "Get-AzureNetworkInterfaceConfig";
 
-        // Custom script extension
-        public const string SetAzureVMDscExtensionCmdletName = "Set-AzureVMDscExtension";
-        public const string GetAzureVMDscExtensionCmdletName = "Get-AzureVMDscExtension";
-        public const string RemoveAzureVMDscExtensionCmdletName = "Remove-AzureVMDscExtension";
-
         // SqlServer extension
         public const string SetAzureVMSqlServerExtensionCmdletName = "Set-AzureVMSqlServerExtension";
         public const string GetAzureVMSqlServerExtensionCmdletName = "Get-AzureVMSqlServerExtension";
@@ -470,6 +470,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        public static PersistentVM CreateVMObjectWithDataDiskSubnetAndAvailibilitySet(string vmName, OS os, string username, string password, string subnet)
+        {
+            string disk1 = "Disk1";
+            int diskSize = 30;
+            string availabilitySetName = Utilities.GetUniqueShortName("AvailSet");
+            string img = string.Empty;
+
+            bool isWindowsOs = false;
+            if (os == OS.Windows)
+            {
+                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
+                isWindowsOs = true;
+            }
+            else
+            {
+                img = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Linux" }, false);
+                isWindowsOs = false;
+            }
+
+            PersistentVM vm = Utilities.CreateIaaSVMObject(vmName, InstanceSize.Small, img, isWindowsOs, username, password);
+            AddAzureDataDiskConfig azureDataDiskConfigInfo1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, diskSize, disk1, 0, HostCaching.ReadWrite.ToString());
+            azureDataDiskConfigInfo1.Vm = vm;
+
+            vm = vmPowershellCmdlets.SetAzureSubnet(vm, new string[] { subnet });
+            vm = vmPowershellCmdlets.SetAzureAvailabilitySet(availabilitySetName, vm);
+            return vm;
+        }
+
         // CheckRemove checks if 'fn(name)' exists.    'fn(name)' is usually 'Get-AzureXXXXX name'
         public static bool CheckRemove<Arg1, Arg2, Ret>(Func<Arg1, Arg2, Ret> fn, Arg1 name1, Arg2 name2)
         {
@@ -561,6 +589,60 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         continue;
                     }
                     else
+                    {
+                        Console.WriteLine(e);
+                        if (e.InnerException != null)
+                        {
+                            Console.WriteLine(e.InnerException);
+                        }
+                        throw;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///  Retry the given action until success or timed out.
+        /// </summary>
+        /// <param name="act">the action</param>
+        /// <param name="errorMessages">retry for this error messages</param>
+        /// <param name="maxTry">the max number of retries</param>
+        /// <param name="intervalSeconds">the interval between retries</param>
+        public static void RetryActionUntilSuccess(Action act, string[] errorMessages, int maxTry, int intervalSeconds)
+        {
+            int i = 0;
+            while (i < maxTry)
+            {
+                try
+                {
+                    act();
+                    return;
+                }
+                catch (Exception e)
+                {
+                    bool found = false;
+                    foreach (var errorMessage in errorMessages)
+                    {
+                        if (e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)))
+                        {
+                            found = true;
+                            i++;
+                            if (i == maxTry)
+                            {
+                                Console.WriteLine("Max number of retry is reached: {0}", errorMessage);
+                                throw;
+                            }
+                            Console.WriteLine("{0} error occurs! retrying ...", errorMessage);
+                            if (e.InnerException != null)
+                            {
+                                Console.WriteLine(e.InnerException);
+                            }
+                            Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
+                            break;
+                        }
+                    }
+
+                    if (!found)
                     {
                         Console.WriteLine(e);
                         if (e.InnerException != null)
@@ -730,24 +812,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return xml.GetElementsByTagName(tag)[0].InnerXml;
         }
 
-        public static bool CompareWadCfg(string wadcfg, XmlDocument daconfig)
+        public static void CompareWadCfg(string wadcfg, XmlDocument daconfig)
         {
-            try
+            if (string.IsNullOrWhiteSpace(wadcfg))
             {
-                if (string.IsNullOrWhiteSpace(wadcfg))
-                {
-                    Assert.IsNull(wadcfg);
-                }
-                else
-                {
-                    string innerXml = daconfig.InnerXml;
-                    Assert.AreEqual(Utilities.FindSubstring(wadcfg, '<', 2), Utilities.FindSubstring(innerXml, '<', 2));
-                }
-                return true;
+                Assert.IsNull(wadcfg);
             }
-            catch
+            else
             {
-                return false;
+                string innerXml = daconfig.InnerXml;
+                StringAssert.Contains(Utilities.FindSubstring(innerXml, '<', 2), Utilities.FindSubstring(wadcfg, '<', 2));
             }
         }
 
