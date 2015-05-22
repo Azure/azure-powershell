@@ -170,22 +170,22 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestBackupRestoreApiManagement.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestCrudApiManagement.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestImportApiManagementHostnameCertificate.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestSetApiManagementVirtualNetworks.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestUpdateApiManagementDeployment.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests.ApiManagementTests\TestUpdateDeploymentComplex.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="testcertificate.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
