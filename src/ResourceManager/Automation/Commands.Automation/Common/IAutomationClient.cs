@@ -129,5 +129,26 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DirectoryInfo GetDscNodeReportContent(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId, string outputFolder, bool overwriteExistingFile);
         #endregion
+
+        #region Webhooks
+
+        Model.Webhook CreateWebhook(
+            string resourceGroupName,
+            string automationAccountName,
+            string name,
+            string runbookName,
+            bool isEnabled,
+            DateTimeOffset expiryTime,
+            Hashtable parameters);
+
+        Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
+
+        IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbooName, ref string nextLink);
+
+        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, Hashtable parameters, bool? isEnabled);
+
+        void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
     }
 }
