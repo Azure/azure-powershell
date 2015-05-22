@@ -189,7 +189,7 @@ function Test-VirtualMachineList
 
     try
     {
-        $s1 = Get-AzureVM -All;
+        $s1 = Get-AzureVM;
         $s2 = Get-AzureVM;
 
         if ($s2 -ne $null)
