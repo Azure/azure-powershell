@@ -14,7 +14,10 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Reflection;
 using Microsoft.Azure.Commands.Resources.Models;
+using System.IO;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -22,11 +25,31 @@ namespace Microsoft.Azure.Commands.Resources
     /// Get the available locations for certain resource types.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
-    public class GetAzureLocationCommand : ResourcesBaseCmdlet
+    public class GetAzureLocationCommand : ResourcesBaseCmdlet, IModuleAssemblyInitializer
     {
         public override void ExecuteCmdlet()
         {
             WriteObject(ResourcesClient.GetLocations(), true);
+        }
+
+        /// <summary>
+        /// Load global aliases for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "ResourceManagerStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
         }
     }
 }

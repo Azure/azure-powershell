@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
     /// <summary>
-    /// Disables auditing on a specific database server.
+    /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseServerAuditing"), OutputType(typeof(ServerAuditingPolicyModel))]
-    public class RemoveSqlDatabaseServerAuditing : SqlDatabaseServerAuditingCmdletBase
+    [Cmdlet(VerbsOther.Use, "AzureSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Alias("Use-AzureSqlDatabaseServerAuditingPolicy")]
+    public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -39,23 +42,26 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
+        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
-            model.AuditState = AuditStateType.Disabled;
+            model.UseServerDefault = UseServerDefaultOptions.Enabled;
+            model.StorageAccountName = GetStorageAccountName();
             return model;
         }
 
         /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
+        /// Returns the storage account name that is used at the policy of the database's server.
         /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
+        /// <returns>A storage account name</returns>
+        protected string GetStorageAccountName()
         {
-            ModelAdapter.IgnoreStorage = true;
-            base.PersistChanges(model);
-            return null;
+            string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
+            if (string.IsNullOrEmpty(storageAccountName))
+            {
+                throw new Exception(string.Format(Resources.UseServerWithoutStorageAccount));
+            }
+            return storageAccountName;
         }
     }
 }
