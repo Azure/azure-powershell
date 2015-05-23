@@ -21,8 +21,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage))]
+    [Cmdlet(VerbsCommon.Get,
+        ProfileNouns.VirtualMachineExtensionImage)]
+    [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -37,34 +38,73 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter, ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string Version { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineExtensionImageListVersionsParameters
+            if (string.IsNullOrEmpty(this.Version))
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName,
-                Type = Type,
-                FilterExpression = FilterExpression
-            };
+                var parameters = new VirtualMachineExtensionImageListVersionsParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName,
+                    Type = Type,
+                    FilterExpression = FilterExpression
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Version = r.Name,
-                             PublisherName = this.PublisherName,
-                             Type = this.Type,
-                             FilterExpression = this.FilterExpression
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineExtensionImage
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 Version = r.Name,
+                                 PublisherName = this.PublisherName,
+                                 Type = this.Type,
+                                 FilterExpression = this.FilterExpression
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            }
+            else
+            {
+
+                var parameters = new VirtualMachineExtensionImageGetParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName,
+                    Type = Type,
+                    FilterExpression = FilterExpression,
+                    Version = Version
+                };
+
+                VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
+
+                var image = new PSVirtualMachineExtensionImageDetails
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.StatusCode,
+                    Id = result.VirtualMachineExtensionImage.Id,
+                    Location = result.VirtualMachineExtensionImage.Location,
+                    Name = result.VirtualMachineExtensionImage.Name,
+                    HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                    OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                    ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                    SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                    VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                    PublisherName = this.PublisherName,
+                    Type = this.Type,
+                    Version = this.Version
+                };
+
+                WriteObject(image);
+            }
         }
     }
 }
