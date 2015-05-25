@@ -889,6 +889,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is an invalid HTTP method..
+        /// </summary>
+        internal static string InvalidHTTPMethod {
+            get {
+                return ResourceManager.GetString("InvalidHTTPMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The page blob size must be a multiple of 512 bytes. But the size of local file &apos;{0}&apos; is {1}..
         /// </summary>
         internal static string InvalidPageBlobSize {

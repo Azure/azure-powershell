@@ -166,6 +166,9 @@
   <data name="InvalidExpiryTime" xml:space="preserve">
     <value>Invalid expiry time '{0}'.</value>
   </data>
+  <data name="InvalidHTTPMethod" xml:space="preserve">
+    <value>'{0}' is an invalid HTTP method.</value>
+  </data>
   <data name="InvalidStartTime" xml:space="preserve">
     <value>Invalid start time '{0}'.</value>
   </data>
