@@ -1593,7 +1593,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -1627,7 +1627,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -3093,7 +3093,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -3127,7 +3127,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -3250,7 +3250,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -3272,7 +3272,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -3408,7 +3408,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -3442,7 +3442,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -3880,7 +3880,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -3942,7 +3942,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -4325,7 +4325,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4359,7 +4359,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -4518,7 +4518,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4563,7 +4563,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4608,7 +4608,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4660,7 +4660,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4742,7 +4742,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -5149,7 +5149,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -5194,7 +5194,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -5264,7 +5264,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -5442,7 +5442,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -5512,7 +5512,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -6762,7 +6762,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6807,7 +6807,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6877,7 +6877,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -7040,7 +7040,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7110,7 +7110,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -7534,7 +7534,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7586,7 +7586,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7663,7 +7663,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -7854,7 +7854,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7952,7 +7952,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -8322,7 +8322,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -8395,7 +8395,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -8513,7 +8513,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -8691,7 +8691,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -8761,7 +8761,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -11495,7 +11495,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -11589,7 +11589,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -13730,7 +13730,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -13824,7 +13824,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -14603,7 +14603,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -14673,7 +14673,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -14840,7 +14840,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context.</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -14922,7 +14922,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context.</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -15026,6 +15026,277 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Set-AzureStorageShareQuota</command:name>
+		<maml:description>
+			<maml:para>Set capacity quota for a specific share.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Set</command:verb>
+		<command:noun>AzureStorageShareQuota</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>Set capacity quota for a specific share.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Set-AzureStorageShareQuota</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+				<maml:name>ShareName</maml:name>
+				<maml:description>
+					<maml:para>Name of the share whose quota to be set.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Quota</maml:name>
+				<maml:description>
+					<maml:para>Quota value in GB.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Context</maml:name>
+				<maml:description>
+					<maml:para>Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ServerTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClientTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConcurrentTaskCount</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureStorageShareQuota</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+				<maml:name>Share</maml:name>
+				<maml:description>
+					<maml:para>Instance of CloudFileShare to represent a share whose quota to be set. You can retrieve a share using Get-AzureStorageShare cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">CloudFileShare</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>Quota</maml:name>
+				<maml:description>
+					<maml:para>Quota value in GB.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ServerTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClientTimeoutPerRequest</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConcurrentTaskCount</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+			<maml:name>ShareName</maml:name>
+			<maml:description>
+				<maml:para>Name of the share whose quota to be set.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+			<maml:name>Quota</maml:name>
+			<maml:description>
+				<maml:para>Quota value in GB.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>Context</maml:name>
+			<maml:description>
+				<maml:para>Azure Storage Context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureStorageContext</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ServerTimeoutPerRequest</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ClientTimeoutPerRequest</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ConcurrentTaskCount</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+			<dev:type>
+				<maml:name>Nullable`1[Int32]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+			<maml:name>Share</maml:name>
+			<maml:description>
+				<maml:para>Instance of CloudFileShare to represent a share whose quota to be set. You can retrieve a share using Get-AzureStorageShare cmdlet.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">CloudFileShare</command:parameterValue>
+			<dev:type>
+				<maml:name>CloudFileShare</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Set quota of a share  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Set-AzureStorageShareQuota -ShareName &quot;myshare&quot; -Quota 1024</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Set-AzureStorageShareStoredAccessPolicy</command:name>
 		<maml:description>
 			<maml:para>Update a Stored Access Policy for an azure storage share.</maml:para>
@@ -15095,7 +15366,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -15217,7 +15488,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -15407,7 +15678,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context</maml:para>
+					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -15501,7 +15772,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context</maml:para>
+				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
