@@ -46,9 +46,14 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryName, Position = 4, Mandatory = false, HelpMessage = "The windows authentication credential.")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 4, Mandatory = false, HelpMessage = "The linked service type.")]
-        [Parameter(ParameterSetName = ByFactoryName, Position = 5, Mandatory = false, HelpMessage = "The linked service type.")]
-        [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService", "OnPremisesOdbcLinkedService", IgnoreCase = true)]
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 4, Mandatory = false,
+            HelpMessage = "The linked service type.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 5, Mandatory = false,
+            HelpMessage = "The linked service type.")]
+        [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService",
+            "OnPremisesOdbcLinkedService", "OnPremisesPostgreSqlLinkedService", "OnPremisesTeradataLinkedService", 
+            "OnPremisesMySQLLinkedService", "OnPremisesDB2LinkedService", "OnPremisesSybaseLinkedService", 
+            IgnoreCase = true)]
         public string Type { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryObject, Position = 5, Mandatory = false, HelpMessage = "The non-credential value.")]
@@ -59,6 +64,14 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryName, Position = 7, Mandatory = false, HelpMessage = "The authentication type.")]
         [ValidateSet("Windows", "Basic", "Anonymous", IgnoreCase = true)]
         public string AuthenticationType { get; set; }
+
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 7, Mandatory = false, HelpMessage = "The server name.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 8, Mandatory = false, HelpMessage = "The server name.")]
+        public string Server { get; set; }
+
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 8, Mandatory = false, HelpMessage = "The database name.")]
+        [Parameter(ParameterSetName = ByFactoryName, Position = 9, Mandatory = false, HelpMessage = "The database name.")]
+        public string Database { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -85,7 +98,8 @@ namespace Microsoft.Azure.Commands.DataFactories
             else
             {
                 // On-premises encryption with Gateway
-                encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName, GatewayName, Credential, Type, NonCredentialValue, AuthenticationType);
+                encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName,
+                    GatewayName, Credential, Type, NonCredentialValue, AuthenticationType, Server, Database);
             }
             
             WriteObject(encryptedValue);

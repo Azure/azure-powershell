@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
@@ -20,6 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
+    [OutputType(typeof(PSAvailabilitySet))]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
@@ -73,11 +76,12 @@ namespace Microsoft.Azure.Commands.Compute
                 PlatformFaultDomainCount = this.PlatformFaultDomainCount
             };
 
-            var op = this.AvailabilitySetClient.CreateOrUpdate(
+            var result = this.AvailabilitySetClient.CreateOrUpdate(
                 this.ResourceGroupName,
                 avSetParams);
 
-            WriteObject(op);
+            var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+            WriteObject(psResult);
         }
     }
 }

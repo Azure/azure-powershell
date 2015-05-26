@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
@@ -25,6 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
@@ -124,8 +127,6 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-
-
             if (this.Settings != null)
             {
                 this.SettingString = JsonConvert.SerializeObject(Settings);
@@ -149,7 +150,8 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VMName,
                 parameters);
 
-            WriteObject(op);
+            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+            WriteObject(result);
         }
     }
 }

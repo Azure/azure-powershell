@@ -157,6 +157,6 @@ function Create-ServerForServerUpgradeTest()
     $serverPassword = "t357ingP@s5w0rd!"
     $credentials = New-Object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 
-    $server = New-AzureSqlServer -ResourceGroupName  $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
+    $server = New-AzureSqlServer -ResourceGroupName  $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials
     return $server
 }

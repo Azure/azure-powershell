@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+            WriteWarning(Properties.Resources.DeprecationOfGetAzureVMExtensionImageDetail);
+
             var parameters = new VirtualMachineExtensionImageGetParameters
             {
                 Location = Location.Canonicalize(),
