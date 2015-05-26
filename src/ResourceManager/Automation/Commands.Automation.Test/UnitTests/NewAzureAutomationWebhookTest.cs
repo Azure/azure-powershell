@@ -12,34 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationRunbookTest : TestBase
+    public class NewAzureAutomationWebhookTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationRunbook cmdlet;
+        private NewAzureAutomationWebhook cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationRunbook
+            this.cmdlet = new NewAzureAutomationWebhook
                               {
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
@@ -47,40 +44,32 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationRunbookByNameSuccessfull()
+        public void NewAzureAutomationWebhookByNameSuccessful()
         {
             // Setup
-            string accountName = "automation";
-            string runbookName = "runbook";
+            string resourceGroupName = "resourceGroup";
+            string accountName = "account";
+            string name = "webhookName";
+            string runbookName = "runbookName";
+            DateTimeOffset expiryTime = DateTimeOffset.Now.AddDays(1);
 
-            this.mockAutomationClient.Setup(f => f.GetRunbook(accountName, runbookName));
+            this.mockAutomationClient.Setup(
+                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null));
 
             // Test
+            this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = runbookName;
-            this.cmdlet.SetParameterSet("ByRunbookName");
+            this.cmdlet.Name = name;
+            this.cmdlet.RunbookName = runbookName;
+            this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.IsEnabled = true;
+            this.cmdlet.Parameters = null;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetRunbook(accountName, runbookName), Times.Once());
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationRunbookByAllSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string nextLink = string.Empty;
-
-            this.mockAutomationClient.Setup(f => f.ListRunbooks(accountName, ref nextLink)).Returns((string a, string b) => new List<Runbook>()); ;
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.SetParameterSet("ByAll");
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbooks(accountName, ref nextLink), Times.Once());
+            this.mockAutomationClient.Verify(
+                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null),
+                Times.Once());
         }
     }
 }

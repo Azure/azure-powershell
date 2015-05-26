@@ -121,6 +121,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
                 model.TableIdentifier = TableIdentifier;
             }
 
+            if (Util.DeprecatedEventTypeFound(EventType))
+            {
+                WriteWarning(string.Format(Resources.DeprecatedEventTypeUsed));
+            }
             return model;
         }
     }

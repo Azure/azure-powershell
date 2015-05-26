@@ -153,7 +153,7 @@ function Test-DatabaseUpdatePolicyWithEventTypes
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success","ParameterizedSQL_Success","ParameterizedSQL_Failure"
@@ -197,7 +197,7 @@ function Test-ServerUpdatePolicyWithEventTypes
 		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
 		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success","ParameterizedSQL_Success","ParameterizedSQL_Failure"
@@ -242,14 +242,14 @@ function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "All"
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 
 		# Test
@@ -301,14 +301,14 @@ function Test-ServerUpdatePolicyWithEventTypeShortcuts
 		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
 		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
 		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 15
+		Assert-AreEqual $policy.EventType.Length 10
 
 
 		# Test
