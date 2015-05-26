@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
     public enum StreamType
     {
         /// <summary>
+        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
+        /// </summary>
+        Any,
+
+        /// <summary>
         /// Indicates Progress Record streams
         /// </summary>
         Progress,
@@ -48,11 +53,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <summary>
         /// Indicates Verbose Record streams
         /// </summary>
-        Verbose,
-
-        /// <summary>
-        /// Indicates Generic stream. Used for querying all the streams regardless of the type.
-        /// </summary>
-        Any
+        Verbose
     }
 }
