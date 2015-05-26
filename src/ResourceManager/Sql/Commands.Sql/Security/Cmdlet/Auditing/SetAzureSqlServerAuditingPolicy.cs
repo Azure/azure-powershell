@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
     /// <summary>
     /// Sets the auditing policy properties for a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
-    public class SetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureSqlServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
+    [Alias("Set-AzureSqlDatabaseServerAuditingPolicy")]
+    public class SetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
 
         [Parameter(Mandatory = false)]
