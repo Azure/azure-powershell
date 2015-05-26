@@ -219,8 +219,8 @@
                 <PropertyName>DataDiskNames</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>NicIds</Label>
-                <PropertyName>NicIds</PropertyName>
+                <Label>NetworkInterfaceIds</Label>
+                <PropertyName>NetworkInterfaceIds</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
