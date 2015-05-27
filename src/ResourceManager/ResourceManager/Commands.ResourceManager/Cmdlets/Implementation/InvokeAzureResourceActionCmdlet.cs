@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// A cmdlet that creates a new azure resource.
+    /// A cmdlet that invokes a resource action.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Invoke, "AzureResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Parameters { get; set; }
 
         /// <summary>
-        /// Gets or sets the property object.
+        /// Gets or sets the action name.
         /// </summary>
         [Alias("ActionName")]
         [Parameter(Mandatory = true, HelpMessage = "The name of the action to invoke.")]
