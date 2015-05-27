@@ -163,7 +163,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Commands.ResourceManager.Cmdlets.dll-Help.xml">
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
