@@ -77,13 +77,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
+        protected void RefreshClientRequestId()
+        {
+            clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
+        }
+
         public void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
             resourceGroupName = rgName;
             resourceName = rName;
 
-            clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
-
+            RefreshClientRequestId();
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));
 
             CmdletCancellationToken = cancellationTokenSource.Token;
