@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -21,6 +22,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
     {
         private AzureHdInsightManagementClient _hdInsightManagementClient;
         private AzureHdInsightJobManagementClient _hdInsightJobClient;
+        protected BasicAuthenticationCloudCredentials _credential;
+        protected string _clusterName;
 
         public AzureHdInsightManagementClient HDInsightManagementClient
         {
@@ -35,8 +38,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
         {
             get
             {
-                return _hdInsightJobClient ??
-                    (_hdInsightJobClient = new AzureHdInsightJobManagementClient(Profile.Context));
+                if (_hdInsightJobClient == null || !_hdInsightJobClient.ClusterName.Equals(_clusterName))
+                {
+                    return new AzureHdInsightJobManagementClient(_clusterName, _credential);
+                }
+                return _hdInsightJobClient;
+                //return _hdInsightJobClient ?? (_hdInsightJobClient = new AzureHdInsightJobManagementClient(_clusterName, _credential));
             }
             set { _hdInsightJobClient = value; }
         }

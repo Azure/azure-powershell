@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -23,8 +25,36 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(AzureHDInsightJob))]
     public class StopAzureHDInsightJobCommand : HDInsightCmdletBase
     {
-        [Parameter(Mandatory = true, 
+        [Parameter(Mandatory = true,
             Position = 0,
+            HelpMessage = "The name of the cluster.")]
+        public string ClusterName
+        {
+            get { return _clusterName; }
+            set { _clusterName = value; }
+        }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The credentials with which to connect to the cluster.")]
+        public PSCredential ClusterCredential
+        {
+            get
+            {
+                return _credential == null ? null : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
+            }
+            set
+            {
+                _credential = new BasicAuthenticationCloudCredentials
+                {
+                    Username = value.UserName,
+                    Password = value.Password.ConvertToString()
+                };
+            }
+        }
+        
+        [Parameter(Mandatory = true, 
+            Position = 2,
             HelpMessage = "The JobID of the jobDetails to stop.",
             ValueFromPipeline = true)]
         public string JobId { get; set; }

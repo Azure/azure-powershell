@@ -55,7 +55,7 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterConfigCommand.cs" />
     <Compile Include="ManagementCommands\RemoveAzureHDInsightClusterCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightClusterSizeCommand.cs" />
-    <Compile Include="ManagementCommands\HDInsightCmdletBase.cs" />
+    <Compile Include="HDInsightCmdletBase.cs" />
     <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Models\Job\AzureHDInsightJob.cs" />

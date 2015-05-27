@@ -14,8 +14,10 @@
 
 using System;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Management.HDInsight.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 
@@ -23,9 +25,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHdInsightJobManagementClient
     {
-        public AzureHdInsightJobManagementClient(AzureContext context)
+        public AzureHdInsightJobManagementClient(string clusterName, BasicAuthenticationCloudCredentials credential)
         {
-            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightJobManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential);
         }
 
         /// <summary>

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private AzureHDInsightHiveJobDefinition job;
 
         #region Input Parameter Definitions
-        
+
         [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
