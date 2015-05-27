@@ -12,34 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Management.Network.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
-
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
-    public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
-    {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network name.")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string VNetName
-        {
-            get; set;
-        }
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
+    using System.Management.Automation;
+    using WindowsAzure.Management.Network.Models;
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
+    [Cmdlet(VerbsCommon.Reset, "AzureVirtualNetworkGateway"), OutputType(typeof(GatewayGetOperationStatusResponse))]
+    public class ResetAzureVirtualNetworkGateway : NetworkCmdletBase
+    {
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string LocalNetworkSiteName
+        public string gatewayId
         {
             get; set;
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetIPsecParameters(VNetName, LocalNetworkSiteName));
+            WriteObject(Client.ResetVirtualNetworkGateway(gatewayId));
         }
     }
 }
