@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
             else
             {
-                Console.WriteLine("Unable to get the default storege account");
+                Console.WriteLine("Unable to get the default storage account");
             }
         }
 

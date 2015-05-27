@@ -75,19 +75,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Account Operations
 
-        public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName)
+        public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink)
         {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            AutomationAccountListResponse response;
 
-            return AutomationManagementClient
-                .ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response = this.automationManagementClient.AutomationAccounts.List(
-                            resourceGroupName);
-                        return new ResponseWithSkipToken<AutomationManagement.Models.AutomationAccount>(
-                            response, response.AutomationAccounts);
-                    }).Select(c => new Model.AutomationAccount(resourceGroupName, c));
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.AutomationAccounts.List(resourceGroupName);
+            }
+            else
+            {
+                response = this.automationManagementClient.AutomationAccounts.ListNext(nextLink);
+            }
+
+            nextLink = response.NextLink;
+            return response.AutomationAccounts.Select(c => new AutomationAccount(resourceGroupName, c));
         }
 
         public AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName)
@@ -231,18 +233,22 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName)
+        public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink)
         {
-            IList<AutomationManagement.Models.Module> modulesModels = AutomationManagementClient
-                .ContinuationTokenHandler(
-                    skipToken =>
-                    {
-                        var response = this.automationManagementClient.Modules.List(resourceGroupName, automationAccountName);
-                        return new ResponseWithSkipToken<AutomationManagement.Models.Module>(
-                            response, response.Modules);
-                    });
+            ModuleListResponse response;
 
-            return modulesModels.Select(c => new Module(resourceGroupName, automationAccountName, c));
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.Modules.List(resourceGroupName,
+                    automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.Modules.ListNext(nextLink);
+            }
+
+            nextLink = response.NextLink;
+            return response.Modules.Select(c => new Module(resourceGroupName, automationAccountName, c));
         }
 
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLinkUri, string contentLinkVersion)

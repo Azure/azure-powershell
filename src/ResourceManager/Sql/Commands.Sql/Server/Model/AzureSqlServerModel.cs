@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// <summary>
         /// Gets or sets the sql login credentials for the admin
         /// </summary>
-        public string SqlAdminUserName { get; set; }
+        public string SqlAdministratorLogin { get; set; }
 
         /// <summary>
         /// Gets or sets the password for the sql admin
         /// </summary>
-        public SecureString SqlAdminPassword { get; set; }
+        public SecureString SqlAdministratorPassword { get; set; }
 
         /// <summary>
         /// Gets or sets the server version

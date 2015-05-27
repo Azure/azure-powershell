@@ -51,13 +51,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                     this.AutomationClient.GetSchedule(
                                         this.AutomationAccountName, this.Name)
                                 };
+                this.GenerateCmdletOutput(schedules);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(schedules);
+                do
+                {
+                    schedules = this.AutomationClient.ListSchedules(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(schedules);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

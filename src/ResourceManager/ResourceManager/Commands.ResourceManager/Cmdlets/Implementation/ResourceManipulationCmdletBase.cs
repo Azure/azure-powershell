@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The tenant level parameter set.
         /// </summary>
-        internal const string ResoruceIdParameterSet = "The resource Id.";
+        internal const string ResourceIdParameterSet = "The resource Id.";
 
         /// <summary>
         /// Gets or sets the resource Id parameter.
         /// </summary>
         [Alias("Id")]
-        [Parameter(ParameterSetName = ResourceManipulationCmdletBase.ResoruceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The fully qualified resource Id, including the subscription. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers/myServer/databases/myDatabase")]
+        [Parameter(ParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified resource Id, including the subscription. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers/myServer/databases/myDatabase")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return !string.IsNullOrWhiteSpace(this.ResourceId)
                 ? this.ResourceId
-                : !this.TenantLevel && string.IsNullOrWhiteSpace(this.ParentResource)
+                : !this.TenantLevel || string.IsNullOrWhiteSpace(this.ParentResource)
                 ? this.GetResourceIdWithoutParentResource()
                 : this.GetResourceIdWithParentResource();
 
@@ -173,8 +173,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return ResourceIdUtility.GetResourceId(
                 subscriptionId: this.SubscriptionId.Value,
                 resourceGroupName: this.ResourceGroupName,
-                 parentResource: this.ParentResource,
-                 resourceType: this.ResourceType,
+                parentResource: this.ParentResource,
+                resourceType: this.ResourceType,
                 resourceName: this.ResourceName);
 
 #pragma warning restore 618

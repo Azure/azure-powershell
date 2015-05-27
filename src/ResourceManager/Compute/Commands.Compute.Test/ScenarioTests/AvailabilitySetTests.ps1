@@ -43,7 +43,9 @@ function Test-AvailabilitySet
         Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
         Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
 
-        Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-ThrowsContains { Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName; } "This cmdlet will remove the specified availability set. Do you want to continue?"
+
+        Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
         
         $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
         Assert-AreEqual $asets $null;
