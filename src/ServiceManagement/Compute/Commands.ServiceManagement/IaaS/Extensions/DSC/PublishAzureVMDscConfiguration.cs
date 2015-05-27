@@ -290,8 +290,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         @"function Copy-Module([string]$module, [string]$tempZipFolder) 
                         {
                             $mi = Get-Module -List -Name $module;
-                            $moduleFolder = Split-Path -Parent $mi.Path;
-                            Copy-Item -Recurse -Path $moduleFolder -Destination $tempZipFolder;
+                            $moduleFolder = Split-Path $mi.Path;
+                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($mi.Name)""
                         }"
                         );
                     powershell.Invoke();
