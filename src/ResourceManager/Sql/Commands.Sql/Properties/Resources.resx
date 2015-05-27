@@ -225,4 +225,7 @@
   <data name="StandaloneDatabaseActivityNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name is required for this operation</value>
   </data>
+  <data name="DeprecatedEventTypeUsed" xml:space="preserve">
+    <value>The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions</value>
+  </data>
 </root>
