@@ -39,18 +39,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 WriteVerbose("Making client call");
 
-                ProtectionPolicyListResponse policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
-
+                WriteVerbose("Received policy response2");
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
                 if (Name != null)
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                    policyObjects = policyListResponse.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
                 }
                 else
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
+                    policyObjects = policyListResponse.Objects;
                 }
 
                 WriteVerbose("Converting response");

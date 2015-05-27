@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.BackupServices.Models;
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets

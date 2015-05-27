@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public abstract class AzureBackupVaultContextObject
+    public class AzureBackupVaultContextObject
     {
         /// <summary>
         /// ResourceGroupName of the azurebackup object
