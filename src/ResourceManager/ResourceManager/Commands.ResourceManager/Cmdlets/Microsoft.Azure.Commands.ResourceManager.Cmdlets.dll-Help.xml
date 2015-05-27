@@ -6706,7 +6706,7 @@
         </maml:introduction>
         <dev:code>Set-AzureResourceLock -LockName test -ResourceName myResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -LockLevel CanNotDelete -LockNotes &quot;Updated note&quot;</dev:code>
         <dev:remarks>
-          <maml:para>Updates </maml:para>
+          <maml:para>Updates existing resource lock</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>
