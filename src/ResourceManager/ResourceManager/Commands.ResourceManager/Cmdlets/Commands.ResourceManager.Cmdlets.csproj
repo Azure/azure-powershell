@@ -152,7 +152,11 @@
     <Compile Include="RestClients\ResourceManagerRestRestClient.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
