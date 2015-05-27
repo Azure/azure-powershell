@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Common
+namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
-    public static class CorsHttpMethods
+    public class PSCorsRule
     {
-        public const string Get = "Get";
-        public const string Head = "Head";
-        public const string Post = "Post";
-        public const string Put = "Put";
-        public const string Delete = "Delete";
-        public const string Trace = "Trace";
-        public const string Options = "Options";
-        public const string Connect = "Connect";
-        public const string Merge = "Merge";
+        public string[] AllowedOrigins { get; set; }
+
+        public string[] AllowedHeaders { get; set; }
+
+        public string[] ExposedHeaders { get; set; }
+
+        public string[] AllowedMethods { get; set; }
+
+        public int MaxAgeInSeconds { get; set; }
     }
 }

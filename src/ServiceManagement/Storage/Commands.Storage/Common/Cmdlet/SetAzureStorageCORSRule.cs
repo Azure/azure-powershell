@@ -18,48 +18,30 @@ using System.Security.Permissions;
 using System.Globalization;
 using SharedProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     /// <summary>
-    /// Add azure storage CORS rule
+    /// Define cmdlet to set azure storage CORS rules to service, it will overwrite all of the CORS rules in the service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, StorageNouns.StorageCORSRule),
-        OutputType(typeof(CorsProperties))]
-    public class AddAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
+    [Cmdlet(VerbsCommon.Set, StorageNouns.StorageCORSRule),
+        OutputType(typeof(PSCorsRule))]
+    public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
 
-        [Parameter(HelpMessage = "Allowed Headers")]
-        public string[] AllowedHeaders { get; set; }
-
-        [Parameter(HelpMessage = "Allowed Methods")]
-        [ValidateSet(CorsHttpMethods.Get, 
-            CorsHttpMethods.Head,
-            CorsHttpMethods.Post,
-            CorsHttpMethods.Put,
-            CorsHttpMethods.Delete,
-            CorsHttpMethods.Trace,
-            CorsHttpMethods.Options,
-            CorsHttpMethods.Connect,
-            CorsHttpMethods.Merge, 
-            IgnoreCase = true)]
-        public string[] AllowedMethods { get; set; }
-
-        [Parameter(HelpMessage = "Allowed origins")]
-        public string[] AllowedOrigins { get; set; }
-        
-        [Parameter(HelpMessage = "Exposed Headers")]
-        public string[] ExposedHeaders { get; set; }
-
-        [Parameter(HelpMessage = "Max age")]
-        public int MaxAgeInSeconds { get; set; }
+        [Parameter(Mandatory = true,
+            HelpMessage = "CorsRule instances to represent rules to be set.")]
+        [ValidateNotNull]
+        public PSCorsRule[] CorsRules { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
-        public AddAzureStorageCORSRuleCommand()
+        public SetAzureStorageCORSRuleCommand()
         {
             EnableMultiThread = false;
         }
@@ -70,34 +52,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
             ServiceProperties serviceProperties = new ServiceProperties();
             serviceProperties.Clean();
+            serviceProperties.Cors = new CorsProperties();
 
-            CorsRule corsRule = new CorsRule();
-            corsRule.AllowedHeaders = this.AllowedHeaders;
-            corsRule.AllowedOrigins = this.AllowedOrigins;
-            corsRule.ExposedHeaders = this.ExposedHeaders;
+            foreach (var corsRuleObject in this.CorsRules)
+            {
+                CorsRule corsRule = new CorsRule();
+                corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
+                corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
+                corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
+                corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
+                this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
+                serviceProperties.Cors.CorsRules.Add(corsRule);
+            }
 
-            this.SetAllowedMethods(corsRule);
-
-            serviceProperties.Cors = currentServiceProperties.Cors;
-            currentServiceProperties.Cors.CorsRules.Add(corsRule);
-
-            Channel.SetStorageServiceProperties(ServiceType, currentServiceProperties,
+            Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
                 GetRequestOptions(ServiceType), OperationContext);
 
             if (PassThru)
             {
-                WriteObject(currentServiceProperties.Cors);
+                WriteObject(this.CorsRules);
             }
         }
 
-        private void SetAllowedMethods(CorsRule corsRule)
+        private void SetAllowedMethods(CorsRule corsRule, string[] allowedMethods)
         {
             corsRule.AllowedMethods = SharedProtocol.CorsHttpMethods.None;
 
-            foreach (var method in this.AllowedMethods)
+            foreach (var method in allowedMethods)
             {
                 SharedProtocol.CorsHttpMethods allowedCorsMethod = SharedProtocol.CorsHttpMethods.None;
                 if (Enum.TryParse<SharedProtocol.CorsHttpMethods>(method, true, out allowedCorsMethod))
