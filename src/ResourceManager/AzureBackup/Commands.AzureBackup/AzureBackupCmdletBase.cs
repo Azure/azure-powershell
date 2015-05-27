@@ -17,13 +17,15 @@ using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.BackupServices;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -32,17 +34,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// ResourceGroup context for the operation
         /// </summary>
-        protected string ResourceGroupName { get; set; }
+        private string resourceGroupName { get; set; }
 
         /// <summary>
         /// Resource context for the operation
         /// </summary>
-        protected string ResourceName { get; set; }
+        private string resourceName { get; set; }
 
         /// <summary>
         /// Client request id.
         /// </summary>
-        protected string clientRequestId;
+        private string clientRequestId;
 
         /// <summary>
         /// Azure backup client.
@@ -64,24 +66,25 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (this.azureBackupClient == null)
                 {
-                    this.azureBackupClient = AzureSession.ClientFactory.CreateClient<BackupServicesManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
-                    // this.azureBackupClient.ResourceGroupName = resourceGroupName;
-                    // this.azureBackupClient.ResourceName = resourceName;
+                    // Temp code to be able to test internal env.
+                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+                    var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
+                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(resourceName, resourceGroupName, cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
                 }
 
                 return this.azureBackupClient;
             }
         }
 
-        public override void ExecuteCmdlet()
+        public void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
-            base.ExecuteCmdlet();
-
-            // Vaildate RGName, RName?
+            resourceGroupName = rgName;
+            resourceName = rName;
 
             clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
 
-            WriteVerbose(string.Format("ClientRequestId: {0}", this.clientRequestId));
+            WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));
 
             CmdletCancellationToken = cancellationTokenSource.Token;
         }
@@ -154,6 +157,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
                 WriteError(errorRecord);
             }
+        }
+
+        protected CustomRequestHeaders GetCustomRequestHeaders()
+        {
+            var hdrs = new CustomRequestHeaders()
+            {
+                // ClientRequestId is a unique ID for every request to backend service.
+                ClientRequestId = this.clientRequestId,
+            };
+
+            return hdrs;
         }
     }
 }

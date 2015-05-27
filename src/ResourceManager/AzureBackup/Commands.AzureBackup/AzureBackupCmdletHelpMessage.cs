@@ -17,8 +17,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
     internal static class AzureBackupCmdletHelpMessage
     {
-        public const string ResourceGroupName = "The resource group name.";
-        public const string ResourceName = "The resource name.";
+        public const string Vault = "The vault details";
         public const string PolicyName = "The protection policy name.";
+        public const string ResourceGroupName = "The ResourceGroup name.";
+        public const string ResourceName = "The Resource name.";
     }
 }

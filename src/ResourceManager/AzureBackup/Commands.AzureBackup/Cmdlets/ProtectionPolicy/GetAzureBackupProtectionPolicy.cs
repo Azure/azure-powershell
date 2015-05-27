@@ -16,15 +16,16 @@ using System;
 using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
-using Microsoft.WindowsAzure.Management.BackupServices.Models;
+using System.Linq;
+using Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(ProtectionPolicyInfo), typeof(List<ProtectionPolicyInfo>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
+    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
@@ -36,9 +37,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync("1234", CmdletCancellationToken).Result;
+                WriteVerbose("Making client call");
 
-                WriteAzureBackupProtectionPolicy(policyListResponse.ProtectionPolicies.Objects);
+                ProtectionPolicyListResponse policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+
+                WriteVerbose("Received policy response");
+
+                IEnumerable<ProtectionPolicyInfo> policyObjects = null;
+                if (Name != null)
+                {
+                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                }
+                else
+                {
+                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
+                }
+
+                WriteVerbose("Converting response");
+                WriteAzureBackupProtectionPolicy(policyObjects);
             });
         }
 
@@ -47,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IList<ProtectionPolicyInfo> sourcePolicyList)
+        public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
         {
             List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
 
