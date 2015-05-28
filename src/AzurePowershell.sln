@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -213,6 +213,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage", "ResourceManager\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage.Test", "ResourceManager\Storage\Commands.Management.Storage.Test\Commands.Management.Storage.Test.csproj", "{7D1D3B56-4EB4-4819-86FD-43330DED8EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.OperationalInsights", "ResourceManager\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj", "{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -524,11 +526,16 @@ Global
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B7FD03F6-98BC-4F54-9A14-0455E579FCD4} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{37455286-D8A7-4E0C-8B4D-C517D20C641A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{D6F470A6-7395-4B8B-9D29-44DF0EC8F624} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A3965B66-5A3E-4B8C-9574-28E5958D4828} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
@@ -539,7 +546,6 @@ Global
 		{4BC0E3D3-6EDD-43AA-8F15-DCFED8ACC93D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{9D5A40CA-5594-4F5C-8230-7ADF7CC0558E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{3B48A77B-5956-4A62-9081-92BA04B02B27} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{B7FD03F6-98BC-4F54-9A14-0455E579FCD4} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{374D4000-DEDE-4995-9B63-E3B9FE0C4D29} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
