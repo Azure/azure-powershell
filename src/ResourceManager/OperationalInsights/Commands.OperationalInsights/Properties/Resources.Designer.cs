@@ -83,6 +83,53 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating storage insight &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StorageInsightCreating {
+            get {
+                return ResourceManager.GetString("StorageInsightCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove storage insight &apos;{0}&apos; in workspace &apos;{1}&apos;?.
+        /// </summary>
+        internal static string StorageInsightDeleteConfirmationMessage {
+            get {
+                return ResourceManager.GetString("StorageInsightDeleteConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A storage insight with name &apos;{0}&apos; in workspace &apos;{1}&apos; exists. 
+        ///Continuing execution may overwrite the exisiting one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string StorageInsightExists {
+            get {
+                return ResourceManager.GetString("StorageInsightExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage insight &apos;{0}&apos; does not exist in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StorageInsightNotFound {
+            get {
+                return ResourceManager.GetString("StorageInsightNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing storage insight &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string StorageInsightRemoving {
+            get {
+                return ResourceManager.GetString("StorageInsightRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating workspace &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string WorkspaceCreating {
@@ -101,7 +148,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A workspace with the name &apos;{0}&apos; in the resource group &apos;{1}&apos; exists. 
+        ///   Looks up a localized string similar to Resource group name and workspace name cannot be null..
+        /// </summary>
+        internal static string WorkspaceDetailsCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("WorkspaceDetailsCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A workspace with name &apos;{0}&apos; in resource group &apos;{1}&apos; exists. 
         ///Continuing execution may overwrite the exisiting one. 
         ///Are you sure you want to continue?.
         /// </summary>

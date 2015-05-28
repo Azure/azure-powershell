@@ -127,14 +127,34 @@ Timestamp (Utc):{4}</value>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
   </data>
+  <data name="StorageInsightCreating" xml:space="preserve">
+    <value>Creating storage insight '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="StorageInsightDeleteConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove storage insight '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="StorageInsightExists" xml:space="preserve">
+    <value>A storage insight with name '{0}' in workspace '{1}' exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="StorageInsightNotFound" xml:space="preserve">
+    <value>Storage insight '{0}' does not exist in workspace '{1}'.</value>
+  </data>
+  <data name="StorageInsightRemoving" xml:space="preserve">
+    <value>Removing storage insight '{0}' in workspace '{1}'.</value>
+  </data>
   <data name="WorkspaceCreating" xml:space="preserve">
     <value>Creating workspace '{0}' in resource group '{1}'.</value>
   </data>
   <data name="WorkspaceDeleteConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to remove workspace '{0}' in resource group '{1}'?</value>
   </data>
+  <data name="WorkspaceDetailsCannotBeEmpty" xml:space="preserve">
+    <value>Resource group name and workspace name cannot be null.</value>
+  </data>
   <data name="WorkspaceExists" xml:space="preserve">
-    <value>A workspace with the name '{0}' in the resource group '{1}' exists. 
+    <value>A workspace with name '{0}' in resource group '{1}' exists. 
 Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>

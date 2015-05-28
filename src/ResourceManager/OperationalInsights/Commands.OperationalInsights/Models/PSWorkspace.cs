@@ -20,71 +20,48 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSWorkspace
     {
-        private readonly Workspace workspace;
-
         public PSWorkspace()
         {
-            workspace = new Workspace();
         }
 
-        public PSWorkspace(Workspace workspace)
+        public PSWorkspace(Workspace workspace, string resourceGroupName)
         {
             if (workspace == null)
             {
                 throw new ArgumentNullException("workspace");
             }
 
-            this.workspace = workspace;
+            this.ResourceGroupName = resourceGroupName;
+            this.Name = workspace.Name;
+            this.ResourceId = workspace.Id;
+            this.Location = workspace.Location;
+            this.Tags = workspace.Tags;
+
+            if (workspace.Properties != null)
+            {
+                this.Sku = workspace.Properties.Sku != null ? workspace.Properties.Sku.Name : null;
+                this.CustomerId = workspace.Properties.CustomerId;
+                this.PortalUrl = workspace.Properties.PortalUrl;
+                this.ProvisioningState = workspace.Properties.ProvisioningState;
+            }
         }
 
-        public string Name
-        {
-            get
-            {
-                return workspace.Name;
-            }
-            set
-            {
-                workspace.Name = value;
-            }
-        }
+        public string Name { get; set; }
+
+        public string ResourceId { get; set; }
 
         public string ResourceGroupName { get; set; }
 
-        public string Location
-        {
-            get
-            {
-                return workspace.Location;
-            }
-            set
-            {
-                workspace.Location = value;
-            }
-        }
+        public string Location { get; set; }
 
-        public IDictionary<string, string> Tags
-        {
-            get
-            {
-                return workspace.Tags;
-            }
-            set
-            {
-                workspace.Tags = value;
-            }
-        }
+        public IDictionary<string, string> Tags { get; set; }
 
-        public WorkspaceProperties Properties
-        {
-            get
-            {
-                return workspace.Properties;
-            }
-            set
-            {
-                workspace.Properties = value;
-            }
-        }
+        public string Sku { get; set; }
+
+        public Guid? CustomerId { get; set; }
+
+        public string PortalUrl { get; set; }
+
+        public string ProvisioningState { get; set; }
     }
 }

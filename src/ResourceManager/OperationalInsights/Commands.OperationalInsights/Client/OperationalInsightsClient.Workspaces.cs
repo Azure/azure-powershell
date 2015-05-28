@@ -22,20 +22,18 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
-    using Management.OperationalInsights.Models;
-    using Management.Resources.Models;
-
     public partial class OperationalInsightsClient
     {
         public virtual PSWorkspace GetWorkspace(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
 
-            return new PSWorkspace(response.Workspace) { ResourceGroupName = resourceGroupName };
+            return new PSWorkspace(response.Workspace, resourceGroupName);
         }
 
         public virtual List<PSWorkspace> ListWorkspaces(string resourceGroupName)
@@ -49,8 +47,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (response != null && response.Workspaces != null)
             {
-                response.Workspaces.ForEach(
-                    ws => workspaces.Add(new PSWorkspace(ws) { ResourceGroupName = resourceGroupName }));
+                response.Workspaces.ForEach(ws => workspaces.Add(new PSWorkspace(ws, resourceGroupName)));
             }
 
             return workspaces;
@@ -72,7 +69,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             WorkspaceProperties properties = new WorkspaceProperties();
 
-            if (!string.IsNullOrEmpty(sku))
+            if (!string.IsNullOrWhiteSpace(sku))
             {
                 properties.Sku = new Sku(sku);
             }
@@ -113,12 +110,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 workspace =
                     new PSWorkspace(
                         CreateOrUpdateWorkspace(
-                            parameters.ResourceGroupName, 
+                            parameters.ResourceGroupName,
                             parameters.WorkspaceName,
                             parameters.Location,
                             parameters.Sku,
                             parameters.CustomerId,
-                            tags)) { ResourceGroupName = parameters.ResourceGroupName };
+                            tags), 
+                        parameters.ResourceGroupName);
             };
 
             if (parameters.Force)
@@ -147,8 +145,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
 
             // If the workspace did not transition to a succeeded provisioning state then throw
-            if (workspace.Properties == null || 
-                !string.Equals(workspace.Properties.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 throw new ProvisioningFailedException(
                     string.Format(
