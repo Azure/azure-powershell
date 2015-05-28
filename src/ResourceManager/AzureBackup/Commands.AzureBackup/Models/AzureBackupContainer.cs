@@ -31,6 +31,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public string HealthStatus { get; set; }
 
+        public string InstanceId { get; set; }
+
+        public string Name { get; set; }
+
         public string ParentContainerFriendlyName { get; set; }
 
         public string ParentContainerName { get; set; }
