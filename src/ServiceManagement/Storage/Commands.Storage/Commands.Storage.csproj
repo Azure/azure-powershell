@@ -189,6 +189,7 @@
     <Compile Include="File\Cmdlet\GetAzureStorageShare.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageShareStoredAccessPolicy.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageDirectory.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageFileSasToken.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageShare.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageShareSasToken.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageShareStoredAccessPolicy.cs" />

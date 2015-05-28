@@ -115,6 +115,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string ShareSas = "AzureStorageShareSASToken";
 
         /// <summary>
+        /// Azure storage file sas
+        /// </summary>
+        public const string FileSas = "AzureStorageFileSASToken";
+
+        /// <summary>
         /// Azure storage table sas
         /// </summary>
         public const string TableSas = "AzureStorageTableSASToken";
