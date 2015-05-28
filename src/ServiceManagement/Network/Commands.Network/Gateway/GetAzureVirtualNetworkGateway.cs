@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -31,9 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(gatewayId))
+            if (!string.IsNullOrEmpty(GatewayId))
             {
-                WriteObject(Client.GetVirtualNetworkGateway(gatewayId));
+                WriteObject(Client.GetVirtualNetworkGateway(GatewayId));
             }
             else
             {

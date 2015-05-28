@@ -26,30 +26,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Service Key / Local network gateway Id / Vnet Network Gateway Id")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string connectedEntityId { get; set; }
+        public string ConnectedEntityId { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connection name.")]
         [ValidateNotNullOrEmpty]
-        public string gatewayConnectionName { get; set; }
+        public string GatewayConnectionName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Gateway connection type: Ipsec/Dedicated/VpnClient/Vnet2Vnet")]
         [ValidateNotNullOrEmpty]
-        public string gatewayConnectionType { get; set; }
+        public string GatewayConnectionType { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Routing Weight.")]
-        public int routingWeight { get; set; }
+        public int RoutingWeight { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Ipsec share key.")]
-        public string sharedKey { get; set; }
+        public string SharedKey { get; set; }
 
         [Parameter(Position = 5, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string virtualNetworkGatewayId { get; set; }
+        public string VirtualNetworkGatewayId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGatewayConnection(connectedEntityId, gatewayConnectionName, gatewayConnectionType, routingWeight, sharedKey, Guid.Parse(virtualNetworkGatewayId)));
+            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId)));
         }
     }
 }

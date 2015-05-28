@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId { get; set; }
+        public string GatewayId { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "The duration of the capture in seconds (between 1 and 300)")]
         [ValidateNotNullOrEmpty]
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.StartDiagnosticsV2(gatewayId, CaptureDurationInSeconds, ContainerName, StorageContext));
+            WriteObject(Client.StartDiagnosticsV2(GatewayId, CaptureDurationInSeconds, ContainerName, StorageContext));
         }
     }
 }

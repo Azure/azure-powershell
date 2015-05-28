@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connected entityId.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string connectedentityId
+        public string ConnectedEntityId
         {
             get;
             set;
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.SetIPsecParametersV2(gatewayId, connectedentityId, EncryptionType, PfsGroup, SADataSizeKilobytes, SALifetimeSeconds));
+            WriteObject(Client.SetIPsecParametersV2(GatewayId, ConnectedEntityId, EncryptionType, PfsGroup, SADataSizeKilobytes, SALifetimeSeconds));
         }
     }
 }

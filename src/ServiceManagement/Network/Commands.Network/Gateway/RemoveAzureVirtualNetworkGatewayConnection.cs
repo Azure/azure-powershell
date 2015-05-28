@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "Virtual network gateway connected EntityId.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string connectedEntityId
+        public string ConnectedEntityId
         {
             get;
             set;
@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.DeleteVirtualNetworkGatewayConnection(gatewayId, connectedEntityId));
+            WriteObject(Client.DeleteVirtualNetworkGatewayConnection(GatewayId, ConnectedEntityId));
         }
     }
 }

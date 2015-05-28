@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model
 {
-    using WindowsAzure.Commands.Utilities.Common;
-
     public class LocalNetwrokGatewayContext : ManagementOperationContext
     {
         public string LocalNetworkGatewayId { get; set; }

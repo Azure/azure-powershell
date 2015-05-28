@@ -25,21 +25,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get; set;
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network gateway AddressSpace.")]
         [ValidateNotNullOrEmpty]
-        public List<string> addressSpace
+        public List<string> AddressSpace
         {
             get; set;
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.UpdateLocalNetworkGateway(gatewayId, addressSpace));
+            WriteObject(Client.UpdateLocalNetworkGateway(GatewayId, AddressSpace));
         }
     }
 }

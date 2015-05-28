@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.DeleteVirtualNetworkGateway(gatewayId));
+            WriteObject(Client.DeleteVirtualNetworkGateway(GatewayId));
         }
     }
 }

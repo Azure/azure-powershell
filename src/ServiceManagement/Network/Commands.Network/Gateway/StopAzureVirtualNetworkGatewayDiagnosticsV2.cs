@@ -24,11 +24,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId { get; set; }
+        public string GatewayId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.StopDiagnosticsV2(gatewayId));
+            WriteObject(Client.StopDiagnosticsV2(GatewayId));
         }
     }
 }

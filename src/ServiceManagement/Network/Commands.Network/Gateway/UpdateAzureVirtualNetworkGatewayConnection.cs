@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connected entityId.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string connectedentityId
+        public string ConnectedEntityId
         {
             get;
             set;
@@ -41,14 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Routing Weight.")]
         [ValidateNotNullOrEmpty]
-        public int routingWeight
+        public int RoutingWeight
         {
             get;
             set;
         }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Ipsec share key.")]
-        public string sharedKey
+        public string SharedKey
         {
             get;
             set;
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.UpdateVirtualNetworkGatewayConnection(gatewayId, connectedentityId, routingWeight, sharedKey));
+            WriteObject(Client.UpdateVirtualNetworkGatewayConnection(GatewayId, ConnectedEntityId, RoutingWeight, SharedKey));
         }
     }
 }

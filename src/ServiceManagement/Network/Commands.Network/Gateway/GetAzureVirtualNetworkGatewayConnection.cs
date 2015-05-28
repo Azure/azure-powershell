@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string gatewayId
+        public string GatewayId
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Virtual network gateway Connected entityId.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string connectedentityId
+        public string ConnectedEntityId
         {
             get;
             set;
@@ -40,9 +40,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(gatewayId) && !string.IsNullOrEmpty(connectedentityId))
+            if (!string.IsNullOrEmpty(GatewayId) && !string.IsNullOrEmpty(ConnectedEntityId))
             {
-                WriteObject(Client.GetVirtualNetworkGatewayConnection(gatewayId, connectedentityId));
+                WriteObject(Client.GetVirtualNetworkGatewayConnection(GatewayId, ConnectedEntityId));
             }
             else
             {

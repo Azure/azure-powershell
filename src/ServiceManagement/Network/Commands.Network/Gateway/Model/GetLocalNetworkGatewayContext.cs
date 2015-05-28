@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
-    using System;
-    using System.Collections.Generic;
-    using WindowsAzure.Commands.Utilities.Common;
-
     public class GetLocalNetworkGatewayContext : ManagementOperationContext
     {
         public string GatewayId { get; set; }
