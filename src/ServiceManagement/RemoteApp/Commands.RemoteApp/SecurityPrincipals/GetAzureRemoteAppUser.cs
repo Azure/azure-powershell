@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             }
         }
 
-        private bool ProccessUsers(SecurityPrincipalInfoResult response)
+        private bool ProccessUsers(SecurityPrincipalInfoListResult response)
         {
             ConsentStatusModel model = null;
             bool found = false;
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         }
         public override void ExecuteCmdlet()
         {
-            SecurityPrincipalInfoResult response = null;
+            SecurityPrincipalInfoListResult response = null;
             bool found = false;
 
             showAllUsers =  String.IsNullOrWhiteSpace(UserUpn);
@@ -137,16 +137,11 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             }
 
             // You must pass in an empty string to this call. After that pass in the token returned by the previous call
-            response = CallClient(() => Client.Principals.ListByPage(CollectionName, ""), Client.Principals);
+            response = CallClient(() => Client.Principals.List(CollectionName), Client.Principals);
 
-            if (response != null && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0)
+            if (response != null && response.SecurityPrincipalInfoList != null)
             {
                 found = ProccessUsers(response);
-                while (response != null && !String.IsNullOrWhiteSpace(response.ContinuationToken) && response.SecurityPrincipalInfoList != null && response.SecurityPrincipalInfoList.Count != 0)
-                {
-                    response = CallClient(() => Client.Principals.ListByPage(CollectionName, response.ContinuationToken), Client.Principals);
-                    ProccessUsers(response);
-                }
             }
 
             if (!found && !showAllUsers)
