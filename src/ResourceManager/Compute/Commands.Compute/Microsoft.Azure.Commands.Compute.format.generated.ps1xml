@@ -214,14 +214,6 @@
                 <Label>StorageProfile</Label>
                 <PropertyName>StorageProfileText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>DataDiskNames</Label>
-                <PropertyName>DataDiskNames</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>NetworkInterfaceIds</Label>
-                <PropertyName>NetworkInterfaceIds</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
