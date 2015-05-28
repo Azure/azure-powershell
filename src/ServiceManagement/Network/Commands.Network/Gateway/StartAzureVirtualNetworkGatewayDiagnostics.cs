@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
     [Cmdlet(VerbsLifecycle.Start, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
-    public class StartAzureVirtualNetworkGatewayDiagnosticsV2 : NetworkCmdletBase
+    public class StartAzureVirtualNetworkGatewayDiagnostics : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]

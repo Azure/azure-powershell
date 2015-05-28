@@ -13,14 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Management.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(SharedKeyContext))]
-    public class GetAzureVirtualNetworkGatewayKeyV2 : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Reset, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(GatewayGetOperationStatusResponse))]
+    public class ResetAzureVirtualNetworkGatewayKey : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
         public string GatewayId
@@ -38,9 +39,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
             set;
         }
 
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The number of characters that the shared key will contain when reset.The virtual network gateway connected entityId.")]
+        [ValidateNotNullOrEmpty]
+        public int keyLength
+        {
+            get;
+            set;
+        }
+
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetSharedKeyV2(GatewayId, ConnectedEntityId));
+            WriteObject(Client.ResetSharedKeyV2(GatewayId, ConnectedEntityId, keyLength));
         }
     }
 }

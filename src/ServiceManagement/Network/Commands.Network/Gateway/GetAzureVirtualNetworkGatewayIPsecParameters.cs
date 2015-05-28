@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
     [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
-    public class GetAzureVirtualNetworkGatewayIPsecParametersV2 : NetworkCmdletBase
+    public class GetAzureVirtualNetworkGatewayIPsecParameters : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
         [ValidateGuid]

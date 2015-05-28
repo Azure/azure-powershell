@@ -18,17 +18,21 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
-    public class StopAzureVirtualNetworkGatewayDiagnosticsV2 : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
+    public class GetAzureVirtualNetworkGatewayDiagnostics : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string GatewayId { get; set; }
+        public string GatewayId
+        {
+            get;
+            set;
+        }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.StopDiagnosticsV2(GatewayId));
+            WriteObject(Client.GetDiagnosticsV2(GatewayId));
         }
     }
 }

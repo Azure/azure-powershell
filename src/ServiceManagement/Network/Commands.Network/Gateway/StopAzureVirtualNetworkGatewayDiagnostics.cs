@@ -13,44 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
-using Microsoft.WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Reset, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(GatewayGetOperationStatusResponse))]
-    public class ResetAzureVirtualNetworkGatewayKeyV2 : NetworkCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
+    public class StopAzureVirtualNetworkGatewayDiagnostics : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string GatewayId
-        {
-            get;
-            set;
-        }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connected entityId.")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ConnectedEntityId
-        {
-            get;
-            set;
-        }
-
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The number of characters that the shared key will contain when reset.The virtual network gateway connected entityId.")]
-        [ValidateNotNullOrEmpty]
-        public int keyLength
-        {
-            get;
-            set;
-        }
-
+        public string GatewayId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.ResetSharedKeyV2(GatewayId, ConnectedEntityId, keyLength));
+            WriteObject(Client.StopDiagnosticsV2(GatewayId));
         }
     }
 }

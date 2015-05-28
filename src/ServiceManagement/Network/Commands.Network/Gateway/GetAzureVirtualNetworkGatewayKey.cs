@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
-    public class GetAzureVirtualNetworkGatewayDiagnosticsV2 : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(SharedKeyContext))]
+    public class GetAzureVirtualNetworkGatewayKey : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
         [ValidateGuid]
@@ -30,9 +29,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
             set;
         }
 
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connected entityId.")]
+        [ValidateGuid]
+        [ValidateNotNullOrEmpty]
+        public string ConnectedEntityId
+        {
+            get;
+            set;
+        }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetDiagnosticsV2(GatewayId));
+            WriteObject(Client.GetSharedKeyV2(GatewayId, ConnectedEntityId));
         }
     }
 }

@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
     [Cmdlet(VerbsCommon.Set, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(SharedKeyContext))]
-    public class SetAzureVirtualNetworkGatewayKeyV2 : NetworkCmdletBase
+    public class SetAzureVirtualNetworkGatewayKey : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
         [ValidateGuid]
