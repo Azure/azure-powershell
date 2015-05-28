@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private bool checkMd5;
 
-        private AzureToFileSystemFileNameResolver fileNameResolver;
+        private BlobToFileSystemNameResolver fileNameResolver;
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageBlobContentCommand class.
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public GetAzureStorageBlobContentCommand(IStorageBlobManagement channel)
         {
             Channel = channel;
-            fileNameResolver = new AzureToFileSystemFileNameResolver(() => NameUtil.WindowsMaxFileNameLength);
+            fileNameResolver = new BlobToFileSystemNameResolver(() => NameUtil.WindowsMaxFileNameLength);
         }
 
         /// <summary>

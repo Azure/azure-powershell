@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <param name="sourcePath">Indicating the source path.</param>
         /// <param name="destinationPath">Indicating the destination path.</param>
         /// <returns>Returns a value indicating whether to overwrite.</returns>
-        private bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath)).Result;
         }

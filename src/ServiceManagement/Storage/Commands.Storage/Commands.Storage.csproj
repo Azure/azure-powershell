@@ -153,10 +153,12 @@
     <Compile Include="Blob\Cmdlet\SetAzureStorageContainerStoredAccessPolicy.cs" />
     <Compile Include="Blob\DataMovementUserData.cs" />
     <Compile Include="Common\AccessPolicyHelper.cs" />
+    <Compile Include="Common\BlobToAzureFileNameResolver.cs" />
+    <Compile Include="Common\BlobToFileNameResolver.cs" />
     <Compile Include="Common\BlobUploadRequestQueue.cs" />
     <Compile Include="Common\CmdletOperationContext.cs" />
     <Compile Include="Blob\StorageDataMovementCmdletBase.cs" />
-    <Compile Include="Common\AzureToFileSystemFileNameResolver.cs" />
+    <Compile Include="Common\BlobToFileSystemNameResolver.cs" />
     <Compile Include="Blob\Cmdlet\StartAzureStorageBlobCopy.cs" />
     <Compile Include="Blob\Cmdlet\StopAzureStorageBlobCopy.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageServiceLogging.cs" />
@@ -199,6 +201,7 @@
     <Compile Include="File\Cmdlet\SetAzureStorageFileContent.cs" />
     <Compile Include="File\Cmdlet\SetAzureStorageShareQuota.cs" />
     <Compile Include="File\Cmdlet\SetAzureStorageShareStoredAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\StartAzureStorageFileCopy.cs" />
     <Compile Include="File\Constants.cs" />
     <Compile Include="File\ErrorIdConstants.cs" />
     <Compile Include="File\NamingUtil.cs" />

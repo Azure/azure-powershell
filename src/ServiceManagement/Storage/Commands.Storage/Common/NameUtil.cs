@@ -26,6 +26,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     /// </summary>
     internal class NameUtil
     {
+        public const int MaxFileNameLength = 1024;
+
         /// <summary>
         /// Max file length in windows
         /// </summary>

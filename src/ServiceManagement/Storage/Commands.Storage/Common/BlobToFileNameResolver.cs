@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text.RegularExpressions;
-
     /// <summary>
-    /// File name resolver class for translating Azure file names to Windows file names.
+    /// File name resolver class for translating Azure blob names to file/azure file names.
     /// </summary>
-    internal class AzureToFileSystemFileNameResolver
+    abstract class BlobToFileNameResolver
     {
         /// <summary>
         /// These filenames are reserved on windows, regardless of the file extension.
@@ -46,29 +47,48 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Chars invalid for file name.
         /// </summary>
         private static char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+        
+        /// <summary>
+        /// Regular expression string format for replacing delimiters 
+        /// that we consider as directory separators:
+        /// <para>Translate delimiters to '\' if it is:
+        /// not the first or the last character in the file name 
+        /// and not following another delimiter</para>
+        /// <example>/folder1//folder2/ with '/' as delimiter gets translated to: /folder1\/folder2/ </example>.
+        /// </summary>
+        private const string translateDelimitersRegexFormat = "(?<=[^{0}]+){0}(?=.+)";
+
+        private const string blobDelimiter = "/";
 
         /// <summary>
-        /// Chars invalid for path name.
+        /// Regular expression for replacing delimiters that we consider as directory separators:
+        /// <para>Translate delimiters to '\' if it is:
+        /// not the first or the last character in the file name 
+        /// and not following another delimiter</para>
+        /// <example>/folder1//folder2/ with '/' as delimiter gets translated to: /folder1\/folder2/ </example>.
         /// </summary>
-        private static char[] invalidPathChars = AzureToFileSystemFileNameResolver.GetInvalidPathChars();
-
-        /// <summary>
-        /// Regular expression for replacing slashes that we don't consider directory separators:
-        /// <para>Translate / to %2F if it is:
-        /// - the first character in the file name
-        /// - the last character in the file name
-        /// - preceeded by another /.</para>
-        /// <example>/abc//def/ gets translated to: %2Fabc/%2Fdef%2F</example>.
-        /// </summary>
-        private static Regex translateSlashesRegex = new Regex("(^/)|(?<=/)/|(/$)", RegexOptions.Compiled);
-
+        private Regex translateDelimitersRegex;
+        
         private Dictionary<string, string> resolvedFilesCache = new Dictionary<string, string>();
 
         private Func<int> getMaxFileNameLength;
 
-        public AzureToFileSystemFileNameResolver(Func<int> getMaxFileNameLength)
+        protected abstract string DirSeparator
+        {
+            get;
+        }
+
+        protected abstract char[] InvalidPathChars
+        {
+            get;
+        }
+
+        public BlobToFileNameResolver(Func<int> getMaxFileNameLength)
         {
             this.getMaxFileNameLength = getMaxFileNameLength;
+
+            string delimiterTemp = "\\/";
+            this.translateDelimitersRegex = new Regex(string.Format(CultureInfo.InvariantCulture, translateDelimitersRegexFormat, delimiterTemp), RegexOptions.Compiled);
         }
 
         public string ResolveFileName(string relativePath, DateTimeOffset? snapshotTime)
@@ -76,11 +96,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             // 1) Unescape original string, original string is UrlEncoded.
             // 2) Replace Azure directory separator with Windows File System directory separator.
             // 3) Trim spaces at the end of the file name.
-            string destinationRelativePath = TranslateSlashes(relativePath).TrimEnd(new char[] { ' ' });
+            string destinationRelativePath = EscapeInvalidCharacters(this.TranslateDelimiters(relativePath).TrimEnd(new char[] { ' ' }));
 
             // Split into path + filename parts.
-            int lastSlash = destinationRelativePath.LastIndexOf('\\');
-
+            int lastSlash = destinationRelativePath.LastIndexOf(this.DirSeparator, StringComparison.Ordinal);
+            
             string destinationFileName;
             string destinationPath;
 
@@ -95,25 +115,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 destinationFileName = destinationRelativePath.Substring(lastSlash + 1);
             }
 
-            if (!string.IsNullOrEmpty(destinationPath))
-            {
-                // Replace invalid path characters with %HH, with HH being the hexadecimal 
-                // representation of the invalid characters.
-                destinationPath = EscapeInvalidCharacters(destinationPath, invalidPathChars);
-            }
-
-            if (!string.IsNullOrEmpty(destinationFileName))
-            {
-                // Replace invalid file name characters with %HH, with HH being the hexadecimal
-                // representation of the invalid character.
-                destinationFileName = EscapeInvalidCharacters(destinationFileName, invalidFileNameChars);
-            }
-
             // Append snapshot time to filename.
             destinationFileName = AppendSnapShotToFileName(destinationFileName, snapshotTime);
 
             // Combine path and filename back together again.
-            destinationRelativePath = Path.Combine(destinationPath, destinationFileName);
+            destinationRelativePath = this.CombinePath(destinationPath, destinationFileName);
 
             // Check if the destination name is 
             // - already used by a previously resolved file.
@@ -127,6 +133,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             this.resolvedFilesCache.Add(destinationRelativePath.ToLowerInvariant(), destinationRelativePath);
 
             return destinationRelativePath;
+        }
+
+        private string CombinePath(string folder, string name)
+        {
+            if (!string.IsNullOrEmpty(folder))
+            {
+                if (folder.EndsWith(this.DirSeparator, StringComparison.Ordinal))
+                {
+                    return string.Format(CultureInfo.CurrentCulture, "{0}{1}", folder, name);
+                }
+                else
+                {
+                    return string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}", folder, this.DirSeparator, name);
+                }
+            }
+
+            return name;
+        }
+
+        private string TranslateDelimiters(string source)
+        {
+            if (string.Equals(this.DirSeparator, blobDelimiter, StringComparison.Ordinal))
+            {
+                return source;
+            }
+            else
+            {
+                // Transform delimiters used for directory separators to windows file system directory separator "\"
+                // or azure file separator "/" according to destination location type.
+                return this.translateDelimitersRegex.Replace(source, this.DirSeparator);
+            }
         }
 
         /// <summary>
@@ -188,47 +225,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return resolvedName;
         }
-
-        private static char[] GetInvalidPathChars()
+        
+        protected virtual string EscapeInvalidCharacters(string fileName)
         {
-            // Union InvalidFileNameChars and InvalidPathChars together
-            // while excluding slash.
-            HashSet<char> charSet = new HashSet<char>(Path.GetInvalidPathChars());
-
-            foreach (char c in invalidFileNameChars)
-            {
-                if ('\\' == c || '/' == c || charSet.Contains(c))
-                {
-                    continue;
-                }
-
-                charSet.Add(c);
-            }
-
-            invalidPathChars = new char[charSet.Count];
-            charSet.CopyTo(invalidPathChars);
-
-            return invalidPathChars;
-        }
-
-        private static string TranslateSlashes(string source)
-        {
-            // Transform slashes not used for directory separators to %2F.
-            string output = translateSlashesRegex.Replace(source, string.Format("%{0:X2}", (int)'/'));
-
-            // Translate remaining slashes to backslashes.
-            return output.Replace('/', '\\');
-        }
-
-        private static string EscapeInvalidCharacters(string fileName, params char[] invalidChars)
-        {
-            if (null != invalidChars)
+            if (null != this.InvalidPathChars)
             {
                 // Replace invalid characters with %HH, with HH being the hexadecimal
                 // representation of the invalid character.
-                foreach (char c in invalidChars)
+                foreach (char c in this.InvalidPathChars)
                 {
-                    fileName = fileName.Replace(c.ToString(), string.Format("%{0:X2}", (int)c));
+                    fileName = fileName.Replace(c.ToString(), string.Format(CultureInfo.InvariantCulture, "%{0:X2}", (int)c));
                 }
             }
 
