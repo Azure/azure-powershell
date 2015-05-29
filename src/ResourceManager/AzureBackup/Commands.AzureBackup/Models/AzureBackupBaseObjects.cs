@@ -54,4 +54,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// </summary>
         public string ContainerId { get; set; }
     }
+
+    public class AzureBackupItemContextObject : AzureBackupContainerContextObject
+    {
+        /// <summary>
+        /// DataSourceId of Azure Backup Item
+        /// </summary>
+        public string DataSourceId { get; set; }
+
+        /// <summary>
+        /// DataSourceId of Azure Backup Item
+        /// </summary>
+        public string DataSourceType { get; set; }
+    }
 }
