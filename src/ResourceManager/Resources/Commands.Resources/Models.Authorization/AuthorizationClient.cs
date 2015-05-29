@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -177,6 +177,110 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
 
             return role;
+        }
+
+        /// <summary>
+        /// Deletes a role definition based on the id.
+        /// </summary>
+        /// <param name="id">The role definition id.</param>
+        /// <returns>The deleted role definition.</returns>
+        public PSRoleDefinition RemoveRoleDefinition(string id)
+        {
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(id);
+            if (roleDefinition != null)
+            {
+                AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinition.Id);
+            }
+            else
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, id));
+            }
+
+            return roleDefinition;
+        }
+
+        /// <summary>
+        /// Updates a role definiton.
+        /// </summary>
+        /// <param name="role">The role definition to update.</param>
+        /// <returns>The updated role definition.</returns>
+        public PSRoleDefinition UpdateRoleDefinition(PSRoleDefinition role)
+        {
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(role.Id);
+            if (roleDefinition == null)
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, role.Id));
+            }
+
+            roleDefinition.Name = role.Name ?? roleDefinition.Name;
+            roleDefinition.Actions = role.Actions ?? roleDefinition.Actions;
+            roleDefinition.NotActions = role.NotActions ?? roleDefinition.NotActions;
+            roleDefinition.AssignableScopes = role.AssignableScopes ?? roleDefinition.AssignableScopes;
+            roleDefinition.Description = role.Description ?? roleDefinition.Description;
+
+            // TODO: confirm with ARM on what exception will be thrown when the last segment of the roleDefinition's ID is not a GUID.
+            // This will be done after their API is designed.
+            string[] scopes = roleDefinition.Id.Split('/');
+            Guid roleDefinitionId = Guid.Parse(scopes.Last());
+
+            return
+                AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
+                    roleDefinitionId,
+                    new RoleDefinitionCreateOrUpdateParameters()
+                    {
+                        RoleDefinition = new RoleDefinition()
+                        {
+                            Id = roleDefinition.Id,
+                            Name = roleDefinitionId,
+                            Properties =
+                                new RoleDefinitionProperties()
+                                {
+                                    RoleName = roleDefinition.Name,
+                                    Permissions =
+                                        new List<Permission>()
+                                        {
+                                            new Permission()
+                                            {
+                                                Actions = roleDefinition.Actions,
+                                                NotActions = roleDefinition.NotActions
+                                            }
+                                        },
+                                    AssignableScopes = roleDefinition.AssignableScopes,
+                                    Description = roleDefinition.Description
+                                }
+                        }
+                    }).RoleDefinition.ToPSRoleDefinition();
+        }
+
+        public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition)
+        {
+            AuthorizationClient.ValidateRoleDefinition(roleDefinition);
+
+            Guid newRoleDefinitionId = Guid.NewGuid();
+            RoleDefinitionCreateOrUpdateParameters parameters = new RoleDefinitionCreateOrUpdateParameters()
+            {
+                RoleDefinition = new RoleDefinition()
+                {
+                    Name = newRoleDefinitionId,
+                    Properties = new RoleDefinitionProperties()
+                    {
+                        AssignableScopes = roleDefinition.AssignableScopes,
+                        Description = roleDefinition.Description,
+                        Permissions = new List<Permission>()
+                        {
+                            new Permission()
+                            {
+                                Actions = roleDefinition.Actions,
+                                NotActions = roleDefinition.NotActions
+                            }
+                        },
+                        RoleName = roleDefinition.Name,
+                        Type = "CustomRole"
+                    }
+                }
+            };
+
+            return AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, parameters).RoleDefinition.ToPSRoleDefinition();
         }
 
         private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)
