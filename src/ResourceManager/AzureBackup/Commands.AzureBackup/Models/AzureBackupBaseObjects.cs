@@ -61,5 +61,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// DataSourceId of Azure Backup Item
         /// </summary>
         public string DataSourceId { get; set; }
+
+        /// <summary>
+        /// DataSourceId of Azure Backup Item
+        /// </summary>
+        public string DataSourceType { get; set; }
     }
 }
