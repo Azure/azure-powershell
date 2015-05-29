@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// Id of the Azure Backup Container
         /// </summary>
-        public string ContainerId { get; set; }
+        public string InstanceId { get; set; }
 
         /// <summary>
         /// Name of the Azure Backup container
