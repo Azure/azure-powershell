@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     {
         protected const string ByWorkspaceName = "ByWorkspaceName";
         protected const string ByWorkspaceObject = "ByWorkspaceObject";
+        protected const string ByName = "ByName";
+        protected const string ByObject = "ByObject";
 
         private OperationalInsightsClient operationalInsightsClient;
 

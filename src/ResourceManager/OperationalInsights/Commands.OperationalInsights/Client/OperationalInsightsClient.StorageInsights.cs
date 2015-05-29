@@ -86,19 +86,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSStorageInsight UpdatePSStorageInsight(UpdatePSStorageInsightParameters parameters)
         {
             // Get the existing storage insight
-            PSStorageInsight storageInsight = GetStorageInsight(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
+            StorageInsightGetResponse response = OperationalInsightsManagementClient.StorageInsights.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
+            StorageInsight storageInsight = response.StorageInsight;
 
             // Execute the update
             StorageInsight updatedStorageInsight = CreateOrUpdateStorageInsight(
-                storageInsight.ResourceGroupName, 
-                storageInsight.WorkspaceName,
+                parameters.ResourceGroupName, 
+                parameters.WorkspaceName,
                 storageInsight.Name, 
-                storageInsight.StorageAccountResourceId, 
-                string.IsNullOrWhiteSpace(parameters.StorageAccountKey) ? storageInsight.StorageAccountKey : parameters.StorageAccountKey, 
-                parameters.Tables ?? storageInsight.Tables, 
-                parameters.Containers ?? storageInsight.Containers);
+                storageInsight.Properties.StorageAccount.Id, 
+                string.IsNullOrWhiteSpace(parameters.StorageAccountKey) ? storageInsight.Properties.StorageAccount.Key : parameters.StorageAccountKey, 
+                parameters.Tables ?? storageInsight.Properties.Tables.ToList(), 
+                parameters.Containers ?? storageInsight.Properties.Containers.ToList());
 
-            return new PSStorageInsight(updatedStorageInsight, storageInsight.ResourceGroupName, storageInsight.WorkspaceName);
+            return new PSStorageInsight(updatedStorageInsight, parameters.ResourceGroupName, parameters.WorkspaceName);
         }
 
         public virtual PSStorageInsight CreatePSStorageInsight(CreatePSStorageInsightParameters parameters)

@@ -40,12 +40,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             if (storageInsight.Properties != null)
             {
-                if (storageInsight.Properties.StorageAccount != null)
-                {
-                    this.StorageAccountResourceId = storageInsight.Properties.StorageAccount.Id;
-                    this.StorageAccountKey = storageInsight.Properties.StorageAccount.Key;
-                }
-                
+                this.StorageAccountResourceId = storageInsight.Properties.StorageAccount != null ? storageInsight.Properties.StorageAccount.Id : null;
                 this.Tables = storageInsight.Properties.Tables.ToList();
                 this.Containers = storageInsight.Properties.Containers.ToList();
                 this.State = storageInsight.Properties.Status != null ? storageInsight.Properties.Status.State : null;
@@ -61,8 +56,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string WorkspaceName { get; set; }
 
         public string StorageAccountResourceId { get; set; }
-
-        public string StorageAccountKey { get; set; }
 
         public string State { get; set; }
 

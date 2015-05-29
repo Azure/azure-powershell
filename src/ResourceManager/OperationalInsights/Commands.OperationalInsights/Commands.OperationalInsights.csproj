@@ -102,6 +102,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -119,6 +131,11 @@
     <Compile Include="Client\OperationalInsightsClient.cs" />
     <Compile Include="CloudExceptionExtensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\PSUsageMetric.cs" />
+    <Compile Include="Models\PSManagementGroup.cs" />
+    <Compile Include="Models\PSAccount.cs" />
+    <Compile Include="Models\PSWorkspaceKeys.cs" />
+    <Compile Include="Models\UpdatePSWorkspaceParameters.cs" />
     <Compile Include="Models\UpdatePSStorageInsightParameters.cs" />
     <Compile Include="Models\CreatePSStorageInsightParameters.cs" />
     <Compile Include="Models\CreatePSWorkspaceParameters.cs" />
@@ -137,13 +154,24 @@
     <Compile Include="StorageInsights\SetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\NewAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\RemoveAzureOperationalInsightsStorageInsightCommand.cs" />
+    <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceManagementGroupsCommand.cs" />
+    <Compile Include="Workspaces\GetAzureOperationalInsightsLinkTargetsCommand.cs" />
+    <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceUsageCommand.cs" />
+    <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceSharedKeysCommand.cs" />
     <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceCommand.cs" />
     <Compile Include="Workspaces\NewAzureOperationalInsightsWorkspaceCommand.cs" />
     <Compile Include="Workspaces\RemoveAzureOperationalInsightsWorkspaceCommand.cs" />
+    <Compile Include="Workspaces\SetAzureOperationalInsightsWorkspaceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Microsoft.Azure.Commands.OperationalInsights.dll-Help.psd1" />
+    <Content Include="Microsoft.Azure.Commands.OperationalInsights.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

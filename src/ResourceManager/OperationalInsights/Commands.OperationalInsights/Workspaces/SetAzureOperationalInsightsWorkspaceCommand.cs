@@ -12,30 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.Workspace), OutputType(typeof(PSWorkspace))]
-    public class NewAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, Constants.Workspace, DefaultParameterSetName = ByName), OutputType(typeof(PSWorkspace))]
+    public class SetAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 0, ParameterSetName = ByObject, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The workspace.")]
+        [ValidateNotNull]
+        public PSWorkspace Workspace { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 2, ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geographic region that the workspace will be created in.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
@@ -43,31 +42,26 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ID of an existing Operational Insights account that this workspace will be linked to.")]
-        public Guid? CustomerId { get; set; }
-
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()
+            if (ParameterSetName == ByObject)
+            {
+                ResourceGroupName = Workspace.ResourceGroupName;
+                Name = Workspace.Name;
+            }
+
+            UpdatePSWorkspaceParameters parameters = new UpdatePSWorkspaceParameters
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
-                Location = Location,
                 Sku = Sku,
-                CustomerId = CustomerId,
-                Tags = Tags,
-                Force = Force.IsPresent,
-                ConfirmAction = ConfirmAction
+                Tags = Tags
             };
 
-            WriteObject(OperationalInsightsClient.CreatePSWorkspace(parameters));
+            WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));
         }
     }
 }

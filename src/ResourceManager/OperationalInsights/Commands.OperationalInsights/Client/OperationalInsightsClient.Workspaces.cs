@@ -29,6 +29,52 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
     public partial class OperationalInsightsClient
     {
+        public virtual List<PSAccount> GetLinkTargets()
+        {
+            List<PSAccount> accounts = new List<PSAccount>();
+
+            var response = OperationalInsightsManagementClient.Workspaces.ListLinkTargets();
+            if (response != null && response.Accounts != null)
+            {
+                response.Accounts.ForEach(account => accounts.Add(new PSAccount(account)));
+            }
+
+            return accounts;
+        }
+
+        public virtual PSWorkspaceKeys GetWorkspaceKeys(string resourceGroupName, string workspaceName)
+        {
+            var response = OperationalInsightsManagementClient.Workspaces.GetSharedKeys(resourceGroupName, workspaceName);
+
+            return new PSWorkspaceKeys(response.Keys);
+        }
+
+        public virtual List<PSManagementGroup> GetWorkspaceManagementGroups(string resourceGroupName, string workspaceName)
+        {
+            List<PSManagementGroup> managementGroups = new List<PSManagementGroup>();
+
+            var response = OperationalInsightsManagementClient.Workspaces.ListManagementGroups(resourceGroupName, workspaceName);
+            if (response != null && response.ManagementGroups != null)
+            {
+                response.ManagementGroups.ForEach(mg => managementGroups.Add(new PSManagementGroup(mg)));
+            }
+
+            return managementGroups;
+        }
+
+        public virtual List<PSUsageMetric> GetWorkspaceUsage(string resourceGroupName, string workspaceName)
+        {
+            List<PSUsageMetric> usageMetrics = new List<PSUsageMetric>();
+
+            var response = OperationalInsightsManagementClient.Workspaces.ListUsages(resourceGroupName, workspaceName);
+            if (response != null && response.UsageMetrics != null)
+            {
+                response.UsageMetrics.ForEach(um => usageMetrics.Add(new PSUsageMetric(um)));
+            }
+
+            return usageMetrics;
+        }
+
         public virtual PSWorkspace GetWorkspace(string resourceGroupName, string workspaceName)
         {
             var response = OperationalInsightsManagementClient.Workspaces.Get(resourceGroupName, workspaceName);
@@ -47,7 +93,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (response != null && response.Workspaces != null)
             {
-                response.Workspaces.ForEach(ws => workspaces.Add(new PSWorkspace(ws, resourceGroupName)));
+                foreach (Workspace workspace in response.Workspaces)
+                {
+                    // If it is a subscription list then parse the resourceGroupName from the workspace ID
+                    string resourceGroup = resourceGroupName;
+                    if (string.IsNullOrWhiteSpace(resourceGroup) && !string.IsNullOrWhiteSpace(workspace.Id))
+                    {
+                        List<string> idSegments = workspace.Id.ToLowerInvariant().Split('/').ToList();
+                        int indexOfResoureGroup = idSegments.IndexOf("resourcegroups") + 1;
+                        resourceGroup = idSegments[indexOfResoureGroup];
+                    }
+
+                    workspaces.Add(new PSWorkspace(workspace, resourceGroup));
+                }
             }
 
             return workspaces;
@@ -96,6 +154,23 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return response.Workspace;
         }
 
+        public virtual PSWorkspace UpdatePSWorkspace(UpdatePSWorkspaceParameters parameters)
+        {
+            // Get the existing workspace
+            PSWorkspace workspace = GetWorkspace(parameters.ResourceGroupName, parameters.WorkspaceName);
+
+            // Execute the update
+            Workspace updatedWorkspace = CreateOrUpdateWorkspace(
+                parameters.ResourceGroupName,
+                parameters.WorkspaceName,
+                workspace.Location,
+                string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
+                workspace.CustomerId,
+                parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags));
+
+            return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
+        }
+
         public virtual PSWorkspace CreatePSWorkspace(CreatePSWorkspaceParameters parameters)
         {
             PSWorkspace workspace = null;
@@ -104,7 +179,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 Dictionary<string, string> tags = new Dictionary<string, string>();
                 if (parameters.Tags != null)
                 {
-                    tags = parameters.Tags.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+                    tags = ToDictionary(parameters.Tags);
                 }
 
                 workspace =
@@ -196,6 +271,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
                 throw;
             }
+        }
+
+        private static Dictionary<string, string> ToDictionary(Hashtable hashTable)
+        {
+            return hashTable.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
         }
     }
 }

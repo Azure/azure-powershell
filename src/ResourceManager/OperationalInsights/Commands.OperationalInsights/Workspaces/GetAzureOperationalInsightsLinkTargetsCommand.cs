@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
+
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    internal static class Constants
+    [Cmdlet(VerbsCommon.Get, Constants.LinkTargets), OutputType(typeof(List<PSAccount>))]
+    public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
     {
-        public const string LinkTargets = "AzureOperationalInsightsLinkTargets";
-
-        public const string Workspace = "AzureOperationalInsightsWorkspace";
-
-        public const string WorkspaceSharedKeys = "AzureOperationalInsightsWorkspaceSharedKeys";
-
-        public const string WorkspaceManagementGroups = "AzureOperationalInsightsWorkspaceManagementGroups";
-
-        public const string WorkspaceUsage = "AzureOperationalInsightsWorkspaceUsage";
-
-        public const string StorageInsight = "AzureOperationalInsightsStorageInsight";
+        public override void ExecuteCmdlet()
+        {
+            WriteObject(OperationalInsightsClient.GetLinkTargets(), true);
+        }
     }
 }
