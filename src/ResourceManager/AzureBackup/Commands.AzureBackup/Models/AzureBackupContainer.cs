@@ -23,24 +23,51 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Represents Azure Backup Container
     /// </summary>
-    public class AzureBackupContainer : AzureBackupVaultCmdletBase
+    public class AzureBackupContainer : AzureBackupVaultContextObject
     {
+        /// <summary>
+        /// Type of the Azure Backup container
+        /// </summary>
         public string ContainerType { get; set; }
 
+        /// <summary>
+        /// Friendly name for the Azure Backup container
+        /// </summary>
         public string FriendlyName { get; set; }
 
+        /// <summary>
+        /// Status of health of the Azure Backup container
+        /// </summary>
         public string HealthStatus { get; set; }
 
+        /// <summary>
+        /// Id of the Azure Backup Container
+        /// </summary>
         public string InstanceId { get; set; }
 
+        /// <summary>
+        /// Name of the Azure Backup container
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Friendly name of the parent container
+        /// </summary>
         public string ParentContainerFriendlyName { get; set; }
 
+        /// <summary>
+        /// Name of the parent container
+        /// </summary>
         public string ParentContainerName { get; set; }
 
+        /// <summary>
+        /// Region where this container is present
+        /// </summary>
         public string Region { get; set; }
 
+        /// <summary>
+        /// Status of registration of the container
+        /// </summary>
         public string RegistrationStatus { get; set; }
     }
 }
