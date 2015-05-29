@@ -996,8 +996,9 @@ function Test-VirtualMachinePlan2
         $p.Plan.Product = $plan.Product;
         $p.Plan.PromotionCode = $null;
         $p.OSProfile.WindowsConfiguration = $null;
-
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        
+        # Negative Tests on non-purchased Plan
+        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "Legal terms have not been accepted for this item on this subscription";
     }
     finally
     {
