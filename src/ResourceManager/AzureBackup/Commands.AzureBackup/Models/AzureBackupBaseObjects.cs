@@ -36,4 +36,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ResourceName = resourceName;
         }
     }
+
+    public class AzureBackupContainerContextObject : AzureBackupVaultContextObject
+    {
+        /// <summary>
+        /// Type of the Azure Backup container
+        /// </summary>
+        public string ContainerType { get; set; }
+
+        /// <summary>
+        /// Name of the Azure Backup container
+        /// </summary>
+        public string ContainerName { get; set; }
+
+        /// <summary>
+        /// Id of the Azure Backup Container
+        /// </summary>
+        public string ContainerId { get; set; }
+    }
 }
