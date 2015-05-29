@@ -193,6 +193,10 @@
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="DynamicTests\Generate-DynamicTests.ps1" />
+    <None Include="DynamicTests\generated\ps_test_1.ps1" />
+    <None Include="DynamicTests\generated\ps_test_2.ps1" />
+    <None Include="DynamicTests\generated\ps_test_3.ps1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">
