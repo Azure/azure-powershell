@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ComputeTestController.cs" />
+    <Compile Include="ScenarioTests\VMDynamicTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
     <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
@@ -193,10 +194,18 @@
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DynamicTests\Generate-DynamicTests.ps1" />
-    <None Include="DynamicTests\generated\ps_test_1.ps1" />
-    <None Include="DynamicTests\generated\ps_test_2.ps1" />
-    <None Include="DynamicTests\generated\ps_test_3.ps1" />
+    <None Include="ScenarioTests\Generated\PSVMDynamicTest1.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\PSVMDynamicTest2.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\PSVMDynamicTest3.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\VMDynamicTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\VirtualMachineProfileTests.ps1">
@@ -278,6 +287,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests\TestVirtualMachineWithVMAgentAutoUpdate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VMDynamicTests\RunVMDynamicTests.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

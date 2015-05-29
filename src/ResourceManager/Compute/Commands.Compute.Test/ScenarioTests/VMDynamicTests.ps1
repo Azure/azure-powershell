@@ -12,11 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Generate Dynamic Tests
-#>
-
 $func_get_all_vm_locations =
 @'
 
@@ -35,19 +30,32 @@ function get_all_vm_locations
 '@;
 
 
-function Generate-DynamicTests
+<#
+.SYNOPSIS
+Run Generated VM Dynamic Tests
+#>
+function Run-VMDynamicTests
 {
+    param ([bool] $isRecordMode)
+
     $num_total_generated_tests = 3;
-    $base_folder = '.\generated';
+    $base_folder = '.\Generated';
 
     for ($i = 1; $i -le $num_total_generated_tests; $i++)
     {
         $st = Write-Host ('Generating Test #' + $i);
 
-        $generated_file_name = $base_folder + '\' + 'ps_test_' + $i + '.ps1';
+        $generated_file_name = $base_folder + '\' + 'PSVMDynamicTest' + $i + '.ps1';
 
-        $st = New-Item -Path $generated_file_name -Value $null -Force;
+        if ($isRecordMode)
+        {
+            # Generate New Dynamic Test Files
+            $st = New-Item -Path $generated_file_name -Value $null -Force;
+            $st = $func_get_all_vm_locations | Out-File -FilePath $generated_file_name -Force;
+        }
 
-        $st = $func_get_all_vm_locations | Out-File -FilePath $generated_file_name -Force;
+        $st = . "$generated_file_name";
+        
+        $st = get_all_vm_locations;
     }
 }
