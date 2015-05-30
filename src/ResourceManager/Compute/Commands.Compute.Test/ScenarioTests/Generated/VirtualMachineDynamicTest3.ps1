@@ -98,14 +98,14 @@ function setup_image_and_disks
 }
 
 
-function ps_vm_dynamic_test_func_2_pstestrg6911
+function ps_vm_dynamic_test_func_3_pstestrg1438
 {
     # Setup
-    $rgname = 'pstestrg6911';
+    $rgname = 'pstestrg1438';
 
     try
     {
-        $loc = 'eastasia';
+        $loc = 'southeastasia';
         $vmsize = 'Standard_A0';
 
         $st = New-AzureResourceGroup -Location $loc -Name $rgname;
@@ -122,7 +122,6 @@ function ps_vm_dynamic_test_func_2_pstestrg6911
         $st = setup_image_and_disks $loc $rgname $stoname $vmconfig;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         $vmname = 'vm' + $rgname;
         $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $vmconfig;
 

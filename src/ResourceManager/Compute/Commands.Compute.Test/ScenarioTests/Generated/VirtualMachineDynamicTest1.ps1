@@ -122,7 +122,6 @@ function ps_vm_dynamic_test_func_1_pstestrg6217
         $st = setup_image_and_disks $loc $rgname $stoname $vmconfig;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         $vmname = 'vm' + $rgname;
         $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $vmconfig;
 
