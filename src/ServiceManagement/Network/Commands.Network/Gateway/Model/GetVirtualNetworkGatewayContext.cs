@@ -17,9 +17,15 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
-    public class VirtualNetworkGatewayContext : ManagementOperationContext
+    public class GetVirtualNetworkGatewayContext : ManagementOperationContext
     {
+        public string GatewayId { get; set; }
+
+        public string GatewayName { get; set; }
+
         public string LastEventData { get; set; }
+        
+        public string GatewayType { get; set; }
 
         public DateTime? LastEventTimeStamp { get; set; }
 
@@ -34,5 +40,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public string DefaultSite { get; set; }
 
         public string GatewaySKU { get; set; }
+
+        public string Location { get; set; }
+
+        public string VnetId { get; set; }
+
+        public string SubnetId { get; set; }
+        
+        public string EnableBgp { get; set; }
     }
 }

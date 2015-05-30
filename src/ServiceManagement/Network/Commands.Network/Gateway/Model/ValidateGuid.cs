@@ -12,27 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model
 {
-    public class VirtualNetworkGatewayContext : ManagementOperationContext
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    public sealed class ValidateGuid : ValidateEnumeratedArgumentsAttribute
     {
-        public string LastEventData { get; set; }
+        protected override void ValidateElement(object element)
+        {
+            string guid = (string)element;
 
-        public DateTime? LastEventTimeStamp { get; set; }
-
-        public string LastEventMessage { get; set; }
-
-        public int LastEventID { get; set; }
-
-        public ProvisioningState State { get; set; }
-
-        public string VIPAddress { get; set; }
-
-        public string DefaultSite { get; set; }
-
-        public string GatewaySKU { get; set; }
+            try
+            {
+                Guid validGuid = Guid.Parse(guid);
+            } 
+            catch
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidGuid, guid));
+            }
+        }
     }
 }
