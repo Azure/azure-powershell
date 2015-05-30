@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RunVMDynamicTests()
         {
-            string isMockMode = HttpMockServer.Mode == HttpRecorderMode.Record ? "$true" : "$false";
-            ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests " + isMockMode);
+            ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests");
         }
     }
 }
