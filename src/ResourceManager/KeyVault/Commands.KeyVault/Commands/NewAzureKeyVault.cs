@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {            
-            if (VaultExists(this.VaultName, this.ResourceGroupName))
+            if (VaultExistsInCurrentSubscription(this.VaultName))
             {
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
             }

@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+            WriteWarning(Properties.Resources.DeprecationOfGetAzureVMImageDetail);
+
             var parameters = new VirtualMachineImageGetParameters
             {
                 Location = Location.Canonicalize(),

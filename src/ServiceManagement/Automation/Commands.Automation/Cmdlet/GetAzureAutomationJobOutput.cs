@@ -47,8 +47,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString() );
-            this.GenerateCmdletOutput(ret);
+            var nextLink = string.Empty;
+
+            do
+            {
+                var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString(), ref nextLink);
+                this.GenerateCmdletOutput(ret);
+
+            } while (!string.IsNullOrEmpty(nextLink));
         }
     }
 }

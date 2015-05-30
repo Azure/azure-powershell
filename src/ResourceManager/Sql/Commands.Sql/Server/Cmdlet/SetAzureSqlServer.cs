@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The new SQL administrator password for the server.")]
         [ValidateNotNull]
-        public SecureString SqlAdminPassword { get; set; }
+        public SecureString SqlAdministratorPassword { get; set; }
         
         /// <summary>
         /// The tags to associate with the server.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 {
                     ResourceGroupName = this.ResourceGroupName,
                     ServerName = this.ServerName,
-                    SqlAdminPassword = this.SqlAdminPassword,
+                    SqlAdministratorPassword = this.SqlAdministratorPassword,
                     Tags = this.Tags,
                     ServerVersion = this.ServerVersion,
                     Location = model.FirstOrDefault().Location,

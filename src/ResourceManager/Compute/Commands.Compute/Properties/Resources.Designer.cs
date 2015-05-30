@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Availability set removal operation.
+        /// </summary>
+        public static string AvailabilitySetRemovalCaption {
+            get {
+                return ResourceManager.GetString("AvailabilitySetRemovalCaption", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified availability set. Do you want to continue?.
+        /// </summary>
+        public static string AvailabilitySetRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("AvailabilitySetRemovalConfirmation", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {
@@ -75,6 +93,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {
             get {
                 return ResourceManager.GetString("CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Get-AzureVMExtensionImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMExtensionImage cmdlet..
+        /// </summary>
+        public static string DeprecationOfGetAzureVMExtensionImageDetail {
+            get {
+                return ResourceManager.GetString("DeprecationOfGetAzureVMExtensionImageDetail", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Get-AzureVMImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMImage cmdlet..
+        /// </summary>
+        public static string DeprecationOfGetAzureVMImageDetail {
+            get {
+                return ResourceManager.GetString("DeprecationOfGetAzureVMImageDetail", resourceCulture);
             }
         }
 
