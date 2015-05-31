@@ -266,10 +266,9 @@ function Run-VMDynamicTests
             $generated_file_name = $generated_file_names[$i];
             $generated_func_name = $generated_func_names[$i];
 
-            $st = Write-Host ('Generating Test #' + (1 + $i));
-
+            # $st = Write-Host ('Generating Test #' + (1 + $i));
             # Generate New Dynamic Test Files
-            $st = New-Item -Path $generated_file_name -Value $null -Force;
+            $st = New-Item -Path $generated_file_name -Type File -Value $null -Force;
             $st = $comment_header_str | Out-File -Append -FilePath $generated_file_name -Force;
             $st = $func_get_vm_config_object | Out-File -Append -FilePath $generated_file_name -Force;
             $st = $func_get_created_storage_account_name | Out-File -Append -FilePath $generated_file_name -Force;
