@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
         typeof(AzureHDInsightCluster))]
-    public class NewAzureHDInsightCommand : HDInsightCmdletBase
+    public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         private ClusterCreateParameters parameters;
         #region Input Parameter Definitions
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 4,
             Mandatory = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
-        public PSCredential HttpUser { get; set; }
+        public PSCredential HttpCredential { get; set; }
 
         [Parameter(
             Position = 5,
@@ -167,14 +167,14 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { parameters.OSType = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets SSH user name.")]
-        public PSCredential SshUser { get; set; }
+        [Parameter(HelpMessage = "Gets or sets SSH credential.")]
+        public PSCredential SshCredential { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
         public string SshPublicKey { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public PSCredential RdpUser { get; set; }
+        [Parameter(HelpMessage = "Gets or sets the credential for RDP access to the cluster.")]
+        public PSCredential RdpCredential { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
         public DateTime RdpAccessExpiry
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        public NewAzureHDInsightCommand()
+        public NewAzureHDInsightClusterCommand()
         {
             parameters = new ClusterCreateParameters();
             AdditionalStorageAccounts = new Dictionary<string, string>();
@@ -248,18 +248,18 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            parameters.UserName = HttpUser.UserName;
-            parameters.Password = HttpUser.Password.ConvertToString();
+            parameters.UserName = HttpCredential.UserName;
+            parameters.Password = HttpCredential.Password.ConvertToString();
 
-            if (RdpUser != null)
+            if (RdpCredential != null)
             {
-                parameters.RdpUsername = RdpUser.UserName;
-                parameters.RdpPassword = RdpUser.Password.ConvertToString();
+                parameters.RdpUsername = RdpCredential.UserName;
+                parameters.RdpPassword = RdpCredential.Password.ConvertToString();
             }
-            if (SshUser != null)
+            if (SshCredential != null)
             {
-                parameters.SshUserName = SshUser.UserName;
-                parameters.SshPassword = SshUser.Password.ConvertToString();
+                parameters.SshUserName = SshCredential.UserName;
+                parameters.SshPassword = SshCredential.Password.ConvertToString();
             }
             foreach (
                 var storageAccount in

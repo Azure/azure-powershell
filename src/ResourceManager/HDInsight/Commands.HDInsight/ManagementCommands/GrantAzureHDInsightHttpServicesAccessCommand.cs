@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
-        public PSCredential HttpUser { get; set; }
+        public PSCredential HttpCredential { get; set; }
 
         #endregion
 
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             var httpParams = new HttpSettingsParameters
             {
                 HttpUserEnabled = true,
-                HttpUsername = HttpUser.UserName,
-                HttpPassword = HttpUser.Password.ConvertToString()
+                HttpUsername = HttpCredential.UserName,
+                HttpPassword = HttpCredential.Password.ConvertToString()
             };
             
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);

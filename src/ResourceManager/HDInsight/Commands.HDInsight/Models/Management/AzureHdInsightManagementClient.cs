@@ -39,18 +39,16 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
         }
 
-        public List<Cluster> GetCluster(string resourceGroupName, string clusterName)
+        public virtual List<Cluster> GetCluster(string resourceGroupName, string clusterName)
         {
             var result = new List<Cluster>();
             if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(clusterName))
             {
-                var listresponse = HdInsightManagementClient.Clusters.List();
-                result.AddRange(listresponse.Clusters);
+                result.AddRange(ListClusters().Clusters);
             }
             else if (string.IsNullOrEmpty(clusterName))
             {
-                var listresponse = HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
-                result.AddRange(listresponse.Clusters);
+                result.AddRange(ListClusters(resourceGroupName).Clusters);
             }
             else if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -58,13 +56,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
             else
             {
-                var getresponse = HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
+                var getresponse = Get(resourceGroupName, clusterName);
                 if (getresponse != null)
                 {
                     result.Add(getresponse.Cluster);   
                 }
             }
             return result;
+        }
+
+        public virtual ClusterListResponse ListClusters()
+        {
+            return HdInsightManagementClient.Clusters.List();
+        }
+
+        public virtual ClusterListResponse ListClusters(string resourceGroupName)
+        {
+            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);   
+        }
+
+        public virtual ClusterGetResponse Get(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
         }
 
         public HDInsightLongRunningOperationResponse ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)

@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = "Gets or sets the username for RDP access to the cluster.")]
-        public PSCredential RdpUser { get; set; }
+            HelpMessage = "Gets or sets the credential for RDP access to the cluster.")]
+        public PSCredential RdpCredential { get; set; }
 
         [Parameter(Position = 3,
             Mandatory = true,
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.HDInsight
                     {
                         RdpSettings = new RdpSettings
                         {
-                            UserName = RdpUser.UserName,
-                            Password = RdpUser.Password.ConvertToString(),
+                            UserName = RdpCredential.UserName,
+                            Password = RdpCredential.Password.ConvertToString(),
                             ExpiryDate = RdpAccessExpiry
                         }
                     }
