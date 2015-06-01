@@ -12,7 +12,7 @@
 ModuleToProcess = '.\Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.1'
+ModuleVersion = '0.9.2'
 
 # ID used to uniquely identify this module
 GUID = 'a9343cbd-175c-4f72-90c7-2abe9b300644'
