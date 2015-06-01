@@ -250,7 +250,7 @@
     <value>Moving resource(s) ...</value>
   </data>
   <data name="MovingResources" xml:space="preserve">
-    <value>Are you sure you want to move resource(s) into the resource goup named '{0}' - the resource(s): '{1}'</value>
+    <value>Are you sure you want to move resource(s) into the resource group named '{0}' - the resource(s): '{1}'</value>
   </data>
   <data name="MovingResourcesFromDifferentSourceResourceGroupsNotAllowed" xml:space="preserve">
     <value>Moving resources from different source resource groups is not allowed.</value>
@@ -259,7 +259,7 @@
     <value>Moving resources from different subscriptions is not currently supported.</value>
   </data>
   <data name="MovingResourcesIntoNewSubscription" xml:space="preserve">
-    <value>Are you sure you want to move resource(s) into the resource goup named '{0}' in the subscription named '{1}' and id '{2}' - the resource(s): '{3}'</value>
+    <value>Are you sure you want to move resource(s) into the resource group named '{0}' in the subscription named '{1}' and id '{2}' - the resource(s): '{3}'</value>
   </data>
   <data name="SubscriptionWithTheSpecifiedNameNotFount" xml:space="preserve">
     <value>A subscription with the name '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptions.</value>
