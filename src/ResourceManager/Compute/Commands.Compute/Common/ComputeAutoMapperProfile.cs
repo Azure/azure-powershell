@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
             Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperationResponse>();
         }
     }
 }

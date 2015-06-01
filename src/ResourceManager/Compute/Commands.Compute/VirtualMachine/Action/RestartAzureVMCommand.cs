@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
@@ -40,7 +43,8 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             var op = this.VirtualMachineClient.Restart(this.ResourceGroupName, this.Name);
-            WriteObject(op);
+            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+            WriteObject(result);
         }
     }
 }

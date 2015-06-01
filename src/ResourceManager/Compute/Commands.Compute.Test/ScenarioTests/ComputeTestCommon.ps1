@@ -211,7 +211,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = Get-AzureVMImageDetail -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+    $vmimg = Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }

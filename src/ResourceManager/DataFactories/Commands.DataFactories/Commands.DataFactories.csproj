@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.15.7-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.15.10-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,7 +73,8 @@
       <HintPath>..\..\..\packages\Microsoft.DataFactories.Runtime.0.11.1-preview\lib\net45\Microsoft.DataFactories.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption">
-      <HintPath>..\..\..\packages\Microsoft.DataTransfer.Gateway.Encryption.1.4.0-preview\lib\net45\Microsoft.DataTransfer.Gateway.Encryption.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.DataTransfer.Gateway.Encryption.1.5.0-preview\lib\net45\Microsoft.DataTransfer.Gateway.Encryption.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
