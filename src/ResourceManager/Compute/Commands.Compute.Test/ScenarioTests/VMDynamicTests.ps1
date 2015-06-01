@@ -35,7 +35,7 @@ function get_all_standard_vm_sizes
 
 function get_hash_int_value
 {
-    # Reference: http://www.cse.yorku.ca/~oz/hash.html{
+    # Reference: http://www.cse.yorku.ca/~oz/hash.html
     param ([string] $seedstr)
 
     if ($seedstr -eq $null) { $seedstr = ''; }
