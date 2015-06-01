@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (string.IsNullOrEmpty(Id)) return null;
                 Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
                 Match m = r.Match(Id);
                 return m.Success ? m.Groups["rgname"].Value : null;
@@ -134,38 +133,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string StorageProfileText
         {
             get { return JsonConvert.SerializeObject(StorageProfile, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string [] DataDiskNames
-        {
-            get
-            {
-                if (this.StorageProfile == null) return null;
-
-                var dataDiskNames = new List<string>();
-                foreach (var disk in StorageProfile.DataDisks)
-                {
-                    dataDiskNames.Add(disk.Name);
-                }
-                return dataDiskNames.ToArray();
-            }
-        }
-
-        [JsonIgnore]
-        public string[] NetworkInterfaceIds
-        {
-            get
-            {
-                if (this.NetworkProfile == null) return null;
-
-                var nicIds = new List<string>();
-                foreach (var nic in NetworkProfile.NetworkInterfaces)
-                {
-                    nicIds.Add(nic.ReferenceUri);
-                }
-                return nicIds.ToArray();
-            }
         }
     }
 }

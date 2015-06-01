@@ -41,35 +41,30 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("Id", "NicIds")]
+        [Alias("NicId", "NetworkInterfaceId")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
-        public string[] NetworkInterfaceIds { get; set; }
+        public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            foreach (var id in this.NetworkInterfaceIds)
+            if (networkProfile != null && networkProfile.NetworkInterfaces != null && networkProfile.NetworkInterfaces.Any(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase)))
             {
-                if (networkProfile != null &&
-                    networkProfile.NetworkInterfaces != null &&
-                    networkProfile.NetworkInterfaces.Any(nic =>
-                        string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase)))
+                var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase));
+                networkProfile.NetworkInterfaces.Remove(nicReference);
+
+                if (!networkProfile.NetworkInterfaces.Any())
                 {
-                    var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase));
-                    networkProfile.NetworkInterfaces.Remove(nicReference);
+                    networkProfile = null;
                 }
             }
 
-            if (!networkProfile.NetworkInterfaces.Any())
-            {
-                networkProfile = null;
-            }
             this.VM.NetworkProfile = networkProfile;
 
             WriteObject(this.VM);
