@@ -213,7 +213,7 @@ function setup_image_and_disks
     $imgRef = Get-DefaultCRPImage;
     $vmconfig = ($imgRef | Set-AzureVMSourceImage -VM $vmconfig);
 
-    # TODO: Remove Data Disks for now
+    # Do not add any data disks
     $vmconfig.StorageProfile.DataDisks = $null;
 
     return $vmconfig;
