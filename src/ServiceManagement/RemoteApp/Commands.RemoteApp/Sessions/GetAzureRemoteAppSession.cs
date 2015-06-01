@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppSession"), OutputType(typeof(RemoteAppSession))]
@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp collection name")]
         [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRemoteAppWorkspace"), OutputType(typeof(TrackingResult))]
+    [Cmdlet(VerbsCommon.Set, "AzureRemoteAppWorkspace")]
     public class SetAzureRemoteAppWorkspace : RdsCmdlet
     {
         [Parameter(Mandatory = true,
@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            OperationResultWithTrackingId response = null;
             AccountDetailsParameter details = new AccountDetailsParameter()
             {
                 AccountInfo = new AccountDetails()
@@ -38,12 +37,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
             };
 
-            response = CallClient(() => Client.Account.Set(details), Client.Account);
-
-            if (response != null)
-            {
-                WriteTrackingId(response);
-            }
+            CallClient(() => Client.Account.Set(details), Client.Account);
         }
 
     }

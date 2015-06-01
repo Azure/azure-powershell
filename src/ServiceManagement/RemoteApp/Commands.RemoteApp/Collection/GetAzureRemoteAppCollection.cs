@@ -12,23 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppCollection"), OutputType(typeof(LocalModels.Collection))]
     public class GetAzureRemoteAppCollection : RdsCmdlet
     {
         [Parameter(Mandatory = false,
-            Position = 1,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "RemoteApp collection name. Wildcards are permitted.")]
         [ValidatePattern(NameValidatorStringWithWildCards)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         private bool showAllCollections = false;

@@ -12,22 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 
 namespace LocalModels
 {
-    public class Collection : Microsoft.Azure.Management.RemoteApp.Models.Collection
+    public class Collection : Microsoft.WindowsAzure.Management.RemoteApp.Models.Collection
     {
         public DateTime LastModifiedLocalTime { get; set; }
-        public Collection(Microsoft.Azure.Management.RemoteApp.Models.Collection col)
+        public Collection(Microsoft.WindowsAzure.Management.RemoteApp.Models.Collection col)
         {
             AdInfo = col.AdInfo;
-            BillingPlanName = col.BillingPlanName;
+            PlanName = col.PlanName;
             Type = col.Type;
             CustomRdpProperty = col.CustomRdpProperty;
             Description = col.Description;
@@ -46,7 +41,7 @@ namespace LocalModels
             SubnetName = col.SubnetName;
             TemplateImageName = col.TemplateImageName;
             TrialOnly = col.TrialOnly;
-            VnetName = String.IsNullOrWhiteSpace(col.VnetName) || col.VnetName.StartsWith ("simplevnet-") ? "" : col.VnetName;
+            VNetName = String.IsNullOrWhiteSpace(col.VNetName) || col.VNetName.StartsWith ("simplevnet-") ? "" : col.VNetName;
         }
     }
 }

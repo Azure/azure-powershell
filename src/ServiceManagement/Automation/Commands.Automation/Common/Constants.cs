@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
 
+        public const string JobRunOnParameterName = "MicrosoftApplicationManagementRunOn";
+
         // default schedule expiry time for daily schedule, consistent with UX
         // 12/31/9999 12:00:00 AM
         public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public const string PsCommandParamDepth = "Depth";
 
         public const int PsCommandValueDepth = 10;
+
+        public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
 
     }
 }

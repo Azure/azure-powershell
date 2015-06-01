@@ -12,25 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsData.Unpublish, "AzureRemoteAppProgram", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PublishingOperationResult))]
     public class UnpublishAzureRemoteAppProgram : RdsCmdlet
     {
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
-            Position = 1,
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Aliases of the programs to unpublish")]
         [ValidateNotNullOrEmpty()]
         public string[] Alias { get; set; }

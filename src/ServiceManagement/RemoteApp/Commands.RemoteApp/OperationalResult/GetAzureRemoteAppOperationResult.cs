@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppOperationResult"), OutputType(typeof(OperationResult))]
@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
     {
         [Parameter(Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Operation Identifier")]
-
         public string TrackingId { get; set; }
 
         public override void ExecuteCmdlet()

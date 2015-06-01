@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class GetAzureWebsiteDeploymentTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebsiteDeploymentTest()
         {
             // Setup
@@ -81,13 +83,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
+
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebsiteDeploymentLogsTest()
         {
             // Setup
@@ -138,14 +142,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
+
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
             Assert.NotNull(deployments.First(d => d.Id.Equals("commit1")).Logs);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDeploymentForSlot()
         {
             string slot = "staging";
@@ -195,8 +201,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
 
             getAzureWebsiteDeploymentCommand.ExecuteCmdlet();
-            Assert.Equal(1, ((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.Count);
-            var deployments = (IEnumerable<DeployResult>)((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
+
+            var deployments = System.Management.Automation.LanguagePrimitives.GetEnumerable(((MockCommandRuntime)getAzureWebsiteDeploymentCommand.CommandRuntime).OutputPipeline).Cast<DeployResult>();
             Assert.NotNull(deployments);
             Assert.Equal(2, deployments.Count());
         }

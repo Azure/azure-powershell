@@ -91,6 +91,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.")]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The Location of the HDInsight cluster to grant http access to.")]
         public string Location
         {

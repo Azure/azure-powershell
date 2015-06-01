@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppCollectionUsageSummary"), OutputType(typeof(BillingUsageSummary))]
     public class GetAzureRemoteAppCollectionUsageSummary : RdsCmdlet
     {
         [Parameter(Mandatory = true,
-		           Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "RemoteApp collection name")]
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 }
                 else
                 {
-                    WriteVerboseWithTimestamp("No usage found for the requested period.");
+                    WriteVerboseWithTimestamp(Commands_RemoteApp.UseageNotFound);
                 }
             }
         }

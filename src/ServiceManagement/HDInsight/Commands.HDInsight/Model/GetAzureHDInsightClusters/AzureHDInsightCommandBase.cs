@@ -35,6 +35,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         public Uri Endpoint { get; set; }
 
+        public bool IgnoreSslErrors { get; set; }
+
         public ILogWriter Logger { get; set; }
 
         public string Subscription { get; set; }

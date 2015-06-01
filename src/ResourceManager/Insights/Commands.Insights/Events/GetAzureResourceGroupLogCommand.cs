@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the resourcegroup parameters of this cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceGroupName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceGroup name")]
+        [Parameter(Position = 0, ParameterSetName = ResourceGroupName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 

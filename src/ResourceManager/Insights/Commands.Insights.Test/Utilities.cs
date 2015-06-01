@@ -127,6 +127,49 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
+        public static MetricListResponse InitializeMetricResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            EventData eventData = Utilities.CreateFakeEvent();
+            return new MetricListResponse
+            {
+                MetricCollection = new MetricCollection
+                {
+                    Value = new List<Metric>()
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        public static MetricDefinitionListResponse InitializeMetricDefinitionResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            EventData eventData = Utilities.CreateFakeEvent();
+            return new MetricDefinitionListResponse
+            {
+                MetricDefinitionCollection = new MetricDefinitionCollection
+                {
+                    Value = new MetricDefinition[] {}
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
+        public static UsageMetricListResponse InitializeUsageMetricResponse()
+        {
+            return new UsageMetricListResponse
+            {
+                UsageMetricCollection = new UsageMetricCollection
+                {
+                    Value = new List<UsageMetric>()
+                },
+                RequestId = Guid.NewGuid().ToString(),
+                StatusCode = HttpStatusCode.OK
+            };
+        }
+
         public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
         {
             // Calling with detailed output
@@ -338,7 +381,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
             cmdlet.Name = null;
-            cmdlet.TargetResourceUri = ResourceUri;
+            cmdlet.TargetResourceId = ResourceUri;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedResourceGroup, resourceGroup);
@@ -372,7 +415,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
                 // Calling with ResourceUri
                 typedCmdlet.Name = null;
-                typedCmdlet.TargetResourceUri = ResourceUri;
+                typedCmdlet.TargetResourceId = ResourceUri;
                 typedCmdlet.ExecuteCmdlet();
 
                 Assert.Equal(expectedResourceGroup, resourceGroup);

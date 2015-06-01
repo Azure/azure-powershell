@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    using Microsoft.Azure.Commands.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.RemoteApp;
     using Microsoft.WindowsAzure.Management.Network;
     using Microsoft.WindowsAzure.Management.Network.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
@@ -32,10 +31,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         private const string NoDomain = "NoDomain";
         private const string AzureVNet = "AzureVNet";
 
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
@@ -125,6 +126,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the resource type of the collection."
+        )]
+        public CollectionMode? ResourceType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // register the subscription for this service if it has not been before
@@ -137,12 +144,13 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 Name = CollectionName,
                 TemplateImageName = ImageName,
                 Region = Location,
-                BillingPlanName = Plan,
+                PlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
-                Mode = CollectionMode.Apps
+                Mode = (ResourceType == null || ResourceType == CollectionMode.Unassigned) ? CollectionMode.Apps : ResourceType.Value
             };
             OperationResultWithTrackingId response = null;
+
 
             switch (ParameterSetName)
             {
@@ -150,7 +158,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 case AzureVNet:
                 {
                     creds = Credential.GetNetworkCredential();
-                    details.VnetName = VNetName;
+                    details.VNetName = VNetName;
 
                     if (SubnetName != null)
                     {
@@ -167,7 +175,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                         }
 
                         details.SubnetName = SubnetName;
-                        ValidateCustomerVNetParams(details.VnetName, details.SubnetName);
+                        ValidateCustomerVNetParams(details.VNetName, details.SubnetName);
 
                         if (DnsServers != null)
                         {

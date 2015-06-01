@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Gets or sets the masking function
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the masking function")]
-        [ValidateSet(Constants.NoMasking, Constants.Default, Constants.Text, Constants.Number, Constants.SSN, Constants.CCN, Constants.Email, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.NoMasking, SecurityConstants.Default, SecurityConstants.Text, SecurityConstants.Number, SecurityConstants.SSN, SecurityConstants.CCN, SecurityConstants.Email, IgnoreCase = false)]
         public override string MaskingFunction { get; set; } // intentionally overriding the parent's Masking function property, to defined it here as a non mandatory property
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
-        public static PSResourceGroup ToPSResourceGroup(this ResourceGroup resourceGroup, ResourcesClient client, bool detailed)
+        public static PSResourceGroup ToPSResourceGroup(this ResourceGroupExtended resourceGroup, ResourcesClient client, bool detailed)
         {
             return resourceGroup.ToPSResourceGroup(client, detailed);
         }
@@ -46,11 +46,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             return deployment;
-        }
-
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this Deployment result, string resourceGroup)
-        {
-            return result.ToPSResourceGroupDeployment(resourceGroup);
         }
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementError error)
@@ -82,6 +77,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
                                 Locations = resourceType.Locations.ToArray(),
                                 ApiVersions = resourceType.ApiVersions.ToArray(),
                             }).ToArray(),
+            };
+        }
+
+        public static PSResourceProviderOperation ToPSResourceProviderOperation(this ResourceProviderOperationDefinition resourceProviderOperationDefinition)
+        {
+            return new PSResourceProviderOperation
+            {
+                OperationName = resourceProviderOperationDefinition.Name,
+                Description = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Description,
+                ProviderNamespace = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Provider,
+                ResourceName = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Resource
             };
         }
 

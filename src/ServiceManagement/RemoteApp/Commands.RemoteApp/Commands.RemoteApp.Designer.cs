@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RemoteApp {
+namespace Microsoft.WindowsAzure.Commands.RemoteApp {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.RemoteApp.Commands.RemoteApp", typeof(Commands_RemoteApp).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.RemoteApp.Commands.RemoteApp", typeof(Commands_RemoteApp).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -93,6 +93,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static string DetailedUsageFailureMessage {
             get {
                 return ResourceManager.GetString("DetailedUsageFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving usage details.
+        /// </summary>
+        internal static string DownloadingUsageDetails {
+            get {
+                return ResourceManager.GetString("DownloadingUsageDetails", resourceCulture);
             }
         }
         
@@ -189,6 +198,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         /// <summary>
         ///   Looks up a localized string similar to ProcessJob completed.
         /// </summary>
+        internal static string JobComplete {
+            get {
+                return ResourceManager.GetString("JobComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProcessJob completed.
+        /// </summary>
         internal static string JobCompletionStatusMessage {
             get {
                 return ResourceManager.GetString("JobCompletionStatusMessage", resourceCulture);
@@ -237,6 +255,42 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         internal static string NoVmImageFoundErrorFormat {
             get {
                 return ResourceManager.GetString("NoVmImageFoundErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publish RemoteApp.
+        /// </summary>
+        internal static string Publish {
+            get {
+                return ResourceManager.GetString("Publish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publishing application; use Get-Job to view status.
+        /// </summary>
+        internal static string Publishing {
+            get {
+                return ResourceManager.GetString("Publishing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request failed..
+        /// </summary>
+        internal static string RequestFailed {
+            get {
+                return ResourceManager.GetString("RequestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request completed successfully..
+        /// </summary>
+        internal static string RequestSuccessful {
+            get {
+                return ResourceManager.GetString("RequestSuccessful", resourceCulture);
             }
         }
         
@@ -340,6 +394,15 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update collection.
+        /// </summary>
+        internal static string UpdateCollection {
+            get {
+                return ResourceManager.GetString("UpdateCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Template image upload script failed.
         /// </summary>
         internal static string UploadScriptFailedError {
@@ -358,6 +421,24 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get usage details.
+        /// </summary>
+        internal static string UsageDetails {
+            get {
+                return ResourceManager.GetString("UsageDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No usage found for the requested period..
+        /// </summary>
+        internal static string UseageNotFound {
+            get {
+                return ResourceManager.GetString("UseageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will reset the shared key for the VNet&apos;s VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key..
         /// </summary>
         internal static string VnetSharedKeyResetCaptionMessage {
@@ -367,11 +448,20 @@ namespace Microsoft.Azure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resetting the VPN shared key.
+        ///   Looks up a localized string similar to Resetting the VPN shared key on {0}.
         /// </summary>
-        internal static string VnetSharedKeyResetConfirmationDescription {
+        internal static string VnetSharedKeyResetConfirmationDescriptionFormat {
             get {
-                return ResourceManager.GetString("VnetSharedKeyResetConfirmationDescription", resourceCulture);
+                return ResourceManager.GetString("VnetSharedKeyResetConfirmationDescriptionFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request took too long to complete..
+        /// </summary>
+        internal static string VNetTimeout {
+            get {
+                return ResourceManager.GetString("VNetTimeout", resourceCulture);
             }
         }
         

@@ -12,28 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
+using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Reset, "AzureRemoteAppVpnSharedKey", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(VNet))]
     public class ResetAzureRemoteAppVpnSharedKey : RdsCmdlet
     {
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
            Position = 0,
            ValueFromPipeline = true,
            HelpMessage = "RemoteApp virtual network name.")]
-        [ValidatePattern(VNetNameValidatorStringWithWildCards)]
+        [ValidatePattern(VNetNameValidatorString)]
         public string VNetName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             OperationResultWithTrackingId response = null;
-            string description = Commands_RemoteApp.VnetSharedKeyResetConfirmationDescription;
+            string description = String.Format(Commands_RemoteApp.VnetSharedKeyResetConfirmationDescriptionFormat, VNetName);
             string warning = Commands_RemoteApp.GenericAreYouSureQuestion;
             string caption = Commands_RemoteApp.VnetSharedKeyResetCaptionMessage;
 
@@ -61,18 +62,17 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 {
                     VNetResult vnet = CallClient(() => Client.VNet.Get(VNetName, true), Client.VNet);
                     WriteObject(vnet.VNet);
-
-                    WriteVerboseWithTimestamp("The request completed successfully.");
+                    WriteVerboseWithTimestamp(Commands_RemoteApp.RequestSuccessful);
                 }
                 else
                 {
                     if (maxRetries > 0)
                     {
-                        WriteErrorWithTimestamp("The request failed.");
+                        WriteErrorWithTimestamp(Commands_RemoteApp.RequestFailed);
                     }
                     else
                     {
-                        WriteErrorWithTimestamp("The request took a long time to complete.");
+                        WriteErrorWithTimestamp(Commands_RemoteApp.VNetTimeout);
                     }
                 }
             }

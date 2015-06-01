@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDeviceConfigScript"), OutputType(typeof(String))]
     public class GetAzureRemoteAppVpnDeviceConfigScript : RdsCmdlet
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "RemoteApp virtual network name.")]
-        [ValidatePattern(VNetNameValidatorStringWithWildCards)]
+        [ValidatePattern(VNetNameValidatorString)]
         public string VNetName { get; set; }
 
         [Parameter(Mandatory = true,

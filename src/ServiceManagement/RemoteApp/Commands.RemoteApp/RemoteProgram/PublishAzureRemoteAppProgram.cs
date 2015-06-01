@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult))]
+    [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult), typeof(Job))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet
     {
         private const string AppPath = "App Path";
         private const string AppId = "App Id";
 
-        [Parameter (Mandatory = true,
-                    Position = 0,
-                    HelpMessage = "RemoteApp collection name")]
-        [ValidatePattern (NameValidatorString)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "RemoteApp collection name")]
+        [ValidatePattern(NameValidatorString)]
+        [Alias("Name")]
         public string CollectionName { get; set; }
 
         [Parameter(Mandatory = true,
@@ -125,13 +128,16 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         {
             if (AsJob.IsPresent)
             {
-                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", "Publish RemoteApp");
+                task = new LongRunningTask<PublishAzureRemoteAppProgram>(this, "RemoteAppBackgroundTask", Commands_RemoteApp.Publish);
 
                 task.ProcessJob(() =>
                 {
+                    task.SetStatus(Commands_RemoteApp.Publishing);
                     PublishAction();
-                    task.SetStatus("ProcessJob completed");
+                    task.SetStatus(Commands_RemoteApp.JobComplete);
                 });
+
+                WriteObject(task);
             }
             else
             {

@@ -2,10 +2,8 @@
 <TestSettings name="Local.x64" id="a0a8374d-b26f-470a-8263-0e223bfc99b5" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run under x64 architecture.</Description>
  <Deployment>
-    <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\Resources\" />
-    <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Extensions.Test\Resources\" />
     <DeploymentItem filename="Common\Commands.ScenarioTest\Resources\" />
-    <DeploymentItem filename="Package\Debug\" />
+    <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Extensions.Test\Resources\" />
     <DeploymentItem filename="Package\Debug\ServiceManagement\Azure\Services\Resources" outputDirectory="Resources" />
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\TestScripts\" />
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\Resources\" />

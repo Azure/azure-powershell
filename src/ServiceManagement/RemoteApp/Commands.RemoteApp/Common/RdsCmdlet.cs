@@ -13,18 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.RemoteApp.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Principal;
+using Microsoft.Azure;
 
 
-namespace Microsoft.Azure.Management.RemoteApp.Models
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
 {
 
     public class TrackingResult
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Models
     }
 }
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     public class EnabledFeatures
     {
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         internal static Job theJob;
 
         private IRemoteAppManagementClient client = null;
+
+        private Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = null;
 
         public IRemoteAppManagementClient Client
         {
@@ -77,6 +81,27 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             set
             {
                 client = value;  // Test Hook
+                Profile = InitializeDefaultProfile();
+                SetTokenCacheForProfile(Profile);
+            }
+        }
+
+        public Microsoft.WindowsAzure.Management.ManagementClient MgmtClient
+        {
+            get
+            {
+                if (mgmtClient == null)
+                {
+                    mgmtClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
+                                        (Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+
+                }
+
+                return mgmtClient;
+            }
+            set
+            {
+                mgmtClient = value;
             }
         }
 
@@ -184,20 +209,8 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                                         String.Format("Collection {0} does not exist",
                                             CollectionName),
                                         String.Empty,
-                                        Client.Principals,
+                                        Client.Collections,
                                         ErrorCategory.ObjectNotFound
-                    );
-
-                    WriteError(er);
-                }
-                else if (!String.Equals(response.Collection.Status, "Active", StringComparison.OrdinalIgnoreCase))
-                {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format("Collection {0} is not in the Active state",
-                            response.Collection.Name),
-                        String.Empty,
-                        Client.Principals,
-                        ErrorCategory.InvalidOperation
                     );
 
                     WriteError(er);
@@ -212,12 +225,9 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             System.Threading.CancellationToken cancelationToken = new System.Threading.CancellationToken();
 
             // register the subscription with RDFE to use the RemoteApp resource
-            Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = 
-                AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
-
             try
             {
-                AzureOperationResponse azureOperationResponse = mgmtClient.Subscriptions.RegisterResourceAsync(Client.RdfeNamespace, cancelationToken).Result;
+                AzureOperationResponse azureOperationResponse = MgmtClient.Subscriptions.RegisterResourceAsync(Client.RdfeNamespace, cancelationToken).Result;
             }
             catch (Exception e)
             {
@@ -234,12 +244,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                     // ignore the 'ConflictError' which is returned if the subscription is already registered for the resource
                     if (ce.Error.Code != "ConflictError")
                     {
-                        HandleCloudException(mgmtClient.Subscriptions, ce);
+                        HandleCloudException(MgmtClient.Subscriptions, ce);
                     }
                 }
                 else
                 {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, mgmtClient.Subscriptions, ErrorCategory.NotSpecified);
+                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromException(e, String.Empty, MgmtClient.Subscriptions, ErrorCategory.NotSpecified);
 
                     ThrowTerminatingError(er);
                 }

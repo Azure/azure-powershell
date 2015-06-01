@@ -48,13 +48,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 { 
                    this.AutomationClient.GetVariable(this.AutomationAccountName, this.Name)
                 };
+                this.GenerateCmdletOutput(ret);
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
             {
-                ret = this.AutomationClient.ListVariables(this.AutomationAccountName);
-            } 
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(ret);
+                do
+                {
+                    ret = this.AutomationClient.ListVariables(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(ret);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            } 
         }
     }
 }

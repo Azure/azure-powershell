@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     public abstract partial class RdsCmdlet
     {
@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         protected const string UserNameValidatorString = @"[^@\""/\[\]:;|=,+*?<>\s]+";
 
         protected const string UserPrincipalValdatorString = UserNameValidatorString + "@" + DomainNameValidatorString;
+
+        protected const string ListTemplateImageNameValidatorString = @"^[()A-Za-z][() ._\-A-Za-z0-9]{1,61}[A-Z-a-z0-9()]$";
+
+        protected const string TemplateImageNameValidatorString = @"^[A-Za-z][ ._\-A-Za-z0-9]{1,61}[A-Z-a-z0-9]$";
 
         protected const string IPv4ValidatorString = @"^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$";
 

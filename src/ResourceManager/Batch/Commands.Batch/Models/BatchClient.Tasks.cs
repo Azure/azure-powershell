@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Linq;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
@@ -24,10 +25,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Tasks matching the specified filter options
+        /// Lists the tasks matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Tasks</param>
-        /// <returns>The Tasks matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for tasks</param>
+        /// <returns>The tasks matching the specified filter options</returns>
         public IEnumerable<PSCloudTask> ListTasks(ListTaskOptions options)
         {
             if (options == null)
@@ -35,12 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrEmpty(options.WorkItemName) || string.IsNullOrEmpty(options.JobName)) && options.Job == null)
-            {
-                throw new ArgumentNullException(Resources.GBT_NoJob);
-            }
-
-            // Get the single Task matching the specified name
+            // Get the single task matching the specified name
             if (!string.IsNullOrEmpty(options.TaskName))
             {
                 WriteVerbose(string.Format(Resources.GBT_GetByName, options.TaskName, options.JobName, options.WorkItemName));
@@ -51,24 +47,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSCloudTask[] { psTask };
                 }
             }
-            // List Tasks using the specified filter
+            // List tasks using the specified filter
             else
             {
-                if (options.MaxCount <= 0)
-                {
-                    options.MaxCount = Int32.MaxValue;
-                }
                 string jName = options.Job == null ? options.JobName : options.Job.Name;
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName, options.MaxCount));
+                    verboseLogString = string.Format(Resources.GBT_GetByOData, jName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName, options.MaxCount));
+                    verboseLogString = string.Format(Resources.GBT_GetNoFilter, jName);
                 }
+                WriteVerbose(verboseLogString);
 
                 IEnumerableAsyncExtended<ICloudTask> tasks = null;
                 if (options.Job != null)
@@ -83,7 +77,90 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
                 }
                 Func<ICloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
-                return new PSAsyncEnumerable<PSCloudTask, ICloudTask>(tasks, mappingFunction).Take(options.MaxCount);
+                return PSAsyncEnumerable<PSCloudTask, ICloudTask>.CreateWithMaxCount(
+                    tasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+            }
+        }
+
+        /// <summary>
+        /// Creates a new task
+        /// </summary>
+        /// <param name="parameters">The parameters to use when creating the task</param>
+        public void CreateTask(NewTaskParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            CloudTask task = new CloudTask(parameters.TaskName, parameters.CommandLine);
+            task.RunElevated = parameters.RunElevated;
+
+            if (parameters.EnvironmentSettings != null)
+            {
+                task.EnvironmentSettings = new List<IEnvironmentSetting>();
+                foreach (DictionaryEntry d in parameters.EnvironmentSettings)
+                {
+                    EnvironmentSetting setting = new EnvironmentSetting(d.Key.ToString(), d.Value.ToString());
+                    task.EnvironmentSettings.Add(setting);
+                }
+            }
+
+            if (parameters.ResourceFiles != null)
+            {
+                task.ResourceFiles = new List<IResourceFile>();
+                foreach (DictionaryEntry d in parameters.ResourceFiles)
+                {
+                    ResourceFile file = new ResourceFile(d.Value.ToString(), d.Key.ToString());
+                    task.ResourceFiles.Add(file);
+                }
+            }
+
+            if (parameters.AffinityInformation != null)
+            {
+                task.AffinityInformation = parameters.AffinityInformation.omObject;
+            }
+
+            if (parameters.TaskConstraints != null)
+            {
+                task.TaskConstraints = parameters.TaskConstraints.omObject;
+            }
+
+            WriteVerbose(string.Format(Resources.NBT_CreatingTask, parameters.TaskName));
+            if (parameters.Job != null)
+            {
+                parameters.Job.omObject.AddTask(task, parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.AddTask(parameters.WorkItemName, parameters.JobName, task, parameters.AdditionalBehaviors);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified task
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which task to delete</param>
+        public void DeleteTask(TaskOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.Task != null)
+            {
+                parameters.Task.omObject.Delete(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IWorkItemManager wiManager = parameters.Context.BatchOMClient.OpenWorkItemManager())
+                {
+                    wiManager.DeleteTask(parameters.WorkItemName, parameters.JobName, parameters.TaskName, parameters.AdditionalBehaviors);
+                }
             }
         }
     }

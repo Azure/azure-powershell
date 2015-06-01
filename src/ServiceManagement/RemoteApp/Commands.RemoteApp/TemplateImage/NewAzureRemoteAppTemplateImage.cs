@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    using Microsoft.Azure.Management.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.RemoteApp;
     using Microsoft.WindowsAzure.Management.Compute;
     using Microsoft.WindowsAzure.Management.Compute.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Management.Storage.Models;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Collections.ObjectModel;
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Management.Automation;
-    using System.Management.Automation.Runspaces;
     using System.Threading;
-    using Microsoft.Azure.Commands.RemoteApp;
 
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppTemplateImage", DefaultParameterSetName = UploadLocalVhd), OutputType(typeof(TemplateImageResult))]
 
@@ -70,6 +67,11 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             ParameterSetName = UploadLocalVhd,
             HelpMessage = "Resumes disrupted upload of an in-progress image")]
         public SwitchParameter Resume { get; set; }
+
+        public virtual string DetermineParameterSetName()
+        {
+            return this.ParameterSetName;
+        }
 
         private LongRunningTask<NewAzureRemoteAppTemplateImage> task = null;
 
@@ -432,7 +434,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
             // sebsequent call to register is redundent
             RegisterSubscriptionWithRdfeForRemoteApp();
 
-            switch (ParameterSetName)
+            switch (DetermineParameterSetName())
             {
                 case UploadLocalVhd:
                     {
