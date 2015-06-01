@@ -98,15 +98,15 @@ function setup_image_and_disks
 }
 
 
-function ps_vm_dynamic_test_func_3_pstestrg1438
+function ps_vm_dynamic_test_func_3_pstestrg7143
 {
     # Setup
-    $rgname = 'pstestrg1438';
+    $rgname = 'pstestrg7143';
 
     try
     {
-        $loc = 'southeastasia';
-        $vmsize = 'Standard_A0';
+        $loc = 'eastus';
+        $vmsize = 'Standard_A5';
 
         $st = New-AzureResourceGroup -Location $loc -Name $rgname;
 

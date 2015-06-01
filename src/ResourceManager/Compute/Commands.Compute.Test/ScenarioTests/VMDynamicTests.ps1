@@ -268,17 +268,17 @@ function Run-VMDynamicTests
 
             # $st = Write-Host ('Generating Test #' + (1 + $i));
             # Generate New Dynamic Test Files
-            $st = New-Item -Path $generated_file_name -Type File -Value $null -Force;
-            $st = $comment_header_str | Out-File -Append -FilePath $generated_file_name -Force;
-            $st = $func_get_vm_config_object | Out-File -Append -FilePath $generated_file_name -Force;
-            $st = $func_get_created_storage_account_name | Out-File -Append -FilePath $generated_file_name -Force;
-            $st = (func_create_and_setup_nic_ids $random_seed) | Out-File -Append -FilePath $generated_file_name -Force;
-            $st = $func_create_and_setup_vm_config_object | Out-File -Append -FilePath $generated_file_name -Force;
+            $st = New-Item -Path $generated_file_name -Type File -Value '' -Force;
+            $st = $comment_header_str | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
+            $st = $func_get_vm_config_object | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
+            $st = $func_get_created_storage_account_name | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
+            $st = (func_create_and_setup_nic_ids $random_seed) | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
+            $st = $func_create_and_setup_vm_config_object | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
             $loc_name_str = $locations[$i % $locations.Count];
             $vm_size_str = (get_all_standard_vm_sizes $loc_name_str) | Get-Random -SetSeed $random_seed;
 
-            $st = $func_setup_image_and_disks | Out-File -Append -FilePath $generated_file_name -Force;
+            $st = $func_setup_image_and_disks | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
             $rgname_str = $generated_rgrp_names[$i];
 
@@ -326,7 +326,7 @@ function ${generated_func_name}
 }
 
 "@;
-            $st = $fn_body | Out-File -Append -FilePath $generated_file_name -Force;
+            $st = $fn_body | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
         }
     }
 
