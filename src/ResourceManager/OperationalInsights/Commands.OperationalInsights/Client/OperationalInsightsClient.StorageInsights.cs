@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         
         public virtual HttpStatusCode DeleteStorageInsight(string resourceGroupName, string workspaceName, string storageInsightName)
         {
-            AzureOperationResponse response = OperationalInsightsManagementClient.Workspaces.Delete(resourceGroupName, workspaceName);
+            AzureOperationResponse response = OperationalInsightsManagementClient.StorageInsights.Delete(resourceGroupName, workspaceName, storageInsightName);
             return response.StatusCode;
         }
 
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             try
             {
-                PSWorkspace workspace = GetWorkspace(resourceGroupName, workspaceName);
+                PSStorageInsight storageInsight = GetStorageInsight(resourceGroupName, workspaceName, storageInsightName);
                 return true;
             }
             catch (CloudException e)
