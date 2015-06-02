@@ -1,3 +1,31 @@
+﻿2015.05.29 version 0.9.2
+* Deprecated Switch-AzureMode
+* Profile
+    * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
+* Added Automation cmdlets
+    * Get-AzureAutomationWebhook
+    * New-AzureAutomationWebhook
+    * Remove-AzureAutomationWebhook
+    * Set-AzureAutomationWebhook    
+* Azure Compute
+    * Get-AzureVMImage and Get-AzureVMImageDetail are combined (Get-AzureVMImageDetail gives a warning message for future deprecation)
+    * Get-AzureVMExtensionImage and Get-AzureVMExtensionImageDetail are combined (Get-AzureVMExtensionImageDetail gives a warning message for future deprecation)
+    * Tags are added in VM resources
+    * Get-AzureVM now gets resource group name from piping
+    * -All switch is removed from Get-AzureVM
+    * Get-AzureVM -Status output is updated
+    * -Force parameter is added for Remove-AzureAvailabilitySet
+    * Outputs of New-AzureAvailabilitySet, Get-AzureAvailabilitySet, and Remove-AzureAvailabilitySet are updated
+* Azure Key Vault 
+    * Update Set-AzureKeyVaultAccessPolicy and Remove-AzureKeyVaultAccessPolicy cmdlets
+    * Fixed bugs  
+* Azure Data Factories
+    * Base cmdlet type switch to use Profile
+    * New-AzureDataFactoryEncryptedValue cmdlet supporting M data sources
+* Azure Resource Manager 
+    * Fixed bug in Move-AzureResource cmdlet
+    * Fixed bug in Set-AzureResource cmdlet
+
 ﻿2015.05.04 version 0.9.1
 * Azure SQL Database: new support for configuring audit retention.
 * Azure Automation
@@ -332,7 +360,7 @@
     * Set-AzureVMCustomScriptExtension
     * Set-AzureVMAccessExtension
   * Show 'Regions' property for Get-AzureVMAvailableExtensions cmdlet
-  * Add 'ResizedSizeInGB' pramater for the following cmdlets
+  * Add 'ResizedSizeInGB' parameter for the following cmdlets
     * Update-AzureDisk
     * Set-AzureOSDisk
     * Set-AzureDataDisk (DiskName parameter is also added along with ResizedSizeInGB)
@@ -437,7 +465,7 @@
 * Compute
   * Set-AzureVMImage cmdlets - added IconUri, SmallIconUri, and ShowInGui parameters
 * Sql
-  *  Added Sql Servver v12 support to SQL authentication context for SqlAzure cmdlets
+  *  Added Sql Server v12 support to SQL authentication context for SqlAzure cmdlets
 
 2014.11.14 Version 0.8.11
 * Profile
@@ -760,7 +788,7 @@
         * Remove-AzureVMImageOSDiskConfig
         * Set-AzureVMImageDataDiskConfig
         * Remove-AzureVMImageDataDiskConfig
-    * Virtual network improvments
+    * Virtual network improvements
         * Set-AzureVnetGatewayKey
 * Azure Automation cmdlets
     * Get-AzureAutomationAccount

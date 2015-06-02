@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource goup named &apos;{0}&apos; - the resource(s): &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; - the resource(s): &apos;{1}&apos;.
         /// </summary>
         internal static string MovingResources {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource goup named &apos;{0}&apos; in the subscription named &apos;{1}&apos; and id &apos;{2}&apos; - the resource(s): &apos;{3}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; in the subscription named &apos;{1}&apos; and id &apos;{2}&apos; - the resource(s): &apos;{3}&apos;.
         /// </summary>
         internal static string MovingResourcesIntoNewSubscription {
             get {
