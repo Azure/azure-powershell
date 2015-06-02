@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 IEnumerable<RecoveryPointInfo> recoveryPointObjects = null;
                 if (Id != null)
                 {
-                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.Where(x => x.Name.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
+                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.Where(x => x.InstanceId.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
                 }
                 else
                 {
@@ -59,24 +59,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(recoveryPointObjects);
+                WriteAzureBackupProtectionPolicy(recoveryPointObjects, AzureBackupItem);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(RecoveryPointInfo sourceRecoverPoint)
+        public void WriteAzureBackupProtectionPolicy(RecoveryPointInfo sourceRecoverPoint, AzureBackupItem azureBackupItem)
         {
-            // this needs to be uncommented once we have proper constructor
-            //this.WriteObject(new AzureBackupRecoveryPoint(AzureBackupItem.ResourceGroupName, AzureBackupItem.ResourceName, sourceRecoverPoint));
+            this.WriteObject(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<RecoveryPointInfo> sourceRecoverPointList)
+        public void WriteAzureBackupProtectionPolicy(IEnumerable<RecoveryPointInfo> sourceRecoverPointList, AzureBackupItem azureBackupItem)
         {
             List<AzureBackupRecoveryPoint> targetList = new List<AzureBackupRecoveryPoint>();
 
             foreach (var sourceRecoverPoint in sourceRecoverPointList)
             {
-                // this needs to be uncommented once we have proper constructor
-                //targetList.Add(new AzureBackupRecoveryPoint(AzureBackupItem.ResourceGroupName, AzureBackupItem.ResourceName, sourceRecoverPoint));
+                targetList.Add(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
             }
 
             this.WriteObject(targetList, true);

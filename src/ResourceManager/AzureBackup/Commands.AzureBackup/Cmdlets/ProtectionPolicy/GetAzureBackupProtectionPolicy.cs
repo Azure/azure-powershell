@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
                 if (Name != null)
                 {
-                    policyObjects = policyListResponse.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
                 }
                 else
                 {
-                    policyObjects = policyListResponse.Objects;
+                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
                 }
 
                 WriteVerbose("Converting response");

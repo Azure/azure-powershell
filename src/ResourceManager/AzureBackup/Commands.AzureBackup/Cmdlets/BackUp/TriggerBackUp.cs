@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     // ToDo:
     // Correct the Commandlet
-    // Coorect the OperationResponse
+    // Correct the OperationResponse
     // Get Tracking API from Piyush and Get JobResponse
     // Get JobResponse Object from Aditya
 
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureBackup"), OutputType(typeof(MBS.OperationResponse))]
+    [Cmdlet(VerbsCommon.New, "AzureBackupItem"), OutputType(typeof(MBS.OperationResponse))]
     public class TriggerAzureBackup : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()

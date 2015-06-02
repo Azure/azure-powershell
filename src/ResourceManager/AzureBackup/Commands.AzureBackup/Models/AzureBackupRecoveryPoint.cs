@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// RecoveryPointId of Azure Backup Item
         /// </summary>
         public string RecoveryPointId { get; set; }
+
+        public AzureBackupRecoveryPointContextObject()
+            : base()
+        {            
+        }
+
+        public AzureBackupRecoveryPointContextObject(RecoveryPointInfo recoveryPointInfo, AzureBackupItem azureBackupItem)
+            : base(azureBackupItem)
+        {
+            RecoveryPointId = recoveryPointInfo.InstanceId;
+        }
     }
 
     /// <summary>
@@ -41,6 +53,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// DataSourceId of Azure Backup Item
         /// </summary>
-        public string RecoveryPointType { get; set; }		
+        public string RecoveryPointType { get; set; }
+
+        public AzureBackupRecoveryPoint()
+            : base()
+        {            
+        }
+
+        public AzureBackupRecoveryPoint(RecoveryPointInfo recoveryPointInfo, AzureBackupItem azureBackupItem)
+            : base(recoveryPointInfo, azureBackupItem)
+        {
+            RecoveryPointTime = recoveryPointInfo.RecoveryPointTime;
+            RecoveryPointType = recoveryPointInfo.RecoveryPointType;
+        }
     }
 }
