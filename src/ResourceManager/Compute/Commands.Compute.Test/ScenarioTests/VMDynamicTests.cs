@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualNetworkGatewayContext : ManagementOperationContext
+    public partial class VMDynamicTests
     {
-        public string LastEventData { get; set; }
-
-        public DateTime? LastEventTimeStamp { get; set; }
-
-        public string LastEventMessage { get; set; }
-
-        public int LastEventID { get; set; }
-
-        public ProvisioningState State { get; set; }
-
-        public string VIPAddress { get; set; }
-
-        public string DefaultSite { get; set; }
-
-        public string GatewaySKU { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RunVMDynamicTests()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests");
+        }
     }
 }
