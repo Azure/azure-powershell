@@ -27,23 +27,21 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        protected const string GetVirtualMachineParamSet = "GetVirtualMachineParamSet";
-        protected const string ListVirtualMachineParamSet = "ListVirtualMachineParamSet";
+        protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";
+        protected const string ListVirtualMachineInResourceGroupParamSet = "ListVirtualMachineInResourceGroupParamSet";
         protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
-        protected const string ListNextVirtualMachinesParamSet = "ListNextVirtualMachinesParamSet";
+        protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
 
         [Parameter(
            Mandatory = true,
            Position = 0,
-            ParameterSetName = ListVirtualMachineParamSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+            ParameterSetName = ListVirtualMachineInResourceGroupParamSet,
+           ValueFromPipelineByPropertyName = true)]
         [Parameter(
            Mandatory = true,
            Position = 0,
-            ParameterSetName = GetVirtualMachineParamSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+           ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -51,34 +49,22 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = true,
             Position = 1,
-            ParameterSetName = GetVirtualMachineParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Position = 2,
-            ParameterSetName = GetVirtualMachineParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To show the status.")]
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
         [Parameter(
-            Position = 1,
-            ParameterSetName = ListAllVirtualMachinesParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To list all virtual machines.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter All { get; set; }
-
-        [Parameter(
             Mandatory = true,
             Position = 1,
-            ParameterSetName = ListNextVirtualMachinesParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The link to the next page of virtual machines.")]
+            ParameterSetName = ListNextLinkVirtualMachinesParamSet,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public Uri NextLink { get; set; }
 
@@ -124,7 +110,6 @@ namespace Microsoft.Azure.Commands.Compute
                     var psItem = Mapper.Map<PSVirtualMachine>(item);
                     psResultList.Add(psItem);
                 }
-
 
                 WriteObject(psResultList, true);
             }

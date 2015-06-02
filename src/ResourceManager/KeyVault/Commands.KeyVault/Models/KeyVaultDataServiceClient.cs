@@ -192,7 +192,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetKeysNextAsync(options.NextLink).GetAwaiter().GetResult();
                 
                 options.NextLink = result.NextLink;
-                return result.Value.Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
+                return (result.Value == null) ? new List<KeyIdentityItem>() :
+                    result.Value.Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
             }
             catch (Exception ex)
             {
@@ -349,7 +350,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetSecretsNextAsync(options.NextLink).GetAwaiter().GetResult(); 
 
                 options.NextLink = result.NextLink;
-                return  result.Value.Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });            
+                return (result.Value == null) ? new List<SecretIdentityItem>() :
+                    result.Value.Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });            
             }
             catch (Exception ex)
             {
