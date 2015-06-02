@@ -24,12 +24,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBackupRecoveryPoint"), OutputType(typeof(AzureBackupRecoveryPoint), typeof(List<AzureBackupRecoveryPoint>))]
+    public class GetAzureBackupRecoveryPoint : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -39,37 +39,42 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 WriteVerbose("Making client call");
 
-                var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                RecoveryPointListResponse recoveryPointListResponse = 
+                    AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(),
+                    AzureBackupItem.ContainerName,
+                    AzureBackupItem.DataSourceType,
+                    AzureBackupItem.DataSourceId,
+                    CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
                 WriteVerbose("Received policy response2");
-                IEnumerable<ProtectionPolicyInfo> policyObjects = null;
-                if (Name != null)
+                IEnumerable<RecoveryPointInfo> recoveryPointObjects = null;
+                if (Id != null)
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.Where(x => x.InstanceId.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
                 }
                 else
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
+                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects;
                 }
 
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(policyObjects);
+                WriteAzureBackupProtectionPolicy(recoveryPointObjects, AzureBackupItem);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(ProtectionPolicyInfo sourcePolicy)
+        public void WriteAzureBackupProtectionPolicy(RecoveryPointInfo sourceRecoverPoint, AzureBackupItem azureBackupItem)
         {
-            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+            this.WriteObject(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
+        public void WriteAzureBackupProtectionPolicy(IEnumerable<RecoveryPointInfo> sourceRecoverPointList, AzureBackupItem azureBackupItem)
         {
-            List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
+            List<AzureBackupRecoveryPoint> targetList = new List<AzureBackupRecoveryPoint>();
 
-            foreach (var sourcePolicy in sourcePolicyList)
+            foreach (var sourceRecoverPoint in sourceRecoverPointList)
             {
-                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+                targetList.Add(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
             }
 
             this.WriteObject(targetList, true);
