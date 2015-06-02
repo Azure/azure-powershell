@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     /// <summary>

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Management.HDInsight.Job.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {

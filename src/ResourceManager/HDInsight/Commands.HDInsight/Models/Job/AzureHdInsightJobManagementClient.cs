@@ -16,8 +16,6 @@ using System;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Management.HDInsight.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 

@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models

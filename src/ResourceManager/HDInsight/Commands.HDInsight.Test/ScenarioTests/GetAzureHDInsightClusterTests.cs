@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
-using System.Management.Automation.Runspaces;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -34,9 +32,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             cmdlet = new GetAzureHDInsightCommand
             {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightManagementClient = hdinsightManagementClient.Object,
                 ClusterName = ClusterName,
-                ResourceGroupName = ResourceGroupName,
-                CommandRuntime = commandRuntimeMock.Object
+                ResourceGroupName = ResourceGroupName
             };
         }
 
@@ -60,9 +59,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
-                    }
-                },
-
+                    },
+                    OperatingSystemType = OSType.Windows
+                }
             };
 
             var getresponse = new ClusterGetResponse { Cluster = cluster };
@@ -70,17 +69,136 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Returns(getresponse)
                 .Verifiable(); 
             
-            var expected = new List<Cluster> { cluster };
-            hdinsightManagementClient.Setup(c => c.GetCluster(ResourceGroupName, ClusterName))
-                .Returns(expected)
+            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+                .CallBase()
                 .Verifiable();
             
-            cmdlet.HDInsightManagementClient = hdinsightManagementClient.Object;
             cmdlet.ExecuteCmdlet();
 
-            var expectedOutput = new List<AzureHDInsightCluster> { new AzureHDInsightCluster(cluster) };
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<AzureHDInsightCluster>>(), true), Times.Once);
+        }
 
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput, true), Times.Once);
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanListHDInsightClustersInRG()
+        {
+            var cluster1 = new Cluster
+            {
+                Id = "id",
+                Name = ClusterName + "1",
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.1",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        ClusterType = HDInsightClusterType.Hadoop
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OperatingSystemType = OSType.Windows
+                }
+            };
+
+            var cluster2 = new Cluster
+            {
+                Id = "id",
+                Name = ClusterName + "2",
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.1",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        ClusterType = HDInsightClusterType.Hadoop
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OperatingSystemType = OSType.Windows
+                }
+            };
+
+            var listresponse = new ClusterListResponse {Clusters = new[] {cluster1, cluster2}};
+            hdinsightManagementClient.Setup(c => c.ListClusters(ResourceGroupName))
+                .Returns(listresponse)
+                .Verifiable();
+
+            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+                .CallBase()
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<AzureHDInsightCluster>>(), true), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanListHDInsightClusters()
+        {
+            var cluster1 = new Cluster
+            {
+                Id = "id",
+                Name = ClusterName + "1",
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.1",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        ClusterType = HDInsightClusterType.Hadoop
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OperatingSystemType = OSType.Windows
+                }
+            };
+
+            var cluster2 = new Cluster
+            {
+                Id = "id",
+                Name = ClusterName + "2",
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.1",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        ClusterType = HDInsightClusterType.Hadoop
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OperatingSystemType = OSType.Windows
+                }
+            };
+
+            var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
+            hdinsightManagementClient.Setup(c => c.ListClusters(ResourceGroupName))
+                .Returns(listresponse)
+                .Verifiable();
+
+            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+                .CallBase()
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<AzureHDInsightCluster>>(), true), Times.Once);
         }
     }
 }

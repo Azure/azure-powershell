@@ -15,7 +15,6 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using System.Security;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
