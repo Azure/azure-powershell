@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="msg">Confirmation message</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
-        private bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath);
             return overwrite || OutputStream.ConfirmAsync(overwriteMessage).Result;

@@ -283,7 +283,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 }
                 else
                 {
-                    dir = this.Channel.GetShareReference(this.SrcShareName).GetRootDirectoryReference();
+                    dir = this.BuildFileShareObjectFromName(this.SrcShareName).GetRootDirectoryReference();
                 }
 
                 string[] path = NamingUtil.ValidatePath(this.SrcFilePath, true);
@@ -335,7 +335,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     destPath = this.DestFilePath;
                 }
-
+                
+                NamingUtil.ValidateShareName(this.DestShareName, false);
                 CloudFileShare share = destChannal.GetShareReference(this.DestShareName);
 
                 string[] path = NamingUtil.ValidatePath(destPath, true);

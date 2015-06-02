@@ -844,7 +844,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blob type of &quot;{0}&quot; is invalid, only page blob or block blob are supported..
+        ///   Looks up a localized string similar to Blob type &quot;{0}&quot; is invalid, only page blob or block blob are supported..
         /// </summary>
         internal static string InvalidBlobType {
             get {
@@ -1020,6 +1020,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string ObjectCannotBeNull {
             get {
                 return ResourceManager.GetString("ObjectCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only support to copy from azure file to a block blob..
+        /// </summary>
+        internal static string OnlyCopyFromBlockBlobToAzureFile {
+            get {
+                return ResourceManager.GetString("OnlyCopyFromBlockBlobToAzureFile", resourceCulture);
             }
         }
         
