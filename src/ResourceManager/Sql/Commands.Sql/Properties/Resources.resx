@@ -171,10 +171,10 @@
   <data name="DataMaskingRuleDoesNotExist" xml:space="preserve">
     <value>The rule {0} does not exist</value>
   </data>
-  <data name="RemoveAzureSqlDatabaseServerDescription" xml:space="preserve">
+  <data name="RemoveAzureSqlServerDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Server '{0}'.</value>
   </data>
-  <data name="RemoveAzureSqlDatabaseServerWarning" xml:space="preserve">
+  <data name="RemoveAzureSqlServerWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Server '{0}'?</value>
   </data>
   <data name="ServerNameExists" xml:space="preserve">
@@ -192,10 +192,10 @@
   <data name="ServerFirewallRuleNameExists" xml:space="preserve">
     <value>Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
   </data>
-  <data name="RemoveAzureSqlDatabaseServerFirewallRuleDescription" xml:space="preserve">
+  <data name="RemoveAzureSqlServerFirewallRuleDescription" xml:space="preserve">
     <value>Permanently removing Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
   </data>
-  <data name="RemoveAzureSqlDatabaseServerFirewallRuleWarning" xml:space="preserve">
+  <data name="RemoveAzureSqlServerFirewallRuleWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
   </data>
   <data name="ElasticPoolNameExists" xml:space="preserve">
@@ -221,5 +221,11 @@
   </data>
   <data name="StopAzureSqlServerUpgradeDescription" xml:space="preserve">
     <value>Stopping upgrade for Azure Sql Database Server '{0}'.</value>
+  </data>
+  <data name="StandaloneDatabaseActivityNotSupported" xml:space="preserve">
+    <value>Azure Sql Database Elastic Pool name is required for this operation</value>
+  </data>
+  <data name="DeprecatedEventTypeUsed" xml:space="preserve">
+    <value>The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions</value>
   </data>
 </root>

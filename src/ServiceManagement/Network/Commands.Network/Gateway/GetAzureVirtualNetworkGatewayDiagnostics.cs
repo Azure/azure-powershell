@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Security.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    /// <summary>
-    /// Returns the auditing policy of a specific database server.
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseServerAuditingPolicy"), OutputType(typeof(ServerAuditingPolicyModel))]
-    public class GetAzureSqlDatabaseServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayDiagnostics"), OutputType(typeof(ManagementOperationContext))]
+    public class GetAzureVirtualNetworkGatewayDiagnostics : NetworkCmdletBase
     {
-        /// <summary>
-        /// No sending is needed as this is a Get cmdlet
-        /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network gateway id.")]
+        [ValidateGuid]
+        [ValidateNotNullOrEmpty]
+        public string GatewayId
         {
-            return null;
+            get;
+            set;
+        }
+
+        public override void ExecuteCmdlet()
+        {
+            WriteObject(Client.GetDiagnosticsV2(GatewayId));
         }
     }
 }

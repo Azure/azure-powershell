@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the current service objective name
         /// </summary>
-        public string CurrentServiceLevelObjectiveName { get; set; }
+        public string CurrentServiceObjectiveName { get; set; }
 
         /// <summary>
         /// gets or sets the requested service objective ID
