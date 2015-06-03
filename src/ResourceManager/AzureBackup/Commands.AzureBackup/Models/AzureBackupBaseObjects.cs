@@ -53,5 +53,43 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Id of the Azure Backup Container
         /// </summary>
         public string ContainerId { get; set; }
+
+        public AzureBackupContainerContextObject()
+            : base()
+        {
+        }
+
+        public AzureBackupContainerContextObject(AzureBackupContainerContextObject azureBackupContainerContextObject)
+            : base(azureBackupContainerContextObject.ResourceGroupName, azureBackupContainerContextObject.ResourceName)
+        {
+            ContainerType = azureBackupContainerContextObject.ContainerType;
+            ContainerName = azureBackupContainerContextObject.ContainerName;
+            ContainerId = azureBackupContainerContextObject.ContainerId;
+        }
+    }
+
+    public class AzureBackupItemContextObject : AzureBackupContainerContextObject
+    {
+        /// <summary>
+        /// DataSourceId of Azure Backup Item
+        /// </summary>
+        public string DataSourceId { get; set; }
+
+        /// <summary>
+        /// DataSourceId of Azure Backup Item
+        /// </summary>
+        public string DataSourceType { get; set; }
+
+        public AzureBackupItemContextObject()
+            : base()
+        {
+        }
+
+        public AzureBackupItemContextObject(AzureBackupItemContextObject azureBackupItemContextObject)
+            : base(azureBackupItemContextObject)
+        {
+            DataSourceId = azureBackupItemContextObject.DataSourceId;
+            DataSourceType = azureBackupItemContextObject.DataSourceType;
+        }
     }
 }
