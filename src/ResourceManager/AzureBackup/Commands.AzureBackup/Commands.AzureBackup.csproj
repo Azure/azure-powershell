@@ -121,6 +121,7 @@
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\VaultCredentials\AcsNamespace.cs" />
@@ -130,6 +131,8 @@
     <Compile Include="Cmdlets\VaultCredentials\VaultCredentials.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
+    <Compile Include="Models\AzureBackupContainerStatus.cs" />
+    <Compile Include="Models\AzureBackupContainerType.cs" />
     <Compile Include="Models\AzureBackupItem.cs" />
     <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
     <Compile Include="Models\ProtectionPolicy.cs" />
