@@ -13,26 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Network.Models;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
-    public class VirtualNetworkGatewayContext : ManagementOperationContext
+    public class GetVirtualNetworkGatewayConnectionContext : ManagementOperationContext
     {
-        public string LastEventData { get; set; }
+        public string GatewayConnectionName { get; set; }
 
-        public DateTime? LastEventTimeStamp { get; set; }
+        public string VirtualNetworkGatewayId { get; set; }
 
-        public string LastEventMessage { get; set; }
+        public string ConnectedEntityId { get; set; }
 
-        public int LastEventID { get; set; }
+        public string GatewayConnectionType { get; set; }
 
-        public ProvisioningState State { get; set; }
+        public int RoutingWeight { get; set; }
 
-        public string VIPAddress { get; set; }
-
-        public string DefaultSite { get; set; }
-
-        public string GatewaySKU { get; set; }
+        public string SharedKey { get; set; }
     }
 }

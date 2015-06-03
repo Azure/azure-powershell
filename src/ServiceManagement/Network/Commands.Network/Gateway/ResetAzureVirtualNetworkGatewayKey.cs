@@ -12,34 +12,45 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
-    public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Reset, "AzureVirtualNetworkGatewayKey"), OutputType(typeof(GatewayGetOperationStatusResponse))]
+    public class ResetAzureVirtualNetworkGatewayKey : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network name.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string VNetName
+        public string GatewayId
         {
-            get; set;
+            get;
+            set;
         }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The virtual network gateway connected entityId.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string LocalNetworkSiteName
+        public string ConnectedEntityId
         {
-            get; set;
+            get;
+            set;
         }
+
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The number of characters that the shared key will contain when reset.The virtual network gateway connected entityId.")]
+        [ValidateNotNullOrEmpty]
+        public int keyLength
+        {
+            get;
+            set;
+        }
+
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetIPsecParameters(VNetName, LocalNetworkSiteName));
+            WriteObject(Client.ResetSharedKeyV2(GatewayId, ConnectedEntityId, keyLength));
         }
     }
 }

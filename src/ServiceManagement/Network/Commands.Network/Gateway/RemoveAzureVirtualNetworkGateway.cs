@@ -12,34 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
-    public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkGateway"), OutputType(typeof(ManagementOperationContext))]
+    public class RemoveAzureVirtualNetworkGateway : NetworkCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network name.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Virtual network gateway Id.")]
         [ValidateGuid]
         [ValidateNotNullOrEmpty]
-        public string VNetName
+        public string GatewayId
         {
-            get; set;
-        }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string LocalNetworkSiteName
-        {
-            get; set;
+            get;
+            set;
         }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetIPsecParameters(VNetName, LocalNetworkSiteName));
+            WriteObject(Client.DeleteVirtualNetworkGateway(GatewayId));
         }
     }
 }
