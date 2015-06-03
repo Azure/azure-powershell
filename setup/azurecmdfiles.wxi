@@ -1106,6 +1106,9 @@
                         <Component Id="cmp60A47A8F0DFC42757E29CA7C75A21217" Guid="*">
                             <File Id="fil552F02B5CDD640DB4312F7CAAB735049" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll" />
                         </Component>
+                        <Component Id="cmpDE97E805227E154CF4D25B2163461267" Guid="*">
+                            <File Id="fil13D0F3FF2F9B93D754B39296DABC0F54" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml" />
+                        </Component>
                         <Component Id="cmpE6D6321DFD55A1F07571F1E21169199C" Guid="*">
                             <File Id="filFEDCD421B189CE5A582A37B80D68C3FE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml" />
                         </Component>
@@ -4252,6 +4255,7 @@
             <ComponentRef Id="cmp1F786D1771E02C0007F768794F3E10AB" />
             <ComponentRef Id="cmpDDC47903D4E3310A136BA41E977329F6" />
             <ComponentRef Id="cmp60A47A8F0DFC42757E29CA7C75A21217" />
+            <ComponentRef Id="cmpDE97E805227E154CF4D25B2163461267" />
             <ComponentRef Id="cmpE6D6321DFD55A1F07571F1E21169199C" />
             <ComponentRef Id="cmpD256276ACABBFDBED438D49EAF836520" />
             <ComponentRef Id="cmp59338734131C2DE2321E63AB277B8300" />

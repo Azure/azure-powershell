@@ -84,7 +84,7 @@ function Test-StorageInsightCreateUpdateDelete
     Assert-AreEqualArray @() $storageInsight.Tables
     Assert-AreEqualArray @("wad-iis-logfiles") $storageInsight.Containers
 
-    $storageinsight = New-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $siname -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey" -Force
+    $storageinsight = New-AzureOperationalInsightsStorageInsight -Workspace $workspace -Name $siname -Tables @("WADWindowsEventLogsTable") -Containers @("wad-iis-logfiles") -StorageAccountKey "anotherfakekey" -StorageAccountResourceId $said -Force
     Assert-AreEqualArray @("WADWindowsEventLogsTable") $storageInsight.Tables
     Assert-AreEqualArray @("wad-iis-logfiles") $storageInsight.Containers
 
