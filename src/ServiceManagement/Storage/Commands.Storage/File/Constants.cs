@@ -62,6 +62,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         public const string FileCopyCmdletName = "AzureStorageFileCopy";
 
         /// <summary>
+        /// Cmdlet name for file copy state.
+        /// </summary>
+        public const string FileCopyCmdletStateName = "AzureStorageFileCopyState";
+
+        /// <summary>
         /// Stores the default endpoint suffix for storage accounts.
         /// </summary>
         public const string DefaultStorageEndPointSuffix = "core.windows.net";

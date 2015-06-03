@@ -188,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             string activity = String.Format(Resources.CopyBlobStatus, blob.CopyState.Status.ToString(), blob.Name, blob.Container.Name, blob.CopyState.Source.ToString());
             progress.Activity = activity;
-            string message = String.Format(Resources.CopyBlobPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
+            string message = String.Format(Resources.CopyPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
             progress.StatusDescription = message;
             OutputStream.WriteProgress(progress);
         }
