@@ -80,6 +80,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
+        /// Filters the existing role Definitions by CustomRole.
+        /// </summary>
+        /// <returns>The custom role Definitions</returns>
+        public List<PSRoleDefinition> FilterRoleDefinitionsByCustom()
+        {
+            List<PSRoleDefinition> result = new List<PSRoleDefinition>();
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List().RoleDefinitions
+                .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
+                .Select(r => r.ToPSRoleDefinition()));
+            return result;
+        }
+
+        /// <summary>
         /// Creates new role assignment.
         /// </summary>
         /// <param name="parameters">The create parameters</param>
