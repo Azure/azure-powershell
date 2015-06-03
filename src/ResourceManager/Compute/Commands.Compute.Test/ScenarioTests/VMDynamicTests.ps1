@@ -332,6 +332,9 @@ function ${generated_func_name}
         `$loc = '${loc_name_str}';
         `$vmsize = '${vm_size_str}';
 
+        `$st = Write-Output 'Running Test ${generated_func_name} - Start ${rgname_str}, ${loc_name_str} & ${vm_size_str}';
+
+        `$st = Write-Output 'Running Test ${generated_func_name} - Creating Resource Group';
         `$st = New-AzureResourceGroup -Location `$loc -Name `$rgname;
 
         `$vmconfig = create_and_setup_vm_config_object `$loc `$rgname `$vmsize;
@@ -346,14 +349,20 @@ function ${generated_func_name}
         `$st = setup_image_and_disks `$loc `$rgname `$stoname `$vmconfig;
 
         # Virtual Machine
+        `$st = Write-Output 'Running Test ${generated_func_name} - Creating VM';
+
         `$vmname = 'vm' + `$rgname;
         `$st = New-AzureVM -ResourceGroupName `$rgname -Location `$loc -Name `$vmname -VM `$vmconfig;
 
         # Get VM
+        `$st = Write-Output 'Running Test ${generated_func_name} - Getting VM';
         `$vm1 = Get-AzureVM -Name `$vmname -ResourceGroupName `$rgname;
 
         # Remove
+        `$st = Write-Output 'Running Test ${generated_func_name} - Removing VM';
         `$st = Remove-AzureVM -Name `$vmname -ResourceGroupName `$rgname -Force;
+
+        `$st = Write-Output 'Running Test ${generated_func_name} - End';
     }
     finally
     {
