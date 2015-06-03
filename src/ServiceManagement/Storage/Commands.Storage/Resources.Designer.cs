@@ -295,15 +295,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes..
-        /// </summary>
-        internal static string CopyBlobPendingStatus {
-            get {
-                return ResourceManager.GetString("CopyBlobPendingStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; copy to blob &apos;{1}&apos; in container &apos;{2}&apos; from &apos;{3}&apos;..
         /// </summary>
         internal static string CopyBlobStatus {
@@ -349,6 +340,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy File..
+        /// </summary>
+        internal static string CopyFileActivity {
+            get {
+                return ResourceManager.GetString("CopyFileActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; copy to file &apos;{1}&apos; in share &apos;{2}&apos; from &apos;{3}&apos;..
+        /// </summary>
+        internal static string CopyFileStatus {
+            get {
+                return ResourceManager.GetString("CopyFileStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CopyId can not be empty..
         /// </summary>
         internal static string CopyIdCannotBeEmpty {
@@ -363,6 +372,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string CopyIdMismatch {
             get {
                 return ResourceManager.GetString("CopyIdMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes..
+        /// </summary>
+        internal static string CopyPendingStatus {
+            get {
+                return ResourceManager.GetString("CopyPendingStatus", resourceCulture);
             }
         }
         

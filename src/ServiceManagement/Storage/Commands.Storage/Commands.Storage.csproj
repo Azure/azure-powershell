@@ -188,6 +188,7 @@
     <Compile Include="File\AzureStorageFileException.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageFile.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageFileContent.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFileCopyState.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageShare.cs" />
     <Compile Include="File\Cmdlet\GetAzureStorageShareStoredAccessPolicy.cs" />
     <Compile Include="File\Cmdlet\NewAzureStorageDirectory.cs" />
