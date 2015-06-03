@@ -114,6 +114,9 @@
   <ItemGroup>
     <Compile Include="HDInsightTestBase.cs" />
     <Compile Include="ScenarioTests\GetAzureHDInsightClusterTests.cs" />
+    <Compile Include="ScenarioTests\RdpTests.cs" />
+    <Compile Include="ScenarioTests\HttpTests.cs" />
+    <Compile Include="ScenarioTests\NewAzureHDInsightClusterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +138,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private IHDInsightManagementClient HdInsightManagementClient { get; set; }
 
-        public ClusterGetResponse CreateNewCluster(string resourceGroupName, string clusterName, ClusterCreateParameters parameters)
+        public virtual ClusterGetResponse CreateNewCluster(string resourceGroupName, string clusterName, ClusterCreateParameters parameters)
         {
             return HdInsightManagementClient.Clusters.Create(resourceGroupName, clusterName, parameters);
         }
@@ -80,32 +80,32 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.Get(resourceGroupName, clusterName);
         }
 
-        public HDInsightLongRunningOperationResponse ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
+        public virtual HDInsightLongRunningOperationResponse ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
             return HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
         }
 
-        public ClusterGetResponse DeleteCluster(string resourceGroupName, string clusterName)
+        public virtual ClusterGetResponse DeleteCluster(string resourceGroupName, string clusterName)
         {
             return HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
         }
 
-        public HDInsightLongRunningOperationResponse ConfigureHttp(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
+        public virtual HDInsightLongRunningOperationResponse ConfigureHttp(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
         {
             return HdInsightManagementClient.Clusters.ConfigureHttpSettings(resourceGroupName, clusterName, httpSettings);
         }
 
-        public HttpConnectivitySettings GetConnectivitySettings(string resourceGroupName, string clusterName)
+        public virtual HttpConnectivitySettings GetConnectivitySettings(string resourceGroupName, string clusterName)
         {
             return HdInsightManagementClient.Clusters.GetConnectivitySettings(resourceGroupName, clusterName);
         }
 
-        public HDInsightLongRunningOperationResponse ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
+        public virtual HDInsightLongRunningOperationResponse ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)
         {
             return HdInsightManagementClient.Clusters.ConfigureRdpSettings(resourceGroupName, clusterName, rdpSettings);
         }
 
-        public CapabilitiesResponse GetCapabilities(string location)
+        public virtual CapabilitiesResponse GetCapabilities(string location)
         {
             return HdInsightManagementClient.Clusters.GetCapabilities(location);
         }

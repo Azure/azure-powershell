@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -33,9 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet = new GetAzureHDInsightCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
-                ClusterName = ClusterName,
-                ResourceGroupName = ResourceGroupName
+                HDInsightManagementClient = hdinsightManagementClient.Object
             };
         }
 
@@ -43,6 +42,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGetHDInsightCluster()
         {
+            cmdlet.ClusterName = ClusterName;
+            cmdlet.ResourceGroupName = ResourceGroupName;
             var cluster = new Cluster
             {
                 Id = "id",
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanListHDInsightClustersInRG()
         {
+            cmdlet.ResourceGroupName = ResourceGroupName;
             var cluster1 = new Cluster
             {
                 Id = "id",
@@ -137,7 +139,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<AzureHDInsightCluster>>(), true), Times.Once);
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(
+                        It.Is<List<AzureHDInsightCluster>>(
+                            list =>
+                                list.Count == 2 &&
+                                list.Any(c => c.Name == cluster1.Name) &&
+                                list.Any(c => c.Name == cluster2.Name)), true), Times.Once);
         }
 
         [Fact]
@@ -187,7 +196,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
-            hdinsightManagementClient.Setup(c => c.ListClusters(ResourceGroupName))
+            hdinsightManagementClient.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();
 
@@ -198,7 +207,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<List<AzureHDInsightCluster>>(), true), Times.Once);
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(
+                        It.Is<List<AzureHDInsightCluster>>(
+                            list =>
+                                list.Count == 2 &&
+                                list.Any(c => c.Name == cluster1.Name) &&
+                                list.Any(c => c.Name == cluster2.Name)), true), Times.Once);
         }
     }
 }
