@@ -505,11 +505,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 foreach (var identity in identities)
                 {
-                    task = this.ResourceManagementClient.ResourceProviderOperationDetails.ListAsync(identity);
-                    task.Wait();
+                    try
+                    {
+                        task = this.ResourceManagementClient.ResourceProviderOperationDetails.ListAsync(identity);
+                        task.Wait(10000);
 
-                    // Add operations for this provider. 
-                    allProviderOperations.AddRange(task.Result.ResourceProviderOperationDetails.Select(op => op.ToPSResourceProviderOperation()));
+                        // Add operations for this provider.
+                        if (task.IsCompleted)
+                        {
+                            allProviderOperations.AddRange(task.Result.ResourceProviderOperationDetails.Select(op => op.ToPSResourceProviderOperation()));
+                        }
+                    }
+                    catch(AggregateException ae)
+                    {
+                         AggregateException flattened = ae.Flatten();
+                         foreach (Exception inner in flattened.InnerExceptions)
+                         {
+                             WriteWarning(inner.ToString());
+                         }
+                    }
                 }
             }
               

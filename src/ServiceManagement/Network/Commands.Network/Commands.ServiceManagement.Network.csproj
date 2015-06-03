@@ -83,9 +83,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.2\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -147,6 +147,10 @@
     <Compile Include="ApplicationGateway\StartApplicationGateway.cs" />
     <Compile Include="ApplicationGateway\StopApplicationGateway.cs" />
     <Compile Include="ApplicationGateway\UpdateApplicationGateway.cs" />
+    <Compile Include="Gateway\GetAzureVirtualNetworkGatewayConnection.cs" />
+    <Compile Include="Gateway\GetAzureVirtualNetworkGatewayDiagnostics.cs" />
+    <Compile Include="Gateway\GetAzureVirtualNetworkGatewayIPsecParameters.cs" />
+    <Compile Include="Gateway\GetAzureVirtualNetworkGatewayKey.cs" />
     <Compile Include="Gateway\GetAzureVNetConnection.cs" />
     <Compile Include="Gateway\GetAzureVNetGateway.cs" />
     <Compile Include="Gateway\GetAzureVNetGatewayDiagnostics.cs" />
@@ -157,17 +161,39 @@
     <Compile Include="Gateway\Model\SharedKeyContext.cs" />
     <Compile Include="Gateway\Model\VirtualNetworkDiagnosticsContext.cs" />
     <Compile Include="Gateway\Model\VirtualNetworkGatewayContext.cs" />
+    <Compile Include="Gateway\Model\GetLocalNetworkGatewayContext.cs" />
+    <Compile Include="Gateway\Model\GetVirtualNetworkGatewayConnectionContext.cs" />
+    <Compile Include="Gateway\Model\GetVirtualNetworkGatewayContext.cs" />
+    <Compile Include="Gateway\Model\LocalNetwrokGatewayContext.cs" />
+    <Compile Include="Gateway\Model\ValidateGuid.cs" />
+    <Compile Include="Gateway\NewAzureVirtualNetworkGateway.cs" />
+    <Compile Include="Gateway\NewAzureVirtualNetworkGatewayConnection.cs" />
     <Compile Include="Gateway\NewAzureVNetGateway.cs" />
     <Compile Include="Gateway\RemoveAzureVNetGateway.cs" />
     <Compile Include="Gateway\RemoveAzureVNetGatewayDefaultSite.cs" />
+    <Compile Include="Gateway\ResetAzureVirtualNetworkGatewayKey.cs" />      
     <Compile Include="Gateway\ResetAzureVNetGateway.cs" />
     <Compile Include="Gateway\ResizeAzureVNetGateway.cs" />
+    <Compile Include="Gateway\SetAzureVirtualNetworkGatewayIPsecParameters.cs" />      
+    <Compile Include="Gateway\SetAzureVirtualNetworkGatewayKey.cs" />
     <Compile Include="Gateway\SetAzureVNetGateway.cs" />
     <Compile Include="Gateway\SetAzureVNetGatewayDefaultSite.cs" />
     <Compile Include="Gateway\SetAzureVNetGatewayIPsecParameters.cs" />
     <Compile Include="Gateway\SetAzureVNetGatewayKey.cs" />
+    <Compile Include="Gateway\StartAzureVirtualNetworkGatewayDiagnostics.cs" />
     <Compile Include="Gateway\StartAzureVNetGatewayDiagnostics.cs" />
+    <Compile Include="Gateway\StopAzureVirtualNetworkGatewayDiagnostics.cs" />
     <Compile Include="Gateway\StopAzureVNetGatewayDiagnostics.cs" />
+    <Compile Include="Gateway\GetAzureLocalNetworkGateway.cs" />
+    <Compile Include="Gateway\GetAzureVirtualNetworkGateway.cs" />
+    <Compile Include="Gateway\NewAzureLocalNetworkGateway.cs" />
+    <Compile Include="Gateway\RemoveAzureLocalNetworkGateway.cs" />
+    <Compile Include="Gateway\RemoveAzureVirtualNetworkGateway.cs" />
+    <Compile Include="Gateway\RemoveAzureVirtualNetworkGatewayConnection.cs" />
+    <Compile Include="Gateway\ResetAzureVirtualNetworkGateway.cs" />
+    <Compile Include="Gateway\ResizeAzureVirtualNetworkGateway.cs" />
+    <Compile Include="Gateway\UpdateAzureLocalNetworkGateway.cs" />
+    <Compile Include="Gateway\UpdateAzureVirtualNetworkGatewayConnection.cs" />
     <Compile Include="IPForwarding\GetAzureIPForwarding.cs" />
     <Compile Include="IPForwarding\Model\IPForwardingState.cs" />
     <Compile Include="IPForwarding\SetAzureIPForwarding.cs" />
