@@ -24,17 +24,16 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public class NewAzureHDInsightClusterTests : HDInsightTestBase
+    public class NewClusterTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
-        private const string ClusterName = "hdicluster";
         private const string StorageName = "giyerwestus1.blob.core.windows.net";
         private const string StorageKey = "O9EQvp3A3AjXq/W27rst1GQfLllhp01qlJMJfSU1hVW2K42gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYUxYw==";
         private const int ClusterSize = 4;
 
         private readonly PSCredential _httpCred;
 
-        public NewAzureHDInsightClusterTests()
+        public NewClusterTests()
         {
             base.SetupTest();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private GrantAzureHDInsightHttpServicesAccessCommand grantcmdlet;
         private RevokeAzureHDInsightHttpServicesAccessCommand revokecmdlet;
-        private const string ClusterName = "hdicluster";
 
         private readonly PSCredential _httpCred;
         

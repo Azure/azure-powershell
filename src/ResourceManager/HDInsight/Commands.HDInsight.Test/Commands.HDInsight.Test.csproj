@@ -113,10 +113,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HDInsightTestBase.cs" />
-    <Compile Include="ScenarioTests\GetAzureHDInsightClusterTests.cs" />
-    <Compile Include="ScenarioTests\RdpTests.cs" />
-    <Compile Include="ScenarioTests\HttpTests.cs" />
-    <Compile Include="ScenarioTests\NewAzureHDInsightClusterTests.cs" />
+    <None Include="ScenarioTests\HDInsightConfigurationTests.ps1" />
+    <Compile Include="ScenarioTests\HDInsightConfigurationTests.cs" />
+    <Compile Include="ScenarioTests\HDInsightScenarioTestsBase.cs" />
+    <Compile Include="UnitTests\GetPropertiesTests.cs" />
+    <Compile Include="UnitTests\GetClusterTests.cs" />
+    <Compile Include="UnitTests\ConfigurationTests.cs" />
+    <Compile Include="UnitTests\RdpTests.cs" />
+    <Compile Include="UnitTests\HttpTests.cs" />
+    <Compile Include="UnitTests\NewClusterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SessionRecords\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

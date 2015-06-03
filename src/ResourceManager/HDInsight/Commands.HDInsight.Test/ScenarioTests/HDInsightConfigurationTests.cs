@@ -12,25 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.HDInsight.Models;
-using Moq;
+
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public class HDInsightTestBase
+    public class HDInsightConfigurationTests : HDInsightScenarioTestsBase
     {
-        protected const string ClusterName = "hdicluster";
-        protected const string ResourceGroupName = "hdi-rg1";
-        protected const string Location = "west us";
-
-        protected Mock<AzureHdInsightManagementClient> hdinsightManagementClient;
-        protected Mock<ICommandRuntime> commandRuntimeMock;
-
-        public virtual void SetupTest()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfigurationPipelining()
         {
-            hdinsightManagementClient = new Mock<AzureHdInsightManagementClient>();
-            commandRuntimeMock = new Mock<ICommandRuntime>();
+            RunPowerShellTest("Test-ConfigurationPipelining");
         }
     }
 }

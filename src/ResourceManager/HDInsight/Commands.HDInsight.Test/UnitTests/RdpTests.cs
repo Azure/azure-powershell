@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     public class RdpTests : HDInsightTestBase
     {
         private GrantAzureHDInsightRdpServicesAccessCommand grantcmdlet;
-        private RevokeAzureHDInsightHttpServicesAccessCommand revokecmdlet;
-        private const string ClusterName = "hdicluster";
+        private RevokeAzureHDInsightRdpServicesAccessCommand revokecmdlet;
 
         private readonly PSCredential _rdpCred;
         
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 RdpCredential = _rdpCred,
                 RdpAccessExpiry = new DateTime(2015, 1, 1)
             };
-            revokecmdlet = new RevokeAzureHDInsightHttpServicesAccessCommand
+            revokecmdlet = new RevokeAzureHDInsightRdpServicesAccessCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementClient.Object,
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 })
                 .Verifiable();
 
-            grantcmdlet.ExecuteCmdlet();
+            revokecmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
         }

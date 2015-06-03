@@ -22,12 +22,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public class GetAzureHDInsightClusterTests : HDInsightTestBase
+    public class GetClusterTests : HDInsightTestBase
     {
         private GetAzureHDInsightCommand cmdlet;
-        private const string ClusterName = "hdicluster";
 
-        public GetAzureHDInsightClusterTests()
+        public GetClusterTests()
         {
             base.SetupTest();
 
