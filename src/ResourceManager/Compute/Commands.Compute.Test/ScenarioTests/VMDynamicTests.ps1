@@ -14,11 +14,11 @@
 
 function get_all_vm_locations
 {
-    $st = Write-Output 'Getting all Azure location - Start';
+    $st = Write-Verbose 'Getting all Azure location - Start';
 
     $locations = Get-AzureLocation | where { $_.Name -like 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
 
-    $st = Write-Output 'Getting all Azure location - End';
+    $st = Write-Verbose 'Getting all Azure location - End';
 
     return $locations;
 }
@@ -27,11 +27,11 @@ function get_all_standard_vm_sizes
 {
     param ([string] $location)
 
-    $st = Write-Output "Getting all VM sizes in location '${location}' - Start";
+    $st = Write-Verbose "Getting all VM sizes in location '${location}' - Start";
 
     $vmsizes = Get-AzureVMSize -Location $location | where { $_.Name -like 'Standard_A*' -and $_.NumberOfCores -le 4 } | select -ExpandProperty Name;
 
-    $st = Write-Output "Getting all VM sizes in location [${location}] - End";
+    $st = Write-Verbose "Getting all VM sizes in location [${location}] - End";
 
     return $vmsizes;
 }
@@ -41,7 +41,7 @@ function get_hash_int_value
     # Reference: http://www.cse.yorku.ca/~oz/hash.html
     param ([string] $seedstr)
 
-    $st = Write-Output "Computing hash for '${seedstr}' - Start";
+    $st = Write-Verbose "Computing hash for '${seedstr}' - Start";
 
     if ($seedstr -eq $null) { $seedstr = ''; }
 
@@ -52,9 +52,9 @@ function get_hash_int_value
         $hash = ((($hash -shl 5) + $hash) + $c) % [System.Int32]::MaxValue;
     }
 
-    $st = Write-Output "Computing hash for '${seedstr}' - `$hash = ${hash}";
+    $st = Write-Verbose "Computing hash for '${seedstr}' - `$hash = ${hash}";
 
-    $st = Write-Output "Computing hash for '${seedstr}' - End";
+    $st = Write-Verbose "Computing hash for '${seedstr}' - End";
 
     return $hash;
 }
@@ -89,12 +89,12 @@ function get_vm_config_object
 {
     param ([string] $rgname, [string] $vmsize)
     
-    $st = Write-Output "Creating VM Config Object - Start";
+    $st = Write-Verbose "Creating VM Config Object - Start";
 
     $vmname = 'vm' + $rgname;
     $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
 
-    $st = Write-Output "Creating VM Config Object - End";
+    $st = Write-Verbose "Creating VM Config Object - End";
 
     return $p;
 }
@@ -108,17 +108,17 @@ function get_created_storage_account_name
 {
     param ([string] $loc, [string] $rgname)
 
-    $st = Write-Output "Creating and getting storage account for '${loc}' and '${rgname}' - Start";
+    $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - Start";
 
     $stoname = 'sto' + $rgname;
     $stotype = 'Standard_GRS';
 
-    $st = Write-Output "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
+    $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
 
     $st = New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     $st = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
     
-    $st = Write-Output "Creating and getting storage account for '${loc}' and '${rgname}' - End";
+    $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - End";
 
     return $stoname;
 }
@@ -136,7 +136,7 @@ function create_and_setup_nic_ids
 {
     param ([string] $loc, [string] $rgname, $vmconfig)
 
-    $st = Write-Output "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
+    $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
     $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
     $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
@@ -184,7 +184,7 @@ function create_and_setup_nic_ids
 
 $fn_end =
 @'
-    $st = Write-Output "Creating and getting NICs for '${loc}' and '${rgname}' - End";
+    $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - End";
 
     return $nic_ids;
 }
@@ -201,7 +201,7 @@ function create_and_setup_vm_config_object
 {
     param ([string] $loc, [string] $rgname, [string] $vmsize)
 
-    $st = Write-Output "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - Start";
+    $st = Write-Verbose "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - Start";
 
     $vmconfig = get_vm_config_object $rgname $vmsize
 
@@ -212,7 +212,7 @@ function create_and_setup_vm_config_object
     $computerName = "cn" + $rgname;
     $vmconfig = Set-AzureVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
 
-    $st = Write-Output "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - End";
+    $st = Write-Verbose "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - End";
 
     return $vmconfig;
 }
@@ -228,7 +228,7 @@ function setup_image_and_disks
 {
     param ([string] $loc, [string] $rgname, [string] $stoname, $vmconfig)
 
-    $st = Write-Output "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - Start";
+    $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - Start";
 
     $osDiskName = 'osDisk';
     $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
@@ -244,7 +244,7 @@ function setup_image_and_disks
     # Do not add any data disks
     $vmconfig.StorageProfile.DataDisks = $null;
 
-    $st = Write-Output "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - End";
+    $st = Write-Verbose "Setting up image and disks of VM config object jfor '${loc}', '${rgname}' and '${stoname}' - End";
 
     return $vmconfig;
 }
@@ -259,7 +259,7 @@ function Run-VMDynamicTests
 {
     param ([int] $num_total_generated_tests = 3, [string] $base_folder = '.\ScenarioTests\Generated')
 
-    $st = Write-Output 'Running VM Dynamic Tests - Start';
+    $st = Write-Verbose 'Running VM Dynamic Tests - Start';
 
     [bool] $isRecordMode = $true;
     $testMode = Get-ComputeTestMode;
@@ -268,7 +268,7 @@ function Run-VMDynamicTests
         $isRecordMode = $false;
     }
 
-    $st = Write-Output "Running VM Dynamic Tests - `$isRecordMode = $isRecordMode";
+    $st = Write-Verbose "Running VM Dynamic Tests - `$isRecordMode = $isRecordMode";
 
     $generated_file_names = @($null) * $num_total_generated_tests;
     $generated_func_names = @($null) * $num_total_generated_tests;
@@ -289,7 +289,7 @@ function Run-VMDynamicTests
         $generated_func_name = 'ps_vm_dynamic_test_func_' + $index + '_' + $rgname_str;
         $generated_func_names[$i] = $generated_func_name;
 
-        $st = Write-Output "Running VM Dynamic Tests - File & Test Name #${index}: ${generated_file_name} & ${generated_func_name}";
+        $st = Write-Verbose "Running VM Dynamic Tests - File & Test Name #${index}: ${generated_file_name} & ${generated_func_name}";
     }
 
     $locations = get_all_vm_locations;
@@ -302,7 +302,7 @@ function Run-VMDynamicTests
             $generated_file_name = $generated_file_names[$i];
             $generated_func_name = $generated_func_names[$i];
 
-            $st = Write-Output ('Running VM Dynamic Tests - Generating Test #' + (1 + $i));
+            $st = Write-Verbose ('Running VM Dynamic Tests - Generating Test #' + (1 + $i));
 
             # Generate New Dynamic Test Files
             $st = New-Item -Path $generated_file_name -Type File -Value '' -Force;
@@ -332,9 +332,9 @@ function ${generated_func_name}
         `$loc = '${loc_name_str}';
         `$vmsize = '${vm_size_str}';
 
-        `$st = Write-Output 'Running Test ${generated_func_name} - Start ${rgname_str}, ${loc_name_str} & ${vm_size_str}';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - Start ${rgname_str}, ${loc_name_str} & ${vm_size_str}';
 
-        `$st = Write-Output 'Running Test ${generated_func_name} - Creating Resource Group';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - Creating Resource Group';
         `$st = New-AzureResourceGroup -Location `$loc -Name `$rgname;
 
         `$vmconfig = create_and_setup_vm_config_object `$loc `$rgname `$vmsize;
@@ -349,20 +349,20 @@ function ${generated_func_name}
         `$st = setup_image_and_disks `$loc `$rgname `$stoname `$vmconfig;
 
         # Virtual Machine
-        `$st = Write-Output 'Running Test ${generated_func_name} - Creating VM';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - Creating VM';
 
         `$vmname = 'vm' + `$rgname;
         `$st = New-AzureVM -ResourceGroupName `$rgname -Location `$loc -Name `$vmname -VM `$vmconfig;
 
         # Get VM
-        `$st = Write-Output 'Running Test ${generated_func_name} - Getting VM';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - Getting VM';
         `$vm1 = Get-AzureVM -Name `$vmname -ResourceGroupName `$rgname;
 
         # Remove
-        `$st = Write-Output 'Running Test ${generated_func_name} - Removing VM';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - Removing VM';
         `$st = Remove-AzureVM -Name `$vmname -ResourceGroupName `$rgname -Force;
 
-        `$st = Write-Output 'Running Test ${generated_func_name} - End';
+        `$st = Write-Verbose 'Running Test ${generated_func_name} - End';
     }
     finally
     {
@@ -374,7 +374,7 @@ function ${generated_func_name}
 "@;
             $st = $fn_body | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
-            $st = Write-Output ('Running VM Dynamic Tests - Generated Function #' + (1 + $i) + ' : ' + $fn_body);
+            $st = Write-Verbose ('Running VM Dynamic Tests - Generated Function #' + (1 + $i) + ' : ' + $fn_body);
         }
     }
 
@@ -385,10 +385,10 @@ function ${generated_func_name}
         
         $generated_func_name = $generated_func_names[$i];
 
-        $st = Write-Output ('Running VM Dynamic Tests - Invoking Function #' + (1 + $i) + ' : ' + $generated_func_name);
+        $st = Write-Verbose ('Running VM Dynamic Tests - Invoking Function #' + (1 + $i) + ' : ' + $generated_func_name);
 
         $st = Invoke-Expression -Command $generated_func_name;
     }
 
-    $st = Write-Output 'Running VM Dynamic Tests - End';
+    $st = Write-Verbose 'Running VM Dynamic Tests - End';
 }
