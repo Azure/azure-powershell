@@ -542,6 +542,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string deploymentLabel = "label1";
             DeploymentInfoContext result;
 
+            PSCredential cred = new PSCredential(username, Utilities.convertToSecureString(password));
+            ExtensionConfigurationInput rdpExtCfg = vmPowershellCmdlets.NewAzureServiceRemoteDesktopExtensionConfig(cred);
+
             try
             {
                 vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
@@ -549,7 +552,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false);
+                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false, rdpExtCfg);
                 }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
 
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
@@ -565,6 +568,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 1);
                 Console.WriteLine("successfully moved");
+
+                // Re-create the Staging depoyment with the extension
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false, rdpExtCfg);
+                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
+
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 1);
+                Console.WriteLine(string.Format("Successfully re-deployed the package to the {0} slot.", DeploymentSlotType.Staging));
 
                 // Set the deployment status to 'Suspended'
                 Utilities.RetryActionUntilSuccess(() =>
