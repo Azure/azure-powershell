@@ -169,5 +169,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return file.FetchAttributesAsync(accessCondition, options, operationContext, token);
         }
+
+        public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return file.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
+        }
     }
 }

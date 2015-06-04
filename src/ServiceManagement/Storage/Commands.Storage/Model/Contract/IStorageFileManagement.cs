@@ -343,7 +343,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
             FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
-
         /// <summary>
         ///  Returns a task that performs an asynchronous operation to retrieve the file's
         ///  attributes.
@@ -369,5 +368,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  A System.Threading.Tasks.Task object that represents the current operation.
         /// </returns>
         Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token);
+
+        /// <summary>
+        /// Return a task that asynchronously abort the file copy operation
+        /// </summary>
+        /// <param name="file">CloudFile object</param>
+        /// <param name="abortCopyId">Copy id</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="requestOptions">File request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Return a task that asynchronously abort the file copy operation</returns>
+        Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken);
     }
 }

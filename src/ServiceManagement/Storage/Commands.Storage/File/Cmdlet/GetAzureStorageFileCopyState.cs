@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Storage.File;
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, Constants.FileCopyCmdletStateName)]
-    public class GetAzureStorageFileCopyState : AzureStorageFileCmdletBase
+    public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
             Position = 0, 

@@ -204,6 +204,7 @@
     <Compile Include="File\Cmdlet\SetAzureStorageShareQuota.cs" />
     <Compile Include="File\Cmdlet\SetAzureStorageShareStoredAccessPolicy.cs" />
     <Compile Include="File\Cmdlet\StartAzureStorageFileCopy.cs" />
+    <Compile Include="File\Cmdlet\StopAzureStorageFileCopy.cs" />
     <Compile Include="File\Constants.cs" />
     <Compile Include="File\ErrorIdConstants.cs" />
     <Compile Include="File\NamingUtil.cs" />

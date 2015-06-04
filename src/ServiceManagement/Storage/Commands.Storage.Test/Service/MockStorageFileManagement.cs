@@ -168,5 +168,15 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             throw new NotImplementedException();
         }
+
+        public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
