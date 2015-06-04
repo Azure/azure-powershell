@@ -262,6 +262,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         null));
             }
             List<string> requiredModules = parseResult.RequiredModules;
+            if (requiredModules.Contains("PSDesiredStateConfiguration"))
+            {
+                requiredModules.Remove("PSDesiredStateConfiguration");
+            }
+
             WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionRequiredModulesVerbose, String.Join(", ", requiredModules)));
 
             // Create a temporary directory for uploaded zip file
