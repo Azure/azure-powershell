@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -79,5 +80,33 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Last Backup Job Id for the Azure Backup Item
         /// </summary>
         public string LastBackupJobId { get; set; }
+
+        public AzureBackupItem()
+            : base()
+        {
+        }
+
+        public AzureBackupItem(DataSourceInfo datasource, AzureBackupContainer azureBackupContainer)
+            : base(datasource, azureBackupContainer)
+        {
+            Status = datasource.Status;
+            ProtectionStatus = datasource.ProtectionStatus;
+            ProtectableObjectName = datasource.ProtectableObjectName;
+            ProtectionPolicyName = datasource.ProtectionPolicyName;
+            ProtectionPolicyId = datasource.ProtectionPolicyId;
+            PolicyInconsistent = datasource.PolicyInconsistent;
+            RecoveryPointsCount = datasource.RecoveryPointsCount;
+            LastRecoveryPoint = datasource.LastRecoveryPoint;
+            LastBackupTime = datasource.LastBackupTime;
+            LastBackupStatus = datasource.LastBackupStatus;
+            LastBackupJobId = datasource.LastBackupJobId;
+        }
+
+        public AzureBackupItem(ProtectableObjectInfo pPOItem, AzureBackupContainer azureBackupContainer)
+            : base(pPOItem, azureBackupContainer)
+        {
+            ProtectionStatus = pPOItem.ProtectionStatus;
+            ProtectableObjectName = pPOItem.Name;
+        }
     }
 }

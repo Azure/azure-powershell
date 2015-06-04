@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public class AzureBackupVaultContextObject
@@ -66,6 +67,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ContainerName = azureBackupContainerContextObject.ContainerName;
             ContainerId = azureBackupContainerContextObject.ContainerId;
         }
+        public AzureBackupContainerContextObject(AzureBackupContainer azureBackupContainer)
+            : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName)
+        {
+            ContainerType = azureBackupContainer.ContainerType;
+            ContainerName = azureBackupContainer.ContainerName;
+            ContainerId = azureBackupContainer.ContainerId;
+        }
     }
 
     public class AzureBackupItemContextObject : AzureBackupContainerContextObject
@@ -90,6 +98,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             DataSourceId = azureBackupItemContextObject.DataSourceId;
             DataSourceType = azureBackupItemContextObject.DataSourceType;
+        }
+
+        public AzureBackupItemContextObject(DataSourceInfo item, AzureBackupContainer azureBackupContainer)
+            : base(azureBackupContainer)
+        {
+            DataSourceId = item.InstanceId;
+            DataSourceType = item.Type;
+        }
+
+        public AzureBackupItemContextObject(ProtectableObjectInfo item, AzureBackupContainer azureBackupContainer)
+            : base(azureBackupContainer)
+        {
+            DataSourceType = item.Type;
         }
     }
 }
