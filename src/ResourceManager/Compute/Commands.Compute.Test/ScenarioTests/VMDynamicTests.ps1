@@ -332,7 +332,7 @@ function ${generated_func_name}
         `$loc = '${loc_name_str}';
         `$vmsize = '${vm_size_str}';
 
-        `$st = Write-Verbose 'Running Test ${generated_func_name} - Start ${rgname_str}, ${loc_name_str} & ${vm_size_str}';
+        `$st = Write-Verbose `"Running Test ${generated_func_name} - Start `${rgname}, `${loc} & `${vmsize}`";
 
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Creating Resource Group';
         `$st = New-AzureResourceGroup -Location `$loc -Name `$rgname;
