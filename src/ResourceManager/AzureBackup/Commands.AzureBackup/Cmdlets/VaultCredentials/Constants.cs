@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    internal static class AzureBackupCmdletHelpMessage
+    public class Constants
     {
-        public const string Vault = "The vault details";
-        public const string PolicyName = "The protection policy name.";
-        public const string ResourceGroupName = "The ResourceGroup name.";
-        public const string ResourceName = "The Resource name.";
-        public const string TargetLocation = "The directory where the credentials file will be saved.";
-        public const string ContainerName = "The container name.";
-        public const string ContainerId = "The container ID.";
-        public const string ContainerRegistrationStatus = "The container registration status.";
-        public const string ContainerType = "The container type.";
+        public const int VaultCertificateExpiryInHoursForBackup = 48;
     }
 }

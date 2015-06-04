@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Get list of protection policies
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
     public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
