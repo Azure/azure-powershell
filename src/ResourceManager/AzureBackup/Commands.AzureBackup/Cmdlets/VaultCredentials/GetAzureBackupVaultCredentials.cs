@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 string channelIntegrityKey = string.Empty;
                 try
                 {
-                    // Upload cert into acs namespace
+                    // Upload cert into ID Mgmt
                     WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
                     acsNamespace = UploadCert(cert, subscriptionId, ResourceName, resourceType, ResourceGroupName);
                     WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
