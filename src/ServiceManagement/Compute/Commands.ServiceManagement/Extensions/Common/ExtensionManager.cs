@@ -262,13 +262,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             var oldExtConfig = currentDeployment != null ? currentDeployment.ExtensionConfiguration : new ExtensionConfiguration();
+            var oldPeerExtConfig = peerDeployment != null ? peerDeployment.ExtensionConfiguration : new ExtensionConfiguration();
 
             ExtensionConfigurationBuilder configBuilder = this.GetBuilder();
             foreach (ExtensionConfigurationInput context in inputs)
             {
                 if (context != null)
                 {
-                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig, peerDeployment.ExtensionConfiguration);
+                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig, oldPeerExtConfig);
                     foreach (var r in currentConfig.AllRoles)
                     {
                         if (currentDeployment == null || !this.GetBuilder(currentDeployment.ExtensionConfiguration).ExistAny(r.Id))
@@ -303,13 +304,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             var oldExtConfig = deployment.ExtensionConfiguration;
+            var oldPeerExtConfig = peerDeployment.ExtensionConfiguration;
 
             ExtensionConfigurationBuilder configBuilder = this.GetBuilder();
             foreach (ExtensionConfigurationInput context in inputs)
             {
                 if (context != null)
                 {
-                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig, peerDeployment.ExtensionConfiguration);
+                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig, oldPeerExtConfig);
                     foreach (var r in currentConfig.AllRoles)
                     {
                         if (!this.GetBuilder(oldExtConfig).ExistAny(r.Id))
