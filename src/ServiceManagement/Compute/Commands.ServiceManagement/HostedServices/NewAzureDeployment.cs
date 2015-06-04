@@ -159,14 +159,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                 }
 
-
-                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
-                DeploymentGetResponse d = null;
-                InvokeInOperationContext(() =>
+                Action<DeploymentSlot, DeploymentGetResponse> func = (t, d) =>
                 {
+                    d = null;
                     try
                     {
-                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slotType);
+                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, t);
                     }
                     catch (CloudException ex)
                     {
@@ -175,10 +173,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                             this.WriteExceptionDetails(ex);
                         }
                     }
-                });
+                };
+
+                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+                DeploymentGetResponse currentDeployment = null;
+                InvokeInOperationContext(() => func(slotType, currentDeployment));
+
+                var peerSlottype = slotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
+                DeploymentGetResponse peerDeployment = null;
+                InvokeInOperationContext(() => func(slotType, peerDeployment));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
-                extConfig = extensionMgr.Set(d, ExtensionConfiguration, this.Slot);
+                extConfig = extensionMgr.Set(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot);
             }
             
             var deploymentInput = new DeploymentCreateParameters
