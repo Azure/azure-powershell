@@ -164,9 +164,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                 }
 
-                Action<DeploymentSlot, DeploymentGetResponse> func = (t, d) =>
+                Func<DeploymentSlot, DeploymentGetResponse> func = t =>
                 {
-                    d = null;
+                    DeploymentGetResponse d = null;
                     try
                     {
                         d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, t);
@@ -178,15 +178,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                             this.WriteExceptionDetails(ex);
                         }
                     }
+
+                    return d;
                 };
 
                 var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
                 DeploymentGetResponse currentDeployment = null;
-                InvokeInOperationContext(() => func(slotType, currentDeployment));
+                InvokeInOperationContext(() => currentDeployment = func(slotType));
 
                 var peerSlottype = slotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
                 DeploymentGetResponse peerDeployment = null;
-                InvokeInOperationContext(() => func(slotType, peerDeployment));
+                InvokeInOperationContext(() => peerDeployment = func(peerSlottype));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
                 extConfig = extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot);
