@@ -74,13 +74,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip="Need to re-record test")]
         public void RaUserPermissions()
         {
             User newUser = null;
             ResourceGroupExtended resourceGroup = null;
-            string roleAssignmentId = "9B8D3FBE-4A95-406C-AAE6-50528FA2AEFB";
+            string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
             string userName = null;
             string userPass = null;
             string userPermission = "*/read";

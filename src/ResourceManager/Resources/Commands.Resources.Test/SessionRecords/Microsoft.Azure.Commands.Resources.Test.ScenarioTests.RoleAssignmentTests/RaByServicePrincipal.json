@@ -1,7 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/servicePrincipals?api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/servicePrincipals?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS9zZXJ2aWNlUHJpbmNpcGFscz9hcGktdmVyc2lvbj0xLjQyLXByZXZpZXdJbnRlcm5hbA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -9,10 +10,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"038de80f-387d-48b7-b29f-b1f16253bdec\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Windows Azure Active Directory\",\r\n      \"appId\": \"00000002-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"Directory.Read\",\r\n          \"description\": \"Allow the application to read data in your organization's directory, such as users, groups and applications.\",\r\n          \"directAccessGrantTypes\": [\r\n            \"Application\"\r\n          ],\r\n          \"displayName\": \"Read directory data\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"5778995a-e1bf-45b8-affa-663a9f3f4d04\",\r\n          \"resourceScopeType\": \"Global\",\r\n          \"userConsentDescription\": \"Allow the application to read data in your organization's directory, such as users, groups and applications.\",\r\n          \"userConsentDisplayName\": \"Read directory data\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"Directory.Write\",\r\n          \"description\": \"Allow the application to read and write data in your organization's directory, such as users and groups.\",\r\n          \"directAccessGrantTypes\": [\r\n            \"Application\"\r\n          ],\r\n          \"displayName\": \"Read and write directory data\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"78c8a3c8-a07e-4b9e-af1b-b5ccab50a175\",\r\n          \"resourceScopeType\": \"Global\",\r\n          \"userConsentDescription\": \"Allow the application to read and write data in your organization's directory, such as users and groups.\",\r\n          \"userConsentDisplayName\": \"Read and write directory data\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"UserProfile.Read\",\r\n          \"description\": \"Allow users to sign in to the application with their organizational accounts and let the application read the profiles of signed-in users, such as their email address and contact information.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Enable sign-on and read users' profiles\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allow you to sign in to the application with your organizational account and let the application read your profile, such as your email address and contact information.\",\r\n          \"userConsentDisplayName\": \"Sign you in and read your profile\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"user_impersonation\",\r\n          \"description\": \"Allow the application to access your organization's directory on behalf of the signed-in user.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Access your organization's directory\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"a42657d6-7f20-40e3-b6f0-cee03008a62a\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allow the application to access your organization's directory information on your behalf, such as photo and contact information from your user profile.\",\r\n          \"userConsentDisplayName\": \"Access your organization's directory\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.ActiveDirectory\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://graph.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/graph.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/directory.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.ActiveDirectory\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"1ba98b33-f85f-4d78-9938-8c117a5d0bbc\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"rbacApp\",\r\n      \"appId\": \"59253046-1d78-4775-adfd-e0e341daee22\",\r\n      \"appMetadata\": {\r\n        \"version\": 0,\r\n        \"data\": []\r\n      },\r\n      \"appOwnerTenantId\": \"1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": {\r\n        \"defaultPolicy\": null,\r\n        \"allowedPolicies\": []\r\n      },\r\n      \"displayName\": \"rbacApp\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": \"https://localhost:9090\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"RBAC Testing\",\r\n      \"replyUrls\": [\r\n        \"https://localhost:9090\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://localhost:9090\",\r\n        \"59253046-1d78-4775-adfd-e0e341daee22\"\r\n      ],\r\n      \"tags\": [\r\n        \"WindowsAzureActiveDirectoryIntegratedApp\"\r\n      ],\r\n      \"webApi\": null,\r\n      \"webApp\": false\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"2f3e66a5-a1b3-4094-a846-4baf81cdfc6d\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Policy Administration Service\",\r\n      \"appId\": \"0469d4cd-df37-4d93-8a61-f8c75b809164\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft Policy Administration Service\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [\r\n        \"https://pas.windows.net\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://pas.windows.net\",\r\n        \"0469d4cd-df37-4d93-8a61-f8c75b809164\",\r\n        \"Microsoft Policy Administration Service\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"514c71c5-c9bc-4c63-87d3-086a2f7b5e08\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"mytestapprandom9190\",\r\n      \"appId\": \"5fb9268a-b81d-4640-b0ed-e8dda1bfafdf\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"mytestapprandom9190\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": \"http://mytestapprandom9190/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"RBAC Testing\",\r\n      \"replyUrls\": [\r\n        \"http://mytestapprandom9190/home\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://mytestapprandom9190/home\",\r\n        \"5fb9268a-b81d-4640-b0ed-e8dda1bfafdf\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"58fe5a3b-3a72-4924-ab1f-a4a26b39d9e5\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"0000000f-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.GraphExplorer\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000f-0000-0000-c000-000000000000/graphexplorer.windows.net\",\r\n        \"0000000f-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.GraphExplorer\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"5ae77d41-2dec-41e6-9a34-b6928e4312be\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"595d87a1-277b-4c0a-aa7f-44f8a068eafc\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.SupportTicketSubmission\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"595d87a1-277b-4c0a-aa7f-44f8a068eafc\",\r\n        \"Microsoft.SupportTicketSubmission\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"61a3bf3a-24fd-4200-a209-52077b4edc01\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"27ca7e0e-7e50-4cd8-a7ac-6df0de36106e\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"sp5696\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [\r\n        {\r\n          \"customKeyIdentifier\": null,\r\n          \"endDate\": \"2015-09-27T00:15:57.6639154Z\",\r\n          \"keyId\": \"66378d23-1d82-4db8-8888-98a244829006\",\r\n          \"startDate\": \"2014-09-27T00:15:57.6639154Z\",\r\n          \"type\": \"Symmetric\",\r\n          \"usage\": \"Verify\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"27ca7e0e-7e50-4cd8-a7ac-6df0de36106e\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"64a789b2-203d-4286-88f4-fcc9ef065b6d\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"RbacBackfill\",\r\n      \"appId\": \"914ed757-9257-4200-b68e-a2bed2f12c5a\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"RbacBackfill\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"914ed757-9257-4200-b68e-a2bed2f12c5a\",\r\n        \"RbacBackfill\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"65b61ca3-efc2-46d7-a99a-904d22437d22\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"testapp\",\r\n      \"appId\": \"a8d497e1-514f-46d3-95e6-1175b52e8c1d\",\r\n      \"appMetadata\": {\r\n        \"version\": 0,\r\n        \"data\": []\r\n      },\r\n      \"appOwnerTenantId\": \"1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": {\r\n        \"defaultPolicy\": null,\r\n        \"allowedPolicies\": []\r\n      },\r\n      \"displayName\": \"testapp\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": \"http://testapp/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"RBAC Testing\",\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://testapp/home\",\r\n        \"a8d497e1-514f-46d3-95e6-1175b52e8c1d\"\r\n      ],\r\n      \"tags\": [\r\n        \"WindowsAzureActiveDirectoryIntegratedApp\"\r\n      ],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"75ed092d-8e37-466a-a09a-63ebb2e85746\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Azure Portal\",\r\n      \"appId\": \"00000013-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"f8cdef31-a31e-4b4a-93e4-5f571e91255a\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.Portal\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [\r\n        \"https://portal.windowsazure.com\",\r\n        \"https://manage.windowsazure.com\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://manage.windowsazure.com\",\r\n        \"00000013-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.Portal\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"8f379e12-3dbd-40e2-8e32-341e3d421d11\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Windows Azure Service Management API\",\r\n      \"appId\": \"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"f8cdef31-a31e-4b4a-93e4-5f571e91255a\",\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"user_impersonation\",\r\n          \"description\": \"Allow the application to access the Azure Management Service API on behalf of the signed-in user.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Access Azure Service Management (preview)\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"41094075-9dad-400e-a0bd-54e686782033\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allow the application to access Azure Service Management API on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access Azure Service Management (preview)\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Windows Azure Service Management API\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://management.core.windows.net/\",\r\n        \"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\r\n        \"Windows Azure Service Management API\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"d9d09142-a31e-4e25-a9b3-2c072b6f60f0\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Office 365 Configure\",\r\n      \"appId\": \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Office365.Configure\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334/configure.office.net\",\r\n        \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334\",\r\n        \"Microsoft.Office365.Configure\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"dbea5a32-0033-4e62-9606-97f75431b5ca\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft App Access Panel\",\r\n      \"appId\": \"0000000c-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.ActiveDirectoryUX\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000c-0000-0000-c000-000000000000/activedirectory.windowsazure.com\",\r\n        \"0000000c-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.ActiveDirectoryUX\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"e68deb93-98e3-476f-8667-1bb60a7f867b\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"sampleapp\",\r\n      \"appId\": \"20c58db7-4501-44e8-8e76-6febdb400c6b\",\r\n      \"appMetadata\": {\r\n        \"version\": 0,\r\n        \"data\": []\r\n      },\r\n      \"appOwnerTenantId\": \"1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": {\r\n        \"defaultPolicy\": null,\r\n        \"allowedPolicies\": []\r\n      },\r\n      \"displayName\": \"sampleapp\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": \"https://localhost:8080\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"RBAC Testing\",\r\n      \"replyUrls\": [\r\n        \"https://localhost:8080\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://localhost:8080\",\r\n        \"20c58db7-4501-44e8-8e76-6febdb400c6b\"\r\n      ],\r\n      \"tags\": [\r\n        \"WindowsAzureActiveDirectoryIntegratedApp\"\r\n      ],\r\n      \"webApi\": null,\r\n      \"webApp\": false\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.SMIT\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff/lowlatency.cloudapp.net\",\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n        \"Microsoft.SMIT\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"21f378cf-a653-4f47-bf58-d6a94343af2e\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft.SMIT\",\r\n      \"appId\": \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.SMIT\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff/lowlatencyppe.cloudapp.net\",\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n        \"Microsoft.SMIT\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"3f32c3d3-84d2-47bd-8cc1-9ad804bffd31\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft Rights Management Services\",\r\n      \"appId\": \"00000012-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"user_impersonation\",\r\n          \"description\": \"Allow the application full access to the Microsoft Rights Management service on behalf of the signed-in user\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Have full access to the Microsoft Rights Management service\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"c9c9a04d-3b66-4ca8-a00c-fca953e2afd3\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allow the application full access to the Microsoft Rights Management service on your behalf\",\r\n          \"userConsentDisplayName\": \"Have full access to the Microsoft Rights Management service\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.RMS\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://api.hostedrms.com/\",\r\n        \"00000012-0000-0000-c000-000000000000/portal.hostedrms.com\",\r\n        \"00000012-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.RMS\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"4208fe5d-8a6f-4309-a750-a1844b64b258\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Windows Azure Active Directory\",\r\n      \"appId\": \"00000002-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"Directory.Read\",\r\n          \"description\": \"Allows the app to read data in your organization's directory, such as users, groups, and apps.\",\r\n          \"directAccessGrantTypes\": [\r\n            \"Application\"\r\n          ],\r\n          \"displayName\": \"Read directory data\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"5778995a-e1bf-45b8-affa-663a9f3f4d04\",\r\n          \"resourceScopeType\": \"Global\",\r\n          \"userConsentDescription\": \"Allows the app to read data in your organization's directory, such as other users, groups and apps.\",\r\n          \"userConsentDisplayName\": \"Read directory data\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"user_impersonation\",\r\n          \"description\": \"Allows the app to have the same access to information in the directory as the signed-in user.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Access the directory as the signed-in user\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"a42657d6-7f20-40e3-b6f0-cee03008a62a\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the app to have the same access to information in your work or school directory as you do.\",\r\n          \"userConsentDisplayName\": \"Access the directory as you\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"User.ReadBasic.All\",\r\n          \"description\": \"Allows the app to read a basic set of profile properties of other users in your company or school on behalf of the signed-in user. Includes display name, first and last name, photo, and email address.\\r\\n\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Read all user's basic profiles\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"cba73afc-7f69-4d86-8450-4978e04ecd1a\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the app to read a basic set of profile properties of other users in your company or school. Includes display name, first and last name, photo, and email address, on your behalf\\r\\n\",\r\n          \"userConsentDisplayName\": \"Read all user's basic profiles\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"User.Read.All\",\r\n          \"description\": \"Allows the app to read the full set of profile properties, group membership, reports and managers of other users in your company or school, on behalf of the signed-in user\\r\\n\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Read all user's full profiles\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"c582532d-9d9e-43bd-a97c-2667a28ce295\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the app to read the full set of profile properties, group membership, reports and managers of other users in your company or school, on behalf of the signed-in user\\r\\n\",\r\n          \"userConsentDisplayName\": \"Read all user's full profiles\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"Directory.ReadWrite.All\",\r\n          \"description\": \"Allows the app to read and write data in your organization's directory, such as users, and groups.  Does not allow user or group deletion.\",\r\n          \"directAccessGrantTypes\": [\r\n            \"Application\"\r\n          ],\r\n          \"displayName\": \"Read and write directory data\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"78c8a3c8-a07e-4b9e-af1b-b5ccab50a175\",\r\n          \"resourceScopeType\": \"Global\",\r\n          \"userConsentDescription\": \"Allows the app to read and write data in your organization's directory, such as other users, groups.  Does not allow user or group deletion.\",\r\n          \"userConsentDisplayName\": \"Read and write directory data\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"User.Read\",\r\n          \"description\": \"Allows users to sign-in to the app, and allows the app to read the profile, group membership, reports and manager of signed-in users. It also allow the app to read basic company information of signed-in users.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Enable sign-in and read user profile\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"311a71cc-e848-46a1-bdf8-97ff7156d8e6\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows you to sign in to the app with your organizational account and let the app read your profile, and discover your group memberships, your reports and manager. It also allows the app to read basic company information.\",\r\n          \"userConsentDisplayName\": \"Sign-in as you and read your profile\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"Group.Read.All\",\r\n          \"description\": \"Allows the app to read all group properties and memberships on behalf of the signed-in user.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Read all groups (preview)\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"6234d376-f627-4f0f-90e0-dff25c5211a3\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the app to read all group properties and memberships on your behalf.\",\r\n          \"userConsentDisplayName\": \"Read all groups (preview)\",\r\n          \"lang\": null\r\n        },\r\n        {\r\n          \"claimValue\": \"Group.ReadWrite.All\",\r\n          \"description\": \"Allows the app to create groups on behalf of the signed-in user and read all group properties and memberships.� Additionally allows the app to update group properties and memberships for groups the signed-in user owns.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Read and write all groups (preview)\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"970d6fa6-214a-4a9b-8513-08fad511e2fd\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the app to create groups on your behalf and read all group properties and memberships.� Additionally allows the app to update group properties and memberships on your behalf, for groups you own.\",\r\n          \"userConsentDisplayName\": \"Read and write all groups (preview)\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.ActiveDirectory\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://graph.ppe.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/graphppe.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/directoryppe.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/graph.ppe.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000/directory.ppe.windows.net\",\r\n        \"00000002-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.ActiveDirectory\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"49ef3d75-9487-4f57-a44f-486f550c32b3\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft Visual Studio Online\",\r\n      \"appId\": \"499b84ac-1321-427f-aa17-267ca6975798\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.VisualStudio.Online\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://app.vssps.vsallin.net/\",\r\n        \"499b84ac-1321-427f-aa17-267ca6975798\",\r\n        \"Microsoft.VisualStudio.Online\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"526a7246-3c33-4f6f-ad91-b0401fa738be\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Device Registration Service\",\r\n      \"appId\": \"01cb2876-7ebd-4aa4-9cc9-d28bd4d359a9\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"self_service_device_delete\",\r\n          \"description\": \"Allow the application permissions to delete any device registered to the signed-in user\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"User can delete devices that belong to them\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"3d68ec3f-3475-456a-90a7-58b8828ebf9f\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allow the application to delete your devices on your behalf\",\r\n          \"userConsentDisplayName\": \"Delete devices that belong to me\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Windows.Azure.DeviceRegistration\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [\r\n        \"https://enterpriseregistration-ppe.windows.net/enrollmentserver/otaprofile/\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"urn:ms-drs:enterpriseregistration-ppe.windows.net\",\r\n        \"urn:ms-drs:enterpriseregistration-int.windows.net\",\r\n        \"01cb2876-7ebd-4aa4-9cc9-d28bd4d359a9\",\r\n        \"Windows.Azure.DeviceRegistration\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"57ee3a9a-a0a9-46df-a668-16441c184a03\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft App Access Panel\",\r\n      \"appId\": \"0000000c-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.ActiveDirectoryUX\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000c-0000-0000-c000-000000000000/activedirectory-ppe.windowsazure.com\",\r\n        \"0000000c-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.ActiveDirectoryUX\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"6474f404-d913-4a26-842a-d436c3331654\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Policy Administration Service\",\r\n      \"appId\": \"0469d4cd-df37-4d93-8a61-f8c75b809164\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft Policy Administration Service\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [\r\n        \"https://pas.windows-ppe.net\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://pas.windows-ppe.net\",\r\n        \"0469d4cd-df37-4d93-8a61-f8c75b809164\",\r\n        \"Microsoft Policy Administration Service\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"82f2f022-201e-4f68-864a-358163389938\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft.Office365.Configure\",\r\n      \"appId\": \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Office365.Configure\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334/configure.officeppe.net\",\r\n        \"aa9ecb1e-fd53-4aaa-a8fe-7a54de2c1334\",\r\n        \"Microsoft.Office365.Configure\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"8d074fe8-c05e-4ffa-b35d-1317ae9c0db9\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Azure Portal\",\r\n      \"appId\": \"c44b4083-3bb0-49c1-b47d-974e53cbdf3c\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"IbizaPortal\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"c44b4083-3bb0-49c1-b47d-974e53cbdf3c\",\r\n        \"IbizaPortal\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"91ceb8cc-f412-4c12-957c-0768414acbff\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Azure Portal\",\r\n      \"appId\": \"00000013-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"ea8a4392-515e-481f-879e-6571ff2a8a36\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.Portal\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [\r\n        \"https://srsazureportal.cloudapp.net\",\r\n        \"https://sqltestportal.cloudapp.net\",\r\n        \"https://sqldatasync-test2.cloudapp.net\",\r\n        \"https://sqldatasync-test1.cloudapp.net\",\r\n        \"https://smsazureportal.cloudapp.net\",\r\n        \"https://rsauxportal.portal.mscds.com\",\r\n        \"https://portaltest01.cloudapp.net\",\r\n        \"https://onestb.cloudapp.net\",\r\n        \"https://onestb-bvt01.cloudapp.net\",\r\n        \"https://oaasportaltest.cloudapp.net\",\r\n        \"https://Ns-Cache-Portal.cloudapp.net\",\r\n        \"https://ns-cache-portal-test.cloudapp.net\",\r\n        \"https://ns-biztalk-portal.cloudapp.net\",\r\n        \"https://next.onecloud.azure-test.net\",\r\n        \"https://next-fx.onecloud.azure-test.net\",\r\n        \"https://itdatapublish-portal2.cloudapp.net\",\r\n        \"https://itdatapublish-portal1.cloudapp.net\",\r\n        \"https://hrmazureportal.cloudapp.net\",\r\n        \"https://hdinsight-azure-portal.cloudapp.net\",\r\n        \"https://hcsazureportal.cloudapp.net\",\r\n        \"https://gsportalpvt.cloudapp.net\",\r\n        \"https://df.onecloud.azure-test.net\",\r\n        \"https://df-fx.onecloud.azure-test.net\",\r\n        \"https://dev.windows.azure-test.net\",\r\n        \"https://dev.activedirectory-stage.windowsazure.com\",\r\n        \"https://current.onecloud.azure-test.net\",\r\n        \"https://current-fx.onecloud.azure-test.net\",\r\n        \"https://commonuxfx.cloudapp.net\",\r\n        \"https://commonuxfx-stress01.cloudapp.net\",\r\n        \"https://commonuxfx-staging.cloudapp.net\",\r\n        \"https://commonuxfx-perf01.cloudapp.net\",\r\n        \"https://commonuxfx-partnerstaging.cloudapp.net\",\r\n        \"https://commonuxfx-lkg.cloudapp.net\",\r\n        \"https://commonuxfx-df.cloudapp.net\",\r\n        \"https://commonuxfx-dev02.cloudapp.net\",\r\n        \"https://commonuxfx-dev01.cloudapp.net\",\r\n        \"https://commonuxfx-cd.cloudapp.net\",\r\n        \"https://commonuxfx-bvt02.cloudapp.net\",\r\n        \"https://commonuxfx-billint.cloudapp.net\",\r\n        \"https://cdm-auxportal-dev01.cloudapp.net\",\r\n        \"https://auxnext.windows.azure-test.net\",\r\n        \"https://auxcurrent.windows.azure-test.net\",\r\n        \"https://windows.azure-test.net\",\r\n        \"https://zumoipportal.cloudapp.net\",\r\n        \"https://zumoipr.cloudapp.net\",\r\n        \"https://zumotcportal.cloudapp.net\",\r\n        \"https://tfsbillingperf.cloudapp.net\",\r\n        \"https://tfsdevservices.cloudapp.net\",\r\n        \"https://tfsdevservices2.cloudapp.net\",\r\n        \"https://vsoint.cloudapp.net\",\r\n        \"https://latest.activedirectory-stage.windowsazure.com\",\r\n        \"https://activedirectory-stage.windowsazure.com\",\r\n        \"https://portal-staging.windowsazure.com\",\r\n        \"https://manage-stage.windowsazure.com\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://manage.windowsazure.com\",\r\n        \"00000013-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.Portal\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"95f74ea4-3293-45fb-a1ab-482e6dfe818e\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft.Azure.SyncFabric\",\r\n      \"appId\": \"00000014-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.SyncFabric\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"00000014-0000-0000-c000-000000000000/SyncFabric-ppe.windowsazure.net\",\r\n        \"00000014-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.SyncFabric\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"99c0614b-45b1-4836-a7e3-4f4a775fff24\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Backup Management Service\",\r\n      \"appId\": \"262044b1-e2ce-469f-a196-69ab7ada62d3\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"ea8a4392-515e-481f-879e-6571ff2a8a36\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Backup Management Service\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"Microsoft Services\",\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"262044b1-e2ce-469f-a196-69ab7ada62d3\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"9fc8a174-0097-4511-bf04-bdc02e2f6a3a\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"595d87a1-277b-4c0a-aa7f-44f8a068eafc\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.SupportTicketSubmission\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://windowsazure.cn/zh-cn/support\",\r\n        \"595d87a1-277b-4c0a-aa7f-44f8a068eafc\",\r\n        \"Microsoft.SupportTicketSubmission\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"b64e825f-d518-4147-951b-71fa8237097b\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft.Azure.GraphStore\",\r\n      \"appId\": \"00000010-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.GraphStore\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"00000010-0000-0000-c000-000000000000/graphstore.windows.net\",\r\n        \"00000010-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.GraphStore\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"c73554e2-39d3-4f53-8467-34df64ad4618\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft.Azure.GraphExplorer\",\r\n      \"appId\": \"0000000f-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Azure.GraphExplorer\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000f-0000-0000-c000-000000000000/graphexplorerppe.windows.net\",\r\n        \"0000000f-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Azure.GraphExplorer\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"d9db4c86-916c-4af7-960f-ea679af193a7\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Azure Logic Apps\",\r\n      \"appId\": \"7cd684f4-8a78-49b0-91ec-6a35d38739ba\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"ea8a4392-515e-481f-879e-6571ff2a8a36\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Azure Logic Apps\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"Microsoft Services\",\r\n      \"replyUrls\": [\r\n        \"https://logic-ppe.azure.com/\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://logic-ppe.azure.com/\",\r\n        \"7cd684f4-8a78-49b0-91ec-6a35d38739ba\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"de013c1d-4186-44d7-ae46-5d86bca291db\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Windows Azure Service Management API\",\r\n      \"appId\": \"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"ea8a4392-515e-481f-879e-6571ff2a8a36\",\r\n      \"appPermissions\": [\r\n        {\r\n          \"claimValue\": \"user_impersonation\",\r\n          \"description\": \"Allows the application to access the Azure Management Service API acting as users in the organization.\",\r\n          \"directAccessGrantTypes\": [],\r\n          \"displayName\": \"Access Azure Service Management as organization users (preview)\",\r\n          \"impersonationAccessGrantTypes\": [\r\n            {\r\n              \"impersonated\": \"User\",\r\n              \"impersonator\": \"Application\"\r\n            }\r\n          ],\r\n          \"isDisabled\": false,\r\n          \"origin\": \"Application\",\r\n          \"permissionId\": \"41094075-9dad-400e-a0bd-54e686782033\",\r\n          \"resourceScopeType\": \"Personal\",\r\n          \"userConsentDescription\": \"Allows the application to access Azure Service Management as you.\",\r\n          \"userConsentDisplayName\": \"Access Azure Service Management as you (preview)\",\r\n          \"lang\": null\r\n        }\r\n      ],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Windows Azure Service Management API\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"https://management.core.windows.net/\",\r\n        \"797f4846-ba00-4fd7-ba43-dac1f8f63013\",\r\n        \"Windows Azure Service Management API\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft Intune\",\r\n      \"appId\": \"0000000a-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Intune\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000a-0000-0000-c000-000000000000/ppe.manage.microsoft.com\",\r\n        \"0000000a-0000-0000-c000-000000000000/dogfood.manage.microsoft.com\",\r\n        \"0000000a-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Intune\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "17032"
+          "26271"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -24,13 +25,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "IO94mNZNhBZJ3rIUznuqNE6HojbeROusjKv8xncDPiY="
         ],
         "request-id": [
-          "d17e8935-7466-42fb-9bc4-3d8290fb1cab"
+          "b40e7448-ea96-4d00-b1cf-5c2e5c74d5d3"
         ],
         "client-request-id": [
-          "f889c3f8-6508-4b79-8d62-64d2e2ec0e8a"
+          "ad0149dd-43bd-41fa-96cb-a17f8870f86f"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -39,7 +40,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "sZqpRuxEYlbhXCKfViaasM8ey2hNyRAvR9IFsFerq1ktH2OFxbciOlSrvJac_1SDk150lUsA2NIGWKq9uHrlhJlpVuCnabgx9r6o1_XQank.oahx5MBzKqrMa-t13QJxooVM9DGtyOKjeDp7xMWrQJ0"
+          "zaa2wkgZfXwsQyIP2OnLLaBirCw-y9e6CBk0szJZiq7zI51K7L1zoeiHGpbLfNBRJ_ec_l29WDnhU942_Sv8kpyD3jLfPiMCuZp_1yAn3iuApwaU2kM6fv-4iSRp5UQ2.BrRv1KtCwpY7AVQydRGFfi2WbU406Q55qMEr4oK_w6Q"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -49,6 +50,9 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "no-cache"
@@ -64,13 +68,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:52 GMT"
+          "Fri, 05 Jun 2015 21:13:11 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/servicePrincipals?$filter=servicePrincipalNames/any(c:c%20eq%20'Microsoft.SMIT')&api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/servicePrincipals?$filter=servicePrincipalNames/any(c:c%20eq%20'Microsoft.Intune')&api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzpjJTIwZXElMjAnTWljcm9zb2Z0LkludHVuZScpJmFwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -78,10 +83,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": null,\r\n      \"appId\": \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.SMIT\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff/lowlatency.cloudapp.net\",\r\n        \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n        \"Microsoft.SMIT\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"Microsoft Intune\",\r\n      \"appId\": \"0000000a-0000-0000-c000-000000000000\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": null,\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"Microsoft.Intune\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": null,\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": true,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": null,\r\n      \"replyUrls\": [],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"0000000a-0000-0000-c000-000000000000/ppe.manage.microsoft.com\",\r\n        \"0000000a-0000-0000-c000-000000000000/dogfood.manage.microsoft.com\",\r\n        \"0000000a-0000-0000-c000-000000000000\",\r\n        \"Microsoft.Intune\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1002"
+          "1093"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -93,13 +98,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "p26FZwHhWTf12W1XQXK+GyAVGWe+soGFePh6Rq4qHrI="
         ],
         "request-id": [
-          "d22146b6-b74c-48a6-b131-364295cd33dd"
+          "d6e88d26-f4fa-409f-b7af-4080300571df"
         ],
         "client-request-id": [
-          "d096d0d9-8f27-4319-b3f8-f78793231d12"
+          "ab82b206-5a63-4e67-aa06-13629e088e3b"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -108,7 +113,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "KrUMCUD1V_vCEpQptErqPRwqNGZuUFDl_54khRtoaue_0r0fkIQIvHQ9hb5SOua1fShvej0LAvYg9spNGlTMoN88WNrceXAPmUJHxKWq26g.39LaOPf2ccBEwiAWza0MIhdEt3c3XiuwQjDqLs1Sho4"
+          "c6yuN_XcamxtSrmHZla6ewmgDnwTilkngIxy9K_oPOOCdcaKD4--Ee2uJS_Gy7JheRv8kkTAqQyFks9iqXzeJNC8q9j7zM0kHtbx4jfaAS6wcd5RLpZrdXjgkcZqqVNZ.OZTduNd3uuuezQNzzh3U8V-H3hn1wloHMkF31p5Jb2s"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -118,6 +123,9 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "no-cache"
@@ -133,27 +141,28 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:52 GMT"
+          "Fri, 05 Jun 2015 21:13:11 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions?api-version=2014-10-01-preview",
+      "RequestUri": "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGYzOTkyZjItZWM3MC00NjE0LWJkYjMtNzBhZGRmMTkwNjlkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yb2xlRGVmaW5pdGlvbnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage everything except access to resources.\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"Microsoft.Authorization/*/Write\",\r\n              \"Microsoft.Authorization/*/Delete\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage everything, including access to resources.\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you view everything, but not make any changes.\",\r\n        \"scope\": \"/\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"API Management Service Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage API Management services, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ApiManagement/Services/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/312a565d-c81f-4fd8-895a-4e21e48d571c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"312a565d-c81f-4fd8-895a-4e21e48d571c\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Application Insights Component Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage Application Insights components, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Insights/components/*\",\r\n              \"Microsoft.Insights/webtests/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/ae349356-3a1b-4a5e-921d-050484c6347e\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"ae349356-3a1b-4a5e-921d-050484c6347e\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"BizTalk Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage BizTalk services, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.BizTalkServices/BizTalk/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/5e3c6656-6cfa-4708-81fe-0de47ac73342\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"5e3c6656-6cfa-4708-81fe-0de47ac73342\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"ClearDB MySQL DB Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage ClearDB MySQL databases, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"successbricks.cleardb/databases/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/9106cda0-8a86-4e81-b686-29a22c54effe\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"9106cda0-8a86-4e81-b686-29a22c54effe\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage everything except access to resources.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"Microsoft.Authorization/*/Write\",\r\n              \"Microsoft.Authorization/*/Delete\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Data Factory Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage data factories, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.DataFactory/dataFactories/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/673868aa-7521-48a0-acc6-0f60742d39f5\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"673868aa-7521-48a0-acc6-0f60742d39f5\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"DocumentDB Account Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage DocumentDB accounts, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.DocumentDb/databaseAccounts/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/5bd9cd88-fe45-4216-938b-f97437e15450\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"5bd9cd88-fe45-4216-938b-f97437e15450\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"EventHub Admin\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Can manage all resources under Microsoft.EventHub provider\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.EventHub/namespaces/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/73b55742-782e-4872-93b5-6ee3ee11c19c\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"73b55742-782e-4872-93b5-6ee3ee11c19c\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Intelligent Systems Account Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage Intelligent Systems accounts, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.IntelligentSystems/accounts/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/03a6d094-3444-4b3d-88af-7477090a9e5e\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"03a6d094-3444-4b3d-88af-7477090a9e5e\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Kona Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you submit, monitor, and manage jobs but not create or delete Kona Accounts.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Kona/konaAccounts/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"Microsoft.Kona/KonaAccounts/TakeOwnership/action\",\r\n              \"Microsoft.Kona/KonaAccounts/Write\",\r\n              \"Microsoft.Kona/KonaAccounts/Delete\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/7ca037c5-4d71-43ab-ba5f-bc1e1fdcc043\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"7ca037c5-4d71-43ab-ba5f-bc1e1fdcc043\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Virtual Network Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage virtual networks, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ClassicNetwork/*\",\r\n              \"Microsoft.Network/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/b34d265f-36f7-4a0d-a4d4-e158ca92e90f\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"b34d265f-36f7-4a0d-a4d4-e158ca92e90f\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"New Relic APM Account Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage New Relic Application Performance Management accounts and applications, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"NewRelic.APM/accounts/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/5d28c62d-5b37-4476-8438-e587778df237\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"5d28c62d-5b37-4476-8438-e587778df237\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Owner\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage everything, including access to resources.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"8e3af657-a8ff-443c-a75c-2fe8c4bcb635\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Reader\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you view everything, but not make any changes.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Redis Cache Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage Redis caches, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Cache/redis/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/e0f68234-74aa-48ed-b826-c38b57376e17\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"e0f68234-74aa-48ed-b826-c38b57376e17\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"SQL DB Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage SQL databases, but not access to them. Also, you can’t manage their security-related policies or their parent SQL servers.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Sql/servers/read\",\r\n              \"Microsoft.Sql/servers/databases/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"Microsoft.Sql/servers/databases/auditingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/connectionPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/dataMaskingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/securityMetrics/*\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/9b7fa17d-e63e-47b0-bb0a-15c516ac86ec\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"9b7fa17d-e63e-47b0-bb0a-15c516ac86ec\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"SQL Security Manager\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage the security-related policies of SQL servers and databases, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Sql/servers/read\",\r\n              \"Microsoft.Sql/servers/auditingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/read\",\r\n              \"Microsoft.Sql/servers/databases/auditingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/connectionPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/dataMaskingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/schemas/read\",\r\n              \"Microsoft.Sql/servers/databases/schemas/tables/read\",\r\n              \"Microsoft.Sql/servers/databases/schemas/tables/columns/read\",\r\n              \"Microsoft.Sql/servers/databases/securityMetrics/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"056cd41c-7e88-42e1-933e-88ba6a50c9c3\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"SQL Server Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage SQL servers and databases, but not access to them, and not their security -related policies.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Sql/servers/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"Microsoft.Sql/servers/auditingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/auditingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/connectionPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/dataMaskingPolicies/*\",\r\n              \"Microsoft.Sql/servers/databases/securityMetrics/*\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Scheduler Job Collections Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage Scheduler job collections, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Scheduler/jobcollections/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/188a0f2f-5c9e-469b-ae67-2aa5ce574b94\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"188a0f2f-5c9e-469b-ae67-2aa5ce574b94\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Search Service Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage Search services, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Search/searchServices/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/7ca78c08-252a-4471-8644-bb5ff32d4ba0\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"7ca78c08-252a-4471-8644-bb5ff32d4ba0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Security Manager\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Can manage security components, security policies and virtual machines\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ClassicCompute/virtualMachines/*\",\r\n              \"Microsoft.Security/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/e3d13bf0-dd5a-482e-ba6b-9b8433878d10\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"e3d13bf0-dd5a-482e-ba6b-9b8433878d10\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Service Bus Admin\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Can manage all resources under Microsoft.ServiceBus provider\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ServiceBus/namespaces/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/ffef8a19-2726-4059-9983-0eca6bf617f2\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"ffef8a19-2726-4059-9983-0eca6bf617f2\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Storage Account Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage storage accounts, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ClassicStorage/storageAccounts/*\",\r\n              \"Microsoft.Storage/storageAccounts/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/86e8f5dc-a6e9-4c67-9d15-de283e8eac25\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"86e8f5dc-a6e9-4c67-9d15-de283e8eac25\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"User Access Administrator\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage user access to Azure resources.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*/read\",\r\n              \"Microsoft.Authorization/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"18d7d88d-d35e-4fb5-a5c3-7773c20a72d9\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Virtual Machine Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.ClassicStorage/storageAccounts/read\",\r\n              \"Microsoft.ClassicStorage/storageAccounts/listKeys/action\",\r\n              \"Microsoft.ClassicStorage/storageAccounts/disks/read\",\r\n              \"Microsoft.ClassicStorage/storageAccounts/images/read\",\r\n              \"Microsoft.ClassicNetwork/virtualNetworks/read\",\r\n              \"Microsoft.ClassicNetwork/reservedIps/read\",\r\n              \"Microsoft.ClassicNetwork/virtualNetworks/join/action\",\r\n              \"Microsoft.ClassicNetwork/reservedIps/link/action\",\r\n              \"Microsoft.ClassicCompute/domainNames/*\",\r\n              \"Microsoft.ClassicCompute/virtualMachines/*\",\r\n              \"Microsoft.Storage/storageAccounts/read\",\r\n              \"Microsoft.Storage/storageAccounts/listKeys/action\",\r\n              \"Microsoft.Network/virtualNetworks/read\",\r\n              \"Microsoft.Network/virtualNetworks/join/action\",\r\n              \"Microsoft.Network/loadBalancers/read\",\r\n              \"Microsoft.Network/loadBalancers/join/action\",\r\n              \"Microsoft.Network/loadBalancers/NATRules/*\",\r\n              \"Microsoft.Network/publicIPAddresses/read\",\r\n              \"Microsoft.Network/publicIPAddresses/link/action\",\r\n              \"Microsoft.Network/networkInterfaces/*\",\r\n              \"Microsoft.Compute/virtualMachines/*\",\r\n              \"Microsoft.Compute/availabilitySets/*\",\r\n              \"Microsoft.Compute/locations/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"d73bb868-a0df-4d4d-bd69-98a00b01fccb\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Web Plan Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage the web plans for websites, but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Web/serverFarms/*\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"roleName\": \"Website Contributor\",\r\n        \"type\": \"BuiltInRole\",\r\n        \"description\": \"Lets you manage websites (not web plans), but not access to them.\",\r\n        \"assignableScopes\": [\r\n          \"/\"\r\n        ],\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"Microsoft.Web/serverFarms/read\",\r\n              \"Microsoft.Web/serverFarms/join/action\",\r\n              \"Microsoft.Web/sites/*\",\r\n              \"Microsoft.Web/certificates/*\",\r\n              \"Microsoft.Web/listSitesAssignedToHostName/read\",\r\n              \"Microsoft.Authorization/*/read\",\r\n              \"Microsoft.Resources/subscriptions/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/resources/read\",\r\n              \"Microsoft.Resources/subscriptions/resourceGroups/deployments/*\",\r\n              \"Microsoft.Insights/alertRules/*\",\r\n              \"Microsoft.Support/*\",\r\n              \"Microsoft.Insights/components/*\"\r\n            ],\r\n            \"notActions\": []\r\n          }\r\n        ]\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/de139f84-1756-47ae-9be6-808fbbe84772\",\r\n      \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n      \"name\": \"de139f84-1756-47ae-9be6-808fbbe84772\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1385"
+          "22633"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -168,16 +177,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:c7c70d35-b9e1-4517-a3b4-89ec85fcfd99"
+          "centralus:d7ec6a6a-d2c0-42d9-85e9-04282c1995f1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "8cecbf8d-10de-4c45-b789-a4982bcb65da"
+          "eedc67de-3a21-46a7-82c4-6bde6ba2796e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005554Z:8cecbf8d-10de-4c45-b789-a4982bcb65da"
+          "CENTRALUS:20150605T211312Z:eedc67de-3a21-46a7-82c4-6bde6ba2796e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,15 +195,16 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:53 GMT"
+          "Fri, 05 Jun 2015 21:13:12 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2014-10-01-preview",
+      "RequestUri": "//subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmMzk5MmYyLWVjNzAtNDYxNC1iZGIzLTcwYWRkZjE5MDY5ZC9yZXNvdXJjZUdyb3Vwcy9Tb21lUmVzb3VyY2VHcm91cEZvclNwbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MT9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -203,10 +213,10 @@
           "254"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n    \"scope\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n    \"scope\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "610"
@@ -221,16 +231,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:fa4bab64-6473-40e3-9279-8519284cc485"
+          "centralus:d050b278-f02a-4085-b86e-3a5db348312d"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "fba55128-da51-4e03-8629-f49a0248e37d"
+          "1598fd52-f6f4-46c8-8f11-c3e33908da9b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005555Z:fba55128-da51-4e03-8629-f49a0248e37d"
+          "CENTRALUS:20150605T211315Z:1598fd52-f6f4-46c8-8f11-c3e33908da9b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -239,24 +249,25 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:15 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2014-10-01-preview",
+      "RequestUri": "//subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmMzk5MmYyLWVjNzAtNDYxNC1iZGIzLTcwYWRkZjE5MDY5ZC9yZXNvdXJjZUdyb3Vwcy9Tb21lUmVzb3VyY2VHcm91cEZvclNwbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MT9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n    \"scope\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n    \"scope\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "610"
@@ -274,16 +285,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:a0b6d7a0-ccd2-43cc-9e7e-2fc96211e29b"
+          "centralus:67715582-c79e-40ce-93cd-7e73cd05eb5b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31998"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "be3e4e0a-fdaa-45a1-b476-912b3e383fd9"
+          "67001f35-f1ea-409f-b957-8bbc4f8bba4d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005555Z:be3e4e0a-fdaa-45a1-b476-912b3e383fd9"
+          "CENTRALUS:20150605T211316Z:67001f35-f1ea-409f-b957-8bbc4f8bba4d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -292,27 +303,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:15 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2014-10-01-preview",
+      "RequestUri": "//subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmMzk5MmYyLWVjNzAtNDYxNC1iZGIzLTcwYWRkZjE5MDY5ZC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zL2FjZGQ3MmE3LTMzODUtNDhlZi1iZDQyLWY2MDZmYmE4MWFlNz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Lets you view everything, but not make any changes.\",\r\n    \"scope\": \"/\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*/read\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Lets you view everything, but not make any changes.\",\r\n    \"assignableScopes\": [\r\n      \"/\"\r\n    ],\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*/read\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "433"
+          "446"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -327,16 +339,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:9ca7978e-8e94-4119-9e58-b472837f494a"
+          "centralus:6742cbc5-5449-45be-9f68-4246c2ada4cf"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31997"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "30ab8850-e645-472e-8d0e-ba743ef3813c"
+          "ce1b563b-f55d-4d73-9f4b-0205b9736fcb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005556Z:30ab8850-e645-472e-8d0e-ba743ef3813c"
+          "CENTRALUS:20150605T211316Z:ce1b563b-f55d-4d73-9f4b-0205b9736fcb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -345,27 +357,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:15 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2014-10-01-preview",
+      "RequestUri": "//subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmMzk5MmYyLWVjNzAtNDYxNC1iZGIzLTcwYWRkZjE5MDY5ZC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZURlZmluaXRpb25zL2FjZGQ3MmE3LTMzODUtNDhlZi1iZDQyLWY2MDZmYmE4MWFlNz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Lets you view everything, but not make any changes.\",\r\n    \"scope\": \"/\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*/read\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"Reader\",\r\n    \"type\": \"BuiltInRole\",\r\n    \"description\": \"Lets you view everything, but not make any changes.\",\r\n    \"assignableScopes\": [\r\n      \"/\"\r\n    ],\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"*/read\"\r\n        ],\r\n        \"notActions\": []\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n  \"type\": \"Microsoft.Authorization/roleDefinitions\",\r\n  \"name\": \"acdd72a7-3385-48ef-bd42-f606fba81ae7\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "433"
+          "446"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -380,16 +393,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:c679bbc8-223a-4c0c-865e-ce448e422cd0"
+          "centralus:fb4e37f9-c068-4de4-9bc4-88c84e958782"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31995"
+          "14990"
         ],
         "x-ms-correlation-request-id": [
-          "b31e5fe5-272d-4288-95ae-241ff07a9381"
+          "f1eb1865-7c29-43d0-86c8-4440c01b2c59"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005556Z:b31e5fe5-272d-4288-95ae-241ff07a9381"
+          "CENTRALUS:20150605T211317Z:f1eb1865-7c29-43d0-86c8-4440c01b2c59"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -398,13 +411,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:56 GMT"
+          "Fri, 05 Jun 2015 21:13:16 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/f1990eeb-b040-47de-a12e-c45da0f9595a?api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/users/e300718e-4d33-4895-b154-b371eeac3b3b?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS91c2Vycy9lMzAwNzE4ZS00ZDMzLTQ4OTUtYjE1NC1iMzcxZWVhYzNiM2I/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -412,7 +426,7 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'f1990eeb-b040-47de-a12e-c45da0f9595a' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'e300718e-4d33-4895-b154-b371eeac3b3b' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "214"
@@ -421,13 +435,13 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "IO94mNZNhBZJ3rIUznuqNE6HojbeROusjKv8xncDPiY="
         ],
         "request-id": [
-          "48cbb5ec-7cd8-401e-8b74-1def33b88628"
+          "bc156a09-4fb2-4138-a345-e684879d88dd"
         ],
         "client-request-id": [
-          "9f6e981f-0e67-47d2-beef-8c25ac1fc7ab"
+          "d45b4d4c-cab9-424d-a5f7-92c182b36c57"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -436,10 +450,13 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "EUIuX9u8nLXYc3K8WXtVxIYt_kXEOmfu8UdD1asZbU5lRSpzBgUijKQywbZtGPYe1PkxFAWGTox7i7hlnHBR0enyDrOLro9H1HlSLMLG3_Q.HbLrdVVHFghLsDb24HsW5gdyfS3WADNC_Ux7U83U7GI"
+          "jSZZuo1ic3xzfHC9YapRjRqz2IXH5OeD3NdY4xlQY_oHal9eaPocwNLlJReC9SdFhAPKCInKlXmy9zgJzmmtYWsm1t77AEBjjHiZhdHgAKRO6vLM-Yrf_91LaGVH2iac.qHxtn769woG9cW8PuoLSJ4ka9-v6K-CKC4uSiWflgak"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "private"
@@ -455,13 +472,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:16 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/f1990eeb-b040-47de-a12e-c45da0f9595a?api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/users/e300718e-4d33-4895-b154-b371eeac3b3b?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS91c2Vycy9lMzAwNzE4ZS00ZDMzLTQ4OTUtYjE1NC1iMzcxZWVhYzNiM2I/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -469,7 +487,7 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'f1990eeb-b040-47de-a12e-c45da0f9595a' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'e300718e-4d33-4895-b154-b371eeac3b3b' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "214"
@@ -478,13 +496,13 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "IO94mNZNhBZJ3rIUznuqNE6HojbeROusjKv8xncDPiY="
         ],
         "request-id": [
-          "ca733835-aace-4a79-9763-660fb29ef210"
+          "cf7cd488-5067-4487-ac15-eb18c5031381"
         ],
         "client-request-id": [
-          "10b34d2f-cc6e-46a6-981d-6ae08fccc673"
+          "f9a1df64-c6c0-48f6-b113-1502815f6820"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -493,10 +511,13 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "4pX_F2zH5EXbmCf3PxqIz_rhIb9VgzGb-W01g3szgL-rbL8U7R-TSeD29juAQf5Ii4boWPmfA12xE3axMVTzAO_V0q6nOlZ4H3xbltjc52Q.FjoxAZdCjGjs3XfQyJAJkgrLP-H5x0-Law8dDQAzGzs"
+          "eRlOAqiiWqc4ktztRwU6JCUMXP_Z3_KXzYCp_o-0RA_zlTlHvajldJGV_hELTyqrcO8Oj76gjn0u_UuQjBdEBgY20nQqq3yD82eC5SRQy4nYsJT1FLssHb7a-c1r_4fe.SDcMB60kbZdRk0MNhWxFb1-lbAquFZuNNp3Ro8OTb4E"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "private"
@@ -512,13 +533,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:17 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/servicePrincipals/f1990eeb-b040-47de-a12e-c45da0f9595a?api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/servicePrincipals/e300718e-4d33-4895-b154-b371eeac3b3b?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS9zZXJ2aWNlUHJpbmNpcGFscy9lMzAwNzE4ZS00ZDMzLTQ4OTUtYjE1NC1iMzcxZWVhYzNiM2I/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -526,10 +548,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"appDisplayName\": null,\r\n  \"appId\": \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n  \"appMetadata\": null,\r\n  \"appOwnerTenantId\": null,\r\n  \"appPermissions\": [],\r\n  \"authenticationPolicy\": null,\r\n  \"displayName\": \"Microsoft.SMIT\",\r\n  \"errorUrl\": null,\r\n  \"explicitAccessGrantRequired\": false,\r\n  \"homepage\": null,\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"microsoftFirstParty\": true,\r\n  \"passwordCredentials\": [],\r\n  \"publisherName\": null,\r\n  \"replyUrls\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"8fca0a66-c008-4564-a876-ab3ae0fd5cff/lowlatency.cloudapp.net\",\r\n    \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n    \"Microsoft.SMIT\"\r\n  ],\r\n  \"tags\": [],\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"appDisplayName\": \"Microsoft Intune\",\r\n  \"appId\": \"0000000a-0000-0000-c000-000000000000\",\r\n  \"appMetadata\": null,\r\n  \"appOwnerTenantId\": null,\r\n  \"appPermissions\": [],\r\n  \"authenticationPolicy\": null,\r\n  \"displayName\": \"Microsoft.Intune\",\r\n  \"errorUrl\": null,\r\n  \"explicitAccessGrantRequired\": false,\r\n  \"homepage\": null,\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"microsoftFirstParty\": true,\r\n  \"passwordCredentials\": [],\r\n  \"publisherName\": null,\r\n  \"replyUrls\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"0000000a-0000-0000-c000-000000000000/ppe.manage.microsoft.com\",\r\n    \"0000000a-0000-0000-c000-000000000000/dogfood.manage.microsoft.com\",\r\n    \"0000000a-0000-0000-c000-000000000000\",\r\n    \"Microsoft.Intune\"\r\n  ],\r\n  \"tags\": [],\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "999"
+          "1090"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -541,13 +563,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "IO94mNZNhBZJ3rIUznuqNE6HojbeROusjKv8xncDPiY="
         ],
         "request-id": [
-          "f81756b4-7419-4730-b8fb-ea42e9f23738"
+          "1b7fb673-ce13-42db-9dd2-862cd5c2310d"
         ],
         "client-request-id": [
-          "15117b44-c764-47ef-b55e-bb9f4e9a8cf8"
+          "ca1401c2-4ed9-4a72-86da-533ae1b54f14"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -556,7 +578,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "TCiU0Mo7GK94lLMqn3uBWStGhfAMibQfRM_ZISogUl4UerW_bXOB2O3Chy8sF-0blmUXeqByagdh0LMq5NBebxHn6mMpq80SuDpDlgH4fYU.6orwr6LndhELp2aZUY0LMsRNLfH4gaco8rVhL_JYlbU"
+          "Vh2Ju0yIp1BYVk6bAdcvSQt0H-gwkoy-osAZBtUE0lQZoNA9zlqaH4l8xFD4ql7-pTQgZHbm3qJkhWwkCKMZiIFwEgPQuaSuOPkBYnXhRFzS5msI9fa5Ipzj_k6fDsLl.Oh7kqnX7Cm4KYJNbdKWtN5GNtN1_fj3-MtOuyLQAsJU"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -566,6 +588,9 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "no-cache"
@@ -581,13 +606,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:16 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/servicePrincipals/f1990eeb-b040-47de-a12e-c45da0f9595a?api-version=1.42-previewInternal",
+      "RequestUri": "/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/servicePrincipals/e300718e-4d33-4895-b154-b371eeac3b3b?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "L2EyNGZmNGM0LWVkNGYtNDgzNC1hOGM4LTJjNWM4YzIxMzE0YS9zZXJ2aWNlUHJpbmNpcGFscy9lMzAwNzE4ZS00ZDMzLTQ4OTUtYjE1NC1iMzcxZWVhYzNiM2I/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -595,10 +621,10 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"appDisplayName\": null,\r\n  \"appId\": \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n  \"appMetadata\": null,\r\n  \"appOwnerTenantId\": null,\r\n  \"appPermissions\": [],\r\n  \"authenticationPolicy\": null,\r\n  \"displayName\": \"Microsoft.SMIT\",\r\n  \"errorUrl\": null,\r\n  \"explicitAccessGrantRequired\": false,\r\n  \"homepage\": null,\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"microsoftFirstParty\": true,\r\n  \"passwordCredentials\": [],\r\n  \"publisherName\": null,\r\n  \"replyUrls\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"8fca0a66-c008-4564-a876-ab3ae0fd5cff/lowlatency.cloudapp.net\",\r\n    \"8fca0a66-c008-4564-a876-ab3ae0fd5cff\",\r\n    \"Microsoft.SMIT\"\r\n  ],\r\n  \"tags\": [],\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.ppe.windows.net/a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"appDisplayName\": \"Microsoft Intune\",\r\n  \"appId\": \"0000000a-0000-0000-c000-000000000000\",\r\n  \"appMetadata\": null,\r\n  \"appOwnerTenantId\": null,\r\n  \"appPermissions\": [],\r\n  \"authenticationPolicy\": null,\r\n  \"displayName\": \"Microsoft.Intune\",\r\n  \"errorUrl\": null,\r\n  \"explicitAccessGrantRequired\": false,\r\n  \"homepage\": null,\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"microsoftFirstParty\": true,\r\n  \"passwordCredentials\": [],\r\n  \"publisherName\": null,\r\n  \"replyUrls\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"0000000a-0000-0000-c000-000000000000/ppe.manage.microsoft.com\",\r\n    \"0000000a-0000-0000-c000-000000000000/dogfood.manage.microsoft.com\",\r\n    \"0000000a-0000-0000-c000-000000000000\",\r\n    \"Microsoft.Intune\"\r\n  ],\r\n  \"tags\": [],\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "999"
+          "1090"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -610,13 +636,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "9WYEenkGfQgzy7gXrMPmukcdKNy0q53uHj0JbV3NXwY="
+          "IO94mNZNhBZJ3rIUznuqNE6HojbeROusjKv8xncDPiY="
         ],
         "request-id": [
-          "4d209adb-60cd-424f-bb0c-c3378ce810f6"
+          "04df387e-b846-433d-8d8b-7df9a5353de3"
         ],
         "client-request-id": [
-          "2ef9607f-96fe-4747-abdb-6f500e64603f"
+          "d3a03bd1-7107-405c-9778-fe60bee34bcd"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -625,7 +651,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "ee6QdCMmrLWC2rpW7XeXMPpIqZpxG_dDdEGb-nnau5VDhuFHYL-YGXQu2Ad4Hd9d1fnZG-e7ZQZpFj5QBpEYn0eoiSTuZntagiG22H5w_V8.jqvYCN111Si0B_KP0HtX7hhBWeOusMNB65BD5IJaXnM"
+          "QgIzb_WDdX-M7b_bfVETrIQoCCUO4PyoRIE9AXVOZnGLBJ8_reS-MQMsimBVDxEBpVhKAPxkWI0FJCbJS06wEODX8yJiahOJyvaEBopwWIzIG_oMz5mDZgLYRE86a00B.pVEXtltBxsdhMlWVDXJpoHNlIVVEnBirKzh6NLjeziI"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -635,6 +661,9 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
         ],
         "Cache-Control": [
           "no-cache"
@@ -650,24 +679,25 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:55 GMT"
+          "Fri, 05 Jun 2015 21:13:17 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'f1990eeb-b040-47de-a12e-c45da0f9595a'&api-version=2014-10-01-preview",
+      "RequestUri": "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'e300718e-4d33-4895-b154-b371eeac3b3b'&api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGYzOTkyZjItZWM3MC00NjE0LWJkYjMtNzBhZGRmMTkwNjlkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yb2xlQXNzaWdubWVudHM/JGZpbHRlcj1wcmluY2lwYWxJZCUyMGVxJTIwJ2UzMDA3MThlLTRkMzMtNDg5NS1iMTU0LWIzNzFlZWFjM2IzYicmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n        \"principalId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n        \"scope\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn\"\r\n      },\r\n      \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n        \"principalId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n        \"scope\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn\"\r\n      },\r\n      \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "622"
@@ -685,16 +715,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:15247394-9cfe-4bb9-8a2f-1bb659d23687"
+          "centralus:5f5ade7d-a6f5-4735-85b2-1192c12ca2fd"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31996"
+          "14991"
         ],
         "x-ms-correlation-request-id": [
-          "26610007-c42f-4066-aba8-59ab05501902"
+          "f836b5c0-d0ad-4c58-8bbb-de7c60742638"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005556Z:26610007-c42f-4066-aba8-59ab05501902"
+          "CENTRALUS:20150605T211316Z:f836b5c0-d0ad-4c58-8bbb-de7c60742638"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -703,21 +733,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:56 GMT"
+          "Fri, 05 Jun 2015 21:13:16 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'f1990eeb-b040-47de-a12e-c45da0f9595a'&api-version=2014-10-01-preview",
+      "RequestUri": "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'e300718e-4d33-4895-b154-b371eeac3b3b'&api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGYzOTkyZjItZWM3MC00NjE0LWJkYjMtNzBhZGRmMTkwNjlkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9yb2xlQXNzaWdubWVudHM/JGZpbHRlcj1wcmluY2lwYWxJZCUyMGVxJTIwJ2UzMDA3MThlLTRkMzMtNDg5NS1iMTU0LWIzNzFlZWFjM2IzYicmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -738,16 +769,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:87cde3c1-b053-4940-936e-a31c5b5615a2"
+          "centralus:1a6d0801-bc27-43bf-bbfc-9551e6e4e359"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31994"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "318a8c34-a388-4804-b442-f7f40b7c6bfa"
+          "c2e34550-fef3-470b-b87a-5e47fe932077"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005557Z:318a8c34-a388-4804-b442-f7f40b7c6bfa"
+          "CENTRALUS:20150605T211319Z:c2e34550-fef3-470b-b87a-5e47fe932077"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -756,24 +787,25 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:57 GMT"
+          "Fri, 05 Jun 2015 21:13:19 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2014-10-01-preview",
+      "RequestUri": "//subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBmMzk5MmYyLWVjNzAtNDYxNC1iZGIzLTcwYWRkZjE5MDY5ZC9yZXNvdXJjZUdyb3Vwcy9Tb21lUmVzb3VyY2VHcm91cEZvclNwbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MT9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01-preview"
+          "2015-05-01-preview"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"f1990eeb-b040-47de-a12e-c45da0f9595a\",\r\n    \"scope\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"e300718e-4d33-4895-b154-b371eeac3b3b\",\r\n    \"scope\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn\"\r\n  },\r\n  \"id\": \"/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/resourceGroups/SomeResourceGroupForSpn/providers/Microsoft.Authorization/roleAssignments/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "610"
@@ -791,16 +823,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:e15fca4f-498d-4299-8e13-a4c59ecd7d78"
+          "centralus:2a3a1f55-d54f-43d7-8a35-3ce2739a149d"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "fe4bf379-5ccd-433a-9a6e-7c6a51868a74"
+          "22f6e9e6-a1dc-4bf9-aad4-a502692610fb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150128T005557Z:fe4bf379-5ccd-433a-9a6e-7c6a51868a74"
+          "CENTRALUS:20150605T211319Z:22f6e9e6-a1dc-4bf9-aad4-a502692610fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -809,7 +841,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Jan 2015 00:55:56 GMT"
+          "Fri, 05 Jun 2015 21:13:19 GMT"
         ]
       },
       "StatusCode": 200
@@ -817,8 +849,8 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "3ca49042-782a-4cc9-89b5-ee1b487fe115",
-    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0",
-    "Domain": "rbactest.onmicrosoft.com"
+    "SubscriptionId": "0f3992f2-ec70-4614-bdb3-70addf19069d",
+    "TenantId": "a24ff4c4-ed4f-4834-a8c8-2c5c8c21314a",
+    "Domain": "aad177.ccsctp.net"
   }
 }

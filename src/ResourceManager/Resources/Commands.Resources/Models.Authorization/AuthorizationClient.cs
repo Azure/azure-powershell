@@ -32,6 +32,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         public static Queue<Guid> RoleAssignmentNames { get; set; }
 
+        /// <summary>
+        /// This queue is used by the tests to assign fixed role definition
+        /// names every time the test runs.
+        /// </summary>
+        public static Queue<Guid> RoleDefinitionNames { get; set; }
+
+
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
         public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
@@ -39,6 +46,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         static AuthorizationClient()
         {
             RoleAssignmentNames = new Queue<Guid>();
+            RoleDefinitionNames = new Queue<Guid>();
         }
 
         /// <summary>
@@ -269,7 +277,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             AuthorizationClient.ValidateRoleDefinition(roleDefinition);
 
-            Guid newRoleDefinitionId = Guid.NewGuid();
+            Guid newRoleDefinitionId = RoleDefinitionNames.Count == 0 ? Guid.NewGuid() : RoleDefinitionNames.Dequeue();
             RoleDefinitionCreateOrUpdateParameters parameters = new RoleDefinitionCreateOrUpdateParameters()
             {
                 RoleDefinition = new RoleDefinition()
