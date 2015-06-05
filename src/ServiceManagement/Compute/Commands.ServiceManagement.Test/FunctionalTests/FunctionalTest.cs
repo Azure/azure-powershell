@@ -611,7 +611,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, configPath2.FullName, rdpExtCfg);
                 }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
-                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 2);
                 Console.WriteLine("successfully updated the deployment");
 
                 ExtensionContext extResult3 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
