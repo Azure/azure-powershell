@@ -72,7 +72,8 @@ FormatsToProcess = @(
     '.\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -96,7 +97,8 @@ NestedModules = @(
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
     '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll'
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
 )
 
 # Functions to export from this module
