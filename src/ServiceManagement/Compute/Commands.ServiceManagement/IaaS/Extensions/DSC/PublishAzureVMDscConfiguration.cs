@@ -262,6 +262,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         null));
             }
             List<string> requiredModules = parseResult.RequiredModules;
+            //Since LCM always uses the latest module there is no need to copy PSDesiredStateConfiguration
             if (requiredModules.Contains("PSDesiredStateConfiguration"))
             {
                 requiredModules.Remove("PSDesiredStateConfiguration");
