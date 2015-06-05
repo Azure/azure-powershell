@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ParentContainerName { get; set; }
 
         /// <summary>
-        /// Region where this container is present
-        /// </summary>
-        public string Region { get; set; }
-
-        /// <summary>
         /// Status of registration of the container
         /// </summary>
         public string RegistrationStatus { get; set; }
