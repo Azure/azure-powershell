@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// DataSourceId of Azure Backup Item
         /// </summary>
-        public string DataSourceType { get; set; }
+        public string Type { get; set; }
 
         public AzureBackupItemContextObject()
             : base()
@@ -97,20 +97,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             : base(azureBackupItemContextObject)
         {
             DataSourceId = azureBackupItemContextObject.DataSourceId;
-            DataSourceType = azureBackupItemContextObject.DataSourceType;
+            Type = azureBackupItemContextObject.Type;
         }
 
         public AzureBackupItemContextObject(DataSourceInfo item, AzureBackupContainer azureBackupContainer)
             : base(azureBackupContainer)
         {
             DataSourceId = item.InstanceId;
-            DataSourceType = item.Type;
+            Type = item.Type;
         }
 
         public AzureBackupItemContextObject(ProtectableObjectInfo item, AzureBackupContainer azureBackupContainer)
             : base(azureBackupContainer)
         {
-            DataSourceType = item.Type;
+            Type = item.Type;
         }
     }
 }

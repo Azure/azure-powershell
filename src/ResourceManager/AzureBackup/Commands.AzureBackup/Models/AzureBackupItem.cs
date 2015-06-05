@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// Status for the Azure Backup Item
         /// </summary>
-        public string Status { get; set; }
+        public string DataSourceStatus { get; set; }
 
         /// <summary>
         /// Protection Status for the Azure Backup Item
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// Protectable Object Name for the Azure Backup Item
         /// </summary>
-        public string ProtectableObjectName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Protection Policy Name for the Azure Backup Item
@@ -52,11 +52,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ProtectionPolicyId { get; set; }
 
         /// <summary>
-        /// Policy Inconsistent for the Azure Backup Item
-        /// </summary>
-        public bool PolicyInconsistent { get; set; }
-
-        /// <summary>
         /// Recovery Points Count for the Azure Backup Item
         /// </summary>
         public int RecoveryPointsCount { get; set; }
@@ -64,22 +59,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <summary>
         /// Last Recovery Point for the Azure Backup Item
         /// </summary>
-        public DateTime? LastRecoveryPoint { get; set; }
-
-        /// <summary>
-        /// Last Backup Time for the Azure Backup Item
-        /// </summary>
-        public DateTime? LastBackupTime { get; set; }
-
-        /// <summary>
-        /// Last Backup Status for the Azure Backup Item
-        /// </summary>
-        public string LastBackupStatus { get; set; }
-
-        /// <summary>
-        /// Last Backup Job Id for the Azure Backup Item
-        /// </summary>
-        public string LastBackupJobId { get; set; }
 
         public AzureBackupItem()
             : base()
@@ -89,24 +68,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public AzureBackupItem(DataSourceInfo datasource, AzureBackupContainer azureBackupContainer)
             : base(datasource, azureBackupContainer)
         {
-            Status = datasource.Status;
+            DataSourceStatus = datasource.Status;
             ProtectionStatus = datasource.ProtectionStatus;
-            ProtectableObjectName = datasource.ProtectableObjectName;
+            Name = datasource.Name;
             ProtectionPolicyName = datasource.ProtectionPolicyName;
             ProtectionPolicyId = datasource.ProtectionPolicyId;
-            PolicyInconsistent = datasource.PolicyInconsistent;
             RecoveryPointsCount = datasource.RecoveryPointsCount;
-            LastRecoveryPoint = datasource.LastRecoveryPoint;
-            LastBackupTime = datasource.LastBackupTime;
-            LastBackupStatus = datasource.LastBackupStatus;
-            LastBackupJobId = datasource.LastBackupJobId;
         }
 
         public AzureBackupItem(ProtectableObjectInfo pPOItem, AzureBackupContainer azureBackupContainer)
             : base(pPOItem, azureBackupContainer)
         {
             ProtectionStatus = pPOItem.ProtectionStatus;
-            ProtectableObjectName = pPOItem.Name;
+            Name = pPOItem.Name;
         }
     }
 }
