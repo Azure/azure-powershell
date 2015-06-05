@@ -521,7 +521,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                          AggregateException flattened = ae.Flatten();
                          foreach (Exception inner in flattened.InnerExceptions)
                          {
-                             WriteWarning(inner.ToString());
+                             // Do nothing for now - this is just a mitigation against one provider which hasn't implemented the operations API correctly
+                             //WriteWarning(inner.ToString());
                          }
                     }
                 }
