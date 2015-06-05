@@ -441,11 +441,15 @@
     <None Include="Resources\download_VHD.csv" />
     <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1" />
     <None Include="Resources\HelloNoDiag.cscfg" />
-    <None Include="Resources\nodiagpackage.csv" />
+    <None Include="Resources\nodiagpackage.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\OneWebOneWorker.cscfg" />
     <None Include="Resources\OneWebOneWorkerRDP.cscfg" />
     <None Include="Resources\overwrite_VHD.csv" />
-    <None Include="Resources\package.csv" />
+    <None Include="Resources\package.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\packageADDomain.csv" />
     <None Include="Resources\packageReservedIP.csv" />
     <None Include="Resources\packageScenario.csv" />
