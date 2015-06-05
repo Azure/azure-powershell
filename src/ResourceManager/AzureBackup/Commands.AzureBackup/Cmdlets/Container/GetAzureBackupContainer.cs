@@ -30,15 +30,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(AzureBackupContainer), typeof(List<AzureBackupContainer>))]
     public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerName)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceGroupName)]
         [ValidateNotNullOrEmpty]
-        public string VirtualMachine { get; set; }
+        public string ContainerResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceName)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerResourceName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerStatus Status { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerType Type { get; set; }
 
@@ -49,74 +53,63 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 string queryFilterString = string.Empty;
-                // TODO: Construct query filter string based on input filters.
-                //queryFilterString = ConstructQueryFilterString();
-
+                queryFilterString = ConstructQueryFilterString();
                 ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
                     GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                IEnumerable<AzureBackupContainer> containers = listContainerResponse.Objects.ToList().ConvertAll(containerInfo =>
-                {
-                    return new AzureBackupContainer()
-                    {
-                        ContainerType = containerInfo.ContainerType,
-                        FriendlyName = containerInfo.FriendlyName,
-                        HealthStatus = containerInfo.HealthStatus,
-                        InstanceId = containerInfo.InstanceId,
-                        Name = containerInfo.Name,
-                        ParentContainerFriendlyName = containerInfo.ParentContainerFriendlyName,
-                        ParentContainerName = containerInfo.ParentContainerName,
-                        RegistrationStatus = containerInfo.RegistrationStatus,
-                        ResourceGroupName = ResourceGroupName,
-                        ResourceName = ResourceName,
-                    };
-                });
+                List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
 
-                WriteObject(containers);
+                // When resource group name is specified, remove all containers whose resource group name
+                // doesn't match the given resource group name
+                if (!string.IsNullOrEmpty(ContainerResourceGroupName))
+                {
+                    containerInfos.RemoveAll(containerInfo =>
+                    {
+                        return containerInfo.ParentContainerName != ContainerResourceGroupName;
+                    });
+                }
+
+                WriteObject(containerInfos.ConvertAll(containerInfo =>
+                {
+                    return new AzureBackupContainer(containerInfo);
+                }));
             });
         }
 
         private string ConstructQueryFilterString()
         {
-            string queryFilterString = string.Empty;
             BMI.ContainerQueryObject containerQueryObject = new BMI.ContainerQueryObject();
 
-            if (Type != null)
+            switch (Type)
             {
-                switch (Type)
-                {
-                    case AzureBackupContainerType.AzureVirtualMachine:
-                        containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
-                        break;
-                    default:
-                        break;
-                }
+                case AzureBackupContainerType.AzureVirtualMachine:
+                    containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
+                    break;
+                default:
+                    break;
             }
 
-            if (Status != null)
+            switch (Status)
             {
-                switch (Status)
-                {
-                    case AzureBackupContainerStatus.Registered:
-                        containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
-                        break;
-                    case AzureBackupContainerStatus.Registering:
-                        containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
-                        break;
-                    case AzureBackupContainerStatus.NotRegistered:
-                        containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
-                        break;
-                    default:
-                        break;
-                }
+                case AzureBackupContainerStatus.Registered:
+                    containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
+                    break;
+                case AzureBackupContainerStatus.Registering:
+                    containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
+                    break;
+                case AzureBackupContainerStatus.NotRegistered:
+                    containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
+                    break;
+                default:
+                    break;
             }
 
-            if (VirtualMachine != null)
+            if (!string.IsNullOrEmpty(ContainerResourceName))
             {
-
+                containerQueryObject.FriendlyName = ContainerResourceName;
             }
 
-            return queryFilterString;
+            return BMI.BackupManagementAPIHelper.GetQueryString(containerQueryObject.GetNameValueCollection());
         }
     }
 }
