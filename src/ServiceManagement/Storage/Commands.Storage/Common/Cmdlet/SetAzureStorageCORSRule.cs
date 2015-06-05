@@ -20,6 +20,8 @@ using SharedProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+using Microsoft.WindowsAzure.Storage;
+using System.Net;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -30,6 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         OutputType(typeof(PSCorsRule))]
     public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
+        private const string InvalidXMLNodeValueError = "InvalidXmlNodeValue";
+        private const string InvalidXMLDocError = "InvalidXmlDocument";
+
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
 
@@ -67,8 +72,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 serviceProperties.Cors.CorsRules.Add(corsRule);
             }
 
-            Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                GetRequestOptions(ServiceType), OperationContext);
+            try
+            {
+                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
+                    GetRequestOptions(ServiceType), OperationContext);
+            }
+            catch (StorageException se)
+            {
+                if ((null != se.RequestInformation) &&
+                    ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
+                    (null != se.RequestInformation.ExtendedErrorInformation) &&
+                    (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ExtendedErrorInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(InvalidXMLDocError, se.RequestInformation.ExtendedErrorInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
+                {
+                    throw new InvalidOperationException(Resources.CORSRuleError);
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             if (PassThru)
             {
