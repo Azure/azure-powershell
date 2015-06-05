@@ -539,6 +539,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsTrue(File.Exists(configPath3.FullName), "file not exist={0}", configPath3);
 
             string deploymentName = "deployment1";
+            string deploymentName2 = "deployment2";
             string deploymentLabel = "label1";
             DeploymentInfoContext result;
 
@@ -595,12 +596,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Re-create the Staging depoyment with the extension
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false, rdpExtCfg);
-                }, "already exists under service", 10, 60);
+                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath2.FullName, configPath2.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName2, false, false, rdpExtCfg);
+                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 60);
 
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
-                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 1);
-                Console.WriteLine(string.Format("Successfully re-deployed the package to the {0} slot.", DeploymentSlotType.Staging));
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName2, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+                Console.WriteLine(string.Format("Successfully re-deployed the package #2 to the {0} slot.", DeploymentSlotType.Staging));
 
                 ExtensionContext extResult2 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
                 Utilities.PrintContext(extResult2);
@@ -611,15 +612,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, configPath2.FullName, rdpExtCfg);
                 }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
-                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 2);
-                Console.WriteLine("successfully updated the deployment");
+                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName2, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+                Console.WriteLine("successfully updated the deployment #2");
 
                 ExtensionContext extResult3 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
                 Utilities.PrintContext(extResult3);
 
                 Assert.IsTrue(!string.Equals(extResult2.Id, extResult3.Id));
 
-                // Set the deployment status to 'Suspended'
+                // Remove the deployment #2
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Staging, true);
+
+                // Set the deployment #1 status to 'Suspended'
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.SetAzureDeploymentStatus(serviceName, DeploymentSlotType.Production, DeploymentStatus.Suspended);
@@ -628,7 +632,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, DeploymentStatus.Suspended, 1);
                 Console.WriteLine("successfully changed the status");
 
-                // Update the deployment
+                // Update the deployment #1
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, configPath2.FullName);
@@ -637,7 +641,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
                 Console.WriteLine("successfully updated the deployment");
 
-                // Upgrade the deployment
+                // Upgrade the deployment #1
                 DateTime start = DateTime.Now;
                 Utilities.RetryActionUntilSuccess(() =>
                 {
