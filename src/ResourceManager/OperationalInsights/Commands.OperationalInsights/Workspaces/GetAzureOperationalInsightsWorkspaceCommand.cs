@@ -12,41 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.Management.Storage
+namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
-    public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, Constants.Workspace), OutputType(typeof(List<PSWorkspace>), typeof(PSWorkspace))]
+    public class GetAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
-        [Alias(StorageAccountNameAlias, AccountNameAlias)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
+        
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
-                 this.ResourceGroupName,
-                 this.Name);
-
-            WriteObject(listKeyResponse.StorageAccountKeys);
+            WriteObject(OperationalInsightsClient.FilterPSWorkspaces(ResourceGroupName, Name), true);
         }
     }
 }
