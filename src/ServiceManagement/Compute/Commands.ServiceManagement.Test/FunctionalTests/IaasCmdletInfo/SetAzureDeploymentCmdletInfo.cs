@@ -45,7 +45,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             result.cmdletParams.Add(new CmdletParam("Config"));
             result.cmdletParams.Add(new CmdletParam("Configuration", configPath));
-            result.cmdletParams.Add(new CmdletParam("ExtensionConfiguration", extConfig));
+
+            if (extConfig != null)
+            {
+                result.cmdletParams.Add(new CmdletParam("ExtensionConfiguration", extConfig));
+            }
 
             return result;
         }
