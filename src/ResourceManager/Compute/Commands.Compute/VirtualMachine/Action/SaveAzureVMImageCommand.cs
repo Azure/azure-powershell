@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
@@ -20,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage)]
-    [OutputType(typeof(ComputeLongRunningOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
     {
         public string Name { get; set; }
@@ -82,7 +84,8 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VMName,
                 parameters);
 
-            WriteObject(op);
+            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+            WriteObject(result);
         }
     }
 }

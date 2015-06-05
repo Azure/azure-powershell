@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets the provider namespace from the resource id.
+        /// Gets the subscription id from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
         public static string GetSubscriptionId(string resourceId)
@@ -174,12 +174,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets the provider namespace from the resource id.
+        /// Gets the name of the resource group from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
-        public static string GetResourceGroup(string resourceId)
+        public static string GetResourceGroupName(string resourceId)
         {
             return ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ResourceGroups);
+        }
+
+        /// <summary>
+        /// Gets the id of the resource group from the resource id.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        public static string GetResourceGroupId(string resourceId)
+        {
+            var subscriptionId = ResourceIdUtility.GetSubscriptionId(resourceId);
+            if (string.IsNullOrWhiteSpace(subscriptionId))
+            {
+                return null;
+            }
+
+            Guid subscriptionGuid;
+            if (!Guid.TryParse(subscriptionId, out subscriptionGuid))
+            {
+                return null;
+            }
+
+            var resourceGroupName = ResourceIdUtility.GetResourceGroupName(resourceId);
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return null;
+            }
+
+            return ResourceIdUtility.GetResourceId(
+                subscriptionId: subscriptionGuid,
+                resourceGroupName: resourceGroupName,
+                resourceType: null,
+                resourceName: null);
         }
 
         /// <summary>

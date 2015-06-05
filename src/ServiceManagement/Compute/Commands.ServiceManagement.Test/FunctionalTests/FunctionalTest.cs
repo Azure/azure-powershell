@@ -1036,7 +1036,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Assert.AreEqual("PaaSDiagnostics", resultConfig.Type, "Type is not equal!");
                 Assert.AreEqual(storage, resultStorageAccount);
-                Assert.IsTrue(Utilities.CompareWadCfg(resultWadCfg, wadconfig));
+                Utilities.CompareWadCfg(resultWadCfg, wadconfig);
 
                 if (string.IsNullOrWhiteSpace(thumbprint))
                 {

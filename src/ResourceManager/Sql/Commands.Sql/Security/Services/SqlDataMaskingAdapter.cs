@@ -116,7 +116,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DataMaskingRuleProperties properties = new DataMaskingRuleProperties();
             updateParameters.Properties = properties;
             properties.Id = model.RuleId;
-            properties.AliasName = model.AliasName;
             properties.TableName = model.TableName;
             properties.ColumnName = model.ColumnName;
             properties.MaskingFunction = PolicizeMaskingFunction(model.MaskingFunction);
@@ -157,7 +156,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             dbRuleModel.ServerName = serverName;
             dbRuleModel.DatabaseName = databaseName;
             dbRuleModel.RuleId = properties.Id;
-            dbRuleModel.AliasName = properties.AliasName;
             dbRuleModel.ColumnName = properties.ColumnName;
             dbRuleModel.TableName = properties.TableName;
             dbRuleModel.MaskingFunction = ModelizeMaskingFunction(properties.MaskingFunction);

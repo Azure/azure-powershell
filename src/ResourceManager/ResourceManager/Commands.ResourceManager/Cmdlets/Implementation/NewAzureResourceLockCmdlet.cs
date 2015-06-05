@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
 
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(result, ResourceObjectFormat.New);
                 });
         }
 

@@ -18,30 +18,51 @@
 #>
 function Test-CreateDatabase
 {
+	Test-CreateDatabaseInternal "12.0"
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database
+#>
+function Test-CreateDatabaseV2
+{
+	Test-CreateDatabaseInternal "2.0" "North Central US"
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database
+#>
+function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
+{
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $serverVersion $location
 
 	try
 	{
-		# Create with default values
-		$databaseName = Get-DatabaseName
-		$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-		Assert-AreEqual $db.DatabaseName $databaseName
-		Assert-NotNull $db.MaxSizeBytes
-		Assert-NotNull $db.Edition
-		Assert-NotNull $db.CurrentServiceLevelObjectiveName
-		Assert-NotNull $db.CollationName
+		if ($serverVersion -ne "2.0")
+		{
+			# Create with default values
+			$databaseName = Get-DatabaseName
+			$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+			Assert-AreEqual $db.DatabaseName $databaseName
+			Assert-NotNull $db.MaxSizeBytes
+			Assert-NotNull $db.Edition
+			Assert-NotNull $db.CurrentServiceLevelObjectiveName
+			Assert-NotNull $db.CollationName
 
-		# Create with default values via piping
-		$databaseName = Get-DatabaseName
-		$db = $server | New-AzureSqlDatabase -DatabaseName $databaseName
-		Assert-AreEqual $db.DatabaseName $databaseName
-		Assert-NotNull $db.MaxSizeBytes
-		Assert-NotNull $db.Edition
-		Assert-NotNull $db.CurrentServiceLevelObjectiveName
-		Assert-NotNull $db.CollationName
-
+			# Create with default values via piping
+			$databaseName = Get-DatabaseName
+			$db = $server | New-AzureSqlDatabase -DatabaseName $databaseName
+			Assert-AreEqual $db.DatabaseName $databaseName
+			Assert-NotNull $db.MaxSizeBytes
+			Assert-NotNull $db.Edition
+			Assert-NotNull $db.CurrentServiceLevelObjectiveName
+			Assert-NotNull $db.CollationName
+		}
+		
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
@@ -68,23 +89,40 @@ function Test-CreateDatabase
 	}
 }
 
-
 <#
 	.SYNOPSIS
 	Tests updating a database
 #>
 function Test-UpdateDatabase
 {
+	Test-UpdateDatabaseInternal "12.0"
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database
+#>
+function Test-UpdateDatabaseV2
+{
+	Test-UpdateDatabaseInternal "2.0" "North Central US"
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a database
+#>
+function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
+{
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $serverVersion $location
 	
-	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
 	Assert-AreEqual $db.DatabaseName $databaseName
 
-    #Default database will be Standard s0 with maxsize: 268435456000 (250GB)
+    # Database will be Standard s0 with maxsize: 268435456000 (250GB)
 
 	try
 	{
@@ -118,13 +156,31 @@ function Test-UpdateDatabase
 #>
 function Test-GetDatabase
 {
+	Test-GetDatabaseInternal "12.0"
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a database
+#>
+function Test-GetDatabaseV2
+{
+	Test-GetDatabaseInternal "2.0" "North Central US"
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a database
+#>
+function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
+{
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $serverVersion $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
     # Create database with non-defaults
@@ -167,13 +223,31 @@ function Test-GetDatabase
 #>
 function Test-RemoveDatabase
 {
+	Test-RemoveDatabaseInternal "12.0"
+}
+
+<#
+	.SYNOPSIS
+	Tests Deleting a database
+#>
+function Test-RemoveDatabaseV2
+{
+	Test-RemoveDatabaseInternal "2.0" "North Central US"
+}
+
+<#
+	.SYNOPSIS
+	Tests Deleting a database
+#>
+function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
+{
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $serverVersion $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
     # Create database with non-defaults
