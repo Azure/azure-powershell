@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 MBS.OperationResponse triggerBackUpInfo =
                     AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
                     AzureBackupItem.ContainerName,
-                    AzureBackupItem.DataSourceType,
+                    AzureBackupItem.Type,
                     AzureBackupItem.DataSourceId,
                     CmdletCancellationToken).Result;                
 

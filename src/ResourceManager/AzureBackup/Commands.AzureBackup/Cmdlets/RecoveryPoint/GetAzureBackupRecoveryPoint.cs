@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 RecoveryPointListResponse recoveryPointListResponse = 
                     AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(),
                     AzureBackupItem.ContainerName,
-                    AzureBackupItem.DataSourceType,
+                    AzureBackupItem.Type,
                     AzureBackupItem.DataSourceId,
                     CmdletCancellationToken).Result;
 
