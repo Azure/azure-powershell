@@ -569,12 +569,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 1);
-                Console.WriteLine("successfully moved");
+                Console.WriteLine("successfully moved.");
 
                 ExtensionContext extResult1 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Production)[0];
                 Utilities.PrintContext(extResult1);
 
                 Assert.IsTrue(string.Equals(extResult0.Id, extResult1.Id));
+
+                // Check until the deployment moving is done, and the staging slot is empty.
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    try
+                    {
+                        result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                        Assert.IsNull(result);
+                    }
+                    catch (Exception e)
+                    {
+                        const string errorMessage = "No deployments were found.";
+                        Assert.IsTrue(e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)));
+                    }
+                }, "Assert", 10, 60);
+                Console.WriteLine("successfully checked original deployment has been moved away.");
 
                 // Re-create the Staging depoyment with the extension
                 Utilities.RetryActionUntilSuccess(() =>
