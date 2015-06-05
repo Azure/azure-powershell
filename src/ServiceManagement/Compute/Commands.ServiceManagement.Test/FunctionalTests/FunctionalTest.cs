@@ -559,6 +559,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 1);
                 Console.WriteLine("successfully deployed the package");
 
+                ExtensionContext extResult0 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult0);
 
                 // Move the deployment from 'Staging' to 'Production'
                 Utilities.RetryActionUntilSuccess(() =>
@@ -569,6 +571,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 1);
                 Console.WriteLine("successfully moved");
 
+                ExtensionContext extResult1 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Production)[0];
+                Utilities.PrintContext(extResult1);
+
+                Assert.IsTrue(string.Equals(extResult0.Id, extResult1.Id));
+
                 // Re-create the Staging depoyment with the extension
                 Utilities.RetryActionUntilSuccess(() =>
                 {
@@ -578,6 +585,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
                 pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 1);
                 Console.WriteLine(string.Format("Successfully re-deployed the package to the {0} slot.", DeploymentSlotType.Staging));
+
+                ExtensionContext extResult2 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult2);
+
+                // Update the deployment with the extension
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, configPath2.FullName, rdpExtCfg);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
+                Console.WriteLine("successfully updated the deployment");
+
+                ExtensionContext extResult3 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult3);
+
+                Assert.IsTrue(!string.Equals(extResult2.Id, extResult3.Id));
 
                 // Set the deployment status to 'Suspended'
                 Utilities.RetryActionUntilSuccess(() =>
