@@ -88,6 +88,31 @@ function Get-ImportKeyFile([string]$filesuffix, [bool] $exists=$true)
 
 <#
 .SYNOPSIS
+Get 1024 bit key file path to be imported
+#>
+function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
+{
+    if ($exists)
+    {
+        $file = "$filesuffix"+"test1024.$filesuffix"
+    }
+    else
+    {
+        $file = "notexist" + ".$filesuffix"
+    }
+
+    if ($global:testEnv -eq 'BVT')
+    {       
+        return Join-Path $invocationPath "bvtdata\$file"        
+    }
+    else
+    {
+        return Join-Path $invocationPath "proddata\$file"
+    }
+}
+
+<#
+.SYNOPSIS
 Remove log file under a folder
 #>
 function Cleanup-Log([string]$rootfolder)
