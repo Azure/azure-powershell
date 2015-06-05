@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using BCI = Microsoft.BackupManagementService.CommonInterface;
+using BMI = Microsoft.BackupManagementService.ManagementInterface;
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerName)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerId)]
-        [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string VirtualMachine { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
@@ -49,12 +48,75 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                IEnumerable<AzureBackupContainer> containers = new List<AzureBackupContainer>();
+                string queryFilterString = string.Empty;
+                // TODO: Construct query filter string based on input filters.
+                //queryFilterString = ConstructQueryFilterString();
 
-                // TODO: Call Hydra
+                ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
+                    GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+
+                IEnumerable<AzureBackupContainer> containers = listContainerResponse.Objects.ToList().ConvertAll(containerInfo =>
+                {
+                    return new AzureBackupContainer()
+                    {
+                        ContainerType = containerInfo.ContainerType,
+                        FriendlyName = containerInfo.FriendlyName,
+                        HealthStatus = containerInfo.HealthStatus,
+                        InstanceId = containerInfo.InstanceId,
+                        Name = containerInfo.Name,
+                        ParentContainerFriendlyName = containerInfo.ParentContainerFriendlyName,
+                        ParentContainerName = containerInfo.ParentContainerName,
+                        RegistrationStatus = containerInfo.RegistrationStatus,
+                        ResourceGroupName = ResourceGroupName,
+                        ResourceName = ResourceName,
+                    };
+                });
 
                 WriteObject(containers);
             });
+        }
+
+        private string ConstructQueryFilterString()
+        {
+            string queryFilterString = string.Empty;
+            BMI.ContainerQueryObject containerQueryObject = new BMI.ContainerQueryObject();
+
+            if (Type != null)
+            {
+                switch (Type)
+                {
+                    case AzureBackupContainerType.AzureVirtualMachine:
+                        containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (Status != null)
+            {
+                switch (Status)
+                {
+                    case AzureBackupContainerStatus.Registered:
+                        containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
+                        break;
+                    case AzureBackupContainerStatus.Registering:
+                        containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
+                        break;
+                    case AzureBackupContainerStatus.NotRegistered:
+                        containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (VirtualMachine != null)
+            {
+
+            }
+
+            return queryFilterString;
         }
     }
 }
