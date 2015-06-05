@@ -416,7 +416,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\ExtensionTests\MicrosoftAntimalware\AzureVMMicrosoftAntimalwareExtensionFunctionalTests.ps1" />
-    <None Include="app.config" />
     <None Include="AzureRTBVTs.playlist" />
     <None Include="AzureRTComplete.playlist" />
     <None Include="AzureRTComplete_Full_Diff.playlist" />

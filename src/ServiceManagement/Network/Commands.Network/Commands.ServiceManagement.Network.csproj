@@ -218,7 +218,6 @@
     <Compile Include="Routes\SetAzureRoute.cs" />
     <Compile Include="Routes\SetAzureSubnetRouteTable.cs" />
     <Compile Include="Routes\Utilities\RouteTableConfigurationBaseCmdlet.cs" />
-    <None Include="app.config" />
     <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

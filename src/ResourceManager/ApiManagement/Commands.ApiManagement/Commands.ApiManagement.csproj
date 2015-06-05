@@ -202,7 +202,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="MSSharedLibKey.snk" />
   </ItemGroup>

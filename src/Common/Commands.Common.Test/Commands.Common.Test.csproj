@@ -207,7 +207,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <EmbeddedResource Include="Resources\Azure.publishsettings">
       <SubType>Designer</SubType>

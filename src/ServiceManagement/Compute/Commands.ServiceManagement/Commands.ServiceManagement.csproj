@@ -490,7 +490,6 @@
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Extensions\ADDomain\ADBuildSchema.cmd" />
     <None Include="Extensions\ADDomain\ADPrivateSchema.xsd">
       <SubType>Designer</SubType>
