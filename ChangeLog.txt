@@ -1,9 +1,9 @@
-2015.06.05 version 0.9.3
+﻿2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
 * Fix bug in Set-AzureResource cmdlet #456
 * Fix for new azure resource of Microsoft.Storage #457
 
-2015.05.28 version 0.9.2
+2015.05.29 version 0.9.2
 * Deprecated Switch-AzureMode
 * Profile
     * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
@@ -13,12 +13,14 @@
     * Remove-AzureAutomationWebhook
     * Set-AzureAutomationWebhook    
 * Azure Compute
-    * Added Version parameter to cmdlets   
-    * Combine Get-AzureVMImage and Get-AzureVMImageDetail
-    * Combine Get-AzureVMExtensionImage and Get-AzureVMExtensionImageDetail
-    * Fix piping issue of Remove-AzureVMDataDisk and Remove-AzureVMNetworkInterface
-    * Update the output of Remove-AzureAvailabilitySet
-    * Add Force parameter for Remove-AzureAvailabilitySet
+    * Get-AzureVMImage and Get-AzureVMImageDetail are combined (Get-AzureVMImageDetail gives a warning message for future deprecation)
+    * Get-AzureVMExtensionImage and Get-AzureVMExtensionImageDetail are combined (Get-AzureVMExtensionImageDetail gives a warning message for future deprecation)
+    * Tags are added in VM resources
+    * Get-AzureVM now gets resource group name from piping
+    * -All switch is removed from Get-AzureVM
+    * Get-AzureVM -Status output is updated
+    * -Force parameter is added for Remove-AzureAvailabilitySet
+    * Outputs of New-AzureAvailabilitySet, Get-AzureAvailabilitySet, and Remove-AzureAvailabilitySet are updated
 * Azure Key Vault 
     * Update Set-AzureKeyVaultAccessPolicy and Remove-AzureKeyVaultAccessPolicy cmdlets
     * Fixed bugs  
