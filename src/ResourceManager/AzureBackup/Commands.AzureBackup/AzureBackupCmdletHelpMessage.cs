@@ -26,5 +26,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
         public const string ContainerResourceGroupName = "The container resource group name.";
+        public const string ProtectionStatus = "Protection Status of the azure backup item.";
     }
 }
