@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupRecoveryPoint"), OutputType(typeof(AzureBackupRecoveryPoint), typeof(List<AzureBackupRecoveryPoint>))]
     public class GetAzureBackupRecoveryPoint : AzureBackupDSCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 RecoveryPointListResponse recoveryPointListResponse = 
                     AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(),
-                    AzureBackupItem.ContainerUniqueName,
-                    AzureBackupItem.Type,
-                    AzureBackupItem.DataSourceId,
+                    item.ContainerUniqueName,
+                    item.Type,
+                    item.DataSourceId,
                     CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
@@ -59,16 +59,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(recoveryPointObjects, AzureBackupItem);
+                WriteAzureBackupRecoveryPoint(recoveryPointObjects, item);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(RecoveryPointInfo sourceRecoverPoint, AzureBackupItem azureBackupItem)
+        public void WriteAzureBackupRecoveryPoint(RecoveryPointInfo sourceRecoverPoint, AzureBackupItem azureBackupItem)
         {
             this.WriteObject(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<RecoveryPointInfo> sourceRecoverPointList, AzureBackupItem azureBackupItem)
+        public void WriteAzureBackupRecoveryPoint(IEnumerable<RecoveryPointInfo> sourceRecoverPointList, AzureBackupItem azureBackupItem)
         {
             List<AzureBackupRecoveryPoint> targetList = new List<AzureBackupRecoveryPoint>();
 
