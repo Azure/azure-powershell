@@ -115,7 +115,10 @@ AliasesToExport = @(
     'Get-AzureSqlDatabaseServerAuditingPolicy',
     'Remove-AzureSqlDatabaseServerAuditing',
     'Set-AzureSqlDatabaseServerAuditingPolicy',
-    'Use-AzureSqlDatabaseServerAuditingPolicy'
+    'Use-AzureSqlDatabaseServerAuditingPolicy',
+    'Get-AzureStorageContainerAcl',
+    'Start-CopyAzureStorageBlob',
+    'Stop-CopyAzureStorageBlob'
 )
 
 # List of all modules packaged with this module
