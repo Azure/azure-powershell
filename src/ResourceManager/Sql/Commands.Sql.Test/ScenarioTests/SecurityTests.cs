@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithStorage()
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-ServerUpdatePolicyWithStorage");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithEventTypes()
         {
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-ServerStorageKeyRotation");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithRetention()
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithRetention()
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerRetentionKeepProperties()
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-ServerRetentionKeepProperties");
         }
 
-        [Fact]
+        [Fact(Skip = "Test executes for long time period")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRetentionKeepProperties()
