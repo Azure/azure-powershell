@@ -1,4 +1,9 @@
-﻿2015.05.29 version 0.9.2
+﻿2015.06.05 version 0.9.3
+* Fixed bug in Websites cmdlets related to slots #454
+* Fix bug in Set-AzureResource cmdlet #456
+* Fix for new azure resource of Microsoft.Storage #457
+
+2015.05.29 version 0.9.2
 * Deprecated Switch-AzureMode
 * Profile
     * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
