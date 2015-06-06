@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using BCI = Microsoft.BackupManagementService.CommonInterface;
+using BMI = Microsoft.BackupManagementService.ManagementInterface;
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,19 +30,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(AzureBackupContainer), typeof(List<AzureBackupContainer>))]
     public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerName)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceGroupName)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ContainerResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerId)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceName)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string ContainerResourceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerStatus Status { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerType Type { get; set; }
 
@@ -49,12 +52,64 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                IEnumerable<AzureBackupContainer> containers = new List<AzureBackupContainer>();
+                string queryFilterString = string.Empty;
+                queryFilterString = ConstructQueryFilterString();
+                ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
+                    GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                // TODO: Call Hydra
+                List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
 
-                WriteObject(containers);
+                // When resource group name is specified, remove all containers whose resource group name
+                // doesn't match the given resource group name
+                if (!string.IsNullOrEmpty(ContainerResourceGroupName))
+                {
+                    containerInfos.RemoveAll(containerInfo =>
+                    {
+                        return containerInfo.ParentContainerName != ContainerResourceGroupName;
+                    });
+                }
+
+                WriteObject(containerInfos.ConvertAll(containerInfo =>
+                {
+                    return new AzureBackupContainer(containerInfo);
+                }));
             });
+        }
+
+        private string ConstructQueryFilterString()
+        {
+            BMI.ContainerQueryObject containerQueryObject = new BMI.ContainerQueryObject();
+
+            switch (Type)
+            {
+                case AzureBackupContainerType.AzureVirtualMachine:
+                    containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            switch (Status)
+            {
+                case AzureBackupContainerStatus.Registered:
+                    containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
+                    break;
+                case AzureBackupContainerStatus.Registering:
+                    containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
+                    break;
+                case AzureBackupContainerStatus.NotRegistered:
+                    containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(ContainerResourceName))
+            {
+                containerQueryObject.FriendlyName = ContainerResourceName;
+            }
+
+            return BMI.BackupManagementAPIHelper.GetQueryString(containerQueryObject.GetNameValueCollection());
         }
     }
 }

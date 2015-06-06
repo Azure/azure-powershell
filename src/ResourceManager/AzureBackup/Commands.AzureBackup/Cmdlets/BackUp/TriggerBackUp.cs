@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 MBS.OperationResponse triggerBackUpInfo =
                     AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
-                    AzureBackupItem.ContainerName,
+                    AzureBackupItem.ContainerUniqueName,
                     AzureBackupItem.Type,
                     AzureBackupItem.DataSourceId,
-                    CmdletCancellationToken).Result;                
+                    CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
                 WriteVerbose("Received policy response2");
@@ -77,4 +77,3 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
-
