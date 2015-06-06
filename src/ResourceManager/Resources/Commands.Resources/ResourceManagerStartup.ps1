@@ -18,4 +18,9 @@
     "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";
     "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";
     "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";
+
+    # Storage aliases
+    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
+    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

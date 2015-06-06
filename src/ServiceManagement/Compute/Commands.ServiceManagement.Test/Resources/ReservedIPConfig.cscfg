@@ -18,7 +18,7 @@
   <NetworkConfiguration>    
     <AddressAssignments>      
       <ReservedIPs>
-        <ReservedIP name="ResrvdIP2"/>
+        <ReservedIP name="{0}"/>
       </ReservedIPs>
     </AddressAssignments>
   </NetworkConfiguration>

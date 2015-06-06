@@ -445,7 +445,9 @@
     <None Include="Resources\download_VHD.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1" />
+    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\HelloNoDiag.cscfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -479,16 +481,10 @@
     <None Include="Resources\rdpcert.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\ReservedIPConfig1.cscfg">
+    <None Include="Resources\ReservedIPConfig.cscfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\ReservedIPConfig1update.cscfg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\ReservedIPConfig2.cscfg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\ReservedIPConfig2update.cscfg">
+    <None Include="Resources\ReservedIPConfigupdate.cscfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\resume_VHD.csv">
@@ -509,7 +505,9 @@
     <None Include="Resources\storageAccountTestData.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1" />
+    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\test1.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
