@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,48 +27,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     public class AzureBackupContainer : AzureBackupContainerContextObject
     {
         /// <summary>
-        /// Type of the Azure Backup container
-        /// </summary>
-        public string ContainerType { get; set; }
-
-        /// <summary>
-        /// Friendly name for the Azure Backup container
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
         /// Status of health of the Azure Backup container
         /// </summary>
         public string HealthStatus { get; set; }
 
         /// <summary>
-        /// Id of the Azure Backup Container
-        /// </summary>
-        public string InstanceId { get; set; }
-
-        /// <summary>
-        /// Name of the Azure Backup container
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Friendly name of the parent container
-        /// </summary>
-        public string ParentContainerFriendlyName { get; set; }
-
-        /// <summary>
-        /// Name of the parent container
-        /// </summary>
-        public string ParentContainerName { get; set; }
-
-        /// <summary>
-        /// Region where this container is present
-        /// </summary>
-        public string Region { get; set; }
-
-        /// <summary>
         /// Status of registration of the container
         /// </summary>
         public string RegistrationStatus { get; set; }
+
+        public AzureBackupContainer() : base() { }
+
+        public AzureBackupContainer(ContainerInfo containerInfo)
+            : base(containerInfo)
+        {
+            HealthStatus = containerInfo.HealthStatus;
+            RegistrationStatus = containerInfo.RegistrationStatus;
+        }
     }
 }
