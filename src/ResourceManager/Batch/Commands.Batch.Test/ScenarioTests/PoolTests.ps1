@@ -185,3 +185,47 @@ function Test-DeletePool
 	$pools = Get-AzureBatchPool_ST -BatchContext $context
 	Assert-True { $pools -eq $null -or $pools[0].State.ToString().ToLower() -eq 'deleting' }
 }
+
+<#
+.SYNOPSIS
+Tests resizing a pool specified by name
+#>
+function Test-ResizePoolByName
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get the initial TargetDedicated count
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 2
+	Start-AzureBatchPoolResize_ST -Name $poolName -TargetDedicated $newTargetDedicated -BatchContext $context
+
+	# Verify the TargetDedicated property was updated
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
+}
+
+<#
+.SYNOPSIS
+Tests resizing a pool specified by pipeline object
+#>
+function Test-ResizePoolByPipeline
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get the initial TargetDedicated count
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 2
+	$pool | Start-AzureBatchPoolResize_ST -TargetDedicated $newTargetDedicated -ResizeTimeout ([TimeSpan]::FromHours(1)) -DeallocationOption ([Microsoft.Azure.Batch.Common.TVMDeallocationOption]::Terminate) -BatchContext $context
+
+	# Verify the TargetDedicated property was updated
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
+}

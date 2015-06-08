@@ -162,5 +162,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 poolManager.DeletePool(poolName, additionBehaviors);
             }
         }
+
+        /// <summary>
+        /// Resizes the specified pool
+        /// </summary>
+        /// <param name="parameters">The parameters to use when resizing the pool</param>
+        public void ResizePool(PoolResizeParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, parameters.PoolName ?? parameters.Pool.Name, parameters.TargetDedicated));
+            if (parameters.Pool != null)
+            {
+                parameters.Pool.omObject.Resize(parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
+                {
+                    poolManager.ResizePool(parameters.PoolName, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
+                }
+            }
+        }
     }
 }
