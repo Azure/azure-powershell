@@ -21,10 +21,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ResourceGroupName = "The ResourceGroup name.";
         public const string ResourceName = "The Resource name.";
         public const string TargetLocation = "The directory where the credentials file will be saved.";
-        public const string ContainerName = "The container name.";
+        public const string ContainerResourceName = "The container resource name aka friendly name.";
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
+<<<<<<< HEAD
         public const string VirtualMachine = "Virtual Machine.";
+=======
+        public const string ContainerResourceGroupName = "The container resource group name.";
+        public const string ProtectionStatus = "Protection Status of the azure backup item.";
+        public const string AzureBackUpItem = "Azure BackUp Item.";
+        public const string RecoveryPointId = "Recovery Point Id.";
+>>>>>>> d3cf61941b7653ba9a2edf165b1ae23e38921395
     }
 }
