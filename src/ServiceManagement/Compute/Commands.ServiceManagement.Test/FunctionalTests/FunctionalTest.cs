@@ -1747,23 +1747,72 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
 
-            var imgName = Utilities.GetUniqueShortName("img");
-
-            try
-            {
-                var scripts = new string[]
+            Func<string, string[]> getScripts = img => new string[]
                 {
                     "Import-Module '.\\" + Utilities.AzurePowershellModuleServiceManagementPirModule + "';",
                     "$c1 = New-AzurePlatformComputeImageConfig -Offer test -Sku test -Version test;",
                     "$c2 = New-AzurePlatformMarketplaceImageConfig -PlanName test -Product test -Publisher test -PublisherId test;",
-                    "Set-AzurePlatformVMImage -ImageName " + imgName + " -ReplicaLocations 'West US' -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
+                    "Set-AzurePlatformVMImage -ImageName " + img + " -ReplicaLocations 'West US' -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
                 };
 
+            var imgName = Utilities.GetUniqueShortName("img");
+
+            try
+            {
+                var scripts = getScripts(imgName);
                 vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
             }
             catch (Exception e)
             {
                 var expectedMsg = "ResourceNotFound: The image with the specified name does not exist.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+
+            // OS Image
+            var osImages = vmPowershellCmdlets.GetAzureVMImage();
+            imgName = osImages.First().ImageName;
+
+            try
+            {
+                var scripts = getScripts(imgName);
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ForbiddenError: This operation is not allowed for this subscription.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+
+            // VM Image
+            var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
+            imgName = vmImages.First().ImageName;
+
+            try
+            {
+                var scripts = getScripts(imgName);
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ForbiddenError: This operation is not allowed for this subscription.";
                 if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
                 {
                     pass = true;
