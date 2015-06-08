@@ -468,7 +468,7 @@
     <comment>0 for blob name, 1 for container name.</comment>
   </data>
   <data name="CORSRuleError" xml:space="preserve">
-    <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/hh452235.aspx" to get detailed information.</value>
+    <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx" to get detailed information.</value>
   </data>
   <data name="TransmitFailed" xml:space="preserve">
     <value>Transmit failed. Exception: {0}.</value>

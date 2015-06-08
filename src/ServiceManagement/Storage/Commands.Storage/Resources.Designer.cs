@@ -376,7 +376,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CORS rules setting is invalid. Please reference to &quot;https://msdn.microsoft.com/en-us/library/azure/hh452235.aspx&quot; to get detailed information..
+        ///   Looks up a localized string similar to CORS rules setting is invalid. Please reference to &quot;https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx&quot; to get detailed information..
         /// </summary>
         internal static string CORSRuleError {
             get {
