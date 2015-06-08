@@ -25,9 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     public class SetAzureCrossConnectionCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Service Key representing Azure Circuit for which BGP peering needs to be created/modified")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Notification Operation to perform. NotifyCrossConnectionProvisioned or NotifyCrossConnectionNotProvisioned")]
         [ValidateNotNullOrEmpty]
@@ -36,17 +34,16 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Provisioning Error Message")]
         public string ProvisioningError { get; set; }
 
-		[Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var crossConnection = ExpressRouteClient.SetAzureCrossConnection(ServiceKey,
-                new CrossConnectionUpdateParameters() {Operation = Operation, ProvisioningError = ProvisioningError});
+            var crossConnection = ExpressRouteClient.SetAzureCrossConnection(ServiceKey, new CrossConnectionUpdateParameters() {Operation = Operation, ProvisioningError = ProvisioningError});
             if(PassThru.IsPresent)
-			{
-				WriteObject(crossConnection);
-			}
+            {
+                WriteObject(crossConnection);
+            }
         }
     }
 }

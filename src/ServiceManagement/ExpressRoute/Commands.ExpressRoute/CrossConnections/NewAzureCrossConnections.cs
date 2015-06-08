@@ -24,9 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dedicated Circuit Service Key")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(HelpMessage = "Do not confirm Azure Cross Connection creation")]
         public SwitchParameter Force { get; set; }
@@ -37,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                Force.IsPresent,
                string.Format(Resources.NewAzureCrossConnectionWarning, ServiceKey),
                string.Format(Resources.NewAzureCrossConnectionMessage, ServiceKey),
-               ServiceKey,
+               ServiceKey.ToString(),
                () =>
                {
                    var crossConnection = ExpressRouteClient.NewAzureCrossConnection(ServiceKey);
