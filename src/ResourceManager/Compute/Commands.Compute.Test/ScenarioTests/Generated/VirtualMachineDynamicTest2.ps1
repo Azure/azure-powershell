@@ -132,7 +132,7 @@ function ps_vm_dynamic_test_func_2_pstestrg4940
         $st = Write-Verbose "Running Test ps_vm_dynamic_test_func_2_pstestrg4940 - Start ${rgname}, ${loc} & ${vmsize}";
 
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_2_pstestrg4940 - Creating Resource Group';
-        $st = New-AzureResourceGroup -Location $loc -Name $rgname;
+        $st = New-AzureResourceGroup -Location $loc -Name $rgname -Force;
 
         $vmconfig = create_and_setup_vm_config_object $loc $rgname $vmsize;
 
