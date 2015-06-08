@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
+        public const string VirtualMachine = "Virtual Machine.";
     }
 }
