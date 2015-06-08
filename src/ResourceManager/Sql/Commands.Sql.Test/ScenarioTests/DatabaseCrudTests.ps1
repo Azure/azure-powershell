@@ -50,7 +50,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $db.DatabaseName $databaseName
 			Assert-NotNull $db.MaxSizeBytes
 			Assert-NotNull $db.Edition
-			Assert-NotNull $db.CurrentServiceLevelObjectiveName
+			Assert-NotNull $db.CurrentServiceObjectiveName
 			Assert-NotNull $db.CollationName
 
 			# Create with default values via piping
@@ -59,7 +59,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $db.DatabaseName $databaseName
 			Assert-NotNull $db.MaxSizeBytes
 			Assert-NotNull $db.Edition
-			Assert-NotNull $db.CurrentServiceLevelObjectiveName
+			Assert-NotNull $db.CurrentServiceObjectiveName
 			Assert-NotNull $db.CollationName
 		}
 		
@@ -70,7 +70,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
-		Assert-AreEqual $db.CurrentServiceLevelObjectiveName Basic
+		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
 		Assert-AreEqual $db.CollationName "Japanese_Bushu_Kakusu_100_CS_AS"
 
 		# Create with all parameters
@@ -80,7 +80,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
 		Assert-AreEqual $db.Edition Basic
-		Assert-AreEqual $db.CurrentServiceLevelObjectiveName Basic
+		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
 		Assert-AreEqual $db.CollationName "Japanese_Bushu_Kakusu_100_CS_AS"
 	}
 	finally
@@ -126,22 +126,45 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 
 	try
 	{
-		# Alter all properties
-		$db1 = Set-AzureSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-            -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
-		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
-		Assert-AreEqual $db1.MaxSizeBytes 1GB
-		Assert-AreEqual $db1.Edition Basic
-		Assert-AreEqual $db1.CurrentServiceLevelObjectiveName Basic
-		Assert-AreEqual $db1.CollationName $db.CollationName
+		if($serverVersion -eq "12.0")
+		{
+			# Alter all properties
+			$db1 = Set-AzureSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db1.MaxSizeBytes 1GB
+			Assert-AreEqual $db1.Edition Basic
+			Assert-AreEqual $db1.CurrentServiceObjectiveName Basic
+			Assert-AreEqual $db1.CollationName $db.CollationName
 
-        # Alter all properties using piping
-		$db2 = $db1 | Set-AzureSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
-		Assert-AreEqual $db2.DatabaseName $db.DatabaseName
-		Assert-AreEqual $db2.MaxSizeBytes 100GB
-		Assert-AreEqual $db2.Edition Standard
-		Assert-AreEqual $db2.CurrentServiceLevelObjectiveName S1
-		Assert-AreEqual $db2.CollationName $db.CollationName
+			# Alter all properties using piping
+			$db2 = $db1 | Set-AzureSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db2.MaxSizeBytes 100GB
+			Assert-AreEqual $db2.Edition Standard
+			Assert-AreEqual $db2.CurrentServiceObjectiveName S1
+			Assert-AreEqual $db2.CollationName $db.CollationName
+		}
+		else 
+		{
+		
+			# Alter all properties
+			$db1 = Set-AzureSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
+			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db1.MaxSizeBytes 250GB
+			Assert-AreEqual $db1.Edition Standard
+			Assert-AreEqual $db1.CurrentServiceObjectiveName S0
+			Assert-AreEqual $db1.CollationName $db.CollationName
+
+			# Alter all properties using piping
+			$db2 = $db1 | Set-AzureSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db2.MaxSizeBytes 1GB
+			Assert-AreEqual $db2.Edition Basic
+			Assert-AreEqual $db2.CurrentServiceObjectiveName Basic
+			Assert-AreEqual $db2.CollationName $db.CollationName
+		}
 	}
 	finally
 	{
@@ -196,7 +219,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
         Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
         Assert-AreEqual $db1.Edition $gdb1.Edition
         Assert-AreEqual $db1.CollationName $gdb1.CollationName
-        Assert-AreEqual $db1.CurrentServiceLevelObjectiveName $gdb1.CurrentServiceLevelObjectiveName
+        Assert-AreEqual $db1.CurrentServiceObjectiveName $gdb1.CurrentServiceObjectiveName
         Assert-AreEqual $db1.MaxSizeBytes $gdb1.MaxSizeBytes
 
         $gdb2 = $db2 | Get-AzureSqlDatabase
@@ -204,7 +227,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
         Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
         Assert-AreEqual $db2.Edition $gdb2.Edition
         Assert-AreEqual $db2.CollationName $gdb2.CollationName
-        Assert-AreEqual $db2.CurrentServiceLevelObjectiveName $gdb2.CurrentServiceLevelObjectiveName
+        Assert-AreEqual $db2.CurrentServiceObjectiveName $gdb2.CurrentServiceObjectiveName
         Assert-AreEqual $db2.MaxSizeBytes $gdb2.MaxSizeBytes
 
         $all = $server | Get-AzureSqlDatabase
