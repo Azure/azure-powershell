@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Blob;
@@ -106,18 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             blobName = NameUtil.ResolveBlobName(blobName);
 
-            CloudBlob blob = null;
-
-            switch (Type)
-            {
-                case BlobType.PageBlob:
-                    blob = Container.GetPageBlobReference(blobName);
-                    break;
-                case BlobType.BlockBlob:
-                default:
-                    blob = Container.GetBlockBlobReference(blobName);
-                    break;
-            }
+            CloudBlob blob = Util.GetBlobReference(Container, blobName, Type);
 
             return new Tuple<string, CloudBlob>(filePath, blob);
         }

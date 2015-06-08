@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using System;
+    using System.Globalization;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
@@ -210,16 +211,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         {
             if (!NameUtil.IsValidBlobName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, name));
+                throw new ArgumentException(String.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.InvalidBlobName, 
+                    name));
             }
         }
 
         protected void ValidateBlobType(CloudBlob blob)
         {
             if ((BlobType.BlockBlob != blob.BlobType)
-                && (BlobType.PageBlob != blob.BlobType))
+                && (BlobType.PageBlob != blob.BlobType)
+                && (BlobType.AppendBlob != blob.BlobType))
             {
-                throw new InvalidOperationException(string.Format(Resources.InvalidBlobType, blob.Name));
+                throw new InvalidOperationException(string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.InvalidBlobType, 
+                    blob.BlobType, 
+                    blob.Name));
             }
         }
 

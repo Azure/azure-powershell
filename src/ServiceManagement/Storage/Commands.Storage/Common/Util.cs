@@ -97,17 +97,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
         {
-            if (BlobType.BlockBlob == blob.Properties.BlobType)
+            CloudBlob targetBlob;
+            switch(blob.Properties.BlobType)
             {
-                return new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                case BlobType.BlockBlob:
+                    targetBlob = new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                case BlobType.PageBlob:
+                    targetBlob = new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                case BlobType.AppendBlob:
+                    targetBlob = new CloudAppendBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                default:
+                    throw new InvalidOperationException(string.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blob.Properties.BlobType,
+                        blob.Name));
             }
 
-            if (BlobType.PageBlob == blob.Properties.BlobType)
-            {
-                return new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
-            }
+            targetBlob.FetchAttributes();
+            return targetBlob;
+        }
 
-            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidBlobType, blob.Name));
+        public static CloudBlob GetBlobReference(CloudBlobContainer container, string blobName, BlobType blobType)
+        {
+            switch(blobType)
+            {
+                case BlobType.BlockBlob:
+                    return container.GetBlockBlobReference(blobName);
+                case BlobType.PageBlob:
+                    return container.GetPageBlobReference(blobName);
+                case BlobType.AppendBlob:
+                    return container.GetAppendBlobReference(blobName);
+                default:
+                    throw new ArgumentException(String.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blobType,
+                        blobName));
+            }
         }
     }
 }

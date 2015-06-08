@@ -862,7 +862,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blob type &quot;{0}&quot; is invalid, only page blob or block blob are supported..
+        ///   Looks up a localized string similar to Blob type &apos;{0}&apos; of blob &apos;{1}&apos; is not supported..
         /// </summary>
         internal static string InvalidBlobType {
             get {

@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Threading.Tasks;
@@ -59,6 +60,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// page blob type
         /// </summary>
         private const string PageBlobType = "Page";
+
+        /// <summary>
+        /// append blob type
+        /// </summary>
+        private const string AppendBlobType = "Append";
 
         [Alias("FullName")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
@@ -105,8 +111,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             ParameterSetName = BlobParameterSet)]
         public StorageBlob.CloudBlob CloudBlob { get; set; }
 
-        [Parameter(HelpMessage = "Blob Type('Block', 'Page')")]
-        [ValidateSet(BlockBlobType, PageBlobType, IgnoreCase = true)]
+        [Parameter(HelpMessage = "Blob Type('Block', 'Page', 'Append')")]
+        [ValidateSet(BlockBlobType, PageBlobType, AppendBlobType, IgnoreCase = true)]
         public string BlobType
         {
             get { return blobType; }
@@ -249,9 +255,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             StorageBlob.BlobType type = StorageBlob.BlobType.BlockBlob;
 
-            if (string.Compare(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase) == 0)
+            if (string.Equals(blobType, BlockBlobType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                type = StorageBlob.BlobType.BlockBlob;
+            }
+            else if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase))
             {
                 type = StorageBlob.BlobType.PageBlob;
+            }
+            else if (string.Equals(blobType, AppendBlobType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                type = StorageBlob.BlobType.AppendBlob;
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.InvalidBlobType,
+                    blobType,
+                    blobName));
             }
 
             if (!string.IsNullOrEmpty(blobName) && !NameUtil.IsValidBlobName(blobName))
