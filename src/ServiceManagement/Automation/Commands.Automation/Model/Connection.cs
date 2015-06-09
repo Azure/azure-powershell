@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.FieldDefinitionValues = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in connection.Properties.FieldDefinitionValues)
             {
-                this.FieldDefinitionValues.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                this.FieldDefinitionValues.Add(kvp.Key, kvp.Value.ToString());
             }
         }
 

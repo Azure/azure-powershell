@@ -18,11 +18,30 @@
 .SYNOPSIS
 Tests Create-AzureVM with valid information.
 #>
-function Test-CreateWindowsAzureQuickVM
+function Test-GetAzureVM
 {
 	# Setup
+
 	$location = Get-DefaultLocation
+	$imgName = Get-DefaultImage $location
+
+
+	$storageName = getAssetName
+	New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+
+	Set-CurrentStorageAccountName $storageName
+
+	$vmName = "vm1"
+	$svcName = Get-CloudServiceName
 
 	# Test
-	New-AzureQuickVM -Windows -ImageName $imageName -Name $newAzureQuickVMName -ServiceName $newAzureQuickVMSvcName -Password "p@ssw0rd" -Location $location
+	New-AzureService -ServiceName $svcName -Location $location
+	New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
+
+	Get-AzureVM -ServiceName $svcName -Name $vmName
+
+
+	# Cleanup
+	Cleanup-CloudService $svcName
 }
+

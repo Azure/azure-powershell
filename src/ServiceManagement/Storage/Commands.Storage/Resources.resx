@@ -171,6 +171,9 @@
   <data name="InvalidExpiryTime" xml:space="preserve">
     <value>Invalid expiry time '{0}'.</value>
   </data>
+  <data name="InvalidHTTPMethod" xml:space="preserve">
+    <value>'{0}' is an invalid HTTP method.</value>
+  </data>
   <data name="InvalidStartTime" xml:space="preserve">
     <value>Invalid start time '{0}'.</value>
   </data>
@@ -478,6 +481,9 @@
   <data name="CopyTaskNotFound" xml:space="preserve">
     <value>Can not find copy task on specified blob '{0}' in container '{1}'.</value>
     <comment>0 for blob name, 1 for container name.</comment>
+  </data>
+  <data name="CORSRuleError" xml:space="preserve">
+    <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx" to get detailed information.</value>
   </data>
   <data name="TransmitFailed" xml:space="preserve">
     <value>Transmit failed. Exception: {0}.</value>

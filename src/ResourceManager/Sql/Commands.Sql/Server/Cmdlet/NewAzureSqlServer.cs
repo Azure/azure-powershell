@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "The SQL administrator credentials for the server")]
         [ValidateNotNull]
-        public PSCredential SqlAdminCredentials { get; set; }
+        public PSCredential SqlAdministratorCredentials { get; set; }
 
         /// <summary>
         /// The location in which to create the server
@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                     ResourceGroupName = this.ResourceGroupName,
                     ServerName = this.ServerName,
                     ServerVersion = this.ServerVersion,
-                    SqlAdminPassword = this.SqlAdminCredentials.Password,
-                    SqlAdminUserName = this.SqlAdminCredentials.UserName,
+                    SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
+                    SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
                     Tags = this.Tags
                 });
             return newEntity;

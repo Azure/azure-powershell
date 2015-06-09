@@ -136,6 +136,9 @@
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WindowsAzure.Storage-Preview.5.0.0\Lib\net40\obj\Release\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
+    </Reference>  
+    <Reference Include="Microsoft.WindowsAzure.Management.RemoteApp">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.RemoteApp.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.RemoteApp.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>

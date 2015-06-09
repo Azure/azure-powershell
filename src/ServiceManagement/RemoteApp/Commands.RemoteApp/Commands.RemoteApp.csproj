@@ -8,8 +8,8 @@
     <OutputType>Library</OutputType>
     <OutputPath>..\..\..\Package\$(Configuration)\ServiceManagement\Azure\RemoteApp\</OutputPath>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.RemoteApp</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.RemoteApp</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.RemoteApp</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.RemoteApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -114,6 +114,9 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.RemoteApp">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.RemoteApp.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.RemoteApp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>

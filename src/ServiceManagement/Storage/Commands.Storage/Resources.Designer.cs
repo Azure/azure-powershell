@@ -403,6 +403,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CORS rules setting is invalid. Please reference to &quot;https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx&quot; to get detailed information..
+        /// </summary>
+        internal static string CORSRuleError {
+            get {
+                return ResourceManager.GetString("CORSRuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Storage Account not found in subscription &apos;{0}&apos;. Please set it use &quot;Set-AzureSubscription&quot;..
         /// </summary>
         internal static string CurrentStorageAccountNameNotFound {
@@ -912,6 +921,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string InvalidFileName {
             get {
                 return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is an invalid HTTP method..
+        /// </summary>
+        internal static string InvalidHTTPMethod {
+            get {
+                return ResourceManager.GetString("InvalidHTTPMethod", resourceCulture);
             }
         }
         
