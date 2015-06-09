@@ -147,7 +147,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Model\ValidateGuid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExpressRoute.psd1">
