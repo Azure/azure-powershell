@@ -88,6 +88,17 @@ function Get-ComputeTestMode
     return $testMode;
 }
 
+
+<#
+.SYNOPSIS
+Get Compute Test Location
+#>
+function Get-ComputTestLocation
+{
+    return $env:AZURE_COMPUTE_TEST_LOCATION;
+}
+
+
 ######################
 #
 # Retry the given code block until it succeeds or times out.
