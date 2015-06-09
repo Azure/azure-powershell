@@ -13,30 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ExpressRoute.Properties;
+using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-
-    [Cmdlet(VerbsCommon.Remove, "AzureDedicatedCircuitLinkAuthorizationMicrosoftIds")]
-    public class RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIdsCommand : ExpressRouteBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureCrossConnection"), OutputType(typeof(AzureCrossConnection))]
+    public class NewAzureCrossConnectionCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Service Key representing Azure Circuit")]
+            HelpMessage = "Dedicated Circuit Service Key")]
         public Guid ServiceKey { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Authorization Id")]
-        public Guid AuthorizationId { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Microsoft Ids to be removed")]
-        public string MicrosoftIds { get; set; }
+        [Parameter(HelpMessage = "Do not confirm Azure Cross Connection creation")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var mapping = ExpressRouteClient.RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIds(ServiceKey, AuthorizationId, MicrosoftIds);
-            WriteObject(mapping);
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Resources.NewAzureCrossConnectionWarning, ServiceKey),
+               string.Format(Resources.NewAzureCrossConnectionMessage, ServiceKey),
+               ServiceKey.ToString(),
+               () =>
+               {
+                   var crossConnection = ExpressRouteClient.NewAzureCrossConnection(ServiceKey);
+                   WriteVerboseWithTimestamp(Resources.NewAzureCrossConnectionSucceeded);
+                   WriteObject(crossConnection);
+               });
+
         }
     }
 }
-
