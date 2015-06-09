@@ -203,6 +203,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureVM.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -287,6 +290,7 @@
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
+    <Compile Include="ServiceManagement\GetLocationTests.cs" />
     <Compile Include="ServiceManagement\GetVMTests.cs" />
     <Compile Include="StorageTests\StorageContainerTest.cs" />
     <Compile Include="StorageTests\StorageContextTest.cs" />
