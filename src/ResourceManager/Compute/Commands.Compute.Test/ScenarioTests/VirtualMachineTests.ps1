@@ -144,11 +144,15 @@ function Test-VirtualMachine
 
         # Availability Set
         $asetName = 'aset' + $rgname;
-        New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+        $st = New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+        Assert-NotNull $st.RequestId;
+        Assert-NotNull $st.StatusCode;
 
         $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
+        Assert-NotNull $asets[0].RequestId;
+        Assert-NotNull $asets[0].StatusCode;
 
         $aset = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
@@ -468,6 +472,8 @@ function Test-VirtualMachineSizeAndUsage
         # Test Sizes
         $s1 = Get-AzureVMSize -Location ($loc -replace ' ');
         Assert-NotNull $s1;
+        Assert-NotNull $s1.RequestId;
+        Assert-NotNull $s1.StatusCode;
         Validate-VirtualMachineSize $vmsize $s1;
 
         $s2 = Get-AzureVMSize -ResourceGroupName $rgname -VMName $vmname;
@@ -526,6 +532,8 @@ function Validate-VirtualMachineUsage
         Assert-NotNull $item.Name.Value;
         Assert-NotNull $item.Name.LocalizedValue;
         Assert-True { $item.CurrentValue -le $item.Limit };
+        Assert-NotNull $item.RequestId;
+        Assert-NotNull $item.StatusCode;
     }
 
     return $valid;
@@ -1069,8 +1077,12 @@ function Test-VirtualMachineTags
 
         # Test Tags
         $tags = @{Name = "test1"; Value = "testval1"}, @{ Name = "test2"; Value = "testval2" };
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -Tags $tags;
+        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -Tags $tags;
+        Assert-NotNull $st.RequestId;
+        Assert-NotNull $st.StatusCode;
         $vm = Get-AzureVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
 
         # Assert
         Assert-AreEqual $tags[0].Value $vm.Tags[$tags[0].Name];

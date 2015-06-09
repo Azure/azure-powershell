@@ -90,9 +90,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperation</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
