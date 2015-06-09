@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Concurrent;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -20,7 +22,16 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
 
+        private readonly ConcurrentQueue<string> _computeMessages = new ConcurrentQueue<string>();
+
         private ComputeClient computeClient;
+        private ComputeTracingInterceptor _computeTracingInterceptor;
+
+        protected string cmdletName = null;
+
+        public ComputeClientBaseCmdlet()
+        {
+        }
 
         public ComputeClient ComputeClient
         {
@@ -40,10 +51,24 @@ namespace Microsoft.Azure.Commands.Compute
 
             set { computeClient = value; }
         }
+
+        protected override void BeginProcessing()
+        {
+            _computeTracingInterceptor = _computeTracingInterceptor ?? new ComputeTracingInterceptor(this, _computeMessages);
+            ComputeTracingInterceptor.AddToContext(_computeTracingInterceptor);
+            base.BeginProcessing();
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ComputeAutoMapperProfile.Initialize();
+        }
+
+        protected override void EndProcessing()
+        {
+            ComputeTracingInterceptor.RemoveFromContext(_computeTracingInterceptor);
+            base.EndProcessing();
         }
     }
 }
