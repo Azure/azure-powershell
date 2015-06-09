@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteObject(containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(containerInfo);
+                    return new AzureBackupContainer(containerInfo, ResourceGroupName, ResourceName,  Location);
                 }));
             });
         }
