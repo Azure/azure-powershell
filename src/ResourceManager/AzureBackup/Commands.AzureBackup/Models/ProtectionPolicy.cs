@@ -48,7 +48,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
         }
 
-        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, ProtectionPolicyInfo sourcePolicy) : base(resourceGroupName, resourceName)
+        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, ProtectionPolicyInfo sourcePolicy)
+            : base(resourceGroupName, resourceName, "dfsdf")
+        {
+            InstanceId = sourcePolicy.InstanceId;
+            Name = sourcePolicy.Name;
+            WorkloadType = sourcePolicy.WorkloadType;
+
+            BackupType = sourcePolicy.Schedule.BackupType;
+            ScheduleStartTime = sourcePolicy.Schedule.ScheduleStartTime;
+            ScheduleRunTimes = sourcePolicy.Schedule.ScheduleRunTimes;
+
+            RetentionType = sourcePolicy.Schedule.RetentionPolicy.RetentionType.ToString();
+            RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
+        }
+
+        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, string location, ProtectionPolicyInfo sourcePolicy)
+            : base(resourceGroupName, resourceName, location)
         {
             InstanceId = sourcePolicy.InstanceId;
             Name = sourcePolicy.Name;

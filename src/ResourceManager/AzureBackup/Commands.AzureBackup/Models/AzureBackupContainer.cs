@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public AzureBackupContainer() : base() { }
 
-        public AzureBackupContainer(ContainerInfo containerInfo)
-            : base(containerInfo)
+        public AzureBackupContainer(ContainerInfo containerInfo, string rgName, string rName, string location)
+            : base(containerInfo, rgName, rName, location)
         {
             HealthStatus = containerInfo.HealthStatus;
             RegistrationStatus = containerInfo.RegistrationStatus;

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public void WriteAzureBackupProtectionPolicy(ProtectionPolicyInfo sourcePolicy)
         {
-            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
         }
 
         public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (var sourcePolicy in sourcePolicyList)
             {
-                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
             }
 
             this.WriteObject(targetList, true);
