@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize", DefaultParameterSetName = Constants.NameParameterSet)]
     public class StartBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool to resize.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the pool to resize.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

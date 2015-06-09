@@ -167,6 +167,7 @@
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommandTests.cs" />
+    <Compile Include="Pools\StopBatchPoolResizeCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
@@ -344,6 +345,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestResizePoolByPipeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestStopResizePoolByName.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestStopResizePoolByPipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">

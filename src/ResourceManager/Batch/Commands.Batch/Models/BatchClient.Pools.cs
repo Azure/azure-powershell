@@ -187,5 +187,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
         }
+
+        /// <summary>
+        /// Stops the resize operation on the specified pool
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="poolName">The name of the pool.</param>
+        /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
+        public void StopResizePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(poolName))
+            {
+                throw new ArgumentNullException("poolName");
+            }
+
+            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolName));
+            using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+            {
+                poolManager.StopResizePool(poolName, additionalBehaviors);
+            }
+        }
     }
 }

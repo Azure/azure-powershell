@@ -270,6 +270,42 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStopResizePoolByName()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-StopResizePoolByName '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStopResizePoolByPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-StopResizePoolByPipeline '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -305,6 +341,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize_ST")]
     public class StartBatchPoolResizeScenarioTestCommand : StartBatchPoolResizeCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize_ST")]
+    public class StopBatchPoolResizeScenarioTestCommand : StopBatchPoolResizeCommand
     {
         public override void ExecuteCmdlet()
         {

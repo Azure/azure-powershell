@@ -671,5 +671,14 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
                 return ResourceManager.GetString("SBPR_ResizingPool", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping resize operation on pool {0}..
+        /// </summary>
+        internal static string SBPR_StopResizingPool {
+            get {
+                return ResourceManager.GetString("SBPR_StopResizingPool", resourceCulture);
+            }
+        }
     }
 }

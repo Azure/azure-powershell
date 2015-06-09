@@ -322,4 +322,7 @@
   <data name="SBPR_ResizingPool" xml:space="preserve">
     <value>Resizing pool {0}, new target dedicated: {1}.</value>
   </data>
+  <data name="SBPR_StopResizingPool" xml:space="preserve">
+    <value>Stopping resize operation on pool {0}.</value>
+  </data>
 </root>

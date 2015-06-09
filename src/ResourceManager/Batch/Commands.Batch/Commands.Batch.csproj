@@ -236,6 +236,7 @@
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommand.cs" />
+    <Compile Include="Pools\StopBatchPoolResizeCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

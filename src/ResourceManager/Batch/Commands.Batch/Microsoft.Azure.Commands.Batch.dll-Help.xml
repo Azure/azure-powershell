@@ -284,13 +284,13 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchAccount -AccountName "PFuller"
+          PS C:\&gt;Get-AzureBatchAccount -AccountName "pfuller"
           AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
           -----------          --------        ----------------- ----               -------------
-          PFfuller              westus          CmdletExampleRG                      https://batch.core.contoso.net
+          pfuller              westus          CmdletExampleRG                      https://batch.core.contoso.net
         </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the batch account named PFuller.</maml:para>
+          <maml:para>This command gets the batch account named pfuller.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -7707,5 +7707,179 @@
         <maml:uri/>
       </maml:navigationLink>
     </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	  <command:details>
+		  <command:name>
+        Stop-AzureBatchPoolResize
+		  </command:name>
+		  <maml:description>
+			  <maml:para>Stops a pool resize operation.</maml:para>
+		  </maml:description>
+		  <maml:copyright>
+			  <maml:para></maml:para>
+		  </maml:copyright>
+		  <command:verb>Stop</command:verb>
+		  <command:noun>AzureBatchPoolResize</command:noun>
+		  <dev:version></dev:version>
+	  </command:details>
+	  <maml:description>
+		  <maml:para>Stops a pool resize operation.</maml:para>
+	  </maml:description>
+	  <!-- Cmdlet syntax section-->
+	  <command:syntax>
+		  <command:syntaxItem>
+			  <maml:name>Stop-AzureBatchPoolResize</maml:name>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				  <maml:name>Name</maml:name>
+				  <maml:description>
+					  <maml:para>The name of the pool.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				  <maml:name>BatchContext</maml:name>
+				  <maml:description>
+					  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  </command:parameter>
+		  </command:syntaxItem>
+	  </command:syntax>
+	  <!-- Cmdlet parameter section  -->
+	  <command:parameters>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			  <maml:name>BatchContext</maml:name>
+			  <maml:description>
+				  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  <dev:type>
+				  <maml:name>BatchAccountContext</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			  <maml:name>Name</maml:name>
+			  <maml:description>
+				  <maml:para>The name of the pool.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  <dev:type>
+				  <maml:name>string</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+	  </command:parameters>
+	  <!-- Input - Output section-->
+	  <command:inputTypes>
+		  <command:inputType>
+			  <dev:type>
+				  <maml:name></maml:name>
+				  <maml:uri/>
+				  <maml:description />
+			  </dev:type>
+			  <maml:description>
+				  <maml:para>
+					  <!-- description  -->
+					
+				  </maml:para>
+			  </maml:description>
+		  </command:inputType>
+	  </command:inputTypes>
+	  <command:returnValues>
+		  <command:returnValue>
+			  <dev:type>
+				  <maml:name></maml:name>
+				  <maml:uri />
+				  <maml:description />
+			  </dev:type>   
+			  <maml:description>
+				  <maml:para>
+					  <!-- description  -->
+					
+				  </maml:para>
+			  </maml:description> 
+		  </command:returnValue>
+	  </command:returnValues>
+	  <!-- Error section-->
+	  <command:terminatingErrors />
+	  <command:nonTerminatingErrors />
+		  <!-- Notes section  -->
+	  <maml:alertSet>
+		  <maml:title></maml:title>
+		  <maml:alert>
+			  <maml:para>
+                          
+                          </maml:para>
+		  </maml:alert>
+		  <maml:alert>
+			  <maml:para></maml:para>
+		  </maml:alert>
+	  </maml:alertSet>
+	  <!-- Example section  --> 
+	  <command:examples>
+
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 1 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Stop-AzureBatchPoolResize -Name &quot;testPool&quot; -BatchContext $context                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Stops the resize operation on pool &quot;testPool&quot;</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 2 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Get-AzureBatchPool -Name &quot;testPool&quot; -BatchContext $context | Stop-AzureBatchPoolResize -BatchContext $context                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Stops the resize operation on pool &quot;testPool&quot; using the pipeline.</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+	  </command:examples>
+	  <!-- Link section  -->
+	  <maml:relatedLinks>
+		  <maml:navigationLink>
+			  <maml:linkText></maml:linkText>
+			  <maml:uri/>
+		  </maml:navigationLink>
+	  </maml:relatedLinks>
   </command:command>
 </helpItems>
