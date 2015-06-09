@@ -137,13 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private BlobToAzureFileNameResolver nameResolver = new BlobToAzureFileNameResolver(() => NameUtil.MaxFileNameLength);
 
         private IStorageFileManagement destChannel = null;
-
-        public StartAzureStorageFileCopyCommand()
-        {
-            blobChannel = this.GetBlobChannel();
-            destChannel = this.GetDestinationChannel();
-        }
-
+        
         /// <summary>
         /// Create file client and storage service management channel if need to.
         /// </summary>
@@ -202,7 +196,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            IStorageFileManagement destChannel = GetDestinationChannel();
+            blobChannel = this.GetBlobChannel();
+            destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
 
             switch (ParameterSetName)
