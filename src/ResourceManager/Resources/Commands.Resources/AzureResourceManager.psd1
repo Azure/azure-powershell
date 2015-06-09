@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.2'
+ModuleVersion = '0.9.3'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -72,7 +72,8 @@ FormatsToProcess = @(
     '.\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
@@ -96,7 +97,8 @@ NestedModules = @(
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
     '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll'
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
 )
 
 # Functions to export from this module
@@ -113,7 +115,10 @@ AliasesToExport = @(
     'Get-AzureSqlDatabaseServerAuditingPolicy',
     'Remove-AzureSqlDatabaseServerAuditing',
     'Set-AzureSqlDatabaseServerAuditingPolicy',
-    'Use-AzureSqlDatabaseServerAuditingPolicy'
+    'Use-AzureSqlDatabaseServerAuditingPolicy',
+    'Get-AzureStorageContainerAcl',
+    'Start-CopyAzureStorageBlob',
+    'Stop-CopyAzureStorageBlob'
 )
 
 # List of all modules packaged with this module
