@@ -12,28 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
-using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
+    using System;
 
-    [Cmdlet(VerbsCommon.New, "AzureDedicatedCircuitLink"), OutputType(typeof(AzureDedicatedCircuitLink))]
-    public class NewAzureDedicatedCircuitLinkCommand : ExpressRouteBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureCrossConnection"), OutputType(typeof(AzureCrossConnection), typeof(IEnumerable<AzureCrossConnection>))]
+    public class GetAzureCrossConnectionCommand : ExpressRouteBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Service Key representing Azure Circuit")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Service Key representing the Dedicated Circuit")]
         public Guid ServiceKey { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Virtual Network Name")]
-        [ValidateNotNullOrEmpty]
-        public string VNetName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var mapping = ExpressRouteClient.NewAzureDedicatedCircuitLink(ServiceKey, VNetName);
-            WriteObject(mapping);
+            if(ServiceKey != Guid.Empty)
+            {
+                GetByServiceKey();
+            }
+            else
+            {
+                GetNoServiceKey();
+            }
+        }
+
+        private void GetByServiceKey()
+        {
+            var crossConnection = ExpressRouteClient.GetAzureCrossConnection(ServiceKey);
+            WriteObject(crossConnection);
+        }
+
+        private void GetNoServiceKey()
+        {
+            var crossConnections = ExpressRouteClient.ListAzureCrossConnections();
+            WriteObject(crossConnections, true);
         }
     }
 }
