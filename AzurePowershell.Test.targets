@@ -393,6 +393,16 @@
       ContinueOnError="false" />
   </Target>
 
+  <Target Name="ComputeCodeCoverage" DependsOnTargets="ForceRestorePackages;Clean;BuildDebug">
+    <Message Importance="high" Text="Gathering Code Coverage data from Compute tests..." />
+    <Delete Files="Project.covarage" />
+    <Exec
+      Command="pushd .\src\ResourceManager\Compute\Commands.Compute.Test\
+              .\ComputeCodeCoverage.cmd
+              popd"
+      ContinueOnError="false" />
+  </Target>
+
   <!-- DSC extension related targets -->
   <Target Name="TestDSCExtension_x64">
     <Message Importance="high" Text="Running DSC extension BVT x64 tests..." />
