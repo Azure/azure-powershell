@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(Guid))]
     public class UnregisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachineInstanceView VirtualMachine { get; set; }
+        public string ContainerUniqueName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,42 +43,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                string vmName = VirtualMachine.Name;
-                string rgName = VirtualMachine.ResourceGroupName;
-                Guid jobId = Guid.Empty;
-
-                ListContainerQueryParameter queryParams = new ListContainerQueryParameter();
-                queryParams.ContainerTypeField = AzureBackupContainerType.IaasVMContainer.ToString();
-                queryParams.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registered.ToString();
-                queryParams.ContainerFriendlyNameField = vmName;
-
-                string queryString = GetQueryFileter(queryParams);
-
-                ListContainerResponse containers =
-                AzureBackupClient.Container.ListAsync(queryString, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                if(containers.Objects.Count() == 0)
-                {
-                    WriteVerbose("Container is not in the registered list");
-                    jobId = Guid.Empty;
-                }
-                
-                else
-                {
-                    //We can havemultiple container with same friendly name.
-                    //Look for resourceGroup name in the ParentFriendlyName
-                    ContainerInfo containerToUnreg = containers.Objects.Where(c => c.ParentContainerFriendlyName.ToLower().Equals(rgName.ToLower())).FirstOrDefault();
-                    if (containerToUnreg == null)
-                    {
-                        //Container is not in list of registered container
-                        jobId = Guid.Empty;
-                    }
-                    else
-                    {
-                        UnregisterContainerRequest unregRequest = new UnregisterContainerRequest(containerToUnreg.Name, AzureBackupContainerType.IaasVMContainer.ToString()); 
-                        MBS.OperationResponse operationResponse = AzureBackupClient.Container.UnregisterAsync(unregRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                        jobId = operationResponse.OperationId; //TODO: Fix it once PiyushKa publish the rest APi to get jobId based on operationId                        
-                    }
-                }
+                UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(ContainerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
+                MBS.OperationResponse operationResponse = AzureBackupClient.Container.UnregisterAsync(unregRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                Guid jobId = operationResponse.OperationId; //TODO: Fix it once PiyushKa publish the rest APi to get jobId based on operationId                        
 
                 WriteObject(jobId);
             });

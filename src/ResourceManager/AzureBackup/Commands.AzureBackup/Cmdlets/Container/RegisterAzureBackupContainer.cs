@@ -63,26 +63,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if(isDiscoveryNeed)
                 {
                     RefreshContainer();
-                }
+                    isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
+                    if ((isDiscoveryNeed == true) || (container == null))
+                    {
+                        //Container is not discovered. Throw exception
+                        throw new NotImplementedException();
+                    }
+                }                
 
-                isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
-                if((isDiscoveryNeed == false) && (container == null))
-                {
-                    //Container is not discovered. Throw exception
-                    throw new NotImplementedException();
-                }
-                else
-                {
-                    //Container is discovered. Register the container
-                    List<string> containerNameList = new List<string>();
-                    containerNameList.Add(container.Name);
-                    RegisterContainerRequest registrationRequest = new RegisterContainerRequest(containerNameList, AzureBackupContainerType.IaasVMContainer.ToString());
-                    operationResponse = AzureBackupClient.Container.RegisterAsync(registrationRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                //Container is discovered. Register the container
+                List<string> containerNameList = new List<string>();
+                containerNameList.Add(container.Name);
+                RegisterContainerRequestInput registrationRequest = new RegisterContainerRequestInput(containerNameList, AzureBackupContainerType.IaasVMContainer.ToString());
+                operationResponse = AzureBackupClient.Container.RegisterAsync(registrationRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                    //TODO fix the OperationResponse to JobID conversion
-                    jobId = operationResponse.OperationId;
-                    WriteObject(jobId);
-                }
+                //TODO fix the OperationResponse to JobID conversion
+                jobId = operationResponse.OperationId;
+                WriteObject(jobId);
             });
         }
 
@@ -144,10 +141,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             bool isDiscoveryNeed = false;
             //First check if container is discoverd or not
             ListContainerQueryParameter queryParams = new ListContainerQueryParameter();
-            queryParams.ContainerTypeField = String.Empty; // AzureBackupContainerType.IaasVMContainer.ToString();
+            queryParams.ContainerTypeField = AzureBackupContainerType.IaasVMContainer.ToString();
             queryParams.ContainerStatusField = String.Empty;
-            //            queryParams.ContainerFriendlyNameField = vmName;
-            queryParams.ContainerFriendlyNameField = String.Empty;
+            queryParams.ContainerFriendlyNameField = vmName;
             string queryString = GetQueryFileter(queryParams);
 
             ListContainerResponse containers = AzureBackupClient.Container.ListAsync(queryString,
