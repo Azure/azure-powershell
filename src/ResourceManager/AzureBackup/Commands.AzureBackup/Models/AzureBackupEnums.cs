@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,60 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+
 {
-    public enum AzureBackupContainerStatus
+    public enum AzureBackupContainerType
     {
+        Invalid = 0,
+
+        Unknown,
+
+        // used by fabric adapter to populate discovered VMs
+        IaasVMContainer,
+
+        // used by fabric adapter to populate discovered services
+        // VMs are child containers of services they belong to
+        IaasVMServiceContainer
+    }
+
+    public enum AzureBackupContainerRegistrationStatus
+    {
+        Invalid = 0,
+
+        Unknown,
+
+        NotRegistered,
+
         Registered,
+
         Registering,
-        NotRegistered
+    }
+
+    public enum AzureBackupOperationStatus
+    {
+        Invalid = 0,
+
+        InProgress,
+
+        Completed
+    }
+
+    public enum AzureBackupOperationResult
+    {
+        Invalid = 0,
+
+        Cancelled,
+
+        Succeeded,
+
+        Failed,
+
+        PartialSuccess
+    }
+
+    public enum AzureBackupOperationErrorCode
+    {
+        BMSUserErrorObjectLocked = 390026,
+        DiscoveryInProgress = 410002,
     }
 }

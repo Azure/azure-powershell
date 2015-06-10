@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Web;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -23,7 +25,6 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.Compute.Models;
 
-
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
@@ -32,9 +33,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Register, "AzureBackupContainer"), OutputType(typeof(Guid))]
     public class RegisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
+        //[Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        //[ValidateNotNullOrEmpty]
+        //public PSVirtualMachineInstanceView VirtualMachine { get; set; }
         [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
         [ValidateNotNullOrEmpty]
-        public PSVirtualMachineInstanceView VirtualMachine { get; set; }
+        public string VirtualMachineName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [ValidateNotNullOrEmpty]
+        public string VirtualMachineRGName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -42,8 +50,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                string vmName = VirtualMachine.Name;
-                string rgName = VirtualMachine.ResourceGroupName;
+                //string vmName = VirtualMachine.Name;
+                //string rgName = VirtualMachine.ResourceGroupName;
+                string vmName = VirtualMachineName;
+                string rgName = VirtualMachineRGName;
                 Guid jobId = Guid.Empty;
                 bool isDiscoveryNeed = false;
                 MBS.OperationResponse operationResponse;
@@ -66,7 +76,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     //Container is discovered. Register the container
                     List<string> containerNameList = new List<string>();
                     containerNameList.Add(container.Name);
-                    RegisterContainerRequest registrationRequest = new RegisterContainerRequest(containerNameList, "IaasVMContainer"); //TODO: Container type from enum
+                    RegisterContainerRequest registrationRequest = new RegisterContainerRequest(containerNameList, AzureBackupContainerType.IaasVMContainer.ToString());
                     operationResponse = AzureBackupClient.Container.RegisterAsync(registrationRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
                     //TODO fix the OperationResponse to JobID conversion
@@ -78,13 +88,55 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void RefreshContainer()
         {
-            MBS.OperationResponse opResponse = 
-                AzureBackupClient.Container.RefreshAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            bool isRetyNeeded = true;
+            int retryCount = 1;
+            bool isDiscoverySuccessful = false;
+            while (isRetyNeeded && retryCount <= 3)
+            {
+                MBS.OperationResponse opResponse =
+                    AzureBackupClient.Container.RefreshAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-            //Now wait for the operation to Complete
+                //Now wait for the operation to Complete               
+                isRetyNeeded = WaitForDiscoveryToCOmplete(opResponse.OperationId.ToString(), out isDiscoverySuccessful);
+                retryCount++;
+            }
 
-            //If operat
-            throw new NotImplementedException();
+            if (!isDiscoverySuccessful)
+            {
+                //Discovery failed
+                throw new Exception(); //TODO:
+            }
+        }
+
+        private bool WaitForDiscoveryToCOmplete(string operationId, out bool isDiscoverySuccessful)
+        {
+            bool isRetryNeeded = false;
+            
+            
+            BMSOperationStatusResponse status = new BMSOperationStatusResponse() 
+                        {
+                            OperationStatus = AzureBackupOperationStatus.InProgress.ToString() 
+                        };
+
+            while (status.OperationStatus != AzureBackupOperationStatus.Completed.ToString())
+            {
+                status = AzureBackupClient.OperationStatus.GetAsync(operationId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                System.Threading.Thread.Sleep(TimeSpan.FromSeconds(15));
+            }
+
+            isDiscoverySuccessful = true;
+            //If operation fails check if retry is needed or not
+            if (status.OperationResult != AzureBackupOperationResult.Succeeded.ToString())
+            {
+                isDiscoverySuccessful = false;
+                if ((status.ErrorCode == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
+                    (status.ErrorCode == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
+                {
+                    //Need to retry for this errors
+                    isRetryNeeded = true;
+                }
+            }
+            return isRetryNeeded;         
         }
 
         private bool IsDiscoveryNeeded(string vmName, string rgName, out ContainerInfo container)
@@ -92,8 +144,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             bool isDiscoveryNeed = false;
             //First check if container is discoverd or not
             ListContainerQueryParameter queryParams = new ListContainerQueryParameter();
-            queryParams.ContainerFriendlyNameField = vmName;
-            ListContainerResponse containers = AzureBackupClient.Container.ListAsync(queryParams,
+            queryParams.ContainerTypeField = String.Empty; // AzureBackupContainerType.IaasVMContainer.ToString();
+            queryParams.ContainerStatusField = String.Empty;
+            //            queryParams.ContainerFriendlyNameField = vmName;
+            queryParams.ContainerFriendlyNameField = String.Empty;
+            string queryString = GetQueryFileter(queryParams);
+
+            ListContainerResponse containers = AzureBackupClient.Container.ListAsync(queryString,
                             GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             if (containers.Objects.Count() == 0)
             {
@@ -115,6 +172,35 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
             }
             return isDiscoveryNeed;
+        }
+
+        private string GetQueryFileter(ListContainerQueryParameter queryParams)
+        {
+            NameValueCollection collection = new NameValueCollection();
+            if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))
+            {
+                collection.Add("ContainerType", queryParams.ContainerTypeField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerStatusField))
+            {
+                collection.Add("ContainerStatus", queryParams.ContainerStatusField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerFriendlyNameField))
+            {
+                collection.Add("FriendlyName", queryParams.ContainerFriendlyNameField);
+            }
+
+            if (collection == null || collection.Count == 0)
+            {
+                return String.Empty;
+            }
+
+            var httpValueCollection = HttpUtility.ParseQueryString(String.Empty);
+            httpValueCollection.Add(collection);
+
+            return "&" + httpValueCollection.ToString();
         }
     }
 }

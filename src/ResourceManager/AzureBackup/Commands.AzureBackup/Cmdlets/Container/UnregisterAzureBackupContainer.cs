@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Web;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -22,7 +24,6 @@ using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using  Microsoft.Azure.Commands.Compute.Models;
-
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -47,12 +48,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 Guid jobId = Guid.Empty;
 
                 ListContainerQueryParameter queryParams = new ListContainerQueryParameter();
-                queryParams.ContainerStatusField = "Registered"; //TODO: Use enum
+                queryParams.ContainerTypeField = AzureBackupContainerType.IaasVMContainer.ToString();
+                queryParams.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registered.ToString();
                 queryParams.ContainerFriendlyNameField = vmName;
 
-                ListContainerResponse containers = 
-                AzureBackupClient.Container.ListAsync(queryParams, 
-                                GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                string queryString = GetQueryFileter(queryParams);
+
+                ListContainerResponse containers =
+                AzureBackupClient.Container.ListAsync(queryString, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
                 if(containers.Objects.Count() == 0)
                 {
                     WriteVerbose("Container is not in the registered list");
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     }
                     else
                     {
-                        UnregisterContainerRequest unregRequest = new UnregisterContainerRequest(containerToUnreg.Name, "IaasVMContainer"); //TODO: Use enum
+                        UnregisterContainerRequest unregRequest = new UnregisterContainerRequest(containerToUnreg.Name, AzureBackupContainerType.IaasVMContainer.ToString()); 
                         MBS.OperationResponse operationResponse = AzureBackupClient.Container.UnregisterAsync(unregRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
                         jobId = operationResponse.OperationId; //TODO: Fix it once PiyushKa publish the rest APi to get jobId based on operationId                        
                     }
@@ -79,6 +82,36 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteObject(jobId);
             });
+        }
+
+        private string GetQueryFileter(ListContainerQueryParameter queryParams)
+        {
+            NameValueCollection collection = new NameValueCollection();
+            if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))
+            {
+                collection.Add("ContainerType", queryParams.ContainerTypeField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerStatusField))
+            {
+                collection.Add("ContainerStatus", queryParams.ContainerStatusField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerFriendlyNameField))
+            {
+                collection.Add("FriendlyName", queryParams.ContainerFriendlyNameField);
+            }
+
+            if (collection == null || collection.Count == 0)
+            {
+                return String.Empty;
+            }
+
+            var httpValueCollection = HttpUtility.ParseQueryString(String.Empty);
+            httpValueCollection.Add(collection);
+
+            return "&" + httpValueCollection.ToString();
+
         }
     }
 }
