@@ -163,7 +163,7 @@
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
-    <Compile Include="Models\HashTableExtensions.cs" />
+    <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
     <Compile Include="Models\PSOperation.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
@@ -185,10 +185,10 @@
     <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
-    <Compile Include="Models\LocationStringExtensions.cs" />
+    <Compile Include="Common\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="Models\SourceImageReferenceExtension.cs" />
+    <Compile Include="Common\SourceImageReferenceExtensions.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

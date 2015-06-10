@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using FROM = Microsoft.Azure.Management.Compute.Models;
+using TO = Microsoft.Azure.Commands.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using AutoMapper;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using FROM = Microsoft.Azure.Management.Compute.Models;
-    using TO = Microsoft.Azure.Commands.Compute.Models;
-
     public static class ComputeMapperExtension
     {
         public static IMappingExpression<TSource, TDestination> ForItems<TSource, TDestination, T>(
