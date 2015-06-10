@@ -70,6 +70,33 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provisioning Cross Connection for service key {0}.
+        /// </summary>
+        internal static string NewAzureCrossConnectionMessage {
+            get {
+                return ResourceManager.GetString("NewAzureCrossConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully provisioned cross connection.
+        /// </summary>
+        internal static string NewAzureCrossConnectionSucceeded {
+            get {
+                return ResourceManager.GetString("NewAzureCrossConnectionSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to provision a cross connection for service key {0}?.
+        /// </summary>
+        internal static string NewAzureCrossConnectionWarning {
+            get {
+                return ResourceManager.GetString("NewAzureCrossConnectionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Azure Dedicated Circuit with name {0} with service provider {1}.
         /// </summary>
         internal static string NewAzureDedicatedCircuitMessage {

@@ -578,11 +578,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <param name="resources">The resource.</param>
         private async Task<Resource<JToken>[]> GetPopulatedResource(IEnumerable<Resource<JToken>> resources)
         {
-            if (this.IsResourceGroupLevelResourceGet())
-            {
-                return new Resource<JToken>[0];
-            }
-
             return await resources
                 .Select(resource => this.GetPopulatedResource(resource))
                 .WhenAllForAwait()
