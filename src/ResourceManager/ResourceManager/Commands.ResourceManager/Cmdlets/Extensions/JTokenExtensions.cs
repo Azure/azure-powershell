@@ -66,11 +66,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             var jobject = (JObject)jtoken;
             var psObject = new PSObject();
 
-            if (jobject.CanConvertTo<Resource<JToken>>())
-            {
-                return jobject.ToResource().ToPsObject(objectFormat);
-            }
-
             if (!string.IsNullOrWhiteSpace(objectType))
             {
                 psObject.TypeNames.Add(objectType);
