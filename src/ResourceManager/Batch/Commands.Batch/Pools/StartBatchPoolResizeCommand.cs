@@ -17,22 +17,17 @@ using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize", DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize")]
     public class StartBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the pool to resize.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the pool to resize.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSCloudPool object representing the pool to resize.")]
-        [ValidateNotNullOrEmpty]
-        public PSCloudPool Pool { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "The number of target dedicated vms.")]
+        [Parameter(Mandatory = true, HelpMessage = "The number of target dedicated VMs.")]
         [ValidateNotNullOrEmpty]
         public int TargetDedicated { get; set; }
 
@@ -46,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         
         public override void ExecuteCmdlet()
         {
-            PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Name, this.Pool, this.AdditionalBehaviors)
+            PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Name, null, this.AdditionalBehaviors)
             {
                 TargetDedicated = this.TargetDedicated,
                 ResizeTimeout = this.ResizeTimeout,

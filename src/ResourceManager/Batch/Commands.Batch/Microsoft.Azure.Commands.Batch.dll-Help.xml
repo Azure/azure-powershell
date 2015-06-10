@@ -7408,305 +7408,238 @@
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-    <command:details>
-      <command:name>
-        Start-AzureBatchPoolResize
-      </command:name>
-      <maml:description>
-        <maml:para>Begins a pool resize operation.</maml:para>
-      </maml:description>
-      <maml:copyright>
-        <maml:para></maml:para>
-      </maml:copyright>
-      <command:verb>Start</command:verb>
-      <command:noun>AzureBatchPoolResize</command:noun>
-      <dev:version></dev:version>
-    </command:details>
-    <maml:description>
-      <maml:para>Begins a resize operation on the specified pool.</maml:para>
-    </maml:description>
-    <!-- Cmdlet syntax section-->
-    <command:syntax>
-      <command:syntaxItem>
-        <maml:name>Start-AzureBatchPoolResize</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-          <maml:name>Pool</maml:name>
-          <maml:description>
-            <maml:para>The PSCloudPool object representing the pool to resize. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>BatchContext</maml:name>
-          <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DeallocationOption</maml:name>
-          <maml:description>
-            <maml:para>The deallocation option associated with this resize.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TVMDeallocationOption</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Pool</maml:name>
-          <maml:description>
-            <maml:para>The PSCloudPool object representing the pool to resize. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ResizeTimeout</maml:name>
-          <maml:description>
-            <maml:para>The resize timeout. If the pool has not reached the target after this time the resize is automatically stopped.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>TargetDedicated</maml:name>
-          <maml:description>
-            <maml:para>The number of target dedicated vms.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Start-AzureBatchPoolResize</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>The name of the pool to resize.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-          <maml:name>Pool</maml:name>
-          <maml:description>
-            <maml:para>The PSCloudPool object representing the pool to resize. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>BatchContext</maml:name>
-          <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DeallocationOption</maml:name>
-          <maml:description>
-            <maml:para>The deallocation option associated with this resize.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TVMDeallocationOption</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ResizeTimeout</maml:name>
-          <maml:description>
-            <maml:para>The resize timeout. If the pool has not reached the target after this time the resize is automatically stopped.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>TargetDedicated</maml:name>
-          <maml:description>
-            <maml:para>The number of target dedicated vms.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        </command:parameter>
-      </command:syntaxItem>
-    </command:syntax>
-    <!-- Cmdlet parameter section  -->
-    <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-        <maml:name>BatchContext</maml:name>
-        <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+	  <command:details>
+		  <command:name>
+                     Start-AzureBatchPoolResize
+		  </command:name>
+		  <maml:description>
+			  <maml:para>Begins a pool resize operation.</maml:para>
+		  </maml:description>
+		  <maml:copyright>
+			  <maml:para></maml:para>
+		  </maml:copyright>
+		  <command:verb>Start</command:verb>
+		  <command:noun>AzureBatchPoolResize</command:noun>
+		  <dev:version></dev:version>
+	  </command:details>
+	  <maml:description>
+		  <maml:para>Begins a resize operation on the specified pool.</maml:para>
+	  </maml:description>
+	  <!-- Cmdlet syntax section-->
+	  <command:syntax>
+		  <command:syntaxItem>
+			  <maml:name>Start-AzureBatchPoolResize</maml:name>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				  <maml:name>Name</maml:name>
+				  <maml:description>
+					  <maml:para>The name of the pool to resize.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				  <maml:name>BatchContext</maml:name>
+				  <maml:description>
+					  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				  <maml:name>DeallocationOption</maml:name>
+				  <maml:description>
+					  <maml:para>The deallocation option associated with this resize.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">TVMDeallocationOption</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				  <maml:name>ResizeTimeout</maml:name>
+				  <maml:description>
+					  <maml:para>The resize timeout. If the pool has not reached the target after this time the resize is automatically stopped.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+			  </command:parameter>
+			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				  <maml:name>TargetDedicated</maml:name>
+				  <maml:description>
+					  <maml:para>The number of target dedicated vms.</maml:para>
+				  </maml:description>
+				  <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			  </command:parameter>
+		  </command:syntaxItem>
+	  </command:syntax>
+	  <!-- Cmdlet parameter section  -->
+	  <command:parameters>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			  <maml:name>BatchContext</maml:name>
+			  <maml:description>
+				  <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			  <dev:type>
+				  <maml:name>BatchAccountContext</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>DeallocationOption</maml:name>
+			  <maml:description>
+				  <maml:para>The deallocation option associated with this resize.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">TVMDeallocationOption</command:parameterValue>
+			  <dev:type>
+				  <maml:name>TVMDeallocationOption</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			  <maml:name>Name</maml:name>
+			  <maml:description>
+				  <maml:para>The name of the pool to resize.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			  <dev:type>
+				  <maml:name>string</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>ResizeTimeout</maml:name>
+			  <maml:description>
+				  <maml:para>The resize timeout. If the pool has not reached the target after this time the resize is automatically stopped.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+			  <dev:type>
+				  <maml:name>TimeSpan</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			  <maml:name>TargetDedicated</maml:name>
+			  <maml:description>
+				  <maml:para>The number of target dedicated vms.</maml:para>
+								
+			  </maml:description>
+			  <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+			  <dev:type>
+				  <maml:name>int</maml:name>
+				  <maml:uri/>
+			  </dev:type>
+			  <dev:defaultValue></dev:defaultValue>
+		  </command:parameter>
+	  </command:parameters>
+	  <!-- Input - Output section-->
+	  <command:inputTypes>
+		  <command:inputType>
+			  <dev:type>
+				  <maml:name></maml:name>
+				  <maml:uri/>
+				  <maml:description />
+			  </dev:type>
+			  <maml:description>
+				  <maml:para>
+					  <!-- description  -->
+					
+				  </maml:para>
+			  </maml:description>
+		  </command:inputType>
+	  </command:inputTypes>
+	  <command:returnValues>
+		  <command:returnValue>
+			  <dev:type>
+				  <maml:name></maml:name>
+				  <maml:uri />
+				  <maml:description />
+			  </dev:type>   
+			  <maml:description>
+				  <maml:para>
+					  <!-- description  -->
+					
+				  </maml:para>
+			  </maml:description> 
+		  </command:returnValue>
+	  </command:returnValues>
+	  <!-- Error section-->
+	  <command:terminatingErrors />
+	  <command:nonTerminatingErrors />
+		  <!-- Notes section  -->
+	  <maml:alertSet>
+		  <maml:title></maml:title>
+		  <maml:alert>
+			  <maml:para>
+                          
+                          </maml:para>
+		  </maml:alert>
+		  <maml:alert>
+			  <maml:para></maml:para>
+		  </maml:alert>
+	  </maml:alertSet>
+	  <!-- Example section  --> 
+	  <command:examples>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        <dev:type>
-          <maml:name>BatchAccountContext</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DeallocationOption</maml:name>
-        <maml:description>
-          <maml:para>The deallocation option associated with this resize.</maml:para>
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 1 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Start-AzureBatchPoolResize -Name &quot;testPool&quot; -TargetDedicated 10 -BatchContext $context                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Starts a resize operation on pool &quot;testPool&quot; with a new target of 10 dedicated vms.</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
 
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">TVMDeallocationOption</command:parameterValue>
-        <dev:type>
-          <maml:name>TVMDeallocationOption</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>The name of the pool to resize.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Pool</maml:name>
-        <maml:description>
-          <maml:para>The PSCloudPool object representing the pool to resize. Use the Get-AzureBatchPool cmdlet to get a PSCloudPool object.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSCloudPool</command:parameterValue>
-        <dev:type>
-          <maml:name>PSCloudPool</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ResizeTimeout</maml:name>
-        <maml:description>
-          <maml:para>The resize timeout. If the pool has not reached the target after this time the resize is automatically stopped.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
-        <dev:type>
-          <maml:name>TimeSpan</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>TargetDedicated</maml:name>
-        <maml:description>
-          <maml:para>The number of target dedicated vms.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
-        <dev:type>
-          <maml:name>int</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-    </command:parameters>
-    <!-- Input - Output section-->
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name></maml:name>
-          <maml:uri />
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-            <!-- description  -->
-
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
-    <!-- Error section-->
-    <command:terminatingErrors />
-    <command:nonTerminatingErrors />
-    <!-- Notes section  -->
-    <maml:alertSet>
-      <maml:title></maml:title>
-      <maml:alert>
-        <maml:para>
-
-        </maml:para>
-      </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
-    </maml:alertSet>
-    <!-- Example section  -->
-    <command:examples>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Start-AzureBatchPoolResize -Name &quot;testPool&quot; -TargetDedicated 10 -BatchContext $context
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>Starts a resize operation on pool &quot;testPool&quot; with a new target of 10 dedicated vms.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 2 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Get-AzureBatchPool -Name &quot;testPool&quot; -BatchContext $context | Start-AzureBatchPoolResize -TargetDedicated 50 -ResizeTimeout ([TimeSpan]::FromHours(1)) -DeallocationOption ([Microsoft.Azure.Batch.Common.TVMDeallocationOption]::Terminate) -BatchContext $context
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>Starts a resize operation on pool &quot;testPool&quot; with a new target of 50 dedicated vms, a resize timeout of 1 hour, and the Terminate deallocation option.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
-    <!-- Link section  -->
-    <maml:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
-      </maml:navigationLink>
-    </maml:relatedLinks>
+		  <command:example>
+			  <maml:title>
+				  -------------------------- EXAMPLE 2 --------------------------
+			  </maml:title> 
+			  <maml:introduction>
+				  <maml:para>C:\PS&gt;</maml:para>
+			  </maml:introduction> 
+  			  <dev:code>
+  Get-AzureBatchPool -Name &quot;testPool&quot; -BatchContext $context | Start-AzureBatchPoolResize -TargetDedicated 50 -ResizeTimeout ([TimeSpan]::FromHours(1)) -DeallocationOption ([Microsoft.Azure.Batch.Common.TVMDeallocationOption]::Terminate) -BatchContext $context                        </dev:code>
+       			  <dev:remarks>
+                                  <maml:para>Description</maml:para>
+                                  <maml:para>-----------</maml:para>
+  			          <maml:para>Starts a resize operation on pool &quot;testPool&quot; with a new target of 50 dedicated vms, a resize timeout of 1 hour, and the Terminate deallocation option.</maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+	                          <maml:para></maml:para>
+  			  </dev:remarks>
+			  <command:commandLines>
+				  <command:commandLine>
+					  <command:commandText></command:commandText>
+				  </command:commandLine>
+			  </command:commandLines>
+		  </command:example>
+	  </command:examples>
+	  <!-- Link section  -->
+	  <maml:relatedLinks>
+		  <maml:navigationLink>
+			  <maml:linkText></maml:linkText>
+			  <maml:uri/>
+		  </maml:navigationLink>
+	  </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	  <command:details>

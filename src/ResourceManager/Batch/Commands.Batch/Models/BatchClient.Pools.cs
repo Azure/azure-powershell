@@ -174,17 +174,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("parameters");
             }
 
-            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, parameters.PoolName ?? parameters.Pool.Name, parameters.TargetDedicated));
-            if (parameters.Pool != null)
+            string poolName = parameters.Pool == null ? parameters.PoolName : parameters.Pool.Name;
+
+            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolName, parameters.TargetDedicated));
+            using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
             {
-                parameters.Pool.omObject.Resize(parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
-            }
-            else
-            {
-                using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
-                {
-                    poolManager.ResizePool(parameters.PoolName, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
-                }
+                poolManager.ResizePool(poolName, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
             }
         }
 

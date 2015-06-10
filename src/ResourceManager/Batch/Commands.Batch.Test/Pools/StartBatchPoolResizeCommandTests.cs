@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Name = null;
-            cmdlet.Pool = null;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
