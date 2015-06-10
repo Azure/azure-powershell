@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperation>();
             Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
+            Mapper.CreateMap<FROM.DeleteOperationResponse, TO.PSComputeLongRunningOperation>();
 
             Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
             Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSAvailabilitySet>();
