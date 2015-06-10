@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public string BackupType { get; set; }
 
-        public DateTime ScheduleStartTime { get; set; }
+        public string ScheduleType { get; set; }
+
+        public IList<string> ScheduleRunDays { get; set; }
 
         public IList<DateTime> ScheduleRunTimes { get; set; }
 
@@ -55,11 +57,25 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             WorkloadType = sourcePolicy.WorkloadType;
             
             BackupType = sourcePolicy.Schedule.BackupType;
-            ScheduleStartTime = sourcePolicy.Schedule.ScheduleStartTime;
+            ScheduleType = sourcePolicy.Schedule.ScheduleRun;
             ScheduleRunTimes = sourcePolicy.Schedule.ScheduleRunTimes;
+            ScheduleRunDays = ConvertScheduleRunDays(sourcePolicy.Schedule.ScheduleRunDays);
 
             RetentionType = sourcePolicy.Schedule.RetentionPolicy.RetentionType.ToString();
             RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
+        }
+
+        private IList<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
+        {
+            IList<string> scheduelRunDays = new List<string>();
+
+            foreach(object item in weekDaysList)
+            {
+                scheduelRunDays.Add(item.ToString());
+            }
+
+            return scheduelRunDays;
+
         }
     }
 }

@@ -22,12 +22,12 @@ using Microsoft.Azure.Management.BackupServices.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of protection policies
+    /// Remove a protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureBackupProtectionPolicy")]
+    public class RemoveAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -43,36 +43,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteVerbose("Received policy response");
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
-                if (Name != null)
+
+                policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+
+                if (policyObjects.Count<ProtectionPolicyInfo>() != 0)
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                    ProtectionPolicyInfo protectionPolicyInfo = policyObjects.ElementAt<ProtectionPolicyInfo>(0);
+                    var policyRemoveResponse = AzureBackupClient.ProtectionPolicy.DeleteAsync(protectionPolicyInfo.InstanceId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
                 }
                 else
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
+                    WriteVerbose("Policy Not Found");
                 }
 
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(policyObjects);
+                WriteVerbose("Successfully deleted policy");
             });
-        }
-
-        public void WriteAzureBackupProtectionPolicy(ProtectionPolicyInfo sourcePolicy)
-        {
-            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
-        }
-
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
-        {
-            List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
-
-            foreach (var sourcePolicy in sourcePolicyList)
-            {
-                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
-            }
-
-            this.WriteObject(targetList, true);
-        }
+        }        
     }
 }
 
