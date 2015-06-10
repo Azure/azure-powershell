@@ -20,8 +20,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
-
 {
+    public enum AzureBackupContainerTypeInput
+    {
+        All,
+        AzureVirtualMachine,
+    }
+
+    public enum AzureBackupContainerStatusInput
+    {
+        All,
+        Registering,
+        Registered,
+    }
+
     public enum AzureBackupContainerType
     {
         Invalid = 0,

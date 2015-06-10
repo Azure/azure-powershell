@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerStatus Status { get; set; }
+        public AzureBackupContainerStatusInput Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerType Type { get; set; }
+        public AzureBackupContainerTypeInput Type { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 queryFilterString = ConstructQueryFilterString();
                 ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
                     GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+
+                WriteVerbose(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
 
                 List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
 
@@ -69,10 +71,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     });
                 }
 
-                WriteObject(containerInfos.ConvertAll(containerInfo =>
+                WriteVerbose(string.Format("# of containers after resource group filter = {0}", listContainerResponse.Objects.Count));
+
+                List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(containerInfo);
-                }));
+                    return new AzureBackupContainer(containerInfo, ResourceGroupName, ResourceName, Location);
+                });
+
+                if (!string.IsNullOrEmpty(ResourceName) & !string.IsNullOrEmpty(ResourceGroupName))
+                {
+                    if (containers.Any())
+                    {
+                        WriteObject(containers.First());
+                    }
+                }
+                else
+                {
+                    WriteObject(containers);
+                }
             });
         }
 
@@ -82,7 +98,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             switch (Type)
             {
-                case AzureBackupContainerType.AzureVirtualMachine:
+                case AzureBackupContainerTypeInput.AzureVirtualMachine:
                     containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
@@ -91,14 +107,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             switch (Status)
             {
-                case AzureBackupContainerStatus.Registered:
+                case AzureBackupContainerStatusInput.Registered:
                     containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
                     break;
-                case AzureBackupContainerStatus.Registering:
+                case AzureBackupContainerStatusInput.Registering:
                     containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
-                    break;
-                case AzureBackupContainerStatus.NotRegistered:
-                    containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
                     break;
                 default:
                     break;

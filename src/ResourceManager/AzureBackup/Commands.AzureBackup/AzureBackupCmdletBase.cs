@@ -42,6 +42,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private string resourceName { get; set; }
 
         /// <summary>
+        /// Resource context for the operation
+        /// </summary>
+        private string location { get; set; }
+
+        /// <summary>
         /// Client request id.
         /// </summary>
         private string clientRequestId;
@@ -82,10 +87,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
         }
 
-        public void InitializeAzureBackupCmdlet(string rgName, string rName)
+        public void InitializeAzureBackupCmdlet(string rgName, string rName, string locationName)
         {
             resourceGroupName = rgName;
             resourceName = rName;
+            location = locationName;
 
             RefreshClientRequestId();
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));

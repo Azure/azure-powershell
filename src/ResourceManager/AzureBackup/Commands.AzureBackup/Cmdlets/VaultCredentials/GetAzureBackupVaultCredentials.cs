@@ -45,8 +45,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteVerbose(string.Format("Profile == null : {0}", (Profile == null).ToString()));
-                WriteVerbose(string.Format("Profile.DefaultSubscription == null : {0}", (Profile.DefaultSubscription == null).ToString()));
+                if (!Directory.Exists(TargetLocation))
+                {
+                    throw new ArgumentException("The target location provided is not a directory. Please provide a directory.");
+                }
+
                 string subscriptionId = Profile.DefaultSubscription.Id.ToString();
                 string resourceType = "resourceType";
                 string displayName = subscriptionId + "_" + ResourceGroupName + "_" + ResourceName;
@@ -62,7 +65,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                                                                        DateTime.UtcNow.AddHours(this.GetCertificateExpiryInHours()));
 
                 AcsNamespace acsNamespace = new AcsNamespace();
-
                 string channelIntegrityKey = string.Empty;
                 try
                 {
@@ -80,8 +82,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 string vaultCredsFileContent = GenerateVaultCreds(cert, subscriptionId, resourceType, acsNamespace);
 
                 // prepare for download
-                string fileName = string.Format("{0}_{1}.VaultCredentials", displayName, DateTime.UtcNow.ToLongDateString());
-                string filePath = Path.Combine(Path.GetDirectoryName(TargetLocation), fileName);
+                string fileName = string.Format("{0}_{1}.VaultCredentials", displayName, DateTime.UtcNow.ToString("yyyy-dd-M--HH-mm-ss"));
+                string directoryPath = Path.GetDirectoryName(TargetLocation);
+                if (directoryPath == null)
+                {
+                    // TargetLocation is a root path
+                    directoryPath = TargetLocation;
+                }
+                string filePath = Path.Combine(directoryPath, fileName);
+                WriteVerbose(string.Format("Saving Vault Credentials to file : {0}", filePath));
+
                 File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
                 // Output filename back to user

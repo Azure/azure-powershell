@@ -43,6 +43,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BackupManagementInterface, Version=1.0.523.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\BackupManagementInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="BMSCommonInterface, Version=1.0.523.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\BMSCommonInterface.dll</HintPath>
+    </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
@@ -117,13 +125,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
-    <None Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
@@ -177,6 +186,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\BackupManagementInterface.dll" />
+    <Content Include="Resources\BMSCommonInterface.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>
