@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Management.Automation.Language;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
@@ -22,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
     {
         public string Path { get; set; }
         public ParseError[] Errors { get; set; }
-        public List<String> RequiredModules { get; set; }
+        public Dictionary<string,string> RequiredModules { get; set; }
 
     }
 }

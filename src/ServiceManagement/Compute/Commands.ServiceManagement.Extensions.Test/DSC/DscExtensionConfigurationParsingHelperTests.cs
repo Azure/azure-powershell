@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(CorporateClientConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
         }
 
         [Fact]
@@ -103,8 +103,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(DomainControllerConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(2, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
-            Assert.Equal("xActiveDirectory", results.RequiredModules[1]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xActiveDirectory"));
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(VisualStudioPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xPSDesiredStateConfiguration", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xPSDesiredStateConfiguration"));
         }
 
         [Fact]
@@ -124,9 +124,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ShMulptiConfigurationsPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(3, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
-            Assert.Equal("xNetworking", results.RequiredModules[1]);
-            Assert.Equal("xPSDesiredStateConfiguration", results.RequiredModules[2]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xNetworking"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xPSDesiredStateConfiguration"));
         }
 
         [Fact]
@@ -136,8 +136,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportListInsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(2, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
-            Assert.Equal("xActiveDirectory", results.RequiredModules[1]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xActiveDirectory"));
         }
 
         [Fact]
@@ -147,8 +147,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportListOutsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(2, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
-            Assert.Equal("xActiveDirectory", results.RequiredModules[1]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xActiveDirectory"));
         }
 
         [Fact]
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportSingleInsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
         }
 
         [Fact]
@@ -168,7 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportSingleOutsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
         }
 
         [Fact]
@@ -178,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameModuleImportSingleInsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xComputerManagement", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xComputerManagement"));
         }
 
         [Fact]
@@ -188,8 +188,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportListInsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(2, results.RequiredModules.Count);
-            Assert.Equal("xPSDesiredStateConfiguration", results.RequiredModules[0]);
-            Assert.Equal("xNetworking", results.RequiredModules[1]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xPSDesiredStateConfiguration"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xNetworking"));
         }
 
         [Fact]
@@ -199,8 +199,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportListOutsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(2, results.RequiredModules.Count);
-            Assert.Equal("xPSDesiredStateConfiguration", results.RequiredModules[0]);
-            Assert.Equal("xNetworking", results.RequiredModules[1]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xPSDesiredStateConfiguration"));
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xNetworking"));
         }
 
         [Fact]
@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportSingleInsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xNetworking", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xNetworking"));
         }
 
         [Fact]
@@ -220,7 +220,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportSingleOutsideNodeConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xNetworking", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xNetworking"));
         }
 
         [Fact]
@@ -230,7 +230,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(IeeScGoodConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xSystemSecurity", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xSystemSecurity"));
         }
 
         [Fact]
@@ -240,7 +240,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(IeeScBadConfigurationPath);
             Assert.Equal(0, results.Errors.Count());
             Assert.Equal(1, results.RequiredModules.Count);
-            Assert.Equal("xSystemSecurity", results.RequiredModules[0]);
+            Assert.Equal(true, results.RequiredModules.ContainsKey("xSystemSecurity"));
         }
     }
 }
