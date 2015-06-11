@@ -23,14 +23,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public enum AzureBackupContainerTypeInput
     {
-        All,
-        AzureVirtualMachine,
+        AzureVirtualMachine = 1,
     }
 
     public enum AzureBackupContainerStatusInput
     {
-        All,
-        Registering,
+        Registering = 1,
         Registered,
     }
 
@@ -87,5 +85,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         BMSUserErrorObjectLocked = 390026,
         DiscoveryInProgress = 410002,
+    }
+
+    public enum AzureBackupVaultStorageType
+    {
+        GeoRedundant = 1,
+        LocallyRedundant,
     }
 }

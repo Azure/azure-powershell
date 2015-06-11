@@ -52,11 +52,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
     }
-
-    // TODO: Move to common enums cs file.
-    public enum AzureBackupVaultStorageType
-    {
-        GeoRedundant = 1,
-        LocallyRedundant,
-    }
 }
