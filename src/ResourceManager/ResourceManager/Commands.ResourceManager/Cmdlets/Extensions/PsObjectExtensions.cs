@@ -99,16 +99,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 return obj;
             }
 
-            var valueAsArray = value as Array;
-            if (valueAsArray != null)
+            var valueAsDictionary = value as IDictionary;
+            if (valueAsDictionary != null)
             {
-                var retVal = new JToken[valueAsArray.Length];
-                for (int i = 0; i < valueAsArray.Length; ++i)
+                JObject obj = new JObject();
+                var dictionaryEntries = valueAsDictionary is IDictionary<string, object>
+                    ? valueAsDictionary.OfType<KeyValuePair<string, object>>().Select(kvp => Tuple.Create(kvp.Key, kvp.Value))
+                    : valueAsDictionary.OfType<DictionaryEntry>().Select(dictionaryEntry => Tuple.Create(dictionaryEntry.Key.ToString(), dictionaryEntry.Value));
+
+                dictionaryEntries = dictionaryEntries.Any(dictionaryEntry => dictionaryEntry.Item1.EqualsInsensitively(Constants.MicrosoftAzureResource))
+                    ? dictionaryEntries.Where(dictionaryEntry => !PsObjectExtensions.PropertiesToRemove.ContainsKey(dictionaryEntry.Item1))
+                    : dictionaryEntries;
+
+                foreach (var dictionaryEntry in dictionaryEntries)
                 {
-                    retVal[i] = PsObjectExtensions.ToJToken(valueAsArray.GetValue(i));
+                    obj.Add(dictionaryEntry.Item1, PsObjectExtensions.ToJToken(dictionaryEntry.Item2));
                 }
 
-                return JArray.FromObject(retVal);
+                return obj;
+            }
+
+            var valueAsIList = value as IList;
+            if (valueAsIList != null)
+            {
+                var tmpList = new List<JToken>();
+                foreach(var v in valueAsIList)
+                {
+                    tmpList.Add(PsObjectExtensions.ToJToken(v));
+                }
+
+                return JArray.FromObject(tmpList.ToArray());
             }
 
             return new JValue(value.ToString());
