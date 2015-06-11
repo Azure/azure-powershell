@@ -89,10 +89,10 @@
         </ListEntries>
       </ListControl>
     </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</Name>
+    <!--<View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperationResponse</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperation</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -110,7 +110,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>
+    </View>-->
     <View>
       <Name>Microsoft.Azure.Management.Compute.Models.DataDisk</Name>
       <ViewSelectedBy>

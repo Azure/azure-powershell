@@ -12,37 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Compute.Common;
-using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    public class UtilityFunctionTests
+    public partial class AzureVMTests
     {
         [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLocationStringExtension()
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestGetAzureLocation()
         {
-            string[] locations = new string[]
-            {
-                "West US",
-                "eastus",
-                "East Asia 2"
-            };
-
-            Func<string, string> normalize = delegate(string s)
-            {
-                return string.IsNullOrEmpty(s) ? s : s.Replace(" ", string.Empty).ToLower();
-            };
-
-            foreach (var loc in locations)
-            {
-                var s1 = loc.Canonicalize();
-                var s2 = normalize(loc);
-                Assert.True(string.Equals(s1, s2));
-            }
+            this.RunPowerShellTest("Test-GetAzureLocation");
         }
     }
 }
