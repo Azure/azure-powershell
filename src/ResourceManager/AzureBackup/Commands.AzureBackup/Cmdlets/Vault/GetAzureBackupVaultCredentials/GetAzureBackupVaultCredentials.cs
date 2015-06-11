@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             string response = string.Empty;
             VaultCredUploadCertResponse vaultCredUploadCertResponse =
-                AzureBackupClient.VaultCredentials.UploadCertificateAsync(
+                AzureBackupClient.Vault.UploadCertificateAsync(
                     "IdMgmtInternalCert",
                     vaultCredUploadCertRequest,
                     GetCustomRequestHeaders(),
