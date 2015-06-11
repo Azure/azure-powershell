@@ -22,8 +22,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public enum AzureBackupContainerStatus
     {
+        All,
         Registered,
         Registering,
-        NotRegistered
+        NotRegistered,
     }
 }

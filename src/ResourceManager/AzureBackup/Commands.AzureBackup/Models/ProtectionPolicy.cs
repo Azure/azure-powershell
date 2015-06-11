@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
         }
 
-        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, ProtectionPolicyInfo sourcePolicy) : base(resourceGroupName, resourceName)
+        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, string location, ProtectionPolicyInfo sourcePolicy)
+            : base(resourceGroupName, resourceName, location)
         {
             InstanceId = sourcePolicy.InstanceId;
             Name = sourcePolicy.Name;

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
     public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public void WriteAzureBackupProtectionPolicy(ProtectionPolicyInfo sourcePolicy)
         {
-            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
         }
 
         public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (var sourcePolicy in sourcePolicyList)
             {
-                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, sourcePolicy));
+                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
             }
 
             this.WriteObject(targetList, true);
