@@ -1752,7 +1752,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     "Import-Module '.\\" + Utilities.AzurePowershellModuleServiceManagementPirModule + "';",
                     "$c1 = New-AzurePlatformComputeImageConfig -Offer test -Sku test -Version test;",
                     "$c2 = New-AzurePlatformMarketplaceImageConfig -PlanName test -Product test -Publisher test -PublisherId test;",
-                    "Set-AzurePlatformVMImage -ImageName " + img + " -ReplicaLocations 'West US' -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
+                    "$vmImgLoc = (Get-AzureLocation | where { $_.Name -like '*US*' } | select -ExpandProperty Name)[0];",
+                    "Set-AzurePlatformVMImage -ImageName " + img + " -ReplicaLocations $vmImgLoc -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
                 };
 
             var imgName = Utilities.GetUniqueShortName("img");
