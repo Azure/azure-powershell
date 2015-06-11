@@ -26,10 +26,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
+        public const string VirtualMachine = "Virtual Machine.";
         public const string ContainerResourceGroupName = "The container resource group name.";
         public const string ProtectionStatus = "Protection Status of the azure backup item.";
         public const string AzureBackUpItem = "Azure BackUp Item.";
         public const string RecoveryPointId = "Recovery Point Id.";
+        public const string StorageType = "The vault back-end storage type.";
         public const string Type = "Type of Azure Backup Item.";
         public const string Status = "Status of Azure Backup Item";
         public const string AzureBackupContainer = "Azure Backup Container for Azure Backup Item.";
