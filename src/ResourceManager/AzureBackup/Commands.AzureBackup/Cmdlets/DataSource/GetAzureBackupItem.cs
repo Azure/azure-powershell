@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using System.Runtime.Serialization;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -27,9 +28,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupItem"), OutputType(typeof(AzureBackupItem), typeof(List<AzureBackupItem>))]
     public class GetAzureBackupItem : AzureBackupContainerCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ProtectionStatus)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public protectionStatus ProtectionStatus { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -39,23 +40,38 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 WriteVerbose("Making client call");
 
-                var azureBackupDatasourceListResponse = AzureBackupClient.DataSource.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                var azureBackupPOListResponse = AzureBackupClient.ProtectableObject. ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                DataSourceQueryParameter dsQueryParameter = new DataSourceQueryParameter()
+                {
+                    ContainerName = AzureBackupContainer.ContainerName
+                };
+
+                POQueryParameter pOQueryParameter = new POQueryParameter()
+                {
+                    Status = this.ProtectionStatus.ToString()
+                };
+
+                var azureBackupDatasourceListResponse = AzureBackupClient.DataSource.ListAsync(dsQueryParameter,GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var azureBackupPOListResponse = AzureBackupClient.ProtectableObject. ListAsync(pOQueryParameter, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
                 WriteVerbose("Received policy response2");
-                IEnumerable<DataSourceInfo> azureBackupDatasourceObjects = null;
-                IEnumerable<ProtectableObjectInfo> azureBackupPOObjects = null;
+                List<DataSourceInfo> azureBackupDatasourceObjects = null;
+                List<ProtectableObjectInfo> azureBackupPOObjects = null;
 
-                if (Id != null)
+                azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects.ToList();
+                azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(AzureBackupContainer.ContainerName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
+
+                //If user has stopped protection for some datasoure then we will have duplicate items(po and ds).
+                //So in this case removing  poitem.
+                foreach (var DSItem in azureBackupDatasourceObjects)
                 {
-                    azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects.Where(x => x.InstanceId.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
-                    azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.InstanceId.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
-                }
-                else
-                {
-                    azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects;
-                    azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects;
+                    foreach(var POItem in azureBackupPOObjects)
+                    {
+                        if(DSItem.ProtectableObjectName == POItem.Name)
+                        {
+                            azureBackupPOObjects.Remove(POItem);
+                        }
+                    }
                 }
 
                 WriteVerbose("Converting response");
@@ -68,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             this.WriteObject(new AzureBackupItem(sourceItem, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<DataSourceInfo> sourceDataSourceList,IEnumerable<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
+        public void WriteAzureBackupProtectionPolicy(List<DataSourceInfo> sourceDataSourceList, List<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
         {
             List<AzureBackupItem> targetList = new List<AzureBackupItem>();
 
@@ -85,5 +101,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             this.WriteObject(targetList, true);
         }
 
+        public enum protectionStatus
+        {
+            [EnumMember]
+            NotProtected = 0,
+
+            [EnumMember]
+            Protected,
+        }
     }
 }

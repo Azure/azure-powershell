@@ -125,11 +125,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />

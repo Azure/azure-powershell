@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public enum AzureBackupContainerType
     {
-        AzureVirtualMachine
+        All,
+        AzureVirtualMachine,
     }
 }

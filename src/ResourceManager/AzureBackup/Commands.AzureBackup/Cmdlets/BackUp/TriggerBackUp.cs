@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureBackupItem"), OutputType(typeof(MBS.OperationResponse))]
+    [Cmdlet(VerbsData.Backup, "AzureBackupItem"), OutputType(typeof(MBS.OperationResponse))]
     public class TriggerAzureBackup : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -44,26 +44,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 MBS.OperationResponse triggerBackUpInfo =
                     AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
-                    AzureBackupItem.ContainerName,
-                    AzureBackupItem.DataSourceType,
-                    AzureBackupItem.DataSourceId,
-                    CmdletCancellationToken).Result;                
+                    item.ContainerUniqueName,
+                    item.Type,
+                    item.DataSourceId,
+                    CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
                 WriteVerbose("Received policy response2");
 
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(triggerBackUpInfo);
+                WriteAzureBackupOperationId(triggerBackUpInfo);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(MBS.OperationResponse sourceOperationResponse)
+        public void WriteAzureBackupOperationId(MBS.OperationResponse sourceOperationResponse)
         {
             // this needs to be uncommented once we have proper constructor
-            //this.WriteObject(new AzureBackupRecoveryPoint(ResourceGroupName, ResourceName, sourceOperationResponse));
+            // this.WriteObject(new AzureBackupRecoveryPoint(ResourceGroupName, ResourceName, sourceOperationResponse));
         }
 
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<MBS.OperationResponse> sourceOperationResponseList)
+        public void WriteAzureBackupOperationId(IEnumerable<MBS.OperationResponse> sourceOperationResponseList)
         {
             List<MBS.OperationResponse> targetList = new List<MBS.OperationResponse>();
 
@@ -77,4 +77,3 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
-

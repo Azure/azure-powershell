@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceName { get; set; }
 
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Location, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,7 +46,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}", ResourceGroupName, ResourceName));
 
-            InitializeAzureBackupCmdlet(ResourceGroupName, ResourceName);
+            InitializeAzureBackupCmdlet(ResourceGroupName, ResourceName, Location);
         }
     }
 }
