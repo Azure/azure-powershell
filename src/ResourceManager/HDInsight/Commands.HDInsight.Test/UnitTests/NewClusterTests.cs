@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         public NewClusterTests()
         {
-            base.SetupTest();
+            base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
             cmdlet = new NewAzureHDInsightClusterCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object
+                HDInsightManagementClient = hdinsightManagementMock.Object
             };
         }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             var getresponse = new ClusterGetResponse {Cluster = cluster};
             
-            hdinsightManagementClient.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
                 parameters => 
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageAccountName == StorageName &&

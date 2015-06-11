@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         public ConfigurationTests()
         {
-            base.SetupTest();
+            base.SetupTestsForManagement();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var newconfigcmdlet = new NewAzureHDInsightClusterConfigCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterType = HDInsightClusterType.Hadoop
             };
 

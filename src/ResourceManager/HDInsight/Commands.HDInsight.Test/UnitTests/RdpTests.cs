@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         
         public RdpTests()
         {
-            base.SetupTest();
+            base.SetupTestsForManagement();
             _rdpCred = new PSCredential("rdpuser", string.Format("Password1!").ConvertToSecureString());
 
             grantcmdlet = new GrantAzureHDInsightRdpServicesAccessCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName,
                 RdpCredential = _rdpCred,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             revokecmdlet = new RevokeAzureHDInsightRdpServicesAccessCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName
             };
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGrantRdpAccess()
         {
-            hdinsightManagementClient.Setup(
+            hdinsightManagementMock.Setup(
                 c =>
                     c.ConfigureRdp(ResourceGroupName, ClusterName,
                         It.Is<RDPSettingsParameters>(
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRevokeRdpAccess()
         {
-            hdinsightManagementClient.Setup(
+            hdinsightManagementMock.Setup(
                 c =>
                     c.ConfigureRdp(ResourceGroupName, ClusterName,
                         It.Is<RDPSettingsParameters>(

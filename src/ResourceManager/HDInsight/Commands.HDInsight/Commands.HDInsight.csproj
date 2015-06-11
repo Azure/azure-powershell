@@ -35,7 +35,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="JobCommands\NewAzureHDInsightSqoopJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightStreamingMapReduceJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightMapReduceJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightPigJobDefinitionCommand.cs" />
@@ -43,6 +42,7 @@
     <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\StopAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\StartAzureHDInsightJobCommand.cs" />
+    <Compile Include="ManagementCommands\SetAzureHDInsightDefaultStorageCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightStorageCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightMetastoreCommand.cs" />
@@ -61,7 +61,6 @@
     <Compile Include="Models\Job\AzureHDInsightJob.cs" />
     <Compile Include="Models\Job\AzureHDInsightMapReduceJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightStreamingMapReduceJobDefinition.cs" />
-    <Compile Include="Models\Job\AzureHDInsightSqoopJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightPigJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightHiveJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightJobDefinition.cs" />

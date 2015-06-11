@@ -63,13 +63,11 @@ FormatsToProcess = @(
     '.\Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',
     '.\Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',
-    '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
-    '.\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'

@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         public GetClusterTests()
         {
-            base.SetupTest();
+            base.SetupTestsForManagement();
 
             cmdlet = new GetAzureHDInsightCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object
+                HDInsightManagementClient = hdinsightManagementMock.Object
             };
         }
 
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             var getresponse = new ClusterGetResponse { Cluster = cluster };
-            hdinsightManagementClient.Setup(c => c.Get(ResourceGroupName, ClusterName))
+            hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
                 .Returns(getresponse)
                 .Verifiable(); 
             
-            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+            hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
                 .CallBase()
                 .Verifiable();
             
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             var listresponse = new ClusterListResponse {Clusters = new[] {cluster1, cluster2}};
-            hdinsightManagementClient.Setup(c => c.ListClusters(ResourceGroupName))
+            hdinsightManagementMock.Setup(c => c.ListClusters(ResourceGroupName))
                 .Returns(listresponse)
                 .Verifiable();
 
-            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+            hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
                 .CallBase()
                 .Verifiable();
 
@@ -195,11 +195,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
-            hdinsightManagementClient.Setup(c => c.ListClusters())
+            hdinsightManagementMock.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();
 
-            hdinsightManagementClient.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+            hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
                 .CallBase()
                 .Verifiable();
 

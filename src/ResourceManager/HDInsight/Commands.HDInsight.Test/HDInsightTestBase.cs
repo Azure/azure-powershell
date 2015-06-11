@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -24,12 +27,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         protected const string ResourceGroupName = "hdi-rg1";
         protected const string Location = "west us";
 
-        protected Mock<AzureHdInsightManagementClient> hdinsightManagementClient;
+        protected Mock<AzureHdInsightManagementClient> hdinsightManagementMock;
+        protected Mock<AzureHdInsightJobManagementClient> hdinsightJobManagementMock;
         protected Mock<ICommandRuntime> commandRuntimeMock;
 
-        public virtual void SetupTest()
+        public virtual void SetupTestsForManagement()
         {
-            hdinsightManagementClient = new Mock<AzureHdInsightManagementClient>();
+            hdinsightManagementMock = new Mock<AzureHdInsightManagementClient>();
+            commandRuntimeMock = new Mock<ICommandRuntime>();
+        }
+
+        public virtual void SetupTestsForData()
+        {
+            var cred = new BasicAuthenticationCloudCredentials {Username = "username", Password = "Password1!"};
+            hdinsightJobManagementMock = new Mock<AzureHdInsightJobManagementClient>(ClusterName, cred);
             commandRuntimeMock = new Mock<ICommandRuntime>();
         }
     }

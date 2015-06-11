@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         
         public HttpTests()
         {
-            base.SetupTest();
+            base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
 
             grantcmdlet = new GrantAzureHDInsightHttpServicesAccessCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName,
                 HttpCredential = _httpCred
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             revokecmdlet = new RevokeAzureHDInsightHttpServicesAccessCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementClient.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName
             };
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGrantHttpAccess()
         {
-            hdinsightManagementClient.Setup(
+            hdinsightManagementMock.Setup(
                 c =>
                     c.ConfigureHttp(ResourceGroupName, ClusterName,
                         It.Is<HttpSettingsParameters>(
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 StatusCode = HttpStatusCode.OK
             };
 
-            hdinsightManagementClient.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
+            hdinsightManagementMock.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
                 .Returns(connectivitysettings)
                 .Verifiable();
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRevokeHttpAccess()
         {
-            hdinsightManagementClient.Setup(
+            hdinsightManagementMock.Setup(
                 c =>
                     c.ConfigureHttp(ResourceGroupName, ClusterName,
                         It.Is<HttpSettingsParameters>(
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 StatusCode = HttpStatusCode.OK
             };
 
-            hdinsightManagementClient.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
+            hdinsightManagementMock.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
                 .Returns(connectivitysettings)
                 .Verifiable();
 

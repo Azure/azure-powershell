@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             if (JobId != null)
             {
-                var job = await HDInsightJobClient.GetJob(JobId);
+                var job = HDInsightJobClient.GetJob(JobId);
                 var jobDetails = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);
                 WriteObject(jobDetails);
             }
             else
             {
-                var jobs = await HDInsightJobClient.ListJobs();
+                var jobs = HDInsightJobClient.ListJobs();
                 WriteObject(jobs, true);
             }
         }

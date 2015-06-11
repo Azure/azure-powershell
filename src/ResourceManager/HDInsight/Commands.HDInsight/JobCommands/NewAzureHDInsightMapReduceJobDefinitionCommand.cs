@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -94,9 +95,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 job.Files.Add(file);
             }
 
-            foreach (KeyValuePair<string, string> define in Defines)
+            var defineDic = Defines.ToDictionary(false);
+            foreach (var define in defineDic)
             {
-                job.Defines.Add(define.Key, define.Value);
+                job.Defines.Add(define.Key, define.Value.ToString());
             }
 
             foreach (var libjar in LibJars)

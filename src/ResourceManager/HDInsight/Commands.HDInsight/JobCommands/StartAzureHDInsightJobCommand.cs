@@ -75,27 +75,22 @@ namespace Microsoft.Azure.Commands.HDInsight
             var azureHiveJobDefinition = JobDefinition as AzureHDInsightHiveJobDefinition;
             var azurePigJobDefinition = JobDefinition as AzureHDInsightPigJobDefinition;
             var azureStreamingJobDefinition = JobDefinition as AzureHDInsightStreamingMapReduceJobDefinition;
-            var azureSqoopJobDefinition = JobDefinition as AzureHDInsightSqoopJobDefinition;
 
             if (azureMapReduceJobDefinition != null)
             {
-                jobCreationResults = await HDInsightJobClient.SubmitMRJob(azureMapReduceJobDefinition);
+                jobCreationResults = HDInsightJobClient.SubmitMRJob(azureMapReduceJobDefinition);
             }
             else if (azureHiveJobDefinition != null)
             {
-                jobCreationResults = await HDInsightJobClient.SubmitHiveJob(azureHiveJobDefinition);
+                jobCreationResults = HDInsightJobClient.SubmitHiveJob(azureHiveJobDefinition);
             }
             else if (azurePigJobDefinition != null)
             {
-                jobCreationResults = await HDInsightJobClient.SubmitPigJob(azurePigJobDefinition);
-            }
-            else if (azureSqoopJobDefinition != null)
-            {
-                jobCreationResults = await HDInsightJobClient.SubmitSqoopJob(azureSqoopJobDefinition);
+                jobCreationResults = HDInsightJobClient.SubmitPigJob(azurePigJobDefinition);
             }
             else if (azureStreamingJobDefinition != null)
             {
-                jobCreationResults = await HDInsightJobClient.SubmitStreamingJob(azureStreamingJobDefinition);
+                jobCreationResults = HDInsightJobClient.SubmitStreamingJob(azureStreamingJobDefinition);
             }
             else
             {
@@ -103,7 +98,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     string.Format(CultureInfo.InvariantCulture, "Cannot start jobDetails of type : {0}.", JobDefinition.GetType()));
             }
 
-            var startedJob = await HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
+            var startedJob = HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
 
             var jobDetail = new AzureHDInsightJob(startedJob.JobDetail, HDInsightJobClient.ClusterName);
 

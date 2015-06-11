@@ -97,8 +97,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var config = Config;
-            _configurations = config.Configurations ?? new Dictionary<string, Dictionary<string, string>>();
+            _configurations = Config.Configurations ?? new Dictionary<string, Dictionary<string, string>>();
 
             AddConfigToConfigurations(Core, ConfigurationKey.CoreSite);
             AddConfigToConfigurations(HiveSite, ConfigurationKey.HiveSite);
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             AddConfigToConfigurations(Tez, ConfigurationKey.TezSite);
             AddConfigToConfigurations(Hdfs, ConfigurationKey.HdfsSite);
 
-            WriteObject(_configurations);
+            WriteObject(Config);
         }
 
         private void AddConfigToConfigurations(Dictionary<string, string> userConfigs, string configKey)
