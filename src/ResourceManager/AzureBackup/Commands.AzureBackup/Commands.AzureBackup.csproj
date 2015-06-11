@@ -86,7 +86,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment">
-      <HintPath>..\..\..\..\..\azure-sdk-for-net\binaries\net40\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Release\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,6 +117,7 @@
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -130,7 +131,11 @@
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
+    <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureBackupJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
+    <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\VaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\VaultCredentials\CertUtils.cs" />
@@ -143,6 +148,7 @@
     <Compile Include="Models\AzureBackupContainerType.cs" />
     <Compile Include="Models\AzureBackupItem.cs" />
     <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
+    <Compile Include="Models\JobObjects.cs" />
     <Compile Include="Models\ProtectionPolicy.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

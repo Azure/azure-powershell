@@ -16,17 +16,137 @@ using System;
 using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
+using System.Linq;
+using System.Web;
+using Microsoft.Azure.Management.BackupServices;
+using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Get list of jobs pertaining to the filters specified. Gets list of all jobs created in the last 24 hours if no filters are specified.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupJob"), OutputType(typeof(string))]
-    public class GetAzureBackupJob : AzureBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBackupJob"), OutputType(typeof(List<Mgmt.Job>), typeof(Mgmt.Job))]
+    public class GetAzureBackupJob : AzureBackupVaultCmdletBase
     {
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string JobId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage)]
+        [ValidateNotNull]
+        public AzureBackupJob Job { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStartTimeHelpMessage)]
+        [ValidateNotNull]
+        public DateTime? StartTime { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterEndTimeHelpMessage)]
+        [ValidateNotNull]
+        public DateTime? EndTime { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStatusHelpMessage)]
+        [ValidateSet("Cancelled", "Cancelling", "Completed", "CompletedWithWarnings", "Failed", "InProgress")]
+        public string Status { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterTypeHelpMessage)]
+        [ValidateSet("VM")]
+        public string Type { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterOperationHelpMessage)]
+        [ValidateSet("Backup", "ConfigureBackup", "DeleteBackupData", "Register", "Restore", "UnProtect", "Unregister")]
+        public string Operation { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (Job != null)
+            {
+                this.ResourceGroupName = Job.ResourceGroupName;
+                this.ResourceName = Job.ResourceName;
+            }
+
+            base.ExecuteCmdlet();
+
+            ExecutionBlock(() =>
+            {
+                //if (Job != null && JobId != null)
+                //{
+                //    throw new Exception("Please use either JobID filter or Job filter but not both.");
+                //}
+
+                if (Job != null)
+                {
+                    JobId = Job.InstanceId;
+                }
+
+                // validations
+                if (!StartTime.HasValue)
+                {
+                    WriteDebug("Setting StartTime to min value.");
+                    StartTime = new DateTime();
+                    StartTime = DateTime.MinValue;
+                }
+
+                if (EndTime.HasValue && EndTime.Value <= StartTime.Value)
+                {
+                    throw new Exception("StartTime should be greater than EndTime.");
+                }
+                else
+                {
+                    if (StartTime != DateTime.MinValue)
+                    {
+                        WriteDebug("End time not set. Setting it to current time.");
+                        EndTime = DateTime.Now;
+                    }
+                    else
+                    {
+                        WriteDebug("Setting EndTime to min value.");
+                        EndTime = new DateTime();
+                        EndTime = DateTime.MinValue;
+                    }
+                }
+
+                StartTime = TimeZoneInfo.ConvertTimeToUtc(StartTime.Value);
+                EndTime = TimeZoneInfo.ConvertTimeToUtc(EndTime.Value);
+
+                // if user hasn't specified any filters, then default filter fetches
+                // all jobs that were created in last 24 hours.
+                if (StartTime == DateTime.MinValue && EndTime == DateTime.MinValue &&
+                    Operation == string.Empty && Status == string.Empty &&
+                    Type == string.Empty && JobId == string.Empty)
+                {
+                    StartTime = DateTime.UtcNow.AddDays(-1);
+                    EndTime = DateTime.UtcNow;
+                }
+
+                WriteDebug("StartTime filter is: " + System.Uri.EscapeDataString(StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
+                WriteDebug("EndTime filter is: " + System.Uri.EscapeDataString(EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
+                WriteDebug("Operation filter is: " + Operation);
+                WriteDebug("Status filter is: " + Status);
+                WriteDebug("Type filter is: " + Type);
+                WriteDebug("JobID filter is: " + JobId);
+
+                JobQueryParameter queryParams = new JobQueryParameter()
+                {
+                    StartTime = StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+                    EndTime = EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+                    Operation = Operation,
+                    Status = Status,
+                    Type = Type,
+                    JobId = JobId
+                };
+
+                Mgmt.JobListResponse jobsList = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                List<AzureBackupJob> retrievedJobs = new List<AzureBackupJob>();
+
+                foreach (Mgmt.Job serviceJob in jobsList.Jobs)
+                {
+                    retrievedJobs.Add(new AzureBackupJob(serviceJob, ResourceGroupName, ResourceName));
+                }
+
+                WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());
+                WriteObject(retrievedJobs);
+            });
         }
     }
 }
