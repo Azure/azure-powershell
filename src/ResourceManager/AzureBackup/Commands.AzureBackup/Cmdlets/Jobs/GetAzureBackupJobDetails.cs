@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("JobID filter is: " + JobID);
 
                 Mgmt.JobProperties serviceJobProperties = AzureBackupClient.Job.GetAsync(JobID, GetCustomRequestHeaders(), CmdletCancellationToken).Result.Job;
-                AzureBackupJobDetails jobDetails = new AzureBackupJobDetails(serviceJobProperties, ResourceGroupName, ResourceName);
+                AzureBackupJobDetails jobDetails = new AzureBackupJobDetails(serviceJobProperties, ResourceGroupName, ResourceName, Location);
 
                 WriteDebug("Retrieved JobDetails from service.");
                 WriteObject(jobDetails);

@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 foreach (Mgmt.Job serviceJob in jobsList.Jobs)
                 {
-                    retrievedJobs.Add(new AzureBackupJob(serviceJob, ResourceGroupName, ResourceName));
+                    retrievedJobs.Add(new AzureBackupJob(serviceJob, ResourceGroupName, ResourceName, Location));
                 }
 
                 WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());

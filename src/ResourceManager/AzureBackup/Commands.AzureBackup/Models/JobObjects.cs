@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public List<ErrorInfo> ErrorDetails { get; set; }
 
-        public AzureBackupJob(Mgmt.Job serviceJob, string ResourceGroupName, string ResourceName)
-            : base(ResourceGroupName, ResourceName)
+        public AzureBackupJob(Mgmt.Job serviceJob, string ResourceGroupName, string ResourceName, string LocationName)
+            : base(ResourceGroupName, ResourceName, LocationName)
         {
             this.InstanceId = serviceJob.InstanceId;
             this.WorkloadType = serviceJob.Type;
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public List<AzureBackupJobSubTask> SubTasks { get; set; }
 
-        public AzureBackupJobDetails(Mgmt.JobProperties serviceJobProperties, string ResourceGroupName, string ResourceName)
-            : base(serviceJobProperties, ResourceGroupName, ResourceName)
+        public AzureBackupJobDetails(Mgmt.JobProperties serviceJobProperties, string ResourceGroupName, string ResourceName, string LocationName)
+            : base(serviceJobProperties, ResourceGroupName, ResourceName, LocationName)
         {
             if (serviceJobProperties.PropertyBag != null)
                 this.Properties = new Dictionary<string, string>(serviceJobProperties.PropertyBag);
