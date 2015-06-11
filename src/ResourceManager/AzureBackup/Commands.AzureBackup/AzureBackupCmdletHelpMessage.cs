@@ -33,5 +33,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string Type = "Type of Azure Backup Item.";
         public const string Status = "Status of Azure Backup Item";
         public const string AzureBackupContainer = "Azure Backup Container for Azure Backup Item.";
+        public const string AzureBackupItem = "Azure Backup Item for enabling protection";
+        public const string RemoveProtectionOption = "Remove Protection Option";
+        public const string Reason = "Reson for removing protection";
+        public const string Comments = "Comments for for removing protection";
     }
 }

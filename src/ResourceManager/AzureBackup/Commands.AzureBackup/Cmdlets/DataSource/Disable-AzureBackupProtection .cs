@@ -22,9 +22,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     [Cmdlet(VerbsLifecycle.Disable, "AzureBackupProtection"), OutputType(typeof(OperationResponse))]
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
         [ValidateSet("Invalid", "RetainBackupData", "DeleteBackupData")] 
         public string RemoveProtectionOption { get; set; }
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Reason)]
+        public string Reason { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Comments)]
+        public string Comments { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -32,8 +39,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
             ExecutionBlock(() =>
             {
                 WriteVerbose("Making client call");
-                RemoveProtectionRequestInput input = new RemoveProtectionRequestInput();
-                input.RemoveProtectionOption = this.RemoveProtectionOption == null ? "RetainBackupData" : this.RemoveProtectionOption;
+                RemoveProtectionRequestInput input = new RemoveProtectionRequestInput()
+                {
+                    RemoveProtectionOption = this.RemoveProtectionOption == null ? "RetainBackupData" : this.RemoveProtectionOption,
+                    Reason = this.Reason,
+                    Comments = this.Comments,
+                };
+
                 WriteVerbose("RemoveProtectionOption = " + input.RemoveProtectionOption);
                 var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), item.ContainerUniqueName, item.Type, item.DataSourceId, input, CmdletCancellationToken).Result;
 

@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (var item in sourceDataSourceList)
             {
-                WriteVerbose("Type of DS is = " + item.Type);
                 targetList.Add(new AzureBackupItem(item, azureBackupContainer));
             }
 
@@ -100,7 +99,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 foreach (var item in sourcePOList)
                 {
-                    WriteVerbose("Type of PO is = " + item.Type);
                     //If user has stopped protection for some datasoure then we will have duplicate items(po and ds).
                     //So in this case removing  poitems from the list.
                     if (targetList.FindIndex(element => element.Name == item.Name) < 0)
