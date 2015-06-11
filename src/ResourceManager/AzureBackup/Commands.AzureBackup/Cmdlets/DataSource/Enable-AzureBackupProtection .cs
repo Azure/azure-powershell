@@ -48,17 +48,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteVerbose("Making client call");
                 SetProtectionRequestInput input = new SetProtectionRequestInput();
                 input.PolicyId = Policy.InstanceId;
-                if (AzureBackupItem.GetType() == ((AzureBackupItem)AzureBackupItem).GetType())
+                if (Item.GetType() == ((AzureBackupItem)Item).GetType())
                 {
-                    input.ProtectableObjectType = (AzureBackupItem as AzureBackupItem).Type;
-                    input.ProtectableObjects.Add((AzureBackupItem as AzureBackupItem).Name);
+                    input.ProtectableObjectType = (Item as AzureBackupItem).Type;
+                    input.ProtectableObjects.Add((Item as AzureBackupItem).Name);
                 }
-                else if (AzureBackupItem.GetType() == ((AzureBackupContainer)AzureBackupItem).GetType())
+                else if (Item.GetType() == ((AzureBackupContainer)Item).GetType())
                 {
-                    if((AzureBackupItem as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
+                    if((Item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
                     {
                         input.ProtectableObjectType = DataSourceType.VM.ToString();
-                        input.ProtectableObjects.Add((AzureBackupItem as AzureBackupContainer).ContainerUniqueName);
+                        input.ProtectableObjects.Add((Item as AzureBackupContainer).ContainerUniqueName);
                     }
                 }
                 else

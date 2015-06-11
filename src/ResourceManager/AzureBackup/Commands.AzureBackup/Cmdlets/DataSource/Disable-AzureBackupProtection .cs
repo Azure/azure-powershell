@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 RemoveProtectionRequestInput input = new RemoveProtectionRequestInput();
                 input.RemoveProtectionOption = this.RemoveProtectionOption == null ? "RetainBackupData" : this.RemoveProtectionOption;
                 WriteVerbose("RemoveProtectionOption = " + input.RemoveProtectionOption);
-                var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), AzureBackupItem.ContainerUniqueName, AzureBackupItem.Type, AzureBackupItem.DataSourceId, input, CmdletCancellationToken).Result;
+                var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), item.ContainerUniqueName, item.Type, item.DataSourceId, input, CmdletCancellationToken).Result;
 
                 WriteVerbose("Received policy response");
                 WriteVerbose("Converting response");

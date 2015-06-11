@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
                     GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
+                WriteVerbose(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
+
                 List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
 
                 // When resource group name is specified, remove all containers whose resource group name
@@ -69,10 +71,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     });
                 }
 
-                WriteObject(containerInfos.ConvertAll(containerInfo =>
+                WriteVerbose(string.Format("# of containers after resource group filter = {0}", listContainerResponse.Objects.Count));
+
+                List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(containerInfo);
-                }));
+                    return new AzureBackupContainer(containerInfo, ResourceGroupName, ResourceName, Location);
+                });
+
+                if (!string.IsNullOrEmpty(ResourceName) & !string.IsNullOrEmpty(ResourceGroupName))
+                {
+                    if (containers.Any())
+                    {
+                        WriteObject(containers.First());
+                    }
+                }
+                else
+                {
+                    WriteObject(containers);
+                }
             });
         }
 

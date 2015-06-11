@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         // ToDO:
         // Correct Help message and other attributes related to paameters
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackUpItem, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupItem AzureBackupItem { get; set; }
+        public AzureBackupItem item { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}", AzureBackupItem.ResourceGroupName, AzureBackupItem.ResourceName));
+            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}", item.ResourceGroupName, item.ResourceName));
 
-            InitializeAzureBackupCmdlet(AzureBackupItem.ResourceGroupName, AzureBackupItem.ResourceName);
+            InitializeAzureBackupCmdlet(item.ResourceGroupName, item.ResourceName, item.Location);
         }
     }
 }

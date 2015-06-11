@@ -118,7 +118,6 @@
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -136,9 +135,10 @@
     <Compile Include="Cmdlets\DataSource\Disable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\Enable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\GetAzureBackupItem.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\VaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\VaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\VaultCredentials\Constants.cs" />
