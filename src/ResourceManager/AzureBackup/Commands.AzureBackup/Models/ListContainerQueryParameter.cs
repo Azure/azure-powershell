@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,21 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public enum AzureBackupContainerType
+    public class ListContainerQueryParameter : ManagementBaseObject
     {
-        All,
-        AzureVirtualMachine,
+        /// <summary>
+        ///Containers information for registration
+        /// </summary>
+        public string ContainerTypeField { get; set; }
+
+        /// <summary>
+        ///Containers status information
+        /// </summary>
+        public string ContainerStatusField { get; set; }
+
+        /// <summary>
+        ///Containers status information
+        /// </summary>
+       public string ContainerFriendlyNameField { get; set; }
     }
 }
