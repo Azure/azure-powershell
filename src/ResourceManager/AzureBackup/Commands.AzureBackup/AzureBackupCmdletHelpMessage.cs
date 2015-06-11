@@ -31,5 +31,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ProtectionStatus = "Protection Status of the azure backup item.";
         public const string AzureBackUpItem = "Azure BackUp Item.";
         public const string RecoveryPointId = "Recovery Point Id.";
+        public const string StorageType = "The vault back-end storage type.";
     }
 }

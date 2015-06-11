@@ -137,11 +137,12 @@
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\AcsNamespace.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\CertUtils.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\Constants.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\VaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\GetAzureBackupVaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\VaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
     <Compile Include="Models\AzureBackupEnums.cs" />
