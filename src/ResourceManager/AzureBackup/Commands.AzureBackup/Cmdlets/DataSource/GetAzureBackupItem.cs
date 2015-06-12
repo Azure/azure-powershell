@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     public class GetAzureBackupItem : AzureBackupContainerCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ProtectionStatus)]
-        [ValidateSet("NotProtected","Protected","Protecting","NotProtected")]   
+        [ValidateSet("Protected","Protecting","NotProtected")]   
         public string ProtectionStatus { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Status)]
-        [ValidateSet("Invalid", "IRPending", "ProtectionStopped", "ProtectionError", "Protected")]        
+        [ValidateSet("IRPending", "ProtectionStopped", "ProtectionError", "Protected")]        
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Type)]
-        [ValidateSet("Invalid", "VM")]
+        [ValidateSet("VM")]
         public string Type { get; set; }
 
         public override void ExecuteCmdlet()
@@ -67,17 +67,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 };
 
                 azureBackupDatasourceListResponse = AzureBackupClient.DataSource.ListAsync(DSQueryParam, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects.Where(x => x.ContainerName.Equals(AzureBackupContainer.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
+                azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects.Where(x => x.ContainerName.Equals(container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
 
                 if (this.Status == null)
                 {
                     azureBackupPOListResponse = AzureBackupClient.ProtectableObject.ListAsync(POQueryParam, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                    azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(AzureBackupContainer.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
                 }
 
                 WriteVerbose("Received response");
                 WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, AzureBackupContainer);
+                WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, container);
             });
         }
 
