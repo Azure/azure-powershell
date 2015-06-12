@@ -49,9 +49,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     item.DataSourceId,
                     CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
-                WriteVerbose("Received policy response2");
-
+                WriteVerbose("Received backup response");
+                
                 WriteVerbose("Converting response");
                 WriteAzureBackupOperationId(triggerBackUpInfo);
             });
