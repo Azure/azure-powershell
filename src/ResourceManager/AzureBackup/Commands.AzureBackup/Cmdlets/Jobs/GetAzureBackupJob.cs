@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage)]
         [ValidateNotNull]
         public AzureBackupJob Job { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStartTimeHelpMessage)]
         [ValidateNotNull]
-        public DateTime? StartTime { get; set; }
+        public DateTime? From { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterEndTimeHelpMessage)]
         [ValidateNotNull]
-        public DateTime? EndTime { get; set; }
+        public DateTime? To { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStatusHelpMessage)]
         [ValidateSet("Cancelled", "Cancelling", "Completed", "CompletedWithWarnings", "Failed", "InProgress")]
@@ -80,47 +80,47 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 // validations
-                if (!StartTime.HasValue)
+                if (!From.HasValue)
                 {
                     WriteDebug("Setting StartTime to min value.");
-                    StartTime = new DateTime();
-                    StartTime = DateTime.MinValue;
+                    From = new DateTime();
+                    From = DateTime.MinValue;
                 }
 
-                if (EndTime.HasValue && EndTime.Value <= StartTime.Value)
+                if (To.HasValue && To.Value <= From.Value)
                 {
                     throw new Exception("StartTime should be greater than EndTime.");
                 }
                 else
                 {
-                    if (StartTime != DateTime.MinValue)
+                    if (From != DateTime.MinValue)
                     {
                         WriteDebug("End time not set. Setting it to current time.");
-                        EndTime = DateTime.Now;
+                        To = DateTime.Now;
                     }
                     else
                     {
                         WriteDebug("Setting EndTime to min value.");
-                        EndTime = new DateTime();
-                        EndTime = DateTime.MinValue;
+                        To = new DateTime();
+                        To = DateTime.MinValue;
                     }
                 }
 
-                StartTime = TimeZoneInfo.ConvertTimeToUtc(StartTime.Value);
-                EndTime = TimeZoneInfo.ConvertTimeToUtc(EndTime.Value);
+                From = TimeZoneInfo.ConvertTimeToUtc(From.Value);
+                To = TimeZoneInfo.ConvertTimeToUtc(To.Value);
 
                 // if user hasn't specified any filters, then default filter fetches
                 // all jobs that were created in last 24 hours.
-                if (StartTime == DateTime.MinValue && EndTime == DateTime.MinValue &&
+                if (From == DateTime.MinValue && To == DateTime.MinValue &&
                     Operation == string.Empty && Status == string.Empty &&
                     Type == string.Empty && JobId == string.Empty)
                 {
-                    StartTime = DateTime.UtcNow.AddDays(-1);
-                    EndTime = DateTime.UtcNow;
+                    From = DateTime.UtcNow.AddDays(-1);
+                    To = DateTime.UtcNow;
                 }
 
-                WriteDebug("StartTime filter is: " + System.Uri.EscapeDataString(StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
-                WriteDebug("EndTime filter is: " + System.Uri.EscapeDataString(EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
+                WriteDebug("StartTime filter is: " + System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
+                WriteDebug("EndTime filter is: " + System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
                 WriteDebug("Operation filter is: " + Operation);
                 WriteDebug("Status filter is: " + Status);
                 WriteDebug("Type filter is: " + Type);
@@ -128,8 +128,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 JobQueryParameter queryParams = new JobQueryParameter()
                 {
-                    StartTime = StartTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
-                    EndTime = EndTime.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+                    StartTime = From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+                    EndTime = To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
                     Operation = Operation,
                     Status = Status,
                     Type = Type,
