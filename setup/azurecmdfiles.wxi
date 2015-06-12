@@ -1177,6 +1177,9 @@
                         <Component Id="cmp4A9CBE6913BD99499757EDE83E2A85C9" Guid="*">
                             <File Id="filAA5C2CA326E78FB614870B357EE52C75" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll" />
                         </Component>
+                        <Component Id="cmp6B1095C3FE5132738564ACAF96CDC695" Guid="*">
+                            <File Id="fil923C42991F5C060808859934E35045C7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml" />
+                        </Component>
                         <Component Id="cmp1D90870460C08DCCAF6043A718F03174" Guid="*">
                             <File Id="fil785E1638145FF177B1AC6B665A7A1A9E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\ResourceManager\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
@@ -4204,6 +4207,7 @@
             <ComponentRef Id="cmp5213FD510F56FD8BB9F7937D8F0F4B7E" />
             <ComponentRef Id="cmpFA7F3226D8E3F705D62B78A767F75520" />
             <ComponentRef Id="cmp4A9CBE6913BD99499757EDE83E2A85C9" />
+            <ComponentRef Id="cmp6B1095C3FE5132738564ACAF96CDC695" />
             <ComponentRef Id="cmp1D90870460C08DCCAF6043A718F03174" />
             <ComponentRef Id="cmp2FD81A9625D5F45C5D43F9E652B2339A" />
             <ComponentRef Id="cmp3857DCE0607C8535A39A94AFF3669FDD" />
