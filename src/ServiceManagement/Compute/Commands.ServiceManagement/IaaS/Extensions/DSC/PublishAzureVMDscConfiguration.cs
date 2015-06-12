@@ -300,11 +300,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         {
                             if([String]::IsNullOrEmpty($moduleVersion))
                             {
-                                $mi = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
+                                $mi = Get-Module -List -Name $moduleName                                
                             }
                             else
                             {
-                                $mi = Get-Module -List -Name $moduleName
+                                $mi = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
                             }
                             
                             $moduleFolder = Split-Path $mi.Path
