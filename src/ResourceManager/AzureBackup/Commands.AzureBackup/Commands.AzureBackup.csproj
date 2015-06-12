@@ -85,7 +85,8 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment">
+    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Release\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -127,31 +128,44 @@
   <ItemGroup>
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
+    <Compile Include="AzureBackupItemCmdletBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
+    <Compile Include="Cmdlets\DataSource\Disable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\DataSource\Enable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\DataSource\GetAzureBackupItem.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
+    <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
+    <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJobDetails.cs" />
     <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\AcsNamespace.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\CertUtils.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\Constants.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
-    <Compile Include="Cmdlets\VaultCredentials\VaultCredentials.cs" />
+    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\GetAzureBackupVaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\VaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
-    <Compile Include="Models\AzureBackupContainerStatus.cs" />
-    <Compile Include="Models\AzureBackupContainerType.cs" />
+    <Compile Include="Models\AzureBackupEnums.cs" />
     <Compile Include="Models\AzureBackupItem.cs" />
     <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
     <Compile Include="Models\JobObjects.cs" />
+    <Compile Include="Models\ListContainerQueryParameter.cs" />
     <Compile Include="Models\ProtectionPolicy.cs" />
+    <Compile Include="Models\RegisterContainer\RegisterContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +177,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.Compute\Commands.Compute.csproj">
+      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
+      <Name>Commands.Compute</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +218,10 @@
     <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

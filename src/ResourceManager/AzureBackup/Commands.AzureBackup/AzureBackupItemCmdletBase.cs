@@ -26,19 +26,20 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public abstract class AzureBackupContainerCmdletBase : AzureBackupCmdletBase
+    public abstract class AzureBackupItemCmdletBase : AzureBackupCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupContainer, ValueFromPipelineByPropertyName = true)]
+        // ToDO:
+        // Correct Help message and other attributes related to paameters
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupItem, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainer AzureBackupContainer { get; set; }
+        public AzureBackupContainerContextObject Item { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", AzureBackupContainer.ResourceGroupName, AzureBackupContainer.ResourceName, AzureBackupContainer.Location));
-
-            InitializeAzureBackupCmdlet(AzureBackupContainer.ResourceGroupName, AzureBackupContainer.ResourceName, AzureBackupContainer.Location);
+            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", Item.ResourceGroupName, Item.ResourceName, Item.Location));
+            InitializeAzureBackupCmdlet(Item.ResourceGroupName, Item.ResourceName, Item.Location);
         }
     }
 }
+
