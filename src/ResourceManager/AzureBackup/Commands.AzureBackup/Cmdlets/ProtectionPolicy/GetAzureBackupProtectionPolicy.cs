@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of protection policies
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
+    public class GetAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
+                WriteDebug("Making client call");
 
                 var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
+                WriteDebug("Received policy response");
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
                 if (Name != null)
                 {
@@ -52,26 +52,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     policyObjects = policyListResponse.ProtectionPolicies.Objects;
                 }
 
-                WriteVerbose("Converting response");
+                WriteDebug("Converting response");
                 WriteAzureBackupProtectionPolicy(policyObjects);
             });
-        }
-
-        public void WriteAzureBackupProtectionPolicy(ProtectionPolicyInfo sourcePolicy)
-        {
-            this.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
-        }
-
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
-        {
-            List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
-
-            foreach (var sourcePolicy in sourcePolicyList)
-            {
-                targetList.Add(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
-            }
-
-            this.WriteObject(targetList, true);
         }
     }
 }

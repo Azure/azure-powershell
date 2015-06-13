@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public IList<string> ScheduleRunDays { get; set; }
 
-        public IList<DateTime> ScheduleRunTimes { get; set; }
+        public DateTime ScheduleRunTimes { get; set; }
 
         public string RetentionType { get; set; }
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             
             BackupType = sourcePolicy.Schedule.BackupType;
             ScheduleType = sourcePolicy.Schedule.ScheduleRun;
-            ScheduleRunTimes = sourcePolicy.Schedule.ScheduleRunTimes;
+            ScheduleRunTimes = ConvertScheduleRunTimes(sourcePolicy.Schedule.ScheduleRunTimes);
             ScheduleRunDays = ConvertScheduleRunDays(sourcePolicy.Schedule.ScheduleRunDays);
 
             RetentionType = sourcePolicy.Schedule.RetentionPolicy.RetentionType.ToString();
@@ -76,7 +77,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
 
             return scheduelRunDays;
-
         }
+
+        private DateTime ConvertScheduleRunTimes(IList<DateTime> scheduleRunTimeList)
+        {
+            IEnumerator<DateTime> scheduleEnumerator = scheduleRunTimeList.GetEnumerator();
+            scheduleEnumerator.MoveNext();
+            return scheduleEnumerator.Current;
+        }        
     }
 }

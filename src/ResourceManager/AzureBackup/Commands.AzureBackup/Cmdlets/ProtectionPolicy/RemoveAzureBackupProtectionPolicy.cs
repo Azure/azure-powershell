@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Remove a protection policy
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureBackupProtectionPolicy")]
-    public class RemoveAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
+    public class RemoveAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
+                WriteDebug("Making client call");
 
                 var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
+                WriteDebug("Received policy response");
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
 
                 policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteVerbose("Policy Not Found");
                 }
 
-                WriteVerbose("Converting response");
+                WriteDebug("Converting response");
                 WriteVerbose("Successfully deleted policy");
             });
         }        
