@@ -8,6 +8,7 @@
     <ScenarioTestDebug>.\src\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
     <CommonTestDebug>.\src\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
     <SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
+    <ComputeDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.dll</ComputeDebug>
     <ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
     <NetworkTestDebug>.\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll</NetworkTestDebug>
     <AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
@@ -397,9 +398,7 @@
     <Message Importance="high" Text="Gathering Code Coverage data from Compute tests..." />
     <Delete Files="Project.covarage" />
     <Exec
-      Command="pushd .\src\ResourceManager\Compute\Commands.Compute.Test\
-              .\ComputeCodeCoverage.cmd
-              popd"
+      Command="C:\cc\ComputeCodeCoverage.cmd $(ComputeDebug) $(ComputeTestDebug)"
       ContinueOnError="false" />
   </Target>
 
