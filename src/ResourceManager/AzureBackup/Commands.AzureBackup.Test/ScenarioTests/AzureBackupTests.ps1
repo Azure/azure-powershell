@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ResourceGroupName = "backuprg";
+$ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
 $ContainerType = "IaasVMContainer"
@@ -57,6 +57,7 @@ function GetAzureRecoveryPointTest
 	{
 	    Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
 		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
 	}
 }
 
