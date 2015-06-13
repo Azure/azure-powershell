@@ -129,6 +129,7 @@
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
+    <Compile Include="AzureBackupPolicyCmdletBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
