@@ -183,94 +183,97 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationConfigureRunbook.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationPublishAndEditRunbook.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationRunbookWithParameter.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartAndStopRunbook.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartRunbookOnASchedule.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartUnpublishedRunbook.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureVM.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SchedulerTests\TestSchedulerEndToEnd.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpoint.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpointNoWeightLocation.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddMultipleAzureTrafficManagerEndpoint.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestCreateAndRemoveProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestDisableProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestDisableProfileWithInvalidCredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestEnableProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestEnableProfileWithInvalidCredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetMultipleProfiles.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetProfileWithInvalidCredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestNewProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestNewProfileInvalidParameters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveAzureTrafficManagerEndpoint.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveProfileWithInvalidCredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveProfileWithNonExistingName.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpoint.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpointAdds.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpointUpdateWeightLocation.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetProfileProperty.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestTestAzureTrafficManagerDomainName.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Storage\StorageContext.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -287,6 +290,7 @@
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
+    <Compile Include="ServiceManagement\GetLocationTests.cs" />
     <Compile Include="ServiceManagement\GetVMTests.cs" />
     <Compile Include="StorageTests\StorageContainerTest.cs" />
     <Compile Include="StorageTests\StorageContextTest.cs" />
