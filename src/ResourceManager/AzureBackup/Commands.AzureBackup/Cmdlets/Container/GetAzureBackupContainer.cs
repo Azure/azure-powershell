@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerStatus Status { get; set; }
+        public AzureBackupContainerStatusInput Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerType Type { get; set; }
+        public AzureBackupContainerTypeInput Type { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             switch (Type)
             {
-                case AzureBackupContainerType.AzureVirtualMachine:
+                case AzureBackupContainerTypeInput.AzureVirtualMachine:
                     containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
@@ -107,14 +107,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             switch (Status)
             {
-                case AzureBackupContainerStatus.Registered:
+                case AzureBackupContainerStatusInput.Registered:
                     containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
                     break;
-                case AzureBackupContainerStatus.Registering:
+                case AzureBackupContainerStatusInput.Registering:
                     containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
-                    break;
-                case AzureBackupContainerStatus.NotRegistered:
-                    containerQueryObject.Status = BCI.RegistrationStatus.NotRegistered.ToString();
                     break;
                 default:
                     break;

@@ -120,6 +120,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public AzureBackupItemContextObject(ProtectableObjectInfo item, AzureBackupContainer azureBackupContainer)
             : base(azureBackupContainer)
         {
+            DataSourceId = "-1";
             Type = item.Type;
         }
     }
