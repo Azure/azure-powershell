@@ -70,7 +70,7 @@ function BackUpAzureBackUpItemTest
 	$azureBackUpItem.ContainerType = $ContainerType
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
-	$operationId = Backup-AzureBackupItem -item $azureBackUpItem
+	$jobId = Backup-AzureBackupItem -item $azureBackUpItem
 }
 
 
