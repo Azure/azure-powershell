@@ -12,8 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ResourceGroupName = "swatirg1";
-$ResourceName = "swatirn1"
+$ResourceGroupName = "backuprg";
+$ResourceName = "backuprn"
+$ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerType = "IaasVMContainer"
+$DataSourceType = "VM"
+$DataSourceId = "17593283453810"
+$Location = "SouthEast Asia"
 
 <#
 .SYNOPSIS
@@ -21,7 +26,7 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-GetAzureBackupProtectionPolicyTests
 {
-	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName
+	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location "wus"
 	Assert-NotNull $protectionPolicies 'Protection Policies should not be null'
 	foreach($protectionPolicy in $protectionPolicies)
 	{
@@ -36,4 +41,36 @@ function Test-GetAzureBackupProtectionPolicyTests
 	}
 }
 
+function Test-GetAzureBackupItemTests
+{
+	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location 
+	$item = Get-AzureBackupItem -container $container[0]
+	Assert-NotNull $item 'Backupt items should not be null'
+	foreach($backupitem in $item)
+	{   
+		Assert-NotNull $backupitem.ProtectionStatus 'ProtectionStatus should not be null'    
+		Assert-NotNull $backupitem.Name 'Name should not be null'            
+		Assert-NotNull $backupitem.Type 'Type should not be null'            
+		Assert-NotNull $backupitem.ContainerType 'ContainerType should not be null'      
+		Assert-NotNull $backupitem.ContainerUniqueName  'ContainerUniqueName should not be null'
+		Assert-NotNull $backupitem.ResourceGroupName  'ResourceGroupName should not be null'  
+		Assert-NotNull $backupitem.ResourceName   'ResourceName should not be null'      
+		Assert-NotNull $backupitem.Location   'Location should not be null' 
+	}
+}
 
+function Test-EnableAzureBackupProtectionTest
+{	
+	$policy = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
+	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location 
+	$item = Get-AzureBackupItem -container $container[0]
+	$operationId = Enable-AzureBackupProtection -item $item[0] -Policy $policy[0] 
+}
+
+function Test-DisableAzureBackupProtectionTest
+{	
+	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location  
+	$item = Get-AzureBackupItem -container $container[0]
+	$operationId = Disable-AzureBackupProtection -item $item[0]
+}
+         

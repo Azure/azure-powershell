@@ -24,7 +24,7 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.AzureBackup .Test.ScenarioTests
 {
     public abstract class AzureBackupTestsBase
     {

@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteVerbose("Received response");
-                WriteVerbose("Converting response");
                 WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, container);
             });
         }
