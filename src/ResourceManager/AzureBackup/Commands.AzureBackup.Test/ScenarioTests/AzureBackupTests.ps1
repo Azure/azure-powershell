@@ -52,12 +52,14 @@ function GetAzureRecoveryPointTest
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$recoveryPoints = Get-AzureBackupRecoveryPoint -item $azureBackUpItem
-	Assert-NotNull $recoveryPoints 'Recovery Points should not be null'
-	foreach($recoveryPoint in $recoveryPoints)
+	if (!($recoveryPoints -eq $null))
 	{
-	    Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+	    foreach($recoveryPoint in $recoveryPoints)
+	    {
+	        Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+		    Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+		    Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+	    }
 	}
 }
 
