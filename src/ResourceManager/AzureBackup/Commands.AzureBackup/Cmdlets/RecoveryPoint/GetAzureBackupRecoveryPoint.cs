@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     item.DataSourceId,
                     CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
-                WriteVerbose("Received policy response2");
+                WriteVerbose("Received recovery point response");
+                
                 IEnumerable<RecoveryPointInfo> recoveryPointObjects = null;
                 if (Id != null)
                 {
