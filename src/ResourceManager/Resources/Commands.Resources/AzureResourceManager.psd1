@@ -71,6 +71,7 @@ FormatsToProcess = @(
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
     '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
+	'.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
