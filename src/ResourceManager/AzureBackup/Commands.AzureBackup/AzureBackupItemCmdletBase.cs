@@ -28,8 +28,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureBackupItemCmdletBase : AzureBackupCmdletBase
     {
-        // ToDO:
-        // Correct Help message and other attributes related to paameters
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerContextObject item { get; set; }

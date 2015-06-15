@@ -25,10 +25,7 @@ using Microsoft.Azure.Management.BackupServices;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     // ToDo:
-    // Correct the Commandlet
-    // Correct the OperationResponse
     // Get Tracking API from Piyush and Get JobResponse
-    // Get JobResponse Object from Aditya
 
     /// <summary>
     /// Enable Azure Backup protection
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 var enableAzureBackupProtection = AzureBackupClient.DataSource.EnableProtectionAsync(GetCustomRequestHeaders(), input, CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
+                WriteVerbose("Received response");
                 WriteVerbose("Converting response");
                 WriteAzureBackupProtectionPolicy(enableAzureBackupProtection);
             });
@@ -82,8 +79,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public void WriteAzureBackupProtectionPolicy(OperationResponse sourceOperationResponse)
         {
-            // this needs to be uncommented once we have proper constructor
-            //this.WriteObject(new AzureBackupRecoveryPoint(ResourceGroupName, ResourceName, sourceOperationResponse));
         }
 
         public void WriteAzureBackupProtectionPolicy(IEnumerable<OperationResponse> sourceOperationResponseList)
@@ -92,7 +87,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (var sourceOperationResponse in sourceOperationResponseList)
             {
-                // this needs to be uncommented once we have proper constructor
                 targetList.Add(sourceOperationResponse);
             }
 
@@ -118,14 +112,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public enum DataSourceType
         {
             [EnumMember]
-            Invalid = 0,
-
-            [EnumMember]
             VM
-
-            // TODO: fix GetJobTypes() in PortalMetadataInternalEP.cs
-            // [EnumMember]
-            // AzureStorageAccount
         }
     }
 }
