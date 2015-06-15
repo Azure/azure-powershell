@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
-        [ValidateSet("Invalid", "RetainBackupData", "DeleteBackupData")] 
+        [ValidateSet("RetainBackupData", "DeleteBackupData")] 
         public string RemoveProtectionOption { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Reason)]

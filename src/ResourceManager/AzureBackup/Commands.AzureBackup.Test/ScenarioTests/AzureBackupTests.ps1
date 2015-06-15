@@ -12,9 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ResourceGroupName = "swatirg";
-$ResourceName = "swatirn"
-$Location = "WestUS"
+$ResourceGroupName = "backuprg"
+$ResourceName = "backuprn"
+$ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerType = "IaasVMContainer"
+$DataSourceType = "VM"
+$DataSourceId = "17593283453810"
+$Location = "SouthEast Asia"
 
 <#
 .SYNOPSIS
@@ -35,6 +39,41 @@ function Test-GetAzureBackupProtectionPolicyTests
 		Assert-NotNull $protectionPolicy.ResourceGroupName 'ResourceGroupName should not be null'
 		Assert-NotNull $protectionPolicy.ResourceName 'ResourceName should not be null'
 	}
+}
+
+function GetAzureRecoveryPointTest
+{
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceGroupName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ContainerType = $ContainerType
+	$azureBackUpItem.DataSourceId = $DataSourceId
+	$azureBackUpItem.Type = $DataSourceType
+	$recoveryPoints = Get-AzureBackupRecoveryPoint -item $azureBackUpItem
+	if (!($recoveryPoints -eq $null))
+	{
+	    foreach($recoveryPoint in $recoveryPoints)
+	    {
+	        Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+		    Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+		    Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+	    }
+	}
+}
+
+function BackUpAzureBackUpItemTest
+{
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ContainerType = $ContainerType
+	$azureBackUpItem.DataSourceId = $DataSourceId
+	$azureBackUpItem.Type = $DataSourceType
+	$jobId = Backup-AzureBackupItem -item $azureBackUpItem
 }
 
 

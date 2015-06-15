@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// </summary>
         public int RecoveryPointsCount { get; set; }
 
-        /// <summary>
-        /// Last Recovery Point for the Azure Backup Item
-        /// </summary>
-
         public AzureBackupItem()
             : base()
         {

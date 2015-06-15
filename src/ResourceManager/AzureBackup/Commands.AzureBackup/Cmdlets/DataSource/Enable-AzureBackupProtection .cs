@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(OperationResponse))]
     public class EnableAzureBackupProtection : AzureBackupItemCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public AzureBackupProtectionPolicy Policy { get; set; }
         public override void ExecuteCmdlet()
@@ -48,17 +48,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteVerbose("Making client call");
                 SetProtectionRequestInput input = new SetProtectionRequestInput();
                 input.PolicyId = Policy.InstanceId;
-                if (Item.GetType() == ((AzureBackupItem)Item).GetType())
+                if (item.GetType() == typeof(AzureBackupItem))
                 {
-                    input.ProtectableObjectType = (Item as AzureBackupItem).Type;
-                    input.ProtectableObjects.Add((Item as AzureBackupItem).Name);
+                    input.ProtectableObjectType = (item as AzureBackupItem).Type;
+                    input.ProtectableObjects.Add((item as AzureBackupItem).Name);
                 }
-                else if (Item.GetType() == ((AzureBackupContainer)Item).GetType())
+                else if (item.GetType() == typeof(AzureBackupContainer))
                 {
-                    if((Item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
+                    WriteVerbose("Input is container Type = "+item.GetType());
+                    if((item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
                     {
+                        WriteVerbose("container Type = " + (item as AzureBackupContainer).ContainerType);
                         input.ProtectableObjectType = DataSourceType.VM.ToString();
-                        input.ProtectableObjects.Add((Item as AzureBackupContainer).ContainerUniqueName);
+                        input.ProtectableObjects.Add((item as AzureBackupContainer).ContainerUniqueName);
+                    }
+                    else
+                    {
+                        throw new Exception("Uknown item type");
                     }
                 }
                 else

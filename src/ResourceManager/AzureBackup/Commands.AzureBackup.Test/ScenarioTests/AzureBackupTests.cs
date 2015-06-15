@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         }
 
         [Fact]
+
         public void GetAzureBackupJobTests()
         {
             this.RunPowerShellTest("Test-GetAzureBackupJob");
@@ -35,6 +36,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         public void StopAzureBackupJobTests()
         {
             this.RunPowerShellTest("Test-StopAzureBackupJob");
+        }
+        public void GetRecoveryPointTests()
+        {
+            this.RunPowerShellTest("GetAzureRecoveryPointTest");
+        }
+
+        [Fact]
+        public void BackUpAzureBackUpItem()
+        {
+            this.RunPowerShellTest("BackUpAzureBackUpItemTest");
         }
     }
 }

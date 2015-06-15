@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
@@ -36,9 +37,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public string BackupType { get; set; }
 
-        public DateTime ScheduleStartTime { get; set; }
+        public string ScheduleType { get; set; }
 
-        public IList<DateTime> ScheduleRunTimes { get; set; }
+        public IList<string> ScheduleRunDays { get; set; }
+
+        public DateTime ScheduleRunTimes { get; set; }
 
         public string RetentionType { get; set; }
 
@@ -56,11 +59,31 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             WorkloadType = sourcePolicy.WorkloadType;
             
             BackupType = sourcePolicy.Schedule.BackupType;
-            ScheduleStartTime = sourcePolicy.Schedule.ScheduleStartTime;
-            ScheduleRunTimes = sourcePolicy.Schedule.ScheduleRunTimes;
+            ScheduleType = sourcePolicy.Schedule.ScheduleRun;
+            ScheduleRunTimes = ConvertScheduleRunTimes(sourcePolicy.Schedule.ScheduleRunTimes);
+            ScheduleRunDays = ConvertScheduleRunDays(sourcePolicy.Schedule.ScheduleRunDays);
 
             RetentionType = sourcePolicy.Schedule.RetentionPolicy.RetentionType.ToString();
             RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
         }
+
+        private IList<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
+        {
+            IList<string> scheduelRunDays = new List<string>();
+
+            foreach(object item in weekDaysList)
+            {
+                scheduelRunDays.Add(item.ToString());
+            }
+
+            return scheduelRunDays;
+        }
+
+        private DateTime ConvertScheduleRunTimes(IList<DateTime> scheduleRunTimeList)
+        {
+            IEnumerator<DateTime> scheduleEnumerator = scheduleRunTimeList.GetEnumerator();
+            scheduleEnumerator.MoveNext();
+            return scheduleEnumerator.Current;
+        }        
     }
 }
