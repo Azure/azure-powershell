@@ -28,6 +28,7 @@
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\StorSimple\</OutputPath>
@@ -139,16 +140,11 @@
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
-    <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
-    <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJobDetails.cs" />
     <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
@@ -178,10 +174,6 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Compute\Commands.Compute\Commands.Compute.csproj">
-      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
-      <Name>Commands.Compute</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
@@ -207,6 +199,9 @@
     <Content Include="Resources\BMSCommonInterface.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cmdlets\RegisterContainer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
