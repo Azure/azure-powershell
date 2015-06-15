@@ -137,6 +137,9 @@
     <Compile Include="Cmdlets\DataSource\Disable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\Enable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\GetAzureBackupItem.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
@@ -200,9 +204,7 @@
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cmdlets\RegisterContainer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
