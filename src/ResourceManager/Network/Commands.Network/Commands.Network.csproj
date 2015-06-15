@@ -181,6 +181,10 @@
     <Compile Include="ApplicationGateway\RequestRoutingRule\RemoveAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\SetAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
     <Compile Include="ApplicationGateway\SetAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\Sku\AzureApplicationGatewaySkuBase.cs" />
+    <Compile Include="ApplicationGateway\Sku\GetAzureApplicationGatewaySkuCommand.cs" />
+    <Compile Include="ApplicationGateway\Sku\NewAzureApplicationGatewaySkuCommand.cs" />
+    <Compile Include="ApplicationGateway\Sku\SetAzureApplicationGatewaySkuCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\AddAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\GetAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\NewAzureApplicationGatewaySslCertificateCommand.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="Models\PSApplicationGatewayHttpListener.cs" />
     <Compile Include="Models\PSApplicationGatewayIpConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
+    <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />

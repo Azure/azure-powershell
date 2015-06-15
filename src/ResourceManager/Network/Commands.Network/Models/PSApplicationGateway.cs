@@ -20,9 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGateway : PSTopLevelResource
      {
-         public int InstanceCount { get; set; }
-         public string Size { get; set; }
-         public string Fqdn { get; private set; }
+         public PSApplicationGatewaySku Sku { get; set; }
+
          public List<PSApplicationGatewayIpConfiguration> GatewayIpConfigurations { get; set; }
 
          public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }

@@ -50,20 +50,12 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The instance count of application gateway")]
+            HelpMessage = "The SKU of application gateway")]
         [ValidateNotNullOrEmpty]
-        public virtual int InstanceCount { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The size of application gateway.")]
-        [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public virtual string Size { get; set; }
-
+        public virtual PSApplicationGatewaySku Sku { get; set; }
+        
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
@@ -152,9 +144,8 @@ namespace Microsoft.Azure.Commands.Network
             var applicationGateway = new PSApplicationGateway();
             applicationGateway.Name = this.Name;
             applicationGateway.ResourceGroupName = this.ResourceGroupName;
-            applicationGateway.Location = this.Location;
-            applicationGateway.InstanceCount = this.InstanceCount;
-            applicationGateway.Size = this.Size;
+            applicationGateway.Location = this.Location;            
+            applicationGateway.Sku = this.Sku;
 
             if (this.GatewayIpConfigurations != null)
             {
