@@ -674,7 +674,7 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>RecoveryPointId</Label>
-            <Width>36</Width>
+            <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RecoveryPointType</Label>
@@ -682,7 +682,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RecoveryPointTime</Label>
-            <Width>18</Width>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ContainerType</Label>
@@ -690,7 +690,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ContainerName</Label>
-            <Width>18</Width>
+            <Width>24</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>

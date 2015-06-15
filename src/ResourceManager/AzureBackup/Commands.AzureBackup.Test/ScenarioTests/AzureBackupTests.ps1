@@ -29,7 +29,7 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-GetAzureBackupProtectionPolicyTests
 {
-	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location "wus"
+	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
 	Assert-NotNull $protectionPolicies 'Protection Policies should not be null'
 	foreach($protectionPolicy in $protectionPolicies)
 	{
@@ -55,7 +55,8 @@ function GetAzureRecoveryPointTest
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$recoveryPoints = Get-AzureBackupRecoveryPoint -item $azureBackUpItem
-	Assert-NotNull $recoveryPoints 'Recovery Points should not be null'
+	if (!($recoveryPoints -eq $null))
+	{
 	foreach($recoveryPoint in $recoveryPoints)
 	{
 	    Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
@@ -115,6 +116,7 @@ function Test-EnableDisableAzureBackupProtectionTest
 	sleep(20)
 	$jobId2 = Enable-AzureBackupProtection -item $azureBackUpItem -Policy $policy 
 }
+}
 
 function BackUpAzureBackUpItemTest
 {
@@ -130,3 +132,43 @@ function BackUpAzureBackUpItemTest
 }
 
 
+function Test-GetAzureBackupJob
+{
+	$OneMonthBack = Get-Date;
+	$OneMonthBack = $OneMonthBack.AddDays(-30);
+	$jobs = Get-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -From $OneMonthBack -Debug
+	Assert-NotNull $jobs 'Jobs list should not be null'
+	foreach($job in $jobs)
+	{
+		Assert-NotNull $jobs.InstanceId 'JobID should not be null';
+		Assert-NotNull $jobs.StartTime 'StartTime should not be null';
+		Assert-NotNull $jobs.WorkloadType 'WorkloadType should not be null';
+		Assert-NotNull $jobs.WorkloadName 'WorkloadName should not be null';
+		Assert-NotNull $jobs.Status 'Status should not be null';
+		Assert-NotNull $jobs.Operation 'Operation should not be null';
+
+		$jobDetails = Get-AzureBackupJobDetails -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $job
+		Assert-NotNull $jobDetails.InstanceId 'JobID should not be null';
+		Assert-NotNull $jobDetails.StartTime 'StartTime should not be null';
+		Assert-NotNull $jobDetails.WorkloadType 'WorkloadType should not be null';
+		Assert-NotNull $jobDetails.WorkloadName 'WorkloadName should not be null';
+		Assert-NotNull $jobDetails.Status 'Status should not be null';
+		Assert-NotNull $jobDetails.Operation 'Operation should not be null';
+		Assert-NotNull $jobDetails.Properties 'Properties in job details cannot be null';
+		Assert-NotNull $jobDetails.SubTasks 'SubTasks in job details cannot be null';
+	}
+}
+
+
+function Test-StopAzureBackupJob
+{
+	$OneMonthBack = Get-Date;
+	$OneMonthBack = $OneMonthBack.AddDays(-30);
+	#TODO
+	#Call trigger backup and get an inprogress job
+	$jobsList = Get-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -From $OneMonthBack #-Operation 'Backup' -Status 'InProgress'
+
+	Stop-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
+	$jobDetails = Get-AzureBackupJobDetails -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
+	#Assert-AreEqual 'Cancelling' $jobDetails.Status
+}
