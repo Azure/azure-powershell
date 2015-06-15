@@ -26,6 +26,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         }
 
         [Fact]
+        public void ListAzureBackupItemTests()
+        {
+            this.RunPowerShellTest("Test-GetAzureBackupItemTests");
+        }
+
+        [Fact]
+        public void EnableDisableAzureBackupProtectionTest()
+        {
+            this.RunPowerShellTest("Test-EnableDisableAzureBackupProtectionTest");
+        }
+
+        [Fact]
 
         public void GetAzureBackupJobTests()
         {
