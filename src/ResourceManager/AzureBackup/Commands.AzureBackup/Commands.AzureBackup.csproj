@@ -142,9 +142,6 @@
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
@@ -158,9 +155,6 @@
     <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
     <Compile Include="Models\ListContainerQueryParameter.cs" />
     <Compile Include="Models\ProtectionPolicy.cs" />
-    <Compile Include="Models\RegisterContainer\RegisterContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

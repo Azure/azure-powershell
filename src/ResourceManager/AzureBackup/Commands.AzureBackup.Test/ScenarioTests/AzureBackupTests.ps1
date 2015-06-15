@@ -19,6 +19,9 @@ $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"
 $Location = "SouthEast Asia"
+$PolicyName = "Policy9";
+$PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
+$POName = "iaasvmcontainer;dev01testing;dev01testing"
 
 <#
 .SYNOPSIS
@@ -63,8 +66,13 @@ function GetAzureRecoveryPointTest
 
 function Test-GetAzureBackupItemTests
 {
-	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location 
-	$item = Get-AzureBackupItem -container $container[0]
+	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupContainer
+	$azureBackUpContainer.ResourceGroupName = $ResourceGroupName
+	$azureBackUpContainer.ResourceName = $ResourceName
+	$azureBackUpContainer.Location = $Location
+	$azureBackUpContainer.ContainerUniqueName = $ContainerName
+	$azureBackUpContainer.ContainerType = $ContainerType
+	$item = Get-AzureBackupItem -container $azureBackUpContainer
 	Assert-NotNull $item 'Backupt items should not be null'
 	foreach($backupitem in $item)
 	{   
@@ -79,20 +87,35 @@ function Test-GetAzureBackupItemTests
 	}
 }
 
-function Test-EnableAzureBackupProtectionTest
+function Test-EnableDisableAzureBackupProtectionTest
 {	
-	$policy = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
-	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location 
-	$item = Get-AzureBackupItem -container $container[0]
-	$operationId = Enable-AzureBackupProtection -item $item[0] -Policy $policy[0] 
+	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupProtectionPolicy
+	$policy.InstanceId = $PolicyId
+	$policy.Name = $PolicyName
+	$policy.ResourceGroupName = $ResourceGroupName
+	$policy.ResourceName = $ResourceName
+	$policy.Location = $Location
+	$policy.WorkloadType = "VM"
+	$policy.RetentionType = "1"
+	$policy.ScheduleRunTimes =  "2015-06-13T20:30:00"
+
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ContainerType = $ContainerType
+	$azureBackUpItem.DataSourceId = $DataSourceId
+	$azureBackUpItem.Type = $DataSourceType
+	$azureBackUpItem.Name = $POName
+
+	$jobId = Enable-AzureBackupProtection -item $azureBackUpItem -Policy $policy 
+	sleep(20)
+	$jobId1 = Disable-AzureBackupProtection -item $azureBackUpItem
+	sleep(20)
+	$jobId2 = Enable-AzureBackupProtection -item $azureBackUpItem -Policy $policy 
 }
 
-function Test-DisableAzureBackupProtectionTest
-{	
-	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceGroupName -Location $Location  
-	$item = Get-AzureBackupItem -container $container[0]
-	$operationId = Disable-AzureBackupProtection -item $item[0]
-}
 function BackUpAzureBackUpItemTest
 {
     $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
