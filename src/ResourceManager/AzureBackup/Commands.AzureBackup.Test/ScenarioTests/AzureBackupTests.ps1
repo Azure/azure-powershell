@@ -74,17 +74,19 @@ function Test-GetAzureBackupItemTests
 	$azureBackUpContainer.ContainerUniqueName = $ContainerName
 	$azureBackUpContainer.ContainerType = $ContainerType
 	$item = Get-AzureBackupItem -container $azureBackUpContainer
-	Assert-NotNull $item 'Backupt items should not be null'
-	foreach($backupitem in $item)
-	{   
-		Assert-NotNull $backupitem.ProtectionStatus 'ProtectionStatus should not be null'    
-		Assert-NotNull $backupitem.Name 'Name should not be null'            
-		Assert-NotNull $backupitem.Type 'Type should not be null'            
-		Assert-NotNull $backupitem.ContainerType 'ContainerType should not be null'      
-		Assert-NotNull $backupitem.ContainerUniqueName  'ContainerUniqueName should not be null'
-		Assert-NotNull $backupitem.ResourceGroupName  'ResourceGroupName should not be null'  
-		Assert-NotNull $backupitem.ResourceName   'ResourceName should not be null'      
-		Assert-NotNull $backupitem.Location   'Location should not be null' 
+	if (!($item -eq $null))
+	{
+		foreach($backupitem in $item)
+		{   
+			Assert-NotNull $backupitem.ProtectionStatus 'ProtectionStatus should not be null'    
+			Assert-NotNull $backupitem.Name 'Name should not be null'            
+			Assert-NotNull $backupitem.Type 'Type should not be null'            
+			Assert-NotNull $backupitem.ContainerType 'ContainerType should not be null'      
+			Assert-NotNull $backupitem.ContainerUniqueName  'ContainerUniqueName should not be null'
+			Assert-NotNull $backupitem.ResourceGroupName  'ResourceGroupName should not be null'  
+			Assert-NotNull $backupitem.ResourceName   'ResourceName should not be null'      
+			Assert-NotNull $backupitem.Location   'Location should not be null' 
+		}
 	}
 }
 
