@@ -1,0 +1,130 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/datasources?api-version=2014-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vZGF0YXNvdXJjZXM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"FriendlyName\": \"dev01Testing\",\r\n      \"ContainerName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ContainerType\": \"IaasVMContainer\",\r\n      \"Type\": \"VM\",\r\n      \"Status\": \"Protected\",\r\n      \"ProtectionStatus\": \"Protected\",\r\n      \"ProtectableObjectName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ProtectionPolicyName\": \"DefaultPolicy\",\r\n      \"ProtectionPolicyId\": \"40716838-2fa2-453b-8901-3f16ecb5359b\",\r\n      \"PolicyInconsistent\": true,\r\n      \"RecoveryPointsCount\": 12,\r\n      \"LastRecoveryPoint\": \"2015-06-15T11:12:50.8577407Z\",\r\n      \"LastBackupTime\": \"2015-06-15T11:11:03.142968Z\",\r\n      \"LastBackupStatus\": \"Completed\",\r\n      \"LastBackupJobId\": \"3198b8b5-6a1b-492e-b550-a3ebd57b6fad\",\r\n      \"InstanceId\": \"17593283453810\",\r\n      \"Name\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 1,\r\n  \"Skiptoken\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "749"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "95e237af-d67d-43ca-b867-760ce8d27333"
+        ],
+        "x-ms-client-request-id": [
+          "38273d83-d1af-4877-b40b-fe95153fe2fc",
+          "38273d83-d1af-4877-b40b-fe95153fe2fc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "95e237af-d67d-43ca-b867-760ce8d27333"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150615T122620Z:95e237af-d67d-43ca-b867-760ce8d27333"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 15 Jun 2015 12:26:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/protectableobjects?api-version=2014-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vcHJvdGVjdGFibGVvYmplY3RzP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"FriendlyName\": \"dev01Testing\",\r\n      \"Type\": \"VM\",\r\n      \"ProtectionStatus\": \"Protected\",\r\n      \"ContainerName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ContainerFriendlyName\": \"dev01Testing\",\r\n      \"ContainerType\": \"IaasVMContainer\",\r\n      \"ParentContainerName\": \"dev01Testing\",\r\n      \"ParentContainerFriendlyName\": \"dev01Testing\",\r\n      \"ParentContainerType\": \"IaasVMServiceContainer\",\r\n      \"InstanceId\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"Name\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 1,\r\n  \"Skiptoken\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "519"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "44cd4165-ecea-40bf-bd81-f87a49e62caa"
+        ],
+        "x-ms-client-request-id": [
+          "a757ddda-d546-4807-a503-040f46c01609",
+          "a757ddda-d546-4807-a503-040f46c01609"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "44cd4165-ecea-40bf-bd81-f87a49e62caa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150615T122621Z:44cd4165-ecea-40bf-bd81-f87a49e62caa"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 15 Jun 2015 12:26:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f5303a0b-fae4-4cdb-b44d-0e4c032dde26"
+  }
+}
