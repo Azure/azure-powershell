@@ -144,7 +144,7 @@
     <Compile Include="Implementation\ResourceManagerCmdletBase.cs" />
     <Compile Include="Implementation\SetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\TestAzureResourceCmdlet.cs" />
-    <Compile Include="Implementation\TestAzureResourceGroup.cs" />
+    <Compile Include="Implementation\TestAzureResourceGroupCmdlet.cs" />
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
