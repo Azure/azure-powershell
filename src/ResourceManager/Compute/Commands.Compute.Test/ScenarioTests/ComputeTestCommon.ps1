@@ -98,6 +98,14 @@ function Get-ComputTestLocation
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
 
+<#
+.SYNOPSIS
+Cleans the created resource groups
+#>
+function Clean-ResourceGroup($rgname)
+{
+    Remove-AzureResourceGroup -Name $rgname -Force;
+}
 
 ######################
 #
