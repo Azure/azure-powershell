@@ -12,11 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
     public class UsageAggregatesTests
     {
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetNonExistingResourceGroup()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetUsageAggregatesWithDefaultParameters");
+        }
     }
 }
