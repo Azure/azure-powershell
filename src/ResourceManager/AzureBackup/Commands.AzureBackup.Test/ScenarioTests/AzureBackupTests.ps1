@@ -15,6 +15,8 @@
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerResourceGroupName = "dev01Testing"
+$ContainerResourceName = "dev01Testing"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"
@@ -22,6 +24,7 @@ $Location = "SouthEast Asia"
 $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;dev01testing;dev01testing"
+$CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
 <#
 .SYNOPSIS
@@ -173,4 +176,48 @@ function Test-StopAzureBackupJob
 	Stop-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
 	$jobDetails = Get-AzureBackupJobDetails -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
 	#Assert-AreEqual 'Cancelling' $jobDetails.Status
+}
+
+function Test-GetAzureBackupContainerWithoutFilterReturnsNonZeroContainers
+{
+	$containers = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
+	Assert-NotNull $containers 'Container list should not be null';
+}
+
+function Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer
+{
+	$container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -ContainerResourceGroupName $ContainerResourceGroupName -ContainerResourceName $ContainerResourceName
+	Assert-NotNull $container 'Container should not be null';
+	Assert-AreEqual $container.ResourceName $ContainerResourceName -CaseSensitive 'Returned container resource name (a.k.a friendly name) does not match the test VM resource name';
+	Assert-AreEqual $container.ResourceGroupName $ContainerResourceGroupName -CaseSensitive 'Returned container resource group name (a.k.a parent friendly name) does not match the test VM resource group name';
+}
+
+function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
+{
+	$fileName = Get-AzureBackupVaultCredentials -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -TargetLocation $CertTargetLocation
+	Assert-NotNull $fileName 'File name should not be null';
+	$certFileFullPath = [io.path]::combine($CertTargetLocation, $fileName);
+	Assert-True {{ Test-Path $certFileFullPath }}
+}
+
+function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
+{
+	# TODO: Create a new resource and use it for these calls. At the end, delete it.
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+}
+
+function Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException
+{
+	# One of them is bound to fail
+
+	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant }
+
+	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant }
 }
