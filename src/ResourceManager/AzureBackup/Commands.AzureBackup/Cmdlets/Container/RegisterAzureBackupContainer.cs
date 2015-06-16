@@ -24,36 +24,60 @@ using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureBackupContainer"), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureBackupContainer", DefaultParameterSetName = V1VMParameterSet), OutputType(typeof(Guid))]
     public class RegisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        //[Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        //[ValidateNotNullOrEmpty]
-        //public PSVirtualMachineInstanceView VirtualMachine { get; set; }
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        [ValidateNotNullOrEmpty]
-        public string VirtualMachineName { get; set; }
+        internal const string V1VMParameterSet = "V1VM";
+        internal const string V2VMParameterSet = "V2VM";
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        [ValidateNotNullOrEmpty]
-        public string VirtualMachineRGName { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        public string Name { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        public string ServiceName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        public string VMResourceGroupName { get; set; }
+
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             ExecutionBlock(() =>
             {
-                //string vmName = VirtualMachine.Name;
-                //string rgName = VirtualMachine.ResourceGroupName;
-                string vmName = VirtualMachineName;
-                string rgName = VirtualMachineRGName;
+                string vmName = String.Empty;
+                string rgName = String.Empty;
+                string ServiceOrRG = String.Empty;
+
+                if(this.ParameterSetName == V1VMParameterSet)
+                {
+                    vmName = Name;
+                    rgName = ServiceName;
+                    WriteDebug(String.Format("Registering ARM-V1 VM, VMName: {0}, CloudServiceName: {1}", vmName, rgName));
+                    ServiceOrRG = "CloudServiceName";
+                }
+                else if(this.ParameterSetName == V2VMParameterSet)
+                {
+                    vmName = Name;
+                    rgName = VMResourceGroupName;
+                    WriteDebug(String.Format("Registering ARM-V2 VM, VMName: {0}, ResourceGroupName: {1}", vmName, rgName));
+                    ServiceOrRG = "ResourceGroupName";
+                }
+
+                else
+                {
+                    throw new PSArgumentException("Please make sure you have pass right set of parameters"); //TODO: PM scrub needed
+                }
+
                 Guid jobId = Guid.Empty;
                 bool isDiscoveryNeed = false;
                 MBS.OperationResponse operationResponse;
@@ -62,16 +86,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                 if(isDiscoveryNeed)
                 {
+                    WriteDebug(String.Format("VM {0} is not yet discovered. Triggering Discovery", vmName));
                     RefreshContainer();
                     isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                     if ((isDiscoveryNeed == true) || (container == null))
                     {
                         //Container is not discovered. Throw exception
-                        throw new NotImplementedException();
+                        string errMsg = String.Format("Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted", vmName, ServiceOrRG, rgName);
+                        WriteDebug(errMsg);
+                        throw new Exception(errMsg); //TODO: Sync with piyush and srub error msg 
                     }
                 }                
 
                 //Container is discovered. Register the container
+                WriteDebug(String.Format("Going to register VM {0}", vmName));
                 List<string> containerNameList = new List<string>();
                 containerNameList.Add(container.Name);
                 RegisterContainerRequestInput registrationRequest = new RegisterContainerRequestInput(containerNameList, AzureBackupContainerType.IaasVMContainer.ToString());
@@ -108,16 +136,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private bool WaitForDiscoveryToCOmplete(string operationId, out bool isDiscoverySuccessful)
         {
             bool isRetryNeeded = false;
-            
-            
-            BMSOperationStatusResponse status = new BMSOperationStatusResponse() 
+            AzureBackupOperationStatusResponse status = new AzureBackupOperationStatusResponse() 
                         {
                             OperationStatus = AzureBackupOperationStatus.InProgress.ToString() 
                         };
-
             while (status.OperationStatus != AzureBackupOperationStatus.Completed.ToString())
             {
                 status = AzureBackupClient.OperationStatus.GetAsync(operationId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                WriteDebug(String.Format("Status of DiscoveryOperation: {0}", status.OperationStatus));
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(15));
             }
 
@@ -126,11 +152,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (status.OperationResult != AzureBackupOperationResult.Succeeded.ToString())
             {
                 isDiscoverySuccessful = false;
+                WriteDebug(String.Format("DiscoveryOperation failed wit ErrorCOde: {0}", status.ErrorCode));
                 if ((status.ErrorCode == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
                     (status.ErrorCode == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
                 {
                     //Need to retry for this errors
                     isRetryNeeded = true;
+                    WriteDebug(String.Format("Going to retry Discovery if retry count is not exceeded"));
                 }
             }
             return isRetryNeeded;         
@@ -148,10 +176,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ListContainerResponse containers = AzureBackupClient.Container.ListAsync(queryString,
                             GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            WriteDebug(String.Format("Container count returned from service: {0}.", containers.Objects.Count()));
             if (containers.Objects.Count() == 0)
             {
                 //Container is not discover
-                WriteVerbose("Container is not discovered");
+                WriteDebug("Container is not discovered");
                 container = null;
                 isDiscoveryNeed = true;
             }
@@ -159,11 +188,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             else
             {
                 //We can have multiple container with same friendly name.
-                //Look for resourceGroup name in the container unoque name
+                //Look for resourceGroup name in the container unoque name                
                 container = containers.Objects.Where(c => c.ParentContainerFriendlyName.ToLower().Equals(rgName.ToLower())).FirstOrDefault();
                 if (container == null)
                 {
                     //Container is not in list of registered container
+                    WriteDebug(String.Format("Desired Container is not found. Returning with isDiscoveryNeed = true"));
                     isDiscoveryNeed = true;
                 }
             }
