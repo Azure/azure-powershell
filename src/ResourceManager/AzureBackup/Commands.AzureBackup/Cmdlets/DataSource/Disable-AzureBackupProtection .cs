@@ -33,8 +33,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
-        [ValidateSet("RetainBackupData", "DeleteBackupData")] 
-        public string RemoveProtectionOption { get; set; }
+        public SwitchParameter RemoveRecoveryPoints 
+        {
+            get { return DeleteBackupData; }
+            set { DeleteBackupData = value; } 
+        }
+        private bool DeleteBackupData;
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Reason)]
         public string Reason { get; set; }
@@ -51,14 +55,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 WriteVerbose("Making client call");
                 RemoveProtectionRequestInput input = new RemoveProtectionRequestInput()
                 {
-                    RemoveProtectionOption = this.RemoveProtectionOption == null ? "RetainBackupData" : this.RemoveProtectionOption,
+                    RemoveProtectionOption = this.DeleteBackupData ? RemoveProtectionOptions.DeleteBackupData.ToString() : RemoveProtectionOptions.RetainBackupData.ToString(),
                     Reason = this.Reason,
                     Comments = this.Comments,
                 };
+                WriteVerbose("RemoveProtectionOption is = " + input.RemoveProtectionOption);
+                var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input, CmdletCancellationToken).Result;
 
-                var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), item.ContainerUniqueName, item.Type, item.DataSourceId, input, CmdletCancellationToken).Result;
-
-                WriteVerbose("Received policy response");
+                WriteVerbose("Received response");
                 WriteVerbose("Converting response");
                 WriteAzureBackupProtectionPolicy(disbaleAzureBackupProtection);
             });
@@ -79,5 +83,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 
             this.WriteObject(targetList, true);
         }
+
+        public enum RemoveProtectionOptions
+        {
+            [EnumMember]
+            DeleteBackupData,
+
+            [EnumMember]
+            RetainBackupData
+        };
     }
 }
