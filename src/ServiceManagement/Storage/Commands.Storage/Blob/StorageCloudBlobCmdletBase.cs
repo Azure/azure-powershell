@@ -201,22 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             azureContainer.Context = channel.StorageContext;
             azureContainer.ContinuationToken = continuationToken;
             OutputStream.WriteObject(taskId, azureContainer);
-        }
-        
-        /// <summary>
-        /// Check whether the blob name is valid. If not throw an exception
-        /// </summary>
-        /// <param name="name">Blob name</param>
-        protected void ValidateBlobName(string name)
-        {
-            if (!NameUtil.IsValidBlobName(name))
-            {
-                throw new ArgumentException(String.Format(
-                    CultureInfo.CurrentCulture, 
-                    Resources.InvalidBlobName, 
-                    name));
-            }
-        }
+        }        
 
         protected void ValidateBlobType(CloudBlob blob)
         {
@@ -229,18 +214,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                     Resources.InvalidBlobType, 
                     blob.BlobType, 
                     blob.Name));
-            }
-        }
-
-        /// <summary>
-        /// Check whether the container name is valid. If not throw an exception
-        /// </summary>
-        /// <param name="name">Container name</param>
-        protected void ValidateContainerName(string name)
-        {
-            if (!NameUtil.IsValidContainerName(name))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
             }
         }
     }

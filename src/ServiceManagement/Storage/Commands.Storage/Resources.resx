@@ -445,6 +445,10 @@
     <value>Stopped the copy task on blob '{0}' in container '{1}' successfully.</value>
     <comment>0 for blob name, 1 for container name</comment>
   </data>
+  <data name="StopCopyFileSuccessfully" xml:space="preserve">
+    <value>Stopped the copy task on file '{0}' successfully.</value>
+    <comment>0 for file uri</comment>
+  </data>
   <data name="CopyPendingStatus" xml:space="preserve">
     <value>Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes.</value>
     <comment>0 for copied percent, 1 for bytes copied, 2 for total bytes.</comment>
@@ -482,6 +486,10 @@
     <value>Can not find copy task on specified blob '{0}' in container '{1}'.</value>
     <comment>0 for blob name, 1 for container name.</comment>
   </data>
+  <data name="FileCopyTaskNotFound" xml:space="preserve">
+    <value>Can not find copy task on specified file '{0}'.</value>
+    <comment>0 for file uri.</comment>
+  </data>
   <data name="CORSRuleError" xml:space="preserve">
     <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx" to get detailed information.</value>
   </data>
@@ -499,6 +507,10 @@
   <data name="ConfirmAbortCopyOperation" xml:space="preserve">
     <value>blob '{0}' in container '{1}' with CopyId {2}.</value>
     <comment>0 for blob name, 1 for container name, 2 for copy id.</comment>
+  </data>
+  <data name="ConfirmAbortFileCopyOperation" xml:space="preserve">
+    <value>file '{0}' with CopyId {1}.</value>
+    <comment>0 for file uri, 1 for copy id.</comment>
   </data>
   <data name="CopyIdMismatch" xml:space="preserve">
     <value>CopyId mismatch on  blob '{0}' in container '{1}'. Expected:{2}. User supplied: {3}.</value>

@@ -168,6 +168,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
         public override AzureStorageContext Context { get; set; }
 
@@ -426,8 +430,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>Destination CloudBlob object</returns>
         private void StartCopyBlob(IStorageBlobManagement SrcChannel, IStorageBlobManagement destChannel, string srcContainerName, string srcBlobName, string destContainerName, string destBlobName)
         {
-            ValidateBlobName(srcBlobName);
-            ValidateContainerName(srcContainerName);
+            NameUtil.ValidateBlobName(srcBlobName);
+            NameUtil.ValidateContainerName(srcContainerName);
 
             if (string.IsNullOrEmpty(destBlobName))
             {
@@ -507,8 +511,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private CloudBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName, BlobType blobType)
         {
-            ValidateContainerName(destContainerName);
-            ValidateBlobName(destBlobName);
+            NameUtil.ValidateContainerName(destContainerName);
+            NameUtil.ValidateBlobName(destBlobName);
 
             CloudBlobContainer container = destChannel.GetContainerReference(destContainerName);
             CloudBlob destBlob = null;
@@ -537,9 +541,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>Destination CloudBlob object</returns>
         private async Task StartCopyInTransferManager(long taskId, IStorageBlobManagement DestChannel, CloudBlob sourceBlob, CloudBlob destBlob)
         {
-            ValidateBlobName(sourceBlob.Name);
-            ValidateContainerName(destBlob.Container.Name);
-            ValidateBlobName(destBlob.Name);
+            NameUtil.ValidateBlobName(sourceBlob.Name);
+            NameUtil.ValidateContainerName(destBlob.Container.Name);
+            NameUtil.ValidateBlobName(destBlob.Name);
 
             Dictionary<string, string> BlobPath = new Dictionary<string, string>()
             {
@@ -569,8 +573,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>Destination CloudBlob object</returns>
         private async Task StartCopyInTransferManager(long taskId, IStorageBlobManagement destChannel, Uri uri, CloudBlobContainer destContainer, string destBlobName)
         {
-            ValidateContainerName(destContainer.Name);
-            ValidateBlobName(destBlobName);
+            NameUtil.ValidateContainerName(destContainer.Name);
+            NameUtil.ValidateBlobName(destBlobName);
             Dictionary<string, string> BlobPath = new Dictionary<string, string>()
             {
                 {"Container", destContainer.Name},

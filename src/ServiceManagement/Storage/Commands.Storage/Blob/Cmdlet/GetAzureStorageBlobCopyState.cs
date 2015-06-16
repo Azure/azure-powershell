@@ -216,8 +216,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
 
-            ValidateBlobName(blobName);
-            ValidateContainerName(container.Name);
+            NameUtil.ValidateBlobName(blobName);
+            NameUtil.ValidateContainerName(container.Name);
 
             CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, options, OperationContext);
 
@@ -231,7 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>CloudBlob object</returns>
         private CloudBlob GetCloudBlobObject(CloudBlob blob)
         {
-            ValidateBlobName(blob.Name);
+            NameUtil.ValidateBlobName(blob.Name);
 
             ValidateBlobType(blob);
 

@@ -15,10 +15,11 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using System;
-    using System.Globalization;
-    using System.Net;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+using System.Globalization;
+using System.Net;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
     internal static class Util
     {
@@ -137,6 +138,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         Resources.InvalidBlobType,
                         blobType,
                         blobName));
+            }
+        }
+
+        public static CloudBlob GetBlobReference(Uri blobUri, StorageCredentials storageCredentials, BlobType blobType)
+        {
+            switch (blobType)
+            {
+                case BlobType.BlockBlob:
+                    return new CloudBlockBlob(blobUri, storageCredentials);
+                case BlobType.PageBlob: 
+                    return new CloudPageBlob(blobUri, storageCredentials);
+                case BlobType.AppendBlob:
+                    return new CloudAppendBlob(blobUri, storageCredentials);
+                case BlobType.Unspecified:
+                    return new CloudBlob(blobUri, storageCredentials);
+                default:
+                    throw new ArgumentException(String.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blobType,
+                        blobUri));
             }
         }
     }

@@ -204,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (file.CopyState == null)
                     {
-                        ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, file.GetFullPath(), file.Share.Name));
+                        ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.Uri.ToString()));
                         OutputStream.WriteError(internalTaskId, e);
                         Interlocked.Increment(ref InternalFailedCount);
                         taskDone = true;

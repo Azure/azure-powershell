@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 if (file.CopyState == null || string.IsNullOrEmpty(file.CopyState.CopyId))
                 {
-                    ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, file.GetFullPath(), file.Share.Name));
+                    ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.Uri.ToString()));
                     OutputStream.WriteError(taskId, e);
                 }
                 else
@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 if (!Force)
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortCopyOperation, file.Uri.ToString(), abortCopyId);
+                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
                     if (!await OutputStream.ConfirmAsync(confirmation))
                     {
                         string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             await localChannel.AbortCopyAsync(file, abortCopyId, null, requestOptions, OperationContext, CmdletCancellationToken);
-            string message = String.Format(Resources.StopCopyBlobSuccessfully, file.Uri.ToString());
+            string message = String.Format(Resources.StopCopyFileSuccessfully, file.Uri.ToString());
             OutputStream.WriteObject(taskId, message);
         }
     }

@@ -41,6 +41,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         private AzureStorageContext internalStorageContext;
 
+        private CloudBlobClient BlobClient
+        {
+            get
+            {
+                if (this.blobClient == null)
+                {
+                    if (this.StorageContext.StorageAccount == null)
+                    {
+                        throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                    }
+                    else
+                    {
+                        this.blobClient = this.StorageContext.StorageAccount.CreateCloudBlobClient();
+                    }
+                }
+
+                return this.blobClient;
+            }
+        }
+
         /// <summary>
         /// The azure storage context assoicated with this IStorageBlobManagement
         /// </summary>
@@ -59,7 +79,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public StorageBlobManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
-            blobClient = internalStorageContext.StorageAccount.CreateCloudBlobClient();
         }
 
         /// <summary>
@@ -72,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public IEnumerable<CloudBlobContainer> ListContainers(string prefix, ContainerListingDetails detailsIncluded, BlobRequestOptions options, OperationContext operationContext)
         {
-            return blobClient.ListContainers(prefix, detailsIncluded, options, operationContext);
+            return this.BlobClient.ListContainers(prefix, detailsIncluded, options, operationContext);
         }
 
         /// <summary>
@@ -95,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>A CloudBlobContainer in local memory</returns>
         public CloudBlobContainer GetContainerReference(string name)
         {
-            return blobClient.GetContainerReference(name);
+            return this.BlobClient.GetContainerReference(name);
         }
 
         /// <summary>
@@ -582,7 +601,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
         {
-            return blobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
+            return this.BlobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
         }
     }
 }

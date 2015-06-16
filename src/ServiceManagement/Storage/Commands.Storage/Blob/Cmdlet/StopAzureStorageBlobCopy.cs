@@ -139,9 +139,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="copyId">Copy id</param>
         private async Task StopCopyBlob(long taskId, IStorageBlobManagement localChannel, CloudBlobContainer container, string blobName, string copyId)
         {
-            ValidateBlobName(blobName);
-
-            ValidateContainerName(container.Name);
+            NameUtil.ValidateBlobName(blobName);
+            NameUtil.ValidateContainerName(container.Name);
 
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;

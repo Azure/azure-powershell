@@ -188,6 +188,7 @@
     <Compile Include="Common\StorageCloudCmdletBase.cs" />
     <Compile Include="Blob\StorageCloudBlobCmdletBase.cs" />
     <Compile Include="Common\StorageExceptionUtil.cs" />
+    <Compile Include="Common\StorageExtensions.cs" />
     <Compile Include="Common\StorageNouns.cs" />
     <Compile Include="Common\TaskOutputStream.cs" />
     <Compile Include="Common\TransferJobRunnerFactory.cs" />

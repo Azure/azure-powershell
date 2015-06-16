@@ -176,7 +176,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>Storage account</returns>
         internal AzureStorageContext GetCmdletStorageContext()
         {
-            if (Context != null)
+            this.Context = this.GetCmdletStorageContext(this.Context);
+
+            return this.Context;
+        }
+
+        internal AzureStorageContext GetCmdletStorageContext(AzureStorageContext context)
+        {
+            if (context != null)
             {
                 WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, Context.StorageAccountName));
             }
@@ -203,10 +210,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
 
                 //Set the storage context and use it in pipeline
-                Context = new AzureStorageContext(account);
+                context = new AzureStorageContext(account);
             }
 
-            return Context;
+            return context;
         }
 
         /// <summary>

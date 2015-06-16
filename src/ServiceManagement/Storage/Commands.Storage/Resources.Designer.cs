@@ -232,6 +232,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to file &apos;{0}&apos; with CopyId {1}..
+        /// </summary>
+        internal static string ConfirmAbortFileCopyOperation {
+            get {
+                return ResourceManager.GetString("ConfirmAbortFileCopyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string ConfirmCaption {
@@ -543,6 +552,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string FileAlreadyExists {
             get {
                 return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find copy task on specified file &apos;{0}&apos;..
+        /// </summary>
+        internal static string FileCopyTaskNotFound {
+            get {
+                return ResourceManager.GetString("FileCopyTaskNotFound", resourceCulture);
             }
         }
         
@@ -1434,6 +1452,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string StopCopyBlobSuccessfully {
             get {
                 return ResourceManager.GetString("StopCopyBlobSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopped the copy task on file &apos;{0}&apos; successfully..
+        /// </summary>
+        internal static string StopCopyFileSuccessfully {
+            get {
+                return ResourceManager.GetString("StopCopyFileSuccessfully", resourceCulture);
             }
         }
         
