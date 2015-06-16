@@ -25,7 +25,7 @@ using Microsoft.Azure.Common.OData;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Get list of azure backup items
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupItem"), OutputType(typeof(AzureBackupItem), typeof(List<AzureBackupItem>))]
     public class GetAzureBackupItem : AzureBackupContainerCmdletBase
@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteVerbose("Received response");
-                WriteVerbose("Converting response");
                 WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, container);
             });
         }

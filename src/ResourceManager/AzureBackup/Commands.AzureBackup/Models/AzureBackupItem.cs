@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Represents Azure Backup Container
+    /// Represents Azure Backup Item
     /// </summary>
     public class AzureBackupItem : AzureBackupItemContextObject
     {
