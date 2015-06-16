@@ -45,19 +45,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteVerbose("Making client call");
                 SetProtectionRequestInput input = new SetProtectionRequestInput();
                 input.PolicyId = Policy.InstanceId;
-                if (item.GetType() == typeof(AzureBackupItem))
+                if (Item.GetType() == typeof(AzureBackupItem))
                 {
-                    input.ProtectableObjectType = (item as AzureBackupItem).Type;
-                    input.ProtectableObjects.Add((item as AzureBackupItem).Name);
+                    input.ProtectableObjectType = (Item as AzureBackupItem).Type;
+                    input.ProtectableObjects.Add((Item as AzureBackupItem).Name);
                 }
-                else if (item.GetType() == typeof(AzureBackupContainer))
+                else if (Item.GetType() == typeof(AzureBackupContainer))
                 {
-                    WriteVerbose("Input is container Type = "+item.GetType());
-                    if((item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
+                    WriteVerbose("Input is container Type = "+Item.GetType());
+                    if((Item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
                     {
-                        WriteVerbose("container Type = " + (item as AzureBackupContainer).ContainerType);
+                        WriteVerbose("container Type = " + (Item as AzureBackupContainer).ContainerType);
                         input.ProtectableObjectType = DataSourceType.VM.ToString();
-                        input.ProtectableObjects.Add((item as AzureBackupContainer).ContainerUniqueName);
+                        input.ProtectableObjects.Add((Item as AzureBackupContainer).ContainerUniqueName);
                     }
                     else
                     {

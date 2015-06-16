@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 RecoveryPointListResponse recoveryPointListResponse = 
                     AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(),
-                    item.ContainerUniqueName,
-                    item.Type,
-                    item.DataSourceId,
+                    Item.ContainerUniqueName,
+                    Item.Type,
+                    Item.DataSourceId,
                     CmdletCancellationToken).Result;
 
                 WriteVerbose("Received recovery point response");
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         WriteVerbose("Converting response");
                         recoveryPointObject = recoveryPointObjects.FirstOrDefault<RecoveryPointInfo>();
-                        WriteAzureBackupRecoveryPoint(recoveryPointObject, item);
+                        WriteAzureBackupRecoveryPoint(recoveryPointObject, Item);
                     }
                     else
                     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     WriteVerbose("Converting response");
                     recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.OrderByDescending(x => x.RecoveryPointTime);
-                    WriteAzureBackupRecoveryPoint(recoveryPointObjects, item);
+                    WriteAzureBackupRecoveryPoint(recoveryPointObjects, Item);
                 }                
             });
         }
