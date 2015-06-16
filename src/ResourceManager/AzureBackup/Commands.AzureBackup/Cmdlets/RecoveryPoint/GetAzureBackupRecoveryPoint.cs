@@ -41,25 +41,35 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 RecoveryPointListResponse recoveryPointListResponse = 
                     AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(),
-                    item.ContainerUniqueName,
-                    item.Type,
-                    item.DataSourceId,
+                    Item.ContainerUniqueName,
+                    Item.Type,
+                    Item.DataSourceId,
                     CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
-                WriteVerbose("Received policy response2");
+                WriteVerbose("Received recovery point response");
+                
                 IEnumerable<RecoveryPointInfo> recoveryPointObjects = null;
                 if (Id != null)
                 {
+                    RecoveryPointInfo recoveryPointObject = null;
                     recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.Where(x => x.InstanceId.Equals(Id, System.StringComparison.InvariantCultureIgnoreCase));
+                    if (recoveryPointObjects != null && recoveryPointObjects.Any<RecoveryPointInfo>())
+                    {
+                        WriteVerbose("Converting response");
+                        recoveryPointObject = recoveryPointObjects.FirstOrDefault<RecoveryPointInfo>();
+                        WriteAzureBackupRecoveryPoint(recoveryPointObject, Item);
+                    }
+                    else
+                    {
+                        WriteVerbose(string.Format("{0}{1}", "No recovery point exist with Id := ", Id));
+                    }
                 }
                 else
                 {
-                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects;
-                }
-
-                WriteVerbose("Converting response");
-                WriteAzureBackupRecoveryPoint(recoveryPointObjects, item);
+                    WriteVerbose("Converting response");
+                    recoveryPointObjects = recoveryPointListResponse.RecoveryPoints.Objects.OrderByDescending(x => x.RecoveryPointTime);
+                    WriteAzureBackupRecoveryPoint(recoveryPointObjects, Item);
+                }                
             });
         }
 

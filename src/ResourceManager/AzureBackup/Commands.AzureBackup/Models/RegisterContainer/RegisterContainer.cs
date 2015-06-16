@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
 
         public AzureBackupRegisterContainer(string resourceGroupName, string resourceName, ProtectionPolicyInfo sourcePolicy)
-            : base(resourceGroupName, resourceName)
+            : base(resourceGroupName, resourceName, "")
         {
             InstanceId = sourcePolicy.InstanceId;
             Name = sourcePolicy.Name;

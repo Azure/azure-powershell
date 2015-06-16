@@ -1,0 +1,69 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/swatirg1/providers/Microsoft.Backupseadev01/BackupVault/swatirn1/protectionpolicies?api-version=2014-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL3N3YXRpcmcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvc3dhdGlybjEvcHJvdGVjdGlvbnBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"WorkloadType\": \"VM\",\r\n      \"Schedule\": {\r\n        \"BackupType\": \"Full\",\r\n        \"ScheduleRun\": \"Daily\",\r\n        \"ScheduleStartTime\": \"0001-01-01T00:00:00\",\r\n        \"ScheduleRunDays\": null,\r\n        \"ScheduleRunTimes\": [\r\n          \"2015-06-11T15:30:00\"\r\n        ],\r\n        \"RetentionPolicy\": {\r\n          \"RetentionType\": 1,\r\n          \"RetentionDuration\": 30\r\n        }\r\n      },\r\n      \"InstanceId\": \"40716838-2fa2-453b-8901-3f16ecb5359b\",\r\n      \"Name\": \"DefaultPolicy\",\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"WorkloadType\": \"VM\",\r\n      \"Schedule\": {\r\n        \"BackupType\": \"Full\",\r\n        \"ScheduleRun\": \"Daily\",\r\n        \"ScheduleStartTime\": \"0001-01-01T00:00:00\",\r\n        \"ScheduleRunDays\": null,\r\n        \"ScheduleRunTimes\": [\r\n          \"2001-01-01T09:00:00\",\r\n          \"2001-01-01T21:00:00\"\r\n        ],\r\n        \"RetentionPolicy\": {\r\n          \"RetentionType\": 1,\r\n          \"RetentionDuration\": 30\r\n        }\r\n      },\r\n      \"InstanceId\": \"a4ae9969-2de5-40aa-97ce-19889b979d09\",\r\n      \"Name\": \"TestPolicyName\",\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"WorkloadType\": \"VM\",\r\n      \"Schedule\": {\r\n        \"BackupType\": \"Full\",\r\n        \"ScheduleRun\": \"Daily\",\r\n        \"ScheduleStartTime\": \"0001-01-01T00:00:00\",\r\n        \"ScheduleRunDays\": null,\r\n        \"ScheduleRunTimes\": [\r\n          \"2001-01-01T09:00:00\",\r\n          \"2001-01-01T21:00:00\"\r\n        ],\r\n        \"RetentionPolicy\": {\r\n          \"RetentionType\": 1,\r\n          \"RetentionDuration\": 30\r\n        }\r\n      },\r\n      \"InstanceId\": \"c5fe92c5-b779-4a2f-bd6e-bc4121ccf599\",\r\n      \"Name\": \"TestPolicyName2\",\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 3,\r\n  \"Skiptoken\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1140"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "75e6dba7-07f4-44ee-b5d5-d1b03063e1e6"
+        ],
+        "x-ms-client-request-id": [
+          "57d3ee70-242e-4a3d-84f8-1fa388afd8b2",
+          "57d3ee70-242e-4a3d-84f8-1fa388afd8b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "75e6dba7-07f4-44ee-b5d5-d1b03063e1e6"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150611T060229Z:75e6dba7-07f4-44ee-b5d5-d1b03063e1e6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 11 Jun 2015 06:02:28 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f5303a0b-fae4-4cdb-b44d-0e4c032dde26"
+  }
+}

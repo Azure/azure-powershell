@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureBackupItem"), OutputType(typeof(MBS.OperationResponse))]
+    [Cmdlet(VerbsData.Backup, "AzureBackupItem"), OutputType(typeof(Guid))]
     public class TriggerAzureBackup : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -41,39 +41,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 WriteVerbose("Making client call");
-
+                Guid jobId = Guid.Empty;
                 MBS.OperationResponse triggerBackUpInfo =
                     AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
-                    item.ContainerUniqueName,
-                    item.Type,
-                    item.DataSourceId,
+                    Item.ContainerUniqueName,
+                    Item.Type,
+                    Item.DataSourceId,
                     CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
-                WriteVerbose("Received policy response2");
-
+                WriteVerbose("Received backup response");
+                
                 WriteVerbose("Converting response");
-                WriteAzureBackupOperationId(triggerBackUpInfo);
+                jobId = triggerBackUpInfo.OperationId;
+                this.WriteObject(jobId);
             });
-        }
-
-        public void WriteAzureBackupOperationId(MBS.OperationResponse sourceOperationResponse)
-        {
-            // this needs to be uncommented once we have proper constructor
-            // this.WriteObject(new AzureBackupRecoveryPoint(ResourceGroupName, ResourceName, sourceOperationResponse));
-        }
-
-        public void WriteAzureBackupOperationId(IEnumerable<MBS.OperationResponse> sourceOperationResponseList)
-        {
-            List<MBS.OperationResponse> targetList = new List<MBS.OperationResponse>();
-
-            foreach (var sourceOperationResponse in sourceOperationResponseList)
-            {
-                // this needs to be uncommented once we have proper constructor
-                //targetList.Add(new TriggerBackUpInfo(ResourceGroupName, ResourceName, sourceOperationResponse));
-            }
-
-            this.WriteObject(targetList, true);
         }
     }
 }

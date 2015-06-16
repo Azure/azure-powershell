@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Represents Azure Backup Container
+    /// Represents Azure Backup Item
     /// </summary>
     public class AzureBackupItem : AzureBackupItemContextObject
     {
@@ -55,10 +55,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Recovery Points Count for the Azure Backup Item
         /// </summary>
         public int RecoveryPointsCount { get; set; }
-
-        /// <summary>
-        /// Last Recovery Point for the Azure Backup Item
-        /// </summary>
 
         public AzureBackupItem()
             : base()
