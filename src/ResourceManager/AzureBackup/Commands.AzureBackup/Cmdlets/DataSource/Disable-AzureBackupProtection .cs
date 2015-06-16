@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 
                 var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), item.ContainerUniqueName, item.Type, item.DataSourceId, input, CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
+                WriteVerbose("Received response");
                 WriteVerbose("Converting response");
                 WriteAzureBackupProtectionPolicy(disbaleAzureBackupProtection);
             });
