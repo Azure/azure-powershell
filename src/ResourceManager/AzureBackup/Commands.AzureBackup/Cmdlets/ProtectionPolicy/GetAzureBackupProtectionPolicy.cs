@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteDebug("Converting response");
-                ProtectionPolicyHelper.WriteAzureBackupProtectionPolicy(this, ResourceGroupName, ResourceName, Location, policyObjects);
+                AzureBackupCmdletHelper.WriteAzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, policyObjects);
                 
             });
         }

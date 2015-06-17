@@ -28,20 +28,26 @@ using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {   
-        public class ProtectionPolicyHelper
+        public class AzureBackupCmdletHelper
         {
             public const int MinRetentionInDays = 7;
             public const int MaxRetentionInDays = 30;
             public const int MinRetentionInWeeks = 1;
             public const int MaxRetentionInWeeks = 4;
+            public static AzureBackupCmdletBase azureBackupCmdletBase;
 
-            public static void WriteAzureBackupProtectionPolicy(AzureBackupCmdletBase azureBackupCmd, string ResourceGroupName,
-                string ResourceName, string Location, ProtectionPolicyInfo sourcePolicy)
+            public AzureBackupCmdletHelper(AzureBackupCmdletBase azureBackupCmd)
             {
-                azureBackupCmd.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
+                azureBackupCmdletBase = azureBackupCmd;
             }
 
-            public static void WriteAzureBackupProtectionPolicy(AzureBackupCmdletBase azureBackupCmd, string ResourceGroupName,
+            public static void WriteAzureBackupProtectionPolicy(string ResourceGroupName,
+                string ResourceName, string Location, ProtectionPolicyInfo sourcePolicy)
+            {
+                azureBackupCmdletBase.WriteObject(new AzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, sourcePolicy));
+            }
+
+            public static void WriteAzureBackupProtectionPolicy(string ResourceGroupName,
                 string ResourceName, string Location, IEnumerable<ProtectionPolicyInfo> sourcePolicyList)
             {
                 List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
@@ -52,44 +58,44 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         ResourceName, Location, sourcePolicy));
                 }
 
-                azureBackupCmd.WriteObject(targetList, true);
+                azureBackupCmdletBase.WriteObject(targetList, true);
             }
 
-            public static BackupSchedule GetBackupSchedule(AzureBackupCmdletBase azureBackupCmd, string backupType, string scheduleType, DateTime scheduleStartTime,
+            public static BackupSchedule FillBackupSchedule(string backupType, string scheduleType, DateTime scheduleStartTime,
                 string retentionType, int retentionDuration, string[] scheduleRunDays)
             {
                 var backupSchedule = new BackupSchedule();
 
                 backupSchedule.BackupType = backupType;
-                backupSchedule.RetentionPolicy = GetRetentionPolicy(azureBackupCmd, retentionType, retentionDuration);
+                backupSchedule.RetentionPolicy = FillRetentionPolicy(retentionType, retentionDuration);
 
-                scheduleType = GetScheduleType(scheduleType, scheduleRunDays);
+                scheduleType = FillScheduleType(scheduleType, scheduleRunDays);
                 backupSchedule.ScheduleRun = scheduleType;
                 
                 if (string.Compare(scheduleType, ScheduleType.Weekly.ToString(), true) == 0)
                 {
-                    backupSchedule.ScheduleRunDays = GetScheduleRunDays(azureBackupCmd, scheduleRunDays);
+                    backupSchedule.ScheduleRunDays = ParseScheduleRunDays(scheduleRunDays);
                 }
 
-                DateTime scheduleRunTime = GetScheduleRunTime(scheduleStartTime);
+                DateTime scheduleRunTime = ParseScheduleRunTime(scheduleStartTime);
 
                 backupSchedule.ScheduleRunTimes = new List<DateTime> { scheduleRunTime };
 
-                azureBackupCmd.WriteDebug("Exiting GetBackupSchedule");
+                azureBackupCmdletBase.WriteDebug("Exiting GetBackupSchedule");
                 return backupSchedule;
             }
 
-            public static void ValidateAzureBackupPolicyRequest(AzureBackupCmdletBase azureBackupCmd, AzureBackupProtectionPolicy policy)
+            public static void ValidateAzureBackupPolicyRequest(AzureBackupProtectionPolicy policy)
             {
 
                 //ValidateWorkloadType(azureBackupCmd, policy.WorkloadType);
-                ValidateBackupType(azureBackupCmd, policy.BackupType);
-                ValidateScheduleType(azureBackupCmd, policy.ScheduleType);
-                ValidateScheduleRunDays(azureBackupCmd, policy.ScheduleRunDays);
-                ValidateRetentionType(azureBackupCmd, policy.RetentionType);
+                ValidateBackupType(policy.BackupType);
+                ValidateScheduleType(policy.ScheduleType);
+                ValidateScheduleRunDays(policy.ScheduleRunDays);
+                ValidateRetentionType(policy.RetentionType);
             }
 
-            private static void ValidateWorkloadType(AzureBackupCmdletBase azureBackupCmd, string workloadType)
+            private static void ValidateWorkloadType(string workloadType)
             {
                 WorkloadType item = (WorkloadType)Enum.Parse(typeof(WorkloadType), workloadType, true);
 
@@ -97,11 +103,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var exception = new Exception("Invalid value for param WorkloadType, Valid values are VM.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
             }
 
-            private static void ValidateBackupType(AzureBackupCmdletBase azureBackupCmd, string backupType)
+            private static void ValidateBackupType(string backupType)
             {
                 BackupType item = (BackupType)Enum.Parse(typeof(BackupType), backupType, true);
 
@@ -109,11 +115,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var exception = new Exception("Invalid value for param BackupType, Valid values are Full.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
             }
 
-            private static void ValidateScheduleType(AzureBackupCmdletBase azureBackupCmd, string scheduleType)
+            private static void ValidateScheduleType(string scheduleType)
             {
                 ScheduleType item = (ScheduleType)Enum.Parse(typeof(ScheduleType), scheduleType, true);
 
@@ -121,11 +127,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var exception = new Exception("Invalid value for param ScheduleType, Valid values are Daily, Weekly.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
             }
 
-            private static void ValidateRetentionType(AzureBackupCmdletBase azureBackupCmd, string retentionType)
+            private static void ValidateRetentionType(string retentionType)
             {
                 RetentionType item = (RetentionType)Enum.Parse(typeof(RetentionType), retentionType, true);
 
@@ -133,11 +139,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var exception = new Exception("Invalid value for param RetentionType, Valid values are Days, Weeks.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
             }
 
-            private static void ValidateScheduleRunDays(AzureBackupCmdletBase azureBackupCmd, List<string> scheduleRunDays)
+            private static void ValidateScheduleRunDays(List<string> scheduleRunDays)
             {
                 foreach (string scheduleRunDay in scheduleRunDays)
                 {
@@ -149,13 +155,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         var exception = new Exception("Invalid value for param ScheduleRunDays, " +
                             "Valid values are Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday");
                         var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                        azureBackupCmd.WriteError(errorRecord);
+                        azureBackupCmdletBase.WriteError(errorRecord);
                     }
                 }
             }
-            private static RetentionPolicy GetRetentionPolicy(AzureBackupCmdletBase azureBackupCmd, string retentionType, int retentionDuration)
+            private static RetentionPolicy FillRetentionPolicy(string retentionType, int retentionDuration)
             {
-                ValidateRetentionRange(azureBackupCmd, retentionType, retentionDuration);
+                ValidateRetentionRange(retentionType, retentionDuration);
                 var retentionPolicy = new RetentionPolicy
                 {
                     RetentionType = (RetentionDurationType)Enum.Parse(typeof(RetentionDurationType), retentionType, true),
@@ -165,14 +171,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 return retentionPolicy;
             }
 
-            private static void ValidateRetentionRange(AzureBackupCmdletBase azureBackupCmd, string retentionType, int retentionDuration)
+            private static void ValidateRetentionRange(string retentionType, int retentionDuration)
             {
                 if(retentionType == RetentionDurationType.Days.ToString() && (retentionDuration < MinRetentionInDays
                     || retentionDuration > MaxRetentionInDays))
                 {
                     var exception = new Exception("For Retention in days , valid values of retention duration are 7 to 30.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
 
                 if (retentionType == RetentionDurationType.Weeks.ToString() && (retentionDuration < MinRetentionInWeeks
@@ -180,12 +186,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var exception = new Exception("For Retention in weeks , valid values of retention duration are 1 to 4.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
 
             }
 
-            private static string GetScheduleType(string scheduleType, string[] scheduleRunDays)
+            private static string FillScheduleType(string scheduleType, string[] scheduleRunDays)
             {
                 if (scheduleType == ScheduleType.Daily.ToString() && scheduleRunDays != null && scheduleRunDays.Length > 0)
                 {
@@ -198,22 +204,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
             }
 
-            private static IList<DayOfWeek> GetScheduleRunDays(AzureBackupCmdletBase azureBackupCmd, string[] scheduleRunDays)
+            private static IList<DayOfWeek> ParseScheduleRunDays(string[] scheduleRunDays)
             {
                 if (scheduleRunDays == null || scheduleRunDays.Length <= 0)
                 {
                     var exception = new Exception("For weekly scheduletype , ScheduleRunDays should not be empty.");
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    azureBackupCmd.WriteError(errorRecord);
+                    azureBackupCmdletBase.WriteError(errorRecord);
                 }
 
                 IList<DayOfWeek> ListofWeekDays = new List<DayOfWeek>();
 
                 foreach (var dayOfWeek in scheduleRunDays)
                 {
-                    azureBackupCmd.WriteDebug("dayOfWeek" + dayOfWeek.ToString());
+                    azureBackupCmdletBase.WriteDebug("dayOfWeek" + dayOfWeek.ToString());
                     DayOfWeek item = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeek, true);
-                    azureBackupCmd.WriteDebug("Item" + item.ToString());
+                    azureBackupCmdletBase.WriteDebug("Item" + item.ToString());
                     if (!ListofWeekDays.Contains(item))
                     {
                         ListofWeekDays.Add(item);
@@ -223,7 +229,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 return ListofWeekDays;
             }
 
-            private static DateTime GetScheduleRunTime(DateTime scheduleStartTime)
+            private static DateTime ParseScheduleRunTime(DateTime scheduleStartTime)
             {
                 scheduleStartTime = scheduleStartTime.ToUniversalTime();
                 DateTime scheduleRunTime = new DateTime(scheduleStartTime.Year, scheduleStartTime.Month,

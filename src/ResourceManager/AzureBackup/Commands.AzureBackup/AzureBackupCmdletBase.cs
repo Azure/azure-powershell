@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));
 
             CmdletCancellationToken = cancellationTokenSource.Token;
+            AzureBackupCmdletHelper cmdHelper = new AzureBackupCmdletHelper(this);
         }
 
         protected void ExecutionBlock(Action execAction)
