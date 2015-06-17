@@ -26,5 +26,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-DatabasePauseResume");
         }
+
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestDatabasePauseResumePiped()
+        {
+            RunPowerShellTest("Test-DatabasePauseResumePiped");
+        }
     }
 }
