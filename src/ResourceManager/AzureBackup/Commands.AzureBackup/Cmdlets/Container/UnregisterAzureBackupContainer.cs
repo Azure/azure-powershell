@@ -20,10 +20,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
-using  Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -33,9 +31,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(Guid))]
     public class UnregisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string ContainerUniqueName { get; set; }
+        public AzureBackupContainer AzureBackupContainer { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,7 +41,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(ContainerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
+                string containerUniqueName = AzureBackupContainer.ContainerUniqueName;
+                UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(containerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
                 MBS.OperationResponse operationResponse = AzureBackupClient.Container.UnregisterAsync(unregRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
                 Guid jobId = operationResponse.OperationId; //TODO: Fix it once PiyushKa publish the rest APi to get jobId based on operationId                        
 

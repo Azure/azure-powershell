@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 Guid jobId = Guid.Empty;
                 MBS.OperationResponse triggerBackUpInfo =
                     AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
-                    item.ContainerUniqueName,
-                    item.Type,
-                    item.DataSourceId,
+                    Item.ContainerUniqueName,
+                    Item.Type,
+                    Item.DataSourceId,
                     CmdletCancellationToken).Result;
 
                 WriteVerbose("Received backup response");

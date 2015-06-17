@@ -1,0 +1,69 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/containers/iaasvmcontainer%3Bdev01testing%3Bdev01testing/datasources/VM/17593283453810/recoverypoints?api-version=2014-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vY29udGFpbmVycy9pYWFzdm1jb250YWluZXIlM0JkZXYwMXRlc3RpbmclM0JkZXYwMXRlc3RpbmcvZGF0YXNvdXJjZXMvVk0vMTc1OTMyODM0NTM4MTAvcmVjb3Zlcnlwb2ludHM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-17T08:38:51.5793413Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"17845881712136\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T14:37:10.7780467Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"19404752991554\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-11T10:52:30.0345282Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"19591702463836\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T06:05:46.9189974Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"20483888156836\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T05:49:51.2034409Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"20920255378610\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-13T20:32:53.114913Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"21428490254558\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-14T20:31:45.7443624Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"22454774268892\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-13T14:44:36.4839382Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"22858334479018\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-15T17:38:00.3816293Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"23250438297653\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-16T19:32:43.9310734Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"24972585524123\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T06:24:33.0768703Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"26453384139263\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-15T11:12:50.8577407Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"27692400690050\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-17T08:23:20.8583076Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"28054591996663\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-17T09:25:09.6146705Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"30159220037616\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T14:58:53.0078718Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"30273063703570\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-11T14:41:46.0950893Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"32528401668178\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    },\r\n    {\r\n      \"RecoveryPointType\": \"AppConsistent\",\r\n      \"RecoveryPointTime\": \"2015-06-12T15:32:19.7649004Z\",\r\n      \"RecoveryPointAdditionalInfo\": \"\",\r\n      \"InstanceId\": \"33472577556162\",\r\n      \"Name\": null,\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 17,\r\n  \"Skiptoken\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3310"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c2e92714-e196-4d6e-b73f-9f5ef3556578"
+        ],
+        "x-ms-client-request-id": [
+          "67678cc4-2baf-4756-9ac5-7da40f2cea77",
+          "67678cc4-2baf-4756-9ac5-7da40f2cea77"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2e92714-e196-4d6e-b73f-9f5ef3556578"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150617T093941Z:c2e92714-e196-4d6e-b73f-9f5ef3556578"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 17 Jun 2015 09:39:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f5303a0b-fae4-4cdb-b44d-0e4c032dde26"
+  }
+}

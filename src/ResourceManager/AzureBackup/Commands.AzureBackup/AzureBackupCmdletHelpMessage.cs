@@ -21,11 +21,34 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ResourceGroupName = "The ResourceGroup name.";
         public const string ResourceName = "The Resource name.";
         public const string Location = "Location.";
-        public const string TargetLocation = "The directory where the credentials file will be saved.";
+        public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
         public const string ContainerResourceName = "The container resource name aka friendly name.";
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
+
+        public const string JobFilterJobIdHelpMessage = "The job ID to filter jobs";
+        public const string JobFilterJobHelpMessage = "The job for filtering";
+        public const string JobFilterStartTimeHelpMessage = "The start time of query range";
+        public const string JobFilterEndTimeHelpMessage = "The end time of query range";
+        public const string JobFilterOperationHelpMessage = "The operation for filtering jos";
+        public const string JobFilterStatusHelpMessage = "The status for filtering jobs";
+        public const string JobFitlerVaultHelpMessage = "The vault of which jobs have to be filtered";
+        public const string JobFilterTypeHelpMessage = "The type of workload whose jobs have to be filtered";
+
+        public const string JobDetailsFilterJobIdHelpMessage = "The job ID to get details";
+        public const string JobDetailsFilterVaultHelpMessage = "The vault of which job details should be fetched";
+        public const string JobDetailsFilterJobHelpMessage = "The job whose full details should be fetched";
+
+        public const string StopJobFilterJobIdHelpMessage = "The job ID to stop job";
+        public const string StopJobFilterVaultHelpMessage = "The vault of which a job has to be stopped";
+        public const string StopJobFilterJobHelpMessage = "The job which should be stopped";
+
+        public const string WaitJobFilterJobIdHelpMessage = "The job ID to stop job";
+        public const string WaitJobFilterVaultHelpMessage = "The vault of which a job has to be stopped";
+        public const string WaitJobFilterJobHelpMessage = "The job which should be stopped";
+        public const string WaitJobFilterTimeoutHelpMessage = "Maximum number of seconds for which cmdlet should wait before job(s) complete running.";
+
         public const string VirtualMachine = "Virtual Machine.";
         public const string ContainerResourceGroupName = "The container resource group name.";
         public const string ProtectionStatus = "Protection Status of the azure backup item.";

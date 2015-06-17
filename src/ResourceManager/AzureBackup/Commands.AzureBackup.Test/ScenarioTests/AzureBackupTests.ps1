@@ -15,10 +15,15 @@
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerResourceGroupName = "dev01Testing"
+$ContainerResourceName = "dev01Testing"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"
 $Location = "SouthEast Asia"
+$PolicyName = "Policy9";
+$PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
+$POName = "iaasvmcontainer;dev01testing;dev01testing"
 
 <#
 .SYNOPSIS
@@ -26,7 +31,7 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-GetAzureBackupProtectionPolicyTests
 {
-	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName
+	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
 	Assert-NotNull $protectionPolicies 'Protection Policies should not be null'
 	foreach($protectionPolicy in $protectionPolicies)
 	{
@@ -40,40 +45,3 @@ function Test-GetAzureBackupProtectionPolicyTests
 		Assert-NotNull $protectionPolicy.ResourceName 'ResourceName should not be null'
 	}
 }
-
-function GetAzureRecoveryPointTest
-{
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
-	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
-	$azureBackUpItem.ResourceName = $ResourceGroupName
-	$azureBackUpItem.Location = $Location
-	$azureBackUpItem.ContainerUniqueName = $ContainerName
-	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
-	$azureBackUpItem.Type = $DataSourceType
-	$recoveryPoints = Get-AzureBackupRecoveryPoint -item $azureBackUpItem
-	if (!($recoveryPoints -eq $null))
-	{
-	    foreach($recoveryPoint in $recoveryPoints)
-	    {
-	        Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
-		    Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-		    Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
-	    }
-	}
-}
-
-function BackUpAzureBackUpItemTest
-{
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
-	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
-	$azureBackUpItem.ResourceName = $ResourceName
-	$azureBackUpItem.Location = $Location
-	$azureBackUpItem.ContainerUniqueName = $ContainerName
-	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
-	$azureBackUpItem.Type = $DataSourceType
-	$jobId = Backup-AzureBackupItem -item $azureBackUpItem
-}
-
-

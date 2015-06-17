@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(containerInfo, ResourceGroupName, ResourceName, Location);
+                    return new AzureBackupContainer(containerInfo, containerInfo.ParentContainerName, containerInfo.FriendlyName, Location);
                 });
 
-                if (!string.IsNullOrEmpty(ResourceName) & !string.IsNullOrEmpty(ResourceGroupName))
+                if (!string.IsNullOrEmpty(ContainerResourceName) & !string.IsNullOrEmpty(ContainerResourceGroupName))
                 {
                     if (containers.Any())
                     {

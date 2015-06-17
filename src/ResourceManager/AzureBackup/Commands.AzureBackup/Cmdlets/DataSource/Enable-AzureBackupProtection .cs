@@ -25,15 +25,12 @@ using Microsoft.Azure.Management.BackupServices;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     // ToDo:
-    // Correct the Commandlet
-    // Correct the OperationResponse
     // Get Tracking API from Piyush and Get JobResponse
-    // Get JobResponse Object from Aditya
 
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(OperationResponse))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(Guid))]
     public class EnableAzureBackupProtection : AzureBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
@@ -48,19 +45,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteVerbose("Making client call");
                 SetProtectionRequestInput input = new SetProtectionRequestInput();
                 input.PolicyId = Policy.InstanceId;
-                if (item.GetType() == typeof(AzureBackupItem))
+                if (Item.GetType() == typeof(AzureBackupItem))
                 {
-                    input.ProtectableObjectType = (item as AzureBackupItem).Type;
-                    input.ProtectableObjects.Add((item as AzureBackupItem).Name);
+                    input.ProtectableObjectType = (Item as AzureBackupItem).Type;
+                    input.ProtectableObjects.Add((Item as AzureBackupItem).Name);
                 }
-                else if (item.GetType() == typeof(AzureBackupContainer))
+                else if (Item.GetType() == typeof(AzureBackupContainer))
                 {
-                    WriteVerbose("Input is container Type = "+item.GetType());
-                    if((item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
+                    WriteVerbose("Input is container Type = "+Item.GetType());
+                    if((Item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
                     {
-                        WriteVerbose("container Type = " + (item as AzureBackupContainer).ContainerType);
+                        WriteVerbose("container Type = " + (Item as AzureBackupContainer).ContainerType);
                         input.ProtectableObjectType = DataSourceType.VM.ToString();
-                        input.ProtectableObjects.Add((item as AzureBackupContainer).ContainerUniqueName);
+                        input.ProtectableObjects.Add((Item as AzureBackupContainer).ContainerUniqueName);
                     }
                     else
                     {
@@ -72,32 +69,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new Exception("Uknown item type");
                 }
 
+                Guid jobId = Guid.Empty;
                 var enableAzureBackupProtection = AzureBackupClient.DataSource.EnableProtectionAsync(GetCustomRequestHeaders(), input, CmdletCancellationToken).Result;
 
-                WriteVerbose("Received policy response");
-                WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(enableAzureBackupProtection);
+                WriteVerbose("Received enable azure backup protection response");
+                jobId = enableAzureBackupProtection.OperationId;
+                this.WriteObject(jobId);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(OperationResponse sourceOperationResponse)
-        {
-            // this needs to be uncommented once we have proper constructor
-            //this.WriteObject(new AzureBackupRecoveryPoint(ResourceGroupName, ResourceName, sourceOperationResponse));
-        }
-
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<OperationResponse> sourceOperationResponseList)
-        {
-            List<OperationResponse> targetList = new List<OperationResponse>();
-
-            foreach (var sourceOperationResponse in sourceOperationResponseList)
-            {
-                // this needs to be uncommented once we have proper constructor
-                targetList.Add(sourceOperationResponse);
-            }
-
-            this.WriteObject(targetList, true);
-        }
         public enum ContainerType
         {
             [EnumMember]
@@ -118,14 +98,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public enum DataSourceType
         {
             [EnumMember]
-            Invalid = 0,
-
-            [EnumMember]
             VM
-
-            // TODO: fix GetJobTypes() in PortalMetadataInternalEP.cs
-            // [EnumMember]
-            // AzureStorageAccount
         }
     }
 }
