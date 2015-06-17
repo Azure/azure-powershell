@@ -88,23 +88,24 @@ function Get-ComputeTestMode
     return $testMode;
 }
 
-
-<#
-.SYNOPSIS
-Get Compute Test Location
-#>
+# Get Compute Test Location
 function Get-ComputTestLocation
 {
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
 
-<#
-.SYNOPSIS
-Cleans the created resource groups
-#>
+# Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {
     Remove-AzureResourceGroup -Name $rgname -Force;
+}
+
+# Get Compute Test Tag
+function Get-ComputeTestTag
+{
+    param ([string] $tagname)
+
+    return @{ Name = $tagname; Value = (Get-Date).ToUniversalTime().ToString("u") };
 }
 
 ######################
@@ -164,11 +165,11 @@ Gets random resource name
 #>
 function Get-RandomItemName
 {
-    param([string] $prefix = "pslibtest")
+    param([string] $prefix = "crptestps")
     
     if ($prefix -eq $null -or $prefix -eq '')
     {
-        $prefix = "pslibtest";
+        $prefix = "crptestps";
     }
 
     $str = $prefix + ((Get-Random) % 10000);
