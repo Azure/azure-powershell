@@ -20,10 +20,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
