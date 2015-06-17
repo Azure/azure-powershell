@@ -148,7 +148,6 @@
     <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />

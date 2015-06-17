@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerContextObject item { get; set; }
+        public AzureBackupContainerContextObject Item { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", item.ResourceGroupName, item.ResourceName, item.Location));
-            InitializeAzureBackupCmdlet(item.ResourceGroupName, item.ResourceName, item.Location);
+            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", Item.ResourceGroupName, Item.ResourceName, Item.Location));
+            InitializeAzureBackupCmdlet(Item.ResourceGroupName, Item.ResourceName, Item.Location);
         }
     }
 }

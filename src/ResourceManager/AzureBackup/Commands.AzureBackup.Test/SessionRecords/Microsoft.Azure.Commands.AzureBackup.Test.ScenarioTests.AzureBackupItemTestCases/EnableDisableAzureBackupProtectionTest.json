@@ -19,7 +19,7 @@
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "\"f0cba117-8ffe-4f9e-8ca5-84104e73d8d8\"",
+      "ResponseBody": "\"a2c77bca-ef55-4543-b3c7-2454d41c2854\"",
       "ResponseHeaders": {
         "Content-Length": [
           "38"
@@ -34,96 +34,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2fc9c464-5788-4a97-974c-27e3e3ffbe4d"
+          "81f956c4-fa7b-48d6-acaa-fa792ba604e9"
         ],
         "x-ms-client-request-id": [
-          "4cd7d528-2138-46fe-a247-b3e8115ff54a",
-          "4cd7d528-2138-46fe-a247-b3e8115ff54a"
+          "d9ecebca-99d3-4083-a1e2-f2ca01225ce2",
+          "d9ecebca-99d3-4083-a1e2-f2ca01225ce2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "2fc9c464-5788-4a97-974c-27e3e3ffbe4d"
+          "81f956c4-fa7b-48d6-acaa-fa792ba604e9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150615T144514Z:2fc9c464-5788-4a97-974c-27e3e3ffbe4d"
+          "CENTRALUS:20150617T091758Z:81f956c4-fa7b-48d6-acaa-fa792ba604e9"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 15 Jun 2015 14:45:14 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/protectableobjects/protect?api-version=2014-09-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vcHJvdGVjdGFibGVvYmplY3RzL3Byb3RlY3Q/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"ProtectableObjects\": [\r\n    \"iaasvmcontainer;dev01testing;dev01testing\"\r\n  ],\r\n  \"ProtectableObjectType\": \"VM\",\r\n  \"PolicyId\": \"c87bbada-6e1b-4db2-b76c-9062d28959a4\"\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Content-Length": [
-          "174"
-        ],
-        "Accept-Language": [
-          "en-us"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
-        ]
-      },
-      "ResponseBody": "\"8a5a5957-9fdf-43da-9259-63e8abe3fc57\"",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "38"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "772c23c3-c24a-48f0-a6db-b57afa35ebaf"
-        ],
-        "x-ms-client-request-id": [
-          "4e04d16f-deb2-4ab6-89ef-5c971506864b",
-          "4e04d16f-deb2-4ab6-89ef-5c971506864b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-correlation-request-id": [
-          "772c23c3-c24a-48f0-a6db-b57afa35ebaf"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150615T144558Z:772c23c3-c24a-48f0-a6db-b57afa35ebaf"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 15 Jun 2015 14:45:58 GMT"
+          "Wed, 17 Jun 2015 09:17:58 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -153,10 +86,10 @@
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "\"a6c19cb6-6f29-40d7-a216-e4590ad7550d\"",
+      "ResponseBody": "{\r\n  \"ErrorCode\": \"BMSUserErrorObjectLocked\",\r\n  \"Message\": {\r\n    \"Language\": \"en-US\",\r\n    \"Value\": \"Another operation is in progress on the selected item.\\r\\nIf there is a current, in-progress operation, please retry after it has finished.\"\r\n  },\r\n  \"Values\": [\r\n    {\r\n      \"Key\": \"Endpoint\",\r\n      \"Value\": \"net.tcp://10.25.228.128:20002/2014/09/BMSManagementService\"\r\n    },\r\n    {\r\n      \"Key\": \"Name\",\r\n      \"Value\": \"NetTcpBinding_IBMSManagementInternal\"\r\n    },\r\n    {\r\n      \"Key\": \"Source\",\r\n      \"Value\": \"BMSWebRole_IN_0\"\r\n    },\r\n    {\r\n      \"Key\": \"Target\",\r\n      \"Value\": \"BMSWorkerRole_IN_0\"\r\n    },\r\n    {\r\n      \"Key\": \"ResourceId\",\r\n      \"Value\": \"3420983535961922368\"\r\n    },\r\n    {\r\n      \"Key\": \"containerName\",\r\n      \"Value\": \"iaasvmcontainer;dev01testing;dev01testing\"\r\n    },\r\n    {\r\n      \"Key\": \"dataSourceType\",\r\n      \"Value\": \"VM\"\r\n    },\r\n    {\r\n      \"Key\": \"dataSourceId\",\r\n      \"Value\": \"17593283453810\"\r\n    },\r\n    {\r\n      \"Key\": \"ApiVersion\",\r\n      \"Value\": \"1.0\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "38"
+          "719"
         ],
         "Content-Type": [
           "application/json"
@@ -168,29 +101,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a51fe2a5-f3d6-4d3e-af88-0e421ffe207c"
+          "e9bb1805-60fb-4b9d-bc5f-2849019d018d"
         ],
         "x-ms-client-request-id": [
-          "e0dc8344-0909-4188-aa69-49f7f5914b16",
-          "e0dc8344-0909-4188-aa69-49f7f5914b16"
+          "98f06f79-0881-43c3-8125-e4bacf9ec14e",
+          "98f06f79-0881-43c3-8125-e4bacf9ec14e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "a51fe2a5-f3d6-4d3e-af88-0e421ffe207c"
+          "e9bb1805-60fb-4b9d-bc5f-2849019d018d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150615T144536Z:a51fe2a5-f3d6-4d3e-af88-0e421ffe207c"
+          "CENTRALUS:20150617T091820Z:e9bb1805-60fb-4b9d-bc5f-2849019d018d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 15 Jun 2015 14:45:36 GMT"
+          "Wed, 17 Jun 2015 09:18:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -199,7 +132,7 @@
           "ASP.NET"
         ]
       },
-      "StatusCode": 202
+      "StatusCode": 400
     }
   ],
   "Names": {},
