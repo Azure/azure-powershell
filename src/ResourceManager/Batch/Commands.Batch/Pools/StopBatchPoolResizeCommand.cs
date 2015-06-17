@@ -12,27 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ExpressRoute.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.ExpressRoute
+namespace Microsoft.Azure.Commands.Batch
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public sealed class ValidateGuid : ValidateEnumeratedArgumentsAttribute
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize")]
+    public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        protected override void ValidateElement(object element)
-        {
-            string guid = (string)element;
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
-            try
-            {
-                Guid validGuid = Guid.Parse(guid);
-            } 
-            catch
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidGuid, guid));
-            }
+        public override void ExecuteCmdlet()
+        {
+            BatchClient.StopResizePool(this.BatchContext, this.Name, this.AdditionalBehaviors);
         }
     }
 }

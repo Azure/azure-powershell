@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.2'
+ModuleVersion = '0.9.3'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -115,7 +115,10 @@ AliasesToExport = @(
     'Get-AzureSqlDatabaseServerAuditingPolicy',
     'Remove-AzureSqlDatabaseServerAuditing',
     'Set-AzureSqlDatabaseServerAuditingPolicy',
-    'Use-AzureSqlDatabaseServerAuditingPolicy'
+    'Use-AzureSqlDatabaseServerAuditingPolicy',
+    'Get-AzureStorageContainerAcl',
+    'Start-CopyAzureStorageBlob',
+    'Stop-CopyAzureStorageBlob'
 )
 
 # List of all modules packaged with this module
