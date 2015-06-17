@@ -67,17 +67,19 @@ function Test-DatabasePauseResumePiped
 	$location = "Japan East"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
-
-	# Create data warehouse database with all parameters.
-	$databaseName = Get-DatabaseName
-	$collationName = "SQL_Latin1_General_CP1_CI_AS"
-	$maxSizeBytes = 250GB
-	$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
 	try
 	{
+		$server = Create-ServerForTest $rg $serverVersion $location
+
+		# Create data warehouse database with all parameters.
+		$databaseName = Get-DatabaseName
+		$collationName = "SQL_Latin1_General_CP1_CI_AS"
+		$maxSizeBytes = 250GB
+		$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
+
+
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.
 		$dwdb2 = $dwdb | Suspend-AzureSqlDatabase
 		Assert-AreEqual $dwdb2.DatabaseName $databaseName
