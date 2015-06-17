@@ -157,7 +157,9 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\BackUpAzureBackUpItem.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\EnableDisableAzureBackupProtectionTest.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupContainerTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupJobTests.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupVaultCredentialsTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetRecoveryPointTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\ListAzureBackupItemTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\ListProtectionPolicyTests.json">
