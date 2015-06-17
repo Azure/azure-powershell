@@ -78,26 +78,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                 "Import-DscResource", @"param($Name, $ModuleName)
                 if ($ModuleName) 
                 {
-                    foreach ($m in $ModuleName) {
-                        if($m.GetType().FullName -eq 'System.Collections.Hashtable'){
-                            $moduleVersion = ""
-                            $moduleName = ""
-                            foreach($mkey in $m.Keys){
-                                if($mkey -eq 'ModuleName'){
-                                    $moduleName = $m[$mkey]    
+                    foreach ($module in $ModuleName) {
+                        if($module.GetType().FullName -eq 'System.Collections.Hashtable'){
+                            $mVersion = ""
+                            $mName = ""
+                            foreach($modulekey in $module.Keys){
+                                if($modulekey -eq 'ModuleName'){
+                                    $mName = $module[$modulekey]    
                                 }
-                                elseif($mkey -eq 'ModuleVersion' -or $mkey -eq 'RequiredVersion'){
-                                    $moduleVersion = $m[$mkey]    
+                                elseif($modulekey -eq 'ModuleVersion' -or $modulekey -eq 'RequiredVersion'){
+                                    $mVersion = $module[$modulekey]    
                                 }
                             }
 
-                            if(!$global:modules.ContainsKey($moduleName)){
-                                $global:modules.Add($moduleName,$moduleVersion)
+                            if(!$global:modules.ContainsKey($mName)){
+                                $global:modules.Add($mName,$mVersion)
                             }
                         }
                         else{
-                            if(!$global:modules.ContainsKey($moduleName)){
-                                $global:modules.Add($m,"""")
+                            if(!$global:modules.ContainsKey($module)){
+                                $global:modules.Add($module,"""")
                             }
                         }
                     }

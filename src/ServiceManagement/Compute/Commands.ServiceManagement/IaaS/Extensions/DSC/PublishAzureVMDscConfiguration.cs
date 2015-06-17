@@ -300,15 +300,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         {
                             if([String]::IsNullOrEmpty($moduleVersion))
                             {
-                                $mi = Get-Module -List -Name $moduleName                                
+                                $module = Get-Module -List -Name $moduleName                                
                             }
                             else
                             {
-                                $mi = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
+                                $module = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
                             }
                             
-                            $moduleFolder = Split-Path $mi.Path
-                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($mi.Name)""
+                            $moduleFolder = Split-Path $module.Path
+                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)""
                         }"
                         );
                     powershell.Invoke();
