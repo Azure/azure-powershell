@@ -57,15 +57,16 @@ function GetAzureRecoveryPointTest
 	$recoveryPoints = Get-AzureBackupRecoveryPoint -Item $azureBackUpItem
 	if (!($recoveryPoints -eq $null))
 	{
-	foreach($recoveryPoint in $recoveryPoints)
-	{
-	    Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+		foreach($recoveryPoint in $recoveryPoints)
+		{
+			Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+		}
 	}
 }
 
-function Test-GetAzureBackupItemTests
+function Test-GetAzureBackupItem
 {
 	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupContainer
 	$azureBackUpContainer.ResourceGroupName = $ResourceGroupName
@@ -90,7 +91,7 @@ function Test-GetAzureBackupItemTests
 	}
 }
 
-function Test-EnableDisableAzureBackupProtectionTest
+function Test-EnableAzureBackupProtection
 {	
 	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupProtectionPolicy
 	$policy.InstanceId = $PolicyId
@@ -111,12 +112,22 @@ function Test-EnableDisableAzureBackupProtectionTest
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.Name = $POName
-
 	$jobId = Enable-AzureBackupProtection -Item $azureBackUpItem -Policy $policy 
-	sleep(20)
+	
+}
+
+function Test-DisableAzureBackupProtection
+{	
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ContainerType = $ContainerType
+	$azureBackUpItem.DataSourceId = $DataSourceId
+	$azureBackUpItem.Type = $DataSourceType
+	$azureBackUpItem.Name = $POName
 	$jobId1 = Disable-AzureBackupProtection -Item $azureBackUpItem
-	sleep(20)
-	$jobId2 = Enable-AzureBackupProtection -Item $azureBackUpItem -Policy $policy 
 }
 
 function BackUpAzureBackUpItemTest
