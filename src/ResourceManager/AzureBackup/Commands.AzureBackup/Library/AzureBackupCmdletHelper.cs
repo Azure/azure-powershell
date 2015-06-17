@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 var backupSchedule = new BackupSchedule();
 
-                backupSchedule.BackupType = backupType;
+                backupSchedule.BackupType = Enum.Parse(typeof(BackupType), backupType, true).ToString();
                 backupSchedule.RetentionPolicy = FillRetentionPolicy(retentionType, retentionDuration);
 
                 scheduleType = FillScheduleType(scheduleType, scheduleRunDays);
