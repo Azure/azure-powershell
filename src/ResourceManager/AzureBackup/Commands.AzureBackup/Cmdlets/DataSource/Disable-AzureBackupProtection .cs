@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input, CmdletCancellationToken).Result;
 
                 WriteVerbose("Received disable azure backup protection response");
-                WriteVerbose("Converting response");
                 jobId = disbaleAzureBackupProtection.OperationId;
                 this.WriteObject(jobId);
             });

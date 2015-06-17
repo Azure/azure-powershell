@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
                 }
 
-                WriteVerbose("Received response");
+                WriteVerbose("Received azure backup item response");
                 WriteAzureBackupItem(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
             });
         }

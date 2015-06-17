@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 var enableAzureBackupProtection = AzureBackupClient.DataSource.EnableProtectionAsync(GetCustomRequestHeaders(), input, CmdletCancellationToken).Result;
 
                 WriteVerbose("Received enable azure backup protection response");
-                WriteVerbose("Received response");
                 jobId = enableAzureBackupProtection.OperationId;
                 this.WriteObject(jobId);
             });
