@@ -76,16 +76,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteVerbose("Received response");
-                WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
+                WriteAzureBackupItem(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(DataSourceInfo sourceItem, AzureBackupContainer azureBackupItem)
+        public void WriteAzureBackupItem(DataSourceInfo sourceItem, AzureBackupContainer azureBackupItem)
         {
             this.WriteObject(new AzureBackupItem(sourceItem, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(List<DataSourceInfo> sourceDataSourceList, List<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
+        public void WriteAzureBackupItem(List<DataSourceInfo> sourceDataSourceList, List<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
         {
             List<AzureBackupItem> targetList = new List<AzureBackupItem>();
 
