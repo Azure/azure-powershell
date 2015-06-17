@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(OperationResponse))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(Guid))]
     public class EnableAzureBackupProtection : AzureBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
@@ -69,29 +69,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new Exception("Uknown item type");
                 }
 
+                Guid jobId = Guid.Empty;
                 var enableAzureBackupProtection = AzureBackupClient.DataSource.EnableProtectionAsync(GetCustomRequestHeaders(), input, CmdletCancellationToken).Result;
 
-                WriteVerbose("Received response");
-                WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(enableAzureBackupProtection);
+                WriteVerbose("Received enable azure backup protection response");
+                jobId = enableAzureBackupProtection.OperationId;
+                this.WriteObject(jobId);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(OperationResponse sourceOperationResponse)
-        {
-        }
-
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<OperationResponse> sourceOperationResponseList)
-        {
-            List<OperationResponse> targetList = new List<OperationResponse>();
-
-            foreach (var sourceOperationResponse in sourceOperationResponseList)
-            {
-                targetList.Add(sourceOperationResponse);
-            }
-
-            this.WriteObject(targetList, true);
-        }
         public enum ContainerType
         {
             [EnumMember]

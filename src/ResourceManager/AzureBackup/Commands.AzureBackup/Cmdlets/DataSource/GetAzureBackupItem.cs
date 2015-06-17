@@ -75,17 +75,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
                 }
 
-                WriteVerbose("Received response");
-                WriteAzureBackupProtectionPolicy(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
+                WriteVerbose("Received azure backup item response");
+                WriteAzureBackupItem(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
             });
         }
 
-        public void WriteAzureBackupProtectionPolicy(DataSourceInfo sourceItem, AzureBackupContainer azureBackupItem)
+        public void WriteAzureBackupItem(DataSourceInfo sourceItem, AzureBackupContainer azureBackupItem)
         {
             this.WriteObject(new AzureBackupItem(sourceItem, azureBackupItem));
         }
 
-        public void WriteAzureBackupProtectionPolicy(List<DataSourceInfo> sourceDataSourceList, List<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
+        public void WriteAzureBackupItem(List<DataSourceInfo> sourceDataSourceList, List<ProtectableObjectInfo> sourcePOList, AzureBackupContainer azureBackupContainer)
         {
             List<AzureBackupItem> targetList = new List<AzureBackupItem>();
 

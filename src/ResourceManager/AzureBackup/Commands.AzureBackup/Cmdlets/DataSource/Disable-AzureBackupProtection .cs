@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBackupProtection"), OutputType(typeof(OperationResponse))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureBackupProtection"), OutputType(typeof(Guid))]
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
@@ -59,31 +59,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                     Reason = this.Reason,
                     Comments = this.Comments,
                 };
+
                 WriteVerbose("RemoveProtectionOption is = " + input.RemoveProtectionOption);
+                Guid jobId = Guid.Empty;
                 var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input, CmdletCancellationToken).Result;
 
-                WriteVerbose("Received response");
-                WriteVerbose("Converting response");
-                WriteAzureBackupProtectionPolicy(disbaleAzureBackupProtection);
+                WriteVerbose("Received disable azure backup protection response");
+                jobId = disbaleAzureBackupProtection.OperationId;
+                this.WriteObject(jobId);
             });
         }
-
-        public void WriteAzureBackupProtectionPolicy(OperationResponse sourceOperationResponse)
-        {
-        }
-
-        public void WriteAzureBackupProtectionPolicy(IEnumerable<OperationResponse> sourceOperationResponseList)
-        {
-            List<OperationResponse> targetList = new List<OperationResponse>();
-
-            foreach (var sourceOperationResponse in sourceOperationResponseList)
-            {
-                targetList.Add(sourceOperationResponse);
-            }
-
-            this.WriteObject(targetList, true);
-        }
-
         public enum RemoveProtectionOptions
         {
             [EnumMember]
