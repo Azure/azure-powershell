@@ -15,6 +15,8 @@
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerResourceGroupName = "dev01Testing"
+$ContainerResourceName = "dev01Testing"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"

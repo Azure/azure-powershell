@@ -12,13 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public class AzureBackupContainerTest : AzureBackupTestsBase
+    public class AzureBackupContainerTests : AzureBackupTestsBase
     {
+        [Fact]
+        public void GetAzureBackupContainerTests()
+        {
+            this.RunPowerShellTest("Test-GetAzureBackupContainerWithoutFilterReturnsNonZeroContainers");
+
+            this.RunPowerShellTest("Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer");
+        }
+
         [Fact]
         public void RegisterAzureBackupContainerTest()
         {
