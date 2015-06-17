@@ -30,5 +30,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
             this.RunPowerShellTest("Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer");
         }
+
+        [Fact]
+        public void RegisterAzureBackupContainerTest()
+        {
+            this.RunPowerShellTest("Test-RegisterAzureBackupContainer");
+        }
+
+        [Fact]
+        public void UnregisterAzureBackupContainerTest()
+        {
+            this.RunPowerShellTest("Test-UnregisterAzureBackupContainer");
+        }
     }
 }

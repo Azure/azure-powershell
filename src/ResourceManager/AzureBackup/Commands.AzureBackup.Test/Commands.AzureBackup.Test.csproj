@@ -129,7 +129,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupItemTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupJobTests.cs" />
-    <Compile Include="ScenarioTests\ContainerTest\AzureBackupContainerTest.cs" />
     <Compile Include="ScenarioTests\RecoveryPointTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupContainerTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupVaultTests.cs" />
@@ -170,7 +169,6 @@
     <None Include="ScenarioTests\AzureBackupJobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ContainerTest\AzureBackupContainerTest.ps1" />
     <None Include="ScenarioTests\RecoveryPointTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

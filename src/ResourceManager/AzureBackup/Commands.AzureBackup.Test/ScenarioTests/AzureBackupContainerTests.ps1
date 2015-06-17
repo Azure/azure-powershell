@@ -18,6 +18,10 @@ $Location = "SouthEast Asia"
 $ContainerResourceGroupName = "dev01Testing"
 $ContainerResourceName = "dev01Testing"
 
+<#
+.SYNOPSIS
+Tests to test list containers
+#>
 function Test-GetAzureBackupContainerWithoutFilterReturnsNonZeroContainers
 {
 	$containers = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
@@ -30,4 +34,23 @@ function Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer
 	Assert-NotNull $container 'Container should not be null';
 	Assert-AreEqual $container.ResourceName $ContainerResourceName -CaseSensitive 'Returned container resource name (a.k.a friendly name) does not match the test VM resource name';
 	Assert-AreEqual $container.ResourceGroupName $ContainerResourceGroupName -CaseSensitive 'Returned container resource group name (a.k.a parent friendly name) does not match the test VM resource group name';
+}
+
+<#
+.SYNOPSIS
+Tests to register the container
+#>
+function Test-RegisterAzureBackupContainer
+{
+	$jobId = Register-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -location $Location -Name $ContainerResourceName -ServiceName $ContainerResourceGroupName
+    
+    Assert-NotNull $jobId 'JobID should not be null';
+}
+
+function Test-UnregisterAzureBackupContainer
+{
+    $container = Get-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -location $Location -ContainerResourceName $ContainerResourceName -ContainerResourceGroupName $ContainerResourceGroupName
+	$jobId = Unregister-AzureBackupContainer -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -location $Location -AzureBackupContainer $container
+    
+    Assert-NotNull $jobId 'JobID should not be null';
 }
