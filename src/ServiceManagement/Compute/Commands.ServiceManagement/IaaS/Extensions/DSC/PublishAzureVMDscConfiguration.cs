@@ -262,6 +262,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         null));
             }
             List<string> requiredModules = parseResult.RequiredModules;
+            //Since LCM always uses the latest module there is no need to copy PSDesiredStateConfiguration
+            if (requiredModules.Contains("PSDesiredStateConfiguration"))
+            {
+                requiredModules.Remove("PSDesiredStateConfiguration");
+            }
+
             WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionRequiredModulesVerbose, String.Join(", ", requiredModules)));
 
             // Create a temporary directory for uploaded zip file
@@ -290,8 +296,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         @"function Copy-Module([string]$module, [string]$tempZipFolder) 
                         {
                             $mi = Get-Module -List -Name $module;
-                            $moduleFolder = Split-Path -Parent $mi.Path;
-                            Copy-Item -Recurse -Path $moduleFolder -Destination $tempZipFolder;
+                            $moduleFolder = Split-Path $mi.Path;
+                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($mi.Name)""
                         }"
                         );
                     powershell.Invoke();
@@ -329,7 +335,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
             else
             {
-                archive = Path.Combine(Path.GetTempPath(), configurationName + ZipFileExtension);
+                string tempArchiveFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionTempFolderVerbose, tempArchiveFolder));
+                Directory.CreateDirectory(tempArchiveFolder);
+                this._temporaryDirectoriesToDelete.Add(tempArchiveFolder);
+                archive = Path.Combine(tempArchiveFolder, configurationName + ZipFileExtension);
                 this._temporaryFilesToDelete.Add(archive);
             }
 

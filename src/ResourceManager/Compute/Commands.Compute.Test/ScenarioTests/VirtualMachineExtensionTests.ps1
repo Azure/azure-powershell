@@ -26,7 +26,7 @@ function Test-VirtualMachineExtension
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
@@ -203,7 +203,7 @@ function Test-VirtualMachineCustomScriptExtension
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -359,7 +359,7 @@ function Test-VirtualMachineAccessExtension
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';

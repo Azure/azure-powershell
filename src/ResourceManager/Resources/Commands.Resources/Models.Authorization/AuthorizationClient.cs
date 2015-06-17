@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 // Filter out by scope
                 if (!string.IsNullOrEmpty(options.Scope))
                 {
-                    result.RemoveAll(r => !options.Scope.StartsWith(r.Scope));                    
+                    result.RemoveAll(r => !options.Scope.StartsWith(r.Scope, StringComparison.InvariantCultureIgnoreCase));                    
                 }
             }
             else if (!string.IsNullOrEmpty(options.Scope))
@@ -301,7 +303,22 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
             };
 
-            return AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, parameters).RoleDefinition.ToPSRoleDefinition();
+            PSRoleDefinition roleDef = null;
+            try
+            {
+                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, parameters).RoleDefinition.ToPSRoleDefinition();
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized && ce.Error.Code.Equals("TenantNotAllowed",StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new InvalidOperationException("The tenant is not currently authorized to create Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
+                }
+
+                throw;
+            }
+
+            return roleDef;
         }
 
         private static void ValidateRoleDefinition(PSRoleDefinition roleDefinition)

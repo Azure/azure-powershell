@@ -122,6 +122,9 @@
     <Compile Include="BgpPeerings\NewAzureBGPPeering.cs" />
     <Compile Include="BgpPeerings\RemoveAzureBGPPeering.cs" />
     <Compile Include="BgpPeerings\SetAzureBGPPeering.cs" />
+    <Compile Include="CrossConnections\GetAzureCrossConnection.cs" />
+    <Compile Include="CrossConnections\NewAzureCrossConnections.cs" />
+    <Compile Include="CrossConnections\SetAzureCrossConnection.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizationMicrosoftIds\NewAzureDedicatedCircuitLinkAuthorizationMicrosoftIds.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizationMicrosoftIds\RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIds.cs" />
     <Compile Include="DedicatedCircuitLinkAuthorizations\GetAzureDedicatedCircuitLinkAuthorization.cs" />
@@ -144,7 +147,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Model\ValidateGuid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExpressRoute.psd1">

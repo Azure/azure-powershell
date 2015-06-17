@@ -104,6 +104,30 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             client.CreatePool(parameters);
         }
 
+        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            {
+                PoolName = poolName
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSCloudPool pool = client.ListPools(options).First();
+            while (pool.AllocationState != AllocationState.Steady)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for steady allocation state");
+                }
+                Sleep(5000);
+                pool = client.ListPools(options).First();
+            }
+        }
+
         /// <summary>
         /// Deletes a pool used in a Scenario test.
         /// </summary>
