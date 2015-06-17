@@ -39,19 +39,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             if (Job != null)
             {
-                this.ResourceGroupName = Job.ResourceGroupName;
-                this.ResourceName = Job.ResourceName;
+                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
 
             base.ExecuteCmdlet();
 
             ExecutionBlock(() =>
             {
-                //if (Job != null && JobID != null)
-                //{
-                //    throw new Exception("Please use either JobID filter or Job filter but not both.");
-                //}
-
                 if (Job != null)
                 {
                     JobID = Job.InstanceId;

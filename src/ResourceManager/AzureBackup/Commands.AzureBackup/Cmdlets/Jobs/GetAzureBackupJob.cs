@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             if (Job != null)
             {
-                this.ResourceGroupName = Job.ResourceGroupName;
-                this.ResourceName = Job.ResourceName;
+                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
 
             base.ExecuteCmdlet();

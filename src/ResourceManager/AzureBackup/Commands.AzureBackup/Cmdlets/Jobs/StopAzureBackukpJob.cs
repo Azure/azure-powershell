@@ -45,37 +45,36 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             if (Job != null)
             {
-                this.ResourceGroupName = Job.ResourceGroupName;
-                this.ResourceName = Job.ResourceName;
+                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
 
             base.ExecuteCmdlet();
 
             ExecutionBlock(() =>
             {
-                //if (JobID != null && Job != null)
-                //{
-                //    throw new Exception("Please use either JobID filter or Job filter but not both.");
-                //}
-
                 if (Job != null)
                 {
                     JobID = Job.InstanceId;
                 }
 
                 WriteDebug("JobID is: " + JobID);
-                Task<OperationResponse> cancelTask = AzureBackupClient.Job.StopAsync(JobID, GetCustomRequestHeaders(), CmdletCancellationToken);
+                OperationResponse cancelTask = AzureBackupClient.Job.StopAsync(JobID, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                if (cancelTask.IsFaulted)
+                var opStatus = AzureBackupClient.OperationStatus.GetAsync(cancelTask.OperationId.ToString(), GetCustomRequestHeaders()).Result;
+                while (opStatus.OperationStatus != "Completed")
                 {
-                    WriteObject(cancelTask.Exception);
+                    WriteDebug("Waiting for the task to complete");
+                    opStatus = AzureBackupClient.OperationStatus.GetAsync(cancelTask.OperationId.ToString(), GetCustomRequestHeaders()).Result;
+                }
+                // TODO:
+                if (opStatus.OperationResult == "Failed")
+                {
+                    var errorRecord = new ErrorRecord(new Exception("Cannot cancel job."), opStatus.Message, ErrorCategory.InvalidOperation, null);
+                    WriteError(errorRecord);
                 }
                 else
                 {
-                    OperationResponse opResponse = cancelTask.Result;
-                    // TODO
-                    // Call and wait until this  completes.
-                    WriteDebug("OpID is : " + opResponse.OperationId);
+                    WriteDebug("Triggered cancellation of job with JobID: " + JobID);
                 }
             });
         }

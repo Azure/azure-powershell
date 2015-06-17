@@ -13,10 +13,10 @@
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"FriendlyName\": \"dev01Testing\",\r\n      \"ContainerName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ContainerType\": \"IaasVMContainer\",\r\n      \"Type\": \"VM\",\r\n      \"Status\": \"Protected\",\r\n      \"ProtectionStatus\": \"Protected\",\r\n      \"ProtectableObjectName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ProtectionPolicyName\": \"Policy9\",\r\n      \"ProtectionPolicyId\": \"c87bbada-6e1b-4db2-b76c-9062d28959a4\",\r\n      \"PolicyInconsistent\": false,\r\n      \"RecoveryPointsCount\": 16,\r\n      \"LastRecoveryPoint\": \"2015-06-17T08:38:51.5793413Z\",\r\n      \"LastBackupTime\": \"2015-06-17T08:37:13.9649748Z\",\r\n      \"LastBackupStatus\": \"Completed\",\r\n      \"LastBackupJobId\": \"b4c03815-5512-4c7e-8187-fcacbb443b2a\",\r\n      \"InstanceId\": \"17593283453810\",\r\n      \"Name\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 1,\r\n  \"Skiptoken\": null\r\n}",
+      "ResponseBody": "{\r\n  \"Objects\": [\r\n    {\r\n      \"FriendlyName\": \"dev01Testing\",\r\n      \"ContainerName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ContainerType\": \"IaasVMContainer\",\r\n      \"Type\": \"VM\",\r\n      \"Status\": \"Protected\",\r\n      \"ProtectionStatus\": \"Protected\",\r\n      \"ProtectableObjectName\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"ProtectionPolicyName\": \"Policy9\",\r\n      \"ProtectionPolicyId\": \"c87bbada-6e1b-4db2-b76c-9062d28959a4\",\r\n      \"PolicyInconsistent\": false,\r\n      \"RecoveryPointsCount\": 16,\r\n      \"LastRecoveryPoint\": \"2015-06-17T08:38:51.5793413Z\",\r\n      \"LastBackupTime\": \"2015-06-17T08:56:25.240997Z\",\r\n      \"LastBackupStatus\": \"Failed\",\r\n      \"LastBackupJobId\": \"f73cd5c5-c3cc-4180-8548-fed9da22f6a5\",\r\n      \"InstanceId\": \"17593283453810\",\r\n      \"Name\": \"iaasvmcontainer;dev01testing;dev01testing\",\r\n      \"OperationInProgress\": false\r\n    }\r\n  ],\r\n  \"ResultCount\": 1,\r\n  \"Skiptoken\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "745"
+          "741"
         ],
         "Content-Type": [
           "application/json"
@@ -28,29 +28,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7b71d7e8-7fdb-4f12-96b9-c7072c75de2d"
+          "faa94cd4-5b23-4d3a-9477-fcf7e0a5e258"
         ],
         "x-ms-client-request-id": [
-          "97e0cd0f-65c2-4fb6-b640-4dc2f71a9958",
-          "97e0cd0f-65c2-4fb6-b640-4dc2f71a9958"
+          "b198f997-b4a0-4bde-8b77-3dc088df6057",
+          "b198f997-b4a0-4bde-8b77-3dc088df6057"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14916"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "7b71d7e8-7fdb-4f12-96b9-c7072c75de2d"
+          "faa94cd4-5b23-4d3a-9477-fcf7e0a5e258"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150617T085639Z:7b71d7e8-7fdb-4f12-96b9-c7072c75de2d"
+          "CENTRALUS:20150617T093618Z:faa94cd4-5b23-4d3a-9477-fcf7e0a5e258"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 17 Jun 2015 08:56:39 GMT"
+          "Wed, 17 Jun 2015 09:36:17 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -89,29 +89,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2414f3f1-96a5-4733-b8a5-5652395598f3"
+          "16f276d6-ba21-4818-93e4-5f143393a1e8"
         ],
         "x-ms-client-request-id": [
-          "62cb01de-d4c7-4ec9-9c50-d15cf2ad7185",
-          "62cb01de-d4c7-4ec9-9c50-d15cf2ad7185"
+          "2735b858-a7b6-4b89-be71-e1c3d29ce60a",
+          "2735b858-a7b6-4b89-be71-e1c3d29ce60a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14915"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "2414f3f1-96a5-4733-b8a5-5652395598f3"
+          "16f276d6-ba21-4818-93e4-5f143393a1e8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150617T085639Z:2414f3f1-96a5-4733-b8a5-5652395598f3"
+          "CENTRALUS:20150617T093619Z:16f276d6-ba21-4818-93e4-5f143393a1e8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 17 Jun 2015 08:56:39 GMT"
+          "Wed, 17 Jun 2015 09:36:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"

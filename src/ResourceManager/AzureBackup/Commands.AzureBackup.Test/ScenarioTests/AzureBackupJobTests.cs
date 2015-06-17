@@ -17,12 +17,19 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public class AzureBackupTests : AzureBackupTestsBase
+    public class AzureBackupJobTests : AzureBackupTestsBase
     {
+
         [Fact]
-        public void ListProtectionPolicyTests()
+        public void GetAzureBackupJobTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupProtectionPolicyTests");
+            this.RunPowerShellTest("Test-GetAzureBackupJob");
+        }
+
+        [Fact]
+        public void StopAzureBackupJobTests()
+        {
+            this.RunPowerShellTest("Test-StopAzureBackupJob");
         }
     }
 }
