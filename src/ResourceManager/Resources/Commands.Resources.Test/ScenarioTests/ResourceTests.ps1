@@ -234,14 +234,14 @@ function Test-MoveAResource
 	New-AzureResourceGroup -Name $rgname -Location $rglocation
 	New-AzureResourceGroup -Name $rgname2 -Location $rglocation
 	$resource = New-AzureResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
-	Move-AzureResource -ResourceId $resource.Id -DestinationResourceGroupName $rgname2 -Force
+	Move-AzureResource -ResourceId $resource.ResourceId -DestinationResourceGroupName $rgname2 -Force
 
 	$movedResource = Get-AzureResource -ResourceGroupName $rgname2 -ResourceName $rname -ResourceType $resourceType
 
 	# Assert
 	Assert-AreEqual $movedResource.Name $resource.Name
 	Assert-AreEqual $movedResource.ResourceGroupName $rgname2
-	Assert-AreEqual $movedResource.ResourceType $resource.Type
+	Assert-AreEqual $movedResource.ResourceType $resource.ResourceType
 }
 
 <#
