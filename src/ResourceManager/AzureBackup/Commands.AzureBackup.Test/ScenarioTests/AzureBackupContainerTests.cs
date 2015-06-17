@@ -21,12 +21,14 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public class GetAzureBackupVaultCredentialsTests : AzureBackupTestsBase
+    public class AzureBackupContainerTests : AzureBackupTestsBase
     {
         [Fact]
-        public void GetAzureBackupVaultCredentialsTests()
+        public void GetAzureBackupContainerTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert");
+            this.RunPowerShellTest("Test-GetAzureBackupContainerWithoutFilterReturnsNonZeroContainers");
+
+            this.RunPowerShellTest("Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer");
         }
     }
 }

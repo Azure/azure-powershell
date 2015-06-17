@@ -21,8 +21,14 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public class SetAzureBackupVaultStorageTypeTests : AzureBackupTestsBase
+    public class AzureBackupVaultTests : AzureBackupTestsBase
     {
+        [Fact]
+        public void GetAzureBackupVaultCredentialsTests()
+        {
+            this.RunPowerShellTest("Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert");
+        }
+
         [Fact]
         public void SetAzureBackupVaultStorageTypeTests()
         {

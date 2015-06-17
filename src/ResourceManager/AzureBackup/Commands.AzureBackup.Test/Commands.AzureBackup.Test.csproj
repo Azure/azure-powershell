@@ -130,9 +130,8 @@
     <Compile Include="ScenarioTests\BackupItemTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupJobTests.cs" />
     <Compile Include="ScenarioTests\RecoveryPointTests.cs" />
-    <Compile Include="ScenarioTests\GetAzureBackupContainerTests.cs" />
-    <Compile Include="ScenarioTests\GetAzureBackupVaultCredentialsTests.cs" />
-    <Compile Include="ScenarioTests\SetAzureBackupVaultStorageTypeTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupContainerTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupVaultTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -173,16 +172,21 @@
     <None Include="ScenarioTests\RecoveryPointTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\GetAzureBackupContainerTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupItemTestCases\DisableAzureBackupProtectionTest.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupItemTestCases\EnableAzureBackupProtectionTest.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupItemTestCases\ListAzureBackupItemTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupJobTests\GetAzureBackupJobTests.json" />
-    <None Include="ScenarioTests\GetAzureBackupContainerTests.ps1" />
-    <None Include="ScenarioTests\GetAzureBackupVaultCredentialsTests.ps1" />
-    <None Include="ScenarioTests\SetAzureBackupVaultStorageTypeTests.ps1" />
+    <None Include="ScenarioTests\AzureBackupContainerTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureBackupVaultTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\ListProtectionPolicyTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupVaultTests\GetAzureBackupVaultCredentialsTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.BackupItemTests\BackUpAzureBackUpItem.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.RecoveryPointTests\GetRecoveryPointTests.json" />
   </ItemGroup>

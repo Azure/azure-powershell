@@ -24,3 +24,25 @@ function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
 	$certFileFullPath = [io.path]::combine($CertTargetLocation, $fileName);
 	Assert-True {{ Test-Path $certFileFullPath }}
 }
+
+function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
+{
+	# TODO: Create a new resource and use it for these calls. At the end, delete it.
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+
+	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+}
+
+function Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException
+{
+	# One of them is bound to fail
+
+	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant }
+
+	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant }
+}
