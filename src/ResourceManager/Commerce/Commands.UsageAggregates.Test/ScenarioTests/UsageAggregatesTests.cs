@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
-    [TestClass]
+
     public class UsageAggregatesTests : UsageAggregatesTestBase
     {
       
-        [TestMethod]
+        [Fact]
         public void GetUsageAggregatesWithDefaultParameters()
         {
             RunPowerShellTest("Test-GetUsageAggregatesWithDefaultParameters");
