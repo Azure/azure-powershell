@@ -121,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\AzureBackupItemTestCases.cs" />
-    <Compile Include="ScenarioTests\AzureBackupTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupPolicyTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupItemTests.cs" />
@@ -161,7 +161,7 @@
     <None Include="ScenarioTests\AzureBackupItemTestCases.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\AzureBackupTests.ps1">
+    <None Include="ScenarioTests\AzureBackupPolicyTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\BackupItemTests.ps1">
