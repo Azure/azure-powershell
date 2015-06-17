@@ -42,7 +42,7 @@ function Test-DatabasePauseResume
 		Assert-AreEqual $dwdb2.CollationName $collationName
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
-		# Resume the database. Make sure the database specs remain the same and its Status is Online. This will also test piping.
+		# Resume the database. Make sure the database specs remain the same and its Status is Online.
 		$dwdb3 = Resume-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
@@ -89,7 +89,7 @@ function Test-DatabasePauseResumePiped
 		Assert-AreEqual $dwdb2.CollationName $collationName
 		Assert-AreEqual $dwdb2.Status "Paused"
 		
-		# Resume the database. Make sure the database specs remain the same and its Status is Online. This will also test piping.
+		# Resume the database. Make sure the database specs remain the same and its Status is Online.
 		$dwdb3 = $dwdb2 | Resume-AzureSqlDatabase
 		Assert-AreEqual $dwdb3.DatabaseName $databaseName
 		Assert-AreEqual $dwdb3.MaxSizeBytes $maxSizeBytes
