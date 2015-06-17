@@ -60,12 +60,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Cancellation Token Source
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        protected CancellationToken CmdletCancellationToken;
+        internal CancellationToken CmdletCancellationToken;
+
+        protected AzureBackupCmdletHelper azureBackupCmdletHelper;
 
         /// <summary>
         /// Get Azure backup client.
         /// </summary>
-        protected BackupServicesManagementClient AzureBackupClient
+        internal BackupServicesManagementClient AzureBackupClient
         {
             get
             {
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));
 
             CmdletCancellationToken = cancellationTokenSource.Token;
+            azureBackupCmdletHelper = new AzureBackupCmdletHelper(this);
         }
 
         protected void ExecutionBlock(Action execAction)
@@ -169,7 +172,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
-        protected CustomRequestHeaders GetCustomRequestHeaders()
+        internal CustomRequestHeaders GetCustomRequestHeaders()
         {
             var hdrs = new CustomRequestHeaders()
             {

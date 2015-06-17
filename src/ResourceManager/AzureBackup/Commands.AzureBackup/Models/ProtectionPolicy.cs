@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public string ScheduleType { get; set; }
 
-        public IList<string> ScheduleRunDays { get; set; }
+        public List<string> ScheduleRunDays { get; set; }
 
         public DateTime ScheduleRunTimes { get; set; }
 
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
         }
 
-        private IList<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
+        private List<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
         {
-            IList<string> scheduelRunDays = new List<string>();
+            List<string> scheduelRunDays = new List<string>();
 
             foreach(object item in weekDaysList)
             {

@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureBackupProtectionPolicy")]
     public class RemoveAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -39,25 +35,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 WriteDebug("Making client call");
 
-                var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-
-                WriteDebug("Received policy response");
-                IEnumerable<ProtectionPolicyInfo> policyObjects = null;
-
-                policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
-
-                if (policyObjects.Count<ProtectionPolicyInfo>() != 0)
+                AzureBackupProtectionPolicy policyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(ProtectionPolicy.Name, 
+                    ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
+                
+                if (policyInfo != null)
                 {
-                    ProtectionPolicyInfo protectionPolicyInfo = policyObjects.ElementAt<ProtectionPolicyInfo>(0);
-                    var policyRemoveResponse = AzureBackupClient.ProtectionPolicy.DeleteAsync(protectionPolicyInfo.InstanceId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                    var policyRemoveResponse = AzureBackupClient.ProtectionPolicy.DeleteAsync(policyInfo.InstanceId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+
+                    WriteDebug("Converting response");
+                    WriteVerbose("Successfully deleted policy");
                 }
                 else
                 {
                     WriteVerbose("Policy Not Found");
                 }
-
-                WriteDebug("Converting response");
-                WriteVerbose("Successfully deleted policy");
             });
         }        
     }
