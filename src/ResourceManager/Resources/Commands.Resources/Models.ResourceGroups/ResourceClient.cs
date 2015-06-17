@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         /// <summary>
         /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
-        /// (Current logic is to sort the 'api-versions' list and choose the max value to store)
+        /// (Current logic is to prefer the latest "non-test' api-version. If there are no such version, choose the latest one)
         /// </summary>
         public Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
         {
@@ -485,7 +485,36 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         operationsResourceType.ApiVersions != null &&
                         operationsResourceType.ApiVersions.Any())
                     {
-                        providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
+                        string[] allowedTestPrefixes = new[] { "-preview", "-alpha", "-beta", "-rc", "-privatepreview" };
+                        List<string> nonTestApiVersions = new List<string>();
+                        
+                        foreach (string apiVersion in operationsResourceType.ApiVersions) 
+                        {
+                            bool isTestApiVersion = false;
+                            foreach (string testPrefix in allowedTestPrefixes)
+                            {
+                                if (apiVersion.EndsWith(testPrefix, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    isTestApiVersion = true;
+                                    break;
+                                }
+                            }
+
+                            if(isTestApiVersion == false && !nonTestApiVersions.Contains(apiVersion))
+                            {
+                                nonTestApiVersions.Add(apiVersion);
+                            }
+                        }
+
+                        if(nonTestApiVersions.Any())
+                        {
+                            string latestNonTestApiVersion = nonTestApiVersions.OrderBy(o => o).Last();
+                            providersSupportingOperations.Add(provider.ProviderNamespace, latestNonTestApiVersion);
+                        }
+                        else
+                        {
+                            providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
+                        }
                     }
                 }
             }
