@@ -50,9 +50,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug("Type of input paramter is List<AzureBackupJob>");
                     foreach (AzureBackupJob jobToWait in ((Job as PSObject).ImmediateBaseObject as List<AzureBackupJob>))
                     {
-                        this.ResourceGroupName = jobToWait.ResourceGroupName;
-                        this.ResourceName = jobToWait.ResourceName;
-                        this.Location = jobToWait.Location;
+                        InitializeAzureBackupCmdlet(jobToWait.ResourceGroupName, jobToWait.ResourceName, jobToWait.Location);
 
                         specifiedJobs.Add(jobToWait.InstanceId);
                     }

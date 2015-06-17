@@ -44,7 +44,7 @@ function Test-GetAzureBackupProtectionPolicyTests
 	}
 }
 
-function GetAzureRecoveryPointTest
+function Test-GetAzureRecoveryPoint
 {
     $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
@@ -57,11 +57,12 @@ function GetAzureRecoveryPointTest
 	$recoveryPoints = Get-AzureBackupRecoveryPoint -item $azureBackUpItem
 	if (!($recoveryPoints -eq $null))
 	{
-	foreach($recoveryPoint in $recoveryPoints)
-	{
-	    Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+		foreach($recoveryPoint in $recoveryPoints)
+		{
+			Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+		}
 	}
 }
 
@@ -117,7 +118,6 @@ function Test-EnableDisableAzureBackupProtectionTest
 	$jobId1 = Disable-AzureBackupProtection -item $azureBackUpItem
 	sleep(20)
 	$jobId2 = Enable-AzureBackupProtection -item $azureBackUpItem -Policy $policy 
-}
 }
 
 function BackUpAzureBackUpItemTest

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         }
         public void GetRecoveryPointTests()
         {
-            this.RunPowerShellTest("GetAzureRecoveryPointTest");
+            this.RunPowerShellTest("Test-GetAzureRecoveryPoint");
         }
 
         [Fact]
