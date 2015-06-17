@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\UsageAggregatesTestController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\UsageAggregatesTestBase.cs" />
     <Compile Include="ScenarioTests\UsageAggregatesTests.cs" />

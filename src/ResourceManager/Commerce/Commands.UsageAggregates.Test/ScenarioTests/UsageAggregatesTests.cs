@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
 
-    public class UsageAggregatesTests : UsageAggregatesTestBase
+    public class UsageAggregatesTests 
     {
       
-        [Fact ]
-        public void GetUsageAggregatesWithDefaultParameters()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUsageAggregatesWithDefaultParameters()
         {
-            RunPowerShellTest("Test-GetUsageAggregatesWithDefaultParameters");
+            UsageAggregatesTestController.NewInstance.RunPsTest("Test-GetUsageAggregatesWithDefaultParameters");
         }
     }
 }
