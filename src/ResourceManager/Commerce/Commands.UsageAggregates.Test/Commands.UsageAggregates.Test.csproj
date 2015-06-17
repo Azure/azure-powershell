@@ -102,6 +102,10 @@
     <Compile Include="ScenarioTests\UsageAggregatesTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
+      <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
+      <Name>Commands.Common.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>

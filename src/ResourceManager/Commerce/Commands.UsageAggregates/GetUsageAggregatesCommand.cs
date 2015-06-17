@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
     public class GetUsageAggregatesCommand : AzurePSCmdlet
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The start of the time range to retrieve data for.")]
+        [Parameter(Mandatory = true, HelpMessage = "The start of the time range to retrieve data for.")]
         public DateTime ReportedStartTime { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The end of the time range to retrieve data for.")]
+        [Parameter(Mandatory = true, HelpMessage = "The end of the time range to retrieve data for.")]
         public DateTime ReportedEndTime { get; set; }
 
         private AggregationGranularity aggregationGranularity = AggregationGranularity.Daily;
