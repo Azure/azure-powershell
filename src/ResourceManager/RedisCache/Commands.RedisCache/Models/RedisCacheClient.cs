@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Commands.Common;
+    using System.Collections;
+    using System.Collections.Generic;
 
     public class RedisCacheClient
     {
@@ -30,7 +32,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
         public RedisCacheClient() { }
 
-        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string redisVersion, string skuFamily, int skuCapacity, string skuName, string maxMemoryPolicy, bool? enableNonSslPort)
+        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string redisVersion, string skuFamily, int skuCapacity, string skuName, Hashtable redisConfiguration, bool? enableNonSslPort)
         {
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
                                                     {
@@ -46,9 +48,13 @@ namespace Microsoft.Azure.Commands.RedisCache
                                                         }
                                                     };
 
-            if (!string.IsNullOrEmpty(maxMemoryPolicy))
+            if (redisConfiguration != null)
             {
-                parameters.Properties.MaxMemoryPolicy = maxMemoryPolicy;
+                parameters.Properties.RedisConfiguration = new Dictionary<string, string>();
+                foreach (object key in redisConfiguration.Keys)
+                {
+                    parameters.Properties.RedisConfiguration.Add(key.ToString(), redisConfiguration[key].ToString());
+                }
             }
 
             if (enableNonSslPort.HasValue)
