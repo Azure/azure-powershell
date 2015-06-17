@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Resume, "AzureSqlDatabase",
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationActivityCmdletBase
+    public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
     {
         /// <summary>
         /// Get the entities from the service

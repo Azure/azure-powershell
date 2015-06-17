@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationActivityCmdletBase.cs" />
+    <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
     <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />
     <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
     <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationAdapter.cs" />
@@ -65,7 +65,6 @@
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionModel.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionAdapter.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionCommunicator.cs" />
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />

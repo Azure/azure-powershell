@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
@@ -23,7 +24,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
 {
-    public abstract class AzureSqlDatabaseActivationActivityCmdletBase
+    public abstract class AzureSqlDatabaseActivationCmdletBase
         : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModel>, AzureSqlDatabaseActivationAdapter>
     {
         /// <summary>
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the Azure SQL Data Warehouse database to pause..
+        /// Gets or sets the name of the Azure SQL Data Warehouse database to pause or resume.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
