@@ -92,4 +92,30 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         GeoRedundant = 1,
         LocallyRedundant,
     }
+
+    public enum ScheduleType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2
+    }
+
+    public enum RetentionType
+    {
+        Invalid = 0,
+        Days = 1,
+        Weeks = 2
+    }
+
+    public enum WorkloadType
+    {
+        Invalid = 0,
+        VM = 1
+    }
+
+    public enum BackupType
+    {
+        Invalid = 0,
+        Full = 1
+    }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of protection policies
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteDebug("Converting response");
-                WriteAzureBackupProtectionPolicy(policyObjects);
+                ProtectionPolicyHelper.WriteAzureBackupProtectionPolicy(this, ResourceGroupName, ResourceName, Location, policyObjects);
+                
             });
         }
     }

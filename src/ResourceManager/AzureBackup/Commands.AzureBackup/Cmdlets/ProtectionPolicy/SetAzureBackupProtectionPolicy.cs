@@ -27,37 +27,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy))]
     public class SetAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName, ValueFromPipelineByPropertyName = true)]
+        
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyNewName, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyInstanceId, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string InstanceId { get; set; }
-
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.BackupType, ValueFromPipelineByPropertyName = true)]
-        [ValidateSet("Full")]
-        public string BackupType { get; set; }
-
-        [Parameter(Position = 6, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ScheduleType, ValueFromPipelineByPropertyName = true)]
-        [ValidateSet("Daily", "Weekly")]
-        public string ScheduleType { get; set; }        
-
-        [Parameter(Position = 7, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ScheduleRunTimes, ValueFromPipelineByPropertyName = true)]
-        public DateTime ScheduleRunTimes { get; set; }
-
-        [Parameter(Position = 8, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RetentionType, ValueFromPipelineByPropertyName = true)]
-        [ValidateSet("Days", IgnoreCase = true)]
-        public string RetentionType { get; set; }
-
-        [Parameter(Position = 9, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RententionDuration, ValueFromPipelineByPropertyName = true)]
-        [ValidateRange(1, 30)]
-        public int RetentionDuration { get; set; }
-
-        [Parameter(Position = 10, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ScheduleRunDays, ValueFromPipelineByPropertyName = true)]
-        [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]
-        public string[] ScheduleRunDays { get; set; }
-
+        public string NewName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,45 +39,50 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 WriteDebug("Making client call");
+                AzureBackupProtectionPolicy policy = ProtectionPolicy;
+                ProtectionPolicyHelper.ValidateAzureBackupPolicyRequest(this, policy);
 
-                var backupSchedule = GetBackupSchedule(BackupType, ScheduleType, ScheduleRunTimes,
-                    RetentionType, RetentionDuration, ScheduleRunDays);                
-               
-                var updateProtectionPolicyRequest = new UpdateProtectionPolicyRequest();
-                updateProtectionPolicyRequest.PolicyName = this.Name;
-                updateProtectionPolicyRequest.Schedule = backupSchedule;
+                var backupSchedule = ProtectionPolicyHelper.GetBackupSchedule(this, policy.BackupType, policy.ScheduleType, policy.ScheduleRunTimes,
+                   policy.RetentionType, policy.RetentionDuration, policy.ScheduleRunDays.ToArray<string>());
+                   
              
                 var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                
+
+                NewName = (string.IsNullOrEmpty(NewName) ? policy.Name: NewName);
+                var updateProtectionPolicyRequest = new UpdateProtectionPolicyRequest();
+                updateProtectionPolicyRequest.PolicyName = this.NewName;
+                updateProtectionPolicyRequest.Schedule = backupSchedule;
+
                 WriteDebug("Got the protectionPolicy List");
 
                 IEnumerable<ProtectionPolicyInfo> policyObjects = null;
 
-                policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.InstanceId.Equals(this.InstanceId, System.StringComparison.InvariantCultureIgnoreCase));
+                policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(policy.Name, System.StringComparison.InvariantCultureIgnoreCase));
 
-                WriteDebug("Got the protectionPolicy with InstanceId" + InstanceId);
+                WriteDebug("Got the protectionPolicy with Name" + this.ProtectionPolicy.Name);
 
                 if (policyObjects.Count<ProtectionPolicyInfo>() != 0)
                 {
-                    var operationId = AzureBackupClient.ProtectionPolicy.UpdateAsync(this.InstanceId, updateProtectionPolicyRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                    var operationId = AzureBackupClient.ProtectionPolicy.UpdateAsync(ProtectionPolicy.InstanceId, updateProtectionPolicyRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
                 }
                 else
                 {
-                    var exception = new Exception("Protection Policy Not Found with InstanceId" + this.InstanceId);
+                    var exception = new Exception("Protection Policy Not Found with Name" + ProtectionPolicy.Name);
                     var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
                     WriteError(errorRecord);                   
                 }
 
-                WriteVerbose("Protection Policy successfully updated");
+                WriteDebug("Protection Policy successfully updated");
 
                 var policyListResponse_afterUpdate = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
                 WriteDebug("Received policy response");
 
-                policyObjects = policyListResponse_afterUpdate.ProtectionPolicies.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                policyObjects = policyListResponse_afterUpdate.ProtectionPolicies.Where(x => x.Name.Equals(NewName, System.StringComparison.InvariantCultureIgnoreCase));
 
                 WriteDebug("Converting response");
-                WriteAzureBackupProtectionPolicy(policyObjects);
+                ProtectionPolicyHelper.WriteAzureBackupProtectionPolicy(this, policy.ResourceGroupName, policy.ResourceName, policy.Location, policyObjects);
+
             });
         }
     }

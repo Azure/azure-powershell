@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ScheduleRunTimes = "Times of day for running backup.";
         public const string RetentionType = "Unit of retention for the recovery point.";
         public const string RententionDuration = "Duration of retention for the recovery point in units specified by RetentionType.";
-        public const string PolicyInstanceId = "ProtectionPolicy InstanceId";
+        public const string PolicyNewName = "Policy new name";
+        public const string AzureBackupPolicy = "Azure Backup protection policy";
     }
 }

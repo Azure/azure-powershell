@@ -86,7 +86,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment">
-      <HintPath>..\..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net40-Debug\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Git4\dummy\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -136,21 +136,22 @@
     <Compile Include="Cmdlets\DataSource\Disable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\Enable-AzureBackupProtection .cs" />
     <Compile Include="Cmdlets\DataSource\GetAzureBackupItem.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RegisterContainer\RegisterAzureBackupContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\GetAzureBackupVaultCredentials.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\VaultCredentials.cs" />
     <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
+    <Compile Include="Library\ProtectionPolicyHelper.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
     <Compile Include="Models\AzureBackupEnums.cs" />
