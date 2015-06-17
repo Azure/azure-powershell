@@ -1281,3 +1281,27 @@ function Test-LinuxVirtualMachine
         Clean-ResourceGroup $rgname
     }
 }
+
+# Test Image Cmdlet Output Format
+function Test-VMImageCmdletOutputFormat
+{
+    $locStr = 'westus';
+    $publisher = 'MicrosoftWindowsServer';
+    $offer = 'WindowsServer';
+    $sku = '2008-R2-SP1';
+    $ver = '2.0.201503';
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr" @('Id', 'Location', 'PublisherName');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } " @('Id', 'Location', 'PublisherName');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer | Get-AzureVMImageSku " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression');
+
+    Assert-OutputContains " Get-AzureVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+
+    Assert-OutputContains " Get-AzureVMImageDetail -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+}

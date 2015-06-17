@@ -89,7 +89,7 @@ function Get-ComputeTestMode
 }
 
 # Get Compute Test Location
-function Get-ComputTestLocation
+function Get-ComputeTestLocation
 {
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
@@ -293,9 +293,37 @@ function Get-DefaultVMConfig
 
     # VM Profile & Hardware
     $vmsize = Get-DefaultVMSize $location;
-    $vmname = Get-RandomItemName 'pstestvm';
+    $vmname = Get-RandomItemName 'crptestps';
 
     $vm = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
+}
+
+# Assert Output Contains
+function Assert-OutputContains
+{
+    param([string] $cmd, [string[]] $sstr)
+    
+    $st = Write-Verbose ('Running Command : ' + $cmd);
+    $output = Invoke-Expression $cmd | Out-String;
+
+    $max_output_len = 1500;
+    if ($output.Length -gt $max_output_len)
+    {
+        # Truncate Long Output in Logs
+        $st = Write-Verbose ('Output String   : ' + $output.Substring(0, $max_output_len) + '...');
+    }
+    else
+    {
+        $st = Write-Verbose ('Output String   : ' + $output);
+    }
+
+    $index = 1;
+    foreach ($str in $sstr)
+    {
+        $st = Write-Verbose ('Search String ' + $index++ + " : `'" + $str + "`'");
+        Assert-True { $output.Contains($str) }
+        $st = Write-Verbose "Found.";
+    }
 }
