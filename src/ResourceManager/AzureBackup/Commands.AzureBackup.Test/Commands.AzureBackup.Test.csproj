@@ -126,6 +126,9 @@
     <Compile Include="ScenarioTests\AzureBackupTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\GetAzureBackupContainerTests.cs" />
+    <Compile Include="ScenarioTests\GetAzureBackupVaultCredentialsTests.cs" />
+    <Compile Include="ScenarioTests\SetAzureBackupVaultStorageTypeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -154,6 +157,9 @@
     <None Include="ScenarioTests\AzureBackupTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\GetAzureBackupContainerTests.ps1" />
+    <None Include="ScenarioTests\GetAzureBackupVaultCredentialsTests.ps1" />
+    <None Include="ScenarioTests\SetAzureBackupVaultStorageTypeTests.ps1" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\BackUpAzureBackUpItem.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\DisableAzureBackupProtectionTest.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\EnableAzureBackupProtectionTest.json" />

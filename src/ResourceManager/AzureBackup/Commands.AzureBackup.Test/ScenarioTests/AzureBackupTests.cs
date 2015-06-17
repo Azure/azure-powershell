@@ -65,27 +65,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         {
             this.RunPowerShellTest("BackUpAzureBackUpItemTest");
         }
-
-        [Fact]
-        public void GetAzureBackupContainerTests()
-        {
-            this.RunPowerShellTest("Test-GetAzureBackupContainerWithoutFilterReturnsNonZeroContainers");
-
-            this.RunPowerShellTest("Test-GetAzureBackupContainerWithUniqueFilterReturnsOneContainer");
-        }
-
-        [Fact]
-        public void GetAzureBackupVaultCredentialsTests()
-        {
-            this.RunPowerShellTest("Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert");
-        }
-
-        [Fact]
-        public void SetAzureBackupVaultStorageTypeTests()
-        {
-            this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException");
-
-            this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException");
-        }
     }
 }
