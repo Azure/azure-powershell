@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.BackupServicesManagment">
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.Azure.Management.BackupServicesManagment.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -79,9 +82,6 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment">
-      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Release\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -129,6 +129,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupItemTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupJobTests.cs" />
+    <Compile Include="ScenarioTests\ContainerTest\AzureBackupContainerTest.cs" />
     <Compile Include="ScenarioTests\RecoveryPointTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupContainerTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupVaultTests.cs" />
@@ -169,6 +170,7 @@
     <None Include="ScenarioTests\AzureBackupJobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ContainerTest\AzureBackupContainerTest.ps1" />
     <None Include="ScenarioTests\RecoveryPointTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
