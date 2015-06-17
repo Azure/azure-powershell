@@ -80,6 +80,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment">
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Release\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Testing, Version=1.0.5417.13285, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hydra.SpecTestSupport.1.0.5417.13285-prerelease\lib\net45\Microsoft.WindowsAzure.Testing.dll</HintPath>
@@ -125,10 +128,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\BackupServicesManagment.csproj">
-      <Project>{38a6741c-77a3-42a8-a846-83373be57c7f}</Project>
-      <Name>BackupServicesManagment</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -153,13 +152,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\AzureBackupTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\BackUpAzureBackUpItem.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\EnableDisableAzureBackupProtectionTest.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupContainerTests.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\DisableAzureBackupProtectionTest.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\EnableAzureBackupProtectionTest.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupJobTests.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetAzureBackupVaultCredentialsTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\GetRecoveryPointTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\ListAzureBackupItemTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupTests\ListProtectionPolicyTests.json">
