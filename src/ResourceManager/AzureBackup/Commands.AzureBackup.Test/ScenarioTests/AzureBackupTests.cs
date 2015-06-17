@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         [Fact]
         public void BackUpAzureBackUpItem()
         {
-            this.RunPowerShellTest("BackUpAzureBackUpItemTest");
+            this.RunPowerShellTest("Test-BackUpAzureBackUpItem");
         }
     }
 }

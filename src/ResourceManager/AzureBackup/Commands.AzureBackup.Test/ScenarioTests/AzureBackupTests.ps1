@@ -120,7 +120,7 @@ function Test-EnableDisableAzureBackupProtectionTest
 	$jobId2 = Enable-AzureBackupProtection -item $azureBackUpItem -Policy $policy 
 }
 
-function BackUpAzureBackUpItemTest
+function Test-BackUpAzureBackUpItem
 {
     $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
