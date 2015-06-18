@@ -259,7 +259,7 @@ function Run-VMDynamicTests
 {
     param ([int] $num_total_generated_tests = 3, [string] $base_folder = '.\ScenarioTests\Generated')
 
-    $target_location = Get-ComputTestLocation;
+    $target_location = Get-ComputeTestLocation;
 
     $st = Write-Verbose 'Running VM Dynamic Tests - Start';
 

@@ -88,16 +88,25 @@ function Get-ComputeTestMode
     return $testMode;
 }
 
-
-<#
-.SYNOPSIS
-Get Compute Test Location
-#>
-function Get-ComputTestLocation
+# Get Compute Test Location
+function Get-ComputeTestLocation
 {
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
 
+# Cleans the created resource group
+function Clean-ResourceGroup($rgname)
+{
+    Remove-AzureResourceGroup -Name $rgname -Force;
+}
+
+# Get Compute Test Tag
+function Get-ComputeTestTag
+{
+    param ([string] $tagname)
+
+    return @{ Name = $tagname; Value = (Get-Date).ToUniversalTime().ToString("u") };
+}
 
 ######################
 #
@@ -156,11 +165,11 @@ Gets random resource name
 #>
 function Get-RandomItemName
 {
-    param([string] $prefix = "pslibtest")
+    param([string] $prefix = "crptestps")
     
     if ($prefix -eq $null -or $prefix -eq '')
     {
-        $prefix = "pslibtest";
+        $prefix = "crptestps";
     }
 
     $str = $prefix + ((Get-Random) % 10000);
@@ -284,9 +293,37 @@ function Get-DefaultVMConfig
 
     # VM Profile & Hardware
     $vmsize = Get-DefaultVMSize $location;
-    $vmname = Get-RandomItemName 'pstestvm';
+    $vmname = Get-RandomItemName 'crptestps';
 
     $vm = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
+}
+
+# Assert Output Contains
+function Assert-OutputContains
+{
+    param([string] $cmd, [string[]] $sstr)
+    
+    $st = Write-Verbose ('Running Command : ' + $cmd);
+    $output = Invoke-Expression $cmd | Out-String;
+
+    $max_output_len = 1500;
+    if ($output.Length -gt $max_output_len)
+    {
+        # Truncate Long Output in Logs
+        $st = Write-Verbose ('Output String   : ' + $output.Substring(0, $max_output_len) + '...');
+    }
+    else
+    {
+        $st = Write-Verbose ('Output String   : ' + $output);
+    }
+
+    $index = 1;
+    foreach ($str in $sstr)
+    {
+        $st = Write-Verbose ('Search String ' + $index++ + " : `'" + $str + "`'");
+        Assert-True { $output.Contains($str) }
+        $st = Write-Verbose "Found.";
+    }
 }
