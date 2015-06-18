@@ -51,11 +51,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
-    <Compile Include="Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
-    <Compile Include="Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
-    <Compile Include="Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
-    <Compile Include="Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
+    <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
+    <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
     <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
     <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />
     <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
