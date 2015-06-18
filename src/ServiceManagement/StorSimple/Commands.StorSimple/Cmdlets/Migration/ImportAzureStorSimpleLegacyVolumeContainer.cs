@@ -25,13 +25,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyVolumeContainer")]
     public class ImportAzureStorSimpleLegacyVolumeContainer : StorSimpleCmdletBase
     {
+        public const string AllContainers = "ALL";
+        public const string SpecificContainers = "DCSpecific";
+
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SpecificContainers,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AllContainers,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
+        public SwitchParameter All { get; set; }        
 
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
@@ -45,9 +52,17 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var importDataContainerRequest = new MigrationImportDataContainerRequest();
-                importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
+                if(All.IsPresent)
+                {
+                    importDataContainerRequest.DataContainerNames = new List<string>();
+                }
+                else
+                {
+                    importDataContainerRequest.DataContainerNames =
+                            new List<string>(LegacyContainerNames.ToList().Distinct(
+                                StringComparer.InvariantCultureIgnoreCase));
+                }
+
                 importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
                 importDataContainerRequest.SkipACRs = SkipACRs.IsPresent;
 

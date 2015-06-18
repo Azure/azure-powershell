@@ -25,13 +25,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleLegacyVolumeContainerMigrationPlan")]
     public class StartAzureStorSimpleLegacyVolumeContainerMigrationPlan : StorSimpleCmdletBase
     {
+        public const string AllContainers = "ALL";
+        public const string SpecificContainers = "DCSpecific";
+
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SpecificContainers,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AllContainers,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
+        public SwitchParameter All { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -39,9 +46,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 var startMigrationPlanRequest = new MigrationPlanStartRequest();
                 startMigrationPlanRequest.ConfigId = LegacyConfigId;
-                startMigrationPlanRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
+                if (All.IsPresent)
+                {
+                    startMigrationPlanRequest.DataContainerNameList = new List<string>();
+                }
+                else
+                {
+                    startMigrationPlanRequest.DataContainerNameList =
+                            new List<string>(LegacyContainerNames.ToList().Distinct(
+                                StringComparer.InvariantCultureIgnoreCase));
+                }
 
                 var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
