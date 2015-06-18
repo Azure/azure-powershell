@@ -16,7 +16,7 @@ $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $DataSourceType = "VM"
 $Location = "SouthEast Asia"
-$PolicyName = "Policy9";
+$PolicyName = "Policy10";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;dev01testing;dev01testing"
 $WorkloadType = "VM"
@@ -94,7 +94,7 @@ function Test-SetAzureBackupProtectionPolicyTests
 	$policy.ScheduleType = $ScheduleType
 	$policyNewName = "policy09_new"
 	
-	$protectionPolicy = New-AzureBackupProtectionPolicy -ProtectionPolicy $policy -NewName $policyNewName
+	$protectionPolicy = Set-AzureBackupProtectionPolicy -ProtectionPolicy $policy -NewName $policyNewName
 
 	Assert-NotNull $protectionPolicy.InstanceId 'InstanceId should not be null'
 	Assert-NotNull $protectionPolicy.Name 'Name should not be null'
