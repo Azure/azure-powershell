@@ -25,7 +25,7 @@ function Test-SingleNetworkInterface
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
@@ -148,7 +148,7 @@ function Test-SingleNetworkInterfaceDnsSettings
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
@@ -255,7 +255,7 @@ function Test-MultipleNetworkInterface
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';

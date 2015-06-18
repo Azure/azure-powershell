@@ -35,21 +35,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
         internal static PSObject ToPsObject(this Resource<JToken> resource, ResourceObjectFormat objectFormat)
         {
-            var resourceType = ResourceIdUtility.GetResourceType(resource.Id);
-            var extensionResourceType = ResourceIdUtility.GetExtensionResourceType(resource.Id);
+            var resourceType = string.IsNullOrEmpty(resource.Id)
+                ? null
+                : ResourceIdUtility.GetResourceType(resource.Id);
+
+            var extensionResourceType = string.IsNullOrEmpty(resource.Id)
+                ? null
+                : ResourceIdUtility.GetExtensionResourceType(resource.Id);
 
             var objectDefinition = new Dictionary<string, object>
             {
                 { "Name", resource.Name },
-                { "ResourceId", resource.Id },
-                { "ResourceName", ResourceIdUtility.GetResourceName(resource.Id) },
+                { "ResourceId", string.IsNullOrEmpty(resource.Id) ? null : resource.Id },
+                { "ResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceName(resource.Id) },
                 { "ResourceType", resourceType },
-                { "ExtensionResourceName", ResourceIdUtility.GetExtensionResourceName(resource.Id) },
+                { "ExtensionResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id) },
                 { "ExtensionResourceType", extensionResourceType },
                 { "Kind", resource.Kind },
-                { "ResourceGroupName", ResourceIdUtility.GetResourceGroupName(resource.Id) },
+                { "ResourceGroupName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id) },
                 { "Location", resource.Location },
-                { "SubscriptionId", ResourceIdUtility.GetSubscriptionId(resource.Id) },
+                { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject(objectFormat) },
                 { "Properties", ResourceExtensions.GetProperties(resource, objectFormat) },
@@ -58,8 +63,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "ETag", resource.ETag },
             };
 
-            var psObject = PowerShellUtilities.ConstructPSObject(
-                (resourceType + extensionResourceType).Replace('/', '.'),
+            var resourceTypeName = resourceType == null && extensionResourceType == null
+                ? null
+                : (resourceType + extensionResourceType).Replace('/', '.');
+
+            var psObject =
+                PowerShellUtilities.ConstructPSObject(
+                resourceTypeName,
                 objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value }));
 
             psObject.TypeNames.Add(Constants.MicrosoftAzureResource);

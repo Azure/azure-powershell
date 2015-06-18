@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingLevelChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");

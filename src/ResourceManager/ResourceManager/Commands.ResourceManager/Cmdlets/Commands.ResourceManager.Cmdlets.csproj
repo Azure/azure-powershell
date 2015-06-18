@@ -143,6 +143,8 @@
     <Compile Include="Extensions\JTokenExtensions.cs" />
     <Compile Include="Implementation\ResourceManagerCmdletBase.cs" />
     <Compile Include="Implementation\SetAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\TestAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\TestAzureResourceGroupCmdlet.cs" />
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
@@ -152,7 +154,11 @@
     <Compile Include="RestClients\ResourceManagerRestRestClient.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

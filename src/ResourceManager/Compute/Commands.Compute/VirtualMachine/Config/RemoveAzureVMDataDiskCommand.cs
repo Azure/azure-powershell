@@ -38,14 +38,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("Name")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
-        public string [] DataDiskNames { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -55,10 +54,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var disks = storageProfile.DataDisks.ToList();
                 var comp = StringComparison.OrdinalIgnoreCase;
-                foreach (var diskName in DataDiskNames)
-                {
-                    disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
-                }
+                disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
                 storageProfile.DataDisks = disks;
             }
 

@@ -25,7 +25,7 @@ function Test-AvailabilitySet
     {
         # Common
         $loc = 'West US';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         $asetName = 'avs' + $rgname;
         $nonDefaultUD = 2;

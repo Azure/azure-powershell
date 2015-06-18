@@ -13,26 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ExpressRoute.Properties;
+using System.Collections;
 
-namespace Microsoft.WindowsAzure.Commands.ExpressRoute
+namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public sealed class ValidateGuid : ValidateEnumeratedArgumentsAttribute
+    public class CreatePSWorkspaceParameters : OperationalInsightsParametersBase
     {
-        protected override void ValidateElement(object element)
-        {
-            string guid = (string)element;
+        public string Location { get; set; }
 
-            try
-            {
-                Guid validGuid = Guid.Parse(guid);
-            } 
-            catch
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidGuid, guid));
-            }
-        }
+        public Guid? CustomerId { get; set; }
+
+        public string Sku { get; set; }
+
+        public bool Force { get; set; }
+
+        public Hashtable Tags { get; set; }
+
+        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
     }
 }
