@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
             {
-                deployments.Add(ResourceManagementClient.Deployments.Get(resourceGroup, name).Deployment.ToPSResourceGroupDeployment(options.ResourceGroupName));
+                deployments.Add(ResourceManagementClient.Deployments.Get(resourceGroup, name).ToPSResourceGroupDeployment(options.ResourceGroupName));
             }
             else if (!string.IsNullOrEmpty(resourceGroup))
             {

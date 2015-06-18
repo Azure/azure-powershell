@@ -52,6 +52,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return result;
         }
 
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentGetResult result, string resourceGroup)
+        {
+            PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
+
+            if (result != null)
+            {
+                deployment = CreatePSResourceGroupDeployment(result.Deployment.Name, resourceGroup, result.Deployment.Properties);
+            }
+
+            return deployment;
+        }
+
+
         public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
         {
             PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
@@ -75,7 +88,20 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
         {
-            return resource.ToPSResource(client, minimal);
+            ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
+            return new PSResource
+            {
+                Name = identifier.ResourceName,
+                Location = resource.Location,
+                ResourceType = identifier.ResourceType,
+                ResourceGroupName = identifier.ResourceGroupName,
+                ParentResource = identifier.ParentResource,
+                Properties = JsonUtilities.DeserializeJson(resource.Properties),
+                PropertiesText = resource.Properties,
+                Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
+                Permissions = minimal ? null : client.GetResourcePermissions(identifier),
+                ResourceId = identifier.ToString()
+            };
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
