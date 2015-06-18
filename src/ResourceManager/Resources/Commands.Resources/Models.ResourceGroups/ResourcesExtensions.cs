@@ -33,7 +33,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
     {
         public static PSResourceGroup ToPSResourceGroup(this ResourceGroupExtended resourceGroup, ResourcesClient client, bool detailed)
         {
-            return resourceGroup.ToPSResourceGroup(client, detailed);
+            var result = new PSResourceGroup
+            {
+                ResourceGroupName = resourceGroup.Name,
+                Location = resourceGroup.Location,
+                ProvisioningState = resourceGroup.ProvisioningState,
+                Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
+                ResourceId = resourceGroup.Id
+            };
+
+            if (detailed)
+            {
+                result.Resources = client.FilterResources(new FilterResourcesOptions { ResourceGroup = resourceGroup.Name })
+                    .Select(r => r.ToPSResource(client, true)).ToList();
+                result.Permissions = client.GetResourceGroupPermissions(resourceGroup.Name);
+            }
+
+            return result;
         }
 
         public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)

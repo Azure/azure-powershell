@@ -18,6 +18,9 @@ Tests verify scenarios for RoleDefinitions creation.
 #>
 function Test-RoleDefinitionCreateTests
 {
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role'
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
@@ -59,6 +62,9 @@ Tests verify negative scenarios for RoleDefinitions
 #>
 function Test-RdNegativeScenarios
 {
+	# Setup
+	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
     # Does not throw when getting a non-existing role assignment
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $rdNull = Get-AzureRoleDefinition -Name $rdName
@@ -97,6 +103,9 @@ Tests verify positive scenarios for RoleDefinitions.
 #>
 function Test-RDPositiveScenarios
 {
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
