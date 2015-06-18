@@ -109,5 +109,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VMImageCmdletOutputFormat");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVMSizeFromAllLocations()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
+        }
     }
 }

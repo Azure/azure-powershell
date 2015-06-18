@@ -1305,3 +1305,17 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzureVMImageDetail -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
+
+# Test Get VM Size from All Locations
+function Test-GetVMSizeFromAllLocations
+{
+    $locations = Get-AzureLocation | where { $_.Name -like 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+    foreach ($loc in $locations)
+    {
+        $vmsizes = Get-AzureVMSize -Location $loc;
+        Assert-True { $vmsizes.Count -gt 0 }
+        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
+
+        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
+    }
+}
