@@ -64,11 +64,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string Comments = "Comments for for removing protection";
         public const string WorkloadType = "Workload type for which the policy is defined.";
         public const string BackupType = "Type of backup.";
-        public const string ScheduleType = "Type of schedule.";
+        public const string DailyScheduleType = "Switch parameter for daily backup schedule.";
+        public const string WeeklyScheduleType = "Switch parameter for weekly backup schedule.";
         public const string ScheduleRunDays = "Days of week for running backup, required for weekly schedule.";
         public const string ScheduleRunTimes = "Times of day for running backup.";
         public const string RetentionType = "Unit of retention for the recovery point.";
         public const string RententionDuration = "Duration of retention for the recovery point in units specified by RetentionType.";
-        public const string PolicyInstanceId = "ProtectionPolicy InstanceId";
+        public const string PolicyNewName = "Policy new name";
+        public const string AzureBackupPolicy = "Azure Backup protection policy";
     }
 }
