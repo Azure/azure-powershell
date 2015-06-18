@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string JobStartedByParameterName = "MicrosoftApplicationManagementStartedBy";
 
+        public const string JobRunOnParameterName = "MicrosoftApplicationManagementRunOn";
+
         public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
 
         // default schedule expiry time for daily schedule, consistent with UX
