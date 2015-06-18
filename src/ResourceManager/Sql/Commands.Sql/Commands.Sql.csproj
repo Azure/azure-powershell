@@ -51,6 +51,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
+    <Compile Include="Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
+    <Compile Include="Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
+    <Compile Include="Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
+    <Compile Include="Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
     <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
     <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />
     <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
@@ -192,6 +197,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.Sql">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.29.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -203,9 +211,6 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.28.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
