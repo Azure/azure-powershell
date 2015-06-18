@@ -12,37 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Database.Model
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
+using System;
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.Batch.Models
 {
-    /// <summary>
-    /// The database edition
-    /// </summary>
-    public enum DatabaseEdition
+    public class PoolResizeParameters : PoolOperationParameters
     {
-        /// <summary>
-        /// No database edition specified
-        /// </summary>
-        None = 0,
+        public PoolResizeParameters(BatchAccountContext context, string poolName, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, poolName, pool, additionalBehaviors)
+        { }
 
         /// <summary>
-        /// A database premium edition
+        /// The number of target dedicated vms.
         /// </summary>
-        Premium = 3,
+        public int TargetDedicated { get; set; }
 
         /// <summary>
-        /// A database basic edition
+        /// The resize timeout.  If the pool has not reached the targets after this time the resize is automatically stopped.
         /// </summary>
-        Basic = 4,
+        public TimeSpan? ResizeTimeout { get; set; }
 
         /// <summary>
-        /// A database standard edition
+        /// The deallocation option associated with this resize.
         /// </summary>
-        Standard = 5,
-
-        /// <summary>
-        /// Azure SQL Data Warehouse database edition
-        /// </summary>
-        DataWarehouse = 6
+        public TVMDeallocationOption DeallocationOption { get; set; }
     }
 }
-

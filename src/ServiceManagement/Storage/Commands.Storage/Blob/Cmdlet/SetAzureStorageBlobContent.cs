@@ -287,6 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             new Dictionary<string, Action<StorageBlob.BlobProperties, string>>(StringComparer.OrdinalIgnoreCase)
             {
                 {"CacheControl", (p, v) => p.CacheControl = v},
+                {"ContentDisposition", (p, v) => p.ContentDisposition = v},
                 {"ContentEncoding", (p, v) => p.ContentEncoding = v},
                 {"ContentLanguage", (p, v) => p.ContentLanguage = v},
                 {"ContentMD5", (p, v) => p.ContentMD5 = v},

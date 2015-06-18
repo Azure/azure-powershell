@@ -12,37 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Database.Model
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Batch
 {
-    /// <summary>
-    /// The database edition
-    /// </summary>
-    public enum DatabaseEdition
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize")]
+    public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        /// <summary>
-        /// No database edition specified
-        /// </summary>
-        None = 0,
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
-        /// <summary>
-        /// A database premium edition
-        /// </summary>
-        Premium = 3,
-
-        /// <summary>
-        /// A database basic edition
-        /// </summary>
-        Basic = 4,
-
-        /// <summary>
-        /// A database standard edition
-        /// </summary>
-        Standard = 5,
-
-        /// <summary>
-        /// Azure SQL Data Warehouse database edition
-        /// </summary>
-        DataWarehouse = 6
+        public override void ExecuteCmdlet()
+        {
+            BatchClient.StopResizePool(this.BatchContext, this.Name, this.AdditionalBehaviors);
+        }
     }
 }
-
