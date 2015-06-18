@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rule Id cannot contain &apos;&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?&apos; and cannot end with a &apos;.&apos;.
+        /// </summary>
+        internal static string NewDataMaskingRuleIdIsNotValid {
+            get {
+                return ResourceManager.GetString("NewDataMaskingRuleIdIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {

@@ -231,4 +231,7 @@
   <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
     <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
   </data>
+  <data name="NewDataMaskingRuleIdIsNotValid" xml:space="preserve">
+    <value>Rule Id cannot contain '&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?' and cannot end with a '.'</value>
+  </data>
 </root>
