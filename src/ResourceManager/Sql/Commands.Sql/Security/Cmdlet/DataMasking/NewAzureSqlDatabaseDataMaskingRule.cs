@@ -29,6 +29,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>
+        /// Gets or sets the column name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ColumnName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the table name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public override string TableName { get; set; }
+
+        /// <summary>
         /// Gets or sets the masking function
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the masking function")]

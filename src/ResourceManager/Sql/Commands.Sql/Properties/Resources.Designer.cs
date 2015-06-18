@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
+        /// </summary>
+        internal static string DeprecatedCmdletUsageWarning {
+            get {
+                return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions.
         /// </summary>
         internal static string DeprecatedEventTypeUsed {

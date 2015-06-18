@@ -228,4 +228,7 @@
   <data name="DeprecatedEventTypeUsed" xml:space="preserve">
     <value>The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions</value>
   </data>
+  <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
+    <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
+  </data>
 </root>
