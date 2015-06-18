@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using BCI = Microsoft.BackupManagementService.CommonInterface;
-using BMI = Microsoft.BackupManagementService.ManagementInterface;
+using Microsoft.Azure.Commands.AzureBackup.Library;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
@@ -94,12 +93,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private string ConstructQueryFilterString()
         {
-            BMI.ContainerQueryObject containerQueryObject = new BMI.ContainerQueryObject();
+            ContainerQueryObject containerQueryObject = new ContainerQueryObject();
 
             switch (Type)
             {
                 case AzureBackupContainerTypeInput.AzureVirtualMachine:
-                    containerQueryObject.Type = BCI.ContainerType.IaasVMContainer.ToString();
+                    containerQueryObject.Type = ContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
@@ -108,10 +107,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             switch (Status)
             {
                 case AzureBackupContainerStatusInput.Registered:
-                    containerQueryObject.Status = BCI.RegistrationStatus.Registered.ToString();
+                    containerQueryObject.Status = RegistrationStatus.Registered.ToString();
                     break;
                 case AzureBackupContainerStatusInput.Registering:
-                    containerQueryObject.Status = BCI.RegistrationStatus.Registering.ToString();
+                    containerQueryObject.Status = RegistrationStatus.Registering.ToString();
                     break;
                 default:
                     break;
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 containerQueryObject.FriendlyName = ContainerResourceName;
             }
 
-            return BMI.BackupManagementAPIHelper.GetQueryString(containerQueryObject.GetNameValueCollection());
+            return BackupManagementAPIHelper.GetQueryString(containerQueryObject.GetNameValueCollection());
         }
     }
 }
