@@ -55,7 +55,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common">
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -86,9 +87,13 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Cmdlets\VaultCredentials\Microsoft.WindowsAzure.Management.Common.dll</HintPath>
+      <HintPath>Resources\Microsoft.WindowsAzure.Management.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
@@ -154,6 +159,7 @@
     <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\VaultCredentials.cs" />
     <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
     <Compile Include="Library\AzureBackupCmdletHelper.cs" />
+    <Compile Include="Library\AzureBackupContainerCmdletHelper.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
     <Compile Include="Models\AzureBackupEnums.cs" />
@@ -173,10 +179,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\BackupServicesManagment.csproj">
-      <Project>{38a6741c-77a3-42a8-a846-83373be57c7f}</Project>
-      <Name>BackupServicesManagment</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -202,8 +204,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\BackupManagementInterface.dll" />
-    <Content Include="Resources\BMSCommonInterface.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>

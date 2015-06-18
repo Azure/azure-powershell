@@ -161,12 +161,24 @@
     <None Include="ScenarioTests\AzureBackupItemTestCases.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\AzureBackupPolicyTests.ps1" />
-    <None Include="ScenarioTests\AzureBackupContainerTests.ps1" />
-    <None Include="ScenarioTests\AzureBackupJobTests.ps1" />
-    <None Include="ScenarioTests\AzureBackupVaultTests.ps1" />
-    <None Include="ScenarioTests\BackupItemTests.ps1" />
-    <None Include="ScenarioTests\RecoveryPointTests.ps1" />
+    <None Include="ScenarioTests\AzureBackupPolicyTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureBackupContainerTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureBackupJobTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureBackupVaultTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\BackupItemTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RecoveryPointTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\GetAzureBackupContainerTests.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\RegisterAzureBackupContainerTest.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\UnregisterAzureBackupContainerTest.json" />
