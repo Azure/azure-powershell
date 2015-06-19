@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
@@ -25,8 +20,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
     public class UsageAggregatesTests 
     {
       
-        //[Fact(Skip = "New test/project can't get the testContext to be created.  Need to come back and fix it.")]
-        [Fact]
+         [Fact]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {
             UsageAggregatesTestController.NewInstance.RunPsTest("Test-GetUsageAggregatesWithDefaultParameters");
