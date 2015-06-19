@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
     public class GetUsageAggregatesCommand : AzurePSCmdlet
     {
+        private UsageAggregationManagementClient _theClient;
+
         [Parameter(Mandatory = true, HelpMessage = "The start of the time range to retrieve data for.")]
         public DateTime ReportedStartTime { get; set; }
 
@@ -50,16 +52,15 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         [Parameter(Mandatory = false, HelpMessage = "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.")]
         public string ContinuationToken { get; set; }
 
-        private UsageAggregationManagementClient theClient;
         public override void ExecuteCmdlet()
         {
-            if (theClient == null)
+            if (_theClient == null)
             {
-                theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(Profile,
+                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(Profile,
                     Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
 
-            UsageAggregationGetResponse aggregations = theClient.UsageAggregates.Get(ReportedStartTime,
+            UsageAggregationGetResponse aggregations = _theClient.UsageAggregates.Get(ReportedStartTime,
                 ReportedEndTime, AggregationGranularity, ShowDetails,
                 ContinuationToken);
 

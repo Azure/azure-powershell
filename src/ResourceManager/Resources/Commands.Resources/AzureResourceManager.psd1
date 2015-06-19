@@ -99,7 +99,7 @@ NestedModules = @(
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',
-	'.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll'
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll'
 )
 
 # Functions to export from this module

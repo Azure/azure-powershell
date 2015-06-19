@@ -16,10 +16,8 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
-
     public class UsageAggregatesTests 
     {
-      
          [Fact]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {

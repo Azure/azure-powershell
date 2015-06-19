@@ -1,6 +1,7 @@
-﻿$subscription = <Add subscription ID>
+﻿# sample script to help the developer verify changes using PowerShell and importing the dll.
+$subscription = "<Add subscription ID>"
 
-Import-Module C:\GitHub\MyGitHub\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll
+Import-Module "<path to>"Microsoft.Azure.Commands.UsageAggregates.dll
 
 Add-AzureAccount 
 
