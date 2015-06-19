@@ -32,16 +32,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <summary>
         /// Gets or sets the table name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
-        [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public virtual string TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the column name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
-        [ValidateNotNullOrEmpty]
-        public string ColumnName { get; set; }
+        public virtual string ColumnName { get; set; }
 
         /// <summary>
         /// Gets or sets the masking function - the definition of this property as a cmdlet parameter is done in the subclasses
