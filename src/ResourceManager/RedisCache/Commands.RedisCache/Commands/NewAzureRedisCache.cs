@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.WindowsAzure;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using MaxMemoryPolicyStrings = Microsoft.Azure.Management.Redis.Models.MaxMemoryPolicy;
     using Hyak.Common;
+    using System.Collections;
 
     [Cmdlet(VerbsCommon.New, "AzureRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -50,10 +50,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy property of redis cache. Valid values: AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL")]
-        [ValidateSet(MaxMemoryPolicyStrings.AllKeysLRU, MaxMemoryPolicyStrings.AllKeysRandom, MaxMemoryPolicyStrings.NoEviction, 
-            MaxMemoryPolicyStrings.VolatileLRU, MaxMemoryPolicyStrings.VolatileRandom, MaxMemoryPolicyStrings.VolatileTTL, IgnoreCase = false)]
-        public string MaxMemoryPolicy { get; set;}
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
+        public Hashtable RedisConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
@@ -114,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, MaxMemoryPolicy, EnableNonSslPort), ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
         }
     }
 }
