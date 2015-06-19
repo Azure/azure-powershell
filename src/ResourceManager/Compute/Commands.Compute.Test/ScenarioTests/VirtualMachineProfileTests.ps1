@@ -37,15 +37,16 @@ function Test-VirtualMachineProfile
     $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
 
     # Remove all NICs
-    $p = $p | Remove-AzureVMNetworkInterface
+    $p = $p | Remove-AzureVMNetworkInterface;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 0;
 
-    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri1;
+    $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri1 -Primary;
     $p = Add-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
     $p = Remove-AzureVMNetworkInterface -VM $p -Id $ipRefUri2;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri1;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
     # Storage
     $stoname = 'hpfteststo' + ((Get-Random) % 10000);
