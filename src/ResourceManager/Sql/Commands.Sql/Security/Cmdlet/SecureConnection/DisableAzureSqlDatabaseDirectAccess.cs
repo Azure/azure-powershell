@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using System.Management.Automation;
 
@@ -41,6 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
         /// <param name="model">A model object</param>
         protected override DatabaseSecureConnectionPolicyModel ApplyUserInputToModel(DatabaseSecureConnectionPolicyModel model) 
         {
+
+            WriteWarning(string.Format(Resources.DeprecatedCmdletUsageWarning, "Disable-AzureSqlDatabaseDirectAccess"));
             model.SecureConnectionState = SecureConnectionStateType.Required;
             return model;
         }

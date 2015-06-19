@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
@@ -28,6 +29,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseDataMaskingRule")]
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
+        /// <summary>
+        /// Gets or sets the column name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ColumnName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the table name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public override string TableName { get; set; }
+
         /// <summary>
         /// Gets or sets the masking function
         /// </summary>
@@ -52,6 +67,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>An error message or null if all is fine</returns>
         protected override string ValidateOperation(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
+            var ruleIdRegex = new Regex("^[^/\\\\#+=<>*%&:?]*[^/\\\\#+=<>*%&:?.]$");
+            
+            if (!ruleIdRegex.IsMatch(RuleId)) // an invalid rule name
+            {
+                return string.Format(CultureInfo.InvariantCulture, Resources.NewDataMaskingRuleIdIsNotValid, RuleId);
+            }
             if(rules.Any(r=> r.RuleId == RuleId))
             {
                 return string.Format(CultureInfo.InvariantCulture, Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
