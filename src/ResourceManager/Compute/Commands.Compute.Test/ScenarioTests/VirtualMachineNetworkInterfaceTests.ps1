@@ -99,8 +99,7 @@ function Test-SingleNetworkInterface
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
@@ -205,8 +204,7 @@ function Test-SingleNetworkInterfaceDnsSettings
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
@@ -315,8 +313,7 @@ function Test-MultipleNetworkInterface
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;

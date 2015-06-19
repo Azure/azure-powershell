@@ -21,16 +21,14 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    public class AzureVMTests
+    public partial class AzureVMTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         #region Get-AzureVM Scenario Tests
 
         [Fact]
-        [Trait(Category.Service, Category.ServiceManagement)]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureVM()
         {
             this.RunPowerShellTest("Test-GetAzureVM");
@@ -52,9 +50,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 List<string> modules = Directory.GetFiles("Resources\\ServiceManagement", "*.ps1").ToList();
                 modules.Add("Common.ps1");
+                modules.Add(@"..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModules(modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }
