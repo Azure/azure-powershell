@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -67,6 +68,16 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Overwrite { get; set; }
 
+        [Parameter(
+           Position = 5,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The file path in which the template of the captured image is stored")]
+        [ValidateNotNullOrEmpty]
+        public string Path
+        {
+            get;
+            set;
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -85,6 +96,11 @@ namespace Microsoft.Azure.Commands.Compute
                 parameters);
 
             var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+
+            if (! string.IsNullOrWhiteSpace(this.Path))
+            {
+                File.WriteAllText(this.Path, result.Output);
+            }
             WriteObject(result);
         }
     }
