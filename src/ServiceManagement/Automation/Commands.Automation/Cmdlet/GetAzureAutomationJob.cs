@@ -70,25 +70,38 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Microsoft.Azure.Commands.Automation.Model.Job> jobs; 
+            IEnumerable<Microsoft.Azure.Commands.Automation.Model.Job> jobs = null; 
  
             if (this.Id != null && !Guid.Empty.Equals(this.Id)) 
              { 
                  // ByJobId 
-                 jobs = new List<Microsoft.Azure.Commands.Automation.Model.Job> { this.AutomationClient.GetJob(this.AutomationAccountName, this.Id) }; 
+                 jobs = new List<Microsoft.Azure.Commands.Automation.Model.Job> { this.AutomationClient.GetJob(this.AutomationAccountName, this.Id) };
+                 this.WriteObject(jobs, true);
              } 
              else if (this.RunbookName != null) 
              { 
                  // ByRunbookName 
-                 jobs = this.AutomationClient.ListJobsByRunbookName(this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime, this.Status); 
+                 var nextLink = string.Empty;
+
+                 do
+                 {
+                     jobs = this.AutomationClient.ListJobsByRunbookName(this.AutomationAccountName, this.RunbookName, this.StartTime, this.EndTime, this.Status, ref nextLink);
+                     this.WriteObject(jobs, true);
+
+                 } while (!string.IsNullOrEmpty(nextLink));
              } 
              else 
              { 
                  // ByAll 
-                 jobs = this.AutomationClient.ListJobs(this.AutomationAccountName, this.StartTime, this.EndTime, this.Status); 
+                 var nextLink = string.Empty;
+
+                 do
+                 {
+                     jobs = this.AutomationClient.ListJobs(this.AutomationAccountName, this.StartTime, this.EndTime, this.Status, ref nextLink);
+                     this.WriteObject(jobs, true);
+
+                 } while (!string.IsNullOrEmpty(nextLink));
              } 
- 
-             this.WriteObject(jobs, true); 
         }
     }
 }

@@ -162,5 +162,45 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 poolManager.DeletePool(poolName, additionBehaviors);
             }
         }
+
+        /// <summary>
+        /// Resizes the specified pool
+        /// </summary>
+        /// <param name="parameters">The parameters to use when resizing the pool</param>
+        public void ResizePool(PoolResizeParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string poolName = parameters.Pool == null ? parameters.PoolName : parameters.Pool.Name;
+
+            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolName, parameters.TargetDedicated));
+            using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
+            {
+                poolManager.ResizePool(poolName, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
+            }
+        }
+
+        /// <summary>
+        /// Stops the resize operation on the specified pool
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="poolName">The name of the pool.</param>
+        /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
+        public void StopResizePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(poolName))
+            {
+                throw new ArgumentNullException("poolName");
+            }
+
+            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolName));
+            using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
+            {
+                poolManager.StopResizePool(poolName, additionalBehaviors);
+            }
+        }
     }
 }

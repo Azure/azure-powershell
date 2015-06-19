@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Accounts
 
-        IEnumerable<AutomationAccount> ListAutomationAccounts(string resourceGroupName);
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink);
 
         AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName);
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
 
-        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName);
+        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink);
 
         void DeleteModule(string resourceGroupName, string automationAccountName, string name);
 
@@ -128,6 +128,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
         DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId);
 
         DirectoryInfo GetDscNodeReportContent(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId, string outputFolder, bool overwriteExistingFile);
+        #endregion
+
+        #region Webhooks
+
+        Model.Webhook CreateWebhook(
+            string resourceGroupName,
+            string automationAccountName,
+            string name,
+            string runbookName,
+            bool isEnabled,
+            DateTimeOffset expiryTime,
+            Hashtable parameters);
+
+        Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
+
+        IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbooName, ref string nextLink);
+
+        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, Hashtable parameters, bool? isEnabled);
+
+        void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
+
         #endregion
     }
 }

@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Properties;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RemoveAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
@@ -53,7 +55,8 @@ namespace Microsoft.Azure.Commands.Compute
              || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
             {
                 var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
             }
         }
     }

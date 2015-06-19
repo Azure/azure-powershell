@@ -51,6 +51,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database Activation\Cmdlet\AzureSqlDatabaseActivationCmdletBase.cs" />
+    <Compile Include="Database Activation\Cmdlet\ResumeAzureSqlDatabase.cs" />
+    <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
+    <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationAdapter.cs" />
+    <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
@@ -118,14 +123,14 @@
     <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingPolicy.cs" />
     <Compile Include="Security\Cmdlet\SecureConnection\GetAzureSqlDatabaseSecureConnectionPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlDatabaseAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlDatabaseServerAuditingPolicy.cs" />
+    <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\SetAzureSqlDatabaseDataMaskingPolicy.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\SqlDatabaseDataMaskingPolicyCmdletBase.cs" />
     <Compile Include="Security\Cmdlet\SecureConnection\SqlDatabaseSecureConnectionCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\UseAzureSqlDatabaseServerAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\RemoveSqlDatabaseServerAuditing.cs" />
+    <Compile Include="Security\Cmdlet\Auditing\UseAzureSqlServerAuditingPolicy.cs" />
+    <Compile Include="Security\Cmdlet\Auditing\RemoveSqlServerAuditing.cs" />
     <Compile Include="Security\Cmdlet\Auditing\RemoveSqlDatabaseAuditing.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlDatabaseServerAuditingPolicy.cs" />
+    <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlDatabaseAuditingPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseAuditingCmdletBase.cs" />
@@ -193,14 +198,14 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.26.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.28.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

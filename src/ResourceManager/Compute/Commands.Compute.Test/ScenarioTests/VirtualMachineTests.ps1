@@ -25,7 +25,7 @@ function Test-VirtualMachine
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -189,7 +189,7 @@ function Test-VirtualMachineList
 
     try
     {
-        $s1 = Get-AzureVM -All;
+        $s1 = Get-AzureVM;
         $s2 = Get-AzureVM;
 
         if ($s2 -ne $null)
@@ -252,15 +252,15 @@ function Test-VirtualMachineImageList
                             {
                                 $versions = $s4 | select -ExpandProperty Version;
 
-                                $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
-                                Assert-NotNull $s6;
-                                Assert-NotNull $s6.Count -gt 0;
-                                $verNames = $s6 | select -ExpandProperty Version;
+                                $s5 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
+                                Assert-NotNull $s5;
+                                Assert-NotNull $s5.Count -gt 0;
+                                $verNames = $s5 | select -ExpandProperty Version;
 
                                 foreach ($ver in $versions)
                                 {
                                     if ($ver -eq $null -or $ver -eq '') { continue; }
-                                    $s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
+                                    $s6 = Get-AzureVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -Version $ver;
                                     Assert-NotNull $s6;
                                     $s6;
 
@@ -299,7 +299,7 @@ function Test-VirtualMachineImageList
                     $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {
-                        $s3 = Get-AzureVMExtensionImageDetail -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
+                        $s3 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
                 
                         Assert-NotNull $s3;
                         Assert-True { $s3.Version -eq $ver; }
@@ -316,11 +316,11 @@ function Test-VirtualMachineImageList
 
         # Test Piping
         $pubNameFilter = '*Microsoft*Windows*Server*';
-        $imgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail;
+        $imgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImage;
         Assert-True { $imgs.Count -gt 0 };
 
         $pubNameFilter = '*Microsoft.Compute*';
-        $extimgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMExtensionImageType | Get-AzureVMExtensionImage | Get-AzureVMExtensionImageDetail;
+        $extimgs = Get-AzureVMImagePublisher -Location $locStr | where { $_.PublisherName -like $pubNameFilter } | Get-AzureVMExtensionImageType | Get-AzureVMExtensionImage | Get-AzureVMExtensionImage;
         Assert-True { $extimgs.Count -gt 0 };
 
         # Negative Tests
@@ -341,12 +341,12 @@ function Test-VirtualMachineImageList
         Assert-ThrowsContains { $s5 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -FilterExpression $filter; } "was not found";
 
         $version = '1.0.0';
-        Assert-ThrowsContains { $s6 = Get-AzureVMImageDetail -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
+        Assert-ThrowsContains { $s6 = Get-AzureVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName -Version $version; } "was not found";
 
         # Extension Images
         $type = Get-ComputeTestResourceName;
-        Assert-ThrowsContains { $s7 = Get-AzureVMExtensionImageDetail -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
-        
+        Assert-ThrowsContains { $s7 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter -Version $version; } "was not found";
+
         Assert-ThrowsContains { $s8 = Get-AzureVMExtensionImageType -Location $locStr -PublisherName $publisherName; } "was not found";
 
         Assert-ThrowsContains { $s9 = Get-AzureVMExtensionImage -Location $locStr -PublisherName $publisherName -Type $type -FilterExpression $filter; } "was not found";
@@ -373,7 +373,7 @@ function Test-VirtualMachineSizeAndUsage
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # Availability Set
         $asetName = 'aset' + $rgname;
@@ -453,7 +453,7 @@ function Test-VirtualMachineSizeAndUsage
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
@@ -544,7 +544,7 @@ function Test-VirtualMachinePIRv2
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -619,7 +619,7 @@ function Test-VirtualMachinePIRv2
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
@@ -654,7 +654,7 @@ function Test-VirtualMachineCapture
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -729,7 +729,7 @@ function Test-VirtualMachineCapture
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # TODO: Remove Data Disks for now
@@ -770,7 +770,7 @@ function Test-VirtualMachineDataDisk
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
@@ -824,7 +824,7 @@ function Test-VirtualMachineDataDisk
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # Negative Tests on A0 Size + 2 Data Disks
@@ -851,7 +851,7 @@ function Test-VirtualMachinePlan
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
@@ -900,7 +900,7 @@ function Test-VirtualMachinePlan
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         $plan = Get-ComputeTestResourceName;
@@ -935,7 +935,7 @@ function Test-VirtualMachinePlan2
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
@@ -987,7 +987,7 @@ function Test-VirtualMachinePlan2
         $vmmImgOfferName = 'a10-vthunder-adc';
         $vmmImgSkusName = 'vthunder_byol';
         $vmmImgVerName = '1.0.0';
-        $imgRef = Get-AzureVMImageDetail -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
+        $imgRef = Get-AzureVMImage -PublisherName $vmmImgPubName -Location $loc -Offer $vmmImgOfferName -Skus $vmmImgSkusName -Version $vmmImgVerName;
         $plan = $imgRef.PurchasePlan;
         $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         $p.Plan = New-Object Microsoft.Azure.Management.Compute.Models.Plan;
@@ -996,8 +996,9 @@ function Test-VirtualMachinePlan2
         $p.Plan.Product = $plan.Product;
         $p.Plan.PromotionCode = $null;
         $p.OSProfile.WindowsConfiguration = $null;
-
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        
+        # Negative Tests on non-purchased Plan
+        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "Legal terms have not been accepted for this item on this subscription";
     }
     finally
     {
@@ -1020,7 +1021,7 @@ function Test-VirtualMachineTags
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
@@ -1063,7 +1064,7 @@ function Test-VirtualMachineTags
 
         # Image Reference;
         $p.StorageProfile.SourceImage = $null;
-        $imgRef = Get-DefaultCRPImage;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # Test Tags
@@ -1095,7 +1096,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
@@ -1189,7 +1190,7 @@ function Test-LinuxVirtualMachine
     {
         # Common
         $loc = 'westus';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';

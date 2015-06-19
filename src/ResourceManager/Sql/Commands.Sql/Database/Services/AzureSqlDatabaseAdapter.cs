@@ -14,10 +14,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -160,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             model.ServerName = serverName;
             model.CollationName = database.Properties.Collation;
             model.CreationDate = database.Properties.CreationDate;
-            model.CurrentServiceLevelObjectiveName = database.Properties.ServiceObjective;
+            model.CurrentServiceObjectiveName = database.Properties.ServiceObjective;
             model.MaxSizeBytes = database.Properties.MaxSizeBytes;
             model.DatabaseName = database.Name;
             model.Status = database.Properties.Status;
@@ -185,12 +187,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
         {
-            List<AzureSqlDatabaseActivityModel> list = new List<AzureSqlDatabaseActivityModel>();
-
             if(!string.IsNullOrEmpty(elasticPoolName))
             {
                 var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
-                list = response.Select((r) =>
+                IEnumerable< AzureSqlDatabaseActivityModel> list = response.Select((r) =>
                     {
                         return new AzureSqlDatabaseActivityModel()
                         {
@@ -219,14 +219,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                                 }
                             }
                         };
-                    }).ToList();
+                    });
+                
+                // Check if we have a database name constraint
+                if (!string.IsNullOrEmpty(databaseName))
+                {
+                    list = list.Where(pl => string.Equals(pl.DatabaseName, databaseName, StringComparison.OrdinalIgnoreCase));
+                }
+
+                return list.ToList();
             }
             else
             {
-
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Resources.StandaloneDatabaseActivityNotSupported));
             }
-
-            return list;
         }
     }
 }

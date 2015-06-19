@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineExtensionImage : PSOperationContext
+    public class PSVirtualMachineExtensionImage : PSOperation
     {
         public string Id { get; set; }
 
