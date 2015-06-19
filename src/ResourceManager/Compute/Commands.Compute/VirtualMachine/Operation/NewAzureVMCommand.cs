@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (! string.IsNullOrEmpty(this.Name))
             {
-                WriteWarning(Properties.Resources.DeprecationOfGetAzureVMImageDetail);
+                WriteWarning(Properties.Resources.DeprecationOfNewAzureVMNameParameterWarning);
             }
 
             var parameters = new VirtualMachine
