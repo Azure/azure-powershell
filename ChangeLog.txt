@@ -8,9 +8,10 @@
 * Azure Key Vault cmdlets
     * Updated Key Vault package versions
     * Fixed bugs related to secrets
-* Added Test-AzureResourceGroup and Test-AzureResource cmdlets
-* Refactored Resource Lock cmdlets
-* Removed unnecessary code when getting a resource
+* Azure Resource Manager
+    * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
+    * Refactored Resource Lock cmdlets
+    * Removed unnecessary code when getting a resource
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
