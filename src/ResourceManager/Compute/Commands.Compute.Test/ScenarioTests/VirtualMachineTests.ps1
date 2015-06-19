@@ -49,6 +49,12 @@ function Test-VirtualMachine
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
+        # Adding the same Nic but not set it Primary
+        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId -Primary;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
+
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
@@ -765,7 +771,10 @@ function Test-VirtualMachineCapture
         Set-AzureVM -Generalize -ResourceGroupName $rgname -Name $vmname;
 
         $dest = Get-ComputeTestResourceName;
-        Save-AzureVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite;
+        $templatePath = ".\template.txt";
+        Save-AzureVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
+        $template = Get-Content $templatePath;
+        Assert-True { $template[1].Contains("$schema"); }
 
         # Remove
         Remove-AzureVM -ResourceGroupName $rgname -Name $vmname -Force;
