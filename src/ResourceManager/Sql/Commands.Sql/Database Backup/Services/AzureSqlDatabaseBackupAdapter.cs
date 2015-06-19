@@ -83,8 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Location = restorePoint.Location,
                     RestorePointType = restorePoint.Properties.RestorePointType,
                     RestorePointCreationDate = restorePoint.Properties.RestorePointCreationDate,
-                    EarliestRestoreDate = restorePoint.Properties.EarliestRestoreDate,
-                    SizeBytes = restorePoint.Properties.SizeBytes
+                    EarliestRestoreDate = restorePoint.Properties.EarliestRestoreDate
                 }; 
             }).ToList();
         }

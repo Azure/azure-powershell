@@ -14,7 +14,7 @@
 
 <#
 	.SYNOPSIS
-	Test getting restore points from databases.
+	Test getting restore points from databases via piped cmdlets.
 #>
 function Test-ListDatabaseRestorePoints
 {
@@ -36,58 +36,17 @@ function Test-ListDatabaseRestorePoints
 		$standarddb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-Edition Standard -RequestedServiceObjectiveName S0
 
-		# Get restore points from data warehouse database. There should be none.
-		$restorePoints =  Get-AzureSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
-		Assert-True $restorePoints.IsEmpty
+		# Get restore points from data warehouse database normally.
+		$restorePoints = Get-AzureSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+		Assert-Null $restorePoints # Since the data warehouse database has just been created, it should not have any discrete restore points.
 
-		# Get restore points from standard database.There should be 1.
-		$restorePoints = Resume-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $standarddb.DatabaseName
+		# Get restore points from standard database piped.
+		$restorePoints = $standarddb | Get-AzureSqlDatabaseRestorePoints 
+		Assert-AreEqual $restorePoints.Count 1 # Standard databases should only have 1 continuous restore point.
 		$restorePoint = $restorePoints[0]
 		Assert-AreEqual $restorePoint.RestorePointType Continuous
 		Assert-Null $restorePoint.RestorePointCreationDate
-		Assert-NotNull $restorePoint.EarliestRestoreDate 
-		Assert-AreEqual $restorePoint.SizeBytes 0
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
-<#
-	.SYNOPSIS
-	Test getting restore points from databases via piped cmdlets.
-#>
-function Test-ListDatabaseRestorePointsPiped
-{
-	# Setup
-	$location = "Japan East"
-	$serverVersion = "12.0";
-	$rg = Create-ResourceGroupForTest
-
-	try
-	{
-		$server = Create-ServerForTest $rg $serverVersion $location
-
-		# Create data warehouse database with all parameters.
-		$databaseName = Get-DatabaseName
-		$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
-
-		$databaseName = Get-DatabaseName
-		$standarddb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition Standard -RequestedServiceObjectiveName S0
-
-		# Get restore points from data warehouse database.
-		Assert-True $restorePoints.IsEmpty
-
-		# Get restore points from standard database.
-		$restorePoints = $standarddb | Resume-AzureSqlDatabase
-		$restorePoint = $restorePoints[0]
-		Assert-AreEqual $restorePoint.RestorePointType Continuous
-		Assert-Null $restorePoint.RestorePointCreationDate
-		Assert-NotNull $restorePoint.EarliestRestoreDate 
-		Assert-AreEqual $restorePoint.SizeBytes 0
+		Assert-True { $restorePoint.EarliestRestoreDate -le [DateTime]::UtcNow }
 	}
 	finally
 	{

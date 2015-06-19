@@ -22,16 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestDatabasePauseResume()
+        public void TestListDatabaseRestorePoints()
         {
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestDatabasePauseResumePiped()
-        {
-            RunPowerShellTest("Test-ListDatabaseRestorePointsPiped");
         }
     }
 }

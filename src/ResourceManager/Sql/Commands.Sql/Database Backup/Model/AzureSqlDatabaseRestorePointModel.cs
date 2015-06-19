@@ -56,12 +56,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Earliest restore time. Populated when restorePointType = DISCRETE. Null otherwise.
         /// </summary>
         public DateTime? EarliestRestoreDate { get; set; }
-
-        /// <summary>
-        /// Size of the backup in blob storage.
-        /// For discrete restore point, the value is the database snap size; for continuous restore point, the value is the 
-        /// total backup storage usage of the database.
-        /// </summary>
-        public int SizeBytes { get; set; }
     }
 }
