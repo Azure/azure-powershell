@@ -236,8 +236,7 @@ function setup_image_and_disks
 
     $vmconfig = Set-AzureVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-    # Image Reference;
-    $vmconfig.StorageProfile.SourceImage = $null;
+    # Image Reference
     $imgRef = Get-DefaultCRPImage -loc $loc;
     $vmconfig = ($imgRef | Set-AzureVMSourceImage -VM $vmconfig);
 

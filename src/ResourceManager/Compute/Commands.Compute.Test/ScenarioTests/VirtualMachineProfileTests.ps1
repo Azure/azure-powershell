@@ -73,7 +73,6 @@ function Test-VirtualMachineProfile
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
     $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-    $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
     $winRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";
     $timeZone = "Pacific Standard Time";
@@ -81,22 +80,26 @@ function Test-VirtualMachineProfile
     $encodedCustom = "ZWNobyAnSGVsbG8gV29ybGQn";
 
     $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
-    $p = Set-AzureVMSourceImage -VM $p -Name $img;
-	$subid = (Get-AzureSubscription -Current).SubscriptionId;
+
+    # Image Reference
+    $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
+    $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+
+    $subid = (Get-AzureSubscription -Current).SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";
     $certUrl =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bdd703272";
     $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
-	$referenceUri2 = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault456";
+    $referenceUri2 = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault456";
     $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
 
-	$certStore2 = "My2";
+    $certStore2 = "My2";
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
-	$p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
+    $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
-	$aucSetting = "AutoLogon";
+    $aucSetting = "AutoLogon";
     $aucContent = "<UserAccounts><AdministratorPassword><Value>" + $password + "</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
     $p = Add-AzureVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
     $p = Add-AzureVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
@@ -104,14 +107,17 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-    Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + $subid + '/services/images/' + $img);
+    Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
     Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
     Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateStore $certStore2;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateUrl $certUrl2;
-	Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.ReferenceUri $referenceUri2;
+    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.ReferenceUri $referenceUri2;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateUrl $certUrl;
     Assert-AreEqual $encodedCustom $p.OSProfile.CustomData;
@@ -141,18 +147,25 @@ function Test-VirtualMachineProfile
     $img = "b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP3-v206";
 
     $p = Set-AzureVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -CustomData $custom -DisablePasswordAuthentication;
-    $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
-	$sshPath = "/home/pstestuser/.ssh/authorized_keys";
+    $imgRef = Get-DefaultCRPLinuxImageOffline -loc $loc;
+    $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+
+    $sshPath = "/home/pstestuser/.ssh/authorized_keys";
     $sshPublicKey = "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV";
     $p = Add-AzureVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
-	$p = Add-AzureVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
+    $p = Add-AzureVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
     $p = Add-AzureVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-    Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + $subid + '/services/images/' + $img);
+
+    Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
+
     Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
@@ -161,7 +174,7 @@ function Test-VirtualMachineProfile
     # Verify SSH configuration
     Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[0].KeyData;
     Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[0].Path;
-	Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[1].KeyData;
+    Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[1].KeyData;
     Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[1].Path;
     Assert-AreEqual $true $p.OSProfile.LinuxConfiguration.DisablePasswordAuthentication
 }
@@ -235,7 +248,10 @@ function Test-VirtualMachineProfileWithoutAUC
     $encodedCustom = "ZWNobyAnSGVsbG8gV29ybGQn";
 
     $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
-    $p = Set-AzureVMSourceImage -VM $p -Name $img;
+
+    $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
+    $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+
     $subid = (Get-AzureSubscription -Current).SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
@@ -253,7 +269,12 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
-    Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + $subid + '/services/images/' + $img);
+
+    Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
+
     Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;

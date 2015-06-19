@@ -33,7 +33,7 @@ function Get-ComputeTestResourceName
     
     try
     {
-        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
+        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
     }
     catch
     {
@@ -199,26 +199,6 @@ function Get-DefaultVMSize
 
 <#
 .SYNOPSIS
-Gets default RDFE Image
-#>
-function Get-DefaultRDFEImage
-{
-    param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
-
-    $d = (Azure\Get-AzureVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
-
-    if ($d -eq $null)
-    {
-        return $null;
-    }
-    else
-    {
-        return $d[-1].ImageName;
-    }
-}
-
-<#
-.SYNOPSIS
 Gets default CRP Image
 #>
 function Get-DefaultCRPImage
@@ -268,6 +248,32 @@ function Get-DefaultCRPImage
     $vmimg = Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
+}
+
+# Create Image Object
+function Create-ComputeVMImageObject
+{
+    param ([string] $publisherName, [string] $offer, [string] $skus, [string] $version)
+
+    $img = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+    $img.PublisherName = $publisherName;
+    $img.Offer = $offer;
+    $img.Skus = $skus;
+    $img.Version = $version;
+
+    return $img;
+}
+
+# Get Default CRP Windows Image Object Offline
+function Get-DefaultCRPWindowsImageOffline
+{
+    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2008-R2-SP1' 'latest';
+}
+
+# Get Default CRP Linux Image Object Offline
+function Get-DefaultCRPLinuxImageOffline
+{
+    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
 }
 
 <#
