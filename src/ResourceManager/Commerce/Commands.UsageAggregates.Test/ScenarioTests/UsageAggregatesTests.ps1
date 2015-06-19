@@ -18,13 +18,6 @@ Tests retrieving some usage data
 #>
 function Test-GetUsageAggregatesWithDefaultParameters()
 {
-	try
-	{
-		$result = Get-UsageAggregates -reportedStartDate = "5/1/2015" -reportedEndDate = "5/2/2015"
-		Write-Debug $result
-	}
-	catch
-	{
-
-	}
+	$result = Get-UsageAggregates -ReportedStartTime "5/1/2015" -ReportedEndTime "5/2/2015"
+	Write-Debug $result
 }
