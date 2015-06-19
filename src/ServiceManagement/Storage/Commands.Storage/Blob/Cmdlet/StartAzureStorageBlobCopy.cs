@@ -503,7 +503,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcFile.Uri.ToString(), destBlob.Uri.ToString()))
             {
-                string copyId = await destBlob.StartCopyAsync(srcFile, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                string copyId = await destBlob.StartCopyAsync(srcFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
@@ -524,9 +524,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 destBlob = container.GetBlockBlobReference(destBlobName);
             }
+            else if (BlobType.AppendBlob == blobType)
+            {
+                destBlob = container.GetAppendBlobReference(destBlobName);
+            }
             else
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobType, blobType));
+                throw new ArgumentException(String.Format(Resources.InvalidBlobType, blobType, destBlobName));
             }
 
             return destBlob;

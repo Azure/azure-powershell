@@ -185,7 +185,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (context != null)
             {
-                WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, Context.StorageAccountName));
+                WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));
             }
             else
             {
