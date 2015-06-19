@@ -2,7 +2,9 @@
 * Added Batch cmdlets
     * Start-AzureBatchPoolResize
     * Stop-AzureBatchPoolResize
-* Added support for scaling in Set-AzureRedisCache, using redisConfiguration instead of maxMemoryPolicy, changes related to ResourceBase, ResourceBaseExtended and ResourceIdentity #513
+* RedisCache cmdlets 
+    * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
+    * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
