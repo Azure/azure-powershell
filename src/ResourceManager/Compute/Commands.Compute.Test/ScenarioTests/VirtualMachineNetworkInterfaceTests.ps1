@@ -370,7 +370,7 @@ function Test-AddNetworkInterface
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
@@ -384,14 +384,14 @@ function Test-AddNetworkInterface
         $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-		$nicId = $nic.Id;
+        $nicId = $nic.Id;
 
         $nicList = Get-AzureNetworkInterface -ResourceGroupName $rgname;
-		$nicList[0].Primary = $true;
+        $nicList[0].Primary = $true;
         $p = Add-AzureVMNetworkInterface -VM $p -NetworkInterface $nicList;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicList[0].Id;
-		Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -424,23 +424,23 @@ function Test-AddNetworkInterface
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
-        # OS & Image
+		# OS & Image
         $user = "Foo12";
         $password = 'BaR@123' + $rgname;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
-
-        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        # Image Reference
+        $imgRef = Get-DefaultCRPImage;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        Assert-NotNull $p.StorageProfile.ImageReference;
+        Assert-Null $p.StorageProfile.SourceImageId;
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
@@ -449,36 +449,10 @@ function Test-AddNetworkInterface
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
 
-        # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
-        Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
-
-        # Update
-        $p.Location = $vm1.Location;
-        Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p;
-
-        $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
-        Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm2.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
-        Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
-        Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
-        Assert-NotNull $vm2.Location;
-
-        $vms = Get-AzureVM -ResourceGroupName $rgname;
-        Assert-AreNotEqual $vms $null;
-
-        # Remove All VMs
-        Get-AzureVM -ResourceGroupName $rgname | Remove-AzureVM -ResourceGroupName $rgname -Force;
-        $vms = Get-AzureVM -ResourceGroupName $rgname;
-        Assert-AreEqual $vms $null;
     }
     finally
     {

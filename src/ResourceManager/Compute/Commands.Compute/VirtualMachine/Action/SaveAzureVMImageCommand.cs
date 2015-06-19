@@ -73,11 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The file path in which the template of the captured image is stored")]
         [ValidateNotNullOrEmpty]
-        public string Path
-        {
-            get;
-            set;
-        }
+        public string Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
