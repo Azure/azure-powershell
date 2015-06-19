@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage))]
+    [OutputType(typeof(PSVirtualMachineExtensionImageType))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
             VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
 
             var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImage
+                         select new PSVirtualMachineExtensionImageType
                          {
                              RequestId = result.RequestId,
                              StatusCode = result.StatusCode,

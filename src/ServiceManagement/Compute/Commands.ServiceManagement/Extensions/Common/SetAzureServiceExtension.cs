@@ -149,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 Version = Version,
                 Roles = new ExtensionRoleList(Role != null && Role.Any() ? Role.Select(r => new ExtensionRole(r)) : Enumerable.Repeat(new ExtensionRole(), 1))
             };
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration, PeerDeployment.ExtensionConfiguration);
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, PeerDeployment);
             ChangeDeployment(extConfig);
         }
 

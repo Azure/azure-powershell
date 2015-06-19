@@ -236,8 +236,7 @@ function setup_image_and_disks
 
     $vmconfig = Set-AzureVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-    # Image Reference;
-    $vmconfig.StorageProfile.SourceImage = $null;
+    # Image Reference
     $imgRef = Get-DefaultCRPImage -loc $loc;
     $vmconfig = ($imgRef | Set-AzureVMSourceImage -VM $vmconfig);
 
@@ -259,6 +258,8 @@ function Run-VMDynamicTests
 {
     param ([int] $num_total_generated_tests = 3, [string] $base_folder = '.\ScenarioTests\Generated')
 
+    $target_location = Get-ComputeTestLocation;
+
     $st = Write-Verbose 'Running VM Dynamic Tests - Start';
 
     [bool] $isRecordMode = $true;
@@ -276,6 +277,8 @@ function Run-VMDynamicTests
 
     $random_sstr = Get-ComputeTestResourceName;
     $random_seed = get_hash_int_value $random_sstr;
+
+    $random_vmsize_seeds = @($null) * $num_total_generated_tests;
     
     for ($i = 0; $i -lt $num_total_generated_tests; $i++)
     {
@@ -288,6 +291,8 @@ function Run-VMDynamicTests
 
         $generated_func_name = 'ps_vm_dynamic_test_func_' + $index + '_' + $rgname_str;
         $generated_func_names[$i] = $generated_func_name;
+
+        $random_vmsize_seeds[$i] = get_hash_int_value (Get-ComputeTestResourceName);
 
         $st = Write-Verbose "Running VM Dynamic Tests - File & Test Name #${index}: ${generated_file_name} & ${generated_func_name}";
     }
@@ -313,7 +318,14 @@ function Run-VMDynamicTests
             $st = $func_create_and_setup_vm_config_object | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
             $loc_name_str = $locations[$i % $locations.Count];
-            $vm_size_str = (get_all_standard_vm_sizes $loc_name_str) | Get-Random -SetSeed $random_seed;
+
+            if ($target_location -ne $null -and $target_location -ne '')
+            {
+                # Use Input Target Location String, if any
+                $loc_name_str = $target_location;
+            }
+
+            $vm_size_str = (get_all_standard_vm_sizes $loc_name_str) | Get-Random -SetSeed $random_vmsize_seeds[$i];
 
             $st = $func_setup_image_and_disks | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 

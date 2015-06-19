@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
                 foreach (var item in result.AvailabilitySets)
                 {
                     var psItem = Mapper.Map<PSAvailabilitySet>(item);
+                    psItem = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psItem);
                     psResultList.Add(psItem);
                 }
 
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var result = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
                 var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+                psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
                 WriteObject(psResult);
             }
         }

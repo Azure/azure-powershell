@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
                 avSetParams);
 
             var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+            psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
             WriteObject(psResult);
         }
     }
