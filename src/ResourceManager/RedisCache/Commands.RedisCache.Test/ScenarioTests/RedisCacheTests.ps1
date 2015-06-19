@@ -52,7 +52,7 @@ function Test-RedisCache
     }
 
     # Updating Cache
-    $cacheUpdated = Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -MaxMemoryPolicy AllKeysLRU -EnableNonSslPort $false
+    $cacheUpdated = Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
     
     Assert-AreEqual $cacheName $cacheUpdated.Name
     Assert-AreEqual $location $cacheUpdated.Location
@@ -65,8 +65,8 @@ function Test-RedisCache
     Assert-AreEqual "2.8" $cacheUpdated.RedisVersion
     Assert-AreEqual "250MB" $cacheUpdated.Size
     Assert-AreEqual "Basic" $cacheUpdated.Sku
-    Assert-AreEqual "AllKeysLRU" $cacheUpdated.MaxMemoryPolicy.Replace("-", "")
-    Assert-False  { $cacheUpdated.EnableNonSslPort }
+    Assert-AreEqual "allkeys-lru" $cacheUpdated.RedisConfiguration.Item("maxmemory-policy")
+    Assert-True  { $cacheUpdated.EnableNonSslPort }
 	
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
@@ -155,22 +155,6 @@ function Test-SetNonExistingRedisCacheTest
 
 <#
 .SYNOPSIS
-Tests creating redis cache that already exists.
-#>
-function Test-CreateExistingRedisCacheTest
-{
-    # Setup
-    # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
-    $cacheName = "myportalcache"
-    $location = "North Central US"
-	
-    # Creating Cache
-    Assert-ThrowsContains {New-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Standard} "already exists"
-}
-
-<#
-.SYNOPSIS
 Tests redis cache.
 #>
 function Test-RedisCachePipeline
@@ -182,7 +166,7 @@ function Test-RedisCachePipeline
     $location = "North Central US"
 	
     # Creating Cache
-    $cacheCreated = New-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic -EnableNonSslPort $false
+    $cacheCreated = New-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic -EnableNonSslPort $true
     
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -195,7 +179,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual "2.8" $cacheCreated.RedisVersion
     Assert-AreEqual "250MB" $cacheCreated.Size
     Assert-AreEqual "Basic" $cacheCreated.Sku
-    Assert-False { $cacheCreated.EnableNonSslPort }
+    Assert-True { $cacheCreated.EnableNonSslPort }
     
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -224,7 +208,7 @@ function Test-RedisCachePipeline
     }
 	
     # Updating Cache using pipeline
-    Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRedisCache -MaxMemoryPolicy AllKeysRandom -EnableNonSslPort $true
+    Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
     $cacheUpdatedPiped = Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName 
     
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
@@ -238,8 +222,8 @@ function Test-RedisCachePipeline
     Assert-AreEqual "2.8" $cacheUpdatedPiped.RedisVersion
     Assert-AreEqual "250MB" $cacheUpdatedPiped.Size
     Assert-AreEqual "Basic" $cacheUpdatedPiped.Sku
-    Assert-AreEqual "AllKeysRandom" $cacheUpdatedPiped.MaxMemoryPolicy.Replace("-", "")
-    Assert-True  { $cacheUpdatedPiped.EnableNonSslPort } 
+    Assert-AreEqual "allkeys-random"  $cacheUpdatedPiped.RedisConfiguration.Item("maxmemory-policy")
+    Assert-False  { $cacheUpdatedPiped.EnableNonSslPort } 
     
     # Get cache keys
     $cacheKeysBeforeUpdate = Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzureRedisCacheKey
