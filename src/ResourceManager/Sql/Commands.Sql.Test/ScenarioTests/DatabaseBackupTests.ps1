@@ -36,11 +36,11 @@ function Test-ListDatabaseRestorePoints
 		$standarddb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-Edition Standard -RequestedServiceObjectiveName S0
 
-		# Get restore points from data warehouse database normally.
+		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzureSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-Null $restorePoints # Since the data warehouse database has just been created, it should not have any discrete restore points.
 
-		# Get restore points from standard database piped.
+		# Get restore points from standard database through pipe.
 		$restorePoints = $standarddb | Get-AzureSqlDatabaseRestorePoints 
 		Assert-AreEqual $restorePoints.Count 1 # Standard databases should only have 1 continuous restore point.
 		$restorePoint = $restorePoints[0]
