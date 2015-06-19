@@ -82,11 +82,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Microsoft.Azure.Commands.UsageAggregates.dll-help.psd1" />
     <None Include="packages.config" />
     <None Include="TestTheCmdLet.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.WindowsAzure.Commands.UsageAggregates.dll-help.xml">
+    <Content Include="Microsoft.Azure.Commands.UsageAggregates.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
