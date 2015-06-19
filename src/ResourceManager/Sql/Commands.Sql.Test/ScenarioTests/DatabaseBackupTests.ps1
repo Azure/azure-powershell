@@ -36,15 +36,11 @@ function Test-ListDatabaseRestorePoints
 		$standarddb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-Edition Standard -RequestedServiceObjectiveName S0
 
-		# Get restore points from data warehouse database.
+		# Get restore points from data warehouse database. There should be none.
 		$restorePoints =  Get-AzureSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
-		$restorePoint = $restorePoints[0]
-		Assert-AreEqual $restorePoint.RestorePointType Discrete
-		Assert-NotNull $restorePoint.RestorePointCreationDate 
-		Assert-Null $restorePoint.EarliestRestoreDate 
-		Assert-AreEqual $restorePoint.SizeBytes 0
+		Assert-True $restorePoints.IsEmpty
 
-		# Get restore points from standard database.
+		# Get restore points from standard database.There should be 1.
 		$restorePoints = Resume-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $standarddb.DatabaseName
 		$restorePoint = $restorePoints[0]
 		Assert-AreEqual $restorePoint.RestorePointType Continuous
@@ -83,12 +79,7 @@ function Test-ListDatabaseRestorePointsPiped
 			-Edition Standard -RequestedServiceObjectiveName S0
 
 		# Get restore points from data warehouse database.
-		$restorePoints =  $dwdb | Get-AzureSqlDatabaseRestorePoints
-		$restorePoint = $restorePoints[0]
-		Assert-AreEqual $restorePoint.RestorePointType Discrete
-		Assert-NotNull $restorePoint.RestorePointCreationDate 
-		Assert-Null $restorePoint.EarliestRestoreDate 
-		Assert-AreEqual $restorePoint.SizeBytes 0
+		Assert-True $restorePoints.IsEmpty
 
 		# Get restore points from standard database.
 		$restorePoints = $standarddb | Resume-AzureSqlDatabase

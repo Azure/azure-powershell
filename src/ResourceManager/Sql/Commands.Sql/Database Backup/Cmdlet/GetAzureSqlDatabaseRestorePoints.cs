@@ -25,24 +25,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to retrieve restore points from.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseRestorePointModel> GetEntity()
         {
-            IEnumerable<AzureSqlDatabaseRestorePointModel> results;
-            results = ModelAdapter.ListRestorePoints(this.ResourceGroupName, this.ServerName, this.DatabaseName);
-            return results;
+            return ModelAdapter.ListRestorePoints(this.ResourceGroupName, this.ServerName, this.DatabaseName);
         }
 
         /// <summary>

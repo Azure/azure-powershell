@@ -156,7 +156,9 @@
     <None Include="ScenarioTests\DatabaseActivationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\DatabaseBackupTests.ps1" />
+    <None Include="ScenarioTests\DatabaseBackupTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\RecommendedElasticPoolTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

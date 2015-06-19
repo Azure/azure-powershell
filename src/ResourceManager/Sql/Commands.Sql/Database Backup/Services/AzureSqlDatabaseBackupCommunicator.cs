@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the database activation REST endpoints.
+    /// This class is responsible for all the REST communication with the database backup REST endpoints.
     /// </summary>
     public class AzureSqlDatabaseBackupCommunicator
     {
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure Sql Databases
+        /// Creates a communicator for Azure Sql Database backup REST endpoints.
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="profile">Azure profile</param>
+        /// <param name="subscription">Associated subscription</param>
         public AzureSqlDatabaseBackupCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
@@ -61,8 +61,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Gets all the restore points for a given Azure Sql Database.
+        /// Lists the restore points for a given Sql Azure Database.
         /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
         public IList<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Backup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;

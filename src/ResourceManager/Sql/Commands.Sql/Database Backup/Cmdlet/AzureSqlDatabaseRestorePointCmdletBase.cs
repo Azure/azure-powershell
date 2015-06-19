@@ -36,6 +36,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "The name of the Azure SQL Database to retrieve restore points from.")]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
+        /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <param name="subscription"></param>

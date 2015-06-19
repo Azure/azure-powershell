@@ -32,7 +32,7 @@ using Microsoft.Azure.Management.Sql.Models;
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
     /// <summary>
-    /// Adapter for database activation operations
+    /// Adapter for database backup operations
     /// </summary>
     public class AzureSqlDatabaseBackupAdapter
     {

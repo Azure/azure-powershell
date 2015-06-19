@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void SuspendAzureSqlDatabaseAttributes()
+        public void GetAzureSqlDatabaseRestorePointsAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseRestorePoints);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
