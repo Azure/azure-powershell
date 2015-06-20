@@ -82,9 +82,11 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       Assert-AreEqual "IPsec" $list[0].ConnectionType
       Assert-AreEqual "3" $list[0].RoutingWeight
       Assert-AreEqual "abc" $list[0].SharedKey
-	  $expected.LocalNetworkGateway2.Location = $location
 
       # Set/Update VirtualNetworkGatewayConnection
+	  $expected.Location = $location
+	  $expected.VirtualNetworkGateway1.Location = $location
+	  $expected.LocalNetworkGateway2.Location = $location
       $expected.RoutingWeight = "4"
       $expected.SharedKey = "xyz"
 
@@ -156,7 +158,8 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       Assert-AreEqual $localnetGateway.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $localnetGateway.Name $actual.Name	
       Assert-AreEqual "192.168.3.11" $localnetGateway.GatewayIpAddress
-	  Assert-AreEqual "192.168.0.0/16" $localnetGateway.AddressPrefix
+	  Assert-AreEqual "192.168.0.0/16" $localnetGateway.LocalNetworkAddressSpace.AddressPrefixes[0]
+	  $localnetGateway.Location = $location
 
       # Create VirtualNetworkGatewayConnection
       $actual = New-AzureVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc
@@ -168,7 +171,7 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       Assert-AreEqual "abc" $expected.SharedKey
 
       # Set VirtualNetworkGatewayConnectionSharedKey
-      $actual = Set-AzureVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -Value TestSharedKeyValue -Force
+      $actual = Set-AzureVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -Value "TestSharedKeyValue" -Force
 
       # Get VirtualNetworkGatewayConnectionSharedKey
       $expected = Get-AzureVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName

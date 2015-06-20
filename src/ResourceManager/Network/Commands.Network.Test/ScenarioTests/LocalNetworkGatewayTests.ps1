@@ -48,8 +48,7 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual "192.168.3.4" $list[0].GatewayIpAddress
       
       # Set/Update LocalNetworkGateway
-	  $expected.AddressPrefix = "200.168.0.0/16"
-      $actual = Set-AzureLocalNetworkGateway -LocalNetworkGateway $expected
+      $actual = Set-AzureLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16"
       $expected = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual "200.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
