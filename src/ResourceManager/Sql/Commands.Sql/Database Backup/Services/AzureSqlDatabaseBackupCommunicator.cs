@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>List of restore points</returns>
         public IList<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Backup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
         }
 
         /// <summary>
