@@ -1,91 +1,203 @@
-<?xml version="1.0" encoding="utf-8"?>
-<helpItems xmlns="http://msh" schema="maml">
-    <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-        <command:details>
-            <command:name>Get-UsageAggregation</command:name>
-            <maml:description>
-                <maml:para>Enables you to query aggregate Azure subscription consumption data.</maml:para>
-            </maml:description>
-            <maml:copyright>
-                <maml:para />
-            </maml:copyright>
-            <command:verb>Get</command:verb>
-            <command:noun>UsageAggregation</command:noun>
-            <dev:version />
-        </command:details>
-        <maml:description>
-            <maml:para>
-                The Get-UsageAggregation cmdlet  to query aggregate Azure subscription consumption data by:
-                • Start and end date/time
-                • Aggregation granularity (ie: daily, hourly)
-                • Instance level detail (ie: for multiple instances of the same resource)
-                For more information, see <maml:navigationLink>
-                    <maml:linkText>Azure Billing REST API Reference</maml:linkText>
-                    <maml:uri>https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c</maml:uri>
-                </maml:navigationLink>(https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) at the Microsoft Developer Network.
-            </maml:para>
-        </maml:description>
-        <command:syntax>
-            <command:syntaxItem>
-                <maml:name>Get-UsageAggregation</maml:name>
-                <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
-                    <maml:name>ReportedStartTime</maml:name>
-                    <maml:description>
-                        <maml:para>The start of the time range to retrieve data for.</maml:para>
-                    </maml:description>
-                    <command:parameterValue required="true" variableLength="True">DateTime</command:parameterValue>
-                </command:parameter>
-                <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
-                    <maml:name>ReportedEndTime</maml:name>
-                    <maml:description>
-                        <maml:para>The end of the time range to retrieve data for.</maml:para>
-                    </maml:description>
-                    <command:parameterValue required="true" variableLength="True">DateTime</command:parameterValue>
-                </command:parameter>
-                <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-                    <maml:name>AggregationGranularity</maml:name>
-                    <maml:description>
-                        <maml:para>Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour.</maml:para>
-                    </maml:description>
-                    <command:parameterValue required="false" variableLength="false">AggregationGranularity</command:parameterValue>
-                </command:parameter>
-                <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-                    <maml:name>ShowDetails</maml:name>
-                    <maml:description>
-                        <maml:para>When set to true (default), the aggregates are broken down into the instance metadata which is more granular.</maml:para>
-                    </maml:description>
-                    <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
-                </command:parameter>
-                <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
-                    <maml:name>ContinuationToken</maml:name>
-                    <maml:description>
-                        <maml:para>Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.</maml:para>
-                    </maml:description>
-                    <command:parameterValue required="true" variableLength="true">String</command:parameterValue>
-                </command:parameter>
-            </command:syntaxItem>
-        </command:syntax>
-        <command:examples>
-            <command:example>
-                <maml:title>Example 1: Retrieves data for subscription</maml:title>
-                <maml:introduction>
-                    <maml:para>
-                    </maml:para>
-                </maml:introduction>
-                <dev:code>
-                    PS C:\&gt;Set-AzureSubscription -SubscriptionId $subscription
-                    PS C:\&gt;Get-UsageAggregation -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
-                </dev:code>
-                <dev:remarks>
-                    <maml:para>The final command retrieves the usage data for the subscription for the specificed dates of 5/2/2015 and 5/5/2015.</maml:para>
-                    <maml:para></maml:para>
-                </dev:remarks>
-                <command:commandLines>
-                    <command:commandLine>
-                        <command:commandText />
-                    </command:commandLine>
-                </command:commandLines>
-            </command:example>
-        </command:examples>
-    </command:command>
+﻿<?xml version="1.0" encoding="utf-8"?><helpItems schema="maml">
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Get-UsageAggregates</command:name>
+		<maml:description>
+			<maml:para>Enables you to query aggregate Azure subscription consumption data.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>UsageAggregates</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>
+The Get-UsageAggregation cmdlet  to query aggregate Azure subscription consumption data by:
+• Start and end date/time
+• Aggregation granularity (ie: daily, hourly)
+• Instance level detail (ie: for multiple instances of the same resource)
+For more information, see Azure Billing REST API Reference (https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) at the Microsoft Developer Network.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-UsageAggregates</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ReportedStartTime</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ReportedEndTime</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AggregationGranularity</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AggregationGranularity</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ShowDetails</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ContinuationToken</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ReportedStartTime</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ReportedEndTime</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			<dev:type>
+				<maml:name>DateTime</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>AggregationGranularity</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AggregationGranularity</command:parameterValue>
+			<dev:type>
+				<maml:name>AggregationGranularity</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ShowDetails</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<dev:type>
+				<maml:name>Boolean</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ContinuationToken</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Profile</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			<dev:type>
+				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Retrieves data for subscription  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Set-AzureSubscription -SubscriptionId $subscription
+PS C:\&gt;Get-UsageAggregates -ReportedStartTime &quot;5/2/2015&quot; -ReportedEndTime &quot;5/5/2015&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>The final command retrieves the usage data for the subscription for the specificed dates of 5/2/2015 and 5/5/2015.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
 </helpItems>
