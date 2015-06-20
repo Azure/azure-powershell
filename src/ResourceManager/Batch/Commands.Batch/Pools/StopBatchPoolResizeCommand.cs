@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Tags.Model;
-using System.Collections;
-using System.Collections.Generic;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Compute.Models
+namespace Microsoft.Azure.Commands.Batch
 {
-    public static class HashTableExtension
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize")]
+    public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        public static Dictionary<string, string> ToDictionary(this Hashtable[] tags)
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        public override void ExecuteCmdlet()
         {
-            return TagsConversionHelper.CreateTagDictionary(tags, true);
+            BatchClient.StopResizePool(this.BatchContext, this.Name, this.AdditionalBehaviors);
         }
     }
 }
