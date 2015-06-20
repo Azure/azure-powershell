@@ -19,7 +19,9 @@
     * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
     * Refactored Resource Lock cmdlets
     * Removed unnecessary code when getting a resource
-	
+* Added UsageAggregates cmdlets 
+    * Get-UsageAggregates
+
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
 * Fix bug in Set-AzureResource cmdlet #456
