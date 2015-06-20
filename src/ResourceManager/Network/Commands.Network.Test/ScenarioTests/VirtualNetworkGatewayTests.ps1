@@ -38,7 +38,7 @@ function Test-VirtualNetworkGatewayCRUD
       $subnet = New-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
       $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-	  $subnet = Get-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+      $subnet = Get-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
       $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
@@ -51,7 +51,7 @@ function Test-VirtualNetworkGatewayCRUD
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       #Assert-AreEqual "Vpn" $expected.GatewayType
-	  #Assert-AreEqual "RouteBased" $expected.VpnType
+      #Assert-AreEqual "RouteBased" $expected.VpnType
       
       # List virtualNetworkGateways
       $list = Get-AzureVirtualNetworkGateway -ResourceGroupName $rgname
