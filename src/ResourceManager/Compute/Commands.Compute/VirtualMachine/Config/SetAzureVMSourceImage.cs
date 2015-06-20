@@ -27,18 +27,12 @@ namespace Microsoft.Azure.Commands.Compute
     public class SetAzureVMSourceImageCommand : AzurePSCmdlet
     {
         protected const string ImageReferenceParameterSet = "ImageReferenceParameterSet";
-        protected const string SourceImageParameterSet = "SourceImageParameterSet";
 
         [Alias("VMProfile")]
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("SourceImageName", "ImageName")]
-        [Parameter(ParameterSetName = SourceImageParameterSet, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-        
         [Parameter(ParameterSetName = ImageReferenceParameterSet, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
@@ -62,23 +56,13 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            if (this.ParameterSetName == SourceImageParameterSet)
+            this.VM.StorageProfile.ImageReference = new ImageReference
             {
-                this.VM.StorageProfile.SourceImage = new SourceImageReference
-                {
-                    ReferenceUri = this.Name
-                }.Normalize(this.Profile.Context.Subscription.Id.ToString());
-            }
-            else if (this.ParameterSetName == ImageReferenceParameterSet)
-            {
-                this.VM.StorageProfile.ImageReference = new ImageReference
-                {
-                    Publisher = PublisherName,
-                    Offer = Offer,
-                    Sku = Skus,
-                    Version = Version
-                };
-            }
+                Publisher = PublisherName,
+                Offer = Offer,
+                Sku = Skus,
+                Version = Version
+            };
 
             WriteObject(this.VM);
         }

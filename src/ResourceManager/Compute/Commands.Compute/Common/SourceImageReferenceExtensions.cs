@@ -15,9 +15,9 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.Compute.Models
+namespace Microsoft.Azure.Commands.Compute.Common
 {
-    public static class SourceImageReferenceExtension
+    public static class SourceImageReferenceExtensions
     {
         const string pattern = @"^/([A-Za-z0-9\-]+)/services/images/.*$";
         const string format = "/{0}/services/images/{1}";

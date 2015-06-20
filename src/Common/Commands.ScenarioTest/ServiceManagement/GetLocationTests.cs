@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
-{
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
+using Xunit;
 
-    public class MoveResourceTest
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+{
+    public partial class AzureVMTests
     {
         [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveAzureResource()
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestGetAzureLocation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
+            this.RunPowerShellTest("Test-GetAzureLocation");
         }
     }
 }
