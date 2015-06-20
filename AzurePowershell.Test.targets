@@ -29,6 +29,7 @@
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
     <StorageTestDebug>.\src\ServiceManagement\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+    <UsageAggregationTestDebug>.\src\ResourceManager\Commerce\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
     <ScenarioTestFilter>All</ScenarioTestFilter>
     <OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
@@ -55,13 +56,14 @@
     <XUnitTests Include=".\src\ResourceManager\Batch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\Commerce\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\ManagedCache\Commands.ManagedCache.Test\bin\Debug\Microsoft.Azure.Commands.ManagedCache.Test.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
     <XUnitTests Include=".\src\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
-	<XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
   </ItemGroup>
   
   <Target Name="InvokeMSTest">
@@ -242,6 +244,13 @@
     <Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
   </Target>
+
+  <!-- run the UsageAggregationTests -->
+  <Target Name="UsageAggregationTests">
+    <Message Importance="high" Text="Running UsageAggregates tests" />
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(UsageAggregationTestDebug)" Html="$(TestOutputDirectory)\UsageAggregationTests.xunit.dll.html" Verbose="true"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>  
   
   <!-- Run the scenario tests with Mocks -->
   <Target Name="MockedScenarioTests">
