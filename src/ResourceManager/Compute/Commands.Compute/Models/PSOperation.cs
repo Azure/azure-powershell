@@ -21,7 +21,7 @@
 
 using System.Net;
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSOperation
     {
