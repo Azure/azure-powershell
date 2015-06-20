@@ -211,31 +211,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\CreateAndRemoveNSG.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\GetMultipleNSGs.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSGFromSubnet.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSGWithNonExistingName.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\RemoveNSR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetAndGetNSGForSubnet.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSGToSubnetInDiffRegion.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSRWithInvalidParameter.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="TestData\EmptyNetworkConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

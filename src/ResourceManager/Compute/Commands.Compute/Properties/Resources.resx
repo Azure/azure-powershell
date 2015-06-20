@@ -135,6 +135,9 @@
   <data name="DeprecationOfGetAzureVMImageDetail" xml:space="preserve">
     <value>Get-AzureVMImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMImage cmdlet.</value>
   </data>
+  <data name="DeprecationOfNewAzureVMNameParameterWarning" xml:space="preserve">
+    <value>The Name parameter of New-AzureVM cmdlet will be deprecated in a future release of Azure PowerShell, because the functionality of Name parameter is obsolete.</value>
+  </data>
   <data name="VirtualMachineExtensionRemovalCaption" xml:space="preserve">
     <value>Virtual machine extension removal operation</value>
   </data>

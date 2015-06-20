@@ -12,33 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
-{
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
-    using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
+using Xunit;
 
-    public class RedisCacheTests : RedisCacheTestsBase
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+{
+    public partial class AzureVMTests
     {
         [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRedisCache()
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestGetAzureLocation()
         {
-            RunPowerShellTest("Test-RedisCache");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNonExistingRedisCacheTest()
-        {
-            RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRedisCachePipeline()
-        {
-            RunPowerShellTest("Test-RedisCachePipeline");
+            this.RunPowerShellTest("Test-GetAzureLocation");
         }
     }
 }

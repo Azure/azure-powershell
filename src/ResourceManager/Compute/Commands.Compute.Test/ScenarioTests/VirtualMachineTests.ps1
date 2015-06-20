@@ -49,6 +49,12 @@ function Test-VirtualMachine
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
+        # Adding the same Nic but not set it Primary
+        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId -Primary;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
+
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
@@ -89,16 +95,21 @@ function Test-VirtualMachine
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # TODO: Remove Data Disks for now
         $p.StorageProfile.DataDisks = $null;
@@ -112,7 +123,12 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+        
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
+
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
@@ -128,7 +144,12 @@ function Test-VirtualMachine
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm2.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $vm2.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $vm2.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $vm2.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $vm2.StorageProfile.ImageReference.Version $imgRef.Version;
+
         Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
@@ -144,11 +165,15 @@ function Test-VirtualMachine
 
         # Availability Set
         $asetName = 'aset' + $rgname;
-        New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+        $st = New-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc;
+        Assert-NotNull $st.RequestId;
+        Assert-NotNull $st.StatusCode;
 
         $asets = Get-AzureAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
+        Assert-NotNull $asets[0].RequestId;
+        Assert-NotNull $asets[0].StatusCode;
 
         $aset = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
@@ -451,8 +476,7 @@ function Test-VirtualMachineSizeAndUsage
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = Set-AzureVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         Assert-NotNull $p.StorageProfile.ImageReference;
@@ -468,6 +492,8 @@ function Test-VirtualMachineSizeAndUsage
         # Test Sizes
         $s1 = Get-AzureVMSize -Location ($loc -replace ' ');
         Assert-NotNull $s1;
+        Assert-NotNull $s1.RequestId;
+        Assert-NotNull $s1.StatusCode;
         Validate-VirtualMachineSize $vmsize $s1;
 
         $s2 = Get-AzureVMSize -ResourceGroupName $rgname -VMName $vmname;
@@ -526,6 +552,8 @@ function Validate-VirtualMachineUsage
         Assert-NotNull $item.Name.Value;
         Assert-NotNull $item.Name.LocalizedValue;
         Assert-True { $item.CurrentValue -le $item.Limit };
+        Assert-NotNull $item.RequestId;
+        Assert-NotNull $item.StatusCode;
     }
 
     return $valid;
@@ -617,8 +645,7 @@ function Test-VirtualMachinePIRv2
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
@@ -727,8 +754,7 @@ function Test-VirtualMachineCapture
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
@@ -745,7 +771,10 @@ function Test-VirtualMachineCapture
         Set-AzureVM -Generalize -ResourceGroupName $rgname -Name $vmname;
 
         $dest = Get-ComputeTestResourceName;
-        Save-AzureVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite;
+        $templatePath = ".\template.txt";
+        Save-AzureVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
+        $template = Get-Content $templatePath;
+        Assert-True { $template[1].Contains("$schema"); }
 
         # Remove
         Remove-AzureVM -ResourceGroupName $rgname -Name $vmname -Force;
@@ -822,8 +851,7 @@ function Test-VirtualMachineDataDisk
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
@@ -898,8 +926,7 @@ function Test-VirtualMachinePlan
         # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
@@ -980,8 +1007,6 @@ function Test-VirtualMachinePlan2
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         # Image Reference
-        $p.StorageProfile.SourceImage = $null;
-
         # Pick a VMM Image
         $vmmImgPubName = 'a10networks';
         $vmmImgOfferName = 'a10-vthunder-adc';
@@ -1062,15 +1087,18 @@ function Test-VirtualMachineTags
 
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        # Image Reference;
-        $p.StorageProfile.SourceImage = $null;
+        # Image Reference
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # Test Tags
         $tags = @{Name = "test1"; Value = "testval1"}, @{ Name = "test2"; Value = "testval2" };
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -Tags $tags;
+        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -Tags $tags;
+        Assert-NotNull $st.RequestId;
+        Assert-NotNull $st.StatusCode;
         $vm = Get-AzureVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-NotNull $vm.RequestId;
+        Assert-NotNull $vm.StatusCode;
 
         # Assert
         Assert-AreEqual $tags[0].Value $vm.Tags[$tags[0].Name];
@@ -1142,15 +1170,20 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-        $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
+        $imgRef = Get-DefaultCRPWindowsImageOffline;
 
         $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
-        $p = Set-AzureVMSourceImage -VM $p -Name $img;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
+
         Assert-Null $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents "NULL";
 
         # Virtual Machine
@@ -1162,7 +1195,12 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
+
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
@@ -1236,15 +1274,20 @@ function Test-LinuxVirtualMachine
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-        $img = 'b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP3-v206';
+
+        $imgRef = Get-DefaultCRPLinuxImageOffline;
 
         $p = Set-AzureVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred
-        $p = Set-AzureVMSourceImage -VM $p -Name $img;
+        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
@@ -1255,7 +1298,12 @@ function Test-LinuxVirtualMachine
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-        Assert-AreEqual $vm1.StorageProfile.SourceImage.ReferenceUri ('/' + (Get-AzureSubscription -Current).SubscriptionId + '/services/images/' + $img);
+
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
+        Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
+
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
@@ -1267,5 +1315,43 @@ function Test-LinuxVirtualMachine
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+# Test Image Cmdlet Output Format
+function Test-VMImageCmdletOutputFormat
+{
+    $locStr = 'westus';
+    $publisher = 'MicrosoftWindowsServer';
+    $offer = 'WindowsServer';
+    $sku = '2008-R2-SP1';
+    $ver = '2.0.201503';
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr" @('Id', 'Location', 'PublisherName');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } " @('Id', 'Location', 'PublisherName');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer " @('Id', 'Location', 'PublisherName', 'Offer');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer | Get-AzureVMImageSku " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku');
+
+    Assert-OutputContains " Get-AzureVMImagePublisher -Location $locStr | ? { `$_.PublisherName -eq `'$publisher`' } | Get-AzureVMImageOffer | Get-AzureVMImageSku | Get-AzureVMImage " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression');
+
+    Assert-OutputContains " Get-AzureVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+
+    Assert-OutputContains " Get-AzureVMImageDetail -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+}
+
+# Test Get VM Size from All Locations
+function Test-GetVMSizeFromAllLocations
+{
+    $locations = Get-AzureLocation | where { $_.Name -like 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+    foreach ($loc in $locations)
+    {
+        $vmsizes = Get-AzureVMSize -Location $loc;
+        Assert-True { $vmsizes.Count -gt 0 }
+        Assert-True { ($vmsizes | where { $_.Name -eq 'Standard_A3' }).Count -eq 1 }
+
+        Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
     }
 }

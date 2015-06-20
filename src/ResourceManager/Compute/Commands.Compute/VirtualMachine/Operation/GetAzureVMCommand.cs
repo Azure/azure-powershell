@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
                     var psResult = Mapper.Map<PSVirtualMachine>(result.VirtualMachine);
+                    psResult = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psResult);
                     WriteObject(psResult);
                 }
             }
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.Commands.Compute
                 foreach (var item in result.VirtualMachines)
                 {
                     var psItem = Mapper.Map<PSVirtualMachine>(item);
+                    psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psItem);
                     psResultList.Add(psItem);
                 }
 
