@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string GatewayIpAddress  { get; set; }
 
-        public PSAddressSpace LocalNetworkSiteAddressSpace  { get; set; }
+        public PSAddressSpace LocalNetworkAddressSpace { get; set; }
 
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string AddressSpaceText
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkSiteAddressSpace, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LocalNetworkAddressSpace, Formatting.Indented); }
         }
     }
 }

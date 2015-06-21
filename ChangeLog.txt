@@ -1,4 +1,13 @@
-﻿2015.06.25 version 0.9.4
+﻿2015.06.20 Microsoft.Azure.Management.Network Version 2.0.4-preview
+PS command changes as per NRP Brooklyn APIs changes:-
+* Command New-AzureLocalNetworkGateway parameter name change
+* Command Reset-AzureLocalNetworkGateway renamed to Set-AzureLocalNetworkGateway, added new parameter
+* Resource: VirtualNetworkGateway parameter changes
+* Command New-AzureVirtualNetworkGateway parameter changes
+* Removed command Resize-AzureVirtualNetworkGateway
+* Command Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection
+
+2015.06.25 version 0.9.4
 * Added Batch cmdlets
     * Start-AzureBatchPoolResize
     * Stop-AzureBatchPoolResize
