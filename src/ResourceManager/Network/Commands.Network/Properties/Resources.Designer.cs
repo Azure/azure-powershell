@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to backendHttpSettingsList.
+        ///   Looks up a localized string similar to backendHttpSettingsCollection.
         /// </summary>
         public static string ApplicationGatewaybackendHttpSettingsName {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to gatewayIpConfiguration.
+        ///   Looks up a localized string similar to gatewayIpConfigurations.
         /// </summary>
         public static string ApplicationGatewayIpConfigurationName {
             get {

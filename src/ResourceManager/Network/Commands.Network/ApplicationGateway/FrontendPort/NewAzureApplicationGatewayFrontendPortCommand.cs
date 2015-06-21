@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             var frontendPort = new PSApplicationGatewayFrontendPort();
+            frontendPort.Name = this.Name;
             frontendPort.Port = this.Port;
 
             frontendPort.Id =

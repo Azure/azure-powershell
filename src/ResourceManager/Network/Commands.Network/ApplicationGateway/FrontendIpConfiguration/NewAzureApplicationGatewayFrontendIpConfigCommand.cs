@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.Network
             // Get the subnetId and publicIp AddressId from the object if specified
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
-                this.SubnetId = this.Subnet.Id;
+                if (Subnet != null)
+                {
+                    this.SubnetId = this.Subnet.Id;
+                }
 
                 if (PublicIpAddress != null)
                 {
@@ -60,14 +63,12 @@ namespace Microsoft.Azure.Commands.Network
                 frontendIpConfig.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 
-            frontendIpConfig.Id =
-                ChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIpConfigName,
-                    this.Name);
+            frontendIpConfig.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIpConfigName,
+                                    this.Name);
 
             WriteObject(frontendIpConfig);
-
         }
     }
 }

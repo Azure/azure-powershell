@@ -207,7 +207,7 @@
     <value>backendAddressPools</value>
   </data>
   <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
-    <value>backendHttpSettingsList</value>
+    <value>backendHttpSettingsCollection</value>
   </data>
   <data name="ApplicationGatewayChildResourceId" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}</value>
@@ -223,7 +223,7 @@
     <value>httpListeners</value>
   </data>
   <data name="ApplicationGatewayIpConfigurationName" xml:space="preserve">
-    <value>gatewayIpConfiguration</value>
+    <value>gatewayIpConfigurations</value>
   </data>
   <data name="ApplicationGatewayNameNotSet" xml:space="preserve">
     <value>ApplicationGatewayNameNotSet</value>
