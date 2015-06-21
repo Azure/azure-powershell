@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
         Mandatory = true,
         ValueFromPipelineByPropertyName = true,
-        HelpMessage = "Gateway connection type.")]
+        HelpMessage = "Gateway connection type:IPsec/Vnet2Vnet/ExpressRoute/VPNClient")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.VirtualNetworkGatewayConnectionType.IPsec,
             MNM.VirtualNetworkGatewayConnectionType.Vnet2Vnet,
-            MNM.VirtualNetworkGatewayConnectionType.Dedicated,
+            MNM.VirtualNetworkGatewayConnectionType.ExpressRoute,
             MNM.VirtualNetworkGatewayConnectionType.VPNClient,
             IgnoreCase = true)]
         public string ConnectionType { get; set; }

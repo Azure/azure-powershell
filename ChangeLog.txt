@@ -21,6 +21,13 @@
     * Removed unnecessary code when getting a resource
 * Added UsageAggregates cmdlets 
     * Get-UsageAggregates
+* Network Resource Provider changes
+    * New-AzureLocalNetworkGateway parameter name change
+    * Reset-AzureLocalNetworkGateway renamed to Set-AzureLocalNetworkGateway, added new parameter
+    * VirtualNetworkGateway parameter changes
+        * New-AzureVirtualNetworkGateway parameter changes
+        * Removed command Resize-AzureVirtualNetworkGateway
+        * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
