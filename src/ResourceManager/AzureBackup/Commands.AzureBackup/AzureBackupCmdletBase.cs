@@ -26,80 +26,50 @@ using System.Net;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureBackupCmdletBase : AzurePSCmdlet
     {
         /// <summary>
-        /// ResourceGroup context for the operation
-        /// </summary>
-        private string resourceGroupName { get; set; }
-
-        /// <summary>
-        /// Resource context for the operation
-        /// </summary>
-        private string resourceName { get; set; }
-
-        /// <summary>
-        /// Resource context for the operation
-        /// </summary>
-        private string location { get; set; }
-
-        /// <summary>
-        /// Client request id.
-        /// </summary>
-        private string clientRequestId;
-
-        /// <summary>
         /// Azure backup client.
         /// </summary>
-        private BackupServicesManagementClient azureBackupClient;
-
-        /// <summary>
-        /// Cancellation Token Source
-        /// </summary>
-        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        internal CancellationToken CmdletCancellationToken;
-
-        protected AzureBackupCmdletHelper azureBackupCmdletHelper;
-
+        private AzureBackupClientAdapter azureBackupClientAdapter;
+        
         /// <summary>
         /// Get Azure backup client.
         /// </summary>
-        internal BackupServicesManagementClient AzureBackupClient
+        protected AzureBackupClientAdapter AzureBackupClient
         {
             get
             {
-                if (this.azureBackupClient == null)
-                {
-                    // Temp code to be able to test internal env.
-                    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-
-                    var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
-                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(resourceName, resourceGroupName, cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
-                }
-
-                return this.azureBackupClient;
+                return this.azureBackupClientAdapter;
             }
         }
 
-        protected void RefreshClientRequestId()
+        /// <summary>
+        /// Initializes required client adapters
+        /// </summary>
+        /// <param name="rgName"></param>
+        /// <param name="rName"></param>
+        protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
-            clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
+            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
+            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri, rgName, rName);
+
+            WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
         }
 
-        public void InitializeAzureBackupCmdlet(string rgName, string rName, string locationName)
+        /// <summary>
+        /// Initializes required client adapters
+        /// </summary>
+        /// <param name="vault"></param>
+        protected void InitializeAzureBackupCmdlet(CmdletModel.AzureBackupVault vault)
         {
-            resourceGroupName = rgName;
-            resourceName = rName;
-            location = locationName;
-
-            RefreshClientRequestId();
-            WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", this.clientRequestId, resourceGroupName, resourceName));
-
-            CmdletCancellationToken = cancellationTokenSource.Token;
-            azureBackupCmdletHelper = new AzureBackupCmdletHelper(this);
+            InitializeAzureBackupCmdlet(vault.ResourceGroupName, vault.Name);
         }
 
         protected void ExecutionBlock(Action execAction)
@@ -172,15 +142,41 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
-        internal CustomRequestHeaders GetCustomRequestHeaders()
+        /// <summary>
+        /// Get status of long running operation
+        /// </summary>
+        /// <param name="operationId"></param>
+        /// <returns></returns>
+        internal OperationResultResponse GetOperationStatus(Guid operationId)
         {
-            var hdrs = new CustomRequestHeaders()
-            {
-                // ClientRequestId is a unique ID for every request to backend service.
-                ClientRequestId = this.clientRequestId,
-            };
+            return AzureBackupClient.GetOperationStatus(operationId.ToString());
+        }
 
-            return hdrs;
+        private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
+
+        /// <summary>
+        /// Track completion of long running operation
+        /// </summary>
+        /// <param name="operationId"></param>
+        /// <param name="checkFrequency">In Millisec</param>
+        /// <returns></returns>
+        internal OperationResultResponse TrackOperation(Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
+        {
+            OperationResultResponse response = null;
+
+            while (true)
+            {
+                response = GetOperationStatus(operationId);
+
+                if (response.OperationStatus == AzureBackupOperationStatus.Completed.ToString())
+                {
+                    break;
+                }
+
+                Thread.Sleep(checkFrequency);
+            }
+
+            return response;
         }
     }
 }

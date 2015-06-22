@@ -20,6 +20,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -59,15 +60,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (Job != null)
-            {
-                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
-            }
-
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                if (Job != null)
+                {
+                    InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName);
+                }
+
+                // TODO: BUG: This will overwrite the above initialization
+                base.ExecuteCmdlet();
+
                 //if (Job != null && JobId != null)
                 //{
                 //    throw new Exception("Please use either JobID filter or Job filter but not both.");
@@ -135,12 +137,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     JobId = JobId
                 };
 
-                Mgmt.JobListResponse jobsList = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var jobsList = AzureBackupClient.ListJobs(queryParams);
                 List<AzureBackupJob> retrievedJobs = new List<AzureBackupJob>();
 
-                foreach (Mgmt.Job serviceJob in jobsList.Jobs)
+                foreach (Mgmt.Job serviceJob in jobsList)
                 {
-                    retrievedJobs.Add(new AzureBackupJob(serviceJob, ResourceGroupName, ResourceName, Location));
+                    // TODO: Initialize vault from Job object when vault is made optional
+                    retrievedJobs.Add(new AzureBackupJob(vault, serviceJob));
                 }
 
                 WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());

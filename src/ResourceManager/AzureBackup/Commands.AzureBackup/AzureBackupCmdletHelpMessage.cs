@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string PolicyName = "The protection policy name.";
         public const string ResourceGroupName = "The ResourceGroup name.";
         public const string ResourceName = "The Resource name.";
-        public const string Location = "Location.";
+        public const string Location = "The resource location.";
+        public const string Sku = "The SKU of the backup vault instance.";
+        public const string ResourceTags = "A hash table which represents resource tags.";
         public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
         public const string ContainerResourceName = "The container resource name aka friendly name.";
         public const string ContainerId = "The container ID.";

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,27 +23,44 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     /// <summary>
-    /// Represents Azure Backup Container
+    /// Represents Azure Backup vault
     /// </summary>
-    public class AzureBackupContainer : AzureBackupContainerContextObject
+    public class AzureBackupVault
     {
-        /// <summary>
-        /// Status of health of the Azure Backup container
-        /// </summary>
-        public string HealthStatus { get; set; }
+        public string ResourceId { get; set; }
 
-        /// <summary>
-        /// Status of registration of the container
-        /// </summary>
-        public string RegistrationStatus { get; set; }
+        public string Name { get; set; }
 
-        public AzureBackupContainer() : base() { }
+        public string ResourceGroupName { get; set; }
 
-        public AzureBackupContainer(AzureBackupVault vault, ContainerInfo containerInfo)
-            : base(vault, containerInfo)
+        public string Region { get; set; }
+
+        // public Hashtable[] Tags { get; protected set; }
+
+        public string Sku { get; set; }
+
+        public string Storage { get; set; }
+
+        public AzureBackupVault() : base() { }
+
+        public AzureBackupVault(string resourceGroupName, string resourceName, string region)
         {
-            HealthStatus = containerInfo.HealthStatus;
-            RegistrationStatus = containerInfo.RegistrationStatus;
+            ResourceGroupName = resourceGroupName;
+            Name = resourceName;
+            Region = region;
+        }
+
+        internal void Validate()
+        {
+            if (String.IsNullOrEmpty(ResourceGroupName))
+            {
+                throw new ArgumentException("AzureBackupVault.ResourceGroupName");
+            }
+
+            if (String.IsNullOrEmpty(Name))
+            {
+                throw new ArgumentException("AzureBackupVault.Name");
+            }
         }
     }
 }
