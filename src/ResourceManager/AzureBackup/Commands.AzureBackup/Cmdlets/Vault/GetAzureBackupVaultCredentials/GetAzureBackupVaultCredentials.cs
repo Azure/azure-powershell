@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 string resourceType = "resourceType";
                 string displayName = subscriptionId + "_" + ResourceGroupName + "_" + ResourceName;
 
-                WriteVerbose(string.Format(CultureInfo.InvariantCulture,
-                                          "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
-                                          subscriptionId, ResourceGroupName, ResourceName, TargetLocation));
+                WriteDebug(string.Format(CultureInfo.InvariantCulture,
+                                         "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
+                                         subscriptionId, ResourceGroupName, ResourceName, TargetLocation));
 
                 X509Certificate2 cert = CertUtils.CreateSelfSignedCert(CertUtils.DefaultIssuer,
                                                                        CertUtils.GenerateCertFriendlyName(subscriptionId, ResourceName),
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 try
                 {
                     // Upload cert into ID Mgmt
-                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
+                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
                     acsNamespace = UploadCert(cert, subscriptionId, ResourceName, resourceType, ResourceGroupName);
-                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
+                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
                 }
                 catch (Exception exception)
                 {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     directoryPath = TargetLocation;
                 }
                 string filePath = Path.Combine(directoryPath, fileName);
-                WriteVerbose(string.Format("Saving Vault Credentials to file : {0}", filePath));
+                WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
 
                 File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     DataContractSerializer serializer = new DataContractSerializer(typeof(BackupVaultCreds));
                     serializer.WriteObject(writer, backupVaultCreds);
 
-                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Backup Vault - Successfully serialized the file content"));
+                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Backup Vault - Successfully serialized the file content"));
                 }
 
                 return Encoding.UTF8.GetString(output.ToArray());
