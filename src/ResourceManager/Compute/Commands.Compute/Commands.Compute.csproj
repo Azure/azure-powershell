@@ -77,9 +77,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.1-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Compute, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.5.0.1-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Compute, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.7.0.0-preview\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.3-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
@@ -164,7 +164,7 @@
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
-    <Compile Include="Models\HashTableExtensions.cs" />
+    <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
     <Compile Include="Models\PSOperation.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
@@ -178,7 +178,6 @@
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\GetAzureVMImageDetailCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
-    <Compile Include="Models\PSOperationResponse.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
     <Compile Include="Models\PSVirtualMachineImage.cs" />
@@ -187,10 +186,10 @@
     <Compile Include="Models\PSVirtualMachineImageResource.cs" />
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
-    <Compile Include="Models\LocationStringExtensions.cs" />
+    <Compile Include="Common\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="Models\SourceImageReferenceExtension.cs" />
+    <Compile Include="Common\SourceImageReferenceExtensions.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

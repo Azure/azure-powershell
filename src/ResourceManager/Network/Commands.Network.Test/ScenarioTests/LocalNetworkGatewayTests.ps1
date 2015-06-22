@@ -24,7 +24,7 @@ function Test-LocalNetworkGatewayCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/localNetworkGateways"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
     try 
      {
       # Create the resource group
@@ -36,7 +36,9 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "192.168.3.4" $expected.GatewayIpAddress
-      
+      Assert-AreEqual "192.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
+      $expected.Location = $location
+
       # List LocalNetworkGateways
       $list = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
@@ -45,11 +47,10 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual $list[0].Location $actual.Location
       Assert-AreEqual "192.168.3.4" $list[0].GatewayIpAddress
       
-      # Reset/Update LocalNetworkGateway
-      $expected.GatewayIpAddress = "192.168.3.5"
-      $actual = Reset-AzureLocalNetworkGateway -LocalNetworkGateway $expected
+      # Set/Update LocalNetworkGateway
+      $actual = Set-AzureLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16"
       $expected = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
-      Assert-AreEqual "192.168.3.5" $expected.GatewayIpAddress        
+      Assert-AreEqual "200.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
       # Delete LocalNetworkGateway
       $delete = Remove-AzureLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force

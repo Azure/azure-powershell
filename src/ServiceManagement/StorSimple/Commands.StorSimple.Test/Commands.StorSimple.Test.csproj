@@ -143,10 +143,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests.BackupPolicyTests\TestNewBackupPolicyAddConfigDefaultValues.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests.BackupPolicyTests\TestNewBackupPolicyConfig.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

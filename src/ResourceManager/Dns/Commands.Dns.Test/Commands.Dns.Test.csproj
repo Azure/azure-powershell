@@ -194,8 +194,89 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetAAAA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetAddRecordTypeMismatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetAddTwoCnames.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCNAME.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCrud.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCrudTrimsDotFromZoneName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCrudWithPiping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetCrudWithPipingTrimsDotFromZoneName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetEtagMismatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetGet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetGetWithEndsWith.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetMX.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetNS.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetRemoveRecordTypeMismatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetSOA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetSRV.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetTXT.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrud.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrudTrimsDot.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrudWithPiping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneCrudWithPipingTrimsDot.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneListWithEndsWith.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneRemoveEtagMismatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneRemoveNotFound.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneSetEtagMismatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.ZoneTests\TestZoneSetNotFound.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup />

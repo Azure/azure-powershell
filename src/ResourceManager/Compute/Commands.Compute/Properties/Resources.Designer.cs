@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("AvailabilitySetRemovalCaption", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to This cmdlet will remove the specified availability set. Do you want to continue?.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("AvailabilitySetRemovalConfirmation", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Get-AzureVMExtensionImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMExtensionImage cmdlet..
         /// </summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("DeprecationOfGetAzureVMExtensionImageDetail", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Get-AzureVMImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMImage cmdlet..
         /// </summary>
@@ -113,7 +113,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("DeprecationOfGetAzureVMImageDetail", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Name parameter of New-AzureVM cmdlet will be deprecated in a future release of Azure PowerShell, because the functionality of Name parameter is obsolete..
+        /// </summary>
+        public static string DeprecationOfNewAzureVMNameParameterWarning {
+            get {
+                return ResourceManager.GetString("DeprecationOfNewAzureVMNameParameterWarning", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Virtual machine extension removal operation.
         /// </summary>

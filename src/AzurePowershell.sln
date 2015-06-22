@@ -218,6 +218,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.OperationalInsight
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.OperationalInsights.Test", "ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\Commands.OperationalInsights.Test.csproj", "{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates", "ResourceManager\Commerce\Commands.UsageAggregates\Commands.UsageAggregates.csproj", "{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates.Test", "ResourceManager\Commerce\Commands.UsageAggregates.Test\Commands.UsageAggregates.Test.csproj", "{F220C306-29A3-4511-8518-A58A55C60D07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -536,6 +540,14 @@ Global
 		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F220C306-29A3-4511-8518-A58A55C60D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F220C306-29A3-4511-8518-A58A55C60D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F220C306-29A3-4511-8518-A58A55C60D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F220C306-29A3-4511-8518-A58A55C60D07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -579,5 +591,6 @@ Global
 		{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

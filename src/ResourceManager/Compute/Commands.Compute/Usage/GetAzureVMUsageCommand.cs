@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
             foreach (var item in result.Usages)
             {
                 var psItem = Mapper.Map<PSUsage>(item);
+                psItem = Mapper.Map<AzureOperationResponse, PSUsage>(result, psItem);
                 psResultList.Add(psItem);
             }
 

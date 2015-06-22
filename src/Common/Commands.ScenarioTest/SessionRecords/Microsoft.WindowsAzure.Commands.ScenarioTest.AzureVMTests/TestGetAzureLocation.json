@@ -1,0 +1,2478 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/locations",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9sb2NhdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Location>\r\n    <Name>West US</Name>\r\n    <DisplayName>West US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_G1</RoleSize>\r\n        <RoleSize>Standard_G2</RoleSize>\r\n        <RoleSize>Standard_G3</RoleSize>\r\n        <RoleSize>Standard_G4</RoleSize>\r\n        <RoleSize>Standard_G5</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>Central US</Name>\r\n    <DisplayName>Central US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>South Central US</Name>\r\n    <DisplayName>South Central US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>East US</Name>\r\n    <DisplayName>East US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>East US 2</Name>\r\n    <DisplayName>East US 2</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_G1</RoleSize>\r\n        <RoleSize>Standard_G2</RoleSize>\r\n        <RoleSize>Standard_G3</RoleSize>\r\n        <RoleSize>Standard_G4</RoleSize>\r\n        <RoleSize>Standard_G5</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>North Europe</Name>\r\n    <DisplayName>North Europe</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>West Europe</Name>\r\n    <DisplayName>West Europe</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>Southeast Asia</Name>\r\n    <DisplayName>Southeast Asia</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>East Asia</Name>\r\n    <DisplayName>East Asia</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n</Locations>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "19145"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "e45dd6c902b8a1bfbc5ca8d6de51db08"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:22 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/e45dd6c902b8a1bfbc5ca8d6de51db08",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zL2U0NWRkNmM5MDJiOGExYmZiYzVjYThkNmRlNTFkYjA4",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>e45dd6c9-02b8-a1bf-bc5c-a8d6de51db08</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "02d60623c528a61cb656ed970e1ab44c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:23 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk5565</ServiceName>\r\n  <Label>b25lc2RrNTU2NQ==</Label>\r\n  <Location>West US</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "203"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f5b3328861f9aa909a466f307e3b4a30"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:25 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk5565"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk5946</ServiceName>\r\n  <Label>b25lc2RrNTk0Ng==</Label>\r\n  <Location>Central US</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "206"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "31d4394021a9a72d993b893bb10cb9a6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:29 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk5946"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk5310</ServiceName>\r\n  <Label>b25lc2RrNTMxMA==</Label>\r\n  <Location>South Central US</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "212"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "46c1f7f3f8d6a0dda8f1699138b83441"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:33 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk5310"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk8863</ServiceName>\r\n  <Label>b25lc2RrODg2Mw==</Label>\r\n  <Location>East US</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "203"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "239da680fcd7a332b3f72b068deba069"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:38 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk8863"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk6610</ServiceName>\r\n  <Label>b25lc2RrNjYxMA==</Label>\r\n  <Location>East US 2</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "205"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7683e29be493a276b2c76fe44fad6509"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:43 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk6610"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk6425</ServiceName>\r\n  <Label>b25lc2RrNjQyNQ==</Label>\r\n  <Location>North Europe</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "208"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "23071a228aaaa32fac1d6306fda72c71"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:49 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk6425"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk6538</ServiceName>\r\n  <Label>b25lc2RrNjUzOA==</Label>\r\n  <Location>West Europe</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "207"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d628c7979233a18cad623289367a195a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:54 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk6538"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk3675</ServiceName>\r\n  <Label>b25lc2RrMzY3NQ==</Label>\r\n  <Location>Southeast Asia</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "210"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e2cd225393a7afef967057b80d7d8560"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:57 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk3675"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk2576</ServiceName>\r\n  <Label>b25lc2RrMjU3Ng==</Label>\r\n  <Location>East Asia</Location>\r\n</CreateHostedService>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "205"
+        ],
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "35a84f536e45a28389aca767f754b43c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:02 GMT"
+        ],
+        "Location": [
+          "https://management.core.windows.net/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/compute/onesdk2576"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/f5b3328861f9aa909a466f307e3b4a30",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zL2Y1YjMzMjg4NjFmOWFhOTA5YTQ2NmYzMDdlM2I0YTMw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>f5b33288-61f9-aa90-9a46-6f307e3b4a30</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "9e635956dab5af93b772f62a4e39d2bb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:25 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1NTY1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565</Url>\r\n  <ServiceName>onesdk5565</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>b25lc2RrNTU2NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:25Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:24Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d92531dee20ba2f584b2b815d733e97c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:25 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1NTY1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565</Url>\r\n  <ServiceName>onesdk5565</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>b25lc2RrNTU2NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:25Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:24Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b72af6132728a99da59e7deadb04c567"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:25 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1NTY1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565</Url>\r\n  <ServiceName>onesdk5565</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>b25lc2RrNTU2NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:25Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:24Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6ad45fc02436ac93aee10be20938072f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:25 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5565",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1NTY1",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0abc8e6a57f6a84a83be51cd40bc2f6b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:28 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/31d4394021a9a72d993b893bb10cb9a6",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzMxZDQzOTQwMjFhOWE3MmQ5OTNiODkzYmIxMGNiOWE2",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>31d43940-21a9-a72d-993b-893bb10cb9a6</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "c1ae78b186d3a338979af914d16239f6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1OTQ2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946</Url>\r\n  <ServiceName>onesdk5946</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNTk0Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:29Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:29Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "591"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "30d1cd3a2e75a6b9b4eff880af23c3cb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1OTQ2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946</Url>\r\n  <ServiceName>onesdk5946</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNTk0Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:29Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:29Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "591"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7540cb1ec97aad60a6e55ea867070260"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1OTQ2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946</Url>\r\n  <ServiceName>onesdk5946</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Central US</Location>\r\n    <Label>b25lc2RrNTk0Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:29Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:29Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "591"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2658be3661caaad7a6c69bb1b9da1a99"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5946",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1OTQ2",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c3228b1324a7af6b84b6721a6ee771e3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:31 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/46c1f7f3f8d6a0dda8f1699138b83441",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzQ2YzFmN2YzZjhkNmEwZGRhOGYxNjk5MTM4YjgzNDQx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>46c1f7f3-f8d6-a0dd-a8f1-699138b83441</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "dbf435d6c71ead05818c73d8e0fa8cac"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:34 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1MzEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310</Url>\r\n  <ServiceName>onesdk5310</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>South Central US</Location>\r\n    <Label>b25lc2RrNTMxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:33Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:34Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "597"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4cf63d4dbb00ab48bb8611ef0b34fcc2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:35 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1MzEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310</Url>\r\n  <ServiceName>onesdk5310</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>South Central US</Location>\r\n    <Label>b25lc2RrNTMxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:33Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:34Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk5310</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>South Central US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "802"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5d08dbb90b65a2e6b8fdbcdcbb09b559"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:35 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1MzEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310</Url>\r\n  <ServiceName>onesdk5310</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>South Central US</Location>\r\n    <Label>b25lc2RrNTMxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:33Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:35Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk5310</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>South Central US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "802"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5557461812b2ad1e97c20878bf485080"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:35 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk5310",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs1MzEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "adb312a7d5cfa5108ce4dce146d349d6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:36 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/239da680fcd7a332b3f72b068deba069",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzIzOWRhNjgwZmNkN2EzMzJiM2Y3MmIwNjhkZWJhMDY5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>239da680-fcd7-a332-b3f7-2b068deba069</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "92770c50a3dda78ea44fe01d37f147c4"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:38 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs4ODYzP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863</Url>\r\n  <ServiceName>onesdk8863</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrODg2Mw==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:37Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:38Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bd37afe97fb3a7589708bcbacf0a51e8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:39 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs4ODYzP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863</Url>\r\n  <ServiceName>onesdk8863</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrODg2Mw==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:37Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:38Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4fe0fefd5e62a06bb5b3229518c9406d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:39 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs4ODYzP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863</Url>\r\n  <ServiceName>onesdk8863</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrODg2Mw==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:37Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:38Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "588"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c535c2267952aecba7544f62504ee46a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:40 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk8863",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs4ODYz",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4d4673ae6734ab70b2582a513fb4532a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:41 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/7683e29be493a276b2c76fe44fad6509",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzc2ODNlMjliZTQ5M2EyNzZiMmM3NmZlNDRmYWQ2NTA5",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>7683e29b-e493-a276-b2c7-6fe44fad6509</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "305b678075e8a2198f03166c0b712907"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:42 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NjEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610</Url>\r\n  <ServiceName>onesdk6610</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US 2</Location>\r\n    <Label>b25lc2RrNjYxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:42Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:42Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "590"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b07b13d687a9a32b825d550b28600819"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:44 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NjEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610</Url>\r\n  <ServiceName>onesdk6610</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US 2</Location>\r\n    <Label>b25lc2RrNjYxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:42Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:42Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "590"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "fdd95f61c91fa68db119081c53ddd8f0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:44 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NjEwP2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610</Url>\r\n  <ServiceName>onesdk6610</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US 2</Location>\r\n    <Label>b25lc2RrNjYxMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:42Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:42Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "590"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "29592e8c1591a45fae7fc6cb4ad4dc21"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:44 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6610",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NjEw",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c4509146466dabb496d1847d978cb749"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:47 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/23071a228aaaa32fac1d6306fda72c71",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzIzMDcxYTIyOGFhYWEzMmZhYzFkNjMwNmZkYTcyYzcx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>23071a22-8aaa-a32f-ac1d-6306fda72c71</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "7fb7bc702441af7f97e1922713e99547"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:49 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NDI1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425</Url>\r\n  <ServiceName>onesdk6425</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>North Europe</Location>\r\n    <Label>b25lc2RrNjQyNQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:48Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:48Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "593"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "d4ce9cbd7fd7af01bc5860cb5234d568"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:50 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NDI1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425</Url>\r\n  <ServiceName>onesdk6425</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>North Europe</Location>\r\n    <Label>b25lc2RrNjQyNQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:48Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:48Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "593"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "833140f47121a1e6bc62d6a187a7b0ae"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:50 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NDI1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425</Url>\r\n  <ServiceName>onesdk6425</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>North Europe</Location>\r\n    <Label>b25lc2RrNjQyNQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:48Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:48Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "593"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0a255cc370f9aff19163c9b757932457"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:51 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6425",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NDI1",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c648fc6cfba7a928a17aba3c609ee9df"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:53 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/d628c7979233a18cad623289367a195a",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zL2Q2MjhjNzk3OTIzM2ExOGNhZDYyMzI4OTM2N2ExOTVh",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>d628c797-9233-a18c-ad62-3289367a195a</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "cfc6055763f8a50a861a16f168b56e2b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:53 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTM4P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538</Url>\r\n  <ServiceName>onesdk6538</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West Europe</Location>\r\n    <Label>b25lc2RrNjUzOA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:53Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:53Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "592"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2a741fd2ad8ea987b457b284d3f7efbc"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:54 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTM4P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538</Url>\r\n  <ServiceName>onesdk6538</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West Europe</Location>\r\n    <Label>b25lc2RrNjUzOA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:53Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:53Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "592"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "db3a377ff839a729b2deea9bae2cacb0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:54 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTM4P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538</Url>\r\n  <ServiceName>onesdk6538</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West Europe</Location>\r\n    <Label>b25lc2RrNjUzOA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:53Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:53Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "592"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7302992a6f7aaa0d8ab735a442c7ad7d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:54 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk6538",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTM4",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "776568285849a62f98ca26f63e3edc97"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:55 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/e2cd225393a7afef967057b80d7d8560",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zL2UyY2QyMjUzOTNhN2FmZWY5NjcwNTdiODBkN2Q4NTYw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>e2cd2253-93a7-afef-9670-57b80d7d8560</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "69450eeba3a6ab2d9c0ca62763f4a885"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:57 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGszNjc1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675</Url>\r\n  <ServiceName>onesdk3675</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Southeast Asia</Location>\r\n    <Label>b25lc2RrMzY3NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:57Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:56Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "595"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8e2259db9169a548960c47d71e476094"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:57 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGszNjc1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675</Url>\r\n  <ServiceName>onesdk3675</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Southeast Asia</Location>\r\n    <Label>b25lc2RrMzY3NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:57Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:56Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "595"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0606acdafaf0aafd81ebdd9a28787650"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:57 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGszNjc1P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675</Url>\r\n  <ServiceName>onesdk3675</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>Southeast Asia</Location>\r\n    <Label>b25lc2RrMzY3NQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:39:57Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:39:56Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "595"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5a7d401e4a02a6399a0627d9bc18abe2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:39:58 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk3675",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGszNjc1",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "dd861497e32ba3009b0aba07679bf32a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:01 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/operations/35a84f536e45a28389aca767f754b43c",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9vcGVyYXRpb25zLzM1YTg0ZjUzNmU0NWEyODM4OWFjYTc2N2Y3NTRiNDNj",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>35a84f53-6e45-a283-89ac-a767f754b43c</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "eda69d4a4a37a6509486d01e7f10f0cd"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:03 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsyNTc2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576</Url>\r\n  <ServiceName>onesdk2576</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East Asia</Location>\r\n    <Label>b25lc2RrMjU3Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:40:02Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:40:03Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "590"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a3bd0bdff7a0ac33b315e673c645f6be"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:04 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsyNTc2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576</Url>\r\n  <ServiceName>onesdk2576</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East Asia</Location>\r\n    <Label>b25lc2RrMjU3Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:40:02Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:40:03Z</DateLastModified>\r\n    <ExtendedProperties />\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "590"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bf3d2dbc8738acedad492f501ba8fb31"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:04 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576?embed-detail=true",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsyNTc2P2VtYmVkLWRldGFpbD10cnVl",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576</Url>\r\n  <ServiceName>onesdk2576</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East Asia</Location>\r\n    <Label>b25lc2RrMjU3Ng==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2015-06-09T00:40:02Z</DateCreated>\r\n    <DateLastModified>2015-06-09T00:40:05Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk2576</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East Asia</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n</HostedService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "788"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0fafeb871bfda72f92d760960c2c65dd"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:05 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/onesdk2576",
+      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsyNTc2",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "9666ca4a9537aeff8b997fbc48fd6428"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 09 Jun 2015 00:40:06 GMT"
+        ],
+        "Server": [
+          "1.0.6198.239",
+          "(rd_rdfe_stable.150604-1401)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-GetAzureLocation": [
+      "onesdk5565",
+      "onesdk5946",
+      "onesdk5310",
+      "onesdk8863",
+      "onesdk6610",
+      "onesdk6425",
+      "onesdk6538",
+      "onesdk3675",
+      "onesdk2576"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "4d368445-cbb1-42a7-97a6-6850ab99f48e"
+  }
+}

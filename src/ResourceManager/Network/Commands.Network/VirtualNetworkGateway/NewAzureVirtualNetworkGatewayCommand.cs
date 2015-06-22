@@ -58,14 +58,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
        Mandatory = false,
        ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The size of this virtual network gateway.")]
-        public string GatewaySize { get; set; }
+       HelpMessage = "The type of this virtual network gateway: Vpn")]
+        [ValidateSet(
+        MNM.VirtualNetworkGatewayType.Vpn,
+        IgnoreCase = true)]
+        public string GatewayType { get; set; }
 
         [Parameter(
        Mandatory = false,
        ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The size of this virtual network gateway.")]
-        public string GatewayType { get; set; }
+       HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
+        [ValidateSet(
+        MNM.VpnType.PolicyBased,
+        MNM.VpnType.RouteBased,
+        IgnoreCase = true)]
+        public string VpnType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -120,8 +127,8 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
-            vnetGateway.GatewaySize = this.GatewaySize;
             vnetGateway.GatewayType = this.GatewayType;
+            vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
 
             // Map to the sdk object

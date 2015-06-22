@@ -98,7 +98,8 @@ namespace Microsoft.Azure.Commands.Compute
             List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
             foreach (var item in result.VirtualMachineSizes)
             {
-                var psItem = Mapper.Map<PSVirtualMachineSize>(item);
+                var psItem = Mapper.Map<VirtualMachineSize, PSVirtualMachineSize>(item);
+                psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachineSize>(result, psItem);
                 psResultList.Add(psItem);
             }
 
