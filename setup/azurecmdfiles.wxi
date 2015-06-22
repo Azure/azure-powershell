@@ -1868,6 +1868,9 @@
                         <Component Id="cmp99392DCBDE8044C2016FF93700B983EB" Guid="*">
                             <File Id="fil9A36FC098B4DD67347F5599B2C6E0B49" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\TrafficManager\Microsoft.Azure.Management.TrafficManager.dll" />
                         </Component>
+                        <Component Id="cmpA6A5BC25D7FEE2BDD4FE342605A5C6D6" Guid="*">
+                            <File Id="fil6C584E0E8CB073F8A95DA33E731E9FB9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\TrafficManager\Microsoft.Azure.ResourceManager.dll" />
+                        </Component>
                         <Component Id="cmpF7B36B0AC5A53D62F461D739E7A0CD7F" Guid="*">
                             <File Id="filC265B633228818419FDBE0FDD7C0EB31" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\TrafficManager\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
@@ -4538,6 +4541,7 @@
             <ComponentRef Id="cmpD2BE076C47F8E3FBE7F08523A849CE97" />
             <ComponentRef Id="cmpA3BD6FFFE2A4A8906122B0CFCDD774A6" />
             <ComponentRef Id="cmp99392DCBDE8044C2016FF93700B983EB" />
+            <ComponentRef Id="cmpA6A5BC25D7FEE2BDD4FE342605A5C6D6" />
             <ComponentRef Id="cmpF7B36B0AC5A53D62F461D739E7A0CD7F" />
             <ComponentRef Id="cmp2BC5CD3EEAB03215BAF80C8D91B316F1" />
             <ComponentRef Id="cmp44E9CD59264367064398F4E0170F73B3" />
