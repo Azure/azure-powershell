@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public Dictionary<string, string> TagsDirectionary
+        public Dictionary<string, string> TagsDictionary
         {
             get
             {

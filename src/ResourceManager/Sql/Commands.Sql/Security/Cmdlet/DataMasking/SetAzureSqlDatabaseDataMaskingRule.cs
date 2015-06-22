@@ -28,6 +28,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseDataMaskingRule")]
     public class SetAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
+
+        /// <summary>
+        /// Gets or sets the column name
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
+        public override string ColumnName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the table name
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
+        public override string TableName { get; set; }
+
+
         /// <summary>
         /// Gets or sets the masking function
         /// </summary>

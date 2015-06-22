@@ -27,9 +27,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingLevelChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
@@ -63,9 +62,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
         
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
