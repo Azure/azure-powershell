@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public class AzureBackupJob : AzureBackupVaultContextObject
     {
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public List<ErrorInfo> ErrorDetails { get; set; }
 
-        public AzureBackupJob(Mgmt.Job serviceJob, string ResourceGroupName, string ResourceName, string LocationName)
-            : base(ResourceGroupName, ResourceName, LocationName)
+        public AzureBackupJob(AzurePSBackupVault vault, Mgmt.Job serviceJob)
+            : base(vault)
         {
             this.InstanceId = serviceJob.InstanceId;
             this.WorkloadType = serviceJob.Type;
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public List<AzureBackupJobSubTask> SubTasks { get; set; }
 
-        public AzureBackupJobDetails(Mgmt.JobProperties serviceJobProperties, string ResourceGroupName, string ResourceName, string LocationName)
-            : base(serviceJobProperties, ResourceGroupName, ResourceName, LocationName)
+        public AzureBackupJobDetails(AzurePSBackupVault vault, Mgmt.JobProperties serviceJobProperties)
+            : base(vault, serviceJobProperties)
         {
             if (serviceJobProperties.PropertyBag != null)
                 this.Properties = new Dictionary<string, string>(serviceJobProperties.PropertyBag);

@@ -21,28 +21,27 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using System.Runtime.Serialization;
 using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    // ToDo:
-    // Get Tracking API from Piyush and Get JobResponse
-
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(string))]
     public class EnableAzureBackupProtection : AzureBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public AzureBackupProtectionPolicy Policy { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
+                base.ExecuteCmdlet();
+
+                WriteDebug("Making client call");
                 SetProtectionRequestInput input = new SetProtectionRequestInput();
                 input.PolicyId = Policy.InstanceId;
                 if (Item.GetType() == typeof(AzureBackupItem))
@@ -52,10 +51,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else if (Item.GetType() == typeof(AzureBackupContainer))
                 {
-                    WriteVerbose("Input is container Type = "+Item.GetType());
-                    if((Item as AzureBackupContainer).ContainerType == ContainerType.IaasVMContainer.ToString())
+                    WriteDebug("Input is container Type = " + Item.GetType());
+                    if ((Item as AzureBackupContainer).ContainerType == AzureBackupContainerType.IaasVMContainer.ToString())
                     {
-                        WriteVerbose("container Type = " + (Item as AzureBackupContainer).ContainerType);
+                        WriteDebug("container Type = " + (Item as AzureBackupContainer).ContainerType);
                         input.ProtectableObjectType = DataSourceType.VM.ToString();
                         input.ProtectableObjects.Add((Item as AzureBackupContainer).ContainerUniqueName);
                     }
@@ -69,36 +68,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new Exception("Uknown item type");
                 }
 
-                Guid jobId = Guid.Empty;
-                var enableAzureBackupProtection = AzureBackupClient.DataSource.EnableProtectionAsync(GetCustomRequestHeaders(), input, CmdletCancellationToken).Result;
+                var operationId = AzureBackupClient.EnableProtection(input);
+                WriteDebug("Received enable azure backup protection response");
 
-                WriteVerbose("Received enable azure backup protection response");
-                jobId = enableAzureBackupProtection.OperationId;
-                this.WriteObject(jobId);
+                var operationStatus = GetOperationStatus(operationId);
+                this.WriteObject(operationStatus.JobList.FirstOrDefault());
             });
-        }
-
-        public enum ContainerType
-        {
-            [EnumMember]
-            Invalid = 0,
-
-            [EnumMember]
-            Unknown,
-
-            // used by fabric adapter to populate discovered VMs
-            [EnumMember]
-            IaasVMContainer,
-
-            // used by fabric adapter to populate discovered services
-            // VMs are child containers of services they belong to
-            [EnumMember]
-            IaasVMServiceContainer
-        }
-        public enum DataSourceType
-        {
-            [EnumMember]
-            VM
         }
     }
 }

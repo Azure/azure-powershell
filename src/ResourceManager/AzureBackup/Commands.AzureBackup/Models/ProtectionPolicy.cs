@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     /// <summary>
     /// Represents ProtectionPolicy object
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
         }
 
-        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, string location, ProtectionPolicyInfo sourcePolicy)
-            : base(resourceGroupName, resourceName, location)
+        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, ProtectionPolicyInfo sourcePolicy)
+            : base(vault)
         {
             InstanceId = sourcePolicy.InstanceId;
             Name = sourcePolicy.Name;

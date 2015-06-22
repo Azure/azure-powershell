@@ -18,6 +18,9 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -61,18 +64,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
                 WriteDebug("Making client call");
 
-                AzureBackupProtectionPolicy policyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(ProtectionPolicy.Name,
-                    ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
-                
+                var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
+                var vault = new CmdletModel.AzurePSBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
+
+                var policyInfo = ProtectionPolicyHelpers.GetCmdletPolicy(vault, response);
+
+                // TODO: Make the below function work with AzureBackupProtectionPolicy
                 FillRemainingValuesForSetPolicyRequest(policyInfo);
 
-                var backupSchedule = azureBackupCmdletHelper.FillBackupSchedule(BackupType, policyInfo.ScheduleType, ScheduleRunTimes,
+                var backupSchedule = ProtectionPolicyHelpers.FillBackupSchedule(BackupType, policyInfo.ScheduleType, ScheduleRunTimes,
                    RetentionType, RetentionDuration, policyInfo.ScheduleRunDays.ToArray<string>());
 
                 NewName = (string.IsNullOrEmpty(NewName) ? policyInfo.Name : NewName);
@@ -82,22 +87,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (policyInfo != null)
                 {
-                    var operationId = AzureBackupClient.ProtectionPolicy.UpdateAsync(policyInfo.InstanceId, updateProtectionPolicyRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                    // TODO: Add Async handling
+                    // BUG: Update API in hydra doesn't return OperationResponse rather than AzureOperationResponse
+                    AzureBackupClient.UpdateProtectionPolicy(policyInfo.InstanceId, updateProtectionPolicyRequest);
                 }
                 else
                 {
-                    var exception = new Exception("Protection Policy Not Found with Name" + ProtectionPolicy.Name);
-                    var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                    WriteError(errorRecord);
-                    return;
+                    // TODO: Validate proper error message is delivered to user.
+                    throw new ArgumentException(String.Format("Protection policy {0} not found", ProtectionPolicy.Name));
                 }
 
                 WriteDebug("Protection Policy successfully updated");
 
-                AzureBackupProtectionPolicy updatedPolicyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(NewName,
-                    ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
+                var updatedPolicy = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
+
                 WriteDebug("Converting response");
-                WriteObject(updatedPolicyInfo);
+
+                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, updatedPolicy));
 
             });
         }
@@ -109,7 +115,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 BackupType = policy.BackupType;
             }
 
-            if (ScheduleRunTimes == null)
+            if (ScheduleRunTimes == null || ScheduleRunTimes == DateTime.MinValue)
             {
                 ScheduleRunTimes = policy.ScheduleRunTimes;
             }
@@ -122,11 +128,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (RetentionDuration == 0)
             {
                 RetentionDuration = policy.RetentionDuration;
-            }
-
-            if (string.IsNullOrEmpty(BackupType))
-            {
-                BackupType = policy.BackupType;
             }
 
             if (this.ParameterSetName != NoScheduleParamSet )

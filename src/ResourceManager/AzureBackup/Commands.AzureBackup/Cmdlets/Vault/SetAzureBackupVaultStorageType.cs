@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
@@ -31,28 +32,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 if (Type == 0)
                 {
-                    throw new ArgumentException("Please provide a vaild storage type.");
+                    throw new ArgumentException("Invalid storage type.");
                 }
 
-                WriteDebug("Updating the storage type.");
-
-                UpdateVaultStorageTypeRequest updateVaultStorageTypeRequest = new UpdateVaultStorageTypeRequest()
-                {
-                    StorageTypeProperties = new StorageTypeProperties()
-                    {
-                        StorageModelType = Type.ToString(),
-                    },
-                };
-
-                AzureBackupClient.Vault.UpdateStorageTypeAsync(updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
-
-                WriteDebug("Update successful.");
+                WriteVerbose(String.Format("Updating the storage type. Type:{0}", Type));
+                AzureBackupClient.UpdateStorageType(Type.ToString());
             });
         }
     }

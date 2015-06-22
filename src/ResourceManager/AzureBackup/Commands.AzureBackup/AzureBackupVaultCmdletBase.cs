@@ -23,30 +23,22 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureBackupVaultCmdletBase : AzureBackupCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceName, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceName { get; set; }
-
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Location, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public AzurePSBackupVault vault { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            vault.Validate();
 
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}", ResourceGroupName, ResourceName));
-
-            InitializeAzureBackupCmdlet(ResourceGroupName, ResourceName, Location);
+            InitializeAzureBackupCmdlet(vault);
         }
     }
 }

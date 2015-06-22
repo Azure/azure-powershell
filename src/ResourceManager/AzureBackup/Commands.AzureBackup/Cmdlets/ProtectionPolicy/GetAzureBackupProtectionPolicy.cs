@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -33,28 +35,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
-                WriteDebug("Making client call");
-
-                IEnumerable<ProtectionPolicyInfo> policyObjects = null;
+                base.ExecuteCmdlet();
+         
                 if (Name != null)
                 {
-                    AzureBackupProtectionPolicy policyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(Name, ResourceGroupName, ResourceName, Location);
-                    WriteDebug("Converting response");
-                    WriteObject(policyInfo);
+                    var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Name);
+                    WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, policyInfo));
                 }
                 else
                 {
-                    var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-
-                    WriteDebug("Received policy response");
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
-
-                    WriteDebug("Converting response");
-                    azureBackupCmdletHelper.WriteAzureBackupProtectionPolicy(ResourceGroupName, ResourceName, Location, policyObjects);
+                    var policyObjects = AzureBackupClient.ListProtectionPolicies();
+                    WriteObject(ProtectionPolicyHelpers.GetCmdletPolicies(vault, policyObjects));
                 }                
             });
         }
