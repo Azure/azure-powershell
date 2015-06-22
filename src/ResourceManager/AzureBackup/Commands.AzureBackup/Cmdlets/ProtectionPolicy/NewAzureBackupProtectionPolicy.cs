@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public DateTime ScheduleRunTimes { get; set; }
 
         [Parameter(Position = 9, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RetentionType, ValueFromPipelineByPropertyName = true)]
-        [ValidateSet("Days", IgnoreCase = true)]
+        [ValidateSet("Days", "Weeks", IgnoreCase = true)]
         public string RetentionType { get; set; }
 
         [Parameter(Position = 10, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RententionDuration, ValueFromPipelineByPropertyName = true)]
