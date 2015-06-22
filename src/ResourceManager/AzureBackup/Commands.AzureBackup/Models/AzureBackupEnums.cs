@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public enum AzureBackupContainerTypeInput
     {
@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         IaasVMServiceContainer
     }
 
+    public enum DataSourceType
+    {
+        Invalid = 0,
+
+        VM
+    }
+
     public enum AzureBackupContainerRegistrationStatus
     {
         Invalid = 0,
@@ -59,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         Registering,
     }
 
-    public enum AzureBackupOperationStatus
+    internal enum AzureBackupOperationStatus
     {
         Invalid = 0,
 
@@ -68,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         Completed
     }
 
-    public enum AzureBackupOperationResult
+    internal enum AzureBackupOperationResult
     {
         Invalid = 0,
 
@@ -91,5 +98,31 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         GeoRedundant = 1,
         LocallyRedundant,
+    }
+
+    public enum ScheduleType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2
+    }
+
+    public enum RetentionType
+    {
+        Invalid = 0,
+        Days = 1,
+        Weeks = 2
+    }
+
+    public enum WorkloadType
+    {
+        Invalid = 0,
+        VM = 1
+    }
+
+    public enum BackupType
+    {
+        Invalid = 0,
+        Full = 1
     }
 }

@@ -20,8 +20,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string PolicyName = "The protection policy name.";
         public const string ResourceGroupName = "The ResourceGroup name.";
         public const string ResourceName = "The Resource name.";
-        public const string Location = "Location.";
-        public const string TargetLocation = "The directory where the credentials file will be saved.";
+        public const string Location = "The resource location.";
+        public const string Sku = "The SKU of the backup vault instance.";
+        public const string ResourceTags = "A hash table which represents resource tags.";
+        public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
         public const string ContainerResourceName = "The container resource name aka friendly name.";
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
@@ -64,11 +66,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string Comments = "Comments for for removing protection";
         public const string WorkloadType = "Workload type for which the policy is defined.";
         public const string BackupType = "Type of backup.";
-        public const string ScheduleType = "Type of schedule.";
+        public const string DailyScheduleType = "Switch parameter for daily backup schedule.";
+        public const string WeeklyScheduleType = "Switch parameter for weekly backup schedule.";
         public const string ScheduleRunDays = "Days of week for running backup, required for weekly schedule.";
-        public const string ScheduleRunTimes = "Times of day for running backup.";
+        public const string ScheduleRunTimes = "Times of day in UTC for running backup.";
         public const string RetentionType = "Unit of retention for the recovery point.";
         public const string RententionDuration = "Duration of retention for the recovery point in units specified by RetentionType.";
-        public const string PolicyInstanceId = "ProtectionPolicy InstanceId";
+        public const string PolicyNewName = "Policy new name";
+        public const string AzureBackupPolicy = "Azure Backup protection policy";
     }
 }

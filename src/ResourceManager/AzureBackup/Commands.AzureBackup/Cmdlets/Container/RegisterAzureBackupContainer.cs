@@ -24,13 +24,16 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Management.BackupServices;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureBackupContainer", DefaultParameterSetName = V1VMParameterSet), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureBackupContainer", DefaultParameterSetName = V1VMParameterSet), OutputType(typeof(string))]
     public class RegisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
         internal const string V1VMParameterSet = "V1VM";
@@ -49,10 +52,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 string vmName = String.Empty;
                 string rgName = String.Empty;
                 string ServiceOrRG = String.Empty;
@@ -79,7 +82,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 Guid jobId = Guid.Empty;
                 bool isDiscoveryNeed = false;
-                MBS.OperationResponse operationResponse;
 
                 ContainerInfo container = null;
                 isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
@@ -102,11 +104,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 List<string> containerNameList = new List<string>();
                 containerNameList.Add(container.Name);
                 RegisterContainerRequestInput registrationRequest = new RegisterContainerRequestInput(containerNameList, AzureBackupContainerType.IaasVMContainer.ToString());
-                operationResponse = AzureBackupClient.Container.RegisterAsync(registrationRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var operationId = AzureBackupClient.RegisterContainer(registrationRequest);
 
-                //TODO fix the OperationResponse to JobID conversion
-                jobId = operationResponse.OperationId;
-                WriteObject(jobId);
+                var operationStatus = GetOperationStatus(operationId);
+                WriteObject(operationStatus.JobList.FirstOrDefault());
             });
         }
 
@@ -117,11 +118,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             bool isDiscoverySuccessful = false;
             while (isRetyNeeded && retryCount <= 3)
             {
-                MBS.OperationResponse opResponse =
-                    AzureBackupClient.Container.RefreshAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var operationId = AzureBackupClient.RefreshContainers();
 
                 //Now wait for the operation to Complete               
-                isRetyNeeded = WaitForDiscoveryToCOmplete(opResponse.OperationId.ToString(), out isDiscoverySuccessful);
+                isRetyNeeded = WaitForDiscoveryToCOmplete(operationId, out isDiscoverySuccessful);
                 retryCount++;
             }
 
@@ -132,26 +132,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
-        private bool WaitForDiscoveryToCOmplete(string operationId, out bool isDiscoverySuccessful)
+        private bool WaitForDiscoveryToCOmplete(Guid operationId, out bool isDiscoverySuccessful)
         {
             bool isRetryNeeded = false;
-            AzureBackupOperationStatusResponse status = new AzureBackupOperationStatusResponse() 
-                        {
-                            OperationStatus = AzureBackupOperationStatus.InProgress.ToString() 
-                        };
-            while (status.OperationStatus != AzureBackupOperationStatus.Completed.ToString())
-            {
-                status = AzureBackupClient.OperationStatus.GetAsync(operationId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                WriteDebug(String.Format("Status of DiscoveryOperation: {0}", status.OperationStatus));
-                System.Threading.Thread.Sleep(TimeSpan.FromSeconds(15));
-            }
+            var status = TrackOperation(operationId); 
 
             isDiscoverySuccessful = true;
             //If operation fails check if retry is needed or not
             if (status.OperationResult != AzureBackupOperationResult.Succeeded.ToString())
             {
                 isDiscoverySuccessful = false;
-                WriteDebug(String.Format("DiscoveryOperation failed wit ErrorCOde: {0}", status.ErrorCode));
+                WriteDebug(String.Format("Discovery operation failed with ErrorCode: {0}", status.ErrorCode));
                 if ((status.ErrorCode == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
                     (status.ErrorCode == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
                 {
@@ -171,12 +162,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             queryParams.ContainerTypeField = AzureBackupContainerType.IaasVMContainer.ToString();
             queryParams.ContainerStatusField = String.Empty;
             queryParams.ContainerFriendlyNameField = vmName;
-            string queryString = GetQueryFileter(queryParams);
+            string queryString = ContainerHelpers.GetQueryFilter(queryParams);
 
-            ListContainerResponse containers = AzureBackupClient.Container.ListAsync(queryString,
-                            GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-            WriteDebug(String.Format("Container count returned from service: {0}.", containers.Objects.Count()));
-            if (containers.Objects.Count() == 0)
+            var containers = AzureBackupClient.ListContainers(queryString);
+            WriteDebug(String.Format("Container count returned from service: {0}.", containers.Count()));
+            if (containers.Count() == 0)
             {
                 //Container is not discover
                 WriteDebug("Container is not discovered");
@@ -188,7 +178,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 //We can have multiple container with same friendly name.
                 //Look for resourceGroup name in the container unoque name                
-                container = containers.Objects.Where(c => c.ParentContainerFriendlyName.ToLower().Equals(rgName.ToLower())).FirstOrDefault();
+                container = containers.Where(c => c.ParentContainerFriendlyName.ToLower().Equals(rgName.ToLower())).FirstOrDefault();
                 if (container == null)
                 {
                     //Container is not in list of registered container
@@ -197,35 +187,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
             }
             return isDiscoveryNeed;
-        }
-
-        private string GetQueryFileter(ListContainerQueryParameter queryParams)
-        {
-            NameValueCollection collection = new NameValueCollection();
-            if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))
-            {
-                collection.Add("ContainerType", queryParams.ContainerTypeField);
-            }
-
-            if (!String.IsNullOrEmpty(queryParams.ContainerStatusField))
-            {
-                collection.Add("ContainerStatus", queryParams.ContainerStatusField);
-            }
-
-            if (!String.IsNullOrEmpty(queryParams.ContainerFriendlyNameField))
-            {
-                collection.Add("FriendlyName", queryParams.ContainerFriendlyNameField);
-            }
-
-            if (collection == null || collection.Count == 0)
-            {
-                return String.Empty;
-            }
-
-            var httpValueCollection = HttpUtility.ParseQueryString(String.Empty);
-            httpValueCollection.Add(collection);
-
-            return "&" + httpValueCollection.ToString();
         }
     }
 }

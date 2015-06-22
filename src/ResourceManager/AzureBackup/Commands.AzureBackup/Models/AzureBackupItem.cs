@@ -19,7 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     /// <summary>
     /// Represents Azure Backup Item

@@ -19,9 +19,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
-    public class ListContainerQueryParameter : ManagementBaseObject
+    internal class ListContainerQueryParameter : ManagementBaseObject
     {
         /// <summary>
         ///Containers information for registration

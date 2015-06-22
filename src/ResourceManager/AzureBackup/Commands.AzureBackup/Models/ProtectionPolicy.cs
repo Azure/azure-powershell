@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     /// <summary>
     /// Represents ProtectionPolicy object
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public string ScheduleType { get; set; }
 
-        public IList<string> ScheduleRunDays { get; set; }
+        public List<string> ScheduleRunDays { get; set; }
 
         public DateTime ScheduleRunTimes { get; set; }
 
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
         }
 
-        public AzureBackupProtectionPolicy(string resourceGroupName, string resourceName, string location, ProtectionPolicyInfo sourcePolicy)
-            : base(resourceGroupName, resourceName, location)
+        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, ProtectionPolicyInfo sourcePolicy)
+            : base(vault)
         {
             InstanceId = sourcePolicy.InstanceId;
             Name = sourcePolicy.Name;
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
         }
 
-        private IList<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
+        private List<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
         {
-            IList<string> scheduelRunDays = new List<string>();
+            List<string> scheduelRunDays = new List<string>();
 
             foreach(object item in weekDaysList)
             {

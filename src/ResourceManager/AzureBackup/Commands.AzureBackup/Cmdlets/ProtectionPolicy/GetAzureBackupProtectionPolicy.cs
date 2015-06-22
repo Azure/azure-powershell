@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -25,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of protection policies
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupProtectionPolicy"), OutputType(typeof(AzureBackupProtectionPolicy), typeof(List<AzureBackupProtectionPolicy>))]
-    public class GetAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+    public class GetAzureBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
@@ -33,27 +35,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
-                WriteDebug("Making client call");
-
-                var policyListResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-
-                WriteDebug("Received policy response");
-                IEnumerable<ProtectionPolicyInfo> policyObjects = null;
+                base.ExecuteCmdlet();
+         
                 if (Name != null)
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects.Where(x => x.Name.Equals(Name, System.StringComparison.InvariantCultureIgnoreCase));
+                    var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Name);
+                    WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, policyInfo));
                 }
                 else
                 {
-                    policyObjects = policyListResponse.ProtectionPolicies.Objects;
-                }
-
-                WriteDebug("Converting response");
-                WriteAzureBackupProtectionPolicy(policyObjects);
+                    var policyObjects = AzureBackupClient.ListProtectionPolicies();
+                    WriteObject(ProtectionPolicyHelpers.GetCmdletPolicies(vault, policyObjects));
+                }                
             });
         }
     }

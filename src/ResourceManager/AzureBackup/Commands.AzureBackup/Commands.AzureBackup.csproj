@@ -28,7 +28,6 @@
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\StorSimple\</OutputPath>
@@ -44,14 +43,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BackupManagementInterface, Version=1.0.523.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Resources\BackupManagementInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="BMSCommonInterface, Version=1.0.523.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Resources\BMSCommonInterface.dll</HintPath>
-    </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
@@ -64,12 +55,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.BackupServicesManagment">
-      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.Azure.Management.BackupServicesManagment.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -88,6 +73,10 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Git4\dummy\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,6 +115,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureBackupClientAdapter\AzureBackupClientAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ContainerAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ItemAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\JobAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\PolicyAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
@@ -134,39 +130,38 @@
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
     <Compile Include="Cmdlets\BackUp\TriggerBackUp.cs" />
-    <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
-    <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
-    <Compile Include="Cmdlets\DataSource\Disable-AzureBackupProtection .cs" />
-    <Compile Include="Cmdlets\DataSource\Enable-AzureBackupProtection .cs" />
-    <Compile Include="Cmdlets\DataSource\GetAzureBackupItem.cs" />
+    <Compile Include="Cmdlets\Item\Disable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\GetAzureBackupItem.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
-    <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
+    <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
+    <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
-    <Compile Include="Cmdlets\Jobs\GetAzureBackupJobDetails.cs" />
-    <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
-    <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\AcsNamespace.cs" />
-    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\CertUtils.cs" />
-    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\Constants.cs" />
-    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\GetAzureBackupVaultCredentials.cs" />
-    <Compile Include="Cmdlets\Vault\GetAzureBackupVaultCredentials\VaultCredentials.cs" />
+    <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\RemoveAzureBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\SetAzureBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\NewAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
+    <Compile Include="Helpers\ContainerHelpers.cs" />
+    <Compile Include="Helpers\VaultHelpers.cs" />
+    <Compile Include="Helpers\ProtectionPolicyHelpers.cs" />
+    <Compile Include="Library\CertUtils.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
     <Compile Include="Models\AzureBackupContainer.cs" />
     <Compile Include="Models\AzureBackupEnums.cs" />
     <Compile Include="Models\AzureBackupItem.cs" />
     <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
+    <Compile Include="Models\AzurePSBackupVault.cs" />
     <Compile Include="Models\JobObjects.cs" />
     <Compile Include="Models\ListContainerQueryParameter.cs" />
     <Compile Include="Models\ProtectionPolicy.cs" />
-    <Compile Include="Models\RegisterContainer\RegisterContainer.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Models\VaultCredentials.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,6 +173,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.Compute\Commands.Compute.csproj">
+      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
+      <Name>Commands.Compute</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -200,8 +199,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\BackupManagementInterface.dll" />
-    <Content Include="Resources\BMSCommonInterface.dll" />
+    <Content Include="Resources\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>
