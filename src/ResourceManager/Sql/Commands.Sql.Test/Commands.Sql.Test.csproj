@@ -47,6 +47,10 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.29.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
@@ -62,10 +66,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Gallery">
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.1-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.28.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
