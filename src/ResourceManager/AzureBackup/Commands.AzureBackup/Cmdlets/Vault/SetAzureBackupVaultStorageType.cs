@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new ArgumentException("Please provide a vaild storage type.");
                 }
 
-                WriteVerbose("Updating the storage type.");
+                WriteDebug("Updating the storage type.");
 
                 UpdateVaultStorageTypeRequest updateVaultStorageTypeRequest = new UpdateVaultStorageTypeRequest()
                 {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 AzureBackupClient.Vault.UpdateStorageTypeAsync(updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
 
-                WriteVerbose("Update successful.");
+                WriteDebug("Update successful.");
             });
         }
     }

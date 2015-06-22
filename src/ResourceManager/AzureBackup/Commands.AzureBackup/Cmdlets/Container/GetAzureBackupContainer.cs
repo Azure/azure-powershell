@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
                     GetCustomRequestHeaders(), CmdletCancellationToken).Result;
 
-                WriteVerbose(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
+                WriteDebug(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
 
                 List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
 
@@ -68,15 +68,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         return containerInfo.ParentContainerName != ContainerResourceGroupName;
                     });
+                    WriteDebug(string.Format("# of containers after resource group filter = {0}", containerInfos.Count));
                 }
-
-                WriteVerbose(string.Format("# of containers after resource group filter = {0}", listContainerResponse.Objects.Count));
 
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
                     return new AzureBackupContainer(containerInfo, containerInfo.ParentContainerName, containerInfo.FriendlyName, Location);
                 });
 
+                // When container resource name and container resource group name are specified, this parameter set
+                // identifies a container uniquely. Thus, we return just one container instead of a list.
                 if (!string.IsNullOrEmpty(ContainerResourceName) & !string.IsNullOrEmpty(ContainerResourceGroupName))
                 {
                     if (containers.Any())
