@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 BackupType = policy.BackupType;
             }
 
-            if (ScheduleRunTimes == null)
+            if (ScheduleRunTimes == null || ScheduleRunTimes == DateTime.MinValue)
             {
                 ScheduleRunTimes = policy.ScheduleRunTimes;
             }
@@ -122,11 +122,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (RetentionDuration == 0)
             {
                 RetentionDuration = policy.RetentionDuration;
-            }
-
-            if (string.IsNullOrEmpty(BackupType))
-            {
-                BackupType = policy.BackupType;
             }
 
             if (this.ParameterSetName != NoScheduleParamSet )
