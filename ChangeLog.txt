@@ -16,6 +16,7 @@
     * Updated Key Vault package versions
     * Fixed bugs related to secrets
 * Azure Resource Manager
+    * Added Get-AzureProviderOperation cmdlet
     * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
     * Refactored Resource Lock cmdlets
     * Removed unnecessary code when getting a resource
