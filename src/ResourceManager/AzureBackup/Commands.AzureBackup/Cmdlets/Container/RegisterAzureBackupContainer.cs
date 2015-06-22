@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -35,15 +36,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         internal const string V1VMParameterSet = "V1VM";
         internal const string V2VMParameterSet = "V2VM";
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        public string VMResourceGroupName { get; set; }
+        public string VMResourceGroupName { get; set; } //TODO:
 
         
         public override void ExecuteCmdlet()
@@ -91,8 +92,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         //Container is not discovered. Throw exception
                         string errMsg = String.Format("Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted", vmName, ServiceOrRG, rgName);
-                        WriteDebug(errMsg);
-                        throw new Exception(errMsg); //TODO: Sync with piyush and srub error msg 
+                        
+                        WriteError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                     }
                 }                
 
