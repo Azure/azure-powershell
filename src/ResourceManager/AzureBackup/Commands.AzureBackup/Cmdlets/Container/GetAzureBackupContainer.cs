@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 queryFilterString = ConstructQueryFilterString();
                 var containerList = AzureBackupClient.ListContainers(queryFilterString);
 
+<<<<<<< HEAD
                 WriteDebug(string.Format("Fetched {0} containers", containerList.Count()));
+=======
+                WriteDebug(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
+>>>>>>> dev
 
                 List<ContainerInfo> containerInfos = containerList.ToList();
 
@@ -69,17 +73,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         return containerInfo.ParentContainerName != ContainerResourceGroupName;
                     });
+                    WriteDebug(string.Format("# of containers after resource group filter = {0}", containerInfos.Count));
                 }
 
+<<<<<<< HEAD
                 WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));
 
                 // TODO: Container friendly name is not captures in Container response
                 // BUG: Friendly name was previously assigned to ResourceName (vault name)
+=======
+>>>>>>> dev
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
                     return new AzureBackupContainer(vault, containerInfo);
                 });
 
+                // When container resource name and container resource group name are specified, this parameter set
+                // identifies a container uniquely. Thus, we return just one container instead of a list.
                 if (!string.IsNullOrEmpty(ContainerResourceName) & !string.IsNullOrEmpty(ContainerResourceGroupName))
                 {
                     if (containers.Any())

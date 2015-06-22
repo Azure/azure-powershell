@@ -41,8 +41,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new ArgumentException("Invalid storage type.");
                 }
 
+<<<<<<< HEAD
                 WriteVerbose(String.Format("Updating the storage type. Type:{0}", Type));
                 AzureBackupClient.UpdateStorageType(Type.ToString());
+=======
+                WriteDebug("Updating the storage type.");
+
+                UpdateVaultStorageTypeRequest updateVaultStorageTypeRequest = new UpdateVaultStorageTypeRequest()
+                {
+                    StorageTypeProperties = new StorageTypeProperties()
+                    {
+                        StorageModelType = Type.ToString(),
+                    },
+                };
+
+                AzureBackupClient.Vault.UpdateStorageTypeAsync(updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+
+                WriteDebug("Update successful.");
+>>>>>>> dev
             });
         }
     }
