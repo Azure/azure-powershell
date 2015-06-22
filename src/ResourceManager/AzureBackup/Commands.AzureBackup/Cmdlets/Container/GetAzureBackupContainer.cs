@@ -57,11 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 queryFilterString = ConstructQueryFilterString();
                 var containerList = AzureBackupClient.ListContainers(queryFilterString);
 
-<<<<<<< HEAD
                 WriteDebug(string.Format("Fetched {0} containers", containerList.Count()));
-=======
-                WriteDebug(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
->>>>>>> dev
 
                 List<ContainerInfo> containerInfos = containerList.ToList();
 
@@ -76,13 +72,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug(string.Format("# of containers after resource group filter = {0}", containerInfos.Count));
                 }
 
-<<<<<<< HEAD
                 WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));
 
                 // TODO: Container friendly name is not captures in Container response
                 // BUG: Friendly name was previously assigned to ResourceName (vault name)
-=======
->>>>>>> dev
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
                     return new AzureBackupContainer(vault, containerInfo);
