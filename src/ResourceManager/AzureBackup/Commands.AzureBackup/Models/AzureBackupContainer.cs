@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public AzureBackupContainer() : base() { }
 
-        public AzureBackupContainer(AzureBackupVault vault, ContainerInfo containerInfo)
+        public AzureBackupContainer(AzurePSBackupVault vault, ContainerInfo containerInfo)
             : base(vault, containerInfo)
         {
             HealthStatus = containerInfo.HealthStatus;

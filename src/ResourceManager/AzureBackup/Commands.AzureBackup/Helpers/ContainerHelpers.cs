@@ -33,9 +33,9 @@ using System.Web;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
-    public static class ContainerHelpers
+    internal class ContainerHelpers
     {
-        public static string GetQueryFilter(ListContainerQueryParameter queryParams)
+        internal static string GetQueryFilter(ListContainerQueryParameter queryParams)
         {
             NameValueCollection collection = new NameValueCollection();
             if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))

@@ -37,16 +37,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         /// <param name="vault"></param>
         /// <param name="storage"></param>
         /// <returns></returns>
-        public static CmdletModel.AzureBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, ClientModel.StorageDetails storage)
+        public static CmdletModel.AzurePSBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, string storageType)
         {
-            var response = new CmdletModel.AzureBackupVault
+            var response = new CmdletModel.AzurePSBackupVault
             {
                 ResourceId = vault.Id,
                 Name = vault.Name,
                 Region = vault.Location,
                 ResourceGroupName = GetResourceGroup(vault.Id),
-                Sku = vault.Properties.Sku.Name,
-                Storage = storage.StorageType,
+                Sku = (vault.Properties != null) ? vault.Properties.Sku.Name : null,
+                Storage = storageType,
             };
 
             return response;

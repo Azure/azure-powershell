@@ -78,10 +78,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Gets storage type details of the specified resource
         /// </summary>
         /// <returns></returns>
-        public StorageDetails GetStorageTypeDetails(string resourceGroupName, string vaultName)
+        public string GetStorageTypeDetails(string resourceGroupName, string vaultName)
         {
-            var response = AzureBackupClient.Vault.GetResourceStorageConfigAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-            return (response != null) ? response.StorageDetails : null;
+            string storageType = String.Empty;
+            try
+            {
+                var response = AzureBackupClient.Vault.GetResourceStorageConfigAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                storageType = (response != null) ? response.StorageDetails.StorageType : null;
+            }
+            catch(Exception)
+            {
+            }
+            
+            return storageType;
         }
 
         /// <summary>

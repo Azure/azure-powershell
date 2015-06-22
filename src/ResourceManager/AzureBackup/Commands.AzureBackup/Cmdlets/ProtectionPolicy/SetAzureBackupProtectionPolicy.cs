@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Making client call");
 
                 var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
-                var vault = new CmdletModel.AzureBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
+                var vault = new CmdletModel.AzurePSBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
 
                 var policyInfo = ProtectionPolicyHelpers.GetCmdletPolicy(vault, response);
 

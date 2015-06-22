@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup vault
     /// </summary>
-    public class AzureBackupVault
+    public class AzurePSBackupVault
     {
         public string ResourceId { get; set; }
 
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public string Storage { get; set; }
 
-        public AzureBackupVault() : base() { }
+        public AzurePSBackupVault() : base() { }
 
-        public AzureBackupVault(string resourceGroupName, string resourceName, string region)
+        public AzurePSBackupVault(string resourceGroupName, string resourceName, string region)
         {
             ResourceGroupName = resourceGroupName;
             Name = resourceName;

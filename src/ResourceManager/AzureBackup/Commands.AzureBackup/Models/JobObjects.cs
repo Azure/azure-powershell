@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public List<ErrorInfo> ErrorDetails { get; set; }
 
-        public AzureBackupJob(AzureBackupVault vault, Mgmt.Job serviceJob)
+        public AzureBackupJob(AzurePSBackupVault vault, Mgmt.Job serviceJob)
             : base(vault)
         {
             this.InstanceId = serviceJob.InstanceId;
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public List<AzureBackupJobSubTask> SubTasks { get; set; }
 
-        public AzureBackupJobDetails(AzureBackupVault vault, Mgmt.JobProperties serviceJobProperties)
+        public AzureBackupJobDetails(AzurePSBackupVault vault, Mgmt.JobProperties serviceJobProperties)
             : base(vault, serviceJobProperties)
         {
             if (serviceJobProperties.PropertyBag != null)

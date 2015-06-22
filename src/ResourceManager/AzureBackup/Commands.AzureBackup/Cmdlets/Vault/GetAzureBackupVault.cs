@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
 using Newtonsoft.Json;
 using System;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// API to get backup vaults in the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupVault"), OutputType(typeof(AzureBackupVault), typeof(List<AzureBackupVault>))]
+    [Cmdlet(VerbsCommon.Get, "AzureBackupVault"), OutputType(typeof(AzurePSBackupVault), typeof(List<AzurePSBackupVault>))]
     public class GetAzureBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
@@ -75,9 +76,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private IEnumerable<AzureBackupVault> GetCmdletVaults(IEnumerable<Microsoft.Azure.Management.BackupServices.Models.AzureBackupVault> backupVaults)
+        private IEnumerable<AzurePSBackupVault> GetCmdletVaults(IEnumerable<AzureBackupVault> backupVaults)
         {
-            List<AzureBackupVault> resultList = new List<AzureBackupVault>();
+            List<AzurePSBackupVault> resultList = new List<AzurePSBackupVault>();
             if (backupVaults != null)
             {
                 foreach (var backupVault in backupVaults)

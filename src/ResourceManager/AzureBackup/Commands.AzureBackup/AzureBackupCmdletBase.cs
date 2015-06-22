@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Initializes required client adapters
         /// </summary>
         /// <param name="vault"></param>
-        protected void InitializeAzureBackupCmdlet(CmdletModel.AzureBackupVault vault)
+        protected void InitializeAzureBackupCmdlet(CmdletModel.AzurePSBackupVault vault)
         {
             InitializeAzureBackupCmdlet(vault.ResourceGroupName, vault.Name);
         }

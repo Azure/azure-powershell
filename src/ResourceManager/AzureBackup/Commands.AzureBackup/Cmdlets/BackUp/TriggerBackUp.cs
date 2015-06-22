@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug("Triggered backup. Converting response");
 
-                var operationStatus = GetOperationStatus(operationId);
+                var operationStatus = TrackOperation(operationId);
                 this.WriteObject(operationStatus.JobList.FirstOrDefault());
             });
         }

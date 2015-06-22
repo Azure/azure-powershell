@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.BackupServices.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Models;
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public class AzureBackupVaultContextObject
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models;
             Location = locationName;
         }
 
-        public AzureBackupVaultContextObject(AzureBackupVault vault) : this(vault.ResourceGroupName, vault.Name, vault.Region)
+        public AzureBackupVaultContextObject(AzurePSBackupVault vault) : this(vault.ResourceGroupName, vault.Name, vault.Region)
         {
         }
     }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models;
             ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
         }
 
-        public AzureBackupContainerContextObject(AzureBackupVault vault, ContainerInfo containerInfo)
+        public AzureBackupContainerContextObject(AzurePSBackupVault vault, ContainerInfo containerInfo)
             : base(vault)
         {
             ContainerType = containerInfo.ContainerType;

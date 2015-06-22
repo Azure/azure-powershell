@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
         }
 
-        public AzureBackupProtectionPolicy(AzureBackupVault vault, ProtectionPolicyInfo sourcePolicy)
+        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, ProtectionPolicyInfo sourcePolicy)
             : base(vault)
         {
             InstanceId = sourcePolicy.InstanceId;
