@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.BackupServices.Models;
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+
+namespace Microsoft.Azure.Commands.AzureBackup.Models;
 {
     public class AzureBackupVaultContextObject
     {
@@ -41,6 +42,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ResourceGroupName = resourceGroupName;
             ResourceName = resourceName;
             Location = locationName;
+        }
+
+        public AzureBackupVaultContextObject(AzureBackupVault vault) : this(vault.ResourceGroupName, vault.Name, vault.Region)
+        {
         }
     }
 
@@ -78,8 +83,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
         }
 
-        public AzureBackupContainerContextObject(ContainerInfo containerInfo, string rgName, string rName, string location)
-            : base(rgName, rName, location)
+        public AzureBackupContainerContextObject(AzureBackupVault vault, ContainerInfo containerInfo)
+            : base(vault)
         {
             ContainerType = containerInfo.ContainerType;
             ContainerUniqueName = containerInfo.Name;

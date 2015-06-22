@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -67,15 +69,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
                 WriteDebug("Making client call");
 
-                var ScheduleType = GetScheduelType(ScheduleRunDays);
+                var ScheduleType = GetScheduleType(ScheduleRunDays);
 
-                var backupSchedule = azureBackupCmdletHelper.FillBackupSchedule(BackupType, ScheduleType, ScheduleRunTimes,
+                var backupSchedule = ProtectionPolicyHelpers.FillBackupSchedule(BackupType, ScheduleType, ScheduleRunTimes,
                    RetentionType, RetentionDuration, ScheduleRunDays);
                 
                 var addProtectionPolicyRequest = new AddProtectionPolicyRequest();
@@ -83,16 +84,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 addProtectionPolicyRequest.Schedule = backupSchedule;
                 addProtectionPolicyRequest.WorkloadType = Enum.Parse(typeof(WorkloadType), this.WorkloadType, true).ToString();
 
-                var operationId = AzureBackupClient.ProtectionPolicy.AddAsync(addProtectionPolicyRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                AzureBackupClient.AddProtectionPolicy(addProtectionPolicyRequest);
                 WriteDebug("Protection policy created successfully");
 
-                AzureBackupProtectionPolicy policyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(Name, ResourceGroupName, ResourceName, Location);
-                WriteDebug("Converting response");
-                WriteObject(policyInfo);
+                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Name);
+                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, policyInfo));
             });
         }
 
-        private string GetScheduelType(string[] ScheduleRunDays)
+        private string GetScheduleType(string[] ScheduleRunDays)
         {
             WriteDebug("ParameterSetName = " + this.ParameterSetName.ToString());
 

@@ -24,6 +24,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -42,8 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", 
                 ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location));
 
-            InitializeAzureBackupCmdlet(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
-        }
-        
+            InitializeAzureBackupCmdlet(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName);
+        }   
     }
 }

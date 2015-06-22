@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -29,20 +30,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 WriteDebug("Making client call");
 
-                AzureBackupProtectionPolicy policyInfo = azureBackupCmdletHelper.GetAzureBackupProtectionPolicyByName(ProtectionPolicy.Name, 
-                    ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
-                
+                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
                 if (policyInfo != null)
                 {
-                    var policyRemoveResponse = AzureBackupClient.ProtectionPolicy.DeleteAsync(policyInfo.InstanceId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-
-                    WriteDebug("Converting response");
+                    AzureBackupClient.DeleteProtectionPolicy(policyInfo.InstanceId);
                     WriteVerbose("Successfully deleted policy");
                 }
                 else

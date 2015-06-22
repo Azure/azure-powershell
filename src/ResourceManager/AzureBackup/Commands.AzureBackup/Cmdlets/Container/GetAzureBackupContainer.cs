@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Library;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
@@ -47,18 +49,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 string queryFilterString = string.Empty;
                 queryFilterString = ConstructQueryFilterString();
-                ListContainerResponse listContainerResponse = AzureBackupClient.Container.ListAsync(queryFilterString,
-                    GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var containerList = AzureBackupClient.ListContainers(queryFilterString);
 
-                WriteVerbose(string.Format("# of fetched containers = {0}", listContainerResponse.Objects.Count));
+                WriteDebug(string.Format("Fetched {0} containers", containerList.Count()));
 
-                List<ContainerInfo> containerInfos = listContainerResponse.Objects.ToList();
+                List<ContainerInfo> containerInfos = containerList.ToList();
 
                 // When resource group name is specified, remove all containers whose resource group name
                 // doesn't match the given resource group name
@@ -70,11 +71,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     });
                 }
 
-                WriteVerbose(string.Format("# of containers after resource group filter = {0}", listContainerResponse.Objects.Count));
+                WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));
 
+                // TODO: Container friendly name is not captures in Container response
+                // BUG: Friendly name was previously assigned to ResourceName (vault name)
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(containerInfo, containerInfo.ParentContainerName, containerInfo.FriendlyName, Location);
+                    return new AzureBackupContainer(vault, containerInfo);
                 });
 
                 if (!string.IsNullOrEmpty(ContainerResourceName) & !string.IsNullOrEmpty(ContainerResourceGroupName))
@@ -93,12 +96,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private string ConstructQueryFilterString()
         {
-            ContainerQueryObject containerQueryObject = new ContainerQueryObject();
+            var containerQueryObject = new ListContainerQueryParameter();
 
             switch (Type)
             {
                 case AzureBackupContainerTypeInput.AzureVirtualMachine:
-                    containerQueryObject.Type = ContainerType.IaasVMContainer.ToString();
+                    containerQueryObject.ContainerTypeField = AzureBackupContainerType.IaasVMContainer.ToString();
                     break;
                 default:
                     break;
@@ -107,10 +110,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             switch (Status)
             {
                 case AzureBackupContainerStatusInput.Registered:
-                    containerQueryObject.Status = RegistrationStatus.Registered.ToString();
+                    containerQueryObject.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registered.ToString();
                     break;
                 case AzureBackupContainerStatusInput.Registering:
-                    containerQueryObject.Status = RegistrationStatus.Registering.ToString();
+                    containerQueryObject.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registering.ToString();
                     break;
                 default:
                     break;
@@ -118,10 +121,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (!string.IsNullOrEmpty(ContainerResourceName))
             {
-                containerQueryObject.FriendlyName = ContainerResourceName;
+                containerQueryObject.ContainerFriendlyNameField = ContainerResourceName;
             }
 
-            return BackupManagementAPIHelper.GetQueryString(containerQueryObject.GetNameValueCollection());
+            return ContainerHelpers.GetQueryFilter(containerQueryObject);
         }
     }
 }

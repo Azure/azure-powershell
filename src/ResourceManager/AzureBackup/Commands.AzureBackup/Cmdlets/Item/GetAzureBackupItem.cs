@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using System.Runtime.Serialization;
 using System.Collections.Specialized;
 using Microsoft.Azure.Common.OData;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -44,15 +45,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 List<DataSourceInfo> azureBackupDatasourceObjects = null;
                 List<ProtectableObjectInfo> azureBackupPOObjects = null;
-                DataSourceListResponse azureBackupDatasourceListResponse = null;
-                ProtectableObjectListResponse azureBackupPOListResponse = null;
-                WriteVerbose("Making client call");
+
+                WriteDebug("Making client call");
                 DataSourceQueryParameter DSQueryParam = new DataSourceQueryParameter()
                 {
                     ProtectionStatus = this.ProtectionStatus,
@@ -66,16 +66,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Type = this.Type
                 };
 
-                azureBackupDatasourceListResponse = AzureBackupClient.DataSource.ListAsync(DSQueryParam, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                azureBackupDatasourceObjects = azureBackupDatasourceListResponse.DataSources.Objects.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
+                var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(DSQueryParam);
+                azureBackupDatasourceObjects = azureBackupDatasourceListResponse.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
 
                 if (this.Status == null)
                 {
-                    azureBackupPOListResponse = AzureBackupClient.ProtectableObject.ListAsync(POQueryParam, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                    azureBackupPOObjects = azureBackupPOListResponse.ProtectableObject.Objects.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
+                    var azureBackupPOListResponse = AzureBackupClient.ListProtectableObjects(POQueryParam);
+                    azureBackupPOObjects = azureBackupPOListResponse.Where(x => x.ContainerName.Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
                 }
 
-                WriteVerbose("Received azure backup item response");
+                WriteDebug("Received azure backup item response");
                 WriteAzureBackupItem(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
             });
         }

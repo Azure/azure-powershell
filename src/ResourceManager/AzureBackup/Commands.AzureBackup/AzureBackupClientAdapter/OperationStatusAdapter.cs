@@ -23,23 +23,17 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
-using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Management.BackupServices.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public abstract class AzureBackupVaultCmdletBase : AzureBackupCmdletBase
+    public partial class AzureBackupClientAdapter
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AzureBackupVault vault { get; set; }
-
-        public override void ExecuteCmdlet()
+        public OperationResultResponse GetOperationStatus(string operationId)
         {
-            base.ExecuteCmdlet();
-            vault.Validate();
-
-            InitializeAzureBackupCmdlet(vault);
+            return AzureBackupClient.OperationStatus.GetAsync(operationId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
         }
     }
 }
-
