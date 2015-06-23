@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return deployment;
         }
 
+
         public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
         {
             PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
