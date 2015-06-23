@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    using Microsoft.Azure.Commands.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Commands.RemoteApp;
     using Microsoft.WindowsAzure.Management.Network;
     using Microsoft.WindowsAzure.Management.Network.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
@@ -127,6 +126,12 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string CustomRdpProperty { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the resource type of the collection."
+        )]
+        public CollectionMode? ResourceType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // register the subscription for this service if it has not been before
@@ -142,9 +147,10 @@ namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
                 PlanName = Plan,
                 Description = Description,
                 CustomRdpProperty = CustomRdpProperty,
-                Mode = CollectionMode.Apps
+                Mode = (ResourceType == null || ResourceType == CollectionMode.Unassigned) ? CollectionMode.Apps : ResourceType.Value
             };
             OperationResultWithTrackingId response = null;
+
 
             switch (ParameterSetName)
             {

@@ -17,6 +17,8 @@ using Microsoft.WindowsAzure.Management.StorSimple.Models;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
+    using Microsoft.WindowsAzure.Commands.StorSimple.Models;
+
     public partial class StorSimpleClient
     {
         public GetBackupResponse GetAllBackups(string deviceId, string filterType, string isAllSelected, string filterValue, string startDateTime, string endDateTime,
@@ -55,6 +57,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public TaskResponse DoBackupAsync(string deviceid, string backupPolicyId, BackupNowRequest request)
         {
             return GetStorSimpleClient().Backup.BeginCreatingBackup(deviceid, backupPolicyId, request, GetCustomRequestHeaders());
+        }
+
+        public JobResponse CloneVolume(string deviceId, TriggerCloneRequest request)
+        {
+            return this.GetStorSimpleClient().CloneVolume.Trigger(deviceId, request, this.GetCustomRequestHeaders());
         }
     }
 }

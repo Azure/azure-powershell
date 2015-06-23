@@ -88,6 +88,31 @@ function Get-ImportKeyFile([string]$filesuffix, [bool] $exists=$true)
 
 <#
 .SYNOPSIS
+Get 1024 bit key file path to be imported
+#>
+function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
+{
+    if ($exists)
+    {
+        $file = "$filesuffix"+"test1024.$filesuffix"
+    }
+    else
+    {
+        $file = "notexist" + ".$filesuffix"
+    }
+
+    if ($global:testEnv -eq 'BVT')
+    {       
+        return Join-Path $invocationPath "bvtdata\$file"        
+    }
+    else
+    {
+        return Join-Path $invocationPath "proddata\$file"
+    }
+}
+
+<#
+.SYNOPSIS
 Remove log file under a folder
 #>
 function Cleanup-Log([string]$rootfolder)
@@ -261,4 +286,57 @@ function Write-ConsoleReport
     Write-Host -ForegroundColor Green "Start Time: $global:startTime"
     Write-Host -ForegroundColor Green "End Time: $global:endTime"
     Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()	
+}
+
+function Equal-DateTime($left, $right)
+{   
+    if ($left -eq $null -and $right -eq $null)
+    {        
+        return $true
+    }
+    if ($left -eq $null -or $right -eq $null)
+    {
+        return $false
+    }
+    
+    return (($left - $right).Duration() -le $delta)
+}
+
+function Equal-Hashtable($left, $right)
+{
+    if ((EmptyOrNullHashtable $left) -and (-Not (EmptyOrNullHashtable $right)))
+    {
+        return $false
+    }  
+    if ((EmptyOrNullHashtable $right) -and (-Not (EmptyOrNullHashtable $left)))
+    {
+        return $false
+    } 
+    if ($right.Count -ne $left.Count)
+    {
+        return $false
+    }
+    
+    return $true
+}
+
+function EmptyOrNullHashtable($hashtable)
+{
+    return ($hashtable -eq $null -or $hashtable.Count -eq 0)
+}
+
+function Equal-OperationList($left, $right)
+{   
+    if ($left -eq $null -and $right -eq $null)
+    {        
+        return $true
+    }
+    if ($left -eq $null -or $right -eq $null)
+    {
+        return $false
+    }
+
+    $diff = Compare-Object -ReferenceObject $left -DifferenceObject $right -PassThru
+    
+    return (-not $diff)
 }

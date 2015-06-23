@@ -142,11 +142,38 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Actions.
+        /// </summary>
+        internal static string InvalidActions {
+            get {
+                return ResourceManager.GetString("InvalidActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for AssignableScopes.
+        /// </summary>
+        internal static string InvalidAssignableScopes {
+            get {
+                return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource identifier..
         /// </summary>
         internal static string InvalidFormatOfResourceId {
             get {
                 return ResourceManager.GetString("InvalidFormatOfResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RoleDefinition Name is invalid.
+        /// </summary>
+        internal static string InvalidRoleDefinitionName {
+            get {
+                return ResourceManager.GetString("InvalidRoleDefinitionName", resourceCulture);
             }
         }
         
@@ -187,7 +214,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource goup named &apos;{0}&apos; - the resource(s): &apos;{1}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; - the resource(s): &apos;{1}&apos;.
         /// </summary>
         internal static string MovingResources {
             get {
@@ -223,7 +250,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource goup named &apos;{0}&apos; in the subscription named &apos;{1}&apos; and id &apos;{2}&apos; - the resource(s): &apos;{3}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; in the subscription named &apos;{1}&apos; and id &apos;{2}&apos; - the resource(s): &apos;{3}&apos;.
         /// </summary>
         internal static string MovingResourcesIntoNewSubscription {
             get {

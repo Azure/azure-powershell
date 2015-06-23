@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>c29245bf</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,18 +50,18 @@
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.17-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -71,17 +73,18 @@
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Hadoop.Client">
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.HDInsight.Net.Http.Formatting">
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -101,16 +104,16 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Contracts">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework">
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core">
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.3.0.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
@@ -147,6 +150,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HDInsight\CmdLetTests\AddConfigValuesCmdletTests.cs" />
@@ -161,6 +172,7 @@
     <Compile Include="HDInsight\CmdLetTests\GetJobOutputCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GetJobsCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GetPropertiesCmdletTests.cs" />
+    <Compile Include="HDInsight\CmdLetTests\GrantRdpAccessCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\GrantHttpAccessCmdletTests.cs" />
     <Compile Include="HDInsight\CmdLetTests\HDInsightTestCaseBase.cs" />
     <Compile Include="HDInsight\CmdLetTests\InvokeHiveCmdletTests.cs" />
@@ -185,6 +197,7 @@
     <Compile Include="HDInsight\CommandTests\HDInsightGetJobsCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\HDInsightGetPropertiesCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\InvokeHiveCommandTests.cs" />
+    <Compile Include="HDInsight\CommandTests\ManageAzureHDInsightRdpAccessCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\ManageAzureHDInsightHttpAccessCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\NewHDInsightMapReduceJobCommandTests.cs" />
     <Compile Include="HDInsight\CommandTests\NewHDInsightPigJobCommandTests.cs" />
@@ -245,6 +258,10 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj">
       <Project>{137d404a-865a-43db-930c-6da67da048df}</Project>
       <Name>Commands.HDInsight</Name>
@@ -267,5 +284,11 @@
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
     <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props'))" />
   </Target>
 </Project>

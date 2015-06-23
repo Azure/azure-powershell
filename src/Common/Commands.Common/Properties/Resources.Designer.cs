@@ -3423,6 +3423,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Switch-AzureMode cmdlet is deprecated and will be removed in a future release..
+        /// </summary>
+        public static string SwitchAzureModeDeprecated {
+            get {
+                return ResourceManager.GetString("SwitchAzureModeDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to decode string from base 64. Please make sure the string is correctly encoded: {0}..
         /// </summary>
         public static string UnableToDecodeBase64String {

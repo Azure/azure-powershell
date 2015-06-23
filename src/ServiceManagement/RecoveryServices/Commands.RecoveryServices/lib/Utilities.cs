@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
@@ -28,11 +29,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public static class Utilities
     {
         /// <summary>
-        /// Serialize the T as xml using DataContractSerializer
+        /// Serialize the T as xml using DataContract Serializer
         /// </summary>
         /// <typeparam name="T">the type name</typeparam>
         /// <param name="value">the T object.</param>
         /// <returns>the serialized object.</returns>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         public static string Serialize<T>(T value)
         {
             if (value == null)
@@ -60,6 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <typeparam name="T">the type name</typeparam>
         /// <param name="xml">the xml as string</param>
         /// <returns>the equivalent T</returns>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         public static T Deserialize<T>(string xml)
         {
             if (string.IsNullOrEmpty(xml))

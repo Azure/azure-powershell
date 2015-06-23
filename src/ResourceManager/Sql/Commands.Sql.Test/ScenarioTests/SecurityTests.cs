@@ -26,24 +26,21 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithStorage");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithEventTypes");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithEventTypes");
@@ -182,6 +179,34 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         public void TestServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-ServerStorageKeyRotation");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestServerUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestServerRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-ServerRetentionKeepProperties");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
         }
     }
 }

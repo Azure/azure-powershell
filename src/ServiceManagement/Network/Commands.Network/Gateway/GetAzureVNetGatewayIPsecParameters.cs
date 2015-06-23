@@ -14,13 +14,15 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 
-namespace Microsoft.Azure.Commands.Network.Gateway
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {
     [Cmdlet(VerbsCommon.Get, "AzureVNetGatewayIPsecParameters"), OutputType(typeof(IPsecParameters))]
     public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network name.")]
+        [ValidateGuid]
         [ValidateNotNullOrEmpty]
         public string VNetName
         {
@@ -28,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Gateway
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
+        [ValidateGuid]
         [ValidateNotNullOrEmpty]
         public string LocalNetworkSiteName
         {

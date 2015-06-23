@@ -453,9 +453,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FabricType { get; set; }
 
         /// <summary>
-        /// Gets or sets the type e.g. VMM, HyperVSite etc.
+        /// Gets or sets the type e.g. VMM, HyperVSite, etc.
         /// </summary>
         [DataMember]
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
         public string Type { get; set; }
 
         /// <summary>

@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RemoteApp;
-using Microsoft.Azure.Management.RemoteApp.Models;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.IO;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsData.Publish, "AzureRemoteAppProgram", DefaultParameterSetName = AppId), OutputType(typeof(PublishingOperationResult), typeof(Job))]
     public class PublishAzureRemoteAppProgram : RdsCmdlet

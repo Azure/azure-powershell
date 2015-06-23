@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
 using System;
 using System.Management.Automation;
 using System.Threading;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     internal class LongRunningTask<T> : Job where T : RdsCmdlet
     {

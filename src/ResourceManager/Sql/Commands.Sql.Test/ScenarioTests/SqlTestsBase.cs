@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.Authorization;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -34,10 +35,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void SetupManagementClients()
         {
-            var sqlCSMClient = GetSqlCSMClient(); // to interact with the security endpoints
+            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient);
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -60,19 +62,49 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
         }
 
-        protected SqlManagementClient GetSqlCSMClient()
+        protected SqlManagementClient GetSqlClient()
         {
-            return TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
+            SqlManagementClient client = TestBase.GetServiceClient<SqlManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
         }
 
         protected StorageManagementClient GetStorageClient()
         {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
         }
 
         protected ResourceManagementClient GetResourcesClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            ResourceManagementClient client = TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        {   
+            AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+
         }
     }
 }

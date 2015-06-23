@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -538,8 +539,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsTrue(File.Exists(configPath3.FullName), "file not exist={0}", configPath3);
 
             string deploymentName = "deployment1";
+            string deploymentName2 = "deployment2";
             string deploymentLabel = "label1";
             DeploymentInfoContext result;
+
+            PSCredential cred = new PSCredential(username, Utilities.convertToSecureString(password));
+            ExtensionConfigurationInput rdpExtCfg = vmPowershellCmdlets.NewAzureServiceRemoteDesktopExtensionConfig(cred);
 
             try
             {
@@ -548,13 +553,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false);
+                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath1.FullName, configPath1.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName, false, false, rdpExtCfg);
                 }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 30);
 
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
                 pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Staging, null, 1);
                 Console.WriteLine("successfully deployed the package");
 
+                ExtensionContext extResult0 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult0);
 
                 // Move the deployment from 'Staging' to 'Production'
                 Utilities.RetryActionUntilSuccess(() =>
@@ -563,9 +570,60 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }, "The server encountered an internal error. Please retry the request.", 10, 30);
                 result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 1);
-                Console.WriteLine("successfully moved");
+                Console.WriteLine("successfully moved.");
 
-                // Set the deployment status to 'Suspended'
+                ExtensionContext extResult1 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Production)[0];
+                Utilities.PrintContext(extResult1);
+
+                Assert.IsTrue(string.Equals(extResult0.Id, extResult1.Id));
+
+                // Check until the deployment moving is done, and the staging slot is empty.
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    try
+                    {
+                        result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                        Assert.IsNull(result);
+                    }
+                    catch (Exception e)
+                    {
+                        const string errorMessage = "No deployments were found.";
+                        Assert.IsTrue(e.ToString().Contains(errorMessage) || (e.InnerException != null && e.InnerException.ToString().Contains(errorMessage)));
+                    }
+                }, "Assert", 10, 60);
+                Console.WriteLine("successfully checked original deployment has been moved away.");
+
+                // Re-create the Staging depoyment with the extension
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureDeployment(serviceName, packagePath2.FullName, configPath2.FullName, DeploymentSlotType.Staging, deploymentLabel, deploymentName2, false, false, rdpExtCfg);
+                }, "Windows Azure is currently performing an operation on this hosted service that requires exclusive access.", 10, 60);
+
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                pass = Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName2, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+                Console.WriteLine(string.Format("Successfully re-deployed the package #2 to the {0} slot.", DeploymentSlotType.Staging));
+
+                ExtensionContext extResult2 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult2);
+
+                // Update the deployment with the extension
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, configPath2.FullName, rdpExtCfg);
+                }, "The server encountered an internal error. Please retry the request.", 10, 30);
+                result = vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
+                pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName2, deploymentLabel, DeploymentSlotType.Staging, null, 2);
+                Console.WriteLine("successfully updated the deployment #2");
+
+                ExtensionContext extResult3 = vmPowershellCmdlets.GetAzureServiceExtension(serviceName, DeploymentSlotType.Staging)[0];
+                Utilities.PrintContext(extResult3);
+
+                Assert.IsTrue(!string.Equals(extResult2.Id, extResult3.Id));
+
+                // Remove the deployment #2
+                vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Staging, true);
+
+                // Set the deployment #1 status to 'Suspended'
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.SetAzureDeploymentStatus(serviceName, DeploymentSlotType.Production, DeploymentStatus.Suspended);
@@ -574,7 +632,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, DeploymentStatus.Suspended, 1);
                 Console.WriteLine("successfully changed the status");
 
-                // Update the deployment
+                // Update the deployment #1
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, configPath2.FullName);
@@ -583,7 +641,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 pass &= Utilities.PrintAndCompareDeployment(result, serviceName, deploymentName, deploymentLabel, DeploymentSlotType.Production, null, 2);
                 Console.WriteLine("successfully updated the deployment");
 
-                // Upgrade the deployment
+                // Upgrade the deployment #1
                 DateTime start = DateTime.Now;
                 Utilities.RetryActionUntilSuccess(() =>
                 {
@@ -625,6 +683,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
                     Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
                 }
+
+                // Negative test for Get-AzureVM
+                var vmRoleList1 = vmPowershellCmdlets.GetAzureVM();
+                Assert.IsFalse(vmRoleList1.Any(r => r.DeploymentName == deploymentName));
+                var vmRoleList2 = vmPowershellCmdlets.GetAzureVM(serviceName);
+                Assert.IsFalse(vmRoleList2.Any(r => r.DeploymentName == deploymentName));
 
                 vmPowershellCmdlets.RemoveAzureDeployment(serviceName, DeploymentSlotType.Production, true);
 
@@ -1029,7 +1093,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Assert.AreEqual("PaaSDiagnostics", resultConfig.Type, "Type is not equal!");
                 Assert.AreEqual(storage, resultStorageAccount);
-                Assert.IsTrue(Utilities.CompareWadCfg(resultWadCfg, wadconfig));
+                Utilities.CompareWadCfg(resultWadCfg, wadconfig);
 
                 if (string.IsNullOrWhiteSpace(thumbprint))
                 {
@@ -1665,6 +1729,94 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 if (e.ToString().Contains("while in use"))
                 {
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// This test covers negative test on Set-AzurePlatformVMImage cmdlets
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Functional), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet (Get,Set,Remove)-AzurePlatformVMImage)")]
+        public void AzurePlatformVMImageNegativeTest()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+
+            Func<string, string[]> getScripts = img => new string[]
+                {
+                    "Import-Module '.\\" + Utilities.AzurePowershellModuleServiceManagementPirModule + "';",
+                    "$c1 = New-AzurePlatformComputeImageConfig -Offer test -Sku test -Version test;",
+                    "$c2 = New-AzurePlatformMarketplaceImageConfig -PlanName test -Product test -Publisher test -PublisherId test;",
+                    "$vmImgLoc = (Get-AzureLocation | where { $_.Name -like '*US*' } | select -ExpandProperty Name)[0];",
+                    "Set-AzurePlatformVMImage -ImageName " + img + " -ReplicaLocations $vmImgLoc -ComputeImageConfig $c1 -MarketplaceImageConfig $c2;"
+                };
+
+            var imgName = Utilities.GetUniqueShortName("img");
+
+            try
+            {
+                var scripts = getScripts(imgName);
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ResourceNotFound: The image with the specified name does not exist.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+
+            // OS Image
+            var osImages = vmPowershellCmdlets.GetAzureVMImage();
+            imgName = osImages.First().ImageName;
+
+            try
+            {
+                var scripts = getScripts(imgName);
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ForbiddenError: This operation is not allowed for this subscription.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
+                    Console.WriteLine(e.InnerException.ToString());
+                }
+                else
+                {
+                    pass = false;
+                    Assert.Fail("Exception occurred: {0}", e.ToString());
+                }
+            }
+
+            // VM Image
+            var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
+            imgName = vmImages.First().ImageName;
+
+            try
+            {
+                var scripts = getScripts(imgName);
+                vmPowershellCmdlets.RunPSScript(string.Join(System.Environment.NewLine, scripts), true);
+            }
+            catch (Exception e)
+            {
+                var expectedMsg = "ForbiddenError: This operation is not allowed for this subscription.";
+                if (e.InnerException != null && e.InnerException.Message != null && e.InnerException.Message.Contains(expectedMsg))
+                {
+                    pass = true;
                     Console.WriteLine(e.InnerException.ToString());
                 }
                 else
