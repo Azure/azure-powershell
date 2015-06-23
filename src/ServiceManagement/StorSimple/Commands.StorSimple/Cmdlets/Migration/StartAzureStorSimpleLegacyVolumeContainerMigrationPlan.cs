@@ -25,18 +25,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsLifecycle.Start, "AzureStorSimpleLegacyVolumeContainerMigrationPlan")]
     public class StartAzureStorSimpleLegacyVolumeContainerMigrationPlan : StorSimpleCmdletBase
     {
-        public const string AllContainers = "ALL";
-        public const string SpecificContainers = "DCSpecific";
-
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = SpecificContainers,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AllContainers,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateAllContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
         public SwitchParameter All { get; set; }
 

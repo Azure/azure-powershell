@@ -26,9 +26,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsLifecycle.Confirm, "AzureStorSimpleLegacyVolumeContainerStatus")]
     public class ConfirmAzureStorSimpleLegacyVolumeContainerStatus : StorSimpleCmdletBase
     {
-        public const string AllContainers = "ALL";
-        public const string SpecificContainers = "DCSpecific";
-
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
@@ -37,11 +34,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateSet("Commit", "Rollback", IgnoreCase = true)]
         public string MigrationOperation { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ParameterSetName = SpecificContainers,
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AllContainers,
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.MigrateAllContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
         public SwitchParameter All { get; set; }
 
