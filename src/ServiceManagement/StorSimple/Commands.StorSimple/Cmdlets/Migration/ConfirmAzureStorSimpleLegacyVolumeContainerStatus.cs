@@ -49,15 +49,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var confirmMigrationRequest = new MigrationConfirmStatusRequest();
                 confirmMigrationRequest.Operation =
                     (MigrationOperation) Enum.Parse(typeof (MigrationOperation), MigrationOperation, true);
-                if (All.IsPresent)
+                switch (ParameterSetName)
                 {
-                    confirmMigrationRequest.DataContainerNameList = new List<string>();
-                }
-                else
-                {
-                    confirmMigrationRequest.DataContainerNameList =
-                            new List<string>(LegacyContainerNames.ToList().Distinct(
-                                StringComparer.InvariantCultureIgnoreCase));
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            confirmMigrationRequest.DataContainerNameList = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                           confirmMigrationRequest.DataContainerNameList =
+                           new List<string>(LegacyContainerNames.ToList().Distinct(
+                               StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path hit.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
                 }
 
                 var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, confirmMigrationRequest);

@@ -43,15 +43,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 var startMigrationPlanRequest = new MigrationPlanStartRequest();
                 startMigrationPlanRequest.ConfigId = LegacyConfigId;
-                if (All.IsPresent)
+                switch (ParameterSetName)
                 {
-                    startMigrationPlanRequest.DataContainerNameList = new List<string>();
-                }
-                else
-                {
-                    startMigrationPlanRequest.DataContainerNameList =
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            startMigrationPlanRequest.DataContainerNameList = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                            startMigrationPlanRequest.DataContainerNameList =
                             new List<string>(LegacyContainerNames.ToList().Distinct(
                                 StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path hit.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
                 }
 
                 var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);

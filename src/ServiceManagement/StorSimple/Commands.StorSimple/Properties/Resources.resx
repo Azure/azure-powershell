@@ -571,4 +571,7 @@ a special character</value>
   <data name="MigrationPlanNotFound" xml:space="preserve">
     <value>No migration plan found corresponding to the LegacyConfigId.</value>
   </data>
+  <data name="MigrationParameterSetNotFound" xml:space="preserve">
+    <value>Parameter set cannot be resolved using the specified named parameters {0}</value>
+  </data>
 </root>

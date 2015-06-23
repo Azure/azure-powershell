@@ -49,15 +49,26 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var importDataContainerRequest = new MigrationImportDataContainerRequest();
-                if(All.IsPresent)
+                switch (ParameterSetName)
                 {
-                    importDataContainerRequest.DataContainerNames = new List<string>();
-                }
-                else
-                {
-                    importDataContainerRequest.DataContainerNames =
-                            new List<string>(LegacyContainerNames.ToList().Distinct(
-                                StringComparer.InvariantCultureIgnoreCase));
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            importDataContainerRequest.DataContainerNames = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                            importDataContainerRequest.DataContainerNames =
+                                    new List<string>(LegacyContainerNames.ToList().Distinct(
+                                        StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
                 }
 
                 importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
