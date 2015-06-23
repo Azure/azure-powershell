@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cloud Exception&apos;s Request ID: &apos;{0}&apos;. Please refer to this identifier for further investigation, if needed..
+        /// </summary>
+        public static string ComputeCloudExceptionRequestIdMessage {
+            get {
+                return ResourceManager.GetString("ComputeCloudExceptionRequestIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
         public static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {

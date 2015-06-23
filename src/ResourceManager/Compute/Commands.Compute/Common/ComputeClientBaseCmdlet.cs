@@ -15,12 +15,14 @@
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
+        protected const string RequestIdHeaderInResponse = "x-ms-request-id";
 
         private ComputeClient computeClient;
 
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             set { computeClient = value; }
         }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -56,12 +59,24 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (CloudException ex)
             {
-                WriteExceptionError(ex);
+                this.WriteCloudExceptionError(ex);
             }
             catch (Exception ex)
             {
                 WriteExceptionError(ex);
             }
+        }
+
+        protected virtual void WriteCloudExceptionError(CloudException ex)
+        {
+            if (ex.Response != null && ex.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
+            {
+                string requestId = ex.Response.Headers[RequestIdHeaderInResponse].FirstOrDefault();
+                string errorMessage = string.Format(Properties.Resources.ComputeCloudExceptionRequestIdMessage, requestId);
+                WriteErrorWithTimestamp(errorMessage);
+            }
+
+            WriteExceptionError(ex);
         }
     }
 }
