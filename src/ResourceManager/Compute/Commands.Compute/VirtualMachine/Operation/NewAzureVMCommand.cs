@@ -68,8 +68,11 @@ namespace Microsoft.Azure.Commands.Compute
                 Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
             };
 
-            var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-            WriteObject(op);
+            ExecuteClientAction(() =>
+            {
+                var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
+                WriteObject(op);
+            });
         }
     }
 }

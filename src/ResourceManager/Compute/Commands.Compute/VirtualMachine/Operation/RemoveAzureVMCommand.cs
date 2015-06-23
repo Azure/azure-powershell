@@ -54,9 +54,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.Force.IsPresent
              || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
             {
-                var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                WriteObject(result);
+                ExecuteClientAction(() =>
+                {
+                    var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    WriteObject(result);
+                });
             }
         }
     }
