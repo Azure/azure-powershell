@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
 
         public AzureBackupContainerContextObject(AzurePSBackupVault vault, ContainerInfo containerInfo)
-            : base(vault)
+            : base(containerInfo.ParentContainerFriendlyName, containerInfo.FriendlyName, vault.Region)
         {
             ContainerType = containerInfo.ContainerType;
             ContainerUniqueName = containerInfo.Name;
