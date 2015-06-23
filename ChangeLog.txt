@@ -1,4 +1,4 @@
-﻿2015.06.25 version 0.9.4
+﻿2015.06.26 version 0.9.4
 * Added Batch cmdlets
     * Start-AzureBatchPoolResize
     * Stop-AzureBatchPoolResize
