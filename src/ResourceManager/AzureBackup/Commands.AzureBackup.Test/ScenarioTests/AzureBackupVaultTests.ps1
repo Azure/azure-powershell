@@ -14,12 +14,13 @@
 
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
-$Location = "SouthEast Asia"
+$Location = "westus"
 $CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
 function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
 {
-	$fileName = Get-AzureBackupVaultCredentials -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -TargetLocation $CertTargetLocation
+	$vault = Get-AzureBackupVault -Name $ResourceName;
+	$fileName = Get-AzureBackupVaultCredentials -vault $vault -TargetLocation $CertTargetLocation
 	Assert-NotNull $fileName 'File name should not be null';
 	$certFileFullPath = [io.path]::combine($CertTargetLocation, $fileName);
 	Assert-True {{ Test-Path $certFileFullPath }}
@@ -27,22 +28,25 @@ function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
 
 function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
 {
-	# TODO: Create a new resource and use it for these calls. At the end, delete it.
+	$freshVault = New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name "storagetestrn" -Region $Location;
+	
+	Set-AzureBackupVaultStorageType $freshVault -Type GeoRedundant
 
-	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+	Set-AzureBackupVaultStorageType $freshVault -Type LocallyRedundant
 
-	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+	Set-AzureBackupVaultStorageType $freshVault -Type GeoRedundant
 
-	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant
+	Set-AzureBackupVaultStorageType $freshVault -Type LocallyRedundant
 
-	Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant
+	Remove-AzureBackupVault -vault $freshVault
 }
 
 function Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException
 {
-	# One of them is bound to fail
+	# TODO: Check for exception based on current storage type - obtained by vault properties
+	$vault = Get-AzureBackupVault -Name $ResourceName;
 
-	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type GeoRedundant }
+	Assert-Throws { Set-AzureBackupVaultStorageType $vault -Type GeoRedundant }
 
-	Assert-Throws { Set-AzureBackupVaultStorageType -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Type LocallyRedundant }
+	Assert-Throws { Set-AzureBackupVaultStorageType $vault -Type LocallyRedundant }
 }
