@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 
                 WriteVerbose("Received disable azure backup protection response");
                 var operationStatus = GetOperationStatus(operationId);
-                this.WriteObject(operationStatus.JobList.FirstOrDefault());
+                this.WriteObject(operationStatus.Jobs.FirstOrDefault());
             });
         }
 

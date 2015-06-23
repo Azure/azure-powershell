@@ -76,7 +76,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.BackupServicesManagment, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Git4\dummy\azure-sdk-for-net\src\ResourceManagement\AzureBackup\BackupServicesManagment\bin\Net45-Debug\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
+      <HintPath>Resources\Microsoft.WindowsAzure.Management.BackupServicesManagment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
