@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.Azure.Management.BackupServices;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private bool WaitForDiscoveryToCOmplete(string operationId, out bool isDiscoverySuccessful)
         {
             bool isRetryNeeded = false;
-            AzureBackupOperationStatusResponse status = new AzureBackupOperationStatusResponse() 
+            OperationResultResponse status = new OperationResultResponse() 
                         {
                             OperationStatus = AzureBackupOperationStatus.InProgress.ToString() 
                         };
