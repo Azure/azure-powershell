@@ -127,7 +127,7 @@
     <value>Cannot specify both Windows and Linux configurations.</value>
   </data>
   <data name="ComputeCloudExceptionRequestIdMessage" xml:space="preserve">
-    <value>Cloud Exception's Request ID: '{0}'. Please refer to this identifier for further investigation, if needed.</value>
+    <value>Please refer to the following operation ID in the cloud exception for further investigation: '{0}'.</value>
   </data>
   <data name="CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript" xml:space="preserve">
     <value>No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File.</value>

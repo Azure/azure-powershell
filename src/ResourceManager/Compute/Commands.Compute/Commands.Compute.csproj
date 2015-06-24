@@ -149,6 +149,7 @@
     <Compile Include="Common\ComputeAutoMapperProfile.cs" />
     <Compile Include="Common\ComputeClientBaseCmdlet.cs" />
     <Compile Include="Common\ComputeClient.cs" />
+    <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageDetailCommand.cs" />
