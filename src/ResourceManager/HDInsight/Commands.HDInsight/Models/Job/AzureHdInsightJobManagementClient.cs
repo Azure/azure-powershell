@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
@@ -41,15 +44,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var hiveJobParams = new HiveJobSubmissionParameters
             {
-                Arguments = hiveJobDef.Arguments.ToString(),
-                Defines = hiveJobDef.Defines.ToString(),
+                Arguments = ConvertListToString(hiveJobDef.Arguments, "arg"),
+                Defines = ConvertDefinesToString(hiveJobDef.Defines),
                 File = hiveJobDef.File,
-                Files = hiveJobDef.Files.ToString(),
+                Files = ConvertListToString(hiveJobDef.Files, "file"),
                 Query = hiveJobDef.Query,
                 StatusDir = hiveJobDef.StatusFolder,
                 UserName = HdInsightJobManagementClient.Credentials.Username
             };
-
             return HdInsightJobManagementClient.JobManagement.SubmitHiveJob(hiveJobParams);
         }
 
@@ -57,11 +59,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var mapredJobParams = new MapReduceJobSubmissionParameters
             {
-                Arguments = mapredJobDef.Arguments.ToString(),
-                Defines = mapredJobDef.Defines.ToString(),
-                Files = mapredJobDef.Files.ToString(),
+                Arguments = ConvertListToString(mapredJobDef.Arguments, "arg"),
+                Defines = ConvertDefinesToString(mapredJobDef.Defines),
+                Files = ConvertListToString(mapredJobDef.Files, "file"),
                 JarClass = mapredJobDef.ClassName,
-                LibJars = mapredJobDef.LibJars.ToString(),
+                LibJars = ConvertListToString(mapredJobDef.LibJars, "jar"),
                 JarFile = mapredJobDef.JarFile,
                 StatusDir = mapredJobDef.StatusFolder,
                 UserName = HdInsightJobManagementClient.Credentials.Username
@@ -74,8 +76,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var pigJobParams = new PigJobSubmissionParameters
             {
-                Arguments = pigJobDef.Arguments.ToString(),
-                Files = pigJobDef.Files.ToString(),
+                Arguments = ConvertListToString(pigJobDef.Arguments, "arg"),
+                Files = ConvertListToString(pigJobDef.Files, "file"),
                 StatusDir = pigJobDef.StatusFolder,
                 File = pigJobDef.File,
                 Query = pigJobDef.Query,
@@ -95,9 +97,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 Mapper = streamingJobDef.Mapper,
                 Reducer = streamingJobDef.Reducer,
                 File = streamingJobDef.File,
-                Defines = streamingJobDef.Defines.ToString(),
-                CmdEnv = streamingJobDef.CommandEnvironment.ToString(),
-                Arguments = streamingJobDef.Arguments.ToString(),
+                Defines = ConvertDefinesToString(streamingJobDef.Defines),
+                CmdEnv = ConvertListToString(streamingJobDef.CommandEnvironment, "cmdenv"),
+                Arguments = ConvertListToString(streamingJobDef.Arguments, "arg"),
                 StatusDir = streamingJobDef.StatusFolder,
                 UserName = HdInsightJobManagementClient.Credentials.Username
             };
@@ -120,5 +122,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             throw new NotImplementedException();
         }
 
+        public Stream GetJobOutput(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        {
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccountName, storageAccountKey, containerName);
+            return joboutput;
+        }
+
+        public static string ConvertDefinesToString(IDictionary<string, string> defines)
+        {
+            return defines.Count == 0 ? null : string.Format("&define={0}", string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray()));
+        }
+
+        public static string ConvertListToString(IList<string> list, string argtype)
+        {
+            var prefix = "&" + argtype + "=";
+            return list.Count == 0 ? null : string.Join(prefix, list.ToArray());
+        }
     }
 }

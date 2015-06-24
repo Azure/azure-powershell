@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightProperties = "AzureHDInsightProperties";
             public const string AzureHDInsightJob = "AzureHDInsightJob";
             public const string AzureHDInsightDefaultStorage = "AzureHDInsightDefaultStorage";
+            public const string Hive = "Hive";
         }
 
         public static class JobDefinitions

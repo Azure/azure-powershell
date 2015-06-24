@@ -52,15 +52,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { resizeParams.TargetInstanceCount = value; }
         }
 
-        [Parameter(
-            Position = 4,
-            HelpMessage = "Gets or sets the name of the cluster.")]
-        public int? MinInstanceCount
-        {
-            get { return resizeParams.MinInstanceCount; }
-            set { resizeParams.MinInstanceCount = value; }
-        }
-
         #endregion
 
         public SetAzureHDInsightClusterSizeCommand()

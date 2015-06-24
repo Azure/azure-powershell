@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
+            var hivejob = GetHiveJob();
+
+            WriteObject(hivejob);
+        }
+
+        public AzureHDInsightHiveJobDefinition GetHiveJob()
+        {
             foreach (var arg in Arguments)
             {
                 job.Arguments.Add(arg);
@@ -102,8 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 job.Defines.Add(define.Key, define.Value.ToString());
             }
-
-            WriteObject(job);
+            return job;
         }
     }
 }

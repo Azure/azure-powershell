@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets the libjars to use for the jobDetails.
         /// </summary>
-        public ICollection<string> LibJars { get; set; }
+        public IList<string> LibJars { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureHDInsightMapReduceJobDefinition class.

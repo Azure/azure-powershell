@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(AzureHDInsightJob))]
     public class StartAzureHDInsightJobCommand : HDInsightCmdletBase
     {
+        #region Input Parameter Definitions
+
         [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the cluster.")]
@@ -62,14 +64,33 @@ namespace Microsoft.Azure.Commands.HDInsight
             ValueFromPipeline = true)]
         public AzureHDInsightJobDefinition JobDefinition { get; set; }
 
+        #endregion
+
+
         public override async void ExecuteCmdlet()
+        {
+            WriteObject(Execute());
+        }
+
+        public AzureHDInsightJob Execute()
+        {
+            var jobCreationResults = SubmitJob();
+
+            var startedJob = HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
+
+            var jobDetail = new AzureHDInsightJob(startedJob.JobDetail, HDInsightJobClient.ClusterName);
+
+            return jobDetail;
+        }
+
+        public JobSubmissionResponse SubmitJob()
         {
             if (string.IsNullOrEmpty(JobDefinition.StatusFolder))
             {
                 JobDefinition.StatusFolder = Guid.NewGuid().ToString();
             }
 
-            JobSubmissionResponse jobCreationResults = null;
+            JobSubmissionResponse jobCreationResults;
 
             var azureMapReduceJobDefinition = JobDefinition as AzureHDInsightMapReduceJobDefinition;
             var azureHiveJobDefinition = JobDefinition as AzureHDInsightHiveJobDefinition;
@@ -98,11 +119,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     string.Format(CultureInfo.InvariantCulture, "Cannot start jobDetails of type : {0}.", JobDefinition.GetType()));
             }
 
-            var startedJob = HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);
-
-            var jobDetail = new AzureHDInsightJob(startedJob.JobDetail, HDInsightJobClient.ClusterName);
-
-            WriteObject(jobDetail);
+            return jobCreationResults;
         }
     }
 }

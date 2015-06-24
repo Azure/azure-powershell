@@ -16,15 +16,18 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(VerbsLifecycle.Wait,
         Constants.CommandNames.AzureHDInsightJob),
     OutputType(typeof(AzureHDInsightJob))]
-    public class GetAzureHDInsightJobCommand : HDInsightCmdletBase
+    public class WaitAzureHDInsightJobCommand : HDInsightCmdletBase
     {
+        #region Input Parameter Definitions
+
         [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the cluster.")]
@@ -53,23 +56,28 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        [Parameter(Position = 2,
+        [Parameter(Mandatory = true, 
+            Position = 2,
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
+        #endregion
+
         public override async void ExecuteCmdlet()
         {
-            if (JobId != null)
+            var jobDetails = WaitJob();
+            WriteObject(jobDetails);
+        }
+
+        public AzureHDInsightJob WaitJob()
+        {
+            var jobDetail = HDInsightJobClient.GetJob(JobId).JobDetail;
+            while (!jobDetail.Status.JobComplete)
             {
-                var job = HDInsightJobClient.GetJob(JobId);
-                var jobDetails = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);
-                WriteObject(jobDetails);
+                jobDetail = HDInsightJobClient.GetJob(JobId).JobDetail;
             }
-            else
-            {
-                var jobs = HDInsightJobClient.ListJobs();
-                WriteObject(jobs, true);
-            }
+            var jobDetails = new AzureHDInsightJob(jobDetail, HDInsightJobClient.ClusterName);
+            return jobDetails;
         }
     }
 }

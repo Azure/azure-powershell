@@ -28,18 +28,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         protected AzureHDInsightJobDefinition()
         {
             Files = new List<string>();
-            Arguments = new Collection<string>();
+            Arguments = new List<string>();
         }
 
         /// <summary>
         /// Gets the arguments for the jobDetails.
         /// </summary>
-        public ICollection<string> Arguments { get; private set; }
+        public IList<string> Arguments { get; private set; }
 
         /// <summary>
         /// Gets the resources for the jobDetails.
         /// </summary>
-        public ICollection<string> Files { get; private set; }
+        public IList<string> Files { get; private set; }
 
         /// <summary>
         /// Gets or sets the status folder to use for the jobDetails.
