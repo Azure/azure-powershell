@@ -50,17 +50,16 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
+            ExecuteClientAction(() =>
             {
-                ExecuteClientAction(() =>
+                if (this.Force.IsPresent
+                 || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
                 {
                     var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
                     var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
-                });
-            }
+                }
+            });
         }
     }
 }
