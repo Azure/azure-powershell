@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(containerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
                 var operationId = AzureBackupClient.UnRegisterContainer(unregRequest);
 
-                var jobId = GetOperationStatus(operationId).JobList.FirstOrDefault();
+                var jobId = GetOperationStatus(operationId).Jobs.FirstOrDefault();
                 WriteObject(jobId);
             });
         }

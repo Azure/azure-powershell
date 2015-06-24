@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureBackupJob"), OutputType(typeof(Mgmt.Job))]
+    [Cmdlet("Wait", "AzureBackupJob", DefaultParameterSetName = "IdFiltersSet"), OutputType(typeof(Mgmt.Job))]
     public class WaitAzureBackupJob : AzureBackupVaultCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (Job != null)
             {
-                WriteDebug("Job is Powershell: " + (Job is PSObject));
+                WriteDebug("Job is PowershellObject: " + (Job is PSObject));
                 WriteDebug("Job type: " + Job.GetType());
 
                 if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is List<AzureBackupJob>))
@@ -80,8 +80,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     specifiedJobs.Add((Job as AzureBackupJob).InstanceId);
                 }
             }
-            else
+
+            if(JobID != null)
             {
+                WriteDebug("Type of immediate base object: " + ((PSObject)JobID).ImmediateBaseObject.GetType().ToString());
                 if ((JobID is PSObject) && (((PSObject)JobID).ImmediateBaseObject is List<string>))
                 {
                     foreach (string idOfJobToWait in ((JobID as PSObject).ImmediateBaseObject as List<string>))
@@ -109,6 +111,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     specifiedJobs.Add(JobID as string);
                 }
             }
+            else
+            {
+                WriteDebug("JobID is null");
+            }
 
             WriteDebug("Number of jobs to wait on: " + specifiedJobs.Count);
 
@@ -133,6 +139,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 while (true)
                 {
+                    WriteDebug("In loop querying jobs");
+
                     if (DateTime.UtcNow.Subtract(waitingStartTime).TotalSeconds >= TimeOut)
                     {
                         WriteDebug("Exiting due to timeout.");
