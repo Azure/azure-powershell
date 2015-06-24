@@ -38,7 +38,7 @@ function Test-VirtualNetworkGatewayCRUD
       $subnet = New-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
       $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-	  $subnet = Get-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+      $subnet = Get-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
       $publicip = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
@@ -46,29 +46,22 @@ function Test-VirtualNetworkGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzureVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewaySize Default -GatewayType DynamicRouting -EnableBgp $false
+      $actual = New-AzureVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
       $expected = Get-AzureVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
-      Assert-AreEqual "Default" $expected.GatewaySize
-      Assert-AreEqual "DynamicRouting" $expected.GatewayType
+      #Assert-AreEqual "Vpn" $expected.GatewayType
+      #Assert-AreEqual "RouteBased" $expected.VpnType
       
-      # List VirtualNetworkGateways
+      # List virtualNetworkGateways
       $list = Get-AzureVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
-      Assert-AreEqual "Default" $list[0].GatewaySize
-      Assert-AreEqual "DynamicRouting" $list[0].GatewayType
       
-      # Resize virtualNetworkGateway
-      $actual = Resize-AzureVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -GatewaySize HighPerformance
-      $expected = Get-AzureVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-      Assert-AreEqual "HighPerformance" $expected.GatewaySize
-
-      # Reset  virtualNetworkGateway
-      #$actual = Reset-AzureVirtualNetworkGateway -VirtualNetworkGateway $expected
+      # Reset/Reboot virtualNetworkGateway primary
+      $actual = Reset-AzureVirtualNetworkGateway -VirtualNetworkGateway $expected
       $list = Get-AzureVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
 
