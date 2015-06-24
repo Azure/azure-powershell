@@ -279,7 +279,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
