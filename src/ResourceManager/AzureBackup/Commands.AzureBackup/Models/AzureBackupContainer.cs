@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     /// <summary>
     /// Represents Azure Backup Container
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public AzureBackupContainer() : base() { }
 
-        public AzureBackupContainer(ContainerInfo containerInfo, string rgName, string rName, string location)
-            : base(containerInfo, rgName, rName, location)
+        public AzureBackupContainer(AzurePSBackupVault vault, ContainerInfo containerInfo)
+            : base(vault, containerInfo)
         {
             HealthStatus = containerInfo.HealthStatus;
             RegistrationStatus = containerInfo.RegistrationStatus;

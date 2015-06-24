@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Library;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
 using Newtonsoft.Json;
 using System;
@@ -39,12 +41,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string TargetLocation { get; set; }
 
+        private const int VaultCertificateExpiryInHoursForBackup = 48;
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 if (!Directory.Exists(TargetLocation))
                 {
                     throw new ArgumentException("The target location provided is not a directory. Please provide a directory.");
@@ -52,14 +56,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 string subscriptionId = Profile.DefaultSubscription.Id.ToString();
                 string resourceType = "resourceType";
-                string displayName = subscriptionId + "_" + ResourceGroupName + "_" + ResourceName;
+                string displayName = subscriptionId + "_" + vault.ResourceGroupName + "_" + vault.Name;
 
-                WriteDebug(string.Format(CultureInfo.InvariantCulture,
-                                         "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
-                                         subscriptionId, ResourceGroupName, ResourceName, TargetLocation));
+                WriteVerbose(string.Format(CultureInfo.InvariantCulture,
+                                          "Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}",
+                                          subscriptionId, vault.ResourceGroupName, vault.Name, TargetLocation));
 
                 X509Certificate2 cert = CertUtils.CreateSelfSignedCert(CertUtils.DefaultIssuer,
-                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, ResourceName),
+                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, vault.Name),
                                                                        CertUtils.DefaultPassword,
                                                                        DateTime.UtcNow.AddMinutes(-10),
                                                                        DateTime.UtcNow.AddHours(this.GetCertificateExpiryInHours()));
@@ -69,9 +73,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 try
                 {
                     // Upload cert into ID Mgmt
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
-                    acsNamespace = UploadCert(cert, subscriptionId, ResourceName, resourceType, ResourceGroupName);
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
+                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Going to upload the certificate"));
+                    acsNamespace = UploadCert(cert, subscriptionId, vault.Name, resourceType, vault.ResourceGroupName);
+                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Successfully uploaded the certificate"));
                 }
                 catch (Exception exception)
                 {
@@ -90,7 +94,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     directoryPath = TargetLocation;
                 }
                 string filePath = Path.Combine(directoryPath, fileName);
-                WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
+                WriteVerbose(string.Format("Saving Vault Credentials to file : {0}", filePath));
 
                 File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
 
@@ -106,7 +110,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <returns></returns>
         private int GetCertificateExpiryInHours(string resourceType = null)
         {
-            return Constants.VaultCertificateExpiryInHoursForBackup;
+            return VaultCertificateExpiryInHoursForBackup;
         }
 
         /// <summary>
@@ -129,13 +133,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 },
             };
 
-            string response = string.Empty;
-            VaultCredUploadCertResponse vaultCredUploadCertResponse =
-                AzureBackupClient.Vault.UploadCertificateAsync(
-                    "IdMgmtInternalCert",
-                    vaultCredUploadCertRequest,
-                    GetCustomRequestHeaders(),
-                    CmdletCancellationToken).Result;
+            var vaultCredUploadCertResponse = AzureBackupClient.UploadCertificate("IdMgmtInternalCert", vaultCredUploadCertRequest);
 
             return new AcsNamespace(vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsHostName,
                                     vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsNamespace,
@@ -180,14 +178,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     BackupVaultCreds backupVaultCreds = new BackupVaultCreds(subscriptionId,
                                                                              resourceType,
-                                                                             ResourceName,
+                                                                             vault.Name,
                                                                              CertUtils.SerializeCert(cert, X509ContentType.Pfx),
                                                                              acsNamespace);
 
                     DataContractSerializer serializer = new DataContractSerializer(typeof(BackupVaultCreds));
                     serializer.WriteObject(writer, backupVaultCreds);
 
-                    WriteDebug(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Backup Vault - Successfully serialized the file content"));
+                    WriteVerbose(string.Format(CultureInfo.InvariantCulture, "RecoveryService - Backup Vault - Successfully serialized the file content"));
                 }
 
                 return Encoding.UTF8.GetString(output.ToArray());

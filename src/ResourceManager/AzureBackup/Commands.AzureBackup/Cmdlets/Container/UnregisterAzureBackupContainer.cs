@@ -22,13 +22,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(string))]
     public class UnregisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipeline = true)]
@@ -37,47 +38,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+
                 string containerUniqueName = AzureBackupContainer.ContainerUniqueName;
                 UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(containerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
-                MBS.OperationResponse operationResponse = AzureBackupClient.Container.UnregisterAsync(unregRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-                Guid jobId = operationResponse.OperationId; //TODO: Fix it once PiyushKa publish the rest APi to get jobId based on operationId                        
+                var operationId = AzureBackupClient.UnRegisterContainer(unregRequest);
 
+                var jobId = GetOperationStatus(operationId).JobList.FirstOrDefault();
                 WriteObject(jobId);
             });
-        }
-
-        private string GetQueryFileter(ListContainerQueryParameter queryParams)
-        {
-            NameValueCollection collection = new NameValueCollection();
-            if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))
-            {
-                collection.Add("ContainerType", queryParams.ContainerTypeField);
-            }
-
-            if (!String.IsNullOrEmpty(queryParams.ContainerStatusField))
-            {
-                collection.Add("ContainerStatus", queryParams.ContainerStatusField);
-            }
-
-            if (!String.IsNullOrEmpty(queryParams.ContainerFriendlyNameField))
-            {
-                collection.Add("FriendlyName", queryParams.ContainerFriendlyNameField);
-            }
-
-            if (collection == null || collection.Count == 0)
-            {
-                return String.Empty;
-            }
-
-            var httpValueCollection = HttpUtility.ParseQueryString(String.Empty);
-            httpValueCollection.Add(collection);
-
-            return "&" + httpValueCollection.ToString();
-
         }
     }
 }

@@ -23,27 +23,31 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Commands.AzureBackup.Models;
+using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public abstract class AzureBackupPolicyCmdletBase : AzureBackupCmdletBase
+    public partial class AzureBackupClientAdapter
     {
-        // ToDO:
-        // Correct Help message and other attributes related to paameters
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupPolicy, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AzureBackupProtectionPolicy ProtectionPolicy { get; set; }
-
-        public override void ExecuteCmdlet()
+        public IEnumerable<Mgmt.Job> ListJobs(JobQueryParameter queryParams)
         {
-            base.ExecuteCmdlet();
+            var response = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return response.Jobs.Objects;
+        }
 
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", 
-                ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location));
+        public Mgmt.JobByIdResponse GetJobDetails(string jobId)
+        {
+            var response = AzureBackupClient.Job.GetAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return response;
+        }
 
-            InitializeAzureBackupCmdlet(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName);
-        }   
+        public Guid TriggerCancelJob(string jobId)
+        {
+            var response = AzureBackupClient.Job.StopAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result.OperationId;
+            return response;
+        }
     }
 }

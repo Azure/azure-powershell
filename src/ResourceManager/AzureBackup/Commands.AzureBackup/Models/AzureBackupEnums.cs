@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public enum AzureBackupContainerTypeInput
     {
@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         IaasVMServiceContainer
     }
 
+    public enum DataSourceType
+    {
+        Invalid = 0,
+
+        VM
+    }
+
     public enum AzureBackupContainerRegistrationStatus
     {
         Invalid = 0,
@@ -59,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         Registering,
     }
 
-    public enum AzureBackupOperationStatus
+    internal enum AzureBackupOperationStatus
     {
         Invalid = 0,
 
@@ -68,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         Completed
     }
 
-    public enum AzureBackupOperationResult
+    internal enum AzureBackupOperationResult
     {
         Invalid = 0,
 

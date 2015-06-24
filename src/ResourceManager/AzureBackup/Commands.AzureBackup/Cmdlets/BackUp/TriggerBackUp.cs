@@ -36,24 +36,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
-                Guid jobId = Guid.Empty;
-                MBS.OperationResponse triggerBackUpInfo =
-                    AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(),
-                    Item.ContainerUniqueName,
-                    Item.Type,
-                    Item.DataSourceId,
-                    CmdletCancellationToken).Result;
+                base.ExecuteCmdlet();
 
-                WriteVerbose("Received backup response");
-                
-                WriteVerbose("Converting response");
-                jobId = triggerBackUpInfo.OperationId;
-                this.WriteObject(jobId);
+                WriteDebug("Making client call");
+                Guid operationId = AzureBackupClient.TriggerBackup(Item.ContainerUniqueName, Item.Type, Item.DataSourceId);
+
+                WriteDebug("Triggered backup. Converting response");
+
+                var operationStatus = TrackOperation(operationId);
+                this.WriteObject(operationStatus.JobList.FirstOrDefault());
             });
         }
     }

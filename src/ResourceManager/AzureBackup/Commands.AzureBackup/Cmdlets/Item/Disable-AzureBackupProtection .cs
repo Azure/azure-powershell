@@ -24,12 +24,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 {
-    // ToDo:
-    // Get Tracking API from Piyush and Get JobResponse
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBackupProtection"), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureBackupProtection"), OutputType(typeof(string))]
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
@@ -47,12 +45,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         public string Comments { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-
+        {          
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
+                base.ExecuteCmdlet();
+
+                WriteDebug("Making client call");
                 RemoveProtectionRequestInput input = new RemoveProtectionRequestInput()
                 {
                     RemoveProtectionOption = this.DeleteBackupData ? RemoveProtectionOptions.DeleteBackupData.ToString() : RemoveProtectionOptions.RetainBackupData.ToString(),
@@ -60,15 +58,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                     Comments = this.Comments,
                 };
 
-                WriteVerbose("RemoveProtectionOption is = " + input.RemoveProtectionOption);
-                Guid jobId = Guid.Empty;
-                var disbaleAzureBackupProtection = AzureBackupClient.DataSource.DisableProtectionAsync(GetCustomRequestHeaders(), Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input, CmdletCancellationToken).Result;
+                WriteDebug("RemoveProtectionOption is = " + input.RemoveProtectionOption);
+                var operationId = AzureBackupClient.DisableProtection(Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input);
 
                 WriteVerbose("Received disable azure backup protection response");
-                jobId = disbaleAzureBackupProtection.OperationId;
-                this.WriteObject(jobId);
+                var operationStatus = GetOperationStatus(operationId);
+                this.WriteObject(operationStatus.JobList.FirstOrDefault());
             });
         }
+
         public enum RemoveProtectionOptions
         {
             [EnumMember]

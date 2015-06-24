@@ -23,27 +23,17 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Commands.AzureBackup.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public abstract class AzureBackupPolicyCmdletBase : AzureBackupCmdletBase
+    public partial class AzureBackupClientAdapter
     {
-        // ToDO:
-        // Correct Help message and other attributes related to paameters
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupPolicy, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public AzureBackupProtectionPolicy ProtectionPolicy { get; set; }
-
-        public override void ExecuteCmdlet()
+        public OperationResultResponse GetOperationStatus(string operationId)
         {
-            base.ExecuteCmdlet();
-
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", 
-                ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location));
-
-            InitializeAzureBackupCmdlet(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName);
-        }   
+            return AzureBackupClient.OperationStatus.GetAsync(operationId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+        }
     }
 }

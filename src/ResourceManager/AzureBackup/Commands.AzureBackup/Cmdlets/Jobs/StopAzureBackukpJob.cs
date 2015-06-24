@@ -20,6 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Management.BackupServices;
 using System.Threading.Tasks;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -27,28 +28,28 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Stop a running cancellable job
     /// </summary>
     [Cmdlet("Stop", "AzureBackupJob"), OutputType(typeof(Mgmt.Job))]
-    public class StopAzureBackupJob : AzureBackupVaultCmdletBase
+    public class StopAzureBackupJob : AzureBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobIdHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
+        [ValidateNotNull]
+        public AzurePSBackupVault Vault { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobIdHelpMessage, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNullOrEmpty]
         public string JobID { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobHelpMessage, ParameterSetName = "JobFiltersSet")]
         [ValidateNotNull]
         public AzureBackupJob Job { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterVaultHelpMessage)]
-        [ValidateNotNull]
-        public object Vault { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (Job != null)
             {
-                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
+                Vault = new AzurePSBackupVault(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
 
-            base.ExecuteCmdlet();
+            InitializeAzureBackupCmdlet(Vault);
 
             ExecutionBlock(() =>
             {
@@ -58,23 +59,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteDebug("JobID is: " + JobID);
-                OperationResponse cancelTask = AzureBackupClient.Job.StopAsync(JobID, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                Guid cancelTaskId = AzureBackupClient.TriggerCancelJob(JobID);
+                OperationResultResponse opResponse = TrackOperation(cancelTaskId);
 
-                var opStatus = AzureBackupClient.OperationStatus.GetAsync(cancelTask.OperationId.ToString(), GetCustomRequestHeaders()).Result;
-                while (opStatus.OperationStatus != "Completed")
+                if (opResponse.OperationResult == AzureBackupOperationResult.Succeeded.ToString())
                 {
-                    WriteDebug("Waiting for the task to complete");
-                    opStatus = AzureBackupClient.OperationStatus.GetAsync(cancelTask.OperationId.ToString(), GetCustomRequestHeaders()).Result;
-                }
-                // TODO:
-                if (opStatus.OperationResult == "Failed")
-                {
-                    var errorRecord = new ErrorRecord(new Exception("Cannot cancel job."), opStatus.Message, ErrorCategory.InvalidOperation, null);
-                    WriteError(errorRecord);
+                    WriteDebug("Triggered cancellation of job with JobID: " + JobID);
                 }
                 else
                 {
-                    WriteDebug("Triggered cancellation of job with JobID: " + JobID);
+                    throw new Exception("Stop Job failed with ErrorCode: " + opResponse.ErrorCode);
                 }
             });
         }

@@ -20,58 +20,58 @@ using System.Linq;
 using System.Web;
 using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get list of jobs pertaining to the filters specified. Gets list of all jobs created in the last 24 hours if no filters are specified.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupJob"), OutputType(typeof(List<Mgmt.Job>), typeof(Mgmt.Job))]
-    public class GetAzureBackupJob : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<Mgmt.Job>), typeof(Mgmt.Job))]
+    public class GetAzureBackupJob : AzureBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobIdHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet")]
+        [ValidateNotNull]
+        public AzurePSBackupVault Vault { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobIdHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage, ParameterSetName = "JobsListFilter")]
         [ValidateNotNull]
         public AzureBackupJob Job { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStartTimeHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStartTimeHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateNotNull]
         public DateTime? From { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterEndTimeHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterEndTimeHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateNotNull]
         public DateTime? To { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStatusHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStatusHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateSet("Cancelled", "Cancelling", "Completed", "CompletedWithWarnings", "Failed", "InProgress")]
         public string Status { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterTypeHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterTypeHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateSet("VM")]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterOperationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterOperationHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateSet("Backup", "ConfigureBackup", "DeleteBackupData", "Register", "Restore", "UnProtect", "Unregister")]
         public string Operation { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (Job != null)
-            {
-                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
-            }
-
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
-                //if (Job != null && JobId != null)
-                //{
-                //    throw new Exception("Please use either JobID filter or Job filter but not both.");
-                //}
+                if (Job != null)
+                {
+                    Vault = new AzurePSBackupVault(Job.ResourceGroupName, Job.ResourceName, Job.Location);
+                }
+
+                InitializeAzureBackupCmdlet(Vault);
 
                 if (Job != null)
                 {
@@ -135,12 +135,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     JobId = JobId
                 };
 
-                Mgmt.JobListResponse jobsList = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+                var jobsList = AzureBackupClient.ListJobs(queryParams);
                 List<AzureBackupJob> retrievedJobs = new List<AzureBackupJob>();
 
-                foreach (Mgmt.Job serviceJob in jobsList.Jobs)
+                foreach (Mgmt.Job serviceJob in jobsList)
                 {
-                    retrievedJobs.Add(new AzureBackupJob(serviceJob, ResourceGroupName, ResourceName, Location));
+                    // TODO: Initialize vault from Job object when vault is made optional
+                    retrievedJobs.Add(new AzureBackupJob(Vault, serviceJob));
                 }
 
                 WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());

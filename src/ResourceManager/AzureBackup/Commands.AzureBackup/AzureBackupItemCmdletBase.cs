@@ -23,6 +23,7 @@ using System.Threading;
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System.Net;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             base.ExecuteCmdlet();
             WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", Item.ResourceGroupName, Item.ResourceName, Item.Location));
-            InitializeAzureBackupCmdlet(Item.ResourceGroupName, Item.ResourceName, Item.Location);
+            InitializeAzureBackupCmdlet(Item.ResourceGroupName, Item.ResourceName);
         }
     }
 }
