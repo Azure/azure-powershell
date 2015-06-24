@@ -74,5 +74,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string RententionDuration = "Duration of retention for the recovery point in units specified by RetentionType.";
         public const string PolicyNewName = "Policy new name";
         public const string AzureBackupPolicy = "Azure Backup protection policy";
+        public const string VMName = "Azure VM name to be register";
+        public const string ServiceName = "Cloud service name of Azure VM to be register";
+        public const string RGName = "Resource Group name of Azure VM to be register";
+        public const string AzureBackupContainerToUnregister = "Azure Backup Container tobe unregister.";
+
     }
 }
