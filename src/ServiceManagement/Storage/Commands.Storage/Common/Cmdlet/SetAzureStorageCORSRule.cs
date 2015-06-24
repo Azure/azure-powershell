@@ -103,16 +103,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             corsRule.AllowedMethods = SharedProtocol.CorsHttpMethods.None;
 
-            foreach (var method in allowedMethods)
+            if (null != allowedMethods)
             {
-                SharedProtocol.CorsHttpMethods allowedCorsMethod = SharedProtocol.CorsHttpMethods.None;
-                if (Enum.TryParse<SharedProtocol.CorsHttpMethods>(method, true, out allowedCorsMethod))
+                foreach (var method in allowedMethods)
                 {
-                    corsRule.AllowedMethods |= allowedCorsMethod;
-                }
-                else
-                {
-                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                    SharedProtocol.CorsHttpMethods allowedCorsMethod = SharedProtocol.CorsHttpMethods.None;
+                    if (Enum.TryParse<SharedProtocol.CorsHttpMethods>(method, true, out allowedCorsMethod))
+                    {
+                        corsRule.AllowedMethods |= allowedCorsMethod;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                    }
                 }
             }
         }
