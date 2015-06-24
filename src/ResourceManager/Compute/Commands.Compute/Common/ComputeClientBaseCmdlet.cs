@@ -13,10 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -55,11 +54,14 @@ namespace Microsoft.Azure.Commands.Compute
         {
             try
             {
-                action();
-            }
-            catch (CloudException ex)
-            {
-                throw new ComputeCloudException(ex);
+                try
+                {
+                    action();
+                }
+                catch (CloudException ex)
+                {
+                    throw new ComputeCloudException(ex);
+                }
             }
             catch (Exception ex)
             {

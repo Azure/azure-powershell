@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using System;
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute.Common
+namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class ComputeCloudException : CloudException
     {
@@ -33,9 +34,14 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             if (ex.Response != null && ex.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
             {
-                sb.Append(' ');
+                if (sb.Length > 0)
+                {
+                    // If the original exception message is not empty, append a new line here.
+                    sb.Append(Environment.NewLine);
+                }
+
                 sb.AppendFormat(
-                    Properties.Resources.ComputeCloudExceptionRequestIdMessage,
+                    Properties.Resources.ComputeCloudExceptionOperationIdMessage,
                     ex.Response.Headers[RequestIdHeaderInResponse].FirstOrDefault());
             }
 
