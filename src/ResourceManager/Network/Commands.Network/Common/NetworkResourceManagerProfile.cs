@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.Network
             // NetworkInterface
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
-            Mapper.CreateMap<CNM.PSDnsSettings, MNM.DnsSettings>();
+            Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIpConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
-            Mapper.CreateMap<MNM.DnsSettings, CNM.PSDnsSettings>();
+            Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
             Mapper.CreateMap<MNM.NetworkInterfaceIpConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
 
             // LoadBalancer
