@@ -24,13 +24,14 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Xml;
+using Hyak.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
-using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -679,7 +680,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 catch (Exception ex)
                 {
                     Assert.IsNotNull(ex.InnerException);
-                    CloudException ce = (CloudException) ex.InnerException;
+                    ComputeCloudException ce = (ComputeCloudException) ex.InnerException;
                     Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
                     Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
                 }
