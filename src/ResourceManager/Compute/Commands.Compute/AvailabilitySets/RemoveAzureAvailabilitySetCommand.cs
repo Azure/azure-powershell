@@ -50,14 +50,17 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.Force.IsPresent
-            || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation,
-                                   Properties.Resources.AvailabilitySetRemovalCaption))
+            ExecuteClientAction(() =>
             {
-                AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
-                var result = Mapper.Map<PSOperation>(op);
-                WriteObject(result);
-            }
+                if (this.Force.IsPresent
+                || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation,
+                                       Properties.Resources.AvailabilitySetRemovalCaption))
+                {
+                    AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
+                    var result = Mapper.Map<PSOperation>(op);
+                    WriteObject(result);
+                }
+            });
         }
     }
 }

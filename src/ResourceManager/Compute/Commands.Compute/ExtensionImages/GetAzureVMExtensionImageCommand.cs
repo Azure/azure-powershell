@@ -45,66 +45,69 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Version))
+            ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineExtensionImageListVersionsParameters
+                if (string.IsNullOrEmpty(this.Version))
                 {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Type = Type,
-                    FilterExpression = FilterExpression
-                };
+                    var parameters = new VirtualMachineExtensionImageListVersionsParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        PublisherName = PublisherName,
+                        Type = Type,
+                        FilterExpression = FilterExpression
+                    };
 
-                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+                    VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
 
-                var images = from r in result.Resources
-                             select new PSVirtualMachineExtensionImage
-                             {
-                                 RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
-                                 Id = r.Id,
-                                 Location = r.Location,
-                                 Version = r.Name,
-                                 PublisherName = this.PublisherName,
-                                 Type = this.Type,
-                                 FilterExpression = this.FilterExpression
-                             };
+                    var images = from r in result.Resources
+                                 select new PSVirtualMachineExtensionImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Type = this.Type,
+                                     FilterExpression = this.FilterExpression
+                                 };
 
-                WriteObject(images, true);
-            }
-            else
-            {
-
-                var parameters = new VirtualMachineExtensionImageGetParameters
+                    WriteObject(images, true);
+                }
+                else
                 {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Type = Type,
-                    FilterExpression = FilterExpression,
-                    Version = Version
-                };
 
-                VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
+                    var parameters = new VirtualMachineExtensionImageGetParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        PublisherName = PublisherName,
+                        Type = Type,
+                        FilterExpression = FilterExpression,
+                        Version = Version
+                    };
 
-                var image = new PSVirtualMachineExtensionImageDetails
-                {
-                    RequestId = result.RequestId,
-                    StatusCode = result.StatusCode,
-                    Id = result.VirtualMachineExtensionImage.Id,
-                    Location = result.VirtualMachineExtensionImage.Location,
-                    HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
-                    OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
-                    ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
-                    SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
-                    VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
-                    Version = result.VirtualMachineExtensionImage.Name,
-                    PublisherName = this.PublisherName,
-                    Type = this.Type,
-                    FilterExpression = this.FilterExpression
-                };
+                    VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
 
-                WriteObject(image);
-            }
+                    var image = new PSVirtualMachineExtensionImageDetails
+                    {
+                        RequestId = result.RequestId,
+                        StatusCode = result.StatusCode,
+                        Id = result.VirtualMachineExtensionImage.Id,
+                        Location = result.VirtualMachineExtensionImage.Location,
+                        HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                        OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                        ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                        SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                        VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                        Version = result.VirtualMachineExtensionImage.Name,
+                        PublisherName = this.PublisherName,
+                        Type = this.Type,
+                        FilterExpression = this.FilterExpression
+                    };
+
+                    WriteObject(image);
+                }
+            });
         }
     }
 }

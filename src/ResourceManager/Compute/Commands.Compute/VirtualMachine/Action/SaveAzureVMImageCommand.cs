@@ -79,25 +79,28 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineCaptureParameters
+            ExecuteClientAction(() =>
             {
-                DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite.IsPresent,
-                VirtualHardDiskNamePrefix = VHDNamePrefix
-            };
+                var parameters = new VirtualMachineCaptureParameters
+                {
+                    DestinationContainerName = DestinationContainerName,
+                    Overwrite = Overwrite.IsPresent,
+                    VirtualHardDiskNamePrefix = VHDNamePrefix
+                };
 
-            var op = this.VirtualMachineClient.Capture(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineClient.Capture(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
 
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
 
-            if (! string.IsNullOrWhiteSpace(this.Path))
-            {
-                File.WriteAllText(this.Path, result.Output);
-            }
-            WriteObject(result);
+                if (!string.IsNullOrWhiteSpace(this.Path))
+                {
+                    File.WriteAllText(this.Path, result.Output);
+                }
+                WriteObject(result);
+            });
         }
     }
 }
