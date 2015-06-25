@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         //Container is not discovered. Throw exception
                         string errMsg = String.Format("Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted", vmName, ServiceOrRG, rgName);
                         WriteDebug(errMsg);
-                        WriteError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
+                        ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                     }
                 }                
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (!isDiscoverySuccessful)
             {
-                WriteError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
+                ThrowTerminatingError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
             }
         }
 
