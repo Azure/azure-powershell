@@ -58,6 +58,9 @@
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.1-preview\lib\portable-net45+sl50+wp80+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="System.Core" />

@@ -156,7 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             GetAzureDedicatedCircuitCommand cmdlet = new GetAzureDedicatedCircuitCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
             };
@@ -198,7 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             RemoveAzureDedicatedCircuitCommand cmdlet = new RemoveAzureDedicatedCircuitCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
             };
