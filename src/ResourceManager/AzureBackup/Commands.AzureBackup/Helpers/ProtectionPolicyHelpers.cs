@@ -107,18 +107,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             if(retentionType == RetentionDurationType.Days.ToString() && (retentionDuration < MinRetentionInDays
                 || retentionDuration > MaxRetentionInDays))
             {
-                var exception = new Exception("For Retention in days , valid values of retention duration are 7 to 30.");
-                //var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                //azureBackupCmdletBase.WriteError(errorRecord);
+                var exception = new ArgumentException("For Retention in days , valid values of retention duration are 7 to 30.");
                 throw exception;
             }
 
             if (retentionType == RetentionDurationType.Weeks.ToString() && (retentionDuration < MinRetentionInWeeks
                 || retentionDuration > MaxRetentionInWeeks))
             {
-                var exception = new Exception("For Retention in weeks , valid values of retention duration are 1 to 4.");
-                //var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                //azureBackupCmdletBase.WriteError(errorRecord);
+                var exception = new ArgumentException("For Retention in weeks , valid values of retention duration are 1 to 4.");
                 throw exception;
             }
 
@@ -141,9 +137,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             if (scheduleRunDays == null || scheduleRunDays.Length <= 0)
             {
-                var exception = new Exception("For weekly scheduletype , ScheduleRunDays should not be empty.");
-                //var errorRecord = new ErrorRecord(exception, string.Empty, ErrorCategory.InvalidData, null);
-                //azureBackupCmdletBase.WriteError(errorRecord);
+                var exception = new ArgumentException("For weekly scheduletype , ScheduleRunDays should not be empty.");
                 throw exception;
             }
 
@@ -151,9 +145,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 
             foreach (var dayOfWeek in scheduleRunDays)
             {
-                //azureBackupCmdletBase.WriteDebug("dayOfWeek" + dayOfWeek.ToString());
                 DayOfWeek item = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayOfWeek, true);
-                //azureBackupCmdletBase.WriteDebug("Item" + item.ToString());
                 if (!ListofWeekDays.Contains(item))
                 {
                     ListofWeekDays.Add(item);
@@ -165,7 +157,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 
         private static DateTime ParseScheduleRunTime(DateTime scheduleStartTime)
         {
-            scheduleStartTime = scheduleStartTime.ToUniversalTime();
+            if (scheduleStartTime.Kind == DateTimeKind.Local)
+            {
+                scheduleStartTime = scheduleStartTime.ToUniversalTime();
+            }
             DateTime scheduleRunTime = new DateTime(scheduleStartTime.Year, scheduleStartTime.Month,
                 scheduleStartTime.Day, scheduleStartTime.Hour, scheduleStartTime.Minute - (scheduleStartTime.Minute % 30), 0);
             return scheduleRunTime;
