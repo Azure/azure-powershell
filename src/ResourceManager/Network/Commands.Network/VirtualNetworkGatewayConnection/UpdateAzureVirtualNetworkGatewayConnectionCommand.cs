@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualNetworkGatewayConnection VirtualNetworkGatewayConnection { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The location")]
+        public string Location { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -45,6 +51,20 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsVirtualNetworkGatewayConnectionPresent(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+            }
+
+            this.VirtualNetworkGatewayConnection.Location = Location;
+            if (this.VirtualNetworkGatewayConnection.VirtualNetworkGateway1 != null)
+            {
+                this.VirtualNetworkGatewayConnection.VirtualNetworkGateway1.Location = Location;
+            }
+            if (this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2 != null)
+            {
+                this.VirtualNetworkGatewayConnection.VirtualNetworkGateway2.Location = Location;
+            }
+            if (this.VirtualNetworkGatewayConnection.LocalNetworkGateway2 != null)
+            {
+                this.VirtualNetworkGatewayConnection.LocalNetworkGateway2.Location = Location;
             }
 
             // Map to the sdk object
