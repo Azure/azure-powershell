@@ -28,21 +28,30 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
         }
 
-        protected static string GetErrorMessageWithRequestIdInfo(CloudException ex)
+        protected static string GetErrorMessageWithRequestIdInfo(CloudException cloudException)
         {
-            var sb = new StringBuilder(ex.Message);
-
-            if (ex.Response != null && ex.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
+            if (cloudException == null)
             {
-                if (sb.Length > 0)
-                {
-                    // If the original exception message is not empty, append a new line here.
-                    sb.Append(Environment.NewLine);
-                }
+                throw new ArgumentNullException("cloudException");
+            }
 
-                sb.AppendFormat(
-                    Properties.Resources.ComputeCloudExceptionOperationIdMessage,
-                    ex.Response.Headers[RequestIdHeaderInResponse].FirstOrDefault());
+            var sb = new StringBuilder(cloudException.Message);
+
+            if (cloudException.Response != null)
+            {
+                var headers = cloudException.Response.Headers;
+                if (headers != null && headers.ContainsKey(RequestIdHeaderInResponse))
+                {
+                    if (sb.Length > 0)
+                    {
+                        // If the original exception message is not empty, append a new line here.
+                        sb.Append(Environment.NewLine);
+                    }
+
+                    sb.AppendFormat(
+                        Properties.Resources.ComputeCloudExceptionOperationIdMessage,
+                        headers[RequestIdHeaderInResponse].FirstOrDefault());
+                }
             }
 
             return sb.ToString();
