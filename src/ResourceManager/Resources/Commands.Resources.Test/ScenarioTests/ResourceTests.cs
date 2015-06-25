@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ResourceTests 
     {
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewComplexResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesNewComplexResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPiping()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPiping");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromEmptyGroup()
         {
@@ -55,25 +55,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromNonExisingGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesForNonExisingType()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesForNonExisingType");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceForNonExisingResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceForNonExisingResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPipingFromAnotherResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
         }
     }
 }

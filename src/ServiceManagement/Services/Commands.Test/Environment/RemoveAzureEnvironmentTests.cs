@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
 using System.IO;
@@ -30,11 +31,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     public class RemoveAzureEnvironmentTests : TestBase, IDisposable
     {
-        private MockDataStore dataStore;
+        private MemoryDataStore dataStore;
 
         public RemoveAzureEnvironmentTests()
         {
-            dataStore = new MockDataStore();
+            dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
         }
 
@@ -44,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemovesAzureEnvironment()
         {
             var commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -75,6 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsForUnknownEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -92,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsForPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();

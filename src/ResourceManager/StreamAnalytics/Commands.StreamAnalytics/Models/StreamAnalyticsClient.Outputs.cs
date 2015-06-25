@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSOutput> outputs = new List<PSOutput>();
 
-            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName, new OutputListParameters("*"));
 
             if (response != null && response.Value != null)
             {

@@ -126,9 +126,9 @@ function Test-BackupRestoreApiManagement
 
     $storageLocation = Get-ProviderLocation "Microsoft.ClassicStorage/storageAccounts"
     $storageAccountName = Get-ApiManagementServiceName
-    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
 
-    $storageKey = (Get-AzureStorageKey -StorageAccountName $storageAccountName).Primary
+    $storageKey = (Get-AzureStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Key1
     $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
 
     $apiManagementName = Get-ApiManagementServiceName
@@ -163,7 +163,7 @@ function Test-BackupRestoreApiManagement
         Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
         # Remove storage account
-        Remove-AzureStorageAccount -StorageAccountName $storageAccountName
+        Remove-AzureStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
         # Remove resource group
         Remove-AzureResourceGroup -Name $resourceGroupName -Force

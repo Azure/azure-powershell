@@ -18,7 +18,7 @@ using System;
 using System.Management.Automation;
 using System.Net;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     public enum ExceptionType

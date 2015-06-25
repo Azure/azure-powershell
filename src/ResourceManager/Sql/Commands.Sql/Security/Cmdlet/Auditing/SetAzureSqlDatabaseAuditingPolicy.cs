@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(Constants.DataAccess, Constants.SchemaChanges, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.All, Constants.None, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.DeprecatedAuditEvents.DataAccess, SecurityConstants.DeprecatedAuditEvents.SchemaChanges, SecurityConstants.DeprecatedAuditEvents.DataChanges, SecurityConstants.DeprecatedAuditEvents.SecurityExceptions, SecurityConstants.DeprecatedAuditEvents.RevokePermissions, SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -52,9 +53,23 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the storage key")]
-        [ValidateSet(Constants.Primary, Constants.Secondary, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of retention days for the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The number of retention days for the audit logs table")]
+        [ValidateNotNullOrEmpty]
+        public uint? RetentionInDays { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the name of the audit logs table.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the audit logs table")]
+        [ValidateNotNullOrEmpty]
+        public string TableIdentifier { get; internal set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -66,9 +81,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingPolicyModel UpdateModel(DatabaseAuditingPolicyModel model)
+        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
+            AuditStateType orgAuditStateType = model.AuditState;
             model.AuditState = AuditStateType.Enabled;
             model.UseServerDefault = UseServerDefaultOptions.Disabled;
             if (StorageAccountName != null)
@@ -77,57 +93,39 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             }
             if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {
-                model.StorageKeyType = (StorageKeyType == Constants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
             }
 
-            ProcessShortcuts();
-            if (EventType != null) // the user provided event types to audit, we use it
-            {
-                
-                Dictionary<string, AuditEventType> events = new Dictionary<string, AuditEventType>(){                
-                    {Constants.DataAccess, AuditEventType.DataAccess},
-                    {Constants.DataChanges, AuditEventType.DataChanges},
-                    {Constants.SecurityExceptions, AuditEventType.SecurityExceptions},
-                    {Constants.RevokePermissions, AuditEventType.RevokePermissions},
-                    {Constants.SchemaChanges, AuditEventType.SchemaChanges}
-                };
-                model.EventType = EventType.Select(s => events[s]).ToArray();
-            }
-            return model;
-        }
+            EventType = Util.ProcessAuditEvents(EventType);
 
-        /// <summary>
-        /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values
-        /// </summary>
-        private void ProcessShortcuts()
-        {
-            if(EventType == null || EventType.Length == 0)
+            if (EventType != null) // the user provided event types to audit
             {
-                return;
+                model.EventType = EventType.Select(s => SecurityConstants.AuditEventsToAuditEventType[s]).ToArray();
             }
-            if(EventType.Length == 1)
+
+            if (RetentionInDays != null)
             {
-                if(EventType[0] == Constants.None)
+                model.RetentionInDays = RetentionInDays;
+            }
+
+            if (TableIdentifier == null)
+            {
+                if ((orgAuditStateType == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
-                    EventType = new string[]{};
-                }
-                else if(EventType[0] == Constants.All)
-                {
-                    EventType = new string[]{Constants.DataAccess, Constants.DataChanges, Constants.SecurityExceptions, Constants.RevokePermissions, Constants.SchemaChanges};
-
+                    // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
+                    throw new Exception(string.Format(Resources.InvalidRetentionTypeSet, model.TableIdentifier));
                 }
             }
             else
             {
-                if(EventType.Contains(Constants.All))
-                {         
-                  throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.All));
-                }
-                if(EventType.Contains(Constants.None))
-                {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, Constants.None));
-                }
+                model.TableIdentifier = TableIdentifier;
             }
+
+            if (Util.DeprecatedEventTypeFound(EventType))
+            {
+                WriteWarning(string.Format(Resources.DeprecatedEventTypeUsed));
+            }
+            return model;
         }
     }
 }

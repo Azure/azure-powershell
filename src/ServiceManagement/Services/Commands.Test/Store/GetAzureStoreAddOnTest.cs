@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using CommonScenarioTest = Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Store;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -53,6 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(CommonScenarioTest.Category.AcceptanceType, CommonScenarioTest.Category.CheckIn)]
         public void GetAzureStoreAddOnAvailableAddOnsSuccessfull()
         {
             // Setup
@@ -102,6 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(CommonScenarioTest.Category.AcceptanceType, CommonScenarioTest.Category.CheckIn)]
         public void GetAzureStoreAddOnWithEmptyCloudService()
         {
             // Setup
@@ -117,6 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(CommonScenarioTest.Category.AcceptanceType, CommonScenarioTest.Category.CheckIn)]
         public void GetAzureStoreAddOnWithoutSearchOptions()
         {
             // Setup
@@ -137,6 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(CommonScenarioTest.Category.AcceptanceType, CommonScenarioTest.Category.CheckIn)]
         public void GetAzureStoreAddOnWithNameFilter()
         {
             // Setup

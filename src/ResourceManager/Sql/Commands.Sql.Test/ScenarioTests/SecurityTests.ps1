@@ -55,8 +55,8 @@ function Test-ServerUpdatePolicyWithStorage
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
@@ -117,11 +117,11 @@ function Test-ServerUpdatePolicyKeepPreviousStorage
 	try 
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		$policyBefore = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		$policyBefore = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policyAfter = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policyAfter = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policyBefore.StorageAccountName $policyAfter.StorageAccountName
@@ -153,17 +153,17 @@ function Test-DatabaseUpdatePolicyWithEventTypes
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
-		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "DataAccess","DataChanges","RevokePermissions"
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success","ParameterizedSQL_Success","ParameterizedSQL_Failure"
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataAccess)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataChanges)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::PlainSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Failure)}
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None"
@@ -193,26 +193,26 @@ function Test-ServerUpdatePolicyWithEventTypes
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "DataAccess","DataChanges","RevokePermissions"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success","ParameterizedSQL_Success","ParameterizedSQL_Failure"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::PlainSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Failure)}
 
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataAccess)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::DataChanges)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 0 
@@ -226,7 +226,7 @@ function Test-ServerUpdatePolicyWithEventTypes
 
 <#
 .SYNOPSIS
-Tests the modification of a database's auting policy event types with the 'All' or 'None' shortcuts 
+Tests the modification of a database's auditing policy event types with the 'All' or 'None' shortcuts 
 #>
 function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 {
@@ -242,14 +242,14 @@ function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "All"
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 
 		# Test
@@ -269,8 +269,12 @@ function Test-DatabaseUpdatePolicyWithEventTypeShortcuts
 		# Test
 		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "All", "None"}
 		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None", "All"}
-		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "DataChanges", "All"}
-		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "DataChanges", "None"}
+		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "All"}
+		Assert-Throws {Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "None"}
+			
+		#Test - If the event types includes new events and deprecated events we throw error
+		Assert-Throws {Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "DataAccess"}
+
 	}
 	finally
 	{
@@ -293,39 +297,42 @@ function Test-ServerUpdatePolicyWithEventTypeShortcuts
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All", "All"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
-		Assert-AreEqual $policy.EventType.Length 5
+		Assert-AreEqual $policy.EventType.Length 10
 
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
-	
-		# Assert
-		Assert-AreEqual $policy.EventType.Length 0 
-
-		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None", "None"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 0 
 
 		# Test
-		Assert-Throws {Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All", "None"}
-		Assert-Throws {Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None", "All"}
-		Assert-Throws {Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "DataChanges", "All"}
-		Assert-Throws {Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "DataChanges", "None"}
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+	
+		# Assert
+		Assert-AreEqual $policy.EventType.Length 0 
+
+		# Test
+		Assert-Throws {Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "All", "None"}
+		Assert-Throws {Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "None", "All"}
+		Assert-Throws {Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "All"}
+		Assert-Throws {Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "None"}
+
+		#Test - If the event types includes new events and deprecated events we throw error
+		Assert-Throws {Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "PlainSQL_Success", "DataAccess"}
 	}
 	finally
 	{
@@ -376,9 +383,9 @@ function Test-DisableServerAuditing
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		Remove-AzureSqlDatabaseServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Remove-AzureSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
@@ -404,7 +411,7 @@ function Test-DatabaseDisableEnableKeepProperties
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "SecurityExceptions"
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "Login_Failure"
 		Remove-AzureSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
@@ -414,7 +421,7 @@ function Test-DatabaseDisableEnableKeepProperties
 		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.UseServerDefault "Disabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::SecurityExceptions)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::Login_Failure)}
 	}
 	finally
 	{
@@ -437,16 +444,16 @@ function Test-ServerDisableEnableKeepProperties
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "RevokePermissions"
-		Remove-AzureSqlDatabaseServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType "TransactionManagement_Success"
+		Remove-AzureSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::RevokePermissions)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::TransactionManagement_Success)}
 	}
 	finally
 	{
@@ -469,8 +476,8 @@ function Test-UseServerDefault
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		Use-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Use-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
@@ -485,7 +492,7 @@ function Test-UseServerDefault
 
 <#
 .SYNOPSIS
-Tests that a failure occurs when trying to set a policy to a database, and that database does not have a polic as well as the policy does not have a storage account  
+Tests that a failure occurs when trying to set a policy to a database, and that database does not have a policy as well as the policy does not have a storage account  
 #>
 function Test-FailedDatabaseUpdatePolicyWithNoStorage
 {
@@ -520,7 +527,7 @@ function Test-FailedServerUpdatePolicyWithNoStorage
 	try
 	{
 		# Assert
-		Assert-Throws { Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy}
+		Assert-Throws { Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy}
 	}
 	finally
 	{
@@ -543,7 +550,7 @@ function Test-FailedUseServerDefault
 	try
 	{
 		# Assert
-		Assert-Throws { Use-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy -DatabaseName $params.databaseWithoutPolicy }
+		Assert-Throws { Use-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverWithoutPolicy -DatabaseName $params.databaseWithoutPolicy }
 	}
 	finally
 	{
@@ -592,10 +599,10 @@ function Test-FailWithBadServerIndentity
 	try 
 	{
 		# Assert
-		Assert-Throws { Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName "NONEXISTING-RG" -ServerName $params.serverName }
-		Assert-Throws { Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" }
-		Assert-Throws { Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -StorageAccountName $params.storageAccount}
-		Assert-Throws { Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -StorageAccountName $params.storageAccount}
+		Assert-Throws { Get-AzureSqlServerAuditingPolicy -ResourceGroupName "NONEXISTING-RG" -ServerName $params.serverName }
+		Assert-Throws { Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" }
+		Assert-Throws { Set-AzureSqlServerAuditingPolicy -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -StorageAccountName $params.storageAccount}
+		Assert-Throws { Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -StorageAccountName $params.storageAccount}
 	}
 	finally
 	{
@@ -648,7 +655,7 @@ function Test-DatabaseDirectAccess
 
 <#
 .SYNOPSIS
-Tests that storage key rotatation process for a policy of a Sql database server is managed properly
+Tests that storage key rotation process for a policy of a Sql database server is managed properly
 #>
 function Test-ServerStorageKeyRotation
 {
@@ -660,22 +667,22 @@ function Test-ServerStorageKeyRotation
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Secondary"}
 
 		# Test
-		Set-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
-		$policy = Get-AzureSqlDatabaseServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
@@ -689,7 +696,7 @@ function Test-ServerStorageKeyRotation
 
 <#
 .SYNOPSIS
-Tests that storage key rotatation process for a policy of a Sql database is managed properly
+Tests that storage key rotation process for a policy of a Sql database is managed properly
 #>
 function Test-DatabaseStorageKeyRotation
 {
@@ -720,6 +727,143 @@ function Test-DatabaseStorageKeyRotation
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+<#
+.SYNOPSIS
+Tests that when setting the retention values of server policy, that values is later fetched properly.
+#>
+function Test-ServerUpdatePolicyWithRetention
+{
+	# Setup
+	$testSuffix = 202
+	Create-TestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -RetentionInDays 10 -TableIdentifier $retentionTableIdentifier;
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 10
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that when setting the retention values of database policy, that values is later fetched properly.
+#>
+function Test-DatabaseUpdatePolicyWithRetention
+{
+	# Setup
+	$testSuffix = 203
+	Create-TestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 10 -TableIdentifier $retentionTableIdentifier;
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 10
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that after setting the retention values to a server auditing policy, this value is used on next policy set operations as default.
+#>
+function Test-ServerRetentionKeepProperties
+{
+	# Setup
+	$testSuffix = 204
+	Create-TestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -RetentionInDays 10 -TableIdentifier $retentionTableIdentifier;
+
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -RetentionInDays 11;
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 11
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
+
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier1" + $testSuffix;
+		Set-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -TableIdentifier $retentionTableIdentifier;
+		$policy = Get-AzureSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 11
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that after setting the retention values to a database auditing policy, this value is used on next policy set operations as default.
+#>
+function Test-DatabaseRetentionKeepProperties
+{
+	# Setup
+	$testSuffix = 205
+	Create-TestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 10 -TableIdentifier $retentionTableIdentifier;
+	
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 11;
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 11
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
+
+		# Test
+		$retentionTableIdentifier = "retentionTableIdentifier1" + $testSuffix;
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -TableIdentifier $retentionTableIdentifier;
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+
+		# Assert
+		Assert-AreEqual $policy.RetentionInDays 11
+		Assert-AreEqual $policy.TableIdentifier $retentionTableIdentifier 
 	}
 	finally
 	{

@@ -20,11 +20,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
     /// <summary>
-    /// The SqlAuditClient class is resposible for transforming the data that was recevied form the ednpoints to the cmdlets model of auditing policy and vice versa
+    /// The SqlAuditClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
     public class SqlAuditAdapter
     {
@@ -44,27 +45,27 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
-        /// Cacheing the fetched storage account name to prevent costly network interaction in cases it is not needed
+        /// Caching the fetched storage account name to prevent costly network interaction in cases it is not needed
         /// </summary>
         private string FetchedStorageAccountName { get; set; }
 
         /// <summary>
-        /// Cacheing the fetched storage account resource group to prevent costly network interaction in cases it is not needed
+        /// Caching the fetched storage account resource group to prevent costly network interaction in cases it is not needed
         /// </summary>
         private string FetchedStorageAccountResourceGroup { get; set; }
 
         /// <summary>
-        /// Cacheing the fetched storage account subscription to prevent costly network interaction in cases it is not needed
+        /// Caching the fetched storage account subscription to prevent costly network interaction in cases it is not needed
         /// </summary>
         private string FetchedStorageAccountSubscription { get; set; }
 
         /// <summary>
-        /// Cacheing the fetched storage account table name to prevent costly network interaction in cases it is not needed
+        /// Caching the fetched storage account table name to prevent costly network interaction in cases it is not needed
         /// </summary>
         private string FetchedStorageAccountTableEndpoint { get; set; }
 
         /// <summary>
-        /// In cases when storage is not needed and not provided, theres's no need to perform storage related network interaction that may fail
+        /// In cases when storage is not needed and not provided, there's no need to perform storage related network interaction that may fail
         /// </summary>
         public bool IgnoreStorage { get; set; }
 
@@ -85,10 +86,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Returns the storage account name of the given database server
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resouce group to which the server belongs</param>
+        /// <param name="resourceGroupName">The name of the resource group to which the server belongs</param>
         /// <param name="serverName">The server's name</param>
         /// <param name="requestId">The Id to use in the request</param>
-        /// <returns>The name of the storage accunt, null if it doesn't exist</returns>
+        /// <returns>The name of the storage account, null if it doesn't exist</returns>
         public string GetServerStorageAccount(string resourceGroupName, string serverName, string requestId)
         {
             return Communicator.GetServerAuditingPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
@@ -139,9 +140,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseAuditingPolicyModel dbPolicyModel = new DatabaseAuditingPolicyModel();
             DatabaseAuditingPolicyProperties properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
-            dbPolicyModel.UseServerDefault = properties.UseServerDefault == Constants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
-            ModelizeStorageInfo(dbPolicyModel,properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
+            dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
+            ModelizeStorageInfo(dbPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(dbPolicyModel, properties.EventTypesToAudit);
+            ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return dbPolicyModel;
         }
 
@@ -155,6 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             serverPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
             ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(serverPolicyModel, properties.EventTypesToAudit);
+            ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
             return serverPolicyModel;
         }
 
@@ -163,8 +166,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// </summary>
         private AuditStateType ModelizeAuditState(string auditState)
         {
-            if (auditState == Constants.AuditingEndpoint.New) return AuditStateType.New;
-            if (auditState == Constants.AuditingEndpoint.Enabled) return AuditStateType.Enabled;
+            if (auditState == SecurityConstants.AuditingEndpoint.New) return AuditStateType.New;
+            if (auditState == SecurityConstants.AuditingEndpoint.Enabled) return AuditStateType.Enabled;
             return AuditStateType.Disabled;
         }
 
@@ -187,32 +190,56 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Transforms the given policy state into a string representation
         /// </summary>
-        private string PolicizeAuditState(AuditStateType AuditState)
+        private string PolicizeAuditState(AuditStateType auditState)
         {
-            switch(AuditState)
+            switch(auditState)
             {
                 case AuditStateType.Enabled:
-                    return Constants.AuditingEndpoint.Enabled;
+                    return SecurityConstants.AuditingEndpoint.Enabled;
                 case AuditStateType.New:
-                    return Constants.AuditingEndpoint.New;
+                    return SecurityConstants.AuditingEndpoint.New;
                 case AuditStateType.Disabled:
                 default:
-                    return Constants.AuditingEndpoint.Disabled;
+                    return SecurityConstants.AuditingEndpoint.Disabled;
             }
         }
 
         /// <summary>
         /// Updates the given model with all the event types information
         /// </summary>
-        public void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
+        private void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
         { 
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(Constants.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
-            if (eventTypesToAudit.IndexOf(Constants.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
-            if (eventTypesToAudit.IndexOf(Constants.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
-            if (eventTypesToAudit.IndexOf(Constants.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
-            if (eventTypesToAudit.IndexOf(Constants.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Failure) != -1) events.Add(AuditEventType.ParameterizedSQL_Failure);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Success) != -1) events.Add(AuditEventType.StoredProcedure_Success);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.StoredProcedure_Failure) != -1) events.Add(AuditEventType.StoredProcedure_Failure);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Success) != -1) events.Add(AuditEventType.Login_Success);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.Login_Failure) != -1) events.Add(AuditEventType.Login_Failure);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Success) != -1) events.Add(AuditEventType.TransactionManagement_Success);
+            if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
             model.EventType = events.ToArray();
+        }
+        
+        /// <summary>
+        /// Updates the content of the model object with all the retention information
+        /// </summary>
+        private void ModelizeRetentionInfo(BaseAuditingPolicyModel model, string retentionDays, string auditLogsTableName)
+        {
+            model.TableIdentifier = auditLogsTableName;
+            uint retentionDaysForModel;
+            if (!(UInt32.TryParse(retentionDays, out retentionDaysForModel)))
+            {
+                retentionDaysForModel = 0;
+            }
+            model.RetentionInDays = retentionDaysForModel;
         }
 
         /// <summary>
@@ -236,7 +263,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="policy">The AuditingPolicy object</param>
+        /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
         private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model)
         {
@@ -244,7 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseAuditingPolicyProperties properties = new DatabaseAuditingPolicyProperties();
             updateParameters.Properties = properties;
             properties.AuditingState = PolicizeAuditState(model.AuditState);
-            properties.UseServerDefault = (model.UseServerDefault == UseServerDefaultOptions.Enabled) ? Constants.AuditingEndpoint.Enabled : Constants.AuditingEndpoint.Disabled;
+            properties.UseServerDefault = (model.UseServerDefault == UseServerDefaultOptions.Enabled) ? SecurityConstants.AuditingEndpoint.Enabled : SecurityConstants.AuditingEndpoint.Disabled;
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);
@@ -252,13 +279,15 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
+            properties.RetentionDays = model.RetentionInDays.ToString();
+            properties.AuditLogsTableName = model.TableIdentifier;
             return updateParameters;
         }
 
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="policy">The AuditingPolicy object</param>
+        /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
         private ServerAuditingPolicyCreateOrUpdateParameters PolicizeServerAuditingModel(ServerAuditingPolicyModel model)
         {
@@ -273,6 +302,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
+            properties.RetentionDays = model.RetentionInDays.ToString();
+            properties.AuditLogsTableName = model.TableIdentifier;
             return updateParameters;
         }
 
@@ -311,27 +342,67 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             {
                 return null;
             }
-            HashSet<AuditEventType> eventTypes = new HashSet<AuditEventType>(model.EventType);
+
             StringBuilder events = new StringBuilder();
-            if(IsEventTypeOn(AuditEventType.DataAccess, model.EventType))
+            if (IsEventTypeOn(AuditEventType.DataAccess, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.DataAccess).Append(",");
+                events.Append(SecurityConstants.AuditingEndpoint.DataAccess).Append(",");
             }
             if (IsEventTypeOn(AuditEventType.DataChanges, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.DataChanges).Append(",");
+                events.Append(SecurityConstants.AuditingEndpoint.DataChanges).Append(",");
             }
             if (IsEventTypeOn(AuditEventType.RevokePermissions, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.RevokePermissions).Append(",");
+                events.Append(SecurityConstants.AuditingEndpoint.RevokePermissions).Append(",");
             }
             if (IsEventTypeOn(AuditEventType.SchemaChanges, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.SchemaChanges).Append(",");
+                events.Append(SecurityConstants.AuditingEndpoint.SchemaChanges).Append(",");
             }
             if (IsEventTypeOn(AuditEventType.SecurityExceptions, model.EventType))
             {
-                events.Append(Constants.AuditingEndpoint.SecurityExceptions).Append(",");
+                events.Append(SecurityConstants.AuditingEndpoint.SecurityExceptions).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.PlainSQL_Success, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.PlainSQL_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.PlainSQL_Failure, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.PlainSQL_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.ParameterizedSQL_Success, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.ParameterizedSQL_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.ParameterizedSQL_Failure, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.ParameterizedSQL_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.StoredProcedure_Success, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.StoredProcedure_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.StoredProcedure_Failure, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.StoredProcedure_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.Login_Success, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.Login_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.Login_Failure, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.Login_Failure).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.TransactionManagement_Success, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.TransactionManagement_Success).Append(",");
+            }
+            if (IsEventTypeOn(AuditEventType.TransactionManagement_Failure, model.EventType))
+            {
+                events.Append(SecurityConstants.AuditingEndpoint.TransactionManagement_Failure).Append(",");
             }
             if(events.Length != 0) 
             {
@@ -369,7 +440,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         }
 
         /// <summary>
-        /// Extracts the storage account sunscription id
+        /// Extracts the storage account subscription id
         /// </summary>
         private string ExtractStorageAccountSubscriptionId(string storageName)
         {

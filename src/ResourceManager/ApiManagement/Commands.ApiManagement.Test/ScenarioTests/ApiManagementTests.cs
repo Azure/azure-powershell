@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
             var storageManagementClient = GetStorageManagementClient();
+            var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
                 apiManagementManagementClient, 
@@ -50,12 +51,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 galaryClient,
                 authorizationManagementClient,
                 managementClient,
-                storageManagementClient);
+                //storageManagementClient,
+                armStorageManagementClient);
         }
 
         protected StorageManagementClient GetStorageManagementClient()
         {
             return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        protected Management.Storage.StorageManagementClient GetArmStorageManagementClient()
+        {
+            return TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private ManagementClient GetManagementClient()
@@ -107,7 +114,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateApiManagementDeploymentWithHelpersAndPipline()
+        public void TestUpdateDeploymentComplex()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipline");
         }

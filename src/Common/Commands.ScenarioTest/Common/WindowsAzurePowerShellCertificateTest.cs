@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 this.credentialFile = TestCredentialHelper.DefaultCredentialFile;
                 this.profileFile = TestCredentialHelper.WindowsAzureProfileFile;
             }
-            AzureSession.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
 
             if (Environment.GetEnvironmentVariable(outputDirKey) != null)
             {
