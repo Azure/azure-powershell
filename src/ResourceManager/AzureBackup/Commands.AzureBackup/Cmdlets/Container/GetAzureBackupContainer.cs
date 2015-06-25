@@ -69,10 +69,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         return containerInfo.ParentContainerName != ContainerResourceGroupName;
                     });
-                    WriteDebug(string.Format("# of containers after resource group filter = {0}", containerInfos.Count));
+                    WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));                
                 }
-
-                WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));
 
                 // TODO: Container friendly name is not captures in Container response
                 // BUG: Friendly name was previously assigned to ResourceName (vault name)

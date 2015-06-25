@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 var operationId = AzureBackupClient.RegisterContainer(registrationRequest);
 
                 var operationStatus = GetOperationStatus(operationId);
-                WriteObject(operationStatus.JobList.FirstOrDefault());
+                WriteObject(operationStatus.Jobs.FirstOrDefault());
             });
         }
 

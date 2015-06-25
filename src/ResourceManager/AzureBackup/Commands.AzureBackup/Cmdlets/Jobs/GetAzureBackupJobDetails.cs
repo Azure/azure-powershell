@@ -18,20 +18,25 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Get full details of a job
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupJobDetails"), OutputType(typeof(Mgmt.JobProperties))]
-    public class GetAzureBackupJobDetils : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureBackupJobDetails", DefaultParameterSetName = "IdFiltersSet"), OutputType(typeof(Mgmt.JobProperties))]
+    public class GetAzureBackupJobDetils : AzureBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobIdHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
+        [ValidateNotNull]
+        public AzurePSBackupVault Vault { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobIdHelpMessage, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNullOrEmpty]
         public string JobID { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobHelpMessage, ParameterSetName = "JobsFiltersSet")]
         [ValidateNotNull]
         public AzureBackupJob Job { get; set; }
 
@@ -39,10 +44,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             if (Job != null)
             {
-                InitializeAzureBackupCmdlet(Job.ResourceGroupName, Job.ResourceName, Job.Location);
+                Vault = new AzurePSBackupVault(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
-
-            base.ExecuteCmdlet();
+            InitializeAzureBackupCmdlet(Vault);
 
             ExecutionBlock(() =>
             {
@@ -53,8 +57,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug("JobID filter is: " + JobID);
 
-                Mgmt.JobProperties serviceJobProperties = AzureBackupClient.Job.GetAsync(JobID, GetCustomRequestHeaders(), CmdletCancellationToken).Result.Job;
-                AzureBackupJobDetails jobDetails = new AzureBackupJobDetails(serviceJobProperties, ResourceGroupName, ResourceName, Location);
+                Mgmt.JobProperties serviceJobProperties = AzureBackupClient.GetJobDetails(JobID).Job;
+                AzureBackupJobDetails jobDetails = new AzureBackupJobDetails(Vault, serviceJobProperties);
 
                 WriteDebug("Retrieved JobDetails from service.");
                 WriteObject(jobDetails);
