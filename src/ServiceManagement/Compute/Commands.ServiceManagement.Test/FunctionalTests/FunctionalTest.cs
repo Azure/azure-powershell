@@ -679,10 +679,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }
                 catch (Exception ex)
                 {
-                    Assert.IsNotNull(ex.InnerException);
-                    ComputeCloudException ce = (ComputeCloudException) ex.InnerException;
-                    Assert.IsTrue(ce.Response.StatusCode == System.Net.HttpStatusCode.BadRequest);
-                    Assert.IsTrue(ce.Message.Contains("The date specified in parameter EndTime is not within the correct range."));
+                    Func<Exception, string, bool> containMessage = (e, s) => e != null && e.Message != null && e.Message.Contains(s);
+                    string msgStr = "The date specified in parameter EndTime is not within the correct range.";
+                    Assert.IsTrue(containMessage(ex, msgStr) || (ex.InnerException != null && containMessage(ex.InnerException, msgStr)));
                 }
 
                 // Negative test for Get-AzureVM
