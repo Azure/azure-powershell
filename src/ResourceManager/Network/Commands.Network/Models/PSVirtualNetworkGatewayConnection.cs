@@ -35,19 +35,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1.Id, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string VirtualNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string LocalNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkGateway2, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented); }
         }
     }
 }
