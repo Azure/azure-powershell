@@ -78,9 +78,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="policyId"></param>
         /// <param name="request"></param>
-        public void UpdateProtectionPolicy(string policyId, UpdateProtectionPolicyRequest request)
+        public Guid UpdateProtectionPolicy(string policyId, UpdateProtectionPolicyRequest request)
         {
-            AzureBackupClient.ProtectionPolicy.UpdateAsync(policyId, request, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+           var response = AzureBackupClient.ProtectionPolicy.UpdateAsync(policyId, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+           return response.OperationId;
         }
     }
 }

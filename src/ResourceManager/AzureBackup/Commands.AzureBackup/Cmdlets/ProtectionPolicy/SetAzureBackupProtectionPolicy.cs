@@ -89,22 +89,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     // TODO: Add Async handling
                     // BUG: Update API in hydra doesn't return OperationResponse rather than AzureOperationResponse
-                    AzureBackupClient.UpdateProtectionPolicy(policyInfo.InstanceId, updateProtectionPolicyRequest);
+                    var operationId = AzureBackupClient.UpdateProtectionPolicy(policyInfo.InstanceId, updateProtectionPolicyRequest);
+
+                    if(operationId != Guid.Empty)
+                    {
+                        var operationStatus = GetOperationStatus(operationId);
+                        WriteDebug("Protection Policy successfully updated and created job(s) to re-configure protection on associated items");
+                        WriteObject(operationStatus.JobList);                        
+                    }
+
+                    else
+                    {
+                        WriteDebug("Protection Policy successfully updated");
+                    }
+
                 }
                 else
                 {
                     // TODO: Validate proper error message is delivered to user.
                     throw new ArgumentException(String.Format("Protection policy {0} not found", ProtectionPolicy.Name));
                 }
-
-                WriteDebug("Protection Policy successfully updated");
-
-                var updatedPolicy = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
-
-                WriteDebug("Converting response");
-
-                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, updatedPolicy));
-
             });
         }
 
