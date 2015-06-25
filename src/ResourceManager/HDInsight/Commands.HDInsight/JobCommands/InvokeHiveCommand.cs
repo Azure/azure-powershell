@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -167,16 +168,18 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             waitJobCommand.WaitJob();
 
-            var output = HDInsightJobClient.GetJobOutput(jobid, DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
-            var outputStr = Convert(output);
-            WriteObject(string.Format("\nJob Output:\n{0}", outputStr));
-        }
+            //get job output
+            var getOutputCommand = new GetAzureHDInsightJobOutputCommand
+            {
+                ClusterCredential = ClusterCredential,
+                ClusterName = clusterConnection,
+                DefaultContainer = DefaultContainer,
+                DefaultStorageAccountName = DefaultStorageAccountName,
+                DefaultStorageAccountKey = DefaultStorageAccountKey,
+                JobId = jobid
+            };
 
-        private static string Convert(Stream stream)
-        {
-            var reader = new StreamReader(stream);
-            var text = reader.ReadToEnd();
-            return text;
+            WriteObject(getOutputCommand.GetJobOutput());
         }
     }
 }
