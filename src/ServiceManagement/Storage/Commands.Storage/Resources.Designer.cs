@@ -394,7 +394,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find copy task on specified blob &apos;{0}&apos; in container &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Can not find copy task on the specified blob &apos;{0}&apos; in container &apos;{1}&apos;..
         /// </summary>
         internal static string CopyTaskNotFound {
             get {
@@ -556,7 +556,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find copy task on specified file &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Can not find copy task on the specified file &apos;{0}&apos;..
         /// </summary>
         internal static string FileCopyTaskNotFound {
             get {

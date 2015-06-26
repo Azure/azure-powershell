@@ -52,11 +52,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Source container instance", Mandatory = true, ParameterSetName = ContainerParameterSet)]
         [ValidateNotNull]
         public CloudBlobContainer SrcContainer { get; set; }
-
+        
+        [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
-           ValueFromPipeline = true, ParameterSetName = BlobFilePathParameterSet)]
+           ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
-           ValueFromPipeline = true, ParameterSetName = BlobFileParameterSet)]
+           ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
         [ValidateNotNull]
         public CloudBlob SrcBlob { get; set; }
 
@@ -389,23 +390,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (!destExist || checkOverwrite())
             {
-                await this.CreateDirectory(destFile.Parent);
+                try
+                {
+                    string copyId = await startCopy();
 
-                string copyId = await startCopy();
-
-                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
-                this.OutputStream.WriteObject(taskId, destFile);
+                    this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
+                    this.OutputStream.WriteObject(taskId, destFile);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-        }
-
-        private async Task CreateDirectory(CloudFileDirectory dir)
-        {
-            if (null != dir.Parent)
-            {
-                await CreateDirectory(dir.Parent);
-            }
-
-            await dir.CreateIfNotExistsAsync(this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
         }
     }
 }

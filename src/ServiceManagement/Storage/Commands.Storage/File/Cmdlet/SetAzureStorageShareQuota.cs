@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Share Quota")]
-        [ValidateRange(1, int.MaxValue)]
+        [ValidateRange(1, 5120)]
         public int Quota { get; set; }
 
         /// <summary>

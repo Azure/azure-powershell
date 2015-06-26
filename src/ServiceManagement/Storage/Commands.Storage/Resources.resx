@@ -483,11 +483,11 @@
     <comment>0,1,2,3 for related task count.</comment>
   </data>
   <data name="CopyTaskNotFound" xml:space="preserve">
-    <value>Can not find copy task on specified blob '{0}' in container '{1}'.</value>
+    <value>Can not find copy task on the specified blob '{0}' in container '{1}'.</value>
     <comment>0 for blob name, 1 for container name.</comment>
   </data>
   <data name="FileCopyTaskNotFound" xml:space="preserve">
-    <value>Can not find copy task on specified file '{0}'.</value>
+    <value>Can not find copy task on the specified file '{0}'.</value>
     <comment>0 for file uri.</comment>
   </data>
   <data name="CORSRuleError" xml:space="preserve">

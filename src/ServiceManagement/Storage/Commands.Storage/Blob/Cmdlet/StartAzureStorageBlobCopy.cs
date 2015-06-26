@@ -127,8 +127,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string SrcFilePath { get; set; }
 
-        [Parameter(HelpMessage = "Source file", Mandatory = true, ParameterSetName = FileParameterSet)]
-        [Parameter(HelpMessage = "Source file", Mandatory = true, ParameterSetName = FileToBlobParameterSet)]
+        [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileToBlobParameterSet)]
         [ValidateNotNull]
         public CloudFile SrcFile { get; set; }
 
@@ -464,6 +464,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private void StartCopyFromFile(IStorageBlobManagement destChannel, CloudFile srcFile, string destContainerName, string destBlobName)
         {
+            if (string.IsNullOrEmpty(destBlobName))
+            {
+                destBlobName = srcFile.GetFullPath();
+            }
+
             CloudBlob destBlob = this.GetDestBlob(destChannel, destContainerName, destBlobName, BlobType.BlockBlob);
 
             this.StartCopyFromFile(destChannel, srcFile, destBlob);
