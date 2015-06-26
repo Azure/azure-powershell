@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The private ip address of the frontendIpConfiguration " +
                           "if static allocation is specified.")]
+        [Parameter(ParameterSetName = "SetByResourceId")]
+        [Parameter(ParameterSetName = "SetByResource")]
         public string PrivateIpAddress { get; set; }
 
         [Parameter(

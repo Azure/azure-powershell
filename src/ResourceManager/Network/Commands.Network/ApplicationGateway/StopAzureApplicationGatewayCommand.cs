@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             appGwModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayType;
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ApplicationGateway.Tag, validate: true);
 
-            this.ApplicationGatewayClient.StopAsync(this.ApplicationGateway.ResourceGroupName, this.ApplicationGateway.Name);
+            this.ApplicationGatewayClient.Stop(this.ApplicationGateway.ResourceGroupName, this.ApplicationGateway.Name);
 
             var getApplicationGateway = this.GetApplicationGateway(this.ApplicationGateway.ResourceGroupName, this.ApplicationGateway.Name);
 
