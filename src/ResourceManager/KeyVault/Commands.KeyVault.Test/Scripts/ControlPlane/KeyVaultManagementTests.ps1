@@ -239,7 +239,9 @@ function Test-SetRemoveAccessPolicyByUPN
 
 	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
-	Assert-AreEqual $upn (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
+    $adUser = (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0]
+	Assert-True (($upn -eq $adUser.UserPrincipalName) -or `
+                ($upn -eq $adUser.Mail))
 
 	$vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
 	Assert-AreEqual 0 $vault.AccessPolicies.Count
@@ -403,7 +405,9 @@ function Test-ModifyAccessPolicy
 	$vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
 
 	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
-	Assert-AreEqual $upn (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
+	$adUser = (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0]
+	Assert-True (($upn -eq $adUser.UserPrincipalName) -or `
+                ($upn -eq $adUser.Mail))
 
 	$objId = $vault.AccessPolicies[0].ObjectId
 
