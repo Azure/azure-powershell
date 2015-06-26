@@ -2859,6 +2859,169 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+	<command:details>
+		<command:name>
+                   Get-AzureVMDscExtension
+		</command:name>
+		<maml:description>
+			<maml:para>Gets the settings of the DSC extension on a particular VM</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para></maml:para>
+		</maml:copyright>
+		<command:verb>Get</command:verb>
+		<command:noun>AzureVMDscExtension</command:noun>
+		<dev:version></dev:version>
+	</command:details>
+	<maml:description>
+		<maml:para>Gets the settings of the DSC extension on a particular VM.</maml:para>
+	</maml:description>
+	<!-- Cmdlet syntax section-->
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Get-AzureVMDscExtension</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>The resource group name.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>VMName</maml:name>
+				<maml:description>
+					<maml:para>The virtual machine name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The extension name</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Output shows status when the switch is present</maml:para>
+				</maml:description>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<!-- Cmdlet parameter section  -->
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>The extension name</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>The resource group name.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Status</maml:name>
+			<maml:description>
+				<maml:para>Output shows status when the switch is present</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>VMName</maml:name>
+			<maml:description>
+				<maml:para>The virtual machine name</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<!-- Input - Output section-->
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri/>
+				<maml:description />
+			</dev:type>
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</maml:name>
+				<maml:uri />
+				<maml:description />
+			</dev:type>   
+			<maml:description>
+				<maml:para>
+					<!-- description  -->
+					
+				</maml:para>
+			</maml:description> 
+		</command:returnValue>
+	</command:returnValues>
+	<!-- Error section-->
+	<command:terminatingErrors />
+	<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>
+                          
+                        </maml:para>
+		</maml:alert>
+		<maml:alert>
+			<maml:para></maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<!-- Example section  --> 
+	<command:examples>
+	</command:examples>
+	<!-- Link section  -->
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText></maml:linkText>
+			<maml:uri/>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>

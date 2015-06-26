@@ -94,5 +94,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContent";
         public const string VaultSecretGroup = "AzureVMSecret";
         public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
+
+        //DSC
+        public const string VirtualMachineDscExtension = "AzureVMDscExtension";
     }
 }
