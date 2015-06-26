@@ -12,29 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text;
+using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Compute.Models
+namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public static class LocationStringExtension
+    public class DatabaseActivationTests : SqlTestsBase
     {
-        public static string Canonicalize(this string location)
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestDatabasePauseResume()
         {
-            if (!string.IsNullOrEmpty(location))
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (char ch in location)
-                {
-                    if (!char.IsWhiteSpace(ch))
-                    {
-                        sb.Append(ch);
-                    }
-                }
+            RunPowerShellTest("Test-DatabasePauseResume");
+        }
 
-                location = sb.ToString().ToLower();
-            }
-
-            return location;
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestDatabasePauseResumePiped()
+        {
+            RunPowerShellTest("Test-DatabasePauseResumePiped");
         }
     }
 }

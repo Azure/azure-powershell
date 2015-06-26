@@ -153,7 +153,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         ValidateTargetLocations();
                         return this.ComputeClient.VirtualMachineOSImages.Replicate(this.ImageName, new Management.Compute.Models.VirtualMachineOSImageReplicateParameters
                             {
-                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList()
+                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList(),
+                                ComputeImageAttributes = new ComputeImageAttributes
+                                {
+                                    Offer = this.ComputeImageConfig.Offer,
+                                    Sku = this.ComputeImageConfig.Sku,
+                                    Version = this.ComputeImageConfig.Version
+                                },
+                                MarketplaceImageAttributes = this.MarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
+                                {
+                                    Plan = new Plan
+                                    {
+                                        Name = this.MarketplaceImageConfig.PlanName,
+                                        Product = this.MarketplaceImageConfig.Product,
+                                        Publisher = this.MarketplaceImageConfig.Publisher
+                                    },
+                                    PublisherId = this.MarketplaceImageConfig.PublisherId
+                                }
                             });
                     });
             }
