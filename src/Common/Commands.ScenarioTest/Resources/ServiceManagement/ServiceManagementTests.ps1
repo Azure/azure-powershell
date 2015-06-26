@@ -61,3 +61,12 @@ function Test-GetAzureLocation
         Cleanup-CloudService $svcName
     }
 }
+
+# Test Service Management Cloud Exception
+function Run-ServiceManagementCloudExceptionTests
+{
+    $compare = "*OperationID : `'*`'";
+    Assert-ThrowsLike { $st = Get-AzureService -ServiceName '*' } $compare;
+    Assert-ThrowsLike { $st = Get-AzureVM -ServiceName '*' } $compare;
+    Assert-ThrowsLike { $st = Get-AzureAffinityGroup -Name '*' } $compare;
+}

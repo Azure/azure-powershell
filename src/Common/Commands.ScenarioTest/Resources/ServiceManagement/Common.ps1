@@ -88,3 +88,4 @@ function Cleanup-Storage
          Write-Warning "Cannot Remove the Storage Account"
     }
 }
+
