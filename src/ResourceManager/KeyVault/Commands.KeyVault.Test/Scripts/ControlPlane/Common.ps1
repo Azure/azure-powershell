@@ -19,7 +19,7 @@ Gets the location for the Website. Default to West US if none found.
 function Get-Location
 {
     $location = Get-AzureLocation | where {$_.Name -eq "Microsoft.KeyVault/vaults"}
-	if ($location -eq $null) 
+    if ($location -eq $null) 
 	{
 		return "East US"
 	} 

@@ -239,7 +239,7 @@ function Test-SetRemoveAccessPolicyByUPN
 
 	CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
-    $adUser = (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0]
+	$adUser = (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0]
 	Assert-True (($upn -eq $adUser.UserPrincipalName) -or `
                 ($upn -eq $adUser.Mail))
 
