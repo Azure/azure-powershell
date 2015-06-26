@@ -1,28 +1,18 @@
-﻿2015.06.25 version 0.9.4
-* Added Batch cmdlets
-    * Start-AzureBatchPoolResize
-    * Stop-AzureBatchPoolResize
-* Azure SQL Database
-    * Added cmdlets for pause/resume functionality and retrieving restore points for restoring backups:
-        * Suspend-AzureSqlDatabase
-        * Resume-AzureSqlDatabase
-        * Get-AzureSqlDatabaseRestorePoints
-    * Changed cmdlets:
-        * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
-* RedisCache cmdlets 
-    * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
-    * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
+﻿2015.06.26 version 0.9.4
+* Azure Compute cmdlets
+    * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
+    * Save-AzureVMImgage has new paramter -Path to save the JSON template returned from the server.
+    * Add-AzureVMNetworkInterface has new paramter -NetworkInterface which accepts a list of NIC object returned by Get-AzureNetworkInterface cmdlet. 
+    * Deprecated “-Name” parameter in Set-AzureVMSourceImage. The guidance is to use the Pub, Offer, SKU, Version method to specify the VM Images for the VM.
+    * Fixed the formatting of the output of VM Image cmdlets.
+    * Fixed issues in New/Set-AzureDeployment & other service extension related cmdlets.
+* Azure Batch cmdlets
+    * Added Start-AzureBatchPoolResize
+    * Added Stop-AzureBatchPoolResize
 * Azure Key Vault cmdlets
     * Updated Key Vault package versions
     * Fixed bugs related to secrets
-* Azure Resource Manager
-    * Added Get-AzureProviderOperation cmdlet
-    * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
-    * Refactored Resource Lock cmdlets
-    * Removed unnecessary code when getting a resource
-* Added UsageAggregates cmdlets 
-    * Get-UsageAggregates
-* Network Resource Provider changes
+* Azure Network Resource Provider cmdlets
     * New-AzureLocalNetworkGateway parameter name change
     * Reset-AzureLocalNetworkGateway renamed to Set-AzureLocalNetworkGateway, added new parameter
     * VirtualNetworkGateway parameter changes
@@ -31,6 +21,22 @@
         * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
 * Azure Storage changes
     * Fix the bug on aliases Get-AzureStorageContainerAcl, Start-CopyAzureStorageBlob and Stop-CopyAzureStorageBlob
+* Azure RedisCache cmdlets 
+    * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
+    * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
+* Azure Resource Manager cmdlets
+    * Added Get-UsageAggregates
+    * Added Get-AzureProviderOperation cmdlet
+    * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
+    * Refactored Resource Lock cmdlets
+    * Removed unnecessary code when getting a resource
+* Azure SQL Database
+    * Added cmdlets for pause/resume functionality and retrieving restore points for restoring backups:
+        * Suspend-AzureSqlDatabase
+        * Resume-AzureSqlDatabase
+        * Get-AzureSqlDatabaseRestorePoints
+    * Changed cmdlets:
+        * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
