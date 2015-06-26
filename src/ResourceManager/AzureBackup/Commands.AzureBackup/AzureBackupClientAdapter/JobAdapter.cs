@@ -37,5 +37,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             var response = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.Jobs.Objects;
         }
+
+        public Mgmt.JobByIdResponse GetJobDetails(string jobId)
+        {
+            var response = AzureBackupClient.Job.GetAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return response;
+        }
+
+        public Guid TriggerCancelJob(string jobId)
+        {
+            var response = AzureBackupClient.Job.StopAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result.OperationId;
+            return response;
+        }
     }
 }
