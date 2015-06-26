@@ -16,11 +16,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Models;
 using Microsoft.WindowsAzure.Management.TrafficManager;
 using Microsoft.WindowsAzure.Management.TrafficManager.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
 {
@@ -28,9 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
     {
         public TrafficManagerManagementClient Client { get; internal set; }
 
-        public TrafficManagerClient(AzureSubscription subscription)
+        public TrafficManagerClient(AzureProfile profile, AzureSubscription subscription)
         {
-            this.Client = AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            this.Client = AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public TrafficManagerClient(TrafficManagerManagementClient client)
@@ -73,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
 
         public void RemoveTrafficManagerProfile(string profileName)
         {
-            OperationResponse resp = this.Client.Profiles.Delete(profileName);
+            AzureOperationResponse resp = this.Client.Profiles.Delete(profileName);
         }
 
         public ProfileWithDefinition GetTrafficManagerProfileWithDefinition(string profileName)

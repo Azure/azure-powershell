@@ -307,7 +307,7 @@ function Wait-Seconds
 {
     param([int] $timeout)
     
-    [Microsoft.WindowsAzure.Testing.TestUtilities]::Wait($timeout * 1000)
+    [Microsoft.Azure.Test.TestUtilities]::Wait($timeout * 1000)
 }
 
 
@@ -348,7 +348,21 @@ function Retry-Function
 function getAssetName
 {
     $stack = Get-PSCallStack
-    $testName = $null;
+    $testName = getTestName
+    
+    $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "onesdk")
+
+    return $assetName
+}
+
+<#
+.SYNOPSIS
+Gets the name of the test
+#>
+function getTestName
+{
+    $stack = Get-PSCallStack
+    $testName = $null
     foreach ($frame in $stack)
     {
         if ($frame.Command.StartsWith("Test-", "CurrentCultureIgnoreCase"))
@@ -356,8 +370,177 @@ function getAssetName
             $testName = $frame.Command
         }
     }
-    
-    $assetName = [Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::GetAssetName($testName, "onesdk")
 
-    return $assetName
+	return $testName
+}
+
+<#
+.SYNOPSIS
+Gets a variable setting from the recorded mock for a test
+
+.PARAMETER variableName
+The name of the variable
+#>
+function getVariable
+{
+   param([string]$variableName)
+   $testName = getTestName
+   $result = $null
+  if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables.ContainsKey($variableName))
+  {
+      $result = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+  }
+
+  return $result
+}
+
+<#
+.SYNOPSIS
+Gets the subscription ID from the recorded mock for a test
+
+#>
+function getSubscription
+{
+   return $(getVariable "SubscriptionId")
+}
+
+<#
+.SYNOPSIS
+Gets the test mock execution mode (Playback, None, Record)
+
+#>
+function getTestMode
+{
+   return $([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode)
+}
+
+<#
+.SYNOPSIS
+Creates a PSCredential from a given useranme and clear text password
+
+.PARAMETER username
+The user name
+.PARAMETER password
+The corresponding password in clear text
+#>
+function createTestCredential
+{
+  param([string]$username, [string]$password)
+  $secPasswd = ConvertTo-SecureString $password -AsPlainText -Force
+  return $(New-Object System.Management.Automation.PSCredential ($username, $secPasswd))
+}
+
+<#
+.SYNOPSIS
+Creates a PSCredential from a given connection string
+
+.PARAMETER connectionString
+The connection string containing username and password information
+#>
+function getTestCredentialFromString
+{
+  param([string] $connectionString)
+  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))))))
+  {
+    throw "The connection string '$connectionString' must have a valid value, including username and password " +`
+		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+  }
+  return $(createTestCredential $parsedString[[Microsoft.Azure.Test.TestEnvironment]::UserIdKey] $parsedString[[Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey])
+}
+
+<#
+.SYNOPSIS
+Gets a Subscription from a given connection string
+
+.PARAMETER connectionString
+The connection string containing subscription information
+#>
+function getSubscriptionFromString
+{
+  param([string] $connectionString)
+  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey)))
+  {
+    throw "The connection string '$connectionString' must have a valid value, including subscription " +`
+		    "in the following format: SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+  }
+  return $($parsedString[[Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey])
+}
+<#
+.SYNOPSIS
+Creates a PSCredential from the given test environment, using the environemnt variables for this process
+
+.PARAMETER testEnvironment
+The test environment : either RDFE or CSM
+#>
+function getCredentialFromEnvironment
+{
+   param([string]$testEnvironment)
+   $credential = $null
+   $testMode = getTestMode
+   if ($testMode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecordMode]::Playback)
+   {
+       $environmentVariable = $null;
+       if ([System.string]::Equals($testEnvironment, "rdfe", [System.StringComparison]::OrdinalIgnoreCase))
+	   {
+	       $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
+	   }
+	   else
+	   {
+	       $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
+	   }
+
+	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
+	   if ([System.string]::IsNullOrEmpty($environmentValue))
+	   {
+	      throw "The environment variable '$environmentVariable' must have a valid value, including username and password " +`
+		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+	   }
+
+	   $credential = $(getTestCredentialFromString $environmentValue)
+   }
+
+   return $credential
+}
+
+<#
+.SYNOPSIS
+Creates a PSCredential from the given test environment, using the environemnt variables for this process
+
+.PARAMETER testEnvironment
+The test environment : either RDFE or CSM
+#>
+function getSubscriptionFromEnvironment
+{
+   param([string]$testEnvironment)
+   $subscription = $null
+   $testMode = getTestMode
+   if ($testMode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecordMode]::Playback)
+   {
+       $environmentVariable = $null;
+       if ([System.string]::Equals($testEnvironment, "rdfe", [System.StringComparison]::OrdinalIgnoreCase))
+	   {
+	       $environmentVariable = [Microsoft.Azure.Test.RDFETestEnvironmentFactory]::TestOrgIdAuthenticationKey
+	   }
+	   else
+	   {
+	       $environmentVariable = [Microsoft.Azure.Test.CSMTestEnvironmentFactory]::TestCSMOrgIdConnectionStringKey
+	   }
+
+	   $environmentValue = [System.Environment]::GetEnvironmentVariable($environmentVariable)
+	   if ([System.string]::IsNullOrEmpty($environmentValue))
+	   {
+	      throw "The environment variable '$environmentVariable' must have a valid value, including subscription id" +`
+		    "in the following format: $environmentVariable=SubscriptionId=<subscription>;UserName=<username>;Password=<password>"
+	   }
+
+	   $subscription = $(getSubscriptionFromString $environmentValue)
+   }
+   else
+   {
+      $subscription = $(getSubscription)
+   }
+
+   return $subscription
 }

@@ -14,16 +14,17 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -31,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class UpdateAzureWebsiteRepositoryTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdatesRemote()
         {
             // Setup
@@ -65,7 +67,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = mockClient.Object,
                 Name = "website1",
             };
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new Guid(base.subscriptionId) }, null, null);
+            currentProfile = new AzureProfile();
+            var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
+            subscription.Properties[AzureSubscription.Property.Default] = "True";
+            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
             // Switch existing website
             cmdlet.ExecuteCmdlet();

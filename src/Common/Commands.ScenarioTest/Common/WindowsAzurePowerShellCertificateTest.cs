@@ -16,14 +16,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 string dummyCredentialFile = Path.Combine(Environment.CurrentDirectory, TestCredentialHelper.DefaultCredentialFile);
                 if (!File.Exists(dummyCredentialFile))
                 {
-                    ProfileClient.DataStore.WriteFile(dummyCredentialFile, Properties.Resources.RdfeTestDummy);
+                    AzureSession.DataStore.WriteFile(dummyCredentialFile, Properties.Resources.RdfeTestDummy);
                 }
                 this.credentialFile = dummyCredentialFile;
             }
@@ -65,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 this.credentialFile = TestCredentialHelper.DefaultCredentialFile;
                 this.profileFile = TestCredentialHelper.WindowsAzureProfileFile;
             }
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
 
             if (Environment.GetEnvironmentVariable(outputDirKey) != null)
             {

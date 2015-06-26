@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -23,49 +24,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbooks for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbook", DefaultParameterSetName = ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Runbook))]
     public class GetAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The get runbook by runbook id parameter set.
+        /// Gets or sets the runbook name.
         /// </summary>
-        private const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The get runbook by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
-        /// The get runbook by schedule name parameter set.
-        /// </summary>
-        private const string ByScheduleName = "ByScheduleName";
-
-        /// <summary>
-        /// The get all parameter set.
-        /// </summary>
-        private const string ByAll = "ByAll";
-
-        /// <summary>
-        /// Gets or sets the runbook Id
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the runbook name
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the runbook name
-        /// </summary>
-        [Parameter(ParameterSetName = ByScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule name.")]
-        public string ScheduleName { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -73,34 +42,27 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            IEnumerable<Runbook> runbooks;
-            if (this.Id.HasValue)
+            IEnumerable<Runbook> ret = null;
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
-                // ByRunbookId
-                runbooks = new List<Runbook>
-                               {
-                                   this.AutomationClient.GetRunbook(
-                                       this.AutomationAccountName, this.Id.Value)
-                               };
-            }
-            else if (this.Name != null)
-            {
-                // ByRunbookName
-                runbooks = new List<Runbook> { this.AutomationClient.GetRunbook(this.AutomationAccountName, this.Name) };
-            }
-            else if (this.ScheduleName != null)
-            {
-                // ByScheduleName
-                runbooks = this.AutomationClient.ListRunbookByScheduleName(
-                    this.AutomationAccountName, this.ScheduleName);
-            }
-            else
-            {
-                // ByAll
-                runbooks = this.AutomationClient.ListRunbooks(this.AutomationAccountName);
-            }
+                ret = new List<Runbook> 
+                { 
+                   this.AutomationClient.GetRunbook(this.AutomationAccountName, this.Name)
+                };
 
-            this.WriteObject(runbooks, true);
+                this.GenerateCmdletOutput(ret);
+            }
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
+            {
+                var nextLink = string.Empty;
+
+                do
+                {
+                    ret = this.AutomationClient.ListRunbooks(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(ret);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

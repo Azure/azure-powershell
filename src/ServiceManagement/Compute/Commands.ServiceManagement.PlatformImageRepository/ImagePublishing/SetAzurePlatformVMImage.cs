@@ -19,6 +19,10 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ImagePublishing
 {
@@ -34,27 +38,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ReplicateParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the image in the image library.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShareParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the image in the image library.")]
         [ValidateNotNullOrEmpty]
-        public string ImageName
-        {
-            get;
-            set;
-        }
+        public string ImageName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ReplicateParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Specifies the locations that image will be replicated.")]
         [ValidateNotNullOrEmpty]
-        public string[] ReplicaLocations
-        {
-            get;
-            set;
-        }
+        public string[] ReplicaLocations { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShareParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Specifies the sharing permission of replicated image.")]
         [ValidateSet("Public", "Private")]
-        public string Permission
-        {
-            get;
-            set;
-        }
+        public string Permission { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
+        public ComputeImageConfig ComputeImageConfig { get; set; }
+
+        [Parameter(ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
+        public MarketplaceImageConfig MarketplaceImageConfig { get; set; }
 
         public void SetAzurePlatformVMImageProcess()
         {
@@ -124,7 +122,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                             this.ImageName,
                             new Management.Compute.Models.VirtualMachineVMImageReplicateParameters
                             {
-                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList()
+                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList(),
+                                ComputeImageAttributes = new ComputeImageAttributes
+                                {
+                                    Offer = this.ComputeImageConfig.Offer,
+                                    Sku = this.ComputeImageConfig.Sku,
+                                    Version = this.ComputeImageConfig.Version
+                                },
+                                MarketplaceImageAttributes = this.MarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
+                                {
+                                    Plan = new Plan
+                                    {
+                                        Name = this.MarketplaceImageConfig.PlanName,
+                                        Product = this.MarketplaceImageConfig.Product,
+                                        Publisher = this.MarketplaceImageConfig.Publisher
+                                    },
+                                    PublisherId = this.MarketplaceImageConfig.PublisherId
+                                }
                             });
                     });
             }
@@ -139,7 +153,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         ValidateTargetLocations();
                         return this.ComputeClient.VirtualMachineOSImages.Replicate(this.ImageName, new Management.Compute.Models.VirtualMachineOSImageReplicateParameters
                             {
-                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList()
+                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList(),
+                                ComputeImageAttributes = new ComputeImageAttributes
+                                {
+                                    Offer = this.ComputeImageConfig.Offer,
+                                    Sku = this.ComputeImageConfig.Sku,
+                                    Version = this.ComputeImageConfig.Version
+                                },
+                                MarketplaceImageAttributes = this.MarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
+                                {
+                                    Plan = new Plan
+                                    {
+                                        Name = this.MarketplaceImageConfig.PlanName,
+                                        Product = this.MarketplaceImageConfig.Product,
+                                        Publisher = this.MarketplaceImageConfig.Publisher
+                                    },
+                                    PublisherId = this.MarketplaceImageConfig.PublisherId
+                                }
                             });
                     });
             }

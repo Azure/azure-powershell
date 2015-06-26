@@ -53,6 +53,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string AzureHDInsightDefaultStorage = "AzureHDInsightDefaultStorage";
         public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
         public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
+        public const string AzureHdinsightRdpAccess = "AzureHdinsightRdpAccess";
         public const string AzureHDInsightJobOutput = "AzureHDInsightJobOutput";
         public const string AzureHDInsightJobs = "AzureHDInsightJob";
         public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";

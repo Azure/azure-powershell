@@ -21,11 +21,13 @@ using AutoMapper;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
     using PVM = Model;
+    using Microsoft.Azure;
 
     [Cmdlet(VerbsCommon.Get, "AzureRole"), OutputType(typeof(PVM.RoleContext), typeof(PVM.RoleInstanceContext))]
     public class GetAzureRoleCommand : ServiceManagementBaseCmdlet
@@ -111,6 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                                                   : PersistentVMHelper.GetPublicIPName(vmRole),
                             PublicIPIdleTimeoutInMinutes = role.PublicIPs == null || !role.PublicIPs.Any() ? null
                                                   : role.PublicIPs.First().IdleTimeoutInMinutes,
+                            PublicIPDomainNameLabel = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().DomainNameLabel,
+                            PublicIPFqdns = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Fqdns.ToList(),
                             DeploymentID          = currentDeployment.PrivateId,
                             InstanceEndpoints     = Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
                         });

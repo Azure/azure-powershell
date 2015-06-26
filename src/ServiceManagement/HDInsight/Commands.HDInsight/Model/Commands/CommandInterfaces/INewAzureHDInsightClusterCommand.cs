@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseCommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
@@ -25,6 +27,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
     /// </summary>
     internal interface INewAzureHDInsightClusterCommand : IAzureHDInsightCommand<AzureHDInsightCluster>, INewAzureHDInsightClusterBase
     {
+        PSCredential RdpCredential { get; set; }
+
+        DateTime? RdpAccessExpiry { get; set; }
+
         ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; }
 
         ICollection<AzureHDInsightConfigAction> ConfigActions { get; }
@@ -49,7 +55,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
 
         string Location { get; set; }
 
-        NodeVMSize HeadNodeSize { get; set; }
+        string HeadNodeSize { get; set; }
+
+        string DataNodeSize { get; set; }
+
+        string ZookeeperNodeSize { get; set; }
 
         ClusterType ClusterType { get; set; }
 
@@ -57,7 +67,15 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInt
 
         string SubnetName { get; set; }
 
+        OSType OSType { get; set; }
+
+        PSCredential SshCredential { get; set; }
+
+        string SshPublicKey { get; set; }
+
         ConfigValuesCollection StormConfiguration { get; set; }
+
+        ConfigValuesCollection SparkConfiguration { get; set; }
 
         HBaseConfiguration HBaseConfiguration { get; set; }
     }

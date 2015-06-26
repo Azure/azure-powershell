@@ -802,4 +802,19 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="WarningVmIsNotDirectlyAssociatedWithNetworkSecurityGroup" xml:space="preserve">
     <value>VM "{0}" is not currently associated with a Network Security Group.</value>
   </data>
+  <data name="RemoveReservedIPAssociation" xml:space="preserve">
+    <value>Remove Reserved IP Association</value>
+  </data>
+  <data name="ReservedIPAssociationWillBeRemoved" xml:space="preserve">
+    <value>This cmdlet will remove the reserved ip association from the specified service. Do you want to continue?</value>
+  </data>
+  <data name="PublicIPNotFoundInNetworkConfiguration" xml:space="preserve">
+    <value>Specified PublicIP not found in NetworkConfiguration</value>
+  </data>
+  <data name="VirtualIPWillBeRemoved" xml:space="preserve">
+    <value>This cmdlet will remove the virtual IP from the specified service. Do you want to continue?</value>
+  </data>
+  <data name="RemoveVirtualIP" xml:space="preserve">
+    <value>Remove Virtual IP from service</value>
+  </data>
 </root>

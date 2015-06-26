@@ -1,3 +1,486 @@
+﻿2015.06.26 version 0.9.4
+* Azure Compute cmdlets
+    * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
+    * Save-AzureVMImgage has new paramter -Path to save the JSON template returned from the server.
+    * Add-AzureVMNetworkInterface has new paramter -NetworkInterface which accepts a list of NIC object returned by Get-AzureNetworkInterface cmdlet. 
+    * Deprecated “-Name” parameter in Set-AzureVMSourceImage. The guidance is to use the Pub, Offer, SKU, Version method to specify the VM Images for the VM.
+    * Fixed the formatting of the output of VM Image cmdlets.
+    * Fixed issues in New/Set-AzureDeployment & other service extension related cmdlets.
+* Azure Batch cmdlets
+    * Added Start-AzureBatchPoolResize
+    * Added Stop-AzureBatchPoolResize
+* Azure Key Vault cmdlets
+    * Updated Key Vault package versions
+    * Fixed bugs related to secrets
+* Azure Network Resource Provider cmdlets
+    * New-AzureLocalNetworkGateway parameter name change
+    * Reset-AzureLocalNetworkGateway renamed to Set-AzureLocalNetworkGateway, added new parameter
+    * VirtualNetworkGateway parameter changes
+        * New-AzureVirtualNetworkGateway parameter changes
+        * Removed command Resize-AzureVirtualNetworkGateway
+        * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
+* Azure RedisCache cmdlets 
+    * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
+    * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
+* Azure Resource Manager cmdlets
+    * Added Get-UsageAggregates
+    * Added Get-AzureProviderOperation cmdlet
+    * Added Test-AzureResourceGroup and Test-AzureResource cmdlets
+    * Refactored Resource Lock cmdlets
+    * Removed unnecessary code when getting a resource
+* Azure SQL Database
+    * Added cmdlets for pause/resume functionality and retrieving restore points for restoring backups:
+        * Suspend-AzureSqlDatabase
+        * Resume-AzureSqlDatabase
+        * Get-AzureSqlDatabaseRestorePoints
+    * Changed cmdlets:
+        * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
+
+2015.06.05 version 0.9.3
+* Fixed bug in Websites cmdlets related to slots #454
+* Fix bug in Set-AzureResource cmdlet #456
+* Fix for new azure resource of Microsoft.Storage #457
+
+2015.05.29 version 0.9.2
+* Deprecated Switch-AzureMode
+* Profile
+    * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
+* Added Automation cmdlets
+    * Get-AzureAutomationWebhook
+    * New-AzureAutomationWebhook
+    * Remove-AzureAutomationWebhook
+    * Set-AzureAutomationWebhook    
+* Azure Compute
+    * Get-AzureVMImage and Get-AzureVMImageDetail are combined (Get-AzureVMImageDetail gives a warning message for future deprecation)
+    * Get-AzureVMExtensionImage and Get-AzureVMExtensionImageDetail are combined (Get-AzureVMExtensionImageDetail gives a warning message for future deprecation)
+    * Tags are added in VM resources
+    * Get-AzureVM now gets resource group name from piping
+    * -All switch is removed from Get-AzureVM
+    * Get-AzureVM -Status output is updated
+    * -Force parameter is added for Remove-AzureAvailabilitySet
+    * Outputs of New-AzureAvailabilitySet, Get-AzureAvailabilitySet, and Remove-AzureAvailabilitySet are updated
+* Azure Key Vault 
+    * Update Set-AzureKeyVaultAccessPolicy and Remove-AzureKeyVaultAccessPolicy cmdlets
+    * Fixed bugs  
+* Azure Data Factories
+    * Base cmdlet type switch to use Profile
+    * New-AzureDataFactoryEncryptedValue cmdlet supporting M data sources
+* Azure Resource Manager 
+    * Fixed bug in Move-AzureResource cmdlet
+    * Fixed bug in Set-AzureResource cmdlet
+
+﻿2015.05.04 version 0.9.1
+* Azure SQL Database: new support for configuring audit retention.
+* Azure Automation
+    * Added Automation cmdlets support in AzureResourceManager mode
+      * Export-AzureAutomationDscConfiguration
+      * Export-AzureAutomationDscNodeReportContent
+      * Get-AzureAutomationAccount
+      * Get-AzureAutomationDscCompilationJob
+      * Get-AzureAutomationDscCompilationJobOutput
+      * Get-AzureAutomationDscConfiguration
+      * Get-AzureAutomationDscNode
+      * Get-AzureAutomationDscNodeConfiguration
+      * Get-AzureAutomationDscNodeReport
+      * Get-AzureAutomationDscOnboardingMetaconfig
+      * Get-AzureAutomationModule
+      * Get-AzureAutomationRegistrationInfo
+      * Import-AzureAutomationDscConfiguration
+      * New-AzureAutomationAccount
+      * New-AzureAutomationKey
+      * New-AzureAutomationModule
+      * Register-AzureAutomationDscNode
+      * Remove-AzureAutomationAccount
+      * Remove-AzureAutomationModule
+      * Set-AzureAutomationAccount
+      * Set-AzureAutomationDscNode
+      * Set-AzureAutomationModule
+      * Start-AzureAutomationDscCompilationJob
+      * Unregister-AzureAutomationDscNode
+* Azure Key Vault 
+    * Added new cmdlets for key vault management in AzureResourceManager mode
+      * New-AzureKeyVault
+      * Get-AzureKeyVault
+      * Remove-AzureKeyVault
+      * Set-AzureKeyVaultAccessPolicy
+      * Remove-AzureKeyVaultAccessPolicy
+    * Added new cmdlet for secret management in AzureResourceManager mode
+      * Set-AzureKeyVaultSecretAttribute
+
+2015.04.29 version 0.9.0
+* Azure Compute
+    * Added Compute cmdlets support in AzureResourceManager mode
+      * Add-AzureVMSshPublicKey
+      * Add-AzureVMSecret
+      * Add-AzureVMNetworkInterface
+      * Add-AzureVMDataDisk
+      * Add-AzureVMAdditionalUnattendContent
+      * Get-AzureVM
+      * Get-AzureVMUsage
+      * Get-AzureVMSize
+      * Get-AzureVMImageSku
+      * Get-AzureVMImagePublisher
+      * Get-AzureVMImageOffer
+      * Get-AzureVMImageDetail
+      * Get-AzureVMImage
+      * Get-AzureVMExtensionImageType
+      * Get-AzureVMExtensionImageDetail
+      * Get-AzureVMExtensionImage
+      * Get-AzureVMExtension
+      * Get-AzureVMCustomScriptExtension
+      * Get-AzureVMAccessExtension
+      * Get-AzureVMImagePublisher
+      * Get-AzureVMImageOffer
+      * Get-AzureVMImageDetail
+      * Get-AzureVMImage
+      * Get-AzureVMExtensionImageType
+      * Get-AzureVMExtensionImageDetail
+      * Get-AzureVMExtensionImage
+      * Get-AzureVMExtension
+      * Get-AzureVMCustomScriptExtension
+      * Get-AzureVMAccessExtension
+      * New-AzureVM
+      * New-AzureVMConfig
+      * Update-AzureVM
+      * Stop-AzureVM
+      * Start-AzureVM
+      * Set-AzureVMSourceImage
+      * Set-AzureVMOSDisk
+      * Set-AzureVMOperatingSystem
+      * Set-AzureVMExtension
+      * Set-AzureVMCustomScriptExtension
+      * Set-AzureVMAccessExtension
+      * Set-AzureVM
+      * Save-AzureVMImage
+      * Restart-AzureVM
+      * Remove-AzureVMNetworkInterface
+      * Remove-AzureVMExtension
+      * Remove-AzureVMDataDisk
+      * Remove-AzureVMCustomScriptExtension
+      * Remove-AzureVMAccessExtension
+      * Remove-AzureVM
+* Azure Network
+  * Added Network Cmdlets support in AzureResourceManager mode
+    * Get-AzureVirtualNetwork
+    * New-AzureVirtualNetwork
+    * Remove-AzureVirtualNetwork
+    * Set-AzureVirtualNetwork
+    * Get-AzureVirtualNetworkSubnetConfig
+    * New-AzureVirtualNetworkSubnetConfig
+    * Add-AzureVirtualNetworkSubnetConfig
+    * Set-AzureVirtualNetworkSubnetConfig
+    * Remove-AzureVirtualNetworkSubnetConfig
+    * Get-AzureNetworkInterface
+    * New-AzureNetworkInterface
+    * Remove-AzureNetworkInterface
+    * Set-AzureNetworkInterface
+    * Get-AzurePublicIpAddress
+    * New-AzurePublicIpAddress
+    * Remove-AzurePublicIpAddress
+    * Set-AzurePublicIpAddress
+    * Add-AzureLoadBalancerBackendAddressPoolConfig
+    * Add-AzureLoadBalancerFrontendIpConfig
+    * Add-AzureLoadBalancerInboundNatRuleConfig
+    * Add-AzureLoadBalancerProbeConfig
+    * Add-AzureLoadBalancerRuleConfig
+    * Get-AzureLoadBalancer
+    * Get-AzureLoadBalancerBackendAddressPoolConfig
+    * Get-AzureLoadBalancerFrontendIpConfig
+    * Get-AzureLoadBalancerInboundNatRuleConfig
+    * Get-AzureLoadBalancerProbeConfig
+    * Get-AzureLoadBalancerRuleConfig
+    * New-AzureLoadBalancer
+    * New-AzureLoadBalancerBackendAddressPoolConfig
+    * New-AzureLoadBalancerFrontendIpConfig
+    * New-AzureLoadBalancerInboundNatRuleConfig
+    * New-AzureLoadBalancerProbeConfig
+    * New-AzureLoadBalancerRuleConfig
+    * Remove-AzureLoadBalancer
+    * Remove-AzureLoadBalancerBackendAddressPoolConfig
+    * Remove-AzureLoadBalancerFrontendIpConfig
+    * Remove-AzureLoadBalancerInboundNatRuleConfig
+    * Remove-AzureLoadBalancerProbeConfig
+    * Remove-AzureLoadBalancerRuleConfig
+    * Set-AzureLoadBalancer
+    * Set-AzureLoadBalancerFrontendIpConfig
+    * Set-AzureLoadBalancerInboundNatRuleConfig
+    * Set-AzureLoadBalancerProbeConfig
+    * Set-AzureLoadBalancerRuleConfig
+    * Get-AzureNetworkSecurityGroup
+    * New-AzureNetworkSecurityGroup
+    * Remove-AzureNetworkSecurityGroup
+    * Set-AzureNetworkSecurityGroup
+    * Get-AzureNetworkSecurityRuleConfig
+    * New-AzureNetworkSecurityRuleConfig
+    * Remove-AzureNetworkSecurityRuleConfig
+    * Add-AzureNetworkSecurityRuleConfig
+    * Set-AzureNetworkSecurityRuleConfig
+    * Get-AzureRemoteDesktopFile
+* Azure Storage
+  * Added cmdlets in AzureResourceManager Mode
+    * New-AzureStorageAccount
+    * Get-AzureStorageAccount
+    * Set-AzureStorageAccount
+    * Remove-AzureStorageAccount
+    * New-AzureStorageAccountKey
+    * Get-AzureStorageAccountKey
+  * Made Azure Storage data cmdlets work in AzureResourceManager Mode
+* Azure HDInsight:
+  * Added support for creating WindowsPaas cluster with RDP Access Enabled by default
+  * Added cmdlets
+	* Grant-AzureHdinsightRdpAccess
+	* Revoke-AzureHdinsightRdpAccess
+* Azure Batch
+  * Added cmdlets
+    * New-AzureBatchVMUser
+    * Remove-AzureBatchVMUser
+    * Get-AzureBatchRDPFile
+    * Get-AzureBatchVMFileContents
+* StorSimple: New StorSimple commands in AzureServiceManagement mode
+  * Added cmdlets
+    * Confirm-AzureStorSimpleLegacyVolumeContainerStatus
+    * Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus
+    * Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan
+    * Get-AzureStorSimpleLegacyVolumeContainerStatus
+    * Import-AzureStorSimpleLegacyApplianceConfig
+    * Import-AzureStorSimpleLegacyVolumeContainer
+    * Start-AzureStorSimpleLegacyVolumeContainerMigrationPlan
+    * New-AzureStorSimpleVirtualDeviceCommand
+    * Get-AzureStorSimpleJob
+    * Stop-AzureStorSimpleJob
+    * Start-AzureStorSimpleBackupCloneJob
+    * Get-AzureStorSimpleFailoverVolumeContainers
+    * Start-AzureStorSimpleDeviceFailoverJob
+    * New-AzureStorSimpleNetworkConfig
+    * Set-AzureStorSimpleDevice
+    * Set-AzureStorSimpleVirtualDevice
+
+2015.03.31 version 0.8.16
+* Azure Data Factory:
+  * Fixes for clean install and subscription registration issues
+* Azure HDInsight:
+  * Support for creating, deleting, listing, and submitting jobs to HDInsight clusters with Linux Operating System.
+* Azure Compute
+  * Fix pipeline issues with Get-AzureVM (#3047)
+  * Fixed DateTime Overflow issue
+* Azure Batch
+  * Added cmdlets
+    * Add/Remove Batch Pools
+    * Get-BatchTaskFileContent
+    * Get-BatchTaskFile
+* Azure Insights
+  * Added cmdlets
+   * Add-AutoscaleSetting
+   * Get-AutoscaleHistory
+   * Get-AutoscaleSetting
+   * New-AutoscaleProfile
+   * New-AutoscaleRule
+   * Remove-AutoscaleSetting
+   * Get-Metrics
+   * Get-MetricDefinitions
+   * Format-MetricsAsTable
+* Azure Websites
+  * Added cmdlet Get-AzureWebhostingPlanMetrics
+  * Added Premium support
+  * Renamed WebSites to WebApp
+* AzureProfile
+  * Made AzureProfile serializable to support workflow scenarios
+
+2015.03.11 version 0.8.15.1
+* Fixes for clean install and subscription registration issues
+
+2015.03.09 version 0.8.15
+* Azure RemoteApp: New RemoteApp cmdlets:
+  * Add-AzureRemoteAppUser
+  * Disconnect-AzureRemoteAppSession
+  * Get-AzureRemoteAppCollection
+  * Get-AzureRemoteAppCollectionUsageDetails
+  * Get-AzureRemoteAppCollectionUsageSummary
+  * Get-AzureRemoteAppLocation
+  * Get-AzureRemoteAppOperationResult
+  * Get-AzureRemoteAppPlan
+  * Get-AzureRemoteAppProgram
+  * Get-AzureRemoteAppSession
+  * Get-AzureRemoteAppStartMenuProgram
+  * Get-AzureRemoteAppTemplateImage
+  * Get-AzureRemoteAppUser
+  * Get-AzureRemoteAppVNet
+  * Get-AzureRemoteAppVpnDevice
+  * Get-AzureRemoteAppVpnDeviceConfigScript
+  * Get-AzureRemoteAppWorkspace
+  * Invoke-AzureRemoteAppSessionLogoff
+  * New-AzureRemoteAppCollection
+  * New-AzureRemoteAppTemplateImage
+  * New-AzureRemoteAppVNet
+  * Publish-AzureRemoteAppProgram
+  * Remove-AzureRemoteAppCollection
+  * Remove-AzureRemoteAppTemplateImage
+  * Remove-AzureRemoteAppUser
+  * Remove-AzureRemoteAppVNet
+  * Rename-AzureRemoteAppTemplateImage
+  * Reset-AzureRemoteAppVpnSharedKey
+  * Send-AzureRemoteAppSessionMessage
+  * Set-AzureRemoteAppCollection
+  * Set-AzureRemoteAppVNet
+  * Set-AzureRemoteAppWorkspace
+  * Unpublish-AzureRemoteAppProgram
+  * Update-AzureRemoteAppCollection
+
+* Storage: new cmdlets
+  * Get-AzureStorageContainerStoredAccessPolicy
+  * Get-AzureStorageQueueStoredAccessPolicy
+  * Get-AzureStorageTableStoredAccessPolicy
+  * New-AzureStorageContainerStoredAccessPolicy
+  * New-AzureStorageQueueStoredAccessPolicy
+  * New-AzureStorageTableStoredAccessPolicy
+  * Remove-AzureStorageContainerStoredAccessPolicy
+  * Remove-AzureStorageQueueStoredAccessPolicy
+  * Remove-AzureStorageTableStoredAccessPolicy
+  * Set-AzureStorageContainerStoredAccessPolicy
+  * Set-AzureStorageQueueStoredAccessPolicy
+  * Set-AzureStorageTableStoredAccessPolicy
+
+* Azure Recovery Services
+  * New cmdlets:
+    * Create and enumerate Vaults & Sites, download Vault Settings file
+      * New- AzureSiteRecoveryVault
+      * Get-AzureSiteRecoveryVault
+      * New- AzureSiteRecoverySite
+      * Get- AzureSiteRecoverySite
+      * Get-AzureSiteRecoveryVaultSettingsFile
+    * Enumerate Networks and manage Network Mappings
+      * Get- AzureSiteRecoveryNetwork
+      * New- AzureSiteRecoveryNetworkMapping
+      * Get- AzureSiteRecoveryNetworkMapping
+      * Remove- AzureSiteRecoveryNetworkMapping
+    * Enumerate Storages and manage Storage Mappings
+      * Get-AzureSiteRecoveryStorage
+      * New- AzureSiteRecoveryStorageMapping
+      * Get-AzureSiteRecoveryStorageMapping
+      * Remove- AzureSiteRecoveryStorageMapping
+    * Create, associated, and dissociate protection profile object
+      * New- AzureSiteRecoveryProtectionProfileObject
+      * Start-AzureSiteRecoveryProtectionProfileAssociationJob
+      * Start-AzureSiteRecoveryProtectionProfileDissociationJob
+    * Update VM properties and sync owner information
+      * Set-AzureSiteRecoveryVM
+      * Update-AzureSiteRecoveryProtectionEntity
+  * Changed cmdlets:
+    * Get-AzureSiteRecoveryJob
+    * Set-AzureSiteRecoveryProtectionEntity – protection profile is introduced
+    * Start-AzureSiteRecoveryCommitFailoverJob
+    * Start-AzureSiteRecoveryPlannedFailoverJob
+    * Start-AzureSiteRecoveryTestFailoverJob
+
+* Azure ExpressRoute cmdlet updates
+  * Fixed bugs in:
+    * New-AzureDedicatedCircuit
+    * New-AzureDedicatedCircuitLink
+    * New-AzureBGPPeering
+    * Remove-AzureDedicatedCircuit
+    * Remove-AzureDedicatedCircuitLink
+    * Remove-AzureBGPPeering
+  * Added new cmdlet:
+    * Update-AzureDedicatedCircuitBandwidth
+
+* Azure SQL Database: new cmdlets for managing database dynamic data masking policies:
+  * Get-AzureSqlDatabaseDataMaskingPolicy
+  * Set-AzureSqlDatabaseDataMaskingPolicy
+  * New-AzureSqlDatabaseDataMaskingRule
+  * Get-AzureSqlDatabaseDataMaskingRule
+  * Set-AzureSqlDatabaseDataMaskingRule
+  * Remove-AzureSqlDatabaseDataMaskingRule
+
+* Azure Batch: new cmdlets:
+  * Get-AzureBatchPool
+  * Get-AzureBatchWorkItem
+  * Get-AzureBatchJob
+  * Get-AzureBatchTask
+
+* Azure Compute: new features
+  * Added ForceUpdate parameter for the following cmdlets:
+    * Set-AzureVMExtension
+    * Set-AzureVMCustomScriptExtension
+    * Set-AzureVMAccessExtension
+  * Show 'Regions' property for Get-AzureVMAvailableExtensions cmdlet
+  * Add 'ResizedSizeInGB' parameter for the following cmdlets
+    * Update-AzureDisk
+    * Set-AzureOSDisk
+    * Set-AzureDataDisk (DiskName parameter is also added along with ResizedSizeInGB)
+
+* AzureProfile:
+  * New cmdlets to manage in-memory profiles
+    * New-AzureProfile: Create a new in-memory Profile
+    * Select-AzureProfile: Select the profile to be used in the current session
+  * Added -Profile parameter to every cmdlet - the cmdlet will use the passed-in profile to authenticate with Azure
+
+2015.02.12 version 0.8.14
+* StorSimple: New StorSimple commands in AzureServiceManagement mode:
+  * GetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleStorageAccountCredential
+  * RemoveAzureStorSimpleAccessControlRecord
+  * RemoveAzureStorSimpleStorageAccountCredential
+  * SetAzureStorSimpleAccessControlRecord
+  * GetAzureStorSimpleDeviceVolume
+  * RemoveAzureStorSimpleDeviceVolume
+  * GetAzureStorSimpleDeviceVolumeContainer
+  * RemoveAzureStorSimpleDeviceVolumeContainer
+  * GetAzureStorSimpleDevice
+  * GetAzureStorSimpleDeviceConnectedInitiator
+  * GetAzureStorSimpleResource
+  * GetAzureStorSimpleResourceContext
+  * SetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceBackupPolicy
+  * GetAzureStorSimpleDeviceBackup
+  * RemoveAzureStorSimpleDeviceBackup
+  * StartAzureStorSimpleDeviceBackupJob
+  * StartAzureStorSimpleDeviceBackupRestoreJob
+  * RemoveAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleDeviceVolume
+  * SetAzureStorSimpleDeviceVolume
+  * NewAzureStorSimpleDeviceVolumeContainer
+  * SelectAzureStorSimpleResource
+  * GetAzureStorSimpleDeviceBackupPolicy
+  * NewAzureStorSimpleStorageAccountCredential
+  * GetAzureStorSimpleTask
+  * SetAzureStorSimpleStorageAccountCredential
+  * NewAzureStorSimpleInlineStorageAccountCredential
+  * NewAzureStorSimpleAccessControlRecord
+
+* HDInsight:
+  * HeadNodeVMSize (update): the parameter is now a string that can now accept various sizes (specifications here: https://msdn.microsoft.com/en-us/library/azure/dn197896.aspx -> Sizes for Web and Worker Role Instances)
+  * DataNodeVMSize (new)  :  use to specify size of data nodes (where applicable)
+  * ZookeeperNodeVMSize (new): use to specify Zookeeper node sizes (where applicable)
+  * ClusterType (update): New value (Spark) can be specified as cluster type
+  * Add-AzureHDInsightConfigValues cmdlet:
+    * Spark (new): collection of configuration properties can be passed in to customize the Spark service
+
+ * Azure Insights cmdlets in AzureResourceManager Mode:
+   * Get-AzureCrrelationLogId
+   * Get-AzureResourceGroupLog
+   * Get-AzureResourceLog
+   * Get-AzureResourceProviderLog
+   * Get-AzureSubscriptionIdLog
+
+* Azure VM cmdlets
+  * Get-AzureVMDscExtentionStatus: Get the DSC Extension status for a cloud service or VM
+
+ * Updates and bug fixes for AzureAutomation and AzureDataFactory cmdlets
+
+2015.01.08 version 0.8.13
+* Key Vault Service - new cmdlets in AzureResourceManager mode:
+  * Keys:
+    * Add-AzureKeyVaultKey
+    * Get-AzureKeyVaultKey
+    * Set-AzureKeyVaultKey
+    * Backup-AzureKeyVaultKey
+    * Restore-AzureKeyVaultKey
+    * Remove-AzureKeyVaultKey
+  * Secrets:
+    * Get-AzureKeyVaultSecret
+    * Set-AzureKeyVaultSecret
+    * Remove-AzureKeyVaultSecret
+
 2014.12.12 version 0.8.12
 * StreamAnalytics
   * New cmdlets in AzureResourceManager mode
@@ -25,7 +508,7 @@
 * Compute
   * Set-AzureVMImage cmdlets - added IconUri, SmallIconUri, and ShowInGui parameters
 * Sql
-  *  Added Sql Servver v12 support to SQL authentication context for SqlAzure cmdlets
+  *  Added Sql Server v12 support to SQL authentication context for SqlAzure cmdlets
 
 2014.11.14 Version 0.8.11
 * Profile
@@ -65,7 +548,7 @@
     * Remove-AzureSqlDatabaseServerAuditing
     * Use-AzureSqlDatabaseServerAuditingPolicy
   * Allow users to define which storage account key (Primary or Secondary) to use when defining audit policy, using the “StorageKeyType” parameter.
-  
+
 2014.10.27 Version 0.8.10
 * Azure Data Factory cmdlets in AzureResourceManager mode
     * New-AzureDataFactory
@@ -119,6 +602,12 @@
         * Get-AzureNetworkSecurityGroupForSubnet
         * Get-AzureNetworkSecurityGroupConfig
         * Get-AzureNetworkSecurityGroup
+	* VipMobility Support
+		*Set-AzureReservedIPAssociation
+		*Remove-AzureReservedIPAssociation
+	* MultiVip Support
+		* Add-AzureVirtualIP
+		* Remove-AzureVirtualIP
 * Azure Virtual Machine
     * Added Add PublicConfigKey and PrivateConfigKey parameters to SetAzureVMExtension
 * Azure Website
@@ -279,13 +768,14 @@
     * Tag parameter in Get-AzureResourceGroup and Get-AzureResource
 * Compute
     * ReverseDnsFqdn parameter in New-AzureService, Set-AzureService, New-AzureVM and New-AzureQuickVM
+	* Added VirtualIPName parameter to Set-AzureEndpoint, Add-AzureEndpoint, Set-AzureLoadBalancedEndpoint for Multivip support
 * Network
     * Set-AzureInternalLoadBalancer
     * Add-AzureDns
     * Set-AzureDns
     * Remove-AzureDns
     * Added IdealTimeoutInMinutes parameter to Set-AzurePublicIP, Add-AzureEndpoint and Set-AzureLoadBalancedEndpoint
-
+	
 2014.06.30 Version 0.8.4
 * Compute
     * New-AzurePlatformExtensionCertificateConfig
@@ -341,7 +831,7 @@
         * Remove-AzureVMImageOSDiskConfig
         * Set-AzureVMImageDataDiskConfig
         * Remove-AzureVMImageDataDiskConfig
-    * Virtual network improvments
+    * Virtual network improvements
         * Set-AzureVnetGatewayKey
 * Azure Automation cmdlets
     * Get-AzureAutomationAccount

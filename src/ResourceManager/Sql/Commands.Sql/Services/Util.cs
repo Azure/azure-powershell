@@ -14,6 +14,9 @@
 
 using System;
 using System.Globalization;
+using System.Linq;
+using Microsoft.Azure.Commands.Sql.Security.Services;
+using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Services
 {
@@ -21,16 +24,99 @@ namespace Microsoft.Azure.Commands.Sql.Services
     {
         /// <summary>
         /// Generates a client side tracing Id of the format:
-        /// [Guid]-[Time in UTC]
+        /// [Guid]
         /// </summary>
         /// <returns>A string representation of the client side tracing Id.</returns>
         public static string GenerateTracingId()
         {
             return string.Format(
                 CultureInfo.InvariantCulture,
-                "{0}-{1}",
-                Guid.NewGuid().ToString(),
-                DateTime.UtcNow.ToString("u"));
+                "{0}",
+                Guid.NewGuid().ToString()
+            );
+        }
+
+        /// <summary>
+        /// In cases where the user decided to use one of the shortcuts (ALL or NONE), this method sets the value of the EventType property to reflect the correct values.
+        /// In addition the is a deprecated audit events validity check.
+        /// </summary>
+        internal static string[] ProcessAuditEvents(string[] eventTypes)
+        {
+            if (eventTypes == null || eventTypes.Length == 0)
+            {
+                return eventTypes;
+            }
+
+
+            string[] auditEvents =
+            {
+                SecurityConstants.PlainSQL_Success,
+                SecurityConstants.PlainSQL_Failure,
+                SecurityConstants.ParameterizedSQL_Success,
+                SecurityConstants.ParameterizedSQL_Failure,
+                SecurityConstants.StoredProcedure_Success,
+                SecurityConstants.StoredProcedure_Failure,
+                SecurityConstants.Login_Success,
+                SecurityConstants.Login_Failure,
+                SecurityConstants.TransactionManagement_Success,
+                SecurityConstants.TransactionManagement_Failure
+            };
+
+
+            if (eventTypes.Length == 1)
+            {
+                if (eventTypes[0] == SecurityConstants.None)
+                {
+                    return new string[] { };
+                }
+                if (eventTypes[0] == SecurityConstants.All)
+                {
+                    return auditEvents;
+                }
+            }
+            else
+            {
+                if (eventTypes.Contains(SecurityConstants.All))
+                {
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
+                }
+                if (eventTypes.Contains(SecurityConstants.None))
+                {
+                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
+                }
+
+                if (DeprecatedEventTypeFound(eventTypes))
+                {
+                    if(eventTypes.Intersect(auditEvents).Any())
+                    {
+                        // If the event types includes new events and deprecated events we throw error
+                    throw new Exception(Resources.InvalidDeprecatedEventTypeSet);
+                    }
+                }
+
+            }
+            return eventTypes;
+        }
+        
+        /// <summary>
+        /// Checks whether a deprected event type is found in the received array of event types
+        /// </summary>
+        internal static bool DeprecatedEventTypeFound(string[] eventType)
+        {
+            if(eventType == null)
+            {
+                return false;
+            }
+
+            string[] deprecatedAuditEvents = 
+            {
+                SecurityConstants.DeprecatedAuditEvents.DataAccess,
+                SecurityConstants.DeprecatedAuditEvents.DataChanges,
+                SecurityConstants.DeprecatedAuditEvents.SecurityExceptions,
+                SecurityConstants.DeprecatedAuditEvents.RevokePermissions,
+                SecurityConstants.DeprecatedAuditEvents.SchemaChanges
+            };
+            return eventType.Intersect(deprecatedAuditEvents).Any();
         }
     }
 }

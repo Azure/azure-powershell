@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.12'
+ModuleVersion = '0.9.4'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'  
+Copyright = 'Â© Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
 Description = ''
@@ -54,7 +54,9 @@ RequiredAssemblies = @()
 ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+TypesToProcess = @(
+    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+)
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
@@ -64,11 +66,19 @@ FormatsToProcess = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',
     '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',
+    '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',
+    '.\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
+    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
+    '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.dll',
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',
@@ -76,7 +86,20 @@ NestedModules = @(
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',
     '.\Batch\Microsoft.Azure.Commands.Batch.dll',
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
+    '.\Dns\Microsoft.Azure.Commands.Dns.dll',
+    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',
+    '.\TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',
+    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',
+    '.\Insights\Microsoft.Azure.Commands.Insights.dll',
+    '.\Websites\Microsoft.Azure.Commands.Websites.dll',
+    '.\Compute\Microsoft.Azure.Commands.Compute.dll',
+    '.\Network\Microsoft.Azure.Commands.Network.dll',
+    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
+    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll'
 )
 
 # Functions to export from this module
@@ -89,7 +112,15 @@ CmdletsToExport = '*'
 VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = @()
+AliasesToExport = @(
+    'Get-AzureSqlDatabaseServerAuditingPolicy',
+    'Remove-AzureSqlDatabaseServerAuditing',
+    'Set-AzureSqlDatabaseServerAuditingPolicy',
+    'Use-AzureSqlDatabaseServerAuditingPolicy',
+    'Get-AzureStorageContainerAcl',
+    'Start-CopyAzureStorageBlob',
+    'Stop-CopyAzureStorageBlob'
+)
 
 # List of all modules packaged with this module
 ModuleList = @()

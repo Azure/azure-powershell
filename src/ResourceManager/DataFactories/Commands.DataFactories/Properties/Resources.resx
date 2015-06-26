@@ -251,4 +251,14 @@ Are you sure you want to continue?</value>
   <data name="HubProvisioningFailed" xml:space="preserve">
     <value>Failed to provision the hub.  Please check if there is any error in the hub properties before re-create it again.</value>
   </data>
+  <data name="FormattedArgumentOutOfRangeExceptionMessageTemplate" xml:space="preserve">
+    <value>{0}
+For data factory naming restrictions, please see http://msdn.microsoft.com/en-us/library/dn835027.aspx</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForGetSlice" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureDataFactorySlice command if you want to specify EndDateTime.</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForSetSliceStatus" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureDataFactorySliceStatus command if you want to specify EndDateTime.</value>
+  </data>
 </root>

@@ -23,7 +23,10 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.Azure;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -47,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected XDocument PublicConfigurationXml { get; set; }
         protected XDocument PrivateConfigurationXml { get; set; }
         protected DeploymentGetResponse Deployment { get; set; }
+        protected DeploymentGetResponse PeerDeployment { get; set; }
 
         public virtual string ServiceName { get; set; }
         public virtual string Slot { get; set; }
@@ -75,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             string serviceName;
             ServiceSettings settings = CommonUtilities.GetDefaultSettings(CommonUtilities.TryGetServiceRootPath(CurrentPath()),
-                ServiceName, null, null, null, null, CurrentContext.Subscription.Id.ToString(), out serviceName);
+                ServiceName, null, null, null, null, Profile.Context.Subscription.Id.ToString(), out serviceName);
 
             if (string.IsNullOrEmpty(serviceName))
             {
@@ -106,6 +110,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
                 Deployment.ExtensionConfiguration = Deployment.ExtensionConfiguration ?? new Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration();
             }
+
+            PeerDeployment = GetPeerDeployment(Slot);
         }
 
         protected void ValidateRoles()
@@ -280,6 +286,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             });
 
             return d;
+        }
+
+        protected DeploymentGetResponse GetPeerDeployment(string currentSlot)
+        {
+            var currentSlotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), currentSlot, true);
+            var peerSlot = currentSlotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
+            var peerSlotStr = peerSlot.ToString();
+
+            return GetDeployment(peerSlotStr);
         }
 
         protected SecureString GetSecurePassword(string password)

@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
-using Microsoft.Azure.Common.Extensions.Properties;
+using Hyak.Common;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Common.Internals;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -52,7 +51,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string GetNodeModulesPath()
         {
-            return Path.Combine(FileUtilities.GetAssemblyDirectory(), Resources.NodeModulesPath);
+            return Path.Combine(
+                FileUtilities.GetAssemblyDirectory(), 
+                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.NodeModulesPath);
         }
 
         [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
@@ -72,7 +73,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             else
             {
-                throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
+                throw new ArgumentException(string.Format(
+                    Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
+                    thumbprint));
             }
         }
 
@@ -329,11 +332,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public static string FormatString(string content)
         {
-            if (ParserHelper.IsXml(content))
+            if (CloudException.IsXml(content))
             {
                 return XmlUtilities.TryFormatXml(content);
             }
-            else if (ParserHelper.IsJson(content))
+            else if (CloudException.IsJson(content))
             {
                 return JsonUtilities.TryFormatJson(content);
             }
@@ -415,6 +418,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             StringBuilder result = new StringBuilder();
             while (amount-- != 0) result.Append(separator);
             return result.ToString();
+        }
+
+        /// <summary>
+        /// Ensure the default profile directory exists
+        /// </summary>
+        public static void EnsureDefaultProfileDirectoryExists()
+        {
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
         }
     }
 }

@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -23,34 +22,24 @@ using Microsoft.Azure.Commands.Automation.Model;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation job output streams for a given account and a given job.
+    /// Gets azure automation variables for a given account.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationJobOutput")]
-    [OutputType(typeof(JobStreamItem))]
+    [OutputType(typeof(JobStream))]
     public class GetAzureAutomationJobOutput : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the job id.
+        /// Gets or sets the job id
         /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The job id.")]
         [Alias("JobId")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "The job name or Id")]
         public Guid Id { get; set; }
 
-        /// <summary>
-        /// Gets or sets the job start time.
-        /// </summary>
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The time from which job output streams should be retrieved.")]
-        public DateTime StartTime { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream type. Defaults to Any.")]
+        public StreamType Stream { get; set; }
 
-        /// <summary>
-        /// Gets or sets the output type.
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateSet(Constants.JobOutputParameter.Any, Constants.JobOutputParameter.Progress, Constants.JobOutputParameter.Output, Constants.JobOutputParameter.Warning, Constants.JobOutputParameter.Error, Constants.JobOutputParameter.Debug, Constants.JobOutputParameter.Verbose, IgnoreCase = true)]
-        [Alias("OutputType")]
-        public string Stream { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Retrieves output created after this time")]
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -58,24 +47,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            // Assume local time if DateTimeKind.Unspecified
-            if (this.StartTime.Kind == DateTimeKind.Unspecified)
-            {
-                this.StartTime = DateTime.SpecifyKind(this.StartTime, DateTimeKind.Local);
-            }
+            var nextLink = string.Empty;
 
-            var streamTypeNames = new string[]
-                                      {
-                                          Constants.JobOutputParameter.Progress, Constants.JobOutputParameter.Output,
-                                          Constants.JobOutputParameter.Warning, Constants.JobOutputParameter.Error,
-                                          Constants.JobOutputParameter.Debug, Constants.JobOutputParameter.Verbose
-                                      };
-            string streamTypeName =
-                streamTypeNames.FirstOrDefault(
-                    name => string.Equals(this.Stream, name, StringComparison.OrdinalIgnoreCase));
-            IEnumerable<JobStreamItem> streamItems = this.AutomationClient.ListJobStreamItems(
-                this.AutomationAccountName, this.Id, this.StartTime, streamTypeName);
-            this.WriteObject(streamItems, true);
+            do
+            {
+                var ret = this.AutomationClient.GetJobStream(this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString(), ref nextLink);
+                this.GenerateCmdletOutput(ret);
+
+            } while (!string.IsNullOrEmpty(nextLink));
         }
     }
 }

@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -59,6 +59,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             HelpMessage = "The AD Graph Endpoint.")]
         public string GraphEndpoint { get; set; }
 
+        [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net")]
+        public string AzureKeyVaultDnsSuffix { get; set; }
+
+        [Parameter(Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
+        public string AzureKeyVaultServiceEndpointResourceId { get; set; }
+
         public SetAzureEnvironmentCommand() : base(true) { }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -78,6 +86,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, ActiveDirectoryServiceEndpointResourceId);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Gallery, GalleryEndpoint);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, GraphEndpoint);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureKeyVaultDnsSuffix);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureKeyVaultServiceEndpointResourceId);
 
             ProfileClient.AddOrSetEnvironment(newEnvironment);
 

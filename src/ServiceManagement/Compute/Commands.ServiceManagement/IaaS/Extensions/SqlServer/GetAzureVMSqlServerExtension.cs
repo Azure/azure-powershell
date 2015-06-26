@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using System.Collections.Generic;
 using System.Net;
-using System.Globalization;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     using NSM = Management.Compute.Models;
+    using Hyak.Common;
 
     /// <summary>
     /// Get-AzureVMSqlServerExtension implementation
@@ -37,8 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineSqlServerExtensionCmdletBase
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
-        protected const string AutoPatchingStatusMessageName = "Automatic Patching";
-        protected const string AutoBackupStatusMessageName = "Automatic Backup";
+        protected const string AutoPatchingStatusMessageName = "Automated Patching";
+        protected const string AutoBackupStatusMessageName = "Automated Backup";
 
         internal void ExecuteCommand()
         {
@@ -65,6 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         private VirtualMachineSqlServerExtensionContext GetExtensionContext(ResourceExtensionReference r)
         {
+            string extensionName= VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
+                               + VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedName;
+
             VirtualMachineSqlServerExtensionContext context = new VirtualMachineSqlServerExtensionContext
             {
                 ExtensionName = r.Name,
@@ -86,17 +92,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             // Note: valid reference to an extension status list is returned by GetResourceExtensionStatusList()
             foreach (NSM.ResourceExtensionStatus res in extensionStatusList)
             {
-                // Extension handler name  in format publisher.ReferenceName
-                string extensionHandlerName = string.Format(CultureInfo.InvariantCulture,
-                    "{0}.{1}",
-                    r.Publisher,
-                    r.ReferenceName);
-
-                // skip all non-sql extensions
-                if (!res.HandlerName.Equals(extensionHandlerName, System.StringComparison.InvariantCulture))
+                // Expected ReferenceName = "Microsoft.SqlServer.Management.SqlIaaSAgent"
+                if (!res.HandlerName.Equals(extensionName, System.StringComparison.InvariantCulture))
                 {
+                    // skip all non-sql extensions
                     continue;
                 }
+
+                WriteVerboseWithTimestamp("Found SQL Extension:" + r.ReferenceName);
 
                 if (null != res.ExtensionSettingStatus)
                 {

@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.WindowsAzure;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using MaxMemoryPolicyStrings = Microsoft.Azure.Management.Redis.Models.MaxMemoryPolicy;
+    using Hyak.Common;
+    using System.Collections;
 
     [Cmdlet(VerbsCommon.New, "AzureRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -35,8 +36,6 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Location where want to create cache.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US", 
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version.")]
@@ -51,10 +50,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy property of redis cache. Valid values: AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL")]
-        [ValidateSet(MaxMemoryPolicyStrings.AllKeysLRU, MaxMemoryPolicyStrings.AllKeysRandom, MaxMemoryPolicyStrings.NoEviction, 
-            MaxMemoryPolicyStrings.VolatileLRU, MaxMemoryPolicyStrings.VolatileRandom, MaxMemoryPolicyStrings.VolatileTTL, IgnoreCase = false)]
-        public string MaxMemoryPolicy { get; set;}
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
+        public Hashtable RedisConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
@@ -101,11 +98,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             catch (CloudException ex)
             {
-                if (ex.ErrorCode == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                if (ex.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
                 {
                     // cache does not exists so go ahead and create one
                 }
-                else if (ex.ErrorCode == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }
@@ -115,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, MaxMemoryPolicy, EnableNonSslPort), ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
         }
     }
 }

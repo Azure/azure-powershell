@@ -15,8 +15,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -24,96 +25,167 @@ namespace Microsoft.Azure.Commands.Automation.Common
     {
         AzureSubscription Subscription { get; }
 
-        IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
+        #region JobStreams
 
-        Job GetJob(string automationAccountName, Guid jobId);
+        IEnumerable<JobStream> GetJobStream(string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType, ref string nextLink);
 
-        IEnumerable<Job> ListJobs(string automationAccountName, DateTime? startTime, DateTime? endTime);
+        #endregion
 
-        IEnumerable<Job> ListJobsByRunbookId(string automationAccountName, Guid runbookId, DateTime? startTime, DateTime? endTime);
+        #region Variables
 
-        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTime? startTime, DateTime? endTime);
+        Variable GetVariable(string automationAccountName, string variableName);
 
-        IEnumerable<JobStreamItem> ListJobStreamItems(string automationAccountName, Guid jobId, DateTime createdSince, string streamTypeName);
+        IEnumerable<Variable> ListVariables(string automationAccountName, ref string nextLink);
 
-        Runbook GetRunbook(string automationAccountName, Guid runbookId);
+        Variable CreateVariable(Variable variable);
 
-        Runbook GetRunbook(string automationAccountName, string runbookName);
+        void DeleteVariable(string automationAccountName, string variableName);
 
-        IEnumerable<Runbook> ListRunbooks(string automationAccountName);
+        Variable UpdateVariable(Variable variable, VariableUpdateFields updateFields);
 
-        IEnumerable<Runbook> ListRunbookByScheduleName(string automationAccountName, string scheduleName);
+        #endregion
 
-        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft);
+        #region Schedules
 
-        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookId(string automationAccountName, Guid runbookId, bool? isDraft);
-
-        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookVersionId(string automationAccountName, Guid runbookVersionId, bool? isDraft);
-
-        Schedule GetSchedule(string automationAccountName, Guid scheduleId);
-
-        Schedule GetSchedule(string automationAccountName, string scheduleName);
-
-        IEnumerable<Schedule> ListSchedules(string automationAccountName);
-
-        Runbook CreateRunbookByName(
-            string automationAccountName,
-            string runbookName,
-            string description,
-            string[] tags);
-
-        Runbook CreateRunbookByPath(
-            string automationAccountName,
-            string runbookPath,
-            string description,
-            string[] tags);
-
-        Schedule CreateSchedule(string automationAccountName, OneTimeSchedule schedule);
-
-        Schedule CreateSchedule(string automationAccountName, DailySchedule schedule);
-
-        Schedule CreateSchedule(string automationAccountName, HourlySchedule schedule);
-
-        Runbook PublishRunbook(string automationAccountName, Guid runbookId);
-
-        Runbook PublishRunbook(string automationAccountName, string runbookName);
-
-        Runbook RegisterScheduledRunbook(string automationAccountName, Guid runbookId, IDictionary parameters, string scheduleName);
-
-        Runbook RegisterScheduledRunbook(string automationAccountName, string runbookName, IDictionary parameters, string scheduleName);
-
-        void DeleteRunbook(string automationAccountName, Guid runbookId);
-
-        void DeleteRunbook(string automationAccountName, string runbookName);
-
-        void DeleteSchedule(string automationAccountName, Guid scheduleId);
+        Schedule CreateSchedule(string automationAccountName, Schedule schedule);
 
         void DeleteSchedule(string automationAccountName, string scheduleName);
 
-        void ResumeJob(string automationAccountName, Guid jobId);
+        Schedule GetSchedule(string automationAccountName, string scheduleName);
 
-        Runbook UpdateRunbook(string automationAccountName, Guid runbookId, string description, string[] tags, bool? logDebug, bool? logProgress, bool? logVerbose);
-
-        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, string[] tags, bool? logDebug, bool? logProgress, bool? logVerbose);
-
-        RunbookDefinition UpdateRunbookDefinition(string automationAccountName, Guid runbookId, string runbookPath, bool overwrite);
-
-        RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
-        
-        Schedule UpdateSchedule(string automationAccountName, Guid scheduleId, bool? isEnabled, string description);
+        IEnumerable<Schedule> ListSchedules(string automationAccountName, ref string nextLink);
 
         Schedule UpdateSchedule(string automationAccountName, string scheduleName, bool? isEnabled, string description);
+
+        #endregion
+
+        #region Runbooks
+
+        Runbook GetRunbook(string automationAccountName, string runbookName);
+
+        IEnumerable<Runbook> ListRunbooks(string automationAccountName, ref string nextLink);
+
+        Runbook CreateRunbookByName(string automationAccountName, string runbookName, string description, string[] tags);
+
+        Runbook CreateRunbookByPath(string automationAccountName, string runbookPath, string description, string[] tags);
         
-        Job StartRunbook(string automationAccountName, Guid runbookId, IDictionary parameters);
+        void DeleteRunbook(string automationAccountName, string runbookName);
 
-        Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters);
+        Runbook PublishRunbook(string automationAccountName, string runbookName);
 
-        void StopJob(string automationAccountName, Guid jobId);
+        Runbook UpdateRunbook(string automationAccountName, string runbookName, string description, string[] tags, bool? logProgress, bool? logVerbose);
 
-        void SuspendJob(string automationAccountName, Guid jobId);
+        RunbookDefinition UpdateRunbookDefinition(string automationAccountName, string runbookName, string runbookPath, bool overwrite);
 
-        Runbook UnregisterScheduledRunbook(string automationAccountName, Guid runbookId, string scheduleName);
+        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string automationAccountName, string runbookName, bool? isDraft);
 
-        Runbook UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+        Job StartRunbook(string automationAccountName, string runbookName, IDictionary parameters, string runOn);
+
+        #endregion
+
+        #region Credentials
+
+        CredentialInfo CreateCredential(string automationAccountName, string name, string userName, string password, string description);
+
+        CredentialInfo UpdateCredential(string automationAccountName, string name, string userName, string password, string description);
+
+        CredentialInfo GetCredential(string automationAccountName, string name);
+
+        IEnumerable<CredentialInfo> ListCredentials(string automationAccountName, ref string nextLink);
+
+        void DeleteCredential(string automationAccountName, string name);
+
+        #endregion
+
+        #region Modules
+
+        Module CreateModule(string automationAccountName, Uri contentLink, string moduleName, IDictionary tags);
+
+        Module GetModule(string automationAccountName, string name);
+
+        Module UpdateModule(string automationAccountName, IDictionary tags, string name, Uri contentLink, string contentLinkVersion);
+
+        IEnumerable<Module> ListModules(string automationAccountName, ref string nextLink);
+
+        void DeleteModule(string automationAccountName, string name);
+        
+        #endregion
+
+        #region Jobs
+
+        Job GetJob(string automationAccountName, Guid id);
+
+        IEnumerable<Job> ListJobsByRunbookName(string automationAccountName, string runbookName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
+
+        IEnumerable<Job> ListJobs(string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
+
+        void ResumeJob(string automationAccountName, Guid id);
+
+        void StopJob(string automationAccountName, Guid id);
+
+        void SuspendJob(string automationAccountName, Guid id);
+
+        #endregion
+        
+        #region Accounts
+
+        IEnumerable<AutomationAccount> ListAutomationAccounts(string automationAccountName, string location);
+
+        AutomationAccount CreateAutomationAccount(string automationAccountName, string location);
+
+        void DeleteAutomationAccount(string automationAccountName);
+        
+        #endregion
+
+        #region Certificates
+
+        CertificateInfo CreateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool exportable);
+
+        CertificateInfo UpdateCertificate(string automationAccountName, string name, string path, SecureString password, string description, bool? exportable);
+
+        CertificateInfo GetCertificate(string automationAccountName, string name);
+
+        IEnumerable<CertificateInfo> ListCertificates(string automationAccountName, ref string nextLink);
+
+        void DeleteCertificate(string automationAccountName, string name);
+
+        #endregion
+
+        #region Connection
+
+        Connection CreateConnection(string automationAccountName, string name, string connectionTypeName, IDictionary connectionFieldValues, string description);
+
+        Connection UpdateConnectionFieldValue(string automationAccountName, string name, string connectionFieldName, object value);
+
+        Connection GetConnection(string automationAccountName, string name);
+
+        IEnumerable<Connection> ListConnectionsByType(string automationAccountName, string name);
+
+        IEnumerable<Connection> ListConnections(string automationAccountName, ref string nextLink);
+
+        void DeleteConnection(string automationAccountName, string name);
+
+        #endregion
+
+        #region JobSchedules
+
+        JobSchedule GetJobSchedule(string automationAccountName, Guid jobScheduleId);
+
+        JobSchedule GetJobSchedule(string automationAccountName, string runbookName, string scheduleName);
+
+        IEnumerable<JobSchedule> ListJobSchedules(string automationAccountName, ref string nextLink);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string automationAccountName, string runbookName);
+
+        IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string automationAccountName, string scheduleName);
+
+        JobSchedule RegisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName, IDictionary parameters);
+
+        void UnregisterScheduledRunbook(string automationAccountName, Guid jobScheduleId);
+
+        void UnregisterScheduledRunbook(string automationAccountName, string runbookName, string scheduleName);
+
+
+        #endregion
     }
 }

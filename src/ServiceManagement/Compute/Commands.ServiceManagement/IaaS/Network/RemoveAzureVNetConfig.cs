@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Management.Network;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {

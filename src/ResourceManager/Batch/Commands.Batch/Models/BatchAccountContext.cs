@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading;
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
@@ -20,40 +23,118 @@ using System.Collections;
 namespace Microsoft.Azure.Commands.Batch
 {
     /// <summary>
-    /// very simple account context class for getting things started
+    /// Contains Batch account details for use when interacting with the Batch service.
     /// </summary>
     public class BatchAccountContext
     {
+        private AccountKeyType keyInUse;
+        private IBatchClient batchOMClient;
+
+        /// <summary>
+        /// The account resource Id.
+        /// </summary>
         public string Id { get; private set; }
 
+        /// <summary>
+        /// The account endpoint.
+        /// </summary>
         public string AccountEndpoint { get; private set; }
 
+        /// <summary>
+        /// The primary account key.
+        /// </summary>
         public string PrimaryAccountKey { get; internal set; }
 
+        /// <summary>
+        /// The secondary account key.
+        /// </summary>
         public string SecondaryAccountKey { get; internal set; }
 
+        /// <summary>
+        /// The name of the Batch account.
+        /// </summary>
         public string AccountName { get; private set; }
 
+        /// <summary>
+        /// The region in which the account was created.
+        /// </summary>
         public string Location { get; private set; }
 
+        /// <summary>
+        /// The name of the resource group that the account resource is under.
+        /// </summary>
         public string ResourceGroupName { get; private set; }
 
+        /// <summary>
+        /// The subscription Id that the account belongs to.
+        /// </summary>
         public string Subscription { get; private set; }
 
+        /// <summary>
+        /// The provisioning state of the account resource.
+        /// </summary>
         public string State { get; private set; }
 
+        /// <summary>
+        /// The Batch service endpoint.
+        /// </summary>
         public string TaskTenantUrl { get; private set; }
 
+        /// <summary>
+        /// Tags associated with the account resource.
+        /// </summary>
         public Hashtable[] Tags { get; private set; }
 
+        /// <summary>
+        /// A string representation of the Tags property.
+        /// </summary>
         public string TagsTable
         {
             get { return Helpers.FormatTagsTable(Tags); }
         }
 
-        internal BatchAccountContext() { }
+        /// <summary>
+        /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
+        /// </summary>
+        public AccountKeyType KeyInUse 
+        { 
+            get { return this.keyInUse; }
+            set
+            {
+                if (value != this.keyInUse)
+                {
+                    this.batchOMClient.Dispose();
+                    this.batchOMClient = null;
+                }
+                this.keyInUse = value;
+            } 
+        }
 
-        internal BatchAccountContext(string accountEndpoint)
+        internal IBatchClient BatchOMClient
+        {
+            get
+            {
+                if (this.batchOMClient == null)
+                {
+                    if ((KeyInUse == AccountKeyType.Primary && string.IsNullOrEmpty(PrimaryAccountKey)) ||
+                        (KeyInUse == AccountKeyType.Secondary && string.IsNullOrEmpty(SecondaryAccountKey)))
+                    {
+                        throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
+                    }
+                    string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
+                    BatchCredentials credentials = new BatchCredentials(AccountName, key);
+                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Connect(TaskTenantUrl, credentials);
+                }
+                return this.batchOMClient;
+            }
+        }
+
+        internal BatchAccountContext()
+        {
+            this.keyInUse = AccountKeyType.Primary;
+        }
+
+        internal BatchAccountContext(string accountEndpoint) : this()
         {
             this.AccountEndpoint = accountEndpoint;
         }

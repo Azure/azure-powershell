@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway.Model
-{
-    using WindowsAzure.Commands.Utilities.Common;
-    using WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Network.Models;
 
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model
+{
     public class VirtualNetworkDiagnosticsContext : ManagementOperationContext
     {
         public string DiagnosticsUrl { get; set; }

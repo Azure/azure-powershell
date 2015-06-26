@@ -22,7 +22,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
@@ -34,18 +34,16 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.BGInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.CustomScript;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.Dsc;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.VMAccess;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.SqlServer;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.ILB;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PaasCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PreviewCmdletInfo;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.Azure.Commands.Network.Gateway.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -373,6 +371,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureDataDiskCmdletInfo(discCfg));
         }
 
+        public SM.PersistentVM SetAzureDataDisk(SetAzureDataDiskResizeConfig discCfg)
+        {
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureDataDiskCmdletInfo(discCfg));
+        }
+
         public void SetDataDisk(string vmName, string serviceName, HostCaching hc, int lun)
         {
             SetAzureDataDiskConfig config = new SetAzureDataDiskConfig(hc, lun);
@@ -451,9 +454,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentStatusCmdletInfo(serviceName, slot, newStatus));
         }
 
-        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath)
+        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath, ExtensionConfigurationInput extConfig = null)
         {
-            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath));
+            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath, extConfig));
         }
 
         public ManagementOperationContext SetAzureDeploymentUpgrade(string serviceName, string slot, string mode, string packagePath, string configPath)
@@ -535,7 +538,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         // Update-AzureDisk
         public SM.DiskContext UpdateAzureDisk(string diskName, string label)
         {
-            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label));
+            return RunPSCmdletAndReturnFirst<SM.DiskContext>(new UpdateAzureDiskCmdletInfo(diskName, label, null));
+        }
+
+        public ManagementOperationContext UpdateAzureDisk(string diskName, string label, int? resizedSize)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureDiskCmdletInfo(diskName, label, resizedSize));
         }
 
         #endregion
@@ -665,9 +673,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureOSDisk
 
-        public SM.PersistentVM SetAzureOSDisk(HostCaching hc, SM.PersistentVM vm)
+        public SM.PersistentVM SetAzureOSDisk(HostCaching? hc, SM.PersistentVM vm, int? resizedSize = null)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureOSDiskCmdletInfo(hc, vm));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureOSDiskCmdletInfo(hc, vm, resizedSize));
         }
 
         public SM.OSVirtualHardDisk GetAzureOSDisk(SM.PersistentVM vm)
@@ -719,30 +727,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps, string reservedIpName = null, string vnetName = null)
+            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps,
+            string reservedIpName = null, string vnetName = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result =
-                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name,
-                        serviceName, imageName, userName, password, locationName, instanceSize, disableWinRMHttps, reservedIpName, vnetName));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, userName, password, locationName,
+                    instanceSize, disableWinRMHttps, reservedIpName, vnetName));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () =>
-                            result =
-                                RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os,
-                                    name, serviceName, imageName, userName, password, null, instanceSize,
-                                    disableWinRMHttps, reservedIpName, vnetName)),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, userName, password, null,
+                        instanceSize, disableWinRMHttps, reservedIpName, vnetName));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
@@ -755,25 +765,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return NewAzureQuickVM(os, name, serviceName, imageName, userName, password, locationName, null);
         }
 
-        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string[] subnetNames, InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
+        public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName, string[] subnetNames,
+            InstanceSize instanceSize, string userName, string password, string vNetName, string affinityGroup, string reservedIP = null)
         {
             var result = new ManagementOperationContext();
             try
             {
-                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, instanceSize.ToString(), userName, password, vNetName, subnetNames, affinityGroup, reservedIP));
+                result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                    os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                    vNetName, subnetNames, affinityGroup, reservedIP));
             }
             catch (Exception e)
             {
-                if (e.ToString().Contains("409"))
+                if (e.ToString().Contains("Service already exists") ||
+                    (e.InnerException != null && e.InnerException.ToString().Contains("Service already exists")))
                 {
-                    Utilities.RetryActionUntilSuccess(
-                        () => result = RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(os, name, serviceName, imageName, userName, password, null, instanceSize.ToString())),
-                        "409", 4, 60);
+                    RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureQuickVMCmdletInfo(
+                        os, name, serviceName, imageName, instanceSize.ToString(), userName, password,
+                        vNetName, subnetNames, null, reservedIP));
                 }
                 else
                 {
-                    Console.WriteLine(e.InnerException.ToString());
+                    Console.WriteLine(e.ToString());
+                    if (e.InnerException != null)
+                    {
+                        Console.WriteLine(e.InnerException.ToString());
+                    }
                     throw;
                 }
             }
@@ -812,10 +829,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzurePlatformVMImage
 
-
-        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations)
+        internal ComputeImageConfig NewAzurePlatformComputeImageConfig(string offer, string sku, string version)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new  SetAzurePlatformVMImageCmdletInfo(imageName, null, locations));
+            return RunPSCmdletAndReturnFirst<ComputeImageConfig>(new NewAzurePlatformComputeImageConfigCmdletInfo(offer, sku, version));
+        }
+
+        internal MarketplaceImageConfig NewAzurePlatformMarketplaceImageConfig(string planName, string product, string publisher, string publisherId)
+        {
+            return RunPSCmdletAndReturnFirst<MarketplaceImageConfig>(new NewAzurePlatformMarketplaceImageConfigCmdletInfo(planName, product, publisher, publisherId));
+        }
+
+        internal ManagementOperationContext SetAzurePlatformVMImageReplicate(string imageName, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new  SetAzurePlatformVMImageCmdletInfo(imageName, null, locations, compCfg, marketCfg));
         }
 
         internal ManagementOperationContext SetAzurePlatformVMImagePublic(string imageName)
@@ -841,14 +867,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion
 
         #region AzureReservedIP
-        internal ManagementOperationContext NewAzureReservedIP(string name, string aff, string svc, string dep, string label = null)
-        {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, aff, label, svc, dep));
-        }
 
         internal ManagementOperationContext NewAzureReservedIP(string name, string location, string label = null)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, label));
+        }
+
+        internal ManagementOperationContext NewAzureReservedIP(string name, string location, string serviceName, string label = null, string slot = SM.DeploymentSlotType.Production)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new NewAzureReservedIPCmdletInfo(name, location, serviceName, slot, label));
+        }
+
+        internal ManagementOperationContext SetAzureReservedIPAssociation(string reservedIpName, string serviceName, string slot = SM.DeploymentSlotType.Production)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, slot));
+        }
+
+        internal ManagementOperationContext RemoveAzureReservedIPAssociation(string reservedIpName, string serviceName, bool force, string slot = SM.DeploymentSlotType.Production)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPAssociationCmdletInfo(reservedIpName, serviceName, slot, force));
         }
 
         internal Collection<SM.ReservedIPContext> GetAzureReservedIP(string name = null)
@@ -859,6 +896,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         internal ManagementOperationContext RemoveAzureReservedIP(string name, bool force = false)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureReservedIPCmdletInfo(name, force));
+        }
+        internal ManagementOperationContext AddAzureVirtualIP(string virtualIPName, string serviceName)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new AddAzureVirtualIPCmdletInfo(virtualIPName, serviceName));
+        }
+        internal ManagementOperationContext RemoveAzureVirtualIP(string virtualIPName, string serviceName, bool force = true)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVirtualIPCmdletInfo(virtualIPName, serviceName, force));
         }
 
         #endregion
@@ -1082,19 +1127,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         // Set-AzureServiceDiagnosticsExtension
         public ManagementOperationContext SetAzureServiceDiagnosticsExtension
-            (string service, string storage, string config = null, string[] roles = null, string slot = null)
+            (string service, AzureStorageContext storageContext, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, string storage, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, cert, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, cert, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, string storage, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, thumbprint, algorithm, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, thumbprint, algorithm, config, roles, slot));
         }
 
         // Get-AzureServiceDiagnosticsExtension
@@ -1300,9 +1345,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string vmName = null)
+        public Collection<SM.PersistentVMRoleListContext> GetAzureVM(string serviceName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(vmName, null));
+            return RunPSCmdletAndReturnAll<SM.PersistentVMRoleListContext>(new GetAzureVMCmdletInfo(null, serviceName));
         }
 
         public SM.PersistentVMRoleContext GetAzureVM(string vmName, string serviceName)
@@ -1365,6 +1410,37 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
+        public void AddAzureVMImage(
+            string imageName,
+            string label,
+            SM.VirtualMachineImageDiskConfigSet diskConfig,
+            string description = null,
+            string eula = null,
+            string imageFamily = null,
+            DateTime? publishedDate = null,
+            string privacyUri = null,
+            string recommendedVMSize = null,
+            string iconName = null,
+            string smallIconName = null,
+            bool? showInGui = null)
+        {
+            var cmdletInfo = new AddAzureVMImageCmdletInfo(
+                imageName,
+                label,
+                diskConfig,
+                description,
+                eula,
+                imageFamily,
+                publishedDate,
+                privacyUri,
+                recommendedVMSize,
+                iconName,
+                smallIconName,
+                showInGui);
+
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(cmdletInfo);
+        }
+
         public SM.OSImageContext UpdateAzureVMImage(string imageName, string label, string recommendedSize = null)
         {
             return RunPSCmdletAndReturnFirst<SM.OSImageContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, null, null));
@@ -1381,8 +1457,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public void UpdateAzureVMImage(string imageName, string label, string imageFamily, bool showInGui = false, string recommendedSize = null,
-            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, Uri iconUri = null,
-            Uri smallIconUri = null)
+            string description = null, string eula = null, Uri privacyUri = null, DateTime? publishedDate = null, string language = null, string iconUri = null,
+            string smallIconUri = null)
         {
             RunPSCmdletAndReturnFirst<ManagementOperationContext>(new UpdateAzureVMImageCmdletInfo(imageName, label, recommendedSize, description, eula, imageFamily,
                 privacyUri, publishedDate.Value, language, iconUri, smallIconUri, showInGui));
@@ -1397,9 +1473,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return result;
         }
 
-        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null,string newImageLabel = null)
+        public void SaveAzureVMImage(string serviceName, string vmName, string newImageName, string osState = null, string newImageLabel = null, bool debug = false, bool retryOnConflict = false)
         {
-            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState));
+            RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SaveAzureVMImageCmdletInfo(serviceName, vmName, newImageName, newImageLabel, osState), debug, retryOnConflict);
         }
 
         public Collection<SM.OSImageContext> GetAzureVMImage(string imageName = null)
@@ -1409,20 +1485,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public Collection<SM.VMImageContext> GetAzureVMImageReturningVMImages(string imageName = null)
         {
-            return RunPSCmdletAndReturnAll<SM.VMImageContext>(new GetAzureVMImageCmdletInfo(imageName));
+            Collection<SM.OSImageContext> images = GetAzureVMImage(imageName);
+            Collection<SM.VMImageContext> vmImages = new Collection<SM.VMImageContext>();
+            foreach (SM.OSImageContext image in images)
+            {
+                if (image is SM.VMImageContext)
+                {
+                    vmImages.Add((SM.VMImageContext)image);
+                }
+            }
+
+            return vmImages;
         }
 
-        public string GetAzureVMImageName(string[] keywords, bool exactMatch = true)
+        public string GetAzureVMImageName(string[] keywords, bool exactMatch = true, int? diskSize = null)
         {
             Collection<SM.OSImageContext> vmImages = GetAzureVMImage();
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0)
+                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0 &&
+                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
                     return image.ImageName;
             }
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0)
+                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0 &&
+                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
                     return image.ImageName;
             }
             return null;
@@ -1506,9 +1594,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<GatewayGetOperationStatusResponse>(new NewAzureVNetGatewayCmdletInfo(vnetName));
         }
 
-        public Collection<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
+        public Collection<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext> GetAzureVNetGateway(string vnetName)
         {
-            return RunPSCmdletAndReturnAll<Microsoft.Azure.Commands.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
+            return RunPSCmdletAndReturnAll<Microsoft.WindowsAzure.Commands.ServiceManagement.Network.VirtualNetworkGatewayContext>(new GetAzureVNetGatewayCmdletInfo(vnetName));
         }
 
         public GatewayGetOperationStatusResponse SetAzureVNetGateway(string option, string vnetName, string localNetwork)
@@ -1910,16 +1998,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVM BGInfo Extension
 
         #region Generic VM Extension cmdlets
-        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm, string extensionName, string publisher, string version, string referenceName = null,
-            string publicConfiguration = null, string privateConfiguration = null, string publicConfigKey = null, string privateConfigKey = null, string publicConfigPath = null, string privateConfigPath = null, bool disable = false)
+        public SM.PersistentVM SetAzureVMExtension(SM.IPersistentVM vm,
+            string extensionName, string publisher,
+            string version, string referenceName = null,
+            string publicConfiguration = null, string privateConfiguration = null,
+            string publicConfigKey = null, string privateConfigKey = null,
+            string publicConfigPath = null, string privateConfigPath = null,
+            bool disable = false, bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName,
-             publicConfiguration, privateConfiguration, publicConfigKey, privateConfigKey, publicConfigPath, privateConfigPath, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                version, referenceName,
+                publicConfiguration, privateConfiguration,
+                publicConfigKey, privateConfigKey,
+                publicConfigPath, privateConfigPath,
+                disable, forceUpdate));
         }
 
-        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm, string extensionName, string publisher, string referenceName=null, bool removeAll=false)
+        public SM.PersistentVM RemoveAzureVMExtension(SM.PersistentVM vm,
+            string extensionName, string publisher,
+            string referenceName = null, bool removeAll = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm, extensionName, publisher, referenceName, removeAll));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMExtensionCmdletInfo(vm,
+                extensionName, publisher,
+                referenceName, removeAll));
         }
 
         public Collection<VirtualMachineExtensionContext> GetAzureVMExtension(SM.PersistentVM vm, string extensionName = null, string publisher = null, string version = null, string referenceName = null)
@@ -1927,7 +2029,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionContext>(new GetAzureVMExtensionCmdletInfo(vm, extensionName, publisher, version, referenceName));
         }
 
-        //ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
+        // ListAllVersionsParamSetName -> ExtensionName,Publisher,AllVersions
         public Collection<VirtualMachineExtensionImageContext> GetAzureVMAvailableExtension(string extensionName, string publisher, bool allVersions)
         {
             return RunPSCmdletAndReturnAll<VirtualMachineExtensionImageContext>(new GetAzureVMAvailableExtensionCmdletInfo(extensionName, publisher, allVersions));
@@ -1953,9 +2055,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnAll<VirtualMachineAccessExtensionContext>(new GetAzureVMAccessExtensionCmdletInfo(vm, userName, password, version, referenceName));
         }
 
-        public SM.PersistentVM SetAzureVMAccessExtension(SM.IPersistentVM vm, string userName= null, string password=null, string version = null, string referenceName =null,bool disable = false)
+        public SM.PersistentVM SetAzureVMAccessExtension(
+            SM.IPersistentVM vm,
+            string userName= null,
+            string password=null,
+            string version = null,
+            string referenceName =null,
+            bool disable = false,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo( vm,  userName,  password,  version,  referenceName, disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMAccessExtensionCmdletInfo(
+                vm,  userName,  password,  version,  referenceName, disable, forceUpdate));
         }
 
         public SM.PersistentVM RemoveAzureVMAccessExtension(SM.IPersistentVM vm)
@@ -1966,24 +2076,50 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #endregion AzureVMAccessExtension cmdlets
 
         #region AzureVMCustomScriptExtensionCmdlets
-        //SetCustomScriptExtensionByUrisParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileUri, bool sseSaSKeys, string run = null, string referenceName = null, string version = null, string argument = null)
+        // SetCustomScriptExtensionByUrisParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileUri,
+            bool sseSaSKeys,
+            string run = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, referenceName, version,fileUri,run, argument ));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, fileUri, run, argument, forceUpdate));
         }
 
-        //DisableCustomScriptExtensionParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, bool disable, string referenceName = null, string version = null)
+        // DisableCustomScriptExtensionParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            bool disable,
+            string referenceName = null,
+            string version = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm,referenceName,version,disable));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, referenceName, version, disable, forceUpdate));
         }
 
-        //SetCustomScriptExtensionByContainerBlobsParamSetName
-        internal SM.PersistentVM SetAzureVMCustomScriptExtension(SM.PersistentVM vm, string[] fileName, string run = null, string storageAccountName = null, string StorageEndpointSuffix = null, string containerName = null,
-              string StorageAccountKey = null, string referenceName = null, string version = null,string argument = null)
+        // SetCustomScriptExtensionByContainerBlobsParamSetName
+        internal SM.PersistentVM SetAzureVMCustomScriptExtension(
+            SM.PersistentVM vm,
+            string[] fileName,
+            string run = null,
+            string storageAccountName = null,
+            string StorageEndpointSuffix = null,
+            string containerName = null,
+            string StorageAccountKey = null,
+            string referenceName = null,
+            string version = null,
+            string argument = null,
+            bool forceUpdate = false)
         {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
-                    StorageAccountKey, run, argument,referenceName, version));
+            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new SetAzureVMCustomScriptExtensionCmdletInfo(
+                vm, fileName, storageAccountName, StorageEndpointSuffix, containerName,
+                    StorageAccountKey, run, argument, referenceName, version, forceUpdate));
         }
 
         internal VirtualMachineCustomScriptExtensionContext GetAzureVMCustomScriptExtension(SM.IPersistentVM vm)
@@ -1996,47 +2132,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMCustomScriptExtensionCmdletInfo(vm));
         }
         #endregion AzureVMCustomScriptExtensionCmdlets
-
-        #region AzureVMDscExtensionCmdlets
-
-        internal struct SetAzureVMDscExtensionArguments
-        {
-            public string Version;
-            public SM.IPersistentVM VM;
-            public string ConfigurationArchive;
-            public AzureStorageContext StorageContext;
-            public string ContainerName;
-            public string ConfigurationName;
-            public Hashtable ConfigurationArgument;
-            public string ConfigurationDataPath;
-        }
-
-
-        internal SM.PersistentVM SetAzureVMDscExtension(SetAzureVMDscExtensionArguments args)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(
-                new SetAzureVMDscExtensionCmdletInfo(
-                    args.Version,
-                    args.VM,
-                    args.ConfigurationArchive,
-                    args.StorageContext,
-                    args.ContainerName,
-                    args.ConfigurationName,
-                    args.ConfigurationArgument,
-                    args.ConfigurationDataPath));
-        }
-
-        internal VirtualMachineDscExtensionContext GetAzureVMDscExtension(SM.IPersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<VirtualMachineDscExtensionContext>(new GetAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        internal SM.PersistentVM RemoveAzureVMDscExtension(SM.PersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        #endregion AzureVMDscExtensionCmdlets
 
         #region AzureVMSqlServerExtensionCmdlets
 
@@ -2103,9 +2198,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.InternalLoadBalancerContext>(new GetAzureInternalLoadBalancerCmdletInfo(serviceName));
         }
 
-        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm)
+        internal SM.IPersistentVM SetAzurePublicIp(string publicIpName, SM.IPersistentVM vm, string domainNameLabel = null)
         {
-            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm));
+            return RunPSCmdletAndReturnFirst<SM.IPersistentVM>(new SetAzurePublicIPCmdletInfo(publicIpName, vm, domainNameLabel));
         }
 
         internal SM.AssignPublicIP GetAzurePublicIpName(string publicIpName, SM.IPersistentVM vm)

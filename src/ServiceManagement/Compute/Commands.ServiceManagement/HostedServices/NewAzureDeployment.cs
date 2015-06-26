@@ -16,16 +16,18 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
     using PVM = Model;
+    using Hyak.Common;
 
     /// <summary>
     /// Create a new deployment. Note that there shouldn't be a deployment 
@@ -111,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Production);
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Staging);
 
-            var storageName = CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            var storageName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
             Uri packageUrl;
             if (this.Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -121,6 +123,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             }
             else
             {
+                if (string.IsNullOrEmpty(storageName))
+                {
+                    throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
+                }
+
                 var progress = new ProgressRecord(0, Resources.WaitForUploadingPackage, Resources.UploadingPackage);
                 WriteProgress(progress);
                 removePackage = true;
@@ -152,14 +159,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                 }
 
-
-                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
-                DeploymentGetResponse d = null;
-                InvokeInOperationContext(() =>
+                Func<DeploymentSlot, DeploymentGetResponse> func = t =>
                 {
+                    DeploymentGetResponse d = null;
                     try
                     {
-                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slotType);
+                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, t);
                     }
                     catch (CloudException ex)
                     {
@@ -168,10 +173,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                             this.WriteExceptionDetails(ex);
                         }
                     }
-                });
+
+                    return d;
+                };
+
+                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+                DeploymentGetResponse currentDeployment = null;
+                InvokeInOperationContext(() => currentDeployment = func(slotType));
+
+                var peerSlottype = slotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
+                DeploymentGetResponse peerDeployment = null;
+                InvokeInOperationContext(() => peerDeployment = func(peerSlottype));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
-                extConfig = extensionMgr.Set(d, ExtensionConfiguration, this.Slot);
+                extConfig = extensionMgr.Set(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot);
             }
             
             var deploymentInput = new DeploymentCreateParameters
@@ -262,11 +277,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             if (string.IsNullOrEmpty(this.Label))
             {
                 this.Label = this.Name;
-            }
-
-            if (string.IsNullOrEmpty(this.CurrentContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
-            {
-                throw new ArgumentException(Resources.CurrentStorageAccountIsNotSet);
             }
         }
     }

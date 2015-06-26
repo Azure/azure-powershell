@@ -1,8 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/68730ae1-2d5c-446b-b37c-bd495a91bf6d?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycy82ODczMGFlMS0yZDVjLTQ0NmItYjM3Yy1iZDQ5NWE5MWJmNmQ/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/a1a58b22-a124-4ae2-bd50-c9ecaccb6eb5?api-version=1.42-previewInternal",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -19,13 +18,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "OijwP55bzFPNFU61dGL7reXxvBErwXnDlELDsunJBUw="
+          "BvccHteD7GpRtL6WC1VKppjYFJCLmeocW/AMspEjmnI="
         ],
         "request-id": [
-          "a26fe1c3-5ac7-4ed0-90f3-8b2389cb6363"
+          "06ea92e6-4967-4d64-ac5f-5be2fbff7a91"
         ],
         "client-request-id": [
-          "d1806fcd-5342-440f-8e9a-cac57ed8088b"
+          "f7d3274e-9d94-4a47-ba42-e63d8ed09d92"
         ],
         "x-ms-gateway-rewrite": [
           "false"
@@ -34,7 +33,7 @@
           "1.42-previewInternal"
         ],
         "ocp-aad-session-key": [
-          "g76B0s0E53V6bbPU1FYqzXWtq50zj4D291xTO3DNHCC1tyP_Rt3QJgNjVWr2r-Au7iVzBYens9kYkUOV_tSWGnF8C6YhECcZwQ1ftOwQ1r8YTaQMIvXXAR5Uq_F4VLj2_m3rreF5_zoOYe5JObjWyA.rp4UgIeMaoSzJbSRsjzEZrEMSLFVcNQQkG3KP6_ty2M"
+          "c6Y6RFDl0yP0NBdoVG_xCBjGbKNdQZqBYrR1ggyU3MilX92iH4qTxLYft8KvQINa2U3aHEquJPyjlyw4QYF7qIR8P5OWtGVzWsywsXmiL8E6YDfqNUwDDcXEjtBhpc4X0iZSvVV_fqgnZ3_GtVHiiw.N7KYNQsrTETf6_HUOKOAzImRsnN_LpVJgyLonYeoylc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -49,7 +48,7 @@
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -59,28 +58,30 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 17:34:35 GMT"
+          "Wed, 28 Jan 2015 01:01:56 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/contrib1/providers/Microsoft.Authorization/roleAssignments/6a26d717-aba9-44e3-b971-c53694e413b2?api-version=2014-07-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzNjYTQ5MDQyLTc4MmEtNGNjOS04OWI1LWVlMWI0ODdmZTExNS9yZXNvdXJjZUdyb3Vwcy9jb250cmliMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzZhMjZkNzE3LWFiYTktNDRlMy1iOTcxLWM1MzY5NGU0MTNiMj9hcGktdmVyc2lvbj0yMDE0LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264/providers/Microsoft.Authorization/roleAssignments/9b8d3fbe-4a95-406c-aae6-50528fa2aefb?api-version=2014-10-01-preview",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-07-01-preview"
+          "2014-10-01-preview"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"a1a58b22-a124-4ae2-bd50-c9ecaccb6eb5\",\r\n    \"scope\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264\"\r\n  },\r\n  \"id\": \"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264/providers/Microsoft.Authorization/roleAssignments/9b8d3fbe-4a95-406c-aae6-50528fa2aefb\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"9b8d3fbe-4a95-406c-aae6-50528fa2aefb\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "0"
+          "582"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -88,17 +89,20 @@
         "Pragma": [
           "no-cache"
         ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
         "x-ms-request-id": [
-          "westus:75bb9eee-20db-48f8-b237-0cf3929206eb"
+          "westus:1e9149af-59e1-44b4-a6d2-569f14f0f7d0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "620b9a6a-dbd8-4d8e-8e7e-d5ac0e4045aa"
+          "bf12fa31-da99-47d3-81f7-5573267ffc2b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140925T173440Z:620b9a6a-dbd8-4d8e-8e7e-d5ac0e4045aa"
+          "WESTUS:20150128T010158Z:bf12fa31-da99-47d3-81f7-5573267ffc2b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,7 +111,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 17:34:40 GMT"
+          "Wed, 28 Jan 2015 01:01:57 GMT"
         ]
       },
       "StatusCode": 200

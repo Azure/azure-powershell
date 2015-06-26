@@ -1,3 +1,4 @@
+<meta name="google-site-verification" content="tZgbB2s-hTI0IePQQRCjHqL_Vf0j_XJmehXAHJerrn4" />
 # Microsoft Azure PowerShell
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
@@ -28,9 +29,9 @@ This repository contains a set of PowerShell cmdlets for developers and administ
       * Log streaming
       * Save log
 * Cloud Services
-  * Create scaffolding for cloud service and role. Role support includes Node.js, PHP, Django and Cache.
+  * Create scaffolding for cloud service and role. Role support includes Node.js and PHP.
   * Manage cloud service and role, such as CRUD, start and stop.
-  * Manage extension
+  * Manage extension.
   * Start/Stop Azure emulator.
   * Manage certificate.
   * Manage cloud service extensions
@@ -122,7 +123,6 @@ For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
 * ```help node-dev``` to get all Node.js development related cmdlets.
 * ```help php-dev``` to get all PHP development related cmdlets.
-* ```help python-dev``` to get all Python development related cmdlets.
 * ```help <cmdlet name>``` to get the details of a specific cmdlet.
 
 ## Supported Environments
@@ -139,12 +139,12 @@ For detail descriptions and examples of the cmdlets, type
 2. Open Microsoft Web Platform Installer and search for __Microsoft Azure PowerShell__.
 3. Install.
 
-You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-sdk-tools/releases)
+You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
 
 ### Source Code
 
 1. Download the source code from GitHub repo
-2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-sdk-tools/wiki/Windows-Azure-PowerShell-Developer-Guide)
+2. Follow the [Microsoft Azure PowerShell Developer Guide](https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide)
 
 ### Supported PowerShell Versions
 
@@ -290,7 +290,7 @@ Be sure to check out the [Microsoft Azure Developer Forums on Stack Overflow](ht
 
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://windowsazure.github.com/guidelines.html).
 
-If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-sdk-tools/issues) section of the project.
+If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
 
 # Learn More
 

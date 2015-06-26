@@ -20,11 +20,10 @@
               ],
               "container": "samples",
 		      "blobName": "sample-blob",
-              "PathPattern": "LongRunning/{date}/{time}",
-              "DateFormat": "yyyy-MM-dd",
-              "TimeFormat": "HH:mm",
-              "SourcePartitionCount": null,
-              "blobSerializationBoundary": "BlobBoundary"
+              "PathPattern": "",
+              "DateFormat": "yyyy/MM/dd",
+              "TimeFormat": "HH",
+              "SourcePartitionCount": null
             }
           }
         }

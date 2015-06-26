@@ -14,11 +14,12 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Subnet
 {
     [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroupToSubnet"), OutputType(typeof(bool))]
     public class SetAzureNetworkSecurityGroupToSubnet : NetworkCmdletBase
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
         {
             try
             {
-                Client.SetNetworkSecurityGroupForSubnet(Name, SubnetName, VirtualNetworkName);
+                Client.SetNetworkSecurityGroupForSubnet(Name, VirtualNetworkName, SubnetName);
                 if (PassThru.IsPresent)
                 {
                     WriteObject(true);
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
             }
             catch (CloudException ce)
             {
-                if (ce.ErrorCode.Equals("BadRequest") && ce.ErrorMessage.Contains("already mapped to network"))
+                if (ce.Error.Code.Equals("BadRequest") && ce.Error.Message.Contains("already mapped to network"))
                 {
                     // there's already a NSG associated with this subnet, so confirm they want to replace it
                     ConfirmAction(
@@ -63,9 +64,10 @@ namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Subnet
                         Name,
                         () =>
                         {
-                            Client.RemoveNetworkSecurityGroupFromSubnet(Name, SubnetName, VirtualNetworkName);
-                            Client.SetNetworkSecurityGroupForSubnet(Name, SubnetName, VirtualNetworkName);
-                            WriteVerboseWithTimestamp(Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded, Name, VirtualNetworkName, SubnetName);
+                            var currentNetworkSecurityGroup = Client.GetNetworkSecurityGroupForSubnet(VirtualNetworkName, SubnetName).Name;
+                            Client.RemoveNetworkSecurityGroupFromSubnet(currentNetworkSecurityGroup, VirtualNetworkName, SubnetName);
+                            Client.SetNetworkSecurityGroupForSubnet(Name, VirtualNetworkName, SubnetName);
+                            WriteVerboseWithTimestamp(Resources.ReplaceNetworkSecurityGroupInSubnetWarningSucceeded, Name, SubnetName, VirtualNetworkName);
                             if (PassThru.IsPresent)
                             {
                                 WriteObject(true);

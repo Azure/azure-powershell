@@ -42,11 +42,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public static void ClassInitialize(TestContext context)
         {
             var vnetConfig = vmPowershellCmdlets.GetAzureVNetConfig(null);
-            if (vnetConfig.Count > 0)
-            {
-                vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
-                Utilities.RetryActionUntilSuccess(() => vmPowershellCmdlets.RemoveAzureVNetConfig(), "in use", 5, 30);
-            }
             vmPowershellCmdlets.SetAzureVNetConfig(Directory.GetCurrentDirectory() + "\\VnetconfigWithLocation.netcfg");
             var sites = vmPowershellCmdlets.GetAzureVNetSite(null);
             subNet = sites[0].Subnets.First().Name;
@@ -75,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => CleanupService(serviceName), "Cleanup service");
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
         public void CreateDeploymentWithILBAndRemoveILB()
         {
             try
@@ -104,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
         public void CreateDeploymentWithILBSubnetAndAddILBEndpoint()
         {
             try
@@ -150,7 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
         public void CreateDeploymentWithILBIPaddressAndSetILBEndpoint()
         {
             try
@@ -196,7 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
         public void ILBonExistingDeploymentAndDelete()
         {
             try
@@ -230,7 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the New-AzureInternalLoadBalancerConfig,Add,Get,Remove-AzureInternalLoadBalancer cmdlets")]
         public void ILBonExistingDeploymentWithVnet()
         {
             try
@@ -274,7 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Sequential), Owner("hylee"), Description("Test the Get/Set-AzurePublicIP cmdlets")]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the Get/Set-AzurePublicIP cmdlets")]
         public void PublicIpPerVMTest()
         {
             try
@@ -314,7 +309,47 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        private static PersistentVM CreateVMWithEndpointDataDiskAndPublicIP(string vmName, string endpointName, string disklabel1, string publicIpName, string serviceName, int localPort, int publicport)
+
+        // The dns name on publicIP is currently in beta, remove Ignore flag once feature is in public
+        [Ignore]
+        [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("derajen"), Description("Test the Get/Set-AzurePublicIP cmdlets with domainNameLabel")]
+        public void PublicIpDomainNameLabelVMTest()
+        {
+            try
+            {
+                string vmname = Utilities.GetUniqueShortName(vmNamePrefix);
+                string endpointName = Utilities.GetUniqueShortName("endpoint");
+                string disklabel1 = Utilities.GetUniqueShortName("disk");
+                string publicIpName = Utilities.GetUniqueShortName("publicIp");
+                string publicIpDomainNameLabel = Utilities.GetUniqueShortName("publicIpdns");
+
+                vmPowershellCmdlets.NewAzureService(serviceName, locationName);
+                var vm = CreateVMWithEndpointDataDiskAndPublicIP(vmname, endpointName, disklabel1, publicIpName, serviceName, LOCAL_PORT_NUMBER1, PUBLIC_PORT_NUMBER1, publicIpDomainNameLabel);
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm });
+
+                VerifyPublicIP(publicIpName, vm);
+
+                // Get azure VM
+                var virtualMachine = vmPowershellCmdlets.GetAzureVM(vmname, serviceName);
+                Assert.AreEqual(publicIpDomainNameLabel, virtualMachine.PublicIPDomainNameLabel);
+                Assert.AreEqual(string.Format("{0}.{1}.cloudapp.net", publicIpDomainNameLabel, serviceName), virtualMachine.PublicIPFqdns[0]);
+                Assert.AreEqual(string.Format("{0}.0.{1}.cloudapp.net", publicIpDomainNameLabel, serviceName), virtualMachine.PublicIPFqdns[1]);
+
+                pass = true;
+            }
+            catch (Exception ex)
+            {
+                pass = false;
+                Console.WriteLine(ex);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
+                throw ex;
+            }
+        }
+
+        private static PersistentVM CreateVMWithEndpointDataDiskAndPublicIP(string vmName, string endpointName, string disklabel1, string publicIpName, string serviceName, int localPort, int publicport, string publicIpDomainNameLabel = null)
         {
             var vm1 = Utilities.CreateIaaSVMObject(vmName, InstanceSize.Small, imageName, true, username, password);
             var endpointConfiginput = new AzureEndPointConfigInfo(AzureEndPointConfigInfo.ParameterSet.NoLB, TCP_PROTOCAL, localPort, publicport, endpointName, serviceName: serviceName);
@@ -323,7 +358,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             var dataDiskConfig1 = new AddAzureDataDiskConfig(DiskCreateOption.CreateNew, 128, disklabel1, 0);
             dataDiskConfig1.Vm = vm1;
             vm1 = vmPowershellCmdlets.AddAzureDataDisk(dataDiskConfig1);
-            vm1 = (PersistentVM)vmPowershellCmdlets.SetAzurePublicIp(publicIpName, vm1);
+            vm1 = (PersistentVM)vmPowershellCmdlets.SetAzurePublicIp(publicIpName, vm1, publicIpDomainNameLabel);
             return vm1;
         }
 

@@ -16,8 +16,10 @@ using System.Linq;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -53,6 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Chef Client bootstrap options in JSON format.")]
+        [ValidateNotNullOrEmpty]
+        public string BootstrapOptions { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Chef Server Node Runlist.")]
         [ValidateNotNullOrEmpty]
         public string RunList { get; set; }
@@ -81,6 +89,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "Flag to opt for auto chef-client update. Chef-client update is false by default.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AutoUpdateChefClient { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Delete the chef config files during update/uninstall extension. Default is false.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DeleteChefConfig { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -150,7 +164,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
+            bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
             string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
+            string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -202,17 +218,43 @@ validation_client_name 	\""{1}\""
 
             if (IsRunListEmpty)
             {
-                this.PublicConfiguration = string.Format("{{{0},{1}}}",
-                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                    string.Format(ClientRbTemplate, ClientConfig));
+                if (IsBootstrapOptionsEmpty)
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                        string.Format(ClientRbTemplate, ClientConfig));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                }
             }
             else
             {
-                this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
-                    string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                    string.Format(ClientRbTemplate, ClientConfig),
-                    string.Format(RunListTemplate, this.RunList));
+                if (IsBootstrapOptionsEmpty)
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(RunListTemplate, this.RunList));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}",
+                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                         string.Format(ClientRbTemplate, ClientConfig),
+                         string.Format(RunListTemplate, this.RunList),
+                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                }
             }
+
         }
 
         protected override void ValidateParameters()

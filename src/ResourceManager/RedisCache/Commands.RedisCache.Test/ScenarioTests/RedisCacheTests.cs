@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Testing;
+    using Microsoft.Azure.Test;
     using Xunit;
 
     public class RedisCacheTests : RedisCacheTestsBase
@@ -32,13 +32,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         public void TestSetNonExistingRedisCacheTest()
         {
             RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateExistingRedisCacheTest()
-        {
-            RunPowerShellTest("Test-CreateExistingRedisCacheTest");
         }
 
         [Fact]

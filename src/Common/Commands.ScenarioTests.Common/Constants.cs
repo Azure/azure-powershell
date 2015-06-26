@@ -38,6 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string Store = "Store";
 
+        public const string Sql = "Sql";
+
         public const string ServiceManagement = "ServiceManagement";
 
         public const string Resources = "Resources";
@@ -49,6 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string ManagedCache = "ManagedCache";
 
         public const string Scheduler = "Scheduler";
+
+        public const string KeyVault = "KeyVault";
 
         public const string Network = "Network";
 

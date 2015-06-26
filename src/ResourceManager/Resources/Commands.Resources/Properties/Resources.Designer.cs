@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the feature &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string FeatureNotFound {
+            get {
+                return ResourceManager.GetString("FeatureNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided file path &apos;{0}&apos; already exists, do you want to override it?.
         /// </summary>
         internal static string FileAlreadyExists {
@@ -133,11 +142,38 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Actions.
+        /// </summary>
+        internal static string InvalidActions {
+            get {
+                return ResourceManager.GetString("InvalidActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for AssignableScopes.
+        /// </summary>
+        internal static string InvalidAssignableScopes {
+            get {
+                return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource identifier..
         /// </summary>
         internal static string InvalidFormatOfResourceId {
             get {
                 return ResourceManager.GetString("InvalidFormatOfResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RoleDefinition Name is invalid.
+        /// </summary>
+        internal static string InvalidRoleDefinitionName {
+            get {
+                return ResourceManager.GetString("InvalidRoleDefinitionName", resourceCulture);
             }
         }
         
@@ -165,6 +201,60 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string InvalidTemplateIdentity {
             get {
                 return ResourceManager.GetString("InvalidTemplateIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resource(s) ....
+        /// </summary>
+        internal static string MoveResourcesMessage {
+            get {
+                return ResourceManager.GetString("MoveResourcesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; - the resource(s): &apos;{1}&apos;.
+        /// </summary>
+        internal static string MovingResources {
+            get {
+                return ResourceManager.GetString("MovingResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resources from different source resource groups is not allowed..
+        /// </summary>
+        internal static string MovingResourcesFromDifferentSourceResourceGroupsNotAllowed {
+            get {
+                return ResourceManager.GetString("MovingResourcesFromDifferentSourceResourceGroupsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resources from different subscriptions is not currently supported..
+        /// </summary>
+        internal static string MovingResourcesFromDifferentSubscriptionsIsNotAllowed {
+            get {
+                return ResourceManager.GetString("MovingResourcesFromDifferentSubscriptionsIsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving resources that are not in the default subscription is not allowed. Please select the subscription you want to move resources from and try again..
+        /// </summary>
+        internal static string MovingResourcesFromNonDefaultSubscriptionNotAllowed {
+            get {
+                return ResourceManager.GetString("MovingResourcesFromNonDefaultSubscriptionNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to move resource(s) into the resource group named &apos;{0}&apos; in the subscription named &apos;{1}&apos; and id &apos;{2}&apos; - the resource(s): &apos;{3}&apos;.
+        /// </summary>
+        internal static string MovingResourcesIntoNewSubscription {
+            get {
+                return ResourceManager.GetString("MovingResourcesIntoNewSubscription", resourceCulture);
             }
         }
         
@@ -205,6 +295,60 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find a registered feature named &apos;{0}&apos; for the resource provider &apos;{1}&apos;..
+        /// </summary>
+        internal static string RegisteredFeatureNotFound {
+            get {
+                return ResourceManager.GetString("RegisteredFeatureNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to register the provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string RegisteringProvider {
+            get {
+                return ResourceManager.GetString("RegisteringProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to register for the feature &apos;{0}&apos; of the provider &apos;{1}&apos;.
+        /// </summary>
+        internal static string RegisteringProviderFeature {
+            get {
+                return ResourceManager.GetString("RegisteringProviderFeature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering provider feature ....
+        /// </summary>
+        internal static string RegisterProviderFeatureMessage {
+            get {
+                return ResourceManager.GetString("RegisterProviderFeatureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering provider ....
+        /// </summary>
+        internal static string RegisterProviderMessage {
+            get {
+                return ResourceManager.GetString("RegisterProviderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing application ....
+        /// </summary>
+        internal static string RemoveApplication {
+            get {
+                return ResourceManager.GetString("RemoveApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -219,6 +363,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemoveResourceMessage {
             get {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove role definition with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveRoleDefinition {
+            get {
+                return ResourceManager.GetString("RemoveRoleDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing service principal ....
+        /// </summary>
+        internal static string RemoveServicePrincipal {
+            get {
+                return ResourceManager.GetString("RemoveServicePrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove application with object id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingApplication {
+            get {
+                return ResourceManager.GetString("RemovingApplication", resourceCulture);
             }
         }
         
@@ -246,6 +417,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingRoleAssignment {
             get {
                 return ResourceManager.GetString("RemovingRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove service principal with object id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemovingServicePrincipal {
+            get {
+                return ResourceManager.GetString("RemovingServicePrincipal", resourceCulture);
             }
         }
         
@@ -295,6 +475,33 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find the resource provider &apos;{0}&apos;..
+        /// </summary>
+        internal static string ResourceProviderNotFound {
+            get {
+                return ResourceManager.GetString("ResourceProviderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderRegistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not unregister the resource provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceProviderUnregistrationFailed {
+            get {
+                return ResourceManager.GetString("ResourceProviderUnregistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource type needs to be in the ResourceProvider/type format. For example Microsoft.Web/sites..
         /// </summary>
         internal static string ResourceTypeFormat {
@@ -304,11 +511,29 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find role definition with name &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Cannot find role definition with name &apos;{0}&apos;..
         /// </summary>
         internal static string RoleDefinitionNotFound {
             get {
                 return ResourceManager.GetString("RoleDefinitionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find role definition with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RoleDefinitionWithIdNotFound {
+            get {
+                return ResourceManager.GetString("RoleDefinitionWithIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with object id &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
             }
         }
         
@@ -318,6 +543,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string StorageAccountNameNeedsToBeSpecified {
             get {
                 return ResourceManager.GetString("StorageAccountNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A subscription with the Id &apos;{0}&apos; was not found. If this is a newly created subscription you will need to re-download your subscriptions..
+        /// </summary>
+        internal static string SubscriptionWithTheSpecifiedIdNotFount {
+            get {
+                return ResourceManager.GetString("SubscriptionWithTheSpecifiedIdNotFount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A subscription with the name &apos;{0}&apos; was not found. If this is a newly created subscription you will need to re-download your subscriptions..
+        /// </summary>
+        internal static string SubscriptionWithTheSpecifiedNameNotFount {
+            get {
+                return ResourceManager.GetString("SubscriptionWithTheSpecifiedNameNotFount", resourceCulture);
             }
         }
         
@@ -336,6 +579,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnableToFindGallery {
             get {
                 return ResourceManager.GetString("UnableToFindGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to unregister the provider &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnregisteringProvider {
+            get {
+                return ResourceManager.GetString("UnregisteringProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistering provider ....
+        /// </summary>
+        internal static string UnregisterProviderMessage {
+            get {
+                return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
             }
         }
     }

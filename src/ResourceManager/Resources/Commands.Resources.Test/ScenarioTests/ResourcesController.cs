@@ -12,19 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Testing;
-using System;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -39,11 +42,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public FeatureClient FeatureClient { get; private set; }
+
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public EventsClient EventsClient { get; private set; }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -134,16 +140,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
-            EventsClient = GetEventsClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            this.FeatureClient = this.GetFeatureClient();
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                EventsClient,
                 AuthorizationManagementClient,
-                GraphClient);
+                GraphClient,
+                this.FeatureClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -179,6 +186,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
+        private FeatureClient GetFeatureClient()
+        {
+            return TestBase.GetServiceClient<FeatureClient>(this.csmTestFactory);
+        }
+
         private ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
@@ -194,10 +206,59 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private EventsClient GetEventsClient()
+        /// <summary>
+        /// The test http client helper factory.
+        /// </summary>
+        private class TestHttpClientHelperFactory : HttpClientHelperFactory
         {
-            return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
-        }
+            /// <summary>
+            /// The subscription cloud credentials.
+            /// </summary>
+            private readonly SubscriptionCloudCredentials credential;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
+            /// </summary>
+            /// <param name="credentials"></param>
+            public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
+            {
+                this.credential = credentials;
+            }
+
+            /// <summary>
+            /// Creates new instances of the <see cref="HttpClientHelper"/> class.
+            /// </summary>
+            /// <param name="credentials">The credentials.</param>
+            /// <param name="headerValues">The headers.</param>
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+            {
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues);
+            }
+
+            /// <summary>
+            /// An implementation of the <see cref="HttpClientHelper"/> abstract class.
+            /// </summary>
+            private class HttpClientHelperImpl : HttpClientHelper
+            {
+                /// <summary>
+                /// Initializes new instances of the <see cref="HttpClientHelperImpl"/> class.
+                /// </summary>
+                /// <param name="credentials">The credentials.</param>
+                /// <param name="headerValues">The headers.</param>
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+                    : base(credentials: credentials, headerValues: headerValues)
+                {
+                }
+
+                /// <summary>
+                /// Creates an <see cref="HttpClient"/>
+                /// </summary>
+                /// <param name="primaryHandlers">The handlers that will be added to the top of the chain.</param>
+                public override HttpClient CreateHttpClient(params DelegatingHandler[] primaryHandlers)
+                {
+                    return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
+                }
+            }
+        }
     }
 }

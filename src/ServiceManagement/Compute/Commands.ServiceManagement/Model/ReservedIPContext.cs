@@ -36,5 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string ServiceName { get; set; }
 
         public string DeploymentName { get; set; }
+
+        public string VirtualIPName { get; set; }
     }
 }

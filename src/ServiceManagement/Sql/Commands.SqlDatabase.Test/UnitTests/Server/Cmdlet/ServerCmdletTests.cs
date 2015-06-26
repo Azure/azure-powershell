@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet;
@@ -33,6 +33,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
     [TestClass]
     public class ServerCmdletTests : TestBase
     {
+        // String ID for server version 2.
+        public const string ServerVersion2 = "2.0";
+
+        // String ID for server version 12.
+        public const string ServerVersion12 = "12.0";
+
+        // The default server version
+        public const string DefaultServerVersion = ServerVersion12;
+
         [TestCleanup]
         public void CleanupTest()
         {
@@ -40,16 +49,19 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
             MockServerHelper.SaveDefaultSessionCollection();
         }
 
-        private static void VerifyServer(SqlDatabaseServerContext server, string adminLogin, string location)
+        /// <summary>
+        /// Verifys the server object to make sure the fields match what is provided
+        /// </summary>
+        /// <param name="server">The server object to validate</param>
+        /// <param name="adminLogin">The expected administration login</param>
+        /// <param name="location">The expected server location</param>
+        /// <param name="version">The expected server verions</param>
+        /// <param name="state">The expected state of the server</param>
+        private static void VerifyServer(SqlDatabaseServerContext server, string adminLogin, string location, string version, string state)
         {
             Assert.AreEqual(adminLogin, server.AdministratorLogin, "Expecting server login to match.");
             Assert.AreEqual(location, server.Location, "Expecting matching location.");
             Assert.AreEqual(10, server.ServerName.Length, "Expecting a valid server name.");
-        }
-
-        private static void VerifyServer(SqlDatabaseServerContext server, string adminLogin, string location, string version, string state)
-        {
-            VerifyServer(server, adminLogin, location);
             Assert.AreEqual(version, server.Version, "Server version doesn't match");
             Assert.AreEqual(state, server.State, "Server state does not match");
         }
@@ -190,14 +202,18 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                     VerifyServer(
                         server,
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
-                        (string)powershell.Runspace.SessionStateProxy.GetVariable("location"));
+                        (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
+                        ServerVersion12,
+                        "Ready");
 
                     SqlDatabaseServerContext server2 = newServerResult2.Single().BaseObject as SqlDatabaseServerContext;
                     Assert.IsNotNull(server2, "Expecting a SqlDatabaseServerContext object");
                     VerifyServer(
                         server,
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
-                        (string)powershell.Runspace.SessionStateProxy.GetVariable("location"));
+                        (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
+                        ServerVersion12,
+                        "Ready");
 
                     // Validate Get-AzureSqlDatabaseServer results
                     server = getServerResult.Single().BaseObject as SqlDatabaseServerContext;
@@ -206,7 +222,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                         server,
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
-                        "2.0",
+                        ServerVersion12,
                         "Ready");
 
                     server = setServerResult.Single().BaseObject as SqlDatabaseServerContext;
@@ -215,7 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                         server,
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
-                        "2.0",
+                        ServerVersion12,
                         "Ready");
 
                     server2 = setServerResult2.Single().BaseObject as SqlDatabaseServerContext;
@@ -224,7 +240,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                         server2,
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
                         (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
-                        "2.0",
+                        ServerVersion12,
                         "Ready");
 
                     // Validate Remove-AzureSqlDatabaseServer results
@@ -319,7 +335,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                 VerifyServer(
                     server,
                     (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
-                    (string)powershell.Runspace.SessionStateProxy.GetVariable("location"));
+                    (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
+                    ServerVersion2,
+                    "Ready");
 
 
                 // Validate Get-AzureSqlDatabaseServer results
@@ -329,8 +347,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
                     server,
                     (string)powershell.Runspace.SessionStateProxy.GetVariable("login"),
                     (string)powershell.Runspace.SessionStateProxy.GetVariable("location"),
-                    "2.0",
-                    null);
+                    ServerVersion2,
+                    "Ready");
 
                 powershell.Streams.ClearStreams();
             }

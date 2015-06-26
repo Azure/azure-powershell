@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -170,26 +171,26 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return job;
         }
 
-        public virtual HttpStatusCode StartPSJob(string resourceGroupName, string jobName)
+        public virtual HttpStatusCode StartPSJob(string resourceGroupName, string jobName, JobStartParameters parameter)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, jobName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, jobName, parameter);
 
             return response.StatusCode;
         }
 
-        public virtual HttpStatusCode StartPSJob(JobParametersBase parameter)
+        public virtual HttpStatusCode StartPSJob(StartPSJobParameter parameter)
         {
             if (parameter == null)
             {
                 throw new ArgumentNullException("parameter");
             }
 
-            return StartPSJob(parameter.ResourceGroupName, parameter.JobName);
+            return StartPSJob(parameter.ResourceGroupName, parameter.JobName, parameter.StartParameters);
         }
 
         public virtual HttpStatusCode StopPSJob(string resourceGroupName, string jobName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, jobName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, jobName);
 
             return response.StatusCode;
         }
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSJob(string resourceGroupName, string jobName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, jobName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, jobName);
 
             return response.StatusCode;
         }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -19,13 +20,13 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Http;
 
-namespace Microsoft.Azure.Common.Extensions.Models
+namespace Microsoft.Azure.Common.Authentication.Models
 {
-    public class RecordingTracingInterceptor : ICloudTracingInterceptor
+    public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
-        public RecordingTracingInterceptor()
+        public RecordingTracingInterceptor(ConcurrentQueue<string> queue)
         {
-            MessageQueue = new ConcurrentQueue<string>();
+            MessageQueue = queue;
         }
 
         public ConcurrentQueue<string> MessageQueue { get; private set; }
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Common.Extensions.Models
 
         public void Information(string message)
         {
-            // Ignore    
+            MessageQueue.Enqueue(message);
         }
 
         public void Configuration(string source, string name, string value)
@@ -80,14 +81,14 @@ namespace Microsoft.Azure.Common.Extensions.Models
         public static void AddToContext(RecordingTracingInterceptor interceptor)
         {
             RemoveFromContext(interceptor);
-            CloudContext.Configuration.Tracing.AddTracingInterceptor(interceptor);
+            TracingAdapter.AddTracingInterceptor(interceptor);
         }
 
         public static void RemoveFromContext(RecordingTracingInterceptor interceptor)
         {
             try
             {
-                CloudContext.Configuration.Tracing.RemoveTracingInterceptor(interceptor);
+                TracingAdapter.RemoveTracingInterceptor(interceptor);
             }
             catch
             {

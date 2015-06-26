@@ -150,6 +150,9 @@
   <data name="RemoveAzureDedicatdCircuitWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Dedicated Circuit with service key '{0}'?</value>
   </data>
+  <data name="SetAzureDedicatedCircuitBandwidthWarning" xml:space="preserve">
+    <value>Are you sure you want to update the bandwidth of the Dedicated Circuit with service key '{0}' to '{1}'?</value>
+  </data>
   <data name="RemoveAzureDedicatedCircuitFailed" xml:space="preserve">
     <value>Remove-AzureDedicatedCircuit Operation failed.</value>
   </data>
@@ -180,6 +183,9 @@
   <data name="RemoveAzureDedicatedCircuitMessage" xml:space="preserve">
     <value>Removing Dedicated Circuit</value>
   </data>
+  <data name="SetAzureDedicatedCircuitBandwidthMessage" xml:space="preserve">
+    <value>Updating Dedicated Circuit Bandwidth</value>
+  </data>
   <data name="RemoveAzureDedicatedCircuitSucceeded" xml:space="preserve">
     <value>Successfully removed Azure Dedicated Circuit with Service Key {0}.</value>
   </data>
@@ -188,5 +194,14 @@
   </data>
   <data name="VlanIdRequired" xml:space="preserve">
     <value>A value for the VLan Id has to be provided.</value>
+  </data>
+  <data name="NewAzureCrossConnectionMessage" xml:space="preserve">
+    <value>Provisioning Cross Connection for service key {0}</value>
+  </data>
+  <data name="NewAzureCrossConnectionSucceeded" xml:space="preserve">
+    <value>Successfully provisioned cross connection</value>
+  </data>
+  <data name="NewAzureCrossConnectionWarning" xml:space="preserve">
+    <value>Are you sure you want to provision a cross connection for service key {0}?</value>
   </data>
 </root>

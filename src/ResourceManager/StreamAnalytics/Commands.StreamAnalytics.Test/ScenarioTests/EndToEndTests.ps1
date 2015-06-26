@@ -78,6 +78,13 @@ function Test-TestStreamingAnalyticsE2E
 	$expected = 1
 	Assert-AreEqual $expected $actual.CurrentCount
 
+	#Get Diagnostics
+	$actual = Get-AzureStreamAnalyticsInput -JobName $jobName -ResourceGroupName $resourceGroup
+	Assert-NotNull $actual
+	Assert-NotNull $actual.Properties.Diagnostics
+	Assert-NotNull $actual.Properties.Diagnostics.Conditions
+	Assert-NotNull $actual.Properties.Diagnostics.Conditions.Message
+
 	# Stop Job
     $actual = Stop-AzureStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup	
 	$expected = "True"

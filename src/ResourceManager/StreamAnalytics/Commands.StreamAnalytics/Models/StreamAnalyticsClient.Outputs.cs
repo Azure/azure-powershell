@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSOutput> outputs = new List<PSOutput>();
 
-            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName, new OutputListParameters("*"));
 
             if (response != null && response.Value != null)
             {
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public virtual HttpStatusCode RemovePSOutput(string resourceGroupName, string jobName, string outputName)
         {
-            OperationResponse response = StreamAnalyticsManagementClient.Outputs.Delete(resourceGroupName, jobName, outputName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.Outputs.Delete(resourceGroupName, jobName, outputName);
 
             return response.StatusCode;
         }
