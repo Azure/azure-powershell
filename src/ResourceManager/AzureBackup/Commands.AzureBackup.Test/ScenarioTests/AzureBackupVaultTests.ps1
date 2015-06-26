@@ -28,7 +28,7 @@ function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
 
 function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
 {
-	$freshVaultName = "storagetestrn2";
+	$freshVaultName = "storagetestrn";
 
 	Assert-Throws { New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $freshVaultName -Region $Location };
 
@@ -47,7 +47,6 @@ function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowExcepti
 
 function Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException
 {
-	# TODO: Check for exception based on current storage type - obtained by vault properties
 	$vault = Get-AzureBackupVault -Name $ResourceName;
 
 	Assert-Throws { Set-AzureBackupVaultStorageType $vault -Type GeoRedundant }
