@@ -56,7 +56,7 @@ Get test secret name
 #>
 function Get-SecretName([string]$suffix)
 {
-    return 'pshts-' + $global:testns+ '-' + $suffix
+    return 'pshts-' + $global:testns + '-' + $suffix
 }
 
 
@@ -237,6 +237,18 @@ function Run-SecretTest ([ScriptBlock] $test, [string] $testName)
    finally 
    {
      Cleanup-SingleSecretTest *>> "$testName.debug_log"
+   }
+}
+
+function Run-VaultTest ([ScriptBlock] $test, [string] $testName)
+{   
+   try 
+   {
+     Run-Test $test $testName *>> "$testName.debug_log"
+   }
+   finally 
+   {
+     
    }
 }
 
