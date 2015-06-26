@@ -19,6 +19,8 @@
         * New-AzureVirtualNetworkGateway parameter changes
         * Removed command Resize-AzureVirtualNetworkGateway
         * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
+* Azure Storage changes
+    * Fix the bug on aliases Get-AzureStorageContainerAcl, Start-CopyAzureStorageBlob and Stop-CopyAzureStorageBlob
 * Azure RedisCache cmdlets 
     * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
     * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513
