@@ -72,49 +72,52 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            ExecuteClientAction(() =>
             {
-                if (Status)
+                if (!string.IsNullOrEmpty(this.Name))
                 {
-                    var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
-                    WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName, this.Name));
+                    if (Status)
+                    {
+                        var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
+                        WriteObject(result.ToPSVirtualMachineInstanceView(this.ResourceGroupName, this.Name));
+                    }
+                    else
+                    {
+                        var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
+                        var psResult = Mapper.Map<PSVirtualMachine>(result.VirtualMachine);
+                        psResult = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psResult);
+                        WriteObject(psResult);
+                    }
                 }
                 else
                 {
-                    var result = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-                    var psResult = Mapper.Map<PSVirtualMachine>(result.VirtualMachine);
-                    psResult = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psResult);
-                    WriteObject(psResult);
-                }
-            }
-            else
-            {
-                VirtualMachineListResponse result = null;
+                    VirtualMachineListResponse result = null;
 
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
-                {
-                    result = this.VirtualMachineClient.List(this.ResourceGroupName);
-                }
-                else if (this.NextLink != null)
-                {
-                    result = this.VirtualMachineClient.ListNext(this.NextLink.ToString());
-                }
-                else
-                {
-                    var listParams = new ListParameters();
-                    result = this.VirtualMachineClient.ListAll(listParams);
-                }
+                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                    {
+                        result = this.VirtualMachineClient.List(this.ResourceGroupName);
+                    }
+                    else if (this.NextLink != null)
+                    {
+                        result = this.VirtualMachineClient.ListNext(this.NextLink.ToString());
+                    }
+                    else
+                    {
+                        var listParams = new ListParameters();
+                        result = this.VirtualMachineClient.ListAll(listParams);
+                    }
 
-                var psResultList = new List<PSVirtualMachine>();
-                foreach (var item in result.VirtualMachines)
-                {
-                    var psItem = Mapper.Map<PSVirtualMachine>(item);
-                    psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psItem);
-                    psResultList.Add(psItem);
-                }
+                    var psResultList = new List<PSVirtualMachine>();
+                    foreach (var item in result.VirtualMachines)
+                    {
+                        var psItem = Mapper.Map<PSVirtualMachine>(item);
+                        psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psItem);
+                        psResultList.Add(psItem);
+                    }
 
-                WriteObject(psResultList, true);
-            }
+                    WriteObject(psResultList, true);
+                }
+            });
         }
     }
 }

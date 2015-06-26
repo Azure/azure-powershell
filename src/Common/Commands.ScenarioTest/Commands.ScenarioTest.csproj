@@ -202,10 +202,13 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureLocation.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunServiceManagementCloudExceptionTests.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AzureVMTests\TestGetAzureVM.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestGetAzureLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestGetAzureVM.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SchedulerTests\TestSchedulerEndToEnd.json">
@@ -289,8 +292,8 @@
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
-    <Compile Include="ServiceManagement\GetLocationTests.cs" />
-    <Compile Include="ServiceManagement\GetVMTests.cs" />
+    <Compile Include="ServiceManagement\ScenarioTests.cs" />
+    <Compile Include="ServiceManagement\ServiceManagementTests.cs" />
     <Compile Include="StorageTests\StorageContainerTest.cs" />
     <Compile Include="StorageTests\StorageContextTest.cs" />
     <Compile Include="StoreTests\StoreTests.cs" />
@@ -414,7 +417,7 @@
     <None Include="Resources\CloudService\Cache\mc.tgz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\ServiceManagement\AzureVMTests.ps1">
+    <None Include="Resources\ServiceManagement\ServiceManagementTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\ServiceManagement\Common.ps1">

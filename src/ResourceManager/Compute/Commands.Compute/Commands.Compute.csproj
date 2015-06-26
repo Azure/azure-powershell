@@ -189,7 +189,6 @@
     <Compile Include="Common\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="Common\SourceImageReferenceExtensions.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
