@@ -12,59 +12,65 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System.Management.Automation;
+using System.Security;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationWebhookTest : TestBase
+    public class NewAzureAutomationConnectionTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private SetAzureAutomationWebhook cmdlet;
+        private NewAzureAutomationConnection cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new SetAzureAutomationWebhook
-            {
-                AutomationClient = this.mockAutomationClient.Object,
-                CommandRuntime = this.mockCommandRuntime
-            };
+            this.cmdlet = new NewAzureAutomationConnection
+                              {
+                                  AutomationClient = this.mockAutomationClient.Object,
+                                  CommandRuntime = this.mockCommandRuntime
+                              };
         }
 
         [TestMethod]
-        public void SetAzureAutomationWebhookToDisabledSuccessful()
+        public void NewAzureAutomationConnectionByNameSuccessfull()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
-            string accountName = "account";
-            string name = "webhookName";
-          
-            this.mockAutomationClient.Setup(
-                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false));
+            string accountName = "automation";
+            string connectionName = "connection";
+            string connectionTypeName = "connectiontype";
+            string password = "password";
+            string description = "desc";
 
-            // Test
+            this.mockAutomationClient.Setup(
+                f => f.CreateConnection(resourceGroupName, accountName, connectionName, connectionTypeName, null, description));
+
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = name;
-            this.cmdlet.IsEnabled = false;
-            this.cmdlet.Parameters = null;
+            this.cmdlet.Name = connectionName;
+            this.cmdlet.Description = description;
+            this.cmdlet.ConnectionTypeName = connectionTypeName;
+            this.cmdlet.ConnectionFieldValues = null;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(
-                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false),
-                Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateConnection(resourceGroupName, accountName, connectionName, connectionTypeName, null, description), Times.Once());
         }
     }
 }

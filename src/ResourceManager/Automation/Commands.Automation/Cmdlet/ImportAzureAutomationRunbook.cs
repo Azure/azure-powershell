@@ -22,19 +22,20 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation schedules for a given account.
+    /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
-    [OutputType(typeof (Runbook))]
-    public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsData.Import, "AzureAutomationRunbook")]
+    [OutputType(typeof(Runbook))]
+    public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
+        
         /// <summary>
-        /// Gets or sets the runbook name
+        /// Gets or sets the path of the runbook script
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
-        [Alias("RunbookName")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook file path.")]
+        [Alias("SourcePath")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook description
@@ -69,17 +70,35 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public bool? LogVerbose { get; set; }
 
         /// <summary>
+        /// Gets or sets the switch parameter to publish the configuration
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Import the runbook in published state.")]
+        public SwitchParameter Published { get; set; }
+        
+        /// <summary>
+        /// Gets or sets switch parameter to confirm overwriting of existing runbook definition.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing runbook definition.")]
+        public SwitchParameter Force { get; set; }
+       
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Runbook runbook = null;
+            var runbook = this.AutomationClient.ImportRunbook(
+                    this.ResourceGroupName, 
+                    this.AutomationAccountName, 
+                    this.ResolvePath(this.Path),
+                    this.Description,
+                    this.Tags, 
+                    this.Type, 
+                    this.LogProgress, 
+                    this.LogVerbose,
+                    this.Published.IsPresent,
+                    this.Force.IsPresent);
 
-            // ByRunbookName
-            runbook = this.AutomationClient.CreateRunbookByName(
-                    this.ResourceGroupName, this.AutomationAccountName, this.Name, this.Description, this.Tags, this.Type, this.LogProgress, this.LogVerbose, false);
-            
             this.WriteObject(runbook);
         }
     }

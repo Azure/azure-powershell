@@ -130,7 +130,7 @@
     <Compile Include="Cmdlet\GetAzureAutomationJobOutput.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\GetAzureAutomationRunbookDefinition.cs" />
+    <Compile Include="Cmdlet\ExportAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationVariable.cs" />
@@ -162,7 +162,7 @@
     <Compile Include="Cmdlet\SetAzureAutomationCredential.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationRunbook.cs" />
-    <Compile Include="Cmdlet\SetAzureAutomationRunbookDefinition.cs" />
+    <Compile Include="Cmdlet\ImportAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationVariable.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationWebhook.cs" />
@@ -220,7 +220,6 @@
     <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Model\BaseProperties.cs" />
     <Compile Include="Model\Runbook.cs" />
-    <Compile Include="Model\RunbookDefinition.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\ScheduleFrequency.cs" />
     <Compile Include="Model\Variable.cs" />

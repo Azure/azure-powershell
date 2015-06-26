@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.State = runbook.Properties.State;
             this.JobCount = runbook.Properties.JobCount;
             this.RunbookType = runbook.Properties.RunbookType;
+            this.LastModifiedBy = runbook.Properties.LastModifiedBy;
             this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in runbook.Tags)
             {
@@ -118,6 +119,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets a value indicating whether log progress is enabled.
         /// </summary>
         public bool LogProgress { get; set; }
+
+        /// <summary>
+        /// Gets or sets a last modified by.
+        /// </summary>
+        public string LastModifiedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the state of runbook.

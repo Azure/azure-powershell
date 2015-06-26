@@ -21,6 +21,7 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
-            Requires.Argument("AutomationAccountName", automationAccountName).ValidAutomationAccountName();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
 
             IDictionary<string, string> accountTags = null;
             if (tags != null)
@@ -437,12 +438,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Runbook CreateRunbookByName(string resourceGroupName, string automationAccountName, string runbookName, string description,
-            IDictionary tags)
+            IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool overwrite)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var runbookModel = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
-                if (runbookModel != null)
+                if (runbookModel != null && overwrite == false)
                 {
                     throw new ResourceCommonException(typeof (Runbook),
                         string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
@@ -454,7 +455,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 var rdcprop = new RunbookCreateOrUpdateDraftProperties()
                 {
                     Description = description,
-                    RunbookType = RunbookTypeEnum.Script,
+                    RunbookType = String.IsNullOrWhiteSpace(type) ? RunbookTypeEnum.Script : (0 == string.Compare(type, Constants.RunbookType.PowerShellWorkflow, StringComparison.OrdinalIgnoreCase)) ? RunbookTypeEnum.Script : type,
+                    LogProgress =  logProgress.HasValue && logProgress.Value,
+                    LogVerbose = logVerbose.HasValue && logVerbose.Value,
                     Draft = new RunbookDraft(),
                 };
 
@@ -462,7 +465,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     Name = runbookName,
                     Properties = rdcprop,
-                    Tags = runbooksTags
+                    Tags = runbooksTags,
+                    Location = GetAutomationAccount(resourceGroupName, automationAccountName).Location
                 };
 
                 this.automationManagementClient.Runbooks.CreateOrUpdateWithDraft(resourceGroupName, automationAccountName, rdcparam);
@@ -471,22 +475,37 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public Runbook CreateRunbookByPath(string resourceGroupName, string automationAccountName, string runbookPath, string description,
-            IDictionary tags)
+        public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite)
         {
+
+            var fileExtension = Path.GetExtension(runbookPath);
+
+            if (0 !=
+                string.Compare(fileExtension, Constants.SupportedFileExtensions.PowerShellScript,
+                    StringComparison.OrdinalIgnoreCase) &&
+                0 !=
+                string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ResourceCommonException(typeof(Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.InvalidImportFile, runbookPath));
+            }
+
+            // if graph runbook make sure type is not null and has right value
+            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
+                && string.IsNullOrWhiteSpace(type) 
+                && (0 != string.Compare(type, Constants.RunbookType.Graph,StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new ResourceCommonException(typeof(Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookTypeForExtension, fileExtension));
+            }
+
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
 
             using (var request = new RequestSettings(this.automationManagementClient))
             {
-                var runbookModel = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
-                if (runbookModel != null)
-                {
-                    throw new ResourceCommonException(typeof (Runbook),
-                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyExists, runbookName));
-                }
-
-                var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags);
+                var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
                 var rduprop = new RunbookDraftUpdateParameters()
                 {
@@ -495,6 +514,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 };
 
                 this.automationManagementClient.RunbookDraft.Update(resourceGroupName, automationAccountName, rduprop);
+
+                if (published)
+                {
+                    runbook = this.PublishRunbook(resourceGroupName, automationAccountName, runbookName);
+                }
 
                 return runbook;
             }
@@ -559,40 +583,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public RunbookDefinition UpdateRunbookDefinition(string resourceGroupName, string automationAccountName, string runbookName,
-            string runbookPath, bool overwrite)
+        public DirectoryInfo ExportRunbook(string resourceGroupName, string automationAccountName,
+            string runbookName, bool? isDraft, string outputFolder, bool overwrite)
         {
-            using (var request = new RequestSettings(this.automationManagementClient))
-            {
-                var runbook = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
-                if (runbook == null)
-                {
-                    throw new ResourceNotFoundException(typeof (Runbook),
-                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookNotFound, runbookName));
-                }
-
-                if ((0 !=
-                     String.Compare(runbook.Properties.State, RunbookState.Published, CultureInfo.InvariantCulture,
-                         CompareOptions.IgnoreCase) && overwrite == false))
-                {
-                    throw new ResourceCommonException(typeof (Runbook),
-                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookAlreadyHasDraft, runbookName));
-                }
-
-                this.automationManagementClient.RunbookDraft.Update(resourceGroupName, automationAccountName,
-                    new RunbookDraftUpdateParameters {Name = runbookName, Stream = File.ReadAllText(runbookPath)});
-
-                var content =
-                    this.automationManagementClient.RunbookDraft.Content(resourceGroupName, automationAccountName, runbookName).Stream;
-
-                return new RunbookDefinition(resourceGroupName, automationAccountName, runbook, content, Constants.Draft);
-            }
-        }
-
-        public IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string resourceGroupName, string automationAccountName,
-            string runbookName, bool? isDraft)
-        {
-            var ret = new List<RunbookDefinition>();
+            DirectoryInfo ret = null;
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var runbook = this.TryGetRunbookModel(resourceGroupName, automationAccountName, runbookName);
@@ -623,11 +617,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // if no slot specified return both draft and publish content
                 if (false == isDraft.HasValue)
                 {
-                    if (false == String.IsNullOrEmpty(draftContent))
-                        ret.Add(new RunbookDefinition(resourceGroupName, automationAccountName, runbook, draftContent, Constants.Draft));
                     if (false == String.IsNullOrEmpty(publishedContent))
-                        ret.Add(new RunbookDefinition(resourceGroupName, automationAccountName, runbook, publishedContent,
-                            Constants.Published));
+                    {
+                        ret = WriteRunbookToFile(outputFolder, runbook.Name, publishedContent, runbook.Properties.RunbookType,
+                               overwrite);
+                    }
+                    else if (false == String.IsNullOrEmpty(draftContent))
+                    {
+                        ret = WriteRunbookToFile(outputFolder, runbook.Name, draftContent, runbook.Properties.RunbookType,
+                                overwrite);
+                    }
                 }
                 else
                 {
@@ -639,7 +638,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 string.Format(CultureInfo.CurrentCulture, Resources.RunbookHasNoDraftVersion,
                                     runbookName));
                         if (false == String.IsNullOrEmpty(draftContent))
-                            ret.Add(new RunbookDefinition(resourceGroupName, automationAccountName, runbook, draftContent, Constants.Draft));
+                            ret = WriteRunbookToFile(outputFolder, runbook.Name, draftContent, runbook.Properties.RunbookType,
+                                overwrite);
                     }
                     else
                     {
@@ -649,13 +649,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     runbookName));
 
                         if (false == String.IsNullOrEmpty(publishedContent))
-                            ret.Add(new RunbookDefinition(resourceGroupName, automationAccountName, runbook, publishedContent,
-                                Constants.Published));
+                            ret = WriteRunbookToFile(outputFolder, runbook.Name, publishedContent, runbook.Properties.RunbookType,
+                                overwrite);
                     }
                 }
-
-                return ret;
             }
+
+            return ret;
         }
 
         public Runbook PublishRunbook(string resourceGroupName, string automationAccountName, string runbookName)
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             var existingVariable = this.GetVariable(variable.ResourceGroupName, variable.AutomationAccountName, variable.Name);
 
-            if (existingVariable.Encrypted != variable.Encrypted)
+            if (existingVariable.Encrypted != variable.Encrypted && updateFields == VariableUpdateFields.OnlyValue)
             {
                 throw new ResourceNotFoundException(typeof (Variable),
                     string.Format(CultureInfo.CurrentCulture, Resources.VariableEncryptionCannotBeChanged, variable.Name,
@@ -1702,6 +1702,34 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             }
             return connection;
+        }
+
+        private DirectoryInfo WriteRunbookToFile(string outputFolder, string runbookName, string content, string runbookType, bool overwriteExistingFile)
+        {
+            string outputFolderFullPath = this.GetCurrentDirectory();
+
+            if (!string.IsNullOrEmpty(outputFolder))
+            {
+                outputFolderFullPath = this.ValidateAndGetFullPath(outputFolder);
+            }
+
+            var fileExtension = (0 == string.Compare(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
+            
+            fileExtension = "." + fileExtension;
+
+            var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
+
+            // file exists and overwrite Not specified
+            if (File.Exists(outputFilePath) && !overwriteExistingFile)
+            {
+                throw new ArgumentException(
+                        string.Format(CultureInfo.CurrentCulture, Resources.RunbookFileAlreadyExists, outputFilePath));
+            }
+
+            // Write to the file
+            this.WriteFile(outputFilePath, content);
+
+            return new DirectoryInfo(runbookName + fileExtension);
         }
 
         #endregion

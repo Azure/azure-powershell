@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,20 +24,20 @@ using Moq;
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationWebhookTest : TestBase
+    public class UnregisterAzureAutomationScheduledRunbookTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private GetAzureAutomationWebhook cmdlet;
+        private UnregisterAzureAutomationScheduledRunbook cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new GetAzureAutomationWebhook
+            this.cmdlet = new UnregisterAzureAutomationScheduledRunbook
             {
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
@@ -44,24 +45,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetAzureAutomationWebhookByNameSuccessful()
+        public void UnregisterAzureAutomationScheduledRunbookByIdSuccessfull()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
-            string accountName = "account";
-            string webhookName = "webhookName";
-            this.cmdlet.SetParameterSet("ByName");
+            string accountName = "automation";
+            var jobScheduleId = new Guid();
 
-            this.mockAutomationClient.Setup(f => f.GetWebhook(resourceGroupName, accountName, webhookName));
+            this.mockAutomationClient.Setup(f => f.UnregisterScheduledRunbook(resourceGroupName, accountName, jobScheduleId));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = webhookName;
+            this.cmdlet.JobScheduleId = jobScheduleId;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByJobScheduleId);
+            this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetWebhook(resourceGroupName, accountName, webhookName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.UnregisterScheduledRunbook(resourceGroupName, accountName, jobScheduleId), Times.Once());
+        }
+
+        [TestMethod]
+        public void UnregisterAzureAutomationScheduledRunbookByRunbookNameAndScheduleNameSuccessfull()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string runbookName = "runbook";
+            string scheduleName = "schedule";
+
+            this.mockAutomationClient.Setup(f => f.UnregisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName));
+
+            // Test
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.RunbookName = runbookName;
+            this.cmdlet.ScheduleName = scheduleName;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByRunbookNameAndScheduleName);
+            this.cmdlet.Force = true;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.UnregisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName), Times.Once());
         }
     }
 }

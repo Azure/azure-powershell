@@ -12,59 +12,69 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System.Management.Automation;
+using System.Security;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationWebhookTest : TestBase
+    public class NewAzureAutomationCertificateTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private SetAzureAutomationWebhook cmdlet;
+        private NewAzureAutomationCertificate cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new SetAzureAutomationWebhook
-            {
-                AutomationClient = this.mockAutomationClient.Object,
-                CommandRuntime = this.mockCommandRuntime
-            };
+            this.cmdlet = new NewAzureAutomationCertificate
+                              {
+                                  AutomationClient = this.mockAutomationClient.Object,
+                                  CommandRuntime = this.mockCommandRuntime
+                              };
         }
 
         [TestMethod]
-        public void SetAzureAutomationWebhookToDisabledSuccessful()
+        public void NewAzureAutomationCertificateByNameSuccessfull()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
-            string accountName = "account";
-            string name = "webhookName";
-          
-            this.mockAutomationClient.Setup(
-                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false));
+            string accountName = "automation";
+            string certificateName = "certificate";
+            string path = "testCert.pfx";
+            string password = "password";
+            string description = "desc";
 
-            // Test
+            var secureString = new SecureString();
+            Array.ForEach(password.ToCharArray(), secureString.AppendChar);
+            secureString.MakeReadOnly();
+
+            this.mockAutomationClient.Setup(
+                f => f.CreateCertificate(resourceGroupName, accountName, certificateName, path, secureString, description, false));
+
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = name;
-            this.cmdlet.IsEnabled = false;
-            this.cmdlet.Parameters = null;
+            this.cmdlet.Name = certificateName;
+            this.cmdlet.Description = description;
+            this.cmdlet.Path = path;
+            this.cmdlet.Password = secureString;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(
-                f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false),
-                Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateCertificate(resourceGroupName, accountName, certificateName, path, secureString, description, false), Times.Once());
         }
     }
 }

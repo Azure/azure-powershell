@@ -12,31 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
-using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class NewAzureAutomationWebhookTest : TestBase
+    public class GetAzureAutomationCertificateTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private NewAzureAutomationWebhook cmdlet;
+        private GetAzureAutomationCertificate cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new NewAzureAutomationWebhook
+            this.cmdlet = new GetAzureAutomationCertificate
                               {
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
@@ -44,32 +47,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void NewAzureAutomationWebhookByNameSuccessful()
+        public void GetAzureAutomationCertificateByNameSuccessfull()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
-            string accountName = "account";
-            string name = "webhookName";
-            string runbookName = "runbookName";
-            DateTimeOffset expiryTime = DateTimeOffset.Now.AddDays(1);
+            string accountName = "automation";
+            string certificateName = "certificate";
 
-            this.mockAutomationClient.Setup(
-                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null));
+            this.mockAutomationClient.Setup(f => f.GetCertificate(resourceGroupName, accountName, certificateName));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = name;
-            this.cmdlet.RunbookName = runbookName;
-            this.cmdlet.ExpiryTime = expiryTime;
-            this.cmdlet.IsEnabled = true;
-            this.cmdlet.Parameters = null;
+            this.cmdlet.Name = certificateName;
+            this.cmdlet.SetParameterSet("ByCertificateName");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(
-                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null),
-                Times.Once());
+            this.mockAutomationClient.Verify(f => f.GetCertificate(resourceGroupName, accountName, certificateName), Times.Once());
+        }
+
+        [TestMethod]
+        public void GetAzureAutomationCertificateByAllSuccessfull()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string nextLink = string.Empty;
+
+            this.mockAutomationClient.Setup(f => f.ListCertificates(resourceGroupName, accountName, ref nextLink)).Returns((string a, string b, string c) => new List<CertificateInfo>());
+
+            // Test
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient.Verify(f => f.ListCertificates(resourceGroupName, accountName, ref nextLink), Times.Once());
         }
     }
 }

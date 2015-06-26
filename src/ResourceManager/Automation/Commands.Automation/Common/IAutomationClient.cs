@@ -185,9 +185,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<Runbook> ListRunbooks(string resourceGroupName, string automationAccountName, ref string nextLink);
 
-        Runbook CreateRunbookByName(string resourceGroupName, string automationAccountName, string runbookName, string description, IDictionary tags);
+        Runbook CreateRunbookByName(string resourceGroupName, string automationAccountName, string runbookName, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool overwrite);
 
-        Runbook CreateRunbookByPath(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags);
+        Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite);
 
         void DeleteRunbook(string resourceGroupName, string automationAccountName, string runbookName);
 
@@ -195,9 +195,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Runbook UpdateRunbook(string resourceGroupName, string automationAccountName, string runbookName, string description, IDictionary tags, bool? logProgress, bool? logVerbose);
 
-        RunbookDefinition UpdateRunbookDefinition(string resourceGroupName, string automationAccountName, string runbookName, string runbookPath, bool overwrite);
-
-        IEnumerable<RunbookDefinition> ListRunbookDefinitionsByRunbookName(string resourceGroupName, string automationAccountName, string runbookName, bool? isDraft);
+        DirectoryInfo ExportRunbook(string resourceGroupName, string automationAccountName, string runbookName, bool? isDraft, string sourcePath, bool overwrite);
 
         Job StartRunbook(string resourceGroupName, string automationAccountName, string runbookName, IDictionary parameters, string runOn);
 

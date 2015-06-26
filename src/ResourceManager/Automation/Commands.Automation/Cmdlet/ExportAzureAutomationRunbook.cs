@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
@@ -25,9 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbook definitions for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRunbookDefinition", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
-    [OutputType(typeof(RunbookDefinition))]
-    public class GetAzureAutomationRunbookDefinition : AzureAutomationBaseCmdlet
+    [Cmdlet(VerbsData.Export, "AzureAutomationRunbook")]
+    [OutputType(typeof(DirectoryInfo))]
+    public class ExportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
@@ -40,10 +41,22 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Returns the draft or the published runbook version only. If not set, return both.")]
-        [ValidateSet(Constants.Published, Constants.Draft)]
+        [Parameter(Mandatory = false, HelpMessage = "Returns the draft or the published runbook version only. If not set, returns published.")]
+        [ValidateSet(Constants.Published, Constants.Draft, IgnoreCase = true)]
         public string Slot { get; set; }
 
+        /// <summary>
+        /// Gets or sets the output folder for the configuration script.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where runbook definition should be placed.")]
+        public string OutputFolder { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter to confirm overwriting of existing configuration script.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name.")]
+        public SwitchParameter Force { get; set; }
+        
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -52,10 +65,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             bool? isDraft = this.IsDraft();
 
-            // ByRunbookName
-            var runbookDefinitions = this.AutomationClient.ListRunbookDefinitionsByRunbookName(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft);
+            var outputFolder = this.AutomationClient.ExportRunbook(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft, this.OutputFolder, this.Force.IsPresent);
 
-            this.WriteObject(runbookDefinitions, true);
+            this.WriteObject(outputFolder, true);
         }
 
         /// <summary>

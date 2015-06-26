@@ -66,5 +66,22 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public const string ModulesUrl = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfig.zip";
 
         public const string ConfigurationFunction = @"RegistrationMetaConfig.ps1\RegistrationMetaConfig";
+
+
+        public static class RunbookType
+        {
+            public const string PowerShell = "PowerShell";
+
+            public const string PowerShellWorkflow = "PowerShellWorkflow";
+
+            public const string Graph = "Graph";
+        }
+
+        public static class SupportedFileExtensions
+        {
+            public const string PowerShellScript = ".ps1";
+
+            public const string Graph = ".graphrunbook";
+        }
     }
 }
