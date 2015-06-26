@@ -25,7 +25,7 @@ function Test-AvailabilitySet
     {
         # Common
         $loc = 'West US';
-        New-AzureResourceGroup -Name $rgname -Location $loc;
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         $asetName = 'avs' + $rgname;
         $nonDefaultUD = 2;
@@ -42,8 +42,6 @@ function Test-AvailabilitySet
         Assert-AreEqual $asetName $aset.Name;
         Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
         Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
-
-        Assert-ThrowsContains { Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName; } "This cmdlet will remove the specified availability set. Do you want to continue?"
 
         Remove-AzureAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
         

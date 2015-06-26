@@ -21,8 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineExtensionImage)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
+    [OutputType(typeof(PSVirtualMachineExtensionImage))]
     [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Commands.Compute
                     StatusCode = result.StatusCode,
                     Id = result.VirtualMachineExtensionImage.Id,
                     Location = result.VirtualMachineExtensionImage.Location,
-                    Name = result.VirtualMachineExtensionImage.Name,
                     HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
                     OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
                     ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
                     SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
                     VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                    Version = result.VirtualMachineExtensionImage.Name,
                     PublisherName = this.PublisherName,
                     Type = this.Type,
-                    Version = this.Version
+                    FilterExpression = this.FilterExpression
                 };
 
                 WriteObject(image);

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,6 +26,25 @@ namespace Microsoft.Azure.Commands.DataFactories
     [Cmdlet(VerbsCommon.Get, Constants.DataSlice, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSDataSlice>))]
     public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
     {
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
+        public DateTime EndDateTime
+        {
+            get
+            {
+                if (_endDateTime == default(DateTime))
+                {
+                    WriteWarning(Resources.EndDateTimeNotSpecifiedForGetSlice);
+                    return StartDateTime + Constants.DefaultSliceActivePeriodDuration;
+                }
+
+                return _endDateTime;
+            }
+            set
+            {
+                _endDateTime = value;
+            }
+        }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {

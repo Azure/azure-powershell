@@ -29,9 +29,19 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory=false)]
+        public SwitchParameter Custom { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(PoliciesClient.FilterRoleDefinitions(Name), true);
+            if (Custom.IsPresent)
+            {
+                WriteObject(PoliciesClient.FilterRoleDefinitionsByCustom(), true);
+            }
+            else
+            {
+                WriteObject(PoliciesClient.FilterRoleDefinitions(Name), true);
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ function Get-ComputeTestResourceName
     
     try
     {
-        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "pstestrg");
+        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
     }
     catch
     {
@@ -52,6 +52,60 @@ function Get-ComputeTestResourceName
     }
 
     return $assetName
+}
+
+
+<#
+.SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-ComputeTestMode
+{
+    $oldErrorActionPreferenceValue = $ErrorActionPreference;
+    $ErrorActionPreference = "SilentlyContinue";
+    
+    try
+    {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    }
+    catch
+    {
+        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        {
+            $testMode = 'Record';
+        }
+        else
+        {
+            throw;
+        }
+    }
+    finally
+    {
+        $ErrorActionPreference = $oldErrorActionPreferenceValue;
+    }
+
+    return $testMode;
+}
+
+# Get Compute Test Location
+function Get-ComputeTestLocation
+{
+    return $env:AZURE_COMPUTE_TEST_LOCATION;
+}
+
+# Cleans the created resource group
+function Clean-ResourceGroup($rgname)
+{
+    Remove-AzureResourceGroup -Name $rgname -Force;
+}
+
+# Get Compute Test Tag
+function Get-ComputeTestTag
+{
+    param ([string] $tagname)
+
+    return @{ Name = $tagname; Value = (Get-Date).ToUniversalTime().ToString("u") };
 }
 
 ######################
@@ -111,11 +165,11 @@ Gets random resource name
 #>
 function Get-RandomItemName
 {
-    param([string] $prefix = "pslibtest")
+    param([string] $prefix = "crptestps")
     
     if ($prefix -eq $null -or $prefix -eq '')
     {
-        $prefix = "pslibtest";
+        $prefix = "crptestps";
     }
 
     $str = $prefix + ((Get-Random) % 10000);
@@ -141,26 +195,6 @@ function Get-DefaultVMSize
     }
 
     return $vmSizes[0].Name;
-}
-
-<#
-.SYNOPSIS
-Gets default RDFE Image
-#>
-function Get-DefaultRDFEImage
-{
-    param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
-
-    $d = (Azure\Get-AzureVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
-
-    if ($d -eq $null)
-    {
-        return $null;
-    }
-    else
-    {
-        return $d[-1].ImageName;
-    }
 }
 
 <#
@@ -216,6 +250,32 @@ function Get-DefaultCRPImage
     return $vmimg;
 }
 
+# Create Image Object
+function Create-ComputeVMImageObject
+{
+    param ([string] $publisherName, [string] $offer, [string] $skus, [string] $version)
+
+    $img = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+    $img.PublisherName = $publisherName;
+    $img.Offer = $offer;
+    $img.Skus = $skus;
+    $img.Version = $version;
+
+    return $img;
+}
+
+# Get Default CRP Windows Image Object Offline
+function Get-DefaultCRPWindowsImageOffline
+{
+    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2008-R2-SP1' 'latest';
+}
+
+# Get Default CRP Linux Image Object Offline
+function Get-DefaultCRPLinuxImageOffline
+{
+    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
+}
+
 <#
 .SYNOPSIS
 Gets VMM Images
@@ -239,9 +299,37 @@ function Get-DefaultVMConfig
 
     # VM Profile & Hardware
     $vmsize = Get-DefaultVMSize $location;
-    $vmname = Get-RandomItemName 'pstestvm';
+    $vmname = Get-RandomItemName 'crptestps';
 
     $vm = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
+}
+
+# Assert Output Contains
+function Assert-OutputContains
+{
+    param([string] $cmd, [string[]] $sstr)
+    
+    $st = Write-Verbose ('Running Command : ' + $cmd);
+    $output = Invoke-Expression $cmd | Out-String;
+
+    $max_output_len = 1500;
+    if ($output.Length -gt $max_output_len)
+    {
+        # Truncate Long Output in Logs
+        $st = Write-Verbose ('Output String   : ' + $output.Substring(0, $max_output_len) + '...');
+    }
+    else
+    {
+        $st = Write-Verbose ('Output String   : ' + $output);
+    }
+
+    $index = 1;
+    foreach ($str in $sstr)
+    {
+        $st = Write-Verbose ('Search String ' + $index++ + " : `'" + $str + "`'");
+        Assert-True { $output.Contains($str) }
+        $st = Write-Verbose "Found.";
+    }
 }
