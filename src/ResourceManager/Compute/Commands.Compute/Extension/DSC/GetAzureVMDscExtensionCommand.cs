@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (Status)
             {
-                var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName,
-                    this.Name);
-                var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName,
+                    Name);
+                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
-                    extension.Publisher.Equals(this.ExtensionNamespace,
+                    extension.Publisher.Equals(ExtensionNamespace,
                         StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(this.ExtensionName,
+                    extension.ExtensionType.Equals(ExtensionName,
                         StringComparison.InvariantCultureIgnoreCase))
                 {
                     WriteObject(GetDscExtensionContext(extension));
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
             else
             {
-                var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                var result = VirtualMachineExtensionClient.Get(ResourceGroupName, VMName, Name);
+                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
-                    extension.Publisher.Equals(this.ExtensionNamespace,
+                    extension.Publisher.Equals(ExtensionNamespace,
                         StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(this.ExtensionName,
+                    extension.ExtensionType.Equals(ExtensionName,
                         StringComparison.InvariantCultureIgnoreCase))
                 {
                     WriteObject(GetDscExtensionContext(extension));
@@ -113,9 +113,27 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Statuses = extension.Statuses
             };
 
-            var publicSettings = string.IsNullOrEmpty(extension.PublicSettings) ? null
+            DscExtensionPublicSettings publicSettings = null;
+            try
+            {
+                publicSettings = string.IsNullOrEmpty(extension.PublicSettings) ? null
                                     : JsonConvert.DeserializeObject<DscExtensionPublicSettings>(extension.PublicSettings);
-
+            }
+            catch (Exception)
+            {
+                // Try deserialize as version 1.0
+                try
+                {
+                    var publicSettingsV1 =
+                        JsonConvert.DeserializeObject<DscExtensionPublicSettings.Version1>(extension.PublicSettings);
+                    publicSettings = publicSettingsV1.ToCurrentVersion();
+                }
+                catch (JsonException)
+                {
+                    throw;
+                } 
+            }
+            
             if (publicSettings == null)
             {
                 context.ModulesUrl = string.Empty;
