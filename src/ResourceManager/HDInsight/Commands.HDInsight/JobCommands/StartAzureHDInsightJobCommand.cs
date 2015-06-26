@@ -30,8 +30,14 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
-        [Parameter(Mandatory = true,
+        [Parameter(
             Position = 0,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -39,8 +45,14 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _clusterName = value; }
         }
 
+        [Parameter(Mandatory = true, 
+            Position = 2, 
+            HelpMessage = "The jobDetails definition to start on the Azure HDInsight cluster.",
+            ValueFromPipeline = true)]
+        public AzureHDInsightJobDefinition JobDefinition { get; set; }
+
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 3,
             HelpMessage = "The credentials with which to connect to the cluster.")]
         public PSCredential ClusterCredential
         {
@@ -58,22 +70,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        [Parameter(Mandatory = true, 
-            Position = 2, 
-            HelpMessage = "The jobDetails definition to start on the Azure HDInsight cluster.",
-            ValueFromPipeline = true)]
-        public AzureHDInsightJobDefinition JobDefinition { get; set; }
-
         #endregion
 
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             WriteObject(Execute());
         }
 
         public AzureHDInsightJob Execute()
         {
+            _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
+
             var jobCreationResults = SubmitJob();
 
             var startedJob = HDInsightJobClient.GetJob(jobCreationResults.JobSubmissionJsonResponse.Id);

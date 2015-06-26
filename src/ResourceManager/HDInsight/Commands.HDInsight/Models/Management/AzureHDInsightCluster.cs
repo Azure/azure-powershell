@@ -14,7 +14,6 @@
 
 using System;
 using System.Linq;
-using System.Net;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models

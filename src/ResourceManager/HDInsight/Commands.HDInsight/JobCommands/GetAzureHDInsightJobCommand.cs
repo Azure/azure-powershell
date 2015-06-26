@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
@@ -25,8 +26,14 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(AzureHDInsightJob))]
     public class GetAzureHDInsightJobCommand : HDInsightCmdletBase
     {
-        [Parameter(Mandatory = true,
+        [Parameter(
             Position = 0,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -35,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 2,
             HelpMessage = "The credentials with which to connect to the cluster.")]
         public PSCredential ClusterCredential
         {
@@ -53,12 +60,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        [Parameter(Position = 2,
+        [Parameter(Position = 3,
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
+            _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             if (JobId != null)
             {
                 var job = HDInsightJobClient.GetJob(JobId);
@@ -67,7 +75,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             else
             {
-                var jobs = HDInsightJobClient.ListJobs();
+                var jobs = HDInsightJobClient.ListJobs().Select(job => job.Id);
                 WriteObject(jobs, true);
             }
         }

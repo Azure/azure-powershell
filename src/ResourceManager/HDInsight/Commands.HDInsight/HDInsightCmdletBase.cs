@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -46,6 +48,40 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                 //return _hdInsightJobClient ?? (_hdInsightJobClient = new AzureHdInsightJobManagementClient(_clusterName, _credential));
             }
             set { _hdInsightJobClient = value; }
+        }
+
+        protected string GetClusterConnection(string resourceGroupName, string clusterName)
+        {
+            if (clusterName.Contains("."))
+            {
+                return clusterName;
+            }
+            var cluster = HDInsightManagementClient.GetCluster(resourceGroupName, clusterName);
+            if (cluster.First() == null)
+            {
+                throw new NullReferenceException(string.Format("Could not find cluster {0} in resource group {1}",
+                    clusterName, resourceGroupName));
+            }
+            var azurecluster = new AzureHDInsightCluster(cluster.First());
+            var state = azurecluster.ClusterState;
+            if (
+                !(state.Equals("Running", StringComparison.OrdinalIgnoreCase) ||
+                  state.Equals("Operational", StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new NotSupportedException(
+                    string.Format("The cluster {0} is in the {1} state and canot be used at this time.", clusterName,
+                        state));
+            }
+
+            var httpEndpoint = azurecluster.HttpEndpoint;
+            if (httpEndpoint == null)
+            {
+                throw new NotSupportedException(
+                    string.Format(
+                        "Cannot use cluster {0} because HTTP is not enabled on it. Please use the {1} cmdlet to HTTP and try again.",
+                        azurecluster.Name, "Grant-" + Constants.CommandNames.AzureHDInsightHttpServicesAccess));
+            }
+            return httpEndpoint;
         }
     }
 }

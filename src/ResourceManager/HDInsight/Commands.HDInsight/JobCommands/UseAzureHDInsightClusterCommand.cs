@@ -15,8 +15,6 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
-using System.Runtime.InteropServices;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -31,6 +29,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         internal const string CurrentCluster = "CurrentHDInsightCluster";
         internal const string ClusterEndpoint = "CurrentHDInsightClusterEndpoint";
+        internal const string ClusterCred = "CurrentHDInsightClusterCredential";
+        internal const string CurrentResourceGroup = "CurrentHDInsightResourceGroup";
         #region Input Parameter Definitions
 
         [Parameter(
@@ -43,51 +43,41 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
-        public string ClusterName
+        public string ClusterName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 2,
+            HelpMessage = "The credentials with which to connect to the cluster.")]
+        public PSCredential ClusterCredential
         {
-            get { return _clusterName; }
-            set { _clusterName = value; }
+            get
+            {
+                return _credential == null
+                    ? null
+                    : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
+            }
+            set
+            {
+                _credential = new BasicAuthenticationCloudCredentials
+                {
+                    Username = value.UserName,
+                    Password = value.Password.ConvertToString()
+                };
+            }
         }
 
         #endregion
 
-
         public override void ExecuteCmdlet()
         {
-            var cluster = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
-            if (cluster.First() == null)
-            {
-                throw new NullReferenceException(string.Format("Could not find cluster {0} in resource group {1}", ClusterName, ResourceGroupName));
-            }
-            var azurecluster = new AzureHDInsightCluster(cluster.First());
-            var state = azurecluster.ClusterState;
-            if (!(state.Equals("Running", StringComparison.OrdinalIgnoreCase) || state.Equals("Operational", StringComparison.OrdinalIgnoreCase)))
-            {
-                throw new NotSupportedException(
-                    string.Format("The cluster {0} is in the {1} state and canot be used at this time.", ClusterName,
-                        state));
-            }
+            var httpEndpoint = GetClusterConnection(ResourceGroupName, ClusterName);
 
-            var httpEndpoint = azurecluster.HttpEndpoint;
-            if (httpEndpoint == null)
-            {
-                throw new NotSupportedException(
-                    string.Format(
-                        "Cannot use cluster {0} because HTTP is not enabled on it. Please use the {1} cmdlet to HTTP and try again.",
-                        azurecluster.Name, "Grant-" + Constants.CommandNames.AzureHDInsightHttpServicesAccess));
-            }
-
-            SessionState.PSVariable.Set(CurrentCluster, ClusterName);
             SessionState.PSVariable.Set(ClusterEndpoint, httpEndpoint);
+            SessionState.PSVariable.Set(ClusterCred, ClusterCredential);
+            SessionState.PSVariable.Set(CurrentResourceGroup, ResourceGroupName);
 
-            WriteObject(string.Format("Successfully connected to cluster {0} in resource group {1}", ClusterName, ResourceGroupName));
+            WriteObject(string.Format("Successfully connected to cluster {0} in resource group {1}", ClusterName,
+                ResourceGroupName));
         }
-    }
-
-    public class AzureHDInsightClusterConnection
-    {
-        public AzureHDInsightCluster Cluster { get; set; }
-
-        public PSCredential HttpCredentials { get; set; }
     }
 }

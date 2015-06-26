@@ -25,32 +25,19 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {
-        [Parameter(Mandatory = true,
+        [Parameter(
             Position = 0,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
             get { return _clusterName; }
             set { _clusterName = value; }
-        }
-
-        [Parameter(Mandatory = true,
-            Position = 1,
-            HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
-        {
-            get
-            {
-                return _credential == null ? null : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
-            }
-            set
-            {
-                _credential = new BasicAuthenticationCloudCredentials
-                {
-                    Username = value.UserName,
-                    Password = value.Password.ConvertToString()
-                };
-            }
         }
 
         [Parameter(Position = 2,
@@ -73,8 +60,28 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
+        [Parameter(Mandatory = true,
+            Position = 6,
+            HelpMessage = "The credentials with which to connect to the cluster.")]
+        public PSCredential ClusterCredential
+        {
+            get
+            {
+                return _credential == null ? null : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
+            }
+            set
+            {
+                _credential = new BasicAuthenticationCloudCredentials
+                {
+                    Username = value.UserName,
+                    Password = value.Password.ConvertToString()
+                };
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
+            _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             var output = GetJobOutput();
             WriteObject(output);
         }

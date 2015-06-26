@@ -16,7 +16,6 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -28,8 +27,14 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
-        [Parameter(Mandatory = true,
+        [Parameter(
             Position = 0,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -38,7 +43,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 2,
+            HelpMessage = "The JobID of the jobDetails to stop.",
+            ValueFromPipeline = true)]
+        public string JobId { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 3,
             HelpMessage = "The credentials with which to connect to the cluster.")]
         public PSCredential ClusterCredential
         {
@@ -56,11 +67,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        [Parameter(Mandatory = true, 
-            Position = 2,
-            HelpMessage = "The JobID of the jobDetails to stop.")]
-        public string JobId { get; set; }
-
         #endregion
 
         public override async void ExecuteCmdlet()
@@ -71,6 +77,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public AzureHDInsightJob WaitJob()
         {
+            _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             var jobDetail = HDInsightJobClient.GetJob(JobId).JobDetail;
             while (!jobDetail.Status.JobComplete)
             {

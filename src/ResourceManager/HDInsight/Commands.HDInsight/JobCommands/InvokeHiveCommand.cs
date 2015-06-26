@@ -14,13 +14,9 @@
 
 using System;
 using System.Collections;
-using System.IO;
-using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -100,27 +96,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Mandatory = true, HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 1,
-            HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
-        {
-            get
-            {
-                return _credential == null
-                    ? null
-                    : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
-            }
-            set
-            {
-                _credential = new BasicAuthenticationCloudCredentials
-                {
-                    Username = value.UserName,
-                    Password = value.Password.ConvertToString()
-                };
-            }
-        }
-
         #endregion
 
         public InvokeHiveCommand()
@@ -131,10 +106,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             //get variables from session
-            var cluster = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentCluster).Value.ToString();
             var clusterConnection = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();
+            var clusterCred =
+                (PSCredential) SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterCred).Value;
+            var resourceGroup =
+                SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
+
             _clusterName = clusterConnection;
-            if (cluster == null || clusterConnection == null)
+            _credential = new BasicAuthenticationCloudCredentials
+            {
+                Username = clusterCred.UserName,
+                Password = clusterCred.Password.ConvertToString()
+            };
+
+            if (clusterConnection == null || clusterCred == null)
             {
                 throw new NullReferenceException(
                     string.Format(
@@ -149,8 +134,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             var startJobCommand = new StartAzureHDInsightJobCommand
             {
                 ClusterName = clusterConnection,
+                ResourceGroupName = resourceGroup,
                 JobDefinition = hivejob,
-                ClusterCredential = ClusterCredential
+                ClusterCredential = clusterCred
             };
 
             var jobCreationResult = startJobCommand.SubmitJob();
@@ -161,7 +147,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             WriteProgress(new ProgressRecord(0, "Waiting for job to complete", "In Progress"));
             var waitJobCommand = new WaitAzureHDInsightJobCommand
             {
-                ClusterCredential = ClusterCredential,
+                ClusterCredential = clusterCred,
+                ResourceGroupName = resourceGroup,
                 ClusterName = clusterConnection,
                 JobId = jobid
             };
@@ -171,7 +158,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             //get job output
             var getOutputCommand = new GetAzureHDInsightJobOutputCommand
             {
-                ClusterCredential = ClusterCredential,
+                ClusterCredential = clusterCred,
+                ResourceGroupName = resourceGroup,
                 ClusterName = clusterConnection,
                 DefaultContainer = DefaultContainer,
                 DefaultStorageAccountName = DefaultStorageAccountName,

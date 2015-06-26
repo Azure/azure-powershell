@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <param name="cluster">The cluster that the jobDetails was created against.</param>
         public AzureHDInsightJob(JobDetailRootJsonObject jobDetails, string cluster)
         {
-            Cluster = cluster;
-            Status = jobDetails.Status;
-            Profile = jobDetails.Profile;
+            Cluster = cluster.Substring(0, cluster.IndexOf('.') + 1);
+            HttpEndpoint = cluster;
+            State = jobDetails.Status.State;
             JobId = jobDetails.Id;
             ParentId = jobDetails.ParentId;
             PercentComplete = jobDetails.PercentComplete;
@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         }
 
         /// <summary>
-        /// Gets or sets the cluster to which the jobDetails was submitted.
+        /// Gets or sets the name of the cluster to which the jobDetails was submitted.
         /// </summary>
         public string Cluster { get; set; }
 
         /// <summary>
-        /// Gets the object containing the job status information.
+        /// Gets or sets the HTTP endpoint for the cluster to which the jobDetails was submitted.
         /// </summary>
-        public Status Status { get; set; }
+        public string HttpEndpoint { get; set; }
 
         /// <summary>
-        /// Gets the object containing the job profile information.
+        /// Gets the object containing the job status information.
         /// </summary>
-        public Profile Profile { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// Gets the JobId returned by the request.

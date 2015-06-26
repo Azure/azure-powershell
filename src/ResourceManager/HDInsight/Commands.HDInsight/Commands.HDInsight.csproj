@@ -35,12 +35,13 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\WaitAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightStreamingMapReduceJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightMapReduceJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightPigJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightHiveJobDefinitionCommand.cs" />
-    <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
+    <Compile Include="JobCommands\GetAzureHDInsightJobOutputCommand.cs" />
     <Compile Include="JobCommands\InvokeHiveCommand.cs" />
     <Compile Include="JobCommands\UseAzureHDInsightClusterCommand.cs" />
     <Compile Include="JobCommands\StopAzureHDInsightJobCommand.cs" />
@@ -96,6 +97,10 @@
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.0.0.1-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.HDInsight.Job, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.0.0.1-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
