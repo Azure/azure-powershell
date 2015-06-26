@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(string))]
     public class UnregisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupContainerToUnregister, ValueFromPipeline = true)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainer AzureBackupContainer { get; set; }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 UnregisterContainerRequestInput unregRequest = new UnregisterContainerRequestInput(containerUniqueName, AzureBackupContainerType.IaasVMContainer.ToString());
                 var operationId = AzureBackupClient.UnRegisterContainer(unregRequest);
 
-                var jobId = GetOperationStatus(operationId).Jobs.FirstOrDefault();
+                var jobId = GetOperationStatus(operationId).JobList.FirstOrDefault();
                 WriteObject(jobId);
             });
         }
