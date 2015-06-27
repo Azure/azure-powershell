@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
          typeof(VirtualMachineDscExtensionContext))]
     public class GetAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
     {
-        protected const string GetDscExtensionParamSetName = "GetDscExtension";
+        private const string GetDscExtensionParamSetName = "GetDscExtension";
 
         [Parameter(
             Mandatory = true,
