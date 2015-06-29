@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// Class to define backup vault credentials
     /// </summary>
     [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Grouping classes based on entity")]
+    [DataContract]
     internal class BackupVaultCreds : VaultCreds
     {
         /// <summary>
@@ -128,26 +129,31 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// AcsNamespace is where the certificate is uploaded into
     /// </summary>
+    [DataContract]
     internal class AcsNamespace
     {
         /// <summary>
         /// Gets or sets the key name for HostName entry
         /// </summary>
+        [DataMember(Order = 0)]
         public string HostName { get; set; }
 
         /// <summary>
         /// Gets or sets the key name for Namespace entry
         /// </summary>
+        [DataMember(Order = 1)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets the value for ResourceProviderRealm entry
         /// </summary>
+        [DataMember(Order = 2)]
         public string ResourceProviderRealm { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the AcsNamespace class
         /// </summary>
+        [DataMember(Order = 3)]
         public AcsNamespace() { }
 
         /// <summary>
