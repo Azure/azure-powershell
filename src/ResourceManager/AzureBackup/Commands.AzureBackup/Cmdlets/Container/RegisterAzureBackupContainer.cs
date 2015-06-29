@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices;
@@ -38,15 +39,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         internal const string V1VMParameterSet = "V1VM";
         internal const string V2VMParameterSet = "V2VM";
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VMName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VMName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V1VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.ServiceName)]
         public string ServiceName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine)]
-        public string VMResourceGroupName { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.RGName)]
+        public string ResourceGroupName { get; set; }
 
         
         public override void ExecuteCmdlet()
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 else if(this.ParameterSetName == V2VMParameterSet)
                 {
                     vmName = Name;
-                    rgName = VMResourceGroupName;
+                    rgName = ResourceGroupName;
                     WriteDebug(String.Format("Registering ARM-V2 VM, VMName: {0}, ResourceGroupName: {1}", vmName, rgName));
                     ServiceOrRG = "ResourceGroupName";
                 }
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         //Container is not discovered. Throw exception
                         string errMsg = String.Format("Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted", vmName, ServiceOrRG, rgName);
                         WriteDebug(errMsg);
-                        throw new Exception(errMsg); //TODO: Sync with piyush and srub error msg 
+                        ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                     }
                 }                
 
@@ -112,35 +113,37 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void RefreshContainer()
         {
-            bool isRetyNeeded = true;
+            bool isRetryNeeded = true;
             int retryCount = 1;
             bool isDiscoverySuccessful = false;
-            while (isRetyNeeded && retryCount <= 3)
+            string errorMessage = string.Empty;
+            while (isRetryNeeded && retryCount <= 3)
             {
                 var operationId = AzureBackupClient.RefreshContainers();
 
                 //Now wait for the operation to Complete               
-                isRetyNeeded = WaitForDiscoveryToCOmplete(operationId, out isDiscoverySuccessful);
+                isRetryNeeded = WaitForDiscoveryToComplete(operationId, out isDiscoverySuccessful, out errorMessage);
                 retryCount++;
             }
 
             if (!isDiscoverySuccessful)
             {
-                //Discovery failed
-                throw new Exception(); //TODO:
+                ThrowTerminatingError(new ErrorRecord(new Exception(errorMessage), string.Empty, ErrorCategory.InvalidArgument, null));
             }
         }
 
-        private bool WaitForDiscoveryToCOmplete(Guid operationId, out bool isDiscoverySuccessful)
+        private bool WaitForDiscoveryToComplete(Guid operationId, out bool isDiscoverySuccessful, out string errorMessage)
         {
             bool isRetryNeeded = false;
-            var status = TrackOperation(operationId); 
+            var status = TrackOperation(operationId);
+            errorMessage = String.Empty;
 
             isDiscoverySuccessful = true;
             //If operation fails check if retry is needed or not
             if (status.OperationResult != AzureBackupOperationResult.Succeeded.ToString())
             {
                 isDiscoverySuccessful = false;
+                errorMessage = status.Message;
                 WriteDebug(String.Format("Discovery operation failed with ErrorCode: {0}", status.ErrorCode));
                 if ((status.ErrorCode == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
                     (status.ErrorCode == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
