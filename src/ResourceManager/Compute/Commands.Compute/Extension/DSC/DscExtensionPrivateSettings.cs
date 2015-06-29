@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         /// <summary>
         /// This hashtable contains parameters that needs to be encrypted on target VM, like PSCredential.
-        /// <see cref="DscExtensionPrivateSettings.Properties" /> are not encrypted on target VM.
+        /// <see cref="DscExtensionPublicSettings.Properties" /> are not encrypted on target VM.
         /// </summary>
         public Hashtable Items { get; set; }
     }

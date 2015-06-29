@@ -3043,7 +3043,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Publish-AzureVMDscConfiguration</maml:name>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>The resource group name.</maml:para>
@@ -3057,7 +3057,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>ContainerName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Azure Storage Container the configuration is uploaded to.</maml:para>
@@ -3071,12 +3071,12 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageContext</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.</maml:para>
+					<maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
@@ -3095,14 +3095,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Publish-AzureVMDscConfiguration</maml:name>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>The resource group name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>ConfigurationPath</maml:name>
 				<maml:description>
 					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file), or an archive (.zip file) containing a set of PowerShell modules, each module in a separate directory.</maml:para>
@@ -3116,7 +3109,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>OutputArchivePath</maml:name>
 				<maml:description>
 					<maml:para>Path to a local ZIP file to write the configuration archive to.
@@ -3141,7 +3134,7 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
       <maml:name>ResourceGroupName</maml:name>
       <maml:description>
         <maml:para>The resource group name.</maml:para>
@@ -3160,7 +3153,7 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 			<maml:name>ContainerName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Azure Storage Container the configuration is uploaded to.</maml:para>
@@ -3184,14 +3177,14 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StorageContext</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>StorageAccountName</maml:name>
 			<maml:description>
-				<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.</maml:para>
+				<maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
-				<maml:name>AzureStorageContext</maml:name>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3272,7 +3265,7 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 			<maml:introduction>
 				<maml:para></maml:para>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Publish-AzureVMDscConfiguration .\MyConfiguration.ps1</dev:code>
+			<dev:code>PS C:\&gt; Publish-AzureVMDscConfiguration .\MyConfiguration.ps1 -ResourceGroupName grpname -StorageAccountName strgAcctName </dev:code>
 			<dev:remarks>
 				<maml:para>Description</maml:para>
 			</dev:remarks>

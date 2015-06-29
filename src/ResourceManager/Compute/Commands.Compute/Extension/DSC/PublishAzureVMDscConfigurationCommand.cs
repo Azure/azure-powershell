@@ -6,7 +6,6 @@ using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -30,7 +29,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         [Parameter(
             Mandatory = true,
-            Position = 0,
+            Position = 2,
+            ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// Path to a file containing one or more configurations; the file can be a 
         /// PowerShell script (*.ps1) or MOF interface (*.mof).
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             Position = 1,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
@@ -53,23 +54,24 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            Position = 4,
             ParameterSetName = UploadArchiveParameterSetName,
             HelpMessage = "Name of the Azure Storage Container the configuration is uploaded to")]
         [ValidateNotNullOrEmpty]
         public string ContainerName { get; set; }
 
         /// <summary>
-        /// The Azure Storage Context that provides the security settings used to upload 
-        /// the configuration script to the container specified by ContainerName. This 
-        /// context should provide write access to the container.
+        /// The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName. 
         /// </summary>
         [Parameter(
+            Mandatory = true,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = UploadArchiveParameterSetName,
-            HelpMessage = "The Azure Storage Context that provides the security settings used to upload " +
-                          "the configuration script to the container specified by ContainerName")]
+            HelpMessage = "The Azure Storage Account name used to upload the configuration script to the container " +
+                          "specified by ContainerName ")]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public String StorageAccountName { get; set; }
 
         /// <summary>
         /// Path to a local ZIP file to write the configuration archive to.
@@ -78,6 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Alias("ConfigurationArchivePath")]
         [Parameter(
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateArchiveParameterSetName,
             HelpMessage = "Path to a local ZIP file to write the configuration archive to.")]
@@ -125,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
             finally
             {
-                foreach (var file in this._temporaryFilesToDelete)
+                foreach (var file in _temporaryFilesToDelete)
                 {
                     try
                     {
@@ -137,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionDeleteErrorMessage, file, e.Message));
                     }
                 }
-                foreach (var directory in this._temporaryDirectoriesToDelete)
+                foreach (var directory in _temporaryDirectoriesToDelete)
                 {
                     try
                     {
@@ -193,7 +196,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension, ConfigurationPath);
                 }
 
-                _storageCredentials = this.GetStorageCredentials(ResourceGroupName, StorageContext);
+                _storageCredentials = GetStorageCredentials(ResourceGroupName, StorageAccountName);
 
                 if (ContainerName == null)
                 {
