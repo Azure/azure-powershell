@@ -14,9 +14,9 @@
 
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Compute.Models
+namespace Microsoft.Azure.Commands.Compute.Common
 {
-    public static class LocationStringExtension
+    public static class LocationStringExtensions
     {
         public static string Canonicalize(this string location)
         {

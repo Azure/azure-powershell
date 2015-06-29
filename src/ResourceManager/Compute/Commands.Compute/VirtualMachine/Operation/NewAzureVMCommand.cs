@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
+            if (! string.IsNullOrEmpty(this.Name))
+            {
+                WriteWarning(Properties.Resources.DeprecationOfNewAzureVMNameParameterWarning);
+            }
+
             var parameters = new VirtualMachine
             {
                 HardwareProfile          = this.VM.HardwareProfile,

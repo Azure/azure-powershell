@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
-    [OutputType(typeof(PSOperationResponse))]
+    [OutputType(typeof(PSOperation))]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
                                    Properties.Resources.AvailabilitySetRemovalCaption))
             {
                 AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
-                var result = Mapper.Map<PSOperationResponse>(op);
+                var result = Mapper.Map<PSOperation>(op);
                 WriteObject(result);
             }
         }

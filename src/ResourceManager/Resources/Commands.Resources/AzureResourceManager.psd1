@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.3'
+ModuleVersion = '0.9.4'
 
 # ID used to uniquely identify this module
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'
@@ -98,7 +98,8 @@ NestedModules = @(
     '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
-    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
+    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll'
 )
 
 # Functions to export from this module

@@ -102,8 +102,8 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.Name = this.Name;
             localnetGateway.ResourceGroupName = this.ResourceGroupName;
             localnetGateway.Location = this.Location;
-            localnetGateway.LocalNetworkSiteAddressSpace = new PSAddressSpace();
-            localnetGateway.LocalNetworkSiteAddressSpace.AddressPrefixes = this.AddressPrefix;
+            localnetGateway.LocalNetworkAddressSpace = new PSAddressSpace();
+            localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
             localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
 
             // Map to the sdk object
