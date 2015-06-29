@@ -27,6 +27,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     public class AzureBackupContainer : AzureBackupContainerContextObject
     {
         /// <summary>
+        /// Resource group name of the resource (ex: resource group name of the VM) being managed by Azure Backup service.
+        /// </summary>
+        public string ManagedResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Resource name of the resource (ex: resource name of the VM) being managed by the Azure Backup service.
+        /// </summary>
+        public string ManagedResourceName { get; set; }
+
+        /// <summary>
         /// Status of health of the Azure Backup container
         /// </summary>
         public string HealthStatus { get; set; }
@@ -41,6 +51,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         public AzureBackupContainer(AzurePSBackupVault vault, ContainerInfo containerInfo)
             : base(vault, containerInfo)
         {
+            ManagedResourceGroupName = containerInfo.ParentContainerFriendlyName;
+            ManagedResourceName = containerInfo.FriendlyName;
             HealthStatus = containerInfo.HealthStatus;
             RegistrationStatus = containerInfo.RegistrationStatus;
         }

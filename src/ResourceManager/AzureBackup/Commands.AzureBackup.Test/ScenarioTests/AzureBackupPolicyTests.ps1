@@ -33,7 +33,8 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-GetAzureBackupProtectionPolicyTests
 {
-	$protectionPolicies = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location
+	$vault = Get-AzureBackupVault -Name $ResourceName;
+	$protectionPolicies = Get-AzureBackupProtectionPolicy -vault $vault
 	Assert-NotNull $protectionPolicies 'Protection Policies should not be null'
 	foreach($protectionPolicy in $protectionPolicies)
 	{
@@ -51,7 +52,8 @@ function Test-GetAzureBackupProtectionPolicyTests
 
 function Test-GetAzureBackupProtectionPolicyByNameTests
 {
-	$protectionPolicy = Get-AzureBackupProtectionPolicy -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Name $PolicyName
+	$vault = Get-AzureBackupVault -Name $ResourceName;
+	$protectionPolicy = Get-AzureBackupProtectionPolicy -vault $vault -Name $PolicyName
 	
 	Assert-NotNull $protectionPolicy.InstanceId 'InstanceId should not be null'
 	Assert-NotNull $protectionPolicy.Name 'Name should not be null'
@@ -67,7 +69,8 @@ function Test-GetAzureBackupProtectionPolicyByNameTests
 
 function Test-NewAzureBackupProtectionPolicyTests
 {	
-	$protectionPolicy = New-AzureBackupProtectionPolicy -Name $PolicyName -WorkloadType $WorkloadType -BackupType $BackupType -Daily -RetentionType $RetentionType -RetentionDuration $RetentionDuration -ScheduleRunTimes $ScheduleRunTimes -ResourceGroupName  $ResourceGroupName -ResourceName $ResourceName -Location $Location
+	$vault = Get-AzureBackupVault -Name $ResourceName;
+	$protectionPolicy = New-AzureBackupProtectionPolicy -vault $vault -Name $PolicyName -WorkloadType $WorkloadType -BackupType $BackupType -Daily -RetentionType $RetentionType -RetentionDuration $RetentionDuration -ScheduleRunTimes $ScheduleRunTimes
 	
 	Assert-NotNull $protectionPolicy.InstanceId 'InstanceId should not be null'
 	Assert-NotNull $protectionPolicy.Name 'Name should not be null'
@@ -82,7 +85,7 @@ function Test-NewAzureBackupProtectionPolicyTests
 
 function Test-SetAzureBackupProtectionPolicyTests
 {	
-	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupProtectionPolicy
+	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy
 	$policy.InstanceId = $PolicyId
 	$policy.Name = $PolicyName
 	$policy.ResourceGroupName = $ResourceGroupName
@@ -110,7 +113,7 @@ function Test-SetAzureBackupProtectionPolicyTests
 function Test-RemoveAzureBackupProtectionPolicyTests
 {	
 	$policyNewName = "policy09_new"
-	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupProtectionPolicy
+	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy
 	$policy.InstanceId = $PolicyId
 	$policy.Name = $policyNewName
 	$policy.ResourceGroupName = $ResourceGroupName
