@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// PowerShell script (*.ps1) or MOF interface (*.mof).
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
+            Position = 1,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Path to a file containing one or more configurations")]
@@ -76,12 +76,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// When using this parameter, Publish-AzureVMDscConfiguration creates a
         /// local ZIP archive instead of uploading it to blob storage..
         /// </summary>
+        [Alias("ConfigurationArchivePath")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateArchiveParameterSetName,
             HelpMessage = "Path to a local ZIP file to write the configuration archive to.")]
         [ValidateNotNullOrEmpty]
-        public string ConfigurationArchivePath { get; set; }
+        public string OutputArchivePath { get; set; }
 
         /// <summary>
         /// By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs. 
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension, ConfigurationPath);
                 }
 
-                ConfigurationArchivePath = GetUnresolvedProviderPathFromPSPath(ConfigurationArchivePath);
+                OutputArchivePath = GetUnresolvedProviderPathFromPSPath(OutputArchivePath);
             }
         }
 
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             if (ParameterSetName == CreateArchiveParameterSetName)
             {
-                ConfirmAction(true, string.Empty, Properties.Resources.AzureVMDscCreateArchiveAction, ConfigurationArchivePath, () => CreateConfigurationArchive());
+                ConfirmAction(true, string.Empty, Properties.Resources.AzureVMDscCreateArchiveAction, OutputArchivePath, () => CreateConfigurationArchive());
             }
             else
             {
@@ -318,7 +319,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (ParameterSetName == CreateArchiveParameterSetName)
             {
-                archive = ConfigurationArchivePath;
+                archive = OutputArchivePath;
 
                 if (!Force && File.Exists(archive))
                 {
