@@ -153,7 +153,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// <summary>
         /// Initializes a new instance of the AcsNamespace class
         /// </summary>
-        [DataMember(Order = 3)]
         public AcsNamespace() { }
 
         /// <summary>

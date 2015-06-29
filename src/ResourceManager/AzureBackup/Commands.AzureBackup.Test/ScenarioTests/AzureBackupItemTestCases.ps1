@@ -12,7 +12,7 @@ $POName = "iaasvmcontainer;dev01testing;dev01testing"
 
 function Test-GetAzureBackupItemTests
 {
-	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupContainer
+	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer
 	$azureBackUpContainer.ResourceGroupName = $ResourceGroupName
 	$azureBackUpContainer.ResourceName = $ResourceName
 	$azureBackUpContainer.Location = $Location
@@ -37,7 +37,7 @@ function Test-GetAzureBackupItemTests
 
 function Test-EnableAzureBackupProtection
 {	
-	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupProtectionPolicy
+	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy
 	$policy.InstanceId = $PolicyId
 	$policy.Name = $PolicyName
 	$policy.ResourceGroupName = $ResourceGroupName
@@ -47,7 +47,7 @@ function Test-EnableAzureBackupProtection
 	$policy.RetentionType = "1"
 	$policy.ScheduleRunTimes =  "2015-06-13T20:30:00"
 
-	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
@@ -62,7 +62,7 @@ function Test-EnableAzureBackupProtection
 
 function Test-DisableAzureBackupProtection
 {	
-	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
