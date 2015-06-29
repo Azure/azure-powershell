@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
-        public string [] DataDiskNames { get; set; }
+        public string[] DataDiskNames { get; set; }
 
         public override void ExecuteCmdlet()
         {
