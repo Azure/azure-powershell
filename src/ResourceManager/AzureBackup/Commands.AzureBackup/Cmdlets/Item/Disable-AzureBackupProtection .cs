@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 WriteDebug("RemoveProtectionOption is = " + input.RemoveProtectionOption);
                 var operationId = AzureBackupClient.DisableProtection(Item.ContainerUniqueName, Item.Type, Item.DataSourceId, input);
 
-                WriteVerbose("Received disable azure backup protection response");
+                WriteDebug("Received disable azure backup protection response");
                 var operationStatus = GetOperationStatus(operationId);
                 this.WriteObject(operationStatus.Jobs.FirstOrDefault());
             });
