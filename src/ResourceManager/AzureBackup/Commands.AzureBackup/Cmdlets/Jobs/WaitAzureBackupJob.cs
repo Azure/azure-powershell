@@ -134,6 +134,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                     System.Threading.Thread.Sleep(30 * 1000);
                 }
+
+                IList<AzureBackupJob> finalJobs = new List<AzureBackupJob>();
+                foreach(string jobId in specifiedJobs)
+                {
+                    finalJobs.Add(new AzureBackupJob(Vault, AzureBackupClient.GetJobDetails(jobId).Job));
+                }
+
+                if (finalJobs.Count == 1)
+                {
+                    WriteObject(finalJobs.First());
+                }
+                else
+                {
+                    WriteObject(finalJobs);
+                }
             });
         }
     }
