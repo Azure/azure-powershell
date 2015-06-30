@@ -145,7 +145,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());
-                WriteObject(retrievedJobs);
+
+                if (retrievedJobs.Count > 1)
+                {
+                    WriteObject(retrievedJobs);
+                }
+                else
+                {
+                    WriteObject(retrievedJobs.First());
+                }
             });
         }
     }

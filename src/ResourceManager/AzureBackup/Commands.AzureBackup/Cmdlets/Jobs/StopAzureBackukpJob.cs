@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JobID { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobHelpMessage, ParameterSetName = "JobFiltersSet")]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StopJobFilterJobHelpMessage, ParameterSetName = "JobFiltersSet", ValueFromPipeline = true)]
         [ValidateNotNull]
         public AzureBackupJob Job { get; set; }
 
