@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DataMaskingPolicyCreateOrUpdateParameters updateParameters = new DataMaskingPolicyCreateOrUpdateParameters();
             DataMaskingPolicyProperties properties = new DataMaskingPolicyProperties();
             updateParameters.Properties = properties;
-            properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Enabled) ? SecurityConstants.DataMaskingEndpoint.Enabled : SecurityConstants.DataMaskingEndpoint.Disabled;
+            properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Disabled) ? SecurityConstants.DataMaskingEndpoint.Disabled : SecurityConstants.DataMaskingEndpoint.Enabled;
             properties.MaskingLevel = (model.MaskingLevel == MaskingLevelType.Standard) ? SecurityConstants.DataMaskingEndpoint.Standard : SecurityConstants.DataMaskingEndpoint.Extended;
             properties.ExemptPrincipals = model.PrivilegedLogins ?? "";
             return updateParameters;
