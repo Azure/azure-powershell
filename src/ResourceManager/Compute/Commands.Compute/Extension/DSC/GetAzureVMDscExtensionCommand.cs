@@ -36,15 +36,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
@@ -59,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             if (Status)
             {
                 var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName,
-                    Name);
+                    ExtensionNamespace + "." + ExtensionName);
                 var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
@@ -77,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
             else
             {
-                var result = VirtualMachineExtensionClient.Get(ResourceGroupName, VMName, Name);
+                var result = VirtualMachineExtensionClient.Get(ResourceGroupName, VMName, ExtensionNamespace + "." + ExtensionName);
                 var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
