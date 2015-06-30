@@ -390,17 +390,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (!destExist || checkOverwrite())
             {
-                try
-                {
-                    string copyId = await startCopy();
+                string copyId = await startCopy();
 
-                    this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
-                    this.OutputStream.WriteObject(taskId, destFile);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
+                this.OutputStream.WriteObject(taskId, destFile);
             }
         }
     }

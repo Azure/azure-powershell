@@ -84,8 +84,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string UriParameterSet = "UriPipeline";
 
         [Alias("SrcICloudBlob", "SrcCloudBlob", "ICloudBlob")]
-        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
-        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
         public CloudBlob CloudBlob { get; set; }
 
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
@@ -163,15 +163,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public CloudBlob DestCloudBlob { get; set; }
 
         [Alias("SrcContext")]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
         public override AzureStorageContext Context { get; set; }
 
