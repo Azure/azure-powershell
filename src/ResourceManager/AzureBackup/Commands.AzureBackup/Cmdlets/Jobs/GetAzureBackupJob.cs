@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<Mgmt.Job>), typeof(Mgmt.Job))]
     public class GetAzureBackupJob : AzureBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet")]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet", ValueFromPipeline = true)]
         [ValidateNotNull]
         public AzurePSBackupVault Vault { get; set; }
 

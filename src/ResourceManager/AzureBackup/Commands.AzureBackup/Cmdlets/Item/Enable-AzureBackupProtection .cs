@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Received enable azure backup protection response");
 
                 var operationStatus = GetOperationStatus(operationId);
-                this.WriteObject(operationStatus.Jobs.FirstOrDefault());
+                this.WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.Jobs).FirstOrDefault());
             });
         }
     }

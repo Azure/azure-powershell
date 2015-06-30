@@ -178,6 +178,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             return response;
         }
+
+        internal IList<AzureBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
+        {
+            IList<AzureBackupJob> jobs = new List<AzureBackupJob>();
+
+            foreach(string jobId in jobIds)
+            {
+                jobs.Add(new AzureBackupJob(vault, AzureBackupClient.GetJobDetails(jobId).Job));
+            }
+
+            return jobs;
+        }
     }
 }
 

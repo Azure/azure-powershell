@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             this.InstanceId = serviceJob.InstanceId;
             this.WorkloadType = serviceJob.Type;
-            this.WorkloadName = serviceJob.Name;
+            this.WorkloadName = serviceJob.EntityFriendlyName;
             this.Operation = serviceJob.Operation;
             this.Status = serviceJob.Status;
             this.Duration = serviceJob.Duration;

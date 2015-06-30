@@ -22,18 +22,10 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureBackupJob", DefaultParameterSetName = "IdFiltersSet"), OutputType(typeof(Mgmt.Job))]
-    public class WaitAzureBackupJob : AzureBackupVaultCmdletBase
+    [Cmdlet("Wait", "AzureBackupJob"), OutputType(typeof(Mgmt.Job))]
+    public class WaitAzureBackupJob : AzureBackupCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
-        [ValidateNotNull]
-        public AzurePSBackupVault Vault { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobIdHelpMessage, ValueFromPipeline = true, ParameterSetName = "IdFiltersSet")]
-        [ValidateNotNull]
-        public object JobID { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true, ParameterSetName = "JobFiltersSet")]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public object Job { get; set; }
 
@@ -44,16 +36,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public override void ExecuteCmdlet()
         {
             List<string> specifiedJobs = new List<string>();
+            AzurePSBackupVault Vault = null;
 
             if (Job != null)
             {
-                WriteDebug("Job is PowershellObject: " + (Job is PSObject));
-                WriteDebug("Job type: " + Job.GetType());
-
                 if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is List<AzureBackupJob>))
                 {
-                    WriteDebug("Type of input paramter is List<AzureBackupJob>");
-                    foreach (AzureBackupJob jobToWait in ((Job as PSObject).ImmediateBaseObject as List<AzureBackupJob>))
+                    foreach (AzureBackupJob jobToWait in (((PSObject)Job).ImmediateBaseObject as List<AzureBackupJob>))
                     {
                         Vault = new AzurePSBackupVault(jobToWait.ResourceGroupName, jobToWait.ResourceName, jobToWait.Location);
                         specifiedJobs.Add(jobToWait.InstanceId);
@@ -79,41 +68,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Vault = new AzurePSBackupVault((Job as AzureBackupJob).ResourceGroupName, (Job as AzureBackupJob).ResourceName, (Job as AzureBackupJob).Location);
                     specifiedJobs.Add((Job as AzureBackupJob).InstanceId);
                 }
-            }
-
-            if(JobID != null)
-            {
-                WriteDebug("Type of immediate base object: " + ((PSObject)JobID).ImmediateBaseObject.GetType().ToString());
-                if ((JobID is PSObject) && (((PSObject)JobID).ImmediateBaseObject is List<string>))
+                else if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is AzureBackupJobDetails))
                 {
-                    foreach (string idOfJobToWait in ((JobID as PSObject).ImmediateBaseObject as List<string>))
-                    {
-                        WriteDebug("Type of JobID filter is List<string>.");
-                        specifiedJobs.Add(idOfJobToWait);
-                    }
+                    AzureBackupJob azureJob = ((Job as PSObject).ImmediateBaseObject as AzureBackupJobDetails);
+                    Vault = new AzurePSBackupVault(azureJob.ResourceGroupName, azureJob.ResourceName, azureJob.Location);
+                    specifiedJobs.Add(azureJob.InstanceId);
                 }
-                else if (JobID is List<string>)
+                else if (Job is AzureBackupJobDetails)
                 {
-                    foreach (string idOfJobToWait in (JobID as List<string>))
-                    {
-                        WriteDebug("Type of JobID filter is List<string>.");
-                        specifiedJobs.Add(idOfJobToWait);
-                    }
+                    Vault = new AzurePSBackupVault((Job as AzureBackupJobDetails).ResourceGroupName, (Job as AzureBackupJobDetails).ResourceName, (Job as AzureBackupJobDetails).Location);
+                    specifiedJobs.Add((Job as AzureBackupJobDetails).InstanceId);
                 }
-                else if ((JobID is PSObject) && (((PSObject)JobID).ImmediateBaseObject is string))
-                {
-                    WriteDebug("Type of JobID filter is string.");
-                    specifiedJobs.Add((JobID as PSObject).ImmediateBaseObject as string);
-                }
-                else if (JobID is string)
-                {
-                    WriteDebug("Type of JobID filter is string.");
-                    specifiedJobs.Add(JobID as string);
-                }
-            }
-            else
-            {
-                WriteDebug("JobID is null");
             }
 
             WriteDebug("Number of jobs to wait on: " + specifiedJobs.Count);
