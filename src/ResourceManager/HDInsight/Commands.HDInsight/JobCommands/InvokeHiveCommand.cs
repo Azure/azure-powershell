@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
@@ -153,21 +154,38 @@ namespace Microsoft.Azure.Commands.HDInsight
                 JobId = jobid
             };
 
-            waitJobCommand.WaitJob();
-
-            //get job output
-            var getOutputCommand = new GetAzureHDInsightJobOutputCommand
+            var job = waitJobCommand.WaitJob();
+            string output;
+            if (job.ExitValue == 0)
             {
-                ClusterCredential = clusterCred,
-                ResourceGroupName = resourceGroup,
-                ClusterName = clusterConnection,
-                DefaultContainer = DefaultContainer,
-                DefaultStorageAccountName = DefaultStorageAccountName,
-                DefaultStorageAccountKey = DefaultStorageAccountKey,
-                JobId = jobid
-            };
+                //get job output
+                var getOutputCommand = new GetAzureHDInsightJobOutputCommand
+                {
+                    ClusterCredential = clusterCred,
+                    ResourceGroupName = resourceGroup,
+                    ClusterName = clusterConnection,
+                    DefaultContainer = DefaultContainer,
+                    DefaultStorageAccountName = DefaultStorageAccountName,
+                    DefaultStorageAccountKey = DefaultStorageAccountKey,
+                    JobId = jobid
+                };
 
-            WriteObject(getOutputCommand.GetJobOutput());
+                output = getOutputCommand.GetJobOutput();
+            }
+            else
+            {
+                //get job error
+                output = Convert(HDInsightJobClient.GetJobError(jobid, DefaultStorageAccountName, DefaultStorageAccountKey,
+                    DefaultContainer));
+            }
+            WriteObject(output);
+        }
+
+        private static string Convert(Stream stream)
+        {
+            var reader = new StreamReader(stream);
+            var text = reader.ReadToEnd();
+            return text;
         }
     }
 }

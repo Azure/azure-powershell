@@ -69,12 +69,10 @@ namespace Microsoft.Azure.Commands.HDInsight
        
         #endregion
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
-            var job = await HDInsightJobClient.StopJob(JobId);
-            var jobDetail = new AzureHDInsightJob(job.JobDetail, HDInsightJobClient.ClusterName);
-            WriteObject(jobDetail);
+            HDInsightJobClient.StopJob(JobId);
         }
     }
 }

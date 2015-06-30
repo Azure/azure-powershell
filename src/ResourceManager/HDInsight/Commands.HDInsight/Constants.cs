@@ -38,14 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
             public const string AzureHDInsightPigJobDefinition = "AzureHDInsightPigJobDefinition";
             public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
-            public const string AzureHDInsightSqoopJobDefinition = "AzureHDInsightSqoopJobDefinition";
             public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureHDInsightStreamingMapReduceJobDefinition";
-        }
-
-        public static class ParameterSetNames
-        {
-            public const string WindowsOS = "WindowsOperatingSystem";
-            public const string LinuxOS = "LinuxOperatingSystem";
         }
     }
 }

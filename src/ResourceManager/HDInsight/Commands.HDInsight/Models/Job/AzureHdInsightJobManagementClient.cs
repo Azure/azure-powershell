@@ -117,14 +117,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightJobManagementClient.JobManagement.ListJobs();
         }
 
-        public Task<JobGetResponse> StopJob(string jobId)
+        public void StopJob(string jobId)
         {
-            throw new NotImplementedException();
+            HdInsightJobManagementClient.JobManagement.KillJob(jobId);
         }
 
         public Stream GetJobOutput(string jobid, string storageAccountName, string storageAccountKey, string containerName)
         {
             var joboutput = HdInsightJobManagementClient.JobManagement.GetJobOutput(jobid, storageAccountName, storageAccountKey, containerName);
+            return joboutput;
+        }
+
+        public Stream GetJobError(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        {
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobErrorLogs(jobid, storageAccountName, storageAccountKey, containerName);
             return joboutput;
         }
 

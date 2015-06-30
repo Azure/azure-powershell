@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get
             {
-                return _credential == null ? null : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
+                return _credential == null
+                    ? null
+                    : new PSCredential(_credential.Username, _credential.Password.ConvertToSecureString());
             }
             set
             {
