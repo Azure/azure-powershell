@@ -27,10 +27,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Subscription</Label>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>MeterCategory</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
@@ -47,16 +43,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <ScriptBlock>$_.Id</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
                 <ScriptBlock>$_.Properties.MeterCategory</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.MeterName</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$results.UsageAggregations[0].Properties.Quantity.ToString() + ' ' + $results.UsageAggregations[0].Properties.Unit</ScriptBlock>
+                <ScriptBlock>$_.Properties.Quantity.ToString() + ' ' + $_.Properties.Unit</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
