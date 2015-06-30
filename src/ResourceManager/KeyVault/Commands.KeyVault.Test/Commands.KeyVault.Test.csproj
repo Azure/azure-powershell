@@ -167,7 +167,8 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\KeyVaultManagementTests.ps1">
+    <None Include="Scripts\ControlPlane\KeyVaultManagementTests.ps1">
+      <Link>ScenarioTests\KeyVaultManagementTests.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateDeleteVaultWithPiping.json">
