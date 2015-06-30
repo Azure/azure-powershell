@@ -167,6 +167,7 @@
     <Compile Include="Extension\DSC\DscExtensionPublicSettings.cs" />
     <Compile Include="Extension\DSC\GetDscResourceException.cs" />
     <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
+    <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionBaseCmdlet.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
