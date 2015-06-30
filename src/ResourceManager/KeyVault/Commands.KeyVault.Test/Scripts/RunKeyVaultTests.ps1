@@ -4,10 +4,7 @@
   [Parameter(Mandatory=$false,Position=1)]   
   [ValidateSet('ControlPlane','DataPlane', 'All')]
   [string]$TestMode = 'All',  
-  [Parameter(Mandatory=$false,Position=2, ParameterSetName="DPTests")]   
-  [ValidateSet('BVT','PROD')]
-  [string]$TestEnvironment = 'PROD',    
-  [Parameter(Mandatory=$false,Position=2, ParameterSetName="CPTests")]   
+  [Parameter(Mandatory=$false,Position=2)]   
   [string]$Location = 'eastus2',
   [Parameter(Mandatory=$false, Position=3)]
   [string]$Vault = ""
@@ -28,7 +25,7 @@ $global:passedCount = 0;
 $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
-$global:testEnv = $TestEnvironment.ToUpperInvariant()
+$global:testEnv = 'PROD';
 $global:testns = $TestRunNameSpace
 $global:location = $location
 $global:testVault = $Vault
