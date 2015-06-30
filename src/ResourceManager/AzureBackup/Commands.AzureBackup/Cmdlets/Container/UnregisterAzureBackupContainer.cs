@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer"), OutputType(typeof(string))]
     public class UnregisterAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.VirtualMachine, ValueFromPipeline = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupContainerToUnregister, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainer AzureBackupContainer { get; set; }
 

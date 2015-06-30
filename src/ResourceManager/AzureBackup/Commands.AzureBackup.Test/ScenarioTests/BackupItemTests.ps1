@@ -12,7 +12,7 @@ $POName = "iaasvmcontainer;dev01testing;dev01testing"
 
 function Test-BackUpAzureBackUpItem
 {
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Cmdlets.AzureBackupItem
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location

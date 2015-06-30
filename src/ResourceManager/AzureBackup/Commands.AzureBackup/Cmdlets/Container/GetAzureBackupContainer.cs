@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(AzureBackupContainer), typeof(List<AzureBackupContainer>))]
     public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceGroupName)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceGroupName)]
         [ValidateNotNullOrEmpty]
-        public string ContainerResourceGroupName { get; set; }
+        public string ManagedResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerResourceName)]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]
-        public string ContainerResourceName { get; set; }
+        public string ManagedResourceName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
         [ValidateNotNullOrEmpty]
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 // When resource group name is specified, remove all containers whose resource group name
                 // doesn't match the given resource group name
-                if (!string.IsNullOrEmpty(ContainerResourceGroupName))
+                if (!string.IsNullOrEmpty(ManagedResourceGroupName))
                 {
                     containerInfos.RemoveAll(containerInfo =>
                     {
-                        return containerInfo.ParentContainerName != ContainerResourceGroupName;
+                        return containerInfo.ParentContainerName != ManagedResourceGroupName;
                     });
                     WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));                
                 }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 // When container resource name and container resource group name are specified, this parameter set
                 // identifies a container uniquely. Thus, we return just one container instead of a list.
-                if (!string.IsNullOrEmpty(ContainerResourceName) & !string.IsNullOrEmpty(ContainerResourceGroupName))
+                if (!string.IsNullOrEmpty(ManagedResourceName) & !string.IsNullOrEmpty(ManagedResourceGroupName))
                 {
                     if (containers.Any())
                     {
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     break;
             }
 
-            if (!string.IsNullOrEmpty(ContainerResourceName))
+            if (!string.IsNullOrEmpty(ManagedResourceName))
             {
-                containerQueryObject.ContainerFriendlyNameField = ContainerResourceName;
+                containerQueryObject.ContainerFriendlyNameField = ManagedResourceName;
             }
 
             return ContainerHelpers.GetQueryFilter(containerQueryObject);

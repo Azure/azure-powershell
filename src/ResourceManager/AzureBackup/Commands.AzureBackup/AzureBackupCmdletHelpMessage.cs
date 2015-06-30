@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string Sku = "The SKU of the backup vault instance.";
         public const string ResourceTags = "A hash table which represents resource tags.";
         public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
-        public const string ContainerResourceName = "The container resource name aka friendly name.";
+        public const string ManagedResourceName = "The resource name of the resource being managed by the Azure Backup service (ex: resource name of the VM).";
         public const string ContainerId = "The container ID.";
         public const string ContainerRegistrationStatus = "The container registration status.";
         public const string ContainerType = "The container type.";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string WaitJobFilterTimeoutHelpMessage = "Maximum number of seconds for which cmdlet should wait before job(s) complete running.";
 
         public const string VirtualMachine = "Virtual Machine.";
-        public const string ContainerResourceGroupName = "The container resource group name.";
+        public const string ManagedResourceGroupName = "The resource group name of the resource being managed by the Azure Backup service (ex: resource group name of the VM).";
         public const string ProtectionStatus = "Protection Status of the azure backup item.";
         public const string AzureBackUpItem = "Azure BackUp Item.";
         public const string RecoveryPointId = "Recovery Point Id.";

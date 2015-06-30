@@ -12,9 +12,10 @@ $POName = "iaasvmcontainer;dev01testing;dev01testing"
 
 function Test-GetAzureBackupJob
 {
+	$vault = Get-AzureBackupVault -Name $ResourceName;
 	$OneMonthBack = Get-Date;
 	$OneMonthBack = $OneMonthBack.AddDays(-30);
-	$jobs = Get-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -From $OneMonthBack -Debug
+	$jobs = Get-AzureBackupJob -Vault $vault -From $OneMonthBack
 	Assert-NotNull $jobs 'Jobs list should not be null'
 	foreach($job in $jobs)
 	{
@@ -25,7 +26,7 @@ function Test-GetAzureBackupJob
 		Assert-NotNull $jobs.Status 'Status should not be null';
 		Assert-NotNull $jobs.Operation 'Operation should not be null';
 
-		$jobDetails = Get-AzureBackupJobDetails -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $job
+		$jobDetails = Get-AzureBackupJobDetails -Job $job
 		Assert-NotNull $jobDetails.InstanceId 'JobID should not be null';
 		Assert-NotNull $jobDetails.StartTime 'StartTime should not be null';
 		Assert-NotNull $jobDetails.WorkloadType 'WorkloadType should not be null';
@@ -40,13 +41,14 @@ function Test-GetAzureBackupJob
 
 function Test-StopAzureBackupJob
 {
+	$vault = Get-AzureBackupVault -Name $ResourceName;
 	$OneMonthBack = Get-Date;
 	$OneMonthBack = $OneMonthBack.AddDays(-30);
 	#TODO
 	#Call trigger backup and get an inprogress job
-	$jobsList = Get-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -From $OneMonthBack #-Operation 'Backup' -Status 'InProgress'
+	$jobsList = Get-AzureBackupJob -Vault $vault -From $OneMonthBack #-Operation 'Backup' -Status 'InProgress'
 
-	Stop-AzureBackupJob -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
-	$jobDetails = Get-AzureBackupJobDetails -ResourceGroupName $ResourceGroupName -ResourceName $ResourceName -Location $Location -Job $jobsList[0];
+	Stop-AzureBackupJob -Job $jobsList[0];
+	$jobDetails = Get-AzureBackupJobDetails -Job $jobsList[0];
 	#Assert-AreEqual 'Cancelling' $jobDetails.Status
 }
