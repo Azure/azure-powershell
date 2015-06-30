@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent
-                 || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
                 {
                     var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
                     var result = Mapper.Map<PSComputeLongRunningOperation>(op);

@@ -52,9 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent
-                || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation,
-                                       Properties.Resources.AvailabilitySetRemovalCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation, Properties.Resources.AvailabilitySetRemovalCaption))
                 {
                     AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
                     var result = Mapper.Map<PSOperation>(op);

@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent
-                 || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
                 {
                     var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
                     WriteObject(op);

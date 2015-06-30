@@ -60,8 +60,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent
-                 || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
                 {
                     Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
                     {
