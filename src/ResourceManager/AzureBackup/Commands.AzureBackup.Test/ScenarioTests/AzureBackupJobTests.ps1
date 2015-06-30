@@ -41,14 +41,22 @@ function Test-GetAzureBackupJob
 
 function Test-StopAzureBackupJob
 {
-	$vault = Get-AzureBackupVault -Name $ResourceName;
 	$OneMonthBack = Get-Date;
 	$OneMonthBack = $OneMonthBack.AddDays(-30);
-	#TODO
-	#Call trigger backup and get an inprogress job
-	$jobsList = Get-AzureBackupJob -Vault $vault -From $OneMonthBack #-Operation 'Backup' -Status 'InProgress'
 
-	Stop-AzureBackupJob -Job $jobsList[0];
-	$jobDetails = Get-AzureBackupJobDetails -Job $jobsList[0];
-	#Assert-AreEqual 'Cancelling' $jobDetails.Status
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ContainerType = $ContainerType
+	$azureBackUpItem.DataSourceId = $DataSourceId
+	$azureBackUpItem.Type = $DataSourceType
+
+	$job = Backup-AzureBackupItem -Item $azureBackUpItem
+
+	Stop-AzureBackupJob -Job $job;
+	Wait-AzureBackupJob -Job $job;
+	$jobDetails = Get-AzureBackupJobDetails -Job $job;
+	Assert-AreEqual 'Cancelled' $jobDetails.Status
 }

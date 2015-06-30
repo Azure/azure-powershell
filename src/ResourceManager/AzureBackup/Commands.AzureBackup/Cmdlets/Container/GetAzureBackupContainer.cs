@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 // BUG: Friendly name was previously assigned to ResourceName (vault name)
                 List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
                 {
-                    return new AzureBackupContainer(vault, containerInfo);
+                    return new AzureBackupContainer(Vault, containerInfo);
                 });
 
                 // When container resource name and container resource group name are specified, this parameter set

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                AzureBackupClient.DeleteVault(vault.ResourceGroupName, vault.Name);
+                AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name);
             });
         }
     }

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Protection policy created successfully");
 
                 var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Name);
-                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(vault, policyInfo));
+                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(Vault, policyInfo));
             });
         }
 

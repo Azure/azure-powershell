@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if (Sku != null)
                 {
                     WriteDebug(String.Format("Updating Sku, Sku: {0}", Sku));
-                    AzureBackupClient.CreateOrUpdateAzureBackupVault(vault.ResourceGroupName, vault.Name, vault.Region, Sku);
+                    AzureBackupClient.CreateOrUpdateAzureBackupVault(Vault.ResourceGroupName, Vault.Name, Vault.Region, Sku);
                 }
 
                 if (Storage.HasValue)
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     AzureBackupClient.UpdateStorageType(Storage.ToString());
                 }
 
-                var backupVault = AzureBackupClient.GetVault(vault.ResourceGroupName, vault.Name);
-                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(vault.ResourceGroupName, vault.Name)));
+                var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);
+                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(Vault.ResourceGroupName, Vault.Name)));
             });
         }
     }

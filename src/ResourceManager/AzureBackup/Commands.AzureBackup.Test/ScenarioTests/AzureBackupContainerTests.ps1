@@ -47,7 +47,7 @@ function Test-RegisterAzureBackupContainer
 	$vault = Get-AzureBackupVault -Name $ResourceName;
 	$jobId = Register-AzureBackupContainer -vault $vault -Name $ManagedResourceName -ServiceName $ManagedResourceGroupName
     
-    Assert-NotNull $jobId 'JobID should not be null';
+    Assert-NotNull $jobId 'Job should not be null';
 }
 
 function Test-UnregisterAzureBackupContainer
@@ -56,5 +56,5 @@ function Test-UnregisterAzureBackupContainer
     $container = Get-AzureBackupContainer -vault $vault -ManagedResourceName $ManagedResourceName -ManagedResourceGroupName $ManagedResourceGroupName
 	$jobId = Unregister-AzureBackupContainer -vault $vault -AzureBackupContainer $container
     
-    Assert-NotNull $jobId 'JobID should not be null';
+    Assert-NotNull $jobId 'Job should not be null';
 }
