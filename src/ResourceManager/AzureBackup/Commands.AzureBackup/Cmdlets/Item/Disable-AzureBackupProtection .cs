@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 RemoveProtectionRequestInput input = new RemoveProtectionRequestInput()
                 {
                     RemoveProtectionOption = this.DeleteBackupData ? RemoveProtectionOptions.DeleteBackupData.ToString() : RemoveProtectionOptions.RetainBackupData.ToString(),
-                    Reason = this.Reason,
-                    Comments = this.Comments,
+                    Reason = this.Reason != null ? this.Reason : String.Empty,
+                    Comments = this.Comments != null ? this.Comments : String.Empty,
                 };
 
                 WriteDebug("RemoveProtectionOption is = " + input.RemoveProtectionOption);

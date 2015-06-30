@@ -107,7 +107,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
             }
 
-            this.WriteObject(targetList, true);
+            if (targetList.Count() == 1)
+            {
+                this.WriteObject(targetList.First(), true);
+            }
+            else
+            {
+                this.WriteObject(targetList, true);
+            }
         }
 
     }
