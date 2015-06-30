@@ -8,7 +8,9 @@
   [ValidateSet('BVT','PROD')]
   [string]$TestEnvironment = 'PROD',    
   [Parameter(Mandatory=$false,Position=2, ParameterSetName="CPTests")]   
-  [string]$Location = 'eastus2'
+  [string]$Location = 'eastus2',
+  [Parameter(Mandatory=$false, Position=3)]
+  [string]$Vault = ""
 )
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
@@ -29,6 +31,7 @@ $global:times = @{}
 $global:testEnv = $TestEnvironment.ToUpperInvariant()
 $global:testns = $TestRunNameSpace
 $global:location = $location
+$global:testVault = $Vault
 
 function Run-TestProtected
 {
