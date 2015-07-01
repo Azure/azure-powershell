@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         SupportsShouldProcess = true,
         DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    class SetAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
+    public class SetAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
     {
         protected const string AzureBlobDscExtensionParamSet = "AzureBlobDscExtension";
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// The specific version of the DSC extension that Set-AzureVMDSCExtension will 
         /// apply the settings to. 
         /// </summary>
-        [Alias("HandlerVersion", "Version")]
+        [Alias("HandlerVersion")]
         [Parameter(
             Mandatory = true,
             Position = 5,

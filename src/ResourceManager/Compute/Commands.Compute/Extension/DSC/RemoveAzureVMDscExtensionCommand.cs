@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "Name of the resource group where virtual machine resource exist.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
+            HelpMessage = "Name of the virtual machine where dsc extension handler would be installed.")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
