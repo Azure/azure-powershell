@@ -35,20 +35,20 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 throw new ArgumentNullException("cloudException");
             }
 
-            var sb = new StringBuilder(cloudException.Message);
+            var sb = new StringBuilder();
 
-            if (cloudException.Response != null)
+            if (!string.IsNullOrEmpty(cloudException.Message))
+            {
+                sb.Append(cloudException.Message);
+            }
+
+            if (cloudException.Response != null &&
+                cloudException.Response.Headers != null)
             {
                 var headers = cloudException.Response.Headers;
-                if (headers != null && headers.ContainsKey(RequestIdHeaderInResponse))
+                if (headers.ContainsKey(RequestIdHeaderInResponse))
                 {
-                    if (sb.Length > 0)
-                    {
-                        // If the original exception message is not empty, append a new line here.
-                        sb.Append(Environment.NewLine);
-                    }
-
-                    sb.AppendFormat(
+                    sb.AppendLine().AppendFormat(
                         Properties.Resources.ComputeCloudExceptionOperationIdMessage,
                         headers[RequestIdHeaderInResponse].FirstOrDefault());
                 }
