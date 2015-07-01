@@ -23,16 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
     public class SecurityConstants
     {
         // Audit Events:
-        public class DeprecatedAuditEvents
-        {
-            // DeprecatedAuditEvents from 04/2015
-            public const string DataAccess = "DataAccess";
-            public const string SchemaChanges = "SchemaChanges";
-            public const string DataChanges = "DataChanges";
-            public const string SecurityExceptions = "SecurityExceptions";
-            public const string RevokePermissions = "RevokePermissions";
-        }
-
         public const string PlainSQL_Success = "PlainSQL_Success";
         public const string PlainSQL_Failure = "PlainSQL_Failure";
         public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";
@@ -50,11 +40,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public static readonly Dictionary<string, AuditEventType> AuditEventsToAuditEventType = new Dictionary
             <string, AuditEventType>
         {
-            {DeprecatedAuditEvents.DataAccess, AuditEventType.DataAccess},
-            {DeprecatedAuditEvents.DataChanges, AuditEventType.DataChanges},
-            {DeprecatedAuditEvents.SecurityExceptions, AuditEventType.SecurityExceptions},
-            {DeprecatedAuditEvents.RevokePermissions, AuditEventType.RevokePermissions},
-            {DeprecatedAuditEvents.SchemaChanges, AuditEventType.SchemaChanges},
             {PlainSQL_Success, AuditEventType.PlainSQL_Success},
             {PlainSQL_Failure, AuditEventType.PlainSQL_Failure},
             {ParameterizedSQL_Success, AuditEventType.ParameterizedSQL_Success},
@@ -91,7 +76,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public static string ReplacementStringDefaultValue = string.Empty;
         public static uint SuffixSizeDefaultValue = 0;
 
-
         /// <summary>
         /// The values that are sent and received by the auditing endpoint
         /// </summary>
@@ -102,11 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             public const string Disabled = "Disabled";
 
             // Event types
-            public const string DataAccess = "DataAccess";
-            public const string SchemaChanges = "SchemaChanges";
-            public const string DataChanges = "DataChanges";
-            public const string SecurityExceptions = "SecurityExceptions";
-            public const string RevokePermissions = "RevokePermissions";
             public const string PlainSQL_Success = "PlainSQL_Success";
             public const string PlainSQL_Failure = "PlainSQL_Failure";
             public const string ParameterizedSQL_Success = "ParameterizedSQL_Success";

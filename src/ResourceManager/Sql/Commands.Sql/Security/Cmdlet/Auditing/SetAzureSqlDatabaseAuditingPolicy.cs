@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// Gets or sets the names of the event types to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Event types to audit")]
-        [ValidateSet(SecurityConstants.DeprecatedAuditEvents.DataAccess, SecurityConstants.DeprecatedAuditEvents.SchemaChanges, SecurityConstants.DeprecatedAuditEvents.DataChanges, SecurityConstants.DeprecatedAuditEvents.SecurityExceptions, SecurityConstants.DeprecatedAuditEvents.RevokePermissions, SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.PlainSQL_Success, SecurityConstants.PlainSQL_Failure, SecurityConstants.ParameterizedSQL_Success, SecurityConstants.ParameterizedSQL_Failure, SecurityConstants.StoredProcedure_Success, SecurityConstants.StoredProcedure_Failure, SecurityConstants.Login_Success, SecurityConstants.Login_Failure, SecurityConstants.TransactionManagement_Success, SecurityConstants.TransactionManagement_Failure, SecurityConstants.All, SecurityConstants.None, IgnoreCase = false)]
         public string[] EventType { get; set; }
 
         /// <summary>
@@ -119,11 +119,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
             else
             {
                 model.TableIdentifier = TableIdentifier;
-            }
-
-            if (Util.DeprecatedEventTypeFound(EventType))
-            {
-                WriteWarning(string.Format(Resources.DeprecatedEventTypeUsed));
             }
             return model;
         }

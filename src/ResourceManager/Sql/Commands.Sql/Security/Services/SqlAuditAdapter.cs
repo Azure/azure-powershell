@@ -212,11 +212,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         private void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
         { 
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataAccess) != -1) events.Add(AuditEventType.DataAccess);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.DataChanges) != -1) events.Add(AuditEventType.DataChanges);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.RevokePermissions) != -1) events.Add(AuditEventType.RevokePermissions);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SchemaChanges) != -1) events.Add(AuditEventType.SchemaChanges);
-            if (eventTypesToAudit.IndexOf(SecurityConstants.DeprecatedAuditEvents.SecurityExceptions) != -1) events.Add(AuditEventType.SecurityExceptions);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
             if (eventTypesToAudit.IndexOf(SecurityConstants.ParameterizedSQL_Success) != -1) events.Add(AuditEventType.ParameterizedSQL_Success);
@@ -363,26 +358,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             }
 
             StringBuilder events = new StringBuilder();
-            if (IsEventTypeOn(AuditEventType.DataAccess, model.EventType))
-            {
-                events.Append(SecurityConstants.AuditingEndpoint.DataAccess).Append(",");
-            }
-            if (IsEventTypeOn(AuditEventType.DataChanges, model.EventType))
-            {
-                events.Append(SecurityConstants.AuditingEndpoint.DataChanges).Append(",");
-            }
-            if (IsEventTypeOn(AuditEventType.RevokePermissions, model.EventType))
-            {
-                events.Append(SecurityConstants.AuditingEndpoint.RevokePermissions).Append(",");
-            }
-            if (IsEventTypeOn(AuditEventType.SchemaChanges, model.EventType))
-            {
-                events.Append(SecurityConstants.AuditingEndpoint.SchemaChanges).Append(",");
-            }
-            if (IsEventTypeOn(AuditEventType.SecurityExceptions, model.EventType))
-            {
-                events.Append(SecurityConstants.AuditingEndpoint.SecurityExceptions).Append(",");
-            }
             if (IsEventTypeOn(AuditEventType.PlainSQL_Success, model.EventType))
             {
                 events.Append(SecurityConstants.AuditingEndpoint.PlainSQL_Success).Append(",");
