@@ -21,6 +21,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -256,8 +258,25 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// </summary>
         public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId)
         {
+            if (!IsDatabaseInServiceTierForPolicy(model, clientId))
+            {
+                throw new Exception(Resources.DatabaseNotInServiceTierForAuditingPolicy);
+            }
             DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model);
             Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
+        }
+
+        private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingPolicyModel model, string clientId)
+        {
+            AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Profile, Subscription);
+            Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+            DatabaseEdition edition = DatabaseEdition.None;
+            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
+            if(edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

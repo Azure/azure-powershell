@@ -51,59 +51,9 @@ function Test-DatabaseDataMaskingPolicyEnablementToggling
 	}
 }
 
-
 <#
 .SYNOPSIS
-Tests changes of the masking level property of a data masking policy 
-#>
-function Test-DatabaseDataMaskingLevelChanges
-{
-
-	# Setup
-	$testSuffix = 20777
-	 $params = Create-DataMaskingTestEnvironment $testSuffix
-
-	try
-	{
-		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingLevel "Standard" 
-		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.MaskingLevel  "Standard"
-
-		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Enabled" 
-		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.MaskingLevel  "Standard"
-
-
-		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingLevel "Extended" 
-		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.MaskingLevel  "Extended"
-
-		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -MaskingLevel "Standard" 
-		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.MaskingLevel  "Standard"
-	}
-	finally
-	{
-		# Cleanup
-	}
-}
-
-
-<#
-.SYNOPSIS
-Tests changes of the masking level property of a data masking policy 
+Tests changes of the privileged logins property of a data masking policy 
 #>
 function Test-DatabaseDataMaskingPrivilegedLoginsChanges
 {

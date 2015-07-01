@@ -76,9 +76,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
 
-        public const string Standard = "Standard";
-        public const string Extended = "Extended";
-
         // Masking functions
         public const string NoMasking = "NoMasking";
         public const string Default = "Default";

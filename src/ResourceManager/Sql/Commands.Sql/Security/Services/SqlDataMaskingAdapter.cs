@@ -214,7 +214,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DatabaseDataMaskingPolicyModel dbPolicyModel = new DatabaseDataMaskingPolicyModel();
             DataMaskingPolicyProperties properties = policy.Properties;
             dbPolicyModel.DataMaskingState = (properties.DataMaskingState == SecurityConstants.DataMaskingEndpoint.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
-            dbPolicyModel.MaskingLevel = (properties.MaskingLevel == SecurityConstants.DataMaskingEndpoint.Standard) ? MaskingLevelType.Standard : MaskingLevelType.Extended;
             dbPolicyModel.PrivilegedLogins = properties.ExemptPrincipals;
             return dbPolicyModel;
         }
@@ -230,7 +229,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             DataMaskingPolicyProperties properties = new DataMaskingPolicyProperties();
             updateParameters.Properties = properties;
             properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Disabled) ? SecurityConstants.DataMaskingEndpoint.Disabled : SecurityConstants.DataMaskingEndpoint.Enabled;
-            properties.MaskingLevel = (model.MaskingLevel == MaskingLevelType.Standard) ? SecurityConstants.DataMaskingEndpoint.Standard : SecurityConstants.DataMaskingEndpoint.Extended;
             properties.ExemptPrincipals = model.PrivilegedLogins ?? "";
             return updateParameters;
         }

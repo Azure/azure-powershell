@@ -234,4 +234,7 @@
   <data name="NewDataMaskingRuleIdIsNotValid" xml:space="preserve">
     <value>Rule Id cannot contain '&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?' and cannot end with a '.'</value>
   </data>
+  <data name="DatabaseNotInServiceTierForAuditingPolicy" xml:space="preserve">
+    <value>Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s)</value>
+  </data>
 </root>
