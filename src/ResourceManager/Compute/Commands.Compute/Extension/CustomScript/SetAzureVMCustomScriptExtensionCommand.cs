@@ -180,59 +180,62 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(this.ParameterSetName, SetCustomScriptExtensionByContainerBlobsParamSetName))
+            ExecuteClientAction(() =>
             {
-                this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
-                    Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
-                var sName = string.IsNullOrEmpty(this.StorageAccountName) ? GetStorageName() : this.StorageAccountName;
-                var sKey = string.IsNullOrEmpty(this.StorageAccountKey) ? GetStorageKey(sName) : this.StorageAccountKey;
-
-                if (this.FileName != null && this.FileName.Any())
+                if (string.Equals(this.ParameterSetName, SetCustomScriptExtensionByContainerBlobsParamSetName))
                 {
-                    this.FileUri = (from blobName in this.FileName
-                                    select GetSasUrlStr(sName, sKey, this.ContainerName, blobName)).ToArray();
+                    this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
+                        Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
+                    var sName = string.IsNullOrEmpty(this.StorageAccountName) ? GetStorageName() : this.StorageAccountName;
+                    var sKey = string.IsNullOrEmpty(this.StorageAccountKey) ? GetStorageKey(sName) : this.StorageAccountKey;
 
-                    if (string.IsNullOrEmpty(this.Run))
+                    if (this.FileName != null && this.FileName.Any())
                     {
-                        WriteWarning(Properties.Resources.CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript);
-                        this.Run = this.FileName[0];
+                        this.FileUri = (from blobName in this.FileName
+                                        select GetSasUrlStr(sName, sKey, this.ContainerName, blobName)).ToArray();
+
+                        if (string.IsNullOrEmpty(this.Run))
+                        {
+                            WriteWarning(Properties.Resources.CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript);
+                            this.Run = this.FileName[0];
+                        }
                     }
                 }
-            }
 
-            var policyStr = string.Format(policyFormatStr, defaultPolicyStr);
-            var commandToExecute = string.Format(poshCmdFormatStr, policyStr, this.Run, this.Argument);
+                var policyStr = string.Format(policyFormatStr, defaultPolicyStr);
+                var commandToExecute = string.Format(poshCmdFormatStr, policyStr, this.Run, this.Argument);
 
-            Hashtable publicSettings = new Hashtable();
-            publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
-            publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
+                Hashtable publicSettings = new Hashtable();
+                publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
+                publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
 
-            Hashtable privateSettings = new Hashtable();
-            privateSettings.Add(storageAccountNameKey, StorageAccountName ?? "");
-            privateSettings.Add(storageAccountKeyKey, StorageAccountKey ?? "");
+                Hashtable privateSettings = new Hashtable();
+                privateSettings.Add(storageAccountNameKey, StorageAccountName ?? "");
+                privateSettings.Add(storageAccountKeyKey, StorageAccountKey ?? "");
 
-            var SettingString = JsonConvert.SerializeObject(publicSettings);
-            var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
+                var SettingString = JsonConvert.SerializeObject(publicSettings);
+                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
 
 
-            var parameters = new VirtualMachineExtension
-            {
-                Location = this.Location,
-                Name = this.Name,
-                Type = VirtualMachineExtensionType,
-                Publisher = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher,
-                ExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
-                TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
-                Settings = SettingString,
-                ProtectedSettings = ProtectedSettingString,
-            };
+                var parameters = new VirtualMachineExtension
+                {
+                    Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Publisher = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher,
+                    ExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
+                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
+                    Settings = SettingString,
+                    ProtectedSettings = ProtectedSettingString,
+                };
 
-            var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
 
-            WriteObject(op);
+                WriteObject(op);
+            });
         }
 
         protected string GetStorageName()
