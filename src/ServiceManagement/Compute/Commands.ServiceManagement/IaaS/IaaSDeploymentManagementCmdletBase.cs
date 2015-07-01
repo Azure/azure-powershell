@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     try
                     {
                         CurrentDeploymentNewSM = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, DeploymentSlot.Production);
-                        GetDeploymentOperationNewSM = GetOperationNewSM(CurrentDeploymentNewSM.RequestId);
+                        GetDeploymentOperationNewSM = GetOperation(CurrentDeploymentNewSM.RequestId);
                         WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
                     }
                     catch (CloudException ex)
