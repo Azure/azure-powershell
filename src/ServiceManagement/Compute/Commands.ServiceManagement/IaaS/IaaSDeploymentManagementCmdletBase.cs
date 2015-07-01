@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
@@ -85,9 +86,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         {
             try
             {
-                HttpRestCallLogger.CurrentCmdlet = this;
-                base.ProcessRecord();
-                ExecuteCommand();
+                try
+                {
+                    HttpRestCallLogger.CurrentCmdlet = this;
+                    base.ProcessRecord();
+                    ExecuteCommand();
+                }
+                catch (CloudException ce)
+                {
+                    throw new ComputeCloudException(ce);
+                }
             }
             catch (Exception ex)
             {
