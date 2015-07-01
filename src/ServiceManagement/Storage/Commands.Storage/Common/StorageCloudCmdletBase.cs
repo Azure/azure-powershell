@@ -21,6 +21,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
@@ -556,6 +557,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 SetUpMultiThreadEnvironment();
             }
+
+            OperationContext.GlobalSendingRequest +=
+                (sender, args) =>
+                {
+                    args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
+                };
 
             base.BeginProcessing();
         }
