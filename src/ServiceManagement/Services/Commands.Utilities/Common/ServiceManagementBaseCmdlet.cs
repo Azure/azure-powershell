@@ -94,6 +94,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             get { return networkClient.Value; }
         }
 
+        protected override void InitChannelCurrentSubscription(bool force)
+        {
+            // Do nothing for service management based cmdlets
+        }
+
         protected OperationStatusResponse GetOperation(string operationId)
         {
             OperationStatusResponse operation = null;
