@@ -154,6 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public SwitchParameter Force { get; set; }
 
         [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
         [ValidateNotNullOrEmpty]
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         //Private Variables
 
-        private const string VersionRegexExpr = @"^(([0-9])\.)([0-9])$";
+        private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -233,7 +234,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     ContainerName = DefaultContainerName;
                 }
 
-                if (Regex.Match(Version, VersionRegexExpr).Success)
+                if (!(Regex.Match(Version, VersionRegexExpr).Success))
                 {
                     ThrowInvalidArgumentError(Properties.Resources.AzureVMDscExtensionInvalidVersion);
                 }
@@ -271,7 +272,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Type = VirtualMachineExtensionType,
                 Publisher = ExtensionNamespace,
                 ExtensionType = ExtensionName,
-                TypeHandlerVersion = Version ?? "",
+                TypeHandlerVersion = Version,
                 // Define the public and private property bags that will be passed to the extension.
                 Settings = DscSettingsSerializer.SerializePublicSettings(publicSettings),
                 //PrivateConfuguration contains sensitive data in a plain text
@@ -282,7 +283,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 ResourceGroupName,
                 VMName,
                 parameters);
-
+            
             var result = Mapper.Map<PSComputeLongRunningOperation>(op);
             WriteObject(result);
         }
