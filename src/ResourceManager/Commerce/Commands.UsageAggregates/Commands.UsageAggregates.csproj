@@ -86,6 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.UsageAggregates.dll-help.psd1" />
+    <Content Include="Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="TestTheCmdLet.ps1" />

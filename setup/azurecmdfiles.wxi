@@ -1894,6 +1894,9 @@
                         <Component Id="cmp4B165777C6CE008CFEE446ACB2A7B9AC" Guid="*">
                             <File Id="fil6BEF4AE37C0AABC1B6EBEACFDFB23EBF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll-help.xml" />
                         </Component>
+                        <Component Id="cmp80B3B24F9A3A790A05C246BA35BC4CBF" Guid="*">
+                            <File Id="filACE274AC35AA5600A8F61AE49EC78C0B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml" />
+                        </Component>
                         <Component Id="cmpEAB3189ED9B3FC06E3EE9DF31FB78FCD" Guid="*">
                             <File Id="fil95DC13FD8BAE2C8DC3424CE9146D21D7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\UsageAggregates\Microsoft.Azure.Commerce.UsageAggregates.dll" />
                         </Component>
@@ -4549,6 +4552,7 @@
             <ComponentRef Id="cmpD145D7FE09196101520B2C18061AB078" />
             <ComponentRef Id="cmp5A40221EF4E95DD5D56060852B14EE3B" />
             <ComponentRef Id="cmp4B165777C6CE008CFEE446ACB2A7B9AC" />
+            <ComponentRef Id="cmp80B3B24F9A3A790A05C246BA35BC4CBF" />
             <ComponentRef Id="cmpEAB3189ED9B3FC06E3EE9DF31FB78FCD" />
             <ComponentRef Id="cmp3048A284A67314ED7DD113C8A0E7AACC" />
             <ComponentRef Id="cmpB75C2663276AF9B54A1956F617A490ED" />
