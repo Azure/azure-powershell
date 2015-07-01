@@ -10667,7 +10667,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
-      <command:verb>Copy</command:verb>
+      <command:verb>Set</command:verb>
       <command:noun>AzureVMDscExtension</command:noun>
       <dev:version></dev:version>
     </command:details>
