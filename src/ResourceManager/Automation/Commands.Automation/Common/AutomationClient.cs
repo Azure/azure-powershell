@@ -1715,8 +1715,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             var fileExtension = (0 == string.Compare(runbookType, Constants.RunbookType.Graph, StringComparison.OrdinalIgnoreCase)) ? Constants.SupportedFileExtensions.Graph : Constants.SupportedFileExtensions.PowerShellScript;
             
-            fileExtension = "." + fileExtension;
-
             var outputFilePath = outputFolderFullPath + "\\" + runbookName + fileExtension;
 
             // file exists and overwrite Not specified

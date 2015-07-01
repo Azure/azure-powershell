@@ -41,18 +41,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Returns the draft or the published runbook version only. If not set, returns published.")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies what version of the runbook, draft or published, should be returned.")]
         [ValidateSet(Constants.Published, Constants.Draft, IgnoreCase = true)]
         public string Slot { get; set; }
 
         /// <summary>
         /// Gets or sets the output folder for the configuration script.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where runbook definition should be placed.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The folder where the runbook should be placed.")]
         public string OutputFolder { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter to confirm overwriting of existing configuration script.
+        /// Gets or sets switch parameter to confirm overwriting of existing local runbook file.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Forces an overwrite of an existing local file with the same name.")]
         public SwitchParameter Force { get; set; }
