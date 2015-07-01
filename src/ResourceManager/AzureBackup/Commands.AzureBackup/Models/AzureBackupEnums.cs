@@ -21,78 +21,78 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
-    public enum AzureBackupContainerTypeInput
-    {
-        AzureVirtualMachine = 1,
-    }
+    //public enum AzureBackupContainerTypeInput
+    //{
+    //    AzureVirtualMachine = 1,
+    //}
 
-    public enum AzureBackupContainerStatusInput
-    {
-        Registering = 1,
-        Registered,
-    }
+    //public enum AzureBackupContainerStatusInput
+    //{
+    //    Registering = 1,
+    //    Registered,
+    //}
 
-    public enum AzureBackupContainerType
-    {
-        Invalid = 0,
+    //public enum AzureBackupContainerType
+    //{
+    //    Invalid = 0,
 
-        Unknown,
+    //    Unknown,
 
-        // used by fabric adapter to populate discovered VMs
-        IaasVMContainer,
+    //    // used by fabric adapter to populate discovered VMs
+    //    IaasVMContainer,
 
-        // used by fabric adapter to populate discovered services
-        // VMs are child containers of services they belong to
-        IaasVMServiceContainer
-    }
+    //    // used by fabric adapter to populate discovered services
+    //    // VMs are child containers of services they belong to
+    //    IaasVMServiceContainer
+    //}
 
-    public enum DataSourceType
-    {
-        Invalid = 0,
+    //public enum DataSourceType
+    //{
+    //    Invalid = 0,
 
-        VM
-    }
+    //    VM
+    //}
 
-    public enum AzureBackupContainerRegistrationStatus
-    {
-        Invalid = 0,
+    //public enum AzureBackupContainerRegistrationStatus
+    //{
+    //    Invalid = 0,
 
-        Unknown,
+    //    Unknown,
 
-        NotRegistered,
+    //    NotRegistered,
 
-        Registered,
+    //    Registered,
 
-        Registering,
-    }
+    //    Registering,
+    //}
 
-    internal enum AzureBackupOperationStatus
-    {
-        Invalid = 0,
+    //internal enum AzureBackupOperationStatus
+    //{
+    //    Invalid = 0,
 
-        InProgress,
+    //    InProgress,
 
-        Completed
-    }
+    //    Completed
+    //}
 
-    internal enum AzureBackupOperationResult
-    {
-        Invalid = 0,
+    //internal enum AzureBackupOperationResult
+    //{
+    //    Invalid = 0,
 
-        Cancelled,
+    //    Cancelled,
 
-        Succeeded,
+    //    Succeeded,
 
-        Failed,
+    //    Failed,
 
-        PartialSuccess
-    }
+    //    PartialSuccess
+    //}
 
-    public enum AzureBackupOperationErrorCode
-    {
-        BMSUserErrorObjectLocked = 390026,
-        DiscoveryInProgress = 410002,
-    }
+    //public enum AzureBackupOperationErrorCode
+    //{
+    //    BMSUserErrorObjectLocked = 390026,
+    //    DiscoveryInProgress = 410002,
+    //}
 
     public enum AzureBackupVaultStorageType
     {
@@ -100,29 +100,29 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         LocallyRedundant,
     }
 
-    public enum ScheduleType
-    {
-        Invalid = 0,
-        Daily = 1,
-        Weekly = 2
-    }
+    //public enum ScheduleType
+    //{
+    //    Invalid = 0,
+    //    Daily = 1,
+    //    Weekly = 2
+    //}
 
-    public enum RetentionType
-    {
-        Invalid = 0,
-        Days = 1,
-        Weeks = 2
-    }
+    //public enum RetentionType
+    //{
+    //    Invalid = 0,
+    //    Days = 1,
+    //    Weeks = 2
+    //}
 
-    public enum WorkloadType
-    {
-        Invalid = 0,
-        VM = 1
-    }
+    //public enum WorkloadType
+    //{
+    //    Invalid = 0,
+    //    VM = 1
+    //}
 
-    public enum BackupType
-    {
-        Invalid = 0,
-        Full = 1
-    }
+    //public enum BackupType
+    //{
+    //    Invalid = 0,
+    //    Full = 1
+    //}
 }

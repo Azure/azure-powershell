@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         [Fact]
         public void SetAzureBackupVaultStorageTypeTests()
         {
-            this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException");
+            //this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException");
 
             this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException");
         }

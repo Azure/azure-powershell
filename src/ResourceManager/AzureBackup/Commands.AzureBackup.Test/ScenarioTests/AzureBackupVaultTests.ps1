@@ -30,7 +30,7 @@ function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowExcepti
 {
 	$freshVaultName = "storagetestrn";
 
-	Assert-Throws { New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $freshVaultName -Region $Location };
+	New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $freshVaultName -Region $Location
 
 	$freshVault = Get-AzureBackupVault -Name $freshVaultName;
 	

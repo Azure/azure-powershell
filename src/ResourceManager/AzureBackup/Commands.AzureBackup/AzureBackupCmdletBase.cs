@@ -142,54 +142,54 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Get status of long running operation
-        /// </summary>
-        /// <param name="operationId"></param>
-        /// <returns></returns>
-        internal OperationResultResponse GetOperationStatus(Guid operationId)
-        {
-            return AzureBackupClient.GetOperationStatus(operationId.ToString());
-        }
+        ///// <summary>
+        ///// Get status of long running operation
+        ///// </summary>
+        ///// <param name="operationId"></param>
+        ///// <returns></returns>
+        //internal OperationResultResponse GetOperationStatus(Guid operationId)
+        //{
+        //    return AzureBackupClient.GetOperationStatus(operationId.ToString());
+        //}
 
-        private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
+        //private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
 
-        /// <summary>
-        /// Track completion of long running operation
-        /// </summary>
-        /// <param name="operationId"></param>
-        /// <param name="checkFrequency">In Millisec</param>
-        /// <returns></returns>
-        internal OperationResultResponse TrackOperation(Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
-        {
-            OperationResultResponse response = null;
+        ///// <summary>
+        ///// Track completion of long running operation
+        ///// </summary>
+        ///// <param name="operationId"></param>
+        ///// <param name="checkFrequency">In Millisec</param>
+        ///// <returns></returns>
+        //internal OperationResultResponse TrackOperation(Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
+        //{
+        //    OperationResultResponse response = null;
 
-            while (true)
-            {
-                response = GetOperationStatus(operationId);
+        //    while (true)
+        //    {
+        //        response = GetOperationStatus(operationId);
 
-                if (response.OperationStatus == AzureBackupOperationStatus.Completed.ToString())
-                {
-                    break;
-                }
+        //        if (response.OperationStatus == AzureBackupOperationStatus.Completed.ToString())
+        //        {
+        //            break;
+        //        }
 
-                Thread.Sleep(checkFrequency);
-            }
+        //        Thread.Sleep(checkFrequency);
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        internal IList<AzureBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
-        {
-            IList<AzureBackupJob> jobs = new List<AzureBackupJob>();
+        //internal IList<AzureBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
+        //{
+        //    IList<AzureBackupJob> jobs = new List<AzureBackupJob>();
 
-            foreach(string jobId in jobIds)
-            {
-                jobs.Add(new AzureBackupJob(vault, AzureBackupClient.GetJobDetails(jobId).Job));
-            }
+        //    foreach(string jobId in jobIds)
+        //    {
+        //        jobs.Add(new AzureBackupJob(vault, AzureBackupClient.GetJobDetails(jobId).Job));
+        //    }
 
-            return jobs;
-        }
+        //    return jobs;
+        //}
     }
 }
 
