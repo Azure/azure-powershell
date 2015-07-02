@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Hyak.Common;
+using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using System.Threading;
-using Hyak.Common;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System.Net;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Scheduler;
-using Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
-using Microsoft.Azure.Commands.AzureBackup.Models;
+using System;
+using System.Management.Automation;
+using System.Net;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -38,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Azure backup client.
         /// </summary>
         private AzureBackupClientAdapter azureBackupClientAdapter;
-        
+
         /// <summary>
         /// Get Azure backup client.
         /// </summary>
@@ -141,55 +135,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteError(errorRecord);
             }
         }
-
-        ///// <summary>
-        ///// Get status of long running operation
-        ///// </summary>
-        ///// <param name="operationId"></param>
-        ///// <returns></returns>
-        //internal OperationResultResponse GetOperationStatus(Guid operationId)
-        //{
-        //    return AzureBackupClient.GetOperationStatus(operationId.ToString());
-        //}
-
-        //private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
-
-        ///// <summary>
-        ///// Track completion of long running operation
-        ///// </summary>
-        ///// <param name="operationId"></param>
-        ///// <param name="checkFrequency">In Millisec</param>
-        ///// <returns></returns>
-        //internal OperationResultResponse TrackOperation(Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
-        //{
-        //    OperationResultResponse response = null;
-
-        //    while (true)
-        //    {
-        //        response = GetOperationStatus(operationId);
-
-        //        if (response.OperationStatus == AzureBackupOperationStatus.Completed.ToString())
-        //        {
-        //            break;
-        //        }
-
-        //        Thread.Sleep(checkFrequency);
-        //    }
-
-        //    return response;
-        //}
-
-        //internal IList<AzureBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
-        //{
-        //    IList<AzureBackupJob> jobs = new List<AzureBackupJob>();
-
-        //    foreach(string jobId in jobIds)
-        //    {
-        //        jobs.Add(new AzureBackupJob(vault, AzureBackupClient.GetJobDetails(jobId).Job));
-        //    }
-
-        //    return jobs;
-        //}
     }
 }
 

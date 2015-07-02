@@ -15,18 +15,13 @@
 using Microsoft.Azure.Commands.AzureBackup.Library;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -84,6 +79,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 // generate vault credentials
                 string vaultCredsFileContent = GenerateVaultCreds(cert, subscriptionId, resourceType, acsNamespace);
+
+                // NOTE: One of the scenarios for this cmdlet is to generate a file which will be an input to DPM servers. 
+                //       We found a bug in the DPM UI which is looking for a particular namespace in the input file.
+                //       The below is a hack to circumvent this issue and this would be removed once the bug can be fixed.
                 vaultCredsFileContent = vaultCredsFileContent.Replace("Microsoft.Azure.Commands.AzureBackup.Models",
                                                                       "Microsoft.Azure.Portal.RecoveryServices.Models.Common");
 

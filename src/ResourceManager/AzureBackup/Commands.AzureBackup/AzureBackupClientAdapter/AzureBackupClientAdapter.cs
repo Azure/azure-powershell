@@ -12,20 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using System.Threading;
-using Hyak.Common;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System.Net;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Net;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
@@ -91,7 +83,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             resourceName = rName;
 
             RefreshClientRequestId();
-            
+
             // Temp code to be able to test internal env.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
         }
