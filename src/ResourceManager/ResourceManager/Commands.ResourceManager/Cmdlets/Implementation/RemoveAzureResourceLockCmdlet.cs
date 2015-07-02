@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
