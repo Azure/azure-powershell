@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Test;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    public partial class AzureVMTests
+    public partial class ServiceManagementTests
     {
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
@@ -26,6 +30,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void TestGetAzureLocation()
         {
             this.RunPowerShellTest("Test-GetAzureLocation");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunServiceManagementCloudExceptionTests()
+        {
+            this.RunPowerShellTest("Run-ServiceManagementCloudExceptionTests");
         }
     }
 }

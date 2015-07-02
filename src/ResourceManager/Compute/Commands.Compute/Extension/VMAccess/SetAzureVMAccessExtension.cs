@@ -92,33 +92,36 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            Hashtable publicSettings = new Hashtable();
-            publicSettings.Add(userNameKey, UserName ?? "");
-
-            Hashtable privateSettings = new Hashtable();
-            privateSettings.Add(passwordKey, Password ?? "");
-
-            var SettingString = JsonConvert.SerializeObject(publicSettings);
-            var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
-
-            var parameters = new VirtualMachineExtension
+            ExecuteClientAction(() =>
             {
-                Location = this.Location,
-                Name = this.Name,
-                Type = VirtualMachineExtensionType,
-                Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
-                ExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
-                TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
-                Settings = SettingString,
-                ProtectedSettings = ProtectedSettingString,
-            };
+                Hashtable publicSettings = new Hashtable();
+                publicSettings.Add(userNameKey, UserName ?? "");
 
-            var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                Hashtable privateSettings = new Hashtable();
+                privateSettings.Add(passwordKey, Password ?? "");
 
-            WriteObject(op);
+                var SettingString = JsonConvert.SerializeObject(publicSettings);
+                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
+
+                var parameters = new VirtualMachineExtension
+                {
+                    Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
+                    ExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
+                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
+                    Settings = SettingString,
+                    ProtectedSettings = ProtectedSettingString,
+                };
+
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
+
+                WriteObject(op);
+            });
         }
     }
 }
