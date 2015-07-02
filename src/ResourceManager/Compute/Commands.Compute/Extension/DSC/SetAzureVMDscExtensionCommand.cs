@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Mandatory = true,
            Position = 2,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Name of the resource group where virtual machine resource exist.")]
+           HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -160,6 +160,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        /// <summary>
+        /// We install the extension handler version specified by the version param. By default extension handler is not autoupdated. 
+        /// Use -AutoUpdate to enable auto update of extension handler to the latest version as and when it is available. 
+        /// </summary>
+        [Parameter(
+            HelpMessage = "Extension handler gets auto updated to the latest version if this switch is present.")]
+        public SwitchParameter AutoUpdate { get; set; }
         //Private Variables
 
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
@@ -277,6 +284,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Settings = DscSettingsSerializer.SerializePublicSettings(publicSettings),
                 //PrivateConfuguration contains sensitive data in a plain text
                 ProtectedSettings = DscSettingsSerializer.SerializePrivateSettings(privateSettings),
+                AutoUpgradeMinorVersion = AutoUpdate.IsPresent ? true : false
             };
 
             var op = VirtualMachineExtensionClient.CreateOrUpdate(
