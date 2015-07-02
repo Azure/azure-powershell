@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             odataQuery: this.ODataQuery);
 
                     var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
+                    var resultString = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result, ResourceObjectFormat.New);
+                    this.TryConvertAndWriteObject(resultString);
                 });
         }
 

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result, ResourceObjectFormat.New);
+                    this.TryConvertAndWriteObject(result, ResourceObjectFormat.New);
                 });
         }
     }
