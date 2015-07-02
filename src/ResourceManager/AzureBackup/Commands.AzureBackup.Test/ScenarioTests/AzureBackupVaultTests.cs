@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
@@ -32,8 +27,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         [Fact]
         public void SetAzureBackupVaultStorageTypeTests()
         {
-            //this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException");
-
             this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException");
         }
     }

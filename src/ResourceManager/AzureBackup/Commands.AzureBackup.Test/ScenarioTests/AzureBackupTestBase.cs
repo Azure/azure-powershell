@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        
+
         public BackupServicesManagementClient BackupServicesMgmtClient { get; private set; }
 
         protected AzureBackupTestsBase()
