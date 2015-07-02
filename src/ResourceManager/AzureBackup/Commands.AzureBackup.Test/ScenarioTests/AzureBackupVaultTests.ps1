@@ -26,25 +26,6 @@ function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
 	Assert-True {{ Test-Path $certFileFullPath }}
 }
 
-function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
-{
-	$freshVaultName = "storagetestrn";
-
-	New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $freshVaultName -Region $Location
-
-	$freshVault = Get-AzureBackupVault -Name $freshVaultName;
-	
-	Set-AzureBackupVaultStorageType $freshVault -Type GeoRedundant
-
-	Set-AzureBackupVaultStorageType $freshVault -Type LocallyRedundant
-
-	Set-AzureBackupVaultStorageType $freshVault -Type GeoRedundant
-
-	Set-AzureBackupVaultStorageType $freshVault -Type LocallyRedundant
-
-	Remove-AzureBackupVault -vault $freshVault
-}
-
 function Test-SetAzureBackupVaultStorageTypeWithLockedResourceThrowsException
 {
 	$vault = Get-AzureBackupVault -Name $ResourceName;

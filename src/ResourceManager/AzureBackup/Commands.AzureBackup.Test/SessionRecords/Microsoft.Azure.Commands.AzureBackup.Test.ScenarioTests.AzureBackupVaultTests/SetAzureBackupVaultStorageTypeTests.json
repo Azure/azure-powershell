@@ -10,7 +10,7 @@
           "en-us"
         ],
         "x-ms-client-request-id": [
-          "ede7470a-27bb-43bc-a67a-4dc39ff35deb-2015-07-02 09:47:13Z-PS"
+          "904b9d2b-eca0-4b1e-b381-eade67d644a1-2015-07-02 09:46:51Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14989"
         ],
         "x-ms-request-id": [
-          "aa627685-6762-44c4-ab93-d6cc09ec9ff7"
+          "9baf01f3-d229-493a-891c-05fbd9dac5c7"
         ],
         "x-ms-correlation-request-id": [
-          "aa627685-6762-44c4-ab93-d6cc09ec9ff7"
+          "9baf01f3-d229-493a-891c-05fbd9dac5c7"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150702T094714Z:aa627685-6762-44c4-ab93-d6cc09ec9ff7"
+          "CENTRALUS:20150702T094653Z:9baf01f3-d229-493a-891c-05fbd9dac5c7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 02 Jul 2015 09:47:13 GMT"
+          "Thu, 02 Jul 2015 09:46:52 GMT"
         ]
       },
       "StatusCode": 200
@@ -64,7 +64,7 @@
           "en-us"
         ],
         "x-ms-client-request-id": [
-          "ede7470a-27bb-43bc-a67a-4dc39ff35deb-2015-07-02 09:47:13Z-PS"
+          "904b9d2b-eca0-4b1e-b381-eade67d644a1-2015-07-02 09:46:51Z-PS"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
@@ -85,29 +85,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c8405bdc-61db-4e8d-ae5d-f203c76d4c8a"
+          "7d95a336-0fc2-4783-b0c0-f4ba1994e58f"
         ],
         "x-ms-client-request-id": [
-          "ede7470a-27bb-43bc-a67a-4dc39ff35deb-2015-07-02 09:47:13Z-PS",
-          "ede7470a-27bb-43bc-a67a-4dc39ff35deb-2015-07-02 09:47:13Z-PS"
+          "904b9d2b-eca0-4b1e-b381-eade67d644a1-2015-07-02 09:46:51Z-PS",
+          "904b9d2b-eca0-4b1e-b381-eade67d644a1-2015-07-02 09:46:51Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14988"
         ],
         "x-ms-correlation-request-id": [
-          "c8405bdc-61db-4e8d-ae5d-f203c76d4c8a"
+          "7d95a336-0fc2-4783-b0c0-f4ba1994e58f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150702T094715Z:c8405bdc-61db-4e8d-ae5d-f203c76d4c8a"
+          "CENTRALUS:20150702T094655Z:7d95a336-0fc2-4783-b0c0-f4ba1994e58f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 02 Jul 2015 09:47:15 GMT"
+          "Thu, 02 Jul 2015 09:46:55 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -116,19 +116,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/certificates/IdMgmtInternalCert?api-version=2015-03-15",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vY2VydGlmaWNhdGVzL0lkTWdtdEludGVybmFsQ2VydD9hcGktdmVyc2lvbj0yMDE1LTAzLTE1",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQTECWXuTfh4FJo2pyQqyEczANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE1MDcwMjA5MzcxNVoXDTE1MDcwNDA5NDcxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN0yF85/FGxqVzlE43DdaaOt7L+tZl7MTSM1c15RIrzzLEw4MNhCRFCklKR6iYUN2hnjO176fiSBSjZ5EdB9DRK2hvDVobOl4VNldWgbmkezl5qHAdGByiU8MDljnnoXvb6MY95b0DQJpWg/aLZtpVfPh7UE5vUvV3NfqqLVB4ETI96bYD/r9xC5yuiggFL8xuTeHJTrVHcESc+4dN0EA7wLP54FcabHt11mPFfsMrsFicD0e23JEQofpqki4JWswvFUlYaSy7i7dCUn+ag/PbUWD/a1Rm2MlzZul/E/UVodxenBbNmNshRTJRF1uio7Zr2uBvsxd+NkwD0zqhS7+fkCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBAEjpZ8iG2+DGB0AWWpRvzePXv3acrjPJpQSrESulp9XNpDonNBkvuSO80OkKxYpCCbG7H6au1gczcUgh3ICs7MSwSscIhhTdfnAgHxpRzYE6/BxwLSqhRpc4fpFLx9oq10MNbWVNQ7fqKun0cbex7AdLOJ5NWkEVrP8Bm2vlRfWehO84p1f9j7tD01mFN6ps3CENerNOJSyMfL5RxooIZm00QZ37xP+RCD86LVBN2/wH2ULn7Rzy8LaDTtZmkO31QSmqYaRCMr1eby9kXo8uqWD6aoPGrM2jc6nmDgX+KXGiQ9ilXCrjb+ZhFWVeAHbqWRPusCax2UnCSyE6l1h/Xns=\"\r\n  }\r\n}",
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/storageconfig/vaultstorageconfig?api-version=2015-03-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vc3RvcmFnZWNvbmZpZy92YXVsdHN0b3JhZ2Vjb25maWc/YXBpLXZlcnNpb249MjAxNS0wMy0xNQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageModelType\": \"GeoRedundant\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json"
         ],
         "Content-Length": [
-          "1035"
+          "68"
         ],
         "Accept-Language": [
           "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "c3cbdb0a-07a1-4da8-9030-fd2e4a1cb8c8-2015-07-02 09:46:55Z-PS"
         ],
         "x-ms-version": [
           "2013-03-01"
@@ -137,10 +140,10 @@
           "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQTECWXuTfh4FJo2pyQqyEczANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE1MDcwMjA5MzcxNVoXDTE1MDcwNDA5NDcxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN0yF85/FGxqVzlE43DdaaOt7L+tZl7MTSM1c15RIrzzLEw4MNhCRFCklKR6iYUN2hnjO176fiSBSjZ5EdB9DRK2hvDVobOl4VNldWgbmkezl5qHAdGByiU8MDljnnoXvb6MY95b0DQJpWg/aLZtpVfPh7UE5vUvV3NfqqLVB4ETI96bYD/r9xC5yuiggFL8xuTeHJTrVHcESc+4dN0EA7wLP54FcabHt11mPFfsMrsFicD0e23JEQofpqki4JWswvFUlYaSy7i7dCUn+ag/PbUWD/a1Rm2MlzZul/E/UVodxenBbNmNshRTJRF1uio7Zr2uBvsxd+NkwD0zqhS7+fkCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBAEjpZ8iG2+DGB0AWWpRvzePXv3acrjPJpQSrESulp9XNpDonNBkvuSO80OkKxYpCCbG7H6au1gczcUgh3ICs7MSwSscIhhTdfnAgHxpRzYE6/BxwLSqhRpc4fpFLx9oq10MNbWVNQ7fqKun0cbex7AdLOJ5NWkEVrP8Bm2vlRfWehO84p1f9j7tD01mFN6ps3CENerNOJSyMfL5RxooIZm00QZ37xP+RCD86LVBN2/wH2ULn7Rzy8LaDTtZmkO31QSmqYaRCMr1eby9kXo8uqWD6aoPGrM2jc6nmDgX+KXGiQ9ilXCrjb+ZhFWVeAHbqWRPusCax2UnCSyE6l1h/Xns=\",\r\n    \"resourceId\": 3420983535961922368,\r\n    \"globalAcsNamespace\": \"seadev01rrp1users\",\r\n    \"globalAcsHostName\": \"accesscontrol.windows.net\",\r\n    \"globalAcsRPRealm\": \"http://windowscloudbackup/m3\",\r\n    \"subject\": \"CN=Windows Azure Tools\",\r\n    \"validFrom\": \"2015-07-02T15:07:15+05:30\",\r\n    \"validTo\": \"2015-07-04T15:17:15+05:30\",\r\n    \"thumbprint\": \"478BF8B0D0F0AB869921297EE3A18A18043B9B09\",\r\n    \"friendlyName\": \"\",\r\n    \"issuer\": \"CN=Windows Azure Tools\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"Error\": {\r\n    \"Code\": \"StorageModelModifyError\",\r\n    \"Message\": \"Storage Redundancy option is locked when the first machine is registered with the vault, and cannot be modified thereafter.\",\r\n    \"Target\": null,\r\n    \"Details\": null,\r\n    \"InnerError\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1410"
+          "227"
         ],
         "Content-Type": [
           "application/json"
@@ -152,35 +155,111 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4d6b78de-c27c-4d47-8b63-31a813389066"
+          "fd723a8a-b129-4839-b8b4-ecd4932688ac"
         ],
         "x-ms-client-request-id": [
-          "eb3055fc-e8a8-421b-b3a0-b175263c28db",
-          "eb3055fc-e8a8-421b-b3a0-b175263c28db"
+          "c3cbdb0a-07a1-4da8-9030-fd2e4a1cb8c8-2015-07-02 09:46:55Z-PS",
+          "c3cbdb0a-07a1-4da8-9030-fd2e4a1cb8c8-2015-07-02 09:46:55Z-PS"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "4d6b78de-c27c-4d47-8b63-31a813389066"
+          "fd723a8a-b129-4839-b8b4-ecd4932688ac"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150702T094719Z:4d6b78de-c27c-4d47-8b63-31a813389066"
+          "CENTRALUS:20150702T094656Z:fd723a8a-b129-4839-b8b4-ecd4932688ac"
+        ],
+        "Connection": [
+          "close"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 02 Jul 2015 09:47:19 GMT"
+          "Thu, 02 Jul 2015 09:46:56 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 403
+    },
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backupseadev01/BackupVault/backuprn/storageconfig/vaultstorageconfig?api-version=2015-03-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3Vwc2VhZGV2MDEvQmFja3VwVmF1bHQvYmFja3Vwcm4vc3RvcmFnZWNvbmZpZy92YXVsdHN0b3JhZ2Vjb25maWc/YXBpLXZlcnNpb249MjAxNS0wMy0xNQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageModelType\": \"LocallyRedundant\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "72"
+        ],
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "c9020526-b0e2-479d-b46e-4aba628b0227-2015-07-02 09:46:56Z-PS"
+        ],
+        "x-ms-version": [
+          "2013-03-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"Error\": {\r\n    \"Code\": \"StorageModelModifyError\",\r\n    \"Message\": \"Storage Redundancy option is locked when the first machine is registered with the vault, and cannot be modified thereafter.\",\r\n    \"Target\": null,\r\n    \"Details\": null,\r\n    \"InnerError\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "227"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "60902c89-e785-4715-bab9-df78d3388245"
+        ],
+        "x-ms-client-request-id": [
+          "c9020526-b0e2-479d-b46e-4aba628b0227-2015-07-02 09:46:56Z-PS",
+          "c9020526-b0e2-479d-b46e-4aba628b0227-2015-07-02 09:46:56Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "60902c89-e785-4715-bab9-df78d3388245"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150702T094659Z:60902c89-e785-4715-bab9-df78d3388245"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2015 09:46:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ]
+      },
+      "StatusCode": 403
     }
   ],
   "Names": {},
