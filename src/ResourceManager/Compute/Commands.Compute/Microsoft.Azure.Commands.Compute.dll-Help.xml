@@ -2881,21 +2881,28 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureVMDscExtension</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>The resource group name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>VMName</maml:name>
 				<maml:description>
 					<maml:para>The virtual machine name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the Extension</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>Status</maml:name>
 				<maml:description>
 					<maml:para>Output shows status when the switch is present</maml:para>
@@ -2905,7 +2912,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>The resource group name.</maml:para>
@@ -2918,7 +2925,32 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+      <maml:name>VMName</maml:name>
+      <maml:description>
+        <maml:para>The virtual machine name</maml:para>
+
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <maml:name>Name</maml:name>
+      <maml:description>
+        <maml:para>Name of the Extension</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      <dev:type>
+        <maml:name>String</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>Status</maml:name>
 			<maml:description>
 				<maml:para>Output shows status when the switch is present</maml:para>
@@ -2931,19 +2963,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>VMName</maml:name>
-			<maml:description>
-				<maml:para>The virtual machine name</maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		
 	</command:parameters>
 	<!-- Input - Output section-->
 	<command:inputTypes>
@@ -8167,14 +8187,21 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Name of Resource Group</maml:para>
+            <maml:para>The name of the resource group</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>VMName</maml:name>
           <maml:description>
-            <maml:para>Name of the VM</maml:para>
+            <maml:para>The name of the virtual machine</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the Extension</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -8191,7 +8218,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>Name of Resource Group</maml:para>
+          <maml:para>The name of the resource group</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8203,7 +8230,19 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>VMName</maml:name>
         <maml:description>
-          <maml:para>Name of the VM</maml:para>
+          <maml:para>The name of the virtual machine</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the Extension</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8265,7 +8304,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName &quot;RG&quot; -VMName &quot;vm1&quot;</dev:code>
+        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName &quot;RG&quot; -VMName &quot;vm1&quot; -Name &quot;extnname&quot;</dev:code>
         <dev:remarks>
           <maml:para />
           <maml:para />
