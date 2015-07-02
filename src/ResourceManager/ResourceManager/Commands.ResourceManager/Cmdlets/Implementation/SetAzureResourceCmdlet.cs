@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿.// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.TryConvertAndWriteObject(result, this.OutputObjectFormat.Value);
+                    this.WriteObject(result.ToResource().ToPsObject(this.OutputObjectFormat.Value));
                 });
         }
 

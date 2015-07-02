@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using System.Management.Automation;
+
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
-    using System.Management.Automation;
-    
+
     [Cmdlet(VerbsCommon.Remove, "AzureDedicatedCircuitLinkAuthorizationMicrosoftIds")]
     public class RemoveAzureDedicatedCircuitLinkAuthorizationMicrosoftIdsCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key representing Azure Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Authorization Id")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string AuthorizationId { get; set; }
+        public Guid AuthorizationId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Microsoft Ids to be removed")]
         public string MicrosoftIds { get; set; }

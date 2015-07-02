@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using FROM = Microsoft.Azure.Management.Compute.Models;
+using TO = Microsoft.Azure.Commands.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using AutoMapper;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using FROM = Microsoft.Azure.Management.Compute.Models;
-    using TO = Microsoft.Azure.Commands.Compute.Models;
-
     public static class ComputeMapperExtension
     {
         public static IMappingExpression<TSource, TDestination> ForItems<TSource, TDestination, T>(
@@ -68,12 +68,21 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected override void Configure()
         {
-            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
-            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
-            Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
-            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperation>();
             Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperationResponse>();
+            Mapper.CreateMap<FROM.DeleteOperationResponse, TO.PSComputeLongRunningOperation>();
+
+            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSAvailabilitySet>();
+
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachine>();
+
+            Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachineSize>();
+
+            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSUsage>();
         }
     }
 }

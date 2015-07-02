@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
-        public string[] NetworkInterfaceIds { get; set; }
+        public string[] NetworkInterfaceIDs { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            foreach (var id in this.NetworkInterfaceIds)
+            foreach (var id in this.NetworkInterfaceIDs)
             {
                 if (networkProfile != null &&
                     networkProfile.NetworkInterfaces != null &&
@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 networkProfile = null;
             }
+
             this.VM.NetworkProfile = networkProfile;
 
             WriteObject(this.VM);

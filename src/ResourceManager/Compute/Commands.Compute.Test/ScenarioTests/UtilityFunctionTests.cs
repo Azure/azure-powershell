@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using System;
 using Xunit;
 

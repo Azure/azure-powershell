@@ -60,9 +60,8 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 WriteObject(psVnetGateways, true);
-            }            
+            }
         }
     }
 }
 
- 
