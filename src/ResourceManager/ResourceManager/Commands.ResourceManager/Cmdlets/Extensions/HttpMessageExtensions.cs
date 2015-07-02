@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             }
         }
 
-            {
         /// <summary>
         /// Reads the JSON content from the http response message.
         /// </summary>
