@@ -123,8 +123,6 @@
     <Compile Include="Security\Cmdlet\DataMasking\RemoveAzureSqlDatabaseDataMaskingRule.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingRule.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\SqlDatabaseDataMaskingRuleCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\EnableAzureSqlDatabaseDirectAccess.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\DisableAzureSqlDatabaseDirectAccess.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingPolicy.cs" />
     <Compile Include="Security\Cmdlet\SecureConnection\GetAzureSqlDatabaseSecureConnectionPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlDatabaseAuditingPolicy.cs" />
