@@ -63,14 +63,13 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    <Reference Include="Microsoft.Azure.ResourceManager">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -193,7 +192,6 @@
     <Compile Include="FunctionalTests\ExtensionTests\AzureVMSqlServerExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\AzureVMBGInfoExtensionTests.cs" />
     <Compile Include="FunctionalTests\ExtensionTests\CustomScriptExtensionTests.cs" />
-    <Compile Include="FunctionalTests\ExtensionTests\DscExtensionTests.cs" />
     <Compile Include="FunctionalTests\FunctionalTestCommonVhd.cs" />
     <Compile Include="FunctionalTests\GenericIaaSExtensionTests.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\AddAzureCertificateCmdletInfo.cs" />
@@ -215,15 +213,12 @@
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\CustomScript\RemoveAzureVMCustomScriptExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\CustomScript\SetAzureVMCustomScriptExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\CustomScript\SetAzureVMCustomScriptExtensionCmdletParmaterSetType.cs" />
-    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\Dsc\GetAzureVMDscExtensionCmdletInfo.cs" />
-    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\Dsc\RemoveAzureVMDscExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\GetAzureVMSqlServerExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\RemoveAzureVMSqlServerExtensionCmdleteInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\SqlServer\SetAzureVMSqlServerExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\GetAzureVMAccessExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\RemoveAzureVMAccessExtensionCmdleteInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\VMAccess\SetAzureVMAccessExtensionCmdletInfo.cs" />
-    <Compile Include="FunctionalTests\IaasCmdletInfo\Extesnions\Dsc\SetAzureVMDscExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Generic\GetAzureVMAvailableExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Generic\GetAzureVMExtensionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\Generic\GetAzureVMExtensionConfigTemplateCmdletInfo.cs" />
@@ -427,64 +422,132 @@
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
     <None Include="Resources\HelloWorld_SDK20.cspkg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\ServiceConfiguration.cscfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="Resources\affinityGroupData.csv" />
-    <None Include="Resources\certificateData.csv" />
+    <None Include="Resources\affinityGroupData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\certificateData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\CustomData.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\cloudinittest.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\download_VHD.csv" />
-    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1" />
-    <None Include="Resources\HelloNoDiag.cscfg" />
-    <None Include="Resources\nodiagpackage.csv" />
-    <None Include="Resources\OneWebOneWorker.cscfg" />
-    <None Include="Resources\OneWebOneWorkerRDP.cscfg" />
-    <None Include="Resources\overwrite_VHD.csv" />
-    <None Include="Resources\package.csv" />
-    <None Include="Resources\packageADDomain.csv" />
-    <None Include="Resources\packageReservedIP.csv" />
-    <None Include="Resources\packageScenario.csv" />
-    <None Include="Resources\patch_VHD.csv" />
-    <None Include="Resources\rdpcert.pfx" />
-    <None Include="Resources\ReservedIPConfig1.cscfg" />
-    <None Include="Resources\ReservedIPConfig1update.cscfg" />
-    <None Include="Resources\ReservedIPConfig2.cscfg" />
-    <None Include="Resources\ReservedIPConfig2update.cscfg" />
-    <None Include="Resources\resume_VHD.csv" />
-    <None Include="Resources\SampleAppV1.cscfg" />
-    <None Include="Resources\SampleAppV2.cscfg" />
-    <None Include="Resources\SampleAppV3.cscfg" />
-    <None Include="Resources\StaticCAvnetconfig.netcfg" />
-    <None Include="Resources\storageAccountTestData.csv" />
-    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1" />
-    <None Include="Resources\test1.ps1" />
-    <None Include="Resources\test2.ps1" />
-    <None Include="Resources\thread_VHD.csv" />
-    <None Include="Resources\upload_VHD.csv" />
-    <None Include="Resources\vnetconfig.netcfg" />
-    <None Include="Resources\VnetconfigWithLocation.netcfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="Resources\download_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\wrongPara_VHD.csv" />
+    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\HelloNoDiag.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\nodiagpackage.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\OneWebOneWorker.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\OneWebOneWorkerRDP.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\overwrite_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\package.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageADDomain.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageReservedIP.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageScenario.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\patch_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\rdpcert.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ReservedIPConfig.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ReservedIPConfigupdate.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\resume_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV1.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV2.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV3.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\StaticCAvnetconfig.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\storageAccountTestData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\test1.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\test2.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\thread_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\upload_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\vnetconfig.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\VnetconfigWithLocation.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\wrongPara_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\ExtensionTests\MicrosoftAntimalware\AntimalwareConfig.xml" />
     <Content Include="FunctionalTests\Readme.txt" />
     <Content Include="lib\Security.Cryptography.dll" />
-    <Content Include="Resources\clxtshar.dll" />
-    <Content Include="Resources\da.xml" />
-    <Content Include="Resources\PrivateConfig.xml" />
-    <Content Include="Resources\PublicConfig.xml" />
-    <Content Include="Resources\VmAccessExtensionConfiguration.xml" />
+    <Content Include="Resources\clxtshar.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\da.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PrivateConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PublicConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\VmAccessExtensionConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestScripts\" />

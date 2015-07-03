@@ -565,6 +565,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OperationID : &apos;{0}&apos;.
+        /// </summary>
+        public static string ComputeCloudExceptionOperationIdMessage {
+            get {
+                return ResourceManager.GetString("ComputeCloudExceptionOperationIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to config.json.
         /// </summary>
         public static string ConfigurationFileName {
@@ -3419,6 +3428,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string SwapWebsiteSlotWarning {
             get {
                 return ResourceManager.GetString("SwapWebsiteSlotWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Switch-AzureMode cmdlet is deprecated and will be removed in a future release..
+        /// </summary>
+        public static string SwitchAzureModeDeprecated {
+            get {
+                return ResourceManager.GetString("SwitchAzureModeDeprecated", resourceCulture);
             }
         }
         

@@ -44,34 +44,39 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageGetParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName,
-                Offer = Offer,
-                Skus = Skus,
-                Version = Version
-            };
+                WriteWarning(Properties.Resources.DeprecationOfGetAzureVMImageDetail);
 
-            VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+                var parameters = new VirtualMachineImageGetParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName,
+                    Offer = Offer,
+                    Skus = Skus,
+                    Version = Version
+                };
 
-            var image = new PSVirtualMachineImageDetail
-            {
-                RequestId = response.RequestId,
-                StatusCode = response.StatusCode,
-                Id = response.VirtualMachineImage.Id,
-                Location = response.VirtualMachineImage.Location,
-                Name = response.VirtualMachineImage.Name,
-                OSDiskImage = response.VirtualMachineImage.OSDiskImage,
-                DataDiskImages = response.VirtualMachineImage.DataDiskImages,
-                PurchasePlan = response.VirtualMachineImage.PurchasePlan,
-                PublisherName = this.PublisherName,
-                Offer = this.Offer,
-                Skus = this.Skus,
-                Version = this.Version
-            };
+                VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
 
-            WriteObject(image);
+                var image = new PSVirtualMachineImageDetail
+                {
+                    RequestId = response.RequestId,
+                    StatusCode = response.StatusCode,
+                    Id = response.VirtualMachineImage.Id,
+                    Location = response.VirtualMachineImage.Location,
+                    Name = response.VirtualMachineImage.Name,
+                    OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                    DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                    PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                    PublisherName = this.PublisherName,
+                    Offer = this.Offer,
+                    Skus = this.Skus,
+                    Version = this.Version
+                };
+
+                WriteObject(image);
+            });
         }
     }
 }

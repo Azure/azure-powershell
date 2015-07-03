@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
-            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
+            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionPublishedName : this.ReferenceName;
             this.SetupAutoTelemetrySettings();
             this.PublicConfiguration = GetPublicConfiguration();
             this.PrivateConfiguration = GetPrivateConfiguration();

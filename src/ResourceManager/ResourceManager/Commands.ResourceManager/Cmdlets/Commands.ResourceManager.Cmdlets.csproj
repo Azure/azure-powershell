@@ -56,7 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.21-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
@@ -109,6 +109,7 @@
     <Compile Include="Entities\Providers\ResourceTypeDefinition.cs" />
     <Compile Include="Entities\ResourceGroup\ResourceBatchMoveParameters.cs" />
     <Compile Include="Entities\Resources\Resource.cs" />
+    <Compile Include="Entities\Resources\ResourceObjectFormat.cs" />
     <Compile Include="Entities\Resources\ResourcePlan.cs" />
     <Compile Include="Entities\Resources\TerminalProvisioningStates.cs" />
     <Compile Include="Extensions\AsyncExtensions.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\PsObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Handlers\AuthenticationHandler.cs" />
     <Compile Include="Handlers\RetryHandler.cs" />
@@ -141,6 +143,8 @@
     <Compile Include="Extensions\JTokenExtensions.cs" />
     <Compile Include="Implementation\ResourceManagerCmdletBase.cs" />
     <Compile Include="Implementation\SetAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\TestAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\TestAzureResourceGroupCmdlet.cs" />
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
@@ -150,7 +154,11 @@
     <Compile Include="RestClients\ResourceManagerRestRestClient.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

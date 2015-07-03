@@ -12,16 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Properties;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StopAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(
@@ -56,24 +58,27 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+            ExecuteClientAction(() =>
             {
-                Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
                 {
-                    var op = f(this.ResourceGroupName, this.Name);
-                    WriteObject(op);
-                };
+                    Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                    {
+                        var op = f(this.ResourceGroupName, this.Name);
+                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    };
 
-                if (this.StayProvisioned)
-                {
-                    call(this.VirtualMachineClient.PowerOff);
+                    if (this.StayProvisioned)
+                    {
+                        call(this.VirtualMachineClient.PowerOff);
+                    }
+                    else
+                    {
+                        call(this.VirtualMachineClient.Deallocate);
+                    }
                 }
-                else
-                {
-                    call(this.VirtualMachineClient.Deallocate);
-                }
-            }
+            });
         }
     }
 }

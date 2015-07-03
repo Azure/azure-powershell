@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSInput> inputs = new List<PSInput>();
 
-            var response = StreamAnalyticsManagementClient.Inputs.ListInputInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Inputs.ListInputInJob(resourceGroupName, jobName, new InputListParameters("*"));
 
             if (response != null && response.Value != null)
             {

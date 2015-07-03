@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.25-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
@@ -225,6 +225,7 @@
     <Compile Include="Models.Generated\PSWorkItemExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSWorkItemSchedule.cs" />
     <Compile Include="Models.Generated\PSWorkItemStatistics.cs" />
+    <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\VMFileOperationParameters.cs" />
     <Compile Include="Models\VMUserOperationParameters.cs" />
     <Compile Include="Models\TaskFileOperationParameters.cs" />
@@ -234,6 +235,8 @@
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
+    <Compile Include="Pools\StartBatchPoolResizeCommand.cs" />
+    <Compile Include="Pools\StopBatchPoolResizeCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -270,6 +273,7 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Batch.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

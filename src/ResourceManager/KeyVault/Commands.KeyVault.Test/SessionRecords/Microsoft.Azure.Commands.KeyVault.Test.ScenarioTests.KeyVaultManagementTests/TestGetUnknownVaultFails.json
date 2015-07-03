@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c2619f08-57f7-492b-a9c3-45dee233805b/resourceGroups/pshtestrg1197/providers/Microsoft.KeyVault/vaults/onesdk6132?api-version=2014-12-19-PREVIEW",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzI2MTlmMDgtNTdmNy00OTJiLWE5YzMtNDVkZWUyMzM4MDViL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzExOTcvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvb25lc2RrNjEzMj9hcGktdmVyc2lvbj0yMDE0LTEyLTE5LVBSRVZJRVc=",
+      "RequestUri": "/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/onesdk7870?api-version=2015-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzFiZGYxOGUtYjA1OC00ZDNhLTgzOGMtZTEyM2FjNjBiYzQzL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzYzNTUvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvb25lc2RrNzg3MD9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/0.0.0.0"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
@@ -28,13 +28,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "693d8abf-fc46-4e69-bcbf-c66d3c85ef2d"
+          "0f52801c-f573-4c34-a1a0-bc7b6ac163ba"
         ],
         "x-ms-correlation-request-id": [
-          "693d8abf-fc46-4e69-bcbf-c66d3c85ef2d"
+          "0f52801c-f573-4c34-a1a0-bc7b6ac163ba"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150418T040340Z:693d8abf-fc46-4e69-bcbf-c66d3c85ef2d"
+          "WESTUS:20150616T173827Z:0f52801c-f573-4c34-a1a0-bc7b6ac163ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 18 Apr 2015 04:03:40 GMT"
+          "Tue, 16 Jun 2015 17:38:27 GMT"
         ]
       },
       "StatusCode": 404
@@ -51,16 +51,16 @@
   ],
   "Names": {
     "Test-GetUnknownVaultFails": [
-      "onesdk6132"
+      "onesdk7870"
     ]
   },
   "Variables": {
-    "ResourceGroupName": "pshtestrg1197",
+    "ResourceGroupName": "pshtestrg6355",
     "Location": "northcentralus",
-    "PreCreatedVault": "pshtestvault6809",
-    "SubscriptionId": "c2619f08-57f7-492b-a9c3-45dee233805b",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com",
-    "User": "kmsngtu@microsoft.com"
+    "PreCreatedVault": "pshtestvault4651",
+    "SubscriptionId": "31bdf18e-b058-4d3a-838c-e123ac60bc43",
+    "TenantId": "8448c020-6abd-43d5-8ebc-410f7b59ffa9",
+    "Domain": "keyvaultsdktestdg.onmicrosoft.com",
+    "User": "keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com"
   }
 }

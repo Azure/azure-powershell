@@ -28,36 +28,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// </summary>
     public abstract class BuildAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
-        /// <summary>
-        /// The name of the parameter set for data masking rule that specifies table and column names
-        /// </summary>
-        internal const string ByTableAndColumn = "ByTableAndColumn";
-
-        /// <summary>
-        /// The name of the parameter set for data masking rule that specifies alias
-        /// </summary>
-        internal const string ByAlias = "ByAlias";
 
         /// <summary>
         /// Gets or sets the table name
         /// </summary>
-        [Parameter(ParameterSetName = ByTableAndColumn, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
-        [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public virtual string TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the column name
         /// </summary>
-        [Parameter(ParameterSetName = ByTableAndColumn, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
-        [ValidateNotNullOrEmpty]
-        public string ColumnName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the alias name
-        /// </summary>
-        [Parameter(ParameterSetName = ByAlias, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alias name.")]
-        [ValidateNotNullOrEmpty]
-        public string AliasName { get; set; }
+        public virtual string ColumnName { get; set; }
 
         /// <summary>
         /// Gets or sets the masking function - the definition of this property as a cmdlet parameter is done in the subclasses
@@ -128,19 +108,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>A string containing error message or null in case all is fine</returns>
         protected string ValidateRuleTarget(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            if (AliasName != null) // using the alias parameter set
+            if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
             {
-                if(rules.Any(r => r.AliasName == AliasName && r.RuleId != RuleId))
-                {
-                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingAliasAlreadyUsedError, AliasName);
-                }
-            }
-            else
-            {
-                if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
-                {
-                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
-                }
+                return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
             }
             return null;
         }
@@ -152,19 +122,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>An updated rule model</returns>
         protected DatabaseDataMaskingRuleModel UpdateRule(DatabaseDataMaskingRuleModel rule)
         {
-            if(!string.IsNullOrEmpty(AliasName))
-            {
-                rule.AliasName = AliasName;
-                rule.TableName = null;
-                rule.ColumnName = null;
-            }
-            else
-            {
-                rule.TableName = TableName;
-                rule.ColumnName = ColumnName;
-                rule.AliasName = null;
-            }
-
+            rule.TableName = TableName;
+            rule.ColumnName = ColumnName;
             if(!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
             {
                 rule.MaskingFunction = ModelizeMaskingFunction();

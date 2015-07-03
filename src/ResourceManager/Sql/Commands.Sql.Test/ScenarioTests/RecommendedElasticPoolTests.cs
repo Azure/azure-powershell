@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class RecommendedElasticPoolTests : SqlTestsBase
     {
-        [Fact]
+        [Fact(Skip="Test needs to be regenerated.  Will be done by recommendations team.")]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestRecommendedElasticPoolList()
         {

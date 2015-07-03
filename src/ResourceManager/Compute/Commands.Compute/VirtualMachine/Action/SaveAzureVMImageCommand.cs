@@ -12,15 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage)]
-    [OutputType(typeof(ComputeLongRunningOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
     {
         public string Name { get; set; }
@@ -65,24 +68,39 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Overwrite { get; set; }
 
+        [Parameter(
+           Position = 5,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The file path in which the template of the captured image is stored")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineCaptureParameters
+            ExecuteClientAction(() =>
             {
-                DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite.IsPresent,
-                VirtualHardDiskNamePrefix = VHDNamePrefix
-            };
+                var parameters = new VirtualMachineCaptureParameters
+                {
+                    DestinationContainerName = DestinationContainerName,
+                    Overwrite = Overwrite.IsPresent,
+                    VirtualHardDiskNamePrefix = VHDNamePrefix
+                };
 
-            var op = this.VirtualMachineClient.Capture(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineClient.Capture(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
 
-            WriteObject(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+
+                if (!string.IsNullOrWhiteSpace(this.Path))
+                {
+                    File.WriteAllText(this.Path, result.Output);
+                }
+                WriteObject(result);
+            });
         }
     }
 }

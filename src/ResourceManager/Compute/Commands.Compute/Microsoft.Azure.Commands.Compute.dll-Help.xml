@@ -50,6 +50,20 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -100,6 +114,30 @@
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -259,6 +297,20 @@ $vm = Add-AzureVMAdditionalUnattendContentConfig -VM $vm -Content $aucContent -S
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -371,6 +423,30 @@ $vm = Add-AzureVMAdditionalUnattendContentConfig -VM $vm -Content $aucContent -S
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -527,6 +603,20 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -574,6 +664,30 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -730,6 +844,20 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -795,6 +923,30 @@ Update-AzureVM -ResourceGroupName &quot;myRG&quot; -Name &quot;crpVM&quot; –VM
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -923,6 +1075,20 @@ Example:
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -972,6 +1138,30 @@ Example:
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1080,6 +1270,20 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1115,6 +1319,30 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1247,6 +1475,20 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1294,6 +1536,30 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1379,6 +1645,20 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1414,6 +1694,30 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1562,6 +1866,20 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -1597,6 +1915,30 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1697,22 +2039,19 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureVM</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Name of the Resource Group</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
+				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -1745,6 +2084,51 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureVM</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Resource Group</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureVM</maml:name>
@@ -1761,6 +2145,20 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1785,6 +2183,30 @@ $vm = Add-AzureVMSshPublicKey -VM $vm -KeyData $sshPublicKey -Path $sshPath;</de
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1981,13 +2403,6 @@ Get-AzureVM</dev:code>
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureVMAccessExtension</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Status</maml:name>
-				<maml:description>
-					<maml:para>Get the instance view of the extension</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -2009,6 +2424,13 @@ Get-AzureVM</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Get the instance view of the extension</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -2016,21 +2438,23 @@ Get-AzureVM</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Status</maml:name>
-			<maml:description>
-				<maml:para>Get the instance view of the extension</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -2067,6 +2491,18 @@ Get-AzureVM</dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Status</maml:name>
+			<maml:description>
+				<maml:para>Get the instance view of the extension</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -2075,6 +2511,30 @@ Get-AzureVM</dev:code>
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2181,13 +2641,6 @@ $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Na
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureVMCustomScriptExtension</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Status</maml:name>
-				<maml:description>
-					<maml:para>Get the instance view of the extension</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -2209,6 +2662,13 @@ $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Na
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Status</maml:name>
+				<maml:description>
+					<maml:para>Get the instance view of the extension</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -2216,21 +2676,23 @@ $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Na
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Status</maml:name>
-			<maml:description>
-				<maml:para>Get the instance view of the extension</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -2267,6 +2729,18 @@ $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Na
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Status</maml:name>
+			<maml:description>
+				<maml:para>Get the instance view of the extension</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -2275,6 +2749,30 @@ $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Na
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2416,6 +2914,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2475,6 +2987,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2614,6 +3150,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2673,6 +3223,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2811,6 +3385,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2882,6 +3470,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2987,6 +3599,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3022,6 +3648,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3116,21 +3766,21 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PublisherName</maml:name>
 				<maml:description>
-					<maml:para>Publisher of the VMImage</maml:para>
+					<maml:para>Publisher of the VMImage. Use the Get-AzureVMImagePublisher cmdlet to get the values for this parameter.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Offer</maml:name>
 				<maml:description>
-					<maml:para>Type of VMImage offer</maml:para>
+					<maml:para>Type of VMImage offer. Use the Get-AzureVMImageOffer cmdlet to get the values for this parameter.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Skus</maml:name>
 				<maml:description>
-					<maml:para>VMImage SKU</maml:para>
+					<maml:para>VMImage SKU. Use the Get-AzureVMImageSku cmdlet to get the value of this parameter.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3147,6 +3797,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -3166,7 +3830,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>PublisherName</maml:name>
 			<maml:description>
-				<maml:para>Publisher of the VMImage</maml:para>
+				<maml:para>Publisher of the VMImage. Use the Get-AzureVMImagePublisher cmdlet to get the values for this parameter.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3178,7 +3842,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Offer</maml:name>
 			<maml:description>
-				<maml:para>Type of VMImage offer</maml:para>
+				<maml:para>Type of VMImage offer. Use the Get-AzureVMImageOffer cmdlet to get the values for this parameter.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3190,7 +3854,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Skus</maml:name>
 			<maml:description>
-				<maml:para>VMImage SKU</maml:para>
+				<maml:para>VMImage SKU. Use the Get-AzureVMImageSku cmdlet to get the value of this parameter.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3219,6 +3883,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3357,6 +4045,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3428,6 +4130,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3533,6 +4259,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3568,6 +4308,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3666,6 +4430,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3689,6 +4467,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3801,6 +4603,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3848,6 +4664,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -3946,6 +4786,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Get-AzureVMSize</maml:name>
@@ -3969,6 +4823,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
@@ -3994,6 +4862,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4017,6 +4899,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4191,6 +5097,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4214,6 +5134,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4340,6 +5284,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4411,6 +5369,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4534,6 +5516,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4597,6 +5593,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4711,6 +5731,20 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4760,6 +5794,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4845,33 +5903,40 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>New-AzureVM</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Location</maml:name>
 				<maml:description>
 					<maml:para>Location of the VM</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
 					<maml:para>VM object that is configured and represents the state of the VM to be created. The VM object can be created using the New-AzureVMConfig cmdlet. The VM object must then be configured correctly using appropriate cmdlets such as Set-AzureVMOperatingSystem, Set-AzureVMSourceImage, Set-AzureVMNetworkInterface etc. before the VM can be created in Azure succesfully.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSVirtualMachine</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Tags</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -4880,10 +5945,24 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Resource Group</maml:para>
@@ -4895,7 +5974,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Location</maml:name>
 			<maml:description>
 				<maml:para>Location of the VM</maml:para>
@@ -4907,7 +5986,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>VM</maml:name>
 			<maml:description>
 				<maml:para>VM object that is configured and represents the state of the VM to be created. The VM object can be created using the New-AzureVMConfig cmdlet. The VM object must then be configured correctly using appropriate cmdlets such as Set-AzureVMOperatingSystem, Set-AzureVMSourceImage, Set-AzureVMNetworkInterface etc. before the VM can be created in Azure succesfully.</maml:para>
@@ -4919,7 +5998,7 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
 				<maml:para />
@@ -4927,6 +6006,18 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Tags</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4939,6 +6030,30 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5109,6 +6224,20 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5156,6 +6285,30 @@ New-AzureStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName 
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5251,7 +6404,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Name</maml:name>
 				<maml:description>
 					<maml:para>Name of the Availability Set</maml:para>
@@ -5264,6 +6417,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -5280,7 +6447,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Name</maml:name>
 			<maml:description>
 				<maml:para>Name of the Availability Set</maml:para>
@@ -5300,6 +6467,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5405,6 +6596,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5440,6 +6645,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5552,6 +6781,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -5599,6 +6842,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5683,13 +6950,6 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureVMAccessExtension</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -5712,27 +6972,36 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -5770,6 +7039,18 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para />
@@ -5777,6 +7058,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -5841,13 +7146,6 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureVMCustomScriptExtension</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -5870,27 +7168,36 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -5928,6 +7235,18 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para />
@@ -5935,6 +7254,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6020,6 +7363,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6055,6 +7412,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6146,13 +7527,6 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureVMExtension</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -6175,27 +7549,36 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -6233,6 +7616,18 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para />
@@ -6240,6 +7635,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6345,6 +7764,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6380,6 +7813,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6465,6 +7922,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6500,6 +7971,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6627,6 +8122,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -6698,6 +8207,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -6816,6 +8349,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureStorageAccount</maml:name>
@@ -6854,6 +8401,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureStorageAccount</maml:name>
@@ -6884,6 +8445,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -6938,6 +8513,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7120,6 +8719,20 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -7167,6 +8780,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7251,6 +8888,27 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMAccessExtension</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Resource Group of the VM</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>VMName</maml:name>
+				<maml:description>
+					<maml:para>Name of the VM</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of the extension</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>TypeHandlerVersion</maml:name>
 				<maml:description>
@@ -7279,27 +8937,6 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Resource Group of the VM</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>VMName</maml:name>
-				<maml:description>
-					<maml:para>Name of the VM</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Name of the extension</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -7307,9 +8944,59 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Resource Group of the VM</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>VMName</maml:name>
+			<maml:description>
+				<maml:para>Name of the VM</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of the extension</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>TypeHandlerVersion</maml:name>
 			<maml:description>
@@ -7358,42 +9045,6 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Resource Group of the VM</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>VMName</maml:name>
-			<maml:description>
-				<maml:para>Name of the VM</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Name of the extension</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -7402,6 +9053,30 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7492,6 +9167,27 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMCustomScriptExtension</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Resource Group of the VM</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>VMName</maml:name>
+				<maml:description>
+					<maml:para>Name of the VM</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of the extension</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>TypeHandlerVersion</maml:name>
 				<maml:description>
@@ -7555,6 +9251,30 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Profile</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureVMCustomScriptExtension</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -7576,16 +9296,6 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Set-AzureVMCustomScriptExtension</maml:name>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>TypeHandlerVersion</maml:name>
 				<maml:description>
@@ -7621,27 +9331,6 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>Resource Group of the VM</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>VMName</maml:name>
-				<maml:description>
-					<maml:para>Name of the VM</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Name of the extension</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -7649,9 +9338,59 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Resource Group of the VM</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>VMName</maml:name>
+			<maml:description>
+				<maml:para>Name of the VM</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para>Name of the extension</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>TypeHandlerVersion</maml:name>
 			<maml:description>
@@ -7760,42 +9499,6 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>Resource Group of the VM</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>VMName</maml:name>
-			<maml:description>
-				<maml:para>Name of the VM</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>Name of the extension</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -7804,6 +9507,30 @@ Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vm
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7978,6 +9705,20 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMExtension</maml:name>
@@ -8050,6 +9791,20 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -8170,6 +9925,30 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -8422,6 +10201,20 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMOperatingSystem</maml:name>
@@ -8475,6 +10268,20 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -8621,6 +10428,30 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -8844,6 +10675,20 @@ $vm = Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -C
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMOSDisk</maml:name>
@@ -8911,6 +10756,20 @@ $vm = Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -C
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -9016,6 +10875,30 @@ $vm = Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -C
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9160,6 +11043,20 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureVMSourceImage</maml:name>
@@ -9183,6 +11080,20 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -9255,6 +11166,30 @@ $vm = Set-AzureVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskVhdUri -Caching
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9456,6 +11391,20 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -9491,6 +11440,30 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9575,20 +11548,6 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Stop-AzureVM</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>StayProvisioned</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9604,39 +11563,43 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StayProvisioned</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>StayProvisioned</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
@@ -9662,6 +11625,30 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>StayProvisioned</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
 				<maml:para />
@@ -9669,6 +11656,30 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9753,26 +11764,33 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Update-AzureVM</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>VM</maml:name>
 				<maml:description>
 					<maml:para>The local VM object that contains the updating VM state</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSVirtualMachine</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
 					<maml:para>Name of the VM</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Tags</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -9781,10 +11799,24 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Name of the Resource Group</maml:para>
@@ -9796,7 +11828,7 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>VM</maml:name>
 			<maml:description>
 				<maml:para>The local VM object that contains the updating VM state</maml:para>
@@ -9808,7 +11840,7 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
 				<maml:para>Name of the VM</maml:para>
@@ -9816,6 +11848,18 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Tags</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9828,6 +11872,30 @@ Set-AzureVMSourceImage -VM $vm -Name $img -DestinationVhdsContainer $vhdContaine
 			<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			<dev:type>
 				<maml:name>AzureProfile</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>

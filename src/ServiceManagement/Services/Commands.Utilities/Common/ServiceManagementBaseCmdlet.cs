@@ -215,11 +215,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 try
                 {
-                    result = action();
+                    try
+                    {
+                        result = action();
+                    }
+                    catch (CloudException ce)
+                    {
+                        throw new ComputeCloudException(ce);
+                    }
                 }
-                catch (CloudException ex)
+                catch (Exception ex)
                 {
-                    WriteExceptionDetails(ex);
+                    WriteExceptionError(ex);
                 }
 
                 if (result is OperationStatusResponse)

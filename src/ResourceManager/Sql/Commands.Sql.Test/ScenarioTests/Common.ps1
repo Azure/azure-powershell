@@ -27,25 +27,19 @@ function Get-SqlAuditingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
-Gets the values of the parameters used at the data masking tests
+Gets the values of the parameters used by the data masking tests
 #>
 function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 {
 	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
 			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
-			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
-			  }
-}
-
-<#
-.SYNOPSIS
-Gets the values of the parameters used in the s
-#>
-function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
-{
-	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
-			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
-			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+			  databaseName = "sql-dm-cmdlet-db" + $testSuffix;
+			  userName = "testuser";
+			  pwd = "testp@ssMakingIt1007Longer";
+			  table1="table1";
+			  column1 = "column1";
+			  table2="table2";
+			  column2 = "column2"
 			  }
 }
 
@@ -76,7 +70,37 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
+	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -administratorLogin $params.userName -Force
+	$fullServerName = $params.serverName + ".database.windows.net"
+	$uid = $params.userName
+	$pwd = $params.pwd
+	$databaseName=$params.databaseName
+	$connectionString = "Server=$fullServerName;uid=$uid; pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+	$connection = New-Object System.Data.SqlClient.SqlConnection
+	$connection.ConnectionString = $connectionString
+	try
+	{
+		$connection.Open()
+		$table1 = $params.table1
+		$column1 = $params.column1
+		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL);"
+		$command = $connection.CreateCommand()
+		$command.CommandText = $query
+		$command.ExecuteReader()
+		$table2 = $params.table2
+		$column2 = $params.column2
+		$query = "CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL);"
+		$command = $connection.CreateCommand()
+		$command.CommandText = $query
+		$command.ExecuteReader()
+	}
+	catch
+	{
+	}
+	finally
+	{
+		$connection.Close()
+	}
 	return $params
 }
 
@@ -144,15 +168,14 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
 {
 	$serverName = Get-ServerName
-	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdminCredentials $credentials
+	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	return $server
 }
 

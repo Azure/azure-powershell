@@ -50,14 +50,15 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string resourceGroupName = "resourceGroup";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListAutomationAccounts(resourceGroupName)).Returns((string a) => new List<AutomationAccount>());
+            this.mockAutomationClient.Setup(f => f.ListAutomationAccounts(resourceGroupName, ref nextLink)).Returns((string a, string b) => new List<AutomationAccount>());
 
             // Test
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListAutomationAccounts(null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListAutomationAccounts(resourceGroupName, ref nextLink), Times.Once());
         }
 
         [TestMethod]

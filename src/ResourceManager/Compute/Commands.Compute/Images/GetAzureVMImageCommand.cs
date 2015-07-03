@@ -21,55 +21,131 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImage)]
-    [OutputType(typeof(PSVirtualMachineImage))]
+    [Cmdlet(VerbsCommon.Get,
+        ProfileNouns.VirtualMachineImage)]
+    [OutputType(typeof(PSVirtualMachineImage),
+        ParameterSetName = new [] {ListVMImageParamSetName})]
+    [OutputType(typeof(PSVirtualMachineImageDetail),
+        ParameterSetName = new [] {GetVMImageDetailParamSetName})]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        protected const string ListVMImageParamSetName = "ListVMImage";
+        protected const string GetVMImageDetailParamSetName = "GetVMImageDetail";
+
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string Offer { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
-        [Parameter, ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = ListVMImageParamSetName,
+            ValueFromPipelineByPropertyName = false),
+        ValidateNotNullOrEmpty]
         public string FilterExpression { get; set; }
+
+        [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true),
+        ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                Offer = Offer,
-                PublisherName = PublisherName,
-                Skus = Skus,
-                FilterExpression = FilterExpression
-            };
+                if (this.ParameterSetName.Equals(ListVMImageParamSetName))
+                {
+                    var parameters = new VirtualMachineImageListParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        Offer = Offer,
+                        PublisherName = PublisherName,
+                        Skus = Skus,
+                        FilterExpression = FilterExpression
+                    };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
+                    VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Version = r.Name,
-                             PublisherName = this.PublisherName,
-                             Offer = this.Offer,
-                             Skus = this.Skus,
-                             FilterExpression = this.FilterExpression
-                         };
+                    var images = from r in result.Resources
+                                 select new PSVirtualMachineImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = this.Skus,
+                                     FilterExpression = this.FilterExpression
+                                 };
 
-            WriteObject(images, true);
+                    WriteObject(images, true);
+                }
+                else
+                {
+                    var parameters = new VirtualMachineImageGetParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        PublisherName = PublisherName,
+                        Offer = Offer,
+                        Skus = Skus,
+                        Version = Version
+                    };
+
+                    VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+
+                    var image = new PSVirtualMachineImageDetail
+                    {
+                        RequestId = response.RequestId,
+                        StatusCode = response.StatusCode,
+                        Id = response.VirtualMachineImage.Id,
+                        Location = response.VirtualMachineImage.Location,
+                        Name = response.VirtualMachineImage.Name,
+                        Version = response.VirtualMachineImage.Name,
+                        PublisherName = this.PublisherName,
+                        Offer = this.Offer,
+                        Skus = this.Skus,
+                        OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                        DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                        PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                    };
+
+                    WriteObject(image);
+                }
+            });
         }
     }
 }
