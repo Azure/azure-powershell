@@ -163,6 +163,49 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Generated\AvailabilitySet\InvokeAzureAvailabilitySetCreateOrUpdateCmdlet.cs" />
+    <Compile Include="Generated\AvailabilitySet\InvokeAzureAvailabilitySetDeleteCmdlet.cs" />
+    <Compile Include="Generated\AvailabilitySet\InvokeAzureAvailabilitySetGetCmdlet.cs" />
+    <Compile Include="Generated\AvailabilitySet\InvokeAzureAvailabilitySetListAvailableSizesCmdlet.cs" />
+    <Compile Include="Generated\AvailabilitySet\InvokeAzureAvailabilitySetListCmdlet.cs" />
+    <Compile Include="Generated\ComputeAutomationBaseCmdlet.cs" />
+    <Compile Include="Generated\Usage\InvokeAzureUsageListCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtensionImage\InvokeAzureVirtualMachineExtensionImageGetCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtensionImage\InvokeAzureVirtualMachineExtensionImageListTypesCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtensionImage\InvokeAzureVirtualMachineExtensionImageListVersionsCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionBeginCreatingOrUpdatingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionBeginDeletingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionCreateOrUpdateCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionDeleteCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionGetCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionGetWithInstanceViewCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineImage\InvokeAzureVirtualMachineImageGetCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineImage\InvokeAzureVirtualMachineImageListCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineImage\InvokeAzureVirtualMachineImageListOffersCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineImage\InvokeAzureVirtualMachineImageListPublishersCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineImage\InvokeAzureVirtualMachineImageListSkusCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachineSize\InvokeAzureVirtualMachineSizeListCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginCapturingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginCreatingOrUpdatingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginDeallocatingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginDeletingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginPoweringOffCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginRestartingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineBeginStartingCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCaptureCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCreateOrUpdateCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineDeallocateCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineDeleteCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineGeneralizeCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineGetCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineGetWithInstanceViewCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineListAllCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineListAvailableSizesCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineListCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineListNextCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachinePowerOffCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineRestartCmdlet.cs" />
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineStartCmdlet.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
@@ -251,6 +294,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Automation\RunCodeGeneration.ps1" />
     <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -305,4 +349,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="BeforeBuild" Condition="('$(BuildingInsideVisualStudio)'=='true')">
+    <PropertyGroup>
+      <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
+      <PSCodeGenScriptPath>".\Automation\RunCodeGeneration.ps1"</PSCodeGenScriptPath>
+      <PSCodeGenTargetFolder>$(OutputPath)</PSCodeGenTargetFolder>
+    </PropertyGroup>
+    <Exec Command="$(PowerShellExe) $(PSCodeGenScriptPath) $(PSCodeGenTargetFolder) $(MSBuildProjectDirectory)" />
+  </Target>
 </Project>
