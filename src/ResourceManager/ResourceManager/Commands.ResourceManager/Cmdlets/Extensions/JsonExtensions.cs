@@ -155,10 +155,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <param name="result">The result.</param>
         public static bool TryConvertTo<TType>(this string str, out TType result)
         {
-            JToken tmp = null;
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                result = default(TType);
+                return true;
+            }
+
             try
             {
-                tmp = str.ToJToken();
+                result = str.FromJson<TType>();
+                return !object.Equals(result, default(TType));
             }
             catch (FormatException)
             {
@@ -170,7 +176,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             {
             }
 
-            return tmp.TryConvertTo<TType>(out result);
+            result = default(TType);
+            return false;
         }
 
         /// <summary>

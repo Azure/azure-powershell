@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             var trackingResult = this.HandleOperationResponse(operationResult, this.IsResourceCreateOrUpdate ? operationResult.OperationUri : operationResult.LocationUri);
 
-            while (trackingResult.ShouldWait)
+            while (trackingResult != null && trackingResult.ShouldWait)
             {
                 operationResult =
                     this.GetResourcesClient()

@@ -344,10 +344,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         {
                             this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
                         }
+
+                        this.ThrowTerminatingError(aggregateException.InnerExceptions.Single().ToErrorRecord());
                     }
                     else
                     {
-                        throw aggregateException.Flatten();
+                        this.ThrowTerminatingError(aggregateException.ToErrorRecord());
                     }
                 }
 
