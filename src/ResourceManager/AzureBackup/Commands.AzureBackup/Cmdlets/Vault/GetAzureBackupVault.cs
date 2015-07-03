@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// API to get backup vaults in the subscription
+    /// API to get azure backup vaults in a subscription
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupVault"), OutputType(typeof(AzurePSBackupVault), typeof(List<AzurePSBackupVault>))]
     public class GetAzureBackupVault : AzureBackupCmdletBase

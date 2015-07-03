@@ -21,7 +21,7 @@ using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// API to download the azure backup vault's credentials.
+    /// API to update an azure backup vault in a subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureBackupVault"), OutputType(typeof(CmdletModel.AzurePSBackupVault))]
     public class SetAzureBackupVault : AzureBackupVaultCmdletBase

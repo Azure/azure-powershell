@@ -27,7 +27,7 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// API to download the azure backup vault's credentials.
+    /// API to download an azure backup vault's credentials.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureBackupVaultCredentials"), OutputType(typeof(string))]
     public class GetAzureBackupVaultCredentials : AzureBackupVaultCmdletBase

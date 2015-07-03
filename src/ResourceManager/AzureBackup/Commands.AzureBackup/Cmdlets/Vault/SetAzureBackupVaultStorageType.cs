@@ -18,6 +18,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
+    /// <summary>
+    /// API to update backend storage type of an azure backup vault in a subscription.
+    /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureBackupVaultStorageType")]
     public class SetAzureBackupVaultStorageType : AzureBackupVaultCmdletBase
     {
