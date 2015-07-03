@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new ArgumentException("Invalid storage type.");
                 }
 
-                WriteVerbose(String.Format("Updating the storage type. Type:{0}", Type));
+                WriteDebug(String.Format("Updating the storage type. Type:{0}", Type));
                 AzureBackupClient.UpdateStorageType(Type.ToString());
             });
         }
