@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 2,
             ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The name of the resource group that contains the storage account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

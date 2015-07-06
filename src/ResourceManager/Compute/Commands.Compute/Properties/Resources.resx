@@ -231,7 +231,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>If the ConfigurationArchive argument is null, then the ConfigurationName, ConfigurationArgument, and ConfigurationDataPath parameters must not be specified </value>
   </data>
   <data name="AzureVMDscNullArchiveNoStorageParameters" xml:space="preserve">
-    <value>If the ConfigurationArchive argument is null, then the StorageContext, ContainerName, and StorageEndpointSuffix parameters must not be specified</value>
+    <value>If the ConfigurationArchive argument is null, then the StorageContext, ArchiveContainerName, and ArchiveStorageEndpointSuffix parameters must not be specified</value>
   </data>
   <data name="AzureVMDscCreateArchiveAction" xml:space="preserve">
     <value>Create Archive</value>

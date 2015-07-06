@@ -29,11 +29,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Mandatory = true,
            Position = 2,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "The name of the resource group that contains the virtual machine.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             Position = 3,
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Alias("ExtensionName")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the DSC Extension handler. It will default to 'DSC' when it is not provided.")]
@@ -56,54 +54,67 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// A null value or empty string indicate that the VM extension should install DSC,
         /// but not start any configuration
         /// </summary>
+        [Alias("ConfigurationArchiveBlob")]
         [Parameter(
             Mandatory = true, 
-            Position = 1, 
+            Position = 5, 
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
             HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzureVMDSCConfiguration")]
         [AllowEmptyString]
         [AllowNull]
-        public string ConfigurationArchiveBlob { get; set; }
+        public string ArchiveBlobName { get; set; }
 
         /// <summary>
-        /// The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName. 
+        /// The Azure Storage Account name used to upload the configuration script to the container specified by ArchiveContainerName. 
         /// </summary>
+        [Alias("StorageAccountName")]
         [Parameter(
             Mandatory = true,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
-            HelpMessage = "The Azure Storage Account name used to download the ConfigurationArchiveBlob")]
+            HelpMessage = "The Azure Storage Account name used to download the ArchiveBlobName")]
         [ValidateNotNullOrEmpty]
-        public String StorageAccountName { get; set; }
+        public String ArchiveStorageAccountName { get; set; }
+
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = AzureBlobDscExtensionParamSet,
+           HelpMessage = "The name of the resource group that contains the storage account containing the configuration archive. " +
+                         "This param is optional if storage account and virtual machine both exists in the same resource group name, " +
+                         "specified by ResourceGroupName param.")]
+        [ValidateNotNullOrEmpty]
+        public string ArchiveResourceGroupName { get; set; }
 
         /// <summary>
         /// The DNS endpoint suffix for all storage services, e.g. "core.windows.net".
         /// </summary>
+        [Alias("StorageEndpointSuffix")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
             HelpMessage = "The Storage Endpoint Suffix.")]
         [ValidateNotNullOrEmpty]
-        public string StorageEndpointSuffix { get; set; }
+        public string ArchiveStorageEndpointSuffix { get; set; }
 
         /// <summary>
         /// Name of the Azure Storage Container where the configuration script is located.
         /// </summary>
+        [Alias("ContainerName")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
-            HelpMessage = "Name of the Azure Storage Container where the configuration script is located")]
+            HelpMessage = "Name of the Azure Storage Container where the configuration archive is located")]
         [ValidateNotNullOrEmpty]
-        public string ContainerName { get; set; }
+        public string ArchiveContainerName { get; set; }
 
         /// <summary>
         /// Name of the configuration that will be invoked by the DSC Extension. The value of this parameter should be the name of one of the configurations 
-        /// contained within the file specified by ConfigurationArchiveBlob.
+        /// contained within the file specified by ArchiveBlobName.
         /// 
-        /// If omitted, this parameter will default to the name of the file given by the ConfigurationArchiveBlob parameter, excluding any extension, for example if 
-        /// ConfigurationArchiveBlob is "SalesWebSite.ps1", the default value for ConfigurationName will be "SalesWebSite".
+        /// If omitted, this parameter will default to the name of the file given by the ArchiveBlobName parameter, excluding any extension, for example if 
+        /// ArchiveBlobName is "SalesWebSite.ps1", the default value for ConfigurationName will be "SalesWebSite".
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -139,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Alias("HandlerVersion")]
         [Parameter(
             Mandatory = true,
-            Position = 5,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The version of the DSC extension that Set-AzureVMDSCExtension will apply the settings to. " +
                           "Allowed format N.N")]
@@ -188,14 +199,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         //Private Methods
         private void ValidateParameters()
         {
-            if (string.IsNullOrEmpty(ConfigurationArchiveBlob))
+            if (string.IsNullOrEmpty(ArchiveBlobName))
             {
                 if (ConfigurationName != null || ConfigurationArgument != null
                     || ConfigurationData != null)
                 {
                     ThrowInvalidArgumentError(Properties.Resources.AzureVMDscNullArchiveNoConfiguragionParameters);
                 }
-                if (ContainerName != null || StorageEndpointSuffix != null)
+                if (ArchiveContainerName != null || ArchiveStorageEndpointSuffix != null)
                 {
                     ThrowInvalidArgumentError(Properties.Resources.AzureVMDscNullArchiveNoStorageParameters);
                 }
@@ -203,8 +214,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             else
             {
                 if (string.Compare(
-                    Path.GetFileName(ConfigurationArchiveBlob),
-                    ConfigurationArchiveBlob,
+                    Path.GetFileName(ArchiveBlobName),
+                    ArchiveBlobName,
                     StringComparison.InvariantCultureIgnoreCase) != 0)
                 {
                     ThrowInvalidArgumentError(Properties.Resources.AzureVMDscConfigurationDataFileShouldNotIncludePath);
@@ -229,16 +240,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     }
                 }
 
-                _storageCredentials = GetStorageCredentials(ResourceGroupName, StorageAccountName);
+                if (ArchiveResourceGroupName == null)
+                {
+                    ArchiveResourceGroupName = ResourceGroupName;
+                }
+
+                _storageCredentials = GetStorageCredentials(ArchiveResourceGroupName, ArchiveStorageAccountName);
 
                 if (ConfigurationName == null)
                 {
-                    ConfigurationName = Path.GetFileNameWithoutExtension(ConfigurationArchiveBlob);
+                    ConfigurationName = Path.GetFileNameWithoutExtension(ArchiveBlobName);
                 }
 
-                if (ContainerName == null)
+                if (ArchiveContainerName == null)
                 {
-                    ContainerName = DefaultContainerName;
+                    ArchiveContainerName = DefaultContainerName;
                 }
 
                 if (!(Regex.Match(Version, VersionRegexExpr).Success))
@@ -253,7 +269,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
             
-            if (!string.IsNullOrEmpty(ConfigurationArchiveBlob))
+            if (!string.IsNullOrEmpty(ArchiveBlobName))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();
 
@@ -262,7 +278,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
-                    Path.GetFileNameWithoutExtension(ConfigurationArchiveBlob),
+                    Path.GetFileNameWithoutExtension(ArchiveBlobName),
                     ConfigurationName);
                 Tuple<DscExtensionPublicSettings.Property[], Hashtable> settings =
                     DscSettingsSerializer.SeparatePrivateItems(ConfigurationArgument);
@@ -305,16 +321,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //
             // Get a reference to the container in blob storage
             //
-            var storageAccount = string.IsNullOrEmpty(StorageEndpointSuffix)
+            var storageAccount = string.IsNullOrEmpty(ArchiveStorageEndpointSuffix)
                                      ? new CloudStorageAccount(_storageCredentials, true)
                                      : new CloudStorageAccount(
                                            _storageCredentials,
-                                           StorageEndpointSuffix,
+                                           ArchiveStorageEndpointSuffix,
                                            true);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 
-            var containerReference = blobClient.GetContainerReference(ContainerName);
+            var containerReference = blobClient.GetContainerReference(ArchiveContainerName);
 
             //
             // Get a reference to the configuration blob and create a SAS token to access it
@@ -326,7 +342,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
             };
 
-            var configurationBlobName = ConfigurationArchiveBlob;
+            var configurationBlobName = ArchiveBlobName;
             var configurationBlobReference = containerReference.GetBlockBlobReference(configurationBlobName);
             var configurationBlobSasToken = configurationBlobReference.GetSharedAccessSignature(blobAccessPolicy);
 
