@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             Position = 1,
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Alias("ExtensionName")]
         [Parameter(
             Mandatory = true,
             Position = 2,
