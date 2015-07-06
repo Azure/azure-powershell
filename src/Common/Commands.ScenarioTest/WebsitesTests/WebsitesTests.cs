@@ -33,7 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -44,7 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -55,7 +53,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -120,7 +117,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -131,7 +127,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -146,7 +141,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -161,7 +155,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -176,7 +169,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -238,7 +230,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         public void TestThrowsForInvalidStorageAccountName()
@@ -311,7 +302,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -332,7 +322,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -343,7 +332,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -354,7 +342,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]
@@ -402,7 +389,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         [Trait(Category.Service, Category.Websites)]
         [Trait(Category.Environment, Category.WAPack)]

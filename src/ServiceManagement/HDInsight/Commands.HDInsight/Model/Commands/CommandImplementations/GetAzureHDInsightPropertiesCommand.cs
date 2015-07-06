@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public override async Task EndProcessing()
         {
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             var capabilities = await client.ListResourceProviderPropertiesAsync();
             capabilities = capabilities.ToList();
             var azureCapabilities = new AzureHDInsightCapabilities(capabilities);

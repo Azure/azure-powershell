@@ -44,16 +44,16 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Task object to use as the basis for the file query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSCloudTask file representing the task that the task files are associated with.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Task files.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The OData filter clause to use when querying for task files.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Task files to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of task files to return.")]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         public int MaxCount
         {
@@ -67,19 +67,14 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListTaskFileOptions options = new ListTaskFileOptions()
+            ListTaskFileOptions options = new ListTaskFileOptions(this.BatchContext, this.WorkItemName, this.JobName, 
+                this.TaskName, this.Task, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.TaskName,
                 TaskFileName = this.Name,
-                Task = this.Task,
                 Filter = this.Filter,
                 MaxCount = this.MaxCount,
-                Recursive = this.Recursive.IsPresent,
-                AdditionalBehaviors = this.AdditionalBehaviors
-            };
+                Recursive = this.Recursive.IsPresent
+            }; 
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate
             // the entire collection first and then write the items out one by one in a single group.  Using foreach, we can take 

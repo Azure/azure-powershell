@@ -15,6 +15,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -54,6 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTest()
         {
             newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
@@ -62,6 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestNullPathsFail()
         {
             try
@@ -77,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestCloudConfigDoesNotExistFail()
         {
             newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
@@ -96,6 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestLocalConfigDoesNotExistFail()
         {
             newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
@@ -115,6 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestSettingsDoesNotExistFail()
         {
             newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
@@ -134,6 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestDefinitionDoesNotExistFail()
         {
             newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
@@ -153,6 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortAllNull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -165,6 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNodeWorkerRoleNull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -179,6 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortPHPWorkerRoleNull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -193,6 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNodeWebRoleNull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -207,6 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortPHPWebRoleNull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -221,6 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNullNodeWebEndpointAndNullWorkerRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -236,6 +249,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNullPHPWebEndpointAndNullWorkerRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -251,6 +265,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNullNodeWebEndpointAndWorkerRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -267,6 +282,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
         
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortNullPHPWebEndpointAndWorkerRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -283,6 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
         
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortWithEmptyPortIndpoints()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -300,6 +317,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetNextPortAddingThirdEndpoint()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

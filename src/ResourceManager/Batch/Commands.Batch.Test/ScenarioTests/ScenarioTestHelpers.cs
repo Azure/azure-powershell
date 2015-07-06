@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test Pool for use in Scenario tests.
+        /// Creates a test pool for use in Scenario tests.
         /// </summary>
         public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName)
         {
@@ -94,21 +94,42 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewPoolParameters parameters = new NewPoolParameters()
+            NewPoolParameters parameters = new NewPoolParameters(context, poolName, behaviors)
             {
-                Context = context,
-                PoolName = poolName,
                 OSFamily = "4",
                 TargetOSVersion = "*",
-                TargetDedicated = 1,
-                AdditionalBehaviors = behaviors
+                TargetDedicated = 1
             };
 
             client.CreatePool(parameters);
         }
 
+        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            {
+                PoolName = poolName
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSCloudPool pool = client.ListPools(options).First();
+            while (pool.AllocationState != AllocationState.Steady)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for steady allocation state");
+                }
+                Sleep(5000);
+                pool = client.ListPools(options).First();
+            }
+        }
+
         /// <summary>
-        /// Deletes a Pool used in a Scenario test.
+        /// Deletes a pool used in a Scenario test.
         /// </summary>
         public static void DeletePool(BatchController controller, BatchAccountContext context, string poolName)
         {
@@ -120,7 +141,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test WorkItem for use in Scenario tests.
+        /// Creates a test workitem for use in Scenario tests.
         /// </summary>
         public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName, TimeSpan? recurrenceInterval)
         {
@@ -137,20 +158,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 schedule.RecurrenceInterval = recurrenceInterval;
             }
 
-            NewWorkItemParameters parameters = new NewWorkItemParameters()
+            NewWorkItemParameters parameters = new NewWorkItemParameters(context, workItemName, behaviors)
             {
-                Context = context,
-                WorkItemName = workItemName,
                 JobExecutionEnvironment = jobExecutionEnvironment,
-                Schedule = schedule,
-                AdditionalBehaviors = behaviors
+                Schedule = schedule
             };
 
             client.CreateWorkItem(parameters);
         }
 
         /// <summary>
-        /// Creates a test WorkItem for use in Scenario tests.
+        /// Creates a test workitem for use in Scenario tests.
         /// </summary>
         public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
         {
@@ -158,7 +176,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Waits for a Recent Job on a WorkItem and returns its name. If a previous job is specified, this method waits until a new Recent Job is created.
+        /// Waits for a recent job on a workitem and returns its name. If a previous job is specified, this method waits until a new job is created.
         /// </summary>
         public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string workItemName, string previousJob = null)
         {
@@ -168,13 +186,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListWorkItemOptions options = new ListWorkItemOptions()
+            ListWorkItemOptions options = new ListWorkItemOptions(context, behaviors)
             {
-                Context = context,
                 WorkItemName = workItemName,
                 Filter = null,
-                MaxCount = Constants.DefaultMaxCount,
-                AdditionalBehaviors = behaviors
+                MaxCount = Constants.DefaultMaxCount
             };
             PSCloudWorkItem workItem = client.ListWorkItems(options).First();
 
@@ -191,7 +207,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test Task for use in Scenario tests.
+        /// Creates a test task for use in Scenario tests.
         /// </summary>
         public static void CreateTestTask(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName, string cmdLine = "cmd /c dir /s")
         {
@@ -199,15 +215,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewTaskParameters parameters = new NewTaskParameters()
+            NewTaskParameters parameters = new NewTaskParameters(context, workItemName, jobName, null, taskName, behaviors)
             {
-                Context = context,
-                WorkItemName = workItemName,
-                JobName = jobName,
-                TaskName = taskName,
                 CommandLine = cmdLine,
-                RunElevated = true,
-                AdditionalBehaviors = behaviors
+                RunElevated = true
             };
             
             client.CreateTask(parameters);
@@ -222,13 +233,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListTaskOptions options = new ListTaskOptions()
+            ListTaskOptions options = new ListTaskOptions(context, workItemName, jobName, null, behaviors)
             {
-                Context = context,
-                WorkItemName = workItemName,
-                JobName = jobName,
-                TaskName = taskName,
-                AdditionalBehaviors = behaviors
+                TaskName = taskName
             };
             IEnumerable<PSCloudTask> tasks = client.ListTasks(options);
 
@@ -237,7 +244,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Deletes a WorkItem used in a Scenario test.
+        /// Deletes a workitem used in a Scenario test.
         /// </summary>
         public static void DeleteWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
         {
@@ -249,7 +256,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Terminates a Job
+        /// Terminates a job
         /// TODO: Replace with terminate Job client method when it exists.
         /// </summary>
         public static void TerminateJob(BatchAccountContext context, string workItemName, string jobName)
@@ -261,6 +268,37 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     wiManager.TerminateJob(workItemName, jobName);
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a test user for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string vmUserName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            NewVMUserParameters parameters = new NewVMUserParameters(context, poolName, vmName, null, behaviors)
+            {
+                VMUserName = vmUserName,
+                Password = "Password1234!",
+            };
+
+            client.CreateVMUser(parameters);
+        }
+
+        /// <summary>
+        /// Deletes a user used in a Scenario test.
+        /// </summary>
+        public static void DeleteUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string vmUserName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            VMUserOperationParameters parameters = new VMUserOperationParameters(context, poolName, vmName, vmUserName, behaviors);
+            client.DeleteVMUser(parameters);
         }
 
         /// <summary>
@@ -424,6 +462,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (createCommandMethod != null)
             {
                 object command = createCommandMethod.Invoke(batchRequest, null);
+                FieldInfo preProcessField = command.GetType().GetField("PreProcessResponse", BindingFlags.Public | BindingFlags.Instance);
+                if (preProcessField != null)
+                {
+                    Delegate preProcessDelegate = preProcessField.GetValue(command) as Delegate;
+                    if (preProcessDelegate != null)
+                    {
+                        preProcessDelegate.DynamicInvoke(command, webResponse, null, null);
+                    }
+                }
 
                 FieldInfo postProcessField = command.GetType().GetField("PostProcessResponse", BindingFlags.Public | BindingFlags.Instance);
                 if (postProcessField != null)

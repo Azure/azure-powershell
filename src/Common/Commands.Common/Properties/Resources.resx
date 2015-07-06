@@ -1358,4 +1358,10 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="AzureProfileMustNotBeNull" xml:space="preserve">
     <value>Selected profile must not be null.</value>
   </data>
+  <data name="SwitchAzureModeDeprecated" xml:space="preserve">
+    <value>The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.</value>
+  </data>
+  <data name="ComputeCloudExceptionOperationIdMessage" xml:space="preserve">
+    <value>OperationID : '{0}'</value>
+  </data>
 </root>

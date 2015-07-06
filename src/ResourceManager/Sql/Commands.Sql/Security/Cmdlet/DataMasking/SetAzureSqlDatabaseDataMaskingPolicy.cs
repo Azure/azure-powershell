@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Security.Model;
-using Microsoft.Azure.Commands.Sql.Security.Services;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Security.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
@@ -33,24 +33,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <summary>
         /// Gets or sets the privileged login names
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon seperated list of privileged user ids login name")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of privileged user ids login name")]
         public string PrivilegedLogins { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the data masking state
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if data masking is enabled or disabled for this database")]
-        [ValidateSet(Constants.Enabled, Constants.Disabled, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string DataMaskingState  { get; set; }
-
-        /// <summary>
-        /// Gets or sets the masking level
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if data masking level")]
-        [ValidateSet(Constants.Standard, Constants.Extended, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string MaskingLevel { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -62,9 +54,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseDataMaskingPolicyModel UpdateModel(DatabaseDataMaskingPolicyModel model)
+        protected override DatabaseDataMaskingPolicyModel ApplyUserInputToModel(DatabaseDataMaskingPolicyModel model)
         {
-            base.UpdateModel(model);
+            base.ApplyUserInputToModel(model);
 
             if (PrivilegedLogins != null) // empty string here means that the user clears the logins list
             {
@@ -73,13 +65,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
             
             if (!string.IsNullOrEmpty(DataMaskingState))
             {
-                model.DataMaskingState = (DataMaskingState == Constants.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
+                model.DataMaskingState = (DataMaskingState == SecurityConstants.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
             }
 
-            if (!string.IsNullOrEmpty(MaskingLevel))
-            {
-                model.MaskingLevel = (MaskingLevel == Constants.Standard) ? MaskingLevelType.Standard : MaskingLevelType.Extended;
-            }
             return model;
         }
     }

@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests
             var getClustersCommand = new GetAzureHDInsightClusterCommand();
             try
             {
-                getClustersCommand.GetClient();
+                getClustersCommand.GetClient(false);
                 Assert.Fail("Should have failed.");
             }
             catch (ArgumentNullException noSubscriptionException)

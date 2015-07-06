@@ -19,8 +19,12 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerConfirmStatus"),
      OutputType(typeof (ConfirmMigrationStatusMsg))]
+=======
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerConfirmStatus")]
+>>>>>>> upstream/dev
     public class GetAzureStorSimpleLegacyVolumeContainerConfirmStatus : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]

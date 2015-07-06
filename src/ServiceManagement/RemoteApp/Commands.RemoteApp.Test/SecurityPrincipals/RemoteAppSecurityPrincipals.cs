@@ -12,21 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RemoteApp.Test
+namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using LocalModels;
     using Common;
-    using Microsoft.Azure.Management.RemoteApp.Cmdlets;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using System;
     using System.Collections.Generic;
     using Xunit;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     public class AzureRemoteAppServiceUser : RemoteAppClientTest
     {
         private string userName = "user1";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllUsers()
         {
             int countOfExpectedUsers = 0;
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetUsersByName()
         {
             int countOfExpectedUsers = 1;
@@ -115,6 +118,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddMSAUserThatDoesntExist()
         {
             int countOfExistingUsers = 0;
@@ -158,6 +162,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddOrgIDUserThatDoesntExist()
         {
             int countOfExistingUsers = 0;
@@ -202,6 +207,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveMSAUserThatExists()
         {
             int countOfExistingUsers = 0;
@@ -245,6 +251,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveOrgIDUserThatExists()
         {
             int countOfExistingUsers = 0;

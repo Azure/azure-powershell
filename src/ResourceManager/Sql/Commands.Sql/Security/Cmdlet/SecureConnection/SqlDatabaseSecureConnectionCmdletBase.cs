@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -21,13 +22,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
     /// <summary>
     /// The base class for all Azure Sql Database security management cmdlets
     /// </summary>
-    public abstract class SqlDatabaseSecureConnectionCmdletBase : SqlDatabaseCmdletBase<DatabaseSecureConnectionPolicyModel, SqlSecureConnectionAdapter>
+    public abstract class SqlDatabaseSecureConnectionCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseSecureConnectionPolicyModel, SqlSecureConnectionAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseSecureConnectionPolicyModel GetModel()
+        protected override DatabaseSecureConnectionPolicyModel GetEntity()
         {
             return ModelAdapter.GetDatabaseSecureConnectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
@@ -40,16 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
         protected override SqlSecureConnectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new SqlSecureConnectionAdapter(Profile, subscription);
-        }
-
-        /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
-        /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(DatabaseSecureConnectionPolicyModel model)
-        {
-            ModelAdapter.SetDatabaseSecureConnectionPolicy(model, clientRequestId);
         }
     }
 }

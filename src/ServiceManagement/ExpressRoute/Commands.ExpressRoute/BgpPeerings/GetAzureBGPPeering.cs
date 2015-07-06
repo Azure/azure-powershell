@@ -15,17 +15,17 @@
 using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
+
     [Cmdlet(VerbsCommon.Get, "AzureBGPPeering"), OutputType(typeof(AzureBgpPeering))]
     public class GetAzureBGPPeeringCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key representing the Azure Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
         [DefaultValue("Private")]

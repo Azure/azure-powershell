@@ -28,36 +28,16 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// </summary>
     public abstract class BuildAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
-        /// <summary>
-        /// The name of the parameter set for data masking rule that specifies table and column names
-        /// </summary>
-        internal const string ByTableAndColumn = "ByTableAndColumn";
-
-        /// <summary>
-        /// The name of the parameter set for data masking rule that specifies alias
-        /// </summary>
-        internal const string ByAlias = "ByAlias";
 
         /// <summary>
         /// Gets or sets the table name
         /// </summary>
-        [Parameter(ParameterSetName = ByTableAndColumn, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
-        [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public virtual string TableName { get; set; }
 
         /// <summary>
         /// Gets or sets the column name
         /// </summary>
-        [Parameter(ParameterSetName = ByTableAndColumn, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
-        [ValidateNotNullOrEmpty]
-        public string ColumnName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the alias name
-        /// </summary>
-        [Parameter(ParameterSetName = ByAlias, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alias name.")]
-        [ValidateNotNullOrEmpty]
-        public string AliasName { get; set; }
+        public virtual string ColumnName { get; set; }
 
         /// <summary>
         /// Gets or sets the masking function - the definition of this property as a cmdlet parameter is done in the subclasses
@@ -104,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override IEnumerable<DatabaseDataMaskingRuleModel> UpdateModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> ApplyUserInputToModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             string errorMessage = ValidateRuleTarget(rules);
             if (string.IsNullOrEmpty(errorMessage))
@@ -128,19 +108,9 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>A string containing error message or null in case all is fine</returns>
         protected string ValidateRuleTarget(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            if (AliasName != null) // using the alias parameter set
+            if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
             {
-                if(rules.Any(r => r.AliasName == AliasName && r.RuleId != RuleId))
-                {
-                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingAliasAlreadyUsedError, AliasName);
-                }
-            }
-            else
-            {
-                if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
-                {
-                    return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
-                }
+                return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
             }
             return null;
         }
@@ -152,19 +122,8 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>An updated rule model</returns>
         protected DatabaseDataMaskingRuleModel UpdateRule(DatabaseDataMaskingRuleModel rule)
         {
-            if(!string.IsNullOrEmpty(AliasName))
-            {
-                rule.AliasName = AliasName;
-                rule.TableName = null;
-                rule.ColumnName = null;
-            }
-            else
-            {
-                rule.TableName = TableName;
-                rule.ColumnName = ColumnName;
-                rule.AliasName = null;
-            }
-
+            rule.TableName = TableName;
+            rule.ColumnName = ColumnName;
             if(!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
             {
                 rule.MaskingFunction = ModelizeMaskingFunction();
@@ -189,17 +148,17 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
                 if(rule.PrefixSize == null)
                 {
-                    rule.PrefixSize = Constants.PrefixSizeDefaultValue;
+                    rule.PrefixSize = SecurityConstants.PrefixSizeDefaultValue;
                 }
 
                 if (string.IsNullOrEmpty(rule.ReplacementString))
                 {
-                    rule.ReplacementString = Constants.ReplacementStringDefaultValue;
+                    rule.ReplacementString = SecurityConstants.ReplacementStringDefaultValue;
                 }
 
                 if (rule.SuffixSize == null)
                 {
-                    rule.SuffixSize = Constants.SuffixSizeDefaultValue;
+                    rule.SuffixSize = SecurityConstants.SuffixSizeDefaultValue;
                 }
             }
 
@@ -217,12 +176,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 
                 if (rule.NumberFrom == null)
                 {
-                    rule.NumberFrom = Constants.NumberFromDefaultValue;
+                    rule.NumberFrom = SecurityConstants.NumberFromDefaultValue;
                 }
 
                 if (rule.NumberTo == null)
                 {
-                    rule.NumberTo = Constants.NumberToDefaultValue;
+                    rule.NumberTo = SecurityConstants.NumberToDefaultValue;
                 }
 
                 if(rule.NumberFrom > rule.NumberTo)
@@ -239,12 +198,12 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// <returns>The model representation of the user provided masking function</returns>
         private MaskingFunction ModelizeMaskingFunction()
         {
-            if (MaskingFunction == Constants.CCN) return Model.MaskingFunction.CreditCardNumber;
-            if (MaskingFunction == Constants.NoMasking) return Model.MaskingFunction.NoMasking;
-            if (MaskingFunction == Constants.Number) return Model.MaskingFunction.Number;
-            if (MaskingFunction == Constants.Text) return Model.MaskingFunction.Text;
-            if (MaskingFunction == Constants.Email) return Model.MaskingFunction.Email;
-            if (MaskingFunction == Constants.SSN) return Model.MaskingFunction.SocialSecurityNumber;
+            if (MaskingFunction == SecurityConstants.CCN) return Model.MaskingFunction.CreditCardNumber;
+            if (MaskingFunction == SecurityConstants.NoMasking) return Model.MaskingFunction.NoMasking;
+            if (MaskingFunction == SecurityConstants.Number) return Model.MaskingFunction.Number;
+            if (MaskingFunction == SecurityConstants.Text) return Model.MaskingFunction.Text;
+            if (MaskingFunction == SecurityConstants.Email) return Model.MaskingFunction.Email;
+            if (MaskingFunction == SecurityConstants.SSN) return Model.MaskingFunction.SocialSecurityNumber;
             return Model.MaskingFunction.Default;
         }
 
@@ -275,9 +234,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId); 
+            return null;
         }
 
         /// <summary>

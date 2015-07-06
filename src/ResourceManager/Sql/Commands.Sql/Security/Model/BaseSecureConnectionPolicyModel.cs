@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     /// <summary>
-    /// The possible states of a scure connection policy
+    /// The possible states of a secure connection policy
     /// </summary>
     public enum SecureConnectionStateType { Required, Optional };
     

@@ -47,7 +47,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto">
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4137.9688, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -56,19 +57,19 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.17-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -79,20 +80,21 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Hadoop.Client, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Hadoop.Client, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
@@ -111,21 +113,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Contracts, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Contracts, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core, Version=1.5.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.HDInsight.Framework.Core, Version=1.5.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.5\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.9\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.3.0.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
@@ -165,6 +167,7 @@
     <Compile Include="Cmdlet\AddAzureHDInsightStorageCmdlet.cs" />
     <Compile Include="Cmdlet\AzureHDInsightCmdlet.cs" />
     <Compile Include="Cmdlet\AzureHdInsightPowerShellHardCodes.cs" />
+    <Compile Include="Cmdlet\GrantAzureHdinsightRdpAccessCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureHDInsightClusterCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureHDInsightJobCmdlet.cs" />
     <Compile Include="Cmdlet\GetAzureHDInsightJobOutputCmdlet.cs" />
@@ -179,6 +182,7 @@
     <Compile Include="Cmdlet\NewAzureHDInsightSqoopJobDefinitionCmdlet.cs" />
     <Compile Include="Cmdlet\NewAzureHDInsightStreamingJobDefinitionCmdlet.cs" />
     <Compile Include="Cmdlet\RemoveClusterHDInsightClusterCmdlet.cs" />
+    <Compile Include="Cmdlet\RevokeAzureHDInsightRdpAccessCmdlet.cs" />
     <Compile Include="Cmdlet\RevokeAzureHDInsightHttpServicesAccessCmdlet.cs" />
     <Compile Include="Cmdlet\SetAzureHDInsightClusterSizeCmdlet.cs" />
     <Compile Include="Cmdlet\SetAzureHDInsightDefaultStorageCmdlet.cs" />
@@ -196,6 +200,7 @@
     <Compile Include="Model\Commands\BaseCommandInterfaces\IGetAzureHDInsightJobBase.cs" />
     <Compile Include="Model\Commands\BaseCommandInterfaces\IGetAzureHDInsightJobOutputBase.cs" />
     <Compile Include="Model\Commands\BaseCommandInterfaces\IManageAzureHDInsightHttpAccessBase.cs" />
+    <Compile Include="Model\Commands\BaseCommandInterfaces\IManageAzureHDInsightRdpAccessBase.cs" />
     <Compile Include="Model\Commands\BaseCommandInterfaces\INewAzureHDInsightClusterBase.cs" />
     <Compile Include="Model\Commands\BaseCommandInterfaces\INewAzureHDInsightClusterConfigBase.cs" />
     <Compile Include="Model\Commands\BaseCommandInterfaces\INewAzureHDInsightHiveJobDefinitionBase.cs" />
@@ -222,6 +227,7 @@
     <Compile Include="Model\Commands\CommandImplementations\GetAzureHDInsightPropertiesCommand.cs" />
     <Compile Include="Model\Commands\CommandImplementations\InvokeHiveCommand.cs" />
     <Compile Include="Model\Commands\CommandImplementations\ManageAzureHDInsightHttpAccessCommand.cs" />
+    <Compile Include="Model\Commands\CommandImplementations\ManageAzureHDInsightRdpAccessCommand.cs" />
     <Compile Include="Model\Commands\CommandImplementations\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="Model\Commands\CommandImplementations\NewAzureHDInsightClusterConfigCommand.cs" />
     <Compile Include="Model\Commands\CommandImplementations\NewAzureHDInsightHiveJobDefinitionCommand.cs" />
@@ -253,6 +259,7 @@
     <Compile Include="Model\Commands\CommandInterfaces\INewAzureHDInsightPigJobDefinitionCommand.cs" />
     <Compile Include="Model\Commands\CommandInterfaces\INewAzureHDInsightSqoopJobDefinitionCommand.cs" />
     <Compile Include="Model\Commands\CommandInterfaces\INewAzureHDInsightStreamingJobDefinitionCommand.cs" />
+    <Compile Include="Model\Commands\CommandInterfaces\IManageAzureHDInsightRdpAccessCommand.cs" />
     <Compile Include="Model\Commands\CommandInterfaces\IRemoveAzureHDInsightClusterCommand.cs" />
     <Compile Include="Model\Commands\CommandInterfaces\ISetAzureHDInsightClusterSizeCommand.cs" />
     <Compile Include="Model\Commands\CommandInterfaces\ISetAzureHDInsightDefaultStorageCommand.cs" />

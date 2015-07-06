@@ -50,11 +50,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         public string ColumnName { get; set; }
 
         /// <summary>
-        /// Gets or sets the alias name on which the current rule operates on
-        /// </summary>
-        public string AliasName { get; set; }
-
-        /// <summary>
         /// Gets or sets the masking function of the current rule
         /// </summary>
         public MaskingFunction MaskingFunction { get; set; }

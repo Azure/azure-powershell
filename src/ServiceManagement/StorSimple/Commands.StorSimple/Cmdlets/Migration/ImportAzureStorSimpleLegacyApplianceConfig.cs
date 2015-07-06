@@ -22,7 +22,11 @@ using System.Security.Cryptography;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
+<<<<<<< HEAD
     [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyApplianceConfig"), OutputType(typeof(LegacyApplianceConfiguration))]
+=======
+    [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyApplianceConfig")]
+>>>>>>> upstream/dev
     public class ImportAzureStorSimpleLegacyApplianceConfig : StorSimpleCmdletBase
     {
 

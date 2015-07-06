@@ -49,13 +49,19 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Client\HttpBearerChallenge.cs" />
-    <Compile Include="Client\HttpBearerChallengeCache.cs" />
-    <Compile Include="Client\Messages.cs" />
-    <Compile Include="WebKey\Base64UrlConverter.cs" />
-    <Compile Include="WebKey\JsonWebKey.cs" />
-    <Compile Include="WebKey\JsonWebKeyOperations.cs" />
-    <Compile Include="WebKey\JsonWebKeyTypes.cs" />
+    <Compile Include="Commands\Constants.cs" />
+    <Compile Include="Models\VaultManagementClient.cs" />
+    <Compile Include="Models\ModelExtensions.cs" />
+    <Compile Include="Models\PSVault.cs" />
+    <Compile Include="Models\PSVaultAccessPolicy.cs" />
+    <Compile Include="Models\VaultCreationParameters.cs" />
+    <Compile Include="Models\PSVaultIdentityItem.cs" />
+    <Compile Include="Commands\GetAzureKeyVault.cs" />
+    <Compile Include="Commands\NewAzureKeyVault.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVault.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultAccessPolicy.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultAccessPolicy.cs" />
+    <Compile Include="Models\KeyVaultManagementCmdletBase.cs" />
     <None Include="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -63,18 +69,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Compile Include="Client\KeyAttributes.cs" />
-    <Compile Include="Client\KeyBundle.cs" />
-    <Compile Include="Client\KeyItem.cs" />
-    <Compile Include="Client\KeyVaultClient.cs" />
-    <Compile Include="Client\KeyVaultClientException.cs" />
-    <Compile Include="Client\ObjectIdentifier.cs" />
-    <Compile Include="Client\Secret.cs" />
-    <Compile Include="Client\SecretItem.cs" />
-    <Compile Include="Client\SecureStringConverter.cs" />
-    <Compile Include="Client\SecureStringExtensions.cs" />
-    <Compile Include="Client\UnixEpoch.cs" />
-    <Compile Include="Client\UriExtensions.cs" />
     <Compile Include="Commands\BackupAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultSecret.cs" />
@@ -82,8 +76,9 @@
     <Compile Include="Commands\RemoveAzureKeyVaultKey.cs" />
     <Compile Include="Commands\RemoveAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultKey.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultKeyAttribute.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultSecretAttribute.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />
@@ -92,10 +87,14 @@
     <Compile Include="Models\KeyBundle.cs" />
     <Compile Include="Models\KeyIdentityItem.cs" />
     <Compile Include="Models\KeyVaultCmdletBase.cs" />
+    <Compile Include="Models\KeyVaultObjectFilterOptions.cs" />
     <Compile Include="Models\ObjectIdentifier.cs" />
     <Compile Include="Models\PfxWebKeyConverter.cs" />
     <Compile Include="Models\Secret.cs" />
+    <Compile Include="Models\SecretAttributes.cs" />
     <Compile Include="Models\SecretIdentityItem.cs" />
+    <Compile Include="Models\SecureStringExtensions.cs" />
+    <Compile Include="Models\TagsHelper.cs" />
     <Compile Include="Models\VaultUriHelper.cs" />
     <Compile Include="Models\KeyVaultDataServiceClient.cs" />
     <Compile Include="Models\WebKeyConverterFactory.cs" />
@@ -111,18 +110,33 @@
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.17-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Graph.RBAC">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.1.0.0\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.KeyVault, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.1.0.0\lib\net40\Microsoft.Azure.Management.KeyVault.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.14.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -133,12 +147,13 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.12.111071459\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -158,6 +173,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
@@ -176,6 +192,14 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
+      <Name>Commands.Tags</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -184,11 +208,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.KeyVault.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Microsoft.Azure.Commands.KeyVault.dll-help.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
