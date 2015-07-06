@@ -42,7 +42,7 @@ Note: To import a key from your own hardware security module, you must first gen
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and ï¿½ (the dash symbol).</maml:para>
+            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and – (the dash symbol).</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -143,7 +143,7 @@ Note: To import a key from your own hardware security module, you must first gen
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and ï¿½ (the dash symbol).</maml:para>
+            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and – (the dash symbol).</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -310,7 +310,7 @@ Note: To import a key from your own hardware security module, you must first gen
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and ï¿½ (the dash symbol).</maml:para>
+          <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and – (the dash symbol).</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -451,7 +451,7 @@ Note: To import a key from your own hardware security module, you must first gen
 PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime() 
 PS C:\&gt; $NotBefore = (Get-Date).ToUniversalTime() 
 PS C:\&gt; $Tags = @{'Severity' = 'high'; 'Accounting' = null}
-PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations ï¿½Disable -Tags $Tags
+PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations –Disable -Tags $Tags
 </dev:code>
         <dev:remarks>
           <maml:para>The first command stores the values decrypt and verify in the $KeyOperations variable.</maml:para>
@@ -1010,7 +1010,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Key = Get-AzureKeyVaultKey -VaultName "Contoso" -KeyName "ITPfx" ï¿½Version "5A12A276385949DB8B5F82AFEE85CAED"
+        <dev:code>PS C:\&gt;$Key = Get-AzureKeyVaultKey -VaultName "Contoso" -KeyName "ITPfx" –Version "5A12A276385949DB8B5F82AFEE85CAED"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets a specific version of the key named ITPfx in the vault named Contoso. After running this command, you can inspect various properties of the key by navigating the $Key object.</maml:para>
@@ -1294,7 +1294,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" ï¿½Version "6A12A286385949DB8B5F82AFEF85CAE9"
+        <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" –Version "6A12A286385949DB8B5F82AFEF85CAE9"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets a specific version of the secret named ITSecret in the vault named Contoso. </maml:para>
@@ -3574,7 +3574,7 @@ PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrinci
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" ï¿½ResourceGroupName "Group14" -EnabledForDeployment
+        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" –ResourceGroupName "Group14" -EnabledForDeployment
 </dev:code>
         <dev:remarks>
           <maml:para>This command grants the permissions for secrets to be retrieved from the Contoso03Vault vault by the Microsoft.Compute resource provider. </maml:para>
@@ -3896,7 +3896,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware" ï¿½Version "7EEA45C6EE50490B9C3176F80AC1A0DG" ï¿½Tags @{}
+        <dev:code>PS C:\&gt;Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware" –Version "7EEA45C6EE50490B9C3176F80AC1A0DG" –Tags @{}
 </dev:code>
         <dev:remarks>
           <maml:para>This commands deletes all tags for a specific version of a key named ITSoftware. </maml:para>
@@ -3979,7 +3979,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Enable</maml:name>
           <maml:description>
-            <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secretï¿½s enabled or disabled state.</maml:para>
+            <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret’s enabled or disabled state.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
@@ -4035,7 +4035,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Enable</maml:name>
         <maml:description>
-          <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secretï¿½s enabled or disabled state.</maml:para>
+          <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret’s enabled or disabled state.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
