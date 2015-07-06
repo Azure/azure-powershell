@@ -21,12 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-<<<<<<< HEAD
     [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerMigrationPlan"),
-     OutputType(typeof (MigrationConfig), typeof (MigrationPlanMsg))]
-=======
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerMigrationPlan"), OutputType(typeof(MigrationConfig), typeof(MigrationPlanMsg))]
->>>>>>> upstream/dev
+     OutputType(typeof(MigrationConfig), typeof(MigrationPlanMsg))]
     public class GetAzureStorSimpleLegacyVolumeContainerMigrationPlan : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = false, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]

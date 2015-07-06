@@ -34,7 +34,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateSet("Commit", "Rollback", IgnoreCase = true)]
         public string MigrationOperation { get; set; }
 
-<<<<<<< HEAD
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
@@ -43,20 +42,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
         public SwitchParameter All { get; set; }
 
-=======
-        [Parameter(Mandatory = false, Position = 2,
-            HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
-        public string[] LegacyContainerNames { get; set; }
-
->>>>>>> upstream/dev
         public override void ExecuteCmdlet()
         {
             try
             {
                 var confirmMigrationRequest = new MigrationConfirmStatusRequest();
                 confirmMigrationRequest.Operation =
-                    (MigrationOperation) Enum.Parse(typeof (MigrationOperation), MigrationOperation, true);
-<<<<<<< HEAD
+                    (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
                 switch (ParameterSetName)
                 {
                     case StorSimpleCmdletParameterSet.MigrateAllContainer:
@@ -66,9 +58,9 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         }
                     case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
                         {
-                           confirmMigrationRequest.DataContainerNameList =
-                           new List<string>(LegacyContainerNames.ToList().Distinct(
-                               StringComparer.InvariantCultureIgnoreCase));
+                            confirmMigrationRequest.DataContainerNameList =
+                            new List<string>(LegacyContainerNames.ToList().Distinct(
+                                StringComparer.InvariantCultureIgnoreCase));
                             break;
                         }
                     default:
@@ -79,11 +71,6 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                         }
                 }
 
-=======
-                confirmMigrationRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
->>>>>>> upstream/dev
                 var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, confirmMigrationRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
                 WriteObject(opFormatter.GetResultMessage(Resources.ConfirmMigrationSuccessMessage, status));
