@@ -105,8 +105,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.RemoteApp">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.RemoteApp.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.RemoteApp.dll</HintPath>
