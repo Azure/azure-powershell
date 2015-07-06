@@ -13,23 +13,29 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn"
+$ResourceName = "backuprn1"
 $Location = "westus"
 $CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
-function Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert
+function Test-AzureBackupVaultScenario
 {
-	$vault = Get-AzureBackupVault -Name $ResourceName;
+	$vault = New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location;
+	Assert-AreEqual $vault.Name $ResourceName;
+	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
+	Assert-AreEqual $vault.Region $Location;
+	Assert-AreEqual $vault.Storage "GeoRedundant"
+
+	$vault = Get-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
+	Assert-AreEqual $vault.Name $ResourceName;
+	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
+	Assert-AreEqual $vault.Region $Location;
+	Assert-AreEqual $vault.Storage "GeoRedundant"
+
 	$fileName = Get-AzureBackupVaultCredentials -vault $vault -TargetLocation $CertTargetLocation
 	Assert-NotNull $fileName 'File name should not be null';
 	$certFileFullPath = [io.path]::combine($CertTargetLocation, $fileName);
 	Assert-True {{ Test-Path $certFileFullPath }}
-}
 
-function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException
-{
-	$vault = Get-AzureBackupVault -Name $ResourceName;
-	
 	Set-AzureBackupVaultStorageType -Vault $vault -Type "GeoRedundant";	
 	$vault = Get-AzureBackupVault -Name $ResourceName;
 	Assert-AreEqual $vault.Storage "GeoRedundant";
@@ -37,4 +43,12 @@ function Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowExcepti
 	Set-AzureBackupVaultStorageType -Vault $vault -Type "LocallyRedundant";	
 	$vault = Get-AzureBackupVault -Name $ResourceName;
 	Assert-AreEqual $vault.Storage "LocallyRedundant";
+
+	$vault = Set-AzureBackupVault -vault $vault -Storage "GeoRedundant";
+	Assert-AreEqual $vault.Name $ResourceName;
+	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
+	Assert-AreEqual $vault.Region $Location;
+	Assert-AreEqual $vault.Storage "GeoRedundant";
+
+	Remove-AzureBackupVault -Vault $vault;	
 }

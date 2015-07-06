@@ -19,15 +19,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class AzureBackupVaultTests : AzureBackupTestsBase
     {
         [Fact]
-        public void GetAzureBackupVaultCredentialsTests()
+        public void AzureBackupVaultScenarioTests()
         {
-            this.RunPowerShellTest("Test-GetAzureBackupVaultCredentialsReturnsFileNameAndDownloadsCert");
-        }
-
-        [Fact]
-        public void SetAzureBackupVaultStorageTypeTests()
-        {
-            this.RunPowerShellTest("Test-SetAzureBackupVaultStorageTypeWithFreshResourceDoesNotThrowException");
-        }
+            this.RunPowerShellTest("Test-AzureBackupVaultScenario");
+        }        
     }
 }

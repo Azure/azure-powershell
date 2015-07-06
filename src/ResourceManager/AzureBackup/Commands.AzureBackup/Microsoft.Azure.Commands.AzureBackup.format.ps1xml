@@ -2,31 +2,23 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.AzureBackup.Cmdlets.GetAzureBackupVault</Name>
+      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzurePSBackupVault</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.AzureBackup.Cmdlets.GetAzureBackupVault</TypeName>
+        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzurePSBackupVault</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Resource Name</Label>
+            <Label>Name</Label>
             <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Resource Group Name</Label>
+            <Label>Region</Label>
             <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Location</Label>
+            <Label>Storage</Label>
             <Width>18</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Storage Type</Label>
-            <Width>18</Width>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource ID</Label>
-            <Width>40</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -36,16 +28,10 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Region</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Storage</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
