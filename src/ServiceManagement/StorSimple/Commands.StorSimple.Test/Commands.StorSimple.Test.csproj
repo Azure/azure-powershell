@@ -140,6 +140,7 @@
     <None Include="ScenarioTests\BackupPolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\BackupTests.ps1" />
     <None Include="ScenarioTests\Configuration\ConfigurationReader.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
