@@ -55,8 +55,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
-            WriteObject(op);
+            ExecuteClientAction(() =>
+            {
+                var op = this.VirtualMachineClient.Generalize(this.ResourceGroupName, this.Name);
+                WriteObject(op);
+            });
         }
     }
 }

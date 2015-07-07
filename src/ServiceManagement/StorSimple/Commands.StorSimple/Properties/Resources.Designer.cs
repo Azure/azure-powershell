@@ -399,7 +399,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string ImportLegacyApplianceConfigSuccessMessage {
             get {
                 return ResourceManager.GetString("ImportLegacyApplianceConfigSuccessMessage", resourceCulture);
-            }
+        }
         }
         
         /// <summary>
@@ -606,6 +606,15 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Properties {
         internal static string MigrationMsgUploadingConfig {
             get {
                 return ResourceManager.GetString("MigrationMsgUploadingConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter set cannot be resolved using the specified named parameters {0}.
+        /// </summary>
+        internal static string MigrationParameterSetNotFound {
+            get {
+                return ResourceManager.GetString("MigrationParameterSetNotFound", resourceCulture);
             }
         }
         

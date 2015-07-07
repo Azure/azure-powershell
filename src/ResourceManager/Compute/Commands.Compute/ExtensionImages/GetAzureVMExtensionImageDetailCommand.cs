@@ -43,37 +43,40 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            WriteWarning(Properties.Resources.DeprecationOfGetAzureVMExtensionImageDetail);
-
-            var parameters = new VirtualMachineExtensionImageGetParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName,
-                Type = Type,
-                FilterExpression = FilterExpression,
-                Version = Version
-            };
+                WriteWarning(Properties.Resources.DeprecationOfGetAzureVMExtensionImageDetail);
 
-            VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
+                var parameters = new VirtualMachineExtensionImageGetParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName,
+                    Type = Type,
+                    FilterExpression = FilterExpression,
+                    Version = Version
+                };
 
-            var image = new PSVirtualMachineExtensionImageDetails
-            {
-                RequestId = result.RequestId,
-                StatusCode = result.StatusCode,
-                Id = result.VirtualMachineExtensionImage.Id,
-                Location = result.VirtualMachineExtensionImage.Location,
-                Name = result.VirtualMachineExtensionImage.Name,
-                HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
-                OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
-                ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
-                SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
-                VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
-                PublisherName = this.PublisherName,
-                Type = this.Type,
-                Version = this.Version
-            };
+                VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
 
-            WriteObject(image);
+                var image = new PSVirtualMachineExtensionImageDetails
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = result.StatusCode,
+                    Id = result.VirtualMachineExtensionImage.Id,
+                    Location = result.VirtualMachineExtensionImage.Location,
+                    Name = result.VirtualMachineExtensionImage.Name,
+                    HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
+                    OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
+                    ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
+                    SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
+                    VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
+                    PublisherName = this.PublisherName,
+                    Type = this.Type,
+                    Version = this.Version
+                };
+
+                WriteObject(image);
+            });
         }
     }
 }

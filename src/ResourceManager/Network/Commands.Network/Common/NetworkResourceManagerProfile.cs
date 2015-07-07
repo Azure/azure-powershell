@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.Network
             // NetworkInterface
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
-            Mapper.CreateMap<CNM.PSDnsSettings, MNM.DnsSettings>();
+            Mapper.CreateMap<CNM.PSDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIpConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
-            Mapper.CreateMap<MNM.DnsSettings, CNM.PSDnsSettings>();
+            Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSDnsSettings>();
             Mapper.CreateMap<MNM.NetworkInterfaceIpConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
 
             // LoadBalancer
@@ -189,10 +189,10 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendAddress, MNM.ApplicationGatewayBackendAddress>();
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendAddressPool, MNM.ApplicationGatewayBackendAddressPool>();
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendHttpSettings, MNM.ApplicationGatewayBackendHttpSettings>();
-            Mapper.CreateMap<CNM.PSApplicationGatewayFrontendIpConfiguration, MNM.ApplicationGatewayFrontendIpConfiguration>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFrontendIpConfiguration, MNM.ApplicationGatewayFrontendIPConfiguration>();
             Mapper.CreateMap<CNM.PSApplicationGatewayFrontendPort, MNM.ApplicationGatewayFrontendPort>();
             Mapper.CreateMap<CNM.PSApplicationGatewayHttpListener, MNM.ApplicationGatewayHttpListener>();
-            Mapper.CreateMap<CNM.PSApplicationGatewayIpConfiguration, MNM.ApplicationGatewayIpConfiguration>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayIpConfiguration, MNM.ApplicationGatewayIPConfiguration>();
             Mapper.CreateMap<CNM.PSApplicationGatewayRequestRoutingRule, MNM.ApplicationGatewayRequestRoutingRule>();
             Mapper.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>();
             Mapper.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
@@ -203,10 +203,10 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ApplicationGatewayBackendAddress, CNM.PSApplicationGatewayBackendAddress>();
             Mapper.CreateMap<MNM.ApplicationGatewayBackendAddressPool, CNM.PSApplicationGatewayBackendAddressPool>();
             Mapper.CreateMap<MNM.ApplicationGatewayBackendHttpSettings, CNM.PSApplicationGatewayBackendHttpSettings>();
-            Mapper.CreateMap<MNM.ApplicationGatewayFrontendIpConfiguration, CNM.PSApplicationGatewayFrontendIpConfiguration>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFrontendIPConfiguration, CNM.PSApplicationGatewayFrontendIpConfiguration>();
             Mapper.CreateMap<MNM.ApplicationGatewayFrontendPort, CNM.PSApplicationGatewayFrontendPort>();
             Mapper.CreateMap<MNM.ApplicationGatewayHttpListener, CNM.PSApplicationGatewayHttpListener>();
-            Mapper.CreateMap<MNM.ApplicationGatewayIpConfiguration, CNM.PSApplicationGatewayIpConfiguration>();
+            Mapper.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIpConfiguration>();
             Mapper.CreateMap<MNM.ApplicationGatewayRequestRoutingRule, CNM.PSApplicationGatewayRequestRoutingRule>();
             Mapper.CreateMap<MNM.ApplicationGatewaySslCertificate, CNM.PSApplicationGatewaySslCertificate>();
             Mapper.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
