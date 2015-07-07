@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
 
@@ -30,6 +31,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         {
             // TODO: Improve this.
             return new ErrorRecord(exception, exception.ErrorResponseMessage == null ? exception.HttpStatus.ToString() : exception.ErrorResponseMessage.Error.Code, ErrorCategory.CloseError, null);
+        }
+
+        /// <summary>
+        /// Converts <see cref="Exception"/> objects into <see cref="ErrorRecord"/>
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        internal static ErrorRecord ToErrorRecord(this Exception exception)
+        {
+            // TODO: Improve this.
+            return new ErrorRecord(exception, exception.Message, ErrorCategory.CloseError, null);
+        }
+
+        /// <summary>
+        /// Converts <see cref="AggregateException"/> objects into <see cref="ErrorRecord"/>
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        internal static ErrorRecord ToErrorRecord(this AggregateException aggregateException)
+        {
+            // TODO: Improve this.
+            return new ErrorRecord(aggregateException, aggregateException.ToString(), ErrorCategory.CloseError, null);
         }
     }
 }
