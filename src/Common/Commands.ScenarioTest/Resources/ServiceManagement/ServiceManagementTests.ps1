@@ -70,3 +70,67 @@ function Run-ServiceManagementCloudExceptionTests
     Assert-ThrowsLike { $st = Get-AzureVM -ServiceName '*' } $compare;
     Assert-ThrowsLike { $st = Get-AzureAffinityGroup -Name '*' } $compare;
 }
+
+# Test Start/Stop-AzureVM for Multiple VMs
+function Run-StartAndStopMultipleVirtualMachinesTest
+{
+    # Setup
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+
+    $storageName = 'pstest' + (getAssetName);
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+
+    # Associate the new storage account with the current subscription
+    Set-CurrentStorageAccountName $storageName;
+
+    $vmNameList = @("vm01", "vm02", "test04");
+    $svcName = 'pstest' + (Get-CloudServiceName);
+    $userName = "pstestuser";
+    $password = "p@ssw0rd";
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+
+    try
+    {
+        foreach ($vmName in $vmNameList)
+        {
+            New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
+        }
+
+        # Get VM List
+        $vmList = Get-AzureVM -ServiceName $svcName;
+
+        # Test Stop
+        Stop-AzureVM -Force -ServiceName $svcName -Name $vmNameList[0];
+        Stop-AzureVM -Force -ServiceName $svcName -Name $vmNameList[0],$vmNameList[1];
+        Stop-AzureVM -Force -ServiceName $svcName -Name $vmNameList;
+        Stop-AzureVM -Force -ServiceName $svcName -Name '*';
+        Stop-AzureVM -Force -ServiceName $svcName -Name 'vm*';
+        Stop-AzureVM -Force -ServiceName $svcName -Name 'vm*','test*';
+        Stop-AzureVM -Force -ServiceName $svcName -VM $vmList[0];
+        Stop-AzureVM -Force -ServiceName $svcName -VM $vmList[0],$vmList[1];
+        Stop-AzureVM -Force -ServiceName $svcName -VM $vmList;
+
+        # Test Start
+        Start-AzureVM -ServiceName $svcName -Name $vmNameList[0];
+        Start-AzureVM -ServiceName $svcName -Name $vmNameList[0],$vmNameList[1];
+        Start-AzureVM -ServiceName $svcName -Name $vmNameList;
+        Start-AzureVM -ServiceName $svcName -Name '*';
+        Start-AzureVM -ServiceName $svcName -Name 'vm*';
+        Start-AzureVM -ServiceName $svcName -Name 'vm*','test*';
+        Start-AzureVM -ServiceName $svcName -VM $vmList[0];
+        Start-AzureVM -ServiceName $svcName -VM $vmList[0],$vmList[1];
+        Start-AzureVM -ServiceName $svcName -VM $vmList;
+    }
+    catch
+    {
+
+    }
+    finally
+    {
+        # Cleanup
+        Cleanup-CloudService $svcName;
+    }
+}

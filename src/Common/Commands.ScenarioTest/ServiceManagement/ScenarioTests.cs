@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Test;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public partial class ServiceManagementTests
     {
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestGetAzureVM()
+        {
+            this.RunPowerShellTest("Test-GetAzureVM");
+        }
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -39,6 +43,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void RunServiceManagementCloudExceptionTests()
         {
             this.RunPowerShellTest("Run-ServiceManagementCloudExceptionTests");
+        }
+        
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunStartAndStopMultipleVirtualMachinesTest()
+        {
+            this.RunPowerShellTest("Run-StartAndStopMultipleVirtualMachinesTest");
         }
     }
 }
