@@ -1,10 +1,16 @@
 ﻿[CmdletBinding()]
 param(
-  [Parameter(Mandatory = $True)]
+  [Parameter(Mandatory = $true)]
   [string]$dllFolder,
-  
-  [Parameter(Mandatory = $True)]
-  [string]$outFolder
+
+  [Parameter(Mandatory = $true)]
+  [string]$outFolder,
+
+  # Cmdlet Code Generation Style
+  # 1. Invoke (default) that uses Invoke as the verb, and Operation + Method (e.g. VirtualMachine + Get)
+  # 2. Verb style that maps the method name to a certain common PS verb (e.g. CreateOrUpdate -> New)
+  [Parameter(Mandatory = $false)]
+  [string]$cmdletStyle = 'Invoke'
 )
 
 $code_common_header =
