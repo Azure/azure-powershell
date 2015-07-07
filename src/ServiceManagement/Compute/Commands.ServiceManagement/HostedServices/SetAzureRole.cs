@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             WriteVerboseWithTimestamp(Resources.GetDeploymentBeginOperation);
             DeploymentGetResponse deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slot);
-            operation = GetOperationNewSM(deploymentGetResponse.RequestId);
+            operation = GetOperation(deploymentGetResponse.RequestId);
             WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
 
             return deploymentGetResponse;
