@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Network
             httpListener.Name = this.Name;
             httpListener.Protocol = this.Protocol;
 
-            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
+            if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
             {
                 httpListener.FrontendIpConfiguration = new PSResourceId();
-                httpListener.FrontendIpConfiguration.Id = this.FrontendIpConfigurationId;
+                httpListener.FrontendIpConfiguration.Id = this.FrontendIPConfigurationId;
             }
 
             if (!string.IsNullOrEmpty(this.FrontendPortId))

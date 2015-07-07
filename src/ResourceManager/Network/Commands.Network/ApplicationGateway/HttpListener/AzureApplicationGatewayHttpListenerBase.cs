@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway FrontendIpConfiguration")]
+                HelpMessage = "ID of the application gateway FrontendIPConfiguration")]
         [ValidateNotNullOrEmpty]
-        public string FrontendIpConfigurationId { get; set; }
+        public string FrontendIPConfigurationId { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway FrontendIpConfiguration")]
+                HelpMessage = "Application gateway FrontendIPConfiguration")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFrontendIpConfiguration FrontendIpConfiguration { get; set; }
+        public PSApplicationGatewayFrontendIPConfiguration FrontendIPConfiguration { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Network
             
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
-                if (FrontendIpConfiguration != null)
+                if (FrontendIPConfiguration != null)
                 {
-                    this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
+                    this.FrontendIPConfigurationId = this.FrontendIPConfiguration.Id;
                 }
                 if (FrontendPort != null)
                 {

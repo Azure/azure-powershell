@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Network
         public static void NormalizeChildResourcesId(PSApplicationGateway applicationGateway)
         {
             // Normalize GatewayIpConfiguration
-            if (applicationGateway.GatewayIpConfigurations != null)
+            if (applicationGateway.GatewayIPConfigurations != null)
             {
-                foreach (var gatewayIpConfig in applicationGateway.GatewayIpConfigurations)
+                foreach (var gatewayIpConfig in applicationGateway.GatewayIPConfigurations)
                 {
                     gatewayIpConfig.Id = string.Empty;                    
                 }
@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize FrontendIpConfiguration
-            if (applicationGateway.FrontendIpConfigurations != null)
+            if (applicationGateway.FrontendIPConfigurations != null)
             {
-                foreach (var frontendIpConfiguration in applicationGateway.FrontendIpConfigurations)
+                foreach (var frontendIpConfiguration in applicationGateway.FrontendIPConfigurations)
                 {
                     frontendIpConfiguration.Id = string.Empty;                    
                 }
