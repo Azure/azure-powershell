@@ -4,6 +4,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -33,10 +34,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string VMName { get; set; }
 
         [Parameter(
-            Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension handler name.")]
+            HelpMessage = "The extension handler name. This is defaulted to 'Microsoft.Powershell.DSC'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -56,7 +56,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             if (Force.IsPresent
              || ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
             {
-                var op = VirtualMachineExtensionClient.Delete(ResourceGroupName, VMName, Name);
+                //Add retry logic due to CRP service restart known issue CRP bug: 3564713
+                var count = 1;
+                DeleteOperationResponse op = null;
+                while (count <= 2)
+                {
+                    op = VirtualMachineExtensionClient.Delete(ResourceGroupName, VMName, Name);
+
+                    if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
                 var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             }

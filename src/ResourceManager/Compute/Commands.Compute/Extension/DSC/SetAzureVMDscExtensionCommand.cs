@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var parameters = new VirtualMachineExtension
             {
                 Location = Location,
-                Name = Name ?? ExtensionName,
+                Name = Name ?? ExtensionNamespace + "." + ExtensionName,
                 Type = VirtualMachineExtensionType,
                 Publisher = ExtensionNamespace,
                 ExtensionType = ExtensionName,
@@ -303,11 +303,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 AutoUpgradeMinorVersion = AutoUpdate.IsPresent ? true : false
             };
 
-            var op = VirtualMachineExtensionClient.CreateOrUpdate(
-                ResourceGroupName,
-                VMName,
-                parameters);
-            
+            //Add retry logic due to CRP service restart known issue CRP bug: 3564713
+            var count = 1;
+            ComputeLongRunningOperationResponse op = null;
+            while (count <= 2)
+            {
+                op = VirtualMachineExtensionClient.CreateOrUpdate(
+                        ResourceGroupName,
+                        VMName,
+                        parameters);
+
+                if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                {
+                    count++;
+                }
+                else
+                {
+                    break;    
+                }
+            }
             var result = Mapper.Map<PSComputeLongRunningOperation>(op);
             WriteObject(result);
         }

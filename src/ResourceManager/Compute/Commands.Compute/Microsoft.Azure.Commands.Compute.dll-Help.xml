@@ -2895,10 +2895,10 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Name of the Extension</maml:para>
+          <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
@@ -2938,10 +2938,10 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
       <maml:name>Name</maml:name>
       <maml:description>
-        <maml:para>Name of the Extension</maml:para>
+        <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       <dev:type>
@@ -8197,10 +8197,10 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Name of the Extension</maml:para>
+            <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -8238,10 +8238,10 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Name of the Extension</maml:para>
+          <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>

@@ -36,10 +36,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string VMName { get; set; }
 
         [Parameter(
-            Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension handler name.")]
+            HelpMessage = "The extension handler name. This is defaulted to 'Microsoft.Powershell.DSC'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
        
