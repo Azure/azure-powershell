@@ -1959,6 +1959,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Virtual machine extension removal operation.
+        /// </summary>
+        public static string VirtualMachineExtensionRemovalCaption {
+            get {
+                return ResourceManager.GetString("VirtualMachineExtensionRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine extension. Do you want to continue?.
+        /// </summary>
+        public static string VirtualMachineExtensionRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The directory specified by the file path does not exist..
         /// </summary>
         public static string VirtualNetworkConfigContextDirectoryDoesNotExist {

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineDscExtension)]
+        ProfileNouns.VirtualMachineDscExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
     {
@@ -40,10 +41,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "To force the removal.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -53,8 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Name = ExtensionNamespace + "." + ExtensionName;
             }
 
-            if (Force.IsPresent
-             || ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+            if (ShouldProcess(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;

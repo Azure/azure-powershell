@@ -817,4 +817,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="RemoveVirtualIP" xml:space="preserve">
     <value>Remove Virtual IP from service</value>
   </data>
+  <data name="VirtualMachineExtensionRemovalCaption" xml:space="preserve">
+    <value>Virtual machine extension removal operation</value>
+  </data>
+  <data name="VirtualMachineExtensionRemovalConfirmation" xml:space="preserve">
+    <value>This cmdlet will remove the specified virtual machine extension. Do you want to continue?</value>
+  </data>
 </root>
