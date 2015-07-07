@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Region { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
-        public AzureBackupVaultStorageType? Storage { get; set; }
+        public AzureBackupVaultStorageType Storage { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Sku)]
         [ValidateSet("standard")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region, skuParam);
 
-                if (Storage.HasValue)
+                if (Storage != 0)
                 {
                     WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
 
