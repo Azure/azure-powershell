@@ -29,9 +29,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateAllContainer,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
+        public SwitchParameter All { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -39,9 +43,27 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 var startMigrationPlanRequest = new MigrationPlanStartRequest();
                 startMigrationPlanRequest.ConfigId = LegacyConfigId;
-                startMigrationPlanRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
+                switch (ParameterSetName)
+                {
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            startMigrationPlanRequest.DataContainerNameList = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                            startMigrationPlanRequest.DataContainerNameList =
+                            new List<string>(LegacyContainerNames.ToList().Distinct(
+                                StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path hit.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
+                }
 
                 var status = StorSimpleClient.StartLegacyVolumeContainerMigrationPlan(startMigrationPlanRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
