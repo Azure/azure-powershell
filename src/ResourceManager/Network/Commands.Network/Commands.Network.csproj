@@ -200,10 +200,8 @@
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHttpSettings.cs" />
-    <Compile Include="Models\PSApplicationGatewayFrontendIpConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendPort.cs" />
     <Compile Include="Models\PSApplicationGatewayHttpListener.cs" />
-    <Compile Include="Models\PSApplicationGatewayIpConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
