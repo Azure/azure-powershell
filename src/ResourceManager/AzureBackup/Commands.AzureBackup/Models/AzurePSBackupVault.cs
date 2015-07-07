@@ -31,8 +31,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         // public Hashtable[] Tags { get; protected set; }
 
-        public string Sku { get; set; }
-
         public string Storage { get; set; }
 
         public AzurePSBackupVault() : base() { }

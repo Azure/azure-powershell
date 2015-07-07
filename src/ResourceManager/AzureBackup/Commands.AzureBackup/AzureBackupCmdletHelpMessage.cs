@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ResourceGroupName = "The ResourceGroup name.";
         public const string ResourceName = "The Resource name.";
         public const string Location = "The resource location.";
-        public const string Sku = "The SKU of the backup vault instance.";
         public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
         public const string StorageType = "The vault back-end storage type.";
     }

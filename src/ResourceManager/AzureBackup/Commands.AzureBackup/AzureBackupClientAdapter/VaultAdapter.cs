@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
     public partial class AzureBackupClientAdapter
     {
         public const int defaultTop = 100;
+        private const string defaultSKU = "standard";
 
         /// <summary>
         /// Creates or updates the vault identified by client
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="location"></param>
         /// <param name="skuParam"></param>
         /// <returns></returns>
-        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location, string skuParam)
+        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location)
         {
             var createResourceParameters = new AzureBackupVaultCreateOrUpdateParameters()
             {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                 {
                     Sku = new SkuProperties()
                     {
-                        Name = skuParam,
+                        Name = defaultSKU,
                     },
                 },
             };

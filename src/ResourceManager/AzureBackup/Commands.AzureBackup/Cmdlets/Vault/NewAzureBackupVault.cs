@@ -40,16 +40,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Sku)]
-        [ValidateSet("standard")]
-        public string Sku { get; set; }
-
         // TODO: Add support for tags
         //[Alias("Tags")]
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
-        //public Hashtable[] Tag { get; set; }
-
-        private string DefaultSKU = "standard";
+        //public Hashtable[] Tag { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -58,10 +52,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
                 InitializeAzureBackupCmdlet(ResourceGroupName, Name);
 
-                string skuParam = Sku ?? DefaultSKU;
                 WriteDebug(String.Format("Creating backup vault with ResourceGroupName: {0}, ResourceName: {1}", ResourceGroupName, Name));
 
-                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region, skuParam);
+                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
 
                 if (Storage != 0)
                 {

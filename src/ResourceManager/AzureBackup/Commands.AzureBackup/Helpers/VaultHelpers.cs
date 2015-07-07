@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 Name = vault.Name,
                 Region = vault.Location,
                 ResourceGroupName = GetResourceGroup(vault.Id),
-                Sku = (vault.Properties != null) ? vault.Properties.Sku.Name : null,
                 Storage = storageType,
             };
 
