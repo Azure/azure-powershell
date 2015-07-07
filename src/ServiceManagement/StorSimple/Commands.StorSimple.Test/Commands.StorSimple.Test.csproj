@@ -115,7 +115,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BackupPolicyTests.cs" />
-    <Compile Include="ScenarioTests\BackupTests.cs" />
     <Compile Include="ScenarioTests\StorSimpleTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +139,6 @@
     <None Include="ScenarioTests\BackupPolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\BackupTests.ps1" />
     <None Include="ScenarioTests\Configuration\ConfigurationReader.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -149,9 +147,6 @@
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests.BackupPolicyTests\TestNewBackupPolicyConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests.BackupTests\TestCreateGetRestoreDeleteBackup.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
