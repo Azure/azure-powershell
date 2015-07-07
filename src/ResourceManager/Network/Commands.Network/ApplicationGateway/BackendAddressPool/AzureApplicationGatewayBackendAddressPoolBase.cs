@@ -29,15 +29,21 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway BackendHttpSettings")]
+                HelpMessage = "Resource IDs of the application gateway backend servers")]
         [ValidateNotNullOrEmpty]
-        public List<string> BackendIpConfigurationIds { get; set; }
+        public List<string> BackendIPConfigurationIds { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway BackendHttpSettings")]
+                ParameterSetName = "SetByIP",
+                HelpMessage = "IP addresses of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayBackendAddress> BackendAddresses { get; set; }        
+        public List<string> BackendIPAddresses { get; set; }
+
+        [Parameter(
+        ParameterSetName = "SetByFqdn",
+        HelpMessage = "FQDNs of application gateway backend servers")]
+        [ValidateNotNullOrEmpty]
+        public List<string> BackendFqdns { get; set; } 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();            

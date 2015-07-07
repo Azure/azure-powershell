@@ -139,6 +139,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
+    <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
@@ -153,6 +154,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

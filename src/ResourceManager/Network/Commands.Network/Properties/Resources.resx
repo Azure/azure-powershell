@@ -237,4 +237,10 @@
   <data name="ApplicationGatewayType" xml:space="preserve">
     <value>microsoft.network/applicationGateways</value>
   </data>
+  <data name="SetByFqdn" xml:space="preserve">
+    <value>SetByFqdn</value>
+  </data>
+  <data name="SetByIP" xml:space="preserve">
+    <value>SetByIP</value>
+  </data>
 </root>

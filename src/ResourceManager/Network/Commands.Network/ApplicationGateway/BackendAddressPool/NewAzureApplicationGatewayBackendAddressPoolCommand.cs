@@ -29,18 +29,32 @@ namespace Microsoft.Azure.Commands.Network
 
             backendAddressPool.Name = this.Name;
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
             {
-                backendAddressPool.BackendAddresses = this.BackendAddresses;                
-            }
-            else
-            {
-                foreach (string id in this.BackendIpConfigurationIds)
+                foreach (string id in this.BackendIPConfigurationIds)
                 {
                     var backendIpConfig = new PSResourceId();
                     backendIpConfig.Id = id;
                     backendAddressPool.BackendIpConfigurations.Add(backendIpConfig);
-                }               
+                }
+            }
+            else if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByIP))
+            {
+                foreach (string ip in this.BackendIPAddresses)
+                {
+                    var backendAddress = new PSApplicationGatewayBackendAddress();
+                    backendAddress.IpAddress = ip;
+                    backendAddressPool.BackendAddresses.Add(backendAddress);
+                }
+            }
+            else 
+            {
+                foreach (string fqdn in this.BackendFqdns)
+                {
+                    var backendAddress = new PSApplicationGatewayBackendAddress();
+                    backendAddress.Fqdn = fqdn;
+                    backendAddressPool.BackendAddresses.Add(backendAddress);
+                }
             }
 
             backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

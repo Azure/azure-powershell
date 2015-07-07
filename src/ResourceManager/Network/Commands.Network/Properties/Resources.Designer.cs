@@ -331,6 +331,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SetByFqdn.
+        /// </summary>
+        public static string SetByFqdn {
+            get {
+                return ResourceManager.GetString("SetByFqdn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByIP.
+        /// </summary>
+        public static string SetByIP {
+            get {
+                return ResourceManager.GetString("SetByIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SetByResource.
         /// </summary>
         public static string SetByResource {
