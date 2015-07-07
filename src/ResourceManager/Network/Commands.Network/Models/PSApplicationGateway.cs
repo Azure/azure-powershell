@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.Network.Models
      {
          public PSApplicationGatewaySku Sku { get; set; }
 
-         public List<PSApplicationGatewayIpConfiguration> GatewayIpConfigurations { get; set; }
+         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
          public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
-         public List<PSApplicationGatewayFrontendIpConfiguration> FrontendIpConfigurations { get; set; }
+         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
          public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Models
          [JsonIgnore]
          public string GatewayIpConfigurationsText
          {
-             get { return JsonConvert.SerializeObject(GatewayIpConfigurations, Formatting.Indented); }
+             get { return JsonConvert.SerializeObject(GatewayIPConfigurations, Formatting.Indented); }
          }
 
          [JsonIgnore]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Models
          [JsonIgnore]
          public string FrontendIpConfigurationsText
          {
-             get { return JsonConvert.SerializeObject(FrontendIpConfigurations, Formatting.Indented); }
+             get { return JsonConvert.SerializeObject(FrontendIPConfigurations, Formatting.Indented); }
          }
 
          [JsonIgnore]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Models
          }
 
          [JsonIgnore]
-         public string BackendHttpSettingsListText
+         public string BackendHttpSettingsCollectionText
          {
              get { return JsonConvert.SerializeObject(BackendHttpSettingsCollection, Formatting.Indented); }
          }

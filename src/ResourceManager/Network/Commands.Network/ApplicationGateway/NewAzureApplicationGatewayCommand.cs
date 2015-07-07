@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of IpConfiguration (subnet)")]
+             HelpMessage = "The list of IPConfiguration (subnet)")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayIpConfiguration> GatewayIpConfigurations { get; set; }
+        public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
-        public List<PSApplicationGatewayFrontendIpConfiguration> FrontendIpConfigurations { get; set; }
+             HelpMessage = "The list of frontend IP config")]
+        public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
         [Parameter(
              Mandatory = true,
@@ -147,10 +147,10 @@ namespace Microsoft.Azure.Commands.Network
             applicationGateway.Location = this.Location;            
             applicationGateway.Sku = this.Sku;
 
-            if (this.GatewayIpConfigurations != null)
+            if (this.GatewayIPConfigurations != null)
             {
-                applicationGateway.GatewayIpConfigurations = new List<PSApplicationGatewayIpConfiguration>();
-                applicationGateway.GatewayIpConfigurations = this.GatewayIpConfigurations;
+                applicationGateway.GatewayIPConfigurations = new List<PSApplicationGatewayIPConfiguration>();
+                applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations;
             }
 
             if (this.SslCertificates != null)
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.SslCertificates = this.SslCertificates;
             }
 
-            if (this.FrontendIpConfigurations != null)
+            if (this.FrontendIPConfigurations != null)
             {
-                applicationGateway.FrontendIpConfigurations = new List<PSApplicationGatewayFrontendIpConfiguration>();
-                applicationGateway.FrontendIpConfigurations = this.FrontendIpConfigurations;
+                applicationGateway.FrontendIPConfigurations = new List<PSApplicationGatewayFrontendIPConfiguration>();
+                applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations;
             }
 
             if (this.FrontendPorts != null)
