@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
         {
-            var parameteres = new ProfileCreateOrUpdateParameters
+            var parameters = new ProfileCreateOrUpdateParameters
             {
                 Profile = profile.ToSDKProfile()
             };
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 profile.ResourceGroupName,
                 profile.Name, 
-                parameteres
+                parameters
                 );
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(profile.ResourceGroupName, profile.Name, response.Profile.Properties);

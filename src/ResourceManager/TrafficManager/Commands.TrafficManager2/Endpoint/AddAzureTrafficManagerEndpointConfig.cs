@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource id of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The target of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Target { get; set; }
@@ -77,6 +81,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 {
                     Name = this.EndpointName,
                     Type = this.Type,
+                    ResourceId = this.ResourceId,
                     Target = this.Target,
                     EndpointStatus = this.EndpointStatus,
                     Weight = this.Weight,

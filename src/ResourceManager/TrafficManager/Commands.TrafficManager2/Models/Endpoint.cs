@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
             }
         }
 
+        public string ResourceId { get; set; }
+
         public string Target { get; set; }
 
         public string EndpointStatus { get; set; }

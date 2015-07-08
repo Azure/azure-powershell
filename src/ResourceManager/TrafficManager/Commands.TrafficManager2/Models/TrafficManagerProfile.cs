@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     {
                         Name = endpoint.Name,
                         Type = endpoint.Type,
+                        Id = endpoint.ResourceId,
                         Properties = new EndpointProperties
                         {
                             Target = endpoint.Target,
