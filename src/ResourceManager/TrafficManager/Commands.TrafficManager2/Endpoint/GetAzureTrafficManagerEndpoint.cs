@@ -46,7 +46,24 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            TrafficManagerEndpoint trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(this.ResourceGroupName, this.ProfileName, this.Type, this.Name);
+            TrafficManagerEndpoint trafficManagerEndpoint = null;
+
+            if (this.ParameterSetName == "Fields")
+            {
+                trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(
+                    this.ResourceGroupName, 
+                    this.ProfileName, 
+                    this.Type, 
+                    this.Name);
+            }
+            else if (this.ParameterSetName == "Object")
+            {
+                trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(
+                    this.TrafficManagerEndpoint.ResourceGroupName,
+                    this.TrafficManagerEndpoint.ProfileName,
+                    this.TrafficManagerEndpoint.Type,
+                    this.TrafficManagerEndpoint.Name);
+            }
 
             this.WriteVerbose(ProjectResources.Success);
             this.WriteObject(trafficManagerEndpoint);
