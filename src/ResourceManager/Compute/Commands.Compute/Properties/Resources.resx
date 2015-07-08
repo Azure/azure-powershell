@@ -284,4 +284,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Configuration published to {0}</value>
     <comment>{0} is an URI</comment>
   </data>
+  <data name="DscExtensionRemovalCaption" xml:space="preserve">
+    <value>Remove Extension</value>
+  </data>
+  <data name="DscExtensionRemovalConfirmation" xml:space="preserve">
+    <value>{0}</value>
+  </data>
 </root>

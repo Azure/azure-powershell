@@ -43,8 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             this.Uninstall = true;
             this.Version = DefaultExtensionVersion;
 
-            if (ShouldProcess(Resources.VirtualMachineExtensionRemovalConfirmation,
-                Resources.VirtualMachineExtensionRemovalCaption))
+            if (ShouldProcess(Resources.DscExtensionRemovalConfirmation,
+                Resources.DscExtensionRemovalCaption))
             {
                 RemovePredicateExtensions();
                 AddResourceExtension();

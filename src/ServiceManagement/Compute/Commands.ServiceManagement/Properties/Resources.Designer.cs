@@ -530,6 +530,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Extension.
+        /// </summary>
+        public static string DscExtensionRemovalCaption {
+            get {
+                return ResourceManager.GetString("DscExtensionRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        public static string DscExtensionRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Duplicate names &apos;{0}&apos; found in both VM and OS images. Please delete one of them, using other method such as Portal or Invoke-RestMethod call, and try again..
         /// </summary>
         public static string DuplicateNamesFoundInBothVMAndOSImages {
@@ -1955,24 +1973,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string VirtualIPWillBeRemoved {
             get {
                 return ResourceManager.GetString("VirtualIPWillBeRemoved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Virtual machine extension removal operation.
-        /// </summary>
-        public static string VirtualMachineExtensionRemovalCaption {
-            get {
-                return ResourceManager.GetString("VirtualMachineExtensionRemovalCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This cmdlet will remove the specified virtual machine extension. Do you want to continue?.
-        /// </summary>
-        public static string VirtualMachineExtensionRemovalConfirmation {
-            get {
-                return ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation", resourceCulture);
             }
         }
         
