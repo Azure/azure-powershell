@@ -300,6 +300,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 }
                 else
                 {
+                    NamingUtil.ValidateShareName(this.SrcShareName, false);
                     dir = this.BuildFileShareObjectFromName(this.SrcShareName).GetRootDirectoryReference();
                 }
 
