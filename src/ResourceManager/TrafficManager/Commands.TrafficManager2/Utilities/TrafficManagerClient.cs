@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public ITrafficManagerManagementClient TrafficManagerManagementClient { get; set; }
 
-        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable[] tag)
+        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable[] tag)
         {
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName, 
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         Location = TrafficManagerClient.ProfileResourceLocation,
                         Properties = new ProfileProperties
                         {
+                            ProfileStatus = profileStatus,
                             TrafficRoutingMethod = trafficRoutingMethod,
                             DnsConfig = new DnsConfig
                             {
@@ -111,6 +112,20 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public bool DeleteTrafficManagerProfile(TrafficManagerProfile profile)
         {
             AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Delete(profile.ResourceGroupName, profile.Name);
+
+            return response.StatusCode.Equals(HttpStatusCode.OK);
+        }
+
+        public bool EnableDisableTrafficManagerProfile(TrafficManagerProfile profile, bool shouldEnableProfileStatus)
+        {
+            profile.ProfileStatus = shouldEnableProfileStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
+
+            var parameters = new ProfileUpdateParameters
+            {
+                Profile = profile.ToSDKProfile()
+            };
+
+            AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Update(profile.ResourceGroupName, profile.Name, parameters);
 
             return response.StatusCode.Equals(HttpStatusCode.OK);
         }

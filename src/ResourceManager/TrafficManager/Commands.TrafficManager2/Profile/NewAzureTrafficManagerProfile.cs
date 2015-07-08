@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The status of the profile.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string ProfileStatus { get; set; }
 
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
                     this.ResourceGroupName,
                     this.Name,
+                    this.ProfileStatus,
                     this.TrafficRoutingMethod,
                     this.RelativeDnsName,
                     this.Ttl,

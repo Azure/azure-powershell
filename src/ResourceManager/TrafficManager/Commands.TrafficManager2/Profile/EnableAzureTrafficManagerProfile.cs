@@ -20,8 +20,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerProfile"), OutputType(typeof(bool))]
-    public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Enable, "AzureTrafficManagerProfile"), OutputType(typeof(bool))]
+    public class EnableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -35,17 +35,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var deleted = false;
-            TrafficManagerProfile profileToDelete = null;
+            var enabled = false;
+            TrafficManagerProfile profileToEnable = null;
 
             if (this.ParameterSetName == "Fields")
             {
-                profileToDelete = new TrafficManagerProfile
+                profileToEnable = new TrafficManagerProfile
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName
@@ -53,23 +50,18 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
             else if (this.ParameterSetName == "Object")
             {
-                profileToDelete = this.TrafficManagerProfile;
+                profileToEnable = this.TrafficManagerProfile;
             }
 
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveProfile, profileToDelete.Name),
-                ProjectResources.Progress_RemovingProfile,
-                this.Name,
-                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete); });
+            enabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToEnable, shouldEnableProfileStatus: true);
 
-            if (deleted)
+            if (enabled)
             {
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
+                this.WriteVerbose(string.Format(ProjectResources.Success_EnableProfile, profileToEnable.Name, profileToEnable.ResourceGroupName));
             }
 
-            this.WriteObject(deleted);
+            this.WriteObject(enabled);
         }
     }
 }

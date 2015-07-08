@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public uint Ttl { get; set; }
 
+        public string ProfileStatus { get; set; }
+
         public string TrafficRoutingMethod { get; set; }
 
         public string MonitorProtocol { get; set; }
@@ -47,6 +49,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 Location = TrafficManagerClient.ProfileResourceLocation,
                 Properties = new ProfileProperties
                 {
+                    ProfileStatus = this.ProfileStatus,
                     TrafficRoutingMethod = this.TrafficRoutingMethod,
                     DnsConfig = new DnsConfig
                     {

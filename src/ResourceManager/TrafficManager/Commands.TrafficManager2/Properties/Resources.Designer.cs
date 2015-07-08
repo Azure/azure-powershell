@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable profile &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_DisableProfile {
+            get {
+                return ResourceManager.GetString("Confirm_DisableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to permanently remove profile &apos;{0}&apos;?.
         /// </summary>
         internal static string Confirm_RemoveProfile {
@@ -97,6 +106,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling profile ....
+        /// </summary>
+        internal static string Progress_DisablingProfile {
+            get {
+                return ResourceManager.GetString("Progress_DisablingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing profile ....
         /// </summary>
         internal static string Progress_RemovingProfile {
@@ -111,6 +129,24 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; from resource group &apos;{1}&apos; was disabled successfully..
+        /// </summary>
+        internal static string Success_DisableProfile {
+            get {
+                return ResourceManager.GetString("Success_DisableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; from resource group &apos;{1}&apos; was enabled successfully..
+        /// </summary>
+        internal static string Success_EnableProfile {
+            get {
+                return ResourceManager.GetString("Success_EnableProfile", resourceCulture);
             }
         }
         
