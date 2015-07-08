@@ -202,6 +202,7 @@ ${operation_get_code}
     $st = Set-Content -Path $file_full_path -Value $cmdlet_source_code_text -Force;
 }
 
+# Sample: InvokeAzureVirtualMachineGetMethod.cs
 function Write-OperationCmdletFile
 {
     param(
@@ -212,10 +213,10 @@ function Write-OperationCmdletFile
         $opShortName,
 
         [Parameter(Mandatory = $True)]
-        [System.Reflection.MethodInfo]$operationMethodInfo
+        [System.Reflection.MethodInfo]$operation_method_info
     )
 
-    $methodName = ($operationMethodInfo.Name.Replace('Async', ''));
+    $methodName = ($operation_method_info.Name.Replace('Async', ''));
     $cmdlet_verb = "Invoke";
     $cmdlet_noun_prefix = 'Azure';
     $cmdlet_noun_suffix = 'Method';
@@ -226,9 +227,9 @@ function Write-OperationCmdletFile
     $get_set_block = '{ get; set; }';
     
     $cmdlet_generated_code = '';
-    # $cmdlet_generated_code += $indents + '// ' + $operationMethodInfo + $new_line_str;
+    # $cmdlet_generated_code += $indents + '// ' + $operation_method_info + $new_line_str;
 
-    $params = $operationMethodInfo.GetParameters();
+    $params = $operation_method_info.GetParameters();
     [System.Collections.ArrayList]$param_names = @();
     foreach ($pt in $params)
     {
@@ -288,7 +289,95 @@ ${cmdlet_generated_code}
     $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
 }
 
-# Code Generation Main:
+# Sample: VirtualMachineCreateParameters
+function Get-ClientComplexParameter
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [System.Reflection.MethodInfo]$op_method_info,
+
+        [Parameter(Mandatory = $True)]
+        [string]$client_name_space
+    )
+
+    $params = $op_method_info.GetParameters();
+    $params = $params | where { -not $_.ParameterType.IsEnum };
+
+    # Assume that each operation method has only one complext parameter type
+    $param_info = $params | where { $_.ParameterType.Namespace -like "${client_name_space}.Model?" } | select -First 1;
+
+    return $param_info;
+}
+
+# Sample: NewAzureVirtualMachineCreateParameters.cs
+function Write-ParameterCmdletFile
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$fileOutputFolder,
+
+        [Parameter(Mandatory = $True)]
+        [string]$operation_short_name,
+
+        [Parameter(Mandatory = $True)]
+        [System.Reflection.ParameterInfo]$parameter_info
+    )
+
+    $param_type_full_name = $parameter_info.ParameterType.FullName;
+    $param_type_short_name = $parameter_info.ParameterType.Name;
+    if (($param_type_short_name -like "${operation_short_name}*") -and ($param_type_short_name.Length -gt $operation_short_name.Length))
+    {
+        # Remove the common part between the parameter type name and operation short name, e.g. 'VirtualMachineDisk'
+        $param_type_short_name = $param_type_short_name.Substring($operation_short_name.Length);
+    }
+
+    $cmdlet_verb = "New";
+    $cmdlet_noun_prefix = 'Azure';
+    $cmdlet_noun_suffix = '';
+
+    $cmdlet_noun = $cmdlet_noun_prefix + $operation_short_name + $param_type_short_name + $cmdlet_noun_suffix;
+    $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun;
+
+    # Construct Code Content
+    $indents = " " * 8;
+    $get_set_block = '{ get; set; }';
+    
+    $cmdlet_generated_code = '';
+
+    $cmdlet_client_call_template =
+@"
+        protected override void OnProcessRecord()
+        {
+            ServiceManagementProfile.Initialize();
+            base.OnProcessRecord();
+            var parameter = new ${param_type_full_name}();
+            WriteObject(parameter);
+        }
+"@;
+
+    $cmdlet_generated_code += $cmdlet_client_call_template;
+
+    $cmdlt_source_template =
+@"
+${code_common_header}
+
+$code_using_strs
+
+namespace ${code_common_namespace}
+{
+    [Cmdlet(`"${cmdlet_verb}`", `"${cmdlet_noun}`")]
+    public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
+    {
+${cmdlet_generated_code}
+    }
+}
+"@;
+
+    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
+    $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
+}
+
+# Code Generation Main Run
 Write-Output $dllFolder;
 Write-Output $outFolder;
 
@@ -323,7 +412,9 @@ else
     $clientClassType = $types | where { $_.Namespace -eq $dllname -and $_.Name -eq 'IComputeManagementClient' };
     Write-BaseCmdletFile $baseCmdletFileFullName $opNameList $clientClassType;
 
-    # Write Cmdlet Files
+    [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();
+
+    # Write Operation Cmdlet Files
     foreach ($ft in $filtered_types)
     {
         Write-Output '=============================================';
@@ -340,6 +431,17 @@ else
         {
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
             Write-OperationCmdletFile $opOutFolder $opShortName $mt;
+
+            [System.Reflection.ParameterInfo]$parameter_type_info = (Get-ClientComplexParameter $mt $client_library_namespace);
+
+            if (($parameter_type_info -ne $null) -and (($parameter_type_info_list | where { $_.ParameterType.FullName -eq $parameter_type_info.FullName }).Count -eq 0))
+            {
+                $parameter_type_info_list += $parameter_type_info;
+
+                Write-Output '---------------------------------------------';
+                Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info;
+                Write-Output '---------------------------------------------';
+            }
         }
     }
 
