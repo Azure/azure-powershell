@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     {
         private ManagementClient _managmentClient;
         private ResourceManagementClient _resourceManagementClient;
-        private ApiManagementClient _apiManagementClient;
 
         public string Location { get; set; }
         public string ResourceGroupName { get; set; }
