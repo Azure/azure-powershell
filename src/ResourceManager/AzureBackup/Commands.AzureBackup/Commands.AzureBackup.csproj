@@ -125,7 +125,6 @@
     <Compile Include="Cmdlets\Vault\GetAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\SetAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\NewAzureBackupVault.cs" />
-    <Compile Include="Cmdlets\Vault\SetAzureBackupVaultStorageType.cs" />
     <Compile Include="Helpers\VaultHelpers.cs" />
     <Compile Include="Library\CertUtils.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
