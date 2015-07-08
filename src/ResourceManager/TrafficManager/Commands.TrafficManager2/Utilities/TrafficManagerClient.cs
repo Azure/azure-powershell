@@ -76,11 +76,46 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile.Properties);
         }
 
+        public Models.Endpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation)
+        {
+            EndpointCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Endpoints.CreateOrUpdate(
+                resourceGroupName,
+                profileName,
+                endpointType,
+                endpointName,
+                new EndpointCreateOrUpdateParameters
+                {
+                    Endpoint = new Endpoint
+                    {
+                        Name = endpointName,
+                        Type = Models.Endpoint.ToSDKEndpointType(endpointType),
+                        Properties = new EndpointProperties
+                        {
+                            TargetResourceId = targetResourceId,
+                            Target = target,
+                            EndpointStatus = endpointStatus,
+                            Weight = weight,
+                            Priority = priority,
+                            EndpointLocation = endpointLocation
+                        }
+                    }
+                });
+
+            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(resourceGroupName, profileName, endpointType, endpointName, response.Endpoint.Properties);
+        }
+
         public TrafficManagerProfile GetTrafficManagerProfile(string resourceGroupName, string profileName)
         {
             ProfileGetResponse response = this.TrafficManagerManagementClient.Profiles.Get(resourceGroupName, profileName);
 
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile.Properties);
+        }
+
+        public Models.Endpoint GetTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName)
+        {
+            EndpointGetResponse response = this.TrafficManagerManagementClient.Endpoints.Get(resourceGroupName, profileName, endpointType, endpointName);
+
+            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(resourceGroupName, profileName, endpointType, endpointName, response.Endpoint.Properties);
         }
 
         public TrafficManagerProfile[] ListTrafficManagerProfiles(string resourceGroupName = null)
@@ -112,6 +147,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         public bool DeleteTrafficManagerProfile(TrafficManagerProfile profile)
         {
             AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Delete(profile.ResourceGroupName, profile.Name);
+
+            return response.StatusCode.Equals(HttpStatusCode.OK);
+        }
+
+        public bool DeleteTrafficManagerEndpoint(Models.Endpoint endpoint)
+        {
+            AzureOperationResponse response = this.TrafficManagerManagementClient.Endpoints.Delete(endpoint.ResourceGroupName, endpoint.ProfileName, endpoint.Type, endpoint.Name);
 
             return response.StatusCode.Equals(HttpStatusCode.OK);
         }
@@ -164,6 +206,24 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             }
 
             return profile;
+        }
+
+        private static Models.Endpoint GetPowershellTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointProperties mamlEndpointProperties)
+        {
+            return new Models.Endpoint
+            {
+                ResourceGroupName = resourceGroupName,
+                ProfileName = profileName,
+                Name = endpointName,
+                Type = endpointType,
+                TargetResourceId = mamlEndpointProperties.TargetResourceId,
+                Target = mamlEndpointProperties.Target,
+                EndpointStatus = mamlEndpointProperties.EndpointStatus,
+                Location = mamlEndpointProperties.EndpointLocation,
+                Priority = mamlEndpointProperties.Priority,
+                Weight = mamlEndpointProperties.Weight,
+                EndpointMonitorStatus = mamlEndpointProperties.EndpointMonitorStatus
+            };
         }
     }
 }

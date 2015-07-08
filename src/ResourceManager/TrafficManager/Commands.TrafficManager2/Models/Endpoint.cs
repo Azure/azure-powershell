@@ -16,27 +16,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
     using System;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Azure.Management.TrafficManager.Models;
 
     public class Endpoint
     {
         public string Name { get; set; }
 
-        private string type;
+        public string ProfileName { get; set; }
 
-        public string Type
-        {
-            get { return this.type; }
+        public string ResourceGroupName { get; set; }
 
-            set
-            {
-                if (!value.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase))
-                {
-                    this.type = string.Format("{0}/{1}", Constants.ProfileType, value);
-                }
-            }
-        }
+        public string Type { get; set; }
 
-        public string ResourceId { get; set; }
+        public string TargetResourceId { get; set; }
 
         public string Target { get; set; }
 
@@ -47,5 +39,33 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public uint? Priority { get; set; }
 
         public string Location { get; set; }
+
+        public string EndpointMonitorStatus { get; set; }
+
+        public Microsoft.Azure.Management.TrafficManager.Models.Endpoint ToSDKEndpoint()
+        {
+            return new Microsoft.Azure.Management.TrafficManager.Models.Endpoint
+            {
+                Name = this.Name,
+                Type = Endpoint.ToSDKEndpointType(this.Type),
+                Id = this.TargetResourceId,
+                Properties = new EndpointProperties
+                {
+                    Target = this.Target,
+                    EndpointStatus = this.EndpointStatus,
+                    Weight = this.Weight,
+                    Priority = this.Priority,
+                    EndpointLocation = this.Location
+                }
+            };
+        }
+
+        public static string ToSDKEndpointType(string type)
+        {
+            return
+                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ? 
+                string.Format("{0}/{1}", Constants.ProfileType, type) : 
+                type;
+        }
     }
 }

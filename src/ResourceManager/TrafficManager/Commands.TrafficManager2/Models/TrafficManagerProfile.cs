@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
 
@@ -65,27 +66,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 }
             };
 
-            if (this.Endpoints.Count > 0)
+            if (this.Endpoints.Any())
             {
-                profile.Properties.Endpoints = new List<Management.TrafficManager.Models.Endpoint>();
-
-                foreach (Endpoint endpoint in this.Endpoints)
-                {
-                    profile.Properties.Endpoints.Add(new Management.TrafficManager.Models.Endpoint
-                    {
-                        Name = endpoint.Name,
-                        Type = endpoint.Type,
-                        Id = endpoint.ResourceId,
-                        Properties = new EndpointProperties
-                        {
-                            Target = endpoint.Target,
-                            EndpointStatus = endpoint.EndpointStatus,
-                            Weight = endpoint.Weight,
-                            Priority = endpoint.Priority,
-                            EndpointLocation = endpoint.Location
-                        }
-                    });
-                }    
+                profile.Properties.Endpoints = this.Endpoints.Select(endpoint => endpoint.ToSDKEndpoint()).ToList();
             }
 
             return profile;
