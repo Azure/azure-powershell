@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable endpoint &apos;{0}&apos; of Profile &apos;{1}&apos;?.
+        /// </summary>
+        internal static string Confirm_DisableEndpoint {
+            get {
+                return ResourceManager.GetString("Confirm_DisableEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to disable profile &apos;{0}&apos;?.
         /// </summary>
         internal static string Confirm_DisableProfile {
@@ -124,6 +133,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling endpoint ....
+        /// </summary>
+        internal static string Progress_DisablingEndpoint {
+            get {
+                return ResourceManager.GetString("Progress_DisablingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling profile ....
         /// </summary>
         internal static string Progress_DisablingProfile {
@@ -160,11 +178,29 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; of Profile &apos;{1}&apos; from resource group &apos;{2}&apos; was disabled successfully..
+        /// </summary>
+        internal static string Success_DisableEndpoint {
+            get {
+                return ResourceManager.GetString("Success_DisableEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile &apos;{0}&apos; from resource group &apos;{1}&apos; was disabled successfully..
         /// </summary>
         internal static string Success_DisableProfile {
             get {
                 return ResourceManager.GetString("Success_DisableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; of Profile &apos;{1}&apos; from resource group &apos;{2}&apos; was enabled successfully..
+        /// </summary>
+        internal static string Success_EnableEndpoint {
+            get {
+                return ResourceManager.GetString("Success_EnableEndpoint", resourceCulture);
             }
         }
         

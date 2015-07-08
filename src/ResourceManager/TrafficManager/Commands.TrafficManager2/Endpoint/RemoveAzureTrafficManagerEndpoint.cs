@@ -20,9 +20,6 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using System.Net;
-    using Hyak.Common;
-
     [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerEndpoint"), OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {

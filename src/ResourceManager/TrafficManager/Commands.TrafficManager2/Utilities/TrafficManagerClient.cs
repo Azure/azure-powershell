@@ -205,16 +205,21 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return response.StatusCode.Equals(HttpStatusCode.OK);
         }
 
-        public bool EnableDisableTrafficManagerProfile(TrafficManagerEndpoint endpoint, bool shouldEnableProfileStatus)
+        public bool EnableDisableTrafficManagerEndpoint(TrafficManagerEndpoint endpoint, bool shouldEnableEndpointStatus)
         {
-            profile.ProfileStatus = shouldEnableProfileStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
+            endpoint.EndpointStatus = shouldEnableEndpointStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
 
-            var parameters = new ProfileUpdateParameters
+            var parameters = new EndpointUpdateParameters
             {
-                Profile = profile.ToSDKProfile()
+                Endpoint = endpoint.ToSDKEndpoint()
             };
 
-            AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Update(profile.ResourceGroupName, profile.Name, parameters);
+            AzureOperationResponse response = this.TrafficManagerManagementClient.Endpoints.Update(
+                endpoint.ResourceGroupName,
+                endpoint.ProfileName,
+                endpoint.Type,
+                endpoint.Name,
+                parameters);
 
             return response.StatusCode.Equals(HttpStatusCode.OK);
         }

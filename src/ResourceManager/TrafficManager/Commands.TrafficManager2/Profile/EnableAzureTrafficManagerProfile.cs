@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            var enabled = false;
             TrafficManagerProfile profileToEnable = null;
 
             if (this.ParameterSetName == "Fields")
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 profileToEnable = this.TrafficManagerProfile;
             }
 
-            enabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToEnable, shouldEnableProfileStatus: true);
+            bool enabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToEnable, shouldEnableProfileStatus: true);
 
             if (enabled)
             {
