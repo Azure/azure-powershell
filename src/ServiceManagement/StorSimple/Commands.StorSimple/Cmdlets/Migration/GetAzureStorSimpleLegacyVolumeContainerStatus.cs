@@ -20,7 +20,8 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerStatus")]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleLegacyVolumeContainerStatus"),
+     OutputType(typeof(DataContainerMigrationStatus))]
     public class GetAzureStorSimpleLegacyVolumeContainerStatus : StorSimpleCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = StorSimpleCmdletHelpMessage.MigrationConfigId)]
