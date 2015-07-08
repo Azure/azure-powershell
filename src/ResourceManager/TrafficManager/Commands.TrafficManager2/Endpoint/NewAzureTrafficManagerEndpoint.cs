@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(Models.Endpoint))]
+    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             {
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    Models.Endpoint endpoint = this.TrafficManagerClient.CreateTrafficManagerEndpoint(
+                    TrafficManagerEndpoint trafficManagerEndpoint = this.TrafficManagerClient.CreateTrafficManagerEndpoint(
                         this.ResourceGroupName,
                         this.ProfileName,
                         this.Type,
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.EndpointLocation);
 
                     this.WriteVerbose(ProjectResources.Success);
-                    this.WriteObject(endpoint);
+                    this.WriteObject(trafficManagerEndpoint);
                 }
                 else
                 {

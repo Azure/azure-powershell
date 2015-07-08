@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
-        public Models.Endpoint Endpoint { get; set; }
+        public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public override void ExecuteCmdlet()
         {
             var deleted = false;
-            Models.Endpoint endpointToDelete = null;
+            TrafficManagerEndpoint trafficManagerEndpointToDelete = null;
 
             if (this.ParameterSetName == "Fields")
             {
-                endpointToDelete = new Models.Endpoint
+                trafficManagerEndpointToDelete = new TrafficManagerEndpoint
                 {
                     Name = this.Name,
                     ProfileName = this.ProfileName,
@@ -67,20 +67,20 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
             else if (this.ParameterSetName == "Object")
             {
-                endpointToDelete = this.Endpoint;
+                trafficManagerEndpointToDelete = this.TrafficManagerEndpoint;
             }
 
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveEndpoint, endpointToDelete.Name, endpointToDelete.ProfileName, endpointToDelete.ResourceGroupName),
+                string.Format(ProjectResources.Confirm_RemoveEndpoint, trafficManagerEndpointToDelete.Name, trafficManagerEndpointToDelete.ProfileName, trafficManagerEndpointToDelete.ResourceGroupName),
                 ProjectResources.Progress_RemovingEndpoint,
                 this.Name,
-                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerEndpoint(endpointToDelete); });
+                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerEndpoint(trafficManagerEndpointToDelete); });
 
             if (deleted)
             {
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveEndpoint, endpointToDelete.Name, endpointToDelete.ProfileName, endpointToDelete.ResourceGroupName));
+                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveEndpoint, trafficManagerEndpointToDelete.Name, trafficManagerEndpointToDelete.ProfileName, trafficManagerEndpointToDelete.ResourceGroupName));
             }
 
             this.WriteObject(deleted);

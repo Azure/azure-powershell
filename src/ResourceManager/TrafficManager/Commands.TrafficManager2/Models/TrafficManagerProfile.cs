@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string MonitorPath { get; set; }
 
-        public List<Endpoint> Endpoints { get; set; }
+        public List<TrafficManagerEndpoint> Endpoints { get; set; }
 
         public Profile ToSDKProfile()
         {

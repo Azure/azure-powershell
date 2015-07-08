@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
 
-    public class Endpoint
+    public class TrafficManagerEndpoint
     {
         public string Name { get; set; }
 
@@ -42,12 +42,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string EndpointMonitorStatus { get; set; }
 
-        public Microsoft.Azure.Management.TrafficManager.Models.Endpoint ToSDKEndpoint()
+        public Endpoint ToSDKEndpoint()
         {
-            return new Microsoft.Azure.Management.TrafficManager.Models.Endpoint
+            return new Endpoint
             {
                 Name = this.Name,
-                Type = Endpoint.ToSDKEndpointType(this.Type),
+                Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
                 Id = this.TargetResourceId,
                 Properties = new EndpointProperties
                 {

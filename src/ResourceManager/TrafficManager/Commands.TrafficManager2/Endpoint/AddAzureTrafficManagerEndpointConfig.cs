@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         {
             if (this.TrafficManagerProfile.Endpoints == null)
             {
-                this.TrafficManagerProfile.Endpoints = new List<Endpoint>();
+                this.TrafficManagerProfile.Endpoints = new List<TrafficManagerEndpoint>();
             }
 
             if (this.TrafficManagerProfile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.TrafficManagerProfile.Endpoints.Add(
-                new Endpoint
+                new TrafficManagerEndpoint
                 {
                     Name = this.EndpointName,
                     Type = this.Type,

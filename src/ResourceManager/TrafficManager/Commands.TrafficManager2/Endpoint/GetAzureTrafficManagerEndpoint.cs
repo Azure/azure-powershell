@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(Models.Endpoint))]
+    [Cmdlet(VerbsCommon.Get, "AzureTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class GetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
-        public Models.Endpoint Endpoint { get; set; }
+        public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            Endpoint endpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(this.ResourceGroupName, this.ProfileName, this.Type, this.Name);
+            TrafficManagerEndpoint trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(this.ResourceGroupName, this.ProfileName, this.Type, this.Name);
 
             this.WriteVerbose(ProjectResources.Success);
-            this.WriteObject(endpoint);
+            this.WriteObject(trafficManagerEndpoint);
         }
     }
 }
