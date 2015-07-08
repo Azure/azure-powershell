@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string Name { get; set; }
        
         [Parameter(
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
         [ValidateNotNullOrEmpty]

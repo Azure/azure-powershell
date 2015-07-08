@@ -2902,7 +2902,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Status</maml:name>
 				<maml:description>
 					<maml:para>Output shows status when the switch is present</maml:para>
@@ -2950,11 +2950,10 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Status</maml:name>
 			<maml:description>
 				<maml:para>Output shows status when the switch is present</maml:para>
-								
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2963,7 +2962,6 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		
 	</command:parameters>
 	<!-- Input - Output section-->
 	<command:inputTypes>
