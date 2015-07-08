@@ -19,8 +19,11 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.WindowsAzure.Management.Compute;
+using System.Management.Automation;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
@@ -33,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.Deployments;
             }
         }
+
         public IDNSServerOperations DNSServerClient
         {
             get
@@ -40,6 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.DnsServer;
             }
         }
+
         public IExtensionImageOperations ExtensionImageClient
         {
             get
@@ -47,6 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.ExtensionImages;
             }
         }
+
         public IHostedServiceOperations HostedServiceClient
         {
             get
@@ -54,6 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.HostedServices;
             }
         }
+
         public ILoadBalancerOperations LoadBalancerClient
         {
             get
@@ -61,6 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.LoadBalancers;
             }
         }
+
         public IOperatingSystemOperations OperatingSystemClient
         {
             get
@@ -68,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.OperatingSystems;
             }
         }
+
         public IServiceCertificateOperations ServiceCertificateClient
         {
             get
@@ -75,6 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.ServiceCertificates;
             }
         }
+
         public IVirtualMachineDiskOperations VirtualMachineDiskClient
         {
             get
@@ -82,6 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.VirtualMachineDisks;
             }
         }
+
         public IVirtualMachineExtensionOperations VirtualMachineExtensionClient
         {
             get
@@ -89,6 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.VirtualMachineExtensions;
             }
         }
+
         public IVirtualMachineOperations VirtualMachineClient
         {
             get
@@ -96,6 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.VirtualMachines;
             }
         }
+
         public IVirtualMachineOSImageOperations VirtualMachineOSImageClient
         {
             get
@@ -103,6 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 return ComputeClient.VirtualMachineOSImages;
             }
         }
+
         public IVirtualMachineVMImageOperations VirtualMachineVMImageClient
         {
             get
@@ -112,4 +126,3 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         }
     }
 }
-

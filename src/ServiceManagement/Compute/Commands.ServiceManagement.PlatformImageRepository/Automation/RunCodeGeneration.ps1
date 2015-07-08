@@ -1,21 +1,35 @@
 ﻿[CmdletBinding()]
 param(
-  [Parameter(Mandatory = $true)]
-  [string]$dllFolder,
+    [Parameter(Mandatory = $true)]
+    [string]$dllFolder,
 
-  [Parameter(Mandatory = $true)]
-  [string]$outFolder,
+    [Parameter(Mandatory = $true)]
+    [string]$outFolder,
+
+    # The base cmdlet from which all automation cmdlets derive
+    [Parameter(Mandatory = $false)]
+    [string]$baseCmdlet = 'ServiceManagementBaseCmdlet',
+
+    # The property field to access the client wrapper class from the base cmdlet
+    [Parameter(Mandatory = $false)]
+    [string]$base_class_client_field = 'ComputeClient',
     
-  # The base cmdlet from which all automation cmdlets derive
-  [Parameter(Mandatory = $false)]
-  [string]$baseCmdlet = 'ServiceManagementBaseCmdlet',
-    
-  # Cmdlet Code Generation Style
-  # 1. Invoke (default) that uses Invoke as the verb, and Operation + Method (e.g. VirtualMachine + Get)
-  # 2. Verb style that maps the method name to a certain common PS verb (e.g. CreateOrUpdate -> New)
-  [Parameter(Mandatory = $false)]
-  [string]$cmdletStyle = 'Invoke'
+    # Cmdlet Code Generation Style
+    # 1. Invoke (default) that uses Invoke as the verb, and Operation + Method (e.g. VirtualMachine + Get)
+    # 2. Verb style that maps the method name to a certain common PS verb (e.g. CreateOrUpdate -> New)
+    [Parameter(Mandatory = $false)]
+    [string]$cmdletStyle = 'Invoke'
 )
+
+$client_library_namespace = 'Microsoft.WindowsAzure.Management.Compute';
+$code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
+
+$code_common_usings = @(
+    'System.Management.Automation',
+    'Microsoft.Azure',
+    'Microsoft.WindowsAzure.Commands.ServiceManagement',
+    'Microsoft.WindowsAzure.Commands.Utilities.Common'
+);
 
 $code_common_header =
 @"
@@ -41,12 +55,35 @@ $code_common_header =
 // code is regenerated.
 "@;
 
-$client_library_namespace = 'Microsoft.WindowsAzure.Management.Compute';
-$code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
+$new_line_str = "`r`n";
+
+function Get-SortedUsings
+{
+    param(
+        # Sample: @('System.Management.Automation', 'Microsoft.Azure', ...)
+        [Parameter(Mandatory = $true)]
+        $common_using_str_list,
+
+        # Sample: 'Microsoft.WindowsAzure.Management.Compute'
+        [Parameter(Mandatory = $true)]
+        $client_library_namespace
+    )
+
+    $a1 = @() + $common_using_str_list + $client_library_namespace;
+    $a2 = Sort-Object -Descending -Unique -InputObject $a1;
+    $a3 = $a2 | foreach { "using ${_};" };
+
+    $text = [string]::Join($new_line_str, $a3);
+
+    return $text;
+}
+
+$code_using_strs = Get-SortedUsings $code_common_usings $client_library_namespace;
 
 function Get-NormalizedName
 {
     param(
+        # Sample: 'vmName' => 'VMName', 'resourceGroup' => 'ResourceGroup', etc.
         [Parameter(Mandatory = $True)]
         [string]$inputName
     )
@@ -73,6 +110,8 @@ function Get-NormalizedName
 function Get-OperationShortName
 {
     param(
+        # Sample #1: 'IVirtualMachineOperations' => 'VirtualMachine'
+        # Sample #2: 'IDeploymentOperations' => 'Deployment'
         [Parameter(Mandatory = $True)]
         [string]$opFullName
     )
@@ -83,7 +122,8 @@ function Get-OperationShortName
 
     if ($opFullName.StartsWith($prefix) -and $opShortName.EndsWith($suffix))
     {
-        $opShortName = $opShortName.Substring($prefix.Length, ($opShortName.Length - $prefix.Length - $suffix.Length));
+        $lenOpShortName = ($opShortName.Length - $prefix.Length - $suffix.Length);
+        $opShortName = $opShortName.Substring($prefix.Length, $lenOpShortName);
     }
 
     return $opShortName;
@@ -93,20 +133,19 @@ function Write-BaseCmdletFile
 {
     param(
         [Parameter(Mandatory = $True)]
-        [string]$fileFullPath,
+        [string]$file_full_path,
 
         [Parameter(Mandatory = $True)]
-        $operationNameList,
+        $operation_name_list,
 
         [Parameter(Mandatory = $True)]
-        $clientClass
+        $client_class_info
     )
 
-
-    [System.Reflection.PropertyInfo[]]$propItems = $clientClass.GetProperties();
+    [System.Reflection.PropertyInfo[]]$propItems = $client_class_info.GetProperties();
 
     $operation_get_code = "";
-    foreach ($opFullName in $operationNameList)
+    foreach ($opFullName in $operation_name_list)
     {
         [string]$sOpFullName = $opFullName;
         Write-Output ('$sOpFullName = ' + $sOpFullName);
@@ -131,26 +170,25 @@ function Write-BaseCmdletFile
         {
             get
             {
-                return ComputeClient.${opPropName};
+                return ${base_class_client_field}.${opPropName};
             }
         }
 "@;
 
-            if (-not ($operation_get_code -eq ''))
+            if (-not ($operation_get_code -eq ""))
             {
-                $operation_get_code += "`r`n";
+                $operation_get_code += ($new_line_str * 2);
             }
 
             $operation_get_code += $operation_get_template;
         }
     }
 
-    $source_template =
+    $cmdlet_source_code_text =
 @"
 ${code_common_header}
 
-using ${client_library_namespace};
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+$code_using_strs
 
 namespace ${code_common_namespace}
 {
@@ -161,7 +199,7 @@ ${operation_get_code}
 }
 "@;
 
-    Set-Content -Path $fileFullPath -Value ($source_template | Out-String) -Force;
+    $st = Set-Content -Path $file_full_path -Value $cmdlet_source_code_text -Force;
 }
 
 function Write-OperationCmdletFile
@@ -179,15 +217,16 @@ function Write-OperationCmdletFile
 
     $methodName = ($operationMethodInfo.Name.Replace('Async', ''));
     $cmdlet_verb = "Invoke";
-    $cmdlet_noun = "Azure" + $opShortName + $methodName;
-    $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun + 'Cmdlet';
+    $cmdlet_noun_prefix = 'Azure';
+    $cmdlet_noun_suffix = 'Method';
+    $cmdlet_noun = $cmdlet_noun_prefix + $opShortName + $methodName + $cmdlet_noun_suffix;
+    $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun;
 
     $indents = " " * 8;
-    $new_line = "`r`n";
     $get_set_block = '{ get; set; }';
     
     $cmdlet_generated_code = '';
-    # $cmdlet_generated_code += $indents + '// ' + $operationMethodInfo + $new_line;
+    # $cmdlet_generated_code += $indents + '// ' + $operationMethodInfo + $new_line_str;
 
     $params = $operationMethodInfo.GetParameters();
     [System.Collections.ArrayList]$param_names = @();
@@ -200,13 +239,13 @@ function Write-OperationCmdletFile
 
             Write-Output ('    ' + $paramTypeFullName + ' ' + $normalized_param_name);
 
-            $param_attributes = $indents + "[Parameter(Mandatory = true), ValidateNotNullOrEmpty]" + $new_line;
-            $param_definition = $indents + "public ${paramTypeFullName} ${normalized_param_name} " + $get_set_block + $new_line;
+            $param_attributes = $indents + "[Parameter(Mandatory = true)]" + $new_line_str;
+            $param_definition = $indents + "public ${paramTypeFullName} ${normalized_param_name} " + $get_set_block + $new_line_str;
             $param_code_content = $param_attributes + $param_definition;
 
-            $cmdlet_generated_code += $param_code_content + $new_line;
+            $cmdlet_generated_code += $param_code_content + $new_line_str;
 
-            $param_names.Add($normalized_param_name);
+            $st = $param_names.Add($normalized_param_name);
         }
     }
 
@@ -233,13 +272,9 @@ function Write-OperationCmdletFile
 @"
 ${code_common_header}
 
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using System.Management.Automation;
+$code_using_strs
 
-namespace Microsoft.WindowsAzure.Commands.Compute.Automation
+namespace ${code_common_namespace}
 {
     [Cmdlet(`"${cmdlet_verb}`", `"${cmdlet_noun}`")]
     public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
@@ -249,10 +284,11 @@ ${cmdlet_generated_code}
 }
 "@;
 
-    $fileFullPath = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
-    Set-Content -Path $fileFullPath -Value $cmdlt_source_template -Force;
+    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
+    $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
 }
 
+# Code Generation Main:
 Write-Output $dllFolder;
 Write-Output $outFolder;
 
@@ -264,7 +300,7 @@ $output = Get-ChildItem -Path $dllFolder | Out-String;
 Write-Output $output;
 
 
-$dllname = 'Microsoft.WindowsAzure.Management.Compute';
+$dllname = $client_library_namespace;
 $dllfile = $dllname + '.dll';
 $dllFileFullPath = $dllFolder + '\' + $dllfile;
 
@@ -302,7 +338,7 @@ else
         $methods = $ft.GetMethods();
         foreach ($mt in $methods)
         {
-            Write-Output ($mt.Name.Replace('Async', ''));
+            Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
             Write-OperationCmdletFile $opOutFolder $opShortName $mt;
         }
     }
