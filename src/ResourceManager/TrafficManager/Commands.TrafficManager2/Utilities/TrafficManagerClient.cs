@@ -82,6 +82,16 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response.Profile.Properties);
         }
 
+        public TrafficManagerProfile[] ListTrafficManagerProfiles(string resourceGroupName = null)
+        {
+            ProfileListResponse response =
+                resourceGroupName == null ? 
+                this.TrafficManagerManagementClient.Profiles.ListAll() :
+                this.TrafficManagerManagementClient.Profiles.ListAllInResourceGroup(resourceGroupName);
+
+            return response.Profiles.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profile.Name, profile.Properties)).ToArray();
+        }
+
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
         {
             var parameteres = new ProfileCreateOrUpdateParameters
