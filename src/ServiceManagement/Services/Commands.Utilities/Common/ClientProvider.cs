@@ -23,35 +23,35 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class ClientProvider : IClientProvider
     {
-        private readonly AzureProfile profile;
+        private readonly ServiceManagementBaseCmdlet svcMgmtBaseCmdlet;
 
-        public ClientProvider(AzureProfile azureProfile)
+        public ClientProvider(ServiceManagementBaseCmdlet baseCmdlet)
         {
-            this.profile = azureProfile;
+            this.svcMgmtBaseCmdlet = baseCmdlet;
         }
 
         ManagementClient IClientProvider.CreateClient()
         {
-            return AzureSession.ClientFactory.CreateClient<ManagementClient>(this.profile.Context,
+            return AzureSession.ClientFactory.CreateClient<ManagementClient>(this.svcMgmtBaseCmdlet.Profile.Context,
                 AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         ComputeManagementClient IClientProvider.CreateComputeClient()
         {
-            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(this.profile,
-                this.profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(this.svcMgmtBaseCmdlet.Profile,
+                this.svcMgmtBaseCmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         StorageManagementClient IClientProvider.CreateStorageClient()
         {
-            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(this.profile,
-                this.profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(this.svcMgmtBaseCmdlet.Profile,
+                this.svcMgmtBaseCmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         NetworkManagementClient IClientProvider.CreateNetworkClient()
         {
-            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(this.profile,
-                this.profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(this.svcMgmtBaseCmdlet.Profile,
+                this.svcMgmtBaseCmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
     }
 }

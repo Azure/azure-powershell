@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected ServiceManagementBaseCmdlet()
         {
-            IClientProvider clientProvider = new ClientProvider(Profile);
+            IClientProvider clientProvider = new ClientProvider(this);
             SetupClients(clientProvider);
         }
 
