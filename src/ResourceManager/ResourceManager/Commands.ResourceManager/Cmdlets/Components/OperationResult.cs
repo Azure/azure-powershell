@@ -56,6 +56,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
-        public JObject Value { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -83,66 +83,69 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.ParameterSetName.Equals(ListVMImageParamSetName))
+            ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineImageListParameters
+                if (this.ParameterSetName.Equals(ListVMImageParamSetName))
                 {
-                    Location = Location.Canonicalize(),
-                    Offer = Offer,
-                    PublisherName = PublisherName,
-                    Skus = Skus,
-                    FilterExpression = FilterExpression
-                };
+                    var parameters = new VirtualMachineImageListParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        Offer = Offer,
+                        PublisherName = PublisherName,
+                        Skus = Skus,
+                        FilterExpression = FilterExpression
+                    };
 
-                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
+                    VirtualMachineImageResourceList result = this.VirtualMachineImageClient.List(parameters);
 
-                var images = from r in result.Resources
-                             select new PSVirtualMachineImage
-                             {
-                                 RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
-                                 Id = r.Id,
-                                 Location = r.Location,
-                                 Version = r.Name,
-                                 PublisherName = this.PublisherName,
-                                 Offer = this.Offer,
-                                 Skus = this.Skus,
-                                 FilterExpression = this.FilterExpression
-                             };
+                    var images = from r in result.Resources
+                                 select new PSVirtualMachineImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = this.Skus,
+                                     FilterExpression = this.FilterExpression
+                                 };
 
-                WriteObject(images, true);
-            }
-            else
-            {
-                var parameters = new VirtualMachineImageGetParameters
+                    WriteObject(images, true);
+                }
+                else
                 {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Offer = Offer,
-                    Skus = Skus,
-                    Version = Version
-                };
+                    var parameters = new VirtualMachineImageGetParameters
+                    {
+                        Location = Location.Canonicalize(),
+                        PublisherName = PublisherName,
+                        Offer = Offer,
+                        Skus = Skus,
+                        Version = Version
+                    };
 
-                VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
+                    VirtualMachineImageGetResponse response = this.VirtualMachineImageClient.Get(parameters);
 
-                var image = new PSVirtualMachineImageDetail
-                {
-                    RequestId = response.RequestId,
-                    StatusCode = response.StatusCode,
-                    Id = response.VirtualMachineImage.Id,
-                    Location = response.VirtualMachineImage.Location,
-                    Name = response.VirtualMachineImage.Name,
-                    Version = response.VirtualMachineImage.Name,
-                    PublisherName = this.PublisherName,
-                    Offer = this.Offer,
-                    Skus = this.Skus,
-                    OSDiskImage = response.VirtualMachineImage.OSDiskImage,
-                    DataDiskImages = response.VirtualMachineImage.DataDiskImages,
-                    PurchasePlan = response.VirtualMachineImage.PurchasePlan,
-                };
+                    var image = new PSVirtualMachineImageDetail
+                    {
+                        RequestId = response.RequestId,
+                        StatusCode = response.StatusCode,
+                        Id = response.VirtualMachineImage.Id,
+                        Location = response.VirtualMachineImage.Location,
+                        Name = response.VirtualMachineImage.Name,
+                        Version = response.VirtualMachineImage.Name,
+                        PublisherName = this.PublisherName,
+                        Offer = this.Offer,
+                        Skus = this.Skus,
+                        OSDiskImage = response.VirtualMachineImage.OSDiskImage,
+                        DataDiskImages = response.VirtualMachineImage.DataDiskImages,
+                        PurchasePlan = response.VirtualMachineImage.PurchasePlan,
+                    };
 
-                WriteObject(image);
-            }
+                    WriteObject(image);
+                }
+            });
         }
     }
 }

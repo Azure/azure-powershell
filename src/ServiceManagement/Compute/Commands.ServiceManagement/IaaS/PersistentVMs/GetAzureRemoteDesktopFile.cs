@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     }
                 }
 
-                var operation = GetOperationNewSM(desktopFileResponse.RequestId);
+                var operation = GetOperation(desktopFileResponse.RequestId);
 
                 WriteVerboseWithTimestamp(string.Format(Resources.AzureRemoteDesktopCompletedOperation, CommandRuntime));
 
