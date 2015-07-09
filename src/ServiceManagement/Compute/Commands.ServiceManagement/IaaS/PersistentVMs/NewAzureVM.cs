@@ -200,7 +200,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                         if (existingService == null || existingService.Properties == null)
                         {
                             // The same service name is already used by another subscription.
-                            this.WriteExceptionDetails(ex);
+                            WriteExceptionError(ex);
                             return;
                         }
                         else if ((string.IsNullOrEmpty(existingService.Properties.Location) &&
@@ -217,13 +217,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                             // The same service name is already created under the same subscription,
                             // but its affinity group or location is not matched with the given parameter.
                             this.WriteWarning("Location or AffinityGroup name is not matched with the existing service");
-                            this.WriteExceptionDetails(ex);
+                            WriteExceptionError(ex);
                             return;
                         }
                     }
                     else
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                         return;
                     }
                 }
@@ -335,7 +335,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     }
                     else
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
 
                     return;

@@ -14,10 +14,13 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Management;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Network;
+using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -25,16 +28,19 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureVM()
-        {
-            this.RunPowerShellTest("Test-GetAzureVM");
-        }
-
         protected void SetupManagementClients()
         {
-            helper.SetupSomeOfManagementClients();
+            var rdfeTestFactory = new RDFETestEnvironmentFactory();
+            var managementClient = TestBase.GetServiceClient<ManagementClient>(rdfeTestFactory);
+            var computeClient = TestBase.GetServiceClient<ComputeManagementClient>(rdfeTestFactory);
+            var networkClient = TestBase.GetServiceClient<NetworkManagementClient>(rdfeTestFactory);
+            var storageClient = TestBase.GetServiceClient<StorageManagementClient>(rdfeTestFactory);
+
+            helper.SetupSomeOfManagementClients(
+                managementClient,
+                computeClient,
+                networkClient,
+                storageClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)

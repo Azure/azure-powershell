@@ -163,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             DeploymentGetResponse deploymentGetResponse = null;
             InvokeInOperationContext(() => deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slot));
-            operation = GetOperationNewSM(deploymentGetResponse.RequestId);
+            operation = GetOperation(deploymentGetResponse.RequestId);
 
             WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
 

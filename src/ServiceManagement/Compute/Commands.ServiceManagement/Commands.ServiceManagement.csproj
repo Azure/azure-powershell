@@ -248,6 +248,7 @@
     <Compile Include="IaaS\Network\RemoveAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\GetAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\RemoveAzureReservedIPAssociation.cs" />
+    <Compile Include="IaaS\Network\RemoveAzureVirtualIP.cs" />
     <Compile Include="IaaS\Network\SetAzureDns.cs" />
     <Compile Include="IaaS\Network\SetAzureInternalLoadBalancer.cs" />
     <Compile Include="IaaS\Network\SetAzureNetworkSecurityGroupConfig.cs" />
@@ -309,7 +310,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RemoveAzureVirtualIP.cs" />
     <Compile Include="RoleSizes\GetAzureRoleSize.cs" />
     <Compile Include="ServiceManagementProfile.cs" />
     <Compile Include="AffinityGroups\SetAzureAffinityGroup.cs" />
