@@ -481,5 +481,76 @@
         </ListEntries>
       </ListControl>
     </View>
+
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Publisher</Label>
+                <PropertyName>Publisher</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtensionType</Label>
+                <PropertyName>ExtensionType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TypeHandlerVersion</Label>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ModulesUrl</Label>
+                <PropertyName>ModulesUrl</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ConfigurationFunction</Label>
+                <PropertyName>ConfigurationFunction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>Properties</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicSettings</Label>
+                <PropertyName>PublicSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProtectedSettings</Label>
+                <PropertyName>ProtectedSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Statuses</Label>
+                <PropertyName>StatusesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>
