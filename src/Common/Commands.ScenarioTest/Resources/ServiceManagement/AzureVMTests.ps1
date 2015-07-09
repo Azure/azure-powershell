@@ -12,36 +12,52 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-########################################################################### Create-AzureVM Scenario Tests ###########################################################################
-
 <#
 .SYNOPSIS
 Tests Create-AzureVM with valid information.
 #>
 function Test-GetAzureVM
 {
-	# Setup
+    # Setup
 
-	$location = Get-DefaultLocation
-	$imgName = Get-DefaultImage $location
-
-
-	$storageName = getAssetName
-	New-AzureStorageAccount -StorageAccountName $storageName -Location $location
-
-	Set-CurrentStorageAccountName $storageName
-
-	$vmName = "vm1"
-	$svcName = Get-CloudServiceName
-
-	# Test
-	New-AzureService -ServiceName $svcName -Location $location
-	New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
-
-	Get-AzureVM -ServiceName $svcName -Name $vmName
+    $location = Get-DefaultLocation
+    $imgName = Get-DefaultImage $location
 
 
-	# Cleanup
-	Cleanup-CloudService $svcName
+    $storageName = getAssetName
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+
+    Set-CurrentStorageAccountName $storageName
+
+    $vmName = "vm1"
+    $svcName = Get-CloudServiceName
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
+
+    Get-AzureVM -ServiceName $svcName -Name $vmName
+
+
+    # Cleanup
+    Cleanup-CloudService $svcName
 }
 
+
+<#
+.SYNOPSIS
+Test Get-AzureLocation
+#>
+function Test-GetAzureLocation
+{
+    $locations = Get-AzureLocation;
+
+    foreach ($loc in $locations)
+    {
+        $svcName = getAssetName;
+        $st = New-AzureService -ServiceName $svcName -Location $loc.Name;
+        
+        # Cleanup
+        Cleanup-CloudService $svcName
+    }
+}

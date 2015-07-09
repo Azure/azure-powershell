@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Gets the resource lock.
+    /// Gets the deployment operation.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase

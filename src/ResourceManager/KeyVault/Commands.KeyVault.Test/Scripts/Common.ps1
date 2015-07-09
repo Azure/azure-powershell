@@ -56,7 +56,7 @@ Get test secret name
 #>
 function Get-SecretName([string]$suffix)
 {
-    return 'pshts-' + $global:testns+ '-' + $suffix
+    return 'pshts-' + $global:testns + '-' + $suffix
 }
 
 
@@ -70,6 +70,31 @@ function Get-ImportKeyFile([string]$filesuffix, [bool] $exists=$true)
     if ($exists)
     {
         $file = "$filesuffix"+"test.$filesuffix"
+    }
+    else
+    {
+        $file = "notexist" + ".$filesuffix"
+    }
+
+    if ($global:testEnv -eq 'BVT')
+    {       
+        return Join-Path $invocationPath "bvtdata\$file"        
+    }
+    else
+    {
+        return Join-Path $invocationPath "proddata\$file"
+    }
+}
+
+<#
+.SYNOPSIS
+Get 1024 bit key file path to be imported
+#>
+function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
+{
+    if ($exists)
+    {
+        $file = "$filesuffix"+"test1024.$filesuffix"
     }
     else
     {
@@ -212,6 +237,18 @@ function Run-SecretTest ([ScriptBlock] $test, [string] $testName)
    finally 
    {
      Cleanup-SingleSecretTest *>> "$testName.debug_log"
+   }
+}
+
+function Run-VaultTest ([ScriptBlock] $test, [string] $testName)
+{   
+   try 
+   {
+     Run-Test $test $testName *>> "$testName.debug_log"
+   }
+   finally 
+   {
+     
    }
 }
 

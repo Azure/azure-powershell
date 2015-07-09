@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
+    using System.Collections;
+    using System.Collections.Generic;
 
     class RedisCacheAttributes
     {
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Port = cache.Properties.Port;
             ProvisioningState = cache.Properties.ProvisioningState;
             SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
+            RedisConfiguration = cache.Properties.RedisConfiguration;
             EnableNonSslPort = cache.Properties.EnableNonSslPort;
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
@@ -38,19 +40,19 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
         {
-            Id = cache.Id;
-            Location = cache.Location;
-            Name = cache.Name;
-            Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
+            Id = cache.Resource.Id;
+            Location = cache.Resource.Location;
+            Name = cache.Resource.Name;
+            Type = cache.Resource.Type;
+            HostName = cache.Resource.Properties.HostName;
+            Port = cache.Resource.Properties.Port;
+            ProvisioningState = cache.Resource.Properties.ProvisioningState;
+            SslPort = cache.Resource.Properties.SslPort;
+            RedisConfiguration = cache.Resource.Properties.RedisConfiguration;
+            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort;
+            RedisVersion = cache.Resource.Properties.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Resource.Properties.Sku.Family, cache.Resource.Properties.Sku.Capacity);
+            Sku = cache.Resource.Properties.Sku.Name;
             ResourceGroupName = resourceGroupName;
         }
 
@@ -94,7 +96,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int SslPort { get; protected set; }
 
-        public string MaxMemoryPolicy { get; protected set; }
+        public IDictionary<string, string> RedisConfiguration { get; protected set; }
 
         public bool EnableNonSslPort { get; protected set; }
 

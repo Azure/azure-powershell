@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using System.Management.Automation;
+using System;
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
-    using System.Management.Automation;
     
     [Cmdlet(VerbsCommon.New, "AzureDedicatedCircuitLinkAuthorization"), OutputType(typeof(AzureDedicatedCircuitLinkAuthorization))]
     public class NewAzureDedicatedCircuitLinkAuthorizationCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key representing Azure Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Description")]

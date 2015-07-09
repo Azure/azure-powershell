@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
 {

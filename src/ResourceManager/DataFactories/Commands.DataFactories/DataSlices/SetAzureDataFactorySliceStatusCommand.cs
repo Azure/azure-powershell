@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories.Models;
+using System;
 using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
@@ -25,6 +26,25 @@ namespace Microsoft.Azure.Commands.DataFactories
     public class SetAzureDataFactorySliceStatusCommand : DataSliceContextBaseCmdlet
     {
         private string _updateType = "Individual";
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
+        public DateTime EndDateTime
+        {
+            get
+            {
+                if (_endDateTime == default(DateTime))
+                {
+                    WriteWarning(Resources.EndDateTimeNotSpecifiedForSetSliceStatus);
+                    return StartDateTime + Constants.DefaultSliceActivePeriodDuration;
+                }
+
+                return _endDateTime;
+            }
+            set
+            {
+                _endDateTime = value;
+            }
+        }
 
         [Parameter(Position = 5, Mandatory = true, HelpMessage = "The data slice status.")]
         [ValidateSet(
