@@ -61,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.27-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -122,6 +122,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -159,6 +160,18 @@
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
+    <Compile Include="Extension\DSC\ConfigurationParseResult.cs" />
+    <Compile Include="Extension\DSC\ConfigurationParsingHelper.cs" />
+    <Compile Include="Extension\DSC\DscExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\DSC\DscExtensionPublicSettings.cs" />
+    <Compile Include="Extension\DSC\DscSettingsSerializer.cs" />
+    <Compile Include="Extension\DSC\GetDscResourceException.cs" />
+    <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
+    <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />
+    <Compile Include="Extension\DSC\SetAzureVMDscExtensionCommand.cs" />
+    <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
+    <Compile Include="Extension\DSC\VirtualMachineDscExtensionBaseCmdlet.cs" />
+    <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
@@ -188,7 +201,6 @@
     <Compile Include="Common\LocationStringExtensions.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
-    <Compile Include="Common\SourceImageReferenceExtensions.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
@@ -245,6 +257,10 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj">
+      <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
+      <Name>Commands.Management.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
       <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
       <Name>Commands.Tags</Name>
@@ -278,6 +294,7 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Compute.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup />

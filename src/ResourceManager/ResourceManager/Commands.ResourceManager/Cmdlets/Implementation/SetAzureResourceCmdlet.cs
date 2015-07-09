@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var activity = string.Format("{0} {1}", this.ShouldUsePatchSemantics() ? "PATCH" : "PUT", managementUri.PathAndQuery);
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
-
-                    this.WriteObject(result.ToResource().ToPsObject(this.OutputObjectFormat.Value));
+                    
+                    this.TryConvertAndWriteObject(result, this.OutputObjectFormat.Value);
                 });
         }
 

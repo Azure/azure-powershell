@@ -84,39 +84,8 @@ namespace Microsoft.Azure.Commands.Sql.Services
                 {
                     throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
-
-                if (DeprecatedEventTypeFound(eventTypes))
-                {
-                    if(eventTypes.Intersect(auditEvents).Any())
-                    {
-                        // If the event types includes new events and deprecated events we throw error
-                    throw new Exception(Resources.InvalidDeprecatedEventTypeSet);
-                    }
-                }
-
             }
             return eventTypes;
-        }
-        
-        /// <summary>
-        /// Checks whether a deprected event type is found in the received array of event types
-        /// </summary>
-        internal static bool DeprecatedEventTypeFound(string[] eventType)
-        {
-            if(eventType == null)
-            {
-                return false;
-            }
-
-            string[] deprecatedAuditEvents = 
-            {
-                SecurityConstants.DeprecatedAuditEvents.DataAccess,
-                SecurityConstants.DeprecatedAuditEvents.DataChanges,
-                SecurityConstants.DeprecatedAuditEvents.SecurityExceptions,
-                SecurityConstants.DeprecatedAuditEvents.RevokePermissions,
-                SecurityConstants.DeprecatedAuditEvents.SchemaChanges
-            };
-            return eventType.Intersect(deprecatedAuditEvents).Any();
-        }
+        }        
     }
 }

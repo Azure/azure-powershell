@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<policies>
+    <inbound>
+        <find-and-replace from="aaa" to="BBB" />
+        <set-header name="ETag" exists-action="skip">
+            <value>bbyby</value>
+            <!-- for multiple headers with the same name add additional value elements -->
+        </set-header>
+        <set-query-parameter name="additional" exists-action="append">
+            <value>xxbbcczc</value>
+            <!-- for multiple parameters with the same name add additional value elements -->
+        </set-query-parameter>
+        <cross-domain />
+    </inbound>
+    <outbound />
+</policies>
