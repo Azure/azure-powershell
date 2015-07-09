@@ -59,6 +59,9 @@
 			* Set-AzureApplicationGatewaySslCertificate
 			* Get-AzureApplicationGatewaySslCertificate
 			* Remove-AzureApplicationGatewaySslCertificate
+* Azure Resource Manager cmdlets
+    * Fixed formatting of output for Get-UsageAggregates
+    * Fixed executing Get-UsageAggregates when first cmdlet being called.
 
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
