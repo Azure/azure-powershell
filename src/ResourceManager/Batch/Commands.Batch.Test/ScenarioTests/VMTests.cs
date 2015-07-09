@@ -26,15 +26,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class VMTests
     {
-        // NOTE: To save time on VM allocation when recording, these tests assume the following:
-        //     - A Batch account named 'vmtests' exists under the subscription being used for recording.
-        //     - The following commands were run to create a pool, and all 3 VMs are allocated and idle:
-        //          $context = Get-AzureBatchAccountKeys "vmtests"
-        //          New-AzureBatchPool -Name "testPool" -VMSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $context
-
-        private const string accountName = "vmtests";
-        private const int vmCount = 3;
-        private const string poolName = "testPool";
+        private const string accountName = ScenarioTestHelpers.SharedAccount;
+        private const string poolName = ScenarioTestHelpers.SharedPool;
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -49,9 +42,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListVMsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
             string state = "idle";
-            int matches = 3;
-            controller.RunPsTest(string.Format("Test-ListVMsByFilter '{0}' '{1}' '{2}' '{3}'", accountName, poolName, state, matches));
+            int matches = 0;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-ListVMsByFilter '{0}' '{1}' '{2}' '{3}'", accountName, poolName, state, matches) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    matches = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolName);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
@@ -68,7 +71,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListAllVMs()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-ListAllVMs '{0}' '{1}' '{2}'", accountName, poolName, vmCount));
+            BatchAccountContext context = null;
+            int vmCount = 0;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-ListAllVMs '{0}' '{1}' '{2}'", accountName, poolName, vmCount) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    vmCount = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolName);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
@@ -76,7 +90,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListVMPipeline()
         {
             BatchController controller = BatchController.NewInstance;
-            controller.RunPsTest(string.Format("Test-ListVMPipeline '{0}' '{1}' '{2}'", accountName, poolName, vmCount));
+            BatchAccountContext context = null;
+            string state = "idle";
+            int vmCount = 0;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-ListVMPipeline '{0}' '{1}' '{2}'", accountName, poolName, vmCount) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    vmCount = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolName);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
     }
 
