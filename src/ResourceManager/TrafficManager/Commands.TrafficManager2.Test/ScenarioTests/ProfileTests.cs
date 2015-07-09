@@ -17,48 +17,48 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class ProfileTests : WatmV2TestsBase
+    public class ProfileTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrud");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrudWithPiping");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteUsingProfile()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CreateDeleteUsingProfile");
+            TestController.NewInstance.RunPowerShellTest("Test-CreateDeleteUsingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudWithEndpoint()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CrudWithEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-CrudWithEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileRemoveNonExisting()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
         }
     }
 }

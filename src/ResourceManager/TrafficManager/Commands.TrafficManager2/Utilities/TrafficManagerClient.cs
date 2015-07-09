@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -29,8 +30,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
     {
         public const string ProfileResourceLocation = "global";
 
-        public TrafficManagerClient(AzureProfile profile)
-            : this(AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager))
+        public Action<string> VerboseLogger { get; set; }
+
+        public Action<string> ErrorLogger { get; set; }
+
+        public TrafficManagerClient(AzureContext context)
+            : this(AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
