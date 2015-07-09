@@ -222,6 +222,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates.Test", "ResourceManager\Commerce\Commands.UsageAggregates.Test\Commands.UsageAggregates.Test.csproj", "{F220C306-29A3-4511-8518-A58A55C60D07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.ServiceManagement", "ResourceManager\ApiManagement\Commands.ApiManagement.ServiceManagement\Commands.ApiManagement.ServiceManagement.csproj", "{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.ServiceManagement.Test", "ResourceManager\ApiManagement\Commands.SMAPI.Test\Commands.ApiManagement.ServiceManagement.Test.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup", "ResourceManager\AzureBackup\Commands.AzureBackup\Commands.AzureBackup.csproj", "{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup.Test", "ResourceManager\AzureBackup\Commands.AzureBackup.Test\Commands.AzureBackup.Test.csproj", "{678AE95D-2364-47D7-888C-3FFA6D412CC8}"
@@ -552,6 +556,14 @@ Global
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8BA708-AF42-4C08-9F4E-DAA1037797D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -604,6 +616,7 @@ Global
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

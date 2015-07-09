@@ -101,6 +101,7 @@ NestedModules = @(
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll',
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll'
 )
 

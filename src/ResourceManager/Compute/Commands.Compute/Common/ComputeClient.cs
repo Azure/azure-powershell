@@ -19,10 +19,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public partial class ComputeClient
+    public class ComputeClient
     {
-        public IComputeManagementClient ComputeManagementClient { get; set; }
-        
+        public IComputeManagementClient ComputeManagementClient { get; private set; }
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Compute
         {
         }
 
-        public ComputeClient(IComputeManagementClient resourceManagementClient)
+        public ComputeClient(IComputeManagementClient computeManagementClient)
         {
-            ComputeManagementClient = resourceManagementClient;
+            ComputeManagementClient = computeManagementClient;
         }
     }
 }
