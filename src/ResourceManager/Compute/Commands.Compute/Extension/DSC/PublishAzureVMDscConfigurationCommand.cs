@@ -21,7 +21,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         VerbsData.Publish,
         ProfileNouns.VirtualMachineDscConfiguration, 
         SupportsShouldProcess = true, 
-        DefaultParameterSetName = UploadArchiveParameterSetName)]
+        DefaultParameterSetName = UploadArchiveParameterSetName),
+    OutputType(
+         typeof(String))]
     public class PublishAzureVMDscConfigurationCommand : VirtualMachineDscExtensionBaseCmdlet
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -376,6 +378,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 modulesBlob.UploadFromFile(archivePath, FileMode.Open);
 
                 WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionArchiveUploadedMessage, modulesBlob.Uri.AbsoluteUri));
+                WriteObject(modulesBlob.Uri.AbsoluteUri);
             });
         }
 
