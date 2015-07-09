@@ -23,6 +23,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Remove, "AzureVirtualIP"), OutputType(typeof(ManagementOperationContext))]
     public class RemoveAzureVirtualIP : ServiceManagementBaseCmdlet
     {
+        public RemoveAzureVirtualIP()
+        {
+        }
+
+        public RemoveAzureVirtualIP(IClientProvider provider) 
+            : base(provider)
+        {
+        }
+
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }

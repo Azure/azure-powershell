@@ -23,93 +23,93 @@ function Test-AzureReservedIPSimpleOperations
 {
     # Setup
     $name = getAssetName
-	$label = "New Reserved IP"
-	$location = "West US"
+    $label = "New Reserved IP"
+    $location = "West US"
 
     # Test Create Reserved IP
     New-AzureReservedIP -ReservedIPName $name -Label $label -Location $location
     $reservedIP = Get-AzureReservedIP -ReservedIPName $name
 
     # Assert
-	Assert-NotNull($reservedIP)
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
+    Assert-AreEqual $reservedIP.Label $label
 
-	#Test Remove reserved IP
-	$removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
-	Assert-AreEqual $removeReservedIP.OperationStatus "Succeeded"
+    #Test Remove reserved IP
+    $removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
+    Assert-AreEqual $removeReservedIP.OperationStatus "Succeeded"
 }
 
 <#
 .SYNOPSIS
-	Brings up a new Azure VM with a Reserved IP
+    Brings up a new Azure VM with a Reserved IP
 #>
 
 function Test-CreateVMWithReservedIP
 {
     # Setup
       
-	$vmname = getAssetName
-	$serviceName = getAssetName
+    $vmname = getAssetName
+    $serviceName = getAssetName
     $storageAccountName = getAssetName
-	$reservedIPName = getAssetName
+    $reservedIPName = getAssetName
     $label = "New Reserved IP"
     $location="West US"
-	
-	New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
-	$subscription = Get-AzureSubscription -Current
-	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
-	Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
+    
+    New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
+    $subscription = Get-AzureSubscription -Current
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+    Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
     $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
 
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
 
-	# Assert
-	Assert-NotNull($reservedIP)
+    # Assert
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-False { $reservedIP.InUse }
-		
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-False { $reservedIP.InUse }
+        
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location -ReservedIPName $reservedIPName
 
     $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
-	
-	# Assert
-	Assert-NotNull($reservedIP)
+    
+    # Assert
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-True { $reservedIP.InUse }
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-True { $reservedIP.InUse }
     Assert-AreEqual $reservedIP.ServiceName $serviceName
 
-	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
-	Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
+    Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
+    Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 
-	Start-Sleep -Seconds 120
+    Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
 <#
 .SYNOPSIS
-	Reserve existing deployment IP
+    Reserve existing deployment IP
 #>
 
 function Test-ReserveExistingDeploymentIP
 {
     # Setup
     
-	$vmname = getAssetName
-	$serviceName = getAssetName
+    $vmname = getAssetName
+    $serviceName = getAssetName
     $storageAccountName = getAssetName
-	$reservedIPName = getAssetName
+    $reservedIPName = getAssetName
     $label = "New Reserved IP"
     $location="West US"
-	
-	$subscription = Get-AzureSubscription -Current
-	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
-	Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
+    
+    $subscription = Get-AzureSubscription -Current
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+    Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
 
     # Test
@@ -117,131 +117,131 @@ function Test-ReserveExistingDeploymentIP
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
     New-AzureReservedIP -ReservedIPName $reservedIPName -ServiceName $serviceName -Location $location -Label $label
-	$reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
 
-	# Assert
-	Assert-NotNull($reservedIP)
+    # Assert
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-True { $reservedIP.InUse }
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-True { $reservedIP.InUse }
     Assert-AreEqual $reservedIP.ServiceName $serviceName
 
-	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
+    Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
     Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 
-	Start-Sleep -Seconds 120
-	Remove-AzureStorageAccount -StorageAccountName $storageAccountName
-}
-
-<#
-.SYNOPSIS
-	Create a VM and associate a reserved IP with it
-#>
-function Test-SetAzureReservedIPAssociationSingleVip
-{
-    # Setup
-     
-	$vmname = getAssetName
-	$serviceName = getAssetName
-    $storageAccountName = getAssetName
-	$reservedIPName = getAssetName
-    $label = "New Reserved IP"
-    $location="West US"
-	
-	New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
-	$subscription = Get-AzureSubscription -Current
-	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
-	Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
-    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
-
-    $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
-
-	# Assert
-	Assert-NotNull($reservedIP)
-    Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-False { $reservedIP.InUse }
-		
-    # Test
-    New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
-    Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
-    New-AzureVM -ServiceName $serviceName -Location $location 
-
-	Set-AzureReservedIPAssociation -ReservedIPName $reservedIPName -ServiceName $serviceName
-
-    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
-	
-	# Assert
-	Assert-NotNull($reservedIP)
-    Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-True { $reservedIP.InUse }
-    Assert-AreEqual $reservedIP.ServiceName $serviceName
-
-	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
-	Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
-
-	Start-Sleep -Seconds 120
+    Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
 <#
 .SYNOPSIS
-	Create a VM with reserved IP and disassociate the reserved IP
+    Create a VM and associate a reserved IP with it
+#>
+function Test-SetAzureReservedIPAssociationSingleVip
+{
+    # Setup
+     
+    $vmname = getAssetName
+    $serviceName = getAssetName
+    $storageAccountName = getAssetName
+    $reservedIPName = getAssetName
+    $label = "New Reserved IP"
+    $location="West US"
+    
+    New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
+    $subscription = Get-AzureSubscription -Current
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+    Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
+
+    $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
+
+    # Assert
+    Assert-NotNull($reservedIP)
+    Assert-AreEqual $reservedIP.Location $location
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-False { $reservedIP.InUse }
+        
+    # Test
+    New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
+    New-AzureVM -ServiceName $serviceName -Location $location 
+
+    Set-AzureReservedIPAssociation -ReservedIPName $reservedIPName -ServiceName $serviceName
+
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
+    
+    # Assert
+    Assert-NotNull($reservedIP)
+    Assert-AreEqual $reservedIP.Location $location
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-True { $reservedIP.InUse }
+    Assert-AreEqual $reservedIP.ServiceName $serviceName
+
+    Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
+    Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
+
+    Start-Sleep -Seconds 120
+    Remove-AzureStorageAccount -StorageAccountName $storageAccountName
+}
+
+<#
+.SYNOPSIS
+    Create a VM with reserved IP and disassociate the reserved IP
 #>
 
 function Test-RemoveAzureReservedIPAssociationSingleVip
 {
     # Setup
       
-	$vmname = getAssetName
-	$serviceName = getAssetName
+    $vmname = getAssetName
+    $serviceName = getAssetName
     $storageAccountName = getAssetName
-	$reservedIPName = getAssetName
+    $reservedIPName = getAssetName
     $label = "New Reserved IP"
     $location="West US"
-	
-	New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
-	$subscription = Get-AzureSubscription -Current
-	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
-	Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
+    
+    New-AzureReservedIP -ReservedIPName $reservedIPName -Label $label -Location $location
+    $subscription = Get-AzureSubscription -Current
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+    Set-AzureSubscription -SubscriptionId $subscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
     $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
 
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
 
-	# Assert
-	Assert-NotNull($reservedIP)
+    # Assert
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-False { $reservedIP.InUse }
-		
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-False { $reservedIP.InUse }
+        
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location -ReservedIPName $reservedIPName
 
     $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
-	
-	# Assert
-	Assert-NotNull($reservedIP)
+    
+    # Assert
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-True { $reservedIP.InUse }
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-True { $reservedIP.InUse }
     Assert-AreEqual $reservedIP.ServiceName $serviceName
 
-	Remove-AzureReservedIPAssociation -ReservedIPName $reservedIPName -ServiceName $serviceName -Force
+    Remove-AzureReservedIPAssociation -ReservedIPName $reservedIPName -ServiceName $serviceName -Force
 
-	$reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $reservedIPName
     # Assert
-	Assert-NotNull($reservedIP)
+    Assert-NotNull($reservedIP)
     Assert-AreEqual $reservedIP.Location $location
-	Assert-AreEqual $reservedIP.Label $label
-	Assert-False { $reservedIP.InUse }
+    Assert-AreEqual $reservedIP.Label $label
+    Assert-False { $reservedIP.InUse }
 
-	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
-	Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
-	
-	#sleep to ensure deployments are cleaned
-	Start-Sleep -Seconds 120
+    Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
+    Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
+    
+    #sleep to ensure deployments are cleaned
+    Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }

@@ -12,26 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.TestInterfaces;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Network;
-using Moq;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Management;
-using Microsoft.WindowsAzure.Management.Storage;
-using Xunit;
-using Assert = Xunit.Assert;
-
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Multivip
 {
+    using Microsoft.Azure;
+    using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS;
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network;
+    using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.TestInterfaces;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.WindowsAzure.Management;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using Microsoft.WindowsAzure.Management.Compute.Models;
+    using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Management.Storage;
+    using Moq;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Xunit;
+    using Assert = Xunit.Assert;
+
     public class MultivipTests
     {
         private Mock<NetworkManagementClient> networkingClientMock;

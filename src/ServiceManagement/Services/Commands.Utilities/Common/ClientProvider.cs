@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Management;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Common.Authentication;
-
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.WindowsAzure.Management;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Management.Storage;
+
     public class ClientProvider : IClientProvider
     {
         private readonly ServiceManagementBaseCmdlet svcMgmtBaseCmdlet;

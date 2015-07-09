@@ -111,7 +111,6 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>

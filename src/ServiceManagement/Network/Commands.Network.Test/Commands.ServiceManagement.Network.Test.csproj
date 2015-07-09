@@ -100,7 +100,6 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -299,7 +298,6 @@
   <ItemGroup>
     <Content Include="Readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.WindowsAzure.Management.Storage;
+
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
+    using Microsoft.WindowsAzure.Management;
+    using Microsoft.WindowsAzure.Management.Compute;
+    using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Management.Storage;
+
     public interface IClientProvider
     {
         ManagementClient CreateClient();
