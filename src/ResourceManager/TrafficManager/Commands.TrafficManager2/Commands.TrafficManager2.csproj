@@ -67,11 +67,15 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoint\DisableAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\EnableAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\SetAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\GetAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\NewAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpointConfig.cs" />
     <Compile Include="Endpoint\AddAzureTrafficManagerEndpointConfig.cs" />
-    <Compile Include="Models\Endpoint.cs" />
+    <Compile Include="Models\TrafficManagerEndpoint.cs" />
     <Compile Include="Models\TrafficManagerProfile.cs" />
     <Compile Include="Profile\DisableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\EnableAzureTrafficManagerProfile.cs" />
