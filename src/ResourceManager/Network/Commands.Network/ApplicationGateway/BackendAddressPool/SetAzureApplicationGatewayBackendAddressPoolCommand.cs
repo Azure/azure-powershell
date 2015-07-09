@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
             {
+                backendAddressPool.BackendIpConfigurations = new System.Collections.Generic.List<PSResourceId>();
                 foreach (string id in this.BackendIPConfigurationIds)
                 {
                     var backendIpConfig = new PSResourceId();
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByIP))
             {
+                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string ip in this.BackendIPAddresses)
                 {
                     var backendAddress = new PSApplicationGatewayBackendAddress();
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
+                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
                 foreach (string fqdn in this.BackendFqdns)
                 {
                     var backendAddress = new PSApplicationGatewayBackendAddress();

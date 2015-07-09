@@ -44,9 +44,12 @@ namespace Microsoft.Azure.Commands.Network
 
             gatewayIPConfiguration.Name = this.Name;
 
-            var gatewayIPConfig = new PSResourceId();
-            gatewayIPConfig.Id = this.Subnet;
-            gatewayIPConfiguration.Subnet = gatewayIPConfig;
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                var gatewayIPConfig = new PSResourceId();
+                gatewayIPConfig.Id = this.SubnetId;
+                gatewayIPConfiguration.Subnet = gatewayIPConfig;
+            }    
 
             gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                 this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,

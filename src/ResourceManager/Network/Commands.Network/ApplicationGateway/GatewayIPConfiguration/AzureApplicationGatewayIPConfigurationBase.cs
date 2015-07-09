@@ -28,14 +28,27 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-                Mandatory = true,
-                HelpMessage = "ID of subnet where application gateway gets its address from")]
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "ID of subnet where application gateway gets its address from")]
         [ValidateNotNullOrEmpty]
-        public string Subnet { get; set; }
-        
+        public string SubnetId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "Subnet where application gateway gets its address from")]
+        public PSSubnet Subnet { get; set; }
+       
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();            
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.Subnet != null)
+                {
+                    this.SubnetId = this.Subnet.Id;
+                }
+            }
         }
     }
 }

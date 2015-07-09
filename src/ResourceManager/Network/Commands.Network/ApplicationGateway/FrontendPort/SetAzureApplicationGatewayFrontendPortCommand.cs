@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var applicationGateway = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var frontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (applicationGateway == null)
+            if (frontendPort == null)
             {
                 throw new ArgumentException("Frontend port with the specified name does not exist");
             }
 
-            applicationGateway.Port = this.Port;
+            frontendPort.Port = this.Port;
 
             WriteObject(this.ApplicationGateway);
         }

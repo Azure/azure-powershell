@@ -45,16 +45,16 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var applicationGateway = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var frontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (applicationGateway != null)
+            if (frontendPort != null)
             {
                 throw new ArgumentException("Frontend port with the specified name already exists");
             }
 
-            var frontendPort = new PSApplicationGatewayFrontendPort();
-            applicationGateway.Name = this.Name;
-            applicationGateway.Port = this.Port;
+            frontendPort = new PSApplicationGatewayFrontendPort();
+            frontendPort.Name = this.Name;
+            frontendPort.Port = this.Port;
 
             frontendPort.Id =
                 ChildResourceHelper.GetResourceId(
