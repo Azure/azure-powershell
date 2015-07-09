@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 isResourceCreateOrUpdate: false)
                             .WaitOnOperation(operationResult: operationResult);
 
-                        this.WriteObject(result, ResourceObjectFormat.New);
+                        this.TryConvertAndWriteObject(result, ResourceObjectFormat.New);
                     }
                     else
                     {
