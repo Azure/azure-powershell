@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network;
@@ -23,6 +24,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Remove, "AzureVirtualIP"), OutputType(typeof(ManagementOperationContext))]
     public class RemoveAzureVirtualIP : ServiceManagementBaseCmdlet
     {
+        public RemoveAzureVirtualIP()
+        {
+        }
+
+        public RemoveAzureVirtualIP(IClientProvider provider)
+            : base(provider)
+        {
+        }
+
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }

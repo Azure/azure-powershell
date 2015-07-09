@@ -16,7 +16,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void AdditionalVipLifecycle()
         {
             RunPowerShellTest("Test-AdditionalVipLifecycle");
@@ -24,7 +24,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void AdditionalVipMobility()
         {
             RunPowerShellTest("Test-AdditionalVipMobility");
@@ -32,7 +32,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void ReserveMultivipDepIP()
         {
             RunPowerShellTest("Test-ReserveExistingDeploymentIPMultivip");
@@ -40,7 +40,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void SetLBEndpointMultivipDep()
         {
             RunPowerShellTest("Test-SetLBEndpoint");

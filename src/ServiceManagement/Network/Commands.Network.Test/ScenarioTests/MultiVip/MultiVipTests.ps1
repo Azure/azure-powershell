@@ -79,7 +79,7 @@ function Test-AdditionalVipLifecycle
 
 	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
     #sleep so that the service & deployments are removed
-	Start-Sleep -Seconds 120
+	#Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
@@ -165,7 +165,7 @@ function Test-AdditionalVipMobility
 	Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 	
 	#sleep so that the service & deployments are removed
-	Start-Sleep -Seconds 120
+	#Start-Sleep -Seconds 120
 
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
@@ -211,7 +211,7 @@ function Test-ReserveExistingDeploymentIPMultivip
 	Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 	
 	#sleep to ensure deployments are cleaned
-	Start-Sleep -Seconds 120
+	#Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
@@ -258,6 +258,6 @@ function Test-SetLBEndpoint
 	#cleanup
 	Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
 	
-	Start-Sleep -Seconds 120
+	#Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }

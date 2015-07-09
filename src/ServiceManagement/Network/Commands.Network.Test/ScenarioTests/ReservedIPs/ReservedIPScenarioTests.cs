@@ -16,7 +16,7 @@
         
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void AzureReservedIPSimpleOperations()
         {
             RunPowerShellTest("Test-AzureReservedIPSimpleOperations");
@@ -24,7 +24,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void CreateVMWithReservedIP()
         {
             RunPowerShellTest("Test-CreateVMWithReservedIP");
@@ -32,7 +32,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void SetReservedIPAssociationSimple()
         {
             RunPowerShellTest("Test-SetAzureReservedIPAssociationSingleVip");
@@ -40,7 +40,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void RemoveReservedIPAssociationSimple()
         {
             RunPowerShellTest("Test-RemoveAzureReservedIPAssociationSingleVip");
@@ -48,7 +48,7 @@
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.CheckIn)]
         public void ReserveExistingDeploymentIP()
         {
             RunPowerShellTest("Test-ReserveExistingDeploymentIP");

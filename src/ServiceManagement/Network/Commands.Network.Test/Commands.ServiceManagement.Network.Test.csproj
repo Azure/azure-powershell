@@ -149,11 +149,12 @@
   <ItemGroup>
     <Compile Include="IPForwarding\GetIPForwardingTests.cs" />
     <Compile Include="IPForwarding\SetIPForwardingTests.cs" />
+    <Compile Include="Multivip\MultivipTests.cs" />
     <Compile Include="NetworkSecurityGroups\GetNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="NetworkSecurityGroups\RemoveNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="NetworkSecurityGroups\SetNetworkSecurityGroupAssociationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReservedIP\NewAzureReservedIPTest.cs" />
+    <Compile Include="ReservedIP\ReservedIPTest.cs" />
     <Compile Include="Routes\GetEffectiveRouteTests.cs" />
     <Compile Include="Routes\GetRouteTableTests.cs" />
     <Compile Include="Routes\GetSubnetRouteTableTests.cs" />
@@ -230,6 +231,9 @@
   <ItemGroup>
     <None Include="ScenarioTests\ReservedIPs\ReservedIPTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\AdditionalVipLifecycle.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\AdditionalVipMobility.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

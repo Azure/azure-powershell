@@ -25,13 +25,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "386f8d263cc9b8c89458f5e373658df8"
+          "c886952710e8b8df82f4b8915446c5e5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:46:43 GMT"
+          "Thu, 09 Jul 2015 00:34:16 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -42,8 +42,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/386f8d263cc9b8c89458f5e373658df8",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzM4NmY4ZDI2M2NjOWI4Yzg5NDU4ZjVlMzczNjU4ZGY4",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/c886952710e8b8df82f4b8915446c5e5",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zL2M4ODY5NTI3MTBlOGI4ZGY4MmY0Yjg5MTU0NDZjNWU1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -54,7 +54,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>386f8d26-3cc9-b8c8-9458-f5e373658df8</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>c8869527-10e8-b8df-82f4-b8915446c5e5</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -66,13 +66,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "13ef4e1d4cbcb552a82deddacaa83a55"
+          "d85d2b76c550be489ba45bcfc14606f5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:46:43 GMT"
+          "Thu, 09 Jul 2015 00:34:16 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -86,7 +86,7 @@
       "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/services/networking/reservedips",
       "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBz",
       "RequestMethod": "POST",
-      "RequestBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk9926</Name>\r\n  <Label>New Reserved IP</Label>\r\n  <DeploymentName></DeploymentName>\r\n  <Location>West US</Location>\r\n</ReservedIP>",
+      "RequestBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk1264</Name>\r\n  <Label>New Reserved IP</Label>\r\n  <DeploymentName></DeploymentName>\r\n  <Location>West US</Location>\r\n</ReservedIP>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
@@ -113,13 +113,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "462ab6594819b58897e15db6f9d22003"
+          "728de660526ab768bc540de5c032a434"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:46:44 GMT"
+          "Thu, 09 Jul 2015 00:34:16 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -130,8 +130,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/462ab6594819b58897e15db6f9d22003",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzQ2MmFiNjU5NDgxOWI1ODg5N2UxNWRiNmY5ZDIyMDAz",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/728de660526ab768bc540de5c032a434",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzcyOGRlNjYwNTI2YWI3NjhiYzU0MGRlNWMwMzJhNDM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -142,7 +142,7 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>462ab659-4819-b588-97e1-5db6f9d22003</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>728de660-526a-b768-bc54-0de5c032a434</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -157,13 +157,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0464a9171e7ab0a6b0f84d6642a14dbf"
+          "1ffcc34d63bcb23ba685dd032507858c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:46:44 GMT"
+          "Thu, 09 Jul 2015 00:34:16 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -174,8 +174,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/462ab6594819b58897e15db6f9d22003",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzQ2MmFiNjU5NDgxOWI1ODg5N2UxNWRiNmY5ZDIyMDAz",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/728de660526ab768bc540de5c032a434",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzcyOGRlNjYwNTI2YWI3NjhiYzU0MGRlNWMwMzJhNDM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -186,7 +186,7 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>462ab659-4819-b588-97e1-5db6f9d22003</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>728de660-526a-b768-bc54-0de5c032a434</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -201,13 +201,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "33a697afc5e5b8afa99d53a375b85b01"
+          "47aba8d5730eb7b38dcc7fae3e327c63"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:14 GMT"
+          "Thu, 09 Jul 2015 00:34:46 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -218,8 +218,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/services/networking/reservedips/onesdk9926",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBzL29uZXNkazk5MjY=",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/services/networking/reservedips/onesdk1264",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBzL29uZXNkazEyNjQ=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -230,10 +230,10 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
         ]
       },
-      "ResponseBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk9926</Name>\r\n  <Address>138.91.193.98</Address>\r\n  <Id>a04e09f6-f0d5-461f-b1ad-e7b63c42f183</Id>\r\n  <Label>New Reserved IP</Label>\r\n  <State>Created</State>\r\n  <Location>West US</Location>\r\n</ReservedIP>",
+      "ResponseBody": "<ReservedIP xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1264</Name>\r\n  <Address>104.210.43.148</Address>\r\n  <Id>8fbb0c54-d998-498c-8ef4-a975c1f68e40</Id>\r\n  <Label>New Reserved IP</Label>\r\n  <State>Created</State>\r\n  <Location>West US</Location>\r\n</ReservedIP>",
       "ResponseHeaders": {
         "Content-Length": [
-          "307"
+          "308"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -245,13 +245,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "34699210b367bb84b4d009c1503f1746"
+          "5c8d11ea0f72b80c91a16ff11dedbd9b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:14 GMT"
+          "Thu, 09 Jul 2015 00:34:46 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -262,8 +262,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/34699210b367bb84b4d009c1503f1746",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzM0Njk5MjEwYjM2N2JiODRiNGQwMDljMTUwM2YxNzQ2",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/5c8d11ea0f72b80c91a16ff11dedbd9b",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzVjOGQxMWVhMGY3MmI4MGM5MWExNmZmMTFkZWRiZDli",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -274,7 +274,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>34699210-b367-bb84-b4d0-09c1503f1746</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>5c8d11ea-0f72-b80c-91a1-6ff11dedbd9b</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -286,13 +286,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "db6c0f02008abab881892e5b2f302c74"
+          "45c7d9f6972db01f95c14e58b09a8c60"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:15 GMT"
+          "Thu, 09 Jul 2015 00:34:47 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -303,8 +303,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/services/networking/reservedips/onesdk9926",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBzL29uZXNkazk5MjY=",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/services/networking/reservedips/onesdk1264",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9zZXJ2aWNlcy9uZXR3b3JraW5nL3Jlc2VydmVkaXBzL29uZXNkazEyNjQ=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -327,13 +327,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0ea3e8550d73b6f0ae989cb13f3d6c85"
+          "f36de6ef8cc4b3bf937d02f0d8dfea5b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:14 GMT"
+          "Thu, 09 Jul 2015 00:34:48 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -344,8 +344,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/0ea3e8550d73b6f0ae989cb13f3d6c85",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzBlYTNlODU1MGQ3M2I2ZjBhZTk4OWNiMTNmM2Q2Yzg1",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/f36de6ef8cc4b3bf937d02f0d8dfea5b",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zL2YzNmRlNmVmOGNjNGIzYmY5MzdkMDJmMGQ4ZGZlYTVi",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -356,7 +356,7 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>0ea3e855-0d73-b6f0-ae98-9cb13f3d6c85</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>f36de6ef-8cc4-b3bf-937d-02f0d8dfea5b</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -371,13 +371,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b81d5e74d01ab23892dd92ce4aa0c770"
+          "62f59d49302eb58ea1fb46c2628f0a71"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:14 GMT"
+          "Thu, 09 Jul 2015 00:34:48 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -388,8 +388,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/0ea3e8550d73b6f0ae989cb13f3d6c85",
-      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zLzBlYTNlODU1MGQ3M2I2ZjBhZTk4OWNiMTNmM2Q2Yzg1",
+      "RequestUri": "/836a8e5b-3d16-46c4-9b45-f6b60515445e/operations/f36de6ef8cc4b3bf937d02f0d8dfea5b",
+      "EncodedRequestUri": "LzgzNmE4ZTViLTNkMTYtNDZjNC05YjQ1LWY2YjYwNTE1NDQ1ZS9vcGVyYXRpb25zL2YzNmRlNmVmOGNjNGIzYmY5MzdkMDJmMGQ4ZGZlYTVi",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -400,7 +400,7 @@
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>0ea3e855-0d73-b6f0-ae98-9cb13f3d6c85</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>f36de6ef-8cc4-b3bf-937d-02f0d8dfea5b</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -415,13 +415,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9f15d38c8090b231b1763233a794c39a"
+          "4bd2ba553c80b8168deca9e687137255"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 08 Jul 2015 20:47:45 GMT"
+          "Thu, 09 Jul 2015 00:35:18 GMT"
         ],
         "Server": [
           "1.0.6198.243",
@@ -434,7 +434,7 @@
   ],
   "Names": {
     "Test-AzureReservedIPSimpleOperations": [
-      "onesdk9926"
+      "onesdk1264"
     ]
   },
   "Variables": {

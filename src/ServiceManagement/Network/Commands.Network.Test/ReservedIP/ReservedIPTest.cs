@@ -1,9 +1,20 @@
-﻿using System.Net;
-using System.Reflection;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS;
@@ -21,7 +32,7 @@ using Assert = Xunit.Assert;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ReservedIP
 {
-    public class NewAzureReservedIPTest
+    public class ReservedIPTest
     {
         private MockCommandRuntime mockCommandRuntime;
 
@@ -31,17 +42,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
         public const string ReservedIPLocation = "West US";
         public const string ReservedIPLabel = "SomeLabel";
         public const string VipName = "VipName";
-        private NewAzureReservedIPCmdlet cmdlet;
-        private NetworkClient client;
         private Mock<NetworkManagementClient> networkingClientMock;
         private Mock<ComputeManagementClient> computeClientMock;
         private Mock<ManagementClient> managementClientMock;
         private Mock<StorageManagementClient> storageClientMock;
-        private Mock<ServiceManagementBaseCmdlet> svcmgmt;
         private IClientProvider testClientProvider;
 
 
-        public NewAzureReservedIPTest()
+        public ReservedIPTest()
         {
             this.networkingClientMock = new Mock<NetworkManagementClient>();
             this.computeClientMock = new Mock<ComputeManagementClient>();
@@ -54,6 +62,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
 
             this.computeClientMock
                 .Setup(c => c.Deployments.GetBySlotAsync(ServiceName, DeploymentSlot.Production, It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() => new DeploymentGetResponse()
+                {
+                    Name = DeploymentName
+                }));
+
+            this.computeClientMock
+                .Setup(
+                    c =>
+                        c.Deployments.GetBySlotAsync(ServiceName, DeploymentSlot.Staging,
+                            It.IsAny<CancellationToken>()))
                 .Returns(Task.Factory.StartNew(() => new DeploymentGetResponse()
                 {
                     Name = DeploymentName
@@ -97,6 +115,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
                 {
                     Status = OperationStatus.Succeeded
                 }));
+
+            // Associate a reserved IP with a deployment
+            this.networkingClientMock
+                .Setup(c => c.ReservedIPs.AssociateAsync(
+                    ReservedIPName,
+                    It.Is<NetworkReservedIPMobilityParameters>(
+                        p => string.Equals(p.ServiceName, ServiceName) &&
+                            string.IsNullOrEmpty(p.VirtualIPName) && string.Equals(p.DeploymentName, DeploymentName)),
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() => new OperationStatusResponse()
+                {
+                    Status = OperationStatus.Succeeded
+                }));
+
+
+            // Associate a reserved IP with a vip
+            this.networkingClientMock
+                .Setup(c => c.ReservedIPs.AssociateAsync(
+                    ReservedIPName,
+                    It.Is<NetworkReservedIPMobilityParameters>(
+                        p => string.Equals(p.ServiceName, ServiceName) &&
+                            string.Equals(p.VirtualIPName, VipName) && string.Equals(p.DeploymentName, DeploymentName)),
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() => new OperationStatusResponse()
+                {
+                    Status = OperationStatus.Succeeded
+                }));
+
+
+            // Remove Azure Reserved IP
+            this.networkingClientMock
+                .Setup(c => c.ReservedIPs.DeleteAsync(
+                   ReservedIPName,
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.Factory.StartNew(() => new OperationStatusResponse()
+                {
+                    Status = OperationStatus.Succeeded
+                }));
         }
 
         [Fact]
@@ -104,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureReservedIPSimple()
         {
-            cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
+            NewAzureReservedIPCmdlet cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
             {
                 ReservedIPName = ReservedIPName,
                 Location = "WestUS",
@@ -143,12 +199,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReservedExistingIPSingleVip()
         {
-            cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
+            ReserveExistingDeploymentIPBySlot(DeploymentSlot.Production);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReservedExistingIPSingleVipStaging()
+        {
+            ReserveExistingDeploymentIPBySlot(DeploymentSlot.Staging);
+        }
+
+        private void ReserveExistingDeploymentIPBySlot(DeploymentSlot slot)
+        {
+            NewAzureReservedIPCmdlet cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
             {
                 ReservedIPName = ReservedIPName,
                 Location = "WestUS",
                 ServiceName = ServiceName,
                 Label = ReservedIPLabel,
+                Slot = slot.ToString(),
                 CommandRuntime = mockCommandRuntime,
             };
 
@@ -161,7 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
             computeClientMock.Verify(
                 c => c.Deployments.GetBySlotAsync(
                     ServiceName,
-                    DeploymentSlot.Production,
+                    slot,
                     It.IsAny<CancellationToken>()),
                 Times.Once);
 
@@ -175,15 +245,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
                 Times.Once());
 
             Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Succeeded", ((ManagementOperationContext) mockCommandRuntime.OutputPipeline[0]).OperationStatus);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RemoveAzureReservedIP()
+        {
+            RemoveAzureReservedIPCmdlet removeCmdlet = new RemoveAzureReservedIPCmdlet(testClientProvider)
+            {
+                ReservedIPName = ReservedIPName,
+                Force = true,
+                CommandRuntime = mockCommandRuntime,
+            };
+
+            // Action
+            removeCmdlet.ExecuteCmdlet();
+
+            networkingClientMock.Verify(
+                c => c.ReservedIPs.DeleteAsync(
+                    ReservedIPName,
+                    It.IsAny<CancellationToken>()),
+                Times.Once());
+
+            Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
             Assert.Equal("Succeeded", ((ManagementOperationContext)mockCommandRuntime.OutputPipeline[0]).OperationStatus);
         }
+
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReserveExistingIPNamedVip()
         {
-            cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
+            NewAzureReservedIPCmdlet cmdlet = new NewAzureReservedIPCmdlet(testClientProvider)
             {
                 ReservedIPName = ReservedIPName,
                 Location = "WestUS",
@@ -211,6 +307,93 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
                     It.Is<NetworkReservedIPCreateParameters>(
                         p =>
                             string.Equals(p.Name, ReservedIPName) && string.Equals(p.ServiceName, ServiceName) &&
+                            string.Equals(p.VirtualIPName, VipName) && string.Equals(p.DeploymentName, DeploymentName)),
+                    It.IsAny<CancellationToken>()),
+                Times.Once());
+
+            Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Succeeded", ((ManagementOperationContext)mockCommandRuntime.OutputPipeline[0]).OperationStatus);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetAzureReservedIPAssociationSimple()
+        {
+            SetAzureReservedIPAssociationSimpleBySlot(DeploymentSlot.Production);   
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetAzureReservedIPAssociationSimpleStaging()
+        {
+            SetAzureReservedIPAssociationSimpleBySlot(DeploymentSlot.Staging);
+        }
+
+        private void SetAzureReservedIPAssociationSimpleBySlot(DeploymentSlot slot)
+        {
+            SetAzureReservedIPAssociationCmdlet setassociation = new SetAzureReservedIPAssociationCmdlet(testClientProvider)
+            {
+                ReservedIPName = ReservedIPName,
+                ServiceName = ServiceName,
+                Slot = slot.ToString(),
+                CommandRuntime = mockCommandRuntime,
+            };
+
+            // Action
+            setassociation.ExecuteCmdlet();
+
+            // Assert
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    ServiceName,
+                    slot,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.ReservedIPs.AssociateAsync(
+                    ReservedIPName,
+                    It.Is<NetworkReservedIPMobilityParameters>(
+                        p =>
+                            string.Equals(p.ServiceName, ServiceName) &&
+                            string.IsNullOrEmpty(p.VirtualIPName) && string.Equals(p.DeploymentName, DeploymentName)),
+                    It.IsAny<CancellationToken>()),
+                Times.Once());
+            Assert.Equal(1, mockCommandRuntime.OutputPipeline.Count);
+            Assert.Equal("Succeeded", ((ManagementOperationContext) mockCommandRuntime.OutputPipeline[0]).OperationStatus);
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetAzureReservedIPAssociationMultivip()
+        {
+            SetAzureReservedIPAssociationCmdlet setassociation = new SetAzureReservedIPAssociationCmdlet(testClientProvider)
+            {
+                ReservedIPName = ReservedIPName,
+                ServiceName = ServiceName,
+                VirtualIPName = VipName,
+                CommandRuntime = mockCommandRuntime,
+            };
+
+            setassociation.ExecuteCmdlet();
+
+            // Assert
+            computeClientMock.Verify(
+                c => c.Deployments.GetBySlotAsync(
+                    ServiceName,
+                    DeploymentSlot.Production,
+                    It.IsAny<CancellationToken>()),
+                Times.Once);
+
+            networkingClientMock.Verify(
+                c => c.ReservedIPs.AssociateAsync(
+                    ReservedIPName,
+                    It.Is<NetworkReservedIPMobilityParameters>(
+                        p =>
+                            string.Equals(p.ServiceName, ServiceName) &&
                             string.Equals(p.VirtualIPName, VipName) && string.Equals(p.DeploymentName, DeploymentName)),
                     It.IsAny<CancellationToken>()),
                 Times.Once());
