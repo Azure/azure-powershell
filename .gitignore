@@ -192,4 +192,3 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
-src/ResourceManager/Commerce/Commands.UsageAggregates/Microsoft.Azure.Commands.UsageAggregates.dll-help.Help.pshproj
