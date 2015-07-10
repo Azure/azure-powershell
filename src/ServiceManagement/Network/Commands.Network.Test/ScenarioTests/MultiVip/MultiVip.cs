@@ -25,12 +25,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using Xunit;
 
     public class MultiVip
-    {
+    {   
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExtraVipLifecycle()
         {
             RunPowerShellTest("Test-AdditionalVipLifecycle");
@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExtraVipMobility()
         {
             RunPowerShellTest("Test-AdditionalVipMobility");
@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReserveMultivipDepIP()
         {
             RunPowerShellTest("Test-ReserveExistingDeploymentIPMultivip");
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetLbEpMultivipDep()
         {
             RunPowerShellTest("Test-SetLBEndpoint");

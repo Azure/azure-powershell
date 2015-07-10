@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
         
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureReservedIPSimpleOps()
         {
             RunPowerShellTest("Test-AzureReservedIPSimpleOperations");
@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateVMWithReservedIP()
         {
             RunPowerShellTest("Test-CreateVMWithReservedIP");
@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetReservedIPAssocSimple()
         {
             RunPowerShellTest("Test-SetAzureReservedIPAssociationSingleVip");
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveReservedIPAssocSimple()
         {
             RunPowerShellTest("Test-RemoveAzureReservedIPAssociationSingleVip");
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReserveExistingDepIP()
         {
             RunPowerShellTest("Test-ReserveExistingDeploymentIP");
