@@ -18,16 +18,16 @@ Application gateway tests
 #>
 function Test-ApplicationGatewayCRUD
 {
-    # Setup	
+	# Setup	
 
 	$rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $domainNameLabel = Get-ResourceName
-    $vnetName = Get-ResourceName
-    $publicIpName = Get-ResourceName
-    $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/applicationgateways"
+	$rname = Get-ResourceName
+	$domainNameLabel = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$vnetGatewayConfigName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$resourceTypeParent = "Microsoft.Network/applicationgateways"
 	$location = Get-ProviderLocation $resourceTypeParent
 
 	$gipconfigname = Get-ResourceName
@@ -39,7 +39,7 @@ function Test-ApplicationGatewayCRUD
 	$ruleName = Get-ResourceName
 	$appgwName = Get-ResourceName
     
-    try 
+	try 
 	{
 		# Create the resource group
 		$resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
@@ -64,14 +64,14 @@ function Test-ApplicationGatewayCRUD
 		# $expected =  Get-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 		# Compare-AzureApplicationGateway $actual $expected
 		
-        # Stop-AzureApplicationGateway -ApplicationGateway $expected
+		# Stop-AzureApplicationGateway -ApplicationGateway $expected
 		# Remove-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 	}
-     finally
-     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-     }
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
 }
 
 <#

@@ -1,64 +1,64 @@
 ﻿2015.07.16 version 0.9.5
 * Azure Network Resource Provider cmdlets
-	* Added Application Gateway cmdlets
-		* New-AzureApplicationGateway
-		* Start-AzureApplicationGateway
-		* Stop-AzureApplicationGateway
-		* SetAzureApplicationGateway
-		* GetAzureApplicationGateway
-		* RemoveAzureApplicationGateway		
-		* Application Gateway Backend Address Pool cmdlets
-			* New-AzureApplicationGatewayBackendAddressPool
-			* Add-AzureApplicationGatewayBackendAddressPool
-			* Set-AzureApplicationGatewayBackendAddressPool
-			* Get-AzureApplicationGatewayBackendAddressPool
-			* Remove-AzureApplicationGatewayBackendAddressPool
-		* Application Gateway Backend HTTP Settings cmdlets
-			* New-AzureApplicationGatewayBackendHttpSettings
-			* Add-AzureApplicationGatewayBackendHttpSettings
-			* Set-AzureApplicationGatewayBackendHttpSettings
-			* Get-AzureApplicationGatewayBackendHttpSettings
-			* Remove-AzureApplicationGatewayBackendHttpSettings			
-		* Application Gateway Frontend IP Configuration cmdlets
-			* New-AzureApplicationGatewayFrontendIPConfiguration
-			* Add-AzureApplicationGatewayFrontendIPConfiguration
-			* Set-AzureApplicationGatewayFrontendIPConfiguration
-			* Get-AzureApplicationGatewayFrontendIPConfiguration
-			* Remove-AzureApplicationGatewayFrontendIPConfiguration	
-		* Application Gateway Frontend Port cmdlets
-			* New-AzureApplicationGatewayFrontendPort
-			* Add-AzureApplicationGatewayFrontendPort
-			* Set-AzureApplicationGatewayFrontendPort
-			* Get-AzureApplicationGatewayFrontendPort
-			* Remove-AzureApplicationGatewayFrontendPort				
-		* Application Gateway Gateway IP Configuration cmdlets
-			* New-AzureApplicationGatewayGatewayIPConfiguration
-			* Add-AzureApplicationGatewayGatewayIPConfiguration
-			* Set-AzureApplicationGatewayGatewayIPConfiguration
-			* Get-AzureApplicationGatewayGatewayIPConfiguration
-			* Remove-AzureApplicationGatewayGatewayIPConfiguration				
-		* Application Gateway HTTP Listener cmdlets
-			* New-AzureApplicationGatewayHttpListener
-			* Add-AzureApplicationGatewayHttpListener
-			* Set-AzureApplicationGatewayHttpListener
-			* Get-AzureApplicationGatewayHttpListener
-			* Remove-AzureApplicationGatewayHttpListener	
-		* Application Gateway Request Routing Rule cmdlets
-			* New-AzureApplicationGatewayRequestRoutingRule
-			* Add-AzureApplicationGatewayRequestRoutingRule
-			* Set-AzureApplicationGatewayRequestRoutingRule
-			* Get-AzureApplicationGatewayRequestRoutingRule
-			* Remove-AzureApplicationGatewayRequestRoutingRule	
-		* Application Gateway SKU cmdlets
-			* New-AzureApplicationGatewaySku
-			* Set-AzureApplicationGatewaySku
-			* Get-AzureApplicationGatewaySku
-		* Application Gateway HTTP Listener cmdlets
-			* New-AzureApplicationGatewaySslCertificate
-			* Add-AzureApplicationGatewaySslCertificate
-			* Set-AzureApplicationGatewaySslCertificate
-			* Get-AzureApplicationGatewaySslCertificate
-			* Remove-AzureApplicationGatewaySslCertificate
+    * Added Application Gateway cmdlets
+        * New-AzureApplicationGateway
+        * Start-AzureApplicationGateway
+        * Stop-AzureApplicationGateway
+        * SetAzureApplicationGateway
+        * GetAzureApplicationGateway
+        * RemoveAzureApplicationGateway
+    * Added Application Gateway Backend Address Pool cmdlets
+        * New-AzureApplicationGatewayBackendAddressPool
+        * Add-AzureApplicationGatewayBackendAddressPool
+        * Set-AzureApplicationGatewayBackendAddressPool
+        * Get-AzureApplicationGatewayBackendAddressPool
+        * Remove-AzureApplicationGatewayBackendAddressPool
+    * Added Application Gateway Backend HTTP Settings cmdlets
+        * New-AzureApplicationGatewayBackendHttpSettings
+        * Add-AzureApplicationGatewayBackendHttpSettings
+        * Set-AzureApplicationGatewayBackendHttpSettings
+        * Get-AzureApplicationGatewayBackendHttpSettings
+        * Remove-AzureApplicationGatewayBackendHttpSettings
+    * Added Application Gateway Frontend IP Configuration cmdlets
+        * New-AzureApplicationGatewayFrontendIPConfiguration
+        * Add-AzureApplicationGatewayFrontendIPConfiguration
+        * Set-AzureApplicationGatewayFrontendIPConfiguration
+        * Get-AzureApplicationGatewayFrontendIPConfiguration
+        * Remove-AzureApplicationGatewayFrontendIPConfiguration
+    * Added Application Gateway Frontend Port cmdlets
+        * New-AzureApplicationGatewayFrontendPort
+        * Add-AzureApplicationGatewayFrontendPort
+        * Set-AzureApplicationGatewayFrontendPort
+        * Get-AzureApplicationGatewayFrontendPort
+        * Remove-AzureApplicationGatewayFrontendPort
+    * Added Application Gateway IP Configuration cmdlets
+        * New-AzureApplicationGatewayGatewayIPConfiguration
+        * Add-AzureApplicationGatewayGatewayIPConfiguration
+        * Set-AzureApplicationGatewayGatewayIPConfiguration
+        * Get-AzureApplicationGatewayGatewayIPConfiguration
+        * Remove-AzureApplicationGatewayGatewayIPConfiguration
+    * Added Application Gateway HTTP Listener cmdlets
+        * New-AzureApplicationGatewayHttpListener
+        * Add-AzureApplicationGatewayHttpListener
+        * Set-AzureApplicationGatewayHttpListener
+        * Get-AzureApplicationGatewayHttpListener
+        * Remove-AzureApplicationGatewayHttpListener
+    * Added Application Gateway Request Routing Rule cmdlets
+        * New-AzureApplicationGatewayRequestRoutingRule
+        * Add-AzureApplicationGatewayRequestRoutingRule
+        * Set-AzureApplicationGatewayRequestRoutingRule
+        * Get-AzureApplicationGatewayRequestRoutingRule
+        * Remove-AzureApplicationGatewayRequestRoutingRule
+    * Added Application Gateway SKU cmdlets
+        * New-AzureApplicationGatewaySku
+        * Set-AzureApplicationGatewaySku
+        * Get-AzureApplicationGatewaySku
+    * Added Application Gateway SSL Certificate cmdlets
+        * New-AzureApplicationGatewaySslCertificate
+        * Add-AzureApplicationGatewaySslCertificate
+        * Set-AzureApplicationGatewaySslCertificate
+        * Get-AzureApplicationGatewaySslCertificate
+        * Remove-AzureApplicationGatewaySslCertificate
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
