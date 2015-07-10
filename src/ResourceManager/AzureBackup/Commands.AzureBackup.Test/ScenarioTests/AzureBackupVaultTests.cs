@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
@@ -19,6 +20,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class AzureBackupVaultTests : AzureBackupTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupVaultScenarioTests()
         {
             this.RunPowerShellTest("Test-AzureBackupVaultScenario");
