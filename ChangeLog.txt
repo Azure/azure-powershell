@@ -1,4 +1,9 @@
-﻿2015.07.10 version 1.0.0
+﻿2015.07.16 version 0.9.5
+*Azure Network cmdlets
+    * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
+    * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+
+2015.07.10 version 1.0.0
 * Azure Backup cmdlets
     *Added New-AzureBackupVault cmdlets
     *Added Get-AzureBackupVault cmdlets
