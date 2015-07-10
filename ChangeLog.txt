@@ -2,6 +2,20 @@
 *Azure Network cmdlets
     * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
     * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+
+2015.07.10 version 1.0.0
+* Azure Backup cmdlets
+    *Added New-AzureBackupVault cmdlets
+    *Added Get-AzureBackupVault cmdlets
+    *Added Set-AzureBackupVault cmdlets
+    *Added Remove-AzureBackupVault cmdlets
+    *Added Get-AzureBackupVaultCredential cmdlets
+
+2015.07.16 version 0.9.5
+* Azure Resource Manager cmdlets
+    * Fixed formatting of output for Get-UsageAggregates
+    * Fixed executing Get-UsageAggregates when first cmdlet being called.
+
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
     * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.

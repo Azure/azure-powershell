@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
     [Cmdlet(VerbsCommon.Set, VirtualMachineDscExtensionCmdletNoun, SupportsShouldProcess = true)]
     [OutputType(typeof(IPersistentVM))]
-    public class SetAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
+    public class SetAzureVMDscExtension : VirtualMachineDscExtensionCmdletBase
     {
         /// <summary>
         /// The Extension Reference Name
