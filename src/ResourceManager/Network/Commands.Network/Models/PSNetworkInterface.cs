@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkInterfaceIpConfiguration> IpConfigurations { get; set; }
 
-        public PSDnsSettings DnsSettings { get; set; }
+        public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
         
         public string MacAddress { get; set; }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string DnsSettingsText
         {
-            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented); }
         }
         
         [JsonIgnore]
