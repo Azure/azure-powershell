@@ -126,16 +126,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             this.RunPowerShellTest("Test-DisableProtection -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
-        public void E2E_DeleteAndDissociateTest()
-        {
-            this.RunPowerShellTest("Test-E2E_DeleteAndDissociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
-        }
-
-        public void E2E_CreateAndAssociateTest()
-        {
-            this.RunPowerShellTest("Test-E2E_CreateAndAssociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
-        }
-
         public void PFORPTest()
         {
             this.RunPowerShellTest("Test-PFORP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
