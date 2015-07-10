@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             // Execute the PUT RouteTable call
             this.RouteTableClient.CreateOrUpdate(this.RouteTable.ResourceGroupName, this.RouteTable.Name, routeTableModel);
 
-            var getRouteTable = this.RouteTableClient.Get(this.RouteTable.ResourceGroupName, this.RouteTable.Name);
+            var getRouteTable = this.GetRouteTable(this.RouteTable.ResourceGroupName, this.RouteTable.Name);
             WriteObject(getRouteTable);
         }
     }

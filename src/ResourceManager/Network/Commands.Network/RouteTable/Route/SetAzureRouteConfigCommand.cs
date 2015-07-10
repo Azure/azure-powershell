@@ -46,8 +46,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("route with the specified name does not exist");
             }
 
-            route = new PSRoute();
-
             route.Name = this.Name;
             route.AddressPrefix = this.AddressPrefix;
             route.NextHopType = this.NextHopType;

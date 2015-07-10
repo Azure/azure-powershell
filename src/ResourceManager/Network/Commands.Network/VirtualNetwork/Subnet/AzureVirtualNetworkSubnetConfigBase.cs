@@ -45,5 +45,19 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "NetworkSecurityGroup")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "RouteTableId")]
+        public string RouteTableId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
     }
 }

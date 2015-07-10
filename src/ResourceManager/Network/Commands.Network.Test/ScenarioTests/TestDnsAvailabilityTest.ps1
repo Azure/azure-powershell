@@ -20,7 +20,7 @@ function Test-DnsAvailability
 {
     # Setup
     $domainQualifiedName = Get-ResourceName
-    $resourceTypeParent = "Microsoft.Network/pubicIPAddresses"
+    $resourceTypeParent = "Microsoft.Network/publicIPAddresses"
     $location = Get-ProviderLocation $resourceTypeParent
 
     # Checkdnsavailability

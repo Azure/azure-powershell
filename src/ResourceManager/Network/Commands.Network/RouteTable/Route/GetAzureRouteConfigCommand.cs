@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
