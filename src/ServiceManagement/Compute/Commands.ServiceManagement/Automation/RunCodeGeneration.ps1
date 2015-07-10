@@ -417,13 +417,17 @@ else
     # Write Operation Cmdlet Files
     foreach ($ft in $filtered_types)
     {
+        Write-Output '';
         Write-Output '=============================================';
         Write-Output $ft.Name;
         Write-Output '=============================================';
     
         $opShortName = Get-OperationShortName $ft.Name;
         $opOutFolder = $outFolder + '/' + $opShortName;
-        $st = rmdir -Recurse -Force $opOutFolder;
+        if (Test-Path -Path $opOutFolder)
+        {
+            $st = rmdir -Recurse -Force $opOutFolder;
+        }
         $st = mkdir -Force $opOutFolder;
 
         $methods = $ft.GetMethods();
@@ -438,9 +442,7 @@ else
             {
                 $parameter_type_info_list += $parameter_type_info;
 
-                Write-Output '---------------------------------------------';
                 Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info;
-                Write-Output '---------------------------------------------';
             }
         }
     }
