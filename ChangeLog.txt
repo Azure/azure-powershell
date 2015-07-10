@@ -1,4 +1,4 @@
-﻿2015.07.16 version 0.9.5
+﻿﻿2015.07.16 version 0.9.5
 * Azure Network Resource Provider cmdlets
     * Added Application Gateway cmdlets
         * New-AzureApplicationGateway
@@ -59,6 +59,12 @@
         * Set-AzureApplicationGatewaySslCertificate
         * Get-AzureApplicationGatewaySslCertificate
         * Remove-AzureApplicationGatewaySslCertificate
+* Azure Backup cmdlets
+    *Added New-AzureBackupVault cmdlets
+    *Added Get-AzureBackupVault cmdlets
+    *Added Set-AzureBackupVault cmdlets
+    *Added Remove-AzureBackupVault cmdlets
+    *Added Get-AzureBackupVaultCredential cmdlets
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
