@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// API to create an azure backup vault in a subscription
+    /// Command to create an azure backup vault in a subscription
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureBackupVault"), OutputType(typeof(AzurePSBackupVault))]
     public class NewAzureBackupVault : AzureBackupCmdletBase

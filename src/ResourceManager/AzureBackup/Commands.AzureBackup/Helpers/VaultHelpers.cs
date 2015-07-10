@@ -18,7 +18,7 @@ using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
-    public static class VaultHelpers
+    internal static class VaultHelpers
     {
         /// <summary>
         /// Gets CmdletModel of backup vault from Client model

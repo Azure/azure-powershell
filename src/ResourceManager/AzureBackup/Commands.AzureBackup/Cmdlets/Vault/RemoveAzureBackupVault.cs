@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// API to remove an azure backup vault in the subscription
+    /// Command to remove an azure backup vault in the subscription
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureBackupVault")]
     public class RemoveAzureBackupVault : AzureBackupVaultCmdletBase
