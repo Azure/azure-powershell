@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // NetworkInterface
             // CNM to MNM
+            Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIpConfiguration>();
 
