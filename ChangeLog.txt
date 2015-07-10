@@ -2,6 +2,19 @@
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
+* Azure Network Resource Provider cmdlets
+	* Fixed minor bugs AzureLoadbalancer 
+	* Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
+	* Added cmdlets to RouteTables and Routes
+		* New-AzureRouteTable
+		* Get-AzureRouteTable
+		* Set-AzureRouteTable
+		* Remove-AzureRouteTable
+		* New-AzureRouteConfig
+		* Add-AzureRouteConfig
+		* Set-AzureRouteConfig
+		* Get-AzureRouteConfig
+		* Remove-AzureRouteConfig
 
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
