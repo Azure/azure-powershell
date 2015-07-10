@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
                     }
 
                     // select the latest version of SDK installed on the machine.
-                    version = key.GetSubKeyNames().Last();
+                    version = key.GetSubKeyNames().LastOrDefault();
 
                     if (string.IsNullOrWhiteSpace(version) && key.GetSubKeyNames().Length == 0)
                     {
