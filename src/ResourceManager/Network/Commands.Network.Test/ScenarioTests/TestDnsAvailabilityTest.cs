@@ -23,7 +23,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDnsAvailability()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-DnsAvailability");
+           //  NetworkResourcesController.NewInstance.RunPsTest("Test-DnsAvailability");
         }
     }
 }
