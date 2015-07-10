@@ -18,6 +18,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -92,6 +93,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "Path to a local ZIP file to write the configuration archive to.")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationArchivePath { get; set; }
+
+        /// <summary>
+        /// Suffix for the storage end point, e.g. core.windows.net
+        /// </summary>
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = UploadArchiveParameterSetName,
+            HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]
+        [ValidateNotNullOrEmpty]
+        public string StorageEndpointSuffix { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -202,6 +213,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (this.ContainerName == null)
                 {
                     this.ContainerName = VirtualMachineDscExtensionCmdletBase.DefaultContainerName;
+                }
+                if (this.StorageEndpointSuffix == null) 
+                {
+                    this.StorageEndpointSuffix = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 }
             } 
             else if (this.ParameterSetName == CreateArchiveParameterSetName)
@@ -380,7 +395,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private CloudBlobContainer GetStorageContainer()
         {
-            var storageAccount = new CloudStorageAccount(this._storageCredentials, true);
+            var storageAccount = new CloudStorageAccount(this._storageCredentials, this.StorageEndpointSuffix, true);
             var blobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer containerReference = blobClient.GetContainerReference(this.ContainerName);
             containerReference.CreateIfNotExists();

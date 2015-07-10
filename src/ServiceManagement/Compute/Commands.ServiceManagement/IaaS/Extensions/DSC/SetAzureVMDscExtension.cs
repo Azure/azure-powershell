@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -231,6 +232,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 {
                     this.ContainerName = DefaultContainerName;
                 }
+
+                if (this.StorageEndpointSuffix == null)
+                {
+                    this.StorageEndpointSuffix = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                }
             }
 
             if (this.Version == null)
@@ -285,6 +291,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
             if (this.ConfigurationDataPath != null)
             {
+                var guid = Guid.NewGuid();
+                // there may be multiple VMs using the same configuration
+
+                var configurationDataBlobName = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0}-{1}.psd1",
+                    this.ConfigurationName,
+                    guid);
+
+                var configurationDataBlobReference =
+                    containerReference.GetBlockBlobReference(configurationDataBlobName);
+
                 this.ConfirmAction(
                     true,
                     string.Empty,
@@ -292,21 +310,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         CultureInfo.CurrentUICulture,
                         Resources.AzureVMDscUploadToBlobStorageAction,
                         this.ConfigurationDataPath),
-                    configurationBlobReference.Uri.AbsoluteUri,
+                    configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        var guid = Guid.NewGuid();
-                        // there may be multiple VMs using the same configuration
-
-                        var configurationDataBlobName = string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{0}-{1}.psd1",
-                            this.ConfigurationName,
-                            guid);
-
-                        var configurationDataBlobReference =
-                            containerReference.GetBlockBlobReference(configurationDataBlobName);
-
                         if (!this.Force && configurationDataBlobReference.Exists())
                         {
                             this.ThrowTerminatingError(
