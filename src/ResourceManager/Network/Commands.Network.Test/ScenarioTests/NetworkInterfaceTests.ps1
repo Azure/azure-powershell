@@ -376,3 +376,63 @@ function Test-NetworkInterfaceSet
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating new simple public networkinterface with Idns.
+#>
+function Test-NetworkInterfaceIDns
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    <#
+    uncomment after IDNS is enabled in all locations
+    $location = Get-ProviderLocation $resourceTypeParent
+    #>
+    $location = "centralus"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create NetworkInterface
+        $actualNic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -InternalDnsNameLabel "idnstest"
+        $expectedNic = Get-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $expectedNic.Name $actualNic.Name	
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "idnstest" $expectedNic.DnsSettings.InternalDnsNameLabel
+        Assert-Null $expectedNic.DnsSettings.InternalFqdn
+
+        # Delete NetworkInterface
+        $delete = Remove-AzureNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzureNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

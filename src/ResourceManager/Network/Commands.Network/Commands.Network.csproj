@@ -281,7 +281,7 @@
     <Compile Include="Models\PSProbeProtocol.cs" />
     <Compile Include="Models\PSAddressSpace.cs" />
     <Compile Include="Models\PSDhcpOptions.cs" />
-    <Compile Include="Models\PSDnsSettings.cs" />
+    <Compile Include="Models\PSNetworkInterfaceDnsSettings.cs" />
     <Compile Include="Models\PSNetworkInterface.cs" />
     <Compile Include="Models\PSNetworkInterfaceIpConfiguration.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
