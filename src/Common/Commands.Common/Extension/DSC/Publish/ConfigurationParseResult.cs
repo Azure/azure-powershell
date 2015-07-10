@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using System.Collections.Generic;
+using System.Management.Automation.Language;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC.Publish
 {
-    [Serializable]
-    public class GetDscResourceException : UnauthorizedAccessException
+    public class ConfigurationParseResult
     {
-        public GetDscResourceException(string resourceName, Exception e) :
-            base(String.Format(CultureInfo.CurrentUICulture, Resources.PublishVMDscExtensionGetDscResourceFailed, resourceName), e) { }
+        public string Path { get; set; }
+        public ParseError[] Errors { get; set; }
+        public Dictionary<string,string> RequiredModules { get; set; }
+
     }
 }
