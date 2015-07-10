@@ -12,30 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCheckDnsAvailability")]
-    public class GetAzureCheckDnsAvailabilityCmdlet : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRouteConfig"), OutputType(typeof(PSRouteTable))]
+    public class RemoveAzurReouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The Domain Qualified Name.")]
+           Mandatory = true,
+           HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
-        public string DomainQualifiedName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+            ValueFromPipeline = true,
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);
-            WriteObject(result);
+            base.ExecuteCmdlet();
+
+            // Verify if the route exists in the RouteTable
+            var route = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (route != null)
+            {
+                this.RouteTable.Routes.Remove(route);
+            }
+
+            WriteObject(this.RouteTable);
         }
     }
 }

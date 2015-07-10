@@ -18,34 +18,40 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
+    public class GetAzureRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the rule")]
+           Mandatory = true,
+           HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The NetworkSecurityGroup")]
-        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            // Verify if the rule exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (rule != null)
+            var routes = this.RouteTable.Routes;
+            
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                this.NetworkSecurityGroup.SecurityRules.Remove(rule);
-            }
+                var route =
+                    routes.First(
+                        resource =>
+                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            WriteObject(this.NetworkSecurityGroup);
+                WriteObject(route);
+            }
+            else
+            {
+                WriteObject(routes, true);
+            }
         }
     }
 }

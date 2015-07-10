@@ -86,28 +86,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("LoadBalancerFrontendIpConfigName", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}.
-        /// </summary>
-        public static string VirtualNetworkGatewayChildResourceId
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayChildResourceId", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfigurations.
-        /// </summary>
-        public static string VirtualNetworkGatewayIpConfigName
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayIpConfigName", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to inboundNatRules.
@@ -151,6 +129,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string LoadBalancerType {
             get {
                 return ResourceManager.GetString("LoadBalancerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/localNetworkGateways.
+        /// </summary>
+        public static string LocalNetworkGatewayType {
+            get {
+                return ResourceManager.GetString("LocalNetworkGatewayType", resourceCulture);
             }
         }
         
@@ -245,6 +232,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/routeTables.
+        /// </summary>
+        public static string RouteTableType {
+            get {
+                return ResourceManager.GetString("RouteTableType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SetByResource.
         /// </summary>
         public static string SetByResource {
@@ -272,55 +268,56 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}.
+        /// </summary>
+        public static string VirtualNetworkGatewayChildResourceId {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayChildResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/connections.
+        /// </summary>
+        public static string VirtualNetworkGatewayConnectionType {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayConnectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfigurations.
+        /// </summary>
+        public static string VirtualNetworkGatewayIpConfigName {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayIpConfigName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
+        /// </summary>
+        public static string VirtualNetworkGatewayNameNotSet {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to microsoft.network/virtualnetworkgateways.
+        /// </summary>
+        public static string VirtualNetworkGatewayType {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to microsoft.network/virtualNetworks.
         /// </summary>
         public static string VirtualNetworkType {
             get {
                 return ResourceManager.GetString("VirtualNetworkType", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to microsoft.network/virtualnetworkgateways.
-        /// </summary>
-        public static string VirtualNetworkGatewayType
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayType", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to microsoft.network/localNetworkGateways.
-        /// </summary>
-        public static string LocalNetworkGatewayType
-        {
-            get
-            {
-                return ResourceManager.GetString("LocalNetworkGatewayType", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to microsoft.network/connections.
-        /// </summary>
-        public static string VirtualNetworkGatewayConnectionType
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayConnectionType", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
-        /// </summary>
-        public static string VirtualNetworkGatewayNameNotSet
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
     }

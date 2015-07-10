@@ -24,8 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRouteTable"), OutputType(typeof(PSRouteTable))]
+    public class NewAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of NetworkSecurityRules")]
-        public List<PSSecurityRule> SecurityRules { get; set; }
+             HelpMessage = "The list of Routes")]
+        public List<PSRoute> Route { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -70,44 +70,44 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsNetworkSecurityGroupPresent(this.ResourceGroupName, this.Name))
+            if (this.IsRouteTablePresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
-                    () => this.CreateNetworkSecurityGroup());
+                    () => this.CreateRouteTable());
 
-                WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
+                WriteObject(this.GetRouteTable(this.ResourceGroupName, this.Name));
             }
             else
             {
-                var networkSecurityGroup = this.CreateNetworkSecurityGroup();
+                var routeTable = this.CreateRouteTable();
 
-                WriteObject(networkSecurityGroup);
+                WriteObject(routeTable);
             }
         }
 
-        private PSNetworkSecurityGroup CreateNetworkSecurityGroup()
+        private PSRouteTable CreateRouteTable()
         {
-            var nsg = new PSNetworkSecurityGroup();
-            nsg.Name = this.Name;
-            nsg.ResourceGroupName = this.ResourceGroupName;
-            nsg.Location = this.Location;
-            nsg.SecurityRules = this.SecurityRules;
+            var psRouteTable = new PSRouteTable();
+            psRouteTable.Name = this.Name;
+            psRouteTable.ResourceGroupName = this.ResourceGroupName;
+            psRouteTable.Location = this.Location;
+            psRouteTable.Routes = this.Route;
 
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
-            nsgModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkSecurityGroupType;
-            nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            var routeTableModel = Mapper.Map<MNM.RouteTable>(psRouteTable);
+            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
+            routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            // Execute the Create NetworkSecurityGroup call
-            this.NetworkSecurityGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);
+            // Execute the Create RouteTable call
+            this.RouteTableClient.CreateOrUpdate(this.ResourceGroupName, this.Name, routeTableModel);
 
-            var getNetworkSecurityGroup = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);
+            var getRouteTable = this.GetRouteTable(this.ResourceGroupName, this.Name);
 
-            return getNetworkSecurityGroup;
+            return getRouteTable;
         }
     }
 }

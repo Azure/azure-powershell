@@ -66,8 +66,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.7-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.8-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -140,7 +141,7 @@
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
-    <Compile Include="ScenarioTests\CheckDnsAvailabilityTest.cs" />
+    <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
@@ -164,7 +165,7 @@
     <None Include="ScenarioTests\NetworkSecurityGroupTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\CheckDnsAvailabilityTest.ps1">
+    <None Include="ScenarioTests\TestDnsAvailabilityTest.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
@@ -180,9 +181,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CheckDnsAvailabilityTest\TestCheckDnsAvailability.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestCreateEmptyLoadBalancer.json">
@@ -219,6 +217,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDUsingId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceEnableIPForwarding.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceIDns.json">

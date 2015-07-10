@@ -14,14 +14,16 @@
 
 <#
 .SYNOPSIS
-Tests creating new simple virtualNetwork.
+Tests Test-AzureDnsAvailability command
 #>
-function Test-CheckDnsAvailability
+function Test-DnsAvailability
 {
     # Setup
     $domainQualifiedName = Get-ResourceName
-    
+    $resourceTypeParent = "Microsoft.Network/pubicIPAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
     # Checkdnsavailability
-    $checkdnsavailabilityStatus = Get-AzureCheckDnsAvailability -Location "westus" -DomainQualifiedName $domainQualifiedName
-    Assert-AreEqual $checkdnsavailabilityStatus.DnsNameAvailability true    
+    $checkdnsavailability = Test-AzureDnsAvailability -Location "westus" -DomainQualifiedName $domainQualifiedName
+    Assert-AreEqual $checkdnsavailability true    
 }

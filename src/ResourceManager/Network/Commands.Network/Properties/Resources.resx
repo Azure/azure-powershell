@@ -131,7 +131,7 @@
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}</value>
     <comment>The ID of a virtual network gateway child resource</comment>
   </data>
-    <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
+  <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
     <value>virtualNetworkGatewayIpConfigurations</value>
   </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
@@ -191,16 +191,19 @@
   <data name="VirtualNetworkType" xml:space="preserve">
     <value>microsoft.network/virtualNetworks</value>
   </data>
-   <data name="VirtualNetworkGatewayType" xml:space="preserve">
+  <data name="VirtualNetworkGatewayType" xml:space="preserve">
     <value>microsoft.network/virtualnetworkgateways</value>
   </data>
-   <data name="LocalNetworkGatewayType" xml:space="preserve">
+  <data name="LocalNetworkGatewayType" xml:space="preserve">
     <value>microsoft.network/localNetworkGateways</value>
   </data>
-     <data name="VirtualNetworkGatewayConnectionType" xml:space="preserve">
+  <data name="VirtualNetworkGatewayConnectionType" xml:space="preserve">
     <value>microsoft.network/connections</value>
   </data>
-    <data name="VirtualNetworkGatewayNameNotSet" xml:space="preserve">
+  <data name="VirtualNetworkGatewayNameNotSet" xml:space="preserve">
     <value>VirtualNetworkGatewayNameNotSet</value>
+  </data>
+  <data name="RouteTableType" xml:space="preserve">
+    <value>microsoft.network/routeTables</value>
   </data>
 </root>

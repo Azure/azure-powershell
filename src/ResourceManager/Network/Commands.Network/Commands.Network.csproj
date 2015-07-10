@@ -74,7 +74,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.7-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.8-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -138,6 +138,19 @@
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="Models\PSRouteTable.cs" />
+    <Compile Include="Models\PSRoute.cs" />
+    <Compile Include="RouteTable\GetAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\RouteTableBaseCmdlet.cs" />
+    <Compile Include="RouteTable\NewAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\RemoveAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\Route\AddAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\AzureRouteConfigBase.cs" />
+    <Compile Include="RouteTable\Route\GetAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\NewAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\RemoveAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\SetAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\SetAzureRouteTableCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
     <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayCommand.cs" />
@@ -204,7 +217,6 @@
     <Compile Include="Models\PSLoadBalancer.cs" />
     <Compile Include="Models\PSLoadBalancingRule.cs" />
     <Compile Include="Models\PSProbe.cs" />
-    <Compile Include="Models\PSProbeProtocol.cs" />
     <Compile Include="Models\PSAddressSpace.cs" />
     <Compile Include="Models\PSDhcpOptions.cs" />
     <Compile Include="Models\PSNetworkInterfaceDnsSettings.cs" />
@@ -245,7 +257,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ProviderWideCmdlets\GetAzureCheckDnsAvailabilityCmdlet.cs" />
+    <Compile Include="ProviderWideCmdlets\TestAzureDnsAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\RemoveAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />

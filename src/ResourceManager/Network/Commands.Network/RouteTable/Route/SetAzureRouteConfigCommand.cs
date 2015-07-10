@@ -12,40 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRouteConfig"), OutputType(typeof(PSRouteTable))]
+    public class SetAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the rule")]
+           Mandatory = true,
+           HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The NetworkSecurityGroup")]
-        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            // Verify if the rule exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            // Verify if the subnet exists in the NetworkSecurityGroup
+            var route = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (rule != null)
+            if (route == null)
             {
-                this.NetworkSecurityGroup.SecurityRules.Remove(rule);
+                throw new ArgumentException("route with the specified name does not exist");
             }
 
-            WriteObject(this.NetworkSecurityGroup);
+            route = new PSRoute();
+
+            route.Name = this.Name;
+            route.AddressPrefix = this.AddressPrefix;
+            route.NextHopType = this.NextHopType;
+            route.NextHopIpAddress = this.NextHopIpAddress;
+
+            WriteObject(this.RouteTable);
         }
     }
 }

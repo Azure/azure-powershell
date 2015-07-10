@@ -12,40 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
+    public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the rule")]
+            Mandatory = true,
+            HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The NetworkSecurityGroup")]
-        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+        public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            // Verify if the rule exists in the NetworkSecurityGroup
-            var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var route = new PSRoute();
 
-            if (rule != null)
-            {
-                this.NetworkSecurityGroup.SecurityRules.Remove(rule);
-            }
+            route.Name = this.Name;
+            route.AddressPrefix = this.AddressPrefix;
+            route.NextHopType = this.NextHopType;
+            route.NextHopIpAddress = this.NextHopIpAddress;
 
-            WriteObject(this.NetworkSecurityGroup);
+            WriteObject(route);
         }
     }
 }
