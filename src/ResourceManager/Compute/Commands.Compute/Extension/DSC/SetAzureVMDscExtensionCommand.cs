@@ -5,6 +5,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using AutoMapper;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
@@ -257,6 +258,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     ArchiveContainerName = DefaultContainerName;
                 }
 
+                if (this.ArchiveStorageEndpointSuffix == null)
+                {
+                    this.ArchiveStorageEndpointSuffix = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                }
+
                 if (!(Regex.Match(Version, VersionRegexExpr).Success))
                 {
                     ThrowInvalidArgumentError(Properties.Resources.AzureVMDscExtensionInvalidVersion);
@@ -335,12 +341,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //
             // Get a reference to the container in blob storage
             //
-            var storageAccount = string.IsNullOrEmpty(ArchiveStorageEndpointSuffix)
-                                     ? new CloudStorageAccount(_storageCredentials, true)
-                                     : new CloudStorageAccount(
-                                           _storageCredentials,
-                                           ArchiveStorageEndpointSuffix,
-                                           true);
+            var storageAccount = new CloudStorageAccount(_storageCredentials, ArchiveStorageEndpointSuffix, true);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -367,6 +368,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (ConfigurationData != null)
             {
+                var guid = Guid.NewGuid();
+                // there may be multiple VMs using the same configuration
+
+                var configurationDataBlobName = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0}-{1}.psd1",
+                    ConfigurationName,
+                    guid);
+
+                var configurationDataBlobReference =
+                    containerReference.GetBlockBlobReference(configurationDataBlobName);
+
                 ConfirmAction(
                     true,
                     string.Empty,
@@ -374,21 +387,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         CultureInfo.CurrentUICulture,
                         Properties.Resources.AzureVMDscUploadToBlobStorageAction,
                         ConfigurationData),
-                    configurationBlobReference.Uri.AbsoluteUri,
+                    configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        var guid = Guid.NewGuid();
-                        // there may be multiple VMs using the same configuration
-
-                        var configurationDataBlobName = string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{0}-{1}.psd1",
-                            ConfigurationName,
-                            guid);
-
-                        var configurationDataBlobReference =
-                            containerReference.GetBlockBlobReference(configurationDataBlobName);
-
                         if (!Force && configurationDataBlobReference.Exists())
                         {
                             ThrowTerminatingError(

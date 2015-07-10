@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -89,6 +90,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string OutputArchivePath { get; set; }
 
+        /// <summary>
+        /// Suffix for the storage end point, e.g. core.windows.net
+        /// </summary>
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = UploadArchiveParameterSetName,
+            HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]
+        [ValidateNotNullOrEmpty]
+        public string StorageEndpointSuffix { get; set; }
+        
         /// <summary>
         /// By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs. 
         /// Use -Force to overwrite them.
@@ -203,6 +214,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 if (ContainerName == null)
                 {
                     ContainerName = DefaultContainerName;
+                }
+                if (this.StorageEndpointSuffix == null)
+                {
+                    this.StorageEndpointSuffix = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 }
             }
             else if (ParameterSetName == CreateArchiveParameterSetName)
@@ -384,7 +399,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         private CloudBlobContainer GetStorageContainer()
         {
-            var storageAccount = new CloudStorageAccount(_storageCredentials, true);
+            var storageAccount = new CloudStorageAccount(_storageCredentials, this.StorageEndpointSuffix, true);
             var blobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer containerReference = blobClient.GetContainerReference(ContainerName);
             containerReference.CreateIfNotExists();

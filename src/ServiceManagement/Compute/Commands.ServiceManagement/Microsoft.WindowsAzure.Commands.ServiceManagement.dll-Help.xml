@@ -17571,7 +17571,6 @@ When this parameter is used, the configuration script is not uploaded to Azure b
           <maml:name>StorageEndpointSuffix</maml:name>
           <maml:description>
             <maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
-
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
           <dev:type>
