@@ -11,7 +11,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
-    public class VirtualMachineDscExtensionBaseCmdlet : VirtualMachineExtensionBaseCmdlet
+    public class VirtualMachineDscExtensionBaseCmdlet : VirtualMachineExtensionBaseCmdlet 
     {
         private StorageManagementClientWrapper _storageClientWrapper;
 
