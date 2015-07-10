@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using System.Linq;
     using Xunit;
 
-    public class MultiVipScenarioTests
+    public class MultiVip
     {
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 

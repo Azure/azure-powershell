@@ -87,7 +87,7 @@ function Test-CreateVMWithReservedIP
     Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
     Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 
-    Start-Sleep -Seconds 120
+    #Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
@@ -129,7 +129,7 @@ function Test-ReserveExistingDeploymentIP
     Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
     Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 
-    Start-Sleep -Seconds 120
+    #Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
@@ -181,7 +181,7 @@ function Test-SetAzureReservedIPAssociationSingleVip
     Remove-AzureService -ServiceName $serviceName -Force -DeleteAll
     Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
 
-    Start-Sleep -Seconds 120
+    #Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
 
@@ -242,6 +242,6 @@ function Test-RemoveAzureReservedIPAssociationSingleVip
     Remove-AzureReservedIP -ReservedIPName $reservedIPName -Force
     
     #sleep to ensure deployments are cleaned
-    Start-Sleep -Seconds 120
+    #Start-Sleep -Seconds 120
     Remove-AzureStorageAccount -StorageAccountName $storageAccountName
 }
