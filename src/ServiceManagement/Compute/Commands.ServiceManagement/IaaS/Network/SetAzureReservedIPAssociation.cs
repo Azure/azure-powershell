@@ -26,6 +26,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Set, ReservedIPConstants.AssociationCmdletNoun), OutputType(typeof(ManagementOperationContext))]
     public class SetAzureReservedIPAssociationCmdlet : ServiceManagementBaseCmdlet
     {
+        public SetAzureReservedIPAssociationCmdlet()
+        {
+        }
+
+        public SetAzureReservedIPAssociationCmdlet(IClientProvider provider)
+            : base(provider)
+        {
+        }
+
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "Reserved IP Name.")]
         [ValidateNotNullOrEmpty]
         public string ReservedIPName
@@ -58,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ServiceManagementProfile.Initialize();
 

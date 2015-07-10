@@ -23,6 +23,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Remove, ReservedIPConstants.CmdletNoun, DefaultParameterSetName = RemoveReservedIPParamSet), OutputType(typeof(ManagementOperationContext))]
     public class RemoveAzureReservedIPCmdlet : ServiceManagementBaseCmdlet
     {
+        public RemoveAzureReservedIPCmdlet()
+        {
+        }
+
+        public RemoveAzureReservedIPCmdlet(IClientProvider provider)
+            : base(provider)
+        {
+        }
+
         protected const string RemoveReservedIPParamSet = "RemoveReservedIP";
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "Reserved IP Name.")]
@@ -32,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of deployment")]
         public SwitchParameter Force { get; set; }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ServiceManagementProfile.Initialize();
 
