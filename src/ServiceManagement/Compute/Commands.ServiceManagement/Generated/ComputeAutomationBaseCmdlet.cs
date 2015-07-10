@@ -20,14 +20,11 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    public abstract class ComputeAutomationBaseCmdlet : ServiceManagementBaseCmdlet
+    public abstract class ComputeAutomationBaseCmdlet : Microsoft.WindowsAzure.Commands.Utilities.Common.ServiceManagementBaseCmdlet
     {
         public IDeploymentOperations DeploymentClient
         {

@@ -20,9 +20,6 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -45,16 +42,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         [Parameter(Mandatory = true)]
         public System.Boolean DeleteFromStorage { get; set; }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
-
-            ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => VirtualMachineDiskClient.BeginDeletingDataDisk(ServiceName, DeploymentName, RoleName, LogicalUnitNumber, DeleteFromStorage),
-                (s, response) => response);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                var result = VirtualMachineDiskClient.BeginDeletingDataDisk(ServiceName, DeploymentName, RoleName, LogicalUnitNumber, DeleteFromStorage);
+                WriteObject(result);
+            });
         }
     }
 }

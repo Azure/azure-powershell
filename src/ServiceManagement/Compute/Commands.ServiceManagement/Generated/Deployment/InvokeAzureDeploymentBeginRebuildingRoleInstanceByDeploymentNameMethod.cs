@@ -20,9 +20,6 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -42,16 +39,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         [Parameter(Mandatory = true)]
         public System.String Resources { get; set; }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
-
-            ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => DeploymentClient.BeginRebuildingRoleInstanceByDeploymentName(ServiceName, DeploymentName, RoleInstanceName, Resources),
-                (s, response) => response);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                var result = DeploymentClient.BeginRebuildingRoleInstanceByDeploymentName(ServiceName, DeploymentName, RoleInstanceName, Resources);
+                WriteObject(result);
+            });
         }
     }
 }

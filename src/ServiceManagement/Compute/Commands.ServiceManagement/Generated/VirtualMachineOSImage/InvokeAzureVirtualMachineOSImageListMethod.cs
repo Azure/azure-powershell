@@ -20,9 +20,6 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -30,16 +27,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet("Invoke", "AzureVirtualMachineOSImageListMethod")]
     public class InvokeAzureVirtualMachineOSImageListMethod : ComputeAutomationBaseCmdlet
     {
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
-
-            ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => VirtualMachineOSImageClient.List(),
-                (s, response) => response);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                var result = VirtualMachineOSImageClient.List();
+                WriteObject(result);
+            });
         }
     }
 }

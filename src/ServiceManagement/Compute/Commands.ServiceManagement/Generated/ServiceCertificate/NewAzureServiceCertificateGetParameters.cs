@@ -20,9 +20,6 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -30,10 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet("New", "AzureServiceCertificateGetParameters")]
     public class NewAzureServiceCertificateGetParameters : ComputeAutomationBaseCmdlet
     {
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
+            base.ExecuteCmdlet();
             var parameter = new Microsoft.WindowsAzure.Management.Compute.Models.ServiceCertificateGetParameters();
             WriteObject(parameter);
         }

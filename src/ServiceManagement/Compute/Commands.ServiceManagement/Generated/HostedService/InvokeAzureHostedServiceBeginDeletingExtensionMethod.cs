@@ -20,9 +20,6 @@
 // code is regenerated.
 
 using System.Management.Automation;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -36,16 +33,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         [Parameter(Mandatory = true)]
         public System.String ExtensionId { get; set; }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
-
-            ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => HostedServiceClient.BeginDeletingExtension(ServiceName, ExtensionId),
-                (s, response) => response);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                var result = HostedServiceClient.BeginDeletingExtension(ServiceName, ExtensionId);
+                WriteObject(result);
+            });
         }
     }
 }

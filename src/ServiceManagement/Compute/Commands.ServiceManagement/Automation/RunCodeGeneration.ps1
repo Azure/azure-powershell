@@ -5,13 +5,17 @@ param(
 
     [Parameter(Mandatory = $true)]
     [string]$outFolder,
+    
+    # The namespace of the Compute client library
+    [Parameter(Mandatory = $true)]
+    [string]$client_library_namespace = 'Microsoft.WindowsAzure.Management.Compute',
 
     # The base cmdlet from which all automation cmdlets derive
-    [Parameter(Mandatory = $false)]
-    [string]$baseCmdlet = 'ServiceManagementBaseCmdlet',
+    [Parameter(Mandatory = $true)]
+    [string]$baseCmdletFullName = 'Microsoft.WindowsAzure.Commands.Utilities.Common.ServiceManagementBaseCmdlet',
 
     # The property field to access the client wrapper class from the base cmdlet
-    [Parameter(Mandatory = $false)]
+    [Parameter(Mandatory = $true)]
     [string]$base_class_client_field = 'ComputeClient',
     
     # Cmdlet Code Generation Style
@@ -21,14 +25,23 @@ param(
     [string]$cmdletStyle = 'Invoke'
 )
 
-$client_library_namespace = 'Microsoft.WindowsAzure.Management.Compute';
+$new_line_str = "`r`n";
+
+Write-Output "=============================================";
+Write-Output "Input Parameters:";
+Write-Output "DLL Folder            = $dllFolder";
+Write-Output "Out Folder            = $outFolder";
+Write-Output "Client NameSpace      = $client_library_namespace";
+Write-Output "Base Cmdlet Full Name = $baseCmdletFullName";
+Write-Output "Base Client Name      = $base_class_client_field";
+Write-Output "Cmdlet Style          = $cmdletStyle";
+Write-Output "=============================================";
+Write-Output "${new_line_str}";
+
 $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
 
 $code_common_usings = @(
-    'System.Management.Automation',
-    'Microsoft.Azure',
-    'Microsoft.WindowsAzure.Commands.ServiceManagement',
-    'Microsoft.WindowsAzure.Commands.Utilities.Common'
+    'System.Management.Automation'
 );
 
 $code_common_header =
@@ -54,8 +67,6 @@ $code_common_header =
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 "@;
-
-$new_line_str = "`r`n";
 
 function Get-SortedUsings
 {
@@ -192,7 +203,7 @@ $code_using_strs
 
 namespace ${code_common_namespace}
 {
-    public abstract class ComputeAutomationBaseCmdlet : $baseCmdlet
+    public abstract class ComputeAutomationBaseCmdlet : $baseCmdletFullName
     {
 ${operation_get_code}
     }
@@ -254,16 +265,14 @@ function Write-OperationCmdletFile
 
     $cmdlet_client_call_template =
 @"
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
-
-            ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => ${opShortName}Client.${methodName}(${params_join_str}),
-                (s, response) => response);
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                var result = ${opShortName}Client.${methodName}(${params_join_str});
+                WriteObject(result);
+            });
         }
 "@;
 
@@ -346,10 +355,9 @@ function Write-ParameterCmdletFile
 
     $cmdlet_client_call_template =
 @"
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ServiceManagementProfile.Initialize();
-            base.OnProcessRecord();
+            base.ExecuteCmdlet();
             var parameter = new ${param_type_full_name}();
             WriteObject(parameter);
         }
@@ -378,14 +386,12 @@ ${cmdlet_generated_code}
 }
 
 # Code Generation Main Run
-Write-Output $dllFolder;
-Write-Output $outFolder;
-
 $outFolder += '/Generated';
 
 $output = Get-ChildItem -Path $dllFolder | Out-String;
 
 # Set-Content -Path ($outFolder + '/Output.txt');
+Write-Output "List items under the folder: $dllFolder"
 Write-Output $output;
 
 
