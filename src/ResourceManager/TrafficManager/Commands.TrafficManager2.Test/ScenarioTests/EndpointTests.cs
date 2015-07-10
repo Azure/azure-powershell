@@ -17,20 +17,20 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class EndpointTests : WatmV2TestsBase
+    public class EndpointTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddEndpoint()
         {
-            this.RunPowerShellTest("Test-AddEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-AddEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteEndpoint()
         {
-            this.RunPowerShellTest("Test-DeleteEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-DeleteEndpoint");
         }
     }
 }

@@ -20,56 +20,67 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureTrafficManagerProfile"), OutputType(typeof(bool))]
-    public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Disable, "AzureTrafficManagerEndpoint"), OutputType(typeof(bool))]
+    public class DisableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = "Fields")]
+        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string Type { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
+        [ValidateNotNullOrEmpty]
+        public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
-        public TrafficManagerProfile TrafficManagerProfile { get; set; }
+        public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var deleted = false;
-            TrafficManagerProfile profileToDelete = null;
+            var disabled = false;
+            TrafficManagerEndpoint endpointToDisable = null;
 
             if (this.ParameterSetName == "Fields")
             {
-                profileToDelete = new TrafficManagerProfile
+                endpointToDisable = new TrafficManagerEndpoint
                 {
                     Name = this.Name,
+                    Target = this.Type,
+                    ProfileName = this.ProfileName,
                     ResourceGroupName = this.ResourceGroupName
                 };
             }
             else if (this.ParameterSetName == "Object")
             {
-                profileToDelete = this.TrafficManagerProfile;
+                endpointToDisable = this.TrafficManagerEndpoint;
             }
 
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveProfile, profileToDelete.Name),
-                ProjectResources.Progress_RemovingProfile,
+                string.Format(ProjectResources.Confirm_DisableEndpoint, endpointToDisable.Name, endpointToDisable.ProfileName),
+                ProjectResources.Progress_DisablingEndpoint,
                 this.Name,
-                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete); });
+                () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerEndpoint(endpointToDisable, shouldEnableEndpointStatus: false); });
 
-            if (deleted)
+            if (disabled)
             {
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
+                this.WriteVerbose(string.Format(ProjectResources.Success_DisableEndpoint, endpointToDisable.Name, endpointToDisable.Name, endpointToDisable.ResourceGroupName));
             }
 
-            this.WriteObject(deleted);
+            this.WriteObject(disabled);
         }
     }
 }
