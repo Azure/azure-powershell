@@ -36,8 +36,8 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-	// A hard-coded Dogfood DC for ADF cmdlet testing
-    $location = "Brazil South"
+	# A hard-coded Dogfood DC for ADF cmdlet testing
+    "Brazil South"
 }
 
 <#
