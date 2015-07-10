@@ -164,11 +164,11 @@
     <Compile Include="Routes\SetRouteTests.cs" />
     <Compile Include="Routes\SetSubnetRouteTableTests.cs" />
     <Compile Include="ScenarioTests\IPForwarding\IPForwardingScenarioTests.cs" />
-    <Compile Include="ScenarioTests\MultiVip\MultiVipScenarioTests.cs" />
+    <Compile Include="ScenarioTests\MultiVip\MultiVip.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroup\NSGScenarioTests.cs" />
     <Compile Include="ScenarioTests\NetworkTests.cs" />
     <Compile Include="ScenarioTests\NetworkTestsBase.cs" />
-    <Compile Include="ScenarioTests\ReservedIPs\ReservedIPScenarioTests.cs" />
+    <Compile Include="ScenarioTests\ReservedIPs\ReservedIP.cs" />
     <Compile Include="TestInterfaces\TestClientProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,18 +231,6 @@
     <None Include="ScenarioTests\ReservedIPs\ReservedIPTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\AdditionalVipLifecycle.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\AdditionalVipMobility.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\ReserveMultivipDepIP.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.MultiVip.MultiVipScenarioTests\SetLBEndpointMultivipDep.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\CreateAndRemoveNSG.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -270,22 +258,19 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.NSGScenarioTests\SetNSRWithInvalidParameter.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\AzureReservedIPSimpleOperations.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIP\AzureReservedIPSimpleOps.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\CreateVMWithReservedIP.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIP\CreateVMWithReservedIP.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\NewAzureReservedIPSimple.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIP\RemoveReservedIPAssocSimple.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\RemoveReservedIPAssociationSimple.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIP\ReserveExistingDepIP.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\ReserveExistingDeploymentIP.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs.ReservedIPScenarioTests\SetReservedIPAssociationSimple.json">
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIP\SetReservedIPAssocSimple.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="TestData\EmptyNetworkConfiguration.xml">

@@ -1,4 +1,18 @@
-﻿namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests.ReservedIPs
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Test;
@@ -10,51 +24,44 @@
     using System.Linq;
     using Xunit;
 
-    public class ReservedIPScenarioTests
+    public class MultiVipScenarioTests
     {
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
-        
+
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.CheckIn)]
-        public void AzureReservedIPSimpleOperations()
+        public void ExtraVipLifecycle()
         {
-            RunPowerShellTest("Test-AzureReservedIPSimpleOperations");
+            RunPowerShellTest("Test-AdditionalVipLifecycle");
         }
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.CheckIn)]
-        public void CreateVMWithReservedIP()
+        public void ExtraVipMobility()
         {
-            RunPowerShellTest("Test-CreateVMWithReservedIP");
+            RunPowerShellTest("Test-AdditionalVipMobility");
         }
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.CheckIn)]
-        public void SetReservedIPAssociationSimple()
+        public void ReserveMultivipDepIP()
         {
-            RunPowerShellTest("Test-SetAzureReservedIPAssociationSingleVip");
+            RunPowerShellTest("Test-ReserveExistingDeploymentIPMultivip");
         }
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.CheckIn)]
-        public void RemoveReservedIPAssociationSimple()
+        public void SetLbEpMultivipDep()
         {
-            RunPowerShellTest("Test-RemoveAzureReservedIPAssociationSingleVip");
-        }
-
-        [Fact]
-        [Trait(Category.Service, Category.Network)]
-        [Trait(Category.RunType, Category.CheckIn)]
-        public void ReserveExistingDeploymentIP()
-        {
-            RunPowerShellTest("Test-ReserveExistingDeploymentIP");
+            RunPowerShellTest("Test-SetLBEndpoint");
         }
 
         #region Test setup
+
         protected void SetupManagementClients()
         {
             var client = TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
@@ -68,7 +75,7 @@
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles("ScenarioTests\\ReservedIPs", "*.ps1").ToList();
+                List<string> modules = Directory.GetFiles("ScenarioTests\\MultiVip", "*.ps1").ToList();
                 modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
                 modules.Add("Common.ps1");
 

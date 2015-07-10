@@ -27,8 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         {
         }
 
-        public RemoveAzureVirtualIP(IClientProvider provider) 
-            : base(provider)
+        public RemoveAzureVirtualIP(IClientProvider provider) : base(provider)
         {
         }
 
