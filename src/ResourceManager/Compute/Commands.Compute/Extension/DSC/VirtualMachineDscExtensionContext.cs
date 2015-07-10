@@ -12,14 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
+using Microsoft.Azure.Commands.Compute.Models;
 
-namespace Microsoft.Azure.Commands.Network.Models
+namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
-    public class PSDnsSettings
+    public class VirtualMachineDscExtensionContext : PSVirtualMachineExtension
     {
-        public List<string> DnsServers { get; set; }
 
-        public List<string> AppliedDnsServers { get; set; }
+        public string ModulesUrl { get; set; }
+        public string ConfigurationFunction { get; set; }
+        public Hashtable Properties { get; set; }
+
     }
 }
