@@ -28,18 +28,27 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual List<PSDataSliceRun> ListDataSliceRuns(
-            string resourceGroupName,
-            string dataFactoryName,
-            string tableName,
-            DateTime dataSliceRangeStartTime)
+        public virtual List<PSDataSliceRun> ListDataSliceRuns(DataSliceRunFilterOptions filterOptions)
         {
             List<PSDataSliceRun> runs = new List<PSDataSliceRun>();
-            var response = DataPipelineManagementClient.DataSliceRuns.List(
-                resourceGroupName,
-                dataFactoryName,
-                tableName,
-                dataSliceRangeStartTime.ConvertToISO8601DateTimeString());
+
+            DataSliceRunListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.DataSliceRuns.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.DataSliceRuns.List(
+                    filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName,
+                    filterOptions.TableName,
+                    new DataSliceRunListParameters()
+                    {
+                        DataSliceStartTime = filterOptions.StartDateTime.ConvertToISO8601DateTimeString()
+                    });    
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.DataSliceRuns != null)
             {
@@ -48,9 +57,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                     runs.Add(
                         new PSDataSliceRun(run)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName,
-                            TableName = tableName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName,
+                            TableName = filterOptions.TableName
                         });
                 }
             }
@@ -58,16 +67,29 @@ namespace Microsoft.Azure.Commands.DataFactories
             return runs;
         }
 
-        public virtual List<PSDataSlice> ListDataSlices(string resourceGroupName, string dataFactoryName, string tableName, DateTime dataSliceRangeStartTime, DateTime dataSliceRangeEndTime)
+        public virtual List<PSDataSlice> ListDataSlices(DataSliceFilterOptions filterOptions)
         {
             List<PSDataSlice> dataSlices = new List<PSDataSlice>();
-            var response = DataPipelineManagementClient.DataSlices.List(
-                resourceGroupName,
-                dataFactoryName,
-                tableName,
-                dataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
-                dataSliceRangeEndTime.ConvertToISO8601DateTimeString());
 
+            DataSliceListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.DataSlices.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.DataSlices.List(
+                    filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName,
+                    filterOptions.TableName,
+                    new DataSliceListParameters()
+                    {
+                        DataSliceRangeStartTime = filterOptions.DataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
+                        DataSliceRangeEndTime = filterOptions.DataSliceRangeEndTime.ConvertToISO8601DateTimeString()
+                    });
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
+            
             if (response != null && response.DataSlices != null)
             {
                 foreach (var dataSlice in response.DataSlices)
@@ -75,9 +97,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                     dataSlices.Add(
                         new PSDataSlice(dataSlice)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName,
-                            TableName = tableName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName,
+                            TableName = filterOptions.TableName
                         });
                 }
             }
@@ -89,7 +111,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             string resourceGroupName,
             string dataFactoryName,
             string tableName,
-            string sliceStatus,
+            string sliceState,
             string updateType,
             DateTime dataSliceRangeStartTime,
             DateTime dataSliceRangeEndTime)
@@ -100,7 +122,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 tableName,
                 new DataSliceSetStatusParameters()
                 {
-                    SliceStatus = sliceStatus,
+                    SliceState = sliceState,
                     UpdateType = updateType,
                     DataSliceRangeStartTime = dataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
                     DataSliceRangeEndTime = dataSliceRangeEndTime.ConvertToISO8601DateTimeString(),

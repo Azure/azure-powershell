@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.DataFactories.Common.Models;
 using Microsoft.Azure.Management.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
@@ -58,27 +59,27 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 
         public string DataFactoryName { get; set; }
         
-        public Availability Availability
+        public Slicer Availability
         {
             get
             {
-                return table.Properties.Availability;
+                return table.Properties.Slicer;
             }
             set
             {
-                table.Properties.Availability = value;
+                table.Properties.Slicer = value;
             }
         }
 
-        public TableLocation Location
+        public TableTypeProperties Location
         {
             get
             {
-                return table.Properties.Location;
+                return table.Properties.TypeProperties;
             }
             set
             {
-                table.Properties.Location = value;
+                table.Properties.TypeProperties = value;
             }
         }
 

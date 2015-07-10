@@ -12,15 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class HubFilterOptions
+    public class DataSliceFilterOptions
     {
-        public string Name { get; set; }
+        public string TableName { get; set; }
 
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }
+
+        public DateTime DataSliceRangeStartTime { get; set; }
+
+        public DateTime DataSliceRangeEndTime { get; set; }
 
         public string NextLink { get; set; }
     }
