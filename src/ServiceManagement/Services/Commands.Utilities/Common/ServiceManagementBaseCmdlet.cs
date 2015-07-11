@@ -39,35 +39,27 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected ServiceManagementBaseCmdlet()
         {
-            runspace = new Lazy<Runspace>(() => {
+            IClientProvider clientProvider = new ClientProvider(this);
+            SetupClients(clientProvider);
+        }
+
+        private void SetupClients(IClientProvider clientProvider)
+        {
+            runspace = new Lazy<Runspace>(() =>
+            {
                 var localRunspace = RunspaceFactory.CreateRunspace(this.Host);
                 localRunspace.Open();
                 return localRunspace;
             });
-            client = new Lazy<ManagementClient>(CreateClient);
-            computeClient = new Lazy<ComputeManagementClient>(CreateComputeClient);
-            storageClient = new Lazy<StorageManagementClient>(CreateStorageClient);
-            networkClient = new Lazy<NetworkManagementClient>(CreateNetworkClient);
+            client = new Lazy<ManagementClient>(clientProvider.CreateClient);
+            computeClient = new Lazy<ComputeManagementClient>(clientProvider.CreateComputeClient);
+            storageClient = new Lazy<StorageManagementClient>(clientProvider.CreateStorageClient);
+            networkClient = new Lazy<NetworkManagementClient>(clientProvider.CreateNetworkClient);
         }
 
-        public ManagementClient CreateClient()
+        protected ServiceManagementBaseCmdlet(IClientProvider clientProvider)
         {
-            return AzureSession.ClientFactory.CreateClient<ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public ComputeManagementClient CreateComputeClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public StorageManagementClient CreateStorageClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public NetworkManagementClient CreateNetworkClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SetupClients(clientProvider);
         }
 
         private Lazy<ManagementClient> client;
