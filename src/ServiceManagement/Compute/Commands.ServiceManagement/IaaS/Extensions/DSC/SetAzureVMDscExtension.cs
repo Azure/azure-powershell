@@ -21,6 +21,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Storage;

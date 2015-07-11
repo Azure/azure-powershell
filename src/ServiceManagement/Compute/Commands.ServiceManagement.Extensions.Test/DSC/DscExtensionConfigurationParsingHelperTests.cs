@@ -17,6 +17,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Xunit;
 

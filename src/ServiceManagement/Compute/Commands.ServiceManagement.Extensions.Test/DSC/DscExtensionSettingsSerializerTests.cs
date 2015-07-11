@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Xunit;

@@ -12,7 +12,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     public class DscExtensionCmdletCommonBase : PSCmdlet
     {
