@@ -103,6 +103,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -144,6 +147,8 @@
   <ItemGroup>
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionCmdletCommonBase.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionCmdletConstants.cs" />
     <Compile Include="Extensions\DSC\DscPrivateSettings.cs" />
     <Compile Include="Extensions\DSC\DSCPublicSettings.cs" />
     <Compile Include="Extensions\DSC\DscSettingsSerializer.cs" />

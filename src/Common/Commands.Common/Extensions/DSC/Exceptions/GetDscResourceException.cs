@@ -16,7 +16,7 @@ using System;
 using System.Globalization;
 
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC.Exceptions
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions
 {
     [Serializable]
     public class GetDscResourceException : UnauthorizedAccessException

@@ -16,7 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     /// <summary>
     /// Represents public settings. Serialized representation of this object stored as a plain text string on the VM.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     public static class DscExtensionCmdletConstants
     {

@@ -15,7 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC.Publish
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
     public class ConfigurationParseResult
     {

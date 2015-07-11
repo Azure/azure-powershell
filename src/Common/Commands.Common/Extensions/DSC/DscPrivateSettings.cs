@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     using System.Collections;
 
