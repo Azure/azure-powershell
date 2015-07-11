@@ -209,13 +209,21 @@
     <None Include="ScenarioTests\DataFactoryTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGateway.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGatewayWithDataFactoryParameter.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestGetNonExistingDataFactoryGateway.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGateway.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGatewayWithDataFactoryParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestGetNonExistingDataFactoryGateway.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateDataFactory.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDataFactoryPiping.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDeleteDataFactoryWithDataFactoryParameter.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestGetNonExistingDataFactory.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestGetNonExistingDataFactory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHub.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubPiping.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubWithDataFactoryParameter.json" />
