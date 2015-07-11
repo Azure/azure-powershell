@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
 {
     public class DscSettingsSerializer
     {

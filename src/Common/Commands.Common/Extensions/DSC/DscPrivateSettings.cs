@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
+namespace Microsoft.WindowsAzure.Commands.Common.Extension.DSC
 {
     using System.Collections;
 

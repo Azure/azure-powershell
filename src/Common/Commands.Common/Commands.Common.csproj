@@ -144,12 +144,12 @@
   <ItemGroup>
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Extension\DSC\DscPrivateSettings.cs" />
-    <Compile Include="Extension\DSC\DSCPublicSettings.cs" />
-    <Compile Include="Extension\DSC\DscSettingsSerializer.cs" />
-    <Compile Include="Extension\DSC\Exceptions\GetDscResourceException.cs" />
-    <Compile Include="Extension\DSC\Publish\ConfigurationParseResult.cs" />
-    <Compile Include="Extension\DSC\Publish\ConfigurationParsingHelper.cs" />
+    <Compile Include="Extensions\DSC\DscPrivateSettings.cs" />
+    <Compile Include="Extensions\DSC\DSCPublicSettings.cs" />
+    <Compile Include="Extensions\DSC\DscSettingsSerializer.cs" />
+    <Compile Include="Extensions\DSC\Exceptions\GetDscResourceException.cs" />
+    <Compile Include="Extensions\DSC\Publish\ConfigurationParseResult.cs" />
+    <Compile Include="Extensions\DSC\Publish\ConfigurationParsingHelper.cs" />
     <Compile Include="SecureStringExtensions.cs" />
     <Compile Include="ConversionUtilities.cs" />
     <Compile Include="DebugStreamTraceListener.cs" />
