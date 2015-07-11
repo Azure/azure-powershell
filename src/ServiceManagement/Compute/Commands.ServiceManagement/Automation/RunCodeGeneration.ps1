@@ -299,7 +299,71 @@ ${cmdlet_generated_code}
 }
 
 # Sample: VirtualMachineCreateParameters
-function Get-ClientComplexParameter
+function Is-ClientComplexType
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $type_info
+    )
+
+    return ($type_info.Namespace -like "${client_name_space}.Model?") -and (-not $type_info.IsEnum);
+}
+
+
+# Sample: IList<ConfigurationSet>
+function Is-ListComplexType
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $type_info
+    )
+
+    if ($type_info.IsGenericType)
+    {
+        $args = $list_item_type = $type_info.GetGenericArguments();
+
+        if ($args.Count -eq 1)
+        {
+            $list_item_type = $type_info.GetGenericArguments()[0];
+
+            if (Is-ClientComplexType $list_item_type)
+            {
+                return $true;
+            }
+        }
+    }
+
+    return $false;
+}
+
+# Sample: IList<ConfigurationSet> => ConfigurationSet
+function Get-ListComplexItemType
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $type_info
+    )
+
+    if ($type_info.IsGenericType)
+    {
+        $args = $list_item_type = $type_info.GetGenericArguments();
+
+        if ($args.Count -eq 1)
+        {
+            $list_item_type = $type_info.GetGenericArguments()[0];
+
+            if (Is-ClientComplexType $list_item_type)
+            {
+                return $list_item_type;
+            }
+        }
+    }
+
+    return $null;
+}
+
+# Sample: VirtualMachines.Create(...) => VirtualMachineCreateParameters
+function Get-MethodComplexParameter
 {
     param(
         [Parameter(Mandatory = $True)]
@@ -310,12 +374,73 @@ function Get-ClientComplexParameter
     )
 
     $params = $op_method_info.GetParameters();
-    $params = $params | where { -not $_.ParameterType.IsEnum };
+    $paramsWithoutEnums = $params | where { -not $_.ParameterType.IsEnum };
 
     # Assume that each operation method has only one complext parameter type
-    $param_info = $params | where { $_.ParameterType.Namespace -like "${client_name_space}.Model?" } | select -First 1;
+    $param_info = $paramsWithoutEnums | where { $_.ParameterType.Namespace -like "${client_name_space}.Model?" } | select -First 1;
 
     return $param_info;
+}
+
+# Sample: VirtualMachineCreateParameters => ConfigurationSet, VMImageInput, ...
+function Get-SubComplexParameterListFromType
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $type_info,
+
+        [Parameter(Mandatory = $True)]
+        [string]$client_name_space
+    )
+
+    $subParamTypeList = @();
+
+    if (-not (Is-ClientComplexType $type_info))
+    {
+        return $subParamTypeList;
+    }
+
+    $paramProps = $type_info.GetProperties();
+    foreach ($pp in $paramProps)
+    {
+        $isClientType = $false;
+        if (Is-ClientComplexType $pp.PropertyType)
+        {
+            $subParamTypeList += $pp.PropertyType;
+            $isClientType = $true;
+        }
+        elseif (Is-ListComplexType $pp.PropertyType)
+        {
+            $subParamTypeList += $pp.PropertyType;
+            $subParamTypeList += Get-ListComplexItemType $pp.PropertyType;
+            $isClientType = $true;
+        }
+
+        if ($isClientType)
+        {
+            $recursiveSubParamTypeList = Get-SubComplexParameterListFromType $pp.PropertyType $client_name_space;
+            foreach ($rsType in $recursiveSubParamTypeList)
+            {
+                $subParamTypeList += $rsType;
+            }
+        }
+    }
+
+    return $subParamTypeList;
+}
+
+# Sample: VirtualMachineCreateParameters => ConfigurationSet, VMImageInput, ...
+function Get-SubComplexParameterList
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [System.Reflection.ParameterInfo]$param_info,
+
+        [Parameter(Mandatory = $True)]
+        [string]$client_name_space
+    )
+
+    return Get-SubComplexParameterListFromType $param_info.ParameterType $client_name_space;
 }
 
 # Sample: NewAzureVirtualMachineCreateParameters.cs
@@ -329,11 +454,33 @@ function Write-ParameterCmdletFile
         [string]$operation_short_name,
 
         [Parameter(Mandatory = $True)]
-        [System.Reflection.ParameterInfo]$parameter_info
-    )
+        $parameter_type_info,
 
-    $param_type_full_name = $parameter_info.ParameterType.FullName;
-    $param_type_short_name = $parameter_info.ParameterType.Name;
+        [Parameter(Mandatory = $false)]
+        $is_list_type = $false
+    )
+    
+    if (-not $is_list_type)
+    {
+        $param_type_full_name = $parameter_type_info.FullName;
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+
+        $param_type_short_name = $parameter_type_info.Name;
+        $param_type_short_name = $param_type_short_name.Replace('+', '.');
+    }
+    else
+    {
+        $itemType = $parameter_type_info.GetGenericArguments()[0];
+        $itemTypeShortName = $itemType.Name;
+        $itemTypeFullName = $itemType.FullName;
+
+        $param_type_full_name = "System.Collections.Generic.List<${itemTypeFullName}>";
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+
+        $param_type_short_name = "${itemTypeShortName}List";
+        $param_type_short_name = $param_type_short_name.Replace('+', '.');
+    }
+
     if (($param_type_short_name -like "${operation_short_name}*") -and ($param_type_short_name.Length -gt $operation_short_name.Length))
     {
         # Remove the common part between the parameter type name and operation short name, e.g. 'VirtualMachineDisk'
@@ -406,6 +553,7 @@ if (-not (Test-Path -Path $dllFileFullPath))
 else
 {
     $assembly = [System.Reflection.Assembly]::LoadFrom($dllFileFullPath);
+    [System.Reflection.Assembly]::LoadWithPartialName("System.Collections.Generic");
     
     # All original types
     $types = $assembly.GetTypes();
@@ -442,13 +590,32 @@ else
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
             Write-OperationCmdletFile $opOutFolder $opShortName $mt;
 
-            [System.Reflection.ParameterInfo]$parameter_type_info = (Get-ClientComplexParameter $mt $client_library_namespace);
+            [System.Reflection.ParameterInfo]$parameter_type_info = (Get-MethodComplexParameter $mt $client_library_namespace);
 
             if (($parameter_type_info -ne $null) -and (($parameter_type_info_list | where { $_.ParameterType.FullName -eq $parameter_type_info.FullName }).Count -eq 0))
             {
                 $parameter_type_info_list += $parameter_type_info;
 
-                Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info;
+                Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info.ParameterType;
+
+                # Run Through the Sub Parameter List
+                $subParamTypeList = Get-SubComplexParameterList $parameter_type_info $client_library_namespace;
+
+                if ($subParamTypeList.Count -gt 0)
+                {
+                    foreach ($sp in $subParamTypeList)
+                    {
+                        Write-Output ((' ' * 8) + $sp);
+                        if (-not $sp.IsGenericType)
+                        {
+                            Write-ParameterCmdletFile $opOutFolder $opShortName $sp;
+                        }
+                        else
+                        {
+                            Write-ParameterCmdletFile $opOutFolder $opShortName $sp $true;
+                        }
+                    }
+                }
             }
         }
     }
