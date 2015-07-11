@@ -58,16 +58,16 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }
-        
-        public Slicer Availability
+
+        public Availability Availability
         {
             get
             {
-                return table.Properties.Slicer;
+                return table.Properties.Availability;
             }
             set
             {
-                table.Properties.Slicer = value;
+                table.Properties.Availability = value;
             }
         }
 
