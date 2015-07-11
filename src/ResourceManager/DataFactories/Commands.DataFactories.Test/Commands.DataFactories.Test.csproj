@@ -78,9 +78,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5571.32271-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.DataFactories.Runtime">
-      <HintPath>..\..\..\packages\Microsoft.DataFactories.Runtime.0.11.1-preview\lib\net45\Microsoft.DataFactories.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
@@ -209,30 +206,46 @@
     <None Include="ScenarioTests\DataFactoryTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGateway.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGateway.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGatewayWithDataFactoryParameter.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestGetNonExistingDataFactoryGateway.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateDataFactory.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestCreateDataFactoryGatewayWithDataFactoryParameter.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDataFactoryPiping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryGatewayTests\TestGetNonExistingDataFactoryGateway.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDeleteDataFactoryWithDataFactoryParameter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestCreateDataFactory.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDataFactoryPiping.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestDeleteDataFactoryWithDataFactoryParameter.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestGetNonExistingDataFactory.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.DataFactoryTests\TestGetNonExistingDataFactory.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHub.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHub.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubPiping.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubWithDataFactoryParameter.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedService.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServicePiping.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServiceWithDataFactoryParameter.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTable.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTablePiping.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTableWithDataFactoryParameter.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubPiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.HubTests\TestHubWithDataFactoryParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedService.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServicePiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.LinkedServiceTests\TestLinkedServiceWithDataFactoryParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTable.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTablePiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataFactories.Test.TableTests\TestTableWithDataFactoryParameter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
