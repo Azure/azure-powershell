@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 endpointToDisable = new TrafficManagerEndpoint
                 {
                     Name = this.Name,
-                    Target = this.Type,
+                    Type = this.Type,
                     ProfileName = this.ProfileName,
                     ResourceGroupName = this.ResourceGroupName
                 };

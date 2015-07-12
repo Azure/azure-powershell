@@ -111,6 +111,38 @@ function Test-CrudWithEndpoint
 
 <#
 .SYNOPSIS
+List profiles in resource group
+#>
+function Test-ListProfilesInResourceGroup
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureTrafficManagerProfile -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-AreEqual 1 $profiles.Count
+}
+
+<#
+.SYNOPSIS
+List profiles in subscription
+#>
+function Test-ListProfilesInSubscription
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureTrafficManagerProfile
+
+	Assert-NotNull $profiles
+}
+
+<#
+.SYNOPSIS
 Create a Profile that already exists
 #>
 function Test-ProfileNewAlreadyExists

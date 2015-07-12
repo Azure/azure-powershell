@@ -220,9 +220,17 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         {
             endpoint.EndpointStatus = shouldEnableEndpointStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
 
+            Endpoint sdkEndpoint = endpoint.ToSDKEndpoint();
+            sdkEndpoint.Properties.EndpointLocation = null;
+            sdkEndpoint.Properties.EndpointMonitorStatus = null;
+            sdkEndpoint.Properties.Priority = null;
+            sdkEndpoint.Properties.Weight = null;
+            sdkEndpoint.Properties.Target = null;
+            sdkEndpoint.Properties.TargetResourceId = null;
+
             var parameters = new EndpointUpdateParameters
             {
-                Endpoint = endpoint.ToSDKEndpoint()
+                Endpoint = sdkEndpoint
             };
 
             AzureOperationResponse response = this.TrafficManagerManagementClient.Endpoints.Update(
@@ -232,7 +240,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 endpoint.Name,
                 parameters);
 
-            return response.StatusCode.Equals(HttpStatusCode.OK);
+            return response.StatusCode.Equals(HttpStatusCode.Created);
         }
 
         private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, ProfileProperties mamlProfileProperties)

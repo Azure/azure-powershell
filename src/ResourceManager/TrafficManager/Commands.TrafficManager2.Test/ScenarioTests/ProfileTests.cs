@@ -49,6 +49,20 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesInResourceGroup()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesInResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesInSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesInSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
