@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
+        /// </summary>
+        internal static string DatabaseNotInServiceTierForAuditingPolicy {
+            get {
+                return ResourceManager.GetString("DatabaseNotInServiceTierForAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
         /// </summary>
         internal static string DataMaskingAliasAlreadyUsedError {
@@ -106,11 +115,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions.
+        ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
-        internal static string DeprecatedEventTypeUsed {
+        internal static string DeprecatedCmdletUsageWarning {
             get {
-                return ResourceManager.GetString("DeprecatedEventTypeUsed", resourceCulture);
+                return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
             }
         }
         
@@ -142,15 +151,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use deprecated audit events with the current audit events in the same policy..
-        /// </summary>
-        internal static string InvalidDeprecatedEventTypeSet {
-            get {
-                return ResourceManager.GetString("InvalidDeprecatedEventTypeSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -174,6 +174,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule Id cannot contain &apos;&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?&apos; and cannot end with a &apos;.&apos;.
+        /// </summary>
+        internal static string NewDataMaskingRuleIdIsNotValid {
+            get {
+                return ResourceManager.GetString("NewDataMaskingRuleIdIsNotValid", resourceCulture);
             }
         }
         

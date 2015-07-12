@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
-    [OutputType(typeof(PSVirtualMachineExtensionImage))]
+    [OutputType(typeof(PSVirtualMachineExtensionImageType))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
@@ -35,26 +35,29 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineExtensionImageListTypesParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName
-            };
+                var parameters = new VirtualMachineExtensionImageListTypesParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImage
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Type = r.Name,
-                             PublisherName = this.PublisherName
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineExtensionImageType
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 Type = r.Name,
+                                 PublisherName = this.PublisherName
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

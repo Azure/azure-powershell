@@ -18,6 +18,9 @@ Tests verifies negative scenarios for RoleAssignments
 #>
 function Test-RaNegativeScenarios
 {
+	# Setup
+	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
 	$subscription = Get-AzureSubscription -Current
 
 	# Bad OID does not throw when getting a non-existing role assignment
@@ -53,7 +56,8 @@ function Test-RaByScope
 	$definitionName = 'Reader'
 	$users = Get-AzureADUser | Select-Object -First 1 -Wait
 	$subscription = Get-AzureSubscription -Current
-	$scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + 'SomeResourceGroup'
+    $resourceGroups = Get-AzureResourceGroup | Select-Object -Last 1 -Wait
+	$scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
 	Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 	
 	# Test
@@ -119,11 +123,8 @@ function Test-RaByResource
 
 	$definitionName = 'Owner'
 	$groups = Get-AzureADGroup | Select-Object -Last 1 -Wait
-	$resourceGroups = Get-AzureResourceGroup | Select-Object -First 1 -Wait
 	Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-	Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
-	$resource = Get-AzureResource -ResourceGroupName $resourceGroups[0].ResourceGroupName `
-								  | Select-Object -Last 1 -Wait
+	$resource = Get-AzureResource -ResourceGroupName 'csmrg8120'
 	Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
 	# Test
@@ -131,7 +132,7 @@ function Test-RaByResource
 	$newAssignment = New-AzureRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -ResourceGroupName 'csmrg8120' `
                         -ResourceType $resource.ResourceType `
                         -ResourceName $resource.Name
 	
@@ -158,7 +159,8 @@ function Test-RaByServicePrincipal
 	$definitionName = 'Reader'
 	$servicePrincipals = Get-AzureADServicePrincipal | Select-Object -Last 1 -Wait
 	$subscription = Get-AzureSubscription -Current
-	$scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + 'SomeResourceGroupForSpn'
+    $resourceGroups = Get-AzureResourceGroup | Select-Object -Last 1 -Wait
+	$scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
 	Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
 	# Test

@@ -66,7 +66,7 @@ function create_and_setup_nic_ids
     $nic_ids = @($null) * 1;
     $nic0 = New-AzureNetworkInterface -Force -Name ('nic0' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
     $nic_ids[0] = $nic0.Id;
-    $vmconfig = Add-AzureVMNetworkInterface -VM $vmconfig -Id $nic0.Id;
+    $vmconfig = Add-AzureVMNetworkInterface -VM $vmconfig -Id $nic0.Id -Primary;
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - End";
 
     return $nic_ids;
@@ -105,8 +105,7 @@ function setup_image_and_disks
 
     $vmconfig = Set-AzureVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-    # Image Reference;
-    $vmconfig.StorageProfile.SourceImage = $null;
+    # Image Reference
     $imgRef = Get-DefaultCRPImage -loc $loc;
     $vmconfig = ($imgRef | Set-AzureVMSourceImage -VM $vmconfig);
 
@@ -119,20 +118,20 @@ function setup_image_and_disks
 }
 
 
-function ps_vm_dynamic_test_func_1_pstestrg1016
+function ps_vm_dynamic_test_func_1_pstestrg592
 {
     # Setup
-    $rgname = 'pstestrg1016';
+    $rgname = 'pstestrg592';
 
     try
     {
-        $loc = 'West US';
-        $vmsize = 'Standard_A3';
+        $loc = 'Japan East';
+        $vmsize = 'Standard_A2';
 
-        $st = Write-Verbose "Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - Start ${rgname}, ${loc} & ${vmsize}";
+        $st = Write-Verbose "Running Test ps_vm_dynamic_test_func_1_pstestrg592 - Start ${rgname}, ${loc} & ${vmsize}";
 
-        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - Creating Resource Group';
-        $st = New-AzureResourceGroup -Location $loc -Name $rgname;
+        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg592 - Creating Resource Group';
+        $st = New-AzureResourceGroup -Location $loc -Name $rgname -Force;
 
         $vmconfig = create_and_setup_vm_config_object $loc $rgname $vmsize;
 
@@ -146,20 +145,20 @@ function ps_vm_dynamic_test_func_1_pstestrg1016
         $st = setup_image_and_disks $loc $rgname $stoname $vmconfig;
 
         # Virtual Machine
-        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - Creating VM';
+        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg592 - Creating VM';
 
         $vmname = 'vm' + $rgname;
         $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $vmconfig;
 
         # Get VM
-        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - Getting VM';
+        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg592 - Getting VM';
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
 
         # Remove
-        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - Removing VM';
+        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg592 - Removing VM';
         $st = Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
 
-        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg1016 - End';
+        $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_1_pstestrg592 - End';
     }
     finally
     {

@@ -26,16 +26,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         public void TestDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithEventTypes");
@@ -43,7 +41,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithEventTypes");
@@ -163,14 +160,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseDirectAccess()
-        {
-            RunPowerShellTest("Test-DatabaseDirectAccess");
-        }
-
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-DatabaseStorageKeyRotation");
@@ -184,33 +173,29 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-ServerStorageKeyRotation");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-ServerRetentionKeepProperties");
         }
 
-        [Fact(Skip = "Test executes for long time period")]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-DatabaseRetentionKeepProperties");

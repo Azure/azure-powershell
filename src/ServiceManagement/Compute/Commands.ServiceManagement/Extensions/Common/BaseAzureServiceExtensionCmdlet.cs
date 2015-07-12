@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected XDocument PublicConfigurationXml { get; set; }
         protected XDocument PrivateConfigurationXml { get; set; }
         protected DeploymentGetResponse Deployment { get; set; }
+        protected DeploymentGetResponse PeerDeployment { get; set; }
 
         public virtual string ServiceName { get; set; }
         public virtual string Slot { get; set; }
@@ -109,6 +110,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
                 Deployment.ExtensionConfiguration = Deployment.ExtensionConfiguration ?? new Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration();
             }
+
+            PeerDeployment = GetPeerDeployment(Slot);
         }
 
         protected void ValidateRoles()
@@ -277,12 +280,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 {
                     if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });
 
             return d;
+        }
+
+        protected DeploymentGetResponse GetPeerDeployment(string currentSlot)
+        {
+            var currentSlotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), currentSlot, true);
+            var peerSlot = currentSlotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
+            var peerSlotStr = peerSlot.ToString();
+
+            return GetDeployment(peerSlotStr);
         }
 
         protected SecureString GetSecurePassword(string password)

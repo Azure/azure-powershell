@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     internal static class AuthorizationClientExtensions
     {
+        public const string CustomRole = "CustomRole";
+
         public static PSRoleDefinition ToPSRoleDefinition(this RoleDefinition role)
         {
             PSRoleDefinition roleDefinition = null;
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Id = role.Id,
                     AssignableScopes = role.Properties.AssignableScopes.ToList(),
                     Description = role.Properties.Description,
-                    IsCustom = role.Properties.Type == "CustomRole" ? true : false
+                    IsCustom = role.Properties.Type == CustomRole ? true : false
                 };
             }
 
