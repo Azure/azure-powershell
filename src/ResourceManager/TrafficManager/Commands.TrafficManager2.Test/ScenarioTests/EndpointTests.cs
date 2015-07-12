@@ -32,5 +32,54 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-DeleteEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-GetExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveNonExistingEndpointFromProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
+        }
     }
 }
