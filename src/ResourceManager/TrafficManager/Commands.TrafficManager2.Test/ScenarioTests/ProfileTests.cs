@@ -60,5 +60,47 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnable()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnable");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnablePipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnablePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnableNonExisting()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnableNonExisting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisable()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisable");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisablePipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisablePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisableNonExisting()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisableNonExisting");
+        }
     }
 }

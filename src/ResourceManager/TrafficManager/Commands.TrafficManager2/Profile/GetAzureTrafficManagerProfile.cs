@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
             else if (this.ResourceGroupName != null && this.Name != null)
             {
-                TrafficManagerProfile profile =
-                    this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
+                TrafficManagerProfile profile = this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteObject(profile);

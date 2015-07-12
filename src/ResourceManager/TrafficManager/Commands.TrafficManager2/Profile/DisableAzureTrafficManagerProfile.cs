@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 this.Force.IsPresent,
                 string.Format(ProjectResources.Confirm_DisableProfile, profileToDisable.Name),
                 ProjectResources.Progress_DisablingProfile,
-                this.Name,
+                profileToDisable.Name,
                 () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToDisable, shouldEnableProfileStatus: false); });
 
             if (disabled)

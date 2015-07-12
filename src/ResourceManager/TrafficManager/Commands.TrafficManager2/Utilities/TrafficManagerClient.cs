@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 this.TrafficManagerManagementClient.Profiles.ListAllInResourceGroup(resourceGroupName);
 
             return response.Profiles.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
-                resourceGroupName, 
+                resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id), 
                 profile.Name,
                 profile.Properties)).ToArray();
         }
@@ -200,9 +200,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         {
             profile.ProfileStatus = shouldEnableProfileStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
 
+            Profile sdkProfile = profile.ToSDKProfile();
+            sdkProfile.Properties.DnsConfig = null;
+            sdkProfile.Properties.Endpoints = null;
+            sdkProfile.Properties.TrafficRoutingMethod = null;
+            sdkProfile.Properties.MonitorConfig = null;
+
             var parameters = new ProfileUpdateParameters
             {
-                Profile = profile.ToSDKProfile()
+                Profile = sdkProfile
             };
 
             AzureOperationResponse response = this.TrafficManagerManagementClient.Profiles.Update(profile.ResourceGroupName, profile.Name, parameters);
@@ -235,6 +241,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             {
                 Name = profileName,
                 ResourceGroupName = resourceGroupName,
+                ProfileStatus = mamlProfileProperties.ProfileStatus,
                 RelativeDnsName = mamlProfileProperties.DnsConfig.RelativeName,
                 Ttl = mamlProfileProperties.DnsConfig.Ttl,
                 TrafficRoutingMethod = mamlProfileProperties.TrafficRoutingMethod,
@@ -263,6 +270,11 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             }
 
             return profile;
+        }
+
+        private static string ExtractResourceGroupFromId(string id)
+        {
+            return id.Split('/')[4];
         }
 
         private static TrafficManagerEndpoint GetPowershellTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointProperties mamlEndpointProperties)
