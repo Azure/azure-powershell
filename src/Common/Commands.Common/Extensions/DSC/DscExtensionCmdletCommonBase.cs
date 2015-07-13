@@ -7,6 +7,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -14,7 +15,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
-    public class DscExtensionCmdletCommonBase : PSCmdlet
+    public class DscExtensionCmdletCommonBase : AzurePSCmdlet
     {
         //Publish
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -332,26 +333,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
             return containerReference.GetBlockBlobReference(blobName);
         }
 
-        /// <summary>
-        /// Asks for confirmation before executing the action.
-        /// </summary>
-        /// <param name="force">Do not ask for confirmation</param>
-        /// <param name="actionMessage">Message to describe the action</param>
-        /// <param name="processMessage">Message to prompt after the active is performed.</param>
-        /// <param name="target">The target name.</param>
-        /// <param name="action">The action code</param>
-        private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
-        {
-            if (force || ShouldContinue(actionMessage, ""))
-            {
-                if (ShouldProcess(target, processMessage))
-                {
-                    action();
-                }
-            }
-        }
+        /** /// <summary>
+         /// Asks for confirmation before executing the action.
+         /// </summary>
+         /// <param name="force">Do not ask for confirmation</param>
+         /// <param name="actionMessage">Message to describe the action</param>
+         /// <param name="processMessage">Message to prompt after the active is performed.</param>
+         /// <param name="target">The target name.</param>
+         /// <param name="action">The action code</param>
+         private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
+         {
+             if (force || ShouldContinue(actionMessage, ""))
+             {
+                 if (ShouldProcess(target, processMessage))
+                 {
+                     action();
+                 }
+             }
+         }**/
 
-        private void ThrowInvalidArgumentError(String format, params object[] args)
+        protected void ThrowInvalidArgumentError(String format, params object[] args)
         {
             ThrowTerminatingError(
                 new ErrorRecord(

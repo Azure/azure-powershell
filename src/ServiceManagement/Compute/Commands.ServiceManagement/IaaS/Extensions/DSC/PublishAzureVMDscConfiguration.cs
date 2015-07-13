@@ -12,23 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
@@ -38,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
     /// Set-AzureVMDscExtension cmdlet.
     /// </summary>
     [Cmdlet(VerbsData.Publish, "AzureVMDscConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = UploadArchiveParameterSetName)]
-    public class PublishAzureVMDscConfigurationCommand : ServiceManagementBaseCmdlet
+    public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletBase
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
         private const string UploadArchiveParameterSetName = "UploadArchive";
@@ -102,7 +89,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// </summary>
         private StorageCredentials _storageCredentials;
 
-        private readonly DscExtensionCmdletCommonBase _dscExtensionCmdletCommonBase = new DscExtensionCmdletCommonBase();
         protected override void ProcessRecord()
         {
             try
@@ -117,19 +103,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             finally
             {
-                _dscExtensionCmdletCommonBase.DeleteTemporaryFiles();
+                DeleteTemporaryFiles();
             }
         }
 
         private void ExecuteCommand()
         {
             //check the PS version
-            _dscExtensionCmdletCommonBase.ValidatePsVersion();
+            ValidatePsVersion();
 
             //validate cmdlet params
             ConfigurationPath = GetUnresolvedProviderPathFromPSPath(ConfigurationPath);
 
-            _dscExtensionCmdletCommonBase.ValidateConfigurationPath(ConfigurationPath, ParameterSetName);
+            ValidateConfigurationPath(ConfigurationPath, ParameterSetName);
 
             switch (ParameterSetName)
             {
@@ -137,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                     ConfigurationArchivePath = GetUnresolvedProviderPathFromPSPath(ConfigurationArchivePath);
                     break;
                 case UploadArchiveParameterSetName:
-                    _storageCredentials = this.GetStorageCredentials(StorageContext);
+                    _storageCredentials = GetStorageCredentials(StorageContext);
                     if (ContainerName == null)
                     {
                         ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
@@ -146,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
 
             //PublishConfiguration();
-            _dscExtensionCmdletCommonBase.PublishConfiguration(
+            PublishConfiguration(
                 ConfigurationPath,
                 ConfigurationArchivePath,
                 Force.IsPresent,
