@@ -21,6 +21,28 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SecurityTests : SqlTestsBase
     {
+        protected Microsoft.Azure.Management.Storage.StorageManagementClient GetStorageV2Client()
+        {
+            var client = TestBase.GetServiceClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected override void SetupManagementClients()
+        {
+            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
+            var storageClient = GetStorageClient();
+            var storageV2Client = GetStorageV2Client();
+            var resourcesClient = GetResourcesClient();
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+        }
+
+        
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithStorage()
