@@ -56,11 +56,20 @@ namespace Microsoft.Azure.Commands.DataFactories
             };
         }
 
-        public virtual List<PSTable> ListTables(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSTable> ListTables(TableFilterOptions filterOptions)
         {
             List<PSTable> tables = new List<PSTable>();
 
-            var response = DataPipelineManagementClient.Tables.List(resourceGroupName, dataFactoryName);
+            TableListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.Tables.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.Tables.List(filterOptions.ResourceGroupName, filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.Tables != null)
             {
@@ -69,8 +78,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                     tables.Add(
                         new PSTable(table)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName
                         });
                 }
             }
@@ -104,7 +113,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                tables.AddRange(ListTables(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
+                tables.AddRange(ListTables(filterOptions));
             }
 
             return tables;
