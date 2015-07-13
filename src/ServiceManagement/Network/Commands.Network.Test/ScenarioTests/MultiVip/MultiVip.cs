@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Storage;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
     using Microsoft.Azure.Common.Authentication;
@@ -66,7 +69,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
         {
             var client = TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
             var client2 = TestBase.GetServiceClient<ManagementClient>(new RDFETestEnvironmentFactory());
-            helper.SetupSomeOfManagementClients(client, client2);
+            var client3 = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            var client4 = TestBase.GetServiceClient<ComputeManagementClient>(new RDFETestEnvironmentFactory());
+            helper.SetupManagementClients(client, client2, client3, client4);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
