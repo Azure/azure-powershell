@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             helper = new EnvironmentSetupHelper();
         }
 
-        protected virtual void SetupManagementClients()
+        protected void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
