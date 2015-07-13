@@ -212,7 +212,19 @@
     <Compile Include="PublicIpAddress\PublicIpAddressBaseCmdlet.cs" />
     <Compile Include="PublicIpAddress\RemoveAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\SetAzurePublicIpAddressCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
+    <Compile Include="Models\PSRouteTable.cs" />
+    <Compile Include="Models\PSRoute.cs" />
+    <Compile Include="RouteTable\GetAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\RouteTableBaseCmdlet.cs" />
+    <Compile Include="RouteTable\NewAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\RemoveAzureRouteTableCommand.cs" />
+    <Compile Include="RouteTable\Route\AddAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\AzureRouteConfigBase.cs" />
+    <Compile Include="RouteTable\Route\GetAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\NewAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\RemoveAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\Route\SetAzureRouteConfigCommand.cs" />
+    <Compile Include="RouteTable\SetAzureRouteTableCommand.cs" />    <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
     <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
@@ -278,7 +290,6 @@
     <Compile Include="Models\PSLoadBalancer.cs" />
     <Compile Include="Models\PSLoadBalancingRule.cs" />
     <Compile Include="Models\PSProbe.cs" />
-    <Compile Include="Models\PSProbeProtocol.cs" />
     <Compile Include="Models\PSAddressSpace.cs" />
     <Compile Include="Models\PSDhcpOptions.cs" />
     <Compile Include="Models\PSNetworkInterfaceDnsSettings.cs" />
@@ -319,7 +330,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ProviderWideCmdlets\GetAzureCheckDnsAvailabilityCmdlet.cs" />
+    <Compile Include="ProviderWideCmdlets\TestAzureDnsAvailabilityCmdlet.cs" />
     <Compile Include="VirtualNetwork\RemoveAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\SetAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\Subnet\AzureVirtualNetworkSubnetConfigBase.cs" />

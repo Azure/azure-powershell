@@ -12,39 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsDiagnostic.Test, "AzureDnsAvailability"), OutputType(typeof(bool))]
+    public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the load balancer probe")]
+            Mandatory = true,
+            HelpMessage = "The Domain Qualified Name.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string DomainQualifiedName { get; set; }
 
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The loadbalancer")]
-        public PSLoadBalancer LoadBalancer { get; set; }
+            Mandatory = true,
+            HelpMessage = "Location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (probe != null)
-            {
-                this.LoadBalancer.Probes.Remove(probe);
-            }
-
-            WriteObject(this.LoadBalancer);
+            this.Location = this.Location.Replace(" ", string.Empty);
+            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);
+            WriteObject(result.DnsNameAvailability);
         }
     }
 }

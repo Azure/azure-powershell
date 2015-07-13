@@ -16,44 +16,46 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class SetAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
+    [Cmdlet(VerbsCommon.Add, "AzureRouteConfig"), OutputType(typeof(PSRouteTable))]
+    public class AddAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Inbound NAT rule")]
+            HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The load balancer")]
-        public PSLoadBalancer LoadBalancer { get; set; }
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (probe == null)
+            // Verify if the Route exists in the RouteTable
+            var route = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (route != null)
             {
-                throw new ArgumentException("Probe with the specified name does not exist");
+                throw new ArgumentException("Route with the specified name already exists");
             }
+            
+            route = new PSRoute();
 
-            probe.Name = this.Name;
-            probe.Port = this.Port;
-            probe.Protocol = this.Protocol;
-            probe.RequestPath = this.RequestPath;
-            probe.IntervalInSeconds = this.IntervalInSeconds;
-            probe.NumberOfProbes = this.ProbeCount;
+            route.Name = this.Name;
+            route.AddressPrefix = this.AddressPrefix;
+            route.NextHopType = this.NextHopType;
+            route.NextHopIpAddress = this.NextHopIpAddress;
 
-            WriteObject(this.LoadBalancer);
+            this.RouteTable.Routes.Add(route);
+
+            WriteObject(this.RouteTable);
         }
     }
 }

@@ -17,39 +17,38 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureLoadBalancerProbeConfigBase : NetworkBaseCmdlet
+    public class AzureRouteConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the probe")]
+            HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Request path")]
+            HelpMessage = "The destination CIDR to which the route applies")]
         [ValidateNotNullOrEmpty]
-        public string RequestPath { get; set; }
+        public string AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The type of Azure hop the packet should be sent to.")]
+        [ValidateSet(
+            MNM.RouteNextHopType.Internet,
+            MNM.RouteNextHopType.Null,
+            MNM.RouteNextHopType.VirtualAppliance,
+            MNM.RouteNextHopType.VirtualNetworkGateway,
+            MNM.RouteNextHopType.VnetLocal,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string NextHopType { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
-        public string Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The probe port")]
-        public int Port { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "IntervalInSeconds")]
-        public int IntervalInSeconds { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "NumberOfProbes")]
-        public int ProbeCount { get; set; }
+            HelpMessage = "The IP address packets should be forwarded to. "
+                            + "Next hop values are only allowed in routes where the "
+                            + "next hop type is VirtualAppliance.")]
+        public string NextHopIpAddress { get; set; }
     }
 }

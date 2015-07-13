@@ -12,48 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class SetAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
+    [Cmdlet(VerbsCommon.Get, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
+    public class GetAzureRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Inbound NAT rule")]
+           Mandatory = false,
+           HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The load balancer")]
-        public PSLoadBalancer LoadBalancer { get; set; }
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            var routes = this.RouteTable.Routes;
             
-            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (probe == null)
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                throw new ArgumentException("Probe with the specified name does not exist");
+                var route =
+                    routes.First(
+                        resource =>
+                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                WriteObject(route);
             }
-
-            probe.Name = this.Name;
-            probe.Port = this.Port;
-            probe.Protocol = this.Protocol;
-            probe.RequestPath = this.RequestPath;
-            probe.IntervalInSeconds = this.IntervalInSeconds;
-            probe.NumberOfProbes = this.ProbeCount;
-
-            WriteObject(this.LoadBalancer);
+            else
+            {
+                WriteObject(routes, true);
+            }
         }
     }
 }

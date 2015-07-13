@@ -22,34 +22,34 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class SetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRouteTable"), OutputType(typeof(PSRouteTable))]
+    public class SetAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkSecurityGroup")]
-        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+            HelpMessage = "The RouteTable")]
+        public PSRouteTable RouteTable { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
+            if (!this.IsRouteTablePresent(this.RouteTable.ResourceGroupName, this.RouteTable.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
             
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
-            nsgModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkSecurityGroupType;
-            nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkSecurityGroup.Tag, validate: true);
+            var routeTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
+            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
+            routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
 
-            // Execute the PUT NetworkSecurityGroup call
-            this.NetworkSecurityGroupClient.CreateOrUpdate(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name, nsgModel);
+            // Execute the PUT RouteTable call
+            this.RouteTableClient.CreateOrUpdate(this.RouteTable.ResourceGroupName, this.RouteTable.Name, routeTableModel);
 
-            var getNetworkSecurityGroup = this.GetNetworkSecurityGroup(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name);
-            WriteObject(getNetworkSecurityGroup);
+            var getRouteTable = this.GetRouteTable(this.RouteTable.ResourceGroupName, this.RouteTable.Name);
+            WriteObject(getRouteTable);
         }
     }
 }

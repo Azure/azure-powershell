@@ -12,39 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
+    public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the load balancer probe")]
+            Mandatory = true,
+            HelpMessage = "The name of the route")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The loadbalancer")]
-        public PSLoadBalancer LoadBalancer { get; set; }
+        public override string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var probe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var route = new PSRoute();
 
-            if (probe != null)
-            {
-                this.LoadBalancer.Probes.Remove(probe);
-            }
+            route.Name = this.Name;
+            route.AddressPrefix = this.AddressPrefix;
+            route.NextHopType = this.NextHopType;
+            route.NextHopIpAddress = this.NextHopIpAddress;
 
-            WriteObject(this.LoadBalancer);
+            WriteObject(route);
         }
     }
 }
