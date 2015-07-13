@@ -17,13 +17,13 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class CheckDnsAvailabilityTest
+    public class ApplicationGatewayTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCheckDnsAvailability()
+        public void TestApplicationGatewayCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-CheckDnsAvailability");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ApplicationGatewayCRUD");
         }
     }
 }

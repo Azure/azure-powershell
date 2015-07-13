@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var virtualNetwork = this.CreateNetworkSecurityGroup();
+                var networkSecurityGroup = this.CreateNetworkSecurityGroup();
 
-                WriteObject(virtualNetwork);
+                WriteObject(networkSecurityGroup);
             }
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             nsgModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkSecurityGroupType;
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            // Execute the Create VirtualNetwork call
+            // Execute the Create NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);
 
             var getNetworkSecurityGroup = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);

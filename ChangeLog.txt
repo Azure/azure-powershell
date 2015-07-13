@@ -1,7 +1,79 @@
 ﻿2015.07.16 version 0.9.5
-*Azure Network cmdlets
-    * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
-    * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+* Azure Network Resource Provider cmdlets
+    * Added Application Gateway cmdlets
+        * New-AzureApplicationGateway
+        * Start-AzureApplicationGateway
+        * Stop-AzureApplicationGateway
+        * SetAzureApplicationGateway
+        * GetAzureApplicationGateway
+        * RemoveAzureApplicationGateway
+    * Added Application Gateway Backend Address Pool cmdlets
+        * New-AzureApplicationGatewayBackendAddressPool
+        * Add-AzureApplicationGatewayBackendAddressPool
+        * Set-AzureApplicationGatewayBackendAddressPool
+        * Get-AzureApplicationGatewayBackendAddressPool
+        * Remove-AzureApplicationGatewayBackendAddressPool
+    * Added Application Gateway Backend HTTP Settings cmdlets
+        * New-AzureApplicationGatewayBackendHttpSettings
+        * Add-AzureApplicationGatewayBackendHttpSettings
+        * Set-AzureApplicationGatewayBackendHttpSettings
+        * Get-AzureApplicationGatewayBackendHttpSettings
+        * Remove-AzureApplicationGatewayBackendHttpSettings
+    * Added Application Gateway Frontend IP Configuration cmdlets
+        * New-AzureApplicationGatewayFrontendIPConfiguration
+        * Add-AzureApplicationGatewayFrontendIPConfiguration
+        * Set-AzureApplicationGatewayFrontendIPConfiguration
+        * Get-AzureApplicationGatewayFrontendIPConfiguration
+        * Remove-AzureApplicationGatewayFrontendIPConfiguration
+    * Added Application Gateway Frontend Port cmdlets
+        * New-AzureApplicationGatewayFrontendPort
+        * Add-AzureApplicationGatewayFrontendPort
+        * Set-AzureApplicationGatewayFrontendPort
+        * Get-AzureApplicationGatewayFrontendPort
+        * Remove-AzureApplicationGatewayFrontendPort
+    * Added Application Gateway IP Configuration cmdlets
+        * New-AzureApplicationGatewayGatewayIPConfiguration
+        * Add-AzureApplicationGatewayGatewayIPConfiguration
+        * Set-AzureApplicationGatewayGatewayIPConfiguration
+        * Get-AzureApplicationGatewayGatewayIPConfiguration
+        * Remove-AzureApplicationGatewayGatewayIPConfiguration
+    * Added Application Gateway HTTP Listener cmdlets
+        * New-AzureApplicationGatewayHttpListener
+        * Add-AzureApplicationGatewayHttpListener
+        * Set-AzureApplicationGatewayHttpListener
+        * Get-AzureApplicationGatewayHttpListener
+        * Remove-AzureApplicationGatewayHttpListener
+    * Added Application Gateway Request Routing Rule cmdlets
+        * New-AzureApplicationGatewayRequestRoutingRule
+        * Add-AzureApplicationGatewayRequestRoutingRule
+        * Set-AzureApplicationGatewayRequestRoutingRule
+        * Get-AzureApplicationGatewayRequestRoutingRule
+        * Remove-AzureApplicationGatewayRequestRoutingRule
+    * Added Application Gateway SKU cmdlets
+        * New-AzureApplicationGatewaySku
+        * Set-AzureApplicationGatewaySku
+        * Get-AzureApplicationGatewaySku
+    * Added Application Gateway SSL Certificate cmdlets
+        * New-AzureApplicationGatewaySslCertificate
+        * Add-AzureApplicationGatewaySslCertificate
+        * Set-AzureApplicationGatewaySslCertificate
+        * Get-AzureApplicationGatewaySslCertificate
+        * Remove-AzureApplicationGatewaySslCertificate
+	* Fixed minor bugs AzureLoadbalancer 
+	* Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
+	* Added cmdlets to RouteTables and Routes
+		* New-AzureRouteTable
+		* Get-AzureRouteTable
+		* Set-AzureRouteTable
+		* Remove-AzureRouteTable
+		* New-AzureRouteConfig
+		* Add-AzureRouteConfig
+		* Set-AzureRouteConfig
+		* Get-AzureRouteConfig
+		* Remove-AzureRouteConfig
+	*Azure Network cmdlets
+		* Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
+		* Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
 
 2015.07.10 version 1.0.0
 * Azure Backup cmdlets
@@ -10,8 +82,6 @@
     *Added Set-AzureBackupVault cmdlets
     *Added Remove-AzureBackupVault cmdlets
     *Added Get-AzureBackupVaultCredential cmdlets
-
-2015.07.16 version 0.9.5
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
@@ -53,6 +123,12 @@
         * Get-AzureSqlDatabaseRestorePoints
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
+* Azure Recovery Services
+    * Fixed Storage and Network mapping issues
+    * Added encryption support for failover changes
+    * Added Delete vault support
+    * Provisioned to update VM properties
+    * Few bug fixes
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454

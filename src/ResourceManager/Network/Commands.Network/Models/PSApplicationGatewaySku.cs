@@ -15,10 +15,10 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public enum PSProbeProtocol
-    {
-        Http,
-
-        Tcp,
-    }
+    public class PSApplicationGatewaySku
+     {
+        public string Name { get; set; }
+        public string Tier { get; set; }        
+        public int Capacity { get; set; }        
+     }
 }

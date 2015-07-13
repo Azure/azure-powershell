@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "EnableIPForwarding")]
+        public SwitchParameter EnableIPForwarding { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
@@ -222,6 +227,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
+            networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
