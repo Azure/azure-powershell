@@ -601,6 +601,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It doesn&apos;t support logging in Microsoft Azure File service..
+        /// </summary>
+        internal static string FileNotSupportLogging {
+            get {
+                return ResourceManager.GetString("FileNotSupportLogging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It doesn&apos;t support metrics in Microsoft Azure File service..
+        /// </summary>
+        internal static string FileNotSupportMetrics {
+            get {
+                return ResourceManager.GetString("FileNotSupportMetrics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Percent : {0}%. Average Speed : {1}/Second..
         /// </summary>
         internal static string FileTransmitStatus {

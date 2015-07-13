@@ -22,6 +22,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File.Protocol;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Storage.Table;
@@ -342,6 +344,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     return account.CreateCloudQueueClient().GetServiceProperties((QueueRequestOptions) options, operationContext);
                 case StorageServiceType.Table:
                     return account.CreateCloudTableClient().GetServiceProperties((TableRequestOptions) options, operationContext);
+                case StorageServiceType.File:
+                    FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServiceProperties((FileRequestOptions)options, operationContext);
+                    ServiceProperties sp = new ServiceProperties();
+                    sp.Clean();
+                    sp.Cors = fileServiceProperties.Cors;
+                    return sp;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
             }
@@ -368,6 +376,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     break;
                 case StorageServiceType.Table:
                     account.CreateCloudTableClient().SetServiceProperties(properties, (TableRequestOptions)options, operationContext);
+                    break;
+                case StorageServiceType.File:
+                    if (null != properties.Logging)
+                    {
+                        throw new InvalidOperationException(Resources.FileNotSupportLogging);
+                    }
+
+                    if (null != properties.HourMetrics || null != properties.MinuteMetrics)
+                    {
+                        throw new InvalidOperationException(Resources.FileNotSupportMetrics);
+                    }
+
+                    FileServiceProperties fileServiceProperties = new FileServiceProperties();
+                    fileServiceProperties.Cors = properties.Cors;
+                    account.CreateCloudFileClient().SetServiceProperties(fileServiceProperties, (FileRequestOptions)options, operationContext);
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");

@@ -177,6 +177,12 @@
   <data name="InvalidStartTime" xml:space="preserve">
     <value>Invalid start time '{0}'.</value>
   </data>
+  <data name="FileNotSupportLogging" xml:space="preserve">
+    <value>It doesn't support logging in Microsoft Azure File service.</value>
+  </data>
+  <data name="FileNotSupportMetrics" xml:space="preserve">
+    <value>It doesn't support metrics in Microsoft Azure File service.</value>
+  </data>
   <data name="OnlyOnePermissionForContainer" xml:space="preserve">
     <value>You must supply only one permission in Off/Blob/Container for container.</value>
   </data>
