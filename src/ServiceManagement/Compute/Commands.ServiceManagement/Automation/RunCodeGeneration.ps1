@@ -1,8 +1,35 @@
-﻿[CmdletBinding()]
+﻿# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+# This script is to generate a set of operation and parameter cmdlets that
+# are mapped from the source client library. 
+#
+# For example, 'ComputeManagementClient.VirtualMachines.Start()' would be
+# 'Invoke-AzureVirtualMachineStartMethod'.
+#
+# It's also possible to map the actual verb from function to cmdlet, e.g.
+# the above example would be 'Start-AzureVirtualMachine', but to keep it
+# simple and consistent, we would like to use the generic verb.
+
+[CmdletBinding()]
 param(
+    # The folder that contains the source DLL, and all its dependency DLLs.
     [Parameter(Mandatory = $true)]
     [string]$dllFolder,
 
+    # The target output folder, and the generated files would be organized in
+    # the sub-folder called 'Generated'.
     [Parameter(Mandatory = $true)]
     [string]$outFolder,
     
