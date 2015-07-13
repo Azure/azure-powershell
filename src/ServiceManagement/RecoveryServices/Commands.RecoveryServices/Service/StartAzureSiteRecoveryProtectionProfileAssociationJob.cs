@@ -83,16 +83,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Handles interrupts.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            // Ctrl + C and etc
-            base.StopProcessing();
-            this.StopProcessingFlag = true;
-        }
-
-        /// <summary>
         /// Associates protection profile with one enterprise based and an Azure protection container
         /// </summary>
         private void EnterpriseToAzureAssociation()
@@ -155,6 +145,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             if (string.Compare(
                 this.ProtectionProfile.ReplicationProvider,
                 Constants.HyperVReplica,
+                StringComparison.OrdinalIgnoreCase) != 0 &&
+                string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.San,
                 StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
@@ -163,26 +157,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     this.ProtectionProfile.ReplicationProvider));
             }
 
-            HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
-                    = new HyperVReplicaProtectionProfileInput()
+            CreateProtectionProfileInput createProtectionProfileInput = null;
+
+            if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.HyperVReplica,
+                StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
+                        = new HyperVReplicaProtectionProfileInput()
+                        {
+                            ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
+                            ReplicationFrequencyInSeconds = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds,
+                            OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
+                            CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
+                            OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? true : false,
+                            RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
+                            ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
+                            AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
+                            AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                        };
+
+                createProtectionProfileInput =
+                    new CreateProtectionProfileInput(
+                    //// Name of the protection profile as the name of the protection container if not given
+                        string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
+                        this.ProtectionProfile.ReplicationProvider,
+                        DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));
+            }
+            else if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.San,
+                StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                SanProtectionProfileInput sanProtectionProfileInput
+                    = new SanProtectionProfileInput()
                     {
-                        ApplicationConsistentSnapshotFrequencyInHours = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ApplicationConsistentSnapshotFrequencyInHours,
-                        ReplicationFrequencyInSeconds = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationFrequencyInSeconds,
-                        OnlineReplicationStartTime = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationStartTime,
-                        CompressionEnabled = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.CompressionEnabled,
-                        OnlineReplicationMethod = (string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? true : false,
-                        RecoveryPoints = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.RecoveryPoints,
-                        ReplicationPort = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.ReplicationPort,
-                        AllowReplicaDeletion = this.ProtectionProfile.HyperVReplicaProviderSettingsObject.AllowReplicaDeletion,
-                        AllowedAuthenticationType = (ushort)((string.Compare(this.ProtectionProfile.HyperVReplicaProviderSettingsObject.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                        CloudId = this.ProtectionProfile.SanProviderSettingsObject.CloudId,
+                        RemoteCloudId = this.ProtectionProfile.SanProviderSettingsObject.RemoteCloudId,
+                        ArrayUniqueId = this.ProtectionProfile.SanProviderSettingsObject.ArrayUniqueId,
+                        RemoteArrayUniqueId = this.ProtectionProfile.SanProviderSettingsObject.RemoteArrayUniqueId
                     };
 
-            CreateProtectionProfileInput createProtectionProfileInput =
-                new CreateProtectionProfileInput(
+                createProtectionProfileInput =
+                    new CreateProtectionProfileInput(
                     //// Name of the protection profile as the name of the protection container if not given
-                    string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
-                    this.ProtectionProfile.ReplicationProvider,
-                    DataContractUtils<HyperVReplicaProtectionProfileInput>.Serialize(hyperVReplicaProtectionProfileInput));
+                        string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
+                        this.ProtectionProfile.ReplicationProvider,
+                        DataContractUtils<SanProtectionProfileInput>.Serialize(sanProtectionProfileInput));
+            }
 
             ProtectionProfileAssociationInput protectionProfileAssociationInput =
                 new ProtectionProfileAssociationInput(

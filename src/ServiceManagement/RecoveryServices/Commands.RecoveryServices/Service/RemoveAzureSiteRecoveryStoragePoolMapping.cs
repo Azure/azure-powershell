@@ -14,40 +14,54 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
+using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// This command will download the xml file for the recovery plan.
+    /// Creates Azure Site Recovery Storage pool mapping.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryRecoveryPlanFile", DefaultParameterSetName = ASRParameterSets.ByRPObject)]
-    public class GetAzureSiteRecoveryRecoveryPlanFile : RecoveryServicesCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureSiteRecoveryStoragePoolMapping")]
+    [OutputType(typeof(ASRJob))]
+    public class RemoveAzureSiteRecoveryStoragePoolMapping : RecoveryServicesCmdletBase
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets XML file path of the Recovery Plan.
+        /// Job response.
+        /// </summary>
+        private JobResponse jobResponse = null;
+
+        /// <summary>
+        /// Gets or sets Primary Storage object.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public ASRStorage PrimaryStorage { get; set; }
 
         /// <summary>
-        /// Gets or sets ID of the Recovery Plan.
+        /// Gets or sets Primary Storage pool id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ById, Mandatory = true)]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string PrimaryStoragePoolId { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery Plan object.
+        /// Gets or sets Recovery Storage object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        public ASRStorage RecoveryStorage { get; set; }
+
+        /// <summary>
+        /// Gets or sets Recovery Storage pool id.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryStoragePoolId { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -57,17 +71,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByRPObject:
-                        this.Id = this.RecoveryPlan.ID;
-                        break;
+                this.jobResponse =
+                    RecoveryServicesClient
+                    .RemoveAzureSiteRecoveryStoragePoolMapping(
+                    this.PrimaryStorage.ServerId,
+                    this.PrimaryStorage.ID,
+                    this.PrimaryStoragePoolId,
+                    this.RecoveryStorage.ServerId,
+                    this.RecoveryStorage.ID,
+                    this.RecoveryStoragePoolId);
 
-                    case ASRParameterSets.ById:
-                        break;
-                }
-
-                this.GetRecoveryPlanFile();
+                this.WriteJob(this.jobResponse.Job);
             }
             catch (Exception exception)
             {
@@ -76,18 +90,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Get the recovery plan xml file.
+        /// Writes Job.
         /// </summary>
-        private void GetRecoveryPlanFile()
+        /// <param name="job">JOB object</param>
+        private void WriteJob(Microsoft.WindowsAzure.Management.SiteRecovery.Models.Job job)
         {
-            if (Directory.Exists(this.Path))
-            {
-                throw new ArgumentException("The input path is a directory. Please provide file path. Check the examples of the commandlet", "Path");
-            }
-
-            RecoveryPlanXmlOuput recoveryPlanXmlOuput =
-                RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlanFile(this.Id);
-            System.IO.File.WriteAllText(this.Path, recoveryPlanXmlOuput.RecoveryPlanXml);
+            this.WriteObject(new ASRJob(job));
         }
     }
 }
