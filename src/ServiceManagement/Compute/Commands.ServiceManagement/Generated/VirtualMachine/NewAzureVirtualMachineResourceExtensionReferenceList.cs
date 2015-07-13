@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineResourceExtensionReferenceList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineResourceExtensionReferenceList")]
     public class NewAzureVirtualMachineResourceExtensionReferenceList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

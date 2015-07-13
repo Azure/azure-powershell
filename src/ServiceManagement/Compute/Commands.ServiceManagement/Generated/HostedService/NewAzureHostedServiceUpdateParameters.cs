@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureHostedServiceUpdateParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceUpdateParameters")]
     public class NewAzureHostedServiceUpdateParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

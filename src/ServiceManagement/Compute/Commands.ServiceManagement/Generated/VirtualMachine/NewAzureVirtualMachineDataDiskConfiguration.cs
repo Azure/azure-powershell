@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineDataDiskConfiguration")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDataDiskConfiguration")]
     public class NewAzureVirtualMachineDataDiskConfiguration : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

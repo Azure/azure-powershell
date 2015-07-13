@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineSshSettingKeyPairList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineSshSettingKeyPairList")]
     public class NewAzureVirtualMachineSshSettingKeyPairList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentUpgradeByNameMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentUpgradeByNameMethod")]
     public class InvokeAzureDeploymentUpgradeByNameMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

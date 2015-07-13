@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDNSServerDeleteDNSServerMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDNSServerDeleteDNSServerMethod")]
     public class InvokeAzureDNSServerDeleteDNSServerMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

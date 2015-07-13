@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineDiskUpdateDiskMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDiskUpdateDiskMethod")]
     public class InvokeAzureVirtualMachineDiskUpdateDiskMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

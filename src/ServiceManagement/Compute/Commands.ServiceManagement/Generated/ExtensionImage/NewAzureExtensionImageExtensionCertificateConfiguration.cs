@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureExtensionImageExtensionCertificateConfiguration")]
+    [Cmdlet(VerbsCommon.New, "AzureExtensionImageExtensionCertificateConfiguration")]
     public class NewAzureExtensionImageExtensionCertificateConfiguration : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

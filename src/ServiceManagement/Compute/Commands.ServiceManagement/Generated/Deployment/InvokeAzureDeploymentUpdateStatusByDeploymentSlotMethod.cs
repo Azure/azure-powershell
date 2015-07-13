@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentUpdateStatusByDeploymentSlotMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentUpdateStatusByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentUpdateStatusByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

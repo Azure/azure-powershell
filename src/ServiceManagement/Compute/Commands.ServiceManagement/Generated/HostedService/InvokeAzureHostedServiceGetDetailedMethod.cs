@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureHostedServiceGetDetailedMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceGetDetailedMethod")]
     public class InvokeAzureHostedServiceGetDetailedMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

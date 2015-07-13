@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

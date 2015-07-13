@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineUpdateLoadBalancedSetParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineUpdateLoadBalancedSetParameters")]
     public class NewAzureVirtualMachineUpdateLoadBalancedSetParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

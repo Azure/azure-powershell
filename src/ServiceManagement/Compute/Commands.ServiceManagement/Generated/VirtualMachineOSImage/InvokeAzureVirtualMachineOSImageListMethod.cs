@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineOSImageListMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineOSImageListMethod")]
     public class InvokeAzureVirtualMachineOSImageListMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

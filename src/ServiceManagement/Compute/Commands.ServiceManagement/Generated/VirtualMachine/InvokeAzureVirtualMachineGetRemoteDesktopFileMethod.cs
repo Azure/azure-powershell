@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineGetRemoteDesktopFileMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineGetRemoteDesktopFileMethod")]
     public class InvokeAzureVirtualMachineGetRemoteDesktopFileMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

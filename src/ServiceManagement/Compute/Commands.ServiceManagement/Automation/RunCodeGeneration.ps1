@@ -26,17 +26,19 @@ param(
 )
 
 $new_line_str = "`r`n";
+$verbs_common_new = "VerbsCommon.New";
+$verbs_lifecycle_invoke = "VerbsLifecycle.Invoke";
 
-Write-Output "=============================================";
-Write-Output "Input Parameters:";
-Write-Output "DLL Folder            = $dllFolder";
-Write-Output "Out Folder            = $outFolder";
-Write-Output "Client NameSpace      = $client_library_namespace";
-Write-Output "Base Cmdlet Full Name = $baseCmdletFullName";
-Write-Output "Base Client Name      = $base_class_client_field";
-Write-Output "Cmdlet Style          = $cmdletStyle";
-Write-Output "=============================================";
-Write-Output "${new_line_str}";
+Write-Verbose "=============================================";
+Write-Verbose "Input Parameters:";
+Write-Verbose "DLL Folder            = $dllFolder";
+Write-Verbose "Out Folder            = $outFolder";
+Write-Verbose "Client NameSpace      = $client_library_namespace";
+Write-Verbose "Base Cmdlet Full Name = $baseCmdletFullName";
+Write-Verbose "Base Client Name      = $base_class_client_field";
+Write-Verbose "Cmdlet Style          = $cmdletStyle";
+Write-Verbose "=============================================";
+Write-Verbose "${new_line_str}";
 
 $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
 
@@ -159,7 +161,7 @@ function Write-BaseCmdletFile
     foreach ($opFullName in $operation_name_list)
     {
         [string]$sOpFullName = $opFullName;
-        Write-Output ('$sOpFullName = ' + $sOpFullName);
+        Write-Verbose ('$sOpFullName = ' + $sOpFullName);
         $prefix = 'I';
         $suffix = 'Operations';
         if ($sOpFullName.StartsWith($prefix) -and $sOpFullName.EndsWith($suffix))
@@ -229,10 +231,17 @@ function Write-OperationCmdletFile
 
     $methodName = ($operation_method_info.Name.Replace('Async', ''));
     $cmdlet_verb = "Invoke";
+    $cmdlet_verb_code = $verbs_common_new;
     $cmdlet_noun_prefix = 'Azure';
     $cmdlet_noun_suffix = 'Method';
     $cmdlet_noun = $cmdlet_noun_prefix + $opShortName + $methodName + $cmdlet_noun_suffix;
     $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun;
+
+    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
+    if (Test-Path $file_full_path)
+    {
+        return;
+    }
 
     $indents = " " * 8;
     $get_set_block = '{ get; set; }';
@@ -286,7 +295,7 @@ $code_using_strs
 
 namespace ${code_common_namespace}
 {
-    [Cmdlet(`"${cmdlet_verb}`", `"${cmdlet_noun}`")]
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
     public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
 ${cmdlet_generated_code}
@@ -294,7 +303,6 @@ ${cmdlet_generated_code}
 }
 "@;
 
-    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
     $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
 }
 
@@ -488,11 +496,18 @@ function Write-ParameterCmdletFile
     }
 
     $cmdlet_verb = "New";
+    $cmdlet_verb_code = $verbs_common_new;
     $cmdlet_noun_prefix = 'Azure';
     $cmdlet_noun_suffix = '';
 
     $cmdlet_noun = $cmdlet_noun_prefix + $operation_short_name + $param_type_short_name + $cmdlet_noun_suffix;
     $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun;
+
+    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
+    if (Test-Path $file_full_path)
+    {
+        return;
+    }
 
     # Construct Code Content
     $indents = " " * 8;
@@ -520,7 +535,7 @@ $code_using_strs
 
 namespace ${code_common_namespace}
 {
-    [Cmdlet(`"${cmdlet_verb}`", `"${cmdlet_noun}`")]
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
     public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
 ${cmdlet_generated_code}
@@ -528,7 +543,6 @@ ${cmdlet_generated_code}
 }
 "@;
 
-    $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
     $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
 }
 
@@ -538,8 +552,8 @@ $outFolder += '/Generated';
 $output = Get-ChildItem -Path $dllFolder | Out-String;
 
 # Set-Content -Path ($outFolder + '/Output.txt');
-Write-Output "List items under the folder: $dllFolder"
-Write-Output $output;
+Write-Verbose "List items under the folder: $dllFolder"
+Write-Verbose $output;
 
 
 $dllname = $client_library_namespace;
@@ -548,7 +562,7 @@ $dllFileFullPath = $dllFolder + '\' + $dllfile;
 
 if (-not (Test-Path -Path $dllFileFullPath))
 {
-    Write-Output "DLL file `'$dllFileFullPath`' not found. Exit.";
+    Write-Verbose "DLL file `'$dllFileFullPath`' not found. Exit.";
 }
 else
 {
@@ -587,6 +601,12 @@ else
         $methods = $ft.GetMethods();
         foreach ($mt in $methods)
         {
+            if ($mt.Name.StartsWith('Begin') -and $mt.Name.Contains('ing'))
+            {
+                # Skip 'BeginXXX' Calls for Now...
+                continue;
+            }
+
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
             Write-OperationCmdletFile $opOutFolder $opShortName $mt;
 

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureLoadBalancerDeleteMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerDeleteMethod")]
     public class InvokeAzureLoadBalancerDeleteMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

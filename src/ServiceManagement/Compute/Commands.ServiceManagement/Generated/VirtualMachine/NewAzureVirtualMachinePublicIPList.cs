@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachinePublicIPList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachinePublicIPList")]
     public class NewAzureVirtualMachinePublicIPList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

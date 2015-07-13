@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineWindowsRemoteManagementSettings")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineWindowsRemoteManagementSettings")]
     public class NewAzureVirtualMachineWindowsRemoteManagementSettings : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

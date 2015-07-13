@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDeploymentExtensionList")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentExtensionList")]
     public class NewAzureDeploymentExtensionList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

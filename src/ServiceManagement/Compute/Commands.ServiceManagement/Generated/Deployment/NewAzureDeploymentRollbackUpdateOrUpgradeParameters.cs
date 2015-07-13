@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDeploymentRollbackUpdateOrUpgradeParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentRollbackUpdateOrUpgradeParameters")]
     public class NewAzureDeploymentRollbackUpdateOrUpgradeParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

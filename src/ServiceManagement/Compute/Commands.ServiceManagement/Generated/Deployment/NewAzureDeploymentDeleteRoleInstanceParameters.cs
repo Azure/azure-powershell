@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDeploymentDeleteRoleInstanceParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentDeleteRoleInstanceParameters")]
     public class NewAzureDeploymentDeleteRoleInstanceParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

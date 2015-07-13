@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineRestartMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineRestartMethod")]
     public class InvokeAzureVirtualMachineRestartMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

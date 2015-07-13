@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineExtensionListVersionsMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineExtensionListVersionsMethod")]
     public class InvokeAzureVirtualMachineExtensionListVersionsMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

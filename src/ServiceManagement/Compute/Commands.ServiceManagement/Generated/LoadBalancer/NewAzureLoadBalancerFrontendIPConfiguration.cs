@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureLoadBalancerFrontendIPConfiguration")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIPConfiguration")]
     public class NewAzureLoadBalancerFrontendIPConfiguration : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineDnsServerList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDnsServerList")]
     public class NewAzureVirtualMachineDnsServerList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

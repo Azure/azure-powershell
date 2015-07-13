@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineOSImageUpdateParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineOSImageUpdateParameters")]
     public class NewAzureVirtualMachineOSImageUpdateParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

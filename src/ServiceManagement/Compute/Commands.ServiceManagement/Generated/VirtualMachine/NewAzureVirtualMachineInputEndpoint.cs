@@ -24,13 +24,13 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineInputEndpoint")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineInputEndpoint")]
     public class NewAzureVirtualMachineInputEndpoint : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var parameter = new Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineUpdateLoadBalancedSetParameters.InputEndpoint();
+            var parameter = new Microsoft.WindowsAzure.Management.Compute.Models.InputEndpoint();
             WriteObject(parameter);
         }
     }

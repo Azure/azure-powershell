@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDeploymentSwapParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentSwapParameters")]
     public class NewAzureDeploymentSwapParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

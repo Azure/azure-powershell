@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineShutdownRolesParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineShutdownRolesParameters")]
     public class NewAzureVirtualMachineShutdownRolesParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineDiskDeleteDataDiskMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDiskDeleteDataDiskMethod")]
     public class InvokeAzureVirtualMachineDiskDeleteDataDiskMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

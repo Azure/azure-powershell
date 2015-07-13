@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineUpdateLoadBalancedEndpointSetMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineUpdateLoadBalancedEndpointSetMethod")]
     public class InvokeAzureVirtualMachineUpdateLoadBalancedEndpointSetMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

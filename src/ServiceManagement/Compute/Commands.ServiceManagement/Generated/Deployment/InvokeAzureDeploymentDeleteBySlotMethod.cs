@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentDeleteBySlotMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentDeleteBySlotMethod")]
     public class InvokeAzureDeploymentDeleteBySlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureLoadBalancerUpdateParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerUpdateParameters")]
     public class NewAzureLoadBalancerUpdateParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

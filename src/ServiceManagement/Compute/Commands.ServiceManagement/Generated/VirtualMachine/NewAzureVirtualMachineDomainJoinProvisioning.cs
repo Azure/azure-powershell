@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineDomainJoinProvisioning")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDomainJoinProvisioning")]
     public class NewAzureVirtualMachineDomainJoinProvisioning : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureHostedServiceCheckNameAvailabilityMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceCheckNameAvailabilityMethod")]
     public class InvokeAzureHostedServiceCheckNameAvailabilityMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

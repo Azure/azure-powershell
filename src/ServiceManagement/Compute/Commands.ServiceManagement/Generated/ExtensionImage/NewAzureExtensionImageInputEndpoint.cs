@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureExtensionImageInputEndpoint")]
+    [Cmdlet(VerbsCommon.New, "AzureExtensionImageInputEndpoint")]
     public class NewAzureExtensionImageInputEndpoint : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

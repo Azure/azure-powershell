@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureExtensionImageUpdateParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureExtensionImageUpdateParameters")]
     public class NewAzureExtensionImageUpdateParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

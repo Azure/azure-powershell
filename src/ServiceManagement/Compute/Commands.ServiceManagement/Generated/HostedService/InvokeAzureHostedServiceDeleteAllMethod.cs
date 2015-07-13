@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureHostedServiceDeleteAllMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceDeleteAllMethod")]
     public class InvokeAzureHostedServiceDeleteAllMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

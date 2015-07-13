@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineBeginShutdownMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineBeginShutdownMethod")]
     public class InvokeAzureVirtualMachineBeginShutdownMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

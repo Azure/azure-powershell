@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineRoleList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineRoleList")]
     public class NewAzureVirtualMachineRoleList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

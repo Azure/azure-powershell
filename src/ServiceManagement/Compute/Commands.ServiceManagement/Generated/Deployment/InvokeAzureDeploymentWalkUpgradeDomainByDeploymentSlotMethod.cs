@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentWalkUpgradeDomainByDeploymentSlotMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentWalkUpgradeDomainByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentWalkUpgradeDomainByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

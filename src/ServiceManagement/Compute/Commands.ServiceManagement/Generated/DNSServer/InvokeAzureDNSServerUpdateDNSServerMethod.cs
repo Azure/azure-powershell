@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDNSServerUpdateDNSServerMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDNSServerUpdateDNSServerMethod")]
     public class InvokeAzureDNSServerUpdateDNSServerMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

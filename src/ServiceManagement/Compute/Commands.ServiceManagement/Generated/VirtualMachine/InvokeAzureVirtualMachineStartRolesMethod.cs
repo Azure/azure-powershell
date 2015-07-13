@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineStartRolesMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineStartRolesMethod")]
     public class InvokeAzureVirtualMachineStartRolesMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

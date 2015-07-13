@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureExtensionImageUnregisterMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureExtensionImageUnregisterMethod")]
     public class InvokeAzureExtensionImageUnregisterMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

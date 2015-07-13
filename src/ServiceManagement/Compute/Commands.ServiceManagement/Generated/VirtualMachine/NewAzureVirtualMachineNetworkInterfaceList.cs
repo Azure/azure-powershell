@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineNetworkInterfaceList")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineNetworkInterfaceList")]
     public class NewAzureVirtualMachineNetworkInterfaceList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

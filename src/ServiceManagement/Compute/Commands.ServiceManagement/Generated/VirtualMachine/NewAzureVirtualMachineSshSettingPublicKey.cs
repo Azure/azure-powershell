@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineSshSettingPublicKey")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineSshSettingPublicKey")]
     public class NewAzureVirtualMachineSshSettingPublicKey : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureServiceCertificateCreateMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureServiceCertificateCreateMethod")]
     public class InvokeAzureServiceCertificateCreateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureDeploymentListEventsBySlotMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentListEventsBySlotMethod")]
     public class InvokeAzureDeploymentListEventsBySlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

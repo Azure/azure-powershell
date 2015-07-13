@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureVirtualMachineVMImageShareMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageShareMethod")]
     public class InvokeAzureVirtualMachineVMImageShareMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureOperatingSystemListFamiliesMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureOperatingSystemListFamiliesMethod")]
     public class InvokeAzureOperatingSystemListFamiliesMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

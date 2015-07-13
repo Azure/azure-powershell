@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureHostedServiceUpdateMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceUpdateMethod")]
     public class InvokeAzureHostedServiceUpdateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

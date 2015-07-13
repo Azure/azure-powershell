@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDeploymentNamedRoleList")]
+    [Cmdlet(VerbsCommon.New, "AzureDeploymentNamedRoleList")]
     public class NewAzureDeploymentNamedRoleList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

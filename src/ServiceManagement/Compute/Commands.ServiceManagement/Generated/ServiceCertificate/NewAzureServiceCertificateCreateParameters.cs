@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureServiceCertificateCreateParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureServiceCertificateCreateParameters")]
     public class NewAzureServiceCertificateCreateParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

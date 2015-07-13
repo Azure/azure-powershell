@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("Invoke", "AzureHostedServiceListAvailableExtensionsMethod")]
+    [Cmdlet(VerbsCommon.New, "AzureHostedServiceListAvailableExtensionsMethod")]
     public class InvokeAzureHostedServiceListAvailableExtensionsMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

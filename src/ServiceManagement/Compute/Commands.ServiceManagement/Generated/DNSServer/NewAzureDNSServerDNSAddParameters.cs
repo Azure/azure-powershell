@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureDNSServerDNSAddParameters")]
+    [Cmdlet(VerbsCommon.New, "AzureDNSServerDNSAddParameters")]
     public class NewAzureDNSServerDNSAddParameters : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureVirtualMachineWindowsRemoteManagementListener")]
+    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineWindowsRemoteManagementListener")]
     public class NewAzureVirtualMachineWindowsRemoteManagementListener : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
