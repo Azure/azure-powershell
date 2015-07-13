@@ -177,7 +177,7 @@ function Test-RecoveryServicesEnumerationTests
 		Assert-NotNull($protectionContainer.ID)
 
 		# Enumerate Protection Entities under each configured Protection Containers
-		if ($protectionContainer.ConfigurationStatus -eq "Configured")
+		if ($protectionContainer.Role -eq "Primary")
 		{
 			$protectionEntities = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer
 			Assert-NotNull($protectionEntities)
@@ -247,7 +247,7 @@ function Test-StorageMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -256,25 +256,34 @@ function Test-StorageMapping
 	}
 
 	# Enumerate Storages
-	$storages = Get-AzureSiteRecoveryStorage -Server $servers[0]
-	Assert-NotNull($storages)
-	Assert-True { $storages.Count -gt 0 }
-	foreach($storage in $storages)
+	$storagesOnPrimary = Get-AzureSiteRecoveryStorage -Server $servers[0]
+	Assert-NotNull($storagesOnPrimary)
+	Assert-True { $storagesOnPrimary.Count -gt 0 }
+	foreach($storage in $storagesOnPrimary)
+	{
+		Assert-NotNull($storage.Name)
+		Assert-NotNull($storage.ID)
+	}
+
+	$storagesOnRecovery = Get-AzureSiteRecoveryStorage -Server $servers[1]
+	Assert-NotNull($storagesOnRecovery)
+	Assert-True { $storagesOnRecovery.Count -gt 0 }
+	foreach($storage in $storagesOnRecovery)
 	{
 		Assert-NotNull($storage.Name)
 		Assert-NotNull($storage.ID)
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $storageMappings.Count -eq 0 }
 
 	# Create StorageMapping
-	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storages[0] -RecoveryStorage $storages[1]
+	$job = New-AzureSiteRecoveryStorageMapping -PrimaryStorage $storagesOnPrimary[0] -RecoveryStorage $storagesOnRecovery[0]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -296,7 +305,7 @@ function Test-StorageUnMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -305,7 +314,7 @@ function Test-StorageUnMapping
 	}
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($storageMappings)
 	Assert-True { $storageMappings.Count -eq 1 }
 	Assert-NotNull($storageMappings[0].PrimaryServerId)
@@ -318,7 +327,7 @@ function Test-StorageUnMapping
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate StorageMappings
-	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$storageMappings = Get-AzureSiteRecoveryStorageMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $storageMappings.Count -eq 0 }
 }
 
@@ -335,7 +344,7 @@ function Test-NetworkMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -344,25 +353,34 @@ function Test-NetworkMapping
 	}
 
 	# Enumerate Networks
-	$networks = Get-AzureSiteRecoveryNetwork -Server $servers[0]
-	Assert-NotNull($networks)
-	Assert-True { $networks.Count -gt 0 }
-	foreach($network in $networks)
+	$networksOnPrimary = Get-AzureSiteRecoveryNetwork -Server $servers[0]
+	Assert-NotNull($networksOnPrimary)
+	Assert-True { $networksOnPrimary.Count -gt 0 }
+	foreach($network in $networksOnPrimary)
+	{
+		Assert-NotNull($network.Name)
+		Assert-NotNull($network.ID)
+	}
+
+	$networksOnRecovery = Get-AzureSiteRecoveryNetwork -Server $servers[1]
+	Assert-NotNull($networksOnRecovery)
+	Assert-True { $networksOnRecovery.Count -gt 0 }
+	foreach($network in $networksOnRecovery)
 	{
 		Assert-NotNull($network.Name)
 		Assert-NotNull($network.ID)
 	}
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $networkMappings.Count -eq 0 }
 
 	# Create NetworkMapping
-	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networks[0] -RecoveryNetwork $networks[1]
+	$job = New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $networksOnPrimary[0] -RecoveryNetwork $networksOnRecovery[0]
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($networkMappings)
 	Assert-True { $networkMappings.Count -eq 1 }
 	Assert-NotNull($networkMappings[0].PrimaryServerId)
@@ -450,7 +468,7 @@ function Test-NetworkUnMapping
 
 	# Enumerate Servers
 	$servers = Get-AzureSiteRecoveryServer
-	Assert-True { $servers.Count -gt 0 }
+	Assert-True { $servers.Count -gt 1 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
 	{
@@ -459,7 +477,7 @@ function Test-NetworkUnMapping
 	}
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-NotNull($networkMappings)
 	Assert-True { $networkMappings.Count -eq 1 }
 	Assert-NotNull($networkMappings[0].PrimaryServerId)
@@ -474,7 +492,7 @@ function Test-NetworkUnMapping
 	WaitForJobCompletion -JobId $job.ID
 
 	# Enumerate NetworkMappings
-	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[0]
+	$networkMappings = Get-AzureSiteRecoveryNetworkMapping -PrimaryServer $servers[0] -RecoveryServer $servers[1]
 	Assert-True { $networkMappings.Count -eq 0 }
 }
 
@@ -1142,7 +1160,7 @@ function Test-EnableProtection
                     # Validate_EnableProtection_WaitForCanFailover
                     if ($Validate_EnableProtection_WaitForCanFailover -eq $true)
                     {
-                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 
+                        WaitForCanFailover $protectionEntity.ProtectionContainerId $protectionEntity.ID 600
                     }
 
                     return;
@@ -1208,21 +1226,169 @@ function Test-DisableProtection
 
 <#
 .SYNOPSIS
+Recovery Services San E2E test
+#>
+function Test-SanE2E
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	$servers = Get-AzureSiteRecoveryServer
+	$primaryVmm = $servers[0]
+	$recoveryVmm = $servers[1]
+	$storagePri = Get-AzureSiteRecoveryStorage -Server $primaryVmm
+	$storageRec = Get-AzureSiteRecoveryStorage -Server $recoveryVmm
+
+	# Find primary array and pool.
+	foreach($storage in $storagePri)
+	{		
+		# Find primary array
+		if ($storage.Name.Contains("HRMPROSVM01"))
+		{
+			$primaryArray = $storage
+
+			foreach($pool in $primaryArray.StoragePools)
+			{
+				# Find primary pool
+				if ($pool.Name.Contains("SanOneSDKPrimaryPool"))
+				{
+					$primaryStoragePool = $pool
+					break
+				}
+			}
+		}
+	}
+
+	# Find recovery array and pool.
+	foreach($storage in $storageRec)
+	{		
+		# Find recovery array
+		if ($storage.Name.Contains("HRMDRSVM01"))
+		{
+			$recoveryArray = $storage
+
+			foreach($pool in $recoveryArray.StoragePools)
+			{
+				# Find recovery pool
+				if ($pool.Name.Contains("SanOneSDKRecoveryPool"))
+				{
+					$recoveryStoragePool = $pool
+					break
+				}
+			}
+		}
+	}
+
+	# Pair pools
+	$job = New-AzureSiteRecoveryStoragePoolMapping -PrimaryStorage $primaryArray -PrimaryStoragePoolId $primaryStoragePool.Id -RecoveryStorage $recoveryArray -RecoveryStoragePoolId $recoveryStoragePool.Id
+	Assert-NotNull($job);
+	
+	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	Assert-True { $protectionContainers.Count -gt 0 }
+	Assert-NotNull($protectionContainers)
+	foreach($protectionContainer in $protectionContainers)
+	{
+		Assert-NotNull($protectionContainer.Name)
+		Assert-NotNull($protectionContainer.ID)
+
+		# Find primary cloud
+		if ($protectionContainer.Name.Contains("SanPrimaryCloud"))
+		{
+			$primaryContainer = $protectionContainer
+		}
+			
+		# Find recovery cloud
+		if ($protectionContainer.Name.Contains("SanRecoveryCloud"))
+		{
+			$recoveryContainer = $protectionContainer
+		}
+	}
+    
+	# Create protection profile
+    $pp = New-AzureSiteRecoveryProtectionProfileObject -ReplicationProvider San -PrimaryContainerId $primaryContainer.ID -RecoveryContainerId $recoveryContainer.ID -PrimaryArrayId $primaryArray.ID -RecoveryArrayId $recoveryArray.ID
+
+	# Start cloud pairing
+	$job = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $primaryContainer -RecoveryProtectionContainer $recoveryContainer
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+	
+	# Get protection Entity (RG)
+	$pe = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $primaryContainer
+
+	# Enable RG
+	$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $pe -Protection Enable -RPO 0 -Replicationtype Async -RecoveryArrayId $recoveryArray.ID
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Get protection Entity (RG) again after enable
+	$pe = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainer $primaryContainer
+
+	# Test failover RG
+	$job = Start-AzureSiteRecoveryTestFailoverJob -ProtectionEntity $pe -WaitForCompletion -Direction PrimaryToRecovery
+	Assert-NotNull($job);	
+
+	# Resume Job on manual action
+    $job = Resume-AzureSiteRecoveryJob -Id $job.ID
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Planned failover RG
+	$job = Start-AzureSiteRecoveryPlannedFailoverJob -ProtectionEntity $pe -Direction PrimaryToRecovery
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Reverse RG
+	$job = Update-AzureSiteRecoveryProtection -ProtectionEntity $pe -Direction RecoveryToPrimary
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+
+	# UnPlanned failover RG
+	$job = Start-AzureSiteRecoveryUnPlannedFailoverJob -ProtectionEntity $pe -Direction RecoveryToPrimary
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Reverse RG
+	$job = Update-AzureSiteRecoveryProtection -ProtectionEntity $pe -Direction PrimaryToRecovery
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600
+
+	# Disable RG
+	$job = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $pe -Protection Disable -DeleteReplicaLuns -RecoveryContainerId $recoveryContainer.ID
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 900
+
+	# Start cloud unpairing
+	$job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $primaryContainer -RecoveryProtectionContainer $recoveryContainer
+	Assert-NotNull($job);
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 600	
+
+	# UnPair pools
+	$job = Remove-AzureSiteRecoveryStoragePoolMapping -PrimaryStorage $primaryArray -PrimaryStoragePoolId $primaryStoragePool.Id -RecoveryStorage $recoveryArray -RecoveryStoragePoolId $recoveryStoragePool.Id
+	Assert-NotNull($job);
+}
+
+<#
+.SYNOPSIS
 Recovery Services Enable Protection Tests
+Wait for CanFailover state
+Usage:
+	WaitForCanFailover pcId peId
+	WaitForCanFailover pcId peId secondsToWait
 #>
 function WaitForCanFailover
 {
-    param([string] $pcId, [string] $peId)
-    $count = 20
+    param([string] $pcId, [string] $peId, [Int] $NumOfSecondsToWait = 120)
+
+	$timeElapse = 0;
+	$interval = 5;
 	do
 	{
-		Start-Sleep 5
+		Start-Sleep $interval
+		$timeElapse = $timeElapse + $interval
 		$pes = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainerId $pcId;
 
-        $count = $count -1;
-
-    	Assert-True { $count -gt 0 } "Job did not reached desired state within 5*$count seconds."
-
+		Assert-True { $timeElapse -lt $NumOfSecondsToWait } "Job did not reached desired state within $NumOfSecondsToWait seconds."
 	} while(-not ($pes[0].CanFailover -eq $true))
 }
 
@@ -1248,4 +1414,19 @@ function WaitForJobCompletion
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))
 
 	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
+}
+
+<#
+.SYNOPSIS
+Wait for job completion and validate the job
+Usage:
+	WaitAndValidatetheJob -JobId $job.ID
+	WaitAndValidatetheJob -JobId $job.ID -NumOfSecondsToWait 10
+#>
+function WaitAndValidatetheJob
+{
+	param([string] $JobId, [Int] $NumOfSecondsToWait = 120)
+    WaitForJobCompletion -JobId $JobId -NumOfSecondsToWait $NumOfSecondsToWait
+	$job = Get-AzureSiteRecoveryJob -Id $job.ID
+	Assert-True { $job.State -eq "Succeeded" }
 }

@@ -49,10 +49,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.HyperVReplica,
-            Constants.HyperVReplicaAzure)]
+            Constants.HyperVReplicaAzure,
+            Constants.San)]
         public string ReplicationProvider { get; set; }
 
         /// <summary>
@@ -150,11 +152,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public SwitchParameter AllowReplicaDeletion { get; set; }
 
         /// <summary>
+        /// Gets or sets the primary cloud id of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan)]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery cloud id of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryContainerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary array id of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan)]
+        [ValidateNotNullOrEmpty]
+        public string PrimaryArrayId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery array id of the Protection Profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterpriseSan)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryArrayId { get; set; }
+
+        /// <summary>
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating - should the VM's data in azure storage be encrypted?
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [DefaultValue(false)]
+        public SwitchParameter EncryptStoredData { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -172,22 +208,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     case ASRParameterSets.EnterpriseToAzure:
                         this.EnterpriseToAzureProtectionProfileObject();
                         break;
+                    case ASRParameterSets.EnterpriseToEnterpriseSan:
+                        this.EnterpriseToEnterpriseSanProtectionProfileObject();
+                        break;
                 }
             }
             catch (Exception exception)
             {
                 this.HandleException(exception);
             }
-        }
-
-        /// <summary>
-        /// Handles interrupts.
-        /// </summary>
-        protected override void StopProcessing()
-        {
-            // Ctrl + C and etc
-            base.StopProcessing();
-            this.StopProcessingFlag = true;
         }
 
         /// <summary>
@@ -260,8 +289,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     RecoveryAzureSubscription = this.RecoveryAzureSubscription,
                     RecoveryAzureStorageAccountName = this.RecoveryAzureStorageAccount,
-                    //// Currently Data Encryption is not supported.
-                    EncryptStoredData = false,
+                    EncryptStoredData = this.EncryptStoredData,
                     ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
                     RecoveryPoints = this.RecoveryPoints,
                     ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
@@ -306,6 +334,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     Authentication = this.Authentication,
                     ReplicationStartTime = this.ReplicationStartTime,
                     AllowReplicaDeletion = this.AllowReplicaDeletion
+                }
+            };
+
+            this.WriteObject(protectionProfile);
+        }
+
+        /// <summary>
+        /// Creates an E2E San Protection Profile object
+        /// </summary>
+        private void EnterpriseToEnterpriseSanProtectionProfileObject()
+        {
+            if (string.Compare(this.ReplicationProvider, Constants.San, StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ReplicationProvider));
+            }
+
+            string primaryCloudId = string.Empty;
+            string recoveryCloudId = string.Empty;
+
+            Utilities.GetCloudIdFromContainerId(this.PrimaryContainerId, out primaryCloudId);
+            Utilities.GetCloudIdFromContainerId(this.RecoveryContainerId, out recoveryCloudId);
+
+            ASRProtectionProfile protectionProfile = new ASRProtectionProfile()
+            {
+                // In case of SAN we don't have a protection profile associated yet. So we are giving a dummy ID now.
+                ID = this.PrimaryContainerId,
+                ReplicationProvider = this.ReplicationProvider,
+                HyperVReplicaAzureProviderSettingsObject = null,
+                HyperVReplicaProviderSettingsObject = null,
+                SanProviderSettingsObject = new SanProviderSettings()
+                {
+                    CloudId = primaryCloudId,
+                    RemoteCloudId = recoveryCloudId,
+                    ArrayUniqueId = this.PrimaryArrayId,
+                    RemoteArrayUniqueId = this.RecoveryArrayId
                 }
             };
 

@@ -146,6 +146,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Internal Dns name")]
+        public string InternalDnsNameLabel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EnableIPForwarding")]
+        public SwitchParameter EnableIPForwarding { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
@@ -216,6 +227,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
+            networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
@@ -261,10 +273,18 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.DnsServer != null)
+            if (this.DnsServer != null || this.InternalDnsNameLabel != null)
             {
-                networkInterface.DnsSettings = new PSDnsSettings();
-                networkInterface.DnsSettings.DnsServers = this.DnsServer;
+                networkInterface.DnsSettings = new PSNetworkInterfaceDnsSettings();
+                if (this.DnsServer != null)
+                {
+                    networkInterface.DnsSettings.DnsServers = this.DnsServer;
+                }
+                if (this.InternalDnsNameLabel != null)
+                {
+                    networkInterface.DnsSettings.InternalDnsNameLabel = this.InternalDnsNameLabel;
+                }
+
             }
 
             networkInterface.IpConfigurations.Add(nicIpConfiguration);

@@ -210,9 +210,6 @@
   <data name="InvalidRetentionTypeSet" xml:space="preserve">
     <value>Cannot use audit table retention without specifying TableIdentifier. You may want to use '{0}'.</value>
   </data>
-  <data name="InvalidDeprecatedEventTypeSet" xml:space="preserve">
-    <value>Cannot use deprecated audit events with the current audit events in the same policy.</value>
-  </data>
   <data name="ServerUpgradeExists" xml:space="preserve">
     <value>Request for upgrade of server '{0}' already exists.</value>
   </data>
@@ -225,13 +222,13 @@
   <data name="StandaloneDatabaseActivityNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name is required for this operation</value>
   </data>
-  <data name="DeprecatedEventTypeUsed" xml:space="preserve">
-    <value>The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions</value>
-  </data>
   <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
     <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
   </data>
   <data name="NewDataMaskingRuleIdIsNotValid" xml:space="preserve">
     <value>Rule Id cannot contain '&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?' and cannot end with a '.'</value>
+  </data>
+  <data name="DatabaseNotInServiceTierForAuditingPolicy" xml:space="preserve">
+    <value>Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s)</value>
   </data>
 </root>

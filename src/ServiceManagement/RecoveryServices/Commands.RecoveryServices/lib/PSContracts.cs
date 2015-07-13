@@ -734,6 +734,37 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
+    /// San specific protection profile Input.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class SanProtectionProfileInput
+    {
+        /// <summary>
+        /// Gets or sets the primary cloud getting paired.
+        /// </summary>
+        [DataMember]
+        public string CloudId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery cloud getting paired.
+        /// </summary>
+        [DataMember]
+        public string RemoteCloudId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary array unique Id getting paired. 
+        /// </summary>
+        [DataMember]
+        public string ArrayUniqueId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery array unique Id getting paired.
+        /// </summary>
+        [DataMember]
+        public string RemoteArrayUniqueId { get; set; }
+    }
+
+    /// <summary>
     /// Hyper-V Replica Azure specific protection profile details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
@@ -859,6 +890,57 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember]
         public ushort ReplicationFrequencyInSeconds { get; set; }
+    }
+
+    /// <summary>
+    /// Azure Site Recovery Protection Profile SanProviderSettings.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
+    public class SanProviderSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SanProviderSettings" /> class.
+        /// </summary>
+        public SanProviderSettings()
+        {
+        }
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the primary cloud getting paired.
+        /// </summary>
+        public string CloudId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery cloud getting paired.
+        /// </summary>
+        public string RemoteCloudId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary array unique Id getting paired. 
+        /// </summary>
+        public string ArrayUniqueId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery array unique Id getting paired.
+        /// </summary>
+        public string RemoteArrayUniqueId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Association Details.
+        /// </summary>
+        public List<ASRProtectionProfileAssociationDetails> AssociationDetail { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether profile can be dissociated or not.
+        /// </summary>
+        public bool CanDissociate { get; set; }
+
+        #endregion
     }
 
     /// <summary>
@@ -1125,6 +1207,82 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
+    /// San specific enable replication group protection input as part of
+    /// EnableReplicationGroupProtection REST API.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class SanEnableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets the fabric that contains the replication group.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string FabricId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cloud that contains the replication group.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string CloudId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fabric's replication group Id.
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string FabricReplicationGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replication type (sync or async).
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string ReplicationType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the RPO to use in conjunction with the replication type. Valid inputs are:
+        /// ReplicationType = Sync -> RPO value should be set to 0.
+        /// ReplicationType = Async
+        ///    - RPO value left at 0 -> Array's default RPO will get used.
+        ///    - RPO value non-zero -> Should be one of the array's supported RPO values.
+        /// </summary>
+        [DataMember(Order = 5)]
+        public int RecoveryPointObjective { get; set; }
+
+        /// <summary>
+        /// Gets or sets the remote array to be used for protection.
+        /// </summary>
+        [DataMember(Order = 6)]
+        public string RemoteArrayId { get; set; }
+    }
+
+    /// <summary>
+    /// San specific disable replication group protection input as part of
+    /// DisableReplicationGroupProtection REST API.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class SanDisableProtectionInput
+    {
+        /// <summary>
+        /// Gets or sets a value indicating whether LUNs needs to be deleted.
+        /// </summary>
+        [DataMember(Order = 1)]
+        public bool DeleteReplicaLuns { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cloud Id from which LUNs should be deleted.
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string TargetCloudIdForLunDeletion { get; set; }
+    }
+
+    /// <summary>
     /// Disk details for E2A provider.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
@@ -1163,6 +1321,64 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember]
         public ulong MaxSizeMB { get; set; }
+    }
+
+    /// <summary>
+    /// VM properties.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class VMProps
+    {
+        /// <summary>
+        /// Gets or sets Recovery Azure given name.
+        /// </summary>
+        [DataMember]
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Recovery Azure VM size.
+        /// </summary>
+        [DataMember]
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected recovery azure network Id.
+        /// </summary>
+        [DataMember]
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of VM NIC details.
+        /// </summary>
+        [DataMember]
+        public List<VMNic> VMNics { get; set; }
+    }
+
+    /// <summary>
+    /// Replication provider specific settings.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related classes together.")]
+    public class ReplicationProviderSpecificSettings
+    {
+        /// <summary>
+        /// Gets or sets Azure VM Disk details.
+        /// </summary>
+        [DataMember]
+        public AzureVmDiskDetails AzureVMDiskDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets VM properties.
+        /// </summary>
+        [DataMember]
+        public VMProps VMProperties { get; set; }
     }
 }
 

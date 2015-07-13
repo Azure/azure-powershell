@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             DateTime currentDateTime = DateTime.Now;
             currentDateTime = currentDateTime.AddHours(-1);
             cikTokenDetails.NotBeforeTimestamp = TimeZoneInfo.ConvertTimeToUtc(currentDateTime);
-            cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddHours(6);
+            cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddDays(7);
             cikTokenDetails.ClientRequestId = clientRequestId;
             cikTokenDetails.Version = new Version(1, 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();

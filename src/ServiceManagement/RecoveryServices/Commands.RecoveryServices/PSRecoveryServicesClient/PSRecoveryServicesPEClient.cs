@@ -59,17 +59,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Sets protection on Protection entity.
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
-        /// <param name="virtualMachineId">Virtual Machine ID</param>
+        /// <param name="protectionEntityId">Virtual Machine ID or Replication group Id</param>
         /// <param name="input">Enable protection input.</param>
         /// <returns>Job response</returns>
         public JobResponse EnableProtection(
             string protectionContainerId,
-            string virtualMachineId,
+            string protectionEntityId,
             EnableProtectionInput input)
         {
             return this.GetSiteRecoveryClient().ProtectionEntity.EnableProtection(
                 protectionContainerId,
-                virtualMachineId,
+                protectionEntityId,
                 input,
                 this.GetRequestHeaders());
         }
@@ -78,15 +78,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Sets protection on Protection entity.
         /// </summary>
         /// <param name="protectionContainerId">Protection Container ID</param>
-        /// <param name="virtualMachineId">Virtual Machine ID</param>
+        /// <param name="protectionEntityId">Virtual Machine ID or Replication group Id</param>
+        /// <param name="input">Disable protection input.</param>
         /// <returns>Job response</returns>
-        public JobResponse DisbleProtection(
+        public JobResponse DisableProtection(
             string protectionContainerId,
-            string virtualMachineId)
+            string protectionEntityId,
+            DisableProtectionInput input)
         {
             return this.GetSiteRecoveryClient().ProtectionEntity.DisableProtection(
                 protectionContainerId,
-                virtualMachineId,
+                protectionEntityId,
+                input,
                 this.GetRequestHeaders());
         }
 

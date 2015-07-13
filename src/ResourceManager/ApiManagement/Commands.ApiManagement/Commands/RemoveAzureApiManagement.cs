@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             var actionDescription = string.Format(
-                    CultureInfo.InvariantCulture,
+                    CultureInfo.CurrentCulture,
                     Resources.RemoveAzureApiManagementDescription,
                     Name);
 
             var actionWarning = string.Format(
-                CultureInfo.InvariantCulture,
+                CultureInfo.CurrentCulture,
                 Resources.RemoveAzureApiManagementWarning,
                 Name);
 

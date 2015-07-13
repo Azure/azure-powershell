@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.Network
             // NetworkInterface
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
-            Mapper.CreateMap<CNM.PSDnsSettings, MNM.DnsSettings>();
+            Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIpConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
-            Mapper.CreateMap<MNM.DnsSettings, CNM.PSDnsSettings>();
+            Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
             Mapper.CreateMap<MNM.NetworkInterfaceIpConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
 
             // LoadBalancer
@@ -165,6 +165,20 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>();
 
+            // RouteTable
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSRouteTable, MNM.RouteTable>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.RouteTable, CNM.PSRouteTable>();
+
+            // Route
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSRoute, MNM.Route>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.Route, CNM.PSRoute>();
+
             // Gateways
             // CNM to MNM
             Mapper.CreateMap<CNM.PSVirtualNetworkGateway, MNM.VirtualNetworkGateway>();
@@ -181,6 +195,35 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIpConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
+
+            //Application Gateways
+            //CNM to MNM
+            Mapper.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
+            Mapper.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendAddress, MNM.ApplicationGatewayBackendAddress>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendAddressPool, MNM.ApplicationGatewayBackendAddressPool>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendHttpSettings, MNM.ApplicationGatewayBackendHttpSettings>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFrontendIPConfiguration, MNM.ApplicationGatewayFrontendIPConfiguration>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayFrontendPort, MNM.ApplicationGatewayFrontendPort>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayHttpListener, MNM.ApplicationGatewayHttpListener>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayIPConfiguration, MNM.ApplicationGatewayIPConfiguration>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayRequestRoutingRule, MNM.ApplicationGatewayRequestRoutingRule>();
+            Mapper.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>();
+            Mapper.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
+
+            //MNM to CNM
+            Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
+            Mapper.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendAddress, CNM.PSApplicationGatewayBackendAddress>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendAddressPool, CNM.PSApplicationGatewayBackendAddressPool>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendHttpSettings, CNM.PSApplicationGatewayBackendHttpSettings>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFrontendIPConfiguration, CNM.PSApplicationGatewayFrontendIPConfiguration>();
+            Mapper.CreateMap<MNM.ApplicationGatewayFrontendPort, CNM.PSApplicationGatewayFrontendPort>();
+            Mapper.CreateMap<MNM.ApplicationGatewayHttpListener, CNM.PSApplicationGatewayHttpListener>();
+            Mapper.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIPConfiguration>();
+            Mapper.CreateMap<MNM.ApplicationGatewayRequestRoutingRule, CNM.PSApplicationGatewayRequestRoutingRule>();
+            Mapper.CreateMap<MNM.ApplicationGatewaySslCertificate, CNM.PSApplicationGatewaySslCertificate>();
+            Mapper.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
         }
     }
 }

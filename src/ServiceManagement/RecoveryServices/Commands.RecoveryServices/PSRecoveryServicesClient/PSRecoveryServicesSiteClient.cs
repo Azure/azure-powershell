@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
@@ -73,6 +74,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             };
 
             return this.GetSiteRecoveryClient().Sites.Create(input, this.GetRequestHeaders(false));
+        }
+
+        /// <summary>
+        /// Method to delete a Site
+        /// </summary>
+        /// <param name="siteName">name of the site</param>
+        /// <param name="vault">vault object</param>
+        /// <returns>job object for the creation.</returns>
+        public JobResponse DeleteAzureSiteRecoverySite(string siteName, ASRVault vault = null)
+        {
+            if (vault != null)
+            {
+                Utilities.UpdateVaultSettings(new ASRVaultCreds()
+                {
+                    CloudServiceName = vault.CloudServiceName,
+                    ResourceName = vault.Name
+                });
+            }
+
+            string siteID = null;
+            SiteListResponse response = this.GetAzureSiteRecoverySites(vault);
+            foreach (var site in response.Sites)
+            {
+                if (siteName.Equals(site.Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    siteID = site.ID;
+                    break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(siteID))
+            {
+                // Site does not exist
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.SiteDetailsNotValid,
+                    siteName));
+            }
+
+            return this.GetSiteRecoveryClient().Sites.Delete(siteID, this.GetRequestHeaders(false));
         }
     }
 }

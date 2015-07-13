@@ -613,48 +613,6 @@ function Test-FailWithBadServerIndentity
 
 <#
 .SYNOPSIS
-Tests that the direct access property is getting updated correctly for a sql database
-#>
-function Test-DatabaseDirectAccess
-{
-	# Setup
-	$testSuffix = 551
-	Create-TestEnvironment $testSuffix
-	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-
-	try
-	{
-		# Test
-		Enable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.SecureConnectionState "Optional"
-
-		# Test
-		Disable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.SecureConnectionState "Required"
-
-		# Test
-		Enable-AzureSqlDatabaseDirectAccess -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureSqlDatabaseSecureConnectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.SecureConnectionState "Optional"
-
-	}
-	finally
-	{
-		# Cleanup
-		Remove-TestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
 Tests that storage key rotation process for a policy of a Sql database server is managed properly
 #>
 function Test-ServerStorageKeyRotation
