@@ -207,18 +207,18 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.LoadBalancerBackendAddressPool != null)
                 {
+                    this.LoadBalancerBackendAddressPoolId = new List<string>();
                     foreach (var bepool in this.LoadBalancerBackendAddressPool)
                     {
-                        this.LoadBalancerBackendAddressPoolId = new List<string>();
                         this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
                     }
                 }
 
                 if (this.LoadBalancerInboundNatRule != null)
                 {
+                    this.LoadBalancerInboundNatRuleId = new List<string>();
                     foreach (var natRule in this.LoadBalancerInboundNatRule)
                     {
-                        this.LoadBalancerInboundNatRuleId = new List<string>();
                         this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
                     }
                 }
