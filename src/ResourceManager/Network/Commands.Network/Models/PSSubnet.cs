@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId NetworkSecurityGroup { get; set; }
 
+        public PSResourceId RouteTable { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -38,6 +40,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string NetworkSecurityGroupText
         {
             get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string RouteTableText
+        {
+            get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented); }
         }
     }
 }

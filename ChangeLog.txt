@@ -59,9 +59,21 @@
         * Set-AzureApplicationGatewaySslCertificate
         * Get-AzureApplicationGatewaySslCertificate
         * Remove-AzureApplicationGatewaySslCertificate
-*Azure Network cmdlets
-    * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
-    * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+	* Fixed minor bugs AzureLoadbalancer 
+	* Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
+	* Added cmdlets to RouteTables and Routes
+		* New-AzureRouteTable
+		* Get-AzureRouteTable
+		* Set-AzureRouteTable
+		* Remove-AzureRouteTable
+		* New-AzureRouteConfig
+		* Add-AzureRouteConfig
+		* Set-AzureRouteConfig
+		* Get-AzureRouteConfig
+		* Remove-AzureRouteConfig
+	*Azure Network cmdlets
+		* Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
+		* Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
 
 2015.07.10 version 1.0.0
 * Azure Backup cmdlets
@@ -73,6 +85,10 @@
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
+
+* Azure Data Factory cmdlets
+    * Upgraded management library to 1.0.0 with breaking JSON format change.
+    * Updated list operation paging support in cmdlets.
 
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
