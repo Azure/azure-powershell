@@ -15,10 +15,14 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public enum PSProbeProtocol
+    public class PSRoute : PSChildResource
     {
-        Http,
+        public string AddressPrefix { get; set; }
+        
+        public string NextHopType { get; set; }
 
-        Tcp,
+        public string NextHopIpAddress { get; set; }
+
+        public string ProvisioningState { get; set; }
     }
 }

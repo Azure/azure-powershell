@@ -59,9 +59,21 @@
         * Set-AzureApplicationGatewaySslCertificate
         * Get-AzureApplicationGatewaySslCertificate
         * Remove-AzureApplicationGatewaySslCertificate
-*Azure Network cmdlets
-    * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
-    * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+	* Fixed minor bugs AzureLoadbalancer 
+	* Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
+	* Added cmdlets to RouteTables and Routes
+		* New-AzureRouteTable
+		* Get-AzureRouteTable
+		* Set-AzureRouteTable
+		* Remove-AzureRouteTable
+		* New-AzureRouteConfig
+		* Add-AzureRouteConfig
+		* Set-AzureRouteConfig
+		* Get-AzureRouteConfig
+		* Remove-AzureRouteConfig
+	*Azure Network cmdlets
+		* Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
+		* Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
 
 2015.07.10 version 1.0.0
 * Azure Backup cmdlets
@@ -111,6 +123,12 @@
         * Get-AzureSqlDatabaseRestorePoints
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
+* Azure Recovery Services
+    * Fixed Storage and Network mapping issues
+    * Added encryption support for failover changes
+    * Added Delete vault support
+    * Provisioned to update VM properties
+    * Few bug fixes
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454

@@ -155,5 +155,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-CommitRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
+
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RecoveryServicesSanE2ETest()
+        {
+            this.RunPowerShellTest("Test-SanE2E -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
     }
 }
