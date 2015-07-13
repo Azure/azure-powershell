@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -26,14 +27,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SqlTestsBase
     {
-        private EnvironmentSetupHelper helper;
+        protected EnvironmentSetupHelper helper;
 
         protected SqlTestsBase()
         {
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected virtual void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
@@ -73,9 +74,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected StorageManagementClient GetStorageClient()
+        protected Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetStorageClient()
         {
-            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            var client = TestBase.GetServiceClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        protected AuthorizationManagementClient GetAuthorizationManagementClient()
         {   
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
