@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Runspaces;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish 
 {

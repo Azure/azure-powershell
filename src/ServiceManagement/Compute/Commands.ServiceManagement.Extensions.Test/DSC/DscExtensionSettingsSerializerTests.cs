@@ -29,7 +29,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
 {
     /// <summary>
-    /// Tests for <see cref="DscSettingsSerializer"/> class.
+    /// Tests for <see cref="DscExtensionSettingsSerializer"/> class.
     /// </summary>
     public class DscExtensionSettingsSerializerTests
     {
@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(credentialParameterName, new PSCredential(userName, String2SecureString(password)));
             
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
             Assert.Equal(1, publicSettings.Properties.Count());
@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
             Assert.Equal(1, publicSettings.Properties.Count());
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
             Assert.Equal(1, publicSettings.Properties.Count());
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             const bool value = true;
             var configurationArguments = new Hashtable {{arg, true}};
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
             Assert.Equal(1, publicSettings.Properties.Count());
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
             Assert.Equal(1, publicSettings.Properties.Count());
@@ -149,23 +149,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
         /// <param name="configurationArguments"></param>
         /// <param name="privateSettings"></param>
         /// <returns></returns>
-        private static DscPublicSettings GetPublicPrivateAfterDeseriazlization(
+        private static DscExtensionPublicSettings GetPublicPrivateAfterDeseriazlization(
             Hashtable configurationArguments,
-            out DscPrivateSettings privateSettings)
+            out DscExtensionPrivateSettings privateSettings)
         {
-            Tuple<DscPublicSettings.Property[], Hashtable> separatedSettings =
-                DscSettingsSerializer.SeparatePrivateItems(configurationArguments);
-            DscPublicSettings publicSettings = new DscPublicSettings();
-            privateSettings = new DscPrivateSettings();
-            publicSettings.Properties = separatedSettings.Item1;
+            Tuple<DscExtensionPublicSettings.Property[], Hashtable> separatedSettings =
+                DscExtensionSettingsSerializer.SeparatePrivateItems(configurationArguments);
+            DscExtensionPublicSettings extensionPublicSettings = new DscExtensionPublicSettings();
+            privateSettings = new DscExtensionPrivateSettings();
+            extensionPublicSettings.Properties = separatedSettings.Item1;
             privateSettings.Items = separatedSettings.Item2;
 
-            string serializedPublic = DscSettingsSerializer.SerializePublicSettings(publicSettings);
-            string serializedPrivate = DscSettingsSerializer.SerializePrivateSettings(privateSettings);
+            string serializedPublic = DscExtensionSettingsSerializer.SerializePublicSettings(extensionPublicSettings);
+            string serializedPrivate = DscExtensionSettingsSerializer.SerializePrivateSettings(privateSettings);
 
-            publicSettings = DscSettingsSerializer.DeserializePublicSettings(serializedPublic);
+            extensionPublicSettings = DscExtensionSettingsSerializer.DeserializePublicSettings(serializedPublic);
             privateSettings = DeserializePrivateSettings(serializedPrivate);
-            return publicSettings;
+            return extensionPublicSettings;
         }
 
         /// <summary>
@@ -189,9 +189,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        static private DscPrivateSettings DeserializePrivateSettings(string s)
+        static private DscExtensionPrivateSettings DeserializePrivateSettings(string s)
         {
-            return JsonConvert.DeserializeObject<DscPrivateSettings>(s);
+            return JsonConvert.DeserializeObject<DscExtensionPrivateSettings>(s);
         }
     }
 }

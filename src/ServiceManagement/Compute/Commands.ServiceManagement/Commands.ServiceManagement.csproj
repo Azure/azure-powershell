@@ -158,7 +158,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IaaS\Extensions\DSC\DscExtensionPublishCmdletBase.cs" />
     <Compile Include="IaaS\Network\AddAzureVirtualIP.cs" />
     <Compile Include="AffinityGroups\GetAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\NewAzureAffinityGroup.cs" />
@@ -208,8 +207,7 @@
     <Compile Include="IaaS\Extensions\DSC\GetAzureVMDscExtension.cs" />
     <Compile Include="IaaS\Extensions\DSC\SetAzureVMDscExtension.cs" />
     <Compile Include="IaaS\Extensions\DSC\VirtualMachineDscExtensionContext.cs" />
-    <Compile Include="IaaS\Extensions\DSC\VirtualMachineDscExtensionCmdletBase.cs" />
-    <Compile Include="IaaS\Extensions\DSC\ServiceManagementBaseCmdletExtentions.cs" />
+    <Compile Include="IaaS\Extensions\DSC\DscExtensionCmdletCommonBase.cs" />
     <Compile Include="IaaS\Extensions\DSC\PublishAzureVMDscConfiguration.cs" />
     <Compile Include="IaaS\Extensions\DSC\VirtualMachineDscExtensionStatusContext.cs" />
     <Compile Include="IaaS\Extensions\MicrosoftAntimalware\GetAzureVMMicrosoftAntimalwareExtension.cs" />

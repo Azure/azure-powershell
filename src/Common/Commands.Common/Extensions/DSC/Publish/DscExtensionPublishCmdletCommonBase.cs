@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
-using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 
-namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
-    public class DscExtensionCmdletCommonBase : AzurePSCmdlet
+    public class DscExtensionPublishCmdletCommonBase : AzurePSCmdlet
     {
         //Publish
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -60,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
             if (paramaterSetName == UploadArchiveParameterSetName)
             {
                 // Check that ConfigurationPath points to a valid file
-                /** TODO: This is repetition. Remove this
+                /** TODO: Why do we need this check? This is repetition. Remove this
                 if (!File.Exists(ConfigurationPath))
                 {
                     this.ThrowInvalidArgumentError(Resources.PublishVMDscExtensionConfigFileNotFound, ConfigurationPath);
@@ -71,8 +70,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                 {
                     ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension, configurationPath);
                 }
-
-                
             }
             else if (paramaterSetName == CreateArchiveParameterSetName)
             {
@@ -221,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// </summary>
         public void PublishConfiguration(
             String configurationPath,
-            String configurationArchivePath,
+            String outputArchivePath,
             Boolean force,
             StorageCredentials storageCredentials,
             String containerName,
@@ -233,9 +230,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                     true,
                     string.Empty,
                     Properties.Resources.AzureVMDscCreateArchiveAction,
-                    configurationArchivePath, () => CreateConfigurationArchive(
+                    outputArchivePath, () => CreateConfigurationArchive(
                         configurationPath,
-                        configurationArchivePath,
+                        outputArchivePath,
                         force,
                         parameterSetName));
             }
@@ -248,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                     ? configurationPath
                     : CreateConfigurationArchive(
                         configurationPath,
-                        configurationArchivePath,
+                        outputArchivePath,
                         force,
                         parameterSetName);
 
@@ -289,6 +286,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture, 
                         Properties.Resources.PublishVMDscExtensionArchiveUploadedMessage, modulesBlob.Uri.AbsoluteUri));
+                    
+                    WriteObject(modulesBlob.Uri.AbsoluteUri);
                 });
         }
 

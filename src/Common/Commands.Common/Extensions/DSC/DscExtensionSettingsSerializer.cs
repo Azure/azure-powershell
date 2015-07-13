@@ -12,32 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
-    public class DscSettingsSerializer
+    public class DscExtensionSettingsSerializer
     {
         /// <summary>
-        /// Serialize DscPublicSettings to string.
+        /// Serialize DscExtensionPublicSettings to string.
         /// </summary>
-        /// <param name="publicSettings"></param>
+        /// <param name="extensionPublicSettings"></param>
         /// <returns></returns>
-        public static string SerializePublicSettings(DscPublicSettings publicSettings)
+        public static string SerializePublicSettings(DscExtensionPublicSettings extensionPublicSettings)
         {
-            return JsonConvert.SerializeObject(publicSettings);
+            return JsonConvert.SerializeObject(extensionPublicSettings);
         }
 
         /// <summary>
@@ -45,35 +40,35 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// </summary>
         /// <param name="privateSettings"></param>
         /// <returns></returns>
-        public static string SerializePrivateSettings(DscPrivateSettings privateSettings)
+        public static string SerializePrivateSettings(DscExtensionPrivateSettings privateSettings)
         {
             return JsonConvert.SerializeObject(privateSettings);
         }
 
-        public static DscPublicSettings DeserializePublicSettings(string publicSettingsString)
+        public static DscExtensionPublicSettings DeserializePublicSettings(string publicSettingsString)
         {
-            DscPublicSettings publicSettings = null;
+            DscExtensionPublicSettings extensionPublicSettings = null;
             try
             {
-                publicSettings = string.IsNullOrEmpty(publicSettingsString)
+                extensionPublicSettings = string.IsNullOrEmpty(publicSettingsString)
                                      ? null
-                                     : JsonConvert.DeserializeObject<DscPublicSettings>(publicSettingsString);
+                                     : JsonConvert.DeserializeObject<DscExtensionPublicSettings>(publicSettingsString);
             }
             catch (JsonException)
             {
                 // Try deserialize as version 1.0
                 try
                 {
-                    DscPublicSettings.Version1 publicSettingsV1 =
-                        JsonConvert.DeserializeObject<DscPublicSettings.Version1>(publicSettingsString);
-                    publicSettings = publicSettingsV1.ToCurrentVersion();
+                    DscExtensionPublicSettings.Version1 publicSettingsV1 =
+                        JsonConvert.DeserializeObject<DscExtensionPublicSettings.Version1>(publicSettingsString);
+                    extensionPublicSettings = publicSettingsV1.ToCurrentVersion();
                 }
                 catch (JsonException)
                 {
                     throw;
                 } 
             }
-            return publicSettings;
+            return extensionPublicSettings;
         }
 
          /// <summary>
@@ -104,9 +99,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// </summary>
         /// <param name="arguments"></param>
         /// <returns>tuple of array (public settings) and hashtable (private settings)</returns>
-        public static Tuple<DscPublicSettings.Property[], Hashtable> SeparatePrivateItems(Hashtable arguments)
+        public static Tuple<DscExtensionPublicSettings.Property[], Hashtable> SeparatePrivateItems(Hashtable arguments)
         {
-            var publicSettings = new List<DscPublicSettings.Property>();
+            var publicSettings = new List<DscExtensionPublicSettings.Property>();
             var privateSettings = new Hashtable();
             if (arguments != null)
             {
@@ -141,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                         entryType = typeof (PSCredential).ToString();
                     }
 
-                    var entry = new DscPublicSettings.Property()
+                    var entry = new DscExtensionPublicSettings.Property()
                     {
                         Name = entryName,
                         TypeName = entryType,
@@ -150,7 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                     publicSettings.Add(entry);
                 }
             }
-            return new Tuple<DscPublicSettings.Property[], Hashtable>(publicSettings.ToArray(), privateSettings);
+            return new Tuple<DscExtensionPublicSettings.Property[], Hashtable>(publicSettings.ToArray(), privateSettings);
         }
 
         /// <summary>

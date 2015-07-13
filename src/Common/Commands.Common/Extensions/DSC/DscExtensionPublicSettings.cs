@@ -22,10 +22,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
     /// Represents public settings. Serialized representation of this object stored as a plain text string on the VM.
     /// Part of the protocol between Set-AzureVMDscExtension cmdlet and DSC Extension handler.
     /// </summary>
-    public class DscPublicSettings
+    public class DscExtensionPublicSettings
     {
         /// <summary>
-        /// Version 1.0.0.0 of DscPublicSettings. We keep it for backward compatability.
+        /// Version 1.0.0.0 of DscExtensionPublicSettings. We keep it for backward compatability.
         /// </summary>
         internal class Version1
         {
@@ -35,26 +35,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
             public Hashtable Properties { get; set; }
 
             /// <summary>
-            /// Converting to the current version of DscPublicSettings.
+            /// Converting to the current version of DscExtensionPublicSettings.
             /// </summary>
             /// <returns></returns>
-            public DscPublicSettings ToCurrentVersion()
+            public DscExtensionPublicSettings ToCurrentVersion()
             {
-                List<Property> properties = new List<Property>();
-                foreach (DictionaryEntry p in this.Properties)
+                var properties = new List<Property>();
+                foreach (DictionaryEntry p in Properties)
                 {
-                    properties.Add(new Property()
+                    properties.Add(new Property
                     {
                         Name = p.Key.ToString(), 
                         TypeName = p.Value.GetType().ToString(), 
                         Value = p.Value
                     });
                 }
-                return new DscPublicSettings()
+                return new DscExtensionPublicSettings
                 {
-                    SasToken = this.SasToken,
-                    ModulesUrl = this.ModulesUrl,
-                    ConfigurationFunction = this.ConfigurationFunction,
+                    SasToken = SasToken,
+                    ModulesUrl = ModulesUrl,
+                    ConfigurationFunction = ConfigurationFunction,
                     Properties = properties.ToArray(),
                     ProtocolVersion = new Version(1, 0, 0, 0)
                 };
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         }
 
         /// <summary>
-        /// Defines an entry of DscPublicSettings.Properties array.
+        /// Defines an entry of DscExtensionPublicSettings.Properties array.
         /// </summary>
         public class Property
         {
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         public Property[] Properties { get; set; }
 
         /// <summary>
-        /// Version of the protocol (DscPublicSettings and DscPrivateSettings mostly).
+        /// Version of the protocol (DscExtensionPublicSettings and DscPrivateSettings mostly).
         /// </summary>
         public Version ProtocolVersion { get; set; }
     }

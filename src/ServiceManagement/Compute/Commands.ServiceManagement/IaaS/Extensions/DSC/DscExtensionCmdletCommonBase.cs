@@ -15,6 +15,7 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -24,13 +25,16 @@ using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
-    static class ServiceManagementBaseCmdletExtentions
+    public static class DscExtensionCmdletCommonBase
     {
+        public const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
+        public const string DefaultExtensionVersion = "1.*";
+
         /// <summary>
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
         /// Throws a terminating error if the credentials cannot be determined.
         /// </summary>
-        public static StorageCredentials GetStorageCredentials(this ServiceManagementBaseCmdlet cmdlet, AzureStorageContext storageContext)
+        public static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, AzureStorageContext storageContext)
         {
             StorageCredentials credentials = null;
 
@@ -41,10 +45,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             else
             {
                 var storageAccountName = cmdlet.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-                
-                if (!string.IsNullOrEmpty(storageAccountName))
+
+                var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                        cmdlet.Profile, cmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+
+                if (!string.IsNullOrEmpty(storageAccountName) && storageClient != null)
                 {
-                    var keys = cmdlet.StorageClient.StorageAccounts.GetKeys(storageAccountName);
+                    var keys = storageClient.StorageAccounts.GetKeys(storageAccountName);
                     
                     if (keys != null)
                     {
@@ -67,13 +74,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 
             if (string.IsNullOrEmpty(credentials.AccountName))
             {
-                cmdlet.ThrowInvalidArgumentError(Resources.AzureVMDscStorageContextMustIncludeAccountName);
+                ThrowInvalidArgumentError(cmdlet, Resources.AzureVMDscStorageContextMustIncludeAccountName);
             }
 
             return credentials;
         }
 
-        public static void ThrowInvalidArgumentError(this ServiceManagementBaseCmdlet cmdlet, string format, params object[] args)
+        public static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
         {
             cmdlet.ThrowTerminatingError(
                 new ErrorRecord(

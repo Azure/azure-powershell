@@ -20,7 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
     /// Represents private/protected settings. Serialized representation of this object stored as an encrypted string on the VM.
     /// Part of the protocol between Set-AzureVMDscExtension cmdlet and DSC Extension handler.
     /// </summary>
-    public class DscPrivateSettings
+    public class DscExtensionPrivateSettings
     {
         /// <summary>
         /// Url to the blob storage with ConfigurationData .psd1 file.
@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 
         /// <summary>
         /// This hashtable contains parameters that needs to be encrypted on target VM, like PSCredential.
-        /// <see cref="DscPublicSettings.Properties" /> are not encrypted on target VM.
+        /// <see cref="DscExtensionPublicSettings.Properties" /> are not encrypted on target VM.
         /// </summary>
         public Hashtable Items { get; set; }
     }

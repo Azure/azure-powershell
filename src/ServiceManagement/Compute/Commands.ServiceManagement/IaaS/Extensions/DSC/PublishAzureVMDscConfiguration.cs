@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
@@ -24,8 +26,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
     /// later can be applied to Azure Virtual Machines using the 
     /// Set-AzureVMDscExtension cmdlet.
     /// </summary>
-    [Cmdlet(VerbsData.Publish, "AzureVMDscConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = UploadArchiveParameterSetName)]
-    public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletBase
+    [Cmdlet(
+        VerbsData.Publish, 
+        "AzureVMDscConfiguration", 
+        SupportsShouldProcess = true, 
+        DefaultParameterSetName = UploadArchiveParameterSetName),
+    OutputType(
+         typeof(String))]
+    public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletCommonBase
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
         private const string UploadArchiveParameterSetName = "UploadArchive";
@@ -77,12 +85,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// When using this parameter, Publish-AzureVMDscConfiguration creates a
         /// local ZIP archive instead of uploading it to blob storage..
         /// </summary>
+        [Alias("ConfigurationArchivePath")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateArchiveParameterSetName,
             HelpMessage = "Path to a local ZIP file to write the configuration archive to.")]
         [ValidateNotNullOrEmpty]
-        public string ConfigurationArchivePath { get; set; }
+        public string OutputArchivePath { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -120,10 +129,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             switch (ParameterSetName)
             {
                 case CreateArchiveParameterSetName:
-                    ConfigurationArchivePath = GetUnresolvedProviderPathFromPSPath(ConfigurationArchivePath);
+                    OutputArchivePath = GetUnresolvedProviderPathFromPSPath(OutputArchivePath);
                     break;
                 case UploadArchiveParameterSetName:
-                    _storageCredentials = GetStorageCredentials(StorageContext);
+                    _storageCredentials = this.GetStorageCredentials(StorageContext);
                     if (ContainerName == null)
                     {
                         ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
@@ -131,10 +140,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                     break;
             }
 
-            //PublishConfiguration();
             PublishConfiguration(
                 ConfigurationPath,
-                ConfigurationArchivePath,
+                OutputArchivePath,
                 Force.IsPresent,
                 _storageCredentials,
                 ContainerName,
