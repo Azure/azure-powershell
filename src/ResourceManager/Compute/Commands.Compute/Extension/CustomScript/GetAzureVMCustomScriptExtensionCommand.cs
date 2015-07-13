@@ -68,36 +68,39 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (Status)
+            ExecuteClientAction(() =>
             {
-                var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
-
-                if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                    returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                if (Status)
                 {
-                    WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                    var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
+                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+                    if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                        returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                    }
+                    else
+                    {
+                        WriteObject(null);
+                    }
                 }
                 else
                 {
-                    WriteObject(null);
-                }
-            }
-            else
-            {
-                var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                    var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
+                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
 
-                if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                    returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                    if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                        returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                    }
+                    else
+                    {
+                        WriteObject(null);
+                    }
                 }
-                else
-                {
-                    WriteObject(null);
-                }
-            }
+            });
         }
     }
 }

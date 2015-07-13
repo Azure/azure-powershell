@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new List<ProductInfoHeaderValue>();
+            UserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -150,6 +150,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-        public List<ProductInfoHeaderValue> UserAgents { get; set; }
+
+        public void AddUserAgent(string productName, string productVersion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserAgent(string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
     }
 }

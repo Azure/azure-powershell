@@ -123,8 +123,6 @@
     <Compile Include="Security\Cmdlet\DataMasking\RemoveAzureSqlDatabaseDataMaskingRule.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingRule.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\SqlDatabaseDataMaskingRuleCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\EnableAzureSqlDatabaseDirectAccess.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\DisableAzureSqlDatabaseDirectAccess.cs" />
     <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingPolicy.cs" />
     <Compile Include="Security\Cmdlet\SecureConnection\GetAzureSqlDatabaseSecureConnectionPolicy.cs" />
     <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlDatabaseAuditingPolicy.cs" />
@@ -206,7 +204,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.27-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

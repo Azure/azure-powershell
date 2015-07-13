@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         }
                     }
 
-                    var operation = GetOperationNewSM(response.RequestId);
+                    var operation = GetOperation(response.RequestId);
                     WriteVerboseWithTimestamp(string.Format(Resources.AzureVNetSiteCompletedOperation, CommandRuntime.ToString()));
                     result = sites.Select(site => ContextFactory<NetworkListResponse.VirtualNetworkSite, VirtualNetworkSiteContext>(site, operation));
                 }
@@ -72,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     }
                     else
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });
