@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -74,9 +73,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetStorageClient()
+        protected StorageManagementClient GetStorageClient()
         {
-            var client = TestBase.GetServiceClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
+            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected AuthorizationManagementClient GetAuthorizationManagementClient()
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
         {   
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
-
         }
     }
 }
