@@ -134,20 +134,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
-        /// Gets or sets Encryption Key File
-        /// </summary>
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string EncryptionKeyFile { get; set; }
-
-        /// <summary>
-        /// Gets or sets Secondary Encryption Key File
-        /// </summary>
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string SecondaryEncryptionKeyFile { get; set; }
-
-        /// <summary>
         /// Gets or sets switch parameter. This is required to PerformSourceSideActions.
         /// </summary>
         [Parameter]
@@ -233,17 +219,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
-                    
-                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
-                    {
-                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
-                    }
-
-                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
-                    {
-                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
-                    }
-
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
             }
@@ -291,17 +266,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var blob = new AzureFailoverInput();
                     blob.VaultLocation = this.GetCurrentValutLocation();
-
-                    if (!string.IsNullOrEmpty(this.EncryptionKeyFile))
-                    {
-                        blob.PrimaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.EncryptionKeyFile);
-                    }
-
-                    if (!string.IsNullOrEmpty(this.SecondaryEncryptionKeyFile))
-                    {
-                        blob.SecondaryKekCertificatePfx = CertUtils.GetCertInBase64EncodedForm(this.SecondaryEncryptionKeyFile);
-                    }
-
                     request.ReplicationProviderSettings = DataContractUtils.Serialize<AzureFailoverInput>(blob);
                 }
             }
