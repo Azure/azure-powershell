@@ -768,9 +768,6 @@
                         <Component Id="cmp3EF2308A3A5D4416CF0A37CF350381A2" Guid="*">
                             <File Id="filBD789B715F4C6F58DFFACC4839072346" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.Data.Services.Client.dll" />
                         </Component>
-                        <Component Id="cmp8549E2CC25A35DDCAD1C042F4E80E254" Guid="*">
-                            <File Id="filF8F961D8FC629431B44B43A76538C334" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.DataFactories.Runtime.dll" />
-                        </Component>
                         <Component Id="cmp2E106693251FC564A4D03DA3778E26F7" Guid="*">
                             <File Id="fil3F27EAE226BD87840D5E9CE662DE26F9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\DataFactories\Microsoft.DataTransfer.Gateway.Encryption.dll" />
                         </Component>
@@ -4308,7 +4305,6 @@
             <ComponentRef Id="cmp0E60A03D189105D6E7A23E5B6943A5C4" />
             <ComponentRef Id="cmp0EE9B6E82BF354ED584258F3D7524FCC" />
             <ComponentRef Id="cmp3EF2308A3A5D4416CF0A37CF350381A2" />
-            <ComponentRef Id="cmp8549E2CC25A35DDCAD1C042F4E80E254" />
             <ComponentRef Id="cmp2E106693251FC564A4D03DA3778E26F7" />
             <ComponentRef Id="cmp7BF776718E3154F969306B3FB853D175" />
             <ComponentRef Id="cmp4F6E42879531C2B7A830BA3B4FF4033B" />
