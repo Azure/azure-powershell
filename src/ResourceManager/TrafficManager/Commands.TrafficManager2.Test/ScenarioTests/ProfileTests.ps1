@@ -47,7 +47,7 @@ function Test-ProfileCrud
 
 	Assert-True { $removed }
 
-	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName }
 }
 
 <#
@@ -67,7 +67,7 @@ function Test-ProfileCrudWithPiping
 
 	Assert-True { $removed }
 
-	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
 }
 
 <#
@@ -88,7 +88,7 @@ function Test-CreateDeleteUsingProfile
 
 	Remove-AzureTrafficManagerProfile -TrafficManagerProfile $createdProfile -Force
 
-	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "ResourceNotFound: Resource not found."
+	Assert-Throws { Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
 }
 
 <#
@@ -107,6 +107,38 @@ function Test-CrudWithEndpoint
 	$updatedProfile = Set-AzureTrafficManagerProfile -TrafficManagerProfile $profileWithEndpoint
 
 	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
+}
+
+<#
+.SYNOPSIS
+List profiles in resource group
+#>
+function Test-ListProfilesInResourceGroup
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureTrafficManagerProfile -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-AreEqual 1 $profiles.Count
+}
+
+<#
+.SYNOPSIS
+List profiles in subscription
+#>
+function Test-ListProfilesInSubscription
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	$createdProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+
+	$profiles = Get-AzureTrafficManagerProfile
+
+	Assert-NotNull $profiles
 }
 
 <#
@@ -139,4 +171,109 @@ function Test-ProfileRemoveNonExisting
 	
 	$removed = Remove-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force 
 	Assert-False { $removed }
+}
+
+<#
+.SYNOPSIS
+Enable existing disabled profile
+#>
+function Test-ProfileEnable
+{
+	$profileName = getAssetName
+	$relativeName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	$disabledProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Disabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	Assert-AreEqual "Disabled" $disabledProfile.ProfileStatus
+
+    Assert-True { Enable-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName }
+
+    $updatedProfile = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-AreEqual "Enabled" $updatedProfile.ProfileStatus
+}
+
+<#
+.SYNOPSIS
+Enable existing disabled profile using pipeline
+#>
+function Test-ProfileEnablePipeline
+{
+	$profileName = getAssetName
+	$relativeName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	$disabledProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Disabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	Assert-AreEqual "Disabled" $disabledProfile.ProfileStatus
+
+    Assert-True { Enable-AzureTrafficManagerProfile -TrafficManagerProfile $disabledProfile }
+
+    $updatedProfile = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-AreEqual "Enabled" $updatedProfile.ProfileStatus
+}
+
+<#
+.SYNOPSIS
+Enable non existing profile
+#>
+function Test-ProfileEnableNonExisting
+{
+	$profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+
+    Assert-Throws { Enable-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
+}
+
+<#
+.SYNOPSIS
+Disable existing disabled profile
+#>
+function Test-ProfileDisable
+{
+	$profileName = getAssetName
+	$relativeName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	$enabledProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Enabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	
+	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
+
+    Assert-True { Disable-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+
+    $updatedProfile = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-AreEqual "Disabled" $updatedProfile.ProfileStatus
+}
+
+<#
+.SYNOPSIS
+Disable existing disabled profile using pipeline
+#>
+function Test-ProfileDisablePipeline
+{
+	$profileName = getAssetName
+	$relativeName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	$enabledProfile = New-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Enabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
+
+    Assert-True { Disable-AzureTrafficManagerProfile -TrafficManagerProfile $enabledProfile -Force }
+
+    $updatedProfile = Get-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-AreEqual "Disabled" $updatedProfile.ProfileStatus
+}
+
+<#
+.SYNOPSIS
+Disable non existing profile
+#>
+function Test-ProfileDisableNonExisting
+{
+	$profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+
+    Assert-Throws { Disable-AzureTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force } 
 }
