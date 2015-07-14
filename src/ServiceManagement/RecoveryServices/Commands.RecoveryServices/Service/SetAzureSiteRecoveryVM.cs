@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -46,43 +45,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string RecoveryAzureVMName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Azure VM size
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string RecoveryAzureVMSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure Network Id
-        /// </summary>
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryAzureNetworkId { get; set; }
+        public string Size { get; set; }
 
         /// <summary>
         /// Gets or sets Selected Primary Network interface card Id
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string PrimaryNicId { get; set; }
+        public string PrimaryNic { get; set; }
 
         /// <summary>
-        /// Gets or sets recovery VM subnet name
+        /// Gets or sets Recovery Azure Network Id
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string RecoveryVMSubnetName { get; set; }
-
-        /// <summary>
-        /// Gets or sets recovery NIC static IP address
-        /// </summary>
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryNicIPAddress { get; set; }
-
+        public string RecoveryNetworkId { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -91,28 +75,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public override void ExecuteCmdlet()
         {
             // Check for at least one option
-            if (string.IsNullOrEmpty(this.RecoveryAzureVMName) &&
-                string.IsNullOrEmpty(this.RecoveryAzureVMSize) &&
-                string.IsNullOrEmpty(this.PrimaryNicId) &&
-                (string.IsNullOrEmpty(this.RecoveryAzureNetworkId) ||
-                string.IsNullOrEmpty(this.RecoveryVMSubnetName) ||
-                string.IsNullOrEmpty(this.RecoveryNicIPAddress)))
+            if (string.IsNullOrEmpty(this.Name) && 
+                string.IsNullOrEmpty(this.Size) && 
+                string.IsNullOrEmpty(this.PrimaryNic) && 
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
             {
                 this.WriteWarning(Properties.Resources.ArgumentsMissingForUpdateVmProperties.ToString());
                 return;
             }
 
-            VMProperties updateVmPropertiesInput = new VMProperties();
-            updateVmPropertiesInput.RecoveryAzureVMName = this.RecoveryAzureVMName;
-            updateVmPropertiesInput.RecoveryAzureVMSize = this.RecoveryAzureVMSize;
-            updateVmPropertiesInput.SelectedRecoveryAzureNetworkId = this.RecoveryAzureNetworkId;
+            // Both primary & recovery inputs should be present
+            if (string.IsNullOrEmpty(this.PrimaryNic) ^
+                string.IsNullOrEmpty(this.RecoveryNetworkId))
+            {
+                this.WriteWarning(Properties.Resources.NetworkArgumentsMissingForUpdateVmProperties.ToString());
+                return;
+            }
 
-            updateVmPropertiesInput.VMNics = new List<VMNicDetails>();
-            VMNicDetails vmnicDetails = new VMNicDetails();
-            vmnicDetails.NicId = this.PrimaryNicId;
-            vmnicDetails.RecoveryVMSubnetName = this.RecoveryVMSubnetName;
-            vmnicDetails.ReplicaNicStaticIPAddress = this.RecoveryNicIPAddress;
-            updateVmPropertiesInput.VMNics.Add(vmnicDetails);
+            UpdateVmPropertiesInput updateVmPropertiesInput = new UpdateVmPropertiesInput();
+            updateVmPropertiesInput.RecoveryAzureVmGivenName = this.Name;
+            updateVmPropertiesInput.RecoveryAzureVmSize = this.Size;
+            updateVmPropertiesInput.SelectedPrimaryNicId = this.PrimaryNic;
+            updateVmPropertiesInput.RecoveryAzureNetworkId = this.RecoveryNetworkId;
 
             this.jobResponse = RecoveryServicesClient.UpdateVmProperties(
                 this.VirtualMachine.ProtectionContainerId,
