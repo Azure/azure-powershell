@@ -15,7 +15,6 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -85,42 +84,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                        break;
                 }
 
-                CreateProtectionProfileInput createProtectionProfileInput = null;
-                if (string.Compare(
-                    this.ProtectionProfile.ReplicationProvider,
-                    Constants.San,
-                    StringComparison.OrdinalIgnoreCase) == 0)
-                    {
-                        SanProtectionProfileInput sanProtectionProfileInput
-                                = new SanProtectionProfileInput()
-                                {
-                                    CloudId = this.ProtectionProfile.SanProviderSettingsObject.CloudId,
-                                    RemoteCloudId = this.ProtectionProfile.SanProviderSettingsObject.RemoteCloudId,
-                                    ArrayUniqueId = this.ProtectionProfile.SanProviderSettingsObject.ArrayUniqueId,
-                                    RemoteArrayUniqueId = this.ProtectionProfile.SanProviderSettingsObject.RemoteArrayUniqueId
-                                };
-
-                        createProtectionProfileInput =
-                                new CreateProtectionProfileInput(
-                                    //// Name of the protection profile as the name of the protection container if not given
-                                    string.IsNullOrEmpty(this.ProtectionProfile.Name) ? this.PrimaryProtectionContainer.Name : this.ProtectionProfile.Name,
-                                    this.ProtectionProfile.ReplicationProvider,
-                                    DataContractUtils<SanProtectionProfileInput>.Serialize(sanProtectionProfileInput));
-                    }
-
                 ProtectionProfileAssociationInput protectionProfileAssociationInput =
                     new ProtectionProfileAssociationInput(
                         this.PrimaryProtectionContainer.ID,
                         recoveryContainerId);
 
-                CreateAndAssociateProtectionProfileInput createAndAssociateProtectionProfileInput =
-                    new CreateAndAssociateProtectionProfileInput(
-                        createProtectionProfileInput,
-                        protectionProfileAssociationInput);
-
                 this.jobResponse = RecoveryServicesClient.StartDeleteAndDissociateAzureSiteRecoveryProtectionProfileJob(
                     this.ProtectionProfile.ID,
-                    createAndAssociateProtectionProfileInput);
+                    protectionProfileAssociationInput);
 
                 this.WriteJob(this.jobResponse.Job);
             }
@@ -128,6 +99,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 this.HandleException(exception);
             }
+        }
+
+        /// <summary>
+        /// Handles interrupts.
+        /// </summary>
+        protected override void StopProcessing()
+        {
+            // Ctrl + C and etc
+            base.StopProcessing();
+            this.StopProcessingFlag = true;
         }
 
         /// <summary>

@@ -78,15 +78,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Deletes and Dissociates Azure Site Recovery Protection Profile.
         /// </summary>
         /// <param name="protectionProfileId">Protection Profile ID</param>
-        /// <param name="createAndAssociateProtectionProfileInput">Protection Profile Association Input</param>
+        /// <param name="protectionProfileAssociationInput">Protection Profile Association Input</param>
         /// <returns>Job response</returns>
         public JobResponse StartDeleteAndDissociateAzureSiteRecoveryProtectionProfileJob(
             string protectionProfileId,
-            CreateAndAssociateProtectionProfileInput createAndAssociateProtectionProfileInput)
+            ProtectionProfileAssociationInput protectionProfileAssociationInput)
         {
             return this.GetSiteRecoveryClient().ProtectionProfile.DissociateAndDelete(
                 protectionProfileId,
-                createAndAssociateProtectionProfileInput,
+                protectionProfileAssociationInput,
                 this.GetRequestHeaders());
         }
     }

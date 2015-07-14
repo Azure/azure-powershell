@@ -2897,9 +2897,6 @@
                         <Component Id="cmp1E1EACEE941A7D7B9B2649BB3AC9ABC3" Guid="*">
                             <File Id="fil7BC44111780DA333D7D3C421E0660012" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll-help.xml" />
                         </Component>
-                        <Component Id="cmp9C20E0942BCFF51F8948DDE7E47043F9" Guid="*">
-                            <File Id="fil91A18D6C24D483473C8F08BC5DCED268" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.format.ps1xml" />
-                        </Component>
                         <Component Id="cmpF2406A263F1B403C803ACB70D2468624" Guid="*">
                             <File Id="fil2AB9A3CCA503D5D983784642C1F8E4F4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
@@ -4739,7 +4736,6 @@
             <ComponentRef Id="cmp5FB7157FEA8EDC9D2D10814DA15518AE" />
             <ComponentRef Id="cmpCA80C6C0F5670291AF2F3560D36B1EA3" />
             <ComponentRef Id="cmp1E1EACEE941A7D7B9B2649BB3AC9ABC3" />
-            <ComponentRef Id="cmp9C20E0942BCFF51F8948DDE7E47043F9" />
             <ComponentRef Id="cmpF2406A263F1B403C803ACB70D2468624" />
             <ComponentRef Id="cmp8BF1C84B7C0D6D25264BEF64FD945354" />
             <ComponentRef Id="cmp18ED74EDB82DE2351B9655ED86ACA19A" />

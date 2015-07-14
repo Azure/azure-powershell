@@ -26,11 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets Azure Site Recovery Servers.
         /// </summary>
-        /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>
         /// <returns>Server list response</returns>
-        public ServerListResponse GetAzureSiteRecoveryServer(bool shouldSignRequest = true)
+        public ServerListResponse GetAzureSiteRecoveryServer()
         {
-            return this.GetSiteRecoveryClient().Servers.List(this.GetRequestHeaders(shouldSignRequest));
+            return this.GetSiteRecoveryClient().Servers.List(this.GetRequestHeaders());
         }
 
         /// <summary>
