@@ -89,7 +89,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.6.0-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.5.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -149,7 +149,6 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkClient.cs" />
-    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStoragePoolMappingClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultExtendedInfoClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMGroupClient.cs" />
@@ -164,15 +163,9 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
     <Compile Include="RecoveryServicesCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\GetAzureSiteRecoveryStoragePoolMapping.cs" />
     <Compile Include="Service\GetAzureSiteRecoveryVault.cs" />
-    <Compile Include="Service\RemoveAzureSiteRecoverySite.cs" />
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
-    <Compile Include="Service\NewAzureSiteRecoveryStoragePoolMapping.cs" />
-    <Compile Include="Service\RemoveAzureSiteRecoveryStoragePoolMapping.cs" />
-    <Compile Include="Service\RemoveAzureSiteRecoveryVault.cs" />
-    <Compile Include="Service\SetAzureSiteRecoveryProtectionProfile.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
@@ -232,9 +225,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Microsoft.Azure.Commands.RecoveryServices.format.ps1xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>

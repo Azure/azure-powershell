@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public JobResponse UpdateVmProperties(
             string protectionContainerId,
             string virtualMachineId,
-            VMProperties updateVmPropertiesInput)
+            UpdateVmPropertiesInput updateVmPropertiesInput)
         {
             return this.GetSiteRecoveryClient().Vm.UpdateVmProperties(
                 protectionContainerId,
