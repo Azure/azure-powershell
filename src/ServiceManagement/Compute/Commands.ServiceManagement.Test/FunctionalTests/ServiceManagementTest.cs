@@ -294,7 +294,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected void StartTest(string testname, DateTime testStartTime)
         {
-            Console.WriteLine("{0} test starts at {1}", testname, testStartTime);
+            string subId = defaultAzureSubscription.SubscriptionId;
+            string endPoint = defaultAzureSubscription.ServiceEndpoint;
+            Console.WriteLine("{0} test starts at {1} for subscription {2} and endpoint {3}", testname, testStartTime, subId, endPoint);
         }
 
         private static void Retry(string cmdlet, string message, int maxTry = 1, int intervalSecond = 10)
