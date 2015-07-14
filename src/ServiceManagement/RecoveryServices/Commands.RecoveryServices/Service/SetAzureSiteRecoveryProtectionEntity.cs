@@ -61,8 +61,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnableReplicationGroup, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.DisableReplicationGroup, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
@@ -111,44 +109,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
-
-        /// <summary>
-        /// Gets or sets RPO in seconds.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnableReplicationGroup, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public int RPO { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication type (sync/async).
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnableReplicationGroup, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.Sync,
-            Constants.Async)]
-        public string Replicationtype { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery array id.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnableReplicationGroup, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryArrayId { get; set; }
-
-        /// <summary>
-        /// Gets or sets switch parameter. On passing true, replica LUNs will get deleted.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.DisableReplicationGroup, Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter DeleteReplicaLuns { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery container id for SAN to delete replica LUNs.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.DisableReplicationGroup, Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryContainerId { get; set; }
         #endregion Parameters
 
         /// <summary>
@@ -158,8 +118,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             switch (this.ParameterSetName)
             {
-                case ASRParameterSets.EnableReplicationGroup:
-                case ASRParameterSets.DisableReplicationGroup:
                 case ASRParameterSets.ByPEObject:
                     this.Id = this.ProtectionEntity.ID;
                     this.ProtectionContainerId = this.ProtectionEntity.ProtectionContainerId;
@@ -204,55 +162,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         try
                         {
-                            string profileId = string.Empty;
-                            string replicationProvider = null;
-
-                            if (this.ProtectionEntity == null)
-                            {
-                                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                                    this.ProtectionContainerId,
-                                    this.Id);
-                                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
-                            }
-
-                            // Get the replciation provider from profile object otherwise assume its E2E.
-                            // Let the call go without profileId set.
-                            if (this.ProtectionProfile != null)
-                            {
-                                profileId = this.ProtectionProfile.ID;
-                                replicationProvider = this.ProtectionProfile.ReplicationProvider;
-                            }
-                            else
-                            {
-                                this.WriteWarningWithTimestamp(
-                                    string.Format(
-                                    Properties.Resources.MandatoryParamFromNextRelease,
-                                    "ProtectionProfile"));
-                                string pcId = this.ProtectionContainerId ?? this.ProtectionEntity.ProtectionContainerId;
-                                var pc = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
-                                    pcId);
-
-                                // PC will have all profiles associated with same replciation providers only.
-                                replicationProvider =
-                                    pc.ProtectionContainer.AvailableProtectionProfiles.Count < 1 ?
-                                    null :
-                                    pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
-
-                                if (replicationProvider != Constants.HyperVReplica && 
-                                    replicationProvider != Constants.San)
-                                {
-                                    throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
-                                }
-                            }
-
-                            if (this.ParameterSetName == ASRParameterSets.ByIDs)
-                            {
-                                this.ValidateUsageById(replicationProvider, "Id");
-                            }
-
                             if (this.Protection == Constants.EnableProtection)
                             {
+                                string profileId = string.Empty;
                                 var input = new EnableProtectionInput();
+
+                                if (this.ProtectionEntity == null)
+                                {
+                                    var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                                        this.ProtectionContainerId,
+                                        this.Id);
+                                    this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+                                }
+
+                                // Get the replciation provider from profile object otherwise assume its E2E.
+                                // Let the call go without profileId set.
+                                string replicationProvider = null;
+
                                 if (this.ProtectionProfile != null)
                                 {
                                     profileId = this.ProtectionProfile.ID;
@@ -270,27 +196,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                         null :
                                         pc.ProtectionContainer.AvailableProtectionProfiles[0].ReplicationProvider;
 
-                                    if (replicationProvider != Constants.HyperVReplica && 
-                                        replicationProvider != Constants.San)
+                                    if (replicationProvider != Constants.HyperVReplica)
                                     {
                                         throw new Exception("Please provide the protection profile object. It can be chosen from available protection profiles of the protection container.");
                                     }
                                 }
 
-                                if (replicationProvider == Constants.San)
+                                if (this.ParameterSetName == ASRParameterSets.ByIDs)
                                 {
-                                    SanEnableProtectionInput sanInput = new SanEnableProtectionInput();
-                                    sanInput.FabricId = this.ProtectionEntity.ServerId;
-                                    sanInput.FabricReplicationGroupId = this.ProtectionEntity.ID;
-
-                                    sanInput.CloudId = this.ProtectionContainerId;
-                                    sanInput.RemoteArrayId = this.RecoveryArrayId;
-                                    sanInput.ReplicationType = this.Replicationtype;
-                                    sanInput.RecoveryPointObjective = this.RPO;
-
-                                    input.ReplicationProviderInput = DataContractUtils.Serialize<SanEnableProtectionInput>(sanInput);
+                                    this.ValidateUsageById(replicationProvider, "Id");
                                 }
-                                else if (replicationProvider == Constants.HyperVReplicaAzure)
+
+                                if (replicationProvider == Constants.HyperVReplicaAzure)
                                 {
                                     input.ProtectionProfileId = this.ProtectionProfile.ID;
                                     AzureEnableProtectionInput azureInput = new AzureEnableProtectionInput();
@@ -339,25 +256,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                             }
                             else
                             {
-                                DisableProtectionInput input = null;
-
-                                if (replicationProvider == Constants.San)
-                                {
-                                    string recoveryCloudId = string.Empty;
-                                    Utilities.GetCloudIdFromContainerId(this.RecoveryContainerId, out recoveryCloudId);
-                                    input = new DisableProtectionInput();
-                                    SanDisableProtectionInput sanInput = new SanDisableProtectionInput();
-                                    sanInput.DeleteReplicaLuns = this.DeleteReplicaLuns;
-                                    sanInput.TargetCloudIdForLunDeletion = recoveryCloudId;
-
-                                    input.ReplicationProviderInput = DataContractUtils.Serialize<SanDisableProtectionInput>(sanInput);
-                                }
-
                                 this.jobResponse =
-                                    RecoveryServicesClient.DisableProtection(
+                                    RecoveryServicesClient.DisbleProtection(
                                     this.ProtectionContainerId,
-                                    this.Id,
-                                    input);
+                                    this.Id);
                             }
 
                             this.WriteJob(this.jobResponse.Job);

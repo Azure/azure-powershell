@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -80,12 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetRecoveryPlanFile()
         {
-            if (Directory.Exists(this.Path))
-            {
-                throw new ArgumentException("The input path is a directory. Please provide file path. Check the examples of the commandlet", "Path");
-            }
-
-            RecoveryPlanXmlOuput recoveryPlanXmlOuput =
+            RecoveryPlanXmlOuput recoveryPlanXmlOuput = 
                 RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlanFile(this.Id);
             System.IO.File.WriteAllText(this.Path, recoveryPlanXmlOuput.RecoveryPlanXml);
         }

@@ -33,16 +33,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             return this.GetRecoveryServicesClient.Vaults.Create(cloudServiceName, vaultName, vaultCreateInput);
         }
-
-        /// <summary>
-        /// Method to delete Azure Site Recovery Vault
-        /// </summary>
-        /// <param name="cloudServiceName">name of the cloud service</param>
-        /// <param name="vaultName">name of the vault</param>
-        /// <returns>Operation response object.</returns>
-        public AzureOperationResponse DeleteVault(string cloudServiceName, string vaultName)
-        {
-            return this.GetRecoveryServicesClient.Vaults.Delete(cloudServiceName, vaultName);
-        }
     }
 }

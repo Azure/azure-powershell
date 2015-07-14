@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Virtual Machine to restart.", ParameterSetName = "Input")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
-        public PersistentVM[] VM { get; set; }
+        public IPersistentVM[] VM { get; set; }
 
         protected override void ExecuteCommand()
         {
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 return;
             }
 
-            string[] inputRoleNames = (this.ParameterSetName == "ByName") ? this.Name : this.VM.Select(vm => vm.RoleName).ToArray();
+            string[] inputRoleNames = (this.ParameterSetName == "ByName") ? this.Name : this.VM.Select(vm => vm.GetInstance().RoleName).ToArray();
 
             // Generate a list of role names matching wildcard patterns or
             // the exact name specified in the -Name parameter.
