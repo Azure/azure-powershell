@@ -109,11 +109,10 @@ function Get-SortedUsings
         $client_library_namespace
     )
 
-    $a1 = @() + $common_using_str_list + $client_library_namespace;
-    $a2 = Sort-Object -Descending -Unique -InputObject $a1;
-    $a3 = $a2 | foreach { "using ${_};" };
+    $list_of_usings = @() + $common_using_str_list + $client_library_namespace;
+    $sorted_usings = $list_of_usings | Sort-Object -Descending -Unique | foreach { "using ${_};" };
 
-    $text = [string]::Join($new_line_str, $a3);
+    $text = [string]::Join($new_line_str, $sorted_usings);
 
     return $text;
 }
