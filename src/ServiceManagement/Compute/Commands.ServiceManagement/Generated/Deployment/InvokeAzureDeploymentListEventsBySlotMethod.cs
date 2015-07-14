@@ -36,10 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         public DeploymentSlot DeploymentSlot { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.DateTime StartTime { get; set; }
+        public DateTime StartTime { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.DateTime EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         public override void ExecuteCmdlet()
         {

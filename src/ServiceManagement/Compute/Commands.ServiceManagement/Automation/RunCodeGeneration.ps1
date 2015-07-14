@@ -173,6 +173,10 @@ function Get-NormalizedTypeName
     {
         $outputName = 'bool';
     }
+    elseif ($inputName -eq 'System.DateTime')
+    {
+        return 'DateTime';
+    }
     elseif ($inputName.StartsWith($client_model_namespace_prefix))
     {
         $outputName = $inputName.Substring($client_model_namespace_prefix.Length);
