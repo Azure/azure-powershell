@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
@@ -21,7 +19,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
+    using Microsoft.WindowsAzure.Management.Compute;
     using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Management.Storage;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;

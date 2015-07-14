@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             else
             {
                 // Use the WithHandler method to create an extra reference to the http client
-                // this will prevent the httpClient from being disposed in a long-runnign test using 
+                // this will prevent the httpClient from being disposed in a long-running test using 
                 // the same client for multiple cmdlets
                 client = client.WithHandler(new PassThroughDelegatingHandler());
             }
@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
-        /// from being disposed.  Should not be used execpt in this mocked context
+        /// from being disposed.  Should not be used execpt in this mocked context.
         /// </summary>
         class PassThroughDelegatingHandler : DelegatingHandler
         {
