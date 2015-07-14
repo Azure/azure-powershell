@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
@@ -41,20 +42,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 Name = Name,
                 ResourceGroupName = ResourceGroupName
             };
-            
-            List<PSDataFactory> dataFactories = DataFactoryClient.FilterPSDataFactories(filterOptions);
 
-            if (dataFactories != null)
+            if (Name != null)
             {
-                if (dataFactories.Count == 1 && Name != null)
+                List<PSDataFactory> dataFactories = DataFactoryClient.FilterPSDataFactories(filterOptions);
+                if (dataFactories != null && dataFactories.Any())
                 {
-                    WriteObject(dataFactories[0]);
+                    WriteObject(dataFactories.First());
                 }
-                else
-                {
-                    WriteObject(dataFactories, true);
-                }
+                return;
             }
+            
+            //List data factories until all pages are fetched
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSDataFactories(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

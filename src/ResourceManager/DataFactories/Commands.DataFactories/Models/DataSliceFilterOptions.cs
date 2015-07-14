@@ -16,14 +16,18 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class BlobDownloadParameters
+    public class DataSliceFilterOptions
     {
-        public string Directory { get; set; }
+        public string TableName { get; set; }
 
-        public Uri SasUri { get; set; }
+        public string ResourceGroupName { get; set; }
 
-        public BlobDownloadParameters()
-        {
-        }
+        public string DataFactoryName { get; set; }
+
+        public DateTime DataSliceRangeStartTime { get; set; }
+
+        public DateTime DataSliceRangeEndTime { get; set; }
+
+        public string NextLink { get; set; }
     }
 }

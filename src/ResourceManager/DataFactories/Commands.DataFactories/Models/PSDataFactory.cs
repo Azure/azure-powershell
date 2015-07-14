@@ -49,6 +49,21 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             }
         }
 
+        public string DataFactoryId
+        {
+            get
+            {
+                return dataFactory.Properties == null ? String.Empty : dataFactory.Properties.DataFactoryId;
+            }
+            internal set
+            {
+                if (dataFactory.Properties != null)
+                {
+                    dataFactory.Properties.DataFactoryId = value;
+                }
+            }
+        }
+
         public string ResourceGroupName { get; set; }
 
         public string Location
