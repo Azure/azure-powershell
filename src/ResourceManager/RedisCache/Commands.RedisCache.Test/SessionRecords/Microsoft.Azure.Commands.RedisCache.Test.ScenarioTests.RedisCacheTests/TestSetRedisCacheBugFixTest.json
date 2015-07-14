@@ -1,0 +1,236 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola?api-version=2015-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRkYjdlZDMtNmVkOS00ODYxLThiMjItN2MwYzBjOTg0OTBiL3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3NpZGRoYXJ0aGNoYXRyb2xhP2FwaS12ZXJzaW9uPTIwMTUtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"siddharthchatrola\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxmemory-policy\": \"volatile-lru\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"siddharthchatrola.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "535"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d34afb29-3727-40f2-bd5e-1a93e08c60ea"
+        ],
+        "x-rp-server-mvid": [
+          "ab3b6d8f-58d8-4b26-88cf-56dfac613ddb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14902"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc991535-debb-470c-8fe6-4ec8e38ecefa"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20150713T215524Z:dc991535-debb-470c-8fe6-4ec8e38ecefa"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2015 21:55:23 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola?api-version=2015-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRkYjdlZDMtNmVkOS00ODYxLThiMjItN2MwYzBjOTg0OTBiL3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3NpZGRoYXJ0aGNoYXRyb2xhP2FwaS12ZXJzaW9uPTIwMTUtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"siddharthchatrola\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {},\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"siddharthchatrola.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "11090a79-684b-4dac-8dad-d686e7645e0b"
+        ],
+        "x-rp-server-mvid": [
+          "ab3b6d8f-58d8-4b26-88cf-56dfac613ddb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14901"
+        ],
+        "x-ms-correlation-request-id": [
+          "3612d84f-91dd-4a30-a0c2-e7cd9fdf5211"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20150713T215525Z:3612d84f-91dd-4a30-a0c2-e7cd9fdf5211"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2015 21:55:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola?api-version=2015-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRkYjdlZDMtNmVkOS00ODYxLThiMjItN2MwYzBjOTg0OTBiL3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3NpZGRoYXJ0aGNoYXRyb2xhP2FwaS12ZXJzaW9uPTIwMTUtMDMtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true\r\n  },\r\n  \"location\": \"North Central US\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "228"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"siddharthchatrola\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {},\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"82xerhg0P27QVoRKKEWb2XdLsemKyJ+Fe4BmlHhItS8=\",\r\n      \"secondaryKey\": \"W9q9jLz3ICEys0a7ao7T673xQ+gxIhLZl0eBDO4YgG4=\"\r\n    },\r\n    \"hostName\": \"siddharthchatrola.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "620"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "85dde2a3-eabd-4f95-ac46-f9fd973764e0"
+        ],
+        "x-rp-server-mvid": [
+          "ab3b6d8f-58d8-4b26-88cf-56dfac613ddb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "981c04ef-e83d-436a-bb27-d825eaa25bee"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20150713T215525Z:981c04ef-e83d-436a-bb27-d825eaa25bee"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2015 21:55:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola?api-version=2015-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRkYjdlZDMtNmVkOS00ODYxLThiMjItN2MwYzBjOTg0OTBiL3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3NpZGRoYXJ0aGNoYXRyb2xhP2FwaS12ZXJzaW9uPTIwMTUtMDMtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"redisConfiguration\": {\r\n      \"maxmemory-policy\": \"allkeys-lru\"\r\n    }\r\n  },\r\n  \"location\": \"North Central US\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "275"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/Siddharth/providers/Microsoft.Cache/Redis/siddharthchatrola\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"siddharthchatrola\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxmemory-policy\": \"allkeys-lru\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"82xerhg0P27QVoRKKEWb2XdLsemKyJ+Fe4BmlHhItS8=\",\r\n      \"secondaryKey\": \"W9q9jLz3ICEys0a7ao7T673xQ+gxIhLZl0eBDO4YgG4=\"\r\n    },\r\n    \"hostName\": \"siddharthchatrola.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "eaeff665-e073-44b2-b9cc-bc49a209369c"
+        ],
+        "x-rp-server-mvid": [
+          "ab3b6d8f-58d8-4b26-88cf-56dfac613ddb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "cbc65150-86a3-4b48-9577-fa6f89bcf69d"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHCENTRALUS:20150713T215526Z:cbc65150-86a3-4b48-9577-fa6f89bcf69d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 13 Jul 2015 21:55:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "04db7ed3-6ed9-4861-8b22-7c0c0c98490b"
+  }
+}
