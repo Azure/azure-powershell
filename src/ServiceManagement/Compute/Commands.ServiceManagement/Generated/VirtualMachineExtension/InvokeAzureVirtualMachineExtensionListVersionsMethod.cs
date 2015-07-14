@@ -19,8 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
@@ -28,10 +30,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     public class InvokeAzureVirtualMachineExtensionListVersionsMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]
-        public System.String PublisherName { get; set; }
+        public string PublisherName { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.String ExtensionName { get; set; }
+        public string ExtensionName { get; set; }
 
         public override void ExecuteCmdlet()
         {

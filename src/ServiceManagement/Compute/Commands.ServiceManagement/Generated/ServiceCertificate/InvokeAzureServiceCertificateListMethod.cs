@@ -19,8 +19,10 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
@@ -28,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     public class InvokeAzureServiceCertificateListMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]
-        public System.String ServiceName { get; set; }
+        public string ServiceName { get; set; }
 
         public override void ExecuteCmdlet()
         {

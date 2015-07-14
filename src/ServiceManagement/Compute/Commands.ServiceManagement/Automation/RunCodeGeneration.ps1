@@ -55,12 +55,14 @@ param(
 $new_line_str = "`r`n";
 $verbs_common_new = "VerbsCommon.New";
 $verbs_lifecycle_invoke = "VerbsLifecycle.Invoke";
+$client_model_namespace = $client_library_namespace + '.Models';
 
 Write-Verbose "=============================================";
 Write-Verbose "Input Parameters:";
 Write-Verbose "DLL Folder            = $dllFolder";
 Write-Verbose "Out Folder            = $outFolder";
 Write-Verbose "Client NameSpace      = $client_library_namespace";
+Write-Verbose "Model NameSpace       = $client_model_namespace";
 Write-Verbose "Base Cmdlet Full Name = $baseCmdletFullName";
 Write-Verbose "Base Client Name      = $base_class_client_field";
 Write-Verbose "Cmdlet Style          = $cmdletStyle";
@@ -70,6 +72,7 @@ Write-Verbose "${new_line_str}";
 $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
 
 $code_common_usings = @(
+    'System',
     'System.Management.Automation'
 );
 
@@ -109,8 +112,8 @@ function Get-SortedUsings
         $client_library_namespace
     )
 
-    $list_of_usings = @() + $common_using_str_list + $client_library_namespace;
-    $sorted_usings = $list_of_usings | Sort-Object -Descending -Unique | foreach { "using ${_};" };
+    $list_of_usings = @() + $common_using_str_list + $client_library_namespace + $client_model_namespace;
+    $sorted_usings = $list_of_usings | Sort-Object -Unique | foreach { "using ${_};" };
 
     $text = [string]::Join($new_line_str, $sorted_usings);
 
@@ -142,6 +145,36 @@ function Get-NormalizedName
         $firstChar = [System.Char]::ToUpper($firstChar);
         $outputName = $firstChar + $inputName.Substring(1);
     }
+
+    return $outputName;
+}
+
+function Get-NormalizedTypeName
+{
+    param(
+        # Sample: 'System.String' => 'string', etc.
+        [Parameter(Mandatory = $True)]
+        [string]$inputName
+    )
+
+    if ([string]::IsNullOrEmpty($inputName))
+    {
+        return $inputName;
+    }
+
+    $outputName = $inputName;
+    $client_model_namespace_prefix = $client_model_namespace + '.';
+
+    if ($inputName -eq 'System.String')
+    {
+        $outputName = 'string';
+    }
+    elseif ($inputName.StartsWith($client_model_namespace_prefix))
+    {
+        $outputName = $inputName.Substring($client_model_namespace_prefix.Length);
+    }
+
+    $outputName = $outputName.Replace('+', '.');
 
     return $outputName;
 }
@@ -286,8 +319,10 @@ function Write-OperationCmdletFile
 
             Write-Output ('    ' + $paramTypeFullName + ' ' + $normalized_param_name);
 
+            $paramTypeNormalizedName = Get-NormalizedTypeName -inputName $paramTypeFullName;
+
             $param_attributes = $indents + "[Parameter(Mandatory = true)]" + $new_line_str;
-            $param_definition = $indents + "public ${paramTypeFullName} ${normalized_param_name} " + $get_set_block + $new_line_str;
+            $param_definition = $indents + "public ${paramTypeNormalizedName} ${normalized_param_name} " + $get_set_block + $new_line_str;
             $param_code_content = $param_attributes + $param_definition;
 
             $cmdlet_generated_code += $param_code_content + $new_line_str;
@@ -501,18 +536,23 @@ function Write-ParameterCmdletFile
 
         $param_type_short_name = $parameter_type_info.Name;
         $param_type_short_name = $param_type_short_name.Replace('+', '.');
+
+        $param_type_normalized_name = Get-NormalizedTypeName $parameter_type_info.FullName;
     }
     else
     {
         $itemType = $parameter_type_info.GetGenericArguments()[0];
         $itemTypeShortName = $itemType.Name;
         $itemTypeFullName = $itemType.FullName;
+        $itemTypeNormalizedShortName = Get-NormalizedTypeName $itemTypeFullName;
 
-        $param_type_full_name = "System.Collections.Generic.List<${itemTypeFullName}>";
+        $param_type_full_name = "System.Collections.Generic.List<${itemTypeNormalizedShortName}>";
         $param_type_full_name = $param_type_full_name.Replace('+', '.');
 
         $param_type_short_name = "${itemTypeShortName}List";
         $param_type_short_name = $param_type_short_name.Replace('+', '.');
+
+        $param_type_normalized_name = Get-NormalizedTypeName $param_type_full_name;
     }
 
     if (($param_type_short_name -like "${operation_short_name}*") -and ($param_type_short_name.Length -gt $operation_short_name.Length))
@@ -546,7 +586,7 @@ function Write-ParameterCmdletFile
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var parameter = new ${param_type_full_name}();
+            var parameter = new ${param_type_normalized_name}();
             WriteObject(parameter);
         }
 "@;
