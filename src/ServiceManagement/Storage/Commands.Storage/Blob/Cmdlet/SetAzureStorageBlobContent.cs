@@ -22,10 +22,10 @@ using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
+    using Microsoft.WindowsAzure.Storage.DataMovement;
     using StorageBlob = WindowsAzure.Storage.Blob;
 
     /// <summary>
@@ -184,11 +184,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 Record = pr
             };
 
-            BlobUploadJob uploadJob = new BlobUploadJob()
-            {
-                DestBlob = blob,
-                SourcePath = filePath
-            };
+            TransferJob uploadJob = 
+                new TransferJob(
+                    new TransferLocation(filePath),
+                    new TransferLocation(blob),
+                    TransferMethod.SyncCopy);
 
             await this.RunTransferJob(uploadJob, data);
 
