@@ -58,14 +58,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
             if (paramaterSetName == UploadArchiveParameterSetName)
             {
-                // Check that ConfigurationPath points to a valid file
-                /** TODO: Why do we need this check? This is repetition. Remove this
-                if (!File.Exists(ConfigurationPath))
-                {
-                    this.ThrowInvalidArgumentError(Resources.PublishVMDscExtensionConfigFileNotFound, ConfigurationPath);
-                }
-                 **/
-
                 if (!DscExtensionCmdletConstants.UploadArchiveAllowedFileExtensions.Contains(Path.GetExtension(configurationFileExtension)))
                 {
                     ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension, configurationPath);
@@ -221,6 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             String outputArchivePath,
             Boolean force,
             StorageCredentials storageCredentials,
+            String storageEndpointSuffix,
             String containerName,
             String parameterSetName)
         {
@@ -249,18 +242,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         force,
                         parameterSetName);
 
-                UploadConfigurationArchive(storageCredentials, containerName, archivePath, force);
+                UploadConfigurationArchive(storageCredentials, storageEndpointSuffix, containerName, archivePath, force);
             }
         }
 
         private void UploadConfigurationArchive(
-            StorageCredentials storageCredentials, 
+            StorageCredentials storageCredentials,
+            String storageEndpointSuffix,
             String containerName, 
             String archivePath,
             Boolean force)
         {
             CloudBlockBlob modulesBlob = 
-                GetBlobReference(storageCredentials, containerName, archivePath);
+                GetBlobReference(storageCredentials, storageEndpointSuffix, containerName, archivePath);
 
             ConfirmAction(
                 true,
@@ -319,9 +313,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             }
         }
 
-        private CloudBlockBlob GetBlobReference(StorageCredentials storageCredentials, String containerName, String archivePath)
+        private CloudBlockBlob GetBlobReference(
+            StorageCredentials storageCredentials, String storageEndpointSuffix, String containerName, String archivePath)
         {
-            var storageAccount = new CloudStorageAccount(storageCredentials, true);
+            var storageAccount = new CloudStorageAccount(storageCredentials, storageEndpointSuffix, true);
             var blobClient = storageAccount.CreateCloudBlobClient();
 
             CloudBlobContainer containerReference = blobClient.GetContainerReference(containerName);

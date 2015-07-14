@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         public Property[] Properties { get; set; }
 
         /// <summary>
-        /// Version of the protocol (DscExtensionPublicSettings and DscPrivateSettings mostly).
+        /// Version of the protocol (DscExtensionPublicSettings and DscExtensionPrivateSettings mostly).
         /// </summary>
         public Version ProtocolVersion { get; set; }
     }

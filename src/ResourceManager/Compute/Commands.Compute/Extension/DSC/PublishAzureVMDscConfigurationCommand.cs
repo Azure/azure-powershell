@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -84,6 +85,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string OutputArchivePath { get; set; }
 
+        /// <summary>  
+        /// Suffix for the storage end point, e.g. core.windows.net  
+        /// </summary>  
+        [Parameter(  
+           ValueFromPipelineByPropertyName = true,  
+           ParameterSetName = UploadArchiveParameterSetName,  
+           HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]  
+        [ValidateNotNullOrEmpty]  
+        public string StorageEndpointSuffix { get; set; }  
+
         /// <summary>
         /// By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs. 
         /// Use -Force to overwrite them.
@@ -123,17 +134,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         {
                             ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
                         }
+                        if (StorageEndpointSuffix == null)
+                        {
+                            StorageEndpointSuffix =
+                                Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                        }
                         break;
                 }
 
                 PublishConfiguration(
-                   ConfigurationPath,
-                   OutputArchivePath,
-                   Force.IsPresent,
-                   _storageCredentials,
-                   ContainerName,
-                   ParameterSetName
-               );
+                   ConfigurationPath, OutputArchivePath, Force.IsPresent, _storageCredentials, StorageEndpointSuffix, ContainerName, ParameterSetName
+                );
             }
             finally
             {

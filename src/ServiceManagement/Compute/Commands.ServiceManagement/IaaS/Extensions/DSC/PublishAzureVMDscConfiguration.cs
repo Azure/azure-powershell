@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -93,6 +94,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         [ValidateNotNullOrEmpty]
         public string OutputArchivePath { get; set; }
 
+        /// <summary>  
+        /// Suffix for the storage end point, e.g. core.windows.net  
+        /// </summary>  
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = UploadArchiveParameterSetName,
+           HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]
+        [ValidateNotNullOrEmpty]
+        public string StorageEndpointSuffix { get; set; }  
+
         /// <summary>
         /// Credentials used to access Azure Storage
         /// </summary>
@@ -137,16 +148,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                     {
                         ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
                     }
+                    if (StorageEndpointSuffix == null)
+                    {
+                        StorageEndpointSuffix =
+                            Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                    }
                     break;
             }
 
             PublishConfiguration(
-                ConfigurationPath,
-                OutputArchivePath,
-                Force.IsPresent,
-                _storageCredentials,
-                ContainerName,
-                ParameterSetName
+                ConfigurationPath, OutputArchivePath, Force.IsPresent, _storageCredentials, StorageEndpointSuffix, ContainerName, ParameterSetName
             );
         }
     }
