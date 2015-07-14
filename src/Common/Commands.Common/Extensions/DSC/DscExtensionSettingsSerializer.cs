@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 
         public static DscExtensionPublicSettings DeserializePublicSettings(string publicSettingsString)
         {
-            DscExtensionPublicSettings extensionPublicSettings = null;
+            DscExtensionPublicSettings extensionPublicSettings;
             try
             {
                 extensionPublicSettings = string.IsNullOrEmpty(publicSettingsString)
@@ -136,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                         entryType = typeof (PSCredential).ToString();
                     }
 
-                    var entry = new DscExtensionPublicSettings.Property()
+                    var entry = new DscExtensionPublicSettings.Property
                     {
                         Name = entryName,
                         TypeName = entryType,
