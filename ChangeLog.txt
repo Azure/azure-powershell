@@ -1,6 +1,8 @@
 ﻿2015.07.16 version 0.9.5
 * Azure RedisCache cmdlets 
     * Set-AzureRedisCache - Bug fix done in management API that fixes bug here as well
+* Azure SQL cmdlets
+	* Allowing to use of Storage V2 accounts in Auditing policies 
 * Azure Network Resource Provider cmdlets
     * Added Application Gateway cmdlets
         * New-AzureApplicationGateway
