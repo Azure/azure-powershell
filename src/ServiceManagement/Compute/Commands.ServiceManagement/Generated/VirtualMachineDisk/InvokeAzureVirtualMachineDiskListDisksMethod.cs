@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDiskListDisksMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineDiskListDisksMethod")]
     public class InvokeAzureVirtualMachineDiskListDisksMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

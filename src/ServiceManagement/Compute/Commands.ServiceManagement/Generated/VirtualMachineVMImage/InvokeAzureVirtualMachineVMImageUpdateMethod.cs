@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageUpdateMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineVMImageUpdateMethod")]
     public class InvokeAzureVirtualMachineVMImageUpdateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

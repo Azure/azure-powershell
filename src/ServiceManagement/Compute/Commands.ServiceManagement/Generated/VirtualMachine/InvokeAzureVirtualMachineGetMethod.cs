@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineGetMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineGetMethod")]
     public class InvokeAzureVirtualMachineGetMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

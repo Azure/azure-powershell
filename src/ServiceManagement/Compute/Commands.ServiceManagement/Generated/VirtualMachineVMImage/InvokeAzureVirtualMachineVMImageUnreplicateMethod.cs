@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageUnreplicateMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineVMImageUnreplicateMethod")]
     public class InvokeAzureVirtualMachineVMImageUnreplicateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

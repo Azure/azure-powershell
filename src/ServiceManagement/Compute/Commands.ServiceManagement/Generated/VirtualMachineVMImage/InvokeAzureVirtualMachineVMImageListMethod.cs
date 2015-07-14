@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageListMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineVMImageListMethod")]
     public class InvokeAzureVirtualMachineVMImageListMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

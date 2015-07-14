@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureHostedServiceDeleteExtensionMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureHostedServiceDeleteExtensionMethod")]
     public class InvokeAzureHostedServiceDeleteExtensionMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureHostedServiceListExtensionsMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureHostedServiceListExtensionsMethod")]
     public class InvokeAzureHostedServiceListExtensionsMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

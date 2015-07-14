@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineOSImageGetDetailsMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineOSImageGetDetailsMethod")]
     public class InvokeAzureVirtualMachineOSImageGetDetailsMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

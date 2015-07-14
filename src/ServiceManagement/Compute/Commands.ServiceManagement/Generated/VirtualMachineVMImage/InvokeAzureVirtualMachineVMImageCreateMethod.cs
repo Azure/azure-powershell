@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageCreateMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineVMImageCreateMethod")]
     public class InvokeAzureVirtualMachineVMImageCreateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineShutdownRolesMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineShutdownRolesMethod")]
     public class InvokeAzureVirtualMachineShutdownRolesMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

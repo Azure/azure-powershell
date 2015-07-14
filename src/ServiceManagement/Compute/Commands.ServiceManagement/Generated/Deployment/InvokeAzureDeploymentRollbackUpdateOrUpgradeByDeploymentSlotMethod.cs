@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentGetPackageBySlotMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentGetPackageBySlotMethod")]
     public class InvokeAzureDeploymentGetPackageBySlotMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

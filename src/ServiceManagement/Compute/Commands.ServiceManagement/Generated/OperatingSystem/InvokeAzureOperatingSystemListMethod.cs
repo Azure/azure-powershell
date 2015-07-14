@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureOperatingSystemListMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureOperatingSystemListMethod")]
     public class InvokeAzureOperatingSystemListMethod : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

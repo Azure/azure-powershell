@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentSwapMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentSwapMethod")]
     public class InvokeAzureDeploymentSwapMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

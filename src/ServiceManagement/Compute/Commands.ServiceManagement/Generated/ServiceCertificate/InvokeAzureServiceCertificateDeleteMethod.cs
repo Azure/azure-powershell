@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureServiceCertificateDeleteMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureServiceCertificateDeleteMethod")]
     public class InvokeAzureServiceCertificateDeleteMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

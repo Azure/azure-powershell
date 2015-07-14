@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageDeleteMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineVMImageDeleteMethod")]
     public class InvokeAzureVirtualMachineVMImageDeleteMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDiskGetDiskMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineDiskGetDiskMethod")]
     public class InvokeAzureVirtualMachineDiskGetDiskMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

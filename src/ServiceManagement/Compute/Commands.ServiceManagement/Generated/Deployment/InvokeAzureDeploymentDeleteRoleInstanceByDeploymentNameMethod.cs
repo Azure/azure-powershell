@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentDeleteRoleInstanceByDeploymentNameMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentDeleteRoleInstanceByDeploymentNameMethod")]
     public class InvokeAzureDeploymentDeleteRoleInstanceByDeploymentNameMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

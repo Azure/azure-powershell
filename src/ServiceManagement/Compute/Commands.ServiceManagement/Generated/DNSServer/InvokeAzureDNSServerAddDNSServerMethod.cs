@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDNSServerAddDNSServerMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDNSServerAddDNSServerMethod")]
     public class InvokeAzureDNSServerAddDNSServerMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

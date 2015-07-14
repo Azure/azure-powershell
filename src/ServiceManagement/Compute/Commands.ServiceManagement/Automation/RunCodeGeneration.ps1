@@ -357,7 +357,7 @@ function Write-OperationCmdletFile
 
     $methodName = ($operation_method_info.Name.Replace('Async', ''));
     $cmdlet_verb = "Invoke";
-    $cmdlet_verb_code = $verbs_common_new;
+    $cmdlet_verb_code = $verbs_lifecycle_invoke;
     $cmdlet_noun_prefix = 'Azure';
     $cmdlet_noun_suffix = 'Method';
     $cmdlet_noun = $cmdlet_noun_prefix + $opShortName + $methodName + $cmdlet_noun_suffix;

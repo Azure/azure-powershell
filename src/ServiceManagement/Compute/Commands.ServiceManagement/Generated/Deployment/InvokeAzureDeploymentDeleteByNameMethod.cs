@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentDeleteByNameMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentDeleteByNameMethod")]
     public class InvokeAzureDeploymentDeleteByNameMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

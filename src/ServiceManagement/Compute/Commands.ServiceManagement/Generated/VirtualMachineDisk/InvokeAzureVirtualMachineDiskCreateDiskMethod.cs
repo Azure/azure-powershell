@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualMachineDiskCreateDiskMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureVirtualMachineDiskCreateDiskMethod")]
     public class InvokeAzureVirtualMachineDiskCreateDiskMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]

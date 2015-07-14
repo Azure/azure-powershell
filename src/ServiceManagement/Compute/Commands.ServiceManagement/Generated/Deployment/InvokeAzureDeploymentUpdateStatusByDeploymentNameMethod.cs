@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentUpdateStatusByDeploymentNameMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentUpdateStatusByDeploymentNameMethod")]
     public class InvokeAzureDeploymentUpdateStatusByDeploymentNameMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

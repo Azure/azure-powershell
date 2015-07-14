@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentCreateMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentCreateMethod")]
     public class InvokeAzureDeploymentCreateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

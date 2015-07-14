@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureDeploymentGetByNameMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureDeploymentGetByNameMethod")]
     public class InvokeAzureDeploymentGetByNameMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

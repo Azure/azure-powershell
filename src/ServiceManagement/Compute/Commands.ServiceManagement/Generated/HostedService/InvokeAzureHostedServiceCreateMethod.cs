@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureHostedServiceCreateMethod")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureHostedServiceCreateMethod")]
     public class InvokeAzureHostedServiceCreateMethod : ComputeAutomationBaseCmdlet
     {
         [Parameter(Mandatory = true)]
