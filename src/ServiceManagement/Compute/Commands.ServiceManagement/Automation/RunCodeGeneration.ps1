@@ -73,7 +73,8 @@ $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Co
 
 $code_common_usings = @(
     'System',
-    'System.Management.Automation'
+    'System.Management.Automation',
+    'Microsoft.Azure'
 );
 
 $code_common_header =
@@ -356,6 +357,8 @@ function Write-OperationCmdletFile
     )
 
     $methodName = ($operation_method_info.Name.Replace('Async', ''));
+    $return_type_info = $operation_method_info.ReturnType.GenericTypeArguments[0];
+    $normalized_output_type_name = Get-NormalizedTypeName $return_type_info.Name;
     $cmdlet_verb = "Invoke";
     $cmdlet_verb_code = $verbs_lifecycle_invoke;
     $cmdlet_noun_prefix = 'Azure';
@@ -430,6 +433,7 @@ $code_using_strs
 namespace ${code_common_namespace}
 {
     [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [OutputType(typeof(${normalized_output_type_name}))]
     public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
 ${cmdlet_generated_code}
@@ -674,6 +678,7 @@ $code_using_strs
 namespace ${code_common_namespace}
 {
     [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [OutputType(typeof(${param_type_normalized_name}))]
     public class ${cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
 ${cmdlet_generated_code}

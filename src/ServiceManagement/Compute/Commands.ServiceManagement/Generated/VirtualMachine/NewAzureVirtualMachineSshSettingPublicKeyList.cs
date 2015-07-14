@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -27,6 +28,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
     [Cmdlet(VerbsCommon.New, "AzureVirtualMachineSshSettingPublicKeyList")]
+    [OutputType(typeof(System.Collections.Generic.List<SshSettingPublicKey>))]
     public class NewAzureVirtualMachineSshSettingPublicKeyList : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
