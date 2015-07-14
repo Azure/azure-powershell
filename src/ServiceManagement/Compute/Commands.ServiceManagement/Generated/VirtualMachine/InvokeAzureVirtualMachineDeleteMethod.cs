@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         public string VirtualMachineName { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.Boolean DeleteFromStorage { get; set; }
+        public bool DeleteFromStorage { get; set; }
 
         public override void ExecuteCmdlet()
         {

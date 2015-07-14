@@ -152,7 +152,7 @@ function Get-NormalizedName
 function Get-NormalizedTypeName
 {
     param(
-        # Sample: 'System.String' => 'string', etc.
+        # Sample: 'System.String' => 'string', 'System.Boolean' => bool, etc.
         [Parameter(Mandatory = $True)]
         [string]$inputName
     )
@@ -168,6 +168,10 @@ function Get-NormalizedTypeName
     if ($inputName -eq 'System.String')
     {
         $outputName = 'string';
+    }
+    elseif ($inputName -eq 'System.Boolean')
+    {
+        $outputName = 'bool';
     }
     elseif ($inputName.StartsWith($client_model_namespace_prefix))
     {
