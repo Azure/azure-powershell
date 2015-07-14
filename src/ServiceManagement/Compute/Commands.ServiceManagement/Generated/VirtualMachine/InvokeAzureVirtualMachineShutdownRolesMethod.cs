@@ -29,10 +29,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureVirtualMachineShutdownRolesMethod")]
     public class InvokeAzureVirtualMachineShutdownRolesMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string DeploymentName { get; set; }
 
         [Parameter(Mandatory = true)]

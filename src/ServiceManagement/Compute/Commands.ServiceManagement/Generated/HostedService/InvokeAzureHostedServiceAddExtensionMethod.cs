@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureHostedServiceAddExtensionMethod")]
     public class InvokeAzureHostedServiceAddExtensionMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = true)]

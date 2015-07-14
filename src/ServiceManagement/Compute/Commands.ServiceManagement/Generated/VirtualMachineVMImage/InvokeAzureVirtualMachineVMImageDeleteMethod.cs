@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageDeleteMethod")]
     public class InvokeAzureVirtualMachineVMImageDeleteMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string VMImageName { get; set; }
 
         [Parameter(Mandatory = true)]

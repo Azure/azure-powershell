@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureHostedServiceDeleteAllMethod")]
     public class InvokeAzureHostedServiceDeleteAllMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
         public override void ExecuteCmdlet()

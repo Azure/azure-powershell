@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = true)]

@@ -29,13 +29,13 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = true)]
         public string DeploymentSlot { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string RoleInstanceName { get; set; }
 
         [Parameter(Mandatory = true)]

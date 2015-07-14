@@ -29,13 +29,13 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureDeploymentReimageRoleInstanceByDeploymentSlotMethod")]
     public class InvokeAzureDeploymentReimageRoleInstanceByDeploymentSlotMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = true)]
         public DeploymentSlot DeploymentSlot { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string RoleInstanceName { get; set; }
 
         public override void ExecuteCmdlet()

@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureVirtualMachineVMImageReplicateMethod")]
     public class InvokeAzureVirtualMachineVMImageReplicateMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string VMImageName { get; set; }
 
         [Parameter(Mandatory = true)]

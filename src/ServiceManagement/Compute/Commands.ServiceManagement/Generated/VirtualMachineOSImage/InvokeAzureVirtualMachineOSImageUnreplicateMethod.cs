@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     [Cmdlet(VerbsCommon.New, "AzureVirtualMachineOSImageUnreplicateMethod")]
     public class InvokeAzureVirtualMachineOSImageUnreplicateMethod : ComputeAutomationBaseCmdlet
     {
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ImageName { get; set; }
 
         public override void ExecuteCmdlet()

@@ -205,6 +205,65 @@ function Get-OperationShortName
     return $opShortName;
 }
 
+# Sample: ServiceName, DeploymentName
+function Is-PipingPropertyName
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$parameterName
+    )
+
+    if ($parameterName.ToLower() -eq 'servicename')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'deploymentname')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'rolename')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'roleinstancename')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'vmimagename')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'imagename')
+    {
+        return $true;
+    }
+    elseif ($parameterName.ToLower() -eq 'diskname')
+    {
+        return $true;
+    }
+
+    return $false;
+}
+
+function Is-PipingPropertyTypeName
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$parameterTypeName
+    )
+    
+    if ($parameterTypeName.ToLower() -eq 'string')
+    {
+        return $true;
+    }
+    elseif ($parameterTypeName.ToLower() -eq 'system.string')
+    {
+        return $true;
+    }
+
+    return $false;
+}
+
 function Write-BaseCmdletFile
 {
     param(
@@ -325,7 +384,13 @@ function Write-OperationCmdletFile
 
             $paramTypeNormalizedName = Get-NormalizedTypeName -inputName $paramTypeFullName;
 
-            $param_attributes = $indents + "[Parameter(Mandatory = true)]" + $new_line_str;
+            $param_attributes = $indents + "[Parameter(Mandatory = true";
+            if ((Is-PipingPropertyName $normalized_param_name) -and (Is-PipingPropertyTypeName $paramTypeNormalizedName))
+            {
+                $piping_from_property_name_code = ", ValueFromPipelineByPropertyName = true";
+                $param_attributes += $piping_from_property_name_code;
+            }
+            $param_attributes += ")]" + $new_line_str;
             $param_definition = $indents + "public ${paramTypeNormalizedName} ${normalized_param_name} " + $get_set_block + $new_line_str;
             $param_code_content = $param_attributes + $param_definition;
 
@@ -381,7 +446,6 @@ function Is-ClientComplexType
 
     return ($type_info.Namespace -like "${client_name_space}.Model?") -and (-not $type_info.IsEnum);
 }
-
 
 # Sample: IList<ConfigurationSet>
 function Is-ListComplexType
