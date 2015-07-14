@@ -158,6 +158,618 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generated\ComputeAutomationBaseCmdlet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentChangeConfigurationByNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentChangeConfigurationBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentDeleteByNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentDeleteBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentDeleteRoleInstanceByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentDeleteRoleInstanceByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentGetByNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentGetBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentGetPackageByNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentGetPackageBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentListEventsBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentListEventsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRebootRoleInstanceByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRebootRoleInstanceByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRebuildRoleInstanceByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRebuildRoleInstanceByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentReimageRoleInstanceByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentReimageRoleInstanceByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentSwapMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentUpdateStatusByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentUpdateStatusByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentUpgradeByNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentUpgradeBySlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentWalkUpgradeDomainByDeploymentNameMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\InvokeAzureDeploymentWalkUpgradeDomainByDeploymentSlotMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentChangeConfigurationParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentDeleteRoleInstanceParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentExtensionConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentExtensionList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentGetPackageParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentNamedRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentNamedRoleList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentRollbackUpdateOrUpgradeParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentSwapParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentUpdateStatusParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentUpgradeParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\Deployment\NewAzureDeploymentWalkUpgradeDomainParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DNSServer\InvokeAzureDNSServerAddDNSServerMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DNSServer\InvokeAzureDNSServerDeleteDNSServerMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DNSServer\InvokeAzureDNSServerUpdateDNSServerMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DNSServer\NewAzureDNSServerDNSAddParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DNSServer\NewAzureDNSServerDNSUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\InvokeAzureExtensionImageRegisterMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\InvokeAzureExtensionImageUnregisterMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\InvokeAzureExtensionImageUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageExtensionCertificateConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageExtensionEndpointConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageExtensionLocalResourceConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageExtensionLocalResourceConfigurationList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageInputEndpoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageInputEndpointList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageInternalEndpoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageInternalEndpointList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageRegisterParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ExtensionImage\NewAzureExtensionImageUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceAddExtensionMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceCheckNameAvailabilityMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceDeleteAllMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceDeleteExtensionMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceGetDetailedMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceGetExtensionMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceGetMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceListAvailableExtensionsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceListExtensionsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceListExtensionVersionsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\InvokeAzureHostedServiceUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\NewAzureHostedServiceAddExtensionParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\NewAzureHostedServiceCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HostedService\NewAzureHostedServiceUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\InvokeAzureLoadBalancerCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\InvokeAzureLoadBalancerDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\InvokeAzureLoadBalancerUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\NewAzureLoadBalancerCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\NewAzureLoadBalancerFrontendIPConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LoadBalancer\NewAzureLoadBalancerUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\OperatingSystem\InvokeAzureOperatingSystemListFamiliesMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\OperatingSystem\InvokeAzureOperatingSystemListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\InvokeAzureServiceCertificateCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\InvokeAzureServiceCertificateDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\InvokeAzureServiceCertificateGetMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\InvokeAzureServiceCertificateListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\NewAzureServiceCertificateCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\NewAzureServiceCertificateDeleteParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ServiceCertificate\NewAzureServiceCertificateGetParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskCreateDataDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskCreateDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskDeleteDataDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskDeleteDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskGetDataDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskGetDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskListDisksMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskUpdateDataDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskUpdateDiskMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\InvokeAzureVirtualMachineDiskUpdateDiskSizeMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\NewAzureVirtualMachineDiskCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\NewAzureVirtualMachineDiskUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\NewAzureVirtualMachineDiskVirtualMachineDataDiskCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineDisk\NewAzureVirtualMachineDiskVirtualMachineDataDiskUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineExtension\InvokeAzureVirtualMachineExtensionListVersionsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageGetDetailsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageGetMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageReplicateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageShareMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageUnreplicateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\InvokeAzureVirtualMachineOSImageUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImageComputeImageAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImageCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImageMarketplaceImageAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImagePlan.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImageReplicateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineOSImage\NewAzureVirtualMachineOSImageUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageGetDetailsMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageListMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageReplicateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageShareMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageUnreplicateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\InvokeAzureVirtualMachineVMImageUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageComputeImageAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageDataDiskConfigurationCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageDataDiskConfigurationCreateParametersList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageDataDiskConfigurationUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageDataDiskConfigurationUpdateParametersList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageMarketplaceImageAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageOSDiskConfigurationCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageOSDiskConfigurationUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImagePlan.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageReplicateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachineVMImage\NewAzureVirtualMachineVMImageUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCaptureOSImageMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCaptureVMImageMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCreateDeploymentMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineCreateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineDeleteMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineGetMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineGetRemoteDesktopFileMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineRestartMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineShutdownMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineShutdownRolesMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineStartMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineStartRolesMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineUpdateLoadBalancedEndpointSetMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\InvokeAzureVirtualMachineUpdateMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineCaptureOSImageParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineCaptureVMImageParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineConfigurationSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineConfigurationSetList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineCreateDeploymentParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineCreateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDataDiskConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDataDiskConfigurationList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDataVirtualHardDisk.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDataVirtualHardDiskList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDnsServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDnsServerList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDnsSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDomainJoinCredentials.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDomainJoinProvisioning.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineDomainJoinSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineInputEndpoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineInputEndpointList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineLoadBalancer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineLoadBalancerList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineNetworkInterface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineNetworkInterfaceList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineOSDiskConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineOSVirtualHardDisk.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachinePublicIP.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachinePublicIPList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineResourceExtensionReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineResourceExtensionReferenceList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineRoleList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineShutdownParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineShutdownRolesParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineSshSettingKeyPair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineSshSettingKeyPairList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineSshSettingPublicKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineSshSettingPublicKeyList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineSshSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineStartRolesParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineStoredCertificateSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineStoredCertificateSettingsList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineUpdateLoadBalancedSetParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineUpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineVMImageInput.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineWindowsRemoteManagementListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineWindowsRemoteManagementListenerList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VirtualMachine\NewAzureVirtualMachineWindowsRemoteManagementSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="IaaS\Network\AddAzureVirtualIP.cs" />
     <Compile Include="AffinityGroups\GetAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\NewAzureAffinityGroup.cs" />
@@ -490,6 +1102,9 @@
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Automation\RunCodeGeneration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Extensions\ADDomain\ADBuildSchema.cmd" />
     <None Include="Extensions\ADDomain\ADPrivateSchema.xsd">
       <SubType>Designer</SubType>
@@ -555,4 +1170,15 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="BuildGenerate">
+    <PropertyGroup>
+      <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
+      <PSCodeGenScriptPath>".\Automation\RunCodeGeneration.ps1"</PSCodeGenScriptPath>
+      <PSCodeGenTargetFolder>$(OutputPath)</PSCodeGenTargetFolder>
+      <ClientLibraryNamesSpace>"Microsoft.WindowsAzure.Management.Compute"</ClientLibraryNamesSpace>
+      <BaseCmdletFullName>"Microsoft.WindowsAzure.Commands.Utilities.Common.ServiceManagementBaseCmdlet"</BaseCmdletFullName>
+      <BaseCmdletClientName>"ComputeClient"</BaseCmdletClientName>
+    </PropertyGroup>
+    <Exec Command="$(PowerShellExe) $(PSCodeGenScriptPath) $(PSCodeGenTargetFolder) $(MSBuildProjectDirectory) $(ClientLibraryNamesSpace) $(BaseCmdletFullName) $(BaseCmdletClientName)" />
+  </Target>
 </Project>

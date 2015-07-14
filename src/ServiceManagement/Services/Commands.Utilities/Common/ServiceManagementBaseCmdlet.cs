@@ -184,5 +184,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return result;
         }
+
+        protected void ExecuteClientAction(Action action)
+        {
+            try
+            {
+                try
+                {
+                    action();
+                }
+                catch (CloudException ex)
+                {
+                    throw new ComputeCloudException(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
     }
 }
