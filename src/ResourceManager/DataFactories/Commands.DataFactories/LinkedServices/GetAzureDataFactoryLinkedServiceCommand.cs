@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using System.Globalization;
+using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
@@ -64,19 +65,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 DataFactoryName = DataFactoryName
             };
 
-            List<PSLinkedService> linkedServices = DataFactoryClient.FilterPSLinkedServices(filterOptions);
-
-            if (linkedServices != null)
+            if (Name != null)
             {
-                if (linkedServices.Count == 1 && Name != null)
+                List<PSLinkedService> linkedServices = DataFactoryClient.FilterPSLinkedServices(filterOptions);
+
+                if (linkedServices != null && linkedServices.Any())
                 {
                     WriteObject(linkedServices[0]);
                 }
-                else
-                {
-                    WriteObject(linkedServices, true);
-                }
+                return;
             }
+
+            // List all linked services until all pages are fetched.
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSLinkedServices(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

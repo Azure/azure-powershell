@@ -46,21 +46,13 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
         }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "The data slice status.")]
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = "The data slice state.")]
         [ValidateSet(
-            DataSliceStatus.NotSpecified,
-            DataSliceStatus.PendingExecution,
-            DataSliceStatus.InProgress,
-            DataSliceStatus.Failed,
-            DataSliceStatus.Ready,
-            DataSliceStatus.Skip,
-            DataSliceStatus.Retry,
-            DataSliceStatus.TimedOut,
-            DataSliceStatus.PendingValidation,
-            DataSliceStatus.RetryValidation,
-            DataSliceStatus.FailedValidation,
-            DataSliceStatus.LongRetry,
-            DataSliceStatus.ValidationInProgress,
+            DataSliceState.Failed,
+            DataSliceState.InProgress,
+            DataSliceState.Ready,
+            DataSliceState.Skipped,
+            DataSliceState.Waiting,
             IgnoreCase = false)]
         public string Status { get; set; }
 

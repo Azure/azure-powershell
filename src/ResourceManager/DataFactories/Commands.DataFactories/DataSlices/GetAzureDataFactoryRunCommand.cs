@@ -57,17 +57,27 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            var dataSliceRuns = DataFactoryClient.ListDataSliceRuns(
-                ResourceGroupName, DataFactoryName, TableName, StartDateTime);
-
-            if (dataSliceRuns == null || dataSliceRuns.Count == 0)
+            DataSliceRunFilterOptions filterOptions = new DataSliceRunFilterOptions()
             {
-                WriteWarning(string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.NoDataSliceFound));
-            }
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName,
+                TableName = TableName,
+                StartDateTime = StartDateTime
+            };
 
-            WriteObject(dataSliceRuns);
+            int totalDataSliceRuns = 0;
+
+            do
+            {
+                var dataSliceRuns = DataFactoryClient.ListDataSliceRuns(filterOptions);
+                totalDataSliceRuns += dataSliceRuns.Count;
+                WriteObject(dataSliceRuns, true);
+            } while (filterOptions.NextLink.IsNextPageLink());
+
+            if (totalDataSliceRuns == 0)
+            {
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.NoDataSliceFound));
+            }
         }
     }
 }

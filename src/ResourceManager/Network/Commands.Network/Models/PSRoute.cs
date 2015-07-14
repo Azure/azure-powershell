@@ -15,10 +15,20 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public enum PSProbeProtocol
-    {
-        Http,
+    using Newtonsoft.Json;
 
-        Tcp,
+    public class PSRoute : PSChildResource
+    {
+        [JsonProperty(Order = 1)]
+        public string AddressPrefix { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string NextHopType { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string NextHopIpAddress { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string ProvisioningState { get; set; }
     }
 }

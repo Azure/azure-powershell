@@ -1,4 +1,6 @@
 ﻿2015.07.16 version 0.9.5
+* Azure RedisCache cmdlets 
+    * Set-AzureRedisCache - Bug fix done in management API that fixes bug here as well
 * Azure Network Resource Provider cmdlets
     * Added Application Gateway cmdlets
         * New-AzureApplicationGateway
@@ -59,9 +61,21 @@
         * Set-AzureApplicationGatewaySslCertificate
         * Get-AzureApplicationGatewaySslCertificate
         * Remove-AzureApplicationGatewaySslCertificate
-*Azure Network cmdlets
-    * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
-    * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
+	* Fixed minor bugs AzureLoadbalancer 
+	* Renamed Get-AzureCheckDnsAvailablity to Test-AzureDnsAvailability
+	* Added cmdlets to RouteTables and Routes
+		* New-AzureRouteTable
+		* Get-AzureRouteTable
+		* Set-AzureRouteTable
+		* Remove-AzureRouteTable
+		* New-AzureRouteConfig
+		* Add-AzureRouteConfig
+		* Set-AzureRouteConfig
+		* Get-AzureRouteConfig
+		* Remove-AzureRouteConfig
+	*Azure Network cmdlets
+		* Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
+		* Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
 
 2015.07.10 version 1.0.0
 * Azure Backup cmdlets
@@ -73,6 +87,10 @@
 * Azure Resource Manager cmdlets
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
+
+* Azure Data Factory cmdlets
+    * Upgraded management library to 1.0.0 with breaking JSON format change.
+    * Updated list operation paging support in cmdlets.
 
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
@@ -111,6 +129,12 @@
         * Get-AzureSqlDatabaseRestorePoints
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
+* Azure Recovery Services
+    * Fixed Storage and Network mapping issues
+    * Added encryption support for failover changes
+    * Added Delete vault support
+    * Provisioned to update VM properties
+    * Few bug fixes
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
