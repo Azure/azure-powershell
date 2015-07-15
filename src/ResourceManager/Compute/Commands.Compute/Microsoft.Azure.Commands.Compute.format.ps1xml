@@ -536,14 +536,6 @@
                 <PropertyName>Properties</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PublicSettings</Label>
-                <PropertyName>PublicSettings</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ProtectedSettings</Label>
-                <PropertyName>ProtectedSettings</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Statuses</Label>
                 <PropertyName>StatusesText</PropertyName>
               </ListItem>

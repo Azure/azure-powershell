@@ -86,13 +86,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// When using this parameter, Publish-AzureVMDscConfiguration creates a
         /// local ZIP archive instead of uploading it to blob storage..
         /// </summary>
-        [Alias("ConfigurationArchivePath")]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateArchiveParameterSetName,
             HelpMessage = "Path to a local ZIP file to write the configuration archive to.")]
         [ValidateNotNullOrEmpty]
-        public string OutputArchivePath { get; set; }
+        public string ConfigurationArchivePath { get; set; }
 
         /// <summary>  
         /// Suffix for the storage end point, e.g. core.windows.net  
@@ -140,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             switch (ParameterSetName)
             {
                 case CreateArchiveParameterSetName:
-                    OutputArchivePath = GetUnresolvedProviderPathFromPSPath(OutputArchivePath);
+                    ConfigurationArchivePath = GetUnresolvedProviderPathFromPSPath(ConfigurationArchivePath);
                     break;
                 case UploadArchiveParameterSetName:
                     _storageCredentials = this.GetStorageCredentials(StorageContext);
@@ -157,7 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
 
             PublishConfiguration(
-                ConfigurationPath, OutputArchivePath, Force.IsPresent, _storageCredentials, StorageEndpointSuffix, ContainerName, ParameterSetName
+                ConfigurationPath, ConfigurationArchivePath, Force.IsPresent, _storageCredentials, StorageEndpointSuffix, ContainerName, ParameterSetName
             );
         }
     }
