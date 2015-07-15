@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             return _storageClientWrapper.StorageManagementClient;
         }
 
-        public static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, String resourceGroupName, String storageAccountName)
+        internal static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, String resourceGroupName, String storageAccountName)
         {
             StorageCredentials credentials = null;
             var storageClient = GetStorageClient(cmdlet);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             return credentials;
         }
 
-        public static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
+        internal static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
         {
             cmdlet.ThrowTerminatingError(
                 new ErrorRecord(

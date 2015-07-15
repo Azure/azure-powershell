@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
-    internal static class DscExtensionCmdletConstants
+    public static class DscExtensionCmdletConstants
     {
         //common extension constants
         internal static readonly string ExtensionPublishedNamespace = "Microsoft.Powershell";

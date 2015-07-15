@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
-    internal static class DscExtensionCmdletCommonBase
+    public static class DscExtensionCmdletCommonBase
     {
         internal const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
         internal static readonly string DefaultExtensionVersion = "1.*";
