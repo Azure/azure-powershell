@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights", "ResourceManager\Insights\Commands.Insights\Commands.Insights.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManagement.Automation.Test", "ResourceManager\Automation\Commands.Automation.Test\Commands.ResourceManagement.Automation.Test.csproj", "{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManagement.Automation.Test", "ResourceManager\Automation\Commands.Automation.Test\Commands.ResourceManagement.Automation.Test.csproj", "{59D1B5DC-9175-43EC-90C6-CBA601B3565F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Websites", "ResourceManager\Websites\Commands.Websites\Commands.Websites.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
 EndProject
