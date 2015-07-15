@@ -25,16 +25,16 @@ using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
-    public static class DscExtensionCmdletCommonBase
+    internal static class DscExtensionCmdletCommonBase
     {
-        public const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
-        public const string DefaultExtensionVersion = "1.*";
+        internal const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
+        internal static readonly string DefaultExtensionVersion = "1.*";
 
         /// <summary>
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
         /// Throws a terminating error if the credentials cannot be determined.
         /// </summary>
-        public static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, AzureStorageContext storageContext)
+        internal static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, AzureStorageContext storageContext)
         {
             StorageCredentials credentials = null;
 
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             return credentials;
         }
 
-        public static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
+        internal static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
         {
             cmdlet.ThrowTerminatingError(
                 new ErrorRecord(
