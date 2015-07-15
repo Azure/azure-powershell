@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
     using System.Collections;
     using System.Collections.Generic;
 
-    class RedisCacheAttributes
+    public class RedisCacheAttributes
     {
         public RedisCacheAttributes(RedisResource cache, string resourceGroupName)
         {
