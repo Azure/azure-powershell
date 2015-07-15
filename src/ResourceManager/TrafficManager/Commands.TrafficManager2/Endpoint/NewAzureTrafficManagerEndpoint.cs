@@ -20,19 +20,23 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using System.Collections.Generic;
-    using System.Linq;
+    using System.Net;
+    using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.Add, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
-    public class AddAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
         [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile that contains the endpoint.")]
         [ValidateNotNullOrEmpty]
-        public TrafficManagerProfile TrafficManagerProfile { get; set; }
+        public string ProfileName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
@@ -66,31 +70,39 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            if (this.TrafficManagerProfile.Endpoints == null)
+            // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
+            // Since our create operation is implemented using PUT, it will overwrite by default.
+            // Therefore, we need to check whether the Profile exists before we actually try to create it.
+            try
             {
-                this.TrafficManagerProfile.Endpoints = new List<TrafficManagerEndpoint>();
-            }
+                this.TrafficManagerClient.GetTrafficManagerEndpoint(this.ResourceGroupName, this.ProfileName, this.Type, this.Name);
 
-            if (this.TrafficManagerProfile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
+                throw new PSArgumentException(string.Format(ProjectResources.Error_CreateExistingEndpoint, this.Name, this.ProfileName, this.ResourceGroupName));
+            }
+            catch (CloudException exception)
             {
-                throw new PSArgumentException(string.Format(ProjectResources.Error_AddExistingEndpoint, this.EndpointName));
-            }
-
-            this.TrafficManagerProfile.Endpoints.Add(
-                new TrafficManagerEndpoint
+                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    Name = this.EndpointName,
-                    Type = this.Type,
-                    TargetResourceId = this.TargetResourceId,
-                    Target = this.Target,
-                    EndpointStatus = this.EndpointStatus,
-                    Weight = this.Weight,
-                    Priority = this.Priority,
-                    Location = this.EndpointLocation
-                });
+                    TrafficManagerEndpoint trafficManagerEndpoint = this.TrafficManagerClient.CreateTrafficManagerEndpoint(
+                        this.ResourceGroupName,
+                        this.ProfileName,
+                        this.Type,
+                        this.Name,
+                        this.TargetResourceId,
+                        this.Target,
+                        this.EndpointStatus,
+                        this.Weight,
+                        this.Priority,
+                        this.EndpointLocation);
 
-            this.WriteVerbose(ProjectResources.Success);
-            this.WriteObject(this.TrafficManagerProfile);
+                    this.WriteVerbose(ProjectResources.Success);
+                    this.WriteObject(trafficManagerEndpoint);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
     }
 }
