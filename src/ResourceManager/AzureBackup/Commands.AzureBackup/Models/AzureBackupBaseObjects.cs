@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.BackupServices.Models;
+
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public class AzureBackupVaultContextObject
@@ -42,5 +44,47 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public AzureBackupVaultContextObject(AzurePSBackupVault vault)
             : this(vault.ResourceGroupName, vault.Name, vault.Region) { }
+    }
+
+    /// <summary>
+    /// This class encapsulates all the properties of the container object 
+    /// that are needed by higher level objects (data source, recovery point etc). 
+    /// </summary>
+    public class AzureBackupContainerContextObject : AzureBackupVaultContextObject
+    {
+        /// <summary>
+        /// Type of the Azure Backup container
+        /// </summary>
+        public string ContainerType { get; set; }
+
+        /// <summary>
+        /// Unique name of the Azure Backup Container
+        /// </summary>
+        public string ContainerUniqueName { get; set; }
+
+        public AzureBackupContainerContextObject()
+            : base()
+        {
+        }
+
+        public AzureBackupContainerContextObject(AzureBackupContainerContextObject azureBackupContainerContextObject)
+            : base(azureBackupContainerContextObject.ResourceGroupName, azureBackupContainerContextObject.ResourceName, azureBackupContainerContextObject.Location)
+        {
+            ContainerType = azureBackupContainerContextObject.ContainerType;
+            ContainerUniqueName = azureBackupContainerContextObject.ContainerUniqueName;
+        }
+        public AzureBackupContainerContextObject(AzureBackupContainer azureBackupContainer)
+            : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName, azureBackupContainer.Location)
+        {
+            ContainerType = azureBackupContainer.ContainerType;
+            ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
+        }
+
+        public AzureBackupContainerContextObject(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
+            : base(vault.ResourceGroupName, vault.Name, vault.Region)
+        {
+            ContainerType = marsContainerResponse.Properties.CustomerType;
+            ContainerUniqueName = marsContainerResponse.UniqueName;
+        }
     }
 }

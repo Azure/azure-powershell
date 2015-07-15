@@ -56,9 +56,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.BackupServicesManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.BackupServicesManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.BackupServices.1.0.0-preview\lib\net40\Microsoft.Azure.Management.BackupServicesManagement.dll</HintPath>
+      <HintPath>Resources\Microsoft.Azure.Management.BackupServicesManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -116,10 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureBackupClientAdapter\AzureBackupClientAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ContainerAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
     <Compile Include="Cmdlets\Vault\RemoveAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVault.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Helpers\VaultHelpers.cs" />
     <Compile Include="Library\CertUtils.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
+    <Compile Include="Models\AzureBackupContainer.cs" />
     <Compile Include="Models\AzureBackupEnums.cs" />
     <Compile Include="Models\AzurePSBackupVault.cs" />
     <Compile Include="Models\VaultCredentials.cs" />
@@ -160,6 +163,7 @@
     <Content Include="Microsoft.Azure.Commands.AzureBackup.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Microsoft.Azure.Management.BackupServicesManagement.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>

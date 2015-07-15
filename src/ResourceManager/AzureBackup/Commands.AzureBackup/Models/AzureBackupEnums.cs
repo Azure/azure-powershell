@@ -19,4 +19,30 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         GeoRedundant = 1,
         LocallyRedundant,
     }
+
+    public enum AzureBackupContainerTypeInput
+    {
+        Windows = 1,
+        SCDPM,
+    }
+
+    public enum AzureBackupContainerStatusInput
+    {
+        Registering = 1,
+        Registered,
+    }
+
+    public enum AzureBackupContainerType
+    {
+        Invalid = 0,
+
+        Unknown,
+
+        // used by fabric adapter to populate discovered VMs
+        IaasVMContainer,
+
+        // used by fabric adapter to populate discovered services
+        // VMs are child containers of services they belong to
+        IaasVMServiceContainer
+    }
 }
