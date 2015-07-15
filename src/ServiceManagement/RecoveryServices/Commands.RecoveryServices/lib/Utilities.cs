@@ -155,32 +155,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 region.Replace(' ', '-'),
                 Constants.CloudServiceNameExtensionSuffix);       
         }
-
-        /// <summary>
-        /// Returns the cloud id given a container id.
-        /// </summary>
-        /// <param name="protectionContainerId">Protection Container Id</param>
-        /// <param name="cloudId">Cloud Id object</param>
-        public static void GetCloudIdFromContainerId(string protectionContainerId, out string cloudId)
-        {
-            // The first part before '_' is server id. Rest will be cloud id.
-            var index = protectionContainerId.IndexOf('_');
-
-            if (index != -1)
-            {
-                try
-                {
-                    cloudId = protectionContainerId.Substring(index + 1, protectionContainerId.Length - index - 1);
-                }
-                catch
-                {
-                    cloudId = null;
-                }
-            }
-            else
-            {
-                cloudId = null;
-            }
-        }
     }
 }

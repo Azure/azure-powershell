@@ -86,6 +86,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Handles interrupts.
+        /// </summary>
+        protected override void StopProcessing()
+        {
+            // Ctrl + C and etc
+            base.StopProcessing();
+            this.StopProcessingFlag = true;
+        }
+
+        /// <summary>
         /// Syncs the owner information.
         /// </summary>
         private void SyncOwnerInformationOnPE()

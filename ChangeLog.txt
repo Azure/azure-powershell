@@ -90,6 +90,10 @@
     * Fixed formatting of output for Get-UsageAggregates
     * Fixed executing Get-UsageAggregates when first cmdlet being called.
 
+* Azure Data Factory cmdlets
+    * Upgraded management library to 1.0.0 with breaking JSON format change.
+    * Updated list operation paging support in cmdlets.
+
 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
     * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
@@ -127,12 +131,6 @@
         * Get-AzureSqlDatabaseRestorePoints
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
-* Azure Recovery Services
-    * Fixed Storage and Network mapping issues
-    * Added encryption support for failover changes
-    * Added Delete vault support
-    * Provisioned to update VM properties
-    * Few bug fixes
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
