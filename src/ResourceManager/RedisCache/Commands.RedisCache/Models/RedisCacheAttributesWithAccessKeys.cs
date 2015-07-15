@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
 
-    class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
+    public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
         public RedisCacheAttributesWithAccessKeys(RedisCreateOrUpdateResponse cache, string resourceGroupName)
         {
