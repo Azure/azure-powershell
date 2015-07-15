@@ -31,6 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private DebugStreamTraceListener _adalListener;
         protected static AzureProfile _currentProfile = null;
+        protected virtual bool IsMetricEnabled {
+            get { return false; }
+        }
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
@@ -153,6 +156,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected override void BeginProcessing()
         {
             InitializeProfile();
+            LogMetricHelperUsage();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -199,6 +203,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
+            if (IsMetricEnabled)
+            {
+                MetricHelper.FlushMetric();
+            }
 
             base.EndProcessing();
         }
@@ -226,6 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages();
+            LogMetricHelperErrorEvent(errorRecord);
             base.WriteError(errorRecord);
         }
 
@@ -350,6 +359,42 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             while (_debugMessages.TryDequeue(out message))
             {
                 base.WriteDebug(message);
+            }
+        }
+
+        protected void LogMetricHelperUsage()
+        {
+            if (!IsMetricEnabled)
+            {
+                return;
+            }
+
+            try
+            {
+                MetricHelper.LogUsageEvent(this.Profile.DefaultSubscription.Id.ToString(), this.GetType().Name);
+            }
+            catch (Exception e)
+            {
+                //Swallow error from Application Insights event collection.
+                WriteErrorWithTimestamp(e.ToString());
+            }
+        }
+
+        protected void LogMetricHelperErrorEvent(ErrorRecord er)
+        {
+            if (!IsMetricEnabled)
+            {
+                return;
+            }
+
+            try
+            {
+                MetricHelper.LogErrorEvent(er, this.Profile.DefaultSubscription.Id.ToString(), this.GetType().Name);
+            }
+            catch (Exception e)
+            {
+                //Swallow error from Application Insights event collection.
+                WriteErrorWithTimestamp(e.ToString());
             }
         }
 
