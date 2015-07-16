@@ -12,6 +12,36 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+<#
+.SYNOPSIS
+Tests that when setting the storage account property's value in a database's auditing policy, that value is later fetched properly
+#>
+function Test-DatabaseUpdatePolicyWithStorageV2
+{
+	# Setup
+	$testSuffix = 102
+	Create-TestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try 
+	{
+		# Test
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled"  
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
 <#
 .SYNOPSIS
 Tests that when setting the storage account property's value in a database's auditing policy, that value is later fetched properly
