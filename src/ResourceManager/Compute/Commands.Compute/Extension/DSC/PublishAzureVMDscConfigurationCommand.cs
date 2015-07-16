@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
@@ -153,3 +153,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

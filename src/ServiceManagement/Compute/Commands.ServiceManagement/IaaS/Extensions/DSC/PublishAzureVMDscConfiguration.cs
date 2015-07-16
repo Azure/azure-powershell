@@ -161,3 +161,4 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         }
     }
 }
+
