@@ -14801,6 +14801,29 @@ Start-AzureStorageBlobCopy -SrcUri http://www.somesite.com/somefile -DestContain
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Start copy from a secondary location  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:para></maml:para>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $SrcContext = New-AzureStorageContext -ConnectionString &quot;DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=***;BlobEndpoint=http://myaccount-secondary.blob.core.windows.net;FileEndpoint=http://myaccount-secondary.file.core.windows.net;QueueEndpoint=http://myaccount-secondary.queue.core.windows.net; TableEndpoint=http://myaccount-secondary.table.core.windows.net;&quot;  
+
+Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context $SrcContext –DestContainer destcontainer -DestBlob DestBlobName 
+</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
