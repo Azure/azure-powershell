@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
             {
                 TrafficManagerProfile = new TrafficManagerProfile
                 {
-                    Endpoints = new List<Endpoint>
+                    Endpoints = new List<TrafficManagerEndpoint>
                     {
-                        new Endpoint
+                        new TrafficManagerEndpoint
                         {
                             Name = "Name"
                         }
