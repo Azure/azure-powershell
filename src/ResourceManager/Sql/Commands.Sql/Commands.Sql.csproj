@@ -108,6 +108,13 @@
     <Compile Include="ServiceTierAdvisor\Model\UpgradeServerHint.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorAdapter.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\AzureSqlDatabaseExecuteIndexRecommendationCmdletBase.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\GetAzureSqlDatabaseIndexRecommendations.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\StartAzureSqlDatabaseExecuteIndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\StopAzureSqlDatabaseExecuteIndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Model\IndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Service\AzureSqlDatabaseIndexRecommendationAdapter.cs" />
+    <Compile Include="Index Recommendations\Service\AzureSqlDatabaseIndexRecommendationCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />

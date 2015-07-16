@@ -210,12 +210,14 @@
     <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="ScenarioTests\TransparentDataEncryptionCrudTests.cs" />
+    <Compile Include="ScenarioTests\IndexRecommendationTests.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseActivationAttributeTest.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerServiceObjectiveAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerFirewallRuleAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
+    <Compile Include="UnitTests\AzureSqlDatabaseIndexRecommendationAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServiceTierAdvisorAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseBackupAttributeTests.cs" />
@@ -268,6 +270,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\IndexRecommendationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServerUpgradeTests.ps1">
@@ -421,6 +426,8 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestCreateIndex.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestGetIndexRecommendation.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\ListRecommendedElasticPools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
