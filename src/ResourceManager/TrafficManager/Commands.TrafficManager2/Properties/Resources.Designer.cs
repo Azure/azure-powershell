@@ -61,6 +61,33 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable endpoint &apos;{0}&apos; of Profile &apos;{1}&apos;?.
+        /// </summary>
+        internal static string Confirm_DisableEndpoint {
+            get {
+                return ResourceManager.GetString("Confirm_DisableEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disable profile &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_DisableProfile {
+            get {
+                return ResourceManager.GetString("Confirm_DisableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to permanently remove endpoint &apos;{0}&apos; from profile &apos;{1}&apos; in resource group &apos;{2}&apos;?.
+        /// </summary>
+        internal static string Confirm_RemoveEndpoint {
+            get {
+                return ResourceManager.GetString("Confirm_RemoveEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to permanently remove profile &apos;{0}&apos;?.
         /// </summary>
         internal static string Confirm_RemoveProfile {
@@ -75,6 +102,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         internal static string Error_AddExistingEndpoint {
             get {
                 return ResourceManager.GetString("Error_AddExistingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos;.
+        /// </summary>
+        internal static string Error_CreateExistingEndpoint {
+            get {
+                return ResourceManager.GetString("Error_CreateExistingEndpoint", resourceCulture);
             }
         }
         
@@ -97,6 +133,33 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling endpoint ....
+        /// </summary>
+        internal static string Progress_DisablingEndpoint {
+            get {
+                return ResourceManager.GetString("Progress_DisablingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling profile ....
+        /// </summary>
+        internal static string Progress_DisablingProfile {
+            get {
+                return ResourceManager.GetString("Progress_DisablingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing endpoint ....
+        /// </summary>
+        internal static string Progress_RemovingEndpoint {
+            get {
+                return ResourceManager.GetString("Progress_RemovingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing profile ....
         /// </summary>
         internal static string Progress_RemovingProfile {
@@ -111,6 +174,51 @@ namespace Microsoft.Azure.Commands.TrafficManager.Properties {
         internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; of Profile &apos;{1}&apos; from resource group &apos;{2}&apos; was disabled successfully..
+        /// </summary>
+        internal static string Success_DisableEndpoint {
+            get {
+                return ResourceManager.GetString("Success_DisableEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; from resource group &apos;{1}&apos; was disabled successfully..
+        /// </summary>
+        internal static string Success_DisableProfile {
+            get {
+                return ResourceManager.GetString("Success_DisableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; of Profile &apos;{1}&apos; from resource group &apos;{2}&apos; was enabled successfully..
+        /// </summary>
+        internal static string Success_EnableEndpoint {
+            get {
+                return ResourceManager.GetString("Success_EnableEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile &apos;{0}&apos; from resource group &apos;{1}&apos; was enabled successfully..
+        /// </summary>
+        internal static string Success_EnableProfile {
+            get {
+                return ResourceManager.GetString("Success_EnableProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; was removed from profile &apos;{1}&apos; in resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string Success_RemoveEndpoint {
+            get {
+                return ResourceManager.GetString("Success_RemoveEndpoint", resourceCulture);
             }
         }
         
