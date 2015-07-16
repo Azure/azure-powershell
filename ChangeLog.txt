@@ -81,14 +81,27 @@
   * Reserved IP cmdlets (New-AzureReservedIP, Get-AzureReservedIP, Set-AzureReservedIPAssociation, Remove-AzureReservedIPAssociation) fixed to support -VirtualIPName parameter
   * Multivip Cmdlets (Add-AzureVirtualIP, Remove-AzureVirtualIP) fixed to support -VirtualIPName parameter
 * Azure Backup cmdlets
-    *Added New-AzureBackupVault cmdlets
-    *Added Get-AzureBackupVault cmdlets
-    *Added Set-AzureBackupVault cmdlets
-    *Added Remove-AzureBackupVault cmdlets
-    *Added Get-AzureBackupVaultCredential cmdlets
+  *Added New-AzureBackupVault cmdlets
+  *Added Get-AzureBackupVault cmdlets
+  *Added Set-AzureBackupVault cmdlets
+  *Added Remove-AzureBackupVault cmdlets
+  *Added Get-AzureBackupVaultCredential cmdlets
 * Azure Resource Manager cmdlets
-    * Fixed formatting of output for Get-UsageAggregates
-    * Fixed executing Get-UsageAggregates when first cmdlet being called.
+  * Fixed formatting of output for Get-UsageAggregates
+  * Fixed executing Get-UsageAggregates when first cmdlet being called.
+* Added TrafficManager cmdlets
+  * Enable-AzureTrafficManagerProfile
+  * Disable-AzureTrafficManagerProfile
+  * New-AzureTrafficManagerEndpoint
+  * Get-AzureTrafficManagerEndpoint
+  * Set-AzureTrafficManagerEndpoint
+  * Remove-AzureTrafficManagerEndpoint
+  * Enable-AzureTrafficManagerEndpoint
+  * Disable-AzureTrafficManagerEndpoint
+* Upgraded TrafficManager cmdlets
+  * Get-AzureTrafficManagerProfile
+    * Name is now optional (it will list all profiles in resource group)
+    * Resource group is now optional (it will list all profiles in subscription)
 * Azure Data Factory cmdlets
     * Upgraded management library to 1.0.0 with breaking JSON format change.
     * Updated list operation paging support in cmdlets.
