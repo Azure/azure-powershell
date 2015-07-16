@@ -150,7 +150,8 @@ For more information, see Azure Billing REST API Reference (https://msdn.microso
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -162,7 +163,8 @@ For more information, see Azure Billing REST API Reference (https://msdn.microso
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -180,8 +182,7 @@ For more information, see Azure Billing REST API Reference (https://msdn.microso
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Set-AzureSubscription -SubscriptionId $subscription
-PS C:\&gt;Get-UsageAggregates -ReportedStartTime &quot;5/2/2015&quot; -ReportedEndTime &quot;5/5/2015&quot;</dev:code>
+			<dev:code>PS C:\&gt;Get-UsageAggregates -ReportedStartTime &quot;5/2/2015&quot; -ReportedEndTime &quot;5/5/2015&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>The final command retrieves the usage data for the subscription for the specificed dates of 5/2/2015 and 5/5/2015.</maml:para>
 				<maml:para />
