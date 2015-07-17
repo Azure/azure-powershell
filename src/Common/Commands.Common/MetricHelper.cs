@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography;
@@ -20,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         static MetricHelper()
         {            
             TelemetryClient = new TelemetryClient();
+            TelemetryClient.Context.Location.Ip = "0.0.0.0";
 
             if (!IsMetricTermAccepted())
             {
@@ -30,11 +34,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 //TODO enable in final cr
                 //TelemetryConfiguration.Active.DisableTelemetry = true;
-                //TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
             }
         }
 
-        public static void LogUsageEvent(string subscriptionId, string cmdletName)
+        public static void LogUsageEvent(AzurePSQoSEvent qos)
         {
             if (!IsMetricTermAccepted())
             {
@@ -42,31 +45,33 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
 
             var tcEvent = new EventTelemetry("CmdletUsage");
-
-            tcEvent.Context.User.Id = GenerateSha256HashString(subscriptionId);
+            //tcEvent.Context.Location.Ip = "0.0.0.0";
+            tcEvent.Context.User.Id = qos.UID;
             tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
-            tcEvent.Properties.Add("CmdletType", cmdletName);
+            tcEvent.Properties.Add("CmdletType", qos.CmdletType);
+            tcEvent.Properties.Add("IsSuccess", qos.IsSuccess.ToString());
+            tcEvent.Properties.Add("Duration", qos.Duration.TotalSeconds.ToString(CultureInfo.InvariantCulture));
 
             TelemetryClient.TrackEvent(tcEvent);
+
+            if (qos.Exception != null)
+            {
+                LogExceptionEvent(qos);
+            }
         }
 
-        public static void LogErrorEvent(ErrorRecord err, string subscriptionId, string cmdletName)
+        private static void LogExceptionEvent(AzurePSQoSEvent qos)
         {
-            if (!IsMetricTermAccepted())
-            {
-                return;
-            }
 
             var tcEvent = new EventTelemetry("CmdletError");
-            tcEvent.Properties.Add("ExceptionType", err.Exception.GetType().FullName);
-            if (err.Exception.InnerException != null)
+            tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
+            if (qos.Exception.InnerException != null)
             {
-                tcEvent.Properties.Add("InnerExceptionType", err.Exception.InnerException.GetType().FullName);
+                tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
             }
-            
-            tcEvent.Context.User.Id = GenerateSha256HashString(subscriptionId);
-            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
-            tcEvent.Properties.Add("CmdletType", cmdletName);
+
+            tcEvent.Context.User.Id = qos.UID;
+            tcEvent.Properties.Add("CmdletType", qos.CmdletType);
 
             TelemetryClient.TrackEvent(tcEvent);
         }
@@ -77,15 +82,21 @@ namespace Microsoft.WindowsAzure.Commands.Common
             return true;
         }
 
-        public static void FlushMetric()
+        public static void FlushMetric(bool waitForMetricSending)
         {
             if (!IsMetricTermAccepted())
             {
                 return;
             }
 
-            var t = Task.Run(() => FlushAi());
-            //TelemetryClient.Flush();
+            if (waitForMetricSending)
+            {
+                FlushAi();
+            }
+            else
+            {
+                Task.Run(() => FlushAi());
+            }
         }
 
         private static void FlushAi()
@@ -93,8 +104,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             try
             {
                 TelemetryClient.Flush();
-                
-                //return Task.FromResult(default(object));
             }
             catch
             {
@@ -113,5 +122,45 @@ namespace Microsoft.WindowsAzure.Commands.Common
             var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
             return Encoding.UTF8.GetString(bytes);
         }
+    }
+}
+
+public class AzurePSQoSEvent
+{
+    private readonly Stopwatch _timer;
+
+    public TimeSpan Duration { get; set; }
+    public bool IsSuccess { get; set; }
+    public string CmdletType { get; set; }
+    public Exception Exception { get; set; }
+    public string UID { get; set; }
+
+    public AzurePSQoSEvent()
+    {
+        _timer = new Stopwatch();
+        _timer.Start();
+    }
+
+    public void PauseQoSTimer()
+    {
+        _timer.Stop();
+    }
+
+    public void ResumeQosTimer()
+    {
+        _timer.Start();
+    }
+
+    public void FinishQosEvent()
+    {
+        _timer.Stop();
+        Duration = _timer.Elapsed;
+    }
+
+    public override string ToString()
+    {
+        return string.Format(
+            "AzureQoSEvent: CmdletType - {0}; IsSuccess - {1}; Duration - {2}; Exception - {3};",
+            CmdletType, IsSuccess, Duration, Exception);
     }
 }
