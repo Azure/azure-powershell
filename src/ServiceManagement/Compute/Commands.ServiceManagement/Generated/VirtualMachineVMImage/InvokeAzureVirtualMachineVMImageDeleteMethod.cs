@@ -47,4 +47,15 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineVMImageDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)invokeMethodInputParameters[0];
+            bool deleteFromStorage = (bool)invokeMethodInputParameters[1];
+
+            var result = VirtualMachineVMImageClient.Delete(vmImageName, deleteFromStorage);
+            WriteObject(result);
+        }
+    }}

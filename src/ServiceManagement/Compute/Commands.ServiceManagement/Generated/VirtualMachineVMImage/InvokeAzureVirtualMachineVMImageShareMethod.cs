@@ -47,4 +47,15 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineVMImageShareMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)invokeMethodInputParameters[0];
+            string permission = (string)invokeMethodInputParameters[1];
+
+            var result = VirtualMachineVMImageClient.Share(vmImageName, permission);
+            WriteObject(result);
+        }
+    }}

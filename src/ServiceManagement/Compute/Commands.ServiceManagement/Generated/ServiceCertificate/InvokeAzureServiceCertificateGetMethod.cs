@@ -44,4 +44,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteServiceCertificateGetMethod(object[] invokeMethodInputParameters)
+        {
+            ServiceCertificateGetParameters parameters = (ServiceCertificateGetParameters)invokeMethodInputParameters[0];
+
+            var result = ServiceCertificateClient.Get(parameters);
+            WriteObject(result);
+        }
+    }}

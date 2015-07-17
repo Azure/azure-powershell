@@ -44,4 +44,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteServiceCertificateDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            ServiceCertificateDeleteParameters parameters = (ServiceCertificateDeleteParameters)invokeMethodInputParameters[0];
+
+            var result = ServiceCertificateClient.Delete(parameters);
+            WriteObject(result);
+        }
+    }}

@@ -44,4 +44,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteExtensionImageUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            ExtensionImageUpdateParameters parameters = (ExtensionImageUpdateParameters)invokeMethodInputParameters[0];
+
+            var result = ExtensionImageClient.Update(parameters);
+            WriteObject(result);
+        }
+    }}

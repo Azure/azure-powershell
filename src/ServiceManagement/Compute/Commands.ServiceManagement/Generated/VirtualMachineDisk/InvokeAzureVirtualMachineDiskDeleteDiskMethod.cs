@@ -47,4 +47,15 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineDiskDeleteDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)invokeMethodInputParameters[0];
+            bool deleteFromStorage = (bool)invokeMethodInputParameters[1];
+
+            var result = VirtualMachineDiskClient.DeleteDisk(name, deleteFromStorage);
+            WriteObject(result);
+        }
+    }}

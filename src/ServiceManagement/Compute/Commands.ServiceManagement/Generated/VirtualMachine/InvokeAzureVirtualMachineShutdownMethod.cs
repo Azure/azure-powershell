@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineShutdownMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string virtualMachineName = (string)invokeMethodInputParameters[2];
+            VirtualMachineShutdownParameters parameters = (VirtualMachineShutdownParameters)invokeMethodInputParameters[3];
+
+            var result = VirtualMachineClient.Shutdown(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+    }}

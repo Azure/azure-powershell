@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteExtensionImageUnregisterMethod(object[] invokeMethodInputParameters)
+        {
+            string providerNamespace = (string)invokeMethodInputParameters[0];
+            string type = (string)invokeMethodInputParameters[1];
+            string version = (string)invokeMethodInputParameters[2];
+
+            var result = ExtensionImageClient.Unregister(providerNamespace, type, version);
+            WriteObject(result);
+        }
+    }}

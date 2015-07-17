@@ -342,6 +342,124 @@ ${operation_get_code}
     $st = Set-Content -Path $file_full_path -Value $cmdlet_source_code_text -Force;
 }
 
+# Write Invoke Compute Client Cmdlet
+function Write-InvokeCmdletFile
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$file_full_path,
+
+        [Parameter(Mandatory = $True)]
+        [string]$invoke_cmdlet_name,
+
+        [Parameter(Mandatory = $True)]
+        [string]$base_cmdlet_name,
+
+        [Parameter(Mandatory = $True)]
+        $client_class_info,
+
+        [Parameter(Mandatory = $True)]
+        $operation_type_list
+    )
+
+    $indents = " " * 8;
+    $get_set_block = '{ get; set; }';
+
+    $cmdlet_verb = "Invoke";
+    $cmdlet_verb_code = $verbs_lifecycle_invoke;
+
+    $cmdlet_file_name_suffix = 'Cmdlet'
+    $cmdlet_class_name = $cmdlet_verb + $invoke_cmdlet_name.Replace($cmdlet_verb, '');
+    $cmdlet_noun = $invoke_cmdlet_name.Replace($cmdlet_verb, '').Replace($cmdlet_file_name_suffix, '');
+
+    $normalized_output_type_name = 'object';
+    $all_method_names = @();
+
+    foreach ($operation_type in $operation_type_list)
+    {
+        $op_short_name = Get-OperationShortName $operation_type.Name;
+        $operation_method_info_list = $operation_type.GetMethods();
+
+        foreach ($method in $operation_method_info_list)
+        {
+            if ($method.Name -like 'Begin*')
+            {
+                continue;
+            }
+
+            $invoke_param_set_name = $op_short_name + $method.Name.Replace('Async', '');
+            $all_method_names += $invoke_param_set_name;
+        }
+    }
+
+    $all_method_names_with_quotes = $all_method_names | foreach { "`"" + $_ + "`"" };
+    $all_method_names_str = [string]::Join(',' + $new_line_str + (' ' * 12), $all_method_names_with_quotes);
+    $validate_all_method_names_code =
+@"
+        [ValidateSet(
+            $all_method_names_str
+        )]
+"@;
+
+    $param_set_code +=
+@"
+        [Parameter(Mandatory = true, Position = 0)]
+$validate_all_method_names_code
+        public string Name $get_set_block
+
+        [Parameter(Position = 1)]
+        public object[] Parameter $get_set_block
+
+"@;
+
+
+    $operations_code = "";
+    foreach ($method_name in $all_method_names)
+    {
+
+        $operation_code_template =
+@"
+                    case `"${method_name}`" : Execute${method_name}Method(Parameter); break;
+"@;
+        $operations_code += $operation_code_template + $new_line_str;
+    }
+
+    $execute_client_action_code =
+@"
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                switch (Name)
+                {
+${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'${method_name}`'.`"); break;
+                }
+            });
+        }
+"@;
+
+    $cmdlet_source_code_text =
+@"
+${code_common_header}
+
+$code_using_strs
+
+namespace ${code_common_namespace}
+{
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [OutputType(typeof(${normalized_output_type_name}))]
+    public partial class $cmdlet_class_name : $base_cmdlet_name
+    {
+${param_set_code}
+${execute_client_action_code}
+    }
+}
+"@;
+
+    $st = Set-Content -Path $file_full_path -Value $cmdlet_source_code_text -Force;
+}
+
 # Sample: InvokeAzureVirtualMachineGetMethod.cs
 function Write-OperationCmdletFile
 {
@@ -353,7 +471,10 @@ function Write-OperationCmdletFile
         $opShortName,
 
         [Parameter(Mandatory = $True)]
-        [System.Reflection.MethodInfo]$operation_method_info
+        [System.Reflection.MethodInfo]$operation_method_info,
+
+        [Parameter(Mandatory = $True)]
+        [string]$invoke_cmdlet_class_name
     )
 
     $methodName = ($operation_method_info.Name.Replace('Async', ''));
@@ -366,6 +487,8 @@ function Write-OperationCmdletFile
     $cmdlet_noun = $cmdlet_noun_prefix + $opShortName + $methodName + $cmdlet_noun_suffix;
     $cmdlet_class_name = $cmdlet_verb + $cmdlet_noun;
 
+    $invoke_param_set_name = $opShortName + $methodName;
+
     $file_full_path = $fileOutputFolder + '/' + $cmdlet_class_name + '.cs';
     if (Test-Path $file_full_path)
     {
@@ -374,12 +497,16 @@ function Write-OperationCmdletFile
 
     $indents = " " * 8;
     $get_set_block = '{ get; set; }';
+    $invoke_input_params_name = 'invokeMethodInputParameters';
     
     $cmdlet_generated_code = '';
     # $cmdlet_generated_code += $indents + '// ' + $operation_method_info + $new_line_str;
 
     $params = $operation_method_info.GetParameters();
     [System.Collections.ArrayList]$param_names = @();
+    [System.Collections.ArrayList]$invoke_param_names = @();
+    [System.Collections.ArrayList]$invoke_local_param_names = @();
+    $position_index = 1;
     foreach ($pt in $params)
     {
         $paramTypeFullName = $pt.ParameterType.FullName;
@@ -392,22 +519,40 @@ function Write-OperationCmdletFile
             $paramTypeNormalizedName = Get-NormalizedTypeName -inputName $paramTypeFullName;
 
             $param_attributes = $indents + "[Parameter(Mandatory = true";
+            $invoke_param_attributes = $indents + "[Parameter(ParameterSetName = `"${invoke_param_set_name}`", Position = ${position_index}, Mandatory = true";
             if ((Is-PipingPropertyName $normalized_param_name) -and (Is-PipingPropertyTypeName $paramTypeNormalizedName))
             {
                 $piping_from_property_name_code = ", ValueFromPipelineByPropertyName = true";
                 $param_attributes += $piping_from_property_name_code;
+
+                $invoke_param_attributes += $piping_from_property_name_code;
             }
             $param_attributes += ")]" + $new_line_str;
+            $invoke_param_attributes += ")]" + $new_line_str;
             $param_definition = $indents + "public ${paramTypeNormalizedName} ${normalized_param_name} " + $get_set_block + $new_line_str;
+            $invoke_param_definition = $indents + "public ${paramTypeNormalizedName} ${invoke_param_set_name}${normalized_param_name} " + $get_set_block + $new_line_str;
+            $param_index = $position_index - 1;
+            $invoke_local_param_definition = $indents + (' ' * 4) + "${paramTypeNormalizedName} " + $pt.Name + " = (${paramTypeNormalizedName})${invoke_input_params_name}[${param_index}];";
             $param_code_content = $param_attributes + $param_definition;
+
+            # For Invoke Method
+            $invoke_param_definition = $indents + "public ${paramTypeNormalizedName} ${invoke_param_set_name}${normalized_param_name} " + $get_set_block + $new_line_str;
+            $invoke_param_code_content += $invoke_param_attributes + $invoke_param_definition + $new_line_str;
+            $invoke_local_param_code_content += $invoke_local_param_definition + $new_line_str;
 
             $cmdlet_generated_code += $param_code_content + $new_line_str;
 
             $st = $param_names.Add($normalized_param_name);
+            $st = $invoke_param_names.Add((${invoke_param_set_name} + $normalized_param_name));
+            $st = $invoke_local_param_names.Add($pt.Name);
+
+            $position_index += 1;
         }
     }
 
     $params_join_str = [string]::Join(', ', $param_names.ToArray());
+    $invoke_params_join_str = [string]::Join(', ', $invoke_param_names.ToArray());
+    $invoke_local_params_join_str = [string]::Join(', ', $invoke_local_param_names.ToArray());
 
     $cmdlet_client_call_template =
 @"
@@ -438,6 +583,25 @@ namespace ${code_common_namespace}
     {
 ${cmdlet_generated_code}
     }
+
+"@;
+
+    $cmdlt_source_template +=
+@"
+
+    public partial class ${invoke_cmdlet_class_name} : ComputeAutomationBaseCmdlet
+    {
+        protected void Execute${invoke_param_set_name}Method(object[] ${invoke_input_params_name})
+        {
+${invoke_local_param_code_content}
+            var result = ${opShortName}Client.${methodName}(${invoke_local_params_join_str});
+            WriteObject(result);
+        }
+    }
+"@;
+
+    $cmdlt_source_template +=
+@"
 }
 "@;
 
@@ -718,10 +882,14 @@ else
     Write-Output ($filtered_types | select Namespace, Name);
 
     # Write Base Cmdlet File
-    $baseCmdletFileFullName = $outFolder + '\' + 'ComputeAutomationBaseCmdlet.cs';
+    $auto_base_cmdlet_name = 'ComputeAutomationBaseCmdlet';
+    $baseCmdletFileFullName = $outFolder + '\' + "$auto_base_cmdlet_name.cs";
     $opNameList = ($filtered_types | select -ExpandProperty Name);
     $clientClassType = $types | where { $_.Namespace -eq $dllname -and $_.Name -eq 'IComputeManagementClient' };
     Write-BaseCmdletFile $baseCmdletFileFullName $opNameList $clientClassType;
+
+    $invoke_cmdlet_class_name = 'InvokeAzureComputeMethodCmdlet';
+    $invoke_cmdlet_file_name = $outFolder + '\' + "$invoke_cmdlet_class_name.cs";
 
     [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();
 
@@ -751,7 +919,7 @@ else
             }
 
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
-            Write-OperationCmdletFile $opOutFolder $opShortName $mt;
+            Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name;
 
             [System.Reflection.ParameterInfo]$parameter_type_info = (Get-MethodComplexParameter $mt $client_library_namespace);
 
@@ -781,6 +949,8 @@ else
                 }
             }
         }
+
+        Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types;
     }
 
     Write-Output "=============================================";

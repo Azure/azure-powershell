@@ -44,4 +44,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineDiskGetDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)invokeMethodInputParameters[0];
+
+            var result = VirtualMachineDiskClient.GetDisk(name);
+            WriteObject(result);
+        }
+    }}

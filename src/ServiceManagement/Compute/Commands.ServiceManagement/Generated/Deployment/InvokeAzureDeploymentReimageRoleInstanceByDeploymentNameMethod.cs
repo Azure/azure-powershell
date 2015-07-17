@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string roleInstanceName = (string)invokeMethodInputParameters[2];
+
+            var result = DeploymentClient.ReimageRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
+            WriteObject(result);
+        }
+    }}

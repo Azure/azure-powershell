@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDNSServerDeleteDNSServerMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string dnsServerName = (string)invokeMethodInputParameters[2];
+
+            var result = DNSServerClient.DeleteDNSServer(serviceName, deploymentName, dnsServerName);
+            WriteObject(result);
+        }
+    }}

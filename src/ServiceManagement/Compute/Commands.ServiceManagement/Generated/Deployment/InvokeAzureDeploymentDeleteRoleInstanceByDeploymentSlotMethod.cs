@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentSlot = (string)invokeMethodInputParameters[1];
+            DeploymentDeleteRoleInstanceParameters parameters = (DeploymentDeleteRoleInstanceParameters)invokeMethodInputParameters[2];
+
+            var result = DeploymentClient.DeleteRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+    }}

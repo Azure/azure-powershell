@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineDiskCreateDataDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string roleName = (string)invokeMethodInputParameters[2];
+            VirtualMachineDataDiskCreateParameters parameters = (VirtualMachineDataDiskCreateParameters)invokeMethodInputParameters[3];
+
+            var result = VirtualMachineDiskClient.CreateDataDisk(serviceName, deploymentName, roleName, parameters);
+            WriteObject(result);
+        }
+    }}

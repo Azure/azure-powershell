@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteLoadBalancerUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string loadBalancerName = (string)invokeMethodInputParameters[2];
+            LoadBalancerUpdateParameters parameters = (LoadBalancerUpdateParameters)invokeMethodInputParameters[3];
+
+            var result = LoadBalancerClient.Update(serviceName, deploymentName, loadBalancerName, parameters);
+            WriteObject(result);
+        }
+    }}

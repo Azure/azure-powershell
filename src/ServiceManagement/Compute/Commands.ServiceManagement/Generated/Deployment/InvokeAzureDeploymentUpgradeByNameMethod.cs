@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDeploymentUpgradeByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            DeploymentUpgradeParameters parameters = (DeploymentUpgradeParameters)invokeMethodInputParameters[2];
+
+            var result = DeploymentClient.UpgradeByName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+    }}

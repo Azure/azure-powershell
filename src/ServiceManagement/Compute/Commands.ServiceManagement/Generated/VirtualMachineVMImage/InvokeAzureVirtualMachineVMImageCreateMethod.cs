@@ -44,4 +44,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineVMImageCreateMethod(object[] invokeMethodInputParameters)
+        {
+            VirtualMachineVMImageCreateParameters parameters = (VirtualMachineVMImageCreateParameters)invokeMethodInputParameters[0];
+
+            var result = VirtualMachineVMImageClient.Create(parameters);
+            WriteObject(result);
+        }
+    }}

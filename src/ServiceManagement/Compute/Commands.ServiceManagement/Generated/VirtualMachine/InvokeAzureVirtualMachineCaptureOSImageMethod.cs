@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineCaptureOSImageMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            string virtualMachineName = (string)invokeMethodInputParameters[2];
+            VirtualMachineCaptureOSImageParameters parameters = (VirtualMachineCaptureOSImageParameters)invokeMethodInputParameters[3];
+
+            var result = VirtualMachineClient.CaptureOSImage(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+    }}

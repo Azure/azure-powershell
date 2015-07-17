@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentSlot = (string)invokeMethodInputParameters[1];
+            string roleInstanceName = (string)invokeMethodInputParameters[2];
+            string resources = (string)invokeMethodInputParameters[3];
+
+            var result = DeploymentClient.RebuildRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName, resources);
+            WriteObject(result);
+        }
+    }}

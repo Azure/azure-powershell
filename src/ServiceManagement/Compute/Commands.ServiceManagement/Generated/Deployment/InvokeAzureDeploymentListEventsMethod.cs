@@ -53,4 +53,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteDeploymentListEventsMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            DateTime startTime = (DateTime)invokeMethodInputParameters[2];
+            DateTime endTime = (DateTime)invokeMethodInputParameters[3];
+
+            var result = DeploymentClient.ListEvents(serviceName, deploymentName, startTime, endTime);
+            WriteObject(result);
+        }
+    }}

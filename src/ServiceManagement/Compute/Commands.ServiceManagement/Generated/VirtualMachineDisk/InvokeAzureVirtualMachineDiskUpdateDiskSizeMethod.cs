@@ -47,4 +47,15 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineDiskUpdateDiskSizeMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)invokeMethodInputParameters[0];
+            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)invokeMethodInputParameters[1];
+
+            var result = VirtualMachineDiskClient.UpdateDiskSize(name, parameters);
+            WriteObject(result);
+        }
+    }}

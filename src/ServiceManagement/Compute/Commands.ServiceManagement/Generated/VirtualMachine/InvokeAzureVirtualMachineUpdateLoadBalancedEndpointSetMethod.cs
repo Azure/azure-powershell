@@ -50,4 +50,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)invokeMethodInputParameters[0];
+            string deploymentName = (string)invokeMethodInputParameters[1];
+            VirtualMachineUpdateLoadBalancedSetParameters parameters = (VirtualMachineUpdateLoadBalancedSetParameters)invokeMethodInputParameters[2];
+
+            var result = VirtualMachineClient.UpdateLoadBalancedEndpointSet(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+    }}

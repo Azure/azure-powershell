@@ -392,6 +392,7 @@
     <Compile Include="Generated\HostedService\NewAzureHostedServiceUpdateParameters.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\InvokeAzureComputeMethodCmdlet.cs" />
     <Compile Include="Generated\LoadBalancer\InvokeAzureLoadBalancerCreateMethod.cs">
       <SubType>Code</SubType>
     </Compile>

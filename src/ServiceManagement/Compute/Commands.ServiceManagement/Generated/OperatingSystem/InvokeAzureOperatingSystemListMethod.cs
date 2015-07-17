@@ -41,4 +41,13 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             });
         }
     }
-}
+
+    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected void ExecuteOperatingSystemListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = OperatingSystemClient.List();
+            WriteObject(result);
+        }
+    }}
