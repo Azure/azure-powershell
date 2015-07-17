@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -65,5 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = DeploymentClient.ListEvents(serviceName, deploymentName, startTime, endTime);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateDeploymentListEventsParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DateTime startTime = new DateTime();
+            DateTime endTime = new DateTime();
+
+            return new object[] { serviceName, deploymentName, startTime, endTime };
         }
     }}

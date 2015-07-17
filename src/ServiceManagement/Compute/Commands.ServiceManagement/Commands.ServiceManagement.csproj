@@ -411,6 +411,7 @@
     <Compile Include="Generated\LoadBalancer\NewAzureLoadBalancerUpdateParameters.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\NewAzureComputeParameterCmdlet.cs" />
     <Compile Include="Generated\OperatingSystem\InvokeAzureOperatingSystemListFamiliesMethod.cs">
       <SubType>Code</SubType>
     </Compile>

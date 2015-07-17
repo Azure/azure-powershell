@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -65,5 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = VirtualMachineClient.Delete(serviceName, deploymentName, virtualMachineName, deleteFromStorage);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateVirtualMachineDeleteParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, deleteFromStorage };
         }
     }}

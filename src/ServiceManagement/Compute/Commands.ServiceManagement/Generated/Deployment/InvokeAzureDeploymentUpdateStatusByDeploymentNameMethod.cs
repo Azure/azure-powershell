@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -61,5 +62,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = DeploymentClient.UpdateStatusByDeploymentName(serviceName, deploymentName, parameters);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateDeploymentUpdateStatusByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentUpdateStatusParameters parameters = new DeploymentUpdateStatusParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
         }
     }}

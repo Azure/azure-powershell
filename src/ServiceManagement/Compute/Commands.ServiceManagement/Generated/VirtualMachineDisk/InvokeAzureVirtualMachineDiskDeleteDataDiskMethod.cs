@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -41,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         public string RoleName { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.Int32 LogicalUnitNumber { get; set; }
+        public int LogicalUnitNumber { get; set; }
 
         [Parameter(Mandatory = true)]
         public bool DeleteFromStorage { get; set; }
@@ -64,10 +65,24 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
             string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            System.Int32 logicalUnitNumber = (System.Int32)ParseParameter(invokeMethodInputParameters[3]);
+            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
             bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[4]);
 
             var result = VirtualMachineDiskClient.DeleteDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateVirtualMachineDiskDeleteDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            int logicalUnitNumber = new int();
+            bool deleteFromStorage = new bool();
+
+            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage };
         }
     }}

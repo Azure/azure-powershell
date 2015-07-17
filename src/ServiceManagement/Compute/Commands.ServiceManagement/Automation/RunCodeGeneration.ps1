@@ -73,6 +73,7 @@ $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Co
 
 $code_common_usings = @(
     'System',
+    'System.Collections.Generic',
     'System.Management.Automation',
     'Microsoft.Azure'
 );
@@ -178,12 +179,54 @@ function Get-NormalizedTypeName
     {
         return 'DateTime';
     }
+    elseif ($inputName -eq 'System.Int32')
+    {
+        return 'int';
+    }
+    elseif ($inputName -eq 'System.UInt32')
+    {
+        return 'uint';
+    }
     elseif ($inputName.StartsWith($client_model_namespace_prefix))
     {
         $outputName = $inputName.Substring($client_model_namespace_prefix.Length);
     }
 
     $outputName = $outputName.Replace('+', '.');
+
+    return $outputName;
+}
+
+function Get-ConstructorCodeByNormalizedTypeName
+{
+    param(
+        # Sample: 'string' => 'string.Empty', 'HostedServiceCreateParameters' => 'new HostedServiceCreateParameters()', etc.
+        [Parameter(Mandatory = $True)]
+        [string]$inputName
+    )
+
+    if ([string]::IsNullOrEmpty($inputName))
+    {
+        return 'null';
+    }
+
+    if ($inputName -eq 'string')
+    {
+        $outputName = 'string.Empty';
+    }
+    else
+    {
+        if ($inputName.StartsWith($client_model_namespace + "."))
+        {
+            $inputName = $inputName.Replace($client_model_namespace + ".", '');
+        }
+        elseif ($inputName.StartsWith('System.Collections.Generic.'))
+        {
+            $inputName = $inputName.Replace('System.Collections.Generic.', '');
+        }
+
+        $outputName = 'new ' + $inputName + "()";
+    }
 
     return $outputName;
 }
@@ -445,7 +488,296 @@ $validate_all_method_names_code
             {
                 switch (Name)
                 {
-${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'${method_name}`'.`"); break;
+${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'`" + Name + `"`'.`"); break;
+                }
+            });
+        }
+"@;
+
+    $cmdlet_source_code_text =
+@"
+${code_common_header}
+
+$code_using_strs
+
+namespace ${code_common_namespace}
+{
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [OutputType(typeof(${normalized_output_type_name}))]
+    public partial class $cmdlet_class_name : $base_cmdlet_name
+    {
+${param_set_code}
+${execute_client_action_code}
+    }
+}
+"@;
+
+    $st = Set-Content -Path $file_full_path -Value $cmdlet_source_code_text -Force;
+}
+
+function Get-ParameterTypeShortName
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $parameter_type_info,
+
+        [Parameter(Mandatory = $false)]
+        $is_list_type = $false
+    )
+    
+    if (-not $is_list_type)
+    {
+        $param_type_full_name = $parameter_type_info.FullName;
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+
+        $param_type_short_name = $parameter_type_info.Name;
+        $param_type_short_name = $param_type_short_name.Replace('+', '.');
+    }
+    else
+    {
+        $itemType = $parameter_type_info.GetGenericArguments()[0];
+        $itemTypeShortName = $itemType.Name;
+        $itemTypeFullName = $itemType.FullName;
+        $itemTypeNormalizedShortName = Get-NormalizedTypeName $itemTypeFullName;
+
+        $param_type_full_name = "System.Collections.Generic.List<${itemTypeNormalizedShortName}>";
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+
+        $param_type_short_name = "${itemTypeShortName}List";
+        $param_type_short_name = $param_type_short_name.Replace('+', '.');
+    }
+
+    return $param_type_short_name;
+}
+
+function Get-ParameterTypeFullName
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        $parameter_type_info,
+
+        [Parameter(Mandatory = $false)]
+        $is_list_type = $false
+    )
+    
+    if (-not $is_list_type)
+    {
+        $param_type_full_name = $parameter_type_info.FullName;
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+    }
+    else
+    {
+        $itemType = $parameter_type_info.GetGenericArguments()[0];
+        $itemTypeShortName = $itemType.Name;
+        $itemTypeFullName = $itemType.FullName;
+        $itemTypeNormalizedShortName = Get-NormalizedTypeName $itemTypeFullName;
+
+        $param_type_full_name = "System.Collections.Generic.List<${itemTypeNormalizedShortName}>";
+        $param_type_full_name = $param_type_full_name.Replace('+', '.');
+    }
+
+    return $param_type_full_name;
+}
+
+# Write New Invoke Parameters Cmdlet
+function Write-InvokeParameterCmdletFile
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$file_full_path,
+
+        [Parameter(Mandatory = $True)]
+        [string]$parameter_cmdlet_name,
+
+        [Parameter(Mandatory = $True)]
+        [string]$base_cmdlet_name,
+
+        [Parameter(Mandatory = $True)]
+        $client_class_info,
+
+        [Parameter(Mandatory = $True)]
+        $operation_type_list
+    )
+
+    $indents = " " * 8;
+    $get_set_block = '{ get; set; }';
+
+    $cmdlet_verb = "New";
+    $cmdlet_verb_code = $verbs_common_new;
+
+    $cmdlet_file_name_suffix = 'Cmdlet'
+    $cmdlet_class_name = $cmdlet_verb + $parameter_cmdlet_name.Replace($cmdlet_verb, '');
+    $cmdlet_noun = $parameter_cmdlet_name.Replace($cmdlet_verb, '').Replace($cmdlet_file_name_suffix, '');
+
+    $normalized_output_type_name = 'object';
+    $all_method_names = @();
+    $all_param_type_names = @();
+    $constructor_code_hashmap = @{};
+
+    foreach ($operation_type in $operation_type_list)
+    {
+        $op_short_name = Get-OperationShortName $operation_type.Name;
+        $operation_method_info_list = $operation_type.GetMethods();
+        $parameter_type_info_list = @();
+
+        foreach ($method in $operation_method_info_list)
+        {
+            if ($method.Name -like 'Begin*')
+            {
+                continue;
+            }
+
+            $invoke_param_set_name = $op_short_name + $method.Name.Replace('Async', '');
+            $all_method_names += $invoke_param_set_name;
+
+            [System.Reflection.ParameterInfo]$parameter_type_info = (Get-MethodComplexParameter $method $client_library_namespace);
+
+            if (($parameter_type_info -ne $null) -and (($parameter_type_info_list | where { $_.ParameterType.FullName -eq $parameter_type_info.FullName }).Count -eq 0))
+            {
+                $parameter_type_info_list += $parameter_type_info;
+
+                $parameter_type_short_name = Get-ParameterTypeShortName $parameter_type_info.ParameterType;
+                if (($parameter_type_short_name -like "${op_short_name}*") -and ($parameter_type_short_name.Length -gt $op_short_name.Length))
+                {
+                    # Remove the common part between the parameter type name and operation short name, e.g. 'VirtualMachineDisk'
+                    $parameter_type_short_name = $parameter_type_short_name.Substring($op_short_name.Length);
+                }
+                $parameter_type_short_name = $op_short_name + $parameter_type_short_name;
+
+                $parameter_type_full_name = Get-ParameterTypeFullName $parameter_type_info.ParameterType;
+                if (-not($all_param_type_names -contains $parameter_type_short_name))
+                {
+                    $all_param_type_names += $parameter_type_short_name;
+                    if (-not $constructor_code_hashmap.ContainsKey($parameter_type_short_name))
+                    {
+                        $st = $constructor_code_hashmap.Add($parameter_type_short_name, (Get-ConstructorCodeByNormalizedTypeName $parameter_type_full_name));
+                    }
+                }
+
+                # Run Through the Sub Parameter List
+                $subParamTypeList = Get-SubComplexParameterList $parameter_type_info $client_library_namespace;
+
+                if ($subParamTypeList.Count -gt 0)
+                {
+                    foreach ($sp in $subParamTypeList)
+                    {
+                        if (-not $sp.IsGenericType)
+                        {
+                            $parameter_type_short_name = Get-ParameterTypeShortName $sp;
+                            if (($parameter_type_short_name -like "${op_short_name}*") -and ($parameter_type_short_name.Length -gt $op_short_name.Length))
+                            {
+                                # Remove the common part between the parameter type name and operation short name, e.g. 'VirtualMachineDisk'
+                                $parameter_type_short_name = $parameter_type_short_name.Substring($op_short_name.Length);
+                            }
+                            $parameter_type_short_name = $op_short_name + $parameter_type_short_name;
+
+                            $parameter_type_full_name = Get-ParameterTypeFullName $sp;
+                            if (-not $constructor_code_hashmap.ContainsKey($parameter_type_short_name))
+                            {
+                                $st = $constructor_code_hashmap.Add($parameter_type_short_name, (Get-ConstructorCodeByNormalizedTypeName $parameter_type_full_name));
+                            }
+                        }
+                        else
+                        {
+                            $parameter_type_short_name = Get-ParameterTypeShortName $sp $true;
+                            if (($parameter_type_short_name -like "${op_short_name}*") -and ($parameter_type_short_name.Length -gt $op_short_name.Length))
+                            {
+                                # Remove the common part between the parameter type name and operation short name, e.g. 'VirtualMachineDisk'
+                                $parameter_type_short_name = $parameter_type_short_name.Substring($op_short_name.Length);
+                            }
+                            $parameter_type_short_name = $op_short_name + $parameter_type_short_name;
+
+                            $parameter_type_full_name = Get-ParameterTypeFullName $sp $true;
+                            if (-not $constructor_code_hashmap.ContainsKey($parameter_type_short_name))
+                            {
+                                $st = $constructor_code_hashmap.Add($parameter_type_short_name, (Get-ConstructorCodeByNormalizedTypeName $parameter_type_full_name));
+                            }
+                        }
+
+                        if (-not($all_param_type_names -contains $parameter_type_short_name))
+                        {
+                            $all_param_type_names += $parameter_type_short_name;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $all_method_names_with_quotes = $all_method_names | foreach { "`"" + $_ + "`"" };
+    $all_method_names_str = [string]::Join(',' + $new_line_str + (' ' * 12), $all_method_names_with_quotes);
+    $validate_all_method_names_code =
+@"
+        [ValidateSet(
+            $all_method_names_str
+        )]
+"@;
+
+    $all_param_type_names = $all_param_type_names | Sort;
+    $all_param_type_names_with_quotes = $all_param_type_names | foreach { "`"" + $_ + "`"" };
+    $all_param_names_str = [string]::Join(',' + $new_line_str + (' ' * 12), $all_param_type_names_with_quotes);
+    $validate_all_param_names_code =
+@"
+        [ValidateSet(
+            $all_param_names_str
+        )]
+"@;
+
+    $param_set_code +=
+@"
+        [Parameter(ParameterSetName = `"CreateParameterListByMethodName`", Mandatory = true, Position = 0)]
+$validate_all_method_names_code
+        public string MethodName $get_set_block
+
+        [Parameter(ParameterSetName = `"CreateParameterObjectByTypeName`", Mandatory = true, Position = 0)]
+$validate_all_param_names_code
+        public string TypeName $get_set_block
+
+"@;
+
+
+    $operations_code = "";
+    foreach ($method_name in $all_method_names)
+    {
+
+        $operation_code_template =
+@"
+                        case `"${method_name}`" : WriteObject(Create${method_name}Parameters()); break;
+"@;
+        $operations_code += $operation_code_template + $new_line_str;
+    }
+
+    $type_operations_code = "";
+    foreach ($type_name in $all_param_type_names)
+    {
+        $constructor_code = $constructor_code_hashmap.Get_Item($type_name);
+        $type_code_template =
+@"
+                        case `"${type_name}`" : WriteObject(${constructor_code}); break;
+"@;
+        $type_operations_code += $type_code_template + $new_line_str;
+    }
+
+    $execute_client_action_code =
+@"
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                if (ParameterSetName == `"CreateParameterListByMethodName`")
+                {
+                    switch (MethodName)
+                    {
+${operations_code}                        default : WriteWarning(`"Cannot find the method by name = `'`" + MethodName + `"`'.`"); break;
+                    }
+                }
+                else
+                {
+                    switch (TypeName)
+                    {
+${type_operations_code}                        default : WriteWarning(`"Cannot find the type by name = `'`" + TypeName + `"`'.`"); break;
+                    }
                 }
             });
         }
@@ -486,7 +818,10 @@ function Write-OperationCmdletFile
         [System.Reflection.MethodInfo]$operation_method_info,
 
         [Parameter(Mandatory = $True)]
-        [string]$invoke_cmdlet_class_name
+        [string]$invoke_cmdlet_class_name,
+
+        [Parameter(Mandatory = $True)]
+        [string]$parameter_cmdlet_class_name
     )
 
     $methodName = ($operation_method_info.Name.Replace('Async', ''));
@@ -529,6 +864,7 @@ function Write-OperationCmdletFile
             Write-Output ('    ' + $paramTypeFullName + ' ' + $normalized_param_name);
 
             $paramTypeNormalizedName = Get-NormalizedTypeName -inputName $paramTypeFullName;
+            $param_constructor_code = Get-ConstructorCodeByNormalizedTypeName -inputName $paramTypeNormalizedName;
 
             $param_attributes = $indents + "[Parameter(Mandatory = true";
             $invoke_param_attributes = $indents + "[Parameter(ParameterSetName = `"${invoke_param_set_name}`", Position = ${position_index}, Mandatory = true";
@@ -545,12 +881,14 @@ function Write-OperationCmdletFile
             $invoke_param_definition = $indents + "public ${paramTypeNormalizedName} ${invoke_param_set_name}${normalized_param_name} " + $get_set_block + $new_line_str;
             $param_index = $position_index - 1;
             $invoke_local_param_definition = $indents + (' ' * 4) + "${paramTypeNormalizedName} " + $pt.Name + " = (${paramTypeNormalizedName})ParseParameter(${invoke_input_params_name}[${param_index}]);";
+            $create_local_param_definition = $indents + (' ' * 4) + "${paramTypeNormalizedName} " + $pt.Name + " = ${param_constructor_code};";
             $param_code_content = $param_attributes + $param_definition;
 
             # For Invoke Method
             $invoke_param_definition = $indents + "public ${paramTypeNormalizedName} ${invoke_param_set_name}${normalized_param_name} " + $get_set_block + $new_line_str;
             $invoke_param_code_content += $invoke_param_attributes + $invoke_param_definition + $new_line_str;
             $invoke_local_param_code_content += $invoke_local_param_definition + $new_line_str;
+            $create_local_param_code_content += $create_local_param_definition + $new_line_str;
 
             $cmdlet_generated_code += $param_code_content + $new_line_str;
 
@@ -608,6 +946,15 @@ ${cmdlet_generated_code}
 ${invoke_local_param_code_content}
             var result = ${opShortName}Client.${methodName}(${invoke_local_params_join_str});
             WriteObject(result);
+        }
+    }
+
+    public partial class ${parameter_cmdlet_class_name} : ComputeAutomationBaseCmdlet
+    {
+        protected object[] Create${invoke_param_set_name}Parameters()
+        {
+${create_local_param_code_content}
+            return new object[] { ${invoke_local_params_join_str} };
         }
     }
 "@;
@@ -902,6 +1249,8 @@ else
 
     $invoke_cmdlet_class_name = 'InvokeAzureComputeMethodCmdlet';
     $invoke_cmdlet_file_name = $outFolder + '\' + "$invoke_cmdlet_class_name.cs";
+    $parameter_cmdlet_class_name = 'NewAzureComputeParameterCmdlet';
+    $parameter_cmdlet_file_name = $outFolder + '\' + "$parameter_cmdlet_class_name.cs";
 
     [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();
 
@@ -931,7 +1280,7 @@ else
             }
 
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
-            Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name;
+            Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name $parameter_cmdlet_class_name;
 
             [System.Reflection.ParameterInfo]$parameter_type_info = (Get-MethodComplexParameter $mt $client_library_namespace);
 
@@ -963,6 +1312,7 @@ else
         }
 
         Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types;
+        Write-InvokeParameterCmdletFile $parameter_cmdlet_file_name $parameter_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types;
     }
 
     Write-Output "=============================================";

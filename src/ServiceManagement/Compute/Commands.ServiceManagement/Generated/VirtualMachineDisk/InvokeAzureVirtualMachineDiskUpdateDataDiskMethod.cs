@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -41,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         public string RoleName { get; set; }
 
         [Parameter(Mandatory = true)]
-        public System.Int32 LogicalUnitNumber { get; set; }
+        public int LogicalUnitNumber { get; set; }
 
         [Parameter(Mandatory = true)]
         public VirtualMachineDataDiskUpdateParameters Parameters { get; set; }
@@ -64,10 +65,24 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
             string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            System.Int32 logicalUnitNumber = (System.Int32)ParseParameter(invokeMethodInputParameters[3]);
+            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
             VirtualMachineDataDiskUpdateParameters parameters = (VirtualMachineDataDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[4]);
 
             var result = VirtualMachineDiskClient.UpdateDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, parameters);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateVirtualMachineDiskUpdateDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            int logicalUnitNumber = new int();
+            VirtualMachineDataDiskUpdateParameters parameters = new VirtualMachineDataDiskUpdateParameters();
+
+            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, parameters };
         }
     }}

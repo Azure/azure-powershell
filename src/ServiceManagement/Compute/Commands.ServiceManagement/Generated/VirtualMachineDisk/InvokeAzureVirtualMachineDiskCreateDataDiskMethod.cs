@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -65,5 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = VirtualMachineDiskClient.CreateDataDisk(serviceName, deploymentName, roleName, parameters);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateVirtualMachineDiskCreateDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            VirtualMachineDataDiskCreateParameters parameters = new VirtualMachineDataDiskCreateParameters();
+
+            return new object[] { serviceName, deploymentName, roleName, parameters };
         }
     }}

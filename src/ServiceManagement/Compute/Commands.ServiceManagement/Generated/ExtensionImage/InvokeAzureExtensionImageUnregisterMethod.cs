@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -61,5 +62,17 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = ExtensionImageClient.Unregister(providerNamespace, type, version);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateExtensionImageUnregisterParameters()
+        {
+            string providerNamespace = string.Empty;
+            string type = string.Empty;
+            string version = string.Empty;
+
+            return new object[] { providerNamespace, type, version };
         }
     }}

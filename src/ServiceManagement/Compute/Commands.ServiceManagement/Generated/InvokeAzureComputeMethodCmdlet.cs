@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -258,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                     case "VirtualMachineVMImageShare" : ExecuteVirtualMachineVMImageShareMethod(Parameter); break;
                     case "VirtualMachineVMImageUnreplicate" : ExecuteVirtualMachineVMImageUnreplicateMethod(Parameter); break;
                     case "VirtualMachineVMImageUpdate" : ExecuteVirtualMachineVMImageUpdateMethod(Parameter); break;
-                    default : WriteWarning("Cannot find the method by name = 'VirtualMachineVMImageUpdate'."); break;
+                    default : WriteWarning("Cannot find the method by name = '" + Name + "'."); break;
                 }
             });
         }

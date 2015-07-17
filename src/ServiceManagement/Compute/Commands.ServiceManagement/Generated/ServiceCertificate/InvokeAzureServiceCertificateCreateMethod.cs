@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -57,5 +58,16 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = ServiceCertificateClient.Create(serviceName, parameters);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateServiceCertificateCreateParameters()
+        {
+            string serviceName = string.Empty;
+            ServiceCertificateCreateParameters parameters = new ServiceCertificateCreateParameters();
+
+            return new object[] { serviceName, parameters };
         }
     }}

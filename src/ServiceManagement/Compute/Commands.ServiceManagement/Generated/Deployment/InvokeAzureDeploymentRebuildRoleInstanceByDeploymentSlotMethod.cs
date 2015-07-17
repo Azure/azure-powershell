@@ -23,6 +23,7 @@ using Microsoft.Azure;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -65,5 +66,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
             var result = DeploymentClient.RebuildRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName, resources);
             WriteObject(result);
+        }
+    }
+
+    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    {
+        protected object[] CreateDeploymentRebuildRoleInstanceByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentSlot = string.Empty;
+            string roleInstanceName = string.Empty;
+            string resources = string.Empty;
+
+            return new object[] { serviceName, deploymentSlot, roleInstanceName, resources };
         }
     }}
