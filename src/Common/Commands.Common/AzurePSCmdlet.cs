@@ -35,6 +35,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private DebugStreamTraceListener _adalListener;
         protected static AzureProfile _currentProfile = null;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
+
+        protected AzurePSQoSEvent QosEvent;
+
         protected virtual bool IsMetricEnabled {
             get { return false; }
         }
@@ -308,7 +311,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             InitializeProfile();
             PromptForDataCollectionProfileIfNotExists();
-            LogMetricHelperUsage();
+            InitializeQosEvent();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -349,16 +352,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
+            LogQosEvent();
             string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
-            if (IsMetricEnabled)
-            {
-                MetricHelper.FlushMetric();
-            }
 
             base.EndProcessing();
         }
@@ -386,7 +386,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages();
-            LogMetricHelperErrorEvent(errorRecord);
+            QosEvent.Exception = errorRecord.Exception;
+            QosEvent.IsSuccess = false;
+            LogQosEvent(true);
             base.WriteError(errorRecord);
         }
 
@@ -514,26 +516,23 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected void LogMetricHelperUsage()
+        protected void InitializeQosEvent()
         {
-            if (!IsMetricEnabled)
+            QosEvent = new AzurePSQoSEvent()
             {
-                return;
-            }
-
-            try
-            {
-                MetricHelper.LogUsageEvent(this.Profile.DefaultSubscription.Id.ToString(), this.GetType().Name);
-            }
-            catch (Exception e)
-            {
-                //Swallow error from Application Insights event collection.
-                WriteErrorWithTimestamp(e.ToString());
-            }
+                CmdletType = this.GetType().Name,
+                IsSuccess = true,
+                UID = MetricHelper.GenerateSha256HashString(this.Profile.DefaultSubscription.Id.ToString())
+            };
         }
 
-        protected void LogMetricHelperErrorEvent(ErrorRecord er)
+        /// <summary>
+        /// Invoke this method when the cmdlet is completed or terminated.
+        /// </summary>
+        protected void LogQosEvent(bool waitForMetricSending = false)
         {
+            QosEvent.FinishQosEvent();
+            WriteVerbose(QosEvent.ToString());
             if (!IsMetricEnabled)
             {
                 return;
@@ -541,7 +540,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             try
             {
-                MetricHelper.LogErrorEvent(er, this.Profile.DefaultSubscription.Id.ToString(), this.GetType().Name);
+                MetricHelper.LogUsageEvent(QosEvent);
+                MetricHelper.FlushMetric(waitForMetricSending);
             }
             catch (Exception e)
             {
@@ -560,10 +560,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="action">The action code</param>
         protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
         {
+            QosEvent.PauseQoSTimer();
             if (force || ShouldContinue(actionMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
                 {
+                    QosEvent.ResumeQosTimer();
                     action();
                 }
             }
