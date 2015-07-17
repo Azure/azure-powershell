@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineExtensionListVersionsMethod(object[] invokeMethodInputParameters)
         {
-            string publisherName = (string)invokeMethodInputParameters[0];
-            string extensionName = (string)invokeMethodInputParameters[1];
+            string publisherName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineExtensionClient.ListVersions(publisherName, extensionName);
             WriteObject(result);

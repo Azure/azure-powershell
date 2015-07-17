@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineVMImageUpdateMethod(object[] invokeMethodInputParameters)
         {
-            string imageName = (string)invokeMethodInputParameters[0];
-            VirtualMachineVMImageUpdateParameters parameters = (VirtualMachineVMImageUpdateParameters)invokeMethodInputParameters[1];
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineVMImageUpdateParameters parameters = (VirtualMachineVMImageUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineVMImageClient.Update(imageName, parameters);
             WriteObject(result);

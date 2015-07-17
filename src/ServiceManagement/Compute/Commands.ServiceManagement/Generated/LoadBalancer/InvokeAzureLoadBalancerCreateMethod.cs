@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteLoadBalancerCreateMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            LoadBalancerCreateParameters parameters = (LoadBalancerCreateParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            LoadBalancerCreateParameters parameters = (LoadBalancerCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = LoadBalancerClient.Create(serviceName, deploymentName, parameters);
             WriteObject(result);

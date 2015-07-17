@@ -426,6 +426,18 @@ $validate_all_method_names_code
 
     $execute_client_action_code =
 @"
+        protected object ParseParameter(object input)
+        {
+            if (input is PSObject)
+            {
+                return (input as PSObject).BaseObject;
+            }
+            else
+            {
+                return input;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -532,7 +544,7 @@ function Write-OperationCmdletFile
             $param_definition = $indents + "public ${paramTypeNormalizedName} ${normalized_param_name} " + $get_set_block + $new_line_str;
             $invoke_param_definition = $indents + "public ${paramTypeNormalizedName} ${invoke_param_set_name}${normalized_param_name} " + $get_set_block + $new_line_str;
             $param_index = $position_index - 1;
-            $invoke_local_param_definition = $indents + (' ' * 4) + "${paramTypeNormalizedName} " + $pt.Name + " = (${paramTypeNormalizedName})${invoke_input_params_name}[${param_index}];";
+            $invoke_local_param_definition = $indents + (' ' * 4) + "${paramTypeNormalizedName} " + $pt.Name + " = (${paramTypeNormalizedName})ParseParameter(${invoke_input_params_name}[${param_index}]);";
             $param_code_content = $param_attributes + $param_definition;
 
             # For Invoke Method

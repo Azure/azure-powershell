@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDNSServerAddDNSServerMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            DNSAddParameters parameters = (DNSAddParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DNSAddParameters parameters = (DNSAddParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DNSServerClient.AddDNSServer(serviceName, deploymentName, parameters);
             WriteObject(result);

@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineVMImageDeleteMethod(object[] invokeMethodInputParameters)
         {
-            string vmImageName = (string)invokeMethodInputParameters[0];
-            bool deleteFromStorage = (bool)invokeMethodInputParameters[1];
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineVMImageClient.Delete(vmImageName, deleteFromStorage);
             WriteObject(result);

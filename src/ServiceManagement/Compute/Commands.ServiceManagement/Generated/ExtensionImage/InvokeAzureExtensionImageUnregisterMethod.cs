@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteExtensionImageUnregisterMethod(object[] invokeMethodInputParameters)
         {
-            string providerNamespace = (string)invokeMethodInputParameters[0];
-            string type = (string)invokeMethodInputParameters[1];
-            string version = (string)invokeMethodInputParameters[2];
+            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string type = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string version = (string)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = ExtensionImageClient.Unregister(providerNamespace, type, version);
             WriteObject(result);

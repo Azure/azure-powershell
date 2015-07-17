@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteExtensionImageUpdateMethod(object[] invokeMethodInputParameters)
         {
-            ExtensionImageUpdateParameters parameters = (ExtensionImageUpdateParameters)invokeMethodInputParameters[0];
+            ExtensionImageUpdateParameters parameters = (ExtensionImageUpdateParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = ExtensionImageClient.Update(parameters);
             WriteObject(result);

@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentGetPackageByNameMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.GetPackageByName(serviceName, deploymentName, parameters);
             WriteObject(result);

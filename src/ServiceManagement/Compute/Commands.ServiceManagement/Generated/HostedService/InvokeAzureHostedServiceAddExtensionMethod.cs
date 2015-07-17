@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteHostedServiceAddExtensionMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            HostedServiceAddExtensionParameters parameters = (HostedServiceAddExtensionParameters)invokeMethodInputParameters[1];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            HostedServiceAddExtensionParameters parameters = (HostedServiceAddExtensionParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = HostedServiceClient.AddExtension(serviceName, parameters);
             WriteObject(result);

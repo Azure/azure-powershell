@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.UpdateStatusByDeploymentSlot(serviceName, deploymentSlot, parameters);
             WriteObject(result);

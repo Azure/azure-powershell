@@ -61,11 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskDeleteDataDiskMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string roleName = (string)invokeMethodInputParameters[2];
-            System.Int32 logicalUnitNumber = (System.Int32)invokeMethodInputParameters[3];
-            bool deleteFromStorage = (bool)invokeMethodInputParameters[4];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            System.Int32 logicalUnitNumber = (System.Int32)ParseParameter(invokeMethodInputParameters[3]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[4]);
 
             var result = VirtualMachineDiskClient.DeleteDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage);
             WriteObject(result);

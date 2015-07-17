@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskDeleteDiskMethod(object[] invokeMethodInputParameters)
         {
-            string name = (string)invokeMethodInputParameters[0];
-            bool deleteFromStorage = (bool)invokeMethodInputParameters[1];
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineDiskClient.DeleteDisk(name, deleteFromStorage);
             WriteObject(result);

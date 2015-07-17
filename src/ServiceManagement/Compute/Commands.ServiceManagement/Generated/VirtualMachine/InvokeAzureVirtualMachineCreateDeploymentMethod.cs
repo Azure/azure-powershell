@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineCreateDeploymentMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            VirtualMachineCreateDeploymentParameters parameters = (VirtualMachineCreateDeploymentParameters)invokeMethodInputParameters[1];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineCreateDeploymentParameters parameters = (VirtualMachineCreateDeploymentParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineClient.CreateDeployment(serviceName, parameters);
             WriteObject(result);

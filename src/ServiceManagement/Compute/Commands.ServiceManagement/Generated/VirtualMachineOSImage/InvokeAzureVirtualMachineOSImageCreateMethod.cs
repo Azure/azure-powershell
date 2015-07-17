@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineOSImageCreateMethod(object[] invokeMethodInputParameters)
         {
-            VirtualMachineOSImageCreateParameters parameters = (VirtualMachineOSImageCreateParameters)invokeMethodInputParameters[0];
+            VirtualMachineOSImageCreateParameters parameters = (VirtualMachineOSImageCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = VirtualMachineOSImageClient.Create(parameters);
             WriteObject(result);

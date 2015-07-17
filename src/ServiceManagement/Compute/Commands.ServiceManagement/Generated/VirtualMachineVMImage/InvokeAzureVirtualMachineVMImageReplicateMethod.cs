@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineVMImageReplicateMethod(object[] invokeMethodInputParameters)
         {
-            string vmImageName = (string)invokeMethodInputParameters[0];
-            VirtualMachineVMImageReplicateParameters parameters = (VirtualMachineVMImageReplicateParameters)invokeMethodInputParameters[1];
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineVMImageReplicateParameters parameters = (VirtualMachineVMImageReplicateParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineVMImageClient.Replicate(vmImageName, parameters);
             WriteObject(result);

@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskCreateDiskMethod(object[] invokeMethodInputParameters)
         {
-            VirtualMachineDiskCreateParameters parameters = (VirtualMachineDiskCreateParameters)invokeMethodInputParameters[0];
+            VirtualMachineDiskCreateParameters parameters = (VirtualMachineDiskCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = VirtualMachineDiskClient.CreateDisk(parameters);
             WriteObject(result);

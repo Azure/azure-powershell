@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskGetDiskMethod(object[] invokeMethodInputParameters)
         {
-            string name = (string)invokeMethodInputParameters[0];
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = VirtualMachineDiskClient.GetDisk(name);
             WriteObject(result);

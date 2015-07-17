@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineOSImageUnreplicateMethod(object[] invokeMethodInputParameters)
         {
-            string imageName = (string)invokeMethodInputParameters[0];
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = VirtualMachineOSImageClient.Unreplicate(imageName);
             WriteObject(result);

@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentSwapMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSwapParameters parameters = (DeploymentSwapParameters)invokeMethodInputParameters[1];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSwapParameters parameters = (DeploymentSwapParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = DeploymentClient.Swap(serviceName, parameters);
             WriteObject(result);

@@ -139,6 +139,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         [Parameter(Position = 1)]
         public object[] Parameter { get; set; }
 
+        protected object ParseParameter(object input)
+        {
+            if (input is PSObject)
+            {
+                return (input as PSObject).BaseObject;
+            }
+            else
+            {
+                return input;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

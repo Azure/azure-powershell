@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteHostedServiceCreateMethod(object[] invokeMethodInputParameters)
         {
-            HostedServiceCreateParameters parameters = (HostedServiceCreateParameters)invokeMethodInputParameters[0];
+            HostedServiceCreateParameters parameters = (HostedServiceCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = HostedServiceClient.Create(parameters);
             WriteObject(result);

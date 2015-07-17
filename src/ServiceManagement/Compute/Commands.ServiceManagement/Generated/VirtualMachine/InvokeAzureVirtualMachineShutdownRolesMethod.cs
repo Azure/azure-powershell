@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineShutdownRolesMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            VirtualMachineShutdownRolesParameters parameters = (VirtualMachineShutdownRolesParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            VirtualMachineShutdownRolesParameters parameters = (VirtualMachineShutdownRolesParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = VirtualMachineClient.ShutdownRoles(serviceName, deploymentName, parameters);
             WriteObject(result);

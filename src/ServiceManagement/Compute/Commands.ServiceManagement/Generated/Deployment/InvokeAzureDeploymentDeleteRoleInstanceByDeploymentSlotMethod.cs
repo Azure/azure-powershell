@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentSlot = (string)invokeMethodInputParameters[1];
-            DeploymentDeleteRoleInstanceParameters parameters = (DeploymentDeleteRoleInstanceParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentSlot = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentDeleteRoleInstanceParameters parameters = (DeploymentDeleteRoleInstanceParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.DeleteRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, parameters);
             WriteObject(result);

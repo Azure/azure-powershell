@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskGetDataDiskMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string roleName = (string)invokeMethodInputParameters[2];
-            System.Int32 logicalUnitNumber = (System.Int32)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            System.Int32 logicalUnitNumber = (System.Int32)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = VirtualMachineDiskClient.GetDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber);
             WriteObject(result);

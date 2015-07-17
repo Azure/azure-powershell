@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineOSImageShareMethod(object[] invokeMethodInputParameters)
         {
-            string imageName = (string)invokeMethodInputParameters[0];
-            string permission = (string)invokeMethodInputParameters[1];
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string permission = (string)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineOSImageClient.Share(imageName, permission);
             WriteObject(result);

@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentCreateMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            DeploymentCreateParameters parameters = (DeploymentCreateParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentCreateParameters parameters = (DeploymentCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.Create(serviceName, deploymentSlot, parameters);
             WriteObject(result);

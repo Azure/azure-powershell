@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.RollbackUpdateOrUpgradeByDeploymentName(serviceName, deploymentName, parameters);
             WriteObject(result);

@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineCaptureVMImageMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string virtualMachineName = (string)invokeMethodInputParameters[2];
-            VirtualMachineCaptureVMImageParameters parameters = (VirtualMachineCaptureVMImageParameters)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineCaptureVMImageParameters parameters = (VirtualMachineCaptureVMImageParameters)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = VirtualMachineClient.CaptureVMImage(serviceName, deploymentName, virtualMachineName, parameters);
             WriteObject(result);

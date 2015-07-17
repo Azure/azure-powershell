@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteServiceCertificateCreateMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            ServiceCertificateCreateParameters parameters = (ServiceCertificateCreateParameters)invokeMethodInputParameters[1];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            ServiceCertificateCreateParameters parameters = (ServiceCertificateCreateParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = ServiceCertificateClient.Create(serviceName, parameters);
             WriteObject(result);

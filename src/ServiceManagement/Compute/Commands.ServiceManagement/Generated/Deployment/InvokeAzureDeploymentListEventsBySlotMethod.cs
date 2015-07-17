@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentListEventsBySlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            DateTime startTime = (DateTime)invokeMethodInputParameters[2];
-            DateTime endTime = (DateTime)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DateTime startTime = (DateTime)ParseParameter(invokeMethodInputParameters[2]);
+            DateTime endTime = (DateTime)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = DeploymentClient.ListEventsBySlot(serviceName, deploymentSlot, startTime, endTime);
             WriteObject(result);

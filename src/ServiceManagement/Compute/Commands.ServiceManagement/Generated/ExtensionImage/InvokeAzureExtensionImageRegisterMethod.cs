@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteExtensionImageRegisterMethod(object[] invokeMethodInputParameters)
         {
-            ExtensionImageRegisterParameters parameters = (ExtensionImageRegisterParameters)invokeMethodInputParameters[0];
+            ExtensionImageRegisterParameters parameters = (ExtensionImageRegisterParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = ExtensionImageClient.Register(parameters);
             WriteObject(result);

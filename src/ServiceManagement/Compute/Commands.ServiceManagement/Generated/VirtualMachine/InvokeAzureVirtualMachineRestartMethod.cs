@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineRestartMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string virtualMachineName = (string)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = VirtualMachineClient.Restart(serviceName, deploymentName, virtualMachineName);
             WriteObject(result);

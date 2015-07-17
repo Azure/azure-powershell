@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineUpdateMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string virtualMachineName = (string)invokeMethodInputParameters[2];
-            VirtualMachineUpdateParameters parameters = (VirtualMachineUpdateParameters)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineUpdateParameters parameters = (VirtualMachineUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = VirtualMachineClient.Update(serviceName, deploymentName, virtualMachineName, parameters);
             WriteObject(result);

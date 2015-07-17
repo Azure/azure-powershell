@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentDeleteByNameMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            bool deleteFromStorage = (bool)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.DeleteByName(serviceName, deploymentName, deleteFromStorage);
             WriteObject(result);

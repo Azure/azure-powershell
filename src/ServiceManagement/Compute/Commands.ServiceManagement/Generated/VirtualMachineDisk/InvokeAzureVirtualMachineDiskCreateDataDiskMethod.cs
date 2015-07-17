@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskCreateDataDiskMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string roleName = (string)invokeMethodInputParameters[2];
-            VirtualMachineDataDiskCreateParameters parameters = (VirtualMachineDataDiskCreateParameters)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineDataDiskCreateParameters parameters = (VirtualMachineDataDiskCreateParameters)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = VirtualMachineDiskClient.CreateDataDisk(serviceName, deploymentName, roleName, parameters);
             WriteObject(result);

@@ -61,11 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskUpdateDataDiskMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string roleName = (string)invokeMethodInputParameters[2];
-            System.Int32 logicalUnitNumber = (System.Int32)invokeMethodInputParameters[3];
-            VirtualMachineDataDiskUpdateParameters parameters = (VirtualMachineDataDiskUpdateParameters)invokeMethodInputParameters[4];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            System.Int32 logicalUnitNumber = (System.Int32)ParseParameter(invokeMethodInputParameters[3]);
+            VirtualMachineDataDiskUpdateParameters parameters = (VirtualMachineDataDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[4]);
 
             var result = VirtualMachineDiskClient.UpdateDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, parameters);
             WriteObject(result);

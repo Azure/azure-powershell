@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineDiskUpdateDiskMethod(object[] invokeMethodInputParameters)
         {
-            string name = (string)invokeMethodInputParameters[0];
-            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)invokeMethodInputParameters[1];
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = VirtualMachineDiskClient.UpdateDisk(name, parameters);
             WriteObject(result);

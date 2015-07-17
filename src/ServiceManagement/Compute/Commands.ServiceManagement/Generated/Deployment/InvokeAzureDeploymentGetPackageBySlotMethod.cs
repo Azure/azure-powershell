@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentGetPackageBySlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.GetPackageBySlot(serviceName, deploymentSlot, parameters);
             WriteObject(result);

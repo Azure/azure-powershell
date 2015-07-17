@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteHostedServiceUpdateMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            HostedServiceUpdateParameters parameters = (HostedServiceUpdateParameters)invokeMethodInputParameters[1];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            HostedServiceUpdateParameters parameters = (HostedServiceUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = HostedServiceClient.Update(serviceName, parameters);
             WriteObject(result);

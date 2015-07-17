@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteHostedServiceCheckNameAvailabilityMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = HostedServiceClient.CheckNameAvailability(serviceName);
             WriteObject(result);

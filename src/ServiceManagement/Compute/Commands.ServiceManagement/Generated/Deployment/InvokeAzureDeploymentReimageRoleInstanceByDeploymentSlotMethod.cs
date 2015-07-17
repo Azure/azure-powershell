@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            string roleInstanceName = (string)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.ReimageRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName);
             WriteObject(result);

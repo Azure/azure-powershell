@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteVirtualMachineOSImageGetMethod(object[] invokeMethodInputParameters)
         {
-            string imageName = (string)invokeMethodInputParameters[0];
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = VirtualMachineOSImageClient.Get(imageName);
             WriteObject(result);

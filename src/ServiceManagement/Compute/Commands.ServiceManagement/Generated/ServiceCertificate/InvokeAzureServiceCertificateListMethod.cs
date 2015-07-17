@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteServiceCertificateListMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = ServiceCertificateClient.List(serviceName);
             WriteObject(result);

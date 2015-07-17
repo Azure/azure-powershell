@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteServiceCertificateDeleteMethod(object[] invokeMethodInputParameters)
         {
-            ServiceCertificateDeleteParameters parameters = (ServiceCertificateDeleteParameters)invokeMethodInputParameters[0];
+            ServiceCertificateDeleteParameters parameters = (ServiceCertificateDeleteParameters)ParseParameter(invokeMethodInputParameters[0]);
 
             var result = ServiceCertificateClient.Delete(parameters);
             WriteObject(result);

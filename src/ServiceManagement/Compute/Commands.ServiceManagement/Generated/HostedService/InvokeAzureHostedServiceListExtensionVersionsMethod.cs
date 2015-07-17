@@ -52,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteHostedServiceListExtensionVersionsMethod(object[] invokeMethodInputParameters)
         {
-            string providerNamespace = (string)invokeMethodInputParameters[0];
-            string extensionType = (string)invokeMethodInputParameters[1];
+            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionType = (string)ParseParameter(invokeMethodInputParameters[1]);
 
             var result = HostedServiceClient.ListExtensionVersions(providerNamespace, extensionType);
             WriteObject(result);

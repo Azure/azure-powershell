@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteLoadBalancerDeleteMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string loadBalancerName = (string)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string loadBalancerName = (string)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = LoadBalancerClient.Delete(serviceName, deploymentName, loadBalancerName);
             WriteObject(result);

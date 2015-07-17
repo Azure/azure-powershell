@@ -58,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            string deploymentName = (string)invokeMethodInputParameters[1];
-            string roleInstanceName = (string)invokeMethodInputParameters[2];
-            string resources = (string)invokeMethodInputParameters[3];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            string resources = (string)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = DeploymentClient.RebuildRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName, resources);
             WriteObject(result);

@@ -55,9 +55,9 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
     {
         protected void ExecuteDeploymentChangeConfigurationBySlotMethod(object[] invokeMethodInputParameters)
         {
-            string serviceName = (string)invokeMethodInputParameters[0];
-            DeploymentSlot deploymentSlot = (DeploymentSlot)invokeMethodInputParameters[1];
-            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)invokeMethodInputParameters[2];
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DeploymentClient.ChangeConfigurationBySlot(serviceName, deploymentSlot, parameters);
             WriteObject(result);
