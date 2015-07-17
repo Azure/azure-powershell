@@ -392,12 +392,8 @@ function Test-NetworkInterfaceIDns
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    <#
-    uncomment after IDNS is enabled in all locations
     $location = Get-ProviderLocation $resourceTypeParent
-    #>
-    $location = "centralus"
-    
+        
     try 
     {
         # Create the resource group
@@ -451,8 +447,7 @@ function Test-NetworkInterfaceEnableIPForwarding
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"    
     $location = Get-ProviderLocation $resourceTypeParent
     
     try 
