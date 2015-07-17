@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -57,34 +59,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// </summary>
         public string ContainerType { get; set; }
 
-        /// <summary>
-        /// Unique name of the Azure Backup Container
-        /// </summary>
-        public string ContainerUniqueName { get; set; }
-
         public AzureBackupContainerContextObject()
             : base()
         {
         }
 
-        public AzureBackupContainerContextObject(AzureBackupContainerContextObject azureBackupContainerContextObject)
-            : base(azureBackupContainerContextObject.ResourceGroupName, azureBackupContainerContextObject.ResourceName, azureBackupContainerContextObject.Location)
-        {
-            ContainerType = azureBackupContainerContextObject.ContainerType;
-            ContainerUniqueName = azureBackupContainerContextObject.ContainerUniqueName;
-        }
-        public AzureBackupContainerContextObject(AzureBackupContainer azureBackupContainer)
-            : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName, azureBackupContainer.Location)
-        {
-            ContainerType = azureBackupContainer.ContainerType;
-            ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
-        }
-
         public AzureBackupContainerContextObject(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
-            : base(vault.ResourceGroupName, vault.Name, vault.Region)
+            : base(vault)
         {
-            ContainerType = marsContainerResponse.Properties.CustomerType;
-            ContainerUniqueName = marsContainerResponse.UniqueName;
+            ContainerType = ContainerHelpers.GetContainerType(marsContainerResponse.Properties.CustomerType).ToString();
+            //ContainerUniqueName = marsContainerResponse.UniqueName;
         }
     }
 }

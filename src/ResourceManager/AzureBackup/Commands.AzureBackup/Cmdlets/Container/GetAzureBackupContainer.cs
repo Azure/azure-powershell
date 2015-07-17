@@ -28,24 +28,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(AzureBackupContainer), typeof(List<AzureBackupContainer>))]
+    [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(List<AzureBackupContainer>))]
     public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceGroupName)]
-        //[ValidateNotNullOrEmpty]
-        //public string ManagedResourceGroupName { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]
-        public string ManagedResourceName { get; set; }
-
-        //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
-        //[ValidateNotNullOrEmpty]
-        //public AzureBackupContainerStatusInput Status { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerTypeInput Type { get; set; }
+        public AzureBackupContainerType Type { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -57,8 +49,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 switch (Type)
                 {
-                    case AzureBackupContainerTypeInput.Windows:
-                    case AzureBackupContainerTypeInput.SCDPM:
+                    case AzureBackupContainerType.Windows:
+                    case AzureBackupContainerType.SCDPM:
                         containers.AddRange(GetMachineContainers());
                         break;
                     default:
@@ -72,38 +64,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private List<AzureBackupContainer> GetMachineContainers()
         {
             List<MarsContainerResponse> marsContainerResponses = new List<MarsContainerResponse>();
-            if (!string.IsNullOrEmpty(ManagedResourceName))
+            if (string.IsNullOrEmpty(Name))
             {
                 marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers());
             }
             else
             {
-                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(ManagedResourceName));
+                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(Name));
             }
 
             return marsContainerResponses.ConvertAll<AzureBackupContainer>(marsContainerResponse =>
             {
                 return new AzureBackupContainer(Vault, marsContainerResponse);
-            }).Where(container => container.ContainerType == GetCustomerType().ToString()).ToList();
-        }
-
-        private CustomerType GetCustomerType()
-        {
-            CustomerType customerType = CustomerType.Invalid;
-
-            switch (Type)
-            {
-                case AzureBackupContainerTypeInput.Windows:
-                    customerType = CustomerType.OBS;
-                    break;
-                case AzureBackupContainerTypeInput.SCDPM:
-                    customerType = CustomerType.DPM;
-                    break;
-                default:
-                    break;
-            }
-
-            return customerType;
+            }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
     }
 }

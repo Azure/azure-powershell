@@ -27,45 +27,29 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// </summary>
     public class AzureBackupContainer : AzureBackupContainerContextObject
     {
-        ///// <summary>
-        ///// Resource group name of the resource (ex: resource group name of the VM) being managed by Azure Backup service.
-        ///// </summary>
-        //public string ManagedResourceGroupName { get; set; }
-
         /// <summary>
         /// Resource name of the resource (ex: resource name of the VM) being managed by the Azure Backup service.
         /// </summary>
-        public string ManagedResourceName { get; set; }
+        public string Name { get; set; }
 
-        ///// <summary>
-        ///// Status of health of the Azure Backup container
-        ///// </summary>
-        //public string HealthStatus { get; set; }
+        /// <summary>
+        /// Id of the container
+        /// </summary>
+        public long Id { get; set; }
 
-        ///// <summary>
-        ///// Status of registration of the container
-        ///// </summary>
-        //public string RegistrationStatus { get; set; }
-
-        public long ContainerId { get; set; }
-
-        public string ContainerStampUri { get; set; }
-
-        public Guid ContainerStampId { get; set; }
-
-        public bool CanReRegister { get; set; }
+        /// <summary>
+        /// Status of registration of the container
+        /// </summary>
+        public string Status { get; set; }
 
         public AzureBackupContainer() : base() { }
 
         public AzureBackupContainer(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
             : base(vault, marsContainerResponse)
         {
-            //ManagedResourceGroupName = ContainerHelpers.GetRGNameFromId(marsContainerResponse.Properties.ParentContainerId);
-            ManagedResourceName = marsContainerResponse.Properties.FriendlyName;
-            ContainerId = marsContainerResponse.Properties.ContainerId;
-            ContainerStampId = marsContainerResponse.Properties.ContainerStampId;
-            ContainerStampUri = marsContainerResponse.Properties.ContainerStampUri;
-            CanReRegister = marsContainerResponse.Properties.CanReRegister;
+            Name = marsContainerResponse.Properties.FriendlyName;
+            Id = marsContainerResponse.Properties.ContainerId;
+            Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
         }
     }
 }

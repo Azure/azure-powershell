@@ -54,26 +54,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             return listResponse.ListMarsContainerResponse.Value;
         }
 
-        ///// <summary>
-        ///// Register container
-        ///// </summary>
-        ///// <param name="containerName"></param>
-        ///// <returns></returns>
-        //public Guid RegisterContainer(string containerName)
-        //{
-        //    var response = AzureBackupVaultClient.Container.RegisterAsync(containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-        //    return response.OperationId;
-        //}
+        /// <summary>
+        /// Enable container reregistration
+        /// </summary>
+        /// <param name="containerId"></param>
+        /// <returns></returns>
+        public void EnableMachineContainerReregistration(long containerId)
+        {
+            AzureBackupVaultClient.Container.EnableMarsContainerReregistration(containerId.ToString(), GetCustomRequestHeaders());
+        }
 
-        ///// <summary>
-        ///// UnRegister container
-        ///// </summary>
-        ///// <param name="containerName"></param>
-        ///// <returns></returns>
-        //public Guid UnRegisterContainer(string containerName)
-        //{
-        //    var response = AzureBackupVaultClient.Container.UnregisterAsync(containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-        //    return response.OperationId;
-        //}
+        /// <summary>
+        /// UnRegister container
+        /// </summary>
+        /// <param name="containerId"></param>
+        /// <returns></returns>
+        public void UnregisterMachineContainer(long containerId)
+        {
+            AzureBackupVaultClient.Container.UnregisterMarsContainer(containerId.ToString(), GetCustomRequestHeaders());
+        }
     }
 }
