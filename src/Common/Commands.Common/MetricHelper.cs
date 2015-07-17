@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         static MetricHelper()
         {            
             TelemetryClient = new TelemetryClient();
-            TelemetryClient.Context.Location.Ip = "0.0.0.0";
+            //TelemetryClient.Context.Location.Ip = "0.0.0.0";
 
             if (!IsMetricTermAccepted())
             {
