@@ -129,12 +129,6 @@
         * Get-AzureSqlDatabaseRestorePoints
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
-* Azure Recovery Services
-    * Fixed Storage and Network mapping issues
-    * Added encryption support for failover changes
-    * Added Delete vault support
-    * Provisioned to update VM properties
-    * Few bug fixes
 
 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454

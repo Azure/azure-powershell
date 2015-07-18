@@ -318,42 +318,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Site {0}.
-        /// </summary>
-        internal static string RemoveSiteWarning {
-            get {
-                return ResourceManager.GetString("RemoveSiteWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removes Site.
-        /// </summary>
-        internal static string RemoveSiteWhatIfMessage {
-            get {
-                return ResourceManager.GetString("RemoveSiteWhatIfMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Vault {0}.
-        /// </summary>
-        internal static string RemoveVaultWarning {
-            get {
-                return ResourceManager.GetString("RemoveVaultWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removes Vault.
-        /// </summary>
-        internal static string RemoveVaultWhatIfMessage {
-            get {
-                return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
         /// </summary>
         internal static string ReplicationStartTimeInvalid {
@@ -377,15 +341,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ServerNotFound {
             get {
                 return ResourceManager.GetString("ServerNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Site name {0} is not valid. Please try again with the correct site details..
-        /// </summary>
-        internal static string SiteDetailsNotValid {
-            get {
-                return ResourceManager.GetString("SiteDetailsNotValid", resourceCulture);
             }
         }
         
@@ -446,29 +401,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation..
-        /// </summary>
-        internal static string VaultCannotBeDeleted {
-            get {
-                return ResourceManager.GetString("VaultCannotBeDeleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Vault has been created.
         /// </summary>
         internal static string VaultCreationSuccessMessage {
             get {
                 return ResourceManager.GetString("VaultCreationSuccessMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vault has been deleted.
-        /// </summary>
-        internal static string VaultDeletionSuccessMessage {
-            get {
-                return ResourceManager.GetString("VaultDeletionSuccessMessage", resourceCulture);
             }
         }
         
