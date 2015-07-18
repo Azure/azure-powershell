@@ -723,13 +723,16 @@ function Write-InvokeParameterCmdletFile
         )]
 "@;
 
+    $param_set_of_create_by_method_name = "CreateParameterListByMethodName";
+    $param_set_of_create_by_type_name = "CreateParameterObjectByTypeName";
+
     $param_set_code +=
 @"
-        [Parameter(ParameterSetName = `"CreateParameterListByMethodName`", Mandatory = true, Position = 0)]
+        [Parameter(ParameterSetName = `"$param_set_of_create_by_method_name`", Mandatory = true, Position = 0)]
 $validate_all_method_names_code
         public string MethodName $get_set_block
 
-        [Parameter(ParameterSetName = `"CreateParameterObjectByTypeName`", Mandatory = true, Position = 0)]
+        [Parameter(ParameterSetName = `"$param_set_of_create_by_type_name`", Mandatory = true, Position = 0)]
 $validate_all_param_names_code
         public string TypeName $get_set_block
 
@@ -791,7 +794,7 @@ $code_using_strs
 
 namespace ${code_common_namespace}
 {
-    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`", DefaultParameterSetName = `"$param_set_of_create_by_method_name`")]
     [OutputType(typeof(${normalized_output_type_name}))]
     public partial class $cmdlet_class_name : $base_cmdlet_name
     {
