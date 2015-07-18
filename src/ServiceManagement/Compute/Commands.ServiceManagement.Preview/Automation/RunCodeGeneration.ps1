@@ -405,7 +405,10 @@ function Write-InvokeCmdletFile
         $operation_type_list,
 
         [Parameter(Mandatory = $True)]
-        $invoke_cmdlet_method_code
+        $invoke_cmdlet_method_code,
+
+        [Parameter(Mandatory = $True)]
+        $dynamic_param_method_code
     )
 
     $indents = " " * 8;
@@ -447,27 +450,42 @@ function Write-InvokeCmdletFile
         )]
 "@;
 
+    $dynamic_param_set_name = "InvokeByDynamicParameters";
+    $static_param_set_name = "InvokeByStaticParameters";
     $param_set_code +=
 @"
-        [Parameter(Mandatory = true, Position = 0)]
+        [Parameter(Mandatory = true, ParameterSetName = `"$dynamic_param_set_name`", Position = 0)]
+        [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 1)]
 $validate_all_method_names_code
-        public string Name $get_set_block
+        public string MethodName $get_set_block
 
-        [Parameter(Position = 1)]
+        [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 0)]
         public object[] Parameter $get_set_block
 
 "@;
 
-
+    $dynamic_parameters_code = "";
     $operations_code = "";
     foreach ($method_name in $all_method_names)
     {
-
         $operation_code_template =
 @"
-                    case `"${method_name}`" : Execute${method_name}Method(Parameter); break;
+                    case `"${method_name}`" :
+                        if (ParameterSetName == `"$dynamic_param_set_name`")
+                        {
+                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                        }
+
+                        Execute${method_name}Method(Parameter); break;
 "@;
         $operations_code += $operation_code_template + $new_line_str;
+
+        
+        $dynamic_param_code_template =
+@"
+                    case `"${method_name}`" : return Create${method_name}DynamicParameters();
+"@;
+        $dynamic_parameters_code += $dynamic_param_code_template + $new_line_str;
     }
 
     $execute_client_action_code =
@@ -489,15 +507,16 @@ $validate_all_method_names_code
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                switch (Name)
+                switch (MethodName)
                 {
-${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'`" + Name + `"`'.`"); break;
+${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'`" + MethodName + `"`'.`"); break;
                 }
             });
         }
 "@;
 
     $invoke_cmdlet_method_code_content = ([string]::Join($new_line_str, $invoke_cmdlet_method_code));
+    $dynamic_param_method_code_content = ([string]::Join($new_line_str, $dynamic_param_method_code));
 
     $cmdlet_source_code_text =
 @"
@@ -507,13 +526,38 @@ $code_using_strs
 
 namespace ${code_common_namespace}
 {
-    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`")]
+    [Cmdlet(${cmdlet_verb_code}, `"${cmdlet_noun}`", DefaultParameterSetName = `"$dynamic_param_set_name`")]
     [OutputType(typeof(${normalized_output_type_name}))]
-    public partial class $cmdlet_class_name : $base_cmdlet_name
+    public partial class $cmdlet_class_name : $base_cmdlet_name, IDynamicParameters
     {
+        protected RuntimeDefinedParameterDictionary dynamicParameters;
+
+        protected static object[] ConvertDynamicParameters(RuntimeDefinedParameterDictionary parameters)
+        {
+            List<object> paramList = new List<object>();
+
+            foreach (var param in parameters)
+            {
+                paramList.Add(param.Value.Value);
+            }
+
+            return paramList.ToArray();
+        }
+
 ${param_set_code}
 ${execute_client_action_code}
 $invoke_cmdlet_method_code_content
+
+        public object GetDynamicParameters()
+        {
+            switch (MethodName)
+            {
+${dynamic_parameters_code}                    default : break;
+            }
+
+            return null;
+        }
+$dynamic_param_method_code_content
     }
 }
 "@;
@@ -934,6 +978,52 @@ function Write-OperationCmdletFile
 
     $cmdlet_generated_code += $cmdlet_client_call_template;
 
+    $dynamic_param_assignment_code_lines = @();
+    $param_index = 1;
+    foreach ($pt in $params)
+    {
+        $param_type_full_name = $pt.ParameterType.FullName;
+        if ($param_type_full_name.EndsWith('CancellationToken'))
+        {
+            continue;
+        }
+
+        $param_name = Get-NormalizedName $pt.Name;
+        $expose_param_name = $param_name;
+        if ($expose_param_name -like '*Parameters')
+        {
+            $expose_param_name = $invoke_param_set_name + $expose_param_name;
+        }
+
+        $dynamic_param_assignment_code_lines +=
+@"
+            var p${param_name} = new RuntimeDefinedParameter();
+            p${param_name}.Name = `"${expose_param_name}`";
+            p${param_name}.ParameterType = typeof($param_type_full_name);
+            p${param_name}.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = $param_index,
+                Mandatory = true
+            });
+            dynamicParameters.Add(`"${expose_param_name}`", p${param_name});
+
+"@;
+        $param_index += 1;
+    }
+
+    $dynamic_param_assignment_code = [string]::Join($new_line_str, $dynamic_param_assignment_code_lines);
+
+    $dynamic_param_source_template =
+@"
+
+        protected object Create${invoke_param_set_name}DynamicParameters()
+        {
+            dynamicParameters = new RuntimeDefinedParameterDictionary();
+$dynamic_param_assignment_code
+            return dynamicParameters;
+        }
+"@;
 
     $invoke_cmdlt_source_template =
 @"
@@ -989,6 +1079,7 @@ $parameter_cmdlt_source_template
 
     # $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
 
+    Write-Output $dynamic_param_source_template;
     Write-Output $invoke_cmdlt_source_template;
     Write-Output $parameter_cmdlt_source_template;
 }
@@ -1279,6 +1370,7 @@ else
     $parameter_cmdlet_file_name = $outFolder + '\' + "$parameter_cmdlet_class_name.cs";
 
     [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();
+    $dynamic_param_method_code = @();
     $invoke_cmdlet_method_code = @();
     $parameter_cmdlet_method_code = @();
 
@@ -1311,6 +1403,7 @@ else
             $outputs = Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name $parameter_cmdlet_class_name;
             if ($outputs.Count -ne $null)
             {
+                $dynamic_param_method_code += $outputs[-3];
                 $invoke_cmdlet_method_code += $outputs[-2];
                 $parameter_cmdlet_method_code += $outputs[-1];
             }
@@ -1345,7 +1438,7 @@ else
             }
         }
 
-        Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types $invoke_cmdlet_method_code;
+        Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types $invoke_cmdlet_method_code $dynamic_param_method_code;
         Write-InvokeParameterCmdletFile $parameter_cmdlet_file_name $parameter_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types $parameter_cmdlet_method_code;
     }
 
