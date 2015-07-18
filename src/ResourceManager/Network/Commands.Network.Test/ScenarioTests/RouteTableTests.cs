@@ -17,13 +17,35 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class CheckDnsAvailabilityTest
+    public class RouteTableTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCheckDnsAvailability()
+        public void TestEmptyRouteTable()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-CheckDnsAvailability");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-EmptyRouteTable");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteTableCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteTableSubnetRef()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableSubnetRef");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteTableRouteCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
+        }
+
     }
 }

@@ -21,10 +21,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSBackendAddressPool : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> BackendIpConfigurations { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
