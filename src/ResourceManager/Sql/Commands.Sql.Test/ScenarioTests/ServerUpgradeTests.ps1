@@ -14,9 +14,9 @@
 
 <#
     .SYNOPSIS
-    Tests upgrading a server with recommended database
+    Tests upgrading a server with result from upgrade hint cmdlet
 #>
-function Test-ServerUpgradeWithRecommendedDatabase
+function Test-ServerUpgradeWithUpgradeHint
 {
     # Setup
     $server = Create-ServerForServerUpgradeTest
@@ -28,12 +28,9 @@ function Test-ServerUpgradeWithRecommendedDatabase
 
     try
     {
-        $recommendedDatabase = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties
-        $recommendedDatabase.Name = databaseName
-        $recommendedDatabase.TargetEdition = "Standard"
-        $recommendedDatabase.TargetServiceLevelObjective = "S0"
+        $mapping = Get-AzureSqlServerUpgradeHint -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
 
-        Start-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime ((Get-Date).AddMinutes(1).ToUniversalTime()) -DatabaseCollection ($recommendedDatabase)
+        Start-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime ((Get-Date).AddMinutes(1).ToUniversalTime()) -DatabaseCollection $mapping.Databases -ElasticPoolCollection $hint.ElasticPools
 
         while ($true)
         {
@@ -53,7 +50,10 @@ function Test-ServerUpgradeWithRecommendedDatabase
                 break
             }
 
-            Start-Sleep -Seconds 1
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+                Start-Sleep -Seconds 10
+            }
         }
     }
     finally
@@ -91,7 +91,10 @@ function Test-ServerUpgradeAndCancel
                 break
             }
 
-            Start-Sleep -Seconds 1
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+                Start-Sleep -Seconds 10
+            }
         }
 
 		# Upgrade is cancelled
@@ -112,7 +115,7 @@ function Test-ServerUpgradeNegative
 {
     # Setup
     $server = Create-ServerForServerUpgradeTest
-    
+
     # Create a basic database
     $databaseName = Get-DatabaseName
     $database = New-AzureSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Basic -MaxSizeBytes 1GB
