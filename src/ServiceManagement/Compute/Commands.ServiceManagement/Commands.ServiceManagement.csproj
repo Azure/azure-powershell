@@ -555,15 +555,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="BuildGenerate">
-    <PropertyGroup>
-      <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellExe>
-      <PSCodeGenScriptPath>".\Automation\RunCodeGeneration.ps1"</PSCodeGenScriptPath>
-      <PSCodeGenTargetFolder>$(OutputPath)</PSCodeGenTargetFolder>
-      <ClientLibraryNamesSpace>"Microsoft.WindowsAzure.Management.Compute"</ClientLibraryNamesSpace>
-      <BaseCmdletFullName>"Microsoft.WindowsAzure.Commands.Utilities.Common.ServiceManagementBaseCmdlet"</BaseCmdletFullName>
-      <BaseCmdletClientName>"ComputeClient"</BaseCmdletClientName>
-    </PropertyGroup>
-    <Exec Command="$(PowerShellExe) $(PSCodeGenScriptPath) $(PSCodeGenTargetFolder) $(MSBuildProjectDirectory) $(ClientLibraryNamesSpace) $(BaseCmdletFullName) $(BaseCmdletClientName)" />
-  </Target>
 </Project>
