@@ -263,5 +263,944 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 }
             });
         }
+
+        protected void ExecuteDeploymentChangeConfigurationByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.ChangeConfigurationByName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentChangeConfigurationBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.ChangeConfigurationBySlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentCreateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentCreateParameters parameters = (DeploymentCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.Create(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentDeleteByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.DeleteByName(serviceName, deploymentName, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentDeleteBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = DeploymentClient.DeleteBySlot(serviceName, deploymentSlot);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentDeleteRoleInstanceParameters roleInstanceName = (DeploymentDeleteRoleInstanceParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.DeleteRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentSlot = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentDeleteRoleInstanceParameters parameters = (DeploymentDeleteRoleInstanceParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.DeleteRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentGetByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = DeploymentClient.GetByName(serviceName, deploymentName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentGetBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = DeploymentClient.GetBySlot(serviceName, deploymentSlot);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentGetPackageByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.GetPackageByName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentGetPackageBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.GetPackageBySlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentListEventsMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DateTime startTime = (DateTime)ParseParameter(invokeMethodInputParameters[2]);
+            DateTime endTime = (DateTime)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = DeploymentClient.ListEvents(serviceName, deploymentName, startTime, endTime);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentListEventsBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DateTime startTime = (DateTime)ParseParameter(invokeMethodInputParameters[2]);
+            DateTime endTime = (DateTime)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = DeploymentClient.ListEventsBySlot(serviceName, deploymentSlot, startTime, endTime);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.RebootRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.RebootRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            string resources = (string)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = DeploymentClient.RebuildRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName, resources);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentSlot = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            string resources = (string)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = DeploymentClient.RebuildRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName, resources);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.ReimageRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.ReimageRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.RollbackUpdateOrUpgradeByDeploymentName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.RollbackUpdateOrUpgradeByDeploymentSlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentSwapMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSwapParameters parameters = (DeploymentSwapParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = DeploymentClient.Swap(serviceName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentUpdateStatusByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.UpdateStatusByDeploymentName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.UpdateStatusByDeploymentSlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentUpgradeByNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentUpgradeParameters parameters = (DeploymentUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.UpgradeByName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentUpgradeBySlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentUpgradeParameters parameters = (DeploymentUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.UpgradeBySlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentWalkUpgradeDomainParameters parameters = (DeploymentWalkUpgradeDomainParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.WalkUpgradeDomainByDeploymentName(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
+            DeploymentWalkUpgradeDomainParameters parameters = (DeploymentWalkUpgradeDomainParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DeploymentClient.WalkUpgradeDomainByDeploymentSlot(serviceName, deploymentSlot, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDNSServerAddDNSServerMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            DNSAddParameters parameters = (DNSAddParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DNSServerClient.AddDNSServer(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDNSServerDeleteDNSServerMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string dnsServerName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = DNSServerClient.DeleteDNSServer(serviceName, deploymentName, dnsServerName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteDNSServerUpdateDNSServerMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string dnsServerName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            DNSUpdateParameters parameters = (DNSUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = DNSServerClient.UpdateDNSServer(serviceName, deploymentName, dnsServerName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteExtensionImageRegisterMethod(object[] invokeMethodInputParameters)
+        {
+            ExtensionImageRegisterParameters parameters = (ExtensionImageRegisterParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = ExtensionImageClient.Register(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteExtensionImageUnregisterMethod(object[] invokeMethodInputParameters)
+        {
+            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string type = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string version = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = ExtensionImageClient.Unregister(providerNamespace, type, version);
+            WriteObject(result);
+        }
+
+        protected void ExecuteExtensionImageUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            ExtensionImageUpdateParameters parameters = (ExtensionImageUpdateParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = ExtensionImageClient.Update(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceAddExtensionMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            HostedServiceAddExtensionParameters parameters = (HostedServiceAddExtensionParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = HostedServiceClient.AddExtension(serviceName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceCheckNameAvailabilityMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.CheckNameAvailability(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceCreateMethod(object[] invokeMethodInputParameters)
+        {
+            HostedServiceCreateParameters parameters = (HostedServiceCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.Create(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.Delete(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceDeleteAllMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.DeleteAll(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceDeleteExtensionMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionId = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = HostedServiceClient.DeleteExtension(serviceName, extensionId);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceGetMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.Get(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceGetDetailedMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.GetDetailed(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceGetExtensionMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionId = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = HostedServiceClient.GetExtension(serviceName, extensionId);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = HostedServiceClient.List();
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceListAvailableExtensionsMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = HostedServiceClient.ListAvailableExtensions();
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceListExtensionsMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = HostedServiceClient.ListExtensions(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceListExtensionVersionsMethod(object[] invokeMethodInputParameters)
+        {
+            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionType = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = HostedServiceClient.ListExtensionVersions(providerNamespace, extensionType);
+            WriteObject(result);
+        }
+
+        protected void ExecuteHostedServiceUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            HostedServiceUpdateParameters parameters = (HostedServiceUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = HostedServiceClient.Update(serviceName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteLoadBalancerCreateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            LoadBalancerCreateParameters parameters = (LoadBalancerCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = LoadBalancerClient.Create(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteLoadBalancerDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string loadBalancerName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = LoadBalancerClient.Delete(serviceName, deploymentName, loadBalancerName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteLoadBalancerUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string loadBalancerName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            LoadBalancerUpdateParameters parameters = (LoadBalancerUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = LoadBalancerClient.Update(serviceName, deploymentName, loadBalancerName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteOperatingSystemListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = OperatingSystemClient.List();
+            WriteObject(result);
+        }
+
+        protected void ExecuteOperatingSystemListFamiliesMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = OperatingSystemClient.ListFamilies();
+            WriteObject(result);
+        }
+
+        protected void ExecuteServiceCertificateCreateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            ServiceCertificateCreateParameters parameters = (ServiceCertificateCreateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = ServiceCertificateClient.Create(serviceName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteServiceCertificateDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            ServiceCertificateDeleteParameters parameters = (ServiceCertificateDeleteParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = ServiceCertificateClient.Delete(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteServiceCertificateGetMethod(object[] invokeMethodInputParameters)
+        {
+            ServiceCertificateGetParameters parameters = (ServiceCertificateGetParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = ServiceCertificateClient.Get(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteServiceCertificateListMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = ServiceCertificateClient.List(serviceName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskCreateDataDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineDataDiskCreateParameters parameters = (VirtualMachineDataDiskCreateParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineDiskClient.CreateDataDisk(serviceName, deploymentName, roleName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskCreateDiskMethod(object[] invokeMethodInputParameters)
+        {
+            VirtualMachineDiskCreateParameters parameters = (VirtualMachineDiskCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineDiskClient.CreateDisk(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskDeleteDataDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[4]);
+
+            var result = VirtualMachineDiskClient.DeleteDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskDeleteDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineDiskClient.DeleteDisk(name, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskGetDataDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineDiskClient.GetDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskGetDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineDiskClient.GetDisk(name);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskListDisksMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = VirtualMachineDiskClient.ListDisks();
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskUpdateDataDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
+            VirtualMachineDataDiskUpdateParameters parameters = (VirtualMachineDataDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[4]);
+
+            var result = VirtualMachineDiskClient.UpdateDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskUpdateDiskMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineDiskClient.UpdateDisk(name, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDiskUpdateDiskSizeMethod(object[] invokeMethodInputParameters)
+        {
+            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineDiskClient.UpdateDiskSize(name, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineExtensionListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = VirtualMachineExtensionClient.List();
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineExtensionListVersionsMethod(object[] invokeMethodInputParameters)
+        {
+            string publisherName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string extensionName = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineExtensionClient.ListVersions(publisherName, extensionName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineBeginShutdownMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineShutdownParameters parameters = (VirtualMachineShutdownParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.BeginShutdown(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineCaptureOSImageMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineCaptureOSImageParameters parameters = (VirtualMachineCaptureOSImageParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.CaptureOSImage(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineCaptureVMImageMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineCaptureVMImageParameters parameters = (VirtualMachineCaptureVMImageParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.CaptureVMImage(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineCreateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            VirtualMachineCreateParameters parameters = (VirtualMachineCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.Create(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineCreateDeploymentMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineCreateDeploymentParameters parameters = (VirtualMachineCreateDeploymentParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineClient.CreateDeployment(serviceName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.Delete(serviceName, deploymentName, virtualMachineName, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineGetMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.Get(serviceName, deploymentName, virtualMachineName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineGetRemoteDesktopFileMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.GetRemoteDesktopFile(serviceName, deploymentName, virtualMachineName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineRestartMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.Restart(serviceName, deploymentName, virtualMachineName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineShutdownMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineShutdownParameters parameters = (VirtualMachineShutdownParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.Shutdown(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineShutdownRolesMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            VirtualMachineShutdownRolesParameters parameters = (VirtualMachineShutdownRolesParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.ShutdownRoles(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineStartMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.Start(serviceName, deploymentName, virtualMachineName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineStartRolesMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            VirtualMachineStartRolesParameters parameters = (VirtualMachineStartRolesParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.StartRoles(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
+            VirtualMachineUpdateParameters parameters = (VirtualMachineUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
+
+            var result = VirtualMachineClient.Update(serviceName, deploymentName, virtualMachineName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(object[] invokeMethodInputParameters)
+        {
+            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            VirtualMachineUpdateLoadBalancedSetParameters parameters = (VirtualMachineUpdateLoadBalancedSetParameters)ParseParameter(invokeMethodInputParameters[2]);
+
+            var result = VirtualMachineClient.UpdateLoadBalancedEndpointSet(serviceName, deploymentName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageCreateMethod(object[] invokeMethodInputParameters)
+        {
+            VirtualMachineOSImageCreateParameters parameters = (VirtualMachineOSImageCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineOSImageClient.Create(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineOSImageClient.Delete(imageName, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageGetMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineOSImageClient.Get(imageName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageGetDetailsMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineOSImageClient.GetDetails(imageName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = VirtualMachineOSImageClient.List();
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageReplicateMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineOSImageReplicateParameters parameters = (VirtualMachineOSImageReplicateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineOSImageClient.Replicate(imageName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageShareMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string permission = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineOSImageClient.Share(imageName, permission);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageUnreplicateMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineOSImageClient.Unreplicate(imageName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineOSImageUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineOSImageUpdateParameters parameters = (VirtualMachineOSImageUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineOSImageClient.Update(imageName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageCreateMethod(object[] invokeMethodInputParameters)
+        {
+            VirtualMachineVMImageCreateParameters parameters = (VirtualMachineVMImageCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineVMImageClient.Create(parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageDeleteMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineVMImageClient.Delete(vmImageName, deleteFromStorage);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageGetDetailsMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineVMImageClient.GetDetails(vmImageName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageListMethod(object[] invokeMethodInputParameters)
+        {
+
+            var result = VirtualMachineVMImageClient.List();
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageReplicateMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineVMImageReplicateParameters parameters = (VirtualMachineVMImageReplicateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineVMImageClient.Replicate(vmImageName, parameters);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageShareMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            string permission = (string)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineVMImageClient.Share(vmImageName, permission);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageUnreplicateMethod(object[] invokeMethodInputParameters)
+        {
+            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+
+            var result = VirtualMachineVMImageClient.Unreplicate(vmImageName);
+            WriteObject(result);
+        }
+
+        protected void ExecuteVirtualMachineVMImageUpdateMethod(object[] invokeMethodInputParameters)
+        {
+            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
+            VirtualMachineVMImageUpdateParameters parameters = (VirtualMachineVMImageUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
+
+            var result = VirtualMachineVMImageClient.Update(imageName, parameters);
+            WriteObject(result);
+        }
     }
 }

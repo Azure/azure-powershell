@@ -469,5 +469,843 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 }
             });
         }
+
+        protected object[] CreateDeploymentChangeConfigurationByNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentChangeConfigurationParameters parameters = new DeploymentChangeConfigurationParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentChangeConfigurationBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentChangeConfigurationParameters parameters = new DeploymentChangeConfigurationParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentCreateParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentCreateParameters parameters = new DeploymentCreateParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentDeleteByNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { serviceName, deploymentName, deleteFromStorage };
+        }
+
+        protected object[] CreateDeploymentDeleteBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+
+            return new object[] { serviceName, deploymentSlot };
+        }
+
+        protected object[] CreateDeploymentDeleteRoleInstanceByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentDeleteRoleInstanceParameters roleInstanceName = new DeploymentDeleteRoleInstanceParameters();
+
+            return new object[] { serviceName, deploymentName, roleInstanceName };
+        }
+
+        protected object[] CreateDeploymentDeleteRoleInstanceByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentSlot = string.Empty;
+            DeploymentDeleteRoleInstanceParameters parameters = new DeploymentDeleteRoleInstanceParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentGetByNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+
+            return new object[] { serviceName, deploymentName };
+        }
+
+        protected object[] CreateDeploymentGetBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+
+            return new object[] { serviceName, deploymentSlot };
+        }
+
+        protected object[] CreateDeploymentGetPackageByNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentGetPackageParameters parameters = new DeploymentGetPackageParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentGetPackageBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentGetPackageParameters parameters = new DeploymentGetPackageParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentListEventsParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DateTime startTime = new DateTime();
+            DateTime endTime = new DateTime();
+
+            return new object[] { serviceName, deploymentName, startTime, endTime };
+        }
+
+        protected object[] CreateDeploymentListEventsBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DateTime startTime = new DateTime();
+            DateTime endTime = new DateTime();
+
+            return new object[] { serviceName, deploymentSlot, startTime, endTime };
+        }
+
+        protected object[] CreateDeploymentRebootRoleInstanceByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleInstanceName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, roleInstanceName };
+        }
+
+        protected object[] CreateDeploymentRebootRoleInstanceByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            string roleInstanceName = string.Empty;
+
+            return new object[] { serviceName, deploymentSlot, roleInstanceName };
+        }
+
+        protected object[] CreateDeploymentRebuildRoleInstanceByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleInstanceName = string.Empty;
+            string resources = string.Empty;
+
+            return new object[] { serviceName, deploymentName, roleInstanceName, resources };
+        }
+
+        protected object[] CreateDeploymentRebuildRoleInstanceByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentSlot = string.Empty;
+            string roleInstanceName = string.Empty;
+            string resources = string.Empty;
+
+            return new object[] { serviceName, deploymentSlot, roleInstanceName, resources };
+        }
+
+        protected object[] CreateDeploymentReimageRoleInstanceByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleInstanceName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, roleInstanceName };
+        }
+
+        protected object[] CreateDeploymentReimageRoleInstanceByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            string roleInstanceName = string.Empty;
+
+            return new object[] { serviceName, deploymentSlot, roleInstanceName };
+        }
+
+        protected object[] CreateDeploymentRollbackUpdateOrUpgradeByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentRollbackUpdateOrUpgradeParameters parameters = new DeploymentRollbackUpdateOrUpgradeParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentRollbackUpdateOrUpgradeByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentRollbackUpdateOrUpgradeParameters parameters = new DeploymentRollbackUpdateOrUpgradeParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentSwapParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSwapParameters parameters = new DeploymentSwapParameters();
+
+            return new object[] { serviceName, parameters };
+        }
+
+        protected object[] CreateDeploymentUpdateStatusByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentUpdateStatusParameters parameters = new DeploymentUpdateStatusParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentUpdateStatusByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentUpdateStatusParameters parameters = new DeploymentUpdateStatusParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentUpgradeByNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentUpgradeParameters parameters = new DeploymentUpgradeParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentUpgradeBySlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentUpgradeParameters parameters = new DeploymentUpgradeParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDeploymentWalkUpgradeDomainByDeploymentNameParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DeploymentWalkUpgradeDomainParameters parameters = new DeploymentWalkUpgradeDomainParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDeploymentWalkUpgradeDomainByDeploymentSlotParameters()
+        {
+            string serviceName = string.Empty;
+            DeploymentSlot deploymentSlot = new DeploymentSlot();
+            DeploymentWalkUpgradeDomainParameters parameters = new DeploymentWalkUpgradeDomainParameters();
+
+            return new object[] { serviceName, deploymentSlot, parameters };
+        }
+
+        protected object[] CreateDNSServerAddDNSServerParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            DNSAddParameters parameters = new DNSAddParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateDNSServerDeleteDNSServerParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string dnsServerName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, dnsServerName };
+        }
+
+        protected object[] CreateDNSServerUpdateDNSServerParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string dnsServerName = string.Empty;
+            DNSUpdateParameters parameters = new DNSUpdateParameters();
+
+            return new object[] { serviceName, deploymentName, dnsServerName, parameters };
+        }
+
+        protected object[] CreateExtensionImageRegisterParameters()
+        {
+            ExtensionImageRegisterParameters parameters = new ExtensionImageRegisterParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateExtensionImageUnregisterParameters()
+        {
+            string providerNamespace = string.Empty;
+            string type = string.Empty;
+            string version = string.Empty;
+
+            return new object[] { providerNamespace, type, version };
+        }
+
+        protected object[] CreateExtensionImageUpdateParameters()
+        {
+            ExtensionImageUpdateParameters parameters = new ExtensionImageUpdateParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateHostedServiceAddExtensionParameters()
+        {
+            string serviceName = string.Empty;
+            HostedServiceAddExtensionParameters parameters = new HostedServiceAddExtensionParameters();
+
+            return new object[] { serviceName, parameters };
+        }
+
+        protected object[] CreateHostedServiceCheckNameAvailabilityParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceCreateParameters()
+        {
+            HostedServiceCreateParameters parameters = new HostedServiceCreateParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateHostedServiceDeleteParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceDeleteAllParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceDeleteExtensionParameters()
+        {
+            string serviceName = string.Empty;
+            string extensionId = string.Empty;
+
+            return new object[] { serviceName, extensionId };
+        }
+
+        protected object[] CreateHostedServiceGetParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceGetDetailedParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceGetExtensionParameters()
+        {
+            string serviceName = string.Empty;
+            string extensionId = string.Empty;
+
+            return new object[] { serviceName, extensionId };
+        }
+
+        protected object[] CreateHostedServiceListParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateHostedServiceListAvailableExtensionsParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateHostedServiceListExtensionsParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateHostedServiceListExtensionVersionsParameters()
+        {
+            string providerNamespace = string.Empty;
+            string extensionType = string.Empty;
+
+            return new object[] { providerNamespace, extensionType };
+        }
+
+        protected object[] CreateHostedServiceUpdateParameters()
+        {
+            string serviceName = string.Empty;
+            HostedServiceUpdateParameters parameters = new HostedServiceUpdateParameters();
+
+            return new object[] { serviceName, parameters };
+        }
+
+        protected object[] CreateLoadBalancerCreateParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            LoadBalancerCreateParameters parameters = new LoadBalancerCreateParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateLoadBalancerDeleteParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string loadBalancerName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, loadBalancerName };
+        }
+
+        protected object[] CreateLoadBalancerUpdateParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string loadBalancerName = string.Empty;
+            LoadBalancerUpdateParameters parameters = new LoadBalancerUpdateParameters();
+
+            return new object[] { serviceName, deploymentName, loadBalancerName, parameters };
+        }
+
+        protected object[] CreateOperatingSystemListParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateOperatingSystemListFamiliesParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateServiceCertificateCreateParameters()
+        {
+            string serviceName = string.Empty;
+            ServiceCertificateCreateParameters parameters = new ServiceCertificateCreateParameters();
+
+            return new object[] { serviceName, parameters };
+        }
+
+        protected object[] CreateServiceCertificateDeleteParameters()
+        {
+            ServiceCertificateDeleteParameters parameters = new ServiceCertificateDeleteParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateServiceCertificateGetParameters()
+        {
+            ServiceCertificateGetParameters parameters = new ServiceCertificateGetParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateServiceCertificateListParameters()
+        {
+            string serviceName = string.Empty;
+
+            return new object[] { serviceName };
+        }
+
+        protected object[] CreateVirtualMachineDiskCreateDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            VirtualMachineDataDiskCreateParameters parameters = new VirtualMachineDataDiskCreateParameters();
+
+            return new object[] { serviceName, deploymentName, roleName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineDiskCreateDiskParameters()
+        {
+            VirtualMachineDiskCreateParameters parameters = new VirtualMachineDiskCreateParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateVirtualMachineDiskDeleteDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            int logicalUnitNumber = new int();
+            bool deleteFromStorage = new bool();
+
+            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage };
+        }
+
+        protected object[] CreateVirtualMachineDiskDeleteDiskParameters()
+        {
+            string name = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { name, deleteFromStorage };
+        }
+
+        protected object[] CreateVirtualMachineDiskGetDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            int logicalUnitNumber = new int();
+
+            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber };
+        }
+
+        protected object[] CreateVirtualMachineDiskGetDiskParameters()
+        {
+            string name = string.Empty;
+
+            return new object[] { name };
+        }
+
+        protected object[] CreateVirtualMachineDiskListDisksParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateVirtualMachineDiskUpdateDataDiskParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string roleName = string.Empty;
+            int logicalUnitNumber = new int();
+            VirtualMachineDataDiskUpdateParameters parameters = new VirtualMachineDataDiskUpdateParameters();
+
+            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, parameters };
+        }
+
+        protected object[] CreateVirtualMachineDiskUpdateDiskParameters()
+        {
+            string name = string.Empty;
+            VirtualMachineDiskUpdateParameters parameters = new VirtualMachineDiskUpdateParameters();
+
+            return new object[] { name, parameters };
+        }
+
+        protected object[] CreateVirtualMachineDiskUpdateDiskSizeParameters()
+        {
+            string name = string.Empty;
+            VirtualMachineDiskUpdateParameters parameters = new VirtualMachineDiskUpdateParameters();
+
+            return new object[] { name, parameters };
+        }
+
+        protected object[] CreateVirtualMachineExtensionListParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateVirtualMachineExtensionListVersionsParameters()
+        {
+            string publisherName = string.Empty;
+            string extensionName = string.Empty;
+
+            return new object[] { publisherName, extensionName };
+        }
+
+        protected object[] CreateVirtualMachineBeginShutdownParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            VirtualMachineShutdownParameters parameters = new VirtualMachineShutdownParameters();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineCaptureOSImageParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            VirtualMachineCaptureOSImageParameters parameters = new VirtualMachineCaptureOSImageParameters();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineCaptureVMImageParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            VirtualMachineCaptureVMImageParameters parameters = new VirtualMachineCaptureVMImageParameters();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineCreateParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            VirtualMachineCreateParameters parameters = new VirtualMachineCreateParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineCreateDeploymentParameters()
+        {
+            string serviceName = string.Empty;
+            VirtualMachineCreateDeploymentParameters parameters = new VirtualMachineCreateDeploymentParameters();
+
+            return new object[] { serviceName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineDeleteParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, deleteFromStorage };
+        }
+
+        protected object[] CreateVirtualMachineGetParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, virtualMachineName };
+        }
+
+        protected object[] CreateVirtualMachineGetRemoteDesktopFileParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, virtualMachineName };
+        }
+
+        protected object[] CreateVirtualMachineRestartParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, virtualMachineName };
+        }
+
+        protected object[] CreateVirtualMachineShutdownParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            VirtualMachineShutdownParameters parameters = new VirtualMachineShutdownParameters();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineShutdownRolesParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            VirtualMachineShutdownRolesParameters parameters = new VirtualMachineShutdownRolesParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineStartParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+
+            return new object[] { serviceName, deploymentName, virtualMachineName };
+        }
+
+        protected object[] CreateVirtualMachineStartRolesParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            VirtualMachineStartRolesParameters parameters = new VirtualMachineStartRolesParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineUpdateParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            string virtualMachineName = string.Empty;
+            VirtualMachineUpdateParameters parameters = new VirtualMachineUpdateParameters();
+
+            return new object[] { serviceName, deploymentName, virtualMachineName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineUpdateLoadBalancedEndpointSetParameters()
+        {
+            string serviceName = string.Empty;
+            string deploymentName = string.Empty;
+            VirtualMachineUpdateLoadBalancedSetParameters parameters = new VirtualMachineUpdateLoadBalancedSetParameters();
+
+            return new object[] { serviceName, deploymentName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineOSImageCreateParameters()
+        {
+            VirtualMachineOSImageCreateParameters parameters = new VirtualMachineOSImageCreateParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateVirtualMachineOSImageDeleteParameters()
+        {
+            string imageName = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { imageName, deleteFromStorage };
+        }
+
+        protected object[] CreateVirtualMachineOSImageGetParameters()
+        {
+            string imageName = string.Empty;
+
+            return new object[] { imageName };
+        }
+
+        protected object[] CreateVirtualMachineOSImageGetDetailsParameters()
+        {
+            string imageName = string.Empty;
+
+            return new object[] { imageName };
+        }
+
+        protected object[] CreateVirtualMachineOSImageListParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateVirtualMachineOSImageReplicateParameters()
+        {
+            string imageName = string.Empty;
+            VirtualMachineOSImageReplicateParameters parameters = new VirtualMachineOSImageReplicateParameters();
+
+            return new object[] { imageName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineOSImageShareParameters()
+        {
+            string imageName = string.Empty;
+            string permission = string.Empty;
+
+            return new object[] { imageName, permission };
+        }
+
+        protected object[] CreateVirtualMachineOSImageUnreplicateParameters()
+        {
+            string imageName = string.Empty;
+
+            return new object[] { imageName };
+        }
+
+        protected object[] CreateVirtualMachineOSImageUpdateParameters()
+        {
+            string imageName = string.Empty;
+            VirtualMachineOSImageUpdateParameters parameters = new VirtualMachineOSImageUpdateParameters();
+
+            return new object[] { imageName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineVMImageCreateParameters()
+        {
+            VirtualMachineVMImageCreateParameters parameters = new VirtualMachineVMImageCreateParameters();
+
+            return new object[] { parameters };
+        }
+
+        protected object[] CreateVirtualMachineVMImageDeleteParameters()
+        {
+            string vmImageName = string.Empty;
+            bool deleteFromStorage = new bool();
+
+            return new object[] { vmImageName, deleteFromStorage };
+        }
+
+        protected object[] CreateVirtualMachineVMImageGetDetailsParameters()
+        {
+            string vmImageName = string.Empty;
+
+            return new object[] { vmImageName };
+        }
+
+        protected object[] CreateVirtualMachineVMImageListParameters()
+        {
+
+            return new object[] {  };
+        }
+
+        protected object[] CreateVirtualMachineVMImageReplicateParameters()
+        {
+            string vmImageName = string.Empty;
+            VirtualMachineVMImageReplicateParameters parameters = new VirtualMachineVMImageReplicateParameters();
+
+            return new object[] { vmImageName, parameters };
+        }
+
+        protected object[] CreateVirtualMachineVMImageShareParameters()
+        {
+            string vmImageName = string.Empty;
+            string permission = string.Empty;
+
+            return new object[] { vmImageName, permission };
+        }
+
+        protected object[] CreateVirtualMachineVMImageUnreplicateParameters()
+        {
+            string vmImageName = string.Empty;
+
+            return new object[] { vmImageName };
+        }
+
+        protected object[] CreateVirtualMachineVMImageUpdateParameters()
+        {
+            string imageName = string.Empty;
+            VirtualMachineVMImageUpdateParameters parameters = new VirtualMachineVMImageUpdateParameters();
+
+            return new object[] { imageName, parameters };
+        }
     }
 }

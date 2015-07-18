@@ -402,7 +402,10 @@ function Write-InvokeCmdletFile
         $client_class_info,
 
         [Parameter(Mandatory = $True)]
-        $operation_type_list
+        $operation_type_list,
+
+        [Parameter(Mandatory = $True)]
+        $invoke_cmdlet_method_code
     )
 
     $indents = " " * 8;
@@ -494,6 +497,8 @@ ${operations_code}                    default : WriteWarning(`"Cannot find the m
         }
 "@;
 
+    $invoke_cmdlet_method_code_content = ([string]::Join($new_line_str, $invoke_cmdlet_method_code));
+
     $cmdlet_source_code_text =
 @"
 ${code_common_header}
@@ -508,6 +513,7 @@ namespace ${code_common_namespace}
     {
 ${param_set_code}
 ${execute_client_action_code}
+$invoke_cmdlet_method_code_content
     }
 }
 "@;
@@ -596,7 +602,10 @@ function Write-InvokeParameterCmdletFile
         $client_class_info,
 
         [Parameter(Mandatory = $True)]
-        $operation_type_list
+        $operation_type_list,
+
+        [Parameter(Mandatory = $True)]
+        $parameter_cmdlet_method_code
     )
 
     $indents = " " * 8;
@@ -786,6 +795,8 @@ ${type_operations_code}                        default : WriteWarning(`"Cannot f
         }
 "@;
 
+    $parameter_cmdlet_method_code_content = ([string]::Join($new_line_str, $parameter_cmdlet_method_code));
+
     $cmdlet_source_code_text =
 @"
 ${code_common_header}
@@ -800,6 +811,7 @@ namespace ${code_common_namespace}
     {
 ${param_set_code}
 ${execute_client_action_code}
+$parameter_cmdlet_method_code_content
     }
 }
 "@;
@@ -922,6 +934,28 @@ function Write-OperationCmdletFile
 
     $cmdlet_generated_code += $cmdlet_client_call_template;
 
+
+    $invoke_cmdlt_source_template =
+@"
+
+        protected void Execute${invoke_param_set_name}Method(object[] ${invoke_input_params_name})
+        {
+${invoke_local_param_code_content}
+            var result = ${opShortName}Client.${methodName}(${invoke_local_params_join_str});
+            WriteObject(result);
+        }
+"@;
+
+    $parameter_cmdlt_source_template =
+@"
+
+        protected object[] Create${invoke_param_set_name}Parameters()
+        {
+${create_local_param_code_content}
+            return new object[] { ${invoke_local_params_join_str} };
+        }
+"@;
+
     $cmdlt_source_template =
 @"
 ${code_common_header}
@@ -937,28 +971,14 @@ namespace ${code_common_namespace}
 ${cmdlet_generated_code}
     }
 
-"@;
-
-    $cmdlt_source_template +=
-@"
-
     public partial class ${invoke_cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
-        protected void Execute${invoke_param_set_name}Method(object[] ${invoke_input_params_name})
-        {
-${invoke_local_param_code_content}
-            var result = ${opShortName}Client.${methodName}(${invoke_local_params_join_str});
-            WriteObject(result);
-        }
+$invoke_cmdlt_source_template
     }
 
     public partial class ${parameter_cmdlet_class_name} : ComputeAutomationBaseCmdlet
     {
-        protected object[] Create${invoke_param_set_name}Parameters()
-        {
-${create_local_param_code_content}
-            return new object[] { ${invoke_local_params_join_str} };
-        }
+$parameter_cmdlt_source_template
     }
 "@;
 
@@ -967,7 +987,10 @@ ${create_local_param_code_content}
 }
 "@;
 
-    $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
+    # $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
+
+    Write-Output $invoke_cmdlt_source_template;
+    Write-Output $parameter_cmdlt_source_template;
 }
 
 # Sample: VirtualMachineCreateParameters
@@ -1256,6 +1279,8 @@ else
     $parameter_cmdlet_file_name = $outFolder + '\' + "$parameter_cmdlet_class_name.cs";
 
     [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();
+    $invoke_cmdlet_method_code = @();
+    $parameter_cmdlet_method_code = @();
 
     # Write Operation Cmdlet Files
     foreach ($ft in $filtered_types)
@@ -1267,11 +1292,11 @@ else
     
         $opShortName = Get-OperationShortName $ft.Name;
         $opOutFolder = $outFolder + '/' + $opShortName;
-        if (Test-Path -Path $opOutFolder)
+        <# if (Test-Path -Path $opOutFolder)
         {
             $st = rmdir -Recurse -Force $opOutFolder;
         }
-        $st = mkdir -Force $opOutFolder;
+        $st = mkdir -Force $opOutFolder; #>
 
         $methods = $ft.GetMethods();
         foreach ($mt in $methods)
@@ -1283,15 +1308,21 @@ else
             }
 
             Write-Output ($new_line_str + $mt.Name.Replace('Async', ''));
-            Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name $parameter_cmdlet_class_name;
+            $outputs = Write-OperationCmdletFile $opOutFolder $opShortName $mt $invoke_cmdlet_class_name $parameter_cmdlet_class_name;
+            if ($outputs.Count -ne $null)
+            {
+                $invoke_cmdlet_method_code += $outputs[-2];
+                $parameter_cmdlet_method_code += $outputs[-1];
+            }
 
             [System.Reflection.ParameterInfo]$parameter_type_info = (Get-MethodComplexParameter $mt $client_library_namespace);
 
             if (($parameter_type_info -ne $null) -and (($parameter_type_info_list | where { $_.ParameterType.FullName -eq $parameter_type_info.FullName }).Count -eq 0))
             {
                 $parameter_type_info_list += $parameter_type_info;
+                Write-Output ((' ' * 4) + $parameter_type_info.ParameterType.Name);
 
-                Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info.ParameterType;
+                # Write-ParameterCmdletFile $opOutFolder $opShortName $parameter_type_info.ParameterType;
 
                 # Run Through the Sub Parameter List
                 $subParamTypeList = Get-SubComplexParameterList $parameter_type_info $client_library_namespace;
@@ -1303,19 +1334,19 @@ else
                         Write-Output ((' ' * 8) + $sp);
                         if (-not $sp.IsGenericType)
                         {
-                            Write-ParameterCmdletFile $opOutFolder $opShortName $sp;
+                            # Write-ParameterCmdletFile $opOutFolder $opShortName $sp;
                         }
                         else
                         {
-                            Write-ParameterCmdletFile $opOutFolder $opShortName $sp $true;
+                            # Write-ParameterCmdletFile $opOutFolder $opShortName $sp $true;
                         }
                     }
                 }
             }
         }
 
-        Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types;
-        Write-InvokeParameterCmdletFile $parameter_cmdlet_file_name $parameter_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types;
+        Write-InvokeCmdletFile $invoke_cmdlet_file_name $invoke_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types $invoke_cmdlet_method_code;
+        Write-InvokeParameterCmdletFile $parameter_cmdlet_file_name $parameter_cmdlet_class_name $auto_base_cmdlet_name $clientClassType $filtered_types $parameter_cmdlet_method_code;
     }
 
     Write-Output "=============================================";
