@@ -455,11 +455,14 @@ function Write-InvokeCmdletFile
     $param_set_code +=
 @"
         [Parameter(Mandatory = true, ParameterSetName = `"$dynamic_param_set_name`", Position = 0)]
-        [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 1)]
 $validate_all_method_names_code
         public string MethodName $get_set_block
 
         [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 0)]
+$validate_all_method_names_code
+        public string FunctionName $get_set_block
+
+        [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 2)]
         public object[] Parameter $get_set_block
 
 "@;
