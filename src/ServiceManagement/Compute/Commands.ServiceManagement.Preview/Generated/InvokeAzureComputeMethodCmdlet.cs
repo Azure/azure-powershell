@@ -256,7 +256,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         )]
         public string FunctionName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "InvokeByStaticParameters", Position = 2)]
+        [Parameter(Mandatory = false, ParameterSetName = "InvokeByStaticParameters", Position = 1)]
         public object[] Parameter { get; set; }
 
         protected object ParseParameter(object input)
@@ -276,6 +276,11 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                if (ParameterSetName == "InvokeByStaticParameters")
+                {
+                    MethodName = FunctionName;
+                }
+
                 switch (MethodName)
                 {
                     case "DeploymentChangeConfigurationByName" :

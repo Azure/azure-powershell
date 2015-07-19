@@ -462,7 +462,7 @@ $validate_all_method_names_code
 $validate_all_method_names_code
         public string FunctionName $get_set_block
 
-        [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 2)]
+        [Parameter(Mandatory = false, ParameterSetName = `"$static_param_set_name`", Position = 1)]
         public object[] Parameter $get_set_block
 
 "@;
@@ -510,6 +510,11 @@ $validate_all_method_names_code
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
+                if (ParameterSetName == `"$static_param_set_name`")
+                {
+                    MethodName = FunctionName;
+                }
+
                 switch (MethodName)
                 {
 ${operations_code}                    default : WriteWarning(`"Cannot find the method by name = `'`" + MethodName + `"`'.`"); break;
