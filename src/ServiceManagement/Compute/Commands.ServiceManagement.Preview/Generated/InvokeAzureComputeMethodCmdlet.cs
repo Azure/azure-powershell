@@ -2049,6 +2049,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2060,6 +2061,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2071,6 +2073,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentChangeConfigurationByNameParameters", pParameters);
 
             return dynamicParameters;
@@ -2088,6 +2091,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2099,6 +2103,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2110,6 +2115,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentChangeConfigurationBySlotParameters", pParameters);
 
             return dynamicParameters;
@@ -2127,6 +2133,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2138,6 +2145,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2149,6 +2157,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -2166,6 +2175,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2177,6 +2187,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -2188,6 +2199,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -2205,6 +2217,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2216,6 +2229,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             return dynamicParameters;
@@ -2233,6 +2247,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2244,6 +2259,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2255,6 +2271,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             return dynamicParameters;
@@ -2272,6 +2289,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2283,6 +2301,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2294,6 +2313,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentDeleteRoleInstanceByDeploymentSlotParameters", pParameters);
 
             return dynamicParameters;
@@ -2311,6 +2331,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2322,6 +2343,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             return dynamicParameters;
@@ -2339,6 +2361,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2350,6 +2373,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             return dynamicParameters;
@@ -2367,6 +2391,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2378,6 +2403,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2389,6 +2415,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentGetPackageByNameParameters", pParameters);
 
             return dynamicParameters;
@@ -2406,6 +2433,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2417,6 +2445,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2428,6 +2457,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentGetPackageBySlotParameters", pParameters);
 
             return dynamicParameters;
@@ -2445,6 +2475,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2456,6 +2487,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pStartTime = new RuntimeDefinedParameter();
@@ -2467,6 +2499,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pStartTime.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("StartTime", pStartTime);
 
             var pEndTime = new RuntimeDefinedParameter();
@@ -2478,6 +2511,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pEndTime.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("EndTime", pEndTime);
 
             return dynamicParameters;
@@ -2495,6 +2529,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2506,6 +2541,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pStartTime = new RuntimeDefinedParameter();
@@ -2517,6 +2553,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pStartTime.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("StartTime", pStartTime);
 
             var pEndTime = new RuntimeDefinedParameter();
@@ -2528,6 +2565,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pEndTime.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("EndTime", pEndTime);
 
             return dynamicParameters;
@@ -2545,6 +2583,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2556,6 +2595,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2567,6 +2607,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             return dynamicParameters;
@@ -2584,6 +2625,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2595,6 +2637,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2606,6 +2649,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             return dynamicParameters;
@@ -2623,6 +2667,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2634,6 +2679,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2645,6 +2691,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             var pResources = new RuntimeDefinedParameter();
@@ -2656,6 +2703,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pResources.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Resources", pResources);
 
             return dynamicParameters;
@@ -2673,6 +2721,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2684,6 +2733,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2695,6 +2745,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             var pResources = new RuntimeDefinedParameter();
@@ -2706,6 +2757,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pResources.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Resources", pResources);
 
             return dynamicParameters;
@@ -2723,6 +2775,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2734,6 +2787,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2745,6 +2799,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             return dynamicParameters;
@@ -2762,6 +2817,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2773,6 +2829,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pRoleInstanceName = new RuntimeDefinedParameter();
@@ -2784,6 +2841,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
 
             return dynamicParameters;
@@ -2801,6 +2859,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2812,6 +2871,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2823,6 +2883,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentRollbackUpdateOrUpgradeByDeploymentNameParameters", pParameters);
 
             return dynamicParameters;
@@ -2840,6 +2901,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2851,6 +2913,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2862,6 +2925,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentRollbackUpdateOrUpgradeByDeploymentSlotParameters", pParameters);
 
             return dynamicParameters;
@@ -2879,6 +2943,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2890,6 +2955,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSwapParameters", pParameters);
 
             return dynamicParameters;
@@ -2907,6 +2973,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2918,6 +2985,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2929,6 +2997,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentUpdateStatusByDeploymentNameParameters", pParameters);
 
             return dynamicParameters;
@@ -2946,6 +3015,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -2957,6 +3027,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -2968,6 +3039,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentUpdateStatusByDeploymentSlotParameters", pParameters);
 
             return dynamicParameters;
@@ -2985,6 +3057,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -2996,6 +3069,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3007,6 +3081,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentUpgradeByNameParameters", pParameters);
 
             return dynamicParameters;
@@ -3024,6 +3099,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -3035,6 +3111,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3046,6 +3123,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentUpgradeBySlotParameters", pParameters);
 
             return dynamicParameters;
@@ -3063,6 +3141,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3074,6 +3153,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3085,6 +3165,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentWalkUpgradeDomainByDeploymentNameParameters", pParameters);
 
             return dynamicParameters;
@@ -3102,6 +3183,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentSlot = new RuntimeDefinedParameter();
@@ -3113,6 +3195,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3124,6 +3207,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentWalkUpgradeDomainByDeploymentSlotParameters", pParameters);
 
             return dynamicParameters;
@@ -3141,6 +3225,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3152,6 +3237,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3163,6 +3249,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DNSServerAddDNSServerParameters", pParameters);
 
             return dynamicParameters;
@@ -3180,6 +3267,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3191,6 +3279,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pDnsServerName = new RuntimeDefinedParameter();
@@ -3202,6 +3291,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pDnsServerName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DnsServerName", pDnsServerName);
 
             return dynamicParameters;
@@ -3219,6 +3309,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3230,6 +3321,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pDnsServerName = new RuntimeDefinedParameter();
@@ -3241,6 +3333,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pDnsServerName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DnsServerName", pDnsServerName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3252,6 +3345,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DNSServerUpdateDNSServerParameters", pParameters);
 
             return dynamicParameters;
@@ -3269,6 +3363,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionImageRegisterParameters", pParameters);
 
             return dynamicParameters;
@@ -3286,6 +3381,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pProviderNamespace.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ProviderNamespace", pProviderNamespace);
 
             var pType = new RuntimeDefinedParameter();
@@ -3297,6 +3393,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pType.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Type", pType);
 
             var pVersion = new RuntimeDefinedParameter();
@@ -3308,6 +3405,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVersion.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Version", pVersion);
 
             return dynamicParameters;
@@ -3325,6 +3423,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionImageUpdateParameters", pParameters);
 
             return dynamicParameters;
@@ -3342,6 +3441,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3353,6 +3453,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("HostedServiceAddExtensionParameters", pParameters);
 
             return dynamicParameters;
@@ -3370,6 +3471,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3387,6 +3489,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("HostedServiceCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -3404,6 +3507,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3421,6 +3525,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3438,6 +3543,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pExtensionId = new RuntimeDefinedParameter();
@@ -3449,6 +3555,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pExtensionId.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionId", pExtensionId);
 
             return dynamicParameters;
@@ -3466,6 +3573,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3483,6 +3591,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3500,6 +3609,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pExtensionId = new RuntimeDefinedParameter();
@@ -3511,6 +3621,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pExtensionId.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionId", pExtensionId);
 
             return dynamicParameters;
@@ -3542,6 +3653,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3559,6 +3671,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pProviderNamespace.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ProviderNamespace", pProviderNamespace);
 
             var pExtensionType = new RuntimeDefinedParameter();
@@ -3570,6 +3683,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pExtensionType.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionType", pExtensionType);
 
             return dynamicParameters;
@@ -3587,6 +3701,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3598,6 +3713,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("HostedServiceUpdateParameters", pParameters);
 
             return dynamicParameters;
@@ -3615,6 +3731,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3626,6 +3743,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3637,6 +3755,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LoadBalancerCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -3654,6 +3773,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3665,6 +3785,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pLoadBalancerName = new RuntimeDefinedParameter();
@@ -3676,6 +3797,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pLoadBalancerName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LoadBalancerName", pLoadBalancerName);
 
             return dynamicParameters;
@@ -3693,6 +3815,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3704,6 +3827,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pLoadBalancerName = new RuntimeDefinedParameter();
@@ -3715,6 +3839,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pLoadBalancerName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LoadBalancerName", pLoadBalancerName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3726,6 +3851,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LoadBalancerUpdateParameters", pParameters);
 
             return dynamicParameters;
@@ -3757,6 +3883,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3768,6 +3895,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceCertificateCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -3785,6 +3913,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceCertificateDeleteParameters", pParameters);
 
             return dynamicParameters;
@@ -3802,6 +3931,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceCertificateGetParameters", pParameters);
 
             return dynamicParameters;
@@ -3819,6 +3949,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             return dynamicParameters;
@@ -3836,6 +3967,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3847,6 +3979,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleName = new RuntimeDefinedParameter();
@@ -3858,6 +3991,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleName", pRoleName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -3869,6 +4003,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineDiskCreateDataDiskParameters", pParameters);
 
             return dynamicParameters;
@@ -3886,6 +4021,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineDiskCreateDiskParameters", pParameters);
 
             return dynamicParameters;
@@ -3903,6 +4039,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -3914,6 +4051,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleName = new RuntimeDefinedParameter();
@@ -3925,6 +4063,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleName", pRoleName);
 
             var pLogicalUnitNumber = new RuntimeDefinedParameter();
@@ -3936,6 +4075,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -3947,6 +4087,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 5,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -3964,6 +4105,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -3975,6 +4117,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -3992,6 +4135,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4003,6 +4147,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleName = new RuntimeDefinedParameter();
@@ -4014,6 +4159,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleName", pRoleName);
 
             var pLogicalUnitNumber = new RuntimeDefinedParameter();
@@ -4025,6 +4171,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
 
             return dynamicParameters;
@@ -4042,6 +4189,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
 
             return dynamicParameters;
@@ -4066,6 +4214,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4077,6 +4226,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pRoleName = new RuntimeDefinedParameter();
@@ -4088,6 +4238,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pRoleName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("RoleName", pRoleName);
 
             var pLogicalUnitNumber = new RuntimeDefinedParameter();
@@ -4099,6 +4250,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4110,6 +4262,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 5,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineDiskUpdateDataDiskParameters", pParameters);
 
             return dynamicParameters;
@@ -4127,6 +4280,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4138,6 +4292,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineDiskUpdateDiskParameters", pParameters);
 
             return dynamicParameters;
@@ -4155,6 +4310,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Name", pName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4166,6 +4322,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineDiskUpdateDiskSizeParameters", pParameters);
 
             return dynamicParameters;
@@ -4190,6 +4347,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pPublisherName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("PublisherName", pPublisherName);
 
             var pExtensionName = new RuntimeDefinedParameter();
@@ -4201,6 +4359,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pExtensionName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ExtensionName", pExtensionName);
 
             return dynamicParameters;
@@ -4218,6 +4377,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4229,6 +4389,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4240,6 +4401,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4251,6 +4413,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineBeginShutdownParameters", pParameters);
 
             return dynamicParameters;
@@ -4268,6 +4431,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4279,6 +4443,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4290,6 +4455,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4301,6 +4467,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineCaptureOSImageParameters", pParameters);
 
             return dynamicParameters;
@@ -4318,6 +4485,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4329,6 +4497,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4340,6 +4509,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4351,6 +4521,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineCaptureVMImageParameters", pParameters);
 
             return dynamicParameters;
@@ -4368,6 +4539,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4379,6 +4551,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4390,6 +4563,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -4407,6 +4581,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4418,6 +4593,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineCreateDeploymentParameters", pParameters);
 
             return dynamicParameters;
@@ -4435,6 +4611,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4446,6 +4623,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4457,6 +4635,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -4468,6 +4647,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -4485,6 +4665,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4496,6 +4677,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4507,6 +4689,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             return dynamicParameters;
@@ -4524,6 +4707,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4535,6 +4719,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4546,6 +4731,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             return dynamicParameters;
@@ -4563,6 +4749,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4574,6 +4761,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4585,6 +4773,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             return dynamicParameters;
@@ -4602,6 +4791,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4613,6 +4803,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4624,6 +4815,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4635,6 +4827,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineShutdownParameters", pParameters);
 
             return dynamicParameters;
@@ -4652,6 +4845,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4663,6 +4857,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4674,6 +4869,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineShutdownRolesParameters", pParameters);
 
             return dynamicParameters;
@@ -4691,6 +4887,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4702,6 +4899,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4713,6 +4911,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             return dynamicParameters;
@@ -4730,6 +4929,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4741,6 +4941,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4752,6 +4953,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineStartRolesParameters", pParameters);
 
             return dynamicParameters;
@@ -4769,6 +4971,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4780,6 +4983,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pVirtualMachineName = new RuntimeDefinedParameter();
@@ -4791,6 +4995,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4802,6 +5007,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 4,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineUpdateParameters", pParameters);
 
             return dynamicParameters;
@@ -4819,6 +5025,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pServiceName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ServiceName", pServiceName);
 
             var pDeploymentName = new RuntimeDefinedParameter();
@@ -4830,6 +5037,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeploymentName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeploymentName", pDeploymentName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4841,6 +5049,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 3,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineUpdateLoadBalancedEndpointSetParameters", pParameters);
 
             return dynamicParameters;
@@ -4858,6 +5067,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineOSImageCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -4875,6 +5085,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -4886,6 +5097,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -4903,6 +5115,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             return dynamicParameters;
@@ -4920,6 +5133,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             return dynamicParameters;
@@ -4944,6 +5158,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -4955,6 +5170,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineOSImageReplicateParameters", pParameters);
 
             return dynamicParameters;
@@ -4972,6 +5188,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             var pPermission = new RuntimeDefinedParameter();
@@ -4983,6 +5200,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pPermission.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Permission", pPermission);
 
             return dynamicParameters;
@@ -5000,6 +5218,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             return dynamicParameters;
@@ -5017,6 +5236,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -5028,6 +5248,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineOSImageUpdateParameters", pParameters);
 
             return dynamicParameters;
@@ -5045,6 +5266,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineVMImageCreateParameters", pParameters);
 
             return dynamicParameters;
@@ -5062,6 +5284,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pVMImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMImageName", pVMImageName);
 
             var pDeleteFromStorage = new RuntimeDefinedParameter();
@@ -5073,6 +5296,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
 
             return dynamicParameters;
@@ -5090,6 +5314,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pVMImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMImageName", pVMImageName);
 
             return dynamicParameters;
@@ -5114,6 +5339,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pVMImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMImageName", pVMImageName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -5125,6 +5351,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineVMImageReplicateParameters", pParameters);
 
             return dynamicParameters;
@@ -5142,6 +5369,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pVMImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMImageName", pVMImageName);
 
             var pPermission = new RuntimeDefinedParameter();
@@ -5153,6 +5381,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pPermission.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("Permission", pPermission);
 
             return dynamicParameters;
@@ -5170,6 +5399,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pVMImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMImageName", pVMImageName);
 
             return dynamicParameters;
@@ -5187,6 +5417,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 1,
                 Mandatory = true
             });
+            pImageName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ImageName", pImageName);
 
             var pParameters = new RuntimeDefinedParameter();
@@ -5198,6 +5429,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 Position = 2,
                 Mandatory = true
             });
+            pParameters.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VirtualMachineVMImageUpdateParameters", pParameters);
 
             return dynamicParameters;

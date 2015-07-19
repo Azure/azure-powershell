@@ -1014,6 +1014,7 @@ function Write-OperationCmdletFile
                 Position = $param_index,
                 Mandatory = true
             });
+            p${param_name}.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add(`"${expose_param_name}`", p${param_name});
 
 "@;
