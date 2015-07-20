@@ -225,7 +225,6 @@
     <Content Include="Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
