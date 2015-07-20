@@ -289,1643 +289,805 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentChangeConfigurationByNameMethod(Parameter); break;
+                        ExecuteDeploymentChangeConfigurationByNameMethod(Parameter);
+                        break;
                     case "DeploymentChangeConfigurationBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentChangeConfigurationBySlotMethod(Parameter); break;
+                        ExecuteDeploymentChangeConfigurationBySlotMethod(Parameter);
+                        break;
                     case "DeploymentCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentCreateMethod(Parameter); break;
+                        ExecuteDeploymentCreateMethod(Parameter);
+                        break;
                     case "DeploymentDeleteByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteByNameMethod(Parameter); break;
+                        ExecuteDeploymentDeleteByNameMethod(Parameter);
+                        break;
                     case "DeploymentDeleteBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteBySlotMethod(Parameter); break;
+                        ExecuteDeploymentDeleteBySlotMethod(Parameter);
+                        break;
                     case "DeploymentDeleteRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentDeleteRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentGetByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetByNameMethod(Parameter); break;
+                        ExecuteDeploymentGetByNameMethod(Parameter);
+                        break;
                     case "DeploymentGetBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetBySlotMethod(Parameter); break;
+                        ExecuteDeploymentGetBySlotMethod(Parameter);
+                        break;
                     case "DeploymentGetPackageByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetPackageByNameMethod(Parameter); break;
+                        ExecuteDeploymentGetPackageByNameMethod(Parameter);
+                        break;
                     case "DeploymentGetPackageBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetPackageBySlotMethod(Parameter); break;
+                        ExecuteDeploymentGetPackageBySlotMethod(Parameter);
+                        break;
                     case "DeploymentListEvents" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentListEventsMethod(Parameter); break;
+                        ExecuteDeploymentListEventsMethod(Parameter);
+                        break;
                     case "DeploymentListEventsBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentListEventsBySlotMethod(Parameter); break;
+                        ExecuteDeploymentListEventsBySlotMethod(Parameter);
+                        break;
                     case "DeploymentRebootRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentRebootRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentRebuildRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentRebuildRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentReimageRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentReimageRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentRollbackUpdateOrUpgradeByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentRollbackUpdateOrUpgradeByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentSwap" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentSwapMethod(Parameter); break;
+                        ExecuteDeploymentSwapMethod(Parameter);
+                        break;
                     case "DeploymentUpdateStatusByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpdateStatusByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentUpdateStatusByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentUpdateStatusByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DeploymentUpgradeByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpgradeByNameMethod(Parameter); break;
+                        ExecuteDeploymentUpgradeByNameMethod(Parameter);
+                        break;
                     case "DeploymentUpgradeBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpgradeBySlotMethod(Parameter); break;
+                        ExecuteDeploymentUpgradeBySlotMethod(Parameter);
+                        break;
                     case "DeploymentWalkUpgradeDomainByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(Parameter); break;
+                        ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(Parameter);
+                        break;
                     case "DeploymentWalkUpgradeDomainByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(Parameter); break;
+                        ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(Parameter);
+                        break;
                     case "DNSServerAddDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerAddDNSServerMethod(Parameter); break;
+                        ExecuteDNSServerAddDNSServerMethod(Parameter);
+                        break;
                     case "DNSServerDeleteDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerDeleteDNSServerMethod(Parameter); break;
+                        ExecuteDNSServerDeleteDNSServerMethod(Parameter);
+                        break;
                     case "DNSServerUpdateDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerUpdateDNSServerMethod(Parameter); break;
+                        ExecuteDNSServerUpdateDNSServerMethod(Parameter);
+                        break;
                     case "ExtensionImageRegister" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageRegisterMethod(Parameter); break;
+                        ExecuteExtensionImageRegisterMethod(Parameter);
+                        break;
                     case "ExtensionImageUnregister" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageUnregisterMethod(Parameter); break;
+                        ExecuteExtensionImageUnregisterMethod(Parameter);
+                        break;
                     case "ExtensionImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageUpdateMethod(Parameter); break;
+                        ExecuteExtensionImageUpdateMethod(Parameter);
+                        break;
                     case "HostedServiceAddExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceAddExtensionMethod(Parameter); break;
+                        ExecuteHostedServiceAddExtensionMethod(Parameter);
+                        break;
                     case "HostedServiceCheckNameAvailability" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceCheckNameAvailabilityMethod(Parameter); break;
+                        ExecuteHostedServiceCheckNameAvailabilityMethod(Parameter);
+                        break;
                     case "HostedServiceCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceCreateMethod(Parameter); break;
+                        ExecuteHostedServiceCreateMethod(Parameter);
+                        break;
                     case "HostedServiceDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteMethod(Parameter); break;
+                        ExecuteHostedServiceDeleteMethod(Parameter);
+                        break;
                     case "HostedServiceDeleteAll" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteAllMethod(Parameter); break;
+                        ExecuteHostedServiceDeleteAllMethod(Parameter);
+                        break;
                     case "HostedServiceDeleteExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteExtensionMethod(Parameter); break;
+                        ExecuteHostedServiceDeleteExtensionMethod(Parameter);
+                        break;
                     case "HostedServiceGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetMethod(Parameter); break;
+                        ExecuteHostedServiceGetMethod(Parameter);
+                        break;
                     case "HostedServiceGetDetailed" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetDetailedMethod(Parameter); break;
+                        ExecuteHostedServiceGetDetailedMethod(Parameter);
+                        break;
                     case "HostedServiceGetExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetExtensionMethod(Parameter); break;
+                        ExecuteHostedServiceGetExtensionMethod(Parameter);
+                        break;
                     case "HostedServiceList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListMethod(Parameter); break;
+                        ExecuteHostedServiceListMethod(Parameter);
+                        break;
                     case "HostedServiceListAvailableExtensions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListAvailableExtensionsMethod(Parameter); break;
+                        ExecuteHostedServiceListAvailableExtensionsMethod(Parameter);
+                        break;
                     case "HostedServiceListExtensions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListExtensionsMethod(Parameter); break;
+                        ExecuteHostedServiceListExtensionsMethod(Parameter);
+                        break;
                     case "HostedServiceListExtensionVersions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListExtensionVersionsMethod(Parameter); break;
+                        ExecuteHostedServiceListExtensionVersionsMethod(Parameter);
+                        break;
                     case "HostedServiceUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceUpdateMethod(Parameter); break;
+                        ExecuteHostedServiceUpdateMethod(Parameter);
+                        break;
                     case "LoadBalancerCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerCreateMethod(Parameter); break;
+                        ExecuteLoadBalancerCreateMethod(Parameter);
+                        break;
                     case "LoadBalancerDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerDeleteMethod(Parameter); break;
+                        ExecuteLoadBalancerDeleteMethod(Parameter);
+                        break;
                     case "LoadBalancerUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerUpdateMethod(Parameter); break;
+                        ExecuteLoadBalancerUpdateMethod(Parameter);
+                        break;
                     case "OperatingSystemList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteOperatingSystemListMethod(Parameter); break;
+                        ExecuteOperatingSystemListMethod(Parameter);
+                        break;
                     case "OperatingSystemListFamilies" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteOperatingSystemListFamiliesMethod(Parameter); break;
+                        ExecuteOperatingSystemListFamiliesMethod(Parameter);
+                        break;
                     case "ServiceCertificateCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateCreateMethod(Parameter); break;
+                        ExecuteServiceCertificateCreateMethod(Parameter);
+                        break;
                     case "ServiceCertificateDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateDeleteMethod(Parameter); break;
+                        ExecuteServiceCertificateDeleteMethod(Parameter);
+                        break;
                     case "ServiceCertificateGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateGetMethod(Parameter); break;
+                        ExecuteServiceCertificateGetMethod(Parameter);
+                        break;
                     case "ServiceCertificateList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateListMethod(Parameter); break;
+                        ExecuteServiceCertificateListMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskCreateDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskCreateDataDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskCreateDataDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskCreateDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskCreateDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskCreateDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskDeleteDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskDeleteDataDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskDeleteDataDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskDeleteDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskDeleteDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskDeleteDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskGetDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskGetDataDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskGetDataDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskGetDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskGetDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskGetDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskListDisks" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskListDisksMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskListDisksMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskUpdateDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDataDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskUpdateDataDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskUpdateDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDiskMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskUpdateDiskMethod(Parameter);
+                        break;
                     case "VirtualMachineDiskUpdateDiskSize" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDiskSizeMethod(Parameter); break;
+                        ExecuteVirtualMachineDiskUpdateDiskSizeMethod(Parameter);
+                        break;
                     case "VirtualMachineExtensionList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineExtensionListMethod(Parameter); break;
+                        ExecuteVirtualMachineExtensionListMethod(Parameter);
+                        break;
                     case "VirtualMachineExtensionListVersions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineExtensionListVersionsMethod(Parameter); break;
+                        ExecuteVirtualMachineExtensionListVersionsMethod(Parameter);
+                        break;
                     case "VirtualMachineCaptureOSImage" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCaptureOSImageMethod(Parameter); break;
+                        ExecuteVirtualMachineCaptureOSImageMethod(Parameter);
+                        break;
                     case "VirtualMachineCaptureVMImage" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCaptureVMImageMethod(Parameter); break;
+                        ExecuteVirtualMachineCaptureVMImageMethod(Parameter);
+                        break;
                     case "VirtualMachineCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCreateMethod(Parameter); break;
+                        ExecuteVirtualMachineCreateMethod(Parameter);
+                        break;
                     case "VirtualMachineCreateDeployment" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCreateDeploymentMethod(Parameter); break;
+                        ExecuteVirtualMachineCreateDeploymentMethod(Parameter);
+                        break;
                     case "VirtualMachineDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDeleteMethod(Parameter); break;
+                        ExecuteVirtualMachineDeleteMethod(Parameter);
+                        break;
                     case "VirtualMachineGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineGetMethod(Parameter); break;
+                        ExecuteVirtualMachineGetMethod(Parameter);
+                        break;
                     case "VirtualMachineGetRemoteDesktopFile" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineGetRemoteDesktopFileMethod(Parameter); break;
+                        ExecuteVirtualMachineGetRemoteDesktopFileMethod(Parameter);
+                        break;
                     case "VirtualMachineRestart" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineRestartMethod(Parameter); break;
+                        ExecuteVirtualMachineRestartMethod(Parameter);
+                        break;
                     case "VirtualMachineShutdown" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineShutdownMethod(Parameter); break;
+                        ExecuteVirtualMachineShutdownMethod(Parameter);
+                        break;
                     case "VirtualMachineShutdownRoles" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineShutdownRolesMethod(Parameter); break;
+                        ExecuteVirtualMachineShutdownRolesMethod(Parameter);
+                        break;
                     case "VirtualMachineStart" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineStartMethod(Parameter); break;
+                        ExecuteVirtualMachineStartMethod(Parameter);
+                        break;
                     case "VirtualMachineStartRoles" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineStartRolesMethod(Parameter); break;
+                        ExecuteVirtualMachineStartRolesMethod(Parameter);
+                        break;
                     case "VirtualMachineUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineUpdateMethod(Parameter); break;
+                        ExecuteVirtualMachineUpdateMethod(Parameter);
+                        break;
                     case "VirtualMachineUpdateLoadBalancedEndpointSet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(Parameter); break;
+                        ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageCreateMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageCreateMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageDeleteMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageDeleteMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageGetMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageGetMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageGetDetails" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageGetDetailsMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageGetDetailsMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageListMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageListMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageReplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageReplicateMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageReplicateMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageShare" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageShareMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageShareMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageUnreplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageUnreplicateMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageUnreplicateMethod(Parameter);
+                        break;
                     case "VirtualMachineOSImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageUpdateMethod(Parameter); break;
+                        ExecuteVirtualMachineOSImageUpdateMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageCreateMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageCreateMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageDeleteMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageDeleteMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageGetDetails" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageGetDetailsMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageGetDetailsMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageListMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageListMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageReplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageReplicateMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageReplicateMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageShare" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageShareMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageShareMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageUnreplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageUnreplicateMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageUnreplicateMethod(Parameter);
+                        break;
                     case "VirtualMachineVMImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageUpdateMethod(Parameter); break;
+                        ExecuteVirtualMachineVMImageUpdateMethod(Parameter);
+                        break;
                     default : WriteWarning("Cannot find the method by name = '" + MethodName + "'."); break;
                 }
             });
         }
 
-        protected void ExecuteDeploymentChangeConfigurationByNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.ChangeConfigurationByName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentChangeConfigurationBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentChangeConfigurationParameters parameters = (DeploymentChangeConfigurationParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.ChangeConfigurationBySlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentCreateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentCreateParameters parameters = (DeploymentCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.Create(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentDeleteByNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.DeleteByName(serviceName, deploymentName, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentDeleteBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = DeploymentClient.DeleteBySlot(serviceName, deploymentSlot);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentDeleteRoleInstanceParameters roleInstanceName = (DeploymentDeleteRoleInstanceParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.DeleteRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentSlot = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentDeleteRoleInstanceParameters parameters = (DeploymentDeleteRoleInstanceParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.DeleteRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentGetByNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = DeploymentClient.GetByName(serviceName, deploymentName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentGetBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = DeploymentClient.GetBySlot(serviceName, deploymentSlot);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentGetPackageByNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.GetPackageByName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentGetPackageBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentGetPackageParameters parameters = (DeploymentGetPackageParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.GetPackageBySlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentListEventsMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DateTime startTime = (DateTime)ParseParameter(invokeMethodInputParameters[2]);
-            DateTime endTime = (DateTime)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = DeploymentClient.ListEvents(serviceName, deploymentName, startTime, endTime);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentListEventsBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DateTime startTime = (DateTime)ParseParameter(invokeMethodInputParameters[2]);
-            DateTime endTime = (DateTime)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = DeploymentClient.ListEventsBySlot(serviceName, deploymentSlot, startTime, endTime);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.RebootRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.RebootRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            string resources = (string)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = DeploymentClient.RebuildRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName, resources);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentSlot = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            string resources = (string)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = DeploymentClient.RebuildRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName, resources);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.ReimageRoleInstanceByDeploymentName(serviceName, deploymentName, roleInstanceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            string roleInstanceName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.ReimageRoleInstanceByDeploymentSlot(serviceName, deploymentSlot, roleInstanceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.RollbackUpdateOrUpgradeByDeploymentName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentRollbackUpdateOrUpgradeParameters parameters = (DeploymentRollbackUpdateOrUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.RollbackUpdateOrUpgradeByDeploymentSlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentSwapMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSwapParameters parameters = (DeploymentSwapParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = DeploymentClient.Swap(serviceName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentUpdateStatusByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.UpdateStatusByDeploymentName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentUpdateStatusParameters parameters = (DeploymentUpdateStatusParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.UpdateStatusByDeploymentSlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentUpgradeByNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentUpgradeParameters parameters = (DeploymentUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.UpgradeByName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentUpgradeBySlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentUpgradeParameters parameters = (DeploymentUpgradeParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.UpgradeBySlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentWalkUpgradeDomainParameters parameters = (DeploymentWalkUpgradeDomainParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.WalkUpgradeDomainByDeploymentName(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            DeploymentSlot deploymentSlot = (DeploymentSlot)ParseParameter(invokeMethodInputParameters[1]);
-            DeploymentWalkUpgradeDomainParameters parameters = (DeploymentWalkUpgradeDomainParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DeploymentClient.WalkUpgradeDomainByDeploymentSlot(serviceName, deploymentSlot, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDNSServerAddDNSServerMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            DNSAddParameters parameters = (DNSAddParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DNSServerClient.AddDNSServer(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDNSServerDeleteDNSServerMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string dnsServerName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = DNSServerClient.DeleteDNSServer(serviceName, deploymentName, dnsServerName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteDNSServerUpdateDNSServerMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string dnsServerName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            DNSUpdateParameters parameters = (DNSUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = DNSServerClient.UpdateDNSServer(serviceName, deploymentName, dnsServerName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteExtensionImageRegisterMethod(object[] invokeMethodInputParameters)
-        {
-            ExtensionImageRegisterParameters parameters = (ExtensionImageRegisterParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = ExtensionImageClient.Register(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteExtensionImageUnregisterMethod(object[] invokeMethodInputParameters)
-        {
-            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string type = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string version = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = ExtensionImageClient.Unregister(providerNamespace, type, version);
-            WriteObject(result);
-        }
-
-        protected void ExecuteExtensionImageUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            ExtensionImageUpdateParameters parameters = (ExtensionImageUpdateParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = ExtensionImageClient.Update(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceAddExtensionMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            HostedServiceAddExtensionParameters parameters = (HostedServiceAddExtensionParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = HostedServiceClient.AddExtension(serviceName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceCheckNameAvailabilityMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.CheckNameAvailability(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceCreateMethod(object[] invokeMethodInputParameters)
-        {
-            HostedServiceCreateParameters parameters = (HostedServiceCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.Create(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.Delete(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceDeleteAllMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.DeleteAll(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceDeleteExtensionMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string extensionId = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = HostedServiceClient.DeleteExtension(serviceName, extensionId);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceGetMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.Get(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceGetDetailedMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.GetDetailed(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceGetExtensionMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string extensionId = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = HostedServiceClient.GetExtension(serviceName, extensionId);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceListMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = HostedServiceClient.List();
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceListAvailableExtensionsMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = HostedServiceClient.ListAvailableExtensions();
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceListExtensionsMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = HostedServiceClient.ListExtensions(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceListExtensionVersionsMethod(object[] invokeMethodInputParameters)
-        {
-            string providerNamespace = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string extensionType = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = HostedServiceClient.ListExtensionVersions(providerNamespace, extensionType);
-            WriteObject(result);
-        }
-
-        protected void ExecuteHostedServiceUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            HostedServiceUpdateParameters parameters = (HostedServiceUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = HostedServiceClient.Update(serviceName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteLoadBalancerCreateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            LoadBalancerCreateParameters parameters = (LoadBalancerCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = LoadBalancerClient.Create(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteLoadBalancerDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string loadBalancerName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = LoadBalancerClient.Delete(serviceName, deploymentName, loadBalancerName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteLoadBalancerUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string loadBalancerName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            LoadBalancerUpdateParameters parameters = (LoadBalancerUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = LoadBalancerClient.Update(serviceName, deploymentName, loadBalancerName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteOperatingSystemListMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = OperatingSystemClient.List();
-            WriteObject(result);
-        }
-
-        protected void ExecuteOperatingSystemListFamiliesMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = OperatingSystemClient.ListFamilies();
-            WriteObject(result);
-        }
-
-        protected void ExecuteServiceCertificateCreateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            ServiceCertificateCreateParameters parameters = (ServiceCertificateCreateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = ServiceCertificateClient.Create(serviceName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteServiceCertificateDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            ServiceCertificateDeleteParameters parameters = (ServiceCertificateDeleteParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = ServiceCertificateClient.Delete(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteServiceCertificateGetMethod(object[] invokeMethodInputParameters)
-        {
-            ServiceCertificateGetParameters parameters = (ServiceCertificateGetParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = ServiceCertificateClient.Get(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteServiceCertificateListMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = ServiceCertificateClient.List(serviceName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskCreateDataDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineDataDiskCreateParameters parameters = (VirtualMachineDataDiskCreateParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineDiskClient.CreateDataDisk(serviceName, deploymentName, roleName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskCreateDiskMethod(object[] invokeMethodInputParameters)
-        {
-            VirtualMachineDiskCreateParameters parameters = (VirtualMachineDiskCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineDiskClient.CreateDisk(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskDeleteDataDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[4]);
-
-            var result = VirtualMachineDiskClient.DeleteDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskDeleteDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineDiskClient.DeleteDisk(name, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskGetDataDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineDiskClient.GetDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskGetDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineDiskClient.GetDisk(name);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskListDisksMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = VirtualMachineDiskClient.ListDisks();
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskUpdateDataDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string roleName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            int logicalUnitNumber = (int)ParseParameter(invokeMethodInputParameters[3]);
-            VirtualMachineDataDiskUpdateParameters parameters = (VirtualMachineDataDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[4]);
-
-            var result = VirtualMachineDiskClient.UpdateDataDisk(serviceName, deploymentName, roleName, logicalUnitNumber, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskUpdateDiskMethod(object[] invokeMethodInputParameters)
-        {
-            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineDiskClient.UpdateDisk(name, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDiskUpdateDiskSizeMethod(object[] invokeMethodInputParameters)
-        {
-            string name = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineDiskUpdateParameters parameters = (VirtualMachineDiskUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineDiskClient.UpdateDiskSize(name, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineExtensionListMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = VirtualMachineExtensionClient.List();
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineExtensionListVersionsMethod(object[] invokeMethodInputParameters)
-        {
-            string publisherName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string extensionName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineExtensionClient.ListVersions(publisherName, extensionName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineBeginShutdownMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineShutdownParameters parameters = (VirtualMachineShutdownParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.BeginShutdown(serviceName, deploymentName, virtualMachineName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineCaptureOSImageMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineCaptureOSImageParameters parameters = (VirtualMachineCaptureOSImageParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.CaptureOSImage(serviceName, deploymentName, virtualMachineName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineCaptureVMImageMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineCaptureVMImageParameters parameters = (VirtualMachineCaptureVMImageParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.CaptureVMImage(serviceName, deploymentName, virtualMachineName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineCreateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineCreateParameters parameters = (VirtualMachineCreateParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.Create(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineCreateDeploymentMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineCreateDeploymentParameters parameters = (VirtualMachineCreateDeploymentParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineClient.CreateDeployment(serviceName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.Delete(serviceName, deploymentName, virtualMachineName, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineGetMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.Get(serviceName, deploymentName, virtualMachineName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineGetRemoteDesktopFileMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.GetRemoteDesktopFile(serviceName, deploymentName, virtualMachineName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineRestartMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.Restart(serviceName, deploymentName, virtualMachineName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineShutdownMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineShutdownParameters parameters = (VirtualMachineShutdownParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.Shutdown(serviceName, deploymentName, virtualMachineName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineShutdownRolesMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineShutdownRolesParameters parameters = (VirtualMachineShutdownRolesParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.ShutdownRoles(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineStartMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.Start(serviceName, deploymentName, virtualMachineName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineStartRolesMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineStartRolesParameters parameters = (VirtualMachineStartRolesParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.StartRoles(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            string virtualMachineName = (string)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineUpdateParameters parameters = (VirtualMachineUpdateParameters)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = VirtualMachineClient.Update(serviceName, deploymentName, virtualMachineName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(object[] invokeMethodInputParameters)
-        {
-            string serviceName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string deploymentName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineUpdateLoadBalancedSetParameters parameters = (VirtualMachineUpdateLoadBalancedSetParameters)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineClient.UpdateLoadBalancedEndpointSet(serviceName, deploymentName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageCreateMethod(object[] invokeMethodInputParameters)
-        {
-            VirtualMachineOSImageCreateParameters parameters = (VirtualMachineOSImageCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineOSImageClient.Create(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineOSImageClient.Delete(imageName, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageGetMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineOSImageClient.Get(imageName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageGetDetailsMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineOSImageClient.GetDetails(imageName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageListMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = VirtualMachineOSImageClient.List();
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageReplicateMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineOSImageReplicateParameters parameters = (VirtualMachineOSImageReplicateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineOSImageClient.Replicate(imageName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageShareMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string permission = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineOSImageClient.Share(imageName, permission);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageUnreplicateMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineOSImageClient.Unreplicate(imageName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineOSImageUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineOSImageUpdateParameters parameters = (VirtualMachineOSImageUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineOSImageClient.Update(imageName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageCreateMethod(object[] invokeMethodInputParameters)
-        {
-            VirtualMachineVMImageCreateParameters parameters = (VirtualMachineVMImageCreateParameters)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineVMImageClient.Create(parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageDeleteMethod(object[] invokeMethodInputParameters)
-        {
-            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            bool deleteFromStorage = (bool)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineVMImageClient.Delete(vmImageName, deleteFromStorage);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageGetDetailsMethod(object[] invokeMethodInputParameters)
-        {
-            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineVMImageClient.GetDetails(vmImageName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageListMethod(object[] invokeMethodInputParameters)
-        {
-
-            var result = VirtualMachineVMImageClient.List();
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageReplicateMethod(object[] invokeMethodInputParameters)
-        {
-            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineVMImageReplicateParameters parameters = (VirtualMachineVMImageReplicateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineVMImageClient.Replicate(vmImageName, parameters);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageShareMethod(object[] invokeMethodInputParameters)
-        {
-            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string permission = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineVMImageClient.Share(vmImageName, permission);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageUnreplicateMethod(object[] invokeMethodInputParameters)
-        {
-            string vmImageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-
-            var result = VirtualMachineVMImageClient.Unreplicate(vmImageName);
-            WriteObject(result);
-        }
-
-        protected void ExecuteVirtualMachineVMImageUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string imageName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            VirtualMachineVMImageUpdateParameters parameters = (VirtualMachineVMImageUpdateParameters)ParseParameter(invokeMethodInputParameters[1]);
-
-            var result = VirtualMachineVMImageClient.Update(imageName, parameters);
-            WriteObject(result);
-        }
 
         public object GetDynamicParameters()
         {
@@ -2037,3402 +1199,5 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             return null;
         }
 
-        protected object CreateDeploymentChangeConfigurationByNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentChangeConfigurationByNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentChangeConfigurationParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentChangeConfigurationByNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentChangeConfigurationBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentChangeConfigurationBySlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentChangeConfigurationParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentChangeConfigurationBySlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentDeleteByNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentDeleteBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentDeleteRoleInstanceByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentDeleteRoleInstanceParameters);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentDeleteRoleInstanceByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(System.String);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentDeleteRoleInstanceByDeploymentSlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentDeleteRoleInstanceParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentDeleteRoleInstanceByDeploymentSlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentGetByNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentGetBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentGetPackageByNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentGetPackageByNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentGetPackageParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentGetPackageByNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentGetPackageBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentGetPackageBySlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentGetPackageParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentGetPackageBySlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentListEventsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pStartTime = new RuntimeDefinedParameter();
-            pStartTime.Name = "StartTime";
-            pStartTime.ParameterType = typeof(System.DateTime);
-            pStartTime.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pStartTime.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("StartTime", pStartTime);
-
-            var pEndTime = new RuntimeDefinedParameter();
-            pEndTime.Name = "EndTime";
-            pEndTime.ParameterType = typeof(System.DateTime);
-            pEndTime.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pEndTime.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("EndTime", pEndTime);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentListEventsBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pStartTime = new RuntimeDefinedParameter();
-            pStartTime.Name = "StartTime";
-            pStartTime.ParameterType = typeof(System.DateTime);
-            pStartTime.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pStartTime.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("StartTime", pStartTime);
-
-            var pEndTime = new RuntimeDefinedParameter();
-            pEndTime.Name = "EndTime";
-            pEndTime.ParameterType = typeof(System.DateTime);
-            pEndTime.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pEndTime.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("EndTime", pEndTime);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRebootRoleInstanceByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRebootRoleInstanceByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRebuildRoleInstanceByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            var pResources = new RuntimeDefinedParameter();
-            pResources.Name = "Resources";
-            pResources.ParameterType = typeof(System.String);
-            pResources.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pResources.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Resources", pResources);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRebuildRoleInstanceByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(System.String);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            var pResources = new RuntimeDefinedParameter();
-            pResources.Name = "Resources";
-            pResources.ParameterType = typeof(System.String);
-            pResources.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pResources.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Resources", pResources);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentReimageRoleInstanceByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentReimageRoleInstanceByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pRoleInstanceName = new RuntimeDefinedParameter();
-            pRoleInstanceName.Name = "RoleInstanceName";
-            pRoleInstanceName.ParameterType = typeof(System.String);
-            pRoleInstanceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleInstanceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleInstanceName", pRoleInstanceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRollbackUpdateOrUpgradeByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentRollbackUpdateOrUpgradeByDeploymentNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentRollbackUpdateOrUpgradeParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentRollbackUpdateOrUpgradeByDeploymentNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentRollbackUpdateOrUpgradeByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentRollbackUpdateOrUpgradeByDeploymentSlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentRollbackUpdateOrUpgradeParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentRollbackUpdateOrUpgradeByDeploymentSlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentSwapDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentSwapParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSwapParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSwapParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentUpdateStatusByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentUpdateStatusByDeploymentNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentUpdateStatusParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentUpdateStatusByDeploymentNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentUpdateStatusByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentUpdateStatusByDeploymentSlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentUpdateStatusParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentUpdateStatusByDeploymentSlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentUpgradeByNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentUpgradeByNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentUpgradeParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentUpgradeByNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentUpgradeBySlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentUpgradeBySlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentUpgradeParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentUpgradeBySlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentWalkUpgradeDomainByDeploymentNameDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentWalkUpgradeDomainByDeploymentNameParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentWalkUpgradeDomainParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentWalkUpgradeDomainByDeploymentNameParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDeploymentWalkUpgradeDomainByDeploymentSlotDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentSlot = new RuntimeDefinedParameter();
-            pDeploymentSlot.Name = "DeploymentSlot";
-            pDeploymentSlot.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentSlot);
-            pDeploymentSlot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentSlot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentSlot", pDeploymentSlot);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DeploymentWalkUpgradeDomainByDeploymentSlotParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DeploymentWalkUpgradeDomainParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentWalkUpgradeDomainByDeploymentSlotParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDNSServerAddDNSServerDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DNSServerAddDNSServerParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DNSAddParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DNSServerAddDNSServerParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDNSServerDeleteDNSServerDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pDnsServerName = new RuntimeDefinedParameter();
-            pDnsServerName.Name = "DnsServerName";
-            pDnsServerName.ParameterType = typeof(System.String);
-            pDnsServerName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pDnsServerName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DnsServerName", pDnsServerName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateDNSServerUpdateDNSServerDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pDnsServerName = new RuntimeDefinedParameter();
-            pDnsServerName.Name = "DnsServerName";
-            pDnsServerName.ParameterType = typeof(System.String);
-            pDnsServerName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pDnsServerName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DnsServerName", pDnsServerName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "DNSServerUpdateDNSServerParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.DNSUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DNSServerUpdateDNSServerParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateExtensionImageRegisterDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "ExtensionImageRegisterParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.ExtensionImageRegisterParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionImageRegisterParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateExtensionImageUnregisterDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pProviderNamespace = new RuntimeDefinedParameter();
-            pProviderNamespace.Name = "ProviderNamespace";
-            pProviderNamespace.ParameterType = typeof(System.String);
-            pProviderNamespace.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pProviderNamespace.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ProviderNamespace", pProviderNamespace);
-
-            var pType = new RuntimeDefinedParameter();
-            pType.Name = "Type";
-            pType.ParameterType = typeof(System.String);
-            pType.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pType.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Type", pType);
-
-            var pVersion = new RuntimeDefinedParameter();
-            pVersion.Name = "Version";
-            pVersion.ParameterType = typeof(System.String);
-            pVersion.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVersion.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Version", pVersion);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateExtensionImageUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "ExtensionImageUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.ExtensionImageUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionImageUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceAddExtensionDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "HostedServiceAddExtensionParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.HostedServiceAddExtensionParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("HostedServiceAddExtensionParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceCheckNameAvailabilityDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "HostedServiceCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.HostedServiceCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("HostedServiceCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceDeleteAllDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceDeleteExtensionDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pExtensionId = new RuntimeDefinedParameter();
-            pExtensionId.Name = "ExtensionId";
-            pExtensionId.ParameterType = typeof(System.String);
-            pExtensionId.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pExtensionId.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionId", pExtensionId);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceGetDetailedDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceGetExtensionDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pExtensionId = new RuntimeDefinedParameter();
-            pExtensionId.Name = "ExtensionId";
-            pExtensionId.ParameterType = typeof(System.String);
-            pExtensionId.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pExtensionId.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionId", pExtensionId);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceListAvailableExtensionsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceListExtensionsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceListExtensionVersionsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pProviderNamespace = new RuntimeDefinedParameter();
-            pProviderNamespace.Name = "ProviderNamespace";
-            pProviderNamespace.ParameterType = typeof(System.String);
-            pProviderNamespace.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pProviderNamespace.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ProviderNamespace", pProviderNamespace);
-
-            var pExtensionType = new RuntimeDefinedParameter();
-            pExtensionType.Name = "ExtensionType";
-            pExtensionType.ParameterType = typeof(System.String);
-            pExtensionType.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pExtensionType.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionType", pExtensionType);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateHostedServiceUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "HostedServiceUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.HostedServiceUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("HostedServiceUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateLoadBalancerCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "LoadBalancerCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.LoadBalancerCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LoadBalancerCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateLoadBalancerDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pLoadBalancerName = new RuntimeDefinedParameter();
-            pLoadBalancerName.Name = "LoadBalancerName";
-            pLoadBalancerName.ParameterType = typeof(System.String);
-            pLoadBalancerName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pLoadBalancerName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LoadBalancerName", pLoadBalancerName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateLoadBalancerUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pLoadBalancerName = new RuntimeDefinedParameter();
-            pLoadBalancerName.Name = "LoadBalancerName";
-            pLoadBalancerName.ParameterType = typeof(System.String);
-            pLoadBalancerName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pLoadBalancerName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LoadBalancerName", pLoadBalancerName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "LoadBalancerUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.LoadBalancerUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LoadBalancerUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateOperatingSystemListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateOperatingSystemListFamiliesDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateServiceCertificateCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "ServiceCertificateCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.ServiceCertificateCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceCertificateCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateServiceCertificateDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "ServiceCertificateDeleteParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.ServiceCertificateDeleteParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceCertificateDeleteParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateServiceCertificateGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "ServiceCertificateGetParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.ServiceCertificateGetParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceCertificateGetParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateServiceCertificateListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskCreateDataDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleName = new RuntimeDefinedParameter();
-            pRoleName.Name = "RoleName";
-            pRoleName.ParameterType = typeof(System.String);
-            pRoleName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleName", pRoleName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineDiskCreateDataDiskParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineDataDiskCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineDiskCreateDataDiskParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskCreateDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineDiskCreateDiskParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineDiskCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineDiskCreateDiskParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskDeleteDataDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleName = new RuntimeDefinedParameter();
-            pRoleName.Name = "RoleName";
-            pRoleName.ParameterType = typeof(System.String);
-            pRoleName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleName", pRoleName);
-
-            var pLogicalUnitNumber = new RuntimeDefinedParameter();
-            pLogicalUnitNumber.Name = "LogicalUnitNumber";
-            pLogicalUnitNumber.ParameterType = typeof(System.Int32);
-            pLogicalUnitNumber.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 5,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskDeleteDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pName = new RuntimeDefinedParameter();
-            pName.Name = "Name";
-            pName.ParameterType = typeof(System.String);
-            pName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pName);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskGetDataDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleName = new RuntimeDefinedParameter();
-            pRoleName.Name = "RoleName";
-            pRoleName.ParameterType = typeof(System.String);
-            pRoleName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleName", pRoleName);
-
-            var pLogicalUnitNumber = new RuntimeDefinedParameter();
-            pLogicalUnitNumber.Name = "LogicalUnitNumber";
-            pLogicalUnitNumber.ParameterType = typeof(System.Int32);
-            pLogicalUnitNumber.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskGetDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pName = new RuntimeDefinedParameter();
-            pName.Name = "Name";
-            pName.ParameterType = typeof(System.String);
-            pName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskListDisksDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskUpdateDataDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pRoleName = new RuntimeDefinedParameter();
-            pRoleName.Name = "RoleName";
-            pRoleName.ParameterType = typeof(System.String);
-            pRoleName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pRoleName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RoleName", pRoleName);
-
-            var pLogicalUnitNumber = new RuntimeDefinedParameter();
-            pLogicalUnitNumber.Name = "LogicalUnitNumber";
-            pLogicalUnitNumber.ParameterType = typeof(System.Int32);
-            pLogicalUnitNumber.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineDiskUpdateDataDiskParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineDataDiskUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 5,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineDiskUpdateDataDiskParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskUpdateDiskDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pName = new RuntimeDefinedParameter();
-            pName.Name = "Name";
-            pName.ParameterType = typeof(System.String);
-            pName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineDiskUpdateDiskParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineDiskUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineDiskUpdateDiskParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDiskUpdateDiskSizeDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pName = new RuntimeDefinedParameter();
-            pName.Name = "Name";
-            pName.ParameterType = typeof(System.String);
-            pName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineDiskUpdateDiskSizeParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineDiskUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineDiskUpdateDiskSizeParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineExtensionListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineExtensionListVersionsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pPublisherName = new RuntimeDefinedParameter();
-            pPublisherName.Name = "PublisherName";
-            pPublisherName.ParameterType = typeof(System.String);
-            pPublisherName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pPublisherName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("PublisherName", pPublisherName);
-
-            var pExtensionName = new RuntimeDefinedParameter();
-            pExtensionName.Name = "ExtensionName";
-            pExtensionName.ParameterType = typeof(System.String);
-            pExtensionName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pExtensionName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ExtensionName", pExtensionName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineBeginShutdownDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineBeginShutdownParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineShutdownParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineBeginShutdownParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineCaptureOSImageDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineCaptureOSImageParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineCaptureOSImageParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineCaptureOSImageParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineCaptureVMImageDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineCaptureVMImageParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineCaptureVMImageParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineCaptureVMImageParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineCreateDeploymentDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineCreateDeploymentParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineCreateDeploymentParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineCreateDeploymentParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineGetRemoteDesktopFileDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineRestartDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineShutdownDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineShutdownParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineShutdownParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineShutdownParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineShutdownRolesDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineShutdownRolesParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineShutdownRolesParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineShutdownRolesParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineStartDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineStartRolesDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineStartRolesParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineStartRolesParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineStartRolesParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pVirtualMachineName = new RuntimeDefinedParameter();
-            pVirtualMachineName.Name = "VirtualMachineName";
-            pVirtualMachineName.ParameterType = typeof(System.String);
-            pVirtualMachineName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pVirtualMachineName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineName", pVirtualMachineName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineUpdateLoadBalancedEndpointSetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pServiceName = new RuntimeDefinedParameter();
-            pServiceName.Name = "ServiceName";
-            pServiceName.ParameterType = typeof(System.String);
-            pServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ServiceName", pServiceName);
-
-            var pDeploymentName = new RuntimeDefinedParameter();
-            pDeploymentName.Name = "DeploymentName";
-            pDeploymentName.ParameterType = typeof(System.String);
-            pDeploymentName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeploymentName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeploymentName", pDeploymentName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineUpdateLoadBalancedEndpointSetParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineUpdateLoadBalancedSetParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineUpdateLoadBalancedEndpointSetParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineOSImageCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineOSImageCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineOSImageCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageGetDetailsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageReplicateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineOSImageReplicateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineOSImageReplicateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineOSImageReplicateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageShareDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            var pPermission = new RuntimeDefinedParameter();
-            pPermission.Name = "Permission";
-            pPermission.ParameterType = typeof(System.String);
-            pPermission.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pPermission.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Permission", pPermission);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageUnreplicateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineOSImageUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineOSImageUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineOSImageUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineOSImageUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageCreateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineVMImageCreateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineVMImageCreateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineVMImageCreateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageDeleteDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pVMImageName = new RuntimeDefinedParameter();
-            pVMImageName.Name = "VMImageName";
-            pVMImageName.ParameterType = typeof(System.String);
-            pVMImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pVMImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMImageName", pVMImageName);
-
-            var pDeleteFromStorage = new RuntimeDefinedParameter();
-            pDeleteFromStorage.Name = "DeleteFromStorage";
-            pDeleteFromStorage.ParameterType = typeof(System.Boolean);
-            pDeleteFromStorage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pDeleteFromStorage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DeleteFromStorage", pDeleteFromStorage);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageGetDetailsDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pVMImageName = new RuntimeDefinedParameter();
-            pVMImageName.Name = "VMImageName";
-            pVMImageName.ParameterType = typeof(System.String);
-            pVMImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pVMImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMImageName", pVMImageName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageListDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageReplicateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pVMImageName = new RuntimeDefinedParameter();
-            pVMImageName.Name = "VMImageName";
-            pVMImageName.ParameterType = typeof(System.String);
-            pVMImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pVMImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMImageName", pVMImageName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineVMImageReplicateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineVMImageReplicateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineVMImageReplicateParameters", pParameters);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageShareDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pVMImageName = new RuntimeDefinedParameter();
-            pVMImageName.Name = "VMImageName";
-            pVMImageName.ParameterType = typeof(System.String);
-            pVMImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pVMImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMImageName", pVMImageName);
-
-            var pPermission = new RuntimeDefinedParameter();
-            pPermission.Name = "Permission";
-            pPermission.ParameterType = typeof(System.String);
-            pPermission.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pPermission.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Permission", pPermission);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageUnreplicateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pVMImageName = new RuntimeDefinedParameter();
-            pVMImageName.Name = "VMImageName";
-            pVMImageName.ParameterType = typeof(System.String);
-            pVMImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pVMImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMImageName", pVMImageName);
-
-            return dynamicParameters;
-        }
-
-        protected object CreateVirtualMachineVMImageUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(System.String);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineVMImageUpdateParameters";
-            pParameters.ParameterType = typeof(Microsoft.WindowsAzure.Management.Compute.Models.VirtualMachineVMImageUpdateParameters);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineVMImageUpdateParameters", pParameters);
-
-            return dynamicParameters;
-        }
     }
 }

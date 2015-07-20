@@ -479,7 +479,8 @@ $validate_all_method_names_code
                             Parameter = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        Execute${method_name}Method(Parameter); break;
+                        Execute${method_name}Method(Parameter);
+                        break;
 "@;
         $operations_code += $operation_code_template + $new_line_str;
 
@@ -523,8 +524,8 @@ ${operations_code}                    default : WriteWarning(`"Cannot find the m
         }
 "@;
 
-    $invoke_cmdlet_method_code_content = ([string]::Join($new_line_str, $invoke_cmdlet_method_code));
-    $dynamic_param_method_code_content = ([string]::Join($new_line_str, $dynamic_param_method_code));
+    # $invoke_cmdlet_method_code_content = ([string]::Join($new_line_str, $invoke_cmdlet_method_code));
+    # $dynamic_param_method_code_content = ([string]::Join($new_line_str, $dynamic_param_method_code));
 
     $cmdlet_source_code_text =
 @"
@@ -847,7 +848,7 @@ ${type_operations_code}                        default : WriteWarning(`"Cannot f
         }
 "@;
 
-    $parameter_cmdlet_method_code_content = ([string]::Join($new_line_str, $parameter_cmdlet_method_code));
+    # $parameter_cmdlet_method_code_content = ([string]::Join($new_line_str, $parameter_cmdlet_method_code));
 
     $cmdlet_source_code_text =
 @"
@@ -1025,7 +1026,6 @@ function Write-OperationCmdletFile
 
     $dynamic_param_source_template =
 @"
-
         protected object Create${invoke_param_set_name}DynamicParameters()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
@@ -1036,7 +1036,6 @@ $dynamic_param_assignment_code
 
     $invoke_cmdlt_source_template =
 @"
-
         protected void Execute${invoke_param_set_name}Method(object[] ${invoke_input_params_name})
         {
 ${invoke_local_param_code_content}
@@ -1047,12 +1046,26 @@ ${invoke_local_param_code_content}
 
     $parameter_cmdlt_source_template =
 @"
-
         protected object[] Create${invoke_param_set_name}Parameters()
         {
 ${create_local_param_code_content}
             return new object[] { ${invoke_local_params_join_str} };
         }
+"@;
+
+    $cmdlet_partial_class_code =
+@"
+    public partial class ${invoke_cmdlet_class_name} : ComputeAutomationBaseCmdlet
+    {
+$dynamic_param_source_template
+
+$invoke_cmdlt_source_template
+    }
+
+    public partial class ${parameter_cmdlet_class_name} : ComputeAutomationBaseCmdlet
+    {
+$parameter_cmdlt_source_template
+    }
 "@;
 
     $cmdlt_source_template =
@@ -1070,23 +1083,26 @@ namespace ${code_common_namespace}
 ${cmdlet_generated_code}
     }
 
-    public partial class ${invoke_cmdlet_class_name} : ComputeAutomationBaseCmdlet
-    {
-$invoke_cmdlt_source_template
-    }
-
-    public partial class ${parameter_cmdlet_class_name} : ComputeAutomationBaseCmdlet
-    {
-$parameter_cmdlt_source_template
-    }
-"@;
-
-    $cmdlt_source_template +=
-@"
+${cmdlet_partial_class_code}
 }
 "@;
 
-    # $st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
+    
+    $cmdlt_partial_class_source_template =
+@"
+${code_common_header}
+
+$code_using_strs
+
+namespace ${code_common_namespace}
+{
+${cmdlet_partial_class_code}
+}
+"@;
+
+    #$st = Set-Content -Path $file_full_path -Value $cmdlt_source_template -Force;
+    $partial_class_file_path = ($file_full_path.Replace('InvokeAzure', ''));
+    $st = Set-Content -Path $partial_class_file_path -Value $cmdlt_partial_class_source_template -Force;
 
     Write-Output $dynamic_param_source_template;
     Write-Output $invoke_cmdlt_source_template;
@@ -1393,11 +1409,11 @@ else
     
         $opShortName = Get-OperationShortName $ft.Name;
         $opOutFolder = $outFolder + '/' + $opShortName;
-        <# if (Test-Path -Path $opOutFolder)
+        if (Test-Path -Path $opOutFolder)
         {
             $st = rmdir -Recurse -Force $opOutFolder;
         }
-        $st = mkdir -Force $opOutFolder; #>
+        $st = mkdir -Force $opOutFolder;
 
         $methods = $ft.GetMethods();
         foreach ($mt in $methods)
