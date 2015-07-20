@@ -47,5 +47,11 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteHopTypeTest()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteHopTypeTest");
+        }
     }
 }

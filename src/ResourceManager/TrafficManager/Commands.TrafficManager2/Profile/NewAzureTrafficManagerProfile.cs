@@ -20,6 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using System.Collections;
     using System.Net;
     using Hyak.Common;
 
@@ -33,6 +34,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The status of the profile.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string ProfileStatus { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The relative name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -60,6 +66,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
 
+        [Alias("Tags")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable[] Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
@@ -78,12 +88,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
                     this.ResourceGroupName,
                     this.Name,
+                    this.ProfileStatus,
                     this.TrafficRoutingMethod,
                     this.RelativeDnsName,
                     this.Ttl,
                     this.MonitorProtocol,
                     this.MonitorPort,
-                    this.MonitorPath);
+                    this.MonitorPath,
+                    this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);

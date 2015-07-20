@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-    public class WatmV2TestsBase
+    public class TestController
     {
         private CSMTestEnvironmentFactory csmTestFactory;
 
-        private readonly EnvironmentSetupHelper helper;
+        private EnvironmentSetupHelper helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -41,15 +41,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         public TrafficManagerManagementClient TrafficManagerManagementClient { get; private set; }
 
-        public static WatmV2TestsBase NewInstance
+        public static TestController NewInstance
         {
             get
             {
-                return new WatmV2TestsBase();
+                return new TestController();
             }
         }
 
-        protected WatmV2TestsBase()
+        protected TestController()
         {
             this.helper = new EnvironmentSetupHelper();
         }
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
 
-                this.SetupManagementClients();
-
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
+                this.SetupManagementClients();
 
                 string callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
