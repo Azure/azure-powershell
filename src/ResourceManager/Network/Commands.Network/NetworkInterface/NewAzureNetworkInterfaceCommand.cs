@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "EnableIPForwarding")]
+        public SwitchParameter EnableIPForwarding { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
@@ -202,18 +207,18 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.LoadBalancerBackendAddressPool != null)
                 {
+                    this.LoadBalancerBackendAddressPoolId = new List<string>();
                     foreach (var bepool in this.LoadBalancerBackendAddressPool)
                     {
-                        this.LoadBalancerBackendAddressPoolId = new List<string>();
                         this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
                     }
                 }
 
                 if (this.LoadBalancerInboundNatRule != null)
                 {
+                    this.LoadBalancerInboundNatRuleId = new List<string>();
                     foreach (var natRule in this.LoadBalancerInboundNatRule)
                     {
-                        this.LoadBalancerInboundNatRuleId = new List<string>();
                         this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
                     }
                 }
@@ -222,6 +227,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
+            networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();

@@ -30,8 +30,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool Primary { get; set; }
 
-        public PSResourceId NetworkSecurityGroup { get; set; }
+        public bool EnableIPForwarding { get; set; }
 
+        public PSResourceId NetworkSecurityGroup { get; set; }
+        
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

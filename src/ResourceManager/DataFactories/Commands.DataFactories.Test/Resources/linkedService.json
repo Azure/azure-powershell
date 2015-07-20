@@ -1,12 +1,9 @@
 {
     name: "foo2",
-    properties:
-    {
-        type: "CustomLinkedService",
-        extendedProperties:
-        {
-            PropertyBagPropertyName1: "PropertyBagPropertyValue1",
-            propertyBagPropertyName2: "PropertyBagPropertyValue2"
+    properties: {
+        type: "AzureStorage",
+        typeProperties: {
+            connectionString:  "myfakeconnectionstring"
         }
     }
 }
