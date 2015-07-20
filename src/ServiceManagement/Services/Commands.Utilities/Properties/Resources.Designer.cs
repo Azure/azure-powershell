@@ -3820,7 +3820,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WAStorageEmulator.exe.
+        ///   Looks up a localized string similar to AzureStorageEmulator.exe.
         /// </summary>
         public static string StorageEmulatorExe {
             get {

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
 
@@ -28,6 +29,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public uint Ttl { get; set; }
 
+        public string ProfileStatus { get; set; }
+
         public string TrafficRoutingMethod { get; set; }
 
         public string MonitorProtocol { get; set; }
@@ -36,7 +39,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string MonitorPath { get; set; }
 
-        public List<Endpoint> Endpoints { get; set; }
+        public List<TrafficManagerEndpoint> Endpoints { get; set; }
 
         public Profile ToSDKProfile()
         {
@@ -47,6 +50,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 Location = TrafficManagerClient.ProfileResourceLocation,
                 Properties = new ProfileProperties
                 {
+                    ProfileStatus = this.ProfileStatus,
                     TrafficRoutingMethod = this.TrafficRoutingMethod,
                     DnsConfig = new DnsConfig
                     {
@@ -62,26 +66,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 }
             };
 
-            if (this.Endpoints.Count > 0)
+            if (this.Endpoints != null && this.Endpoints.Any())
             {
-                profile.Properties.Endpoints = new List<Management.TrafficManager.Models.Endpoint>();
-
-                foreach (Endpoint endpoint in this.Endpoints)
-                {
-                    profile.Properties.Endpoints.Add(new Management.TrafficManager.Models.Endpoint
-                    {
-                        Name = endpoint.Name,
-                        Type = endpoint.Type,
-                        Properties = new EndpointProperties
-                        {
-                            Target = endpoint.Target,
-                            EndpointStatus = endpoint.EndpointStatus,
-                            Weight = endpoint.Weight,
-                            Priority = endpoint.Priority,
-                            EndpointLocation = endpoint.Location
-                        }
-                    });
-                }    
+                profile.Properties.Endpoints = this.Endpoints.Select(endpoint => endpoint.ToSDKEndpoint()).ToList();
             }
 
             return profile;

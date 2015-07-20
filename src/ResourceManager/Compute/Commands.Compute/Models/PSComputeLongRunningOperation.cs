@@ -39,7 +39,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
         [JsonIgnore]
         public string ErrorText
         {
-            get { return JsonConvert.SerializeObject(Error, Formatting.Indented); }
+            get
+            {
+                var errorStr = JsonConvert.SerializeObject(Error, Formatting.Indented);
+                return String.IsNullOrEmpty(errorStr) || "null".Equals(errorStr) ? "" : errorStr;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@
                 outputs: [ {name: "outputTable"} ],
                 linkedServiceName: "foo2",
                 type: "DotNetActivity",
-                transformation:
+                typeProperties:
                 {
 			        assemblyName: "mycode.dll",
                     entryPoint: "myclassname",

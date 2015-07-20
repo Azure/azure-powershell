@@ -178,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
                     Type = JobActionType.StorageQueue,
                     QueueMessage = new JobQueueMessage
                     {
-                        Message = jobRequest.Body ?? string.Empty,
+                        Message = jobRequest.StorageQueueMessage ?? string.Empty,
                         StorageAccountName = jobRequest.StorageAccount,
                         QueueName = jobRequest.QueueName,
                         SasToken = jobRequest.SasToken

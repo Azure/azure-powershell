@@ -151,6 +151,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Checks if a conversion from the supplied <see cref="JToken"/> to a <typeparamref name="TType"/> can be made.
         /// </summary>
         /// <typeparam name="TType">The type to convert to.</typeparam>
+        /// <param name="str">The string.</param>
+        /// <param name="result">The result.</param>
+        public static bool TryConvertTo<TType>(this string str, out TType result)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                result = default(TType);
+                return true;
+            }
+
+            try
+            {
+                result = str.FromJson<TType>();
+                return !object.Equals(result, default(TType));
+            }
+            catch (FormatException)
+            {
+            }
+            catch (ArgumentException)
+            {
+            }
+            catch (JsonException)
+            {
+            }
+
+            result = default(TType);
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if a conversion from the supplied <see cref="JToken"/> to a <typeparamref name="TType"/> can be made.
+        /// </summary>
+        /// <typeparam name="TType">The type to convert to.</typeparam>
         /// <param name="jobject">The <see cref="JObject"/>.</param>
         /// <param name="result">The result.</param>
         public static bool TryConvertTo<TType>(this JToken jobject, out TType result)
