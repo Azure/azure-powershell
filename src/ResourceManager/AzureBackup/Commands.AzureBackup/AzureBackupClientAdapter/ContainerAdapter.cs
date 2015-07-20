@@ -55,16 +55,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         }
 
         /// <summary>
-        /// Enable container reregistration
-        /// </summary>
-        /// <param name="containerId"></param>
-        /// <returns></returns>
-        public void EnableMachineContainerReregistration(long containerId)
-        {
-            AzureBackupVaultClient.Container.EnableMarsContainerReregistration(containerId.ToString(), GetCustomRequestHeaders());
-        }
-
-        /// <summary>
         /// UnRegister container
         /// </summary>
         /// <param name="containerId"></param>

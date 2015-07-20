@@ -40,9 +40,7 @@ function Test-AzureBackupMarsContainerScenario
 	Assert-AreEqual $container.Name $ContainerName;
 	Assert-AreEqual $container.ResourceGroupName $vault.ResourceGroupName;
 	Assert-AreEqual $container.ResourceName $vault.Name;
-	Assert-AreEqual $container.Status $ContainerStatus;
-	
-	#Enable-AzureBackupContainerReregistration -Container $container	
+	Assert-AreEqual $container.Status $ContainerStatus;	
 	
 	Unregister-AzureBackupContainer -Container $container -Force
 
