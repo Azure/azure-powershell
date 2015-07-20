@@ -72,100 +72,59 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             }
         }
 
+        public void ValidateConfigurationDataPath(String configurationDataPath)
+        {
+            if (!File.Exists(configurationDataPath))
+            {
+                ThrowInvalidArgumentError(
+                    Properties.Resources.AzureVMDscCannotFindConfigurationDataFile,
+                    configurationDataPath);
+            }
+            if (string.Compare(
+                Path.GetExtension(configurationDataPath),
+                ".psd1",
+                StringComparison.InvariantCultureIgnoreCase) != 0)
+            {
+                ThrowInvalidArgumentError(Properties.Resources.AzureVMDscInvalidConfigurationDataFile);
+            }
+        }
+
         public string CreateConfigurationArchive(
             String configurationPath,
+            String configurationDataPath,
+            String additionalPath,
             String configurationArchivePath,
             Boolean force,
+            Boolean skipDependencyDetection,
             String parameterSetName)
         {
-            WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Properties.Resources.AzureVMDscParsingConfiguration, configurationPath));
-            ConfigurationParseResult parseResult = null;
-            try
-            {
-                parseResult = ConfigurationParsingHelper.ParseConfiguration(configurationPath);
-            }
-            catch (GetDscResourceException e)
-            {
-                ThrowTerminatingError(new ErrorRecord(e, "CannotAccessDscResource", ErrorCategory.PermissionDenied, null));
-            }
-
-            if (parseResult.Errors.Any())
-            {
-                ThrowTerminatingError(
-                    new ErrorRecord(
-                        new ParseException(
-                            String.Format(
-                                CultureInfo.CurrentUICulture,
-                                Properties.Resources.PublishVMDscExtensionStorageParserErrors,
-                                configurationPath,
-                                String.Join("\n", parseResult.Errors.Select(error => error.ToString())))),
-                        "DscConfigurationParseError",
-                        ErrorCategory.ParserError,
-                        null));
-            }
-
-            var requiredModules = parseResult.RequiredModules;
-            //Since LCM always uses the latest module there is no need to copy PSDesiredStateConfiguration
-            if (requiredModules.ContainsKey("PSDesiredStateConfiguration"))
-            {
-                requiredModules.Remove("PSDesiredStateConfiguration");
-            }
-
-            WriteVerbose(String.Format(CultureInfo.CurrentUICulture, 
-                Properties.Resources.PublishVMDscExtensionRequiredModulesVerbose, String.Join(", ", requiredModules)));
-
             // Create a temporary directory for uploaded zip file
             var tempZipFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionTempFolderVerbose, tempZipFolder));
+            WriteVerbose(String.Format(
+                CultureInfo.CurrentUICulture, 
+                Properties.Resources.PublishVMDscExtensionTempFolderVerbose, 
+                tempZipFolder));
             Directory.CreateDirectory(tempZipFolder);
             _temporaryDirectoriesToDelete.Add(tempZipFolder);
 
-            // CopyConfiguration
+            // Copy Configuration
             var configurationName = Path.GetFileName(configurationPath);
             var configurationDestination = Path.Combine(tempZipFolder, configurationName);
-            WriteVerbose(String.Format(
-                CultureInfo.CurrentUICulture,
-                Properties.Resources.PublishVMDscExtensionCopyFileVerbose,
-                configurationPath,
-                configurationDestination));
-            File.Copy(configurationPath, configurationDestination);
+            CopyFileToZipFolder(configurationPath, configurationDestination);
 
-            // CopyRequiredModules
-            foreach (var module in requiredModules)
+            //copy configuration data if available
+            var configurationDataName = Path.GetFileName(configurationDataPath);
+            var configurationDataDestination = Path.Combine(tempZipFolder, configurationDataName);
+            CopyFileToZipFolder(configurationDataPath, configurationDataDestination);
+
+            //copy additional content if available
+            CopyAdditionalContent(additionalPath, tempZipFolder);
+
+            //Copy required modules when -SkipDependencyDetection switch is not present
+            if (!skipDependencyDetection)
             {
-                using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
-                {
-                    // Wrapping script in a function to prevent script injection via $module variable.
-                    powershell.AddScript(
-                        @"function Copy-Module([string]$moduleName, [string]$moduleVersion, [string]$tempZipFolder) 
-                        {
-                            if([String]::IsNullOrEmpty($moduleVersion))
-                            {
-                                $module = Get-Module -List -Name $moduleName                                
-                            }
-                            else
-                            {
-                                $module = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
-                            }
-                            
-                            $moduleFolder = Split-Path $module.Path
-                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)""
-                        }"
-                        );
-                    powershell.Invoke();
-                    powershell.Commands.Clear();
-                    powershell.AddCommand("Copy-Module")
-                        .AddParameter("moduleName", module.Key)
-                        .AddParameter("moduleVersion", module.Value)
-                        .AddParameter("tempZipFolder", tempZipFolder);
-                    WriteVerbose(String.Format(
-                        CultureInfo.CurrentUICulture,
-                        Properties.Resources.PublishVMDscExtensionCopyModuleVerbose,
-                        module,
-                        tempZipFolder));
-                    powershell.Invoke();
-                }
-            }
+                CopyRequiredModules(configurationPath, tempZipFolder);
+            } 
 
             //
             // Zip the directory
@@ -210,12 +169,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         /// </summary>
         public void PublishConfiguration(
             String configurationPath,
+            String configurationDataPath,
+            String additionalPath,
             String outputArchivePath,
-            Boolean force,
-            StorageCredentials storageCredentials,
             String storageEndpointSuffix,
             String containerName,
-            String parameterSetName)
+            String parameterSetName,
+            Boolean force,
+            Boolean skipDependencyDetection,
+            StorageCredentials storageCredentials)
         {
             if (parameterSetName == CreateArchiveParameterSetName)
             {
@@ -225,8 +187,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     Properties.Resources.AzureVMDscCreateArchiveAction,
                     outputArchivePath, () => CreateConfigurationArchive(
                         configurationPath,
+                        configurationDataPath,
+                        additionalPath,
                         outputArchivePath,
                         force,
+                        skipDependencyDetection,
                         parameterSetName));
             }
             else
@@ -238,12 +203,128 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     ? configurationPath
                     : CreateConfigurationArchive(
                         configurationPath,
+                        configurationDataPath,
+                        additionalPath,
                         outputArchivePath,
                         force,
+                        skipDependencyDetection,
                         parameterSetName);
 
                 UploadConfigurationArchive(storageCredentials, storageEndpointSuffix, containerName, archivePath, force);
             }
+        }
+
+        private void CopyRequiredModules(String configurationPath, String tempZipFolder)
+        {
+            WriteVerbose(
+                    String.Format(
+                        CultureInfo.CurrentUICulture,
+                        Properties.Resources.AzureVMDscParsingConfiguration,
+                        configurationPath));
+
+            var requiredModules = GetRequiredModules(configurationPath);
+
+            foreach (var module in requiredModules)
+            {
+                using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
+                {
+                    // Wrapping script in a function to prevent script injection via $module variable.
+                    powershell.AddScript(
+                        @"function Copy-Module([string]$moduleName, [string]$moduleVersion, [string]$tempZipFolder) 
+                        {
+                            if([String]::IsNullOrEmpty($moduleVersion))
+                            {
+                                $module = Get-Module -List -Name $moduleName                                
+                            }
+                            else
+                            {
+                                $module = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
+                            }
+                            
+                            $moduleFolder = Split-Path $module.Path
+                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)""
+                        }"
+                            );
+                    powershell.Invoke();
+                    powershell.Commands.Clear();
+                    powershell.AddCommand("Copy-Module")
+                        .AddParameter("moduleName", module.Key)
+                        .AddParameter("moduleVersion", module.Value)
+                        .AddParameter("tempZipFolder", tempZipFolder);
+                    WriteVerbose(String.Format(
+                        CultureInfo.CurrentUICulture,
+                            Properties.Resources.PublishVMDscExtensionCopyModuleVerbose,
+                            module,
+                            tempZipFolder));
+                    powershell.Invoke();
+                }
+            }
+        }
+
+        private void CopyAdditionalContent(String additionalPath, String tempZipFolder)
+        {
+            try
+            {
+                if(PathIsAFile(additionalPath))
+                {
+                    var additionalFileName = Path.GetFileName(additionalPath);
+                    var additionalFileDestination = Path.Combine(tempZipFolder, additionalFileName);
+                    CopyFileToZipFolder(additionalPath, additionalFileDestination);
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+                ThrowInvalidArgumentError(
+                    Properties.Resources.PublishVMDscExtensionAdditionalContentPathNotExist,
+                    additionalPath);
+            }
+        }
+
+        private Dictionary<string,string> GetRequiredModules(String configurationPath)
+        {
+            ConfigurationParseResult parseResult = null;
+            try
+            {
+                parseResult = ConfigurationParsingHelper.ParseConfiguration(configurationPath);
+            }
+            catch (GetDscResourceException e)
+            {
+                ThrowTerminatingError(
+                    new ErrorRecord(e, "CannotAccessDscResource", ErrorCategory.PermissionDenied, null));
+            }
+
+            if (parseResult.Errors.Any())
+            {
+                ThrowTerminatingError(
+                    new ErrorRecord(
+                        new ParseException(
+                            String.Format(
+                                CultureInfo.CurrentUICulture,
+                                Properties.Resources.PublishVMDscExtensionStorageParserErrors,
+                                configurationPath,
+                                String.Join("\n", parseResult.Errors.Select(error => error.ToString())))),
+                        "DscConfigurationParseError",
+                        ErrorCategory.ParserError,
+                        null));
+            }
+
+            var requiredModules = parseResult.RequiredModules;
+            //Since LCM always uses the latest module there is no need to copy PSDesiredStateConfiguration
+            if (requiredModules.ContainsKey("PSDesiredStateConfiguration"))
+            {
+                requiredModules.Remove("PSDesiredStateConfiguration");
+            }
+
+            WriteVerbose(String.Format(
+                CultureInfo.CurrentUICulture,
+                Properties.Resources.PublishVMDscExtensionRequiredModulesVerbose, 
+                String.Join(", ", requiredModules)));
+            
+            return requiredModules;
         }
 
         private void UploadConfigurationArchive(
@@ -283,6 +364,25 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     
                     WriteObject(modulesBlob.Uri.AbsoluteUri);
                 });
+        }
+
+        private void CopyFileToZipFolder(String source, string destination)
+        {
+            WriteVerbose(String.Format(
+                CultureInfo.CurrentUICulture,
+                Properties.Resources.PublishVMDscExtensionCopyFileVerbose,
+                source,
+                destination));
+            File.Copy(source, destination);
+        }
+
+        private Boolean PathIsAFile(String path)
+        {
+            FileAttributes attributes = File.GetAttributes(path);
+            if (attributes != null && attributes.HasFlag(FileAttributes.Directory))
+                return false;
+
+            return true;
         }
 
         public void DeleteTemporaryFiles()
@@ -326,25 +426,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
             return containerReference.GetBlockBlobReference(blobName);
         }
-
-        /** /// <summary>
-         /// Asks for confirmation before executing the action.
-         /// </summary>
-         /// <param name="force">Do not ask for confirmation</param>
-         /// <param name="actionMessage">Message to describe the action</param>
-         /// <param name="processMessage">Message to prompt after the active is performed.</param>
-         /// <param name="target">The target name.</param>
-         /// <param name="action">The action code</param>
-         private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
-         {
-             if (force || ShouldContinue(actionMessage, ""))
-             {
-                 if (ShouldProcess(target, processMessage))
-                 {
-                     action();
-                 }
-             }
-         }**/
 
         protected void ThrowInvalidArgumentError(String format, params object[] args)
         {
