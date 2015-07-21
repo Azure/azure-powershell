@@ -42,6 +42,8 @@ function Test-AzureBackupMarsContainerScenario
 	Assert-AreEqual $container.ResourceName $vault.Name;
 	Assert-AreEqual $container.Status $ContainerStatus;	
 	
+	Enable-AzureBackupContainerReregistration -Container $container	
+	
 	Unregister-AzureBackupContainer -Container $container -Force
 
 	$unregContainers = Get-AzureBackupContainer -vault $vault -type $ContainerType -name $ContainerName

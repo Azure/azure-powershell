@@ -122,6 +122,7 @@
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
+    <Compile Include="Cmdlets\Container\EnableAzureBackupContainerReregistration.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
