@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.AzureBackup.Models
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public enum AzureBackupVaultStorageType
+    public class AzureBackupContainerTests : AzureBackupTestsBase
     {
-        GeoRedundant = 1,
-        LocallyRedundant,
-    }
-
-    public enum AzureBackupContainerType
-    {
-        Windows = 1,
-        SCDPM,
-    }
-
-    public enum AzureBackupContainerStatusInput
-    {
-        Registering = 1,
-        Registered,
-    }
-
-    public enum AzureBackupContainerRegistrationStatus
-    {
-        Registered = 1,
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AzureBackupMarsContainerScenarioTests()
+        {
+            this.RunPowerShellTest("Test-AzureBackupMarsContainerScenario");
+        }   
     }
 }
