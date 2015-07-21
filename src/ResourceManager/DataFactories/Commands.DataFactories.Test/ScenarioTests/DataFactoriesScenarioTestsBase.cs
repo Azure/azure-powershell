@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             }
         }
 
-        protected DataPipelineManagementClient GetDataPipelineManagementClient()
+        protected DataFactoryManagementClient GetDataPipelineManagementClient()
         {
-            return TestBase.GetServiceClient<DataPipelineManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<DataFactoryManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         protected ResourceManagementClient GetResourceManagementClient()
