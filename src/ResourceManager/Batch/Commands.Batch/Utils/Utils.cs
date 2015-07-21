@@ -53,6 +53,18 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 {
                     JobReleaseTaskSyncCollections(specification.JobReleaseTask);
                 }
+
+                specification.omObject.Metadata = CreateSyncedList(specification.Metadata,
+                (m) =>
+                {
+                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
+                    return metadata;
+                });
+                
+                if (specification.PoolInformation != null)
+                {
+                    PoolInformationSyncCollections(specification.PoolInformation);
+                }
             }
         }
 
