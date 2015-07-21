@@ -61,9 +61,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.DataFactories, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.0.15.12-preview\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.1.0.1\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,9 +80,6 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.DataFactories.Runtime">
-      <HintPath>..\..\..\packages\Microsoft.DataFactories.Runtime.0.11.1-preview\lib\net45\Microsoft.DataFactories.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,9 +178,11 @@
     <Compile Include="Models\DataFactoryClient.Hubs.cs" />
     <Compile Include="Models\DataFactoryClient.Tables.cs" />
     <Compile Include="Models\DataFactoryClientExtensions.cs" />
+    <Compile Include="Models\DataSliceRunFilterOptions.cs" />
     <Compile Include="Models\HubFilterOptions.cs" />
     <Compile Include="Models\PatchPSDataFactoryParameters.cs" />
     <Compile Include="Models\PipelineFilterOptions.cs" />
+    <Compile Include="Models\DataSliceFilterOptions.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
     <Compile Include="Models\PSDataSlice.cs" />
     <Compile Include="Models\PSDataSliceRun.cs" />

@@ -21,18 +21,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSProbe : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string Protocol { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int Port { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int IntervalInSeconds { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int NumberOfProbes { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string RequestPath { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

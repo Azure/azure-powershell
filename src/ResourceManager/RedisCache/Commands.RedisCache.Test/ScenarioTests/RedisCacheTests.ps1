@@ -150,7 +150,7 @@ function Test-SetNonExistingRedisCacheTest
     $location = "North Central US"
 	
     # Creating Cache
-    Assert-Throws {Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -MaxMemoryPolicy AllKeysLRU}
+    Assert-Throws {Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
 }
 
 <#
@@ -237,4 +237,25 @@ function Test-RedisCachePipeline
 
     # Delete cache
     Assert-True {Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzureRedisCache -Force -PassThru} "Remove cache failed."
+}
+
+<#
+.SYNOPSIS
+Tests bug fix in set redis cache.
+#>
+function Test-SetRedisCacheBugFixTest
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "Siddharth"
+    $cacheName = "siddharthchatrola"
+    $location = "North Central US"
+	
+	# Updating Cache
+    $cacheUpdated = Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
+    Assert-True  { $cacheUpdated.EnableNonSslPort }
+	
+    $cacheUpdated2 = Set-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
+	Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
+	Assert-True  { $cacheUpdated2.EnableNonSslPort }
 }
