@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
@@ -127,10 +128,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to a file or a directory for any additional content to be copied" +
+            HelpMessage = "Path to any source files or directories as additional content to be copied" +
             "to the configuration archive.")]
         [ValidateNotNullOrEmpty]
-        public String AdditionalPath { get; set; }
+        public String[] AdditionalPath { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -171,9 +172,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                 ValidateConfigurationDataPath(ConfigurationDataPath);
             }
             
-            if(AdditionalPath != null)
+            if(AdditionalPath != null && AdditionalPath.Length > 0)
             {
-                AdditionalPath = GetUnresolvedProviderPathFromPSPath(ConfigurationDataPath);
+                for(var count = 0; count < AdditionalPath.Length; count++)
+                {
+                    AdditionalPath[count] = GetUnresolvedProviderPathFromPSPath(AdditionalPath[count]);
+                }
             }
 
             switch (ParameterSetName)

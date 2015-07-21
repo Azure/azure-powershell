@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = DscExtensionCmdletConstants.ExtensionPublishedName + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
+                Name = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
             }
 
             if (ShouldProcess(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.DscExtensionRemovalConfirmation, Name), Properties.Resources.DscExtensionRemovalCaption))

@@ -10,6 +10,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Management.Automation;
+using Newtonsoft.Json;
 
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
@@ -92,12 +93,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         public string CreateConfigurationArchive(
             String configurationPath,
             String configurationDataPath,
-            String additionalPath,
+            String[] additionalPath,
             String configurationArchivePath,
             Boolean force,
             Boolean skipDependencyDetection,
             String parameterSetName)
         {
+            var metadata = new Dictionary<string, object>();
             // Create a temporary directory for uploaded zip file
             var tempZipFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             WriteVerbose(String.Format(
@@ -110,21 +112,55 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             // Copy Configuration
             var configurationName = Path.GetFileName(configurationPath);
             var configurationDestination = Path.Combine(tempZipFolder, configurationName);
+            metadata.Add("ConfigurationScript",configurationName);
             CopyFileToZipFolder(configurationPath, configurationDestination);
 
             //copy configuration data if available
-            var configurationDataName = Path.GetFileName(configurationDataPath);
-            var configurationDataDestination = Path.Combine(tempZipFolder, configurationDataName);
-            CopyFileToZipFolder(configurationDataPath, configurationDataDestination);
-
+            if (configurationDataPath != null)
+            {
+                var configurationDataName = Path.GetFileName(configurationDataPath);
+                var configurationDataDestination = Path.Combine(tempZipFolder, configurationDataName);
+                metadata.Add("ConfigurationData",configurationDataName);
+                CopyFileToZipFolder(configurationDataPath, configurationDataDestination);    
+            }
+            
             //copy additional content if available
-            CopyAdditionalContent(additionalPath, tempZipFolder);
+            if (additionalPath != null && additionalPath.Length > 0)
+            {
+                var additionalContentMetadata = new List<string>();
+                foreach (var contentPath in additionalPath)
+                {
+                    CopyAdditionalContent(contentPath, tempZipFolder, additionalContentMetadata);
+                }
+                metadata.Add("AdditionalContent", additionalContentMetadata);
+            }
 
             //Copy required modules when -SkipDependencyDetection switch is not present
             if (!skipDependencyDetection)
             {
-                CopyRequiredModules(configurationPath, tempZipFolder);
+                var metadataModules = CopyRequiredModules(configurationPath, tempZipFolder);
+                if (metadataModules != null)
+                {
+                    metadata.Add("Modules", metadataModules);
+                }
             } 
+
+            //copy metadata info
+            var metadataJson = JsonConvert.SerializeObject(metadata);
+            const string metadataFileName = "dscmetadata.txt";
+            var metadataDestPath = Path.Combine(tempZipFolder, metadataFileName);
+            if (File.Exists(metadataDestPath))
+            {
+                ThrowTerminatingError(
+                        new ErrorRecord(
+                            new UnauthorizedAccessException(
+                                string.Format(CultureInfo.CurrentUICulture, Properties.Resources.AzureVMDscMetadataAlreadyExists, metadataDestPath)),
+                            "FileAlreadyExists",
+                            ErrorCategory.PermissionDenied,
+                            null));
+            }
+
+            File.WriteAllText(metadataDestPath, metadataJson);
 
             //
             // Zip the directory
@@ -170,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         public void PublishConfiguration(
             String configurationPath,
             String configurationDataPath,
-            String additionalPath,
+            String[] additionalPath,
             String outputArchivePath,
             String storageEndpointSuffix,
             String containerName,
@@ -214,7 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             }
         }
 
-        private void CopyRequiredModules(String configurationPath, String tempZipFolder)
+        private List<string> CopyRequiredModules(String configurationPath, String tempZipFolder)
         {
             WriteVerbose(
                     String.Format(
@@ -223,9 +259,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         configurationPath));
 
             var requiredModules = GetRequiredModules(configurationPath);
+            var metadataModules = new List<string>();
 
             foreach (var module in requiredModules)
             {
+                metadataModules.Add(module.Key);   
                 using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
                 {
                     // Wrapping script in a function to prevent script injection via $module variable.
@@ -259,9 +297,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     powershell.Invoke();
                 }
             }
+
+            return metadataModules;
         }
 
-        private void CopyAdditionalContent(String additionalPath, String tempZipFolder)
+        private void CopyAdditionalContent(String additionalPath, String tempZipFolder, List<string> additionalContentMetadata)
         {
             try
             {
@@ -269,11 +309,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 {
                     var additionalFileName = Path.GetFileName(additionalPath);
                     var additionalFileDestination = Path.Combine(tempZipFolder, additionalFileName);
+                    additionalContentMetadata.Add(additionalFileName);
                     CopyFileToZipFolder(additionalPath, additionalFileDestination);
                 }
                 else
                 {
+                    var dir = new DirectoryInfo(additionalPath);
+                    if (!dir.Exists)
+                    {
+                        ThrowInvalidArgumentError(
+                        Properties.Resources.PublishVMDscExtensionDirectoryNotExist,
+                        dir);
+                    }
 
+                    var dirName = dir.Name;
+                    additionalContentMetadata.Add(dirName);
+                    var dirDestination = Path.Combine(tempZipFolder, dirName);
+
+                    CopyDirectory(dirDestination, dir);
                 }
             }
             catch (Exception)
@@ -281,6 +334,31 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 ThrowInvalidArgumentError(
                     Properties.Resources.PublishVMDscExtensionAdditionalContentPathNotExist,
                     additionalPath);
+            }
+        }
+
+        private void CopyDirectory(String destDirPath, DirectoryInfo dir)
+        {
+            //if the destination directory does not exist create it
+            if (!Directory.Exists(destDirPath))
+            {
+                Directory.CreateDirectory(destDirPath);
+            }
+
+            //get the files in the directory and copy them to the tempzipfolder location
+            var files = dir.GetFiles();
+            foreach (var file in files)
+            {
+                var temppath = Path.Combine(destDirPath, file.Name);
+                file.CopyTo(temppath, true);
+            }
+
+            //copy subdirectories
+            var dirs = dir.GetDirectories();
+            foreach (var subdir in dirs)
+            {
+                var temppath = Path.Combine(destDirPath, subdir.Name);
+                CopyDirectory(temppath, subdir);
             }
         }
 
@@ -378,11 +456,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
         private Boolean PathIsAFile(String path)
         {
-            FileAttributes attributes = File.GetAttributes(path);
-            if (attributes != null && attributes.HasFlag(FileAttributes.Directory))
-                return false;
-
-            return true;
+            var attributes = File.GetAttributes(path);
+            return !attributes.HasFlag(FileAttributes.Directory);
         }
 
         public void DeleteTemporaryFiles()
