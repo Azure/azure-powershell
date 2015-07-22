@@ -17409,6 +17409,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 </command:command>
 <!-- v 1.3.0.36 -->
 
+<!-- v 1.3.0.36 -->
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 	<command:details>
 		<command:name>
@@ -17431,32 +17432,10 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Publish-AzureVMDscConfiguration</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>The name of the resource group that contains the storage account</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>ConfigurationPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>ConfigurationDataPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
-				<maml:name>OutputArchivePath</maml:name>
-				<maml:description>
-					<maml:para>Path to a local ZIP file to write the configuration archive to. 
-          When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
+					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file), or an archive (.zip file) containing a set of PowerShell modules, each module in a separate directory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -17466,6 +17445,22 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 					<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConfigurationArchivePath</maml:name>
+				<maml:description>
+					<maml:para>Path to a local ZIP file to write the configuration archive to. 
+
+When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConfigurationDataPath</maml:name>
+				<maml:description>
+					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -17493,41 +17488,13 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Publish-AzureVMDscConfiguration</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>The name of the resource group that contains the storage account</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<maml:name>Publish-ASMVMDscConfiguration</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>ConfigurationPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
+					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file), or an archive (.zip file) containing a set of PowerShell modules, each module in a separate directory.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>ConfigurationDataPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>ContainerName</maml:name>
-				<maml:description>
-					<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-				<maml:name>StorageContext</maml:name>
-				<maml:description>
-					<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AdditionalPath</maml:name>
@@ -17535,6 +17502,20 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 					<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ConfigurationDataPath</maml:name>
+				<maml:description>
+					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ContainerName</maml:name>
+				<maml:description>
+					<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -17548,7 +17529,15 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 					<maml:para>By default all dependent modules are added to the zip file.  Use -SkipDependencyDetection to skip adding modules to the zip file.</maml:para>
 				</maml:description>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>StorageContext</maml:name>
+				<maml:description>
+					<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.
+</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>StorageEndpointSuffix</maml:name>
 				<maml:description>
 					<maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
@@ -17575,6 +17564,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			<maml:name>AdditionalPath</maml:name>
 			<maml:description>
 				<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			<dev:type>
@@ -17583,34 +17573,13 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>ConfigurationDataPath</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ConfigurationArchivePath</maml:name>
 			<maml:description>
-				<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>ConfigurationPath</maml:name>
-			<maml:description>
-				<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>ContainerName</maml:name>
-			<maml:description>
-				<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
+				<maml:para>Path to a local ZIP file to write the configuration archive to. 
+
+When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -17620,38 +17589,53 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ConfigurationDataPath</maml:name>
+			<maml:description>
+				<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>ConfigurationPath</maml:name>
+			<maml:description>
+				<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file), or an archive (.zip file) containing a set of PowerShell modules, each module in a separate directory.</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ContainerName</maml:name>
+			<maml:description>
+				<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>windows-powershell-dsc</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
 				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
-			<maml:name>OutputArchivePath</maml:name>
-			<maml:description>
-				<maml:para>Path to a local ZIP file to write the configuration archive to. 
-        When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>The name of the resource group that contains the storage account</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -17660,6 +17644,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			<maml:name>SkipDependencyDetection</maml:name>
 			<maml:description>
 				<maml:para>By default all dependent modules are added to the zip file.  Use -SkipDependencyDetection to skip adding modules to the zip file.</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -17668,10 +17653,12 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>StorageContext</maml:name>
 			<maml:description>
-				<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.</maml:para>
+				<maml:para>The Azure Storage Context that provides the security settings used to upload the configuration script to the container specified by ContainerName. This context should provide write access to the container.
+</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -17680,10 +17667,11 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>StorageEndpointSuffix</maml:name>
 			<maml:description>
 				<maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
+								
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -17692,7 +17680,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
    			 <maml:name>Confirm</maml:name>
     			<maml:description>
 				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
@@ -17704,7 +17692,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 					</dev:type>
  			<dev:defaultValue /> 
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
    			 <maml:name>WhatIf</maml:name>
     			<maml:description>
 				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
@@ -17801,7 +17789,8 @@ By default the command does no produce any output; use the -Verbose option to di
 				<maml:para>C:\PS&gt;</maml:para>
 			</maml:introduction> 
   			<dev:code>
-Publish-AzureVMDscConfiguration .\MyConfiguration.ps1 -OutputArchivePath .\MyConfiguration.ps1.zip                        </dev:code>
+Publish-AzureVMDscConfiguration .\MyConfiguration.ps1 -ConfigurationArchivePath .\MyConfiguration.ps1.zip
+                        </dev:code>
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
@@ -17901,6 +17890,9 @@ Publish-AzureVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -Ad
 		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
+
+
+  
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
