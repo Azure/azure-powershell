@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +19,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
         static MetricHelper()
         {            
             TelemetryClient = new TelemetryClient();
+            //InstrumentationKey shall be injected in build server
+            TelemetryClient.InstrumentationKey = "ce08abab-065a-4af8-a997-fdd4cd5481b4";
             //TelemetryClient.Context.Location.Ip = "0.0.0.0";
 
             if (!IsMetricTermAccepted())
@@ -37,40 +35,47 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
-        public static void LogUsageEvent(AzurePSQoSEvent qos)
+        public static void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
         {
             if (!IsMetricTermAccepted())
             {
                 return;
             }
 
-            var tcEvent = new EventTelemetry("CmdletUsage");
-            //tcEvent.Context.Location.Ip = "0.0.0.0";
-            tcEvent.Context.User.Id = qos.UID;
-            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
-            tcEvent.Properties.Add("CmdletType", qos.CmdletType);
-            tcEvent.Properties.Add("IsSuccess", qos.IsSuccess.ToString());
-            tcEvent.Properties.Add("Duration", qos.Duration.TotalSeconds.ToString(CultureInfo.InvariantCulture));
+            if (isUsageMetricEnabled)
+            {
+                LogUsageEvent(qos);
+            }
 
-            TelemetryClient.TrackEvent(tcEvent);
-
-            if (qos.Exception != null)
+            if (isErrorMetricEnabled && qos.Exception != null)
             {
                 LogExceptionEvent(qos);
             }
         }
 
+        private static void LogUsageEvent(AzurePSQoSEvent qos)
+        {
+            var tcEvent = new RequestTelemetry(qos.CmdletType, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
+            tcEvent.Context.User.Id = qos.Uid;
+            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
+            tcEvent.Context.Device.OperatingSystem = Environment.OSVersion.VersionString;
+
+            TelemetryClient.TrackRequest(tcEvent);
+        }
+
         private static void LogExceptionEvent(AzurePSQoSEvent qos)
         {
-
+            //Log as custome event to exclude actual exception message
             var tcEvent = new EventTelemetry("CmdletError");
             tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
+            tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
             if (qos.Exception.InnerException != null)
             {
                 tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
+                tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
             }
 
-            tcEvent.Context.User.Id = qos.UID;
+            tcEvent.Context.User.Id = qos.Uid;
             tcEvent.Properties.Add("CmdletType", qos.CmdletType);
 
             TelemetryClient.TrackEvent(tcEvent);
@@ -129,14 +134,16 @@ public class AzurePSQoSEvent
 {
     private readonly Stopwatch _timer;
 
+    public DateTimeOffset StartTime { get; set; }
     public TimeSpan Duration { get; set; }
     public bool IsSuccess { get; set; }
     public string CmdletType { get; set; }
     public Exception Exception { get; set; }
-    public string UID { get; set; }
+    public string Uid { get; set; }
 
     public AzurePSQoSEvent()
     {
+        StartTime = DateTimeOffset.Now;
         _timer = new Stopwatch();
         _timer.Start();
     }
