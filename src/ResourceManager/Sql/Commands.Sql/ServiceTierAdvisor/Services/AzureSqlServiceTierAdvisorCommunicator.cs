@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Sql;
 
-namespace Microsoft.Azure.Commands.Sql.Database.Services
+namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AzureSqlDatabaseCommunicator
+    public class AzureSqlServiceTierAdvisorCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -45,16 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
-        /// Expand string used for getting additional database information
-        /// </summary>
-        public const string ExpandDatabase = "serviceTierAdvisors";
-
-        /// <summary>
-        /// Creates a communicator for Azure Sql Databases
+        /// Creates a communicator for Azure Sql Service Tier Advisor
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServiceTierAdvisorCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
@@ -65,53 +57,44 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database
+        /// Get database with expanded properties
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of Azure Sql server</param>
+        /// <param name="databaseName">Database name</param>
+        /// <param name="expand">Expand string</param>
+        /// <param name="clientRequestId">Request identifier</param>
+        /// <returns></returns>
+        public Management.Sql.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.Get(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, expand).Database;
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database expanded additional details.
+        /// List databases expanded
         /// </summary>
-        public Management.Sql.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of Azure Sql server</param>
+        /// <param name="expand">Expand string</param>
+        /// <param name="clientRequestId">Request identifier</param>
+        /// <returns>List of databases</returns>
+        public IList<Management.Sql.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
+            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
         }
-
+        
         /// <summary>
-        /// Lists Azure Sql Databases
+        /// Get recommended elastic pools
         /// </summary>
-        public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of Azure Sql server</param>
+        /// <param name="clientRequestId">Request identifier</param>
+        /// <returns>List of recommended elastic pools</returns>
+        public IList<Management.Sql.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }
-
-        /// <summary>
-        /// Lists Azure Sql Databases expanded with additional details.
-        /// </summary>
-        public IList<Management.Sql.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
-        }
-
-        /// <summary>
-        /// Creates or updates a database
-        /// </summary>
-        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
-        {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
-        }
-
-        /// <summary>
-        /// Deletes a database
-        /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
-        {
-            GetCurrentSqlClient(clientRequestId).Databases.Delete(resourceGroupName, serverName, databaseName);
-        }
-
+        
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.

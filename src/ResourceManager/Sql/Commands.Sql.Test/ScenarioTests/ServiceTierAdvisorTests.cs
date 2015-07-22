@@ -12,28 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Model
+namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    /// <summary>
-    /// Represents a recommended elastic pool metric
-    /// </summary>
-    public class AzureSqlElasticPoolRecommendationMetricModel
+    public class ServiceTierAdvisorTests : SqlTestsBase
     {
-        /// <summary>
-        /// Gets or sets the time of metric.
-        /// </summary>
-        public DateTime DateTime { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the DTU.
-        /// </summary>
-        public double Dtu { get; set; }
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void GetUpgradeDatabaseHint()
+        {
+            RunPowerShellTest("Test-GetUpgradeDatabaseHint");
+        }
 
-        /// <summary>
-        /// Gets or sets size in gigabytes.
-        /// </summary>
-        public double SizeGB { get; set; }
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void GetUpgradeServerHint()
+        {
+            RunPowerShellTest("Test-GetUpgradeServerHint");
+        }
     }
 }
