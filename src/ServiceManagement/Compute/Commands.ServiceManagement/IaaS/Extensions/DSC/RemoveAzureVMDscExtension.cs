@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -44,6 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         }
         private void ExecuteCommand()
         {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
             //this parameter needs to be true for remove to work
             Uninstall = true;
             Version = DscExtensionCmdletCommonBase.DefaultExtensionVersion;
