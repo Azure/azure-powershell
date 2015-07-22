@@ -38,8 +38,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected AzurePSQoSEvent QosEvent;
 
-        protected virtual bool IsMetricEnabled {
+        protected virtual bool IsUsageMetricEnabled {
             get { return false; }
+        }
+
+        protected virtual bool IsErrorMetricEnabled
+        {
+            get { return true; }
         }
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
@@ -522,7 +527,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 CmdletType = this.GetType().Name,
                 IsSuccess = true,
-                UID = MetricHelper.GenerateSha256HashString(this.Profile.DefaultSubscription.Id.ToString())
+                Uid = MetricHelper.GenerateSha256HashString(this.Profile.DefaultSubscription.Id.ToString())
             };
         }
 
@@ -533,15 +538,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             QosEvent.FinishQosEvent();
             WriteVerbose(QosEvent.ToString());
-            if (!IsMetricEnabled)
-            {
-                return;
-            }
 
             try
             {
-                MetricHelper.LogUsageEvent(QosEvent);
+                MetricHelper.LogQoSEvent(QosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
                 MetricHelper.FlushMetric(waitForMetricSending);
+                WriteVerbose("Finish sending metric.");
             }
             catch (Exception e)
             {

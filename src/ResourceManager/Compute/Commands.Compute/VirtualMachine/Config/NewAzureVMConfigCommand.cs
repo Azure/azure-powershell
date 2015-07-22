@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
-        protected override bool IsMetricEnabled
+        protected override bool IsUsageMetricEnabled
         {
             get { return true; }
         }
