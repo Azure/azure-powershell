@@ -384,7 +384,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected void LogQosEvent(bool waitForMetricSending = false)
         {
             QosEvent.FinishQosEvent();
+            //TODO change to debug
             WriteVerbose(QosEvent.ToString());
+
+            if (!IsUsageMetricEnabled && (!IsErrorMetricEnabled || QosEvent.IsSuccess))
+            {
+                return;
+            }
 
             try
             {
