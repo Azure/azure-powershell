@@ -22,5 +22,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string Location = "The resource location.";
         public const string TargetLocation = "The directory where the credentials file will be saved. This must be an absolute path.";
         public const string StorageType = "The vault back-end storage type.";
+        public const string ManagedResourceName = "The resource name of the resource being managed by the Azure Backup service (ex: resource name of the VM).";
+        public const string ManagedResourceGroupName = "The resource group name of the resource being managed by the Azure Backup service (ex: resource group name of the VM).";
+        public const string ContainerRegistrationStatus = "The container registration status.";
+        public const string ContainerType = "The container type.";
+        public const string AzureBackupContainer = "Azure Backup Container for Azure Backup Item.";
     }
 }

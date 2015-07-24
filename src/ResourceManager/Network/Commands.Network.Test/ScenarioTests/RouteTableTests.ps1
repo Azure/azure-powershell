@@ -314,3 +314,63 @@ function Test-RouteTableRouteCRUD
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests RouteTable Hoptype Test
+#>
+function Test-RouteHopTypeTest
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $routeTableName = Get-ResourceName
+	$vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/routeTables"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        
+		$route1 = New-AzureRouteConfig -name "route1" -AddressPrefix "192.168.1.0/24" -NextHopIpAddress "23.108.1.1" -NextHopType "VirtualAppliance"
+		$route2 = New-AzureRouteConfig -name "route2" -AddressPrefix "10.0.1.0/24" -NextHopType "VnetLocal"
+		$route3 = New-AzureRouteConfig -name "route3" -AddressPrefix "0.0.0.0/0" -NextHopType "Internet"
+		$route4 = New-AzureRouteConfig -name "route4" -AddressPrefix "10.0.2.0/24" -NextHopType "None"
+		        
+        # Create RouteTable
+        $rt = New-AzureRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route1, $route2, $route3, $route4
+
+		# Get RouteTable
+        $getRT = Get-AzureRouteTable -name $routeTableName -ResourceGroupName $rgName
+
+		#verification
+        Assert-AreEqual $rgName $getRT.ResourceGroupName
+        Assert-AreEqual $routeTableName $getRT.Name
+        Assert-NotNull $getRT.Etag
+        Assert-AreEqual 4 @($getRT.Routes).Count       
+		Assert-AreEqual $getRT.Routes[0].Name "route1"
+		Assert-AreEqual $getRT.Routes[0].NextHopType "VirtualAppliance"
+		Assert-AreEqual $getRT.Routes[1].Name "route2"
+		Assert-AreEqual $getRT.Routes[1].NextHopType "VnetLocal"
+		Assert-AreEqual $getRT.Routes[2].Name "route3"
+		Assert-AreEqual $getRT.Routes[2].NextHopType "Internet"
+		Assert-AreEqual $getRT.Routes[3].Name "route4"
+		Assert-AreEqual $getRT.Routes[3].NextHopType "None"
+		
+		# Delete RouteTable
+        $delete = Remove-AzureRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzureRouteTable -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
