@@ -202,7 +202,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             Boolean force,
             Boolean skipDependencyDetection,
             StorageCredentials storageCredentials,
-            Boolean passThru=false)
+            Boolean passThru=true)
         {
             if (parameterSetName == CreateArchiveParameterSetName)
             {
