@@ -257,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         public string FunctionName { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = "InvokeByStaticParameters", Position = 1)]
-        public object[] Parameter { get; set; }
+        public object[] ArgumentList { get; set; }
 
         protected object ParseParameter(object input)
         {
@@ -286,802 +286,802 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                     case "DeploymentChangeConfigurationByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentChangeConfigurationByNameMethod(Parameter);
+                        ExecuteDeploymentChangeConfigurationByNameMethod(ArgumentList);
                         break;
                     case "DeploymentChangeConfigurationBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentChangeConfigurationBySlotMethod(Parameter);
+                        ExecuteDeploymentChangeConfigurationBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentCreateMethod(Parameter);
+                        ExecuteDeploymentCreateMethod(ArgumentList);
                         break;
                     case "DeploymentDeleteByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteByNameMethod(Parameter);
+                        ExecuteDeploymentDeleteByNameMethod(ArgumentList);
                         break;
                     case "DeploymentDeleteBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteBySlotMethod(Parameter);
+                        ExecuteDeploymentDeleteBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentDeleteRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentDeleteRoleInstanceByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentDeleteRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentDeleteRoleInstanceByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentGetByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetByNameMethod(Parameter);
+                        ExecuteDeploymentGetByNameMethod(ArgumentList);
                         break;
                     case "DeploymentGetBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetBySlotMethod(Parameter);
+                        ExecuteDeploymentGetBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentGetPackageByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetPackageByNameMethod(Parameter);
+                        ExecuteDeploymentGetPackageByNameMethod(ArgumentList);
                         break;
                     case "DeploymentGetPackageBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentGetPackageBySlotMethod(Parameter);
+                        ExecuteDeploymentGetPackageBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentListEvents" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentListEventsMethod(Parameter);
+                        ExecuteDeploymentListEventsMethod(ArgumentList);
                         break;
                     case "DeploymentListEventsBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentListEventsBySlotMethod(Parameter);
+                        ExecuteDeploymentListEventsBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentRebootRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentRebootRoleInstanceByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentRebootRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentRebootRoleInstanceByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentRebuildRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentRebuildRoleInstanceByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentRebuildRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentRebuildRoleInstanceByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentReimageRoleInstanceByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentReimageRoleInstanceByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentReimageRoleInstanceByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentReimageRoleInstanceByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentRollbackUpdateOrUpgradeByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentRollbackUpdateOrUpgradeByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentRollbackUpdateOrUpgradeByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentSwap" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentSwapMethod(Parameter);
+                        ExecuteDeploymentSwapMethod(ArgumentList);
                         break;
                     case "DeploymentUpdateStatusByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpdateStatusByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentUpdateStatusByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentUpdateStatusByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentUpdateStatusByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DeploymentUpgradeByName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpgradeByNameMethod(Parameter);
+                        ExecuteDeploymentUpgradeByNameMethod(ArgumentList);
                         break;
                     case "DeploymentUpgradeBySlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentUpgradeBySlotMethod(Parameter);
+                        ExecuteDeploymentUpgradeBySlotMethod(ArgumentList);
                         break;
                     case "DeploymentWalkUpgradeDomainByDeploymentName" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(Parameter);
+                        ExecuteDeploymentWalkUpgradeDomainByDeploymentNameMethod(ArgumentList);
                         break;
                     case "DeploymentWalkUpgradeDomainByDeploymentSlot" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(Parameter);
+                        ExecuteDeploymentWalkUpgradeDomainByDeploymentSlotMethod(ArgumentList);
                         break;
                     case "DNSServerAddDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerAddDNSServerMethod(Parameter);
+                        ExecuteDNSServerAddDNSServerMethod(ArgumentList);
                         break;
                     case "DNSServerDeleteDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerDeleteDNSServerMethod(Parameter);
+                        ExecuteDNSServerDeleteDNSServerMethod(ArgumentList);
                         break;
                     case "DNSServerUpdateDNSServer" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteDNSServerUpdateDNSServerMethod(Parameter);
+                        ExecuteDNSServerUpdateDNSServerMethod(ArgumentList);
                         break;
                     case "ExtensionImageRegister" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageRegisterMethod(Parameter);
+                        ExecuteExtensionImageRegisterMethod(ArgumentList);
                         break;
                     case "ExtensionImageUnregister" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageUnregisterMethod(Parameter);
+                        ExecuteExtensionImageUnregisterMethod(ArgumentList);
                         break;
                     case "ExtensionImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteExtensionImageUpdateMethod(Parameter);
+                        ExecuteExtensionImageUpdateMethod(ArgumentList);
                         break;
                     case "HostedServiceAddExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceAddExtensionMethod(Parameter);
+                        ExecuteHostedServiceAddExtensionMethod(ArgumentList);
                         break;
                     case "HostedServiceCheckNameAvailability" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceCheckNameAvailabilityMethod(Parameter);
+                        ExecuteHostedServiceCheckNameAvailabilityMethod(ArgumentList);
                         break;
                     case "HostedServiceCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceCreateMethod(Parameter);
+                        ExecuteHostedServiceCreateMethod(ArgumentList);
                         break;
                     case "HostedServiceDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteMethod(Parameter);
+                        ExecuteHostedServiceDeleteMethod(ArgumentList);
                         break;
                     case "HostedServiceDeleteAll" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteAllMethod(Parameter);
+                        ExecuteHostedServiceDeleteAllMethod(ArgumentList);
                         break;
                     case "HostedServiceDeleteExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceDeleteExtensionMethod(Parameter);
+                        ExecuteHostedServiceDeleteExtensionMethod(ArgumentList);
                         break;
                     case "HostedServiceGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetMethod(Parameter);
+                        ExecuteHostedServiceGetMethod(ArgumentList);
                         break;
                     case "HostedServiceGetDetailed" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetDetailedMethod(Parameter);
+                        ExecuteHostedServiceGetDetailedMethod(ArgumentList);
                         break;
                     case "HostedServiceGetExtension" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceGetExtensionMethod(Parameter);
+                        ExecuteHostedServiceGetExtensionMethod(ArgumentList);
                         break;
                     case "HostedServiceList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListMethod(Parameter);
+                        ExecuteHostedServiceListMethod(ArgumentList);
                         break;
                     case "HostedServiceListAvailableExtensions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListAvailableExtensionsMethod(Parameter);
+                        ExecuteHostedServiceListAvailableExtensionsMethod(ArgumentList);
                         break;
                     case "HostedServiceListExtensions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListExtensionsMethod(Parameter);
+                        ExecuteHostedServiceListExtensionsMethod(ArgumentList);
                         break;
                     case "HostedServiceListExtensionVersions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceListExtensionVersionsMethod(Parameter);
+                        ExecuteHostedServiceListExtensionVersionsMethod(ArgumentList);
                         break;
                     case "HostedServiceUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteHostedServiceUpdateMethod(Parameter);
+                        ExecuteHostedServiceUpdateMethod(ArgumentList);
                         break;
                     case "LoadBalancerCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerCreateMethod(Parameter);
+                        ExecuteLoadBalancerCreateMethod(ArgumentList);
                         break;
                     case "LoadBalancerDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerDeleteMethod(Parameter);
+                        ExecuteLoadBalancerDeleteMethod(ArgumentList);
                         break;
                     case "LoadBalancerUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteLoadBalancerUpdateMethod(Parameter);
+                        ExecuteLoadBalancerUpdateMethod(ArgumentList);
                         break;
                     case "OperatingSystemList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteOperatingSystemListMethod(Parameter);
+                        ExecuteOperatingSystemListMethod(ArgumentList);
                         break;
                     case "OperatingSystemListFamilies" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteOperatingSystemListFamiliesMethod(Parameter);
+                        ExecuteOperatingSystemListFamiliesMethod(ArgumentList);
                         break;
                     case "ServiceCertificateCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateCreateMethod(Parameter);
+                        ExecuteServiceCertificateCreateMethod(ArgumentList);
                         break;
                     case "ServiceCertificateDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateDeleteMethod(Parameter);
+                        ExecuteServiceCertificateDeleteMethod(ArgumentList);
                         break;
                     case "ServiceCertificateGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateGetMethod(Parameter);
+                        ExecuteServiceCertificateGetMethod(ArgumentList);
                         break;
                     case "ServiceCertificateList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteServiceCertificateListMethod(Parameter);
+                        ExecuteServiceCertificateListMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskCreateDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskCreateDataDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskCreateDataDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskCreateDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskCreateDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskCreateDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskDeleteDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskDeleteDataDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskDeleteDataDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskDeleteDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskDeleteDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskDeleteDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskGetDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskGetDataDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskGetDataDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskGetDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskGetDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskGetDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskListDisks" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskListDisksMethod(Parameter);
+                        ExecuteVirtualMachineDiskListDisksMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskUpdateDataDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDataDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskUpdateDataDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskUpdateDisk" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDiskMethod(Parameter);
+                        ExecuteVirtualMachineDiskUpdateDiskMethod(ArgumentList);
                         break;
                     case "VirtualMachineDiskUpdateDiskSize" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDiskUpdateDiskSizeMethod(Parameter);
+                        ExecuteVirtualMachineDiskUpdateDiskSizeMethod(ArgumentList);
                         break;
                     case "VirtualMachineExtensionList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineExtensionListMethod(Parameter);
+                        ExecuteVirtualMachineExtensionListMethod(ArgumentList);
                         break;
                     case "VirtualMachineExtensionListVersions" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineExtensionListVersionsMethod(Parameter);
+                        ExecuteVirtualMachineExtensionListVersionsMethod(ArgumentList);
                         break;
                     case "VirtualMachineCaptureOSImage" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCaptureOSImageMethod(Parameter);
+                        ExecuteVirtualMachineCaptureOSImageMethod(ArgumentList);
                         break;
                     case "VirtualMachineCaptureVMImage" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCaptureVMImageMethod(Parameter);
+                        ExecuteVirtualMachineCaptureVMImageMethod(ArgumentList);
                         break;
                     case "VirtualMachineCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCreateMethod(Parameter);
+                        ExecuteVirtualMachineCreateMethod(ArgumentList);
                         break;
                     case "VirtualMachineCreateDeployment" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineCreateDeploymentMethod(Parameter);
+                        ExecuteVirtualMachineCreateDeploymentMethod(ArgumentList);
                         break;
                     case "VirtualMachineDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineDeleteMethod(Parameter);
+                        ExecuteVirtualMachineDeleteMethod(ArgumentList);
                         break;
                     case "VirtualMachineGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineGetMethod(Parameter);
+                        ExecuteVirtualMachineGetMethod(ArgumentList);
                         break;
                     case "VirtualMachineGetRemoteDesktopFile" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineGetRemoteDesktopFileMethod(Parameter);
+                        ExecuteVirtualMachineGetRemoteDesktopFileMethod(ArgumentList);
                         break;
                     case "VirtualMachineRestart" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineRestartMethod(Parameter);
+                        ExecuteVirtualMachineRestartMethod(ArgumentList);
                         break;
                     case "VirtualMachineShutdown" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineShutdownMethod(Parameter);
+                        ExecuteVirtualMachineShutdownMethod(ArgumentList);
                         break;
                     case "VirtualMachineShutdownRoles" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineShutdownRolesMethod(Parameter);
+                        ExecuteVirtualMachineShutdownRolesMethod(ArgumentList);
                         break;
                     case "VirtualMachineStart" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineStartMethod(Parameter);
+                        ExecuteVirtualMachineStartMethod(ArgumentList);
                         break;
                     case "VirtualMachineStartRoles" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineStartRolesMethod(Parameter);
+                        ExecuteVirtualMachineStartRolesMethod(ArgumentList);
                         break;
                     case "VirtualMachineUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineUpdateMethod(Parameter);
+                        ExecuteVirtualMachineUpdateMethod(ArgumentList);
                         break;
                     case "VirtualMachineUpdateLoadBalancedEndpointSet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(Parameter);
+                        ExecuteVirtualMachineUpdateLoadBalancedEndpointSetMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageCreateMethod(Parameter);
+                        ExecuteVirtualMachineOSImageCreateMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageDeleteMethod(Parameter);
+                        ExecuteVirtualMachineOSImageDeleteMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageGet" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageGetMethod(Parameter);
+                        ExecuteVirtualMachineOSImageGetMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageGetDetails" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageGetDetailsMethod(Parameter);
+                        ExecuteVirtualMachineOSImageGetDetailsMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageListMethod(Parameter);
+                        ExecuteVirtualMachineOSImageListMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageReplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageReplicateMethod(Parameter);
+                        ExecuteVirtualMachineOSImageReplicateMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageShare" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageShareMethod(Parameter);
+                        ExecuteVirtualMachineOSImageShareMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageUnreplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageUnreplicateMethod(Parameter);
+                        ExecuteVirtualMachineOSImageUnreplicateMethod(ArgumentList);
                         break;
                     case "VirtualMachineOSImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineOSImageUpdateMethod(Parameter);
+                        ExecuteVirtualMachineOSImageUpdateMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageCreate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageCreateMethod(Parameter);
+                        ExecuteVirtualMachineVMImageCreateMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageDelete" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageDeleteMethod(Parameter);
+                        ExecuteVirtualMachineVMImageDeleteMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageGetDetails" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageGetDetailsMethod(Parameter);
+                        ExecuteVirtualMachineVMImageGetDetailsMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageList" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageListMethod(Parameter);
+                        ExecuteVirtualMachineVMImageListMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageReplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageReplicateMethod(Parameter);
+                        ExecuteVirtualMachineVMImageReplicateMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageShare" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageShareMethod(Parameter);
+                        ExecuteVirtualMachineVMImageShareMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageUnreplicate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageUnreplicateMethod(Parameter);
+                        ExecuteVirtualMachineVMImageUnreplicateMethod(ArgumentList);
                         break;
                     case "VirtualMachineVMImageUpdate" :
                         if (ParameterSetName == "InvokeByDynamicParameters")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        ExecuteVirtualMachineVMImageUpdateMethod(Parameter);
+                        ExecuteVirtualMachineVMImageUpdateMethod(ArgumentList);
                         break;
                     default : WriteWarning("Cannot find the method by name = '" + MethodName + "'."); break;
                 }

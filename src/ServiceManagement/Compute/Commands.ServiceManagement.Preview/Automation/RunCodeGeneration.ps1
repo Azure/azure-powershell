@@ -463,7 +463,7 @@ $validate_all_method_names_code
         public string FunctionName $get_set_block
 
         [Parameter(Mandatory = false, ParameterSetName = `"$static_param_set_name`", Position = 1)]
-        public object[] Parameter $get_set_block
+        public object[] ArgumentList $get_set_block
 
 "@;
 
@@ -476,10 +476,10 @@ $validate_all_method_names_code
                     case `"${method_name}`" :
                         if (ParameterSetName == `"$dynamic_param_set_name`")
                         {
-                            Parameter = ConvertDynamicParameters(dynamicParameters);
+                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
                         }
 
-                        Execute${method_name}Method(Parameter);
+                        Execute${method_name}Method(ArgumentList);
                         break;
 "@;
         $operations_code += $operation_code_template + $new_line_str;
