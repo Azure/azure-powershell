@@ -74,6 +74,7 @@ $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Co
 $code_common_usings = @(
     'System',
     'System.Collections.Generic',
+    'System.Linq',
     'System.Management.Automation',
     'Microsoft.Azure'
 );
@@ -455,15 +456,9 @@ function Write-InvokeCmdletFile
     $param_set_code +=
 @"
         [Parameter(Mandatory = true, ParameterSetName = `"$dynamic_param_set_name`", Position = 0)]
-$validate_all_method_names_code
-        public string MethodName $get_set_block
-
         [Parameter(Mandatory = true, ParameterSetName = `"$static_param_set_name`", Position = 0)]
 $validate_all_method_names_code
-        public string FunctionName $get_set_block
-
-        [Parameter(Mandatory = false, ParameterSetName = `"$static_param_set_name`", Position = 1)]
-        public object[] ArgumentList $get_set_block
+        public string MethodName $get_set_block
 
 "@;
 
@@ -474,12 +469,7 @@ $validate_all_method_names_code
         $operation_code_template =
 @"
                     case `"${method_name}`" :
-                        if (ParameterSetName == `"$dynamic_param_set_name`")
-                        {
-                            ArgumentList = ConvertDynamicParameters(dynamicParameters);
-                        }
-
-                        Execute${method_name}Method(ArgumentList);
+                        Execute${method_name}Method(argumentList);
                         break;
 "@;
         $operations_code += $operation_code_template + $new_line_str;
@@ -511,9 +501,13 @@ $validate_all_method_names_code
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ParameterSetName == `"$static_param_set_name`")
+                if (ParameterSetName == `"$dynamic_param_set_name`")
                 {
-                    MethodName = FunctionName;
+                    argumentList = ConvertDynamicParameters(dynamicParameters);
+                }
+                else
+                {
+                    argumentList = (object[])dynamicParameters[`"ArgumentList`"].Value;
                 }
 
                 switch (MethodName)
@@ -540,6 +534,7 @@ namespace ${code_common_namespace}
     public partial class $cmdlet_class_name : $base_cmdlet_name, IDynamicParameters
     {
         protected RuntimeDefinedParameterDictionary dynamicParameters;
+        protected object[] argumentList;
 
         protected static object[] ConvertDynamicParameters(RuntimeDefinedParameterDictionary parameters)
         {
@@ -1022,6 +1017,24 @@ function Write-OperationCmdletFile
         $param_index += 1;
     }
 
+    $param_name = $expose_param_name = 'ArgumentList';
+    $param_type_full_name = 'object[]';
+    $dynamic_param_assignment_code_lines +=
+@"
+            var p${param_name} = new RuntimeDefinedParameter();
+            p${param_name}.Name = `"${expose_param_name}`";
+            p${param_name}.ParameterType = typeof($param_type_full_name);
+            p${param_name}.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByStaticParameters",
+                Position = $param_index,
+                Mandatory = true
+            });
+            p${param_name}.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add(`"${expose_param_name}`", p${param_name});
+
+"@;
+
     $dynamic_param_assignment_code = [string]::Join($new_line_str, $dynamic_param_assignment_code_lines);
 
     $dynamic_param_source_template =
@@ -1391,7 +1404,7 @@ else
 
     $invoke_cmdlet_class_name = 'InvokeAzureComputeMethodCmdlet';
     $invoke_cmdlet_file_name = $outFolder + '\' + "$invoke_cmdlet_class_name.cs";
-    $parameter_cmdlet_class_name = 'NewAzureComputeParameterCmdlet';
+    $parameter_cmdlet_class_name = 'NewAzureComputeArgumentListCmdlet';
     $parameter_cmdlet_file_name = $outFolder + '\' + "$parameter_cmdlet_class_name.cs";
 
     [System.Reflection.ParameterInfo[]]$parameter_type_info_list = @();

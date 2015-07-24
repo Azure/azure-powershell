@@ -24,13 +24,14 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, "AzureComputeParameter", DefaultParameterSetName = "CreateParameterListByMethodName")]
+    [Cmdlet(VerbsCommon.New, "AzureComputeArgumentList", DefaultParameterSetName = "CreateParameterListByMethodName")]
     [OutputType(typeof(object))]
-    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
         [Parameter(ParameterSetName = "CreateParameterListByMethodName", Mandatory = true, Position = 0)]
         [ValidateSet(

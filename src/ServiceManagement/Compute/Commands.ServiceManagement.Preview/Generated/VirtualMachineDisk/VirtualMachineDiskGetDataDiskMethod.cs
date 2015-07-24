@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Compute.Automation
@@ -81,6 +82,18 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             pLogicalUnitNumber.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("LogicalUnitNumber", pLogicalUnitNumber);
 
+            var pArgumentList = new RuntimeDefinedParameter();
+            pArgumentList.Name = "ArgumentList";
+            pArgumentList.ParameterType = typeof(object[]);
+            pArgumentList.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByStaticParameters",
+                Position = 5,
+                Mandatory = true
+            });
+            pArgumentList.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("ArgumentList", pArgumentList);
+
             return dynamicParameters;
         }
 
@@ -96,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
         }
     }
 
-    public partial class NewAzureComputeParameterCmdlet : ComputeAutomationBaseCmdlet
+    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
         protected object[] CreateVirtualMachineDiskGetDataDiskParameters()
         {
