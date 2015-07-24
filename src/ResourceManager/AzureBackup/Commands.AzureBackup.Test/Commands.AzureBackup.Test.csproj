@@ -125,11 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\AzureBackupContainerTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupItemTestCases.cs" />
+    <Compile Include="ScenarioTests\AzureBackupJobTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupPolicyTests.cs" />
+    <Compile Include="ScenarioTests\AzureBackupScenarioTests.cs" />
     <Compile Include="ScenarioTests\AzureBackupTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AzureBackupVaultTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ScenarioTests\BackupItemTests.cs" />
+    <Compile Include="ScenarioTests\RecoveryPointTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -158,9 +164,15 @@
     <None Include="ScenarioTests\AzureBackupContainerTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AzureBackupItemTestCases.ps1" />
+    <None Include="ScenarioTests\AzureBackupJobTests.ps1" />
+    <None Include="ScenarioTests\AzureBackupPolicyTests.ps1" />
+    <None Include="ScenarioTests\AzureBackupScenarioTests.ps1" />
     <None Include="ScenarioTests\AzureBackupVaultTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\BackupItemTests.ps1" />
+    <None Include="ScenarioTests\RecoveryPointTests.ps1" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\AzureBackupMarsContainerScenarioTests.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

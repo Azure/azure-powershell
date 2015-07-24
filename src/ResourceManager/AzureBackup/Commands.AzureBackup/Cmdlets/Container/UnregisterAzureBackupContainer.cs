@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     case AzureBackupContainerType.SCDPM:
                         DeleteServer();
                         break;
+                    case AzureBackupContainerType.AzureVM:
+                        UnregisterContainer();
+                        break;
                     default:
                         break;
                 }
@@ -72,6 +75,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 AzureBackupClient.UnregisterMachineContainer(Container.Id);
             }
+        }
+
+        private void UnregisterContainer()
+        {
+            string containerUniqueName = Container.ContainerUniqueName;
+            var operationId = AzureBackupClient.UnRegisterContainer(containerUniqueName);
+
+            WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), GetOperationStatus(operationId).JobList).FirstOrDefault());
         }
     }
 }

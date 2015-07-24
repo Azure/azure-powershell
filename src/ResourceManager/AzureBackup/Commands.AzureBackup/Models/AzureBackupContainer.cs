@@ -51,5 +51,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Id = marsContainerResponse.Properties.ContainerId;
             Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
         }
+
+        public AzureBackupContainer(AzurePSBackupVault vault, CSMContainerResponse containerInfo)
+            : base(vault, containerInfo)
+        {
+            //ManagedResourceGroupName = ContainerHelpers.GetRGNameFromId(containerInfo.Properties.ParentContainerId);
+            Name = containerInfo.Properties.FriendlyName;
+            //HealthStatus = containerInfo.Properties.HealthStatus;
+            Status = containerInfo.Properties.Status;
+        }
     }
 }

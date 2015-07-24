@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     {
         Windows = 1,
         SCDPM,
+        AzureVM,
     }
 
     public enum AzureBackupContainerStatusInput
@@ -34,6 +35,74 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
     public enum AzureBackupContainerRegistrationStatus
     {
-        Registered = 1,
+        Invalid = 0,
+
+        Unknown,
+
+        NotRegistered,
+
+        Registered,
+
+        Registering,
+    }
+
+    public enum ScheduleType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2
+    }
+
+    public enum BackupType
+    {
+        Invalid = 0,
+        Full = 1
+    }
+
+    public enum CSMAzureBackupOperationStatus
+    {
+
+        Invalid = 0,
+
+
+        InProgress,
+
+
+        Cancelled,
+
+
+        Succeeded,
+
+
+        Failed,
+
+
+        PartialSuccess
+    }
+
+    public enum AzureBackupOperationErrorCode
+    {
+        BMSUserErrorObjectLocked = 390026,
+        DiscoveryInProgress = 410002,
+    }
+
+    public enum ManagedContainerType
+    {
+        Invalid = 0,
+
+        Unknown,
+
+        // used by fabric adapter to populate discovered VMs
+        IaasVMContainer,
+
+        // used by fabric adapter to populate discovered services
+        // VMs are child containers of services they belong to
+        IaasVMServiceContainer
+    }
+
+    public enum WorkloadType
+    {
+        Invalid = 0,
+        VM = 1
     }
 }

@@ -31,13 +31,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(List<AzureBackupContainer>))]
     public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
+        private const string MachineContainerParamSet = "MachineContainer";
+        private const string ManagedContainerParamSet = "ManagedContainer";
+
+        [Parameter(Mandatory = false, ParameterSetName = MachineContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
+        [Parameter(Mandatory = false, ParameterSetName = ManagedContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
+        [Parameter(Mandatory = true, ParameterSetName = MachineContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
+        [Parameter(Mandatory = true, ParameterSetName = ManagedContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ContainerType)]
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerType Type { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ManagedContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string ManagedResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ManagedContainerParamSet, HelpMessage = AzureBackupCmdletHelpMessage.ContainerRegistrationStatus)]
+        [ValidateNotNullOrEmpty]
+        public AzureBackupContainerStatusInput Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -46,6 +59,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
 
                 List<AzureBackupContainer> containers = new List<AzureBackupContainer>();
+                bool uniqueContainer = false;
 
                 switch (Type)
                 {
@@ -53,11 +67,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     case AzureBackupContainerType.SCDPM:
                         containers.AddRange(GetMachineContainers());
                         break;
+                    case AzureBackupContainerType.AzureVM:
+                        uniqueContainer = GetManagedContainers(containers);
+                        break;
                     default:
                         break;
                 }
 
-                WriteObject(containers);
+                if (uniqueContainer)
+                {
+                    if (containers.Any())
+                    {
+                        WriteObject(containers.First());
+                    }
+                }
+                else
+                {
+                    WriteObject(containers);
+                }
             });
         }
 
@@ -77,6 +104,74 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 return new AzureBackupContainer(Vault, marsContainerResponse);
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
+        }
+
+        private bool GetManagedContainers(List<AzureBackupContainer> managedContainers)
+        {
+            string queryFilterString = string.Empty;
+            queryFilterString = ConstructQueryFilterString();
+            var containerList = AzureBackupClient.ListContainers(queryFilterString);
+
+            WriteDebug(string.Format("Fetched {0} containers", containerList.Count()));
+
+            List<CSMContainerResponse> containerInfos = containerList.ToList();
+
+            // When resource group name is specified, remove all containers whose resource group name
+            // doesn't match the given resource group name
+            if (!string.IsNullOrEmpty(ManagedResourceGroupName))
+            {
+                containerInfos.RemoveAll(containerInfo =>
+                {
+                    string rgName = ContainerHelpers.GetRGNameFromId(containerInfo.Properties.ParentContainerId);
+                    return rgName != ManagedResourceGroupName;
+                });
+                WriteDebug(string.Format("Count of containers after resource group filter = {0}", containerInfos.Count));
+            }
+
+            // TODO: Container friendly name is not captures in Container response
+            // BUG: Friendly name was previously assigned to ResourceName (vault name)
+            List<AzureBackupContainer> containers = containerInfos.ConvertAll(containerInfo =>
+            {
+                return new AzureBackupContainer(Vault, containerInfo);
+            });
+            managedContainers.AddRange(containers);
+
+            // When container resource name and container resource group name are specified, this parameter set
+            // identifies a container uniquely. Thus, we return just one container instead of a list.
+            return !string.IsNullOrEmpty(Name) & !string.IsNullOrEmpty(ManagedResourceGroupName);
+        }
+
+        private string ConstructQueryFilterString()
+        {
+            var containerQueryObject = new ListContainerQueryParameter();
+
+            switch (Type)
+            {
+                case AzureBackupContainerType.AzureVM:
+                    containerQueryObject.ContainerTypeField = ManagedContainerType.IaasVMContainer.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            switch (Status)
+            {
+                case AzureBackupContainerStatusInput.Registered:
+                    containerQueryObject.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registered.ToString();
+                    break;
+                case AzureBackupContainerStatusInput.Registering:
+                    containerQueryObject.ContainerStatusField = AzureBackupContainerRegistrationStatus.Registering.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(Name))
+            {
+                containerQueryObject.ContainerFriendlyNameField = Name;
+            }
+
+            return ContainerHelpers.GetQueryFilter(containerQueryObject);
         }
     }
 }

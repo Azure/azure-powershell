@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified Azure Virtual Machine Not Found..
+        /// </summary>
+        internal static string AzureVMNotFound {
+            get {
+                return ResourceManager.GetString("AzureVMNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified resource does not exist..
         /// </summary>
         internal static string ResourceNotFoundMessage {
