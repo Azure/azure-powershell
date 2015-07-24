@@ -115,11 +115,21 @@ namespace Microsoft.Azure.Commands.DataFactories
                        };
         }
 
-        public virtual List<PSHub> ListHubs(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSHub> ListHubs(HubFilterOptions filterOptions)
         {
             List<PSHub> hubs = new List<PSHub>();
 
-            var response = DataPipelineManagementClient.Hubs.List(resourceGroupName, dataFactoryName);
+            HubListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.Hubs.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.Hubs.List(filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.Hubs != null)
             {
@@ -127,8 +137,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                 {
                     hubs.Add(new PSHub(hub)
                                  {
-                                     ResourceGroupName = resourceGroupName,
-                                     DataFactoryName = dataFactoryName
+                                     ResourceGroupName = filterOptions.ResourceGroupName,
+                                     DataFactoryName = filterOptions.DataFactoryName
                                  });
                 }
             }
@@ -166,7 +176,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                hubs.AddRange(ListHubs(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
+                hubs.AddRange(ListHubs(filterOptions));
             }
 
             return hubs;

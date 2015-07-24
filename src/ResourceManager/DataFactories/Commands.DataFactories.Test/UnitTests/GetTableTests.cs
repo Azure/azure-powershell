@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                     ResourceGroupName = ResourceGroupName
                 }
             };
-
+            
             dataFactoriesClientMock
                 .Setup(
                     c =>
@@ -116,12 +116,18 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == null)))
+                                    options.Name == null &&
+                                    options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListTables(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListTables(It.Is<TableFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null &&
+                        options.NextLink == null)))
                 .Returns(expected)
                 .Verifiable();
 

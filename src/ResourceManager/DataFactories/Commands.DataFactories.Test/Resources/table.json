@@ -1,14 +1,12 @@
 {
     name: "foo1",
-    properties:
-    {        
-        location: 
-        {
-            type: "CustomLocation",
-            linkedServiceName: "foo2"
+    properties: {
+        type: "CustomDataSet",
+        typeProperties: {
+            tableName: "myTable"
         },
-        availability: 
-        {
+        linkedServiceName: "foo2",
+        availability: {
             frequency: "Hour",
             interval: 1
         }

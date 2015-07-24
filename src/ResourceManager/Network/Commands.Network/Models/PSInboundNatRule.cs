@@ -19,20 +19,28 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSInboundNatRule : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         public PSResourceId FrontendIPConfiguration { get; set; }
 
+        [JsonProperty(Order = 1)]
         public PSResourceId BackendIPConfiguration { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string Protocol { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int FrontendPort { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int BackendPort { get; set; }
 
+        [JsonProperty(Order = 1)]
         public int? IdleTimeoutInMinutes { get; set; }
 
+        [JsonProperty(Order = 1)]
         public bool EnableFloatingIP { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

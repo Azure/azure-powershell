@@ -1357,7 +1357,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service..
+        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service; refer to https://msdn.microsoft.com/library/azure/dn167011.aspx for details..
         /// </summary>
         internal static string ShareNameInvalid {
             get {

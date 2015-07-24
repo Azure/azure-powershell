@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Virtual Machine to restart.", ParameterSetName = "Input")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
-        public Model.PersistentVM[] VM { get; set; }
+        public Model.IPersistentVM[] VM { get; set; }
 
         [Parameter(Position = 2, HelpMessage = "Keeps the VM provisioned")]
         public SwitchParameter StayProvisioned { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 return;
             }
 
-            string[] inputRoleNames = (this.ParameterSetName == "ByName") ? this.Name : this.VM.Select(vm => vm.RoleName).ToArray();
+            string[] inputRoleNames = (this.ParameterSetName == "ByName") ? this.Name : this.VM.Select(vm => vm.GetInstance().RoleName).ToArray();
 
             // Generate a list of role names matching regular expressions or
             // the exact name specified in the -Name parameter.

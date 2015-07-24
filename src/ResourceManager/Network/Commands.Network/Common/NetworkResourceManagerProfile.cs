@@ -165,6 +165,20 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>();
 
+            // RouteTable
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSRouteTable, MNM.RouteTable>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.RouteTable, CNM.PSRouteTable>();
+
+            // Route
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSRoute, MNM.Route>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.Route, CNM.PSRoute>();
+
             // Gateways
             // CNM to MNM
             Mapper.CreateMap<CNM.PSVirtualNetworkGateway, MNM.VirtualNetworkGateway>();

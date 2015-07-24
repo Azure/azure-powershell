@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
     using System.Collections;
     using System.Collections.Generic;
 
-    class RedisCacheAttributes
+    public class RedisCacheAttributes
     {
         public RedisCacheAttributes(RedisResource cache, string resourceGroupName)
         {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ProvisioningState = cache.Properties.ProvisioningState;
             SslPort = cache.Properties.SslPort;
             RedisConfiguration = cache.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort;
+            EnableNonSslPort = cache.Properties.EnableNonSslPort.Value;
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
             Sku = cache.Properties.Sku.Name;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ProvisioningState = cache.Resource.Properties.ProvisioningState;
             SslPort = cache.Resource.Properties.SslPort;
             RedisConfiguration = cache.Resource.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort;
+            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort.Value;
             RedisVersion = cache.Resource.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Resource.Properties.Sku.Family, cache.Resource.Properties.Sku.Capacity);
             Sku = cache.Resource.Properties.Sku.Name;

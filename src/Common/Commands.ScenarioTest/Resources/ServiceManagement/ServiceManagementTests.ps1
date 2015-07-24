@@ -124,10 +124,6 @@ function Run-StartAndStopMultipleVirtualMachinesTest
         Start-AzureVM -ServiceName $svcName -VM $vmList[0],$vmList[1];
         Start-AzureVM -ServiceName $svcName -VM $vmList;
     }
-    catch
-    {
-
-    }
     finally
     {
         # Cleanup
