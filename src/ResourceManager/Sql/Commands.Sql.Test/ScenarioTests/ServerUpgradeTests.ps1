@@ -37,16 +37,16 @@ function Test-ServerUpgradeWithUpgradeHint
             $upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
             if ($upgrade.Status -eq "Completed")
             {
-				# Upgrade is successful
-				$server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-				Assert-AreEqual $server.ServerVersion "12.0"
+                # Upgrade is successful
+                $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+                Assert-AreEqual $server.ServerVersion "12.0"
                 break
             }
-			elseif ($upgrade.Status -eq "Stopped")
+            elseif ($upgrade.Status -eq "Stopped")
             {
-				# Upgrade failed
-				$server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-				Assert-AreEqual $server.ServerVersion "2.0"
+                # Upgrade failed
+                $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+                Assert-AreEqual $server.ServerVersion "2.0"
                 break
             }
 
@@ -79,9 +79,9 @@ function Test-ServerUpgradeAndCancel
         Assert-AreEqual $upgrade.Status "Queued"
 
         Stop-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -Force
-		
-		$upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-		Assert-AreEqual $upgrade.Status "Cancelling"
+        
+        $upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+        Assert-AreEqual $upgrade.Status "Cancelling"
 
         while ($true)
         {
@@ -97,7 +97,7 @@ function Test-ServerUpgradeAndCancel
             }
         }
 
-		# Upgrade is cancelled
+        # Upgrade is cancelled
         $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $server.ServerVersion "2.0"
     }
