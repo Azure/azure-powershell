@@ -313,15 +313,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File &apos;{0}&apos; already exists..
-        /// </summary>
-        public static string AzureVMDscMetadataAlreadyExists {
-            get {
-                return ResourceManager.GetString("AzureVMDscMetadataAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Parsing configuration script: {0}.
         /// </summary>
         public static string AzureVMDscParsingConfiguration {

@@ -103,10 +103,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// By default all dependent modules are added to the zip file. 
-        /// Use -SkipDependencyDetection to skip adding modules to the zip file.
+        /// Excludes DSC resource dependencies from the configuration archive
         /// </summary>
-        [Parameter(HelpMessage = "Use -SkipDependencyDetection to skip adding modules to the zip file")]
+        [Parameter(HelpMessage = "Excludes DSC resource dependencies from the configuration archive")]
         public SwitchParameter SkipDependencyDetection { get; set; }
 
         /// <summary>
@@ -121,13 +120,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string ConfigurationDataPath { get; set; }
 
         /// <summary>
-        /// Path to a file or a directory for any additional content that needs to be 
-        /// copied to the configuration archive
+        /// Path to a file or a directory to include in  the configuration archive 
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to any source files or directories as additional content to be copied" +
-            "to the configuration archive.")]
+            HelpMessage = "Path to a file or a directory to include in  the configuration archive")]
         [ValidateNotNullOrEmpty]
         public String[] AdditionalPath { get; set; }
 

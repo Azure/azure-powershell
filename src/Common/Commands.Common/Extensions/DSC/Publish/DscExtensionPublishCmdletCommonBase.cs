@@ -112,7 +112,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             // Copy Configuration
             var configurationName = Path.GetFileName(configurationPath);
             var configurationDestination = Path.Combine(tempZipFolder, configurationName);
-            metadata.Add("ConfigurationScript",configurationName);
             CopyFileToZipFolder(configurationPath, configurationDestination);
 
             //copy configuration data if available
@@ -147,19 +146,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
             //copy metadata info
             var metadataJson = JsonConvert.SerializeObject(metadata);
-            const string metadataFileName = "dscmetadata.txt";
+            const string metadataFileName = "dscmetadata.json";
             var metadataDestPath = Path.Combine(tempZipFolder, metadataFileName);
-            if (File.Exists(metadataDestPath))
-            {
-                ThrowTerminatingError(
-                        new ErrorRecord(
-                            new UnauthorizedAccessException(
-                                string.Format(CultureInfo.CurrentUICulture, Properties.Resources.AzureVMDscMetadataAlreadyExists, metadataDestPath)),
-                            "FileAlreadyExists",
-                            ErrorCategory.PermissionDenied,
-                            null));
-            }
-
             File.WriteAllText(metadataDestPath, metadataJson);
 
             //

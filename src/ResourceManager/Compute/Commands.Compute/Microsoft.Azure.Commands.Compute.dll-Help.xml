@@ -3060,7 +3060,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AdditionalPath</maml:name>
 				<maml:description>
-					<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
+					<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			</command:parameter>
@@ -3080,7 +3080,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>SkipDependencyDetection</maml:name>
 				<maml:description>
-					<maml:para>By default all dependent modules are added to the zip file.  Use -SkipDependencyDetection to skip adding modules to the zip file.</maml:para>
+					<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
 				</maml:description>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
@@ -3129,7 +3129,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AdditionalPath</maml:name>
 				<maml:description>
-					<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
+					<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			</command:parameter>
@@ -3149,7 +3149,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>SkipDependencyDetection</maml:name>
 				<maml:description>
-					<maml:para>By default all dependent modules are added to the zip file.  Use -SkipDependencyDetection to skip adding modules to the zip file.</maml:para>
+					<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
 				</maml:description>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
@@ -3178,7 +3178,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AdditionalPath</maml:name>
 			<maml:description>
-				<maml:para>Path to any source files or directories as additional content to be copied to the configuration archive</maml:para>
+				<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			<dev:type>
@@ -3262,8 +3262,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>SkipDependencyDetection</maml:name>
 			<maml:description>
-				<maml:para>By default all dependent modules are added to the zip file.  Use -SkipDependencyDetection to skip adding modules to the zip file.</maml:para>
-								
+				<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>

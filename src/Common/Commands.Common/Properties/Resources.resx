@@ -1406,10 +1406,6 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>File '{0}' already exists. Use the -Force parameter to overwrite it.</value>
     <comment>{0} is the path to a file</comment>
   </data>
-  <data name="AzureVMDscMetadataAlreadyExists" xml:space="preserve">
-    <value>File '{0}' already exists.</value>
-    <comment>{0} is the path to a file</comment>
-  </data>
   <data name="PublishVMDscExtensionUploadArchiveConfigFileNotExist" xml:space="preserve">
     <value>Configuration file '{0}' not found.</value>
     <comment>0 = path to the configuration file</comment>
