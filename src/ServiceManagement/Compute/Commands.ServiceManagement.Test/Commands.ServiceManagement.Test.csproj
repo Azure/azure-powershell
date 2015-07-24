@@ -426,7 +426,6 @@
     <None Include="AzureRTComplete_Full_Diff.playlist" />
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
-    <None Include="Resources\DSC\FourthCoffee.ps1" />
     <None Include="Resources\HelloWorld_SDK20.cspkg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
