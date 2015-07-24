@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string TargetDedicatedParameterSet = "TargetDedicated";
         internal const string AutoScaleParameterSet = "AutoScale";
 
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The identifier of the pool to create.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The id of the pool to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

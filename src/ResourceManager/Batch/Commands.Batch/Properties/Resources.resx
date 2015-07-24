@@ -211,7 +211,7 @@
     <value>Getting all tasks from job "{0}".</value>
   </data>
   <data name="GRDP_NoComputeNode" xml:space="preserve">
-    <value>No compute node was specified. Supply a PSComputeNode object or a pool identifier and compute node identifier for the Remote Desktop Protocol file to point to.</value>
+    <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to.</value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
@@ -259,31 +259,31 @@
     <value>Creating user {0} on compute node {1}</value>
   </data>
   <data name="NoComputeNode" xml:space="preserve">
-    <value>No compute node was specified. Supply a PSComputeNode object or a pool identifier and compute node identifier.</value>
+    <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id.</value>
   </data>
   <data name="NoComputeNodeUser" xml:space="preserve">
-    <value>No compute node user specified. Supply a pool identifier, compute node identifier, and compute node user name.</value>
+    <value>No compute node user specified. Supply a pool id, compute node id, and compute node user name.</value>
   </data>
   <data name="NoDownloadDestination" xml:space="preserve">
     <value>No destination was provided for the downloaded file. Either provide a file path or a Stream object.</value>
   </data>
   <data name="NoJob" xml:space="preserve">
-    <value>No job was specified. Supply a PSCloudJob object or a job identifier.</value>
+    <value>No job was specified. Supply a PSCloudJob object or a job id.</value>
   </data>
   <data name="NoJobSchedule" xml:space="preserve">
-    <value>No job schedule was specified.  Supply a job schedule identifier or PSCloudJobSchedule object.</value>
+    <value>No job schedule was specified.  Supply a job schedule id or PSCloudJobSchedule object.</value>
   </data>
   <data name="NoNodeFile" xml:space="preserve">
-    <value>No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job identifier and task identifier, or a parent pool identifier and compute node identifier.</value>
+    <value>No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job id and task id, or a parent pool id and compute node id.</value>
   </data>
   <data name="NoNodeFileParent" xml:space="preserve">
-    <value>No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job identifier and a task identifier.  To specify a parent compute node, supply a PSComputeNode object or a pool identifier and a compute node identifier.</value>
+    <value>No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job id and a task id. To specify a parent compute node, supply a PSComputeNode object or a pool id and a compute node id.</value>
   </data>
   <data name="NoPool" xml:space="preserve">
-    <value>No pool was specified. Supply a PSCloudPool object or a pool identifier.</value>
+    <value>No pool was specified. Supply a PSCloudPool object or a pool id.</value>
   </data>
   <data name="NoTask" xml:space="preserve">
-    <value>No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name.</value>
+    <value>No task was specified. Supply a PSCloudTask object or a job id and task id.</value>
   </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove batch account {0}?</value>

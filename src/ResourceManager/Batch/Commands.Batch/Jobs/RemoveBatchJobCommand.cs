@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJob)]
     public class RemoveBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the job to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

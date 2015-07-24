@@ -29,22 +29,22 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string ComputeNodeAndIdAndPathParameterSet = "ComputeNode_Id_Path";
         internal const string ComputeNodeAndIdAndStreamParameterSet = "ComputeNode_Id_Stream";
 
-        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the job containing the target task.")]
+        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the target task.")]
         [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the task.")]
+        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task.")]
         [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TaskId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the pool containing the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool containing the compute node.")]
         [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the compute node.")]
+        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node.")]
         [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }

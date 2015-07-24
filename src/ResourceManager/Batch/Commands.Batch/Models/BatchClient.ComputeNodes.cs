@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             string poolId = options.Pool == null ? options.PoolId : options.Pool.Id;
 
-            // Get the single compute node matching the specified identifier
+            // Get the single compute node matching the specified id
             if (!string.IsNullOrEmpty(options.ComputeNodeId))
             {
                 WriteVerbose(string.Format(Resources.GBCN_GetById, options.ComputeNodeId, poolId));

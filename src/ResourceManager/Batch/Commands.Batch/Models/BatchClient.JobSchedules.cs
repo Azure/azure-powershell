@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            // Get the single job schedule matching the specified identifier
+            // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
                 WriteVerbose(string.Format(Resources.GBJS_GetById, options.JobScheduleId));
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Deletes the specified job schedule.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="jobScheduleId">The identifier of the job schedule to delete.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to delete.</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
         public void DeleteJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {

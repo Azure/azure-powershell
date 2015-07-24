@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// The identifier of the pool.
+        /// The id of the pool.
         /// </summary>
         public string PoolId { get; private set; }
 

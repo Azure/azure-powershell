@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// The identifier of the task to create.
+        /// The id of the task to create.
         /// </summary>
         public string TaskId { get; private set; }
 

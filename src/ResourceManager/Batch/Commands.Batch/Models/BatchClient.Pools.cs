@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Deletes the specified pool.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="poolId">The identifier of the pool to delete.</param>
+        /// <param name="poolId">The id of the pool to delete.</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
         public void DeletePool(BatchAccountContext context, string poolId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Stops the resize operation on the specified pool.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="poolId">The identifier of the pool.</param>
+        /// <param name="poolId">The id of the pool.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
         public void StopResizePool(BatchAccountContext context, string poolId, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {

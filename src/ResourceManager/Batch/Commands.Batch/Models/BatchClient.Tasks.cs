@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            // Get the single task matching the specified identifier
+            // Get the single task matching the specified id
             if (!string.IsNullOrEmpty(options.TaskId))
             {
                 WriteVerbose(string.Format(Resources.GBT_GetById, options.TaskId, options.JobId));

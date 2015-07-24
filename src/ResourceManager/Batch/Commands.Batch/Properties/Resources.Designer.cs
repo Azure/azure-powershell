@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool identifier and compute node identifier for the Remote Desktop Protocol file to point to..
+        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to..
         /// </summary>
         internal static string GRDP_NoComputeNode {
             get {
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool identifier and compute node identifier..
+        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id..
         /// </summary>
         internal static string NoComputeNode {
             get {
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No compute node user specified. Supply a pool identifier, compute node identifier, and compute node user name..
+        ///   Looks up a localized string similar to No compute node user specified. Supply a pool id, compute node id, and compute node user name..
         /// </summary>
         internal static string NoComputeNodeUser {
             get {
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a job identifier..
+        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a job id..
         /// </summary>
         internal static string NoJob {
             get {
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No job schedule was specified.  Supply a job schedule identifier or PSCloudJobSchedule object..
+        ///   Looks up a localized string similar to No job schedule was specified.  Supply a job schedule id or PSCloudJobSchedule object..
         /// </summary>
         internal static string NoJobSchedule {
             get {
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job identifier and task identifier, or a parent pool identifier and compute node identifier..
+        ///   Looks up a localized string similar to No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job id and task id, or a parent pool id and compute node id..
         /// </summary>
         internal static string NoNodeFile {
             get {
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job identifier and a task identifier.  To specify a parent compute node, supply a PSComputeNode object or a pool identifier and a compute node identifier..
+        ///   Looks up a localized string similar to No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job id and a task id. To specify a parent compute node, supply a PSComputeNode object or a pool id and a compute node id..
         /// </summary>
         internal static string NoNodeFileParent {
             get {
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool identifier..
+        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool id..
         /// </summary>
         internal static string NoPool {
             get {
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name..
+        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a job id and task id..
         /// </summary>
         internal static string NoTask {
             get {

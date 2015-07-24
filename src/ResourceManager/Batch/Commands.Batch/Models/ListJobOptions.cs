@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         { }
 
         /// <summary>
-        /// If specified, the single job with this identifier will be returned.
+        /// If specified, the single job with this id will be returned.
         /// </summary>
         public string JobId { get; set; }
 

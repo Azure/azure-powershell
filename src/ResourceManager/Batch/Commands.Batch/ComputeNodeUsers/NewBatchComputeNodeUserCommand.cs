@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchComputeNodeUser)]
     public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The identifier of the pool containing the compute node to create the user on.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the pool containing the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The identifier of the compute node to create the user on.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 

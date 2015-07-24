@@ -21,10 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchTask")]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The identifier of the job to create the task under.")]
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The identifier of the task to create.")]
+        [Parameter(Mandatory = true, HelpMessage = "The id of the task to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

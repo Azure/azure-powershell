@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// The identifier of the job containing the task.
+        /// The id of the job containing the task.
         /// </summary>
         public string JobId { get; private set; }
 
         /// <summary>
-        /// The identifier of the task.
+        /// The id of the task.
         /// </summary>
         public string TaskId { get; private set; }
 
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSCloudTask Task { get; private set; }
 
         /// <summary>
-        /// The identifier of the pool containing the compute node.
+        /// The id of the pool containing the compute node.
         /// </summary>
         public string PoolId { get; private set; }
 
         /// <summary>
-        /// The identifier of the compute node
+        /// The id of the compute node
         /// </summary>
         public string ComputeNodeId { get; private set; }
 

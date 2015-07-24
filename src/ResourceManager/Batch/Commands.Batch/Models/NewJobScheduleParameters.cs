@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// The identifier of the job schedule to create.
+        /// The id of the job schedule to create.
         /// </summary>
         public string JobScheduleId { get; private set; }
 

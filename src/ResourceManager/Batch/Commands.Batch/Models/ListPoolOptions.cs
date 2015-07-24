@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         { }
 
         /// <summary>
-        /// If specified, the single pool with this identifier will be returned.
+        /// If specified, the single pool with this id will be returned.
         /// </summary>
         public string PoolId { get; set; }
 

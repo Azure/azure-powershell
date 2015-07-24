@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            // Get the single job matching the specified identifier
+            // Get the single job matching the specified id
             if (!string.IsNullOrEmpty(options.JobId))
             {
                 WriteVerbose(string.Format(Resources.GBJ_GetById, options.JobId));
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Deletes the specified job.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="jobId">The identifier of the job to delete.</param>
+        /// <param name="jobId">The id of the job to delete.</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
         public void DeleteJob(BatchAccountContext context, string jobId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {

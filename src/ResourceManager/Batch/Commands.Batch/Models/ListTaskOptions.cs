@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         { }
 
         /// <summary>
-        /// If specified, the single task with this identifier will be returned.
+        /// If specified, the single task with this id will be returned.
         /// </summary>
         public string TaskId { get; set; }
 

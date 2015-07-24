@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchJobSchedule)]
     public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the job schedule to create.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job schedule to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

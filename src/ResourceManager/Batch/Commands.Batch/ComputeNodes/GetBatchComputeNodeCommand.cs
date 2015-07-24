@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the pool.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }

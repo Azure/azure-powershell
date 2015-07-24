@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// The identifier of the job.
+        /// The id of the job.
         /// </summary>
         public string JobId { get; private set; }
 

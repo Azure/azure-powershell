@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string IdAndPathParameterSet = "Id_Path";
         internal const string IdAndStreamParameterSet = "Id_Stream";
 
-        [Parameter(Position = 0, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the pool which contains the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool which contains the compute node.")]
         [Parameter(Position = 0, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the compute node to which the Remote Desktop Protocol file will point.")]
+        [Parameter(Position = 1, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node to which the Remote Desktop Protocol file will point.")]
         [Parameter(Position = 1, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }

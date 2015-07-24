@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The identifier of the job which contains the tasks.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job which contains the tasks.")]
         [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
