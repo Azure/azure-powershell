@@ -201,7 +201,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             String parameterSetName,
             Boolean force,
             Boolean skipDependencyDetection,
-            StorageCredentials storageCredentials)
+            StorageCredentials storageCredentials,
+            Boolean passThru=false)
         {
             if (parameterSetName == CreateArchiveParameterSetName)
             {
@@ -234,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         skipDependencyDetection,
                         parameterSetName);
 
-                UploadConfigurationArchive(storageCredentials, storageEndpointSuffix, containerName, archivePath, force);
+                UploadConfigurationArchive(storageCredentials, storageEndpointSuffix, containerName, archivePath, force, passThru);
             }
         }
 
@@ -398,7 +399,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             String storageEndpointSuffix,
             String containerName, 
             String archivePath,
-            Boolean force)
+            Boolean force,
+            Boolean passThru)
         {
             CloudBlockBlob modulesBlob = 
                 GetBlobReference(storageCredentials, storageEndpointSuffix, containerName, archivePath);
@@ -427,8 +429,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture, 
                         Properties.Resources.PublishVMDscExtensionArchiveUploadedMessage, modulesBlob.Uri.AbsoluteUri));
-                    
-                    WriteObject(modulesBlob.Uri.AbsoluteUri);
+
+                    if (passThru)
+                    {
+                        WriteObject(modulesBlob.Uri.AbsoluteUri);
+                    }
                 });
         }
 

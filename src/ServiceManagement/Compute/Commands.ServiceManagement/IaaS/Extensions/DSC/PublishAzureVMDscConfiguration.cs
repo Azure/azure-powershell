@@ -131,6 +131,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         public String[] AdditionalPath { get; set; }
 
         /// <summary>
+        /// Outputs the blob url for configuration archive path
+        /// </summary>
+        [Parameter(HelpMessage = "Outputs the blob url for configuration archive path")]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// Credentials used to access Azure Storage
         /// </summary>
         private StorageCredentials _storageCredentials;
@@ -206,7 +212,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
                 ParameterSetName,
                 Force.IsPresent, 
                 SkipDependencyDetection.IsPresent,
-                _storageCredentials
+                _storageCredentials,
+                PassThru.IsPresent
             );
         }
     }

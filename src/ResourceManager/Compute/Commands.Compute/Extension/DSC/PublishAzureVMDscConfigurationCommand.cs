@@ -191,8 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     ParameterSetName,
                     Force.IsPresent,
                     SkipDependencyDetection.IsPresent,
-                    _storageCredentials
-                );
+                    _storageCredentials);
             }
             finally
             {

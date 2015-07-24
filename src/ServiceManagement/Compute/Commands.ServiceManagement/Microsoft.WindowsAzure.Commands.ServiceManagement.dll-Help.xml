@@ -17486,7 +17486,13 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
     			</maml:description>
 			</command:parameter>
-		</command:syntaxItem>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Outputs the blob url for configuration archive path</maml:para>
+				</maml:description>
+			</command:parameter>
+    </command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Publish-ASMVMDscConfiguration</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
@@ -17556,7 +17562,13 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
     			</maml:description>
 			</command:parameter>
-		</command:syntaxItem>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PassThru</maml:name>
+				<maml:description>
+					<maml:para>Outputs the blob url for configuration archive path</maml:para>
+				</maml:description>
+			</command:parameter>
+  </command:syntaxItem>
 	</command:syntax>
 	<!-- Cmdlet parameter section  -->
 	<command:parameters>
@@ -17702,7 +17714,20 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 					</dev:type>
  			<dev:defaultValue /> 
 			</command:parameter>
-	</command:parameters>
+	  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PassThru</maml:name>
+			<maml:description>
+				<maml:para>Outputs the blob url for configuration archive path</maml:para>
+								
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+  </command:parameters>
 	<!-- Input - Output section-->
 	<command:inputTypes>
 		<command:inputType>
