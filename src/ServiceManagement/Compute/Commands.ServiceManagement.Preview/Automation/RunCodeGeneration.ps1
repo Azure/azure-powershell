@@ -806,7 +806,7 @@ $validate_all_method_names_code
 
         $operation_code_template =
 @"
-                        case `"${method_name}`" : WriteObject(Create${method_name}Parameters()); break;
+                        case `"${method_name}`" : WriteObject(Create${method_name}Parameters(), true); break;
 "@;
         $operations_code += $operation_code_template + $new_line_str;
     }
