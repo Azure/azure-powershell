@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -59,10 +60,10 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateOperatingSystemListFamiliesParameters()
+        protected PSArgument[] CreateOperatingSystemListFamiliesParameters()
         {
 
-            return new object[] {  };
+            return ConvertFromObjectsToArguments(new string[] { "" }, new object[] {  });
         }
     }
 }

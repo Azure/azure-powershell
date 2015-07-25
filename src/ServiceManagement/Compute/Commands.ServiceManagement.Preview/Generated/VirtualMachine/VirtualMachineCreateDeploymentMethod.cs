@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -85,12 +86,12 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateVirtualMachineCreateDeploymentParameters()
+        protected PSArgument[] CreateVirtualMachineCreateDeploymentParameters()
         {
             string serviceName = string.Empty;
             VirtualMachineCreateDeploymentParameters parameters = new VirtualMachineCreateDeploymentParameters();
 
-            return new object[] { serviceName, parameters };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "Parameters" }, new object[] { serviceName, parameters });
         }
     }
 }

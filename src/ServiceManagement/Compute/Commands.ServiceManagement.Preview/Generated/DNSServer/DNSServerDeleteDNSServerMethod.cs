@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -98,13 +99,13 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateDNSServerDeleteDNSServerParameters()
+        protected PSArgument[] CreateDNSServerDeleteDNSServerParameters()
         {
             string serviceName = string.Empty;
             string deploymentName = string.Empty;
             string dnsServerName = string.Empty;
 
-            return new object[] { serviceName, deploymentName, dnsServerName };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "DeploymentName", "DnsServerName" }, new object[] { serviceName, deploymentName, dnsServerName });
         }
     }
 }

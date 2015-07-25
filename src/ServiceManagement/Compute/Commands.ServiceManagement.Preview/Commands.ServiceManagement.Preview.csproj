@@ -211,6 +211,7 @@
     <Compile Include="Generated\LoadBalancer\LoadBalancerCreateMethod.cs" />
     <Compile Include="Generated\LoadBalancer\LoadBalancerDeleteMethod.cs" />
     <Compile Include="Generated\LoadBalancer\LoadBalancerUpdateMethod.cs" />
+    <Compile Include="Generated\Models\PSArgument.cs" />
     <Compile Include="Generated\NewAzureComputeArgumentListCmdlet.cs" />
     <Compile Include="Generated\OperatingSystem\OperatingSystemListFamiliesMethod.cs" />
     <Compile Include="Generated\OperatingSystem\OperatingSystemListMethod.cs" />

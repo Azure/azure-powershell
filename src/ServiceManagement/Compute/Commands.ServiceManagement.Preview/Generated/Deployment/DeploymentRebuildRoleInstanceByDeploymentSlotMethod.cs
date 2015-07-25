@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -111,14 +112,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateDeploymentRebuildRoleInstanceByDeploymentSlotParameters()
+        protected PSArgument[] CreateDeploymentRebuildRoleInstanceByDeploymentSlotParameters()
         {
             string serviceName = string.Empty;
             string deploymentSlot = string.Empty;
             string roleInstanceName = string.Empty;
             string resources = string.Empty;
 
-            return new object[] { serviceName, deploymentSlot, roleInstanceName, resources };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "DeploymentSlot", "RoleInstanceName", "Resources" }, new object[] { serviceName, deploymentSlot, roleInstanceName, resources });
         }
     }
 }

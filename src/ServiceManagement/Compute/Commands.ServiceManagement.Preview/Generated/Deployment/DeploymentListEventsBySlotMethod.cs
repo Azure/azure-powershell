@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -111,14 +112,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateDeploymentListEventsBySlotParameters()
+        protected PSArgument[] CreateDeploymentListEventsBySlotParameters()
         {
             string serviceName = string.Empty;
             DeploymentSlot deploymentSlot = new DeploymentSlot();
             DateTime startTime = new DateTime();
             DateTime endTime = new DateTime();
 
-            return new object[] { serviceName, deploymentSlot, startTime, endTime };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "DeploymentSlot", "StartTime", "EndTime" }, new object[] { serviceName, deploymentSlot, startTime, endTime });
         }
     }
 }

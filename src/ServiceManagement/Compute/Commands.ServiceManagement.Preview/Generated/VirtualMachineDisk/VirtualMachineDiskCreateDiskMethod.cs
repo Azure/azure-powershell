@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -72,11 +73,11 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateVirtualMachineDiskCreateDiskParameters()
+        protected PSArgument[] CreateVirtualMachineDiskCreateDiskParameters()
         {
             VirtualMachineDiskCreateParameters parameters = new VirtualMachineDiskCreateParameters();
 
-            return new object[] { parameters };
+            return ConvertFromObjectsToArguments(new string[] { "Parameters" }, new object[] { parameters });
         }
     }
 }

@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -124,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateVirtualMachineDiskDeleteDataDiskParameters()
+        protected PSArgument[] CreateVirtualMachineDiskDeleteDataDiskParameters()
         {
             string serviceName = string.Empty;
             string deploymentName = string.Empty;
@@ -132,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
             int logicalUnitNumber = new int();
             bool deleteFromStorage = new bool();
 
-            return new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "DeploymentName", "RoleName", "LogicalUnitNumber", "DeleteFromStorage" }, new object[] { serviceName, deploymentName, roleName, logicalUnitNumber, deleteFromStorage });
         }
     }
 }

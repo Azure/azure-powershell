@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -177,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
                 }
                 else
                 {
-                    argumentList = (object[])dynamicParameters["ArgumentList"].Value;
+                    argumentList = ConvertFromArgumentsToObjects((object[])dynamicParameters["ArgumentList"].Value);
                 }
 
                 switch (MethodName)

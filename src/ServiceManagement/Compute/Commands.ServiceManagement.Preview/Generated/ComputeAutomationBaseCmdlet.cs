@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -31,6 +32,42 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 {
     public abstract class ComputeAutomationBaseCmdlet : Microsoft.WindowsAzure.Commands.Utilities.Common.ServiceManagementBaseCmdlet
     {
+        protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
+        {
+            var arguments = new PSArgument[objects.Length];
+            
+            for (int index = 0; index < objects.Length; index++)
+            {
+                arguments[index] = new PSArgument
+                {
+                    Name = names[index],
+                    Type = objects[index].GetType(),
+                    Value = objects[index]
+                };
+            }
+
+            return arguments;
+        }
+
+        protected static object[] ConvertFromArgumentsToObjects(object[] arguments)
+        {
+            var objects = new object[arguments.Length];
+            
+            for (int index = 0; index < arguments.Length; index++)
+            {
+                if (arguments[index] is PSArgument)
+                {
+                    objects[index] = ((PSArgument)arguments[index]).Value;
+                }
+                else
+                {
+                    objects[index] = arguments[index];
+                }
+            }
+
+            return objects;
+        }
+
         public IDeploymentOperations DeploymentClient
         {
             get

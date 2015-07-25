@@ -70,6 +70,7 @@ Write-Verbose "=============================================";
 Write-Verbose "${new_line_str}";
 
 $code_common_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation';
+$code_model_namespace = ($client_library_namespace.Replace('.Management.', '.Commands.')) + '.Automation.Models';
 
 $code_common_usings = @(
     'System',
@@ -115,7 +116,7 @@ function Get-SortedUsings
         $client_library_namespace
     )
 
-    $list_of_usings = @() + $common_using_str_list + $client_library_namespace + $client_model_namespace;
+    $list_of_usings = @() + $common_using_str_list + $client_library_namespace + $client_model_namespace + $code_model_namespace;
     $sorted_usings = $list_of_usings | Sort-Object -Unique | foreach { "using ${_};" };
 
     $text = [string]::Join($new_line_str, $sorted_usings);
@@ -313,6 +314,35 @@ function Is-PipingPropertyTypeName
     return $false;
 }
 
+function Write-PSArgumentFile
+{
+    param(
+        [Parameter(Mandatory = $True)]
+        [string]$file_full_path
+    )
+
+    $model_source_code_text =
+@"
+${code_common_header}
+
+$code_using_strs
+
+namespace ${code_model_namespace}
+{
+    public class PSArgument
+    {
+        public string Name { get; set; }
+
+        public Type Type { get; set; }
+
+        public object Value { get; set; }
+    }
+}
+"@;
+
+    $st = Set-Content -Path $file_full_path -Value $model_source_code_text -Force;
+}
+
 function Write-BaseCmdletFile
 {
     param(
@@ -378,6 +408,42 @@ namespace ${code_common_namespace}
 {
     public abstract class ComputeAutomationBaseCmdlet : $baseCmdletFullName
     {
+        protected static PSArgument[] ConvertFromObjectsToArguments(string[] names, object[] objects)
+        {
+            var arguments = new PSArgument[objects.Length];
+            
+            for (int index = 0; index < objects.Length; index++)
+            {
+                arguments[index] = new PSArgument
+                {
+                    Name = names[index],
+                    Type = objects[index].GetType(),
+                    Value = objects[index]
+                };
+            }
+
+            return arguments;
+        }
+
+        protected static object[] ConvertFromArgumentsToObjects(object[] arguments)
+        {
+            var objects = new object[arguments.Length];
+            
+            for (int index = 0; index < arguments.Length; index++)
+            {
+                if (arguments[index] is PSArgument)
+                {
+                    objects[index] = ((PSArgument)arguments[index]).Value;
+                }
+                else
+                {
+                    objects[index] = arguments[index];
+                }
+            }
+
+            return objects;
+        }
+
 ${operation_get_code}
     }
 }
@@ -507,7 +573,7 @@ $validate_all_method_names_code
                 }
                 else
                 {
-                    argumentList = (object[])dynamicParameters[`"ArgumentList`"].Value;
+                    argumentList = ConvertFromArgumentsToObjects((object[])dynamicParameters[`"ArgumentList`"].Value);
                 }
 
                 switch (MethodName)
@@ -916,6 +982,7 @@ function Write-OperationCmdletFile
     [System.Collections.ArrayList]$param_names = @();
     [System.Collections.ArrayList]$invoke_param_names = @();
     [System.Collections.ArrayList]$invoke_local_param_names = @();
+    [System.Collections.ArrayList]$create_local_param_names = @();
     $position_index = 1;
     foreach ($pt in $params)
     {
@@ -966,6 +1033,8 @@ function Write-OperationCmdletFile
     $params_join_str = [string]::Join(', ', $param_names.ToArray());
     $invoke_params_join_str = [string]::Join(', ', $invoke_param_names.ToArray());
     $invoke_local_params_join_str = [string]::Join(', ', $invoke_local_param_names.ToArray());
+
+    $invoke_local_param_names_join_str = "`"" + [string]::Join('", "', $param_names.ToArray()) + "`"";
 
     $cmdlet_client_call_template =
 @"
@@ -1059,10 +1128,10 @@ ${invoke_local_param_code_content}
 
     $parameter_cmdlt_source_template =
 @"
-        protected object[] Create${invoke_param_set_name}Parameters()
+        protected PSArgument[] Create${invoke_param_set_name}Parameters()
         {
 ${create_local_param_code_content}
-            return new object[] { ${invoke_local_params_join_str} };
+            return ConvertFromObjectsToArguments(new string[] { $invoke_local_param_names_join_str }, new object[] { ${invoke_local_params_join_str} });
         }
 "@;
 
@@ -1100,7 +1169,7 @@ ${cmdlet_partial_class_code}
 }
 "@;
 
-    
+
     $cmdlt_partial_class_source_template =
 @"
 ${code_common_header}
@@ -1401,6 +1470,16 @@ else
     $opNameList = ($filtered_types | select -ExpandProperty Name);
     $clientClassType = $types | where { $_.Namespace -eq $dllname -and $_.Name -eq 'IComputeManagementClient' };
     Write-BaseCmdletFile $baseCmdletFileFullName $opNameList $clientClassType;
+
+    # PSArgument File
+    $model_class_out_folder = $outFolder + '\Models';
+    if (Test-Path -Path $model_class_out_folder)
+    {
+        $st = rmdir -Recurse -Force $model_class_out_folder;
+    }
+    $st = mkdir -Force $model_class_out_folder;
+    $psargument_model_class_file_path = $model_class_out_folder + '\PSArgument.cs';
+    Write-PSArgumentFile $psargument_model_class_file_path;
 
     $invoke_cmdlet_class_name = 'InvokeAzureComputeMethodCmdlet';
     $invoke_cmdlet_file_name = $outFolder + '\' + "$invoke_cmdlet_class_name.cs";

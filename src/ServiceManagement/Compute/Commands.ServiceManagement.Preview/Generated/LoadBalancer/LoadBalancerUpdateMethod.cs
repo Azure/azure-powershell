@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Compute.Automation.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
@@ -111,14 +112,14 @@ namespace Microsoft.WindowsAzure.Commands.Compute.Automation
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object[] CreateLoadBalancerUpdateParameters()
+        protected PSArgument[] CreateLoadBalancerUpdateParameters()
         {
             string serviceName = string.Empty;
             string deploymentName = string.Empty;
             string loadBalancerName = string.Empty;
             LoadBalancerUpdateParameters parameters = new LoadBalancerUpdateParameters();
 
-            return new object[] { serviceName, deploymentName, loadBalancerName, parameters };
+            return ConvertFromObjectsToArguments(new string[] { "ServiceName", "DeploymentName", "LoadBalancerName", "Parameters" }, new object[] { serviceName, deploymentName, loadBalancerName, parameters });
         }
     }
 }
