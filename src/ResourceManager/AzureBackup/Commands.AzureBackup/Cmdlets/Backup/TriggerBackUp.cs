@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug(string.Format("Triggered backup. Converting response {0}", operationId));
 
-                //var operationStatus = TrackOperation(operationId);
-                //WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
+                var operationStatus = TrackOperation(operationId);
+                WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
             });
         }
     }

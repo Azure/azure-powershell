@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="ScenarioTests\BackupItemTests.cs" />
     <Compile Include="ScenarioTests\RecoveryPointTests.cs" />
+    <Compile Include="ScenarioTests\RestoreItemTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -173,6 +174,7 @@
     </None>
     <None Include="ScenarioTests\BackupItemTests.ps1" />
     <None Include="ScenarioTests\RecoveryPointTests.ps1" />
+    <None Include="ScenarioTests\RestoreItemTests.ps1" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests.AzureBackupContainerTests\AzureBackupMarsContainerScenarioTests.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

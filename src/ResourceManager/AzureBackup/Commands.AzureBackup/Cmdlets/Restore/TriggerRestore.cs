@@ -20,13 +20,14 @@ using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using System.Web.Script.Serialization;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
     /// Trigger Restore Job
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureBackupItem"), OutputType(typeof(Guid))]
+    [Cmdlet(VerbsData.Restore, "AzureBackupItem"), OutputType(typeof(AzureBackupJob))]
     public class RestoreAzureBackup : AzureBackupRestoreBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StorageAccountName)]

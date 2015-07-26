@@ -8,18 +8,18 @@ $Location = "SouthEast Asia"
 $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;dev01testing;dev01testing"
+$ItemName = "iaasvmcontainer;dev01testing;dev01testing"
+$RecoveryPointName = "12520735098347"
 
 
-function Test-GetAzureRecoveryPoint
+function Test-GetAzureRecoveryPoints
 {
     $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceGroupName
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
-	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
-	$azureBackUpItem.Type = $DataSourceType
+	$azureBackUpItem.ItemName = $ItemName
 	$recoveryPoints = Get-AzureBackupRecoveryPoint -Item $azureBackUpItem
 	if (!($recoveryPoints -eq $null))
 	{
@@ -29,5 +29,22 @@ function Test-GetAzureRecoveryPoint
 			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
 			Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
 		}
+	}
+}
+
+function Test-GetAzureRecoveryPoint
+{
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
+	$azureBackUpItem.ResourceName = $ResourceGroupName
+	$azureBackUpItem.Location = $Location
+	$azureBackUpItem.ContainerUniqueName = $ContainerName
+	$azureBackUpItem.ItemName = $ItemName
+	$recoveryPoint = Get-AzureBackupRecoveryPoint -Item $azureBackUpItem -Id $RecoveryPointName
+	if (!($recoveryPoint -eq $null))
+	{
+		Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
+		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
+		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
 	}
 }
