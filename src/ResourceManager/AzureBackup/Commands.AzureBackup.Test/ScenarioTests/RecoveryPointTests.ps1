@@ -40,7 +40,7 @@ function Test-GetAzureRecoveryPoint
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ItemName = $ItemName
-	$recoveryPoint = Get-AzureBackupRecoveryPoint -Item $azureBackUpItem -Id $RecoveryPointName
+	$recoveryPoint = Get-AzureBackupRecoveryPoint -Item $azureBackUpItem -RecoveryPointId $RecoveryPointName
 	if (!($recoveryPoint -eq $null))
 	{
 		Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
