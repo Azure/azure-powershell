@@ -33,8 +33,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void AddAdalTracing(DebugStreamTraceListener listener)
         {
-            //AdalTrace.TraceSource.Listeners.Add(listener);
-            //AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
+            AdalTrace.TraceSource.Listeners.Add(listener);
+            AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
         }
 
         public ConcurrentQueue<string> Messages; 
@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static void RemoveAdalTracing(DebugStreamTraceListener listener)
         {
-            //AdalTrace.TraceSource.Listeners.Remove(listener);
+            AdalTrace.TraceSource.Listeners.Remove(listener);
         }
     }
 }
