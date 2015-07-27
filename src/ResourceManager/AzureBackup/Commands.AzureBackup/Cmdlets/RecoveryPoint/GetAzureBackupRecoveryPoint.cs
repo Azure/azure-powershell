@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string RecoveryPointId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 WriteDebug("Making client call");
 
-                if (Id != null)
+                if (RecoveryPointId != null)
                 {
-                    CSMRecoveryPointResponse recoveryPointObject = AzureBackupClient.GetRecoveryPoint(Item.ContainerUniqueName, Item.ItemName, Id);
+                    CSMRecoveryPointResponse recoveryPointObject = AzureBackupClient.GetRecoveryPoint(Item.ContainerUniqueName, Item.ItemName, RecoveryPointId);
                     if (recoveryPointObject != null)
                     {
                         WriteAzureBackupRecoveryPoint(recoveryPointObject, Item);
                     }
                     else
                     {
-                        WriteDebug(string.Format("{0}{1}", "No recovery point exist with Id := ", Id));
+                        WriteDebug(string.Format("{0}{1}", "No recovery point exist with Id := ", RecoveryPointId));
                     }
                 }
                 else
