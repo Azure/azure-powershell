@@ -183,5 +183,28 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return base.SendAsync(request, cancellationToken);
             }
         }
+
+
+        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

@@ -58,11 +58,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
                 {
                     var context = new AuthenticationContext(Path.Combine(authEndpoint, tenant));
 
-                    result = context.AcquireToken(
+                    result = context.AcquireTokenAsync(
                         resource: "https://management.core.windows.net/",
                         clientId: clientId,
                         redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
-                        promptBehavior: PromptBehavior.Auto);
+                        parameters: new PlatformParameters(PromptBehavior.Auto, null)).ConfigureAwait(false).GetAwaiter().GetResult();
                 }
                 catch (Exception threadEx)
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Remove trailing slashes from a string
         /// </summary>
-        /// <param name="authority">The tring to remove slashes from.</param>
+        /// <param name="authority">The string to remove slashes from.</param>
         /// <returns>The input string with trailing slashes removed</returns>
         private static string EnsureNoTrailingSlash(string authority)
         {

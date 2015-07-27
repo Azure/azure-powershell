@@ -51,9 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
         private StorSimpleManagementClient GetStorSimpleClient()
         {
             try
-            {
-                //var testEnvironment = this.rdfeTestFactory.GetTestEnvironment();
-                
+            {                
                 var storSimpleClient = GetServiceClient<StorSimpleManagementClient>();
                 
                 //var storSimpleClient = new StorSimpleManagementClient("", "", "", "", "",
