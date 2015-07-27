@@ -284,13 +284,13 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchAccount -AccountName "pfuller"
-          AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
-          -----------          --------        ----------------- ----               -------------
-          pfuller              westus          CmdletExampleRG                      https://Batch.core.contoso.net
+          PS C:\&gt;Get-AzureBatchAccount -AccountName "cmdletexample"
+          AccountName                Location        ResourceGroupName Tags               TaskTenantUrl
+          -----------                --------        ----------------- ----               -------------
+          cmdletexample              westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
         </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the Batch account named pfuller.</maml:para>
+          <maml:para>This command gets the Batch account named cmdletexample.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -308,10 +308,10 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureBatchAccount -ResourceGroupName "CmdletExampleRG"
-          AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
-          -----------          --------        ----------------- ----               -------------
-          cmdletexample        westus          CmdletExampleRG                      https://Batch.core.contoso.net
-          cmdletexample2       westus          CmdletExampleRG                      https://Batch.core.contoso.net
+          AccountName                Location        ResourceGroupName Tags               TaskTenantUrl
+          -----------                --------        ----------------- ----               -------------
+          cmdletexample              westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
+          cmdletexample2             westus          CmdletExampleRG                      https://cmdletexample2.westus.batch.azure.com
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the Batch accounts associated with the CmdletExampleRG resource group.</maml:para>
@@ -3751,10 +3751,10 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureBatchAccountKey -AccountName "CmdletExample" -KeyType "Primary"
-          AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
-          -----------          --------        ----------------- ----               -------------
-          cmdletexample        westus          CmdletExample                        https://Batch.core.contoso.net
+          PS C:\&gt;New-AzureBatchAccountKey -AccountName "cmdletexample" -KeyType "Primary"
+          AccountName                Location        ResourceGroupName Tags               TaskTenantUrl
+          -----------                --------        ----------------- ----               -------------
+          cmdletexample              westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
         </dev:code>
         <dev:remarks>
           <maml:para>This command regenerates the primary account key on the Batch account named CmdletExample.</maml:para>
@@ -3938,9 +3938,9 @@
         <dev:code>
           PS C:\&gt;New-AzureBatchAccount -AccountName "cmdletexample" -ResourceGroupName "CmdletExampleRG" -Location "WestUS"
 
-          AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
-          -----------          --------        ----------------- ----               -------------
-          cmdletexample       WestUS           CmdletExampleRG                      https://Batch.core.contoso.net
+          AccountName                Location        ResourceGroupName Tags               TaskTenantUrl
+          -----------                --------        ----------------- ----               -------------
+          cmdletexample              westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new Batch account named cmdletexample using the CmdletExampleRG resource group in the WestUS location.</maml:para>
@@ -7199,12 +7199,12 @@
           PS C:\&gt;Set-AzureBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
 
 
-          AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
-          -----------          --------        ----------------- ----               -------------
-          cmdletexample        westus          cmdletexamplerg   {System.Collection https://Batch.core.windows.net
-          s.Hashtable, Syste
-          m.Collections.Hash
-          table}
+          AccountName                Location        ResourceGroupName  Tags                TaskTenantUrl
+          -----------                --------        -----------------  ----                -------------
+          cmdletexample              westus          CmdletExampleRG    {System.Collection  https://cmdletexample.westus.batch.azure.com
+                                                                        s.Hashtable, Syste
+                                                                        m.Collections.Hash
+                                                                        table}
         </dev:code>
         <dev:remarks>
           <maml:para>This command updates the tags on the cmdletexample account.</maml:para>
