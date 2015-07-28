@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             Assert.Equal(2, client.Profile.Environments.Count); //only default environments
         }
 
-        [Fact]
+        [Fact(Skip = "ADAL Version 3.5 does not allow AuthenticationResult construction.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearAzureProfileClearsTokenCache()
         {

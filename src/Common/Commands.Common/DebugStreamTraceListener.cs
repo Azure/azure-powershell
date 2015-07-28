@@ -20,7 +20,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -29,12 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public DebugStreamTraceListener(ConcurrentQueue<string> queue)
         {
             Messages = queue;
-        }
-
-        public static void AddAdalTracing(DebugStreamTraceListener listener)
-        {
-            AdalTrace.TraceSource.Listeners.Add(listener);
-            AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
         }
 
         public ConcurrentQueue<string> Messages; 
@@ -46,11 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public override void WriteLine(string message)
         {
             Write(message +  "\n");
-        }
-
-        public static void RemoveAdalTracing(DebugStreamTraceListener listener)
-        {
-            AdalTrace.TraceSource.Listeners.Remove(listener);
         }
     }
 }

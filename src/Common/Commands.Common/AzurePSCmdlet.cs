@@ -170,7 +170,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             _httpTracingInterceptor = _httpTracingInterceptor?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener?? new DebugStreamTraceListener(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
-            DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
             base.BeginProcessing();
         }
@@ -197,7 +196,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             WriteDebugWithTimestamp(message);
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
-            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
 
             base.EndProcessing();
