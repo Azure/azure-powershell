@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Sql;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Services
+namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
@@ -55,45 +55,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Services
                 SqlClient = null;
             }
         }
-
-        /// <summary>
-        /// Gets the Azure Sql Recommended Elastic Pool
-        /// </summary>
-        public Management.Sql.Models.RecommendedElasticPool Get(string resourceGroupName, string serverName, string recommendedElasticPoolName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.Get(resourceGroupName, serverName, recommendedElasticPoolName).RecommendedElasticPool;
-        }
-
-        /// <summary>
-        /// Gets the Azure Sql Database in the Recommended Elastic Pool
-        /// </summary>
-        public Management.Sql.Models.Database GetDatabase(string resourceGroupName, string serverName, string recommendedElasticPoolName, string databaseName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.GetDatabases(resourceGroupName, serverName, recommendedElasticPoolName, databaseName).Database;
-        }
         
         /// <summary>
-        /// Lists Azure Sql Recommended Elastic Pool
+        /// Lists Azure Sql Recommended Elastic Pool with expanded properties
         /// </summary>
-        public IList<Management.Sql.Models.RecommendedElasticPool> List(string resourceGroupName, string serverName, string clientRequestId)
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="expand">Expanded properties</param>
+        /// <param name="clientRequestId">Request id</param>
+        /// <returns>IList of RecommendedElasticPool</returns>
+        public IList<Management.Sql.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.List(resourceGroupName, serverName).RecommendedElasticPools;
-        }
-
-        /// <summary>
-        /// Gets Recommended Elastic Pool Metrics
-        /// </summary>
-        public IList<Management.Sql.Models.RecommendedElasticPoolMetric> ListMetrics(string resourceGroupName, string serverName, string poolName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListMetrics(resourceGroupName, serverName, poolName).RecommendedElasticPoolsMetrics;
-        }
-
-        /// <summary>
-        /// Gets Recommended Elastic Pool Databases
-        /// </summary>
-        internal IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string poolName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListDatabases(resourceGroupName, serverName, poolName).Databases;
+            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }
 
         /// <summary>
