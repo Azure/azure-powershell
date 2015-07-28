@@ -324,12 +324,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
+        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = new Deployment
             {
                 Properties = new DeploymentProperties {
-                    Mode = DeploymentMode.Incremental,
+                    Mode = deploymentMode,
                     Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
                     Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
                 }
