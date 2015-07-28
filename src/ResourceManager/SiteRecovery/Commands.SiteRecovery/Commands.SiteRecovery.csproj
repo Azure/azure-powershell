@@ -49,7 +49,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.SiteRecovery, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServicesARM.0.0.15-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServicesARM.0.0.22-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

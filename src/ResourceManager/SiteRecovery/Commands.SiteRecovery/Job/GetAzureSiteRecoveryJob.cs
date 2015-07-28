@@ -64,22 +64,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         //[ValidateNotNullOrEmpty]
         //public string TargetObjectId { get; set; }
 
-        /// <summary>
-        /// Gets or sets state. Take string input for possible States of ASR Job. Use this parameter 
-        /// to get filtered view of Jobs
-        /// </summary>
-        /// Considered Valid states from WorkflowStatus enum in SRS (WorkflowData.cs)
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "State of job to return.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "NotStarted",
-            "InProgress",
-            "Succeeded",
-            "Other",
-            "Failed",
-            "Cancelled",
-            "Suspended")]
-        public string State { get; set; }
+        ///// <summary>
+        ///// Gets or sets state. Take string input for possible States of ASR Job. Use this parameter 
+        ///// to get filtered view of Jobs
+        ///// </summary>
+        ///// Considered Valid states from WorkflowStatus enum in SRS (WorkflowData.cs)
+        //[Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "State of job to return.")]
+        //[ValidateNotNullOrEmpty]
+        //[ValidateSet(
+        //    "NotStarted",
+        //    "InProgress",
+        //    "Succeeded",
+        //    "Other",
+        //    "Failed",
+        //    "Cancelled",
+        //    "Suspended")]
+        //public string State { get; set; }
         #endregion Parameters
 
         /// <summary>
