@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         }
 
         /// <summary>
-        /// Gets all containers in the vault
+        /// Gets all IaaSVM containers in the vault by friendly name
         /// </summary>
-        /// <param name="filter"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<CSMContainerResponse> ListContainers(string filter)
+        public IEnumerable<CSMContainerResponse> ListContainers(ContainerQueryParameters parameters)
         {
-            var listResponse = AzureBackupClient.Container.ListAsync(filter, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var listResponse = AzureBackupClient.Container.ListAsync(parameters, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return listResponse.CSMContainerListResponse.Value;
         }
 

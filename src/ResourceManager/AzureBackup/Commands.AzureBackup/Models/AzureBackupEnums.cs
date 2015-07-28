@@ -27,23 +27,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         AzureVM,
     }
 
-    public enum AzureBackupContainerStatusInput
-    {
-        Registering = 1,
-        Registered,
-    }
-
     public enum AzureBackupContainerRegistrationStatus
     {
-        Invalid = 0,
-
-        Unknown,
-
-        NotRegistered,
-
-        Registered,
-
+        Registered = 1,
         Registering,
+        NotRegistered,
     }
 
     public enum ScheduleType
@@ -86,23 +74,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         DiscoveryInProgress = 410002,
     }
 
-    public enum ManagedContainerType
-    {
-        Invalid = 0,
-
-        Unknown,
-
-        // used by fabric adapter to populate discovered VMs
-        IaasVMContainer,
-
-        // used by fabric adapter to populate discovered services
-        // VMs are child containers of services they belong to
-        IaasVMServiceContainer
-    }
-
     public enum WorkloadType
     {
         Invalid = 0,
         VM = 1
+    }
+
+    public enum ManagedContainerType
+    {
+        Invalid = 0,
+        IaasVM,
+        IaasVMService,
     }
 }

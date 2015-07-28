@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private bool IsDiscoveryNeeded(string vmName, string rgName, out CSMContainerResponse container)
         {
             bool isDiscoveryNeed = false;
-            //First check if container is discoverd or not
-            ListContainerQueryParameter queryParams = new ListContainerQueryParameter();
-            queryParams.ContainerTypeField = ManagedContainerType.IaasVMContainer.ToString();
-            queryParams.ContainerStatusField = String.Empty;
-            queryParams.ContainerFriendlyNameField = vmName;
-            string queryString = ContainerHelpers.GetQueryFilter(queryParams);
+            ContainerQueryParameters parameters = new ContainerQueryParameters()
+            {
+                ContainerType = ManagedContainerType.IaasVM.ToString(),
+                FriendlyName = vmName,                
+            };
 
-            var containers = AzureBackupClient.ListContainers(queryString);
+            //First check if container is discoverd or not            
+            var containers = AzureBackupClient.ListContainers(parameters);
             WriteDebug(String.Format("Container count returned from service: {0}.", containers.Count()));
             if (containers.Count() == 0)
             {

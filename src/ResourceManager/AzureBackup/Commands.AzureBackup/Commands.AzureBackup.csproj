@@ -126,7 +126,9 @@
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
-    <Compile Include="AzureBackupPolicyCmdletBase.cs" />
+    <Compile Include="AzureBackupPolicyCmdletBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AzureBackUpRestoreBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
@@ -137,7 +139,9 @@
     <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Item\Disable-AzureBackupProtection .cs" />
-    <Compile Include="Cmdlets\Item\Enable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureBackupProtection .cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Cmdlets\Item\GetAzureBackupItem.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
@@ -147,7 +151,9 @@
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\TriggerRestore.cs" />
     <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
@@ -210,9 +216,6 @@
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
