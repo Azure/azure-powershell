@@ -121,6 +121,9 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -161,6 +164,9 @@
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
+    <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\DSC\ConfigurationParseResult.cs" />
     <Compile Include="Extension\DSC\ConfigurationParsingHelper.cs" />
     <Compile Include="Extension\DSC\DscExtensionPrivateSettings.cs" />

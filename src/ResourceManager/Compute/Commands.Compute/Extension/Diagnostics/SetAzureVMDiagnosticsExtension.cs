@@ -13,43 +13,52 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Xml;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
+namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        VirtualMachineDiagnosticsExtensionNoun,
-        DefaultParameterSetName = SetExtParamSetName),
-    OutputType(
-        typeof(IPersistentVM))]
-    public class SetAzureVMDiagnosticsExtensionCommand : VirtualMachineDiagnosticsExtensionCmdletBase
+        ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    public class SetAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private string publicConfiguration;
         private string privateConfiguration;
         private string storageKey;
-        protected const string SetExtParamSetName = "SetDiagnosticsExtension";
-        protected const string SetExtRefParamSetName = "SetDiagnosticsWithReferenceExtension";
+        private const string VirtualMachineExtension = "Microsoft.Compute/virtualMachines/extensions";
+        private const string IaaSDiagnosticsExtension = "IaaSDiagnostics";
+        private const string ExtensionPublisher = "Microsoft.Azure.Diagnostics";
+        private StorageManagementClient storageClient;
+
         [Parameter(
-            ParameterSetName = SetExtParamSetName,
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "XML Diagnostics Configuration")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
         [Parameter(
-            ParameterSetName = SetExtRefParamSetName,
             Mandatory = true,
-            Position = 0,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string VMName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "XML Diagnostics Configuration")]
         [ValidateNotNullOrEmpty]
@@ -59,15 +68,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             set;
         }
 
-        [Parameter(ParameterSetName = SetExtParamSetName,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(
             Mandatory = true,
-            HelpMessage = "The storage connection context")]
-        [Parameter(ParameterSetName = SetExtRefParamSetName,
-            Position = 1,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
             HelpMessage = "The storage connection context")]
         [ValidateNotNullOrEmpty]
         public AzureStorageContext StorageContext
@@ -75,38 +79,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             get;
             set;
         }
- 
 
         [Parameter(
-        ParameterSetName = SetExtParamSetName,
-        Position = 2,
-        ValueFromPipelineByPropertyName = false,
-        HelpMessage = "WAD Version")]
-        [Parameter(
-        ParameterSetName = SetExtRefParamSetName,
-        Position = 2,
-        ValueFromPipelineByPropertyName = false,
-        HelpMessage = "WAD Version")]
-        public override string Version { get; set; }
-
-        [Parameter(
-            ParameterSetName = SetExtParamSetName,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To Set the Extension State to 'Disable'.")]
-        [Parameter(
-            ParameterSetName = SetExtRefParamSetName,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To Set the Extension State to 'Disable'.")]
-        public override SwitchParameter Disable { get; set; }
-
-        [Parameter(
-            ParameterSetName = SetExtRefParamSetName,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To specify the reference name.")]
-        public override string ReferenceName { get; set; }
+            HelpMessage = "The location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Extension Name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         public string StorageAccountName
         {
@@ -137,62 +125,74 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
         }
 
-        public override string PublicConfiguration
+        public string PublicConfiguration
         {
             get
             {
                 if (string.IsNullOrEmpty(this.publicConfiguration))
                 {
                     this.publicConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName));
+                        DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(
+                            this.DiagnosticsConfigurationPath, this.StorageAccountName);
                 }
 
                 return this.publicConfiguration;
             }
         }
 
-        public override string PrivateConfiguration
+        public string PrivateConfiguration
         {
             get
             {
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
-                    this.privateConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
-                            this.Endpoint));
+                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
+                            this.Endpoint);
                 }
 
                 return this.privateConfiguration;
             }
         }
 
+        public StorageManagementClient StorageClient
+        {
+            get
+            {
+                if (this.storageClient == null)
+                {
+                    this.storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                }
+
+                return this.storageClient;
+            }
+        }
 
         internal void ExecuteCommand()
         {
-            ValidateParameters();
-            RemovePredicateExtensions();
-            AddResourceExtension();
-            WriteObject(VM);
-            UpdateAzureVMCommand cmd = new UpdateAzureVMCommand();
-        }
+            base.ExecuteCmdlet();
 
-        protected override void ValidateParameters()
-        {     
-            base.ValidateParameters();
-            ExtensionName = DiagnosticsExtensionType;
-            Publisher = DiagnosticsExtensionNamespace;
-
-            // If the user didn't specify an extension reference name and the input VM already has a diagnostics extension,
-            // reuse its reference name
-            if (string.IsNullOrEmpty(ReferenceName))
+            ExecuteClientAction(() =>
             {
-                ResourceExtensionReference diagnosticsExtension = ResourceExtensionReferences.FirstOrDefault(ExtensionPredicate);
-                if (diagnosticsExtension != null)
+                var parameters = new VirtualMachineExtension
                 {
-                    ReferenceName = diagnosticsExtension.ReferenceName;
-                }
-            }
+                    Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtension,
+                    Settings = this.PublicConfiguration,
+                    ProtectedSettings = this.PrivateConfiguration,
+                    Publisher = ExtensionPublisher,
+                    ExtensionType = IaaSDiagnosticsExtension,
+                    TypeHandlerVersion = "1.4"
+                };
+
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
+
+                WriteObject(op);
+            });
         }
 
         protected string GetStorageKey()
