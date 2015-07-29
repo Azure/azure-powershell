@@ -31,8 +31,12 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
-        [ValidateNotNullOrEmpty]
-        public DeploymentMode DeploymentMode { get; set; }
+        public DeploymentMode Mode { get; set; }
+
+        public TestAzureResourceGroupTemplateCommand()
+        {
+            this.Mode = DeploymentMode.Incremental;
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -46,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
                 StorageAccountName = StorageAccountName
             };
 
-            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode));
+            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode));
         }
     }
 }
