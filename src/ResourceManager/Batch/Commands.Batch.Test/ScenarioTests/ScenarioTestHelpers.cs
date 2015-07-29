@@ -49,7 +49,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // Content-Type header used by the Batch REST APIs
         private const string ContentTypeString = "application/json;odata=minimalmetadata";
 
-        private const string DefaultPoolName = "testPool";
+        // NOTE: To save time on setup and VM allocation when recording, many tests assume the following:
+        //     - A Batch account named 'pstests' exists under the subscription being used for recording.
+        //     - The following commands were run to create a pool, and all 3 VMs are allocated:
+        //          $context = Get-AzureBatchAccountKeys "pstests"
+        //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
+        //          $startTask.CommandLine = "cmd /c echo hello"
+        //          New-AzureBatchPool -Name "testPool" -VMSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        internal const string SharedAccount = "pstests";
+        internal const string SharedPool = "testPool";
+        internal const string SharedPoolVM = "tvm-4155946844_1-20150709t190321z"; // Use the following command to get a VM name: (Get-AzureBatchVM -PoolName "testPool" -BatchContext $context)[0].Name
+        internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
+        internal const string SharedPoolStartTaskStdOutContent = "hello";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
@@ -88,7 +99,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName)
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName, int targetDedicated)
         {
             YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
@@ -98,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 OSFamily = "4",
                 TargetOSVersion = "*",
-                TargetDedicated = 1
+                TargetDedicated = targetDedicated
             };
 
             client.CreatePool(parameters);
@@ -129,6 +140,39 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Gets the CurrentDedicated count from a pool
+        /// </summary>
+        public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolName)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            {
+                PoolName = poolName
+            };
+
+            PSCloudPool pool = client.ListPools(options).First();
+            return pool.CurrentDedicated.Value;
+        }
+
+        /// <summary>
+        /// Gets the number of pools under the specified account
+        /// </summary>
+        public static int GetPoolCount(BatchController controller, BatchAccountContext context)
+        {
+            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors);
+
+            return client.ListPools(options).Count();
+        }
+
+
+        /// <summary>
         /// Deletes a pool used in a Scenario test.
         /// </summary>
         public static void DeletePool(BatchController controller, BatchAccountContext context, string poolName)
@@ -150,7 +194,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSJobExecutionEnvironment jobExecutionEnvironment = new PSJobExecutionEnvironment();
-            jobExecutionEnvironment.PoolName = DefaultPoolName;
+            jobExecutionEnvironment.PoolName = SharedPool;
             PSWorkItemSchedule schedule = null;
             if (recurrenceInterval != null)
             {
@@ -316,7 +360,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     object batchResponse = null;
 
-                    Delegate postProcessDelegate = null;
                     HttpRequestMessage request = GenerateHttpRequest((BatchRequest)batchRequest);
 
                     // Setup HTTP recorder and send the request

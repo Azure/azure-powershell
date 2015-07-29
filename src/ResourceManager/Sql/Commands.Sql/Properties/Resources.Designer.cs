@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
+        /// </summary>
+        internal static string DatabaseNotInServiceTierForAuditingPolicy {
+            get {
+                return ResourceManager.GetString("DatabaseNotInServiceTierForAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
         /// </summary>
         internal static string DataMaskingAliasAlreadyUsedError {
@@ -115,15 +124,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The use of any of these event types is deprecated: DataAccess, SchemaChanges, DataChanges, SecurityExceptions, RevokePermissions.
-        /// </summary>
-        internal static string DeprecatedEventTypeUsed {
-            get {
-                return ResourceManager.GetString("DeprecatedEventTypeUsed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ElasticPoolNameExists {
@@ -147,15 +147,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string EnterUserId {
             get {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot use deprecated audit events with the current audit events in the same policy..
-        /// </summary>
-        internal static string InvalidDeprecatedEventTypeSet {
-            get {
-                return ResourceManager.GetString("InvalidDeprecatedEventTypeSet", resourceCulture);
             }
         }
         

@@ -71,28 +71,5 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
             dbPolicyModel.SecureConnectionState = properties.SecurityEnabledAccess == SecurityConstants.SecureConnectionEndpoint.Required ? SecureConnectionStateType.Required : SecureConnectionStateType.Optional;
             return dbPolicyModel;
         }
-
-        /// <summary>
-        /// Sets the secure connection policy of a specific database based on the information provided by the model object
-        /// </summary>
-        public void SetDatabaseSecureConnectionPolicy(DatabaseSecureConnectionPolicyModel model, String clientId)
-        {
-            DatabaseSecureConnectionPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseSecureConnectionModel(model);
-            Communicator.SetDatabaseSecureConnectionPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
-        }
-
-        /// <summary>
-        /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
-        /// </summary>
-        /// <param name="model">The Secure Connection Policy model object</param>
-        /// <returns>The communication model object</returns>
-        private DatabaseSecureConnectionPolicyCreateOrUpdateParameters PolicizeDatabaseSecureConnectionModel(DatabaseSecureConnectionPolicyModel model)
-        {
-            DatabaseSecureConnectionPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecureConnectionPolicyCreateOrUpdateParameters();
-            DatabaseSecureConnectionPolicyCreateOrUpdateProperties properties = new DatabaseSecureConnectionPolicyCreateOrUpdateProperties();
-            updateParameters.Properties = properties;
-            properties.SecurityEnabledAccess = model.SecureConnectionState == SecureConnectionStateType.Required ? SecurityConstants.SecureConnectionEndpoint.Required : SecurityConstants.SecureConnectionEndpoint.Optional;
-            return updateParameters;
-        }
     }
 }

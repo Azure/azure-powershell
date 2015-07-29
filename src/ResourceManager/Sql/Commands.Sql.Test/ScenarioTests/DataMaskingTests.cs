@@ -29,13 +29,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestDatabaseDataMaskingLevelChanges()
-        {
-            RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
-        }
-
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");

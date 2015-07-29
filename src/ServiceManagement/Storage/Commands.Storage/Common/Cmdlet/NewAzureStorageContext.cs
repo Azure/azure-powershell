@@ -296,20 +296,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, StorageNouns.StorageAccountName));
             }
 
+            if (string.IsNullOrEmpty(endPoint))
+            {
+                return GetStorageAccountWithAzureEnvironment(credential, storageAccountName, useHttps);
+            }
+
             string blobEndpoint = string.Empty;
             string tableEndpoint = string.Empty;
             string queueEndpoint = string.Empty;
             string fileEndpoint = string.Empty;
-            string domain = string.Empty;
-
-            if (string.IsNullOrEmpty(endPoint))
-            {
-                domain = GetDefaultEndPointDomain();
-            }
-            else
-            {
-                domain = endPoint.Trim();
-            }
+            string domain = endPoint.Trim();
 
             if (useHttps)
             {
@@ -345,9 +341,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             if (string.IsNullOrEmpty(azureEnvironmentName))
             {
                 azureEnvironment = Profile.Context.Environment;
+
+                if (null == azureEnvironment)
+                {
+                    azureEnvironmentName = EnvironmentName.AzureCloud;
+                }
             }
-            else
-            {
+
+            if (null == azureEnvironment)
+            { 
                 try
                 {
                     var profileClient = new ProfileClient(Profile);

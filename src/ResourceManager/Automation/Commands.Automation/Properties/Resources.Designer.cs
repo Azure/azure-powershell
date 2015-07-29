@@ -295,11 +295,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imported file should be  either .ps1 or .graphrunbook..
+        /// </summary>
+        internal static string InvalidImportFile {
+            get {
+                return ResourceManager.GetString("InvalidImportFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
             get {
                 return ResourceManager.GetString("InvalidRunbookParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The runbook type is invalid for the file extension. PowerShell workflow and scripts should be .ps1. Graph runbook extension should be .graphrunbook. Provided file extension: {0}  .
+        /// </summary>
+        internal static string InvalidRunbookTypeForExtension {
+            get {
+                return ResourceManager.GetString("InvalidRunbookTypeForExtension", resourceCulture);
             }
         }
         
@@ -534,6 +552,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RunbookAlreadyHasDraft {
             get {
                 return ResourceManager.GetString("RunbookAlreadyHasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}.
+        /// </summary>
+        internal static string RunbookFileAlreadyExists {
+            get {
+                return ResourceManager.GetString("RunbookFileAlreadyExists", resourceCulture);
             }
         }
         

@@ -817,4 +817,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="RemoveVirtualIP" xml:space="preserve">
     <value>Remove Virtual IP from service</value>
   </data>
+  <data name="DscExtensionRemovalCaption" xml:space="preserve">
+    <value>Remove Extension</value>
+  </data>
+  <data name="DscExtensionRemovalConfirmation" xml:space="preserve">
+    <value>{0}</value>
+  </data>
 </root>

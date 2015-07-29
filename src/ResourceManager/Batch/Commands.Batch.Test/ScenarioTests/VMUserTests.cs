@@ -27,13 +27,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class VMUserTests
     {
-        // NOTE: To save time on VM allocation when recording, these tests assume the following:
-        //     - A Batch account named 'usertests' exists under the subscription being used for recording.
-        //     - There is a pool named 'testPool' that has at least 1 vm allocated to it.
-
-        private const string accountName = "usertests";
-        private const string poolName = "testPool";
-        private const string vmName = "tvm-1900272697_1-20150407t180708z"; // Run the following to get a vm name: (Get-AzureBatchVM "testPool" -BatchContext $context)[0].Name
+        private const string accountName = ScenarioTestHelpers.SharedAccount;
+        private const string poolName = ScenarioTestHelpers.SharedPool;
+        private const string vmName = ScenarioTestHelpers.SharedPoolVM;
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

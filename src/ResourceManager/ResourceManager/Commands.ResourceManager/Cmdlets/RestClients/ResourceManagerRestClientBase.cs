@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
             var operationResult = new OperationResult
             {
                 Value = await response
-                    .ReadContentAsJsonAsync<JObject>()
+                    .ReadContentAsStringAsync()
                     .ConfigureAwait(continueOnCapturedContext: false),
             };
 

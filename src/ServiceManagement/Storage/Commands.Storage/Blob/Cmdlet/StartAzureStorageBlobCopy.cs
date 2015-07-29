@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -162,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             base.BeginProcessing();
         }
 
-        protected async Task EnqueueStartCopyJob(BlobStartCopyJob startCopyJob, DataMovementUserData userData)
+        protected async Task EnqueueStartCopyJob(TransferJob startCopyJob, DataMovementUserData userData)
         {
             await this.RunTransferJob(startCopyJob, userData);
 
@@ -388,11 +388,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 Record = null
             };
 
-            BlobStartCopyJob startCopyJob = new BlobStartCopyJob()
-            {
-                SourceBlob = sourceBlob,
-                DestBlob = destBlob
-            };
+            TransferJob startCopyJob = new TransferJob(new TransferLocation(sourceBlob), new TransferLocation(destBlob), TransferMethod.AsyncCopyInAzureStorageWithoutMonitor);
 
             await this.EnqueueStartCopyJob(startCopyJob, data);
         }
@@ -422,11 +418,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 Record = null
             };
 
-            BlobStartCopyJob startCopyJob = new BlobStartCopyJob()
-            {
-                SourceUri = uri,
-                DestBlob = destContainer.GetBlockBlobReference(destBlobName)
-            };
+            TransferJob startCopyJob = new TransferJob(
+                new TransferLocation(uri), 
+                new TransferLocation(destContainer.GetBlockBlobReference(destBlobName)),
+                TransferMethod.AsyncCopyInAzureStorageWithoutMonitor);
 
             await this.EnqueueStartCopyJob(startCopyJob, data);
         }

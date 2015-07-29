@@ -45,14 +45,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         public string DataMaskingState  { get; set; }
 
         /// <summary>
-        /// Gets or sets the masking level
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if data masking level")]
-        [ValidateSet(SecurityConstants.Standard, SecurityConstants.Extended, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string MaskingLevel { get; set; }
-
-        /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
@@ -76,10 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
                 model.DataMaskingState = (DataMaskingState == SecurityConstants.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
             }
 
-            if (!string.IsNullOrEmpty(MaskingLevel))
-            {
-                model.MaskingLevel = (MaskingLevel == SecurityConstants.Standard) ? MaskingLevelType.Standard : MaskingLevelType.Extended;
-            }
             return model;
         }
     }

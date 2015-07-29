@@ -53,5 +53,19 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceSet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceIDns()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIDns");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceEnableIPForwarding()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceEnableIPForwarding");
+        }
     }
 }

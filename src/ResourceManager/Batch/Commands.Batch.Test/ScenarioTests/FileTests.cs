@@ -28,19 +28,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class FileTests
     {
-        // NOTE: To save time on VM allocation when recording, these tests assume the following:
-        //     - A Batch account named 'filetests' exists under the subscription being used for recording.
-        //     - The following commands were run to create a pool, and all 3 VMs are allocated:
-        //          $context = Get-AzureBatchAccountKeys "filetests"
-        //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
-        //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureBatchPool -Name "testPool" -VMSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-
-        private const string accountName = "filetests";
-        private const string poolName = "testPool";
-        private const string vmName = "tvm-1900272697_1-20150331t200107z"; // Use the following command to get a VM name: (Get-AzureBatchVM -PoolName "testPool" -BatchContext $context)[0].Name
-        private const string startTaskStdOutName = "startup\\stdout.txt";
-        private const string startTaskStdOutContent = "hello";
+        private const string accountName = ScenarioTestHelpers.SharedAccount;
+        private const string poolName = ScenarioTestHelpers.SharedPool;
+        private const string vmName = ScenarioTestHelpers.SharedPoolVM;
+        private const string startTaskStdOutName = ScenarioTestHelpers.SharedPoolStartTaskStdOut;
+        private const string startTaskStdOutContent = ScenarioTestHelpers.SharedPoolStartTaskStdOutContent;
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -32,24 +32,27 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListPublishersParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize()
-            };
+                var parameters = new VirtualMachineImageListPublishersParameters
+                {
+                    Location = Location.Canonicalize()
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImagePublisher
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             PublisherName = r.Name
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineImagePublisher
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 PublisherName = r.Name
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

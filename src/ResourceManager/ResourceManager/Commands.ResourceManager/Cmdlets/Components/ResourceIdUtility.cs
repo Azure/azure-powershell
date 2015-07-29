@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 resourceIdBuilder.Append(ResourceIdUtility.ProcessResourceTypeAndName(resourceType: extensionResourceType, resourceName: extensionResourceName));
             }
 
-            return resourceId.ToString();
+            return resourceIdBuilder.ToString();
         }
 
         /// <summary>

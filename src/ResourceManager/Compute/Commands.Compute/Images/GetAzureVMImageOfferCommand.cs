@@ -35,26 +35,29 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListOffersParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName
-            };
+                var parameters = new VirtualMachineImageListOffersParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImageOffer
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Offer = r.Name,
-                             PublisherName = this.PublisherName
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineImageOffer
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 Offer = r.Name,
+                                 PublisherName = this.PublisherName
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

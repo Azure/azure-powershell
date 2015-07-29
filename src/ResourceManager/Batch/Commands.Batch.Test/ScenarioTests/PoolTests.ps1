@@ -153,9 +153,9 @@ function Test-ListAllPools
 	param([string]$accountName, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$workItems = Get-AzureBatchPool_ST -BatchContext $context
+	$pools = Get-AzureBatchPool_ST -BatchContext $context
 
-	Assert-AreEqual $count $workItems.Length
+	Assert-AreEqual $count $pools.Length
 }
 
 <#
@@ -169,8 +169,8 @@ function Test-DeletePool
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
 	# Verify the Pool exists
-	$pools = Get-AzureBatchPool_ST -BatchContext $context
-	Assert-AreEqual 1 $pools.Count
+	$pool = Get-AzureBatchPool_ST $poolName -BatchContext $context
+	Assert-AreEqual $poolName $pool.Name
 
 	if ($usePipeline -eq '1')
 	{
@@ -181,9 +181,11 @@ function Test-DeletePool
 		Remove-AzureBatchPool_ST -Name $poolName -Force -BatchContext $context
 	}
 
-	# Verify the Pool was deleted
-	$pools = Get-AzureBatchPool_ST -BatchContext $context
-	Assert-True { $pools -eq $null -or $pools[0].State.ToString().ToLower() -eq 'deleting' }
+	# Verify the Pool was deleted. Use the OData filter since the GetPool API will cause a 404 if the pool isn't found.
+	$filter = "name eq '" + $poolName + "'"
+	$pool = Get-AzureBatchPool_ST -Filter $filter -BatchContext $context
+	
+	Assert-True { $pool -eq $null -or $pool.State.ToString().ToLower() -eq 'deleting' }
 }
 
 <#

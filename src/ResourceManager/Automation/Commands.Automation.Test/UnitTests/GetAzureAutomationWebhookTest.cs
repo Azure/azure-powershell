@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
-namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
     public class GetAzureAutomationWebhookTest : TestBase

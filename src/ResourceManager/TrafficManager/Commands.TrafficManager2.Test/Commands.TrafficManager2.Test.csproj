@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.27-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -97,7 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\ProfileTests.cs" />
     <Compile Include="ScenarioTests\EndpointTests.cs" />
-    <Compile Include="ScenarioTests\WatmV2TestsBase.cs" />
+    <Compile Include="ScenarioTests\TestController.cs" />
     <Compile Include="UnitTests\AddAzureTrafficManagerEndpointConfigTests.cs" />
     <Compile Include="UnitTests\RemoveAzureTrafficManagerEndpointConfigTests.cs" />
   </ItemGroup>
@@ -113,29 +113,8 @@
     <None Include="ScenarioTests\ProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.EndpointTests\TestAddEndpoint.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.EndpointTests\TestDeleteEndpoint.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestCreateDeleteUsingProfile.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestCrudWithEndpoint.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileCrud.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileCrudWithPiping.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileNewAlreadyExists.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.ProfileTests\TestProfileRemoveNonExisting.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

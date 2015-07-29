@@ -38,28 +38,31 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListSkusParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName,
-                Offer = Offer
-            };
+                var parameters = new VirtualMachineImageListSkusParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName,
+                    Offer = Offer
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImageSku
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             PublisherName = this.PublisherName,
-                             Offer = this.Offer,
-                             Skus = r.Name
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineImageSku
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 PublisherName = this.PublisherName,
+                                 Offer = this.Offer,
+                                 Skus = r.Name
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

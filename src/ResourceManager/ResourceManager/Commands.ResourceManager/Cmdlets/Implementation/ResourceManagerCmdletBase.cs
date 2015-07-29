@@ -260,6 +260,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
 
         /// <summary>
+        /// Writes the object
+        /// </summary>
+        /// <param name="resultString">The result as a string</param>
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        protected void TryConvertAndWriteObject(string resultString, ResourceObjectFormat objectFormat)
+        {
+            JToken resultJToken;
+            if (resultString.TryConvertTo<JToken>(out resultJToken))
+            {
+                this.WriteObject(resultJToken, objectFormat);
+            }
+            else
+            {
+                this.WriteObject(resultString);
+            }
+        }
+
+        /// <summary>
+        /// Writes the object
+        /// </summary>
+        /// <param name="resultString">The result as a string</param>
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        protected void TryConvertToResourceAndWriteObject(string resultString, ResourceObjectFormat objectFormat)
+        {
+            Resource<JToken> resultResource;
+            if (resultString.TryConvertTo<Resource<JToken>>(out resultResource))
+            {
+                this.WriteObject(resultResource.ToPsObject(objectFormat));
+            }
+            else
+            {
+                this.WriteObject(resultString);
+            }
+        }
+
+        /// <summary>
         /// Writes a <see cref="JToken"/> object as a <see cref="PSObject"/>.
         /// </summary>
         /// <param name="result">The result of the action.</param>
@@ -326,10 +362,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         {
                             this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
                         }
+
+                        this.ThrowTerminatingError(aggregateException.InnerExceptions.Single().ToErrorRecord());
                     }
                     else
                     {
-                        throw aggregateException.Flatten();
+                        this.ThrowTerminatingError(aggregateException.ToErrorRecord());
                     }
                 }
 

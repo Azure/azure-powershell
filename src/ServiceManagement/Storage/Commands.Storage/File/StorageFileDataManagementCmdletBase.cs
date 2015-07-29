@@ -17,7 +17,8 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
+using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
@@ -70,10 +71,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             this.transferJobRunner = null;
         }
 
-        protected async Task RunTransferJob(FileTransferJob job, ProgressRecord record)
+        protected async Task RunTransferJob(TransferJob job, ProgressRecord record)
         {
             this.SetRequestOptionsInTransferJob(job);
-            job.AccessCondition = this.AccessCondition;
             job.OverwritePromptCallback = this.ConfirmOverwrite;
 
             try
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
-        protected void SetRequestOptionsInTransferJob(FileTransferJob transferJob)
+        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
         {
             var cmdletOptions = this.RequestOptions;
 
@@ -113,7 +113,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 return;
             }
 
-            var requestOptions = transferJob.FileRequestOptions;
+            if (null != transferJob.Source.AzureFile)
+            {
+                this.SetRequestOptions(transferJob.Source, cmdletOptions);
+            }
+
+            if (null != transferJob.Destination.AzureFile)
+            {
+                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
+            }
+        }
+
+        private void SetRequestOptions(TransferLocation location, FileRequestOptions cmdletOptions)
+        {
+            FileRequestOptions requestOptions = location.RequestOptions as FileRequestOptions;
+
+            if (null == requestOptions)
+            { 
+                requestOptions = new FileRequestOptions();
+            }
 
             if (cmdletOptions.MaximumExecutionTime != null)
             {
@@ -127,7 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
             requestOptions.DisableContentMD5Validation = true;
 
-            transferJob.FileRequestOptions = requestOptions;
+            location.RequestOptions = requestOptions;
         }
     }
 }

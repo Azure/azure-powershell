@@ -1,25 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/test-list-job-maxcount?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlZ3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "28"
-        ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount\",\r\n  \"name\": \"test-list-job-maxcount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "197"
+          "237"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -30,17 +24,17 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1172"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14960"
         ],
         "x-ms-request-id": [
-          "e3d1b5a7-042d-4a4c-956d-f3649016793f"
+          "bd0fc85d-779a-4261-953f-dd2be3b9c35f"
         ],
         "x-ms-correlation-request-id": [
-          "e3d1b5a7-042d-4a4c-956d-f3649016793f"
+          "bd0fc85d-779a-4261-953f-dd2be3b9c35f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150304T231209Z:e3d1b5a7-042d-4a4c-956d-f3649016793f"
+          "WESTUS:20150709T192900Z:bd0fc85d-779a-4261-953f-dd2be3b9c35f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,31 +43,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:09 GMT"
+          "Thu, 09 Jul 2015 19:29:00 GMT"
         ]
       },
-      "StatusCode": 201
+      "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQ/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "28"
-        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "0"
+          "237"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -81,59 +72,47 @@
         "Pragma": [
           "no-cache"
         ],
-        "Retry-After": [
-          "15"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14959"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+        "x-ms-request-id": [
+          "9d80910e-2ceb-4ed2-86d0-e5a32922fd25"
         ],
-        "request-id": [
-          "e9a5bb5f-dfb4-4bc0-9047-f747640ad0a5"
+        "x-ms-correlation-request-id": [
+          "9d80910e-2ceb-4ed2-86d0-e5a32922fd25"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150709T193007Z:9d80910e-2ceb-4ed2-86d0-e5a32922fd25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "2286cfa7-7877-4122-96da-5288274155a5"
-        ],
-        "x-ms-correlation-request-id": [
-          "2286cfa7-7877-4122-96da-5288274155a5"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231213Z:2286cfa7-7877-4122-96da-5288274155a5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:12 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/e9a5bb5f-dfb4-4bc0-9047-f747640ad0a5?api-version=2014-05-01-privatepreview"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Thu, 09 Jul 2015 19:30:07 GMT"
         ]
       },
-      "StatusCode": 202
+      "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/e9a5bb5f-dfb4-4bc0-9047-f747640ad0a5?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQvb3BlcmF0aW9uUmVzdWx0cy9lOWE1YmI1Zi1kZmI0LTRiYzAtOTA0Ny1mNzQ3NjQwYWQwYTU/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-05-01-privatepreview"
+          "2015-07-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"testlistjobmaxcount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"testlistjobmaxcount.batch.core.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.batch.core.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "356"
+          "323"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -142,37 +121,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:12 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "d3042ea6-eff4-4760-a7db-23731237bf35"
+          "10653f3e-c281-4b35-a0b4-b1aaea11cbc7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31996"
+          "14958"
         ],
         "x-ms-request-id": [
-          "48854591-fcbe-47ef-b64a-fd2a4b3623dc"
+          "0fa5977b-f5cb-4d32-a95f-f5a3fc8252d1"
         ],
         "x-ms-correlation-request-id": [
-          "48854591-fcbe-47ef-b64a-fd2a4b3623dc"
+          "0fa5977b-f5cb-4d32-a95f-f5a3fc8252d1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150304T231213Z:48854591-fcbe-47ef-b64a-fd2a4b3623dc"
+          "WESTUS:20150709T192901Z:0fa5977b-f5cb-4d32-a95f-f5a3fc8252d1"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:13 GMT"
+          "Thu, 09 Jul 2015 19:29:01 GMT"
         ],
         "ETag": [
-          "0x8D224E7C8575A39"
+          "0x8D28894A544DC95"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -181,22 +160,85 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/listKeys?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "POST",
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-05-01-privatepreview"
+          "2015-07-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"testlistjobmaxcount\",\r\n  \"primary\": \"m0WaSscgEagKDfW6VzO+qbmeHayfjQsX/jQWhjLnKLgvEykQztlx7+/n/vdvLIfdigymRxrJTRBKeJ6DfkEidw==\",\r\n  \"secondary\": \"F7E2UTDwDbGyNVUQ7/A33YdxE7nIHnGSinaytC3c4RLwA5RXTjlIJJbaJdpb1kMw4ZcrrmOljJJ8Vio5vfHI+Q==\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.batch.core.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "241"
+          "323"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Last-Modified": [
+          "Thu, 09 Jul 2015 19:30:08 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "request-id": [
+          "8415c1b9-6b93-470f-8f25-98dbfd3f3296"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14958"
+        ],
+        "x-ms-request-id": [
+          "89b045af-7138-47c5-9f95-7f411c0f1dee"
+        ],
+        "x-ms-correlation-request-id": [
+          "89b045af-7138-47c5-9f95-7f411c0f1dee"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150709T193008Z:89b045af-7138-47c5-9f95-7f411c0f1dee"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2015 19:30:07 GMT"
+        ],
+        "ETag": [
+          "0x8D28894CCD1CE62"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2015-07-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"LvTRVrhrb0mV/DvM55d7NT36RpCLXka/hrZSZQnNKlfV8nxzU0ChDAxrILper4n3AndEtMgyxW404JKkGodXFA==\",\r\n  \"secondary\": \"Lc37R3wawurI2u8oLu6pblhfYBW7S6770vbeqnUQJX87kT7R5hEFq2IlEfowvQ+rO3K0frlfFNlyiL/rkaYnFw==\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "229"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -208,28 +250,28 @@
           "no-cache"
         ],
         "request-id": [
-          "f7e748be-d55e-4b6f-9f46-3a38041cd508"
+          "fac4caff-6203-4fc3-926f-c2431deed5d3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
+          "1185"
         ],
         "x-ms-request-id": [
-          "6e97b64a-de41-44ba-b01f-ab558fd95b6a"
+          "818ac719-aa7a-448f-b8c6-6a51770aefc6"
         ],
         "x-ms-correlation-request-id": [
-          "6e97b64a-de41-44ba-b01f-ab558fd95b6a"
+          "818ac719-aa7a-448f-b8c6-6a51770aefc6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150304T231213Z:6e97b64a-de41-44ba-b01f-ab558fd95b6a"
+          "WESTUS:20150709T192902Z:818ac719-aa7a-448f-b8c6-6a51770aefc6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:13 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -238,22 +280,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/listKeys?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
+      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-05-01-privatepreview"
+          "2015-07-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"testlistjobmaxcount\",\r\n  \"primary\": \"m0WaSscgEagKDfW6VzO+qbmeHayfjQsX/jQWhjLnKLgvEykQztlx7+/n/vdvLIfdigymRxrJTRBKeJ6DfkEidw==\",\r\n  \"secondary\": \"F7E2UTDwDbGyNVUQ7/A33YdxE7nIHnGSinaytC3c4RLwA5RXTjlIJJbaJdpb1kMw4ZcrrmOljJJ8Vio5vfHI+Q==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"LvTRVrhrb0mV/DvM55d7NT36RpCLXka/hrZSZQnNKlfV8nxzU0ChDAxrILper4n3AndEtMgyxW404JKkGodXFA==\",\r\n  \"secondary\": \"Lc37R3wawurI2u8oLu6pblhfYBW7S6770vbeqnUQJX87kT7R5hEFq2IlEfowvQ+rO3K0frlfFNlyiL/rkaYnFw==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "241"
+          "229"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -265,28 +307,28 @@
           "no-cache"
         ],
         "request-id": [
-          "e9f48862-e8b7-4690-92eb-ed143f27291e"
+          "32be320a-4ce5-48a4-8df1-8c4d99e5a8a6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1182"
+          "1184"
         ],
         "x-ms-request-id": [
-          "a495a995-2e3b-4714-9096-e1287996a493"
+          "e51e8680-669b-4681-8f49-f3e05c99e497"
         ],
         "x-ms-correlation-request-id": [
-          "a495a995-2e3b-4714-9096-e1287996a493"
+          "e51e8680-669b-4681-8f49-f3e05c99e497"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150304T231401Z:a495a995-2e3b-4714-9096-e1287996a493"
+          "WESTUS:20150709T193008Z:e51e8680-669b-4681-8f49-f3e05c99e497"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:00 GMT"
+          "Thu, 09 Jul 2015 19:30:07 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -310,25 +352,25 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "9b536027-e2ce-4202-b45c-2cc93e86c2d8"
+          "fe985cd2-efaf-4006-8490-71745b0d1a3d"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "d57b8152-dcee-4dff-92d8-1c553817418c"
+          "35867b6a-a110-4823-9514-659dcc49321a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -337,16 +379,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem"
+          "https://pstests.batch.core.windows.net/workitems/testWorkItem"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:53 GMT"
+          "Thu, 09 Jul 2015 19:29:01 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Location": [
-          "https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem"
+          "https://pstests.batch.core.windows.net/workitems/testWorkItem"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -364,28 +406,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "7f0b7877-2005-48d0-8abb-9dac18087e86"
+          "2f4cc6c6-46fb-4f2b-bb81-414ab6f44d36"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "933c4c9a-f1b4-4845-b886-9d22b4f8272a"
+          "bd052931-11e7-48fa-b141-eb09d553f60e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -394,10 +436,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:03 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -415,28 +457,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "0421c174-1172-4fcc-8ceb-4c363b8f769c"
+          "5c862170-015a-4b2e-bb28-7a694760c331"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:12:55 GMT"
+          "Thu, 09 Jul 2015 19:29:03 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "4dbcc4ef-b58f-4344-8906-db5a76813021"
+          "134a0281-1082-4bae-a078-fb45c4848e66"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -445,10 +487,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:12:55 GMT"
+          "Thu, 09 Jul 2015 19:29:03 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -466,28 +508,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "51791e7d-c752-4860-9864-0517b467ac08"
+          "234e336d-25eb-4046-bdf9-6b8934d98064"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:01 GMT"
+          "Thu, 09 Jul 2015 19:29:08 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "90fd82d1-6c83-4922-8f60-73dcd80869cf"
+          "1fe46470-924f-4dfe-b234-59e93a9f5a53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -496,10 +538,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:00 GMT"
+          "Thu, 09 Jul 2015 19:29:08 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -517,28 +559,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "eb89cd73-b580-4730-b933-8d7fd7967b3d"
+          "0c1725a6-de2b-4284-b883-b2592d573e19"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:06 GMT"
+          "Thu, 09 Jul 2015 19:29:13 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "1d363b8e-3548-4c9f-80bb-594828455014"
+          "c4ad02b8-4048-45a1-82b8-03233bea4ab4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -547,10 +589,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:06 GMT"
+          "Thu, 09 Jul 2015 19:29:12 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -568,28 +610,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "d589597f-361f-47b4-b3d5-6f7d581b70ae"
+          "1fcd1113-7fb8-403d-ade6-5a22dd115328"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:11 GMT"
+          "Thu, 09 Jul 2015 19:29:19 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "fa43374e-7152-43f7-b09f-dbc84aa8cf5a"
+          "d344e9db-e751-46c2-a145-d86932a3dc43"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -598,10 +640,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:11 GMT"
+          "Thu, 09 Jul 2015 19:29:19 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -619,28 +661,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "77da3aaa-59ac-41be-8e3e-76e10dfd54c0"
+          "1adf673d-efbd-4bc0-9c18-65621b775d4a"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:17 GMT"
+          "Thu, 09 Jul 2015 19:29:24 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "ce68e88e-24b9-4d2e-a9c5-a30c9fe302a3"
+          "b652a791-dc69-4573-8c80-6434f58a263b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -649,10 +691,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:16 GMT"
+          "Thu, 09 Jul 2015 19:29:24 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -670,28 +712,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "4a43cedc-0268-488c-8623-f9a0920b7e51"
+          "67127205-4d86-4392-94f2-4703309f0bc6"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:22 GMT"
+          "Thu, 09 Jul 2015 19:29:29 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "7aef4c4d-3292-411f-a40e-231abafa2905"
+          "d4899ebd-a009-4ff7-8351-5f2758a6b28c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -700,10 +742,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:21 GMT"
+          "Thu, 09 Jul 2015 19:29:30 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -721,28 +763,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "8e5099b5-8659-4f5e-931f-a4bba8ba02d2"
+          "03ed67cf-0e76-40ff-8ac0-b55e81bc21c5"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:27 GMT"
+          "Thu, 09 Jul 2015 19:29:35 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "9df46145-82b6-47f8-a53c-c63990d02907"
+          "a5e5b26c-797f-46ef-8db4-f5853c31ed73"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -751,10 +793,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:28 GMT"
+          "Thu, 09 Jul 2015 19:29:35 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -772,28 +814,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "4c2b78b7-4423-4fd0-bd51-7bfb2994e193"
+          "e9b027de-61e7-4ed5-be11-9ce14040bd06"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:33 GMT"
+          "Thu, 09 Jul 2015 19:29:40 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "a372ca26-939c-438b-bf35-009e688a86b6"
+          "4183a701-192e-4a47-85aa-54a4097640ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -802,10 +844,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:33 GMT"
+          "Thu, 09 Jul 2015 19:29:41 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -823,28 +865,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "683857a0-47f4-4916-a80b-a7aeddb265ab"
+          "5e326f85-e3d0-4648-8d9c-5349fbb31323"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:38 GMT"
+          "Thu, 09 Jul 2015 19:29:45 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "b38e3581-8297-4990-8204-8a2fc7ad5d4e"
+          "bb3d88ae-467a-4d5a-8690-8a8fbe21c821"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -853,10 +895,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:38 GMT"
+          "Thu, 09 Jul 2015 19:29:46 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -874,28 +916,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "a15c86b7-1fdf-45b8-b153-9bc69401ebd0"
+          "d4c007ac-c6dd-4e57-a791-535913a4b3c2"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:43 GMT"
+          "Thu, 09 Jul 2015 19:29:51 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "541eba56-cb26-4938-8926-38cad1976f91"
+          "a8480e44-94fd-4256-8eba-63724a7de436"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -904,10 +946,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:43 GMT"
+          "Thu, 09 Jul 2015 19:29:51 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -925,28 +967,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "92d6d195-3b53-4724-b0ef-ad28318f5ca1"
+          "d8d08f03-ea90-49e7-8ed7-d4a7109c6163"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:49 GMT"
+          "Thu, 09 Jul 2015 19:29:56 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:13:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "2555c3e7-b590-4cb8-ab3e-70cb19e9023d"
+          "ef5bb2b1-d292-4009-9bf9-9a979726941f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -955,10 +997,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:48 GMT"
+          "Thu, 09 Jul 2015 19:29:56 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -976,28 +1018,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "3240f8e6-efb1-4e5c-9c58-0480d7614d57"
+          "145372f7-2775-4614-97e3-884cc0976802"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:13:54 GMT"
+          "Thu, 09 Jul 2015 19:30:01 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:14:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"name\": \"job-0000000002\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:30:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"name\": \"job-0000000001\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "4c468ab4-2504-4611-8f6f-caf4b454519b"
+          "b4ddee1a-599a-49d8-884d-047047962055"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1006,10 +1048,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:13:53 GMT"
+          "Thu, 09 Jul 2015 19:30:00 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1027,28 +1069,28 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "40c6048c-5f60-4026-976c-8001485830f9"
+          "40e00610-4d11-4114-bec6-3558c2157f69"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:14:01 GMT"
+          "Thu, 09 Jul 2015 19:30:07 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D224E7E0E7025F\",\r\n  \"lastModified\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"creationTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-03-04T23:12:54.1942367Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-03-04T23:14:54.1942367Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"name\": \"job-0000000002\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:31:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"name\": \"job-0000000002\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:12:54 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "fbea628c-594f-406d-ab88-b876f99992ca"
+          "b917fff7-f6e8-49f3-be42-bb8be0489225"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1057,10 +1099,10 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:01 GMT"
+          "Thu, 09 Jul 2015 19:30:06 GMT"
         ],
         "ETag": [
-          "0x8D224E7E0E7025F"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1069,109 +1111,49 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/workitems/testWorkItem?api-version=2014-10-01.1.0",
+      "EncodedRequestUri": "L3dvcmtpdGVtcy90ZXN0V29ya0l0ZW0/YXBpLXZlcnNpb249MjAxNC0xMC0wMS4xLjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "WA-Batch/1.0"
+        ],
+        "client-request-id": [
+          "8e9c12fb-536c-40bf-8b41-02357082450f"
+        ],
+        "return-client-request-id": [
+          "False"
+        ],
+        "ocp-date": [
+          "Thu, 09 Jul 2015 19:30:08 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-centralus/providers/Microsoft.Batch/batchAccounts/jaschneibatch2\",\r\n      \"name\": \"jaschneibatch2\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {\r\n        \"tagname\": \"tagvalue\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/Default-AzureBatch-WestUS/providers/Microsoft.Batch/batchAccounts/jaschneibatch\",\r\n      \"name\": \"jaschneibatch\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount\",\r\n      \"name\": \"testlistjobmaxcount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#workitems/@Element\",\r\n  \"name\": \"testWorkItem\",\r\n  \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem\",\r\n  \"eTag\": \"0x8D28894A5A8A077\",\r\n  \"lastModified\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"creationTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-07-09T19:29:02.8490359Z\",\r\n  \"schedule\": {\r\n    \"recurrenceInterval\": \"PT1M\"\r\n  },\r\n  \"jobExecutionEnvironment\": {\r\n    \"poolName\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2015-07-09T19:31:02.8490359Z\",\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"name\": \"job-0000000002\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "772"
-        ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31984"
-        ],
-        "x-ms-request-id": [
-          "6506e300-8713-4923-a38d-32c9d1dabf9a"
-        ],
-        "x-ms-correlation-request-id": [
-          "6506e300-8713-4923-a38d-32c9d1dabf9a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231400Z:6506e300-8713-4923-a38d-32c9d1dabf9a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:00 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQ/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-05-01-privatepreview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"testlistjobmaxcount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"testlistjobmaxcount.batch.core.windows.net\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "356"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+          "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Wed, 04 Mar 2015 23:14:00 GMT"
+          "Thu, 09 Jul 2015 19:29:02 GMT"
         ],
-        "Pragma": [
-          "no-cache"
+        "Transfer-Encoding": [
+          "chunked"
         ],
         "request-id": [
-          "4b0b75e2-a357-41b1-a7e0-81b5718c8eda"
+          "150556f2-5e79-4032-8ef9-8d472e2dd02a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31968"
-        ],
-        "x-ms-request-id": [
-          "b73ac77e-dcb7-4bfb-8624-0016d417efbc"
-        ],
-        "x-ms-correlation-request-id": [
-          "b73ac77e-dcb7-4bfb-8624-0016d417efbc"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231401Z:b73ac77e-dcb7-4bfb-8624-0016d417efbc"
-        ],
-        "Cache-Control": [
-          "no-cache"
+        "DataServiceVersion": [
+          "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:00 GMT"
+          "Thu, 09 Jul 2015 19:30:08 GMT"
         ],
         "ETag": [
-          "0x8D224E808A2A0D2"
+          "0x8D28894A5A8A077"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1189,16 +1171,16 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "ab878ab9-830c-4f34-9b47-b357f7503145"
+          "985268a1-89eb-43de-af25-a37e2d7d5abd"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:14:01 GMT"
+          "Thu, 09 Jul 2015 19:30:08 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"job-0000000002\",\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"eTag\": \"0x8D224E804AF88AB\",\r\n      \"lastModified\": \"2015-03-04T23:13:54.2286507Z\",\r\n      \"creationTime\": \"2015-03-04T23:13:54.1952135Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-03-04T23:13:54.2286507Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-03-04T23:13:54.2286507Z\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"job-0000000001\",\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"eTag\": \"0x8D224E7E1693E75\",\r\n      \"lastModified\": \"2015-03-04T23:12:55.0477429Z\",\r\n      \"creationTime\": \"2015-03-04T23:12:54.2278252Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2015-03-04T23:12:55.0888993Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2015-03-04T23:12:54.2448243Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-03-04T23:12:54.2448243Z\",\r\n        \"endTime\": \"2015-03-04T23:12:55.0888993Z\",\r\n        \"terminateReason\": \"UserTerminate\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"job-0000000002\",\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"eTag\": \"0x8D28894C96E9943\",\r\n      \"lastModified\": \"2015-07-09T19:30:02.8667203Z\",\r\n      \"creationTime\": \"2015-07-09T19:30:02.8494213Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-07-09T19:30:02.8667203Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-07-09T19:30:02.8667203Z\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"job-0000000001\",\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"eTag\": \"0x8D28894A60FFFC2\",\r\n      \"lastModified\": \"2015-07-09T19:29:03.5264962Z\",\r\n      \"creationTime\": \"2015-07-09T19:29:02.8873755Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2015-07-09T19:29:04.449729Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2015-07-09T19:29:02.9033103Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-07-09T19:29:02.9033103Z\",\r\n        \"endTime\": \"2015-07-09T19:29:04.449729Z\",\r\n        \"terminateReason\": \"UserTerminate\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1207,7 +1189,7 @@
           "chunked"
         ],
         "request-id": [
-          "d6c9e7ec-2137-4b2b-8153-bd462584a219"
+          "dbb06b71-aada-44d9-ae80-acf84c440cbc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1216,7 +1198,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:01 GMT"
+          "Thu, 09 Jul 2015 19:30:08 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1234,16 +1216,16 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "254cdc1c-504d-4df9-a624-b5e10d9e77bb"
+          "7e30e0fd-e0dd-44a3-829b-cd8ba7d3f080"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:14:02 GMT"
+          "Thu, 09 Jul 2015 19:30:09 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://testlistjobmaxcount.batch.core.windows.net/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"job-0000000002\",\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"eTag\": \"0x8D224E804AF88AB\",\r\n      \"lastModified\": \"2015-03-04T23:13:54.2286507Z\",\r\n      \"creationTime\": \"2015-03-04T23:13:54.1952135Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-03-04T23:13:54.2286507Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-03-04T23:13:54.2286507Z\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"job-0000000001\",\r\n      \"url\": \"https://testlistjobmaxcount.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"eTag\": \"0x8D224E7E1693E75\",\r\n      \"lastModified\": \"2015-03-04T23:12:55.0477429Z\",\r\n      \"creationTime\": \"2015-03-04T23:12:54.2278252Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2015-03-04T23:12:55.0888993Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2015-03-04T23:12:54.2448243Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-03-04T23:12:54.2448243Z\",\r\n        \"endTime\": \"2015-03-04T23:12:55.0888993Z\",\r\n        \"terminateReason\": \"UserTerminate\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.batch.core.windows.net/$metadata#jobs\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"job-0000000002\",\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000002\",\r\n      \"eTag\": \"0x8D28894C96E9943\",\r\n      \"lastModified\": \"2015-07-09T19:30:02.8667203Z\",\r\n      \"creationTime\": \"2015-07-09T19:30:02.8494213Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-07-09T19:30:02.8667203Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-07-09T19:30:02.8667203Z\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"job-0000000001\",\r\n      \"url\": \"https://pstests.batch.core.windows.net/workitems/testWorkItem/jobs/job-0000000001\",\r\n      \"eTag\": \"0x8D28894A60FFFC2\",\r\n      \"lastModified\": \"2015-07-09T19:29:03.5264962Z\",\r\n      \"creationTime\": \"2015-07-09T19:29:02.8873755Z\",\r\n      \"state\": \"completed\",\r\n      \"stateTransitionTime\": \"2015-07-09T19:29:04.449729Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2015-07-09T19:29:02.9033103Z\",\r\n      \"poolName\": \"testPool\",\r\n      \"executionInfo\": {\r\n        \"startTime\": \"2015-07-09T19:29:02.9033103Z\",\r\n        \"endTime\": \"2015-07-09T19:29:04.449729Z\",\r\n        \"terminateReason\": \"UserTerminate\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1252,7 +1234,7 @@
           "chunked"
         ],
         "request-id": [
-          "09422772-d058-462d-a842-07e682b581dd"
+          "4b93591a-459b-455e-84f6-a8b35e473572"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1261,7 +1243,7 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:02 GMT"
+          "Thu, 09 Jul 2015 19:30:09 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1279,13 +1261,13 @@
           "WA-Batch/1.0"
         ],
         "client-request-id": [
-          "7ab1c551-9004-4764-a276-fd62d970b752"
+          "feb2e643-4c46-4ee4-82e8-18e10ea96148"
         ],
         "return-client-request-id": [
           "False"
         ],
         "ocp-date": [
-          "Wed, 04 Mar 2015 23:14:02 GMT"
+          "Thu, 09 Jul 2015 19:30:09 GMT"
         ]
       },
       "ResponseBody": "",
@@ -1294,7 +1276,7 @@
           "chunked"
         ],
         "request-id": [
-          "287439de-2442-40b5-b59c-4ba985b14d1e"
+          "e2cd96cc-2591-4ae3-ab31-5bd76066298a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1303,397 +1285,13 @@
           "3.0"
         ],
         "Date": [
-          "Wed, 04 Mar 2015 23:14:03 GMT"
+          "Thu, 09 Jul 2015 19:30:09 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQ/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "request-id": [
-          "3d9d0f49-7e9f-4b96-9dd5-1e1c554f7e34"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1181"
-        ],
-        "x-ms-request-id": [
-          "c07ce4d5-66ea-4eae-94fe-7b812ecd995d"
-        ],
-        "x-ms-correlation-request-id": [
-          "c07ce4d5-66ea-4eae-94fe-7b812ecd995d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231405Z:c07ce4d5-66ea-4eae-94fe-7b812ecd995d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:04 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/3d9d0f49-7e9f-4b96-9dd5-1e1c554f7e34?api-version=2014-05-01-privatepreview"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/3d9d0f49-7e9f-4b96-9dd5-1e1c554f7e34?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQvb3BlcmF0aW9uUmVzdWx0cy8zZDlkMGY0OS03ZTlmLTRiOTYtOWRkNS0xZTFjNTU0ZjdlMzQ/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-05-01-privatepreview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "request-id": [
-          "020fe2d7-e8b6-4c1e-9ff3-248d0d7d3d34"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31967"
-        ],
-        "x-ms-request-id": [
-          "a99843d8-f973-4fff-a619-35c1d8aad879"
-        ],
-        "x-ms-correlation-request-id": [
-          "a99843d8-f973-4fff-a619-35c1d8aad879"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231405Z:a99843d8-f973-4fff-a619-35c1d8aad879"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:04 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/3d9d0f49-7e9f-4b96-9dd5-1e1c554f7e34?api-version=2014-05-01-privatepreview"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/test-list-job-maxcount/providers/Microsoft.Batch/batchAccounts/testlistjobmaxcount/operationResults/3d9d0f49-7e9f-4b96-9dd5-1e1c554f7e34?api-version=2014-05-01-privatepreview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3Rlc3RsaXN0am9ibWF4Y291bnQvb3BlcmF0aW9uUmVzdWx0cy8zZDlkMGY0OS03ZTlmLTRiOTYtOWRkNS0xZTFjNTU0ZjdlMzQ/YXBpLXZlcnNpb249MjAxNC0wNS0wMS1wcml2YXRlcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-05-01-privatepreview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Last-Modified": [
-          "Wed, 04 Mar 2015 23:14:20 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "request-id": [
-          "b5d3d46d-8c32-43f8-ac17-c02d34741bc0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31966"
-        ],
-        "x-ms-request-id": [
-          "bcadc5c1-d67e-44eb-b785-14f6b6098335"
-        ],
-        "x-ms-correlation-request-id": [
-          "bcadc5c1-d67e-44eb-b785-14f6b6098335"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231420Z:bcadc5c1-d67e-44eb-b785-14f6b6098335"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:20 GMT"
-        ],
-        "ETag": [
-          "0x8D224E8142B2802"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourcegroups/test-list-job-maxcount?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlZ3JvdXBzL3Rlc3QtbGlzdC1qb2ItbWF4Y291bnQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1186"
-        ],
-        "x-ms-request-id": [
-          "53779194-2d7f-43a1-a88f-a5c1e618a200"
-        ],
-        "x-ms-correlation-request-id": [
-          "53779194-2d7f-43a1-a88f-a5c1e618a200"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231422Z:53779194-2d7f-43a1-a88f-a5c1e618a200"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:21 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFVUlZOVU9qSkVURWxUVkRveVJFcFBRam95UkUxQldFTlBWVTVVTFVWQlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2laV0Z6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-04-01-preview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31983"
-        ],
-        "x-ms-request-id": [
-          "50f6ab02-1c1d-4e0d-a7ba-5f3b09aad406"
-        ],
-        "x-ms-correlation-request-id": [
-          "50f6ab02-1c1d-4e0d-a7ba-5f3b09aad406"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231422Z:50f6ab02-1c1d-4e0d-a7ba-5f3b09aad406"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:22 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFVUlZOVU9qSkVURWxUVkRveVJFcFBRam95UkUxQldFTlBWVTVVTFVWQlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2laV0Z6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-04-01-preview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31982"
-        ],
-        "x-ms-request-id": [
-          "922a6ecc-8273-4209-acaf-44e5313c895d"
-        ],
-        "x-ms-correlation-request-id": [
-          "922a6ecc-8273-4209-acaf-44e5313c895d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231437Z:922a6ecc-8273-4209-acaf-44e5313c895d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:37 GMT"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1URVNUOjJETElTVDoyREpPQjoyRE1BWENPVU5ULUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFVUlZOVU9qSkVURWxUVkRveVJFcFBRam95UkUxQldFTlBWVTVVTFVWQlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2laV0Z6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-04-01-preview"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31981"
-        ],
-        "x-ms-request-id": [
-          "a9d95eca-0dee-4eb3-a220-454b96d918d2"
-        ],
-        "x-ms-correlation-request-id": [
-          "a9d95eca-0dee-4eb3-a220-454b96d918d2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150304T231453Z:a9d95eca-0dee-4eb3-a220-454b96d918d2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 04 Mar 2015 23:14:52 GMT"
-        ]
-      },
-      "StatusCode": 200
     }
   ],
   "Names": {},

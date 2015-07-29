@@ -30,7 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     /// $vm = Get-AzureVM -ServiceName service -Name VM-name
     /// Remove-AzureVMDscExtension -VM $vm | Update-AzureVM -Verbose
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, VirtualMachineDscExtensionCmdletNoun),
+    [Cmdlet(VerbsCommon.Remove, 
+        VirtualMachineDscExtensionCmdletNoun,
+        SupportsShouldProcess = true),
     OutputType(typeof(IPersistentVM))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
     {
@@ -41,10 +43,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             this.Uninstall = true;
             this.Version = DefaultExtensionVersion;
 
-            RemovePredicateExtensions();
-            AddResourceExtension();
-
-            WriteObject(VM);
+            if (ShouldProcess(Resources.DscExtensionRemovalConfirmation,
+                Resources.DscExtensionRemovalCaption))
+            {
+                RemovePredicateExtensions();
+                AddResourceExtension();
+                WriteObject(VM);
+            }
         }
 
         protected override void ProcessRecord()

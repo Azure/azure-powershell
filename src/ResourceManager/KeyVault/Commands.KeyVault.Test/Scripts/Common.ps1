@@ -23,7 +23,11 @@ Get test key name
 #>
 function Get-KeyVault([bool] $haspermission=$true)
 {
-    if ($global:testEnv -eq 'BVT' -and $haspermission)
+    if ($global:testVault -ne "" -and $haspermission)
+    {
+        return $global:testVault
+    }
+    elseif ($global:testEnv -eq 'BVT' -and $haspermission)
     {        
         return 'powershellbvt'
     }
@@ -56,7 +60,7 @@ Get test secret name
 #>
 function Get-SecretName([string]$suffix)
 {
-    return 'pshts-' + $global:testns+ '-' + $suffix
+    return 'pshts-' + $global:testns + '-' + $suffix
 }
 
 
@@ -237,6 +241,18 @@ function Run-SecretTest ([ScriptBlock] $test, [string] $testName)
    finally 
    {
      Cleanup-SingleSecretTest *>> "$testName.debug_log"
+   }
+}
+
+function Run-VaultTest ([ScriptBlock] $test, [string] $testName)
+{   
+   try 
+   {
+     Run-Test $test $testName *>> "$testName.debug_log"
+   }
+   finally 
+   {
+     
    }
 }
 

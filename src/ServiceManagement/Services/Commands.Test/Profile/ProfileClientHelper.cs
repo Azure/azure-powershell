@@ -16,7 +16,10 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Hyak.Common;
+using Microsoft.Azure.Subscriptions.Rdfe;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Profile
 {
@@ -29,6 +32,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             get { return this._subscriptions; }
 
             set { this._subscriptions = value; }
+        }
+
+        protected override SubscriptionClient WithHandler(ServiceClient<SubscriptionClient> newClient, DelegatingHandler handler)
+        {
+            return newClient as SubscriptionClient;
+        }
+
+        public override SubscriptionClient WithHandler(DelegatingHandler handler)
+        {
+            return this;
         }
 
         public override Microsoft.Azure.Subscriptions.Rdfe.ISubscriptionOperations Subscriptions
@@ -127,6 +140,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 return MockCsmTenantOperations.Create(this.ReturnedTenants);
             }
+        }
+
+        public override Azure.Subscriptions.Csm.SubscriptionClient WithHandler(DelegatingHandler handler)
+        {
+            return this;
         }
     }
 

@@ -280,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 {
                     if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });

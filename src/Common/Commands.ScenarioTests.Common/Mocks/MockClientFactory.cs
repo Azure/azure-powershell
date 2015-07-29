@@ -19,6 +19,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Common;
@@ -38,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new List<ProductInfoHeaderValue>();
+            UserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -96,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 {
                     throw new ArgumentException(
                         string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
-                            typeof(TClient).Name));
+                            typeof (TClient).Name));
                 }
                 else
                 {
@@ -106,6 +108,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     realClient.Dispose();
                     return newRealClient;
                 }
+            }
+            else
+            {
+                // Use the WithHandler method to create an extra reference to the http client
+                // this will prevent the httpClient from being disposed in a long-running test using 
+                // the same client for multiple cmdlets
+                client = client.WithHandler(new PassThroughDelegatingHandler());
             }
 
             return client;
@@ -150,6 +159,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-        public List<ProductInfoHeaderValue> UserAgents { get; set; }
+
+        public void AddUserAgent(string productName, string productVersion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserAgent(string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+
+        /// <summary>
+        /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
+        /// from being disposed.  Should not be used execpt in this mocked context.
+        /// </summary>
+        class PassThroughDelegatingHandler : DelegatingHandler
+        {
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                return base.SendAsync(request, cancellationToken);
+            }
+        }
     }
 }
