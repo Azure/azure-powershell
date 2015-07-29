@@ -56,7 +56,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.27-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.1-preview\lib\portable-net45+sl50+wp80+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.0.9.3-preview\lib\portable-net45+sl50+wp80+win\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -67,10 +67,18 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoint\DisableAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\EnableAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\SetAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\GetAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpoint.cs" />
+    <Compile Include="Endpoint\NewAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpointConfig.cs" />
     <Compile Include="Endpoint\AddAzureTrafficManagerEndpointConfig.cs" />
-    <Compile Include="Models\Endpoint.cs" />
+    <Compile Include="Models\TrafficManagerEndpoint.cs" />
     <Compile Include="Models\TrafficManagerProfile.cs" />
+    <Compile Include="Profile\DisableAzureTrafficManagerProfile.cs" />
+    <Compile Include="Profile\EnableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\RemoveAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\SetAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\GetAzureTrafficManagerProfile.cs" />
@@ -94,6 +102,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
+      <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
