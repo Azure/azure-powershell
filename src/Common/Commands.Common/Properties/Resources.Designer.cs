@@ -565,6 +565,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OperationID : &apos;{0}&apos;.
+        /// </summary>
+        public static string ComputeCloudExceptionOperationIdMessage {
+            get {
+                return ResourceManager.GetString("ComputeCloudExceptionOperationIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to config.json.
         /// </summary>
         public static string ConfigurationFileName {
@@ -3306,7 +3315,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WAStorageEmulator.exe.
+        ///   Looks up a localized string similar to AzureStorageEmulator.exe.
         /// </summary>
         public static string StorageEmulatorExe {
             get {

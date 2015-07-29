@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 secret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, value, 
-                    secretAttributes.TagsDirectionary, secretAttributes.ContentType, attributes).GetAwaiter().GetResult();
+                    secretAttributes.TagsDictionary, secretAttributes.ContentType, attributes).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 secret = this.keyVaultClient.UpdateSecretAsync(secretIdentifier.Identifier, 
-                    secretAttributes.ContentType, attributes, secretAttributes.TagsDirectionary).GetAwaiter().GetResult();
+                    secretAttributes.ContentType, attributes, secretAttributes.TagsDictionary).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {

@@ -45,7 +45,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties {
                 return resourceMan;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The value {0} is an invalid GUID..
+        /// </summary>
+        internal static string InvalidGuid
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidGuid", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.

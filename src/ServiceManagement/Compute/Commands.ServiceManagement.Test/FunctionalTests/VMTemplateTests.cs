@@ -581,7 +581,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 // Try to get VM image with data disks
                 var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
-                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.Category == "Public" && t.DataDiskConfigurations != null && t.DataDiskConfigurations.Any()).FirstOrDefault();
+                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.Category == "Public" && t.DataDiskConfigurations != null
+                    && t.Location.Contains(locationName) && t.DataDiskConfigurations.Any()).FirstOrDefault();
 
                 // New-AzureService and verify with Get-AzureService
                 vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);

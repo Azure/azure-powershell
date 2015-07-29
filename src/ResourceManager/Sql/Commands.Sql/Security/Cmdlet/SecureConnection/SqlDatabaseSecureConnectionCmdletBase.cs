@@ -42,16 +42,5 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.SecureConnection
         {
             return new SqlSecureConnectionAdapter(Profile, subscription);
         }
-
-        /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
-        /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model)
-        {
-            ModelAdapter.SetDatabaseSecureConnectionPolicy(model, clientRequestId);
-            return null;
-        }
     }
 }

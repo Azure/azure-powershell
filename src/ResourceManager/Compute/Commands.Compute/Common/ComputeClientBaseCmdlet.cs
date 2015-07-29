@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -40,10 +43,30 @@ namespace Microsoft.Azure.Commands.Compute
 
             set { computeClient = value; }
         }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ComputeAutoMapperProfile.Initialize();
+        }
+
+        protected void ExecuteClientAction(Action action)
+        {
+            try
+            {
+                try
+                {
+                    action();
+                }
+                catch (CloudException ex)
+                {
+                    throw new ComputeCloudException(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
         }
     }
 }

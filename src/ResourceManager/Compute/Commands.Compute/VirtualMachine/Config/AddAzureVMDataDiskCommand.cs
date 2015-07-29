@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
-        [ValidateNotNullOrEmpty]
         public int? DiskSizeInGB { get; set; }
 
         [Parameter(

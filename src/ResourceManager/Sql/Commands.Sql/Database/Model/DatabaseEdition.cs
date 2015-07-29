@@ -37,7 +37,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// A database standard edition
         /// </summary>
-        Standard = 5
+        Standard = 5,
+
+        /// <summary>
+        /// Azure SQL Data Warehouse database edition
+        /// </summary>
+        DataWarehouse = 6
     }
 }
 

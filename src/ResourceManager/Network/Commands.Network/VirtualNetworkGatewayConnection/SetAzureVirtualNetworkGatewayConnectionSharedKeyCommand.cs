@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
          HelpMessage = "The virtual network connection shared key value.")]
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
-  
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]

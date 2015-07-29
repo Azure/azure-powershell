@@ -15,11 +15,6 @@
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     /// <summary>
-    /// The possible masking levels
-    /// </summary>
-    public enum MaskingLevelType { Standard, Extended };
-
-    /// <summary>
     /// The possible states in which a data masking policy may be in
     /// </summary>
     public enum DataMaskingStateType { Enabled, Disabled };
@@ -38,11 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Security.Model
         /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the masking level
-        /// </summary>
-        public MaskingLevelType MaskingLevel { get; set; }
 
         /// <summary>
         ///  Gets or sets the state of the policy

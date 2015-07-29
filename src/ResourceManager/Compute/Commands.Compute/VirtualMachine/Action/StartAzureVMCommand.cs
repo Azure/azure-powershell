@@ -42,9 +42,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            var op = this.VirtualMachineClient.Start(this.ResourceGroupName, this.Name);
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-            WriteObject(result);
+            base.ExecuteCmdlet();
+
+            ExecuteClientAction(() =>
+            {
+                var op = this.VirtualMachineClient.Start(this.ResourceGroupName, this.Name);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
+            });
         }
     }
 }

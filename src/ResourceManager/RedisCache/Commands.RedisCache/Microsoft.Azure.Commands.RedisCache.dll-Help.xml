@@ -107,22 +107,22 @@
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup -Name myexists
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
-          
+
+          ResourceGroupName  : myGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+          Location           : North Central US
+          Name               : myexists
+          Type               : Microsoft.Cache/Redis
+          HostName           : myexists.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 1GB
+          Sku                : Basic
+
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets details about the specified redis cache.</maml:para>
@@ -141,37 +141,37 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
 
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location          : North Central US
-          Name              : myearlier
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : True
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
-          
+          ResourceGroupName  : myGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+          Location           : North Central US
+          Name               : myexists
+          Type               : Microsoft.Cache/Redis
+          HostName           : myexists.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 1GB
+          Sku                : Basic
+
+          ResourceGroupName  : myGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
+          Location           : North Central US
+          Name               : myearlier
+          Type               : Microsoft.Cache/Redis
+          HostName           : myearlier.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : True
+          RedisVersion       : 2.8
+          Size               : 250MB
+          Sku                : Standard
+
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets details about all redis caches in the specified resource group.</maml:para>
@@ -190,52 +190,52 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Get-AzureRedisCache
-          
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
-          Location          : North Central US
-          Name              : myexists
-          Type              : Microsoft.Cache/Redis
-          HostName          : myexists.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Basic
 
-          ResourceGroupName : myGroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
-          Location          : North Central US
-          Name              : myearlier
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : True
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
+          ResourceGroupName  : myGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
+          Location           : North Central US
+          Name               : myexists
+          Type               : Microsoft.Cache/Redis
+          HostName           : myexists.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 1GB
+          Sku                : Basic
 
-          ResourceGroupName : myGroup2
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup2/providers/Microsoft.Cache/Redis/myearlier2
-          Location          : North Central US
-          Name              : myearlier2
-          Type              : Microsoft.Cache/Redis
-          HostName          : myearlier2.redis.cache.windows.net
-          Port              : 6379
-          ProvisioningState : succeeded
-          SslPort           : 6380
-          MaxMemoryPolicy   : VolatileTTL
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Basic
-          
+          ResourceGroupName  : myGroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myearlier
+          Location           : North Central US
+          Name               : myearlier
+          Type               : Microsoft.Cache/Redis
+          HostName           : myearlier.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : True
+          RedisVersion       : 2.8
+          Size               : 250MB
+          Sku                : Standard
+
+          ResourceGroupName  : myGroup2
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup2/providers/Microsoft.Cache/Redis/myearlier2
+          Location           : North Central US
+          Name               : myearlier2
+          Type               : Microsoft.Cache/Redis
+          HostName           : myearlier2.redis.cache.windows.net
+          Port               : 6379
+          ProvisioningState  : succeeded
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 250MB
+          Sku                : Basic
+
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets details about all redis caches in the current subscription.</maml:para>
@@ -317,11 +317,11 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>MaxMemoryPolicy</maml:name>
+          <maml:name>RedisConfiguration</maml:name>
           <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL</maml:para>
+            <maml:para> All Redis Configuration Settings. Few possible keys: maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples, slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value, hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value etc. </maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>EnableNonSslPort</maml:name>
@@ -409,13 +409,13 @@
         <dev:defaultValue>Standard</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>MaxMemoryPolicy</maml:name>
+        <maml:name>RedisConfiguration</maml:name>
         <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. By default the value is VolatileLRU. All possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+          <maml:para> All Redis Configuration Settings. Few possible keys: maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples, slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value, hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value etc. </maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -476,24 +476,24 @@
         </maml:introduction>
         <dev:code>
           PS C:\&gt;New-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
-         
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   :
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 1GB
-          Sku               : Standard
-          
+
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : mygroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
+          Location           : North Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.cache.icbbvt.windows-int.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 1GB
+          Sku                : Standard
+
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a redis cache.</maml:para>
@@ -511,24 +511,24 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -RedisVersion "2.8" -Size 250MB -Sku Standard -MaxMemoryPolicy AllKeysLRU -Force
+          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -RedisVersion "2.8" -Size 250MB -Sku Standard -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
 
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   : AllKeysLRU
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : mygroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
+          Location           : North Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.cache.icbbvt.windows-int.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random]}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 250MB
+          Sku                : Standard
 
         </dev:code>
         <dev:remarks>
@@ -1075,11 +1075,25 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>MaxMemoryPolicy</maml:name>
+          <maml:name>Size</maml:name>
           <maml:description>
-            <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+            <maml:para>Size of the redis cache. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Sku</maml:name>
+          <maml:description>
+            <maml:para>Sku of redis cache. Possible values are Basic and Standard.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>RedisConfiguration</maml:name>
+          <maml:description>
+            <maml:para> All Redis Configuration Settings. Few possible keys: maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples, slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value, hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value etc. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>EnableNonSslPort</maml:name>
@@ -1118,13 +1132,37 @@
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>MaxMemoryPolicy</maml:name>
+        <maml:name>Size</maml:name>
         <maml:description>
-          <maml:para>MaxMemoryPolicy used by the redis cache. The default value is VolatileLRU. Possible values are AllKeysLRU, AllKeysRandom, NoEviction, VolatileLRU, VolatileRandom, VolatileTTL.</maml:para>
+          <maml:para>Size of the redis cache. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Sku</maml:name>
+        <maml:description>
+          <maml:para>Sku of the redis cache. Possible values are Basic and Standard.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>RedisConfiguration</maml:name>
+        <maml:description>
+          <maml:para> All Redis Configuration Settings. Few possible keys: maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples, slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value, hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value etc. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -1184,24 +1222,24 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -MaxMemoryPolicy AllKeysLRU
+          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
-          PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-          ResourceGroupName : mygroup
-          Id                : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
-          Location          : North Central US
-          Name              : mycache
-          Type              : Microsoft.Cache/Redis
-          HostName          : mycache.cache.icbbvt.windows-int.net
-          Port              : 6379
-          ProvisioningState : creating
-          SslPort           : 6380
-          MaxMemoryPolicy   : AllKeysLRU
-          EnableNonSslPort  : False
-          RedisVersion      : 2.8
-          Size              : 250MB
-          Sku               : Standard
+          PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+          ResourceGroupName  : mygroup
+          Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/mygroup/providers/Microsoft.Cache/Redis/mycache
+          Location           : North Central US
+          Name               : mycache
+          Type               : Microsoft.Cache/Redis
+          HostName           : mycache.cache.icbbvt.windows-int.net
+          Port               : 6379
+          ProvisioningState  : creating
+          SslPort            : 6380
+          RedisConfiguration : {[maxmemory-policy, allkeys-random]}
+          EnableNonSslPort   : False
+          RedisVersion       : 2.8
+          Size               : 250MB
+          Sku                : Standard
 
         </dev:code>
         <dev:remarks>

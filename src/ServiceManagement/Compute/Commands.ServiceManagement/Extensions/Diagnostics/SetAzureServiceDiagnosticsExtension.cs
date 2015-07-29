@@ -132,10 +132,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             };
 
             var secondSlotDeployment = GetDeployment(this.Slot == DeploymentSlotType.Production ? DeploymentSlotType.Staging : DeploymentSlotType.Production);
-            Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration secondSlotExtensionConfiguration = 
-                secondSlotDeployment != null ? secondSlotDeployment.ExtensionConfiguration : null;
 
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration, secondSlotExtensionConfiguration);
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, secondSlotDeployment);
             ChangeDeployment(extConfig);
         }
 

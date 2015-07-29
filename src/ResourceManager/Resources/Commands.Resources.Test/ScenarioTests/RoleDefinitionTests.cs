@@ -20,21 +20,22 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleDefinitionTests
     {
-        // TODO: Add  [Trait(Category.AcceptanceType, Category.CheckIn)] attribute for each test once it gets implemented fully
-
-        [Fact(Skip = "Not implemented")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionCreateTests()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionCreateTests");
         }
 
-        [Fact(Skip="Not implemented")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
         }
 
-        [Fact(Skip = "Not implemented")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdPositiveScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");

@@ -25,9 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key of Azure Dedicated Circuit to be removed")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Bandwidth")]
         public UInt32? Bandwidth { get; set; }
@@ -44,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 Force.IsPresent,
                 string.Format(Resources.SetAzureDedicatedCircuitBandwidthWarning, ServiceKey, Bandwidth),
                 Resources.SetAzureDedicatedCircuitBandwidthMessage,
-                ServiceKey,
+                ServiceKey.ToString(),
                 () =>
                 {
                     var circuit = ExpressRouteClient.SetAzureDedicatedCircuitProperties(ServiceKey, Bandwidth, Sku);

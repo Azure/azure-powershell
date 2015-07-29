@@ -12,6 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,12 +25,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Profile.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -41,8 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         protected const string username = "pstestuser";
         protected static string localFile = Resource.Vhd;
         protected static string vnetConfigFilePath = Directory.GetCurrentDirectory() + "\\vnetconfig.netcfg";
-        protected const string testDataContainer = "testdata";
-        protected const string osVhdName = "oneGBFixedWS2008R2.vhd";
+        protected const string osVhdName = "os.vhd";
 
         protected const string WinRmEndpointName = "PowerShell";
         protected const string RdpEndpointName = "RemoteDesktop";
@@ -295,7 +294,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         protected void StartTest(string testname, DateTime testStartTime)
         {
-            Console.WriteLine("{0} test starts at {1}", testname, testStartTime);
+            string subId = defaultAzureSubscription.SubscriptionId;
+            string endPoint = defaultAzureSubscription.ServiceEndpoint;
+            Console.WriteLine("{0} test starts at {1} for subscription {2} and endpoint {3}", testname, testStartTime, subId, endPoint);
         }
 
         private static void Retry(string cmdlet, string message, int maxTry = 1, int intervalSecond = 10)

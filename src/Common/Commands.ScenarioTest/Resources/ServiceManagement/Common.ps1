@@ -20,9 +20,9 @@ Sets the default storage account
 function Set-CurrentStorageAccountName
 {
     param([string] $storageAccountName)
-	$currentSubscription = Get-AzureSubscription -Current
+    $currentSubscription = Get-AzureSubscription -Current
 
-	Set-AzureSubscription -SubscriptionId $currentSubscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
+    Set-AzureSubscription -SubscriptionId $currentSubscription.SubscriptionId -CurrentStorageAccountName $storageAccountName
 }
 
 <#
@@ -31,7 +31,7 @@ Gets the default location
 #>
 function Get-DefaultLocation
 {
-	return (Get-AzureLocation)[0].Name
+    return (Get-AzureLocation)[0].Name
 }
 
 <#
@@ -41,7 +41,7 @@ Gets the default image
 function Get-DefaultImage
 {
     param([string] $loc)
-	return (Get-AzureVMImage | where {$_.OS -eq "Windows"} | where {$_.Location.Contains($loc)})[0].ImageName
+    return (Get-AzureVMImage | where {$_.OS -eq "Windows"} | where {$_.Location.Contains($loc)})[0].ImageName
 }
 
 
@@ -51,7 +51,7 @@ Gets valid and available cloud service name.
 #>
 function Get-CloudServiceName
 {
-	return getAssetName
+    return getAssetName
 }
 
 <#
@@ -61,14 +61,14 @@ Cleanup cloud service
 function Cleanup-CloudService
 {
     param([string] $name)
-	try
-	{
-	     Remove-AzureService -ServiceName $name -Force
-	}
-	catch
-	{
-	     Write-Warning "Cannot Remove the Cloud Service"
-	}
+    try
+    {
+         Remove-AzureService -ServiceName $name -Force
+    }
+    catch
+    {
+         Write-Warning "Cannot Remove the Cloud Service"
+    }
 }
 
 <#
@@ -78,13 +78,14 @@ Cleanup storage
 function Cleanup-Storage
 {
     param([string] $name)
-	Remove-AzureStorageAccount -StorageAccountName $name
-	try
-	{
-	     Remove-AzureStorageAccount -StorageAccountName $name
-	}
-	catch
-	{
-	     Write-Warning "Cannot Remove the Storage Account"
-	}
+    Remove-AzureStorageAccount -StorageAccountName $name
+    try
+    {
+         Remove-AzureStorageAccount -StorageAccountName $name
+    }
+    catch
+    {
+         Write-Warning "Cannot Remove the Storage Account"
+    }
 }
+

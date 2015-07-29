@@ -153,9 +153,9 @@ function Test-ListAllPools
 	param([string]$accountName, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$workItems = Get-AzureBatchPool_ST -BatchContext $context
+	$pools = Get-AzureBatchPool_ST -BatchContext $context
 
-	Assert-AreEqual $count $workItems.Length
+	Assert-AreEqual $count $pools.Length
 }
 
 <#
@@ -169,8 +169,8 @@ function Test-DeletePool
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
 	# Verify the Pool exists
-	$pools = Get-AzureBatchPool_ST -BatchContext $context
-	Assert-AreEqual 1 $pools.Count
+	$pool = Get-AzureBatchPool_ST $poolName -BatchContext $context
+	Assert-AreEqual $poolName $pool.Name
 
 	if ($usePipeline -eq '1')
 	{
@@ -181,7 +181,99 @@ function Test-DeletePool
 		Remove-AzureBatchPool_ST -Name $poolName -Force -BatchContext $context
 	}
 
-	# Verify the Pool was deleted
-	$pools = Get-AzureBatchPool_ST -BatchContext $context
-	Assert-True { $pools -eq $null -or $pools[0].State.ToString().ToLower() -eq 'deleting' }
+	# Verify the Pool was deleted. Use the OData filter since the GetPool API will cause a 404 if the pool isn't found.
+	$filter = "name eq '" + $poolName + "'"
+	$pool = Get-AzureBatchPool_ST -Filter $filter -BatchContext $context
+	
+	Assert-True { $pool -eq $null -or $pool.State.ToString().ToLower() -eq 'deleting' }
+}
+
+<#
+.SYNOPSIS
+Tests resizing a pool specified by name
+#>
+function Test-ResizePoolByName
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get the initial TargetDedicated count
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 2
+	Start-AzureBatchPoolResize_ST -Name $poolName -TargetDedicated $newTargetDedicated -BatchContext $context
+
+	# Verify the TargetDedicated property was updated
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
+}
+
+<#
+.SYNOPSIS
+Tests resizing a pool specified by pipeline object
+#>
+function Test-ResizePoolByPipeline
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get the initial TargetDedicated count
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 2
+	$pool | Start-AzureBatchPoolResize_ST -TargetDedicated $newTargetDedicated -ResizeTimeout ([TimeSpan]::FromHours(1)) -DeallocationOption ([Microsoft.Azure.Batch.Common.TVMDeallocationOption]::Terminate) -BatchContext $context
+
+	# Verify the TargetDedicated property was updated
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
+}
+
+<#
+.SYNOPSIS
+Tests stopping a pool resize operation using the pool name
+#>
+function Test-StopResizePoolByName
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Start a resize and then stop it
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 5
+	Start-AzureBatchPoolResize_ST -Name $poolName -TargetDedicated $newTargetDedicated -BatchContext $context
+	Stop-AzureBatchPoolResize_ST -Name $poolName -BatchContext $context
+
+	# Verify the AllocationState changed to Stopping
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual 'Stopping' $pool.AllocationState
+}
+
+<#
+.SYNOPSIS
+Tests stopping a pool resize operation using the pipeline
+#>
+function Test-StopResizePoolByPipeline
+{
+	param([string]$accountName, [string]$poolName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Start a resize and then stop it
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	$initialTargetDedicated = $pool.TargetDedicated
+
+	$newTargetDedicated = $initialTargetDedicated + 5
+	$pool | Start-AzureBatchPoolResize_ST -TargetDedicated $newTargetDedicated -BatchContext $context
+	$pool | Stop-AzureBatchPoolResize_ST -BatchContext $context
+
+	# Verify the AllocationState changed to Stopping
+	$pool = Get-AzureBatchPool_ST -Name $poolName -BatchContext $context
+	Assert-AreEqual 'Stopping' $pool.AllocationState
 }

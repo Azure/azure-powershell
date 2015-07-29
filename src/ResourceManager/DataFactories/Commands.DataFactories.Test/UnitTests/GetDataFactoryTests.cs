@@ -44,12 +44,15 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             // Arrange
             PSDataFactory expected = new PSDataFactory() {DataFactoryName = DataFactoryName, ResourceGroupName = ResourceGroupName};
-         
+
             dataFactoriesClientMock.Setup(
                 c =>
                     c.FilterPSDataFactories(
                         It.Is<DataFactoryFilterOptions>(
-                            options => options.Name == DataFactoryName && options.ResourceGroupName == ResourceGroupName)))
+                            options =>
+                                options.Name == DataFactoryName && 
+                                options.ResourceGroupName == ResourceGroupName &&
+                                options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
@@ -84,17 +87,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 new PSDataFactory() {DataFactoryName = DataFactoryName, ResourceGroupName = ResourceGroupName},
                 new PSDataFactory() {DataFactoryName = "datafactory1", ResourceGroupName = ResourceGroupName}
             };
-
+            
             // Arrange
             dataFactoriesClientMock.Setup(
                 c =>
                     c.FilterPSDataFactories(
                         It.Is<DataFactoryFilterOptions>(
-                            options => options.Name == null && options.ResourceGroupName == ResourceGroupName)))
+                            options => options.Name == null && options.ResourceGroupName == ResourceGroupName && options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
-            dataFactoriesClientMock.Setup(c => c.ListDataFactories(ResourceGroupName))
+            dataFactoriesClientMock.Setup(c => c.ListDataFactories(It.Is<DataFactoryFilterOptions>(
+                options =>
+                    options.Name == null && options.ResourceGroupName == ResourceGroupName && options.NextLink == null)))
                 .Returns(expected)
                 .Verifiable();
 

@@ -15,12 +15,68 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// The remove azure resource lock cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class RemoveAzureResourceLockCmdlet : RemoveAzureResourceCmdlet
+    public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase 
     {
+        /// <summary>
+        /// Gets or sets the extension resource name parameter.
+        /// </summary>
+        [Alias("ExtensionResourceName")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [ValidateNotNullOrEmpty]
+        public string LockName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the force parameter.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Executes the cmdlet.
+        /// </summary>
+        protected override void OnProcessRecord()
+        {
+            base.OnProcessRecord();
+            var resourceId = this.GetResourceId(this.LockName);
+            this.ConfirmAction(
+                this.Force,
+                string.Format("Are you sure you want to delete the following lock: {0}", resourceId),
+                "Deleting the lock...",
+                resourceId,
+                () =>
+                {
+                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+
+                    var operationResult = this.GetResourcesClient()
+                        .DeleteResource(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion,
+                            cancellationToken: this.CancellationToken.Value)
+                        .Result;
+
+                    var managementUri = this.GetResourcesClient()
+                        .GetResourceManagementRequestUri(
+                            resourceId: resourceId,
+                            apiVersion: apiVersion);
+
+                    var activity = string.Format("DELETE {0}", managementUri.PathAndQuery);
+
+                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
+                        .WaitOnOperation(operationResult: operationResult);
+
+                    this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+                });
+        }
     }
 }

@@ -10,6 +10,7 @@ $delta=[TimeSpan]::FromMinutes(2)
 $tags=@{"tag1"="value1"; "tag2"=""; "tag3"=$null}
 $newtags= @{"tag1"="value1"; "tag2"="value2"; "tag3"="value3"; "tag4"="value4"}
 $emptytags=@{}
+$defaultKeySizeInBytes = 256
 
 
 
@@ -67,6 +68,7 @@ function Test_CreateSoftwareKeyWithDefaultAttributes
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length $defaultKeySizeInBytes
 }
 
 <#
@@ -95,6 +97,7 @@ function Test_CreateHsmKeyWithDefaultAttributes
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length $defaultKeySizeInBytes
 }
 
 <#
@@ -124,6 +127,23 @@ function Test_ImportPfxWithDefaultAttributes
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length $defaultKeySizeInBytes
+ }
+
+ <#
+.SYNOPSIS
+Tests import pfx with default attributes
+#>
+function Test_ImportPfxWith1024BitKey
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'pfx1024'
+    $pfxpath = Get-ImportKeyFile1024 'pfx'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
+    Assert-NotNull $key
+    $global:createdKeys += $keyname
+    Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length 128
  }
 
 <#
@@ -184,6 +204,23 @@ function Test_ImportByokWithDefaultAttributes
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length $defaultKeySizeInBytes
+}
+
+<#
+.SYNOPSIS
+Tests import byok with default attributes
+#>
+function Test_ImportByokWith1024BitKey
+{
+    $keyVault = Get-KeyVault
+    $keyname=Get-KeyName 'byok1024'   
+    $byokpath = Get-ImportKeyFile1024 'byok'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $byokpath
+    Assert-NotNull $key
+    $global:createdKeys += $keyname
+    Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
+	Assert-AreEqual $key.Key.N.Length 128
 }
 
 <#

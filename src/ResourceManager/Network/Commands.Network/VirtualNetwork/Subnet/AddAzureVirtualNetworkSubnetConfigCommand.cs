@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
+
+                if (this.RouteTable != null)
+                {
+                    this.RouteTableId = this.RouteTable.Id;
+                }
             }
 
             subnet = new PSSubnet();
@@ -63,6 +68,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.NetworkSecurityGroup = new PSResourceId();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteTableId))
+            {
+                subnet.RouteTable = new PSResourceId();
+                subnet.RouteTable.Id = this.RouteTableId;
             }
 
             this.VirtualNetwork.Subnets.Add(subnet);

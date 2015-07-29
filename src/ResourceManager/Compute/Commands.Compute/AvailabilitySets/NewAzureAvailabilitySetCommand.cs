@@ -68,20 +68,24 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var avSetParams = new AvailabilitySet
+            ExecuteClientAction(() =>
             {
-                Name = this.Name,
-                Location = this.Location,
-                PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                PlatformFaultDomainCount = this.PlatformFaultDomainCount
-            };
+                var avSetParams = new AvailabilitySet
+                {
+                    Name = this.Name,
+                    Location = this.Location,
+                    PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
+                };
 
-            var result = this.AvailabilitySetClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                avSetParams);
+                var result = this.AvailabilitySetClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    avSetParams);
 
-            var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-            WriteObject(psResult);
+                var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+                psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
+                WriteObject(psResult);
+            });
         }
     }
 }
