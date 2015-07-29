@@ -138,18 +138,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             if (!skipDependencyDetection)
             {
                 var metadataModules = CopyRequiredModules(configurationPath, tempZipFolder);
-                if (metadataModules != null)
+                if (metadataModules != null && metadataModules.Count > 0)
                 {
                     metadata.Add("Modules", metadataModules);
                 }
             } 
 
-            //copy metadata info
-            var metadataJson = JsonConvert.SerializeObject(metadata);
-            const string metadataFileName = "dscmetadata.json";
-            var metadataDestPath = Path.Combine(tempZipFolder, metadataFileName);
-            File.WriteAllText(metadataDestPath, metadataJson);
-
+            //copy metadata info only when modules/additional content/configuration data exist
+            if (metadata.Count > 0)
+            {
+                var metadataJson = JsonConvert.SerializeObject(metadata);
+                const string metadataFileName = "dscmetadata.json";
+                var metadataDestPath = Path.Combine(tempZipFolder, metadataFileName);
+                File.WriteAllText(metadataDestPath, metadataJson);    
+            }
+            
             //
             // Zip the directory
             //
