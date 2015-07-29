@@ -374,8 +374,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 CmdletType = this.GetType().Name,
                 IsSuccess = true,
-                Uid = MetricHelper.GenerateSha256HashString(this.Profile.DefaultSubscription.Id.ToString())
             };
+
+            if (this.Profile != null && this.Profile.DefaultSubscription != null)
+            {
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.Profile.DefaultSubscription.Id.ToString());
+            }
+            else
+            {
+                QosEvent.Uid = "defaultid";
+            }
         }
 
         /// <summary>
@@ -383,6 +392,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected void LogQosEvent(bool waitForMetricSending = false)
         {
+            if (QosEvent == null)
+            {
+                return;
+            }
+
             QosEvent.FinishQosEvent();
             //TODO change to debug
             WriteVerbose(QosEvent.ToString());
@@ -415,12 +429,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="action">The action code</param>
         protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
         {
-            QosEvent.PauseQoSTimer();
+            if (QosEvent != null)
+            {
+                QosEvent.PauseQoSTimer();
+            }
+            
             if (force || ShouldContinue(actionMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
-                {
-                    QosEvent.ResumeQosTimer();
+                {                 
+                    if (QosEvent != null)
+                    {
+                        QosEvent.ResumeQosTimer();
+                    }
                     action();
                 }
             }
