@@ -14,9 +14,9 @@
 
 <#
     .SYNOPSIS
-    Tests upgrading a server with recommended database
+    Tests upgrading a server with result from upgrade hint cmdlet
 #>
-function Test-ServerUpgradeWithRecommendedDatabase
+function Test-ServerUpgradeWithUpgradeHint
 {
     # Setup
     $server = Create-ServerForServerUpgradeTest
@@ -28,32 +28,32 @@ function Test-ServerUpgradeWithRecommendedDatabase
 
     try
     {
-        $recommendedDatabase = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.RecommendedDatabaseProperties
-        $recommendedDatabase.Name = databaseName
-        $recommendedDatabase.TargetEdition = "Standard"
-        $recommendedDatabase.TargetServiceLevelObjective = "S0"
+        $mapping = Get-AzureSqlServerUpgradeHint -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
 
-        Start-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime ((Get-Date).AddMinutes(1).ToUniversalTime()) -DatabaseCollection ($recommendedDatabase)
+        Start-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime ((Get-Date).AddMinutes(1).ToUniversalTime()) -DatabaseCollection $mapping.Databases -ElasticPoolCollection $hint.ElasticPools
 
         while ($true)
         {
             $upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
             if ($upgrade.Status -eq "Completed")
             {
-				# Upgrade is successful
-				$server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-				Assert-AreEqual $server.ServerVersion "12.0"
+                # Upgrade is successful
+                $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+                Assert-AreEqual $server.ServerVersion "12.0"
                 break
             }
-			elseif ($upgrade.Status -eq "Stopped")
+            elseif ($upgrade.Status -eq "Stopped")
             {
-				# Upgrade failed
-				$server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-				Assert-AreEqual $server.ServerVersion "2.0"
+                # Upgrade failed
+                $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+                Assert-AreEqual $server.ServerVersion "2.0"
                 break
             }
 
-            Start-Sleep -Seconds 1
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+                Start-Sleep -Seconds 10
+            }
         }
     }
     finally
@@ -79,9 +79,9 @@ function Test-ServerUpgradeAndCancel
         Assert-AreEqual $upgrade.Status "Queued"
 
         Stop-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -Force
-		
-		$upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
-		Assert-AreEqual $upgrade.Status "Cancelling"
+        
+        $upgrade = Get-AzureSqlServerUpgrade -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+        Assert-AreEqual $upgrade.Status "Cancelling"
 
         while ($true)
         {
@@ -91,10 +91,13 @@ function Test-ServerUpgradeAndCancel
                 break
             }
 
-            Start-Sleep -Seconds 1
+            if ($env:AZURE_TEST_MODE -eq "Record")
+            {
+                Start-Sleep -Seconds 10
+            }
         }
 
-		# Upgrade is cancelled
+        # Upgrade is cancelled
         $server = Get-AzureSqlServer -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $server.ServerVersion "2.0"
     }
@@ -112,7 +115,7 @@ function Test-ServerUpgradeNegative
 {
     # Setup
     $server = Create-ServerForServerUpgradeTest
-    
+
     # Create a basic database
     $databaseName = Get-DatabaseName
     $database = New-AzureSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Basic -MaxSizeBytes 1GB

@@ -65,6 +65,17 @@ function Create-TestEnvironmentWithParams ($params)
 
 <#
 .SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests, while using storage  V2 as the used storage account
+#>
+function Create-TestEnvironmentWithStorageV2 ($testSuffix)
+{
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
+	New-AzureStorageAccount -Name $params.storageAccount -Location "West US" -ResourceGroupName $params.rgname -Type "Standard_GRS"
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql data masking tests
 #>
 function Create-DataMaskingTestEnvironment ($testSuffix)

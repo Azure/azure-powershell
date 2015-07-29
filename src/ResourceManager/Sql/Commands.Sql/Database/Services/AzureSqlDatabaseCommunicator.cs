@@ -45,6 +45,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
+        /// Expand string used for getting additional database information
+        /// </summary>
+        public const string ExpandDatabase = "serviceTierAdvisors";
+
+        /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
@@ -68,11 +73,27 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+        /// Gets the Azure Sql Database expanded additional details.
+        /// </summary>
+        public Management.Sql.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
+        }
+
+        /// <summary>
         /// Lists Azure Sql Databases
         /// </summary>
         public IList<Management.Sql.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+        }
+
+        /// <summary>
+        /// Lists Azure Sql Databases expanded with additional details.
+        /// </summary>
+        public IList<Management.Sql.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
         }
 
         /// <summary>
