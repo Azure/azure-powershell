@@ -104,7 +104,7 @@ NestedModules = @(
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll',  
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
-	'.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
+    '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
 )  
   
 # Functions to export from this module  
