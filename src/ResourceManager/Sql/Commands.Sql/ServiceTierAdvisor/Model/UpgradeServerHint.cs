@@ -12,28 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.AzureBackup.Models
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
+
+namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Model
 {
-    public enum AzureBackupVaultStorageType
+    /// <summary>
+    /// Represents recommendations for upgrading server
+    /// </summary>
+    public class UpgradeServerHint
     {
-        GeoRedundant = 1,
-        LocallyRedundant,
-    }
+        /// <summary>
+        /// List of elastic pools
+        /// </summary>
+        public IEnumerable<UpgradeRecommendedElasticPoolProperties> ElasticPools { get; set; }
 
-    public enum AzureBackupContainerType
-    {
-        Windows = 1,
-        SCDPM,
-    }
-
-    public enum AzureBackupContainerStatusInput
-    {
-        Registering = 1,
-        Registered,
-    }
-
-    public enum AzureBackupContainerRegistrationStatus
-    {
-        Registered = 1,
+        /// <summary>
+        /// List of recommended database properties
+        /// </summary>
+        public IEnumerable<RecommendedDatabaseProperties> Databases { get; set; }
     }
 }
