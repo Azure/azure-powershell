@@ -2607,8 +2607,14 @@
                         <Component Id="cmpE52498FB0431A601DD9FDE6F082DF1D4" Guid="*">
                             <File Id="fil1C2DE4A7227BA117EC30E177CDE33EBA" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll" />
                         </Component>
+                        <Component Id="cmp646219B124F3F4E61F8D4436CF6A3B69" Guid="*">
+                            <File Id="fil75570DDE9B14F94681BF5BFF761D6866" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll-Help.psd1" />
+                        </Component>
                         <Component Id="cmpFD1814D8F2D73854649A52268A2C2A83" Guid="*">
                             <File Id="fil84D1B77FA55EFCD4484D8AD09043589F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll-Help.xml" />
+                        </Component>
+                        <Component Id="cmp9DF26170AD3B0860AAFF291D39DD9FC5" Guid="*">
+                            <File Id="filA7907C4D3EB3A0ED61047497A6A4EA85" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.format.ps1xml" />
                         </Component>
                         <Component Id="cmp44D7FF7B300E1FDFF7EDCFF4DA736373" Guid="*">
                             <File Id="fil2A38767DE0ADEA01833D5D3B6ECE675F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Store.format.ps1xml" />
@@ -5214,7 +5220,9 @@
             <ComponentRef Id="cmpF7ADD37722F45985B5323202F35958F2" />
             <ComponentRef Id="cmp9D64A1111722F25BC100121E73BE039E" />
             <ComponentRef Id="cmpE52498FB0431A601DD9FDE6F082DF1D4" />
+            <ComponentRef Id="cmp646219B124F3F4E61F8D4436CF6A3B69" />
             <ComponentRef Id="cmpFD1814D8F2D73854649A52268A2C2A83" />
+            <ComponentRef Id="cmp9DF26170AD3B0860AAFF291D39DD9FC5" />
             <ComponentRef Id="cmp44D7FF7B300E1FDFF7EDCFF4DA736373" />
             <ComponentRef Id="cmp5E2D1458EED1C843527BFFA8D0231514" />
             <ComponentRef Id="cmpFB99C8144E83C73ADF06A4C987432388" />
