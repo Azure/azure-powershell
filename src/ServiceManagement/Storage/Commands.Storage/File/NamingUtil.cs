@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         private const string InvalidFileNamePattern = @"^((LPT\d)|(COM\d)|(PRN)|(AUX)|(NUL)|(CON)|(CLOCK\$))$";
 
-        private const int MaxPathLength = 1024;
+        private const int MaxPathLength = 2048;
 
         private static readonly char[] PathSeparators = new char[] { '/', '\\' };
 
