@@ -83,37 +83,45 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets the Azure Sql Database Server Upgrade status
         /// </summary>
-        public ServerUpgradeStatus GetStatus(string resourceGroupName, string serverName, string clientRequestId)
+        public ServerUpgradeGetResponse GetUpgrade(string resourceGroupName, string serverName, string clientRequestId)
         {
             try
             {
-                var status = GetCurrentSqlClient(clientRequestId).ServerUpgrades.Get(resourceGroupName, serverName).Status;
-                if (status == null)
+                var upgradeDetails = GetCurrentSqlClient(clientRequestId).ServerUpgrades.Get(resourceGroupName, serverName);
+                if (!String.IsNullOrEmpty(upgradeDetails.Status))
                 {
-                    // This upgrade is either completed or not started. Check server version to be sure
-                    var server = GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName).Server;
-                    if (server.Properties.Version.Equals(targetUpgradeVersion, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return ServerUpgradeStatus.Completed;
-                    }
+                    return upgradeDetails;
+                }
 
-                    return ServerUpgradeStatus.NotStarted;
-                }
-                
-                ServerUpgradeStatus result;
-                if (Enum.TryParse(status, out result))
+                // This upgrade is either completed or not started. Check server version to be sure
+                var server = GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName).Server;
+                if (server.Properties.Version.Equals(targetUpgradeVersion, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return result;
+                    return new ServerUpgradeGetResponse
+                    {
+                        Status = ServerUpgradeStatus.Completed.ToString(),
+                        ScheduleUpgradeAfterTime = null
+                    };
                 }
-                
-                return ServerUpgradeStatus.Unknown;
+                else
+                {
+                    return new ServerUpgradeGetResponse
+                    {
+                        Status = ServerUpgradeStatus.NotStarted.ToString(),
+                        ScheduleUpgradeAfterTime = null
+                    };
+                }
             }
             catch (CloudException cloudException)
             {
                 if (cloudException.Response.StatusCode == HttpStatusCode.BadRequest)
                 {
-                    // if bad request, the migration is aborted or cancelled
-                    return ServerUpgradeStatus.Stopped;
+                    // if bad request, the migration is already stopped
+                    return new ServerUpgradeGetResponse
+                    {
+                        Status = ServerUpgradeStatus.Stopped.ToString(),
+                        ScheduleUpgradeAfterTime = null
+                    };
                 }
                 
                 throw;
