@@ -2898,7 +2898,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
+          <maml:para>Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
@@ -2941,7 +2941,7 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
     <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
       <maml:name>Name</maml:name>
       <maml:description>
-        <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
+        <maml:para>Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       <dev:type>
@@ -3019,11 +3019,11 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 				<maml:para>C:\PS&gt;</maml:para>
 			</maml:introduction> 
   			<dev:code>
-Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powershell.DSC' </dev:code>
+Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:code>
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Retrieves the settings of extension (Name - 'Microsoft.Powershell.DSC') on virtual machine 'VM'.</maml:para>
+  			        <maml:para>Retrieves the settings of extension (Name - 'DSC') on virtual machine 'VM'. Specify Name parameter only when you changed its default value 'Microsoft.Powershell.DSC' to something else ('DSC' in this case) either through Set-AzureVMDscExtension cmdlet or an ARM template.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3084,14 +3084,14 @@ Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powe
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AdditionalPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
+					<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ConfigurationDataPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+					<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureVMDscExtension cmdlet</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -3153,14 +3153,14 @@ Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powe
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AdditionalPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
+					<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ConfigurationDataPath</maml:name>
 				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+					<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureVMDscExtension cmdlet</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			</command:parameter>
@@ -3202,7 +3202,7 @@ Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powe
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AdditionalPath</maml:name>
 			<maml:description>
-				<maml:para>Path to a file or a directory to include in  the configuration archive</maml:para>
+				<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
 			<dev:type>
@@ -3214,7 +3214,7 @@ Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powe
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ConfigurationDataPath</maml:name>
 			<maml:description>
-				<maml:para>Path to a .psd1 file that specifies the data for the Configuration</maml:para>
+				<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureVMDscExtension cmdlet</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
 			<dev:type>
@@ -3405,9 +3405,7 @@ Publish-AzureVMDscConfiguration .\MyConfiguration.ps1                        </d
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.
-
-By default the command does not produce any output; use the -Verbose option to display an indication of the operations performed by the command</maml:para>
+  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3457,7 +3455,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath 'C:\Sample.ps1 -SkipDependenc
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Adds configuration 'Sample.ps1' to configuration archive to upload to Azure storage and skips dependent resource modules.</maml:para>
+  			        <maml:para>Adds configuration 'Sample.ps1' to the configuration archive to upload to Azure storage and skips dependent resource modules.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3482,7 +3480,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath C:\Sample.ps1 -ConfigurationD
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Adds configuration 'Sample.ps1' and configuration data 'SampleData.psd1' to configuration archive to upload to Azure storage.</maml:para>
+  			        <maml:para>Adds configuration 'Sample.ps1' and configuration data 'SampleData.psd1' to the configuration archive to upload to Azure storage.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -8430,7 +8428,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
+            <maml:para>Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Remove-AzureVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -8464,7 +8462,7 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Name of the Extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
+          <maml:para>Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Remove-AzureVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -8514,11 +8512,14 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName Name -VMName VM -Name Microsoft.Powershell.DSC</dev:code>
+        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName Name -VMName VM -Name DSC</dev:code>
         <dev:remarks>
-          <maml:para />
-          <maml:para />
-          <maml:para />
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Removes the extension (Name - 'DSC') on virtual machine 'VM'. Specify Name parameter only when you changed its default value 'Microsoft.Powershell.DSC' to something else ('DSC' in this case) either through Set-AzureVMDscExtension cmdlet or an ARM template.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
           <maml:para></maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -11013,7 +11014,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Name of the DSC Extension handler. It will default to 'DSC' when it is not provided</maml:para>
+            <maml:para>Name of the ARM resource that represents the extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
@@ -11133,7 +11134,7 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Name of the DSC Extension handler. It will default to 'DSC' when it is not provided</maml:para>
+          <maml:para>Name of the ARM resource that represents the extension. This is defaulted to 'Microsoft.Powershell.DSC'</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>

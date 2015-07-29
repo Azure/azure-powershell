@@ -115,7 +115,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to a .psd1 file that specifies the data for the Configuration")]
+            HelpMessage = "Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration " +
+                          "archive and then passed to the configuration function. It gets overwritten by the configuration data path " +
+                          "provided through the Set-AzureVMDscExtension cmdlet")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationDataPath { get; set; }
 
@@ -124,7 +126,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to a file or a directory to include in  the configuration archive")]
+            HelpMessage = "Path to a file or a directory to include in  the configuration archive. It gets downloaded to the " +
+                          "VM along with the configuration")]
         [ValidateNotNullOrEmpty]
         public String[] AdditionalPath { get; set; }
 
