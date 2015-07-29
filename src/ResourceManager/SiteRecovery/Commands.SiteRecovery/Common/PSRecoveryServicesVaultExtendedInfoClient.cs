@@ -129,6 +129,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Changes the Vault context
+        /// </summary>
+        /// <param name="vault">vault object</param>
+        /// <returns>credential object</returns>
+        public ASRVaultCreds ChangeVaultContext(ASRVault vault)
+        {
+            // Update vault settings
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                ResourceGroupName = vault.ResouceGroupName,
+                ResourceName = vault.Name
+            });
+
+            // Get Channel Integrity key
+            Task<string> getChannelIntegrityKey = this.GetChannelIntegrityKey();
+            getChannelIntegrityKey.Wait();
+
+
+            // Update vault settings along with Channel integrity key
+            Utilities.UpdateVaultSettings(new ASRVaultCreds()
+            {
+                ResourceGroupName = vault.ResouceGroupName,
+                ResourceName = vault.Name,
+                ChannelIntegrityKey = getChannelIntegrityKey.Result
+            });
+
+            return asrVaultCreds;
+        }
+
+        /// <summary>
         /// Method to update vault certificate
         /// </summary>
         /// <param name="cert">certificate object </param>
