@@ -77,6 +77,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         {
                             throw;
                         }
+                        else
+                        {
+                            WriteWarning(string.Format(CultureInfo.CurrentUICulture, Resources.NoDeploymentFoundInService, ServiceName));
+                        }
                     }
                 });
             }
