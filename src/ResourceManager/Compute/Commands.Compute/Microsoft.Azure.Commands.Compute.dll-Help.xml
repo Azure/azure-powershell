@@ -3011,6 +3011,30 @@ $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmna
 	</maml:alertSet>
 	<!-- Example section  --> 
 	<command:examples>
+    <command:example>
+			<maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title> 
+			<maml:introduction>
+				<maml:para>C:\PS&gt;</maml:para>
+			</maml:introduction> 
+  			<dev:code>
+Get-AzureVMDscExtension -ResourceGroupName Name -VMName VM -Name 'Microsoft.Powershell.DSC' </dev:code>
+       			<dev:remarks>
+                                <maml:para>Description</maml:para>
+                                <maml:para>-----------</maml:para>
+  			        <maml:para>Retrieves the settings of extension (Name - 'Microsoft.Powershell.DSC') on virtual machine 'VM'.</maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+	                        <maml:para></maml:para>
+  			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText></command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<!-- Link section  -->
 	<maml:relatedLinks>
@@ -3381,9 +3405,9 @@ Publish-AzureVMDscConfiguration .\MyConfiguration.ps1                        </d
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>This command creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.
+  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.
 
-By default the command does no produce any output; use the -Verbose option to display an indication of the operations performed by the command</maml:para>
+By default the command does not produce any output; use the -Verbose option to display an indication of the operations performed by the command</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3408,7 +3432,7 @@ Publish-AzureVMDscConfiguration .\MyConfiguration.ps1 -OutputArchivePath .\MyCon
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>This command creates a ZIP package for the given script and any dependent resource modules and stores it in the local file .\MyConfiguration.ps1.zip.</maml:para>
+  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and stores it in the local file .\MyConfiguration.ps1.zip.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3433,7 +3457,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath 'C:\Sample.ps1 -SkipDependenc
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Use -SkipDependencyDetection to skip adding modules to the configuration archive</maml:para>
+  			        <maml:para>Adds configuration 'Sample.ps1' to configuration archive to upload to Azure storage and skips dependent resource modules.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3458,7 +3482,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath C:\Sample.ps1 -ConfigurationD
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Adding configuration data to the archive</maml:para>
+  			        <maml:para>Adds configuration 'Sample.ps1' and configuration data 'SampleData.psd1' to configuration archive to upload to Azure storage.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -3483,7 +3507,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -Ad
        			<dev:remarks>
                                 <maml:para>Description</maml:para>
                                 <maml:para>-----------</maml:para>
-  			        <maml:para>Adding additional content (files or directories) used by the configuration</maml:para>
+  			        <maml:para>Adds configuration 'Sample.ps1', configuration data 'SampleData.psd1' and additional content (files or directories referenced by the configuration) to configuration archive to upload to Azure storage.</maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
 	                        <maml:para></maml:para>
@@ -8486,11 +8510,11 @@ $vm =  New-AzureVMConfig –VMName “myVM” –VMSize “Standard_A1&quot; -Av
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Remove an Extension  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName &quot;RG&quot; -VMName &quot;vm1&quot; -Name &quot;extnname&quot;</dev:code>
+        <dev:code>PS C:\&gt; Remove-AzureVMDscExtension –ResouceGroupName Name -VMName VM -Name Microsoft.Powershell.DSC</dev:code>
         <dev:remarks>
           <maml:para />
           <maml:para />
@@ -11282,16 +11306,13 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureVMDscExtension -ResourceGroupName name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName stg -ConfigurationName MyConfiguration -Version 1.10 -Location 'West US'
+          Set-AzureVMDscExtension -ResourceGroupName Name -VMName VM -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -Version 1.10 -Location 'West US'
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
           <maml:para>
-            Set the extension on the VM to download MyConfiguration.ps1 from the default container (windows-powershell-dsc)
-            and invoke configuration MyConfiguration with arguments to the configuration function. Connect to blob storage using the value of
-            $ENV:azure_storage_connection_string
-          </maml:para>
+            Sets the extension on the 'VM' to download Sample.ps1.zip (from the 'Stg' storage account and the default container 'windows-powershell-dsc') that was previously uploaded using Publish-AzureVMDscConfiguration cmdlet and invokes configuration 'ConfigName'.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -11312,12 +11333,12 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureVMDscExtension -ResourceGroupName name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName stg -ConfigurationName name -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US'
+          Set-AzureVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US'
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>With arguments to the configuration function</maml:para>
+          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -11338,12 +11359,12 @@ Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMNa
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureVMDscExtension -ResourceGroupName name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName stg -ConfigurationName name -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US' -AutoUpdate
+          Set-AzureVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US' -AutoUpdate
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Enable -AutoUpdate </maml:para>
+          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments. Also, enables auto update of extension handler to the latest version as and when it is available.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
