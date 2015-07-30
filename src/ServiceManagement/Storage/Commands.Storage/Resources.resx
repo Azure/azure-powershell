@@ -600,6 +600,9 @@ Failed: {2}.</value>
   <data name="ConfirmCaption" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="DefaultDomain" xml:space="preserve">
+    <value>core.windows.net</value>
+  </data>
   <data name="TransmitActiveSummary" xml:space="preserve">
     <value>Total: {0}. Successful: {1}. Failed: {2}. Active: {3}.</value>
     <comment>0 for total task count, 1 for successful count, 2 for failed count, 3 for active count.</comment>

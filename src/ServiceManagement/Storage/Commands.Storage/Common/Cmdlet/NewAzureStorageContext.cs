@@ -361,12 +361,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
             }
 
-            Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);
-            Uri queueEndPoint = azureEnvironment.GetStorageQueueEndpoint(storageAccountName, useHttps);
-            Uri tableEndPoint = azureEnvironment.GetStorageTableEndpoint(storageAccountName, useHttps);
-            Uri fileEndPoint = azureEnvironment.GetStorageFileEndpoint(storageAccountName, useHttps);
+            try
+            {
+                Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);
+                Uri queueEndPoint = azureEnvironment.GetStorageQueueEndpoint(storageAccountName, useHttps);
+                Uri tableEndPoint = azureEnvironment.GetStorageTableEndpoint(storageAccountName, useHttps);
+                Uri fileEndPoint = azureEnvironment.GetStorageFileEndpoint(storageAccountName, useHttps);
 
-            return new CloudStorageAccount(credential, blobEndPoint, queueEndPoint, tableEndPoint, fileEndPoint);
+                return new CloudStorageAccount(credential, blobEndPoint, queueEndPoint, tableEndPoint, fileEndPoint);
+            }
+            catch (ArgumentNullException)
+            {
+                // the environment may not have value for StorageEndpointSuffix, in this case, we'll still use the default domain of "core.windows.net"
+                return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, Resources.DefaultDomain);
+            }
         }
 
         /// <summary>
