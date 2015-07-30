@@ -47,8 +47,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.27-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.1.2-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -67,20 +67,29 @@
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.1-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5513.27084, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5571.32271-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5682.31780, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5682.31780-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5571.32271-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5513.27084-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.5.207081303-alpha\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.1.0.18-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
@@ -101,6 +110,7 @@
       <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="xunit">
       <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>

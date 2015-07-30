@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
-        /// from being disposed.  Should not be used execpt in this mocked context.
+        /// from being disposed.  Should not be used except in this mocked context.
         /// </summary>
         class PassThroughDelegatingHandler : DelegatingHandler
         {
@@ -183,5 +183,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return base.SendAsync(request, cancellationToken);
             }
         }
+
+
+        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents { get; set; }
     }
 }
