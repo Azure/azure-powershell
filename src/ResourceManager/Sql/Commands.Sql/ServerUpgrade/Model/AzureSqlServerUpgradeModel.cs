@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
     public class AzureSqlServerUpgradeModel
@@ -30,5 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
         /// Gets or sets the upgrade status of the server
         /// </summary>
         public ServerUpgradeStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the earliest time to upgrade the server
+        /// </summary>
+        public DateTime? ScheduleUpgradeAfterUtcDateTime { get; set; }
     }
 }
