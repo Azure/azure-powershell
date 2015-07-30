@@ -16,37 +16,14 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Security.Cryptography.X509Certificates;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewaySslCertificateCommand : NetworkBaseCmdlet
+    public class AddAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the ssl certificate")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate data")]
-        [ValidateNotNullOrEmpty]
-        public string Data { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate password")]
-        [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate public data")]
-        [ValidateNotNullOrEmpty]
-        public string PublicCertData { get; set; }
-
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -62,18 +39,9 @@ namespace Microsoft.Azure.Commands.Network
             if (sslCertificate != null)
             {
                 throw new ArgumentException("Ssl certificate with the specified name already exists");
-            }
+            }            
 
-            sslCertificate = new PSApplicationGatewaySslCertificate();
-            sslCertificate.Name = this.Name;
-            sslCertificate.Data = this.Data;
-            sslCertificate.Password = this.Password;
-            sslCertificate.PublicCertData = this.PublicCertData;
-            sslCertificate.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaySslCertificateName,
-                                this.Name);
-
+            sslCertificate = base.NewObject();            
             this.ApplicationGateway.SslCertificates.Add(sslCertificate);
 
             WriteObject(this.ApplicationGateway);
