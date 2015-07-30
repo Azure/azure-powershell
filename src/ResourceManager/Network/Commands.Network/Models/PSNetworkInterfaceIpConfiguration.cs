@@ -20,18 +20,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSNetworkInterfaceIpConfiguration : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         public string PrivateIpAddress { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string PrivateIpAllocationMethod { get; set; }
 
+        [JsonProperty(Order = 1)]
         public PSResourceId Subnet { get; set; }
 
+        [JsonProperty(Order = 1)]
         public PSResourceId PublicIpAddress { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancerBackendAddressPools { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancerInboundNatRules { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

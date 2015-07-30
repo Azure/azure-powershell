@@ -203,7 +203,9 @@
   <data name="VirtualNetworkGatewayNameNotSet" xml:space="preserve">
     <value>VirtualNetworkGatewayNameNotSet</value>
   </data>
-  <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
+  <data name="RouteTableType" xml:space="preserve">
+    <value>microsoft.network/routeTables</value>
+  </data>  <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
     <value>backendAddressPools</value>
   </data>
   <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
@@ -242,5 +244,4 @@
   </data>
   <data name="SetByIP" xml:space="preserve">
     <value>SetByIP</value>
-  </data>
-</root>
+  </data></root>
