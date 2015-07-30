@@ -43,6 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private void ExecuteCommand()
         {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
             List<ResourceExtensionReference> extensionRefs = GetPredicateExtensionList();
             WriteObject(
                 extensionRefs == null ? null : extensionRefs.Select(

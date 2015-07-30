@@ -145,12 +145,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             public string ModulesUrl { get; set; }
         }
 
-        public SetAzureVMDscExtension()
-        {
-            this.extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
-            this.publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
-        }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -159,6 +153,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         internal void ExecuteCommand()
         {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
             ValidateParameters();
 
             CreateConfiguration();
