@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Management.Automation.Language;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
     public class ConfigurationParseResult
     {
         public string Path { get; set; }
         public ParseError[] Errors { get; set; }
-        public List<String> RequiredModules { get; set; }
+        public Dictionary<string,string> RequiredModules { get; set; }
 
     }
 }

@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Compute;
 using System;
-using System.Net;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Management.Compute;
+using System.Net;
 
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
@@ -209,8 +210,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         internal VirtualMachineDscExtensionStatusContext CreateDscStatusContext(NSM.Role vmRole, NSM.RoleInstance roleInstance) 
         {
             var message = string.Empty;
-            var extension = VirtualMachineDscExtensionCmdletBase.ExtensionPublishedNamespace + "." 
-                               + VirtualMachineDscExtensionCmdletBase.ExtensionPublishedName;
+            var extension = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "."
+                               + DscExtensionCmdletConstants.ExtensionPublishedName;
             NSM.ResourceExtensionConfigurationStatus extensionSettingStatus = null;
             
             if (roleInstance != null && roleInstance.ResourceExtensionStatusList != null)

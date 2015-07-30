@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Runspaces;
 
-namespace Microsoft.Azure.Commands.Compute.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish 
 {
 
     public static class ConfigurationParsingHelper
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         private static bool IsParameterName(CommandElementAst ast, string name)
         {
-            CommandParameterAst constantAst = ast as CommandParameterAst;
+            var constantAst = ast as CommandParameterAst;
             if (constantAst == null)
             {
                 return false;
@@ -40,14 +40,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             return String.Equals(constantAst.ParameterName, name, StringComparison.OrdinalIgnoreCase);
         }
 
-        private static List<string> GetLegacyTopLevelParametersFromAst(CommandAst ast, string parameterName)
+        private static IEnumerable<string> GetLegacyTopLevelParametersFromAst(CommandAst ast, string parameterName)
         {
-            List<string> parameters = new List<string>();
+            var parameters = new List<string>();
             IEnumerable<CommandParameterAst> commandElement =
                 ast.CommandElements.Where(x => IsParameterName(x, parameterName)).OfType<CommandParameterAst>();
             foreach (var commandElementAst in commandElement)
             {
-                ArrayLiteralAst arrayLiteralAst = commandElementAst.Argument as ArrayLiteralAst;
+                var arrayLiteralAst = commandElementAst.Argument as ArrayLiteralAst;
                 if (arrayLiteralAst != null)
                 {
                     parameters.AddRange(arrayLiteralAst.Elements.OfType<StringConstantExpressionAst>().Select(x => x.Value));
@@ -61,10 +61,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             return ast.Extent.StartOffset == startOffset && !(ast is StatementBlockAst) && !(ast is NamedBlockAst);
         }
-        private static List<string> GetSingleAstRequiredModules(Ast ast, Token[] tokens)
+        private static Dictionary<string, string> GetSingleAstRequiredModules(Ast ast, IEnumerable<Token> tokens, Dictionary<string,string> modules)
         {
-            List<string> modules = new List<string>();
-            List<string> resources = new List<string>();
+            var resources = new List<string>();
             var imports = tokens.Where(token =>
                     String.Compare(token.Text, "Import-DscResource", StringComparison.OrdinalIgnoreCase) == 0);
 
@@ -73,11 +72,33 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             // argument function binding to emulate Import-DscResource argument binding.
             //
             InitialSessionState initialSessionState = InitialSessionState.Create();
-            SessionStateFunctionEntry importDscResourcefunctionEntry = new SessionStateFunctionEntry(
+            var importDscResourcefunctionEntry = new SessionStateFunctionEntry(
                 "Import-DscResource", @"param($Name, $ModuleName)
                 if ($ModuleName) 
                 {
-                    foreach ($m in $ModuleName) { $global:modules.Add($m) }
+                    foreach ($module in $ModuleName) {
+                        if($module.GetType().FullName -eq 'System.Collections.Hashtable'){
+                            $mVersion = ""
+                            $mName = ""
+                            foreach($modulekey in $module.Keys){
+                                if($modulekey -eq 'ModuleName'){
+                                    $mName = $module[$modulekey]    
+                                }
+                                elseif($modulekey -eq 'ModuleVersion' -or $modulekey -eq 'RequiredVersion'){
+                                    $mVersion = $module[$modulekey]    
+                                }
+                            }
+
+                            if(!$global:modules.ContainsKey($mName)){
+                                $global:modules.Add($mName,$mVersion)
+                            }
+                        }
+                        else{
+                            if(!$global:modules.ContainsKey($module)){
+                                $global:modules.Add($module,"""")
+                            }
+                        }
+                    }
                 } else {
                     foreach ($n in $Name) { $global:resources.Add($n) }
                 }
@@ -118,7 +139,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     }
                 }
             }
-            modules.AddRange(resources.Select(GetModuleNameForDscResource));
+
+            var modulesFromDscResource = resources.Select(GetModuleNameForDscResource);
+            foreach (var moduleName in modulesFromDscResource)
+            {
+                if (!modules.ContainsKey(moduleName))
+                {
+                    modules.Add(moduleName, "");    
+                }
+            }
+            
             return modules;
         }
 
@@ -147,9 +177,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             return moduleName;
         }
 
-        private static List<string> GetRequiredModulesFromAst(Ast ast, Token[] tokens)
+        private static Dictionary<String, String> GetRequiredModulesFromAst(Ast ast, IEnumerable<Token> tokens)
         {
-            List<string> modules = new List<string>();
+            var modules = new Dictionary<String,String>();
 
             // We use System.Management.Automation.Language.Parser to extract required modules from ast, 
             // but format of ast is a bit tricky and have changed in time.
@@ -186,26 +216,42 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 // So we process everything: ModuleDefinition and ResourceDefinition.
 
                 // Example: Import-DscResource -Module xPSDesiredStateConfiguration
-                modules.AddRange(GetLegacyTopLevelParametersFromAst(legacyConfigurationAst, "ModuleDefinition"));
+
+                var moduleParams = GetLegacyTopLevelParametersFromAst(legacyConfigurationAst, "ModuleDefinition");
+                foreach (var param in moduleParams)
+                {
+                    if (!modules.ContainsKey(param))
+                    {
+                        modules.Add(param, "");
+                    }
+                }
+                
                 // Example: Import-DscResource -Name MSFT_xComputer
-                modules.AddRange(GetLegacyTopLevelParametersFromAst(legacyConfigurationAst, "ResourceDefinition").Select(GetModuleNameForDscResource));    
+                var resourceParams = GetLegacyTopLevelParametersFromAst(legacyConfigurationAst, "ResourceDefinition").Select(GetModuleNameForDscResource);
+                foreach (var param in resourceParams)
+                {
+                    if (!modules.ContainsKey(param))
+                    {
+                        modules.Add(param, "");
+                    }
+                }    
             }
             
             // Both cases in new version and 2nd case in old version:
-            modules.AddRange(GetSingleAstRequiredModules(ast, tokens));
-
-            return modules.Distinct().ToList();
+            modules = GetSingleAstRequiredModules(ast, tokens, modules);
+            
+            return modules;
         }
 
         private static bool IsLegacyAstConfiguration(Ast node)
         {
-            CommandAst commandNode = node as CommandAst;
+            var commandNode = node as CommandAst;
             if (commandNode == null)
             {
                 return false;
             }
             // TODO: Add case when configuration name is not a StringConstant, but a variable.
-            StringConstantExpressionAst commandParameter = (commandNode.CommandElements[0] as StringConstantExpressionAst);
+            var commandParameter = (commandNode.CommandElements[0] as StringConstantExpressionAst);
             if (commandParameter == null)
             {
                 return false;
@@ -229,10 +275,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             // file may still successfully define one or more configurations. We don't process
             // required modules in case of parsing errors to avoid script injection.
             ScriptBlockAst ast = Parser.ParseFile(fullPath, out tokens, out errors);
-            List<string> requiredModules = new List<string>();
+            var requiredModules = new Dictionary<string, string>();
             if (!errors.Any())
             {
-                requiredModules = GetRequiredModulesFromAst(ast, tokens).Distinct().ToList();
+                requiredModules = GetRequiredModulesFromAst(ast, tokens);
             }
             return new ConfigurationParseResult()
             {

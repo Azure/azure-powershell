@@ -16,7 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Compute.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
     /// <summary>
     /// Represents public settings. Serialized representation of this object stored as a plain text string on the VM.
@@ -40,21 +40,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             /// <returns></returns>
             public DscExtensionPublicSettings ToCurrentVersion()
             {
-                List<Property> properties = new List<Property>();
-                foreach (DictionaryEntry p in this.Properties)
+                var properties = new List<Property>();
+                foreach (DictionaryEntry p in Properties)
                 {
-                    properties.Add(new Property()
+                    properties.Add(new Property
                     {
                         Name = p.Key.ToString(), 
                         TypeName = p.Value.GetType().ToString(), 
                         Value = p.Value
                     });
                 }
-                return new DscExtensionPublicSettings()
+                return new DscExtensionPublicSettings
                 {
-                    SasToken = this.SasToken,
-                    ModulesUrl = this.ModulesUrl,
-                    ConfigurationFunction = this.ConfigurationFunction,
+                    SasToken = SasToken,
+                    ModulesUrl = ModulesUrl,
+                    ConfigurationFunction = ConfigurationFunction,
                     Properties = properties.ToArray(),
                     ProtocolVersion = new Version(1, 0, 0, 0)
                 };

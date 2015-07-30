@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Management.Automation.Language;
+using System.Globalization;
 
-namespace Microsoft.Azure.Commands.Compute.Extension.DSC
+
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions
 {
-    public class ConfigurationParseResult
+    [Serializable]
+    public class GetDscResourceException : UnauthorizedAccessException
     {
-        public string Path { get; set; }
-        public ParseError[] Errors { get; set; }
-        public List<String> RequiredModules { get; set; }
-
+        public GetDscResourceException(string resourceName, Exception e) :
+            base(String.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionGetDscResourceFailed, resourceName), e) { }
     }
 }

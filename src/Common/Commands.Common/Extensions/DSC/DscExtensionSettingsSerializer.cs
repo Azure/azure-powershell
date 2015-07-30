@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,20 +20,19 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
-using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.Compute.Extension.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
 {
-    public class DscSettingsSerializer
+    public class DscExtensionSettingsSerializer
     {
         /// <summary>
-        /// Serialize DscPublicSettings to string.
+        /// Serialize DscExtensionPublicSettings to string.
         /// </summary>
-        /// <param name="publicSettings"></param>
+        /// <param name="extensionPublicSettings"></param>
         /// <returns></returns>
-        public static string SerializePublicSettings(DscExtensionPublicSettings publicSettings)
+        public static string SerializePublicSettings(DscExtensionPublicSettings extensionPublicSettings)
         {
-            return JsonConvert.SerializeObject(publicSettings);
+            return JsonConvert.SerializeObject(extensionPublicSettings);
         }
 
         /// <summary>
@@ -48,10 +47,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         public static DscExtensionPublicSettings DeserializePublicSettings(string publicSettingsString)
         {
-            DscExtensionPublicSettings publicSettings;
+            DscExtensionPublicSettings extensionPublicSettings;
             try
             {
-                publicSettings = string.IsNullOrEmpty(publicSettingsString)
+                extensionPublicSettings = string.IsNullOrEmpty(publicSettingsString)
                                      ? null
                                      : JsonConvert.DeserializeObject<DscExtensionPublicSettings>(publicSettingsString);
             }
@@ -62,14 +61,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 {
                     DscExtensionPublicSettings.Version1 publicSettingsV1 =
                         JsonConvert.DeserializeObject<DscExtensionPublicSettings.Version1>(publicSettingsString);
-                    publicSettings = publicSettingsV1.ToCurrentVersion();
+                    extensionPublicSettings = publicSettingsV1.ToCurrentVersion();
                 }
                 catch (JsonException)
                 {
                     throw;
                 } 
             }
-            return publicSettings;
+            return extensionPublicSettings;
         }
 
          /// <summary>
