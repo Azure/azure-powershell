@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -54,18 +54,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Name = "testPool";
+            cmdlet.Id = "testPool";
+            cmdlet.VirtualMachineSize = "small";
+            cmdlet.OSFamily = "4";
 
-            // Don't go to the service on an AddPool call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Don't go to the service on an Add CloudPool call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is AddPoolRequest)
+                BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse> request =
+                (BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    AddPoolResponse response = new AddPoolResponse();
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolAddResponse response = new CloudPoolAddResponse();
+                    Task<CloudPoolAddResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
