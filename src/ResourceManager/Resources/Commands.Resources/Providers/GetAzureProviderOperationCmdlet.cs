@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -41,6 +41,9 @@ using Microsoft.Azure.Management.Resources.Models;
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            // remove leading and trailing whitespaces
+            this.ActionString = this.ActionString.Trim();
+
             List<PSResourceProviderOperation> operationsToDisplay;
 
             if (this.ActionString.Contains(WildCardCharacter))
