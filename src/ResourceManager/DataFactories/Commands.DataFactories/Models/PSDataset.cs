@@ -19,39 +19,39 @@ using Microsoft.Azure.Management.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
-    public class PSTable
+    public class PSDataset
     {
-        private Table table;
+        private Table dataset;
 
-        public PSTable()
+        public PSDataset()
         {
-            table = new Table() {Properties = new TableProperties()};
+            this.dataset = new Table() {Properties = new TableProperties()};
         }
 
-        public PSTable(Table table)
+        public PSDataset(Table dataset)
         {
-            if (table == null)
+            if (dataset == null)
             {
-                throw new ArgumentNullException("table");
+                throw new ArgumentNullException("dataset");
             }
 
-            if (table.Properties == null)
+            if (dataset.Properties == null)
             {
-                table.Properties = new TableProperties();
+                dataset.Properties = new TableProperties();
             }
 
-            this.table = table;
+            this.dataset = dataset;
         }
 
-        public string TableName
+        public string DatasetName
         {
             get
             {
-                return table.Name;
+                return this.dataset.Name;
             }
             set
             {
-                table.Name = value;
+                this.dataset.Name = value;
             }
         }
         
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties.Availability;
+                return this.dataset.Properties.Availability;
             }
             set
             {
-                table.Properties.Availability = value;
+                this.dataset.Properties.Availability = value;
             }
         }
 
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties.TypeProperties;
+                return this.dataset.Properties.TypeProperties;
             }
             set
             {
-                table.Properties.TypeProperties = value;
+                this.dataset.Properties.TypeProperties = value;
             }
         }
 
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties.Policy;
+                return this.dataset.Properties.Policy;
             }
             set
             {
-                table.Properties.Policy = value;
+                this.dataset.Properties.Policy = value;
             }
         }
 
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties.Structure;
+                return this.dataset.Properties.Structure;
             }
             set
             {
-                table.Properties.Structure = value;
+                this.dataset.Properties.Structure = value;
             }
         }
 
@@ -111,11 +111,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties.Published;
+                return this.dataset.Properties.Published;
             }
             set
             {
-                table.Properties.Published = value;
+                this.dataset.Properties.Published = value;
             }
         }
 
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return table.Properties;
+                return this.dataset.Properties;
             }
             set
             {
-                table.Properties = value;
+                this.dataset.Properties = value;
             }
         }
 

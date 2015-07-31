@@ -22,17 +22,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class GetTableTests : DataFactoryUnitTestBase
+    public class GetDatasetTests : DataFactoryUnitTestBase
     {
-        private const string tableName = "foo";
+        private const string datasetName = "foo";
 
-        private GetAzureDataFactoryTableCommand cmdlet;
+        private GetAzureDataFactoryDatasetCommand cmdlet;
 
-        public GetTableTests()
+        public GetDatasetTests()
         {
             base.SetupTest();
 
-            cmdlet = new GetAzureDataFactoryTableCommand()
+            cmdlet = new GetAzureDataFactoryDatasetCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataFactoryClient = dataFactoriesClientMock.Object,
@@ -43,12 +43,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanGetTable()
+        public void CanGetDataset()
         {
             // Arrange
-            PSTable expected = new PSTable()
+            PSDataset expected = new PSDataset()
             {
-                TableName = tableName,
+                DatasetName = datasetName,
                 DataFactoryName = DataFactoryName,
                 ResourceGroupName = ResourceGroupName
             };
@@ -56,17 +56,17 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             dataFactoriesClientMock
                 .Setup(
                     c =>
-                        c.FilterPSTables(
-                            It.Is<TableFilterOptions>(
+                        c.FilterPSDatasets(
+                            It.Is<DatasetFilterOptions>(
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == tableName)))
+                                    options.Name == datasetName)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(c => c.GetTable(ResourceGroupName, DataFactoryName, tableName))
+                .Setup(c => c.GetDataset(ResourceGroupName, DataFactoryName, datasetName))
                 .Returns(expected)
                 .Verifiable();
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             cmdlet.Name = "";
             Exception empty = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Name = tableName;
+            cmdlet.Name = datasetName;
             cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -89,20 +89,20 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanListTables()
+        public void CanListDatasets()
         {
             // Arrange
-            List<PSTable> expected = new List<PSTable>()
+            List<PSDataset> expected = new List<PSDataset>()
             {
-                new PSTable()
+                new PSDataset()
                 {
-                    TableName = tableName,
+                    DatasetName = datasetName,
                     DataFactoryName = DataFactoryName,
                     ResourceGroupName = ResourceGroupName
                 },
-                new PSTable()
+                new PSDataset()
                 {
-                    TableName = "anotherTable",
+                    DatasetName = "anotherDataset",
                     DataFactoryName = DataFactoryName,
                     ResourceGroupName = ResourceGroupName
                 }
@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             dataFactoriesClientMock
                 .Setup(
                     c =>
-                        c.FilterPSTables(
-                            It.Is<TableFilterOptions>(
+                        c.FilterPSDatasets(
+                            It.Is<DatasetFilterOptions>(
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListTables(It.Is<TableFilterOptions>(
+                .Setup(f => f.ListDatasets(It.Is<DatasetFilterOptions>(
                     options =>
                         options.ResourceGroupName == ResourceGroupName &&
                         options.DataFactoryName == DataFactoryName &&

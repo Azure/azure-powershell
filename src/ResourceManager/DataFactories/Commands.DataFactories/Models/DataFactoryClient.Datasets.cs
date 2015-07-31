@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual Table CreateOrUpdateTable(string resourceGroupName, string dataFactoryName, string tableName, string rawJsonContent)
+        public virtual Table CreateOrUpdateDataset(string resourceGroupName, string dataFactoryName, string datasetName, string rawJsonContent)
         {
             if (string.IsNullOrWhiteSpace(rawJsonContent))
             {
@@ -38,27 +38,27 @@ namespace Microsoft.Azure.Commands.DataFactories
             var response = DataPipelineManagementClient.Tables.CreateOrUpdateWithRawJsonContent(
                 resourceGroupName,
                 dataFactoryName,
-                tableName,
+                datasetName,
                 new TableCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
 
             return response.Table;
         }
 
-        public virtual PSTable GetTable(string resourceGroupName, string dataFactoryName, string tableName)
+        public virtual PSDataset GetDataset(string resourceGroupName, string dataFactoryName, string datasetName)
         {
             var response = DataPipelineManagementClient.Tables.Get(
-                resourceGroupName, dataFactoryName, tableName);
+                resourceGroupName, dataFactoryName, datasetName);
 
-            return new PSTable(response.Table)
+            return new PSDataset(response.Table)
             {
                 ResourceGroupName = resourceGroupName,
                 DataFactoryName = dataFactoryName
             };
         }
 
-        public virtual List<PSTable> ListTables(TableFilterOptions filterOptions)
+        public virtual List<PSDataset> ListDatasets(DatasetFilterOptions filterOptions)
         {
-            List<PSTable> tables = new List<PSTable>();
+            List<PSDataset> datasets = new List<PSDataset>();
 
             TableListResponse response;
             if (filterOptions.NextLink.IsNextPageLink())
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             if (response != null && response.Tables != null)
             {
-                foreach (var table in response.Tables)
+                foreach (var dataset in response.Tables)
                 {
-                    tables.Add(
-                        new PSTable(table)
+                    datasets.Add(
+                        new PSDataset(dataset)
                         {
                             ResourceGroupName = filterOptions.ResourceGroupName,
                             DataFactoryName = filterOptions.DataFactoryName
@@ -84,16 +84,16 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
             }
 
-            return tables;
+            return datasets;
         }
 
-        public virtual HttpStatusCode DeleteTable(string resourceGroupName, string dataFactoryName, string tableName)
+        public virtual HttpStatusCode DeleteDataset(string resourceGroupName, string dataFactoryName, string datasetName)
         {
-            AzureOperationResponse response = DataPipelineManagementClient.Tables.Delete(resourceGroupName, dataFactoryName, tableName);
+            AzureOperationResponse response = DataPipelineManagementClient.Tables.Delete(resourceGroupName, dataFactoryName, datasetName);
             return response.StatusCode;
         }
 
-        public virtual List<PSTable> FilterPSTables(TableFilterOptions filterOptions)
+        public virtual List<PSDataset> FilterPSDatasets(DatasetFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -105,32 +105,32 @@ namespace Microsoft.Azure.Commands.DataFactories
                 throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
             }
 
-            List<PSTable> tables = new List<PSTable>();
+            List<PSDataset> datasets = new List<PSDataset>();
 
             if (!string.IsNullOrWhiteSpace(filterOptions.Name))
             {
-                tables.Add(GetTable(filterOptions.ResourceGroupName, filterOptions.DataFactoryName, filterOptions.Name));
+                datasets.Add(this.GetDataset(filterOptions.ResourceGroupName, filterOptions.DataFactoryName, filterOptions.Name));
             }
             else
             {
-                tables.AddRange(ListTables(filterOptions));
+                datasets.AddRange(this.ListDatasets(filterOptions));
             }
 
-            return tables;
+            return datasets;
         }
 
-        public virtual PSTable CreatePSTable(CreatePSTableParameters parameters)
+        public virtual PSDataset CreatePSDataset(CreatePSDatasetParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
             }
 
-            PSTable table = null;
-            Action createTable = () =>
+            PSDataset dataset = null;
+            Action createDataset = () =>
             {
-                table =
-                    new PSTable(CreateOrUpdateTable(
+                dataset =
+                    new PSDataset(this.CreateOrUpdateDataset(
                         parameters.ResourceGroupName,
                         parameters.DataFactoryName,
                         parameters.Name,
@@ -140,50 +140,50 @@ namespace Microsoft.Azure.Commands.DataFactories
                         DataFactoryName = parameters.DataFactoryName
                     };
 
-                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(table.ProvisioningState))
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataset.ProvisioningState))
                 {
-                    string errorMessage = table.Properties == null
+                    string errorMessage = dataset.Properties == null
                         ? string.Empty
-                        : table.Properties.ErrorMessage;
+                        : dataset.Properties.ErrorMessage;
                     throw new ProvisioningFailedException(errorMessage);
                 }
             };
 
             if (parameters.Force)
             {
-                // If user decides to overwrite anyway, then there is no need to check if the table exists or not.
-                createTable();
+                // If user decides to overwrite anyway, then there is no need to check if the dataset exists or not.
+                createDataset();
             }
             else
             {
-                bool tableExists = CheckTableExists(parameters.ResourceGroupName, parameters.DataFactoryName,
+                bool datasetExists = this.CheckDatasetExists(parameters.ResourceGroupName, parameters.DataFactoryName,
                     parameters.Name);
 
                 parameters.ConfirmAction(
-                    !tableExists,  // prompt only if the table exists
+                    !datasetExists,  // prompt only if the dataset exists
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.TableExists,
+                        Resources.DatasetExists,
                         parameters.Name,
                         parameters.DataFactoryName),
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.TableCreating,
+                        Resources.DatasetCreating,
                         parameters.Name,
                         parameters.DataFactoryName),
                     parameters.Name,
-                    createTable);
+                    createDataset);
             }
 
-            return table;
+            return dataset;
         }
 
-        private bool CheckTableExists(string resourceGroupName, string dataFactoryName, string tableName)
+        private bool CheckDatasetExists(string resourceGroupName, string dataFactoryName, string datasetName)
         {
-            // ToDo: implement HEAD to check if the table exists
+            // ToDo: implement HEAD to check if the dataset exists
             try
             {
-                PSTable table = GetTable(resourceGroupName, dataFactoryName, tableName);
+                PSDataset dataset = this.GetDataset(resourceGroupName, dataFactoryName, datasetName);
 
                 return true;
             }

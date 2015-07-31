@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Globalization;
+using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Table, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSTable))]
-    public class NewAzureDataFactoryTableCommand : DataFactoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, Constants.Dataset, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSDataset>), typeof(PSDataset))]
+    public class GetAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-HelpMessage = "The data factory object.")]
+            HelpMessage = "The data factory object.")]
         public PSDataFactory DataFactory { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -34,19 +35,18 @@ HelpMessage = "The data factory object.")]
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The dataset name.")]
         public string Name { get; set; }
-
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The table JSON file path.")]
-        [ValidateNotNullOrEmpty]
-        public string File { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
+            // ValidationNotNullOrEmpty doesn't handle whitespaces well
+            if (Name != null && string.IsNullOrWhiteSpace(Name))            
+            {
+                throw new PSArgumentNullException("Name");
+            }
+
             if (ParameterSetName == ByFactoryObject)
             {
                 if (DataFactory == null)
@@ -58,23 +58,28 @@ HelpMessage = "The data factory object.")]
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            // Resolve the file path and read the raw content
-            string rawJsonContent = DataFactoryClient.ReadJsonFileContent(this.TryResolvePath(File));
-
-            // Resolve any mismatch between -Name and the name written in JSON
-            Name = ResolveResourceName(rawJsonContent, Name, "Table");
-
-            CreatePSTableParameters parameters = new CreatePSTableParameters()
+            DatasetFilterOptions filterOptions = new DatasetFilterOptions()
             {
-                ResourceGroupName = ResourceGroupName,
-                DataFactoryName = DataFactoryName,
                 Name = Name,
-                RawJsonContent = rawJsonContent,
-                Force = Force.IsPresent,
-                ConfirmAction = ConfirmAction
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName
             };
 
-            WriteObject(DataFactoryClient.CreatePSTable(parameters));
+            if (Name != null)
+            {
+                List<PSDataset> datasets = DataFactoryClient.FilterPSDatasets(filterOptions);
+                if (datasets != null && datasets.Any())
+                {
+                    WriteObject(datasets[0]);
+                }
+                return;
+            }
+            
+            // List datasets until all pages are fetched
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSDatasets(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

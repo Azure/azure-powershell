@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public abstract class TableContextBaseCmdlet : DataFactoryBaseCmdlet
+    public abstract class DatasetContextBaseCmdlet : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory object.")]
@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
-        [Alias("TableName")]
+            HelpMessage = "The dataset name.")]
+        [Alias("DatasetName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
     }
