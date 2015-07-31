@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.PoolLifetimeOption? PoolLifetimeOption
+        public Microsoft.Azure.Batch.Common.PoolLifetimeOption PoolLifetimeOption
         {
             get
             {

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
                 BatchRequest<ComputeNodeDeleteUserParameters, ComputeNodeDeleteUserResponse> request =
                 (BatchRequest<ComputeNodeDeleteUserParameters, ComputeNodeDeleteUserResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeDeleteUserResponse response = new ComputeNodeDeleteUserResponse();
                     Task<ComputeNodeDeleteUserResponse> task = Task.FromResult(response);

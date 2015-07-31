@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 BatchRequest<CloudJobAddParameters, CloudJobAddResponse> request =
                 (BatchRequest<CloudJobAddParameters, CloudJobAddResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudJobAddResponse response = new CloudJobAddResponse();
                     Task<CloudJobAddResponse> task = Task.FromResult(response);

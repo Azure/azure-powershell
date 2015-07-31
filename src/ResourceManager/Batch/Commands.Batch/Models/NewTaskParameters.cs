@@ -70,6 +70,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The task constraints.
         /// </summary>
-        public PSTaskConstraints TaskConstraints { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
     }
 }

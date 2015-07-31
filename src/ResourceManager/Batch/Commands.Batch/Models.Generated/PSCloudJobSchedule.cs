@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime CreationTime
+        public System.DateTime? CreationTime
         {
             get
             {
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobScheduleState PreviousState
+        public Microsoft.Azure.Batch.Common.JobScheduleState? PreviousState
         {
             get
             {
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.JobScheduleState State
+        public Microsoft.Azure.Batch.Common.JobScheduleState? State
         {
             get
             {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime StateTransitionTime
+        public System.DateTime? StateTransitionTime
         {
             get
             {

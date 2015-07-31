@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
                 BatchRequest<CloudJobScheduleGetParameters, CloudJobScheduleGetResponse> request =
                 (BatchRequest<CloudJobScheduleGetParameters, CloudJobScheduleGetResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudJobScheduleGetResponse response = BatchTestHelpers.CreateCloudJobScheduleGetResponse(cmdlet.Id);
                     Task<CloudJobScheduleGetResponse> task = Task.FromResult(response);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
                 BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse> request =
                 (BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
                     Task<CloudJobScheduleListResponse> task = Task.FromResult(response);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
                 BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse> request =
                 (BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
                     Task<CloudJobScheduleListResponse> task = Task.FromResult(response);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
                 BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse> request =
                 (BatchRequest<CloudJobScheduleListParameters, CloudJobScheduleListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
                     Task<CloudJobScheduleListResponse> task = Task.FromResult(response);

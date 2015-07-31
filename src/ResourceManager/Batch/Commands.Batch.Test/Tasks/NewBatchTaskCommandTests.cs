@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskAddParameters, CloudTaskAddResponse> request =
                 (BatchRequest<CloudTaskAddParameters, CloudTaskAddResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskAddResponse response = new CloudTaskAddResponse();
                     Task<CloudTaskAddResponse> task = Task.FromResult(response);

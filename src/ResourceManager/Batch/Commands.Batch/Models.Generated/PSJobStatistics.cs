@@ -67,19 +67,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.TimeSpan UserCPUTime
+        public System.TimeSpan UserCpuTime
         {
             get
             {
-                return this.omObject.UserCPUTime;
+                return this.omObject.UserCpuTime;
             }
         }
         
-        public System.TimeSpan KernelCPUTime
+        public System.TimeSpan KernelCpuTime
         {
             get
             {
-                return this.omObject.KernelCPUTime;
+                return this.omObject.KernelCpuTime;
             }
         }
         

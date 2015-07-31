@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.ComputeNodeFillType ComputeNodeFillType
+        public Microsoft.Azure.Batch.Common.ComputeNodeFillType? ComputeNodeFillType
         {
             get
             {

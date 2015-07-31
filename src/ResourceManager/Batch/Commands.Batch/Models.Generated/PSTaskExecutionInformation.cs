@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime StartTime
+        public System.DateTime? StartTime
         {
             get
             {

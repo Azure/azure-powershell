@@ -93,7 +93,7 @@ function Test-NewJobSchedule
 		$jobMgr.DisplayName = $jobMgrDisplay = "jobManagerDisplay"
 		$jobMgr.RunElevated = $runElevated = $false
 		$jobMgrMaxWallClockTime = [TimeSpan]::FromHours(1)
-		$jobMgr.TaskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($jobMgrMaxWallClockTime,$null,$null)
+		$jobMgr.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($jobMgrMaxWallClockTime,$null,$null)
 
 		$jobPrep = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobPreparationTask
 		$jobPrep.CommandLine = $jobPrepCmd = "cmd /c dir /s"
@@ -116,7 +116,7 @@ function Test-NewJobSchedule
 		$jobPrep.Id = $jobPrepId = "jobPrep"
 		$jobPrep.RunElevated = $jobPrepRunElevated = $false
 		$jobPrepRetryCount = 2
-		$jobPrep.TaskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null,$null,$jobPrepRetryCount)
+		$jobPrep.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null,$null,$jobPrepRetryCount)
 
 		$jobRelease = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobReleaseTask
 		$jobRelease.CommandLine = $jobReleaseCmd = "cmd /c dir /s"
@@ -220,7 +220,7 @@ function Test-NewJobSchedule
 		Assert-AreEqual $jobMgrId $jobSchedule2.JobSpecification.JobManagerTask.Id
 		Assert-AreEqual $jobMgrDisplay $jobSchedule2.JobSpecification.JobManagerTask.DisplayName
 		Assert-AreEqual $runElevated $jobSchedule2.JobSpecification.JobManagerTask.RunElevated
-		Assert-AreEqual $jobMgrMaxWallClockTime $jobSchedule2.JobSpecification.JobManagerTask.TaskConstraints.MaxWallClockTime
+		Assert-AreEqual $jobMgrMaxWallClockTime $jobSchedule2.JobSpecification.JobManagerTask.Constraints.MaxWallClockTime
 		Assert-AreEqual $jobPrepCmd $jobSchedule2.JobSpecification.JobPreparationTask.CommandLine
 		Assert-AreEqual $jobPrepEnvCount $jobSchedule2.JobSpecification.JobPreparationTask.EnvironmentSettings.Count
 		Assert-AreEqual $jobPrepEnv1Name $jobSchedule2.JobSpecification.JobPreparationTask.EnvironmentSettings[0].Name
@@ -232,7 +232,7 @@ function Test-NewJobSchedule
 		Assert-AreEqual $jobPrepFilePath $jobSchedule2.JobSpecification.JobPreparationTask.ResourceFiles[0].FilePath
 		Assert-AreEqual $jobPrepId $jobSchedule2.JobSpecification.JobPreparationTask.Id
 		Assert-AreEqual $jobPrepRunElevated $jobSchedule2.JobSpecification.JobPreparationTask.RunElevated
-		Assert-AreEqual $jobPrepRetryCount $jobSchedule2.JobSpecification.JobPreparationTask.TaskConstraints.MaxTaskRetryCount
+		Assert-AreEqual $jobPrepRetryCount $jobSchedule2.JobSpecification.JobPreparationTask.Constraints.MaxTaskRetryCount
 		Assert-AreEqual $jobReleaseCmd $jobSchedule2.JobSpecification.JobReleaseTask.CommandLine
 		Assert-AreEqual $jobReleaseEnvCount $jobSchedule2.JobSpecification.JobReleaseTask.EnvironmentSettings.Count
 		Assert-AreEqual $jobReleaseEnv1Name $jobSchedule2.JobSpecification.JobReleaseTask.EnvironmentSettings[0].Name

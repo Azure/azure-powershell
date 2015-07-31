@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime? StartTime
+        public System.DateTime StartTime
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime? LastUpdateTime
+        public System.DateTime LastUpdateTime
         {
             get
             {

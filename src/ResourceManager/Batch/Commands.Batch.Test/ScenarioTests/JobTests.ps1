@@ -91,7 +91,7 @@ function Test-NewJob
 		$jobMgr.DisplayName = $jobMgrDisplay = "jobManagerDisplay"
 		$jobMgr.RunElevated = $runElevated = $false
 		$jobMgrMaxWallClockTime = [TimeSpan]::FromHours(1)
-		$jobMgr.TaskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($jobMgrMaxWallClockTime,$null,$null)
+		$jobMgr.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($jobMgrMaxWallClockTime,$null,$null)
 
 		$jobPrep = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobPreparationTask
 		$jobPrep.CommandLine = $jobPrepCmd = "cmd /c dir /s"
@@ -114,7 +114,7 @@ function Test-NewJob
 		$jobPrep.Id = $jobPrepId = "jobPrep"
 		$jobPrep.RunElevated = $jobPrepRunElevated = $false
 		$jobPrepRetryCount = 2
-		$jobPrep.TaskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null,$null,$jobPrepRetryCount)
+		$jobPrep.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null,$null,$jobPrepRetryCount)
 
 		$jobRelease = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobReleaseTask
 		$jobRelease.CommandLine = $jobReleaseCmd = "cmd /c dir /s"
@@ -147,7 +147,7 @@ function Test-NewJob
 		$displayName = "displayName"
 		$priority = 1
 
-		New-AzureBatchJob_ST -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -JobConstraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
+		New-AzureBatchJob_ST -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -Constraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
 		
 		$job2 = Get-AzureBatchJob_ST -Id $jobId2 -BatchContext $context
 		
@@ -181,7 +181,7 @@ function Test-NewJob
 		Assert-AreEqual $jobMgrId $job2.JobManagerTask.Id
 		Assert-AreEqual $jobMgrDisplay $job2.JobManagerTask.DisplayName
 		Assert-AreEqual $runElevated $job2.JobManagerTask.RunElevated
-		Assert-AreEqual $jobMgrMaxWallClockTime $job2.JobManagerTask.TaskConstraints.MaxWallClockTime
+		Assert-AreEqual $jobMgrMaxWallClockTime $job2.JobManagerTask.Constraints.MaxWallClockTime
 		Assert-AreEqual $jobPrepCmd $job2.JobPreparationTask.CommandLine
 		Assert-AreEqual $jobPrepEnvCount $job2.JobPreparationTask.EnvironmentSettings.Count
 		Assert-AreEqual $jobPrepEnv1Name $job2.JobPreparationTask.EnvironmentSettings[0].Name
@@ -193,7 +193,7 @@ function Test-NewJob
 		Assert-AreEqual $jobPrepFilePath $job2.JobPreparationTask.ResourceFiles[0].FilePath
 		Assert-AreEqual $jobPrepId $job2.JobPreparationTask.Id
 		Assert-AreEqual $jobPrepRunElevated $job2.JobPreparationTask.RunElevated
-		Assert-AreEqual $jobPrepRetryCount $job2.JobPreparationTask.TaskConstraints.MaxTaskRetryCount
+		Assert-AreEqual $jobPrepRetryCount $job2.JobPreparationTask.Constraints.MaxTaskRetryCount
 		Assert-AreEqual $jobReleaseCmd $job2.JobReleaseTask.CommandLine
 		Assert-AreEqual $jobReleaseEnvCount $job2.JobReleaseTask.EnvironmentSettings.Count
 		Assert-AreEqual $jobReleaseEnv1Name $job2.JobReleaseTask.EnvironmentSettings[0].Name
@@ -205,8 +205,8 @@ function Test-NewJob
 		Assert-AreEqual $jobReleaseFilePath $job2.JobReleaseTask.ResourceFiles[0].FilePath
 		Assert-AreEqual $jobReleaseId $job2.JobReleaseTask.Id
 		Assert-AreEqual $jobReleaseRunElevated $job2.JobReleaseTask.RunElevated
-		Assert-AreEqual $maxTaskRetry $job2.JobConstraints.MaxTaskRetryCount
-		Assert-AreEqual $maxWallClockTime $job2.JobConstraints.MaxWallClockTime
+		Assert-AreEqual $maxTaskRetry $job2.Constraints.MaxTaskRetryCount
+		Assert-AreEqual $maxWallClockTime $job2.Constraints.MaxWallClockTime
 		Assert-AreEqual $priority $job2.Priority
 		Assert-AreEqual $metadata.Count $job2.Metadata.Count
 		foreach($m in $job2.Metadata)

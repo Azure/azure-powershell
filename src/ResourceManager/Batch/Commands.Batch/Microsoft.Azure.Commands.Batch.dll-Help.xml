@@ -594,12 +594,12 @@
           PS C:\&gt;Get-AzureBatchJob -Id "Job01" -BatchContext $Context
 
           CommonEnvironmentSettings   : 
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           CreationTime                : 7/25/2015 9:12:07 PM
           DisplayName                 : 
           ETag                        : 0x8D29535B2941439
           ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
           Id                          : Job01
-          JobConstraints              : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           JobManagerTask              : 
           JobPreparationTask          : 
           JobReleaseTask              : 
@@ -635,12 +635,12 @@
           PS C:\&gt;Get-AzureBatchJob -JobScheduleId "MyJobSchedule" -Filter "state eq 'active'" -BatchContext $Context
 
           CommonEnvironmentSettings   : 
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           CreationTime                : 7/25/2015 9:15:44 PM
           DisplayName                 : 
           ETag                        : 0x8D2953633DD13E1
           ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
           Id                          : MyJobSchedule:job-1
-          JobConstraints              : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           JobManagerTask              : 
           JobPreparationTask          : 
           JobReleaseTask              : 
@@ -675,12 +675,12 @@
         <dev:code>
           PS C:\&gt;Get-AzureBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Get-AzureBatchJob -BatchContext $Context
           CommonEnvironmentSettings   : 
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           CreationTime                : 7/25/2015 9:15:44 PM
           DisplayName                 : 
           ETag                        : 0x8D2953633DD13E1
           ExecutionInformation        : Microsoft.Azure.Commands.Batch.Models.PSJobExecutionInformation
           Id                          : MyJobSchedule:job-1
-          JobConstraints              : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
           JobManagerTask              : 
           JobPreparationTask          : 
           JobReleaseTask              : 
@@ -2819,6 +2819,7 @@
           AffinityInformation         : 
           CommandLine                 : cmd /c dir /s
           ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           CreationTime                : 7/25/2015 11:24:52 PM
           DisplayName                 : 
           EnvironmentSettings         : 
@@ -2833,7 +2834,6 @@
           State                       : Completed
           StateTransitionTime         : 7/25/2015 11:24:59 PM
           Statistics                  : 
-          TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           Url                         : https://cmdletexample.westus.batch.azure.com/jobs/Job01/tasks/MyTask
         </dev:code>
         <dev:remarks>
@@ -2858,6 +2858,7 @@
           AffinityInformation         :
           CommandLine                 : cmd /c dir /s
           ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           CreationTime                : 3/24/2015 10:21:51 PM
           EnvironmentSettings         :
           ETag                        : 0x8D295483E08BD9D
@@ -2871,12 +2872,12 @@
           State                       : Completed
           StateTransitionTime         : 3/24/2015 10:22:00 PM
           Statistics                  :
-          TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           Url                         : https://cmdletexample.westus.batch.azure.com/jobs/Job02/tasks/MyTask
 
           AffinityInformation         :
           CommandLine                 : cmd /c echo hello &gt; newFile.txt
           ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           CreationTime                : 3/24/2015 10:21:51 PM
           EnvironmentSettings         :
           ETag                        : 0x8D295483E08BD9D
@@ -2890,7 +2891,6 @@
           State                       : Completed
           StateTransitionTime         : 3/24/2015 10:23:37 PM
           Statistics                  :
-          TaskConstraints             : Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints
           Url                         : https://cmdletexample.westus.batch.azure.com/jobs/Job02/tasks/MyTask2
         </dev:code>
         <dev:remarks>
@@ -4608,7 +4608,7 @@
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TaskConstraints</maml:name>
+          <maml:name>Constraints</maml:name>
           <maml:description>
             <maml:para>Specifies the execution constraints for the task.</maml:para>
           </maml:description>
@@ -4694,7 +4694,7 @@
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>TaskConstraints</maml:name>
+          <maml:name>Constraints</maml:name>
           <maml:description>
             <maml:para>Specifies the execution constraints for the task.</maml:para>
           </maml:description>
@@ -4850,7 +4850,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>TaskConstraints</maml:name>
+        <maml:name>Constraints</maml:name>
         <maml:description>
           <maml:para>Specifies the execution constraints for the task.</maml:para>
         </maml:description>
@@ -5564,7 +5564,7 @@
           <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>JobConstraints</maml:name>
+          <maml:name>Constraints</maml:name>
           <maml:description>
             <maml:para>Specifies the execution constraints for the job.</maml:para>
           </maml:description>
@@ -5666,7 +5666,7 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>JobConstraints</maml:name>
+        <maml:name>Constraints</maml:name>
         <maml:description>
           <maml:para>Specifies the execution constraints for the job.</maml:para>
         </maml:description>

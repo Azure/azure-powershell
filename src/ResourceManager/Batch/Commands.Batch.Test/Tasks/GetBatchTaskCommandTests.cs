@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
                 (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(new string[] {cmdlet.Id});
                     Task<CloudTaskListResponse> task = Task.FromResult(response);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskGetParameters, CloudTaskGetResponse> request =
                 (BatchRequest<CloudTaskGetParameters, CloudTaskGetResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskGetResponse response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
                     Task<CloudTaskGetResponse> task = Task.FromResult(response);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
                 (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
                     Task<CloudTaskListResponse> task = Task.FromResult(response);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
                 (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
                     Task<CloudTaskListResponse> task = Task.FromResult(response);
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
                 (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
                     Task<CloudTaskListResponse> task = Task.FromResult(response);

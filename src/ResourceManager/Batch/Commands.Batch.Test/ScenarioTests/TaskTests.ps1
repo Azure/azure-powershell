@@ -47,7 +47,7 @@ function Test-CreateTask
 
 	$envSettings = @{"env1"="value1";"env2"="value2"}
 
-	New-AzureBatchTask_ST -JobId $jobId -Id $taskId2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -TaskConstraints $taskConstraints -BatchContext $context
+	New-AzureBatchTask_ST -JobId $jobId -Id $taskId2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -BatchContext $context
 		
 	$task2 = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId2 -BatchContext $context
 		
@@ -56,9 +56,9 @@ function Test-CreateTask
 	Assert-AreEqual $cmd $task2.CommandLine
 	Assert-AreEqual $true $task2.RunElevated
 	Assert-AreEqual $affinityId $task2.AffinityInformation.AffinityId
-	Assert-AreEqual $maxWallClockTime $task2.TaskConstraints.MaxWallClockTime
-	Assert-AreEqual $retentionTime $task2.TaskConstraints.RetentionTime
-	Assert-AreEqual $maxRetryCount $task2.TaskConstraints.MaxRetryCount
+	Assert-AreEqual $maxWallClockTime $task2.Constraints.MaxWallClockTime
+	Assert-AreEqual $retentionTime $task2.Constraints.RetentionTime
+	Assert-AreEqual $maxRetryCount $task2.Constraints.MaxRetryCount
 	Assert-AreEqual $resourceFiles.Count $task2.ResourceFiles.Count
 	foreach($r in $task2.ResourceFiles)
 	{

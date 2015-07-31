@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The job constraints.
         /// </summary>
-        public PSJobConstraints JobConstraints { get; set; }
+        public PSJobConstraints Constraints { get; set; }
 
         /// <summary>
         /// The details of the Job Manager task that will be launched whenever a job is started.

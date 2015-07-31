@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSJobExecutionInformation executionInformation;
         
-        private PSJobConstraints jobConstraints;
+        private PSJobConstraints constraints;
         
         private PSJobManagerTask jobManagerTask;
         
@@ -149,28 +149,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSJobConstraints JobConstraints
+        public PSJobConstraints Constraints
         {
             get
             {
-                if (((this.jobConstraints == null) 
-                            && (this.omObject.JobConstraints != null)))
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
                 {
-                    this.jobConstraints = new PSJobConstraints(this.omObject.JobConstraints);
+                    this.constraints = new PSJobConstraints(this.omObject.Constraints);
                 }
-                return this.jobConstraints;
+                return this.constraints;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.JobConstraints = null;
+                    this.omObject.Constraints = null;
                 }
                 else
                 {
-                    this.omObject.JobConstraints = value.omObject;
+                    this.omObject.Constraints = value.omObject;
                 }
-                this.jobConstraints = value;
+                this.constraints = value;
             }
         }
         

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse> request =
                 (BatchRequest<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeGetRemoteDesktopResponse response = new ComputeNodeGetRemoteDesktopResponse();
                     Task<ComputeNodeGetRemoteDesktopResponse> task = Task.FromResult(response);

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskStatistics statistics;
         
-        private PSTaskConstraints taskConstraints;
+        private PSTaskConstraints constraints;
         
         public PSCloudTask(string id, string commandline)
         {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime CreationTime
+        public System.DateTime? CreationTime
         {
             get
             {
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime LastModified
+        public System.DateTime? LastModified
         {
             get
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState PreviousState
+        public Microsoft.Azure.Batch.Common.TaskState? PreviousState
         {
             get
             {
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.TaskState State
+        public Microsoft.Azure.Batch.Common.TaskState? State
         {
             get
             {
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime StateTransitionTime
+        public System.DateTime? StateTransitionTime
         {
             get
             {
@@ -300,28 +300,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskConstraints TaskConstraints
+        public PSTaskConstraints Constraints
         {
             get
             {
-                if (((this.taskConstraints == null) 
-                            && (this.omObject.TaskConstraints != null)))
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
                 {
-                    this.taskConstraints = new PSTaskConstraints(this.omObject.TaskConstraints);
+                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
                 }
-                return this.taskConstraints;
+                return this.constraints;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.TaskConstraints = null;
+                    this.omObject.Constraints = null;
                 }
                 else
                 {
-                    this.omObject.TaskConstraints = value.omObject;
+                    this.omObject.Constraints = value.omObject;
                 }
-                this.taskConstraints = value;
+                this.constraints = value;
             }
         }
         

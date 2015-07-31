@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.AllocationState AllocationState
+        public Microsoft.Azure.Batch.Common.AllocationState? AllocationState
         {
             get
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime CreationTime
+        public System.DateTime? CreationTime
         {
             get
             {
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime LastModified
+        public System.DateTime? LastModified
         {
             get
             {
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.PoolState State
+        public Microsoft.Azure.Batch.Common.PoolState? State
         {
             get
             {
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime StateTransitionTime
+        public System.DateTime? StateTransitionTime
         {
             get
             {

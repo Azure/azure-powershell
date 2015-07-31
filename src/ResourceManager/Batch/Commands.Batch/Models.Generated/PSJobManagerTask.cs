@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSResourceFile> resourceFiles;
         
-        private PSTaskConstraints taskConstraints;
+        private PSTaskConstraints constraints;
         
         public PSJobManagerTask()
         {
@@ -196,28 +196,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSTaskConstraints TaskConstraints
+        public PSTaskConstraints Constraints
         {
             get
             {
-                if (((this.taskConstraints == null) 
-                            && (this.omObject.TaskConstraints != null)))
+                if (((this.constraints == null) 
+                            && (this.omObject.Constraints != null)))
                 {
-                    this.taskConstraints = new PSTaskConstraints(this.omObject.TaskConstraints);
+                    this.constraints = new PSTaskConstraints(this.omObject.Constraints);
                 }
-                return this.taskConstraints;
+                return this.constraints;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.TaskConstraints = null;
+                    this.omObject.Constraints = null;
                 }
                 else
                 {
-                    this.omObject.TaskConstraints = value.omObject;
+                    this.omObject.Constraints = value.omObject;
                 }
-                this.taskConstraints = value;
+                this.constraints = value;
             }
         }
     }

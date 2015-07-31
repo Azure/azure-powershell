@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolGetParameters, CloudPoolGetResponse> request =
                 (BatchRequest<CloudPoolGetParameters, CloudPoolGetResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolGetResponse response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
                     Task<CloudPoolGetResponse> task = Task.FromResult(response);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
                 (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
                     Task<CloudPoolListResponse> task = Task.FromResult(response);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
                 (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
                     Task<CloudPoolListResponse> task = Task.FromResult(response);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
                 (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
                     Task<CloudPoolListResponse> task = Task.FromResult(response);

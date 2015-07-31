@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 BatchRequest<CloudTaskDeleteParameters, CloudTaskDeleteResponse> request =
                 (BatchRequest<CloudTaskDeleteParameters, CloudTaskDeleteResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudTaskDeleteResponse response = new CloudTaskDeleteResponse();
                     Task<CloudTaskDeleteResponse> task = Task.FromResult(response);

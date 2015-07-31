@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.CommonEnvironmentSettings = envSettings;
             }
 
-            if (parameters.JobConstraints != null)
+            if (parameters.Constraints != null)
             {
-                job.JobConstraints = parameters.JobConstraints.omObject;
+                job.Constraints = parameters.Constraints.omObject;
             }
 
             if (parameters.JobManagerTask != null)

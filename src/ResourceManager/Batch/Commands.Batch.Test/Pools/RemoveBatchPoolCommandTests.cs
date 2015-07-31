@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse> request =
                 (BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolDeleteResponse response = new CloudPoolDeleteResponse();
                     Task<CloudPoolDeleteResponse> task = Task.FromResult(response);

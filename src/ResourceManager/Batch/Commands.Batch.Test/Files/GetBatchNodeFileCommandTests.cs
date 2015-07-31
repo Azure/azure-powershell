@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(new string[] {cmdlet.Name});
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> request =
                 (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
                     Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(new string[] {cmdlet.Name});
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> request =
                 (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
                     Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                 BatchRequest<NodeFileListParameters, NodeFileListResponse> request =
                 (BatchRequest<NodeFileListParameters, NodeFileListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
                     Task<NodeFileListResponse> task = Task.FromResult(response);

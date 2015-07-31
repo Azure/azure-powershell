@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 BatchRequest<ComputeNodeGetParameters, ComputeNodeGetResponse> request =
                 (BatchRequest<ComputeNodeGetParameters, ComputeNodeGetResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeGetResponse response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
                     Task<ComputeNodeGetResponse> task = Task.FromResult(response);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
                 (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
                     Task<ComputeNodeListResponse> task = Task.FromResult(response);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
                 (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
                     Task<ComputeNodeListResponse> task = Task.FromResult(response);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
                 (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
                     Task<ComputeNodeListResponse> task = Task.FromResult(response);

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse> request =
                 (BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolAddResponse response = new CloudPoolAddResponse();
                     Task<CloudPoolAddResponse> task = Task.FromResult(response);

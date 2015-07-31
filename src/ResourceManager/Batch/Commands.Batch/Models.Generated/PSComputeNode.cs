@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public Microsoft.Azure.Batch.Common.ComputeNodeState State
+        public Microsoft.Azure.Batch.Common.ComputeNodeState? State
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime StateTransitionTime
+        public System.DateTime? StateTransitionTime
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime AllocationTime
+        public System.DateTime? AllocationTime
         {
             get
             {

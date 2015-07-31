@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
                 BatchRequest<ComputeNodeAddUserParameters, ComputeNodeAddUserResponse> request =
                 (BatchRequest<ComputeNodeAddUserParameters, ComputeNodeAddUserResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     ComputeNodeAddUserResponse response = new ComputeNodeAddUserResponse();
                     Task<ComputeNodeAddUserResponse> task = Task.FromResult(response);

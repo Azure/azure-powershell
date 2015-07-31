@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolResizeParameters, CloudPoolResizeResponse> request =
                 (BatchRequest<CloudPoolResizeParameters, CloudPoolResizeResponse>)baseRequest;
 
-                request.ServiceRequestFunc = () =>
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     CloudPoolResizeResponse response = new CloudPoolResizeResponse();
                     Task<CloudPoolResizeResponse> task = Task.FromResult(response);

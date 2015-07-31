@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.AffinityInformation = parameters.AffinityInformation.omObject;
             }
 
-            if (parameters.TaskConstraints != null)
+            if (parameters.Constraints != null)
             {
-                task.TaskConstraints = parameters.TaskConstraints.omObject;
+                task.Constraints = parameters.Constraints.omObject;
             }
 
             WriteVerbose(string.Format(Resources.NBT_CreatingTask, parameters.TaskId));

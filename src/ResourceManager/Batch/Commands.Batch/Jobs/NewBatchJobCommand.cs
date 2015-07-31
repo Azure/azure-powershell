@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSJobConstraints JobConstraints { get; set; }
+        public PSJobConstraints Constraints { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 CommonEnvironmentSettings = this.CommonEnvironmentSettings,
                 DisplayName = this.DisplayName,
-                JobConstraints = this.JobConstraints,
+                Constraints = this.Constraints,
                 JobManagerTask = this.JobManagerTask,
                 JobPreparationTask = this.JobPreparationTask,
                 JobReleaseTask = this.JobReleaseTask,

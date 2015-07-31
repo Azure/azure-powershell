@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSTaskConstraints TaskConstraints { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch
                 EnvironmentSettings = this.EnvironmentSettings,
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
-                TaskConstraints = this.TaskConstraints
+                Constraints = this.Constraints
             };
 
             BatchClient.CreateTask(parameters);

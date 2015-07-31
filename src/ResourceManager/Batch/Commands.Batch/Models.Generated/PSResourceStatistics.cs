@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? StartTime
+        public System.DateTime StartTime
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public System.DateTime? LastUpdateTime
+        public System.DateTime LastUpdateTime
         {
             get
             {
@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public double AverageCPUPercentage
+        public double AverageCpuPercentage
         {
             get
             {
-                return this.omObject.AverageCPUPercentage;
+                return this.omObject.AverageCpuPercentage;
             }
         }
         

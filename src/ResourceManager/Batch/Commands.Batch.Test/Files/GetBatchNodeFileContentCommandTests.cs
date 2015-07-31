@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
                 if (fileRequest != null)
                 {
-                    fileRequest.ServiceRequestFunc = () =>
+                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         NodeFileGetResponse response = new NodeFileGetResponse();
                         Task<NodeFileGetResponse> task = Task.FromResult(response);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                     BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> propRequest =
                         (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
 
-                    propRequest.ServiceRequestFunc = () =>
+                    propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
                         Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
                 if (fileRequest != null)
                 {
-                    fileRequest.ServiceRequestFunc = () =>
+                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         NodeFileGetResponse response = new NodeFileGetResponse();
                         Task<NodeFileGetResponse> task = Task.FromResult(response);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
                     BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> propRequest =
                         (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
 
-                    propRequest.ServiceRequestFunc = () =>
+                    propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
                         Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
