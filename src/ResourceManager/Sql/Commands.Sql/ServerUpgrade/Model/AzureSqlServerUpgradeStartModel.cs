@@ -43,5 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
         /// Gets or sets the collection of recommended database properties for the server upgrade
         /// </summary>
         public RecommendedDatabaseProperties[] DatabaseCollection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of recommended elastic pool properties for the server upgrade
+        /// </summary>
+        public UpgradeRecommendedElasticPoolProperties[] ElasticPoolCollection { get; set; }
     }
 }

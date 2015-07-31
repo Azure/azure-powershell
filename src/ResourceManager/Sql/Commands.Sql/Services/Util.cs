@@ -15,8 +15,8 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Services
 {
