@@ -20,11 +20,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 {
-    public class NewTableTests : DataFactoryUnitTestBase
+    public class NewDatasetTests : DataFactoryUnitTestBase
     {
-        private const string tableName = "foo1";
+        private const string datasetName = "foo1";
 
-        private const string filePath = "table.json";
+        private const string filePath = "dataset.json";
 
         private const string rawJsonContent = @"
 {
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 }
 ";
 
-        private NewAzureDataFactoryTableCommand cmdlet;
+        private NewAzureDataFactoryDatasetCommand cmdlet;
         
-        public NewTableTests()
+        public NewDatasetTests()
         {
             base.SetupTest();
 
-            cmdlet = new NewAzureDataFactoryTableCommand()
+            cmdlet = new NewAzureDataFactoryDatasetCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataFactoryClient = dataFactoriesClientMock.Object,
-                Name = tableName,
+                Name = datasetName,
                 DataFactoryName = DataFactoryName,
                 ResourceGroupName = ResourceGroupName
             };
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
         // ToDo: enable the tests when we can set readonly provisioning state in test
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateTable()
+        public void CanCreateDataset()
         {
             // Arrange
             Table expected = new Table()
             {
-                Name = tableName,
+                Name = datasetName,
                 Properties = new TableProperties()
             };
 
@@ -86,10 +86,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
             dataFactoriesClientMock.Setup(
                 c =>
-                    c.CreatePSTable(
-                        It.Is<CreatePSTableParameters>(
+                    c.CreatePSDataset(
+                        It.Is<CreatePSDatasetParameters>(
                             parameters =>
-                                parameters.Name == tableName &&
+                                parameters.Name == datasetName &&
                                 parameters.ResourceGroupName == ResourceGroupName &&
                                 parameters.DataFactoryName == DataFactoryName)))
                 .CallBase()
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
             dataFactoriesClientMock.Setup(
                 c =>
-                    c.CreateOrUpdateTable(ResourceGroupName, DataFactoryName, tableName, rawJsonContent))
+                    c.CreateOrUpdateDataset(ResourceGroupName, DataFactoryName, datasetName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
             
@@ -112,22 +112,22 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             commandRuntimeMock.Verify(
                 f =>
                     f.WriteObject(
-                        It.Is<PSTable>(
+                        It.Is<PSDataset>(
                             tbl =>
                                 ResourceGroupName == tbl.ResourceGroupName &&
                                 DataFactoryName == tbl.DataFactoryName &&
-                                expected.Name == tbl.TableName)),
+                                expected.Name == tbl.DatasetName)),
                 Times.Once());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanThrowIfTableProvisioningFailed()
+        public void CanThrowIfDatasetProvisioningFailed()
         {
             // Arrange
             Table expected = new Table()
             {
-                Name = tableName,
+                Name = datasetName,
                 Properties = new TableProperties()
             };
 
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
             dataFactoriesClientMock.Setup(
                 c =>
-                    c.CreatePSTable(
-                        It.Is<CreatePSTableParameters>(
+                    c.CreatePSDataset(
+                        It.Is<CreatePSDatasetParameters>(
                             parameters =>
-                                parameters.Name == tableName &&
+                                parameters.Name == datasetName &&
                                 parameters.ResourceGroupName == ResourceGroupName &&
                                 parameters.DataFactoryName == DataFactoryName)))
                 .CallBase()
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
             dataFactoriesClientMock.Setup(
                 c =>
-                    c.CreateOrUpdateTable(ResourceGroupName, DataFactoryName, tableName, rawJsonContent))
+                    c.CreateOrUpdateDataset(ResourceGroupName, DataFactoryName, datasetName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
 

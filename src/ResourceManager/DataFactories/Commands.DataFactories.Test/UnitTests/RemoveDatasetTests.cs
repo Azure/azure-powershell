@@ -19,21 +19,21 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 {
-    public class RemoveTableTests : DataFactoryUnitTestBase
+    public class RemoveDatasetTests : DataFactoryUnitTestBase
     {
-        private const string tableName = "foo";
+        private const string datasetName = "foo";
 
-        private RemoveAzureDataFactoryTableCommand cmdlet;
+        private RemoveAzureDataFactoryDatasetCommand cmdlet;
 
-        public RemoveTableTests()
+        public RemoveDatasetTests()
         {
             base.SetupTest();
 
-            cmdlet = new RemoveAzureDataFactoryTableCommand()
+            cmdlet = new RemoveAzureDataFactoryDatasetCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataFactoryClient = dataFactoriesClientMock.Object,
-                Name = tableName,
+                Name = datasetName,
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
                 Force = true
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanRemoveTable()
+        public void CanRemoveDataset()
         {
             HttpStatusCode expectedStatusCode = HttpStatusCode.OK;
 
             // Arrange
             dataFactoriesClientMock.Setup(
-                f => f.DeleteTable(ResourceGroupName, DataFactoryName, tableName))
+                f => f.DeleteDataset(ResourceGroupName, DataFactoryName, datasetName))
                 .Returns(expectedStatusCode)
                 .Verifiable();
 

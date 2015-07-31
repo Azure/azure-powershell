@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Globalization;
-using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Table, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSTable>), typeof(PSTable))]
-    public class GetAzureDataFactoryTableCommand : DataFactoryBaseCmdlet
+    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataset))]
+    public class NewAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The data factory object.")]
+HelpMessage = "The data factory object.")]
         public PSDataFactory DataFactory { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -35,18 +34,19 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The dataset name.")]
         public string Name { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The dataset JSON file path.")]
+        [ValidateNotNullOrEmpty]
+        public string File { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            // ValidationNotNullOrEmpty doesn't handle whitespaces well
-            if (Name != null && string.IsNullOrWhiteSpace(Name))            
-            {
-                throw new PSArgumentNullException("Name");
-            }
-
             if (ParameterSetName == ByFactoryObject)
             {
                 if (DataFactory == null)
@@ -58,28 +58,23 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            TableFilterOptions filterOptions = new TableFilterOptions()
+            // Resolve the file path and read the raw content
+            string rawJsonContent = DataFactoryClient.ReadJsonFileContent(this.TryResolvePath(File));
+
+            // Resolve any mismatch between -Name and the name written in JSON
+            Name = ResolveResourceName(rawJsonContent, Name, "Dataset");
+
+            CreatePSDatasetParameters parameters = new CreatePSDatasetParameters()
             {
-                Name = Name,
                 ResourceGroupName = ResourceGroupName,
-                DataFactoryName = DataFactoryName
+                DataFactoryName = DataFactoryName,
+                Name = Name,
+                RawJsonContent = rawJsonContent,
+                Force = Force.IsPresent,
+                ConfirmAction = ConfirmAction
             };
 
-            if (Name != null)
-            {
-                List<PSTable> tables = DataFactoryClient.FilterPSTables(filterOptions);
-                if (tables != null && tables.Any())
-                {
-                    WriteObject(tables[0]);
-                }
-                return;
-            }
-            
-            // List tables until all pages are fetched
-            do
-            {
-                WriteObject(DataFactoryClient.FilterPSTables(filterOptions), true);
-            } while (filterOptions.NextLink.IsNextPageLink());
+            WriteObject(DataFactoryClient.CreatePSDataset(parameters));
         }
     }
 }
