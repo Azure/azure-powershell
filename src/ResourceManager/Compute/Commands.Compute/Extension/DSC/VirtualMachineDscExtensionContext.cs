@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Commands.Compute.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -24,5 +26,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string ConfigurationFunction { get; set; }
         public Hashtable Properties { get; set; }
 
+        [JsonIgnore]
+        public string StatusesText
+        {
+            get
+            {
+                var status = JsonConvert.SerializeObject(Statuses, Formatting.Indented);
+                return "null".Equals(status) ? String.Empty : status;
+            }
+        }
     }
 }

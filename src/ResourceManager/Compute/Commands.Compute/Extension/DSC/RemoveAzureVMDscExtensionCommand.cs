@@ -1,11 +1,12 @@
-﻿using System;
-using System.Globalization;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Globalization;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -17,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
+    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = ExtensionNamespace + "." + ExtensionName;
+                Name = DscExtensionCmdletConstants.ExtensionPublishedName + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
             }
 
             if (ShouldProcess(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.DscExtensionRemovalConfirmation, Name), Properties.Resources.DscExtensionRemovalCaption))
