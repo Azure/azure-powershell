@@ -43,18 +43,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanGetProperties()
         {
             var features = new string[] {"feature1", "feature2"};
-            var quota = new QuotaCapability
-            {
-                CoresUsed = 45,
-                MaxCoresAllowed = 90
-            };
             var versions = new Dictionary<string, VersionsCapability> {{"key", new VersionsCapability()}};
             var vm = new Dictionary<string, VmSizesCapability> {{"key1", new VmSizesCapability()}};
             var regions = new Dictionary<string, RegionsCapability> {{"eastus", new RegionsCapability()}};
             var propertiesResponse = new CapabilitiesResponse
             {
                 Features = features,
-                QuotaCapability = quota,
                 Versions = versions,
                 VmSizes = vm,
                 Regions = regions
@@ -71,7 +65,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<CapabilitiesResponse>(
                             resp =>
-                                resp.Features == features && resp.QuotaCapability == quota && resp.Regions == regions &&
+                                resp.Features == features && resp.Regions == regions &&
                                 resp.Versions == versions && resp.VmSizes == vm)),
                 Times.Once);
         }

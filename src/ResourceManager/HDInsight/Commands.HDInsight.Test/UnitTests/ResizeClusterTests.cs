@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 c =>
                     c.ResizeCluster(ResourceGroupName, ClusterName,
                         It.Is<ClusterResizeParameters>(
-                            param => param.TargetInstanceCount == targetcount && param.MinInstanceCount == null)))
+                            param => param.TargetInstanceCount == targetcount)))
                 .Returns(new HDInsightLongRunningOperationResponse
                 {
                     Error = null,
