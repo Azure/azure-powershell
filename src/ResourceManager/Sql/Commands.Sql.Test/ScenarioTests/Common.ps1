@@ -81,7 +81,7 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -administratorLogin $params.userName -Force
+	New-AzureResourceGroup -Name $params.rgname -Location "Australia East" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
 	$uid = $params.userName
 	$pwd = $params.pwd
