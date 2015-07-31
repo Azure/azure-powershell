@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 FriendlyName = vmName,                
             };
 
-            //First check if container is discoverd or not            
+            //First check if container is discovered or not            
             var containers = AzureBackupClient.ListContainers(parameters);
             WriteDebug(String.Format("Container count returned from service: {0}.", containers.Count()));
             if (containers.Count() == 0)
