@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -53,12 +54,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <returns>The server</returns>
         public AzureSqlServerUpgradeModel GetUpgrade(string resourceGroupName, string serverName)
         {
-            var status = Communicator.GetStatus(resourceGroupName, serverName, Util.GenerateTracingId());
-            return new AzureSqlServerUpgradeModel()
+            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName, Util.GenerateTracingId());
+            ServerUpgradeStatus status;
+            if (!Enum.TryParse(upgradeDetails.Status, out status))
+            {
+                status = ServerUpgradeStatus.Unknown;
+            }
+
+            return new AzureSqlServerUpgradeModel
             {
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
-                Status = status
+                Status = status,
+                ScheduleUpgradeAfterUtcDateTime = upgradeDetails.ScheduleUpgradeAfterTime
             };
         }
 
@@ -74,7 +82,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
                 {
                     Version = model.ServerVersion,
                     ScheduleUpgradeAfterUtcDateTime = model.ScheduleUpgradeAfterUtcDateTime,
-                    DatabaseCollection = model.DatabaseCollection
+                    DatabaseCollection = model.DatabaseCollection,
+                    ElasticPoolCollection = model.ElasticPoolCollection
                 }
             };
             Communicator.Start(model.ResourceGroupName, model.ServerName, parameters, Util.GenerateTracingId());

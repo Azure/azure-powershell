@@ -103,12 +103,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -145,6 +149,14 @@
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="ComputeCloudException.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionCmdletConstants.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionPrivateSettings.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionPublicSettings.cs" />
+    <Compile Include="Extensions\DSC\DscExtensionSettingsSerializer.cs" />
+    <Compile Include="Extensions\DSC\Exceptions\GetDscResourceException.cs" />
+    <Compile Include="Extensions\DSC\Publish\ConfigurationParseResult.cs" />
+    <Compile Include="Extensions\DSC\Publish\ConfigurationParsingHelper.cs" />
+    <Compile Include="Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs" />
     <Compile Include="SecureStringExtensions.cs" />
     <Compile Include="ConversionUtilities.cs" />
     <Compile Include="DebugStreamTraceListener.cs" />
@@ -182,6 +194,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +202,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
