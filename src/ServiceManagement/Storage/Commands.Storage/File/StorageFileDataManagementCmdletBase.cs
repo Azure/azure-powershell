@@ -64,11 +64,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         protected override void EndProcessing()
         {
-            base.EndProcessing();
-            this.WriteTaskSummary();
-
-            this.transferJobRunner.Dispose();
-            this.transferJobRunner = null;
+            try
+            {
+                base.EndProcessing();
+                this.WriteTaskSummary();
+            }
+            finally
+            {
+                this.transferJobRunner.Dispose();
+                this.transferJobRunner = null;
+            }
         }
 
         protected async Task RunTransferJob(TransferJob job, ProgressRecord record)
