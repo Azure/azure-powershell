@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Table, DefaultParameterSetName = ByFactoryName)]
-    public class RemoveAzureDataFactoryTableCommand : TableContextBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ByFactoryName)]
+    public class RemoveAzureDataFactoryDatasetCommand : DatasetContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                     Force.IsPresent,
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.TableConfirmationMessage,
+                        Resources.DatasetConfirmationMessage,
                         Name,
                         DataFactoryName),
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.TableRemoving,
+                        Resources.DatasetRemoving,
                         Name,
                         DataFactoryName),
                     Name,
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         private void ExecuteDelete()
         {
-            HttpStatusCode response = DataFactoryClient.DeleteTable(ResourceGroupName, DataFactoryName, Name);
+            HttpStatusCode response = DataFactoryClient.DeleteDataset(ResourceGroupName, DataFactoryName, Name);
                 
             if(response == HttpStatusCode.NoContent)
             {
-                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.TableNotFound, Name, DataFactoryName));
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.DatasetNotFound, Name, DataFactoryName));
             }
         }
     }

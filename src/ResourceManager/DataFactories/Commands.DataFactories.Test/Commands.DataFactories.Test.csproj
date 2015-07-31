@@ -63,8 +63,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.DataFactories">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.1.0.1\lib\net40\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.DataFactories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.1.0.2\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -148,7 +148,7 @@
     <Compile Include="UnitTests\GetDataFactoryGatewayTests.cs" />
     <Compile Include="ScenarioTests\TableTests.cs" />
     <Compile Include="UnitTests\GetPipelineTests.cs" />
-    <Compile Include="UnitTests\GetTableTests.cs" />
+    <Compile Include="UnitTests\GetDatasetTests.cs" />
     <Compile Include="UnitTests\GetLinkedServiceTests.cs" />
     <Compile Include="UnitTests\GetDataFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,10 +161,10 @@
     <Compile Include="UnitTests\NewDataFactoryTests.cs" />
     <Compile Include="UnitTests\NewPipelineTests.cs" />
     <Compile Include="UnitTests\RemoveAzureDataFactoryGatewayTests.cs" />
-    <Compile Include="UnitTests\NewTableTests.cs" />
+    <Compile Include="UnitTests\NewDatasetTests.cs" />
     <Compile Include="UnitTests\RemoveHubTests.cs" />
     <Compile Include="UnitTests\RemovePipelineTests.cs" />
-    <Compile Include="UnitTests\RemoveTableTests.cs" />
+    <Compile Include="UnitTests\RemoveDatasetTests.cs" />
     <Compile Include="UnitTests\RemoveLinkedServiceTests.cs" />
     <Compile Include="UnitTests\RemoveDataFactoryTests.cs" />
     <Compile Include="UnitTests\SaveAzureDataFactoryTests.cs" />
@@ -184,7 +184,7 @@
     <None Include="Resources\pipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\table.json">
+    <None Include="Resources\dataset.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">

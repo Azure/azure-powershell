@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The dataset name.")]
         [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The data slice range start time.")]
         public DateTime StartDateTime { get; set; }
