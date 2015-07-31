@@ -14,6 +14,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class MetricHelper
     {
+        private const int FlushTimeoutInMilli = 5000;
         private static readonly TelemetryClient TelemetryClient;
 
         static MetricHelper()
@@ -94,13 +95,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return;
             }
 
+            var flushTask = Task.Run(() => FlushAi());
             if (waitForMetricSending)
             {
-                FlushAi();
-            }
-            else
-            {
-                Task.Run(() => FlushAi());
+                Task.WaitAll(new[] { flushTask }, FlushTimeoutInMilli);
             }
         }
 
