@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
+namespace Microsoft.Azure.Commands.Compute
 {
-    public class VirtualMachineDiagnosticsExtensionCmdletBase : VirtualMachineExtensionCmdletBase
+    public class VirtualMachineDiagnosticsExtensionCmdletBase : VirtualMachineExtensionBaseCmdlet
     {
         protected const string DiagnosticsExtensionNamespace = "Microsoft.Azure.Diagnostics";
         protected const string DiagnosticsExtensionType = "IaaSDiagnostics";
-        protected const string VirtualMachineDiagnosticsExtensionNoun = "AzureVMDiagnosticsExtension";
+
+        protected string StorageAccountName { get; set; }
+        protected string StorageKey { get; set; }
+        protected string Endpoint { get; set; }
 
         public VirtualMachineDiagnosticsExtensionCmdletBase()
             : base()
         {
-            
+
         }
     }
 }
