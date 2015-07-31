@@ -1443,4 +1443,13 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Cannot delete '{0}': {1}</value>
     <comment>{0} is the path of a file, {1} is an error message</comment>
   </data>
+  <data name="IaasDiagnosticsBadConfigNoEndWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg end element in the config.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoMatchingWadCfg" xml:space="preserve">
+    <value>WadCfg start element in the config is not matching the end element.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg element in the config.</value>
+  </data>
 </root>
