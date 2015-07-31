@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the pools matching the specified filter options
+        /// Lists the pools matching the specified filter options.
         /// </summary>
-        /// <param name="options">The options to use when querying for pools</param>
-        /// <returns>The pools matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for pools.</param>
+        /// <returns>The pools matching the specified filter options.</returns>
         public IEnumerable<PSCloudPool> ListPools(ListPoolOptions options)
         {
             if (options == null)
@@ -36,16 +36,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            // Get the single pool matching the specified name
-            if (!string.IsNullOrWhiteSpace(options.PoolName))
+            // Get the single pool matching the specified id
+            if (!string.IsNullOrWhiteSpace(options.PoolId))
             {
-                WriteVerbose(string.Format(Resources.GBP_GetByName, options.PoolName));
-                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
-                {
-                    ICloudPool pool = poolManager.GetPool(options.PoolName, additionalBehaviors: options.AdditionalBehaviors);
-                    PSCloudPool psPool = new PSCloudPool(pool);
-                    return new PSCloudPool[] { psPool };
-                }
+                WriteVerbose(string.Format(Resources.GBP_GetById, options.PoolId));
+                PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+                CloudPool pool = poolOperations.GetPool(options.PoolId, additionalBehaviors: options.AdditionalBehaviors);
+                PSCloudPool psPool = new PSCloudPool(pool);
+                return new PSCloudPool[] { psPool };
             }
             // List pools using the specified filter
             else
@@ -63,20 +61,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 WriteVerbose(verboseLogString);
 
-                using (IPoolManager poolManager = options.Context.BatchOMClient.OpenPoolManager())
-                {
-                    IEnumerableAsyncExtended<ICloudPool> pools = poolManager.ListPools(odata, options.AdditionalBehaviors);
-                    Func<ICloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
-                    return PSAsyncEnumerable<PSCloudPool, ICloudPool>.CreateWithMaxCount(
-                        pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
-                }
+                PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+                IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(odata, options.AdditionalBehaviors);
+                Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
+                return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
+                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
             }
         }
 
         /// <summary>
-        /// Creates a new pool
+        /// Creates a new pool.
         /// </summary>
-        /// <param name="parameters">The parameters to use when creating the pool</param>
+        /// <param name="parameters">The parameters to use when creating the pool.</param>
         public void CreatePool(NewPoolParameters parameters)
         {
             if (parameters == null)
@@ -84,89 +80,77 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("parameters");
             }
 
-            using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            CloudPool pool = poolOperations.CreatePool(poolId: parameters.PoolId, osFamily: parameters.OSFamily, virtualMachineSize: parameters.VirtualMachineSize);
+            pool.DisplayName = parameters.DisplayName;
+            pool.ResizeTimeout = parameters.ResizeTimeout;
+            pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
+            pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
+
+            if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
-                ICloudPool pool = poolManager.CreatePool(poolName: parameters.PoolName, osFamily: parameters.OSFamily);
-                pool.ResizeTimeout = parameters.ResizeTimeout;
-                pool.MaxTasksPerVM = parameters.MaxTasksPerVM;
-                pool.Communication = parameters.Communication;
-
-                if (!string.IsNullOrEmpty(parameters.VMSize))
-                {
-                    // Don't override OM default if unspecified
-                    pool.VMSize = parameters.VMSize;
-                }
-
-                if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
-                {
-                    pool.AutoScaleEnabled = true;
-                    pool.AutoScaleFormula = parameters.AutoScaleFormula;
-                    // Clear OM default to avoid server errors
-                    pool.TargetDedicated = null;
-                }
-                else if (parameters.TargetDedicated.HasValue)
-                {
-                    // Don't override OM default if unspecified
-                    pool.TargetDedicated = parameters.TargetDedicated;
-                }
-
-                if (parameters.SchedulingPolicy != null)
-                {
-                    pool.SchedulingPolicy = parameters.SchedulingPolicy.omObject;
-                }
-
-                if (parameters.StartTask != null)
-                {
-                    Utils.Utils.StartTaskSyncCollections(parameters.StartTask);
-                    pool.StartTask = parameters.StartTask.omObject;
-                }
-
-                if (parameters.Metadata != null)
-                {
-                    pool.Metadata = new List<IMetadataItem>();
-                    foreach (DictionaryEntry m in parameters.Metadata)
-                    {
-                        pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value.ToString()));
-                    }
-                }
-
-                if (parameters.CertificateReferences != null)
-                {
-                    pool.CertificateReferences = new List<ICertificateReference>();
-                    foreach (PSCertificateReference c in parameters.CertificateReferences)
-                    {
-                        pool.CertificateReferences.Add(c.omObject);
-                    }
-                }
-
-                WriteVerbose(string.Format(Resources.NBP_CreatingPool, parameters.PoolName));
-                pool.Commit(parameters.AdditionalBehaviors);
+                pool.AutoScaleEnabled = true;
+                pool.AutoScaleFormula = parameters.AutoScaleFormula;
             }
+            else if (parameters.TargetDedicated.HasValue)
+            {
+                pool.TargetDedicated = parameters.TargetDedicated;
+            }
+
+            if (parameters.TaskSchedulingPolicy != null)
+            {
+                pool.TaskSchedulingPolicy = parameters.TaskSchedulingPolicy.omObject;
+            }
+
+            if (parameters.StartTask != null)
+            {
+                Utils.Utils.StartTaskSyncCollections(parameters.StartTask);
+                pool.StartTask = parameters.StartTask.omObject;
+            }
+
+            if (parameters.Metadata != null)
+            {
+                pool.Metadata = new List<MetadataItem>();
+                foreach (DictionaryEntry m in parameters.Metadata)
+                {
+                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value.ToString()));
+                }
+            }
+
+            if (parameters.CertificateReferences != null)
+            {
+                pool.CertificateReferences = new List<CertificateReference>();
+                foreach (PSCertificateReference c in parameters.CertificateReferences)
+                {
+                    pool.CertificateReferences.Add(c.omObject);
+                }
+            }
+
+            WriteVerbose(string.Format(Resources.NBP_CreatingPool, parameters.PoolId));
+            pool.Commit(parameters.AdditionalBehaviors);
         }
 
         /// <summary>
-        /// Deletes the specified pool
+        /// Deletes the specified pool.
         /// </summary>
-        /// <param name="context">The account to use</param>
-        /// <param name="poolName">The name of the pool to delete</param>
-        /// <param name="additionBehaviors">Additional client behaviors to perform</param>
-        public void DeletePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        /// <param name="context">The account to use.</param>
+        /// <param name="poolId">The id of the pool to delete.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void DeletePool(BatchAccountContext context, string poolId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
-            if (string.IsNullOrWhiteSpace(poolName))
+            if (string.IsNullOrWhiteSpace(poolId))
             {
-                throw new ArgumentNullException("poolName");
+                throw new ArgumentNullException("poolId");
             }
 
-            using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-            {
-                poolManager.DeletePool(poolName, additionBehaviors);
-            }
+            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+            poolOperations.DeletePool(poolId, additionBehaviors);
         }
 
         /// <summary>
-        /// Resizes the specified pool
+        /// Resizes the specified pool.
         /// </summary>
-        /// <param name="parameters">The parameters to use when resizing the pool</param>
+        /// <param name="parameters">The parameters to use when resizing the pool.</param>
         public void ResizePool(PoolResizeParameters parameters)
         {
             if (parameters == null)
@@ -174,33 +158,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("parameters");
             }
 
-            string poolName = parameters.Pool == null ? parameters.PoolName : parameters.Pool.Name;
+            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
 
-            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolName, parameters.TargetDedicated));
-            using (IPoolManager poolManager = parameters.Context.BatchOMClient.OpenPoolManager())
-            {
-                poolManager.ResizePool(poolName, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.DeallocationOption, parameters.AdditionalBehaviors);
-            }
+            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolId, parameters.TargetDedicated));
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            poolOperations.ResizePool(poolId, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.ComputeNodeDeallocationOption, parameters.AdditionalBehaviors);
         }
 
         /// <summary>
-        /// Stops the resize operation on the specified pool
+        /// Stops the resize operation on the specified pool.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="poolName">The name of the pool.</param>
+        /// <param name="poolId">The id of the pool.</param>
         /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        public void StopResizePool(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public void StopResizePool(BatchAccountContext context, string poolId, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
-            if (string.IsNullOrWhiteSpace(poolName))
+            if (string.IsNullOrWhiteSpace(poolId))
             {
-                throw new ArgumentNullException("poolName");
+                throw new ArgumentNullException("poolId");
             }
 
-            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolName));
-            using (IPoolManager poolManager = context.BatchOMClient.OpenPoolManager())
-            {
-                poolManager.StopResizePool(poolName, additionalBehaviors);
-            }
+            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolId));
+            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+            poolOperations.StopResizePool(poolId, additionalBehaviors);
         }
     }
 }

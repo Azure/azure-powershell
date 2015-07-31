@@ -18,23 +18,23 @@ Tests creating a Task
 #>
 function Test-CreateTask
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName)
+	param([string]$accountName, [string]$jobId)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
-	$taskName1 = "simple"
-	$taskName2= "complex"
+	$taskId1 = "simple"
+	$taskId2= "complex"
 	$cmd = "cmd /c dir /s"
 
-	# Create a simple Task and verify pipeline
-	Get-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -BatchContext $context | New-AzureBatchTask_ST -Name $taskName1 -CommandLine $cmd -BatchContext $context
-	$task1 = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName1 -BatchContext $context
+	# Create a simple task and verify pipeline
+	Get-AzureBatchJob_ST -Id $jobId -BatchContext $context | New-AzureBatchTask_ST -Id $taskId1 -CommandLine $cmd -BatchContext $context
+	$task1 = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId1 -BatchContext $context
 
-	# Verify created Task matches expectations
-	Assert-AreEqual $taskName1 $task1.Name
+	# Verify created task matches expectations
+	Assert-AreEqual $taskId1 $task1.Id
 	Assert-AreEqual $cmd $task1.CommandLine
 
-	# Create a complicated Task
+	# Create a complicated task
 	$affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation
 	$affinityInfo.AffinityId = $affinityId = "affinityId"
 
@@ -47,18 +47,18 @@ function Test-CreateTask
 
 	$envSettings = @{"env1"="value1";"env2"="value2"}
 
-	New-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -TaskConstraints $taskConstraints -BatchContext $context
+	New-AzureBatchTask_ST -JobId $jobId -Id $taskId2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -BatchContext $context
 		
-	$task2 = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName2 -BatchContext $context
+	$task2 = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId2 -BatchContext $context
 		
-	# Verify created Task matches expectations
-	Assert-AreEqual $taskName2 $task2.Name
+	# Verify created task matches expectations
+	Assert-AreEqual $taskId2 $task2.Id
 	Assert-AreEqual $cmd $task2.CommandLine
 	Assert-AreEqual $true $task2.RunElevated
 	Assert-AreEqual $affinityId $task2.AffinityInformation.AffinityId
-	Assert-AreEqual $maxWallClockTime $task2.TaskConstraints.MaxWallClockTime
-	Assert-AreEqual $retentionTime $task2.TaskConstraints.RetentionTime
-	Assert-AreEqual $maxRetryCount $task2.TaskConstraints.MaxRetryCount
+	Assert-AreEqual $maxWallClockTime $task2.Constraints.MaxWallClockTime
+	Assert-AreEqual $retentionTime $task2.Constraints.RetentionTime
+	Assert-AreEqual $maxRetryCount $task2.Constraints.MaxRetryCount
 	Assert-AreEqual $resourceFiles.Count $task2.ResourceFiles.Count
 	foreach($r in $task2.ResourceFiles)
 	{
@@ -73,82 +73,68 @@ function Test-CreateTask
 
 <#
 .SYNOPSIS
-Tests that calling Get-AzureBatchTask without required parameters throws error
+Tests querying for a Batch task by id
 #>
-function Test-GetTaskRequiredParameters
+function Test-GetTaskById
 {
-	param([string]$accountName)
+	param([string]$accountName, [string]$jobId, [string]$taskId)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	Assert-Throws { Get-AzureBatchTask_ST -BatchContext $context }
-	Assert-Throws { Get-AzureBatchTask_ST -WorkItemName "wi" -BatchContext $context }
-	Assert-Throws { Get-AzureBatchTask_ST -JobName "job" -BatchContext $context }
-}
+	$task = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context
 
-<#
-.SYNOPSIS
-Tests querying for a Batch Task by name
-#>
-function Test-GetTaskByName
-{
-	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName)
-
-	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$task = Get-AzureBatchTask_ST -WorkItemName $wiName -JobName $jobName -Name $taskName -BatchContext $context
-
-	Assert-AreEqual $taskName $task.Name
+	Assert-AreEqual $taskId $task.Id
 
 	# Verify positional parameters also work
-	$task = Get-AzureBatchTask_ST $wiName $jobName $taskName -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
 
-	Assert-AreEqual $taskName $task.Name
+	Assert-AreEqual $taskId $task.Id
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Tasks using a filter
+Tests querying for Batch tasks using a filter
 #>
 function Test-ListTasksByFilter
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskPrefix, [string]$matches)
+	param([string]$accountName, [string]$jobId, [string]$taskPrefix, [string]$matches)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$filter = "startswith(name,'" + "$taskPrefix" + "')"
+	$filter = "startswith(id,'" + "$taskPrefix" + "')"
 
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Filter $filter -BatchContext $context
+	$tasks = Get-AzureBatchTask_ST -JobId $jobId -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $tasks.Length
 	foreach($task in $tasks)
 	{
-		Assert-True { $task.Name.StartsWith("$taskPrefix") }
+		Assert-True { $task.Id.StartsWith("$taskPrefix") }
 	}
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
 	$tasks = Get-AzureBatchTask_ST -Job $job -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $tasks.Length
 	foreach($task in $tasks)
 	{
-		Assert-True { $task.Name.StartsWith("$taskPrefix") }
+		Assert-True { $task.Id.StartsWith("$taskPrefix") }
 	}
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Tasks and supplying a max count
+Tests querying for Batch tasks and supplying a max count
 #>
 function Test-ListTasksWithMaxCount
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$maxCount)
+	param([string]$accountName, [string]$jobId, [string]$maxCount)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -MaxCount $maxCount -BatchContext $context
+	$tasks = Get-AzureBatchTask_ST -JobId $jobId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $tasks.Length
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
 	$tasks = Get-AzureBatchTask_ST -Job $job -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $tasks.Length
@@ -156,19 +142,19 @@ function Test-ListTasksWithMaxCount
 
 <#
 .SYNOPSIS
-Tests querying for all Tasks under a WorkItem
+Tests querying for all tasks under a job
 #>
 function Test-ListAllTasks
 {
-	param([string]$accountName, [string]$workItemName, [string] $jobName, [string]$count)
+	param([string]$accountName, [string] $jobId, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
 
 	Assert-AreEqual $count $tasks.Length
 
 	# Verify parent object parameter set also works
-	$job = Get-AzureBatchJob_ST $workItemName $jobName -BatchContext $context
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
 	$tasks = Get-AzureBatchTask_ST -Job $job -BatchContext $context
 
 	Assert-AreEqual $count $tasks.Length
@@ -180,43 +166,39 @@ Tests pipelining scenarios
 #>
 function Test-ListTaskPipeline
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName)
+	param([string]$accountName, [string]$jobId, [string]$taskId)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
 	# Get Job into Get Task
-	$task = Get-AzureBatchJob_ST -WorkItemName $workItemName -Name $jobName -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
-	Assert-AreEqual $taskName $task.Name
-
-	# Get WorkItem into Get Job into Get Task
-	$task = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
-	Assert-AreEqual $taskName $task.Name
+	$task = Get-AzureBatchJob_ST -Id $jobId -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
+	Assert-AreEqual $taskId $task.Id
 }
 
 <#
 .SYNOPSIS
-Tests deleting a Task
+Tests deleting a task
 #>
 function Test-DeleteTask
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$usePipeline)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$usePipeline)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
 	# Verify the task exists
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
 	Assert-AreEqual 1 $tasks.Count
 
 	if ($usePipeline -eq '1')
 	{
-		Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -BatchContext $context | Remove-AzureBatchTask_ST -Force -BatchContext $context
+		Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context | Remove-AzureBatchTask_ST -Force -BatchContext $context
 	}
 	else
 	{
-		Remove-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -Force -BatchContext $context
+		Remove-AzureBatchTask_ST -JobId $jobId -Id $taskId -Force -BatchContext $context
 	}
 
-	# Verify the job was deleted
-	$tasks = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -BatchContext $context
+	# Verify the task was deleted
+	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
 	Assert-Null $tasks
 }
