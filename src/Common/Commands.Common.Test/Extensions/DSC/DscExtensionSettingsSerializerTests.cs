@@ -20,13 +20,11 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Xunit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 {
     /// <summary>
     /// Tests for <see cref="DscExtensionSettingsSerializer"/> class.

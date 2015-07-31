@@ -121,8 +121,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DSC\DscExtensionConfigurationParsingHelperTests.cs" />
-    <Compile Include="DSC\DscExtensionSettingsSerializerTests.cs" />
     <Compile Include="DSC\UnitTests\GetAzureVmDscExtensionStatusUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,54 +145,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="Resources\DSC\Configurations\CorporateClientConfiguration.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\DomainControllerConfiguration.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportListInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportListOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameModuleImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\IEEScBad.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\IEEScGood.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\SHMulptiConfigurations.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\VisualStudio.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Resources\DSC\DSC Resource Kit Wave 6 08282014.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

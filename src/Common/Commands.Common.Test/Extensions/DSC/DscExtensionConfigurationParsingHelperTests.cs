@@ -18,11 +18,10 @@ using System.IO.Compression;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Xunit;
 
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
+namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 {
     /// <summary>
     /// Tests for DSC <see cref="ConfigurationParsingHelper"/> class.
