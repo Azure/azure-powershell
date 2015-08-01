@@ -46,5 +46,19 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string CookieBasedAffinity { get; set; }
+
+        public PSApplicationGatewayBackendHttpSettings NewObject()
+        {
+            var backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
+            backendHttpSettings.Name = this.Name;
+            backendHttpSettings.Port = this.Port;
+            backendHttpSettings.Protocol = this.Protocol;
+            backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
+            backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
+                                    this.Name);
+            return backendHttpSettings;
+        }
     }
 }

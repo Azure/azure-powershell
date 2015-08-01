@@ -21,19 +21,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
+    public class SetAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the frontend port")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Frontend port")]
-        [ValidateNotNullOrEmpty]
-        public int Port { get; set; }
 
         [Parameter(
              Mandatory = true,
@@ -45,14 +34,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var frontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var oldFrontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (frontendPort == null)
+            if (oldFrontendPort == null)
             {
                 throw new ArgumentException("Frontend port with the specified name does not exist");
             }
 
-            frontendPort.Port = this.Port;
+            var newFrontendPort = base.NewObject();
+
+            this.ApplicationGateway.FrontendPorts.Remove(oldFrontendPort);
+            this.ApplicationGateway.FrontendPorts.Add(newFrontendPort);
 
             WriteObject(this.ApplicationGateway);
         }
