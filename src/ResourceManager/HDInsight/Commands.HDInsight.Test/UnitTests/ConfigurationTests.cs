@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 c.ClusterType == HDInsightClusterType.Hadoop &&
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
-                                string.IsNullOrEmpty(c.DataNodeSize) &&
+                                string.IsNullOrEmpty(c.WorkerNodeSize) &&
                                 string.IsNullOrEmpty(c.DefaultStorageAccountKey) &&
                                 string.IsNullOrEmpty(c.DefaultStorageAccountName) &&
                                 string.IsNullOrEmpty(c.HeadNodeSize) &&

@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Data Node.")]
-        public string DataNodeSize 
+        public string WorkerNodeSize 
         {
-            get { return parameters.DataNodeSize; }
-            set { parameters.DataNodeSize = value; }
+            get { return parameters.WorkerNodeSize; }
+            set { parameters.WorkerNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ClusterType = parameters.ClusterType,
                     DefaultStorageAccountName = parameters.DefaultStorageAccountName,
                     DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
-                    DataNodeSize = parameters.DataNodeSize,
+                    WorkerNodeSize = parameters.WorkerNodeSize,
                     HeadNodeSize = parameters.HeadNodeSize,
                     ZookeeperNodeSize = parameters.ZookeeperNodeSize,
                     HiveMetastore = HiveMetastore,
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.ClusterType = value.ClusterType;
                 parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
                 parameters.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
-                parameters.DataNodeSize = value.DataNodeSize;
+                parameters.WorkerNodeSize = value.WorkerNodeSize;
                 parameters.HeadNodeSize = value.HeadNodeSize;
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;

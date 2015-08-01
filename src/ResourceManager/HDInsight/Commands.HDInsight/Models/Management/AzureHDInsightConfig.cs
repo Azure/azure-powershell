@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the size of the Data Node.
         /// </summary>
-        public string DataNodeSize { get; set; }
+        public string WorkerNodeSize { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the Zookeeper Node.

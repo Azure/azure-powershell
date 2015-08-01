@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Data Node.")]
-        public string DataNodeSize
+        public string WorkerNodeSize
         {
-            get { return _config.DataNodeSize; }
-            set { _config.DataNodeSize = value; }
+            get { return _config.WorkerNodeSize; }
+            set { _config.WorkerNodeSize = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the size of the Zookeeper Node.")]
