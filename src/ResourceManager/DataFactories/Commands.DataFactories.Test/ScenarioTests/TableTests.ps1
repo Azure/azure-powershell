@@ -14,8 +14,8 @@
 
 <#
 .SYNOPSIS
-Create a table and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created table after test finishes.
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
 #>
 function Test-Table
 {
@@ -32,15 +32,15 @@ function Test-Table
      
         New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
-        $tblname = "foo2"
-        $actual = New-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname -File .\Resources\table.json -Force
-        $expected = Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname
+        $datasetname = "foo2"
+        $actual = New-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $expected = Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.TableName $actual.TableName
+        Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname -Force
+        Remove-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
@@ -50,8 +50,8 @@ function Test-Table
 
 <#
 .SYNOPSIS
-Create a table and the linked service which it depends on. Then do a Get to compare the result are identical.
-Delete the created table after test finishes.
+Create a dataset and the linked service which it depends on. Then do a Get to compare the result are identical.
+Delete the created dataset after test finishes.
 Use -DataFactory parameter in all cmdlets.
 #>
 function Test-TableWithDataFactoryParameter
@@ -69,15 +69,15 @@ function Test-TableWithDataFactoryParameter
      
         New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
-        $tblname = "foo2"
-        $actual = New-AzureDataFactoryTable -DataFactory $df -Name $tblname -File .\Resources\table.json -Force
-        $expected = Get-AzureDataFactoryTable -DataFactory $df -Name $tblname
+        $datasetname = "foo2"
+        $actual = New-AzureDataFactoryDataset -DataFactory $df -Name $datasetname -File .\Resources\dataset.json -Force
+        $expected = Get-AzureDataFactoryDataset -DataFactory $df -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.TableName $actual.TableName
+        Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureDataFactoryTable -DataFactory $df -Name $tblname -Force
+        Remove-AzureDataFactoryDataset -DataFactory $df -Name $datasetname -Force
     }
     finally
     {
@@ -104,13 +104,14 @@ function Test-TablePiping
      
         New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
-        $tblname = "foo2"
-        New-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname -File .\Resources\table.json -Force
+        $datasetname = "foo2"
+        New-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
         
-        Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname | Remove-AzureDataFactoryTable -Force
+        Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureDataFactoryDataset -Force
 
-        # Test the table no longer exists
-        Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname } "TableNotFound"
+        # Test the dataset no longer exists
+		# TODO bgold09: change expected error message to "DatasetNotFound" after service error messages have been updated
+        Assert-ThrowsContains { Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname } "TableNotFound"
     }
     finally
     {

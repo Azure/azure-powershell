@@ -176,6 +176,7 @@
     <Compile Include="AzurePSCmdlet.cs" />
     <Compile Include="CmdletExtensions.cs" />
     <Compile Include="ConfigurationConstants.cs" />
+    <Compile Include="DiagnosticsHelper.cs" />
     <Compile Include="ErrorHelper.cs" />
     <Compile Include="IdnHelper.cs" />
     <Compile Include="ManagementOperationContext.cs" />

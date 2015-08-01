@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             DataFactoryClient.SetSliceStatus(
                 ResourceGroupName,
                 DataFactoryName,
-                TableName,
+                this.DatasetName,
                 Status,
                 UpdateType,
                 StartDateTime,
