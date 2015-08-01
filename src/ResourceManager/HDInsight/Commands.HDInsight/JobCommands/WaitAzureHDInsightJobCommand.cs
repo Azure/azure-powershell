@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        public override async void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             var jobDetails = WaitJob();
             WriteObject(jobDetails);
