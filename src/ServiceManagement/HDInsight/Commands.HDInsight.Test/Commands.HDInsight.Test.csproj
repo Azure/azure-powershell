@@ -269,6 +269,10 @@
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Commands.HDInsight\HDInsight.csproj">
+      <Project>{137d404a-865a-43db-930c-6da67da048df}</Project>
+      <Name>HDInsight</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
