@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class CreatePSTableParameters : DataFactoryParametersBase
+    public class CreatePSDatasetParameters : DataFactoryParametersBase
     {
         public string Name { get; set; }
 

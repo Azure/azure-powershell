@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class PoolOperationParameters : BatchClientParametersBase
     {
-        public PoolOperationParameters(BatchAccountContext context, string poolName, PSCloudPool pool,
+        public PoolOperationParameters(BatchAccountContext context, string poolId, PSCloudPool pool,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(poolName) && pool == null)
+            if (string.IsNullOrWhiteSpace(poolId) && pool == null)
             {
                 throw new ArgumentNullException(Resources.NoPool);
             }
 
-            this.PoolName = poolName;
+            this.PoolId = poolId;
             this.Pool = pool;
         }
 
         /// <summary>
-        /// The name of the pool
+        /// The id of the pool.
         /// </summary>
-        public string PoolName { get; private set; }
+        public string PoolId { get; private set; }
 
         /// <summary>
-        /// The PSCloudPool object representing the target pool
+        /// The PSCloudPool object representing the target pool.
         /// </summary>
         public PSCloudPool Pool { get; private set; }
     }
