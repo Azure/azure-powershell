@@ -17,35 +17,36 @@ using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize")]
+    [Cmdlet(VerbsLifecycle.Start, Constants.AzureBatchPoolResize)]
     public class StartBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the pool to resize.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool to resize.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The number of target dedicated VMs.")]
+        [Parameter(Mandatory = true, HelpMessage = "The number of target dedicated compute nodes.")]
         [ValidateNotNullOrEmpty]
         public int TargetDedicated { get; set; }
 
-        [Parameter(HelpMessage = "The resize timeout.  If the pool has not reached the target after this time the resize is automatically stopped.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public TimeSpan? ResizeTimeout { get; set; }
 
-        [Parameter(HelpMessage = "The deallocation option associated with this resize.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
-        public TVMDeallocationOption DeallocationOption { get; set; }
+        public ComputeNodeDeallocationOption? ComputeNodeDeallocationOption { get; set; }
         
         public override void ExecuteCmdlet()
         {
-            PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Name, null, this.AdditionalBehaviors)
+            PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {
                 TargetDedicated = this.TargetDedicated,
                 ResizeTimeout = this.ResizeTimeout,
-                DeallocationOption = this.DeallocationOption
+                ComputeNodeDeallocationOption = this.ComputeNodeDeallocationOption
             };
 
             BatchClient.ResizePool(parameters);

@@ -101,9 +101,11 @@ NestedModules = @(
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
-    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll',  
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
+	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
-    '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll'  
+    '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
+    '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
 )  
   
 # Functions to export from this module  
@@ -135,4 +137,4 @@ FileList =  @()
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = ''  
 
-}  
+} 

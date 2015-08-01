@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class PoolResizeParameters : PoolOperationParameters
     {
-        public PoolResizeParameters(BatchAccountContext context, string poolName, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-            : base(context, poolName, pool, additionalBehaviors)
+        public PoolResizeParameters(BatchAccountContext context, string poolId, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, poolId, pool, additionalBehaviors)
         { }
 
         /// <summary>
-        /// The number of target dedicated vms.
+        /// The number of target dedicated compute nodes.
         /// </summary>
         public int TargetDedicated { get; set; }
 
@@ -38,6 +38,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The deallocation option associated with this resize.
         /// </summary>
-        public TVMDeallocationOption DeallocationOption { get; set; }
+        public ComputeNodeDeallocationOption? ComputeNodeDeallocationOption { get; set; }
     }
 }

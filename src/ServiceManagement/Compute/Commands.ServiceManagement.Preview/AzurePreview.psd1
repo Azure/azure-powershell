@@ -62,6 +62,7 @@ TypesToProcess = @(
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
+    '.\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess

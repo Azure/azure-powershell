@@ -79,15 +79,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading {0} file {1} to: {2}.
-        /// </summary>
-        internal static string Downloading {
-            get {
-                return ResourceManager.GetString("Downloading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to End {0} call to RP.
         /// </summary>
         internal static string EndMAMLCall {
@@ -124,16 +115,79 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting job &quot;{0}&quot; from workitem &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Getting compute node &quot;{0}&quot; from pool &quot;{1}&quot;..
         /// </summary>
-        internal static string GBJ_GetByName {
+        internal static string GBCN_GetById {
             get {
-                return ResourceManager.GetString("GBJ_GetByName", resourceCulture);
+                return ResourceManager.GetString("GBCN_GetById", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting jobs matching the specified OData filter from workitem &quot;{0}&quot;. .
+        ///   Looks up a localized string similar to Getting compute nodes matching the specified OData filter from pool &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBCN_GetByOData {
+            get {
+                return ResourceManager.GetString("GBCN_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all compute nodes under pool &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBCN_NoFilter {
+            get {
+                return ResourceManager.GetString("GBCN_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting node file &quot;{0}&quot; from compute node &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBCNF_GetByName {
+            get {
+                return ResourceManager.GetString("GBCNF_GetByName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting node files matching the specified OData filter from compute node &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBCNF_GetByOData {
+            get {
+                return ResourceManager.GetString("GBCNF_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all node files from compute node &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBCNF_NoFilter {
+            get {
+                return ResourceManager.GetString("GBCNF_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting job &quot;{0}&quot;.
+        /// </summary>
+        internal static string GBJ_GetById {
+            get {
+                return ResourceManager.GetString("GBJ_GetById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all jobs from job schedule &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBJ_GetByJobScheduleNoFilter {
+            get {
+                return ResourceManager.GetString("GBJ_GetByJobScheduleNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting jobs matching the specified OData filter..
         /// </summary>
         internal static string GBJ_GetByOData {
             get {
@@ -142,7 +196,16 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all jobs from workitem &quot;{0}&quot;. .
+        ///   Looks up a localized string similar to Getting jobs matching the specified OData filter from job schedule &quot;{0}&quot;..
+        /// </summary>
+        internal static string GBJ_GetByODataAndJobSChedule {
+            get {
+                return ResourceManager.GetString("GBJ_GetByODataAndJobSChedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all jobs associated with the Batch account..
         /// </summary>
         internal static string GBJ_GetNoFilter {
             get {
@@ -151,11 +214,47 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting job schedule &quot;{0}&quot;.
+        /// </summary>
+        internal static string GBJS_GetById {
+            get {
+                return ResourceManager.GetString("GBJS_GetById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting job schedules matching the specified OData filter. .
+        /// </summary>
+        internal static string GBJS_GetByOData {
+            get {
+                return ResourceManager.GetString("GBJS_GetByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all job schedules associated with the Batch account. .
+        /// </summary>
+        internal static string GBJS_NoFilter {
+            get {
+                return ResourceManager.GetString("GBJS_NoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading node file {0} to: {1}.
+        /// </summary>
+        internal static string GBNFC_Downloading {
+            get {
+                return ResourceManager.GetString("GBNFC_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting pool &quot;{0}&quot;.
         /// </summary>
-        internal static string GBP_GetByName {
+        internal static string GBP_GetById {
             get {
-                return ResourceManager.GetString("GBP_GetByName", resourceCulture);
+                return ResourceManager.GetString("GBP_GetById", resourceCulture);
             }
         }
         
@@ -178,11 +277,20 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting task &quot;{0}&quot; from job &quot;{1}&quot; under workitem &quot;{2}&quot;.
+        ///   Looks up a localized string similar to Downloading Remote Desktop Protocol file for compute node {0} to: {1}.
         /// </summary>
-        internal static string GBT_GetByName {
+        internal static string GBRDP_Downloading {
             get {
-                return ResourceManager.GetString("GBT_GetByName", resourceCulture);
+                return ResourceManager.GetString("GBRDP_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting task &quot;{0}&quot; from job &quot;{1}&quot;.
+        /// </summary>
+        internal static string GBT_GetById {
+            get {
+                return ResourceManager.GetString("GBT_GetById", resourceCulture);
             }
         }
         
@@ -205,7 +313,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting task file &quot;{0}&quot; from task &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Getting node file &quot;{0}&quot; from task &quot;{1}&quot;.
         /// </summary>
         internal static string GBTF_GetByName {
             get {
@@ -214,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting task files matching the specified OData filter from task &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting node files matching the specified OData filter from task &quot;{0}&quot;..
         /// </summary>
         internal static string GBTF_GetByOData {
             get {
@@ -223,7 +331,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all task files under task &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting all node files under task &quot;{0}&quot;..
         /// </summary>
         internal static string GBTF_NoFilter {
             get {
@@ -232,92 +340,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting vm &quot;{0}&quot; from pool &quot;{1}&quot;..
+        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to..
         /// </summary>
-        internal static string GBVM_GetByName {
+        internal static string GRDP_NoComputeNode {
             get {
-                return ResourceManager.GetString("GBVM_GetByName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting vms matching the specified OData filter from pool &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBVM_GetByOData {
-            get {
-                return ResourceManager.GetString("GBVM_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all vms under pool &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBVM_NoFilter {
-            get {
-                return ResourceManager.GetString("GBVM_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting vm file &quot;{0}&quot; from vm &quot;{1}&quot;.
-        /// </summary>
-        internal static string GBVMF_GetByName {
-            get {
-                return ResourceManager.GetString("GBVMF_GetByName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting vm files matching the specified OData filter from vm &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBVMF_GetByOData {
-            get {
-                return ResourceManager.GetString("GBVMF_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all vm files from vm &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBVMF_NoFilter {
-            get {
-                return ResourceManager.GetString("GBVMF_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting workitem &quot;{0}&quot;.
-        /// </summary>
-        internal static string GBWI_GetByName {
-            get {
-                return ResourceManager.GetString("GBWI_GetByName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting workitems matching the specified OData filter. .
-        /// </summary>
-        internal static string GBWI_GetByOData {
-            get {
-                return ResourceManager.GetString("GBWI_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all workitems associated with the Batch account. .
-        /// </summary>
-        internal static string GBWI_NoFilter {
-            get {
-                return ResourceManager.GetString("GBWI_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name for the RDP file to point to..
-        /// </summary>
-        internal static string GRDP_NoVM {
-            get {
-                return ResourceManager.GetString("GRDP_NoVM", resourceCulture);
+                return ResourceManager.GetString("GRDP_NoComputeNode", resourceCulture);
             }
         }
         
@@ -412,6 +439,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating job {0}.
+        /// </summary>
+        internal static string NBJ_CreatingJob {
+            get {
+                return ResourceManager.GetString("NBJ_CreatingJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating job schedule {0}.
+        /// </summary>
+        internal static string NBJS_CreatingJobSchedule {
+            get {
+                return ResourceManager.GetString("NBJS_CreatingJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating pool {0}.
         /// </summary>
         internal static string NBP_CreatingPool {
@@ -430,7 +475,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating user {0} on vm {1}.
+        ///   Looks up a localized string similar to Creating user {0} on compute node {1}.
         /// </summary>
         internal static string NBU_CreatingUser {
             get {
@@ -439,11 +484,20 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating workitem {0}.
+        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id..
         /// </summary>
-        internal static string NBWI_CreatingWorkItem {
+        internal static string NoComputeNode {
             get {
-                return ResourceManager.GetString("NBWI_CreatingWorkItem", resourceCulture);
+                return ResourceManager.GetString("NoComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No compute node user specified. Supply a pool id, compute node id, and compute node user name..
+        /// </summary>
+        internal static string NoComputeNodeUser {
+            get {
+                return ResourceManager.GetString("NoComputeNodeUser", resourceCulture);
             }
         }
         
@@ -457,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a workitem name and job name..
+        ///   Looks up a localized string similar to No job was specified. Supply a PSCloudJob object or a job id..
         /// </summary>
         internal static string NoJob {
             get {
@@ -466,7 +520,34 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool name..
+        ///   Looks up a localized string similar to No job schedule was specified.  Supply a job schedule id or PSCloudJobSchedule object..
+        /// </summary>
+        internal static string NoJobSchedule {
+            get {
+                return ResourceManager.GetString("NoJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job id and task id, or a parent pool id and compute node id..
+        /// </summary>
+        internal static string NoNodeFile {
+            get {
+                return ResourceManager.GetString("NoNodeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job id and a task id. To specify a parent compute node, supply a PSComputeNode object or a pool id and a compute node id..
+        /// </summary>
+        internal static string NoNodeFileParent {
+            get {
+                return ResourceManager.GetString("NoNodeFileParent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No pool was specified. Supply a PSCloudPool object or a pool id..
         /// </summary>
         internal static string NoPool {
             get {
@@ -475,56 +556,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name..
+        ///   Looks up a localized string similar to No task was specified. Supply a PSCloudTask object or a job id and task id..
         /// </summary>
         internal static string NoTask {
             get {
                 return ResourceManager.GetString("NoTask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No task file was specified. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name..
-        /// </summary>
-        internal static string NoTaskFile {
-            get {
-                return ResourceManager.GetString("NoTaskFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No vm was specified. Supply a PSVM object or a pool name and vm name..
-        /// </summary>
-        internal static string NoVM {
-            get {
-                return ResourceManager.GetString("NoVM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No vm file was specified. Supply a PSVMFile object or a pool name, vm name, and vm file name..
-        /// </summary>
-        internal static string NoVMFile {
-            get {
-                return ResourceManager.GetString("NoVMFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No vm user specified. Supply a pool name, vm name, and user name..
-        /// </summary>
-        internal static string NoVMUser {
-            get {
-                return ResourceManager.GetString("NoVMUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No workitem was specified.  Supply a workitem name or PSCloudWorkItem object..
-        /// </summary>
-        internal static string NoWorkItem {
-            get {
-                return ResourceManager.GetString("NoWorkItem", resourceCulture);
             }
         }
         
@@ -561,6 +597,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBJ_RemoveJob {
             get {
                 return ResourceManager.GetString("RBJ_RemoveJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove job schedule {0}?.
+        /// </summary>
+        internal static string RBJS_RemoveConfirm {
+            get {
+                return ResourceManager.GetString("RBJS_RemoveConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing job schedule ....
+        /// </summary>
+        internal static string RBJS_RemoveJobSchedule {
+            get {
+                return ResourceManager.GetString("RBJS_RemoveJobSchedule", resourceCulture);
             }
         }
         
@@ -615,24 +669,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBU_RemoveUser {
             get {
                 return ResourceManager.GetString("RBU_RemoveUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove workitem {0}?.
-        /// </summary>
-        internal static string RBWI_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBWI_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing workitem ....
-        /// </summary>
-        internal static string RBWI_RemoveWorkItem {
-            get {
-                return ResourceManager.GetString("RBWI_RemoveWorkItem", resourceCulture);
             }
         }
         
