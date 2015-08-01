@@ -157,6 +157,11 @@
     <Compile Include="Extensions\DSC\Publish\ConfigurationParseResult.cs" />
     <Compile Include="Extensions\DSC\Publish\ConfigurationParsingHelper.cs" />
     <Compile Include="Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SecureStringExtensions.cs" />
     <Compile Include="ConversionUtilities.cs" />
     <Compile Include="DebugStreamTraceListener.cs" />
@@ -185,17 +190,12 @@
     <Compile Include="Tasks.cs" />
     <Compile Include="PSAzureAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
