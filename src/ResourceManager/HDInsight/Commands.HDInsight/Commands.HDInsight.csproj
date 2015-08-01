@@ -34,6 +34,8 @@
     <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
@@ -80,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Azure.Commands.HDInsight.dll-help.psd1" />
+    <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
