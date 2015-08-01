@@ -73,10 +73,6 @@
                 <PropertyName>Structure</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Published</Label>
-                <PropertyName>Published</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Properties</Label>
                 <PropertyName>Properties</PropertyName>
               </ListItem>
