@@ -107,18 +107,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             }
         }
 
-        public bool? Published
-        {
-            get
-            {
-                return this.dataset.Properties.Published;
-            }
-            set
-            {
-                this.dataset.Properties.Published = value;
-            }
-        }
-
         public TableProperties Properties
         {
             get
