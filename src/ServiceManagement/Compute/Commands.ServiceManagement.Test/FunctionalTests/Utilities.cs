@@ -115,9 +115,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         // AzureQuickVM
         public const string NewAzureQuickVMCmdletName = "New-AzureQuickVM";
 
-        //Get-AzureWinRMUri
-
+        // Get-AzureWinRMUri
         public const string GetAzureWinRMUriCmdletName = "Get-AzureWinRMUri";
+
+        // AzurePlatformExtension
+        public const string PublishAzurePlatformExtensionCmdletName = "Publish-AzurePlatformExtension";
+        public const string SetAzurePlatformExtensionCmdletName = "Set-AzurePlatformExtension";
+        public const string UnpublishAzurePlatformExtensionCmdletName = "Unpublish-AzurePlatformExtension";
+        public const string NewAzurePlatformExtensionCertificateConfigCmdletName = "New-AzurePlatformExtensionCertificateConfig";
+        public const string NewAzurePlatformExtensionEndpointConfigSetCmdletName = "New-AzurePlatformExtensionEndpointConfigSet";
+        public const string SetAzurePlatformExtensionEndpointCmdletName = "Set-AzurePlatformExtensionEndpoint";
+        public const string RemoveAzurePlatformExtensionEndpointCmdletName = "Remove-AzurePlatformExtensionEndpoint";
+        public const string NewAzurePlatformExtensionLocalResourceConfigSetCmdletName = "New-AzurePlatformExtensionLocalResourceConfigSet";
+        public const string SetAzurePlatformExtensionLocalResourceCmdletName = "Set-AzurePlatformExtensionLocalResource";
+        public const string RemoveAzurePlatformExtensionLocalResourceCmdletName = "Remove-AzurePlatformExtensionLocalResource";
 
         // AzurePlatformVMImage
         public const string SetAzurePlatformVMImageCmdletName = "Set-AzurePlatformVMImage";
