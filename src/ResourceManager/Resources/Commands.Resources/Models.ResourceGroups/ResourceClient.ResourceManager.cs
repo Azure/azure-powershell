@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
-            Deployment deployment = CreateBasicDeployment(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             if (validationInfo.Errors.Count != 0)
@@ -563,9 +563,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
         /// <returns>True if valid, false otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
+        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
-            Deployment deployment = CreateBasicDeployment(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
 
             if (validationInfo.Errors.Count == 0)
