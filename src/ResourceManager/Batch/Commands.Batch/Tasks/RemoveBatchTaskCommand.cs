@@ -21,39 +21,35 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchTask")]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask)]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem containing the task to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to delete.")]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string JobId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the job containing the task to delete.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to delete.")]
         [ValidateNotNullOrEmpty]
-        public string JobName { get; set; }
-
-        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the task to delete.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
         [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask InputObject { get; set; }
 
-        [Parameter(HelpMessage = "Do not ask for confirmation.")]
+        [Parameter]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string taskName = InputObject == null ? this.Name : InputObject.Name;
-            TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.WorkItemName, this.JobName,
-                this.Name, this.InputObject, this.AdditionalBehaviors);
+            string taskId = InputObject == null ? this.Id : InputObject.Id;
+            TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId,
+                this.Id, this.InputObject, this.AdditionalBehaviors);
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBT_RemoveConfirm, taskName),
+                string.Format(Resources.RBT_RemoveConfirm, taskId),
                 Resources.RBT_RemoveTask,
-                taskName,
+                taskId,
                 () => BatchClient.DeleteTask(parameters));
         }
     }

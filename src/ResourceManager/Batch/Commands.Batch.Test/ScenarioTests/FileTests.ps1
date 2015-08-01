@@ -14,205 +14,145 @@
 
 <#
 .SYNOPSIS
-Tests querying for a Batch Task file by name
+Tests querying for a Batch node file by task by name
 #>
-function Test-GetTaskFileByName
+function Test-GetNodeFileByTaskByName
 {
-	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
+	$nodeFile = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
 
-	Assert-AreEqual $taskFileName $taskFile.Name
-
-	# Verify positional parameters also work
-	$task = Get-AzureBatchTaskFile_ST $wiName $jobName $taskName $taskFileName -BatchContext $context
-
-	Assert-AreEqual $taskFileName $taskFile.Name
+	Assert-AreEqual $nodeFileName $nodeFile.Name
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Task Files using a filter
+Tests querying for Batch node files by task using a filter
 #>
-function Test-ListTaskFilesByFilter
+function Test-ListNodeFilesByTaskByFilter
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$taskFilePrefix, [string]$matches)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFilePrefix, [string]$matches)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$filter = "startswith(name,'" + "$taskFilePrefix" + "')"
+	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
-	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $taskFiles.Length
-	foreach($taskFile in $taskFiles)
+	Assert-AreEqual $matches $nodeFiles.Length
+	foreach($nodeFile in $nodeFiles)
 	{
-		Assert-True { $taskFile.Name.StartsWith("$taskFilePrefix") }
+		Assert-True { $nodeFile.Name.StartsWith("$nodeFilePrefix") }
 	}
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
-	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -Filter $filter -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $taskFiles.Length
-	foreach($taskFile in $taskFiles)
+	Assert-AreEqual $matches $nodeFiles.Length
+	foreach($nodeFile in $nodeFiles)
 	{
-		Assert-True { $taskFile.Name.StartsWith("$taskFilePrefix") }
+		Assert-True { $nodeFile.Name.StartsWith("$nodeFilePrefix") }
 	}
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Task Files and supplying a max count
+Tests querying for Batch node files by task and supplying a max count
 #>
-function Test-ListTaskFilesWithMaxCount
+function Test-ListNodeFilesByTaskWithMaxCount
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$maxCount)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -MaxCount $maxCount -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $taskFiles.Length
+	Assert-AreEqual $maxCount $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
-	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -MaxCount $maxCount -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $taskFiles.Length
+	Assert-AreEqual $maxCount $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch Task Files with the Recursive switch
+Tests querying for Batch node files by task with the Recursive switch
 #>
-function Test-ListTaskFilesRecursive
+function Test-ListNodeFilesByTaskRecursive
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$newfile)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$newfile)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'wd')"
-	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
 
 	# Only the directory itself is returned
-	Assert-AreEqual 1 $taskFiles.Length
-	Assert-True { $taskFiles[0].IsDirectory }
+	Assert-AreEqual 1 $nodeFiles.Length
+	Assert-True { $nodeFiles[0].IsDirectory }
 
 	# Verify the new file is returned when using the Recursive switch
-	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -Filter $filter -Recursive -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -Recursive -BatchContext $context
 
-	Assert-AreEqual 2 $taskFiles.Length
-	$file = $taskFiles | Where-Object { $_.IsDirectory -eq $false }
+	Assert-AreEqual 2 $nodeFiles.Length
+	$file = $nodeFiles | Where-Object { $_.IsDirectory -eq $false }
 	Assert-AreEqual "wd\$newFile" $file.Name
 }
 
 <#
 .SYNOPSIS
-Tests querying for all Task Files under a Task
+Tests querying for all node files under a task
 #>
-function Test-ListAllTaskFiles
+function Test-ListAllNodeFilesByTask
 {
-	param([string]$accountName, [string]$workItemName, [string] $jobName, [string]$taskName, [string]$count)
+	param([string]$accountName, [string] $jobId, [string]$taskId, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$taskFiles = Get-AzureBatchTaskFile_ST -WorkItemName $workItemName -JobName $jobName -TaskName $taskName -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $null -BatchContext $context
 
-	Assert-AreEqual $count $taskFiles.Length
+	Assert-AreEqual $count $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureBatchTask_ST $workItemName $jobName $taskName -BatchContext $context
-	$taskFiles = Get-AzureBatchTaskFile_ST -Task $task -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -BatchContext $context
 
-	Assert-AreEqual $count $taskFiles.Length
+	Assert-AreEqual $count $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
 Tests pipelining scenarios
 #>
-function Test-ListTaskFilePipeline
+function Test-ListNodeFileByTaskPipeline
 {
-	param([string]$accountName, [string]$workItemName, [string]$jobName, [string]$taskName, [string]$count)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
-	# Get Task into Get Task File
-	$taskFiles = Get-AzureBatchTask_ST -WorkItemName $workItemName -JobName $jobName -Name $taskName -BatchContext $context | Get-AzureBatchTaskFile_ST -BatchContext $context
-	Assert-AreEqual $count $taskFiles.Length
+	# Get Task into Get Node File
+	$nodeFiles = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
+	Assert-AreEqual $count $nodeFiles.Length
 
-	# Get WorkItem into Get Job into Get Task into Get Task file
-	$taskFiles = Get-AzureBatchWorkItem_ST -Name $workItemName -BatchContext $context | Get-AzureBatchJob_ST -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context | Get-AzureBatchTaskFile_ST -BatchContext $context
-	Assert-AreEqual $count $taskFiles.Length
+	# Get Job into Get Task into Get Node file
+	$nodeFiles = Get-AzureBatchJob_ST $jobId -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
+	Assert-AreEqual $count $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
-Tests downloading Task file contents by name
+Tests downloading node file contents by task by name
 #>
-function Test-GetTaskFileContentByName
+function Test-GetNodeFileContentByTaskByName
 {
-	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -DestinationStream $stream
-		
-		$stream.Position = 0
-		$sr = New-Object System.IO.StreamReader $stream
-		$downloadedContents = $sr.ReadToEnd()
-
-		# Don't do strict equality check since extra newline characters get added to the end of the file
-		Assert-True { $downloadedContents.Contains($fileContent) }
-	}
-	finally
-	{
-		if ($sr -ne $null)
-		{
-			$sr.Dispose()
-		}
-		$stream.Dispose()
-	}
-
-	# Verify positional parameters also work
-	$stream = New-Object System.IO.MemoryStream 
-	try
-	{
-		Get-AzureBatchTaskFileContent_ST $wiName $jobName $taskName $taskFileName -BatchContext $context -DestinationStream $stream
-
-		$stream.Position = 0
-		$sr = New-Object System.IO.StreamReader $stream
-		$downloadedContents = $sr.ReadToEnd()
-
-		# Don't do strict equality check since extra newline characters get added to the end of the file
-		Assert-True { $downloadedContents.Contains($fileContent) }
-	}
-	finally
-	{
-		if ($sr -ne $null)
-		{
-			$sr.Dispose()
-		}
-		$stream.Dispose()
-	}
-}
-
-<#
-.SYNOPSIS
-Tests downloading Task file contents using the pipeline
-#>
-function Test-GetTaskFileContentPipeline
-{
-	param([string]$accountName, [string]$wiName, [string]$jobName, [string]$taskName, [string]$taskFileName, [string]$fileContent)
-
-	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$stream = New-Object System.IO.MemoryStream 
-
-	try
-	{
-		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
-		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -233,146 +173,179 @@ function Test-GetTaskFileContentPipeline
 
 <#
 .SYNOPSIS
-Tests querying for a Batch vm file by name
+Tests downloading node file contents by task using the pipeline
 #>
-function Test-GetVMFileByName
+function Test-GetNodeFileContentByTaskPipeline
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName)
+	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
+	$stream = New-Object System.IO.MemoryStream 
 
-	Assert-AreEqual $vmFileName $vmFile.Name
+	try
+	{
+		$nodeFile = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
+		$nodeFile | Get-AzureBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests querying for a Batch node file by compute node by name
+#>
+function Test-GetNodeFileByComputeNodeByName
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$nodeFile = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
+
+	Assert-AreEqual $nodeFileName $nodeFile.Name
 
 	# Verify positional parameters also work
-	$vmFile = Get-AzureBatchVMFile_ST $poolName $vmName $vmFileName -BatchContext $context
+	$nodeFile = Get-AzureBatchNodeFile_ST $poolId $computeNodeId $nodeFileName -BatchContext $context
 
-	Assert-AreEqual $vmFileName $vmFile.Name
+	Assert-AreEqual $nodeFileName $nodeFile.Name
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch vm files using a filter
+Tests querying for Batch node files by compute node using a filter
 #>
-function Test-ListVMFilesByFilter
+function Test-ListNodeFilesByComputeNodeByFilter
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFilePrefix, [string]$matches)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFilePrefix, [string]$matches)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$filter = "startswith(name,'" + "$vmFilePrefix" + "')"
+	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
-	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $vmFiles.Length
-	foreach($vmFile in $vmFiles)
+	Assert-AreEqual $matches $nodeFiles.Length
+	foreach($nodeFile in $nodeFiles)
 	{
-		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+		Assert-True { $nodeFile.Name.StartsWith("$nodeFilePrefix") }
 	}
 
 	# Verify parent object parameter set also works
-	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
-	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -Filter $filter -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -Filter $filter -BatchContext $context
 
-	Assert-AreEqual $matches $vmFiles.Length
-	foreach($vmFile in $vmFiles)
+	Assert-AreEqual $matches $nodeFiles.Length
+	foreach($nodeFile in $nodeFiles)
 	{
-		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+		Assert-True { $nodeFile.Name.StartsWith("$nodeFilePrefix") }
 	}
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch vm files and supplying a max count
+Tests querying for Batch node files by compute node and supplying a max count
 #>
-function Test-ListVMFilesWithMaxCount
+function Test-ListNodeFilesByComputeNodeWithMaxCount
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$maxCount)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$maxCount)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -MaxCount $maxCount -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $vmFiles.Length
+	Assert-AreEqual $maxCount $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
-	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -MaxCount $maxCount -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -MaxCount $maxCount -BatchContext $context
 
-	Assert-AreEqual $maxCount $vmFiles.Length
+	Assert-AreEqual $maxCount $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
-Tests querying for Batch vm files with the Recursive switch
+Tests querying for Batch node files by compute node with the Recursive switch
 #>
-function Test-ListVMFilesRecursive
+function Test-ListNodeFilesByComputeNodeRecursive
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$startupFolder, [string]$recursiveCount)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$startupFolder, [string]$recursiveCount)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$startupFolder" + "')"
-	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
 
 	# Only the directory itself is returned
-	Assert-AreEqual 1 $vmFiles.Length
-	Assert-True { $vmFiles[0].IsDirectory }
+	Assert-AreEqual 1 $nodeFiles.Length
+	Assert-True { $nodeFiles[0].IsDirectory }
 
-	# Verify the start task vm files are returned when using the Recursive switch
-	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -Recursive -BatchContext $context
+	# Verify the start task node files are returned when using the Recursive switch
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -Recursive -BatchContext $context
 
-	Assert-AreEqual $recursiveCount $vmFiles.Length 
-	$files = $vmFiles | Where-Object { $_.Name.StartsWith("startup\st") -eq $true }
+	Assert-AreEqual $recursiveCount $nodeFiles.Length 
+	$files = $nodeFiles | Where-Object { $_.Name.StartsWith("startup\st") -eq $true }
 	Assert-AreEqual 2 $files.Length # stdout, stderr
 }
 
 <#
 .SYNOPSIS
-Tests querying for all vm files under a VM
+Tests querying for all node files under a compute node
 #>
-function Test-ListAllVMFiles
+function Test-ListAllNodeFilesByComputeNode
 {
-	param([string]$accountName, [string]$poolName, [string] $vmName, [string]$count)
+	param([string]$accountName, [string]$poolId, [string] $computeNodeId, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
-	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context
 
-	Assert-AreEqual $count $vmFiles.Length
+	Assert-AreEqual $count $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
-	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -BatchContext $context
 
-	Assert-AreEqual $count $vmFiles.Length
+	Assert-AreEqual $count $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
 Tests pipelining scenarios
 #>
-function Test-ListVMFilePipeline
+function Test-ListNodeFileByComputeNodePipeline
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$count)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$count)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 
-	# Get VM into Get VM File
-	$vmFiles = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context | Get-AzureBatchVMFile_ST -BatchContext $context
-	Assert-AreEqual $count $vmFiles.Length
+	# Get Compute Node into Get Node File
+	$nodeFiles = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
+	Assert-AreEqual $count $nodeFiles.Length
 }
 
 <#
 .SYNOPSIS
-Tests downloading vm file contents by name
+Tests downloading node file contents by compute node by name
 #>
-function Test-GetVMFileContentByName
+function Test-GetNodeFileContentByComputeNodeByName
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
 	{
-		Get-AzureBatchVMFileContent_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -394,7 +367,7 @@ function Test-GetVMFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchVMFileContent_ST $poolName $vmName $vmFileName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST $poolId $computeNodeId $nodeFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -415,19 +388,19 @@ function Test-GetVMFileContentByName
 
 <#
 .SYNOPSIS
-Tests downloading vm file contents using the pipeline
+Tests downloading node file contents by compute node using the pipeline
 #>
-function Test-GetVMFileContentPipeline
+function Test-GetNodeFileContentByComputeNodePipeline
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
 	{
-		$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
-		$vmFile | Get-AzureBatchVMFileContent_ST -BatchContext $context -DestinationStream $stream
+		$nodeFile = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
+		$nodeFile | Get-AzureBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -448,11 +421,11 @@ function Test-GetVMFileContentPipeline
 
 <#
 .SYNOPSIS
-Tests downloading an RDP file by name
+Tests downloading a Remote Desktop Protocol file by compute node id
 #>
-function Test-GetRDPFileByName
+function Test-GetRDPFileById
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
@@ -460,7 +433,7 @@ function Test-GetRDPFileByName
 
 	try
 	{
-		Get-AzureBatchRDPFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchRemoteDesktopProtocolFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -482,7 +455,7 @@ function Test-GetRDPFileByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchRDPFile_ST $poolName $vmName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchRemoteDesktopProtocolFile_ST $poolId $computeNodeId -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -503,11 +476,11 @@ function Test-GetRDPFileByName
 
 <#
 .SYNOPSIS
-Tests downloading an RDP file using the pipeline
+Tests downloading a Remote DesktopProtocol file using the pipeline
 #>
 function Test-GetRDPFilePipeline
 {
-	param([string]$accountName, [string]$poolName, [string]$vmName)
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
 
 	$context = Get-AzureBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
@@ -515,8 +488,8 @@ function Test-GetRDPFilePipeline
 
 	try
 	{
-		$vm = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context
-		$vm | Get-AzureBatchRDPFile_ST -BatchContext $context -DestinationStream $stream
+		$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
+		$computeNode | Get-AzureBatchRemoteDesktopProtocolFile_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream

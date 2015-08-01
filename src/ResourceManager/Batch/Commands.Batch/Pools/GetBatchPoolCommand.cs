@@ -22,20 +22,20 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchPool", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudPool))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchPool, DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudPool))]
     public class GetBatchPoolCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool to retrieve.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The OData filter clause to use when querying for pools.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of pools to return.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         public int MaxCount
         {
             get { return this.maxCount; }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {
-                PoolName = this.Name,
+                PoolId = this.Id,
                 Filter = this.Filter,
                 MaxCount = this.MaxCount
             };

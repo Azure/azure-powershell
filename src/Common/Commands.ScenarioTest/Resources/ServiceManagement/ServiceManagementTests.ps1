@@ -343,3 +343,24 @@ function Run-NewAzureComputeParameterObjectTests
         Assert-True { $param_type_name -like $full_name_query } "`'$param_type_name`' & `'$full_name`'";
     }
 }
+
+function Run-AzurePlatformVMImageNegativeTest
+{
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+    $replicate_locations = (Get-AzureLocation | where { $_.Name -like '*US*' } | select -ExpandProperty Name);
+
+    $c1 = New-AzurePlatformComputeImageConfig -Offer test -Sku test -Version test;
+    $c2 = New-AzurePlatformMarketplaceImageConfig -PlanName test -Product test -Publisher test -PublisherId test;
+
+    Assert-ThrowsContains `
+        { Set-AzurePlatformVMImage -ImageName $imgName -ReplicaLocations $replicate_locations -ComputeImageConfig $c1 -MarketplaceImageConfig $c2 } `
+        "ForbiddenError: This operation is not allowed for this subscription.";
+
+    foreach ($mode in @("MSDN", "Private", "Public"))
+    {
+        Assert-ThrowsContains `
+            { Set-AzurePlatformVMImage -ImageName $imgName -Permission $mode } `
+            "ForbiddenError: This operation is not allowed for this subscription.";
+    }
+}
