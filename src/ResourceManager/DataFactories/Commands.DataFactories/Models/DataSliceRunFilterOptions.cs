@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public class DataSliceRunFilterOptions
     {
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         public string ResourceGroupName { get; set; }
 

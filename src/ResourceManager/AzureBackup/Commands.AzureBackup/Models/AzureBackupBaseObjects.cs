@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
     public class AzureBackupVaultContextObject
@@ -42,5 +46,29 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public AzureBackupVaultContextObject(AzurePSBackupVault vault)
             : this(vault.ResourceGroupName, vault.Name, vault.Region) { }
+    }
+
+    /// <summary>
+    /// This class encapsulates all the properties of the container object 
+    /// that are needed by higher level objects (data source, recovery point etc). 
+    /// </summary>
+    public class AzureBackupContainerContextObject : AzureBackupVaultContextObject
+    {
+        /// <summary>
+        /// Type of the Azure Backup container
+        /// </summary>
+        public string ContainerType { get; set; }
+
+        public AzureBackupContainerContextObject()
+            : base()
+        {
+        }
+
+        public AzureBackupContainerContextObject(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
+            : base(vault)
+        {
+            ContainerType = ContainerHelpers.GetContainerType(marsContainerResponse.Properties.CustomerType).ToString();
+            //ContainerUniqueName = marsContainerResponse.UniqueName;
+        }
     }
 }

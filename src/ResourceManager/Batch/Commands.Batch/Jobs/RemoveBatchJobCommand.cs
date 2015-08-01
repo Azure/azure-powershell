@@ -12,45 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchJob")]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJob)]
     public class RemoveBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem containing the job to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job to delete.")]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the job to delete.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudJob object representing the job to delete.")]
-        [ValidateNotNullOrEmpty]
-        public PSCloudJob InputObject { get; set; }
-
-        [Parameter(HelpMessage = "Do not ask for confirmation.")]
+        [Parameter]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string jobName = InputObject == null ? this.Name : InputObject.Name;
-            JobOperationParameters parameters = new JobOperationParameters(this.BatchContext, this.WorkItemName,
-                this.Name, this.InputObject, this.AdditionalBehaviors);
-
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBJ_RemoveConfirm, jobName),
+                string.Format(Resources.RBJ_RemoveConfirm, this.Id),
                 Resources.RBJ_RemoveJob,
-                jobName,
-                () => BatchClient.DeleteJob(parameters));
+                this.Id,
+                () => BatchClient.DeleteJob(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }
     }
 }

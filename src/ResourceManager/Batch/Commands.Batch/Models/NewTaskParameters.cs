@@ -21,50 +21,55 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewTaskParameters : JobOperationParameters
     {
-        public NewTaskParameters(BatchAccountContext context, string workItemName, string jobName, PSCloudJob job, string taskName,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, workItemName, jobName, job, additionalBehaviors)
+        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, jobId, job, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(taskName))
+            if (string.IsNullOrWhiteSpace(taskId))
             {
-                throw new ArgumentNullException("taskName");
+                throw new ArgumentNullException("taskId");
             }
 
-            this.TaskName = taskName;
+            this.TaskId = taskId;
         }
 
         /// <summary>
-        /// The name of the Task to create.
+        /// The id of the task to create.
         /// </summary>
-        public string TaskName { get; private set; }
+        public string TaskId { get; private set; }
 
         /// <summary>
-        /// The command the Task will execute.
+        /// The display name of the task to create.
+        /// </summary>
+        public string DisplayName { get; set; }
+
+        /// <summary>
+        /// The command the task will execute.
         /// </summary>
         public string CommandLine { get; set; }
 
         /// <summary>
-        /// Resource Files to add to the new Task.
+        /// Resource files to add to the new task.
         /// </summary>
         public IDictionary ResourceFiles { get; set; }
 
         /// <summary>
-        /// Environment Settings to add to the new Task.
+        /// Environment settings to add to the new task.
         /// </summary>
         public IDictionary EnvironmentSettings { get; set; }
 
         /// <summary>
-        /// Whether to run the Task in elevated mode.
+        /// Whether to run the task in elevated mode.
         /// </summary>
         public bool RunElevated { get; set; }
 
         /// <summary>
-        /// The Affinity Information for the Task.
+        /// The affinity information for the task.
         /// </summary>
         public PSAffinityInformation AffinityInformation { get; set; }
 
         /// <summary>
-        /// The Task Constraints.
+        /// The task constraints.
         /// </summary>
-        public PSTaskConstraints TaskConstraints { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
     }
 }

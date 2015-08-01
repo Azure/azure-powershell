@@ -68,7 +68,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.28.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.32.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -158,6 +158,9 @@
     <Compile Include="ScenarioTests\DatabaseBackupTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
+    <None Include="ScenarioTests\ServiceTierAdvisorTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\DatabaseActivationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -170,6 +173,7 @@
     <None Include="ScenarioTests\ElasticPoolCrudTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
     <Compile Include="ScenarioTests\SecurityTests.cs" />
@@ -184,6 +188,7 @@
     <Compile Include="UnitTests\AzureSqlDatabaseServerFirewallRuleAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
+    <Compile Include="UnitTests\AzureSqlServiceTierAdvisorAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseBackupAttributeTests.cs" />
     <Compile Include="Utilities\UnitTestHelper.cs" />
   </ItemGroup>
@@ -381,19 +386,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\TestRecommendedElasticPoolGet.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\TestRecommendedElasticPoolGetDatabase.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\TestRecommendedElasticPoolGetMetrics.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\TestRecommendedElasticPoolList.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\TestRecommendedElasticPoolListDatabase.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\ListRecommendedElasticPools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerCrudTests\TestServerCreate.json">
@@ -408,13 +401,25 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerCrudTests\TestServerUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeWithUpgradeHint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServiceTierAdvisorTests\GetUpgradeDatabaseHint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServiceTierAdvisorTests\GetUpgradeServerHint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerCrudTests\TestServerRemove.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerCrudTests\TestServerUpdate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestDatabaseTransparentDataEncryptionGet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestDatabaseTransparentDataEncryptionUpdate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeWithRecommendedDatabase.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeAndCancel.json">
