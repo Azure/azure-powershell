@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo
 {
-    public class ExtensionInputEndpoint
+    public class NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo : CmdletsInfo
     {
-        public string LocalPort { get; set; }
-        public string Name { get; set; }
-        public int Port { get; set; }
-        public string Protocol { get; set; }
+        public NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo()
+        {
+            this.cmdletName = Utilities.NewAzurePlatformExtensionLocalResourceConfigSetCmdletName;
+        }
     }
 }

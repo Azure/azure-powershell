@@ -14,11 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model
 {
-    public class ExtensionInputEndpoint
+    public class ExtensionInstanceInputEndpoint
     {
+        public int FixedPortMax { get; set; }
+        public int FixedPortMin { get; set; }
         public string LocalPort { get; set; }
         public string Name { get; set; }
-        public int Port { get; set; }
         public string Protocol { get; set; }
     }
 }
