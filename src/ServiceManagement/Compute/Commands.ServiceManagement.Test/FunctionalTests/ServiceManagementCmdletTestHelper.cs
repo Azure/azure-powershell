@@ -827,6 +827,100 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion WinRM 
 
+        #region AzurePlatformExtension
+
+        internal ExtensionCertificateConfig NewAzurePlatformExtensionCertificateConfig(
+            string storeLocation, string storeName, string thumbAlgorithm, bool thumbRequired = false)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionCertificateConfig>(
+                new NewAzurePlatformExtensionCertificateConfigCmdletInfo(storeLocation, storeName, thumbAlgorithm, thumbRequired));
+        }
+
+        internal ExtensionEndpointConfigSet NewAzurePlatformExtensionEndpointConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new NewAzurePlatformExtensionEndpointConfigSetCmdletInfo());
+        }
+
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string inputEndpoint,
+            string protocol, int port, string localPort)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    inputEndpoint, null, null, protocol, port, localPort, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string internalEndpoint,
+            string protocol, int port)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, internalEndpoint, null, protocol, port, null, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string instanceInputEndpoint,
+            string protocol, string localPort, int portMax, int portMin)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, null, instanceInputEndpoint, protocol, null, localPort, portMax, portMin));
+        }
+
+        internal ExtensionEndpointConfigSet RemoveAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string epName, string kind)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new RemoveAzurePlatformExtensionEndpointCmdletInfo(endpointConfig, epName, kind));
+        }
+
+        internal ExtensionLocalResourceConfigSet NewAzurePlatformExtensionLocalResourceConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo());
+        }
+
+        internal ExtensionLocalResourceConfigSet SetAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name, int sizeInMb)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new SetAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name, sizeInMb));
+        }
+
+        internal ExtensionLocalResourceConfigSet RemoveAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new RemoveAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name));
+        }
+
+        internal ManagementOperationContext PublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, string hr,
+            Uri media, string label, string description, string company,
+            ExtensionCertificateConfig certConfig, ExtensionEndpointConfigSet epConfig, ExtensionLocalResourceConfigSet lrConfig,
+            DateTime publishDate, string publicSchema, string privateSchema, string sample,
+            string eula,  Uri privacyUri, Uri homepage, string os, string regions,
+            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool internalExtension, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new PublishAzurePlatformExtensionCmdletInfo(
+                    extensionName, publisher, version, hr,
+                    media, label, description, company,
+                    certConfig, epConfig, lrConfig,
+                    publishDate, publicSchema, privateSchema, sample,
+                    eula, privacyUri, homepage, os, regions,
+                    blockRole, disallowUpgrade, xmlExtension, internalExtension, force));
+        }
+
+        internal ManagementOperationContext UnpublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new UnpublishAzurePlatformExtensionCmdletInfo(extensionName, publisher, version, force));
+        }
+
+        #endregion
+
         #region AzurePlatformVMImage
 
         internal ComputeImageConfig NewAzurePlatformComputeImageConfig(string offer, string sku, string version)
@@ -1304,7 +1398,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         #endregion
-
 
         #region AzureVM
 

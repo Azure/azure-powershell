@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to frontendIpConfigurations.
         /// </summary>
-        public static string ApplicationGatewayFrontendIpConfigName {
+        public static string ApplicationGatewayFrontendIPConfigName {
             get {
-                return ResourceManager.GetString("ApplicationGatewayFrontendIpConfigName", resourceCulture);
+                return ResourceManager.GetString("ApplicationGatewayFrontendIPConfigName", resourceCulture);
             }
         }
         
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to gatewayIpConfigurations.
         /// </summary>
-        public static string ApplicationGatewayIpConfigurationName {
+        public static string ApplicationGatewayIPConfigurationName {
             get {
-                return ResourceManager.GetString("ApplicationGatewayIpConfigurationName", resourceCulture);
+                return ResourceManager.GetString("ApplicationGatewayIPConfigurationName", resourceCulture);
             }
         }
         

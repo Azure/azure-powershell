@@ -19,48 +19,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
-    public class NewAzureApplicationGatewaySslCertificateCommand : NetworkBaseCmdlet
+    public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the ssl certificate")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate data")]
-        [ValidateNotNullOrEmpty]
-        public string Data { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate password")]
-        [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate public data")]
-        [ValidateNotNullOrEmpty]
-        public string PublicCertData { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            var sslCertificate = new PSApplicationGatewaySslCertificate();
-            sslCertificate.Name = this.Name;
-            sslCertificate.Data = this.Data;
-            sslCertificate.Password = this.Password;
-            sslCertificate.PublicCertData = this.PublicCertData;
-            
-            sslCertificate.Id =
-                ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaySslCertificateName,
-                    this.Name);
-
-            WriteObject(sslCertificate);
+            WriteObject(base.NewObject());
         }
     }
 }

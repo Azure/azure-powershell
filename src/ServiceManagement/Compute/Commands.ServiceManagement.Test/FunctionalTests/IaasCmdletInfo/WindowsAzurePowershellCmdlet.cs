@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo
 {
@@ -38,10 +38,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private static PowershellModule[] ConstructModules()
         {
-            return new[]
+            var modules = new[]
             {
-                new PowershellModule(Utilities.windowsAzurePowershellServiceModule, Utilities.windowsAzurePowershellPath)
+                new PowershellModule(Utilities.windowsAzurePowershellServiceModule, Utilities.windowsAzurePowershellPath),
+                new PowershellModule(Utilities.AzurePowershellModuleServiceManagementPirModule, Utilities.windowsAzurePowershellDefaultPath),
+                new PowershellModule(Utilities.AzurePowershellModuleServiceManagementPreviewModule, Utilities.windowsAzurePowershellDefaultPath),
             };
+            return modules;
         }
     }
 }
