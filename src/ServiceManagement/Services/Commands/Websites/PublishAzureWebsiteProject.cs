@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         /// Generate dynamic parameters based on the connection strings in the Web.config.
         /// It will look at 2 Web.config files:
         /// 1. Web.config
-        /// 2. Web.<configuration>.config (like Web.Release.config)
+        /// 2. Web.&lt;configuration&gt;.config (like Web.Release.config)
         /// This only works when -ProjectFile is used and -ConnectionString is not used.
         /// </summary>
         /// <returns>The dynamic parameters.</returns>

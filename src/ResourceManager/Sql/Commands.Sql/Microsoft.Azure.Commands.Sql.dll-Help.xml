@@ -9211,6 +9211,13 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">RecommendedDatabaseProperties[]</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ElasticPoolCollection</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">UpgradeRecommendedElasticPoolProperties[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
@@ -9267,6 +9274,18 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 			<command:parameterValue required="true" variableLength="true">RecommendedDatabaseProperties[]</command:parameterValue>
 			<dev:type>
 				<maml:name>RecommendedDatabaseProperties[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ElasticPoolCollection</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">UpgradeRecommendedElasticPoolProperties[]</command:parameterValue>
+			<dev:type>
+				<maml:name>UpgradeRecommendedElasticPoolProperties[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -10084,6 +10103,18 @@ Switch-AzureMode -Name AzureResourceManager</maml:para>
             </dev:type>
             <dev:defaultValue></dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+            <maml:name>ElasticPoolCollection</maml:name>
+            <maml:description>
+                <maml:para>Collection of UpgradeRecommendedElasticPoolProperties objects to be used for the server upgrade. Check the examples on how to construct a sample object.</maml:para>
+            </maml:description>
+            <command:parameterValue required="true" variableLength="true">UpgradeRecommendedElasticPoolProperties[]</command:parameterValue>
+            <dev:type>
+                <maml:name>UpgradeRecommendedElasticPoolProperties[]</maml:name>
+                <maml:uri/>
+            </dev:type>
+            <dev:defaultValue></dev:defaultValue>
+        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
             <maml:name>ServerName</maml:name>
             <maml:description>
@@ -10186,12 +10217,44 @@ $databaseMap = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.Recomm
 $databaseMap.Name = &quot;testdb&quot;
 $databaseMap.TargetEdition = &quot;Standard&quot;
 $databaseMap.TargetServiceLevelObjective = &quot;S0&quot;
-Start-AzureSqlServerUpgrade -ResourceGroupName MyResourceGroup -ServerName MySqlServer -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime $scheduleTime -DatabaseCollection ($databaseMap)</dev:code>
+Start-AzureSqlServerUpgrade -ResourceGroupName MyResourceGroup -ServerName MySqlServer -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime $scheduleTime -DatabaseCollection @($databaseMap)</dev:code>
             <dev:remarks>
                 <maml:para>Upgrade the existing server &quot;MySqlServer&quot; in resource group &quot;MyResourceGroup&quot; to version 12.0.
 The server &quot;MySqlServer&quot; must have version 2.0 and a database named &quot;testdb&quot;, otherwise the command will fail.</maml:para>
                 <maml:para>The earliest time to upgrade is 5 minutes after the cmdlet invocation.
 After upgrade, the database &quot;testdb&quot; will have edition &quot;Standard&quot; and Service Level Objective &quot;S0&quot;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+            </dev:remarks>
+            <command:commandLines>
+                <command:commandLine>
+                    <command:commandText>
+                        <maml:para />
+                    </command:commandText>
+                </command:commandLine>
+            </command:commandLines>
+        </command:example>
+    	<command:example>
+            <maml:title>--------------------------  Example 3: Upgrade server with schedule time and target elastic pool properties --------------------------</maml:title>
+            <maml:introduction>
+                <maml:paragraph>PS C:\&gt;</maml:paragraph>
+            </maml:introduction>
+            <dev:code>$scheduleTime = (Get-Date).AddMinutes(5).ToUniversalTime()
+$elasticPool = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties
+$elasticPool.DatabaseDtuMax = 100
+$elasticPool.DatabaseDtuMin = 50
+$elasticPool.Dtu = 800
+$elasticPool.Edition = "Standard"
+$elasticPool.IncludeAllDatabases = $true
+$elasticPool.Name = "my_ep"
+$elasticPool.StorageMb = 800 * 1024
+Start-AzureSqlServerUpgrade -ResourceGroupName MyResourceGroup -ServerName MySqlServer -ServerVersion 12.0 -ScheduleUpgradeAfterUtcDateTime $scheduleTime -ElasticPoolCollection @($elasticPool)</dev:code>
+            <dev:remarks>
+                <maml:para>Upgrade the existing server &quot;MySqlServer&quot; in resource group &quot;MyResourceGroup&quot; to version 12.0.
+The server &quot;MySqlServer&quot; must have version 2.0, otherwise the command will fail.</maml:para>
+                <maml:para>The earliest time to upgrade is 5 minutes after the cmdlet invocation.
+After upgrade, all databases will be in the elastic pool &quot;my_ep&quot;.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para />

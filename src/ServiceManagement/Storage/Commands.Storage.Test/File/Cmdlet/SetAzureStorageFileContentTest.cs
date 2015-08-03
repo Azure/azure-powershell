@@ -139,9 +139,9 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             var mockupRunner = new MockTransferJobRunner(
                 job =>
                 {
-                    Assert.AreEqual(destinationFileName, job.Destination.FilePath, "Destination file name validation failed.");
-                    Assert.AreEqual(shareName, job.Source.AzureFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(sourceFilePath, job.Source.AzureFile.Name, "Source file validation failed.");
+                    Assert.AreEqual(destinationFileName, job.Destination.AzureFile.Name, "Destination file name validation failed.");
+                    Assert.AreEqual(shareName, job.Destination.AzureFile.Share.Name, "Share validation failed.");
+                    Assert.AreEqual(sourceFilePath, job.Source.FilePath, "Source file validation failed.");
                     return TaskEx.FromResult(true);
                 });
 
