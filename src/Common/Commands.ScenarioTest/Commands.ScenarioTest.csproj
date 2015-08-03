@@ -186,6 +186,12 @@
     <None Include="Resources\CredentialTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\ServiceManagement\Files\OneWebOneWorker.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\OneWebOneWorker.cspkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationConfigureRunbook.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
