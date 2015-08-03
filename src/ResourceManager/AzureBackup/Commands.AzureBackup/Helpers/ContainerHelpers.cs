@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
     internal class ContainerHelpers
     {
-        private static readonly Regex ResourceGroupRegex = new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
+        private static readonly Regex ResourceGroupRegex = new Regex(@"/subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/BackupVault/(?<BackupVaultName>.+)/containers/(?<containersName>.+)", RegexOptions.Compiled);
 
         internal static AzureBackupContainerType GetContainerType(string customerType)
         {
@@ -62,6 +62,28 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     containerType = AzureBackupContainerType.Windows;
                     break;
                 case CustomerType.SqlPaaS:
+                    break;
+                default:
+                    break;
+            }
+
+            return containerType;
+        }
+
+        internal static AzureBackupContainerType GetTypeForManagedContainer(string managedContainerTypeString)
+        {
+            ManagedContainerType managedContainerType = (ManagedContainerType)Enum.Parse(typeof(ManagedContainerType), managedContainerTypeString, true);
+
+            AzureBackupContainerType containerType = 0;
+
+            switch (managedContainerType)
+            {
+                case ManagedContainerType.Invalid:
+                    break;
+                case ManagedContainerType.IaasVM:
+                    containerType = AzureBackupContainerType.AzureVM;
+                    break;
+                case ManagedContainerType.IaasVMService:
                     break;
                 default:
                     break;
@@ -101,10 +123,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             var match = ResourceGroupRegex.Match(id);
             if (match.Success)
             {
-                var resourceGroupNameGroup = match.Groups["resourceGroupName"];
-                if (resourceGroupNameGroup != null && resourceGroupNameGroup.Success)
+                var vmRGName = match.Groups["containersName"];
+                if (vmRGName != null && vmRGName.Success)
                 {
-                    return resourceGroupNameGroup.Value;
+                    return vmRGName.Value;
                 }
             }
 
