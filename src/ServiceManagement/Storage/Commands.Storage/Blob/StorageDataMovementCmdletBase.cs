@@ -158,11 +158,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override void EndProcessing()
         {
-            base.EndProcessing();
-            WriteTaskSummary();
-
-            this.transferJobRunner.Dispose();
-            this.transferJobRunner = null;
+            try
+            {
+                base.EndProcessing();
+                WriteTaskSummary();
+            }
+            finally
+            {
+                this.transferJobRunner.Dispose();
+                this.transferJobRunner = null;
+            }
         }
 
         /// <summary>

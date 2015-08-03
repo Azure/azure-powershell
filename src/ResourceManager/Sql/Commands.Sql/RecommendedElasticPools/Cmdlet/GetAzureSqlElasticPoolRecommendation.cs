@@ -15,13 +15,16 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Services;
+using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
+using Microsoft.Azure.Management.Sql.Models;
 
-namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
-    public abstract class AzureSqlElasticPoolRecommendationCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolRecommendationModel>, AzureSqlElasticPoolRecommendationAdapter>
+    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolRecommendation", 
+        ConfirmImpact = ConfirmImpact.None)]
+    public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
+
         /// <summary>
         /// Gets or sets the name of the server to use.
         /// </summary>
@@ -40,6 +43,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPoolRecommendation.Cmdlet
         protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlElasticPoolRecommendationAdapter(Profile, subscription);
+        }
+
+        /// <summary>
+        /// Get the entities from the service
+        /// </summary>
+        /// <returns>The list of entities</returns>
+        protected override IEnumerable<UpgradeRecommendedElasticPoolProperties> GetEntity()
+        {
+            return ModelAdapter.ListRecommendedElasticPoolProperties(this.ResourceGroupName, this.ServerName);
         }
     }
 }
