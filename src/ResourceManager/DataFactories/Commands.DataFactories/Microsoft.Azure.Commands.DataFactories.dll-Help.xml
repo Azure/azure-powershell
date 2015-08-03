@@ -1775,7 +1775,6 @@
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
 
                     DatasetName         : DAWikipediaClickEvents
                     ResourceGroupName : ADF
@@ -1784,7 +1783,6 @@
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
 
                     DatasetName         : DAWikiAggregatedData
                     ResourceGroupName : ADF
@@ -1793,7 +1791,6 @@
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
                     <maml:para>This command gets information about all datasets in the data factory named WikiADF. </maml:para>
@@ -1818,7 +1815,6 @@
                     Location          : Microsoft.DataFactories.AzureBlobLocation
                     Policy            : Microsoft.DataFactories.Policy
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
                     <maml:para>This command gets information about the dataset named DAWikipediaClickEvents in the data factory named WikiADF.</maml:para>
@@ -3816,7 +3812,6 @@
                     Location          : Microsoft.DataFactories.AzureBlobLocation
                     Policy            : Microsoft.DataFactories.Policy
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
                     <maml:para>This command creates a dataset named DA_WikipediaClickEvents in the data factory named WikiADF. The command bases the dataset on information in the DAWikipediaClickEvents.json file. </maml:para>

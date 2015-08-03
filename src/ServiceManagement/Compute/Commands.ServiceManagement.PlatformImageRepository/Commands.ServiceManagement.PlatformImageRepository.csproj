@@ -112,7 +112,8 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.3.1\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -163,6 +164,7 @@
     <Compile Include="ImagePublishing\RemoveAzurePlatformVMImage.cs" />
     <Compile Include="ImagePublishing\GetAzurePlatformVMImage.cs" />
     <Compile Include="ImagePublishing\SetAzurePlatformVMImage.cs" />
+    <Compile Include="Model\ExtensionInstanceInputEndpoint.cs" />
     <Compile Include="Model\ExtensionInternalEndpoint.cs" />
     <Compile Include="Model\ExtensionInputEndpoint.cs" />
     <Compile Include="Model\ExtensionLocalResourceConfig.cs" />

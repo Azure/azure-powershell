@@ -156,6 +156,7 @@
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\RemoveAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\SetAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\AddAzureApplicationGatewayFrontendPortCommand.cs" />
+    <Compile Include="ApplicationGateway\FrontendPort\AzureApplicationGatewayFrontendPortBase.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\GetAzureApplicationGatewayFrontendPortCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\NewAzureApplicationGatewayFrontendPortCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\RemoveAzureApplicationGatewayFrontendPortCommand.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="ApplicationGateway\Sku\NewAzureApplicationGatewaySkuCommand.cs" />
     <Compile Include="ApplicationGateway\Sku\SetAzureApplicationGatewaySkuCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\AddAzureApplicationGatewaySslCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\SslCertificate\AzureApplicationGatewaySslCertificateBase.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\GetAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\NewAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\RemoveAzureApplicationGatewaySslCertificateCommand.cs" />
