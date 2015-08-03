@@ -43,16 +43,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug("Making client call");
                 string itemName = string.Empty;
+
                 CSMSetProtectionRequest input = new CSMSetProtectionRequest();
-                input.Properties.PolicyId = Policy.InstanceId;
+                input.Properties = new CSMSetProtectionRequestProperties();
+                input.Properties.PolicyId = Policy.PolicyId;
+
                 if (Item.GetType() == typeof(AzureBackupItem))
                 {
                     itemName = (Item as AzureBackupItem).ItemName;
                 }
+
                 else if (Item.GetType() == typeof(AzureBackupContainer))
                 {
                     WriteDebug("Input is container Type = " + Item.GetType());
-                    if ((Item as AzureBackupContainer).ContainerType == ManagedContainerType.IaasVMContainer.ToString())
+                    if ((Item as AzureBackupContainer).ContainerType == ManagedContainerType.IaasVM.ToString())
                     {
                         itemName = (Item as AzureBackupContainer).ContainerUniqueName;
                     }
@@ -61,12 +65,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         throw new Exception("Uknown item type");
                     }
                 }
+
                 else
                 {
                     throw new Exception("Uknown item type");
                 }
 
-                var operationId = AzureBackupClient.EnableProtection(Item.ContainerUniqueName,itemName, input);
+                var operationId = AzureBackupClient.EnableProtection(Item.ContainerUniqueName, itemName, input);
                 WriteDebug("Received enable azure backup protection response");
 
                 var operationStatus = GetOperationStatus(operationId);

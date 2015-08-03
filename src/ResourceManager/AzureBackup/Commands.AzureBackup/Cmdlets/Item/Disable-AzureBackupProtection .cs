@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     public class DisableAzureBackupProtection : AzureBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
-        public SwitchParameter RemoveRecoveryPoints 
+        public SwitchParameter RemoveRecoveryPoints
         {
             get { return DeleteBackupData; }
-            set { DeleteBackupData = value; } 
+            set { DeleteBackupData = value; }
         }
         private bool DeleteBackupData;
 
@@ -46,15 +46,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         public string Comments { get; set; }
 
         public override void ExecuteCmdlet()
-        {          
+        {
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
                 Guid operationId = Guid.Empty;
                 WriteDebug("Making client call");
 
-                if(!this.DeleteBackupData)
+                if (!this.DeleteBackupData)
                 {
+                    //Calling update protection with policy Id as empty.
                     CSMUpdateProtectionRequest input = new CSMUpdateProtectionRequest()
                     {
                         Properties = new CSMUpdateProtectionRequestProperties(string.Empty)
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 
                 else
                 {
+                    //Calling disable protection
                     operationId = AzureBackupClient.DisableProtection(Item.ContainerUniqueName, Item.ItemName);
                 }
 
