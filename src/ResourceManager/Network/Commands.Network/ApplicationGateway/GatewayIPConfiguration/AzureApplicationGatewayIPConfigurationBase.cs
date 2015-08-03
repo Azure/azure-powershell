@@ -50,5 +50,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
         }
+
+        public PSApplicationGatewayIPConfiguration NewObject()
+        {
+            var gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
+
+            gatewayIPConfiguration.Name = this.Name;
+
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                var gatewayIPConfig = new PSResourceId();
+                gatewayIPConfig.Id = this.SubnetId;
+                gatewayIPConfiguration.Subnet = gatewayIPConfig;
+            }
+
+            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIPConfigurationName,
+                                this.Name);
+            
+            return gatewayIPConfiguration;
+        }
     }
 }

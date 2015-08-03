@@ -32,41 +32,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var requestRoutingRule = this.ApplicationGateway.RequestRoutingRules.SingleOrDefault
+            var oldRequestRoutingRule = this.ApplicationGateway.RequestRoutingRules.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (requestRoutingRule == null)
+            if (oldRequestRoutingRule == null)
             {
                 throw new ArgumentException("RequestRoutingRule with the specified name does not exist");
             }
 
-            requestRoutingRule = new PSApplicationGatewayRequestRoutingRule();
-            requestRoutingRule.Name = this.Name;
-            requestRoutingRule.RuleType = this.RuleType;
+            var newRequestRoutingRule = base.NewObject();
 
-            if (!string.IsNullOrEmpty(this.BackendHttpSettingsId))
-            {
-                requestRoutingRule.BackendHttpSettings = new PSResourceId();
-                requestRoutingRule.BackendHttpSettings.Id = this.BackendHttpSettingsId;
-            }
-
-            if (!string.IsNullOrEmpty(this.HttpListenerId))
-            {
-                requestRoutingRule.HttpListener = new PSResourceId();
-                requestRoutingRule.HttpListener.Id = this.HttpListenerId;
-            }
-            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
-            {
-                requestRoutingRule.BackendAddressPool = new PSResourceId();
-                requestRoutingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
-            }
-
-            requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRequestRoutingRuleName,
-                                this.Name);
-
-            this.ApplicationGateway.RequestRoutingRules.Add(requestRoutingRule);
+            this.ApplicationGateway.RequestRoutingRules.Remove(oldRequestRoutingRule);
+            this.ApplicationGateway.RequestRoutingRules.Add(newRequestRoutingRule);
 
             WriteObject(this.ApplicationGateway);
         }

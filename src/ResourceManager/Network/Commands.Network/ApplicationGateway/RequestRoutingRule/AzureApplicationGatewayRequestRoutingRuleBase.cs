@@ -89,5 +89,36 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
         }
+
+        public PSApplicationGatewayRequestRoutingRule NewObject()
+        {
+            var requestRoutingRule = new PSApplicationGatewayRequestRoutingRule();
+            requestRoutingRule.Name = this.Name;
+            requestRoutingRule.RuleType = this.RuleType;
+
+            if (!string.IsNullOrEmpty(this.BackendHttpSettingsId))
+            {
+                requestRoutingRule.BackendHttpSettings = new PSResourceId();
+                requestRoutingRule.BackendHttpSettings.Id = this.BackendHttpSettingsId;
+            }
+
+            if (!string.IsNullOrEmpty(this.HttpListenerId))
+            {
+                requestRoutingRule.HttpListener = new PSResourceId();
+                requestRoutingRule.HttpListener.Id = this.HttpListenerId;
+            }
+            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
+            {
+                requestRoutingRule.BackendAddressPool = new PSResourceId();
+                requestRoutingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
+            }
+
+            requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRequestRoutingRuleName,
+                                this.Name);
+            
+            return requestRoutingRule;
+        }
     }
 }

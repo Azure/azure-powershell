@@ -106,8 +106,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=12.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.3.1\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
@@ -296,6 +297,17 @@
     <Compile Include="FunctionalTests\NetworkCmdletInfo\SetAzureReservedIPAssociationCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventBySlotCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionCertificateConfigCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionEndpointConfigSetCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\PublishAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformExtensionEndpointCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformExtensionLocalResourceCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionEndpointCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionLocalResourceCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\UnpublishAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PlatformExtensionTests.cs" />
     <Compile Include="FunctionalTests\SubscriptionCmdletInfo\RemoveAzureSubscriptionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\RemoveAzureVMCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\RemoveAzureServiceCmdletInfo.cs" />
@@ -363,9 +375,9 @@
     <Compile Include="FunctionalTests\PaasCmdletInfo\SetAzureServiceRemoteDesktopExtensionCmdletInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FunctionalTests\PIRCmdletInfo\GetAzurePlatformVMImage.cs" />
-    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformVMImage.cs" />
-    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformVMImage.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\GetAzurePlatformVMImageCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformVMImageCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformVMImageCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PIRTest.cs" />
     <Compile Include="FunctionalTests\PowershellCore\InvokeCommandCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PowershellCore\PowershellCmdletScript.cs" />
@@ -385,7 +397,6 @@
     <Compile Include="FunctionalTests\IaasCmdletInfo\NewAzureQuickVMCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\NewAzureStorageAccountCmdletInfo.cs" />
     <Compile Include="FunctionalTests\SubscriptionCmdletInfo\SetAzureSubscriptionCmdletInfo.cs" />
-    <Compile Include="FunctionalTests\IaasCmdletInfo\WindowsAzurePowershellCmdletSequence.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\WindowsAzurePowershellCmdlet.cs" />
     <Compile Include="FunctionalTests\PowershellCore\CmdletsInfo.cs" />
     <Compile Include="FunctionalTests\PowershellCore\CmdletParam.cs" />
