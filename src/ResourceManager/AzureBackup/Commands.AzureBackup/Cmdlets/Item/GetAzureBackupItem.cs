@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Type)]
-        [ValidateSet("VM")]
+        [ValidateSet("IaasVM")]
         public string Type { get; set; }
 
         public override void ExecuteCmdlet()
