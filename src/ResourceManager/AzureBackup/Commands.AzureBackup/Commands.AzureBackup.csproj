@@ -121,6 +121,7 @@
     <Compile Include="AzureBackupClientAdapter\ItemAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\JobAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\PolicyAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
@@ -209,6 +211,9 @@
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cmdlets\RegisterContainer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
