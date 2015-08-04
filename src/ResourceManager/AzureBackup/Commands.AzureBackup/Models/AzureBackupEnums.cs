@@ -27,6 +27,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         AzureVM,
     }
 
+    public enum DataSourceType
+    {
+        Invalid = 0,
+
+        VM
+    }
+
     public enum AzureBackupContainerRegistrationStatus
     {
         Registered = 1,
@@ -74,16 +81,39 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         DiscoveryInProgress = 410002,
     }
 
-    public enum WorkloadType
-    {
-        Invalid = 0,
-        VM = 1
-    }
-
     public enum ManagedContainerType
     {
         Invalid = 0,
         IaasVM,
         IaasVMService,
     }
+
+    public enum ScheduleType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2
+    }
+
+    public enum RetentionType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2,
+        Monthly = 3,
+        Yearly = 4
+    }
+
+    public enum WorkloadType
+    {
+        Invalid = 0,
+        IaasVM = 1
+    }
+
+    public enum RetentionFormat
+    {
+        Daily,
+        Weekly
+    }
+
 }

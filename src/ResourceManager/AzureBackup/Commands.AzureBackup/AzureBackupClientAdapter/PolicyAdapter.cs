@@ -37,51 +37,51 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public ProtectionPolicyInfo GetProtectionPolicyByName(string name)
+        public CSMProtectionPolicyResponse GetProtectionPolicyByName(string name)
         {
             var policyList = ListProtectionPolicies();
-
             var filteredList = policyList.Where(x => x.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase));
-            return filteredList.FirstOrDefault();
+            return filteredList.FirstOrDefault();           
         }
 
         /// <summary>
         /// Gets all policies in the vault
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<ProtectionPolicyInfo> ListProtectionPolicies()
-        {
-            var listResponse = AzureBackupClient.ProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-            return listResponse.ProtectionPolicies.Objects;
+        public IList<CSMProtectionPolicyResponse> ListProtectionPolicies()
+        {            
+            var listResponse = AzureBackupClient.CSMProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return listResponse.CSMProtectionPolicyListResponse.Value;         
         }
 
         /// <summary>
         /// Add protection policy
         /// </summary>
+        /// <param name="policyName"></param>
         /// <param name="request"></param>
-        public void AddProtectionPolicy(AddProtectionPolicyRequest request)
+        public void AddProtectionPolicy(string policyName, CSMAddProtectionPolicyRequest request)
         {
-            AzureBackupClient.ProtectionPolicy.AddAsync(request, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupClient.CSMProtectionPolicy.AddAsync(policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
         /// Delete protection policy
         /// </summary>
-        /// <param name="policyId"></param>
-        public void DeleteProtectionPolicy(string policyId)
+        /// <param name="policyName"></param>
+        public void DeleteProtectionPolicy(string policyName)
         {
-            AzureBackupClient.ProtectionPolicy.DeleteAsync(policyId, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupClient.CSMProtectionPolicy.DeleteAsync(policyName, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
         /// Update specified protection policy
         /// </summary>
-        /// <param name="policyId"></param>
+        /// <param name="policyName"></param>
         /// <param name="request"></param>
-        public Guid UpdateProtectionPolicy(string policyId, UpdateProtectionPolicyRequest request)
+        public Guid UpdateProtectionPolicy(string policyName, CSMUpdateProtectionPolicyRequest request)
         {
-           var response = AzureBackupClient.ProtectionPolicy.UpdateAsync(policyId, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-           return response.OperationId;
+            var response = AzureBackupClient.CSMProtectionPolicy.UpdateAsync(policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return response.OperationId;
         }
 
         /// <summary>
