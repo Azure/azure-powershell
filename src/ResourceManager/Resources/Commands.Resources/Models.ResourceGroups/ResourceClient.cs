@@ -559,5 +559,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
               
             return allProviderOperations;
         }
+
+        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        {
+            ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
+            return result.Provider;
+        }
+
+        public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        {
+           ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
+           return result.Providers;
+        }
     }
 }

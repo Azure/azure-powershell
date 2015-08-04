@@ -32,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         protected const string AzurePlatformExtensionEndpointCommandNoun = "AzurePlatformExtensionEndpoint";
         protected const string InputEndpointParamSetStr = "InputEndpoint";
         protected const string InternalEndpointParamSetStr = "InternalEndpoint";
+        protected const string InstanceInputEndpointParamSetStr = "InstanceInputEndpoint";
 
         [Parameter(
             Mandatory = true,
@@ -55,6 +56,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Internal Endpoint Name.")]
         public string InternalEndpointName { get; set; }
+
+        [Parameter(
+            ParameterSetName = InstanceInputEndpointParamSetStr,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Instance Input Endpoint Name.")]
+        public string InstanceInputEndpointName { get; set; }
 
         protected override void ProcessRecord()
         {

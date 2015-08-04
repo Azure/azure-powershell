@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
 {
     public class ExtensionInputEndpoint
     {
-        public int LocalPort { get; set; }
+        public string LocalPort { get; set; }
         public string Name { get; set; }
         public int Port { get; set; }
         public string Protocol { get; set; }

@@ -77,8 +77,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.3-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+	  <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -156,6 +156,7 @@
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\RemoveAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\SetAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\AddAzureApplicationGatewayFrontendPortCommand.cs" />
+    <Compile Include="ApplicationGateway\FrontendPort\AzureApplicationGatewayFrontendPortBase.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\GetAzureApplicationGatewayFrontendPortCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\NewAzureApplicationGatewayFrontendPortCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendPort\RemoveAzureApplicationGatewayFrontendPortCommand.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="ApplicationGateway\Sku\NewAzureApplicationGatewaySkuCommand.cs" />
     <Compile Include="ApplicationGateway\Sku\SetAzureApplicationGatewaySkuCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\AddAzureApplicationGatewaySslCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\SslCertificate\AzureApplicationGatewaySslCertificateBase.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\GetAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\NewAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\RemoveAzureApplicationGatewaySslCertificateCommand.cs" />
