@@ -8,6 +8,8 @@
         * If you were using the AzureBatchVM cmdlets, use the AzureBatchComputeNode cmdlets instead.
         * The AzureBatchTaskFile and AzureBatchVMFile cmdlets have been consolidated into the AzureBatchNodeFile cmdlets.
         * The Name property on most entities has been replaced by an Id property.
+* HDInsight cmdlets
+    * All cmdlets are now available in AzureResourceManager mode
 
 ## 2015.07.17 version 0.9.5
 * Azure SQL cmdlets
