@@ -73,3 +73,32 @@ function Test-UnregisterAzureBackupContainer
      
     Assert-NotNull $jobId 'Job should not be null'; 
 }
+
+$BMSContainerType = "AzureVM"
+$BMSContainerUniqueName = "iaasvmcontainer;panbha45;panbha45"
+$BMSContainerName = "panbha45"
+$BMSContainerStatus = "Registered"
+
+function Test-AzureBackupContainerScenario
+{
+    $vault = Get-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
+    
+    $containers = Get-AzureBackupContainer -vault $vault -type $BMSContainerType
+    Assert-AreEqual $containers[0].ContainerType $BMSContainerType;
+    Assert-AreEqual $containers[0].ContainerUniqueName $BMSContainerUniqueName;
+    Assert-AreEqual $containers[0].Location $vault.Region;
+    Assert-AreEqual $containers[0].Name $BMSContainerName;
+    Assert-AreEqual $containers[0].ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $containers[0].ResourceName $vault.Name;
+    Assert-AreEqual $containers[0].Status $BMSContainerStatus;
+
+    $namedContainers = Get-AzureBackupContainer -vault $vault -type $BMSContainerType -name $BMSContainerName
+    $container = $namedContainers[0];
+    Assert-AreEqual $container.ContainerType $BMSContainerType;
+    Assert-AreEqual $container.ContainerUniqueName $BMSContainerUniqueName;
+    Assert-AreEqual $container.Location $vault.Region;
+    Assert-AreEqual $container.Name $BMSContainerName;
+    Assert-AreEqual $container.ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $container.ResourceName $vault.Name;
+    Assert-AreEqual $container.Status $BMSContainerStatus;
+}

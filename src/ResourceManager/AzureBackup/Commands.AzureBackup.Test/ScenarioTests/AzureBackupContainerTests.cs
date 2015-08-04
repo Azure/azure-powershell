@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         public void AzureBackupUnregisterContainerScenarioTests()
         {
             this.RunPowerShellTest("Test-UnregisterAzureBackupContainer");
-        }   
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AzureBackupContainerScenarioTests()
+        {
+            this.RunPowerShellTest("Test-AzureBackupContainerScenario");
+        }
     }
 }
