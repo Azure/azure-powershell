@@ -88,13 +88,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         IaasVMService,
     }
 
-    public enum ScheduleType
-    {
-        Invalid = 0,
-        Daily = 1,
-        Weekly = 2
-    }
-
     public enum RetentionType
     {
         Invalid = 0,

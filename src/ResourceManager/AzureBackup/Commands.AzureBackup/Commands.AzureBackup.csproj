@@ -121,10 +121,12 @@
     <Compile Include="AzureBackupClientAdapter\ItemAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\JobAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\PolicyAdapter.cs" />
     <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
+    <Compile Include="AzureBackupPolicyCmdletBase.cs" />
     <Compile Include="AzureBackUpRestoreBase.cs" />
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
@@ -134,11 +136,19 @@
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureBackupContainer.cs" />
+    <Compile Include="Cmdlets\Item\Disable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\GetAzureBackupItem.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJob.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureBackupJobDetails.cs" />
     <Compile Include="Cmdlets\Jobs\StopAzureBackukpJob.cs" />
     <Compile Include="Cmdlets\Jobs\WaitAzureBackupJob.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupRetentionPolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\Restore\TriggerRestore.cs" />
     <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
@@ -147,6 +157,7 @@
     <Compile Include="Cmdlets\Vault\SetAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\NewAzureBackupVault.cs" />
     <Compile Include="Helpers\ContainerHelpers.cs" />
+    <Compile Include="Helpers\ProtectionPolicyHelpers.cs" />
     <Compile Include="Helpers\VaultHelpers.cs" />
     <Compile Include="Library\CertUtils.cs" />
     <Compile Include="Models\AzureBackupBaseObjects.cs" />
@@ -157,6 +168,7 @@
     <Compile Include="Models\AzurePSBackupVault.cs" />
     <Compile Include="Models\JobObjects.cs" />
     <Compile Include="Models\ListContainerQueryParameter.cs" />
+    <Compile Include="Models\ProtectionPolicy.cs" />
     <Compile Include="Models\VaultCredentials.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -199,6 +211,9 @@
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cmdlets\RegisterContainer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
