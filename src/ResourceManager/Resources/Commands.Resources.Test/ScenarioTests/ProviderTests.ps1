@@ -64,14 +64,14 @@ function Test-AzureProviderOperation
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
 
 	# Filter non-Microsoft.Insights actions and match the lengths
-	$nonInsightsActions = $allActions | Where-Object { $_.OperationName.ToLower().StartsWith("microsoft.insights/") -eq $false }
+	$nonInsightsActions = $allActions | Where-Object { $_.Operation.ToLower().StartsWith("microsoft.insights/") -eq $false }
 	$actualLength = $allActions.Length - $nonInsightsActions.Length;
 	$expectedLength = $insightsActions.Length;
 	Assert-True { $actualLength -eq  $expectedLength }
 
 	foreach ($action in $insightsActions)
 	{
-	    Assert-True { $action.OperationName.ToLower().StartsWith("microsoft.insights/"); }
+	    Assert-True { $action.Operation.ToLower().StartsWith("microsoft.insights/"); }
 	}
 
 	# Case insenstive search
@@ -80,7 +80,7 @@ function Test-AzureProviderOperation
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }
 	foreach ($action in $insightsCaseActions)
 	{
-		Assert-True { $action.OperationName.ToLower().Startswith("microsoft.insights/"); }
+		Assert-True { $action.Operation.ToLower().Startswith("microsoft.insights/"); }
 	}
 
 	# Get all Read actions of microsoft.insights provider
@@ -89,8 +89,8 @@ function Test-AzureProviderOperation
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
 	foreach ($action in $insightsReadActions)
 	{
-	    Assert-True { $action.OperationName.ToLower().EndsWith("/read"); }
-		Assert-True { $action.OperationName.ToLower().StartsWith("microsoft.insights/");}
+	    Assert-True { $action.Operation.ToLower().EndsWith("/read"); }
+		Assert-True { $action.Operation.ToLower().StartsWith("microsoft.insights/");}
 	}
 
 	# Get all Read actions of all providers
@@ -101,14 +101,21 @@ function Test-AzureProviderOperation
 
 	foreach ($action in $readActions)
 	{
-	    Assert-True { $action.OperationName.ToLower().EndsWith("/read"); }
+	    Assert-True { $action.Operation.ToLower().EndsWith("/read"); }
 	}
 
 	# Get a particular action
 	$action = Get-AzureProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
-	Assert-AreEqual $action.OperationName.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
+	Assert-AreEqual $action.Operation.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
 
-	# Get a non-existing action
-	$action = Get-AzureProviderOperation NonExistentProvider/* 
-	Assert-True { $action.Length -eq 0 } 
+	# Get an invalid action
+	$action = Get-AzureProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
+	Assert-True { $action.Length -eq 0 }
+
+	# Get actions for non-existing provider
+	$exceptionMessage = "ProviderNotFound: Provider NonExistentProvider not found.";
+	Assert-Throws { Get-AzureProviderOperation NonExistentProvider/* } $exceptionMessage
+
+	# Get action for non-existing provider
+	Assert-Throws { Get-AzureProviderOperation NonExistentProvider/servers/read } $exceptionMessage
  }
