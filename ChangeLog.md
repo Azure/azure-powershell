@@ -1,4 +1,4 @@
-﻿﻿2015.08.07 version 0.9.6
+## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
     * Cmdlets updated to use the general availability API. See http://blogs.technet.com/b/windowshpc/archive/2015/07/10/what-39-s-new-in-azure-batch-july-release-general-availability.aspx
     * Breaking changes to cmdlets resulting from API update:
@@ -33,7 +33,7 @@
     * Enable-AzureBackupContainerReregistration cmdlet.
 * Azure UsageAggregates cmdlet
 
-﻿2015.07.17 version 0.9.5
+## 2015.07.17 version 0.9.5
 * Azure SQL cmdlets
   * Allowing to use of Storage V2 accounts in Auditing policies
 * Azure RedisCache cmdlets 
@@ -141,7 +141,7 @@
     * Upgraded management library to 1.0.0 with breaking JSON format change.
     * Updated list operation paging support in cmdlets.
 
-2015.06.26 version 0.9.4
+## 2015.06.26 version 0.9.4
 * Azure Compute cmdlets
     * Warning message for deprecation Name parameter in New-AzureVM. The guidance is to use –Name parameter in New-AzureVMConfig cmdlet.
     * Save-AzureVMImgage has new paramter -Path to save the JSON template returned from the server.
@@ -179,12 +179,12 @@
     * Changed cmdlets:
         * New-AzureSqlDatabase - Can now create Azure Sql Data Warehouse databases
 
-2015.06.05 version 0.9.3
+## 2015.06.05 version 0.9.3
 * Fixed bug in Websites cmdlets related to slots #454
 * Fix bug in Set-AzureResource cmdlet #456
 * Fix for new azure resource of Microsoft.Storage #457
 
-2015.05.29 version 0.9.2
+## 2015.05.29 version 0.9.2
 * Deprecated Switch-AzureMode
 * Profile
     * Fixed bug in Get-AzureSubscription and Select-AzureSubscription cmdlets 
@@ -212,7 +212,7 @@
     * Fixed bug in Move-AzureResource cmdlet
     * Fixed bug in Set-AzureResource cmdlet
 
-﻿2015.05.04 version 0.9.1
+## 2015.05.04 version 0.9.1
 * Azure SQL Database: new support for configuring audit retention.
 * Azure Automation
     * Added Automation cmdlets support in AzureResourceManager mode
@@ -250,7 +250,7 @@
     * Added new cmdlet for secret management in AzureResourceManager mode
       * Set-AzureKeyVaultSecretAttribute
 
-2015.04.29 version 0.9.0
+## 2015.04.29 version 0.9.0
 * Azure Compute
     * Added Compute cmdlets support in AzureResourceManager mode
       * Add-AzureVMSshPublicKey
@@ -398,7 +398,7 @@
     * Set-AzureStorSimpleDevice
     * Set-AzureStorSimpleVirtualDevice
 
-2015.03.31 version 0.8.16
+## 2015.03.31 version 0.8.16
 * Azure Data Factory:
   * Fixes for clean install and subscription registration issues
 * Azure HDInsight:
@@ -429,10 +429,10 @@
 * AzureProfile
   * Made AzureProfile serializable to support workflow scenarios
 
-2015.03.11 version 0.8.15.1
+## 2015.03.11 version 0.8.15.1
 * Fixes for clean install and subscription registration issues
 
-2015.03.09 version 0.8.15
+## 2015.03.09 version 0.8.15
 * Azure RemoteApp: New RemoteApp cmdlets:
   * Add-AzureRemoteAppUser
   * Disconnect-AzureRemoteAppSession
@@ -557,7 +557,7 @@
     * Select-AzureProfile: Select the profile to be used in the current session
   * Added -Profile parameter to every cmdlet - the cmdlet will use the passed-in profile to authenticate with Azure
 
-2015.02.12 version 0.8.14
+## 2015.02.12 version 0.8.14
 * StorSimple: New StorSimple commands in AzureServiceManagement mode:
   * GetAzureStorSimpleAccessControlRecord
   * GetAzureStorSimpleStorageAccountCredential
@@ -624,7 +624,7 @@
     * Set-AzureKeyVaultSecret
     * Remove-AzureKeyVaultSecret
 
-2014.12.12 version 0.8.12
+## 2014.12.12 version 0.8.12
 * StreamAnalytics
   * New cmdlets in AzureResourceManager mode
     * New-AzureStreamAnalyticsJob
@@ -653,7 +653,7 @@
 * Sql
   *  Added Sql Server v12 support to SQL authentication context for SqlAzure cmdlets
 
-2014.11.14 Version 0.8.11
+## 2014.11.14 Version 0.8.11
 * Profile
   * Clear-AzureProfile: remove all subscription and credential data from the user store
   * Select-AzureSubscription: fixed output types in default and PassThru mode
@@ -692,7 +692,7 @@
     * Use-AzureSqlDatabaseServerAuditingPolicy
   * Allow users to define which storage account key (Primary or Secondary) to use when defining audit policy, using the “StorageKeyType” parameter.
 
-2014.10.27 Version 0.8.10
+## 2014.10.27 Version 0.8.10
 * Azure Data Factory cmdlets in AzureResourceManager mode
     * New-AzureDataFactory
     * New-AzureDataFactoryGateway
@@ -799,7 +799,7 @@
 * Fixed Get-AzureSubscription -ExtendedDetails regression
 * Added -CreateACSNamespace parameter to New-AzureSBNamespace cmdlet
 
-2014.09.10 Version 0.8.8
+## 2014.09.10 Version 0.8.8
 * Role-based access control support
     * Query role definition
         * Get-AzureRoleDefinition
@@ -834,13 +834,13 @@
     * -Detail parameter on Get-AzureResourceGroup to improve performance
     * Major refactoring around account and subscription management
 
-2014.08.22 Version 0.8.7.1
+## 2014.08.22 Version 0.8.7.1
 * AzureResourceManager
     * Update Gallery and Monitoring management clients to fix Gallery commands
 *HDInsight
     * Update Microsoft.Net API for Hadoop
 
-2014.08.18 Version 0.8.7
+## 2014.08.18 Version 0.8.7
 * Update Newtonsoft.Json dependency to 6.0.4
 * Compute
     * Windows Azure Diagnostics (WAD) Version 1.2: extension cmdlets for Iaas And PaaS
@@ -919,7 +919,7 @@
     * Remove-AzureDns
     * Added IdealTimeoutInMinutes parameter to Set-AzurePublicIP, Add-AzureEndpoint and Set-AzureLoadBalancedEndpoint
 	
-2014.06.30 Version 0.8.4
+## 2014.06.30 Version 0.8.4
 * Compute
     * New-AzurePlatformExtensionCertificateConfig
     * New-AzurePlatformExtensionEndpointConfigSet
@@ -942,7 +942,7 @@
     * New-AzureSchedulerJobCollection
     * Set-AzureSchedulerJobCollection
 
-2014.05.29 Version 0.8.3
+## 2014.05.29 Version 0.8.3
 * Restructured source code and installation folder
 * Web Site
     * Return instances info from Get-AzureWebsite
@@ -953,7 +953,7 @@
 * Update Get-AzureRoleSize, Get-AzureAffinityGroup, Get-AzureService, Get-AzureLocation cmdlets with role sizes info
 * New "ClusterType" parameter for HDInsight
 
-2014.05.12 Version 0.8.2
+## 2014.05.12 Version 0.8.2
 * Compute and Network improvements
     * Public IP support
         * Set-AzurePublicIP
@@ -1013,7 +1013,7 @@
     * Remove-AzureServiceAntimalwareExtension
     * Set-AzureServiceAntimalwareExtension
 
-2014.05.07 Version 0.8.1
+## 2014.05.07 Version 0.8.1
 * Managed cache cmdlets
     * New-AzureManagedCache
     * Set-AzureManagedCache
@@ -1026,7 +1026,7 @@
 * Documentation improvements
 * Engineering and infrastructure improvements
 
-2014.04.03 Version 0.8.0
+## 2014.04.03 Version 0.8.0
 * Azure Resource Manager cmdlets (preview)
   * Switch-AzureMode to switch the PowerShell module between service management and resource manager.
   * Resource groups
@@ -1076,7 +1076,7 @@
     * New-AzureQuickVM
 * Upgrade cloud service cmdlets dependencies to Azure SDK 2.3
 
-2014.03.11 Version 0.7.4
+## 2014.03.11 Version 0.7.4
 * VM extension cmdlets
   * Set-AzureVMExtension
   * Get-AzureVMExtension
@@ -1087,10 +1087,10 @@
 * Multi-thread support in storage cmdlets
 * Add YARN support via -Yarn parameter on Add-AzureHDInsightConfigValues
 
-2014.02.25 Version 0.7.3.1
+## 2014.02.25 Version 0.7.3.1
 * Hotfix for https://github.com/WindowsAzure/azure-sdk-tools/issues/2350
 
-2014.02.12 Version 0.7.3
+## 2014.02.12 Version 0.7.3
 * Web Site cmdlets
   * Slot
     * All Web Site cmdlets takes a new -Slot parameter
@@ -1158,10 +1158,10 @@ Virtual Network cmdlets
   * Set-AzureBGPPeering
 
 
-2013.12.19 Version 0.7.2.1
-﻿* Hotfix for some encoding issue with Hive query which contain "%".
-﻿
-﻿2013.12.10 Version 0.7.2
+## 2013.12.19 Version 0.7.2.1
+* Hotfix for some encoding issue with Hive query which contain "%".
+
+## 2013.12.10 Version 0.7.2
 * HDInsight cmdlets
   * Add-AzureHDInsightConfigValues
   * Add-AzureHDInsightMetastore
@@ -1207,7 +1207,7 @@ Virtual Network cmdlets
   * Save-AzureServiceProjectPackage
 
 
-2013.11.07 Version 0.7.1
+## 2013.11.07 Version 0.7.1
 * Regression fixes
     * Get-AzureWinRMUri cannot return the correct port number (https://github.com/WindowsAzure/azure-sdk-tools/issues/2056)
     * New-AzureVM fails when creating a VM with a domain join provisioning (https://github.com/WindowsAzure/azure-sdk-tools/issues/2055)
@@ -1234,7 +1234,7 @@ Virtual Network cmdlets
     * Stop-WAPackVM
     * Suspend-WAPackVM
 
-2013.10.21 Version 0.7.0
+## 2013.10.21 Version 0.7.0
 * Windows Azure Active Directory authentication support!
     * Now you can use your Microsoft account or Organizational account to login from PowerShell without the need of any management certificate or publish settings file!
     * Use Add-AzureAccount to get started
@@ -1267,7 +1267,7 @@ Virtual Network cmdlets
   * Set-AzurePlatformVMImage
   * Remove-AzurePlatformVMImage
 
-2013.07.31 Version 0.6.18
+## 2013.07.31 Version 0.6.18
 * Service Bus authorization rule cmdlets
   * New-AzureSBAuthorizationRule
   * Get-AzureSBAuthorizationRule
@@ -1275,7 +1275,7 @@ Virtual Network cmdlets
   * Remove-AzureSBAuthorizationRule
 * Some Windows Azure Pack fixes.
 
-2013.07.18 Version 0.6.17
+## 2013.07.18 Version 0.6.17
 * Upgraded Windows Azure SDK dependency from 1.8 to 2.0.
 * SQL Azure database CRUD cmdlets don't require SQL auth anymore if the user owns the belonging subscription.
 * Get-AzureSqlDatabaseServerQuota cmdlet to get the quota information for a specified Windows Azure SQL Database Server.
@@ -1284,7 +1284,7 @@ Virtual Network cmdlets
   * Added -ServiceObjective parameter to Set-AzureSqlDatabase to set the service objective of the specified Windows Azure SQL database.
 * Fixed a Get-AzureWebsite local caching issue. Now Get-AzureWebsite will always return the up-to-date web site information.
 
-2013.06.24 Version 0.6.16
+## 2013.06.24 Version 0.6.16
 * Add-AzureEnvironment to add customized environment like Windows Azure Pack
 * Set-AzureEnvironment to set customized environment like Windows Azure Pack
 * Remove-AzureEnvironment to remove customized environment like Windows Azure Pack
@@ -1295,7 +1295,7 @@ Virtual Network cmdlets
 * Added -AllowAllAzureSerivces parameter to New-AzureSqlDatabaseServerFirewallRule
 * Many bug fixes around VM, Cloud Services and Web Site diagnostics
 
-2013.06.03 Version 0.6.15
+## 2013.06.03 Version 0.6.15
 * Introduced the environment concept to support different Windows Azure environments
   * Get-AzureEnvironment cmdlet to return all the out-of-box Windows Azure environments
   * -Environment parameter in the following cmdlets to specify which environment to target
@@ -1333,7 +1333,7 @@ Virtual Network cmdlets
 * Bug fixes
   * Fixed New-AzureSqlDatabaseServerContext model mismatch warning
 
-2013.05.08 Version 0.6.14
+## 2013.05.08 Version 0.6.14
 * Windows Azure Storage Table cmdlets
   * Get-AzureStorageTable
   * New-AzureStorageTable
@@ -1344,10 +1344,10 @@ Virtual Network cmdlets
   * Remove-AzureStorageQueue
 * Fix an issue in Publish-AzureServiceProject when swapping between staging and production slot
 
-2013.04.23 Version 0.6.13.1
+## 2013.04.23 Version 0.6.13.1
 * Hotfix to make Set-AzureStorageAccount behave correctly with the -GeoReplicationEnabled parameter
 
-2013.04.16 Version 0.6.13
+## 2013.04.16 Version 0.6.13
 * Completely fixed issues with first website creation on a new account. Now you can use PowerShell with a new account directly without the need to go to the Azure portal.
 * BREAKING CHANGE: New-AzureVM and New-AzureQuickVM now require an –AdminUserName parameter when creating Windows based VMs.
 * Added support for virtual machine high memory SKUs (A6 and A7).
@@ -1368,10 +1368,10 @@ Virtual Network cmdlets
 * Fixed several GB18030 encoding issues.
 * Renamed Start/Stop-CopyAzureStorageBlob to Start/Stop-AzureStorageBlobCopy. Kept old names as aliases for backward compatibility.
 
-2013.03.26 Version 0.6.12.1
+## 2013.03.26 Version 0.6.12.1
  * Hotfix to fix issues with first website creation on a new account.
 
-2013.03.20 Version 0.6.12
+## 2013.03.20 Version 0.6.12
  * Windows Azure Storage entity level cmdlets
    * New-AzureStorageContext
    * New-AzureStorageContainer
@@ -1389,13 +1389,13 @@ Virtual Network cmdlets
  * Windows Azure Web Sites diagnostics log streaming cmdlet
    * Get-AzureWebsitLog -Tail
 
-2013.03.06 Version 0.6.11
+## 2013.03.06 Version 0.6.11
  * Windows Azure Store cmdlets
  * Upgraded to the latest service management library and update service management version header to 2012-12-01
  * Added Save-AzureVhd cmdlet
  * Updated Add-AzureVMImage, Get-AzureVMImage and Set-AzureVMImage cmdlets to support new attributes in service management version header 2012-12-01
 
-2013.02.11 Version 0.6.10
+## 2013.02.11 Version 0.6.10
  * Upgrade to use PowerShell 3.0
  * Released source code for VM and Cloud Services cmdlets
  * Added a few new cmdlets for Cloud Services (Add-AzureWebRole, Add-AzureWorkerRole, NewAzureRoleTemplate, Save-AzureServiceProjectPackage, Set-AzureServiceProjectRole -VMSize), See Web Camps TV (http://channel9.msdn.com/Shows/Web+Camps+TV/Whats-Coming-in-the-Command-Line-Tools-for-Windows-Azure-with-Glenn-Block) for more on these new cmdlets.
@@ -1407,7 +1407,7 @@ Virtual Network cmdlets
  * Added scenario test framework and started adding automated scenario tests
  * Multiple bug fixes
 
-2012.12.12 Version 0.6.9
+## 2012.12.12 Version 0.6.9
  * Added Service Bus namespace management cmdlets 'help azuresb'
  * Added -ServiceBusNamespace parameter to 'Test-AzureName' to verify namespace availability
  * Added VHD uploader cmdlet 'Add-AzureVHD' for uploading VM images to blob storage.
@@ -1415,31 +1415,31 @@ Virtual Network cmdlets
  * Fixed PHP customization functionality for modifying php.ini and installing custom extensions
  * Verbose option is enabled by default when using Windows Azure PowerShell shortcut
 
-2012.11.21 Version 0.6.8
+## 2012.11.21 Version 0.6.8
  * Multiple bug fixes
  * Added dedicated cache role support
  * Added GitHub support
 
-2012.10.08 Version 0.6.5
+## 2012.10.08 Version 0.6.5
  * Adding websites cmdlets
 
-2012.06.06 Version 0.6.0
+## 2012.06.06 Version 0.6.0
  * Adding PowerShell management cmdlets
  * Adding PHP Cmdlets
  * Renaming existing cmdlets to remove duplication
  * Node.exe is no longer embedded
 
-2012.05.11 Version 0.5.4
+## 2012.05.11 Version 0.5.4
  * node 0.6.17
  * iisnode 0.1.19
 
-2012.02.17 Version 0.5.3
+## 2012.02.17 Version 0.5.3
  * Bug fixes
 
-2012.02.10 Version 0.5.2
+## 2012.02.10 Version 0.5.2
  * Bug fixes
 
-2011.12.23 Version 0.5.1
+## 2011.12.23 Version 0.5.1
  * Added Remote Desktop support
  * Added SSL support
  * node 0.6.6
