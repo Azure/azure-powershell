@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public const string EncryptString = "AzureDataFactoryEncryptValue";
 
-        public const string Table = "AzureDataFactoryTable";
+        public const string Dataset = "AzureDataFactoryDataset";
 
         public const string Pipeline = "AzureDataFactoryPipeline";
 

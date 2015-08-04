@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 response = DataPipelineManagementClient.DataSliceRuns.List(
                     filterOptions.ResourceGroupName,
                     filterOptions.DataFactoryName,
-                    filterOptions.TableName,
+                    filterOptions.DatasetName,
                     new DataSliceRunListParameters()
                     {
                         DataSliceStartTime = filterOptions.StartDateTime.ConvertToISO8601DateTimeString()
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                         {
                             ResourceGroupName = filterOptions.ResourceGroupName,
                             DataFactoryName = filterOptions.DataFactoryName,
-                            TableName = filterOptions.TableName
+                            DatasetName = filterOptions.DatasetName
                         });
                 }
             }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 response = DataPipelineManagementClient.DataSlices.List(
                     filterOptions.ResourceGroupName,
                     filterOptions.DataFactoryName,
-                    filterOptions.TableName,
+                    filterOptions.DatasetName,
                     new DataSliceListParameters()
                     {
                         DataSliceRangeStartTime = filterOptions.DataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                         {
                             ResourceGroupName = filterOptions.ResourceGroupName,
                             DataFactoryName = filterOptions.DataFactoryName,
-                            TableName = filterOptions.TableName
+                            DatasetName = filterOptions.DatasetName
                         });
                 }
             }
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         public virtual void SetSliceStatus(
             string resourceGroupName,
             string dataFactoryName,
-            string tableName,
+            string datasetName,
             string sliceState,
             string updateType,
             DateTime dataSliceRangeStartTime,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             DataPipelineManagementClient.DataSlices.SetStatus(
                 resourceGroupName,
                 dataFactoryName,
-                tableName,
+                datasetName,
                 new DataSliceSetStatusParameters()
                 {
                     SliceState = sliceState,

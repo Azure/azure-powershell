@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -94,6 +96,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             return config.ToString();
         }
 
+        protected string GetJsonPublicConfiguration()
+        {
+            Hashtable publicSettings = new Hashtable();
+            publicSettings.Add(UserNameElem, UserName ?? "");
+
+            return JsonConvert.SerializeObject(publicSettings);
+        }
+
         protected string GetPrivateConfiguration()
         {
             XDocument config = new XDocument(
@@ -104,6 +114,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             );
 
             return config.ToString();
+        }
+        protected string GetJsonPrivateConfiguration()
+        {
+            Hashtable privateSettings = new Hashtable();
+            privateSettings.Add(PasswordElem, Password ?? "");
+
+            return JsonConvert.SerializeObject(privateSettings);
         }
 
         protected void GetVMAccessExtensionValues(ResourceExtensionReference extensionRef)
@@ -117,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 else
                 {
                     Disable = string.Equals(extensionRef.State, ReferenceDisableStateStr);
-                    GetVMAccessExtensionValues(extensionRef.ResourceExtensionParameterValues);
+                    GetVMAccessExtensionValues(extensionRef.ResourceExtensionParameterValues, IsXmlExtension(extensionRef.Version));
                 }
             }
             else
@@ -126,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             }
         }
 
-        private void GetVMAccessExtensionValues(ResourceExtensionParameterValueList paramVals)
+        private void GetVMAccessExtensionValues(ResourceExtensionParameterValueList paramVals, bool isXml)
         {
             if (paramVals != null && paramVals.Any())
             {
@@ -135,7 +152,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (publicParamVal != null && !string.IsNullOrEmpty(publicParamVal.Value))
                 {
                     this.PublicConfiguration = publicParamVal.Value;
-                    this.UserName = GetConfigValue(this.PublicConfiguration, UserNameElem);
+                    this.UserName = (isXml)
+                        ? GetConfigValue(this.PublicConfiguration, UserNameElem)
+                        : GetJsonConfigValue(this.PublicConfiguration, UserNameElem);
                 }
 
                 var privateParamVal = paramVals.FirstOrDefault(
@@ -146,7 +165,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (privateParamVal != null)
                 {
                     this.PrivateConfiguration = privateParamVal.SecureValue.ConvertToUnsecureString();
-                    this.Password = GetConfigValue(this.PrivateConfiguration, PasswordElem);
+                    this.Password = (isXml)
+                        ? GetConfigValue(this.PrivateConfiguration, PasswordElem)
+                        : GetJsonConfigValue(this.PrivateConfiguration, PasswordElem);
                 }
             }
         }

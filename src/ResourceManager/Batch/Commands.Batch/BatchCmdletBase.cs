@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure;
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Batch
 
                     str.AppendFormat("Error Code: {0}", ex.RequestInformation.AzureError.Code).AppendLine();
                     str.AppendFormat("Error Message: {0}", ex.RequestInformation.AzureError.Message.Value).AppendLine();
-                    str.AppendFormat("Client Request ID:{0}", ex.RequestInformation.ClientRequestID).AppendLine();
+                    str.AppendFormat("Client Request ID:{0}", ex.RequestInformation.ClientRequestId).AppendLine();
                     if (ex.RequestInformation.AzureError.Values != null)
                     {
                         foreach (AzureErrorDetail detail in ex.RequestInformation.AzureError.Values)

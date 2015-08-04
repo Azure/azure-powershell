@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtension = "AzureVMExtension";
         public const string VirtualMachineCustomScriptExtension = "AzureVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureVMAccessExtension";
+        public const string VirtualMachineDiagnosticsExtension = "AzureVMDiagnosticsExtension";
         public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";

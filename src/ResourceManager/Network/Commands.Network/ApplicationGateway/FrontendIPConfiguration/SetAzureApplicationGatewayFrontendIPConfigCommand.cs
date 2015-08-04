@@ -32,62 +32,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var frontendIPConfig = this.ApplicationGateway.FrontendIPConfigurations.SingleOrDefault
+            var oldFrontendIPConfig = this.ApplicationGateway.FrontendIPConfigurations.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (frontendIPConfig == null)
+            if (oldFrontendIPConfig == null)
             {
                 throw new ArgumentException("FrontendIPConfiguration with the specified name does not exist");
             }
 
+            var newFrontendIPConfig = base.NewObject();
 
-            // Get the subnetId and publicIPAddressId from the object if specified
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
-            {
-                this.SubnetId = this.Subnet.Id;
-
-                if (PublicIPAddress != null)
-                {
-                    this.PublicIPAddressId = this.PublicIPAddress.Id;
-                }
-            }
-
-            frontendIPConfig.Name = this.Name;
-
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                frontendIPConfig.Subnet = new PSResourceId();
-                frontendIPConfig.Subnet.Id = this.SubnetId;
-
-                if (!string.IsNullOrEmpty(this.PrivateIPAddress))
-                {
-                    frontendIPConfig.PrivateIPAddress = this.PrivateIPAddress;
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
-                }
-                else
-                {
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(this.PrivateIPAddress))
-            {
-                frontendIPConfig.PrivateIPAddress = this.PrivateIPAddress;
-            }
-
-            frontendIPConfig.Subnet = null;
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                frontendIPConfig.Subnet = new PSResourceId();
-                frontendIPConfig.Subnet.Id = this.SubnetId;
-            }
-
-            frontendIPConfig.PublicIPAddress = null;
-            if (!string.IsNullOrEmpty(this.PublicIPAddressId))
-            {
-                frontendIPConfig.PublicIPAddress = new PSResourceId();
-                frontendIPConfig.PublicIPAddress.Id = this.PublicIPAddressId;
-            }
+            this.ApplicationGateway.FrontendIPConfigurations.Remove(oldFrontendIPConfig);
+            this.ApplicationGateway.FrontendIPConfigurations.Add(newFrontendIPConfig);
 
             WriteObject(this.ApplicationGateway);
         }
