@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -24,66 +25,115 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     public class AzureBackupProtectionPolicy : AzureBackupVaultContextObject
     {
         /// <summary>
-        /// InstanceId of the azurebackup object
-        /// </summary>
-        public string InstanceId { get; set; }
-
-        /// <summary>
         /// Name of the azurebackup object
         /// </summary>
+
+        public string PolicyId { get; set; }
+
         public string Name { get; set; }
 
-        public string WorkloadType { get; set; }
-
-        public string BackupType { get; set; }
+        public string Type { get; set; }
 
         public string ScheduleType { get; set; }
 
-        public List<string> ScheduleRunDays { get; set; }
+        public List<string> DaysOfWeek { get; set; }
 
-        public DateTime ScheduleRunTimes { get; set; }
+        public DateTime BackupTime { get; set; }
 
-        public string RetentionType { get; set; }
-
-        public int RetentionDuration { get; set; }
+        public IList<AzureBackupRetentionPolicy> RetentionPolicyList { get; set; }
 
         public AzureBackupProtectionPolicy()
         {
         }
 
-        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, ProtectionPolicyInfo sourcePolicy)
+        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, CSMProtectionPolicyProperties sourcePolicy, string policyId)
             : base(vault)
         {
-            InstanceId = sourcePolicy.InstanceId;
-            Name = sourcePolicy.Name;
-            WorkloadType = sourcePolicy.WorkloadType;
-            
-            BackupType = sourcePolicy.Schedule.BackupType;
-            ScheduleType = sourcePolicy.Schedule.ScheduleRun;
-            ScheduleRunTimes = ConvertScheduleRunTimes(sourcePolicy.Schedule.ScheduleRunTimes);
-            ScheduleRunDays = ConvertScheduleRunDays(sourcePolicy.Schedule.ScheduleRunDays);
-
-            RetentionType = sourcePolicy.Schedule.RetentionPolicy.RetentionType.ToString();
-            RetentionDuration = sourcePolicy.Schedule.RetentionPolicy.RetentionDuration;
+            PolicyId = policyId;
+            Name = sourcePolicy.PolicyName;
+            Type = sourcePolicy.WorkloadType;
+            ScheduleType = sourcePolicy.BackupSchedule.ScheduleRun;
+            BackupTime = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunTimes(sourcePolicy.BackupSchedule.ScheduleRunTimes);
+            DaysOfWeek = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunDays(sourcePolicy.BackupSchedule.ScheduleRunDays);
+            RetentionPolicyList = ProtectionPolicyHelpers.ConvertCSMRetentionPolicyListToPowershell(sourcePolicy.LtrRetentionPolicy);            
         }
+    }    
 
-        private List<string> ConvertScheduleRunDays(IList<DayOfWeek> weekDaysList)
+    public class AzureBackupRetentionPolicy
+    {
+        public string RetentionType { get; set; }
+
+        public int Retention { get; set; }
+
+        public IList<DateTime> RetentionTimes { get; set; }
+
+        public AzureBackupRetentionPolicy(string retentionType, int retention)
         {
-            List<string> scheduelRunDays = new List<string>();
-
-            foreach(object item in weekDaysList)
-            {
-                scheduelRunDays.Add(item.ToString());
-            }
-
-            return scheduelRunDays;
+            this.RetentionType = retentionType;
+            this.Retention = retention;
         }
-
-        private DateTime ConvertScheduleRunTimes(IList<DateTime> scheduleRunTimeList)
-        {
-            IEnumerator<DateTime> scheduleEnumerator = scheduleRunTimeList.GetEnumerator();
-            scheduleEnumerator.MoveNext();
-            return scheduleEnumerator.Current;
-        }        
     }
+
+    public class AzureBackupDailyRetentionPolicy : AzureBackupRetentionPolicy
+    {
+        public AzureBackupDailyRetentionPolicy(string retentionType, int retention)
+            : base(retentionType, retention)
+        { }
+    }
+
+    public class AzureBackupWeeklyRetentionPolicy : AzureBackupRetentionPolicy
+    {
+        public List<DayOfWeek> DaysOfWeek { get; set; }
+        public AzureBackupWeeklyRetentionPolicy(string retentionType, int retention, IList<DayOfWeek> daysOfWeek)
+            : base(retentionType, retention)
+        {
+            this.DaysOfWeek = new List<DayOfWeek>(daysOfWeek);
+        }
+    }
+
+    public class AzureBackupMonthlyRetentionPolicy : AzureBackupRetentionPolicy
+    {
+        public RetentionFormat RetentionFormat { get; set; }
+
+        public List<string> DaysOfMonth { get; set; }
+
+        public List<WeekNumber> WeekNumber { get; set; }
+
+        public List<DayOfWeek> DaysOfWeek { get; set; }
+
+        public AzureBackupMonthlyRetentionPolicy(string retentionType, int retention, RetentionFormat retentionFormat, List<string> daysOfMonth,
+            List<WeekNumber> weekNumber, List<DayOfWeek> daysOfWeek)
+            : base(retentionType, retention)
+        {
+            this.RetentionFormat = retentionFormat;
+            this.DaysOfMonth = daysOfMonth;
+            this.WeekNumber = weekNumber;
+            this.DaysOfWeek = daysOfWeek;
+        }
+    }
+
+    public class AzureBackupYearlyRetentionPolicy : AzureBackupRetentionPolicy
+    {
+        public List<Month> MonthsOfYear { get; set; }
+
+        public RetentionFormat RetentionFormat { get; set; }
+
+        public List<string> DaysOfMonth { get; set; }
+
+        public List<WeekNumber> WeekNumber { get; set; }
+
+        public List<DayOfWeek> DaysOfWeek { get; set; }
+
+        public AzureBackupYearlyRetentionPolicy(string retentionType, int retention, List<Month> monthsOfYear, RetentionFormat retentionFormat, List<string> daysOfMonth,
+            List<WeekNumber> weekNumber, List<DayOfWeek> daysOfWeek)
+            : base(retentionType, retention)
+        {
+            this.MonthsOfYear = monthsOfYear;
+            this.RetentionFormat = retentionFormat;
+            this.DaysOfMonth = daysOfMonth;
+            this.WeekNumber = weekNumber;
+            this.DaysOfWeek = daysOfWeek;
+        }
+    }
+
 }

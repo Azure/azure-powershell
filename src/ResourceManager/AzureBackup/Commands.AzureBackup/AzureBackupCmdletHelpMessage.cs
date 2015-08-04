@@ -80,5 +80,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string ServiceName = "Cloud service name of Azure VM to be register";
         public const string RGName = "Resource Group name of Azure VM to be register";
         public const string AzureBackupContainerToUnregister = "Azure Backup Container tobe unregister.";
+
+ 	public const string RetentionPolicyList = "List of Retention Policies to be associated with protection policy.";
+        public const string DailyRetention = "Switch param for Daily Retention";
+        public const string WeeklyRetention = "Switch param for Daily Retention";
+        public const string MonthlyRetentionInDailyFormat = "Switch param for MonthlyRetentionInDailyFormat";
+        public const string MonthlyRetentionInWeeklyFormat = "Switch param for MonthlyRetentionInWeeklyFormat";
+        public const string YearlyRetentionInDailyFormat = "Switch param for YearlyRetentionInDailyFormat";
+        public const string YearlyRetentionInWeeklyFormat = "Switch param for YearlyRetentionInWeeklyFormat";
+        public const string DaysOfWeek = "List of Days of Week";
+        public const string DaysOfMonth = "List of Days of Month";
+        public const string WeekNumber = "List of Week Numbers of the month";
+        public const string MonthsOfYear = "List of Months of the year";
+        public const string Retention = "Retntion duration value";
     }
 }
