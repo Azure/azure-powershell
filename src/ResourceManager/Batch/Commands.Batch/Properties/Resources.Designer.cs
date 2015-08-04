@@ -79,11 +79,38 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling automatic scaling on pool {0}..
+        /// </summary>
+        internal static string DisableAutoScale {
+            get {
+                return ResourceManager.GetString("DisableAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling automatic scaling on pool {0} using the formula: {1}.
+        /// </summary>
+        internal static string EnableAutoScale {
+            get {
+                return ResourceManager.GetString("EnableAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End {0} call to RP.
         /// </summary>
         internal static string EndMAMLCall {
             get {
                 return ResourceManager.GetString("EndMAMLCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluating the following autoscale formula on pool {0}: {1}.
+        /// </summary>
+        internal static string EvaluateAutoScale {
+            get {
+                return ResourceManager.GetString("EvaluateAutoScale", resourceCulture);
             }
         }
         

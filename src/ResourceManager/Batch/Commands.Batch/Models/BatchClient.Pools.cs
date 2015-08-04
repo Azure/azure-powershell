@@ -182,5 +182,60 @@ namespace Microsoft.Azure.Commands.Batch.Models
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             poolOperations.StopResizePool(poolId, additionalBehaviors);
         }
+
+        /// <summary>
+        /// Enables automatic scaling on the specified pool.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
+        public void EnableAutoScale(AutoScaleParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
+
+            WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Disables automatic scaling on the specified pool.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the target pool.</param>
+        public void DisableAutoScale(PoolOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
+
+            WriteVerbose(string.Format(Resources.DisableAutoScale, poolId));
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            poolOperations.DisableAutoScale(poolId, parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Gets the result of evaluating an automatic scaling formula on the specified pool.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
+        public PSAutoScaleEvaluation EvaluateAutoScale(AutoScaleParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
+
+            WriteVerbose(string.Format(Resources.EvaluateAutoScale, poolId, parameters.AutoScaleFormula));
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            AutoScaleEvaluation evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+            return new PSAutoScaleEvaluation(evaluation);
+        }
     }
 }

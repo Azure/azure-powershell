@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
+        public const string AzureBatchAutoScale = "AzureBatchAutoScale";
 
         // Parameter sets
         public const string IdParameterSet = "Id";
