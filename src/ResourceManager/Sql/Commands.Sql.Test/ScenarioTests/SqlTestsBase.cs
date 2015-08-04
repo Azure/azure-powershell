@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SqlTestsBase
     {
-        private EnvironmentSetupHelper helper;
+        protected EnvironmentSetupHelper helper;
 
         protected SqlTestsBase()
         {
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected virtual void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        protected AuthorizationManagementClient GetAuthorizationManagementClient()
         {   
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
-
         }
     }
 }

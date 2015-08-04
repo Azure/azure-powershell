@@ -36,12 +36,8 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq $provider}
-    if ($location -eq $null) {
-        "West US"
-    } else {
-        $location.Locations[0]
-    }
+    # A Dogfood data center for ADF cmdlet mock testing
+    "Brazil South"
 }
 
 <#

@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public IDataPipelineManagementClient DataPipelineManagementClient { get; private set; }
+        public IDataFactoryManagementClient DataPipelineManagementClient { get; private set; }
 
         public DataFactoryClient(AzureProfile profile)
         {
-            DataPipelineManagementClient = AzureSession.ClientFactory.CreateClient<DataPipelineManagementClient>(
+            DataPipelineManagementClient = AzureSession.ClientFactory.CreateClient<DataFactoryManagementClient>(
                 profile, AzureEnvironment.Endpoint.ResourceManager);
         }
 

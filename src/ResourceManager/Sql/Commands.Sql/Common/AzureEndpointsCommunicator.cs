@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -43,7 +46,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         ///  The storage management client used by this communicator
         /// </summary>
-        private static StorageManagementClient StorageClient { get; set; }
+        private static Microsoft.WindowsAzure.Management.Storage.StorageManagementClient StorageClient { get; set; }
+
+        private static Microsoft.Azure.Management.Storage.StorageManagementClient StorageV2Client { get; set; }
         
         /// <summary>
         /// Gets or sets the Azure subscription
@@ -73,6 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 Subscription = subscription;
                 StorageClient = null;
                 ResourcesClient = null;
+                StorageV2Client = null;
             }
         }
 
@@ -97,15 +103,40 @@ namespace Microsoft.Azure.Commands.Sql.Common
             await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             HttpResponseMessage httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-            JToken responseDoc = JToken.Parse(responseContent);
-
             Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
-            string primaryKey = (string)responseDoc["primaryKey"];
-            string secondaryKey = (string)responseDoc["secondaryKey"];
-            if(string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
-                throw new Exception(); // this is caught by the synced wrapper 
-            result.Add(StorageKeyKind.Primary, primaryKey);
-            result.Add(StorageKeyKind.Secondary, secondaryKey);
+            try
+            {
+                JToken responseDoc = JToken.Parse(responseContent);
+                string primaryKey = (string)responseDoc["primaryKey"];
+                string secondaryKey = (string)responseDoc["secondaryKey"];
+                if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+                    throw new Exception(); // this is caught by the synced wrapper 
+                result.Add(StorageKeyKind.Primary, primaryKey);
+                result.Add(StorageKeyKind.Secondary, secondaryKey);
+                return result;
+            }
+            catch
+            {
+                try
+                {
+                    return GetV2Keys(resourceGroupName, storageAccountName);
+                }
+                catch
+                {
+                    throw;
+                }
+            }
+        }
+
+        private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
+        {
+            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Profile);
+            var r =  storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+            string k1 = r.StorageAccountKeys.Key1;
+            string k2 = r.StorageAccountKeys.Key2;
+            Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
+            result.Add(StorageKeyKind.Primary, k1);
+            result.Add(StorageKeyKind.Secondary, k2);
             return result;
         }
         
@@ -133,33 +164,39 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public string GetStorageResourceGroup(string storageAccountName)
         {
-            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);
-            
-            ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
+            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);            
+            Func<string, string> getResourceGroupName =
+            resourceType =>
+            {
+                ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
                     {
                         ResourceGroupName = null,
-                        ResourceType = "Microsoft.ClassicStorage/storageAccounts",
+                        ResourceType = resourceType,
                         TagName = null,
                         TagValue = null
                     });
-            var allResources = new List<GenericResourceExtended>(res.Resources);
-            
-            if (allResources.Count != 0)
-            {
+                var allResources = new List<GenericResourceExtended>(res.Resources);
                 GenericResourceExtended account = allResources.Find(r => r.Name == storageAccountName);
                 if (account != null)
                 {
-                    String resId =  account.Id;
+                    String resId = account.Id;
                     String[] segments = resId.Split('/');
-                    int indexOfResoureGroup = new List<string>(segments).IndexOf("resourceGroups") +1;
+                    int indexOfResoureGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
                     return segments[indexOfResoureGroup];
-                }     
+                }
                 else
                 {
                     throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
                 }
+            };            
+            try
+            {
+                return getResourceGroupName("Microsoft.ClassicStorage/storageAccounts");
             }
-            return null;
+            catch
+            {
+                return getResourceGroupName("Microsoft.Storage/storageAccounts");
+            }
         }
 
         /// <summary>
@@ -174,18 +211,35 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
             catch
             {
-                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
+                try
+                {
+                    return GetCurrentStorageV2Client(profile).StorageAccounts.List().StorageAccounts.Where(a => a.Name == storageAccountName).First().PrimaryEndpoints.Table.AbsoluteUri;
+                }
+                catch
+                {
+                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
+                }
             }
         }
 
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
+        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
         {
             if(StorageClient == null)
-                StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+                StorageClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ServiceManagement);
             return StorageClient;
+        }
+
+        /// <summary>
+        /// Lazy creation of a single instance of a storage client
+        /// </summary>
+        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(AzureProfile profile)
+        {
+            if (StorageV2Client == null)
+                StorageV2Client = AzureSession.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
+            return StorageV2Client;
         }
 
         /// <summary>

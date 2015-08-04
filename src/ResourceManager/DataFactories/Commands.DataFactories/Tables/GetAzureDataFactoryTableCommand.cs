@@ -17,6 +17,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using System.Globalization;
+using System.Linq;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
@@ -64,19 +65,21 @@ namespace Microsoft.Azure.Commands.DataFactories
                 DataFactoryName = DataFactoryName
             };
 
-            List<PSTable> tables = DataFactoryClient.FilterPSTables(filterOptions);
-
-            if (tables != null)
+            if (Name != null)
             {
-                if (tables.Count == 1 && Name != null)
+                List<PSTable> tables = DataFactoryClient.FilterPSTables(filterOptions);
+                if (tables != null && tables.Any())
                 {
                     WriteObject(tables[0]);
                 }
-                else
-                {
-                    WriteObject(tables, true);
-                }
+                return;
             }
+            
+            // List tables until all pages are fetched
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSTables(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

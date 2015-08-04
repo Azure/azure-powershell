@@ -133,12 +133,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == null)))
+                                    options.Name == null &&
+                                    options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListHubs(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListHubs(It.Is<HubFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null &&
+                        options.NextLink == null)))
+
                 .Returns(expected)
                 .Verifiable();
 

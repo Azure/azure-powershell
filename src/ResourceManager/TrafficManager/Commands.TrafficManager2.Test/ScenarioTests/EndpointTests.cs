@@ -17,20 +17,111 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class EndpointTests : WatmV2TestsBase
+    public class EndpointTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddEndpoint()
         {
-            this.RunPowerShellTest("Test-AddEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-AddEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteEndpoint()
         {
-            this.RunPowerShellTest("Test-DeleteEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-DeleteEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-GetExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveNonExistingEndpointFromProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
+        }
+
+        [Fact(Skip = "Bug")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpoint");
+        }
+
+        [Fact(Skip = "Bug")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableEndpoint");
+        }
+
+        [Fact(Skip = "Bug")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpointUsingPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPiping");
+        }
+
+        [Fact(Skip = "Bug")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableEndpointUsingPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableEndpointUsingPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableNonExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableNonExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableNonExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableNonExistingEndpoint");
         }
     }
 }
