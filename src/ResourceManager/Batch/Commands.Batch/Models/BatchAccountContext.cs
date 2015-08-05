@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class BatchAccountContext
     {
         private AccountKeyType keyInUse;
-        private IBatchClient batchOMClient;
+        private BatchClient batchOMClient;
 
         /// <summary>
         /// The account resource Id.
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Batch
             } 
         }
 
-        internal IBatchClient BatchOMClient
+        internal BatchClient BatchOMClient
         {
             get
             {
@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchCredentials credentials = new BatchCredentials(AccountName, key);
-                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Connect(TaskTenantUrl, credentials);
+                    BatchSharedKeyCredentials credentials = new BatchSharedKeyCredentials(TaskTenantUrl, AccountName, key);
+                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(credentials);
                 }
                 return this.batchOMClient;
             }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Batch
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');
             this.AccountName = hostParts[0];
-            this.TaskTenantUrl = Uri.UriSchemeHttps + Uri.SchemeDelimiter + String.Join(".", hostParts, 1, hostParts.Length - 1);
+            this.TaskTenantUrl = Uri.UriSchemeHttps + Uri.SchemeDelimiter + accountEndpoint;
 
             // get remaining fields from Id which looks like:
             // /subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/clwtest/providers/Microsoft.Batch/batchAccounts/clw

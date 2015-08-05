@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.5'  
+ModuleVersion = '0.9.6'  
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -101,7 +101,8 @@ NestedModules = @(
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
-    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll',  
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
+	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
     '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
@@ -136,4 +137,4 @@ FileList =  @()
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = ''  
 
-}  
+} 

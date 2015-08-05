@@ -286,11 +286,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
+        /// </summary>
+        public static string AzureVMDscCannotFindConfigurationDataFile {
+            get {
+                return ResourceManager.GetString("AzureVMDscCannotFindConfigurationDataFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Archive.
         /// </summary>
         public static string AzureVMDscCreateArchiveAction {
             get {
                 return ResourceManager.GetString("AzureVMDscCreateArchiveAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The configuration data must be a .psd1 file.
+        /// </summary>
+        public static string AzureVMDscInvalidConfigurationDataFile {
+            get {
+                return ResourceManager.GetString("AzureVMDscInvalidConfigurationDataFile", resourceCulture);
             }
         }
         
@@ -975,6 +993,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string GlobalSettingsManager_Load_PublishSettingsNotFound {
             get {
                 return ResourceManager.GetString("GlobalSettingsManager_Load_PublishSettingsNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoEndWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoEndWadCfg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoMatchingWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoMatchingWadCfg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoWadCfg", resourceCulture);
             }
         }
         
@@ -2270,6 +2315,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
@@ -2321,6 +2375,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string PublishVMDscExtensionDeleteErrorMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionDirectoryNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
             }
         }
         

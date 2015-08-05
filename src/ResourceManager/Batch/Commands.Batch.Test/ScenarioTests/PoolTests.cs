@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public class PoolTests
     {
         private const string commonAccountName = ScenarioTestHelpers.SharedAccount;
-        private const string testPoolName = ScenarioTestHelpers.SharedPool;
+        private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -34,26 +34,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController controller = BatchController.NewInstance;
             controller.RunPsTest(string.Format("Test-NewPool '{0}'", commonAccountName));
-
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetPoolByName()
+        public void TestGetPoolById()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName = "testGetPool";
+            string poolId = "testGetPool";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetPoolByName '{0}' '{1}'", commonAccountName, poolName) }; },
+                () => { return new string[] { string.Format("Test-GetPoolById '{0}' '{1}'", commonAccountName, poolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
@@ -64,9 +63,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListPoolsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName1 = "testFilter1";
-            string poolName2 = "testFilter2";
-            string poolName3 = "thirdFilterTest";
+            string poolId1 = "testFilter1";
+            string poolId2 = "testFilter2";
+            string poolId3 = "thirdFilterTest";
             string poolPrefix = "testFilter";
             int matches = 2;
             BatchAccountContext context = null;
@@ -75,15 +74,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId1, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId2, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId3, 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId3);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
@@ -94,9 +93,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListPoolsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName1 = "testMaxCount1";
-            string poolName2 = "testMaxCount2";
-            string poolName3 = "thirdMaxCount";
+            string poolId1 = "testMaxCount1";
+            string poolId2 = "testMaxCount2";
+            string poolId3 = "thirdMaxCount";
             int maxCount = 1;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
@@ -104,15 +103,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId1, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId2, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId3, 0);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId3);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
@@ -123,9 +122,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListAllPools()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName1 = "testList1";
-            string poolName2 = "testList2";
-            string poolName3 = "thirdTestList";
+            string poolId1 = "testList1";
+            string poolId2 = "testList2";
+            string poolId3 = "thirdTestList";
             int beforeAddCount = 0;
             int afterAddCount = 0;
             BatchAccountContext context = null;
@@ -135,16 +134,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
                     beforeAddCount = ScenarioTestHelpers.GetPoolCount(controller, context);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName1, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName2, 0);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName3, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId1, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId2, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId3, 0);
                     afterAddCount = beforeAddCount + 3;
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName1);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName2);
-                    ScenarioTestHelpers.DeletePool(controller, context, poolName3);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId1);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId2);
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId3);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
@@ -155,15 +154,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestDeletePool()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName = "testDelete";
+            string poolId = "testDelete";
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '0'", commonAccountName, poolName) }; },
+                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '0'", commonAccountName, poolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, 0);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -175,15 +174,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestDeletePoolPipeline()
         {
             BatchController controller = BatchController.NewInstance;
-            string poolName = "testDeletePipe";
+            string poolId = "testDeletePipe";
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '1'", commonAccountName, poolName) }; },
+                () => { return new string[] { string.Format("Test-DeletePool '{0}' '{1}' '1'", commonAccountName, poolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolName, 0);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, 0);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -192,16 +191,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestResizePoolByName()
+        public void TestResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ResizePoolByName '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () => { return new string[] { string.Format("Test-ResizePoolById '{0}' '{1}'", commonAccountName, testPoolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -215,11 +214,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ResizePoolByPipeline '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () => { return new string[] { string.Format("Test-ResizePoolByPipeline '{0}' '{1}'", commonAccountName, testPoolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -228,16 +227,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStopResizePoolByName()
+        public void TestStopResizePoolById()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-StopResizePoolByName '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () => { return new string[] { string.Format("Test-StopResizePoolById '{0}' '{1}'", commonAccountName, testPoolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -251,11 +250,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-StopResizePoolByPipeline '{0}' '{1}'", commonAccountName, testPoolName) }; },
+                () => { return new string[] { string.Format("Test-StopResizePoolByPipeline '{0}' '{1}'", commonAccountName, testPoolId) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
-                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
