@@ -82,6 +82,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private List<AzureBackupContainer> GetMachineContainers()
         {
             List<MarsContainerResponse> marsContainerResponses = new List<MarsContainerResponse>();
+
+            // Machine containers are always registered. 
+            // So if requested Status is not Registered, return an empty list.
+            // Machine containers don't have a resource group.
+            // So, if a resource group is passed, return an empty list.
+            if (Status != AzureBackupContainerRegistrationStatus.Registered ||
+                !string.IsNullOrEmpty(ManagedResourceGroupName))
+            {
+                return new List<AzureBackupContainer>();
+            }
+
             if (string.IsNullOrEmpty(Name))
             {
                 marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers());
