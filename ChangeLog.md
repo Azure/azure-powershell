@@ -8,6 +8,30 @@
         * If you were using the AzureBatchVM cmdlets, use the AzureBatchComputeNode cmdlets instead.
         * The AzureBatchTaskFile and AzureBatchVMFile cmdlets have been consolidated into the AzureBatchNodeFile cmdlets.
         * The Name property on most entities has been replaced by an Id property.
+* Azure Network
+    * Cert and SET cmdlet bugfix
+* Azure Compute
+    * Update VMAcces extension to use Json configs.
+    * Fix Publish Extension cmdlets.
+    * Update CustomScript cmdlet for SAS Uri.
+    * Update help file.
+    * Get, Set and Remove Azure Powershell commandlets for IaaS V2 VM.
+* Azure Data Factory
+    * Rename Table to Dataset.
+* Azure SQL
+    * changed the structure of the security namespace to align to the rest of the namespaces in the Azure SQL namespace.
+    * Added Schema to data masking rule.
+    * Updated underlying sql nuget version.
+    * Add the parameter for elastic pool in Start-AzureSqlServerUpgrade.
+    * Return the schedule time of the upgrade (in case of forced upgrade) to customer in Get-AzureSqlServerUpgrade.
+* Azure Hdinsight Resoruce Management cmdlets
+* Azure Site Recovery
+    * Add Valult, Server, Protection Container, protection Entity, Protection Profile, Job cmdlets.
+* Azure Stream Analytics 
+    * Use Stream Analytics SDK reference to 1.6.0 version.
+* Azure Backup
+    * Enable-AzureBackupContainerReregistration cmdlet.
+* Azure UsageAggregates cmdlet
 
 ## 2015.07.17 version 0.9.5
 * Azure SQL cmdlets

@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -34,12 +35,24 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
+        public DeploymentMode Mode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        public NewAzureResourceGroupDeploymentCommand()
+        {
+            this.Mode = DeploymentMode.Incremental;
+        }
+
         public override void ExecuteCmdlet()
         {
             CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DeploymentName = Name,
+                DeploymentMode = Mode,
                 GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
@@ -47,7 +60,22 @@ namespace Microsoft.Azure.Commands.Resources
                 StorageAccountName = StorageAccountName
             };
 
-            WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+            if(this.Mode == DeploymentMode.Complete)
+            {
+                this.ConfirmAction(
+                    this.Force,
+                    "Are you sure you want to use the complete deployment mode? Resources in the resource group '" + ResourceGroupName + "' which are not included in the template will be deleted.",
+                    "Creating a deployment with Complete mode",
+                    ResourceGroupName,
+                    () =>
+                    {
+                        WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+                    });
+            }
+            else
+            {
+                WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+            }
         }
     }
 }
