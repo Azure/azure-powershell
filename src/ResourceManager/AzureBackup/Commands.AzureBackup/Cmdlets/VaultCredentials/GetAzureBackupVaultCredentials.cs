@@ -88,13 +88,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 // prepare for download
                 string fileName = string.Format("{0}_{1}.VaultCredentials", displayName, DateTime.UtcNow.ToString("yyyy-dd-M--HH-mm-ss"));
-                string directoryPath = Path.GetDirectoryName(TargetLocation);
-                if (directoryPath == null)
-                {
-                    // TargetLocation is a root path
-                    directoryPath = TargetLocation;
-                }
-                string filePath = Path.Combine(directoryPath, fileName);
+                string filePath = Path.Combine(TargetLocation, fileName);
                 WriteDebug(string.Format("Saving Vault Credentials to file : {0}", filePath));
 
                 File.WriteAllBytes(filePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
