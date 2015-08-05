@@ -15,7 +15,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
@@ -24,6 +24,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     /// </summary>
     internal interface ITransferJobRunner : IDisposable
     {
-        Task RunTransferJob(TransferJobBase job, Action<double, double> progressReport, CancellationToken cancellationToken);
+        Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken);
     }
 }

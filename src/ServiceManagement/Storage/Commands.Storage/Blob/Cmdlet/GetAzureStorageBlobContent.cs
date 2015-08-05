@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -130,15 +130,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 Record = pr
             };
 
-            BlobDownloadJob downloadJob = new BlobDownloadJob()
-            {
-                SourceBlob = blob,
-                DestPath = filePath,
-            };
+            TransferJob downloadJob = new TransferJob(
+                new TransferLocation(blob),
+                new TransferLocation(filePath),
+                TransferMethod.SyncCopy);
 
-            BlobRequestOptions requestOptions = downloadJob.BlobRequestOptions;
+            BlobRequestOptions requestOptions = downloadJob.Source.RequestOptions as BlobRequestOptions;
+
+            if (null == requestOptions)
+            {
+                requestOptions = new BlobRequestOptions();
+            }
+
             requestOptions.DisableContentMD5Validation = !checkMd5;
-            downloadJob.BlobRequestOptions = requestOptions;
+            downloadJob.Source.RequestOptions = requestOptions;
 
             await this.RunTransferJob(downloadJob, data);
 

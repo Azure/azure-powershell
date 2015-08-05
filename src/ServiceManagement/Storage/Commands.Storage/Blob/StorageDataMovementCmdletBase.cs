@@ -18,7 +18,7 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             this.transferJobRunner = TransferJobRunnerFactory.CreateRunner(this.GetCmdletConcurrency());
         }
 
-        protected async Task RunTransferJob(BlobTransferJob transferJob, DataMovementUserData userData)
+        protected async Task RunTransferJob(TransferJob transferJob, DataMovementUserData userData)
         {
             this.SetRequestOptionsInTransferJob(transferJob);
             transferJob.OverwritePromptCallback = ConfirmOverwrite;
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
-        protected void SetRequestOptionsInTransferJob(BlobTransferJob transferJob)
+        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
         {
             BlobRequestOptions cmdletOptions = RequestOptions;
 
@@ -123,7 +123,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 return;
             }
 
-            BlobRequestOptions requestOptions = transferJob.BlobRequestOptions;
+            if (null != transferJob.Source.Blob)
+            {
+                this.SetRequestOptions(transferJob.Source, cmdletOptions);
+            }
+
+            if (null != transferJob.Destination.Blob)
+            {
+                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
+            }
+        }
+
+        protected void SetRequestOptions(TransferLocation location, BlobRequestOptions cmdletOptions)
+        {
+            BlobRequestOptions requestOptions = location.RequestOptions as BlobRequestOptions;
+
+            if (null == requestOptions)
+            {
+                requestOptions = new BlobRequestOptions();
+            }
 
             if (cmdletOptions.MaximumExecutionTime != null)
             {
@@ -135,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 requestOptions.ServerTimeout = cmdletOptions.ServerTimeout;
             }
 
-            transferJob.BlobRequestOptions = requestOptions;
+            location.RequestOptions = requestOptions;
         }
 
         protected override void EndProcessing()

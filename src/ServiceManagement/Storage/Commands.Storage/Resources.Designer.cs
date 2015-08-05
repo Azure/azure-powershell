@@ -394,6 +394,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to core.windows.net.
+        /// </summary>
+        internal static string DefaultDomain {
+            get {
+                return ResourceManager.GetString("DefaultDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can not find your azure storage credential. Please set current storage account using &quot;Set-AzureSubscription&quot; or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         internal static string DefaultStorageCredentialsNotFound {
@@ -1267,7 +1276,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service..
+        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service; refer to https://msdn.microsoft.com/library/azure/dn167011.aspx for details..
         /// </summary>
         internal static string ShareNameInvalid {
             get {
