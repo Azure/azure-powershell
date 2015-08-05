@@ -191,9 +191,9 @@ function Test-DatabaseUpdatePolicyWithEventTypes
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::PlainSQL_Success)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Success)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Failure)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::PlainSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Failure)}
 
 		# Test
 		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType "None"
@@ -235,9 +235,9 @@ function Test-ServerUpdatePolicyWithEventTypes
 	
 		# Assert
 		Assert-AreEqual $policy.EventType.Length 3
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::PlainSQL_Success)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Success)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::ParameterizedSQL_Failure)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::PlainSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Failure)}
 
 
 		# Test
@@ -451,7 +451,7 @@ function Test-DatabaseDisableEnableKeepProperties
 		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.UseServerDefault "Disabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::Login_Failure)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::Login_Failure)}
 	}
 	finally
 	{
@@ -483,7 +483,7 @@ function Test-ServerDisableEnableKeepProperties
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.EventType.Length 1
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Security.Model.AuditEventType]::TransactionManagement_Success)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::TransactionManagement_Success)}
 	}
 	finally
 	{
