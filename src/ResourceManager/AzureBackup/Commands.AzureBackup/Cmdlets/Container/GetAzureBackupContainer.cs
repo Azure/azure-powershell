@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
 
                 List<AzureBackupContainer> containers = new List<AzureBackupContainer>();
-                bool uniqueContainer = false;
 
                 switch (Type)
                 {
@@ -63,18 +62,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         containers.AddRange(GetMachineContainers());
                         break;
                     case AzureBackupContainerType.AzureVM:
-                        uniqueContainer = GetManagedContainers(containers);
+                        containers.AddRange(GetManagedContainers());
                         break;
                     default:
                         break;
                 }
 
-                if (uniqueContainer)
+                if (containers.Count == 1)
                 {
-                    if (containers.Any())
-                    {
-                        WriteObject(containers.First());
-                    }
+                    WriteObject(containers.First());
                 }
                 else
                 {
@@ -101,8 +97,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
 
-        private bool GetManagedContainers(List<AzureBackupContainer> managedContainers)
+        private List<AzureBackupContainer> GetManagedContainers()
         {
+            List<AzureBackupContainer> managedContainers = new List<AzureBackupContainer>();
+
             ContainerQueryParameters parameters = new ContainerQueryParameters();
             parameters.ContainerType = ManagedContainerType.IaasVM.ToString();
             parameters.FriendlyName = Name;
@@ -134,9 +132,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 return new AzureBackupContainer(Vault, container);
             }));
 
-            // When container resource name and container resource group name are specified, this parameter set
-            // identifies a container uniquely. Thus, we return just one container instead of a list.
-            return !string.IsNullOrEmpty(Name) & !string.IsNullOrEmpty(ManagedResourceGroupName);
+            return managedContainers;
         }
     }
 }
