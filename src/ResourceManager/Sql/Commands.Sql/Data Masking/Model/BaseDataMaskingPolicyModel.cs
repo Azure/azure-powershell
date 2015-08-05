@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Model
     /// <summary>
     /// The possible states in which a data masking policy may be in
     /// </summary>
-    public enum DataMaskingStateType { Enabled, Disabled };
+    public enum DataMaskingStateType {Uninitialized, Enabled, Disabled };
     
     /// <summary>
     /// The base class that defines the core properties of a data masking policy
