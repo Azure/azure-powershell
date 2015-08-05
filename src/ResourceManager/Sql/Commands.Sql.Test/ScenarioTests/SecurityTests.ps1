@@ -73,6 +73,49 @@ function Test-DatabaseUpdatePolicyWithStorage
 
 <#
 .SYNOPSIS
+Tests the flow in which re-setting the policy with storage account that has the same name as before, but it is now on a different region
+#>
+function Test-DatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion
+{
+	# Setup
+	$testSuffix = 173
+	Create-TestEnvironment $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+
+	try 
+	{
+		# Test
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled"  
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
+
+		Azure\Remove-AzureStorageAccount -StorageAccountName $params.storageAccount 
+		$newResourceGroupName =  "test-rg-for-sql-cmdlets-" + $testSuffix
+		New-AzureResourceGroup -Name $newResourceGroupName -Location "japanwest" 
+		New-AzureStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "japanwest" -Type Standard_GRS 
+
+		Set-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzureSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.AuditState "Enabled"  
+		Assert-AreEqual $policy.UseServerDefault "Disabled"
+
+
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
+
+<#
+.SYNOPSIS
 Tests that when setting the storage account property's value in a server's auditing policy, that value is later fetched properly
 #>
 function Test-ServerUpdatePolicyWithStorage
