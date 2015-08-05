@@ -158,6 +158,10 @@
     </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit, Version=1.9.2.1705, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -422,6 +426,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\GetAzureVMDscExtensionStatusUnitTest.cs" />
     <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\VirtualMachineExtensionImageFactoryTests.cs" />
     <Compile Include="FunctionalTests\VMTemplateTests.cs" />
   </ItemGroup>
@@ -583,6 +588,10 @@
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.ServiceManagement.Network.csproj">
       <Project>{40fee0bb-fd45-4efc-85bc-0d602a6892c4}</Project>
       <Name>Commands.ServiceManagement.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
+      <Name>Commands.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ServiceManagement.PlatformImageRepository\Commands.ServiceManagement.PlatformImageRepository.csproj">
       <Project>{6478fa8b-3801-4863-8591-87f0855d5c82}</Project>
