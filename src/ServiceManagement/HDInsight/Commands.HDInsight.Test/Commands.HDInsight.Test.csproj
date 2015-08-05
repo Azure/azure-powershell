@@ -264,10 +264,6 @@
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj">
-      <Project>{137d404a-865a-43db-930c-6da67da048df}</Project>
-      <Name>Commands.HDInsight</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
       <Name>Commands.Test.Utilities</Name>
@@ -275,6 +271,10 @@
     <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
       <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
       <Name>Commands.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.HDInsight\HDInsight.csproj">
+      <Project>{137d404a-865a-43db-930c-6da67da048df}</Project>
+      <Name>HDInsight</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

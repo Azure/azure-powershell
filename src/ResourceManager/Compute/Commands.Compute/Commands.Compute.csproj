@@ -137,6 +137,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -181,17 +184,14 @@
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
-    <Compile Include="Extension\DSC\ConfigurationParseResult.cs" />
-    <Compile Include="Extension\DSC\ConfigurationParsingHelper.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPrivateSettings.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPublicSettings.cs" />
-    <Compile Include="Extension\DSC\DscSettingsSerializer.cs" />
-    <Compile Include="Extension\DSC\GetDscResourceException.cs" />
+    <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\DSC\DscExtensionCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
     <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\SetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
-    <Compile Include="Extension\DSC\VirtualMachineDscExtensionBaseCmdlet.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />

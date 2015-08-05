@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -54,23 +54,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.WorkItemName = "testWorkItem";
-            cmdlet.JobName = "job-0000000001";
+            cmdlet.JobId = "job-1";
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Name = "testTask";
+            cmdlet.Id = "testTask";
 
-            // Don't go to the service on an AddWorkItem call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Don't go to the service on an Add CloudTask call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is AddTaskRequest)
+                BatchRequest<CloudTaskAddParameters, CloudTaskAddResponse> request =
+                (BatchRequest<CloudTaskAddParameters, CloudTaskAddResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    AddTaskResponse response = new AddTaskResponse();
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudTaskAddResponse response = new CloudTaskAddResponse();
+                    Task<CloudTaskAddResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

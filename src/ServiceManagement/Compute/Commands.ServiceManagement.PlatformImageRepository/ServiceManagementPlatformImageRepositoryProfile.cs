@@ -52,6 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
             Mapper.CreateMap<ExtensionLocalResourceConfig, ExtensionLocalResourceConfiguration>();
             Mapper.CreateMap<ExtensionInternalEndpoint, ExtensionEndpointConfiguration.InternalEndpoint>();
             Mapper.CreateMap<ExtensionInputEndpoint, ExtensionEndpointConfiguration.InputEndpoint>();
+            Mapper.CreateMap<ExtensionInstanceInputEndpoint, ExtensionEndpointConfiguration.InstanceInputEndpoint>();
             Mapper.CreateMap<ExtensionEndpointConfigSet, ExtensionEndpointConfiguration>();
 
             Mapper.CreateMap<PublishAzurePlatformExtensionCommand, ExtensionImageRegisterParameters>()
