@@ -112,6 +112,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             client.CreatePool(parameters);
         }
 
+        public static void EnableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            string formula = "$TargetDedicated=2";
+            AutoScaleParameters parameters = new AutoScaleParameters(context, poolId, null, formula, behaviors);
+            client.EnableAutoScale(parameters);
+        }
+
+        public static void DisableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PoolOperationParameters parameters = new PoolOperationParameters(context, poolId, null, behaviors);
+            client.DisableAutoScale(parameters);
+        }
+
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();

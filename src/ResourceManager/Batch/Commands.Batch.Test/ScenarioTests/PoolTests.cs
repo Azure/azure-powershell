@@ -260,6 +260,132 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableAutoScaleById()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-EnableAutoScale '{0}' '{1}' '0'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableAutoScaleByPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-EnableAutoScale '{0}' '{1}' '1'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableAutoScaleById()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DisableAutoScale '{0}' '{1}' '0'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableAutoScaleByPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DisableAutoScale '{0}' '{1}' '1'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEvaluateAutoScaleById()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-EvaluateAutoScale '{0}' '{1}' '0'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEvaluateAutoScaleByPipeline()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-EvaluateAutoScale '{0}' '{1}' '1'", commonAccountName, testPoolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -305,6 +431,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize_ST")]
     public class StopBatchPoolResizeScenarioTestCommand : StopBatchPoolResizeCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchAutoScale_ST")]
+    public class EnableBatchAutoScaleScenarioTestCommand : EnableBatchAutoScaleCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchAutoScale_ST")]
+    public class DisableBatchAutoScaleScenarioTestCommand : DisableBatchAutoScaleCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsDiagnostic.Test, "AzureBatchAutoScale_ST")]
+    public class TestBatchAutoScaleScenarioTestCommand : TestBatchAutoScaleCommand
     {
         public override void ExecuteCmdlet()
         {
