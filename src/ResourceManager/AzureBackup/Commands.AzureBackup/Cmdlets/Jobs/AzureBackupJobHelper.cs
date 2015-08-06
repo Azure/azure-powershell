@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
     public static class AzureBackupJobHelper
     {
+        public static DateTime MinimumAllowedDate = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day, DateTime.MinValue.Hour, DateTime.MinValue.Minute, DateTime.MinValue.Second, DateTimeKind.Utc);
+
         public static bool IsValidStatus(string inputStatus)
         {
             JobStatus status;

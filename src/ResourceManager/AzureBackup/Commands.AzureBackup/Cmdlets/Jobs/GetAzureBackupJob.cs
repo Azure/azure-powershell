@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterTypeHelpMessage, ParameterSetName = "FiltersSet")]
-        [ValidateSet("VM")]
+        [ValidateSet("IaasVM")]
         public string Type { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterOperationHelpMessage, ParameterSetName = "FiltersSet")]
@@ -81,18 +81,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 // validations
                 if (!From.HasValue)
                 {
+                    if (To.HasValue)
+                    {
+                        throw new Exception("Please specify both From and To.");
+                    }
                     WriteDebug("Setting StartTime to min value.");
                     From = new DateTime();
-                    From = DateTime.MinValue;
+                    From = AzureBackupJobHelper.MinimumAllowedDate;
                 }
 
                 if (To.HasValue && To.Value <= From.Value)
                 {
-                    throw new Exception("StartTime should be greater than EndTime.");
+                    throw new Exception("From should be lesser than To.");
                 }
                 else
                 {
-                    if (From != DateTime.MinValue)
+                    if (From != AzureBackupJobHelper.MinimumAllowedDate)
                     {
                         WriteDebug("End time not set. Setting it to current time.");
                         To = DateTime.Now;
@@ -101,7 +105,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     {
                         WriteDebug("Setting EndTime to min value.");
                         To = new DateTime();
-                        To = DateTime.MinValue;
+                        To = AzureBackupJobHelper.MinimumAllowedDate;
                     }
                 }
 
@@ -110,7 +114,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 // if user hasn't specified any filters, then default filter fetches
                 // all jobs that were created in last 24 hours.
-                if (From == DateTime.MinValue && To == DateTime.MinValue &&
+                if (From == AzureBackupJobHelper.MinimumAllowedDate && To == AzureBackupJobHelper.MinimumAllowedDate &&
                     string.IsNullOrEmpty(Operation) && string.IsNullOrEmpty(Status) &&
                     string.IsNullOrEmpty(Type) && string.IsNullOrEmpty(JobId))
                 {
