@@ -14,6 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+using System.Globalization;
+using System.Net;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
     internal static class Util
     {
@@ -47,6 +53,113 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             return string.Format(sizeFormats[order], size);
+        }
+
+        public static CloudBlob GetBlobReferenceFromServer(
+            CloudBlobContainer container, 
+            string blobName, 
+            AccessCondition accessCondition = null,
+            BlobRequestOptions options = null,
+            OperationContext operationContext = null)
+        {
+            CloudBlob blob = container.GetBlobReference(blobName);
+            return GetBlobReferenceFromServer(blob, accessCondition, options, operationContext);
+        }
+
+        public static CloudBlob GetBlobReferenceFromServer(CloudBlobClient client, Uri blobUri)
+        {
+            CloudBlob blob = new CloudBlob(blobUri, client.Credentials);
+            return GetBlobReferenceFromServer(blob);
+        }
+
+        private static CloudBlob GetBlobReferenceFromServer(
+            CloudBlob blob,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions options = null,
+            OperationContext operationContext = null)
+        {
+            try
+            {
+                blob.FetchAttributes(accessCondition, options, operationContext);
+            }
+            catch (StorageException se)
+            {
+                if (se.RequestInformation == null ||
+                    (se.RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
+                {
+                    throw;
+                }
+
+                return null;
+            }
+
+            return GetCorrespondingTypeBlobReference(blob);
+        }
+
+        public static CloudBlob GetCorrespondingTypeBlobReference(CloudBlob blob)
+        {
+            CloudBlob targetBlob;
+            switch(blob.Properties.BlobType)
+            {
+                case BlobType.BlockBlob:
+                    targetBlob = new CloudBlockBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                case BlobType.PageBlob:
+                    targetBlob = new CloudPageBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                case BlobType.AppendBlob:
+                    targetBlob = new CloudAppendBlob(blob.SnapshotQualifiedUri, blob.ServiceClient.Credentials);
+                    break;
+                default:
+                    throw new InvalidOperationException(string.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blob.Properties.BlobType,
+                        blob.Name));
+            }
+
+            targetBlob.FetchAttributes();
+            return targetBlob;
+        }
+
+        public static CloudBlob GetBlobReference(CloudBlobContainer container, string blobName, BlobType blobType)
+        {
+            switch(blobType)
+            {
+                case BlobType.BlockBlob:
+                    return container.GetBlockBlobReference(blobName);
+                case BlobType.PageBlob:
+                    return container.GetPageBlobReference(blobName);
+                case BlobType.AppendBlob:
+                    return container.GetAppendBlobReference(blobName);
+                default:
+                    throw new ArgumentException(String.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blobType,
+                        blobName));
+            }
+        }
+
+        public static CloudBlob GetBlobReference(Uri blobUri, StorageCredentials storageCredentials, BlobType blobType)
+        {
+            switch (blobType)
+            {
+                case BlobType.BlockBlob:
+                    return new CloudBlockBlob(blobUri, storageCredentials);
+                case BlobType.PageBlob: 
+                    return new CloudPageBlob(blobUri, storageCredentials);
+                case BlobType.AppendBlob:
+                    return new CloudAppendBlob(blobUri, storageCredentials);
+                case BlobType.Unspecified:
+                    return new CloudBlob(blobUri, storageCredentials);
+                default:
+                    throw new ArgumentException(String.Format(
+                        CultureInfo.CurrentCulture,
+                        Resources.InvalidBlobType,
+                        blobType,
+                        blobUri));
+            }
         }
     }
 }

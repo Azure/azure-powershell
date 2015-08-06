@@ -12,20 +12,20 @@
 // limitations under the License.
 // ---------------------------------------------------------------------------------
 
-using System;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
+    using System;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     /// <summary>
     /// Azure storage blob object
     /// </summary>
     public class AzureStorageBlob : AzureStorageBase
     {
         /// <summary>
-        /// ICloudBlob object
+        /// CloudBlob object
         /// </summary>
-        public ICloudBlob ICloudBlob { get; private set; }
+        public CloudBlob ICloudBlob { get; private set; }
 
         /// <summary>
         /// Azure storage blob type
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         /// Azure storage blob constructor
         /// </summary>
         /// <param name="blob">ICloud blob object</param>
-        public AzureStorageBlob(ICloudBlob blob)
+        public AzureStorageBlob(CloudBlob blob)
         {
             Name = blob.Name;
             ICloudBlob = blob;
