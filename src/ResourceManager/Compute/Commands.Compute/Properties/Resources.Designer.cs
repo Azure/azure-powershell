@@ -233,24 +233,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get-AzureVMExtensionImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMExtensionImage cmdlet..
-        /// </summary>
-        public static string DeprecationOfGetAzureVMExtensionImageDetail {
-            get {
-                return ResourceManager.GetString("DeprecationOfGetAzureVMExtensionImageDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Get-AzureVMImageDetail cmdlet will be deprecated in a future release of Azure PowerShell. The functionality is merged into Get-AzureVMImage cmdlet..
-        /// </summary>
-        public static string DeprecationOfGetAzureVMImageDetail {
-            get {
-                return ResourceManager.GetString("DeprecationOfGetAzureVMImageDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {

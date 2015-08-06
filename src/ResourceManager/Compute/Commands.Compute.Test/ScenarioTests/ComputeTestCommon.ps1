@@ -284,7 +284,7 @@ function Get-MarketplaceImage
 {
     param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
 
-    $imgs = Get-AzureVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail | where { $_.PurchasePlan -ne $null };
+    $imgs = Get-AzureVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImage | where { $_.PurchasePlan -ne $null };
 
     return $imgs;
 }
