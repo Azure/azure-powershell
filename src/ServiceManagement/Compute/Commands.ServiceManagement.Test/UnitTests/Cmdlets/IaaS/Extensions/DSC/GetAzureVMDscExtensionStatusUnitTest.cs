@@ -5,7 +5,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Xunit;
 
-namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC.UnitTests
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdlets.IaaS.Extensions.DSC
 {
     using NSM = Management.Compute.Models;
 

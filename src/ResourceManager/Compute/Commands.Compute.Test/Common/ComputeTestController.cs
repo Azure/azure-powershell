@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenatId;
+                tenantId = environment.AuthorizationContext.TenantId;
                 UserDomain = environment.AuthorizationContext.UserDomain;
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
