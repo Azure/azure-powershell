@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+
     internal sealed class DataManagementWrapper : ITransferJobRunner
     {
         // Powershell could be ran either in 32bit or 64bit

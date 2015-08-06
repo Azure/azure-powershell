@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         /// <param name="msg">Confirmation message</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
-        private bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath);
             return overwrite || OutputStream.ConfirmAsync(overwriteMessage).Result;
@@ -158,11 +158,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override void EndProcessing()
         {
-            base.EndProcessing();
-            WriteTaskSummary();
-
-            this.transferJobRunner.Dispose();
-            this.transferJobRunner = null;
+            try
+            {
+                base.EndProcessing();
+                WriteTaskSummary();
+            }
+            finally
+            {
+                this.transferJobRunner.Dispose();
+                this.transferJobRunner = null;
+            }
         }
 
         /// <summary>

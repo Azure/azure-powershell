@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Storage.File;
+
     public abstract class StorageFileDataManagementCmdletBase : AzureStorageFileCmdletBase
     {
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <param name="sourcePath">Indicating the source path.</param>
         /// <param name="destinationPath">Indicating the destination path.</param>
         /// <returns>Returns a value indicating whether to overwrite.</returns>
-        private bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath)).Result;
         }
@@ -64,11 +64,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         protected override void EndProcessing()
         {
-            base.EndProcessing();
-            this.WriteTaskSummary();
-
-            this.transferJobRunner.Dispose();
-            this.transferJobRunner = null;
+            try
+            {
+                base.EndProcessing();
+                this.WriteTaskSummary();
+            }
+            finally
+            {
+                this.transferJobRunner.Dispose();
+                this.transferJobRunner = null;
+            }
         }
 
         protected async Task RunTransferJob(TransferJob job, ProgressRecord record)

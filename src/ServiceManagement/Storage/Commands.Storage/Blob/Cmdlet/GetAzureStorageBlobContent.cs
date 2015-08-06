@@ -45,10 +45,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string ContainerParameterSet = "ContainerPipeline";
 
+        [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Azure Blob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [ValidateNotNull]
-        public ICloudBlob ICloudBlob { get; set; }
+        public CloudBlob CloudBlob { get; set; }
 
         [Parameter(HelpMessage = "Azure Container Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
@@ -92,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private bool checkMd5;
 
-        private AzureToFileSystemFileNameResolver fileNameResolver;
+        private BlobToFileSystemNameResolver fileNameResolver;
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageBlobContentCommand class.
@@ -109,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public GetAzureStorageBlobContentCommand(IStorageBlobManagement channel)
         {
             Channel = channel;
-            fileNameResolver = new AzureToFileSystemFileNameResolver(() => NameUtil.WindowsMaxFileNameLength);
+            fileNameResolver = new BlobToFileSystemNameResolver(() => NameUtil.WindowsMaxFileNameLength);
         }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
-        internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, ICloudBlob blob, string filePath)
+        internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)
         {
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
@@ -147,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             await this.RunTransferJob(downloadJob, data);
 
-            this.WriteICloudBlobObject(data.TaskId, data.Channel, blob);
+            this.WriteCloudBlobObject(data.TaskId, data.Channel, blob);
         }
 
         /// <summary>
@@ -173,12 +174,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
 
-            ICloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, OperationContext);
-
-            if (null == blob)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
             GetBlobContent(blob, fileName, true);
         }
@@ -202,12 +198,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValidatePipelineCloudBlobContainer(container);
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = RequestOptions;
-            ICloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, OperationContext);
 
-            if (null == blob)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
-            }
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, requestOptions, OperationContext);
 
             GetBlobContent(blob, filePath, true);
         }
@@ -215,18 +207,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// get blob content
         /// </summary>
-        /// <param name="blob">source ICloudBlob object</param>
+        /// <param name="blob">source CloudBlob object</param>
         /// <param name="fileName">destination file path</param>
         /// <param name="isValidBlob">whether the source container validated</param>
         /// <returns>the downloaded AzureStorageBlob object</returns>
-        internal void GetBlobContent(ICloudBlob blob, string fileName, bool isValidBlob = false)
+        internal void GetBlobContent(CloudBlob blob, string fileName, bool isValidBlob = false)
         {
             if (null == blob)
             {
-                throw new ArgumentNullException(typeof(ICloudBlob).Name, String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+                throw new ArgumentNullException(typeof(CloudBlob).Name, String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
-            //skip download the snapshot except the ICloudBlob pipeline
+            ValidateBlobType(blob);
+
+            //skip download the snapshot except the CloudBlob pipeline
             if (IsSnapshot(blob) && ParameterSetName != BlobParameterSet)
             {
                 WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, blob.SnapshotTime));
@@ -237,7 +231,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!isValidBlob)
             {
-                ValidatePipelineICloudBlob(blob);
+                ValidatePipelineCloudBlob(blob);
             }
 
             //create the destination directory if not exists.
@@ -298,7 +292,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
-                    GetBlobContent(ICloudBlob, FileName, true);
+                    GetBlobContent(CloudBlob, FileName, true);
                     break;
 
                 case ContainerParameterSet:
