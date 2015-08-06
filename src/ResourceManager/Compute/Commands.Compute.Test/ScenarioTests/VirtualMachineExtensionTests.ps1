@@ -255,7 +255,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         $extver = '1.1';
 
         # Set extension settings by hash table
-        $settings = @{"fileUris" = ""; "commandToExecute" = ""};
+        $settings = @{"fileUris" = @(); "commandToExecute" = ""};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
         Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
 
