@@ -114,12 +114,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, bool isValidBlob)
         {
-            ValidateBlobType(blob);
-
             if (!isValidBlob)
             {
                 ValidatePipelineCloudBlob(blob);
             }
+
+            ValidateBlobType(blob);
 
             DeleteSnapshotsOption deleteSnapshotsOption = DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
