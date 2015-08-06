@@ -107,7 +107,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = 'csetest';
@@ -246,7 +246,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine Create
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -408,7 +408,7 @@ function Test-VirtualMachineCustomScriptExtension
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -569,7 +569,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -735,7 +735,7 @@ function Test-VirtualMachineAccessExtension
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = 'csetest';
