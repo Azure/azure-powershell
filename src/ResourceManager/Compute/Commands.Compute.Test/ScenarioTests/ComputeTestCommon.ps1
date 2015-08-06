@@ -333,3 +333,22 @@ function Assert-OutputContains
         $st = Write-Verbose "Found.";
     }
 }
+
+
+# Create a SAS Uri
+function Get-SasUri
+{
+    param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+
+	$uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+
+	$destUri = New-Object -TypeName System.Uri($uri);
+	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+	$policy.Permissions = $type;
+	$policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
+	$uri += $destBlob.GetSharedAccessSignature($policy);
+
+	return $uri;
+}
