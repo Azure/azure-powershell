@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
+
     /// <summary>
     /// File management
     /// </summary>
@@ -62,6 +62,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public CloudFileShare GetShareReference(string shareName)
         {
             return this.Client.GetShareReference(shareName);
+        }
+
+        public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            share.FetchAttributes(accessCondition, options, operationContext);
+        }
+
+        public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            share.SetProperties(accessCondition, options, operationContext);
         }
 
         public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
@@ -134,6 +144,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public Task DeleteFileAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return file.DeleteAsync(accessCondition, options, operationContext, cancellationToken);
+        }
+
+        public Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
+            FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return share.GetPermissionsAsync(accessCondition, options, operationContext, cancellationToken);
+        }
+
+        public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            return share.GetPermissions(accessCondition, options, operationContext);
+        }
+
+        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions, 
+            AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            share.SetPermissions(permissions, accessCondition, options, operationContext);
+        }
+
+        public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
+        {
+            return file.FetchAttributesAsync(accessCondition, options, operationContext, token);
+        }
+
+        public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return file.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
     }
 }

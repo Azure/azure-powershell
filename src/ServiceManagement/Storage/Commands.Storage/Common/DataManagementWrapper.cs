@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+
     internal sealed class DataManagementWrapper : ITransferJobRunner
     {
         // Powershell could be ran either in 32bit or 64bit
@@ -32,8 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             TransferOptions options = new TransferOptions()
             {
-                ParallelOperations = concurrency,
-                ClientRequestIdPrefix = clientRequestId
+                ParallelOperations = concurrency
             };
 
             if (!Environment.Is64BitProcess && options.MaximumCacheSize > Maximum32bitCacheSize)
@@ -44,11 +42,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             this.manager = new TransferManager(options);
         }
 
-        public Task RunTransferJob(TransferJobBase job, Action<double, double> progressReport, CancellationToken cancellationToken)
+        public Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken)
         {
             TaskCompletionSource<object> downloadCompletionSource = new TaskCompletionSource<object>();
 
-            job.StartEvent += (sender, eventArgs) =>
+            job.Starting += (sender, eventArgs) =>
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
@@ -58,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 progressReport(0, 0);
             };
 
-            job.ProgressEvent += (sender, eventArgs) =>
+            job.ProgressUpdated += (sender, eventArgs) =>
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
@@ -68,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 progressReport(eventArgs.Progress, eventArgs.Speed);
             };
 
-            job.FinishEvent += (sender, eventArgs) =>
+            job.Finished += (sender, eventArgs) =>
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
@@ -85,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
             };
 
-            this.manager.EnqueueJob(job, cancellationToken);
+            this.manager.ExecuteJobAsync(job, cancellationToken);
 
             return downloadCompletionSource.Task;
         }
