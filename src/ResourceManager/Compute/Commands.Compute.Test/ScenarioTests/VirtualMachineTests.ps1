@@ -1365,7 +1365,7 @@ function Test-VirtualMachineListWithPaging
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ComputeDefaultLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         $numberOfInstances = 51;
@@ -1399,7 +1399,7 @@ function Test-VirtualMachineListWithPaging
 
         Set-Content -Path $paramFile -Value $paramContent -Force -Verbose;
 
-        New-AzureResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile -Verbose;
+        New-AzureResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile;
 
         $vms = Get-AzureVM -ResourceGroupName $rgname;
         Assert-True { $vms.Count -eq $numberOfInstances };

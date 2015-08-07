@@ -29,13 +29,6 @@
     },
     "location": {
       "type": "string",
-      "allowedValues": [
-        "West US",
-        "East US",
-        "West Europe",
-        "East Asia",
-        "Southeast Asia"
-      ],
       "metadata": {
         "description": "Location to deploy the VM in"
       }
