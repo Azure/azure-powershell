@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
         OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
@@ -42,9 +42,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         private const string NameParameterSet = "NamePipeline";
 
-        [Parameter(HelpMessage = "ICloudBlob Object", Mandatory = true,
+        [Alias("ICloudBlob")]
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSet)]
-        public ICloudBlob ICloudBlob { get; set; }
+        public CloudBlob CloudBlob { get; set; }
 
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerPipelineParameterSet)]
@@ -108,15 +109,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove the azure blob 
         /// </summary>
-        /// <param name="blob">ICloudblob object</param>
-        /// <param name="isValidBlob">whether the ICloudblob parameter is validated</param>
+        /// <param name="blob">Cloudblob object</param>
+        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
-        internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, ICloudBlob blob, bool isValidBlob)
+        internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, bool isValidBlob)
         {
             if (!isValidBlob)
             {
-                ValidatePipelineICloudBlob(blob);
+                ValidatePipelineCloudBlob(blob);
             }
+
+            ValidateBlobType(blob);
 
             DeleteSnapshotsOption deleteSnapshotsOption = DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
@@ -146,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             try
             {
-                await DeleteICloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
                 retryDeleteSnapshot = false;
             }
             catch (StorageException e)
@@ -169,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 if (await OutputStream.ConfirmAsync(message))
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
-                    await DeleteICloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                    await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
                 }
                 else
                 {
@@ -179,12 +182,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
-        internal async Task DeleteICloudAsync(long taskId, IStorageBlobManagement localChannel, ICloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption)
+        internal async Task DeleteCloudAsync(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption)
         {
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = null;
 
-            await localChannel.DeleteICloudBlobAsync(blob, deleteSnapshotsOption, accessCondition,
+            await localChannel.DeleteCloudBlobAsync(blob, deleteSnapshotsOption, accessCondition,
                     requestOptions, OperationContext, CmdletCancellationToken);
 
             string result = String.Format(Resources.RemoveBlobSuccessfully, blob.Name, blob.Container.Name);
@@ -214,8 +217,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             AccessCondition accessCondition = null;
             BlobRequestOptions requestOptions = null;
 
-            ICloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
-                    requestOptions, OperationContext, CmdletCancellationToken);
+            CloudBlob blob = null;
+
+            try
+            {
+                blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition,
+                      requestOptions, OperationContext, CmdletCancellationToken);
+            }
+            catch (InvalidOperationException)
+            {
+                blob = null;
+            }
 
             if (null == blob && container.ServiceClient.Credentials.IsSharedKey)
             {
@@ -255,7 +267,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             switch (ParameterSetName)
             {
                 case BlobPipelineParameterSet:
-                    ICloudBlob localBlob = ICloudBlob;
+                    CloudBlob localBlob = CloudBlob;
                     taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
                     break;
 
