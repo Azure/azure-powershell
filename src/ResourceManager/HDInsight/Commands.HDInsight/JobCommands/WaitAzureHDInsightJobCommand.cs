@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
+            HelpMessage = "The name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
