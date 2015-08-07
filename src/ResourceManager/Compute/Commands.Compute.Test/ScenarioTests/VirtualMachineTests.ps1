@@ -1413,3 +1413,65 @@ function Test-VirtualMachineListWithPaging
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Test Virtual Machine List with Paging
+#>
+function Test-VirtualMachineListWithPaging
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeDefaultLocation;
+        $st = New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+
+        $numberOfInstances = 51;
+        $vmSize = 'Standard_A0';
+
+        $templateFile = ".\Templates\azuredeploy.json";
+        $paramFile = ".\Templates\azuredeploy-parameters-51vms.json";
+        $paramContent =
+@"
+{
+  "newStorageAccountName": {
+    "value": "${rgname}sto"
+  },
+  "adminUsername": {
+    "value": "Foo12"
+  },
+  "adminPassword": {
+    "value": "BaR@123${rgname}"
+  },
+  "numberOfInstances": {
+    "value": $numberOfInstances
+  },
+  "location": {
+    "value": "$loc"
+  },
+  "vmSize": {
+    "value": "$vmSize"
+  }
+}
+"@;
+
+        $st = Set-Content -Path $paramFile -Value $paramContent -Force;
+
+        $st = New-AzureResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile;
+
+        $vms = Get-AzureVM -ResourceGroupName $rgname;
+        Assert-True { $vms.Count -eq $numberOfInstances };
+
+        $vms = Get-AzureVM;
+        Assert-True { $vms.Count -ge $numberOfInstances };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

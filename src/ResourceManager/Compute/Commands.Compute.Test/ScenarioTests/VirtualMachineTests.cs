@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
         }
 
-        [Fact(Skip = "Fix NextLink")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
