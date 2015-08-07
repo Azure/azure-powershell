@@ -511,3 +511,60 @@ function Run-ServiceExtensionSetCmdletTests
         Cleanup-CloudService $svcName;
     }
 }
+
+
+# Run Service Deployment Extension Cmdlet Tests
+function Run-ServiceDeploymentExtensionCmdletTests
+{
+    # Setup
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+
+    $storageName = 'pstest' + (getAssetName);
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+
+    # Associate the new storage account with the current subscription
+    Set-CurrentStorageAccountName $storageName;
+
+    $svcName = 'pstest' + (Get-CloudServiceName);
+    $userName = "pstestuser";
+    $password = "p@ssw0rd";
+    $sPassword = ConvertTo-SecureString $password -AsPlainText -Force;
+    $credential = New-Object System.Management.Automation.PSCredential ($userName, $sPassword);
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+
+    try
+    {
+        # New-AzureDeployment (in Azure.psd1)
+        $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+        $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg';
+
+        $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role WebRole1
+        $rdpCfg2 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role WorkerRole1;
+        $adCfg1 = New-AzureServiceADDomainExtensionConfig -Role WebRole1 -WorkgroupName 'test1';
+        $adCfg2 = New-AzureServiceADDomainExtensionConfig -Role WorkerRole1 -WorkgroupName 'test2';
+
+        $st = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfg -Label $svcName -Slot Production -ExtensionConfiguration $rdpCfg1,$adCfg1;
+        $exts = Get-AzureServiceExtension -ServiceName $svcName -Slot Production;
+        Assert-True { $exts.Count -eq 2 };
+
+        $st = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfg -Label $svcName -Slot Staging -ExtensionConfiguration $rdpCfg2,$adCfg2;
+        $exts = Get-AzureServiceExtension -ServiceName $svcName -Slot Staging;
+        Assert-True { $exts.Count -eq 2 };
+
+        $st = Set-AzureDeployment -Config -ServiceName $svcName -Configuration $cscfg -Slot Production -ExtensionConfiguration $rdpCfg2;
+        $exts = Get-AzureServiceExtension -ServiceName $svcName -Slot Production;
+        Assert-True { $exts.Count -eq 1 };
+
+        $st = Set-AzureDeployment -Config -ServiceName $svcName -Configuration $cscfg -Slot Staging -ExtensionConfiguration $rdpCfg1,$adCfg1;
+        $exts = Get-AzureServiceExtension -ServiceName $svcName -Slot Staging;
+        Assert-True { $exts.Count -eq 2 };
+    }
+    finally
+    {
+        # Cleanup
+        Cleanup-CloudService $svcName;
+    }
+}
