@@ -61,5 +61,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseDataMaskingRuleCreationWithoutPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");
+        }
     }
 }

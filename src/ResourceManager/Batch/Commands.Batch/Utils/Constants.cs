@@ -18,12 +18,23 @@ namespace Microsoft.Azure.Commands.Batch.Utils
     {
         public const int DefaultMaxCount = 1000;
 
-        public const string NameParameterSet = "Name";
+        // Cmdlet nouns
+        public const string AzureBatchPool = "AzureBatchPool";
+        public const string AzureBatchPoolResize = "AzureBatchPoolResize";
+        public const string AzureBatchComputeNode = "AzureBatchComputeNode";
+        public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
+        public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
+        public const string AzureBatchJob = "AzureBatchJob";
+        public const string AzureBatchTask = "AzureBatchTask";
+        public const string AzureBatchNodeFile = "AzureBatchNodeFile";
+        public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
+        public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
+
+        // Parameter sets
+        public const string IdParameterSet = "Id";
         public const string ODataFilterParameterSet = "ODataFilter";
         public const string InputObjectParameterSet = "InputObject";
         public const string ParentObjectParameterSet = "ParentObject";
-        public const string NameAndPathParameterSet = "Name_Path";
-        public const string NameAndStreamParameterSet = "Name_Stream";
         public const string InputObjectAndPathParameterSet = "InputObject_Path";
         public const string InputObjectAndStreamParameterSet = "InputObject_Stream";
     }

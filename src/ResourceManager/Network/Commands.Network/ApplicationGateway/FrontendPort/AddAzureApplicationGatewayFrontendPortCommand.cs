@@ -21,20 +21,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
+    public class AddAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the frontend port")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Frontend port")]
-        [ValidateNotNullOrEmpty]
-        public int Port { get; set; }
-
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -52,18 +40,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Frontend port with the specified name already exists");
             }
 
-            frontendPort = new PSApplicationGatewayFrontendPort();
-            frontendPort.Name = this.Name;
-            frontendPort.Port = this.Port;
-
-            frontendPort.Id =
-                ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    this.ApplicationGateway.ResourceGroupName,
-                    this.ApplicationGateway.Name,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendPortName,
-                    this.Name);
-
+            frontendPort = base.NewObject();            
             this.ApplicationGateway.FrontendPorts.Add(frontendPort);
 
             WriteObject(this.ApplicationGateway);

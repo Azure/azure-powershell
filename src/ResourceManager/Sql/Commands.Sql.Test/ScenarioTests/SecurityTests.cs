@@ -231,5 +231,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
         }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
+        }
     }
 }
