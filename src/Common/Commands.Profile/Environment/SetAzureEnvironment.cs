@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -23,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Sets a Microsoft Azure environment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureEnvironment"), OutputType(typeof(AzureEnvironment))]
+    [Cmdlet(VerbsCommon.Set, "AzureEnvironment"), OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureEnvironmentCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -91,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             ProfileClient.AddOrSetEnvironment(newEnvironment);
 
-            WriteObject(newEnvironment);
+            WriteObject((PSAzureEnvironment)newEnvironment);
         }
 
         private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)

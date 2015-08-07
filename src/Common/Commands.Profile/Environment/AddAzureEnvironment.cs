@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using System.Collections.Generic;
 using System;
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Adds a new Microsoft Azure environment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureEnvironment"), OutputType(typeof(AzureEnvironment))]
+    [Cmdlet(VerbsCommon.Add, "AzureEnvironment"), OutputType(typeof(PSAzureEnvironment))]
     public class AddAzureEnvironmentCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -94,14 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] = AzureKeyVaultDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
-            
             ProfileClient.AddOrSetEnvironment(newEnvironment);
-            List<object> args = new List<object> { "Name", newEnvironment.Name };
-            foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
-            {
-                args.AddRange(new object[] { property, newEnvironment.GetEndpoint(property) });
-            }
-            WriteObject(base.ConstructPSObject(null, args.ToArray()));
+            WriteObject((PSAzureEnvironment)newEnvironment);
         }
     }
 }
