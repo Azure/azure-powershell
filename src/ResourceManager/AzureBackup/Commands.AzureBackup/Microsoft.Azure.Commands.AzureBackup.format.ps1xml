@@ -39,6 +39,43 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJob</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupJob</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>WorkloadName</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+            <Width>12</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+            <Width>12</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>WorkloadName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer</TypeName>
