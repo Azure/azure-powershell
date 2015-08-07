@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos; in container &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos; in container &apos;{1}&apos;, or the blob type is unsupported..
         /// </summary>
         internal static string BlobNotFound {
             get {
@@ -147,6 +147,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string BlobTypeMismatch {
             get {
                 return ResourceManager.GetString("BlobTypeMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find blob &apos;{0}&apos;, or the blob type is unsupported..
+        /// </summary>
+        internal static string BlobUriNotFound {
+            get {
+                return ResourceManager.GetString("BlobUriNotFound", resourceCulture);
             }
         }
         
@@ -223,6 +232,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to file &apos;{0}&apos; with CopyId {1}..
+        /// </summary>
+        internal static string ConfirmAbortFileCopyOperation {
+            get {
+                return ResourceManager.GetString("ConfirmAbortFileCopyOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string ConfirmCaption {
@@ -286,15 +304,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes..
-        /// </summary>
-        internal static string CopyBlobPendingStatus {
-            get {
-                return ResourceManager.GetString("CopyBlobPendingStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; copy to blob &apos;{1}&apos; in container &apos;{2}&apos; from &apos;{3}&apos;..
         /// </summary>
         internal static string CopyBlobStatus {
@@ -340,6 +349,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy File..
+        /// </summary>
+        internal static string CopyFileActivity {
+            get {
+                return ResourceManager.GetString("CopyFileActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; copy to file &apos;{1}&apos; in share &apos;{2}&apos; from &apos;{3}&apos;..
+        /// </summary>
+        internal static string CopyFileStatus {
+            get {
+                return ResourceManager.GetString("CopyFileStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CopyId can not be empty..
         /// </summary>
         internal static string CopyIdCannotBeEmpty {
@@ -358,7 +385,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find copy task on specified blob &apos;{0}&apos; in container &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes..
+        /// </summary>
+        internal static string CopyPendingStatus {
+            get {
+                return ResourceManager.GetString("CopyPendingStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find copy task on the specified blob &apos;{0}&apos; in container &apos;{1}&apos;..
         /// </summary>
         internal static string CopyTaskNotFound {
             get {
@@ -372,6 +408,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string CopyUriToBlobSuccessfully {
             get {
                 return ResourceManager.GetString("CopyUriToBlobSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CORS rules setting is invalid. Please reference to &quot;https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx&quot; to get detailed information..
+        /// </summary>
+        internal static string CORSRuleError {
+            get {
+                return ResourceManager.GetString("CORSRuleError", resourceCulture);
             }
         }
         
@@ -390,6 +435,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string CurrentStorageAccountNotFoundOnAzure {
             get {
                 return ResourceManager.GetString("CurrentStorageAccountNotFoundOnAzure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to core.windows.net.
+        /// </summary>
+        internal static string DefaultDomain {
+            get {
+                return ResourceManager.GetString("DefaultDomain", resourceCulture);
             }
         }
         
@@ -511,6 +565,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not find copy task on the specified file &apos;{0}&apos;..
+        /// </summary>
+        internal static string FileCopyTaskNotFound {
+            get {
+                return ResourceManager.GetString("FileCopyTaskNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File name can not be empty..
         /// </summary>
         internal static string FileNameCannotEmpty {
@@ -543,6 +606,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string FileNotFound {
             get {
                 return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It doesn&apos;t support logging in Microsoft Azure File service..
+        /// </summary>
+        internal static string FileNotSupportLogging {
+            get {
+                return ResourceManager.GetString("FileNotSupportLogging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It doesn&apos;t support metrics in Microsoft Azure File service..
+        /// </summary>
+        internal static string FileNotSupportMetrics {
+            get {
+                return ResourceManager.GetString("FileNotSupportMetrics", resourceCulture);
             }
         }
         
@@ -835,7 +916,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Blob type of &quot;{0}&quot; is invalid, only page blob or block blob are supported..
+        ///   Looks up a localized string similar to Blob type &apos;{0}&apos; of blob &apos;{1}&apos; is not supported..
         /// </summary>
         internal static string InvalidBlobType {
             get {
@@ -844,7 +925,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ICloudBlob &quot;{0}&quot; should contain container properties..
+        ///   Looks up a localized string similar to CloudBlob &quot;{0}&quot; should contain container properties..
         /// </summary>
         internal static string InvalidBlobWithoutContainer {
             get {
@@ -885,6 +966,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string InvalidFileName {
             get {
                 return ResourceManager.GetString("InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is an invalid HTTP method..
+        /// </summary>
+        internal static string InvalidHTTPMethod {
+            get {
+                return ResourceManager.GetString("InvalidHTTPMethod", resourceCulture);
             }
         }
         
@@ -1011,6 +1101,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string ObjectCannotBeNull {
             get {
                 return ResourceManager.GetString("ObjectCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only support to copy from azure file to a block blob..
+        /// </summary>
+        internal static string OnlyCopyFromBlockBlobToAzureFile {
+            get {
+                return ResourceManager.GetString("OnlyCopyFromBlockBlobToAzureFile", resourceCulture);
             }
         }
         
@@ -1267,7 +1366,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service..
+        ///   Looks up a localized string similar to The given share name/prefix &apos;{0}&apos; is not a valid name for a file share of Microsoft Azure File Service; refer to https://msdn.microsoft.com/library/azure/dn167011.aspx for details..
         /// </summary>
         internal static string ShareNameInvalid {
             get {
@@ -1290,6 +1389,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string SignedPermissionsMustBeOmitted {
             get {
                 return ResourceManager.GetString("SignedPermissionsMustBeOmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This start time field must be omitted if it has been specified in an associated stored access policy..
+        /// </summary>
+        internal static string SignedStartTimeMustBeOmitted {
+            get {
+                return ResourceManager.GetString("SignedStartTimeMustBeOmitted", resourceCulture);
             }
         }
         
@@ -1371,6 +1479,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         internal static string StopCopyBlobSuccessfully {
             get {
                 return ResourceManager.GetString("StopCopyBlobSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopped the copy task on file &apos;{0}&apos; successfully..
+        /// </summary>
+        internal static string StopCopyFileSuccessfully {
+            get {
+                return ResourceManager.GetString("StopCopyFileSuccessfully", resourceCulture);
             }
         }
         
