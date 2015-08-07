@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AzureVMNotFound" xml:space="preserve">
-    <value>The specified Azure Virtual Machine Not Found.</value>
+    <value>The specified Azure Virtual Machine Not Found. Possible causes are
+1. VM does not exist
+2. VM is Azure IaaS v2 VM
+3. The VM name or the Service name needs to be case sensitive
+ 
+Please contact Microsoft for further assistant.</value>
   </data>
   <data name="ResourceNotFoundMessage" xml:space="preserve">
     <value>The specified resource does not exist.</value>
