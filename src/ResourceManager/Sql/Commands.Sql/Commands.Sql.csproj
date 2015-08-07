@@ -148,7 +148,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Database\Cmdlet\AzureSqlDatabaseActivityCmdletBase.cs" />
