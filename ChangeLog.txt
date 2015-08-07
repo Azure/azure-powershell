@@ -15,7 +15,6 @@
     * Fix Publish Extension cmdlets.
     * Update CustomScript cmdlet for SAS Uri.
     * Update help file.
-    * Get, Set and Remove Azure Powershell commandlets for IaaS V2 VM.
 * Azure Data Factory
     * Rename Table to Dataset.
 * Azure SQL
