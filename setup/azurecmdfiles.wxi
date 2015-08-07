@@ -2044,6 +2044,9 @@
                         <Component Id="cmp499092B04619C0EDE4686B78E1128605" Guid="*">
                             <File Id="fil9E595049BBFB9413DD757D01D9D71D3E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Commands.Sql.dll-Help.xml" />
                         </Component>
+                        <Component Id="cmpF23457BA331434DDB0815F84746FD1E7" Guid="*">
+                            <File Id="fil1972DDA29C9A5FC7D61122B5F5E1D84B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml" />
+                        </Component>
                         <Component Id="cmp4345BAF62C4935A6C763E439913D5EF1" Guid="*">
                             <File Id="fil7A2E85A4308692430EBF0FF8501B017A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
@@ -5404,6 +5407,7 @@
             <ComponentRef Id="cmp5746A3BAD258D8EA1473730146C01F1D" />
             <ComponentRef Id="cmp56F52674BB946225BB64533814DCF37F" />
             <ComponentRef Id="cmp499092B04619C0EDE4686B78E1128605" />
+            <ComponentRef Id="cmpF23457BA331434DDB0815F84746FD1E7" />
             <ComponentRef Id="cmp4345BAF62C4935A6C763E439913D5EF1" />
             <ComponentRef Id="cmpDA20E40FD1BE07A113851AFDBA89787D" />
             <ComponentRef Id="cmp2C144B41FAE124CE1C9921E8B7DB9776" />
