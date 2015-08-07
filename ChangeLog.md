@@ -30,7 +30,9 @@
 * Azure Stream Analytics 
     * Use Stream Analytics SDK reference to 1.6.0 version.
 * Azure Backup
-    * Enable-AzureBackupContainerReregistration cmdlet.
+    * Get-AzureBackupContainer cmdlet
+    * Enable-AzureBackupContainerReregistration cmdlet
+    * Unregister-AzureBackupContainer cmdlet
 * Azure UsageAggregates cmdlet
 
 ## 2015.07.17 version 0.9.5
