@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster")]
+            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
         [Parameter(HelpMessage = "Gets the Core Site configurations of this HDInsight cluster.")]
