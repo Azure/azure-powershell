@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
 {
     /// <summary>
-    /// Represents an Azure Sql Database Copy
+    /// Represents an Azure SQL Database Copy
     /// </summary>
     public class AzureSqlDatabaseReplicationModelBase
     {
@@ -33,22 +33,22 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the name of the Azure SQL Server
         /// </summary>
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the database
+        /// Gets or sets the name of the Azure SQL Database
         /// </summary>
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the location of the database
+        /// Gets or sets the location of the Azure SQL Database
         /// </summary>
         public string Location { get; set; }
         
         /// <summary>
-        /// Gets or sets the tags associated with the server.
+        /// Gets or sets the tags associated with the Azure SQL Server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
     }

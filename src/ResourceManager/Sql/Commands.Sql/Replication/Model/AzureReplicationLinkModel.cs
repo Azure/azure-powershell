@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
 {
     /// <summary>
-    /// Represents an Azure Sql Database Replication Link
+    /// Represents an Azure SQL Database Replication Link
     /// </summary>
     public class AzureReplicationLinkModel : AzureSqlDatabaseReplicationModelBase
     {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the name of the Azure SQL Server
         /// </summary>
         public string PartnerServerName { get; set; }
 

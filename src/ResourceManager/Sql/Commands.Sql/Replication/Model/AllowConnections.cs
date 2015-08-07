@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Readable Secondary
         /// </summary>
         All = 1
-
-        // Not yet supported
-        // ReadOnly = 2
     }
 }
 

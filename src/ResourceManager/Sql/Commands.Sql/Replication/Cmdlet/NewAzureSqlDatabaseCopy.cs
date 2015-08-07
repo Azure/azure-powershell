@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Replication.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Replication.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to create a new Azure Sql Database Copy
+    /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseCopy",
         ConfirmImpact = ConfirmImpact.Low)]
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string ElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags associated with the Azure Sql Database Copy
+        /// Gets or sets the tags associated with the Azure SQL Database Copy
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database Copy")]
+            HelpMessage = "The tags to associate with the Azure SQL Database Copy")]
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string CopyResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server of the copy.
+        /// Gets or sets the name of the Azure SQL Server of the copy.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the Azure Sql Database Server of the copy.")]
+            HelpMessage = "The name of the Azure SQL Server of the copy.")]
         [ValidateNotNullOrEmpty]
         public string CopyServerName { get; set; }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the name of the source database copy.
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Azure Sql Database copy.")]
+            HelpMessage = "The name of the Azure SQL Database copy.")]
         [ValidateNotNullOrEmpty]
         public string CopyDatabaseName { get; set; }
 
@@ -113,8 +113,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
-                "DatabaseName");
+                string.Format(Resources.DatabaseNameExists, this.CopyDatabaseName, copyServerName),
+                "CopyDatabaseName");
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             string copyServer = string.IsNullOrWhiteSpace(CopyServerName) ? ServerName : CopyServerName;
 
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
-            string copyLocation = ModelAdapter.GetServerLocation(copyResourceGroup, copyServer);
+            string copyLocation = copyServer.Equals(ServerName) ? location : ModelAdapter.GetServerLocation(copyResourceGroup, copyServer);
             List<Model.AzureSqlDatabaseCopyModel> newEntity = new List<AzureSqlDatabaseCopyModel>();
             newEntity.Add(new AzureSqlDatabaseCopyModel()
             {

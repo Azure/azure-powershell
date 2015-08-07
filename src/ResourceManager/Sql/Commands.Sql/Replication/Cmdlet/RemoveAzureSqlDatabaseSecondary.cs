@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Replication.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,18 +22,12 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseSecondary",
-        DefaultParameterSetName = ByPartnerServerName,
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>
-        /// ParameterSet to get a Replication Link by its Partner Server Name
-        /// </summary>
-        internal const string ByPartnerServerName = "ByPartnerServerName";
-
-        /// <summary>
-        /// Gets or sets the name of the primary Replication Link to remove.
+        /// Gets or sets the name of the primary Azure SQL Database with the replication link to remove.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -43,22 +37,20 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource group of the partner.
+        /// Gets or sets the name of the partner resource group.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ByPartnerServerName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group of the secondary.")]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server of the partner.
+        /// Gets or sets the name of the partner Azure SQL Server.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ByPartnerServerName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure Sql Database Server of the secondary.")]
+            HelpMessage = "The name of the Azure SQL Server of the secondary.")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 
@@ -84,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to server
+        /// No changes to persist to Azure SQL Server
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>

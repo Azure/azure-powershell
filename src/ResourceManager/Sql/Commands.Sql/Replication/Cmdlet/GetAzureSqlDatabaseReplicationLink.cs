@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     public class GetAzureSqlDatabaseReplicationLink : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>
-        /// ParameterSet to get all Replication Links for a given Azure Sql Database
+        /// ParameterSet to get all Replication Links for a given Azure SQL Database
         /// </summary>
         internal const string ByDatabaseName = "ByDatabaseName";
 
         /// <summary>
-        /// ParameterSet to get a Replication Link by its partner Server Name
+        /// ParameterSet to get a Replication Link by its partner Azure SQL Server Name
         /// </summary>
         internal const string ByPartnerServerName = "ByPartnerServerName";
  
         /// <summary>
-        /// Gets or sets the name of the Azure Sql Database to retrieve links for.
+        /// Gets or sets the name of the Azure SQL Database to retrieve links for.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server that has the Azure SQL Database partner.
+        /// Gets or sets the name of the Azure SQL Server that has the Azure SQL Database partner.
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = ByPartnerServerName,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "The name of the server that has the Azure SQL Database partner.")]
+            HelpMessage = "The name of the Azure SQL Server that has the Azure SQL Database partner.")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to server
+        /// No changes to persist to Azure SQL Server
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
