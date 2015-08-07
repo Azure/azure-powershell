@@ -37,21 +37,26 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string PublishSettingsFileUrl { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Alias("ServiceManagement", "ServiceManagementUrl")]
         public string ServiceEndpoint { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string ManagementPortalUrl { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The storage endpoint")]
+        [Alias("StorageEndpointSuffix")]
         public string StorageEndpoint { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The URI for the Active Directory service for this environment")]
+        [Alias("AdEndpointUrl", "ActiveDirectory", "ActiveDirectoryAuthority")]
         public string ActiveDirectoryEndpoint { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
+        [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The public gallery endpoint")]
+        [Alias("Gallery", "GalleryUrl")]
         public string GalleryEndpoint { get; set; }
 
         [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, 
@@ -60,6 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         [Parameter(Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The AD Graph Endpoint.")]
+        [Alias("Graph", "GraphUrl")]
         public string GraphEndpoint { get; set; }
 
         [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -71,8 +77,21 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         [Parameter(Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Traffic Manager service.")]
+        public string TrafficManagerDnsSuffix { get; set; }
+
+         [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Sql databases created in this environment.")]
+        public string SqlDatabaseDnsSuffix { get; set; }
+
+        [Parameter(Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
-        public SwitchParameter EnableADFSAuthentication { get; set; }
+        [Alias("OnPremise")]
+        public SwitchParameter EnableAdfsAuthentication { get; set; }
+
+        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The default tenant for this environment.")]
+        public string AdTenant { get; set; }
 
         public AddAzureEnvironmentCommand() : base(true) { }
 
@@ -82,7 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             var newEnvironment = new AzureEnvironment
             {
                 Name = Name,
-                OnPremise = EnableADFSAuthentication
+                OnPremise = EnableAdfsAuthentication
             };
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
@@ -95,6 +114,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] = AzureKeyVaultDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] = TrafficManagerDnsSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
             ProfileClient.AddOrSetEnvironment(newEnvironment);
             WriteObject((PSAzureEnvironment)newEnvironment);
         }
